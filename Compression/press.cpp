@@ -1,4 +1,4 @@
-vector<int> comression(vector<int> A){
+vector<int> press(vector<int> A){
     vector<int> B;
     vector<int> T;
     rep(i,A.size())T.push_back(A[i]);
