@@ -28,12 +28,21 @@ template<class T>void chmin(T&x,T y){if(x>y)x=y;}
 template<class X,class Y>class lazy_segtree{
     int n;
     vector<X> dat;
-    vector<Y> eval_node;    //評価
-    function<Y(Y,Y)> eval_operation;    //eval_node上の演算子
-    function<X(X,X)> get_operation;     //貰うときのやつ
-    function<X(X,Y)> inv_operation;  //引き戻してくる
+    vector<Y> lazy;    //評価
+    using fxy=function<X(X,Y)>;
+    using fx=function<X(X,X)>;
+    using fy=function<Y(Y,Y)>;
+    fy op_Y;    //eval_node上の演算子
+    fxy op_XY;     //貰うときのやつ
+    fx op_X;  //引き戻してくる
 public:
-    lazy_segtree(int n,[](int a,int b)):
+    lazy_segtree(int n_,fx FX,fy FY,fxy FXY):n(n_),op_X(FX),op_Y(FY),op_XY(FXY){
+        int siz=n_;
+        int pow=1;
+        while(n<siz)pow*=2;
+        dat.resize(2*pow-1);
+        lazy.resize(2*pos-1);
+    }
 };
 int main() {
 }
