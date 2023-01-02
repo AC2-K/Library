@@ -1,50 +1,55 @@
 template <typename X>
-class SegmentTree
-{
+class SegmentTree {
     using fx = function<X(X, X)>;
-  
-    vector<X> dat;
-    X ex;
-    int siz = 1;
+    int n;
     fx op;
-  
-public:
-    SegmentTree(int N, fx _op, X _ex):
-    {
-        ex = _ex;
-        op = _op;
-        siz = 1;
-        while (siz < N)
-            siz *= 2;
-        dat.resize(siz * 2);
-        for (int i = 0; i < siz * 2; i++)
-            dat[i] = _ex;
-    }
+    const X ex;
+    vector<X> dat;
 
-    void update(int pos, X x)
-    {
-        pos = pos + siz - 1;
-        dat[pos] = x;
-        while (pos >= 2)
-        {
-            pos /= 2;
-            dat[pos] = op(dat[pos * 2], dat[pos * 2 + 1]);
+    X query(int a, int b, int k, int l, int r) {
+        if (r <= a || b <= l) {
+            return ex;
+        }
+        else if (a <= l && r <= b) {
+            return dat[k];
+        }
+        else {
+            X vl = query(a, b, k * 2 + 1, l, (l + r) / 2);
+            X vr = query(a, b, k * 2 + 2, (l + r) / 2, r);
+            return op(vl, vr);
         }
     }
-    X query(int l, int r)
-    {
-        return query(l, r, 1, siz + 1, 1);
+public:
+    SegmentTree(int n_, fx fx_, X ex_) : n(), op(fx_), ex(ex_), dat(n_ * 4, ex_) {
+        int x = 1;
+        while (n_ > x) {
+            x *= 2;
+        }
+        n = x;
     }
-private:
-    X query(int l, int r, int a, int b, int u)
-    {
-        if (r <= a || b <= l)
-            return ex;
-        if (l <= a && b <= r)
-            return dat[u];
-        int m = (a + b) / 2;
-        int L = query(l, r, a, m, u * 2);
-        int R = query(l, r, m, b, u * 2 + 1);
-        return op(L, R);
+    void set(int pos, X x) { 
+        dat[pos + n - 1] = x;
     }
+    void build() {
+        for (int k = n - 2; k >= 0; k--) dat[k] = op(dat[2 * k + 1], dat[2 * k + 2]);
+    }
+
+    void update(int pos, X x) {
+        pos += n - 1;
+        dat[pos] = x;
+        while (pos > 0) {
+            pos = (pos - 1) / 2;
+            dat[pos] = op(dat[pos * 2 + 1], dat[pos * 2 + 2]);
+        }
+    }
+    void add(int pos,X val){
+        update(pos,get(pos)+val);
+    }
+
+    X query(int a, int b) { 
+        if(a==0&&b==n)return dat[0];
+        return query(a, b, 0, 0, n); 
+    }
+
+    X get(int pos){return dat[pos+n-1];}
 };
