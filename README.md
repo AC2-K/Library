@@ -1,2 +1,1 @@
-# Library-CPP
-- 注意!Zobrist_hashは、正しいか分かんないです。使わないでね...
+
