@@ -19,7 +19,6 @@ template<class T>class set_hash{
     ll hash;
     map<T,ll> mapping;
 public:
-    //コンストラクタと、ハッシュ表
 
     void insert(T x){
         if(mapping.find(x)!=mapping.end())return;
@@ -27,6 +26,7 @@ public:
         hash=hash^mapping[x];
     }
     void erase(T x){
+        if(mapping.find(x)==mapping.end())continue;
         hash=hash^mapping[x];
     }
     ll val(){return hash;}
