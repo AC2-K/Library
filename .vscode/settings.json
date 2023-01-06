@@ -1,0 +1,28 @@
+{
+    "files.associations": {
+        "ios": "cpp",
+        "algorithm": "cpp",
+        "atomic": "cpp",
+        "bit": "cpp",
+        "deque": "cpp",
+        "iterator": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "memory": "cpp",
+        "new": "cpp",
+        "random": "cpp",
+        "set": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp",
+        "xmemory": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "xloctime": "cpp",
+        "cmath": "cpp",
+        "string": "cpp",
+        "xlocnum": "cpp"
+    }
+}
