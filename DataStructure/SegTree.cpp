@@ -27,7 +27,7 @@ public:
     void set(int pos, X val) { 
         dat[pos + n - 1] = val;
     }
-    /// @brief setしたあと、構築する O(\log n)
+    /// @brief setしたあと、構築する O(n)
     void build() {
         for (int k = n - 2; k >= 0; k--){
             dat[k] = op(dat[2 * k + 1], dat[2 * k + 2]);
