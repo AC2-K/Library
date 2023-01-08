@@ -7,7 +7,7 @@ vector<ll> dijkstra(int s,const vector<vector<pair<ll,ll>>>&g){
     int n=g.size();
     priority_queue<P,vector<P>,greater<P>> que;
     que.emplace(0,s);
-    vector<ll> dist(n,INFL);
+    vector<ll> dist(n,infl);
     vector<bool> confirm(n,false);
     dist[s]=0;
     while(!que.empty()){
