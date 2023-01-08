@@ -1,3 +1,7 @@
+#include"template.hpp"
+
+/// @brief modint構造体
+/// @tparam mod  
 template<ll mod>class modint {
 private:
 	using mint = modint<mod>;

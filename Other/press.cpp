@@ -1,12 +1,16 @@
+#include"template.hpp"
+/// @brief 座圧
+/// @param A 座圧したい列
+/// @return 座圧後の列
 vector<int> press(vector<int> A){
     vector<int> B;
     vector<int> T;
     rep(i,A.size())T.push_back(A[i]);
     sort(all(T));
-    T.erase(unique(all(T)),T.end());    //重複消去
+    T.erase(unique(all(T)),T.end());
     rep(i,A.size()){
         int pos=lower_bound(all(T),A[i])-T.begin();
-        B.push_back(pos+1);
+        B.push_back(pos);
     }
     return B;
 }
