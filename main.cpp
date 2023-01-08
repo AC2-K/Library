@@ -24,69 +24,27 @@ template<class T>using vvvv=v<vvv<T>>;
 */
 template<class T>void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>void chmin(T&x,T y){if(x>y)x=y;}
-//離散対数
-//x^n=y mod (mod)なる最小の非負整数
-ll DLP(ll x,ll y,const ll&mod){
-    //memo
-    /*
-    x^n=yなるnを愚直に求めると、O(mod)かかる。
-    BSGSを使ってO(\sqrt mod)まで落とす.
-    定数Qをsq=sqrt(mod)と定める。この時、n=Qi+jなるi,j(i\leq Q,j<Q)が存在する
-        x^(Qi+j)=y
-    <=> x^j=y*X^(Qi) (X=xの逆元)
-    左辺は列挙可能.iを全探索して、対応するjが存在すればnは復元できる。したがってO(Q)で解ける
-    */
-    x%=mod;
-    y%=mod;
-    auto mod_pow=[&](ll base, ll exp)-> ll {
-        long long res = 1;
-        while (exp > 0) {
-            if (exp & 1) res = res * base % mod;
-            base = base * base % mod;
-            exp >>= 1;
-        }
-        return res;
-    };
 
-    auto mod_inv=[&](ll v)-> ll {return mod_pow(v,mod-2);};
-    //OK
-    ll ok=mod;
-    ll ng=0;
-    while(abs(ok-ng)>1){
-        ll mid=(ok+ng)/2;
-        if(mid*mid>=mod)ok=mid;
-        else ng=mid;
+/// @brief 座圧
+/// @param A 座圧したい列
+/// @return 座圧後の列
+vector<int> press(vector<int> A){
+    vector<int> B;
+    vector<int> T;
+    rep(i,A.size())T.push_back(A[i]);
+    sort(all(T));
+    T.erase(unique(all(T)),T.end());
+    rep(i,A.size()){
+        int pos=lower_bound(all(T),A[i])-T.begin();
+        B.push_back(pos);
     }
-    ll sqrt_mod=ok;
-    return sqrt_mod;
-
-
-    map<ll,ll> mp;    //mp[s]=s=x^jなる最小のjを復元する(j<sqrt_mod)
-    ll cur=1;
-    for(int i=0;i<sqrt_mod;i++){
-        if(mp.find(cur)==mp.end())mp[cur]=i;    //もし何も入ってなかったら突っ込む
-        cur*=x;
-        cur%=mod;
-    }
-
-    ll X=mod_pow(mod_inv(x),sqrt_mod);
-    ll val=y;
-    for(int i=0;i<sqrt_mod;i++){
-        if(mp.find(val)!=mp.end()){
-            ll j=mp[val];
-            return sqrt_mod*i+j;
-        }
-        val*=X;
-    }
-    return -1;
+    return B;
 }
-
 int main() {
-    int t;
-    cin>>t;
-    while(t--){
-        ll x,y,p;
-        cin>>x>>y>>p;
-        cout<<DLP(x,y,p)<<'\n';
-    }
+    int n;
+    cin>>n;
+    vector<int> a(n);
+    for(auto&aa:a)cin>>aa;
+    a=press(a);
+    for(auto&aa:a)cout<<aa<<endl;
 }
