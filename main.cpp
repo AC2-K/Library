@@ -25,4 +25,13 @@ template<class T>using vvvv=v<vvv<T>>;
 template<class T>void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>void chmin(T&x,T y){if(x>y)x=y;}
 int main() {
+    int n;
+    cin>>n;
+    ll ans=1;
+    rep(i,n){
+        int a;
+        cin>>a;
+        ans=lcm(ans,a);
+    }
+    cout<<ans<<endl;
 }
