@@ -1,5 +1,5 @@
 # LibraryCPP
-AC2Kの使ってるライブラリ集です
+使ってるライブラリ集(C++)です
 # DataStructure
 データ構造とかです
 |ファイル名|中身|verify|
