@@ -61,6 +61,8 @@
         "xlocmon": "cpp",
         "xstddef": "cpp",
         "xtr1common": "cpp",
-        "xtree": "cpp"
-    }
+        "xtree": "cpp",
+        "numbers": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

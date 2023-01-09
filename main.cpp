@@ -24,27 +24,5 @@ template<class T>using vvvv=v<vvv<T>>;
 */
 template<class T>void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>void chmin(T&x,T y){if(x>y)x=y;}
-
-/// @brief 座圧
-/// @param A 座圧したい列
-/// @return 座圧後の列
-vector<int> press(vector<int> A){
-    vector<int> B;
-    vector<int> T;
-    rep(i,A.size())T.push_back(A[i]);
-    sort(all(T));
-    T.erase(unique(all(T)),T.end());
-    rep(i,A.size()){
-        int pos=lower_bound(all(T),A[i])-T.begin();
-        B.push_back(pos);
-    }
-    return B;
-}
 int main() {
-    int n;
-    cin>>n;
-    vector<int> a(n);
-    for(auto&aa:a)cin>>aa;
-    a=press(a);
-    for(auto&aa:a)cout<<aa<<endl;
 }
