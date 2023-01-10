@@ -2,10 +2,41 @@
 
 /// @brief modint構造体
 /// @tparam mod  
-template<ll mod>class modint {
-private:
+/// @brief modint構造体
+	/// @tparam mod  
+	template<const ll mod>
+	class modint {
+	private:
+
 	using mint = modint<mod>;
 	ll value = 0;
+
+	ll mod_inv(ll a, ll m) {
+		a %= m;
+		ll b = m, u = 1, v = 0;
+		while (b>0) {
+			ll t = a / b;
+			a -= t * b; swap(a, b);
+			u -= t * v; swap(u, v);
+		}
+		u %= m;
+		if (u < 0) u += m;
+		return u;
+	}
+	ll mod_pow(ll base, ll exp, ll M) {
+		ll ans = 1;
+		base %= M;
+		while (exp > 0) {
+			if (exp & 1) {
+				ans *= base;
+				ans %= M;
+			}
+			base *= base;
+			base %= M;
+			exp >>= 1;
+		}
+		return ans;
+	}
 public:
 	modint(ll v = 0) {
 		v %= mod;
@@ -58,33 +89,19 @@ public:
 	bool operator>=(mint fp) {
 		return value >= fp.val();
 	}
-
-	mint inv() {
-		return mod_pow(mod - 2);
-	}
-	mint mod_pow(ll exp) {
-		ll base = value;
-		ll ans = 1;
-		base %= mod;
-		while (exp > 0) {
-			if (exp & 1) {
-				ans *= base;
-				ans %= mod;
-			}
-			base *= base;
-			base %= mod;
-			exp >>= 1;
-		}
-		return ans;
-	}
 	mint operator/(mint a) {
-		return mint(a.inv()*value);
+		return mint(a.inv() * value);
 	}
 	void operator/=(mint a) {
 		value = value * a.inv();
 		value %= mod;
 	}
-	//入出力
+		mint inv() {
+		return mod_inv(val, mod);
+	}
+	mint pow(ll exp) {
+		return mod_pow(value, exp, mod);
+	}
 };
 template<ll T>istream& operator>>(istream& is, modint<T>& mt) {
 	ll v;
