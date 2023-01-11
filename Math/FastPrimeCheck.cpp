@@ -1,6 +1,5 @@
 #include"template.hpp"
 class MillerRabin {
-    //底
     using ll = long long;
     using i128 = __int128_t;
     const vector<ll> bases = { 2 , 7 , 61 };
@@ -19,13 +18,11 @@ class MillerRabin {
         return ans;
     }
 
-    //CHECK!!!
 public:
     bool is_prime(ll n) {
         if (n < 2) {
             return false;
         }
-        //2^q*d==n-1となるように分解する
         ll d = n - 1;
         ll q = 0;
         while ((d & 1) == 0) {

@@ -1,6 +1,4 @@
 #include"template.hpp"
-
-/// @brief disjoint set
 class DSU {
 private:
     vector<int> par, rank, siz;
@@ -42,14 +40,6 @@ public:
         return cnt;
     }
 };
-
-/// @brief 最小全域木
-/// @param N グラフの頂点数 
-/// @param M 辺の本数
-/// @param E 辺 firstに重み,secondにidを突っ込む
-/// @param A 辺Eの頂点
-/// @param B ;;
-/// @return 最小全域木を求める
 ll MST(int N, int M, vector<pair<ll,ll>> E, vector<int> A, vector<int> B) {
     if (M == 0)return 0;
     sort(E.begin(), E.end());

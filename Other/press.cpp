@@ -1,7 +1,4 @@
 #include"template.hpp"
-/// @brief 座圧
-/// @param A 座圧したい列
-/// @return 座圧後の列
 vector<int> press(vector<int> A){
     vector<int> B;
     vector<int> T;

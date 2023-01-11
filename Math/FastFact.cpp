@@ -1,5 +1,4 @@
 #include"template.hpp"
-//ミラーラビン法
 class MillerRabin {
     //底
     using ll = long long;

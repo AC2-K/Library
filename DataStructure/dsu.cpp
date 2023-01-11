@@ -1,5 +1,4 @@
 #include"template.hpp"
-/// @brief disjoint set
 class DSU {
 private:
 	vector<int> par, rank, siz;

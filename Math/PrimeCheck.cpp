@@ -1,7 +1,4 @@
 #include"template.hpp"
-/// @brief エラトステネスの篩
-/// @param N N以下の自然数に対して~
-/// @return 判定結果を表にして渡す
 vector<bool> prime_checker(int N) {
     vector<bool> primes(N + 1, true);
 

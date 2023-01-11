@@ -1,19 +1,15 @@
 #include"template.hpp"
-/// @brief 繰り返しニ乗法を用いて、O(log exp)でbase^exp mod Mを計算する
-/// @param base 底
-/// @param exp 指数
-/// @param M mod
-/// @return base^exp
-ll mod_pow(ll base, ll exp, ll M) {
+ll mod_pow(ll base, ll exp, ll mod) {
+    if(base==0)return 0;
     ll ans = 1;
-    base %= M;
+    base %= mod;
     while (exp > 0) {
         if (exp & 1) {
             ans *= base;
-            ans %= M;
+            ans %= mod;
         }
         base *= base;
-        base %= M;
+        base %= mod;
         exp >>= 1;
     }
     return ans;

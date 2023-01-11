@@ -1,8 +1,4 @@
 #include"template.hpp"
-/// @brief 単一始点最短経路問題をdijkstra法で解く
-/// @param s 始点となる頂点
-/// @param g グラフ。pairのfirstに番号、secondに重みを格納する
-/// @return 結果をvectorで返す
 vector<ll> dijkstra(int s,const vector<vector<pair<ll,ll>>>&g){
     int n=g.size();
     priority_queue<P,vector<P>,greater<P>> que;

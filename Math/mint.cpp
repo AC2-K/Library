@@ -1,7 +1,5 @@
 #include"template.hpp"
 
-/// @brief modint構造体
-/// @tparam mod  
 template<ll mod>class modint {
 private:
 	using mint = modint<mod>;
@@ -84,7 +82,6 @@ public:
 		value = value * a.inv();
 		value %= mod;
 	}
-	//入出力
 };
 template<ll T>istream& operator>>(istream& is, modint<T>& mt) {
 	ll v;
