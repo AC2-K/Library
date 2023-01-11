@@ -19,7 +19,7 @@
 |:--------|:---|:-----|
 |fact.cpp|$O(\sqrt n)$の素因数分解|[リンク](https://onlinejudge.u-aizu.ac.jp/status/users/ac2000_/submissions/1/NTL_1_A/judge/7312275/C++17)|
 |FastPrimeCheck.cpp|ミラーラビンの素数判定|[リンク](https://algo-method.com/submissions/758365)と[リンク](https://onlinejudge.u-aizu.ac.jp/status/users/ac2000_/submissions/1/ALDS1_1_C/judge/7314111/C++17)|
-|FastFact.cpp|$\rho$法|未.LibraryCheckerでWA,TLEが出ている|
+|FastFact.cpp|$\rho$法|作成中|
 |mint.cpp|modint|未|
 |pow.cpp|繰り返しニ乗法|[リンク](https://onlinejudge.u-aizu.ac.jp/status/users/ac2000_/submissions/1/NTL_1_B/judge/7312276/C++17)|
 |PrimeCheck.cpp|エラトステネスの篩|[リンク](https://onlinejudge.u-aizu.ac.jp/status/users/ac2000_/submissions/1/ALDS1_1_C/judge/7325294/C++17)|
