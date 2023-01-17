@@ -1,17 +1,16 @@
 #include"template.hpp"
-
-template<ll mod>class modint {
+template<const ll&mod>class modint {
 private:
 	using mint = modint<mod>;
 	ll value = 0;
 public:
 	modint(ll v = 0) {
 		v %= mod;
-		v = (v + mod) % mod;
+		if(v < 0)v += mod;
 		value = v;
 	}
 	ll val() {
-		return value;
+		return value % mod;
 	}
 	mint operator+(mint fp) {
 		return mint(value + fp.val());
@@ -23,23 +22,33 @@ public:
 		return mint(value * fp.val());
 	}
 	void operator=(mint fp) {
-		val = fp.val();
+		value = fp.val();
 	}
 	void operator=(ll val) {
-		value = val;
+		value = val % mod;
+		if(value < 0) {
+			value += mod;
+		}
 	}
 	void operator+=(mint fp) {
-		value = ((value + fp.val() + mod) % mod + mod) % mod;
+		(value += fp.val()) %= mod;
+		if(value < 0) {
+			value += mod;
+		}
 	}
 	void operator-=(mint fp) {
 		value = value - fp.val();
 		value %= mod;
-		value += mod;
-		value %= mod;
+		if(value < 0) {
+			value += mod;
+		}
 	}
 	void operator*=(mint fp) {
 		value = value * fp.val();
-		value = (value % mod + mod) % mod;
+		value = value % mod;
+		if(value < 0) {
+			value += mod;
+		}
 	}
 	bool operator==(mint fp) {
 		return value == fp.val();
@@ -57,10 +66,10 @@ public:
 		return value >= fp.val();
 	}
 
-	mint inv() {
+	ll inv() {
 		return mod_pow(mod - 2);
 	}
-	mint mod_pow(ll exp) {
+	ll mod_pow(ll exp) {
 		ll base = value;
 		ll ans = 1;
 		base %= mod;
@@ -82,13 +91,13 @@ public:
 		value = value * a.inv();
 		value %= mod;
 	}
+	friend istream& operator>>(istream& is, mint& mt) {
+		ll v;
+		is >> v;
+		mt = mint(v);
+		return is;
+	}
+	friend ostream& operator << (ostream& os, mint& mt) {
+		return os << mt.val();
+	}
 };
-template<ll T>istream& operator>>(istream& is, modint<T>& mt) {
-	ll v;
-	is >> v;
-	mt = v;
-	return is;
-}
-template<ll T>ostream& operator << (ostream& os, modint<T>& mt) {
-	return os << mt.val() % T;
-}
