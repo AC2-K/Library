@@ -1,26 +1,42 @@
 #include<bits/stdc++.h>
 using namespace std;
-//cout << fixed << setprecision(10);
-#define rep(i, N)  for(int i=0;i<(N);i++)
-#define all(x) (x).begin(),(x).end()
-#define popcount(x) __builtin_popcount(x)
-using ll = long long;
-using ld = long double;
-using graph = vector<vector<int>>;
-using P = pair<int, int>;
-const int INF = 1e9;
-const ll INFL = 1e18;
-const ld eps = ld(0.000000001);
-const long double pi = 3.141592653589793;
-const ll MOD = 1e9 + 7;
-const ll MOD2 = 998244353;
-const int dx[4] = { 1,0,-1,0 };
-const int dy[4] = { 0,1,0,-1 };
-/*
-template<class T>using v=vector<T>;
-template<class T>using vv=v<v<T>>;
-template<class T>using vvv=v<vv<T>>;
-template<class T>using vvvv=v<vvv<T>>;
-*/
-template<class T>void chmax(T&x,T y){if(x<y)x=y;}
-template<class T>void chmin(T&x,T y){if(x>y)x=y;}
+
+class scc_graph {
+
+	vector<vector<int>> g,rg;
+	int sz;
+public:
+	scc_graph(int n) : sz(n), g(n) {	}
+
+	void add_edge(int from, int to) {
+		g[from].emplace_back(to);
+		rg[to].emplace_back(from);
+	}
+
+	vector<vector<int>> scc() {
+		vector<vector<int>> vec;
+
+		vector<int> ord;
+		vector<bool> vis(sz,false);
+		auto dfs1 = [&](auto f, int v)-> void {
+			vis[v] = true;
+			for (auto nv : g[v]) {
+				if (vis[nv])continue;
+				f(f, nv);
+			}
+			ord.emplace_back(v);
+		};
+		dfs1(dfs1, 0);
+
+		reverse(ord.begin(), ord.end());
+
+
+		for (auto& v : vis) {
+			v = false;
+		}
+	}
+
+};
+int main() {
+	scc_graph g(100);
+}

@@ -1,5 +1,5 @@
 #include"template.hpp"
-vector<ll> dijkstra(int s,const vector<vector<pair<ll,ll>>>&g){
+vector<ll> dijkstra(int s,const vector<vector<edge>>&g){
     int n=g.size();
     priority_queue<P,vector<P>,greater<P>> que;
     que.emplace(0,s);
@@ -13,8 +13,8 @@ vector<ll> dijkstra(int s,const vector<vector<pair<ll,ll>>>&g){
         if(confirm[vv])continue;
         confirm[vv]=true;
         for(auto nex:g[vv]){
-            int nv=nex.first,nc=nex.second;
-            if(dist[nv]<dist[vv]+nc)continue;
+            int nv=nex.to,nc=nex.cost;
+            if(dist[nv]<=dist[vv]+nc)continue;
             dist[nv]=dist[vv]+nc;
             que.emplace(dist[nv],nv);
         }

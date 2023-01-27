@@ -4,7 +4,6 @@ ll phi_func(ll n){
     for(ll d=2;d*d<=n;d++){
         if(n%d==0){
             res=res/d*(d-1);
-
             for(;n%d==0;n/=d){  }
         }
     }
