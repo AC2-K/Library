@@ -1,5 +1,3 @@
-#include"template.hpp"
-
 template <class X>
 class SegmentTree {
     using fx = function<X(X, X)>;
