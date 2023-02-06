@@ -6,12 +6,13 @@
 |:--------|:---|:-----|
 |SegTree.cpp|セグメント木|RMQ:[リンク](https://judge.yosupo.jp/submission/120801)|
 |||RSQ:[リンク](https://judge.yosupo.jp/submission/120802)
+|lazy_segtree.cppp|遅延評価セグメント木|RUQ:|
 |dsu.cpp|UnionFind|[リンク](https://judge.yosupo.jp/submission/120804)|
 # GraphAlgorithm
 グラフ問題のためのライブラリです
 |ファイル名|中身|verify|
 |:--------|:---|:-----|
-|MST.cpp|最小全域木|[リンク](https://onlinejudge.u-aizu.ac.jp/status/users/ac2000_/submissions/1/GRL_2_A/judge/7325282/C++17)|
+|MST.cpp|最小全域木|[リンク](https://onlinejudge.u-aizu.ac.jp/status/users/ac2000_/submissions/1/GRL_2_A/judge/7440641/C++17)|
 |dijkstra.cpp|ダイクストラ法|[リンク](https://onlinejudge.u-aizu.ac.jp/status/users/ac2000_/submissions/1/GRL_1_A/judge/7325288/C++17)|
 # Math
 数学系統のライブラリです

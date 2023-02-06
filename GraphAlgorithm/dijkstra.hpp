@@ -1,4 +1,3 @@
-#include"template.hpp"
 vector<ll> dijkstra(int s,const vector<vector<edge>>&g){
     int n=g.size();
     priority_queue<P,vector<P>,greater<P>> que;
