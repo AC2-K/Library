@@ -1,4 +1,3 @@
-#include"template.hpp"
 vector<bool> prime_checker(int N) {
     vector<bool> primes(N + 1, true);
 

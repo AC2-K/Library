@@ -1,4 +1,3 @@
-#include"template.hpp"
 ll phi_func(ll n){
     ll res=n;
     for(ll d=2;d*d<=n;d++){

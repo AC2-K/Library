@@ -1,4 +1,3 @@
-#include"template.hpp"
 template<const ll&mod>class modint {
 private:
 	using mint = modint<mod>;

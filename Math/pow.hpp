@@ -1,4 +1,3 @@
-#include"template.hpp"
 ll mod_pow(ll base, ll exp, ll mod) {
     if(base==0)return 0;
     ll ans = 1;

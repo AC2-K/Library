@@ -1,4 +1,3 @@
-#include"template.hpp"
 vector<pair<ll, ll>> fact(ll n) {
     vector<pair<ll, ll>> ret;
     for (ll div = 2; div * div <= n; div++) {

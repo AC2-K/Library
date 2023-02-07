@@ -1,4 +1,3 @@
-#include"template.hpp"
 class DSU {
 private:
 	vector<int> par, rank, siz;

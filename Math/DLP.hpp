@@ -1,4 +1,3 @@
-#include"template.hpp"
 class DLP {
 	ll mod_inv(ll a, ll m) {
 		a %= m;
