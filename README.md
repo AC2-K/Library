@@ -1,5 +1,28 @@
 # LibraryCPP
-使ってるライブラリ集(C++)です
+使ってるライブラリ集(C++)です。なお、以下のマクロ・エイリアスを前提とします。
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+#define rep(i, N)  for(int i=0;i<(N);i++)
+#define all(x) (x).begin(),(x).end()
+#define popcount(x) __builtin_popcount(x)
+using ll = long long;
+using ld = long double;
+using graph = vector<vector<int>>;
+using P = pair<int, int>;
+const int inf = 1e9;
+const ll infl = 1e18;
+const ld eps = 1e-6;
+const long double pi = acos(-1);
+const ll MOD = 1e9 + 7;
+const ll MOD2 = 998244353;
+const int dx[4] = { 1,0,-1,0 };
+const int dy[4] = { 0,1,0,-1 };
+template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
+template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
+```
+
+大抵のファイルはAOJとかで動くことを確認しています。
 # DataStructure
 データ構造とかです\
 略語
@@ -42,5 +65,6 @@
 その他の便利そうなやつです
 |ファイル名|中身|verify|
 |:--------|:---|:-----|
+|template|競プロ用C++テンプレート|なし|
 |LIS|狭義/広義単調増加部分列|[リンク](https://onlinejudge.u-aizu.ac.jp/status/users/ac2000_/submissions/1/DPL_1_D/judge/7325298/C++17)|
 |press|座標圧縮|[リンク](https://atcoder.jp/contests/abc036/submissions/37949032)|
