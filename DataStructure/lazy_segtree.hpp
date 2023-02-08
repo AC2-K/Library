@@ -1,104 +1,103 @@
+#PROBLEM 
 template<
-    class X, class M,
-    X(*fx)(X, X), const X& ex,
-    M(*fm)(M, M), const M& em,
-    X(*fxm)(X, M)
+    class S, class F,
+    S(*op)(S, S), S(*e)(),
+    F(*comp)(F, F), F(*id)(),
+    S(*mapping)(S, F)
 >
 class lazy_segtree {
     int sz;
-    vector<X> dat;
-    vector<M> lz;
-    void Init(int n) {
-        dat.assign(4 * n, ex);
-        lz.assign(4 * n, em);
+    vector<S> dat;
+    vector<F> lz;
+public:
+    lazy_segtree(int n) :lazy_segtree(vector<S>(n, e())) {    }
+    lazy_segtree(const vector<S>& a) :dat(4 * a.size(), e()), lz(4 * a.size(), id()) {
         int x = 1;
-        while (n > x) {
+        while (a.size() > x) {
             x <<= 1;
         }
         sz = x;
-    }
-public:
-    lazy_segtree(int n) {
-        lazy_segtree(n, vector<X>(n, ex));
-    }
-    lazy_segtree(int n, const vector<X>& a) {
-        Init(n);
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < a.size(); i++) {
             set(i, a[i]);
         }
         build();
     }
 public:
-    void set(int pos, X x) {
+    void set(int pos, S x) {
         assert(0 <= pos && pos < sz);
         dat[pos + sz - 1] = x;
     }
     void build() {
         for (int i = sz - 2; i >= 0; i--) {
-            dat[i] = fx(dat[2 * i + 1], dat[2 * i + 2]);
+            dat[i] = op(dat[2 * i + 1], dat[2 * i + 2]);
         }
     }
 
 private:
     void eval(int pos) {
-        if (lz[pos] == em) return;
+        if (lz[pos] == id()) return;
         if (pos < sz - 1) {
-            lz[2 * pos + 1] = fm(lz[2 * pos + 1], lz[pos]);
-            lz[2 * pos + 2] = fm(lz[2 * pos + 2], lz[pos]);
+            lz[2 * pos + 1] = comp(lz[2 * pos + 1], lz[pos]);
+            lz[2 * pos + 2] = comp(lz[2 * pos + 2], lz[pos]);
         }
-        dat[pos] = fxm(dat[pos], lz[pos]);
-        lz[pos] = em;
+        dat[pos] = mapping(dat[pos], lz[pos]);
+        lz[pos] = id();
     }
 
 private:
-    void update(int L, int R, int l, int r, M x, int k) {
+    void update(int L, int R, int l, int r, F x, int k) {
         eval(k);
         if (L <= l && r <= R) {
-            lz[k] = fm(lz[k], x);
+            lz[k] = comp(lz[k], x);
             eval(k);
         }
         else if (L < r && l < R) {
             int mid = (l + r) >> 1;
             update(L, R, l, mid, x, 2 * k + 1);
             update(L, R, mid, r, x, 2 * k + 2);
-            dat[k] = fx(dat[2 * k + 1], dat[2 * k + 2]);
+            dat[k] = op(dat[2 * k + 1], dat[2 * k + 2]);
         }
     }
 public:
-    void update(int l, int r, M x) {
+    void update(int l, int r, F x) {
         assert(0 <= l && l <= r && r <= sz);
         update(l, r, 0, sz, x, 0);
     }
 
 private:
-    X prod(int L, int R, int l, int r, int k) {
+    S prod(int L, int R, int l, int r, int k) {
         eval(k);
         if (r <= L || R <= l) {
-            return ex;
+            return e();
         }
         else if (L <= l && r <= R) {
             return dat[k];
         }
         else {
             int mid = (l + r) >> 1;
-            X vl = prod(L, R, l, mid, 2 * k + 1);
-            X vr = prod(L, R, mid, r, 2 * k + 2);
-            return fx(vl, vr);
+            S vl = prod(L, R, l, mid, 2 * k + 1);
+            S vr = prod(L, R, mid, r, 2 * k + 2);
+            return op(vl, vr);
         }
     }
 
 public:
-    X prod(int l, int r) {
+    S prod(int l, int r) {
         assert(0 <= l && l <= r && r <= sz);
         return prod(l, r, 0, sz, 0);
     }
 
-    X operator[](int pos) {
-        return prod(pos,pos+1);
+    S operator[](int pos) {
+        return prod(pos, pos + 1);
     }
 };
 //@brief 遅延評価セグメント木
-//X:モノイド,M:作用素の集合
-//fx:X × X -> X 
-//fm:M × M -> M
-//fxm:X × M -> X
+//S:datのほうのモノイド,F:作用素の集合
+//op:S × S -> S 
+//composition:F × F -> F
+//mapping:S × F -> S
+S e() { return }
+F id() { return }
+S op(S x, S y) { return }
+F comp(F x, F y) { return }
+S mapping(S x, F y) { return }

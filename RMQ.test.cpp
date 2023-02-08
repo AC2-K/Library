@@ -1,3 +1,24 @@
+#include<bits/stdc++.h>
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_A"
+using namespace std;
+#define rep(i, N)  for(int i=0;i<(N);i++)
+#define all(x) (x).begin(),(x).end()
+#define popcount(x) __builtin_popcount(x)
+using ll = long long;
+//using i128=__int128_t;
+using ld = long double;
+using graph = vector<vector<int>>;
+using P = pair<int, int>;
+const int inf = 1e9;
+const ll infl = 1e18;
+const ld eps = 1e-6;
+const long double pi = acos(-1);
+const ll MOD = 1e9 + 7;
+const ll MOD2 = 998244353;
+const int dx[4] = { 1,0,-1,0 };
+const int dy[4] = { 0,1,0,-1 };
+template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
+template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
 
 template<class S, S(*op)(S, S), S(*e)()>
 class segtree {
@@ -72,5 +93,23 @@ public:
     }
 };
 using S = ll;
-S op(S x, S y) { return; }
-S e() { return; }
+S op(S x, S y) { return min(a,b); }
+S e() { return (1ll<<31)-1; }
+int main() {
+    int n,q;
+    scanf("%d%d",&n,&q);
+    segtree<S,op,e> seg(n);
+    while(q--){
+        int t;
+        scanf("%d",&t);
+        if(t==0){
+            int p,x;
+            scanf("%d%d",&p,&x);
+            seg.update(p,x);
+        }else{
+            int l,r;
+            scanf("%d%d",&l,&r);
+            printf("%d\n",seg.prod(l,r+1));
+        }
+    }
+}
