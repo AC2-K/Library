@@ -24,4 +24,3 @@ template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
 ```
 
 AOJとかでAtCoderで動くことを確認している...はず
-[![Actions Status](https://github.com/AC2-K/Library-CPP/workflows/verify/badge.svg)](https://github.com/AC2-K/Library-CPP/actions)
