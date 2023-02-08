@@ -1,4 +1,3 @@
-#PROBLEM 
 template<
     class S, class F,
     S(*op)(S, S), S(*e)(),
