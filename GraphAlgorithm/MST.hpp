@@ -1,4 +1,3 @@
-#include"DataStructure/dsu.hpp"
 class MST{
     class DSU {
     private:

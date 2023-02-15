@@ -1,4 +1,3 @@
-#include"template.hpp"
 vector<int> press(vector<int> A){
     vector<int> B;
     vector<int> T;

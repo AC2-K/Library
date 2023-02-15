@@ -1,4 +1,3 @@
-
 class Rho{
     using i128=__int128_t;
     mt19937 mt; //メルセンヌツイスタ
