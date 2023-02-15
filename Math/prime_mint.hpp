@@ -1,4 +1,4 @@
-template<const ll&mod>class modint {
+template<const ll mod>class modint {
 private:
 	using mint = modint<mod>;
 	ll value = 0;
@@ -70,6 +70,20 @@ public:
 	}
 	ll mod_pow(ll exp) {
 		ll base = value;
+		ll ans = 1;
+		base %= mod;
+		while (exp > 0) {
+			if (exp & 1) {
+				ans *= base;
+				ans %= mod;
+			}
+			base *= base;
+			base %= mod;
+			exp >>= 1;
+		}
+		return ans;
+	}
+	static ll mod_pow(ll base,ll exp){
 		ll ans = 1;
 		base %= mod;
 		while (exp > 0) {

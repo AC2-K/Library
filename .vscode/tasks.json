@@ -6,6 +6,9 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-fdiagnostics-color=always",
+                "/home/ykota0619/MainSpace/Library/DataStructure",
+                "/home/ykota0619/MainSpace/Library/GraphAlgorithm",
+                "/home/ykota0619/MainSpace/Library/Math",
                 "-g",
                 "${file}",
                 "-o",
