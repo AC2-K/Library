@@ -1,22 +1,25 @@
-vector<ll> dijkstra(int s,const vector<vector<edge>>&g){
-    int n=g.size();
-    priority_queue<P,vector<P>,greater<P>> que;
+pair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){
+    vector<ll> dist(g.size(),infl);
+    vector<int> pre(g.size(),-1);
+    using st=pair<ll,int>;
+    priority_queue<st,vector<st>,greater<st>> que;
     que.emplace(0,s);
-    vector<ll> dist(n,infl);
-    vector<bool> confirm(n,false);
     dist[s]=0;
+    pre[s]=s;
     while(!que.empty()){
-        auto T=que.top();
+        auto[d,v]=que.top();
         que.pop();
-        int vc=T.first,vv=T.second;
-        if(confirm[vv])continue;
-        confirm[vv]=true;
-        for(auto nex:g[vv]){
-            int nv=nex.to,nc=nex.cost;
-            if(dist[nv]<=dist[vv]+nc)continue;
-            dist[nv]=dist[vv]+nc;
-            que.emplace(dist[nv],nv);
+        if(dist[v]!=d){
+            continue;
+        }
+
+        for(const auto&[nv,c]:g[v]){
+            if(dist[v]+c<dist[nv]){
+                dist[nv]=dist[v]+c;
+                pre[nv]=v;
+                que.emplace(dist[nv],nv);
+            }
         }
     }
-    return dist;
+    return {dist,pre};
 }
