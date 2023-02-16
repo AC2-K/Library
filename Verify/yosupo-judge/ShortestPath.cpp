@@ -1,4 +1,7 @@
 #include<bits/stdc++.h>
+#include"GraphAlgorithm/dijkstra.hpp"
+#include"GraphAlgorithm/edge.hpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/shortest_path"
 using namespace std;
 #define rep(i, N)  for(int i=0;i<(N);i++)
 #define all(x) (x).begin(),(x).end()
@@ -18,37 +21,6 @@ const int dx[4] = { 1,0,-1,0 };
 const int dy[4] = { 0,1,0,-1 };
 template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
-struct edge{
-    int to;
-    int cost;
-    edge(int to,int cost):to(to),cost(cost){    }
-};
-
-pair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){
-    vector<ll> dist(g.size(),infl);
-    vector<int> pre(g.size(),-1);
-    using st=pair<ll,int>;
-    priority_queue<st,vector<st>,greater<st>> que;
-    que.emplace(0,s);
-    dist[s]=0;
-    pre[s]=s;
-    while(!que.empty()){
-        auto[d,v]=que.top();
-        que.pop();
-        if(dist[v]!=d){
-            continue;
-        }
-
-        for(const auto&[nv,c]:g[v]){
-            if(dist[v]+c<dist[nv]){
-                dist[nv]=dist[v]+c;
-                pre[nv]=v;
-                que.emplace(dist[nv],nv);
-            }
-        }
-    }
-    return {dist,pre};
-}
 int main() {
     cin.tie(0)->sync_with_stdio(0);
     cout.tie(nullptr);
