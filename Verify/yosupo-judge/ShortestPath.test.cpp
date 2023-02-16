@@ -2,6 +2,7 @@
 #include"GraphAlgorithm/dijkstra.hpp"
 #include"GraphAlgorithm/edge.hpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/shortest_path"
+//test
 using namespace std;
 #define rep(i, N)  for(int i=0;i<(N);i++)
 #define all(x) (x).begin(),(x).end()
