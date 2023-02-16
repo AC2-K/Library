@@ -4,7 +4,7 @@ class Rho{
     class MillerRabin {
         using ll = long long;
         using i128 = __int128_t;
-        const vector<ll> bases = { 2 , 7 , 61 };
+        const vector<ll> bases = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37 };
         i128 mod_pow(i128 base, i128 exp, ll mod) {
             i128 ans = 1;
             base %= mod;
