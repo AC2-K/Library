@@ -1,84 +1,84 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<functional>
+#include<cassert>
 using namespace std;
-#define rep(i, N)  for(int i=0;i<(N);i++)
-#define all(x) (x).begin(),(x).end()
-#define popcount(x) __builtin_popcount(x)
-using ll = long long;
-//using i128=__int128_t;
-using ld = long double;
 using graph = vector<vector<int>>;
-using P = pair<int, int>;
-const int inf = 1e9;
-const ll infl = 1e18;
-const ld eps = 1e-6;
-const long double pi = acos(-1);
-const ll MOD = 1e9 + 7;
-const ll MOD2 = 998244353;
-const int dx[4] = { 1,0,-1,0 };
-const int dy[4] = { 0,1,0,-1 };
-template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
-template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
-struct edge{
-    int to;
-    int cost;
-    edge(int to,int cost):to(to),cost(cost){    }
-};
+class LCA {
+    using graph = vector<vector<int>>;
+    int n;
+    graph g;
+    vector<int> vs, in;
 
-pair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){
-    vector<ll> dist(g.size(),infl);
-    vector<int> pre(g.size(),-1);
-    using st=pair<ll,int>;
-    priority_queue<st,vector<st>,greater<st>> que;
-    que.emplace(0,s);
-    dist[s]=0;
-    pre[s]=s;
-    while(!que.empty()){
-        auto[d,v]=que.top();
-        que.pop();
-        if(dist[v]!=d){
-            continue;
-        }
-
-        for(const auto&[nv,c]:g[v]){
-            if(dist[v]+c<dist[nv]){
-                dist[nv]=dist[v]+c;
-                pre[nv]=v;
-                que.emplace(dist[nv],nv);
+    template<class T>
+    class SparseTable {
+        vector<vector<T>> table;
+        vector<int> look_up;
+    public:
+        SparseTable(const vector<T>& vec = {}) {
+            int sz = vec.size();
+            int log = 0;
+            while ((1 << log) <= sz) {
+                log++;
+            }
+            table.assign(log, vector<T>(1 << log));
+            for (int i = 0; i < sz; i++) {
+                table[0][i] = vec[i];
+            }
+            for (int i = 1; i < log; i++) {
+                for (int j = 0; j + (1 << i) <= (1 << log); j++) {
+                    table[i][j] = min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);
+                }
+            }
+            look_up.resize(sz + 1);
+            for (int i = 2; i < look_up.size(); i++) {
+                look_up[i] = look_up[i >> 1] + 1;
             }
         }
+
+        T prod(int l, int r) {
+            int b = look_up[r - l];
+            return min(table[b][l], table[b][r - (1 << b)]);
+        }
+    };
+    SparseTable<pair<int,int>> seg;
+public:
+    LCA(const graph& g) :g(g), n(g.size()),in(n) { }
+    void setup() {
+        int p = 0;
+        vector<pair<int,int>> vec(2 * n);
+        function<void(int, int, int)> dfs = [&](int v, int par, int now_depth) -> void {
+            in[v] = p;
+            vec[p++]={now_depth,v};
+            for (const auto& ch : g[v])if (ch != par) {
+                dfs(ch, v, now_depth + 1);
+                vec[p++] = { now_depth,v };
+            }
+        };
+        dfs(0, -1, 0);
+        seg = SparseTable<pair<int, int>>(vec);
     }
-    return {dist,pre};
-}
+
+    int query(int u, int v) {
+        if (in[u] >= in[v])swap(u, v);
+        return seg.prod(in[u], in[v] + 1).second;
+    }
+};
 int main() {
-    cin.tie(0)->sync_with_stdio(0);
-    cout.tie(nullptr);
-
-    int n,m,s,t;
-    cin>>n>>m>>s>>t;
-    vector<vector<edge>> g(n);
-    rep(i,m){
-        int a,b,c;
-        cin>>a>>b>>c;
-        g[a].emplace_back(b,c);
+    int n, q;
+    cin >> n >> q;
+    vector<vector<int>> g(n);
+    for (int i = 1; i < n; i++) {
+        int p;
+        cin >> p;
+        g[p].emplace_back(i);
+        g[i].emplace_back(p);
     }
-
-    auto [dist,trace]=dijkstra(s,g);
-    if(dist[t]>=infl){
-        cout<<-1<<'\n';
-        return 0;
-    }
-
-    int cur=t;
-    vector<int> path;
-    while(cur!=trace[cur]){
-        path.emplace_back(cur);
-        cur=trace[cur];
-    }
-
-    path.emplace_back(cur);
-    cout<<dist[t]<<' '<<path.size()-1<<'\n';
-    reverse(all(path));
-    for(int i=1;i<path.size();i++){
-        cout<<path[i-1]<<' '<<path[i]<<'\n';
+    LCA lca(g);
+    lca.setup();
+    while (q--) {
+        int u, v;
+        cin >> u >> v;
+        cout << lca.query(u, v) << '\n';
     }
 }
