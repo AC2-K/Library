@@ -15,5 +15,3 @@ ll bsgs(S s,S g,ll n,ll m,const function<S(S)>&f,const function<S(S)>&fm){
     }
     return -1;
 }
-/// @brief BabyStep GiantStep 
-//条件を満たすf:S->Sについて、f^m(s)=gなる最小のmを求める
