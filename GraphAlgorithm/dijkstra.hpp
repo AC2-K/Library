@@ -1,4 +1,3 @@
-#pragma once
 #include"edge.hpp"
 pair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){
     vector<ll> dist(g.size(),infl);
@@ -23,5 +22,5 @@ pair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){
             }
         }
     }
-    return {dist,pre};
+    return make_pair(dist,pre);
 }
