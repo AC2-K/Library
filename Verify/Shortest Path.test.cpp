@@ -1,4 +1,5 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/shortest_path"
+#pragma once
 #include"template.hpp"
 #include"GraphAlgorithm/dijkstra.hpp"
 int main() {
