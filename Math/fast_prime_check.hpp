@@ -15,7 +15,6 @@ class MillerRabin {
         }
         return ans;
     }
-
 public:
     bool is_prime(ll n) {
         if (n < 2) {
@@ -28,7 +27,7 @@ public:
             q++;
         }
 
-        for (ll a : bases) {
+        for (const auto&a : bases) {
             if (a == n) {
                 return true;
             }
