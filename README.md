@@ -23,4 +23,4 @@ template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
 ```
 
-AOJとかでAtCoderで動くことを確認している...はず
+AOJとかでAtCoderで動くことを確認している...はず 
