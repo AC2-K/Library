@@ -91,12 +91,6 @@ public:
     }
 };
 //@brief 遅延評価セグメント木
-//S:datのほうのモノイド,F:作用素の集合
 //op:S × S -> S 
 //composition:F × F -> F
 //mapping:S × F -> S
-S e() { return }
-F id() { return }
-S op(S x, S y) { return }
-F comp(F x, F y) { return }
-S mapping(S x, F y) { return }

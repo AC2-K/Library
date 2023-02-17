@@ -1,4 +1,4 @@
-#pragma onece
+#pragma once
 #include"Math/mod_pow.hpp"
 
 ll dlp(ll x, ll y, ll p) {

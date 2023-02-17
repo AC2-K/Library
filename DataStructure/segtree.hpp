@@ -70,3 +70,6 @@ public:
         return dat[n + pos - 1];
     }
 };
+/// @brief セグメント木
+//op:S->S
+//e:S->{1_S}

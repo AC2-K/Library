@@ -1,3 +1,5 @@
+#pragma once
+#include"edge.hpp"
 pair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){
     vector<ll> dist(g.size(),infl);
     vector<int> pre(g.size(),-1);
