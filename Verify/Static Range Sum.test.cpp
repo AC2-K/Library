@@ -1,5 +1,6 @@
 #include"template.hpp"
 #include"DataStructure/segtree.hpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
 using S=ll;
 S op(S x,S y){return x+y;}
 S e(){return 0;}
@@ -8,7 +9,7 @@ int main(){
     cin.tie(0);
     int n,q;
     cin>>n>>q;
-    vector<int> a(n);
+    vector<ll> a(n);
     for(auto&aa:a){
         cin>>aa;
     }

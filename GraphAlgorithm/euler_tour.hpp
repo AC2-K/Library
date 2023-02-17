@@ -1,6 +1,5 @@
 class EulerTour {
 	using graph = vector<vector<int>>;
-
 	graph g;
 public:
 	vector<int> in, out, depth,tour;
