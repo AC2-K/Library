@@ -70,6 +70,3 @@ public:
         return dat[n + pos - 1];
     }
 };
-using S = ll;
-S op(S x, S y) { return; }
-S e() { return; }

@@ -1,4 +1,3 @@
-#include"template.hpp"
 class RollingHash {
 	static const ll mod = 1e9 + 7;
 	const ll base;

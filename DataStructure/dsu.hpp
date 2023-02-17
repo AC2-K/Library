@@ -31,7 +31,7 @@ public:
 	int size(int x) {
 		return siz[root(x)];
 	}
-	int connect() {
+	int group_size() {
 		int cnt = 0;
 		for (int i = 0; i < N; i++)
 			if (root(i) == i)

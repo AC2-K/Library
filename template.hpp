@@ -1,13 +1,10 @@
-# LibraryCPP
-
-使ってるライブラリ集(C++)です。なお、基本的には以下のテンプレートを用いています。
-```cpp
 #include<bits/stdc++.h>
 using namespace std;
 #define rep(i, N)  for(int i=0;i<(N);i++)
 #define all(x) (x).begin(),(x).end()
 #define popcount(x) __builtin_popcount(x)
 using ll = long long;
+//using i128=__int128_t;
 using ld = long double;
 using graph = vector<vector<int>>;
 using P = pair<int, int>;
@@ -21,6 +18,3 @@ const int dx[4] = { 1,0,-1,0 };
 const int dy[4] = { 0,1,0,-1 };
 template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
-```
-
-AOJとかでAtCoderで動くことを確認している...はず。
