@@ -1,6 +1,6 @@
+#define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
 #include"template.hpp"
 #include"DataStructure/segtree.hpp"
-#define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
 using S=ll;
 S op(S x,S y){return x+y;}
 S e(){return 0;}

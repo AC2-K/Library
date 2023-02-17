@@ -1,6 +1,6 @@
+#define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_subtree_sum"
 #include<bits/stdc++.h>
 using namespace std;
-#define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_subtree_sum"
 #include"GraphAlgorithm/euler_tour.hpp"
 #include"DataStructure/segtree.hpp"
 using S = long long;
