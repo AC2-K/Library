@@ -50,6 +50,7 @@ int groups_size()
 # segtree
 セグメント木です。
 モノイド $(S,\cdot,1_{S})$ の列 $a=(a_1,a_2,\dots,a_n)$ について、以下の操作を $O(\log n)$ で行います
+
 - $x\in S$ と $0\leq i<n$ なる $i\in\mathbb{Z}$ に対して  $a_i\leftarrow a_i\cdot x$ とする。
 
 - $0\leq l<r<n$ なる整数 $l,r$ に対して、 $a_l \cdot a_{l+1} \dots,a_{r-1}\cdot a_{r-1}$を計算する 
