@@ -1,4 +1,7 @@
 template<class S> bsgs(S s, S g, ll n, ll m, const function<S(S)>& f, const function<S(S)>& fm) {
+    if(s == g){
+        return 0;
+    }
     map<S, ll> mp;
     for (int j = 1; j <= m; j++) {
         g = f(g);
