@@ -28,3 +28,8 @@ AOJとかでAtCoderで動くことを確認している...はず。
 バグ、エラーなどなど...不備を見つけた際は、[twitter](https://twitter.com/ac2000_cp)などに連絡いただけるととても助かります。
 
 ## ドキュメント
+ゆるゆる更新していきます。
+|FileName|Document|
+|-------:|-------:|
+|[dsu.hpp](https://github.com/AC2-K/Library-CPP/blob/main/DataStructure/dsu.hpp)|[dsu.md](https://github.com/AC2-K/Library-CPP/blob/main/Documents/DataStructure/dsu.md)|
+|[segtree.hpp](https://github.com/AC2-K/Library-CPP/blob/main/DataStructure/segtree.hpp)|[segtree.md](https://github.com/AC2-K/Library-CPP/blob/main/Documents/DataStructure/segtree.md)|
