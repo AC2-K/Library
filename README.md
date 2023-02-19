@@ -1,5 +1,5 @@
 # LibraryCPP
-
+## What's this???
 使ってるライブラリ集(C++)です。なお、基本的には以下のテンプレートを用いています。
 ```cpp
 #include<bits/stdc++.h>
@@ -24,3 +24,7 @@ template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
 ```
 
 AOJとかでAtCoderで動くことを確認している...はず。
+
+バグ、エラーなどなど...不備を見つけた際は、[twitter](https://twitter.com/ac2000_cp)などに連絡いただけるととても助かります。
+
+## ドキュメント
