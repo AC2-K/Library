@@ -34,3 +34,4 @@ AOJとかでAtCoderで動くことを確認している...はず。
 |-------:|-------:|
 |[dsu.hpp](https://github.com/AC2-K/Library-CPP/blob/main/DataStructure/dsu.hpp)|[dsu.md](https://github.com/AC2-K/Library-CPP/blob/main/Documents/DataStructure/dsu.md)|
 |[segtree.hpp](https://github.com/AC2-K/Library-CPP/blob/main/DataStructure/segtree.hpp)|[segtree.md](https://github.com/AC2-K/Library-CPP/blob/main/Documents/DataStructure/segtree.md)|
+|[lazy_segtree.hpp](https://github.com/AC2-K/Library-CPP/blob/main/DataStructure/lazy_segtree.hpp)|[lazy_segtree.md](https://github.com/AC2-K/Library-CPP/blob/main/Documents/DataStructure/lazy_segtree.md)|
