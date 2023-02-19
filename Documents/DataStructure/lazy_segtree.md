@@ -70,5 +70,5 @@ void seg.build()
 segtree同様に、`seg,build`が用意してあります。
 
 ### 計算量
-- `set`: $O(1)
+- `set`: $O(1)$
 - `build`: $O(n)$
