@@ -1,7 +1,7 @@
 # LibraryCPP
 ## What's this???
 使ってるライブラリ集(C++)です。なお、基本的には以下のテンプレートを用いています。
-```cpp
+```cpp:template.hpp
 #include<bits/stdc++.h>
 using namespace std;
 #define rep(i, N)  for(int i=0;i<(N);i++)
@@ -22,6 +22,7 @@ const int dy[4] = { 0,1,0,-1 };
 template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
 ```
+- [template.hpp](https://github.com/AC2-K/Library-CPP/blob/main/template.hpp)
 
 AOJとかでAtCoderで動くことを確認している...はず。
 
