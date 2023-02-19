@@ -14,7 +14,7 @@ pair<vector<long long>,vector<int>> dijkstra(int s, vector<vector<edge>> g)
 ### dist
 $dist[v]$ は $s\to v$ の最短経路長です。たどり着けないときは $dist[v]=10^{18}$ です。
 ### prev
-$s\to v$ の最短パスを $(p_1=s,p_2,\dots,p_k=v)$ とします。このようなパスが存在すれば、 $prev[v]=p_{k-1}$ です。ただし、$prev[s]=s$ です。\
+$s\to v$ の最短パスを $(p_1=s,p_2,\dots,p_k=v)$ とします。このようなパスが存在すれば、 $prev[v]=p_{k-1}$ です。ただし、 $prev[s]=s$ です。\
 そもそも最短パスが存在しなければ $prev[v]=-1$ です。
 \
 \
