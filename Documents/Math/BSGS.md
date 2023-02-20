@@ -9,7 +9,7 @@ $$f^t(s)=g$$
 - ある $m\in\mathbb{N}$が存在して $f^m$ が高速に求まる。
 
 このとき、 $n,m,f^m$ が実際に求まれば、上記の $t$ が $O((m+\frac{n}{m})\log (m+\frac{n}{m}))$ で求まる。\
-$m=\text{ceil}(\sqrt n)$ だと計算量 $(\sqrt n\log n)$で求まる!!!
+$m=\text{ceil}\left(\sqrt n\right)$ だと計算量 $(\sqrt n\log n)$で求まる!!!
 
 <details>
   <summary> 手法 </summary>
