@@ -163,7 +163,6 @@ ll phi_func(ll n){
     for(auto&d:pf){
         res=res/d*(d-1);
     }
-    if(n!=1)res=res/n*(n-1);
     return res;
 }
 #line 5 "main.cpp"
