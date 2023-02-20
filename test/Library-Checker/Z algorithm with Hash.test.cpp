@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/zalgorithm"
 #include"template.hpp"
-#include"StringAlgorithm/rolling_hash.hpp"
+#include"string/rolling_hash.hpp"
 int main() {
     string s;
     cin>>s;

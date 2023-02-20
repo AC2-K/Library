@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/discrete_logarithm_mod"
 #include"template.hpp"
-#include"Math/DLP.hpp"
+#include"math/DLP.hpp"
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);

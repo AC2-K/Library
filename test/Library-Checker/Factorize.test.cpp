@@ -19,7 +19,7 @@ const int dx[4] = { 1,0,-1,0 };
 const int dy[4] = { 0,1,0,-1 };
 template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
-#include"Math/fast_fact.hpp"
+#include"math/fast_fact.hpp"
 Rho rho;
 int main() {
     ios::sync_with_stdio(false);

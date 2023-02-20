@@ -1,5 +1,5 @@
 #pragma once
-#include"Math/fast_prime_check.hpp"
+#include"math/fast_prime_check.hpp"
 class Rho{
     using i128=__int128_t;
     mt19937 mt;

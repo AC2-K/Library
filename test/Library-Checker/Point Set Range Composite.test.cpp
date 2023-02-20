@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
 #include"template.hpp"
 #include"data-structure/segtree.hpp"
-#include"Math/prime_mint.hpp"
+#include"math/prime_mint.hpp"
 using mint=modint<MOD2>;
 
 struct F
