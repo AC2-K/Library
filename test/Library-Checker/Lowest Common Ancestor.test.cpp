@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/submission/126153"
+#define PROBLEM "https://judge.yosupo.jp/problem/lca"
 
 #include"template.hpp"
 #include"graph/lca.hpp"
