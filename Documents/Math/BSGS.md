@@ -50,5 +50,5 @@ $m=\text{ceil}(\sqrt n)$ だと計算量 $(\sqrt n\log n)$で求まる!!!
 ```cpp
 bsgs<class S>(S s,S g,ll n,ll m,function<S(S)> f,function<S(S)> fm)
 ```
-$s,g,n,m,f$ は上の通り。 $fm$ は $f^m$ \
+$S,s,g,n,m,f$ は上の通り。 $fm$ は $f^m$ です。\
 $f,fm$ はラムダ式とかで渡してください。
