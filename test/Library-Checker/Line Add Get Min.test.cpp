@@ -1,13 +1,13 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/line_add_get_min"
 
 #include"template.hpp"
-#include"data-structure/ConvexHullTrick.hpp"
+#include"data-structure/cht.hpp"
 
 int main(){
     int n,q;
     cin>>n>>q;
 
-    ConvexHullTrick cht;    
+    CHT cht;    
     for(int i=0;i<n;i++){
         ll a,b;
         cin>>a>>b;
