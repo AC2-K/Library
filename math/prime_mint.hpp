@@ -114,3 +114,5 @@ public:
 		return os << mt.val();
 	}
 };
+
+///@brief (素数modの) modint

@@ -18,3 +18,4 @@ template<class S> bsgs(S s, S g, ll n, ll m, const function<S(S)>& f, const func
     }
     return -1;
 }
+///@brief BabyStepGiantStep

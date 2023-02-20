@@ -1,4 +1,5 @@
 class EulerTour {
+	//さすがに機能少なすぎる?
 	using graph = vector<vector<int>>;
 	graph g;
 public:
@@ -24,3 +25,4 @@ public:
 		dfs(root, -1);
 	}
 };
+///@brief オイラーツアー

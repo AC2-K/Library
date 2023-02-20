@@ -10,3 +10,4 @@ ll phi_func(ll n){
     }
     return res;
 }
+///@brief オイラーのφ関数

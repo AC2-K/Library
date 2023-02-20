@@ -13,3 +13,4 @@ vector<bool> prime_checker(int N) {
 
     return primes;
 }
+///@brief エラトステネスの篩

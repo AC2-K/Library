@@ -91,6 +91,3 @@ public:
     }
 };
 //@brief 遅延評価セグメント木
-//op:S × S -> S 
-//composition:F × F -> F
-//mapping:S × F -> S

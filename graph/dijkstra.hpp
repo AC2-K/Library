@@ -25,3 +25,4 @@ pair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){
     }
     return make_pair(dist,pre);
 }
+///@brief dijkstra法

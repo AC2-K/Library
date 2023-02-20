@@ -5,7 +5,7 @@ class LCA {
     int n;
     graph g;
     vector<int> vs, in;
-    SparseTable<pair<int,int>> seg;
+    sparse_table<pair<int,int>> seg;
 public:
     LCA(const graph& g) :g(g), n(g.size()),in(n) { }
     void setup() {
@@ -20,7 +20,7 @@ public:
             }
         };
         dfs(0, -1, 0);
-        seg = SparseTable<pair<int, int>>(vec);
+        seg = sparse_table<pair<int, int>>(vec);
     }
 
     int query(int u, int v) {
@@ -28,3 +28,4 @@ public:
         return seg.prod(in[u], in[v] + 1).second;
     }
 };
+///@brief RMQによる最小共通祖先

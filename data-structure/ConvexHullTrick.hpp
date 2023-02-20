@@ -1,5 +1,5 @@
 template<typename T = ll, bool query_type = false>
-class ConvexHullTrick {
+class CHT {
 	class line {
 	public:
 		T a, b;
@@ -74,3 +74,4 @@ public:
 		}
 	}
 };
+///@brief ConvexHullTrick

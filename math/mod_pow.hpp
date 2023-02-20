@@ -13,3 +13,4 @@ ll mod_pow(ll base, ll exp, ll mod) {
     }
     return ans;
 }
+///@brief mod pにおける累乗

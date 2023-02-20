@@ -35,3 +35,4 @@ public:
 		return ((hash[r] + mod - hash[l] * pow[r - l]) % mod + mod) % mod;
 	}
 };
+///@brief rolling hash

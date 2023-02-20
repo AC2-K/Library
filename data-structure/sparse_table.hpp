@@ -1,9 +1,9 @@
 template<class T>
-class SparseTable {
+class sparse_table {
     vector<vector<T>> table;
     vector<int> look_up;
 public:
-    SparseTable(const vector<T>& vec = {}) {
+    sparse_table(const vector<T>& vec = {}) {
         int sz = vec.size();
         int log = 0;
         while ((1 << log) <= sz) {
@@ -29,3 +29,4 @@ public:
         return min(table[b][l], table[b][r - (1 << b)]);
     }
 };
+///@brief SparseTable
