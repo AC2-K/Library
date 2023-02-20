@@ -13,7 +13,7 @@ public:
     Rho(){
         mt.seed(clock());
     }
-
+private:
     ll find_factor(ll n){
         if(n==4){
             return 2;
@@ -36,21 +36,45 @@ public:
     }
 
 
-    vector<ll> fact(const ll n,bool sorting=true){
+    vector<ll> rho_fact(const ll&n){
         if(n<2){
             return {};
         }
         if(mr.is_prime(n)){
             return{n};
         }
-        ll res=-1;
-        while(res==-1){
-            res=find_factor(n);
+        ll d=-1;
+        while(d==-1){
+            d=find_factor(n);
         }
-        vector<ll> V1=fact(res,false);
-        vector<ll> V2=fact(n/res,false);
-        V1.insert(V1.end(),V2.begin(),V2.end());
-        if(sorting)sort(V1.begin(),V1.end());
-        return V1;
+        vector<ll> v1=fact(d);
+        vector<ll> v2=fact(n/d);
+        v1.insert(v1.end(),v2.begin(),v2.end());
+        return v1;
+    }
+    vector<ll> naive_fact(ll n){
+        vector<ll> ret;
+        for (ll div = 2; div * div <= n; div++) {
+            if (n % div != 0)continue;
+            ll exp = 0;
+            while (n % div == 0) {
+                ret.push_back(div);
+                n /= div;
+            }
+        }
+        if (n != 1)ret.push_back(n);
+        return ret;
+    }
+
+public:
+    vector<ll> fact(const ll n){
+        vector<ll> res;
+        if(n<=1000){
+            res=naive_fact(n);
+        }else{
+            res=rho_fact(n);
+        }
+        sort(all(res));
+        return res;
     }
 };

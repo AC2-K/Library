@@ -1,10 +1,12 @@
+#pragma once
+#include"math/fast_fact.hpp"
 ll phi_func(ll n){
     ll res=n;
-    for(ll d=2;d*d<=n;d++){
-        if(n%d==0){
-            res=res/d*(d-1);
-            for(;n%d==0;n/=d){  }
-        }
+    Rho rho;
+    auto pf=rho.fact(n);
+    pf.erase(unique(all(pf)),pf.end());
+    for(auto&p:pf){
+        res=res/p*(p-1);
     }
     if(n!=1)res=res/n*(n-1);
     return res;
