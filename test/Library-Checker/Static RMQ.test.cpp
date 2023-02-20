@@ -9,7 +9,7 @@ int main() {
 		cin >> aa;
 	}
 
-	SparseTable<int> rmq(a);
+	sparse_table<int> rmq(a);
 	while (q--) {
 		int l, r;
 		cin >> l >> r;
