@@ -1,4 +1,4 @@
-#include"DataStructure/dsu.hpp"
+#include"data-structure/dsu.hpp"
 class MST{
     DSU dsu;
     struct Edge

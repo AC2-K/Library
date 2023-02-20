@@ -1,6 +1,6 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_B"
 #include"template.hpp"
-#include"DataStructure/segtree.hpp"
+#include"data-structure/segtree.hpp"
 using S=ll;
 S op(S x,S y){return x+y;}
 S e(){return 0;}

@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/line_add_get_min"
 
 #include"template.hpp"
-#include"DataStructure/ConvexHullTrick.hpp"
+#include"data-structure/ConvexHullTrick.hpp"
 
 int main(){
     int n,q;

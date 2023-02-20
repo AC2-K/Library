@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
 #include"template.hpp"
-#include"DataStructure/segtree.hpp"
+#include"data-structure/segtree.hpp"
 #include"Math/prime_mint.hpp"
 using mint=modint<MOD2>;
 

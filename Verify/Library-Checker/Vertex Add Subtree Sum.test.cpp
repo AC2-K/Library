@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_subtree_sum"
 #include<bits/stdc++.h>
 using namespace std;
-#include"GraphAlgorithm/euler_tour.hpp"
-#include"DataStructure/segtree.hpp"
+#include"graph/euler_tour.hpp"
+#include"data-structure/segtree.hpp"
 using S = long long;
 S op(S x, S y) { return x+y; }
 S e() { return 0; }

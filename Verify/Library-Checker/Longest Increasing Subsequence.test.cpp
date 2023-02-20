@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/longest_increasing_subsequence"
 #include"template.hpp"
-#include"DataStructure/segtree.hpp"
+#include"data-structure/segtree.hpp"
 using S = P;
 S op(S x, S y) { return max(x,y); }
 S e() { return P(0,0); }

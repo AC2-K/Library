@@ -6,8 +6,8 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-fdiagnostics-color=always",
-                "/home/ykota0619/MainSpace/Library/DataStructure",
-                "/home/ykota0619/MainSpace/Library/GraphAlgorithm",
+                "/home/ykota0619/MainSpace/Library/data-structure",
+                "/home/ykota0619/MainSpace/Library/graph",
                 "/home/ykota0619/MainSpace/Library/Math",
                 "/home/ykota0619/MainSpace/Library/StringAlgorithm",
                 "-g",

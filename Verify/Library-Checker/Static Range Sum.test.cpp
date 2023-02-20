@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
 #include"template.hpp"
-#include"DataStructure/segtree.hpp"
+#include"data-structure/segtree.hpp"
 namespace for_segtree{
     using S=ll;
     S op(S x,S y){return x+y;}

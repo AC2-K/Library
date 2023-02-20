@@ -1,5 +1,5 @@
 #pragma once
-#include"DataStructure/sparse_table.hpp"
+#include"data-structure/sparse_table.hpp"
 class LCA {
     using graph = vector<vector<int>>;
     int n;

@@ -27,11 +27,3 @@ template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
 AOJとかでAtCoderで動くことを確認している...はず。
 
 バグ、エラーなどなど...不備を見つけた際は、[twitter](https://twitter.com/ac2000_cp)などに連絡いただけるととても助かります。
-
-## ドキュメント
-ゆるゆる更新していきます。
-|FileName|Document|
-|-------:|-------:|
-|[dsu.hpp](https://github.com/AC2-K/Library-CPP/blob/main/DataStructure/dsu.hpp)|[dsu.md](https://github.com/AC2-K/Library-CPP/blob/main/Documents/DataStructure/dsu.md)|
-|[segtree.hpp](https://github.com/AC2-K/Library-CPP/blob/main/DataStructure/segtree.hpp)|[segtree.md](https://github.com/AC2-K/Library-CPP/blob/main/Documents/DataStructure/segtree.md)|
-|[lazy_segtree.hpp](https://github.com/AC2-K/Library-CPP/blob/main/DataStructure/lazy_segtree.hpp)|[lazy_segtree.md](https://github.com/AC2-K/Library-CPP/blob/main/Documents/DataStructure/lazy_segtree.md)|
