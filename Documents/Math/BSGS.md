@@ -19,3 +19,4 @@ void bsgs(S s,S g,ll n,ll m,function<S(S)> f,function<S(S)> fm)
 $s,g,n,m,f$ は上の通り。 $fm$ は $f^m$ \
 $f,fm$ はラムダ式とかで渡してください。\
 返り値は、存在すれば $t$ , 存在しなければ $-1$ です。
+ma
