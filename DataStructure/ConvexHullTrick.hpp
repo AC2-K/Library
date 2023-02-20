@@ -1,4 +1,4 @@
-template<typename T = ll, bool is_max = false>
+template<typename T = ll, bool query_type = false>
 class ConvexHullTrick {
 	class line {
 	public:
@@ -8,8 +8,7 @@ class ConvexHullTrick {
 		mutable bool has_nxt;
 		T get(T x)const { return a * x + b; }
 		T get_nxt(T x)const { return nxt_a * x + nxt_b; }
-		line() = default;
-		line(T a, T b, bool query = false) :a(a), b(b), is_query(query), has_nxt(false) {}
+		line(T a, T b, bool q = false) :a(a), b(b), is_query(q), has_nxt(false) {}
 		friend bool operator<(const line& l, const line& r) {
 			if (l.is_query) {
 				if (!r.has_nxt)return true;
@@ -25,29 +24,40 @@ class ConvexHullTrick {
 
 	set<line> ls;
 	bool is_needed(const typename set<line>::iterator& it) {
-		//set<line> ls;
-		if (it != ls.begin() && it->a == prev(it)->a)return it->b < prev(it)->b;
-		if (next(it) != ls.end() && it->a == next(it)->a)return it->b < next(it)->b;
-		if (it == ls.begin() || next(it) == ls.end())return true;
-		return 1.*(it->b - prev(it)->b) * (next(it)->a - it->a) < 1.*(it->b - next(it)->b) * (prev(it)->a - it->a);	//精度で死なないように気を付ける!!!
+		if (it != ls.begin() && it->a == prev(it)->a){
+			return it->b < prev(it)->b;
+		}
+		if (next(it) != ls.end() && it->a == next(it)->a){
+			return it->b < next(it)->b;
+		}
+		if (it == ls.begin() || next(it) == ls.end()){
+			return true;
+		}
+		//精度大丈夫...?
+		return 1.*(it->b - prev(it)->b) * (next(it)->a - it->a) < 1.*(it->b - next(it)->b) * (prev(it)->a - it->a);	
 	}
 
 public:
-	ConvexHullTrick() = default;
 	void add(T a,T b) {
-		auto it = ls.emplace(is_max ? -a : a, is_max ? -b : b).first;
+		ls.emplace(query_type ? -a : a, query_type ? -b : b);
+        const auto&ln=(query_type?line{-a,-b}:line{a,b});
+        auto it=ls.find(ln);
 		if (!is_needed(it)) {
 			ls.erase(it);
 			return;
 		}
-		while (it != ls.begin() && !is_needed(prev(it)))ls.erase(prev(it));
-		while (next(it) != ls.end() && !is_needed(next(it)))ls.erase(next(it));
+		while (it != ls.begin() && !is_needed(prev(it))){
+            ls.erase(prev(it));
+        }
+		while (next(it) != ls.end() && !is_needed(next(it))){
+            ls.erase(next(it));
+        }
 		if (it != ls.begin()) {
 			prev(it)->has_nxt = true;
 			prev(it)->nxt_a = it->a;
 			prev(it)->nxt_b = it->b;
 		}
-		if (it != prev(ls.end())) {
+		if (next(it) != ls.end()) {
 			it->has_nxt = true;
 			it->nxt_a = next(it)->a;
 			it->nxt_b = next(it)->b;
@@ -56,7 +66,7 @@ public:
 	T operator()(T x) const {
 		const auto& it = ls.lower_bound(line(x, 0, true));
 
-		if (is_max) {	
+		if (query_type) {	
 			return -it->a * x - it->b;
 		}
 		else {

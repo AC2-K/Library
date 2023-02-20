@@ -7,7 +7,8 @@
 ```cpp
 ConvexHullTrick<typename T,bool is_max> cht
 ```
-$a,b$ の型を `T` で指定します。クエリの $\min$ を $\max$ にしたいときは`is_max`をtrue`にします。
+$a,b$ などなどの型を `T` で指定します(long longとか)\
+クエリの $\min$ を $\max$ にしたいときは`is_max`をtrue`にします。
 ## add
 ```cpp
 void cht.add(T a,T b)

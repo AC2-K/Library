@@ -17,4 +17,4 @@ template<class S>
 void bsgs(S s,S g,ll n,ll m,function<S(S)> f,function<S(S)> fm)
 ```
 $s,g,n,m,f$ は上の通り。 $fm$ は $f^m$ \
-$f,fm$ はラムダ式とかで渡してください。
+$f,fm$ はラムダ式とかで渡す。
