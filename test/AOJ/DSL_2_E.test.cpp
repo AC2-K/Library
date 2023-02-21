@@ -1,3 +1,5 @@
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E"
+
 #include"template.hpp"
 #include"data-structure/lazy_segtree.hpp"
 
@@ -27,10 +29,5 @@ int main() {
             i--;
             cout<<seg[i]<<'\n';
         }
-        /*
-        cout<<"[";
-        rep(i,n)cout<<seg[i]<<',';
-        cout<<"]\n";
-        */
     }
 }
