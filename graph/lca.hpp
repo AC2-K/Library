@@ -28,4 +28,4 @@ public:
         return seg.prod(in[u], in[v] + 1).second;
     }
 };
-///@brief RMQによる最小共通祖先
+///@brief LCA

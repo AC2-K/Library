@@ -78,4 +78,4 @@ public:
         return res;
     }
 };
-///@brief Rho法による高速素因数分解
+///@brief Rho法

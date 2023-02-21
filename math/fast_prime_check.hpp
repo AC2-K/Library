@@ -50,4 +50,4 @@ public:
         return true;
     }
 };
-///@MillerRabin法による素数判定
+///@brief MillerRabinの素数判定
