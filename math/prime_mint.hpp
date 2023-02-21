@@ -115,4 +115,4 @@ public:
 	}
 };
 
-///@brief (素数modの) modint
+///@brief modint

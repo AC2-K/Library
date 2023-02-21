@@ -8,5 +8,5 @@ ll ext_gcd(ll a,ll b,ll&x,ll&y){
         return d;
     }
 }
-/// @brief 拡張ユークリッド法
+/// @brief 拡張ユークリッドの互除法
 /// @return ax+by=gcd(a,b)なるx,yを格納する,返り値にgcd(a,b)

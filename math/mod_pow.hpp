@@ -13,4 +13,4 @@ ll mod_pow(ll base, ll exp, ll mod) {
     }
     return ans;
 }
-///@brief べき乗
+///@brief バイナリ法

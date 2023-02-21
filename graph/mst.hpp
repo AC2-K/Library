@@ -33,4 +33,4 @@ public:
         return ans;
     }
 };
-///@brief MST
+///@brief 最小全域木
