@@ -6,8 +6,8 @@
 int op(int x,int y){return x+y;}
 int comp(int x,int y){return y;}
 int mapping(int x,int y){return y;}
-int e(){return 0;}
-int id(){return 0;}
+int e(){return (1ll<<31)-1;}
+int id(){return (1ll<<31)-1;}
 
 int main(){
     int n,q;
