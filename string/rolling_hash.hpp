@@ -1,5 +1,5 @@
 class RollingHash {
-	static const ll mod = 1e9 + 7;
+	static const ll mod = 998244353;
 	const ll base;
 	vector<ll> pow;
 	static inline ll generate_base() {
