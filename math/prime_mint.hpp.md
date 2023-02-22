@@ -10,7 +10,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: "(\u7D20\u6570mod\u306E) modint"
+    document_title: modint
     links: []
   bundledCode: "#line 1 \"math/prime_mint.hpp\"\ntemplate<const ll mod>class modint\
     \ {\nprivate:\n\tusing mint = modint<mod>;\n\tll value = 0;\npublic:\n\tmodint(ll\
@@ -41,7 +41,7 @@ data:
     \t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\tll v;\n\t\tis\
     \ >> v;\n\t\tmt = mint(v);\n\t\treturn is;\n\t}\n\tfriend ostream& operator <<\
     \ (ostream& os, mint& mt) {\n\t\treturn os << mt.val();\n\t}\n};\n\n///@brief\
-    \ (\u7D20\u6570mod\u306E) modint\n"
+    \ modint\n"
   code: "template<const ll mod>class modint {\nprivate:\n\tusing mint = modint<mod>;\n\
     \tll value = 0;\npublic:\n\tmodint(ll v = 0) {\n\t\tv %= mod;\n\t\tif(v < 0)v\
     \ += mod;\n\t\tvalue = v;\n\t}\n\tll val() {\n\t\treturn value % mod;\n\t}\n\t\
@@ -70,12 +70,12 @@ data:
     \ a) {\n\t\tvalue = value * a.inv();\n\t\tvalue %= mod;\n\t}\n\tfriend istream&\
     \ operator>>(istream& is, mint& mt) {\n\t\tll v;\n\t\tis >> v;\n\t\tmt = mint(v);\n\
     \t\treturn is;\n\t}\n\tfriend ostream& operator << (ostream& os, mint& mt) {\n\
-    \t\treturn os << mt.val();\n\t}\n};\n\n///@brief (\u7D20\u6570mod\u306E) modint"
+    \t\treturn os << mt.val();\n\t}\n};\n\n///@brief modint"
   dependsOn: []
   isVerificationFile: false
   path: math/prime_mint.hpp
   requiredBy: []
-  timestamp: '2023-02-21 08:23:41+09:00'
+  timestamp: '2023-02-21 13:24:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library-Checker/Point Set Range Composite.test.cpp
@@ -84,5 +84,5 @@ layout: document
 redirect_from:
 - /library/math/prime_mint.hpp
 - /library/math/prime_mint.hpp.html
-title: "(\u7D20\u6570mod\u306E) modint"
+title: modint
 ---

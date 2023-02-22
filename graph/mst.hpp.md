@@ -10,7 +10,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: MST
+    document_title: "\u6700\u5C0F\u5168\u57DF\u6728"
     links: []
   bundledCode: "#line 1 \"data-structure/dsu.hpp\"\nclass DSU {\nprivate:\n\tvector<int>\
     \ par, rank, siz;\n\tint N;\npublic:\n\tDSU(int n) : par(n, -1), rank(n, 0), siz(n,\
@@ -33,7 +33,7 @@ data:
     \ len = E[i].cost;\n            int id = E[i].id;\n            int a = V1[id],\
     \ b = V2[id];\n            if (dsu.same(a, b))continue;\n            dsu.merge(a,\
     \ b);\n            ans += len;\n        }\n        return ans;\n    }\n};\n///@brief\
-    \ MST\n"
+    \ \u6700\u5C0F\u5168\u57DF\u6728\n"
   code: "#include\"data-structure/dsu.hpp\"\nclass MST{\n    DSU dsu;\n    struct\
     \ Edge\n    {\n        int v1,v2;\n        int cost;\n        int id;\n      \
     \  Edge(int v1,int v2,int cost,int id):v1(v1),v2(v2),cost(cost),id(id){  }\n \
@@ -45,13 +45,13 @@ data:
     \ len = E[i].cost;\n            int id = E[i].id;\n            int a = V1[id],\
     \ b = V2[id];\n            if (dsu.same(a, b))continue;\n            dsu.merge(a,\
     \ b);\n            ans += len;\n        }\n        return ans;\n    }\n};\n///@brief\
-    \ MST"
+    \ \u6700\u5C0F\u5168\u57DF\u6728"
   dependsOn:
   - data-structure/dsu.hpp
   isVerificationFile: false
   path: graph/mst.hpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-21 13:24:55+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: graph/mst.hpp
@@ -59,5 +59,5 @@ layout: document
 redirect_from:
 - /library/graph/mst.hpp
 - /library/graph/mst.hpp.html
-title: MST
+title: "\u6700\u5C0F\u5168\u57DF\u6728"
 ---

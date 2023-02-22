@@ -6,7 +6,7 @@ data:
     title: segmenttree
   - icon: ':heavy_check_mark:'
     path: graph/euler_tour.hpp
-    title: "\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC"
+    title: EulerTour
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -20,19 +20,18 @@ data:
   bundledCode: "#line 1 \"test/Library-Checker/Vertex Add Subtree Sum.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n#include<bits/stdc++.h>\n\
     using namespace std;\n#line 1 \"graph/euler_tour.hpp\"\nclass EulerTour {\n\t\
-    //\u3055\u3059\u304C\u306B\u6A5F\u80FD\u5C11\u306A\u3059\u304E\u308B?\n\tusing\
-    \ graph = vector<vector<int>>;\n\tgraph g;\npublic:\n\tvector<int> in, out, depth,tour;\n\
-    \    EulerTour(int n) :g(n), depth(n), in(n), out(n) {}\n\tvoid add_edge(int a,\
-    \ int b) {\n\t\tg[a].emplace_back(b);\n\t\tg[b].emplace_back(a);\n\t}\n\n\tvoid\
-    \ build(int root){\n\t\tdepth[root] = 0;\n\t\tfunction<void(int, int)> dfs = [&](int\
-    \ v, int par = -1)-> void {\n\t\t\tin[v] = tour.size();\n\t\t\ttour.emplace_back(v);\n\
-    \t\t\tfor (const auto& c : g[v])if (c != par) {\n\t\t\t\tdepth[c] = depth[v] +\
-    \ 1;\n\t\t\t\tdfs(c, v);\n\t\t\t\ttour.emplace_back(v);\n\t\t\t}\n\t\t\tout[v]\
-    \ = tour.size() - 1;\n\t\t};\n\t\tdfs(root, -1);\n\t}\n};\n///@brief \u30AA\u30A4\
-    \u30E9\u30FC\u30C4\u30A2\u30FC\n#line 1 \"data-structure/segtree.hpp\"\ntemplate<class\
-    \ S, S(*op)(S, S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S> dat;\n\
-    \    void Init(int n_) {\n        int x = 1;\n        while (n_ > x) {\n     \
-    \       x <<= 1;\n        }\n        n = x;\n    }\npublic:\n    segtree(int n_)\
+    using graph = vector<vector<int>>;\n\tgraph g;\npublic:\n\tvector<int> in, out,\
+    \ depth,tour;\n    EulerTour(int n) :g(n), depth(n), in(n), out(n) {}\n\tvoid\
+    \ add_edge(int a, int b) {\n\t\tg[a].emplace_back(b);\n\t\tg[b].emplace_back(a);\n\
+    \t}\n\n\tvoid build(int root){\n\t\tdepth[root] = 0;\n\t\tfunction<void(int, int)>\
+    \ dfs = [&](int v, int par = -1)-> void {\n\t\t\tin[v] = tour.size();\n\t\t\t\
+    tour.emplace_back(v);\n\t\t\tfor (const auto& c : g[v])if (c != par) {\n\t\t\t\
+    \tdepth[c] = depth[v] + 1;\n\t\t\t\tdfs(c, v);\n\t\t\t\ttour.emplace_back(v);\n\
+    \t\t\t}\n\t\t\tout[v] = tour.size() - 1;\n\t\t};\n\t\tdfs(root, -1);\n\t}\n};\n\
+    ///@brief EulerTour\n#line 1 \"data-structure/segtree.hpp\"\ntemplate<class S,\
+    \ S(*op)(S, S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S> dat;\n  \
+    \  void Init(int n_) {\n        int x = 1;\n        while (n_ > x) {\n       \
+    \     x <<= 1;\n        }\n        n = x;\n    }\npublic:\n    segtree(int n_)\
     \ : segtree(vector<S>(n_, e())) {   }\n    segtree(const vector<S>& v) :dat(4\
     \ * v.size()) {\n        Init(v.size());\n        for (int i = 0; i < v.size();\
     \ i++) {\n            set(i, v[i]);\n        }\n        build();\n    }\n    inline\
@@ -85,7 +84,7 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-21 13:24:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library-Checker/Vertex Add Subtree Sum.test.cpp

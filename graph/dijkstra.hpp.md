@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: graph/edge.hpp
-    title: "\u8FBA"
+    title: edge
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -19,7 +19,7 @@ data:
     document_title: "dijkstra\u6CD5"
     links: []
   bundledCode: "#line 1 \"graph/edge.hpp\"\nstruct edge{\n    int to;\n    ll cost;\n\
-    \    edge(int to,ll cost):to(to),cost(cost){}\n};\n///@brief \u8FBA\n#line 3 \"\
+    \    edge(int to,ll cost):to(to),cost(cost){}\n};\n///@brief edge\n#line 3 \"\
     graph/dijkstra.hpp\"\npair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){\n\
     \    vector<ll> dist(g.size(),infl);\n    vector<int> pre(g.size(),-1);\n    using\
     \ st=pair<ll,int>;\n    priority_queue<st,vector<st>,greater<st>> que;\n    que.emplace(0,s);\n\
@@ -43,7 +43,7 @@ data:
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-21 13:24:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library-Checker/Tree Diameter.test.cpp

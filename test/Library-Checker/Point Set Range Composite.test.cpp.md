@@ -6,7 +6,7 @@ data:
     title: segmenttree
   - icon: ':heavy_check_mark:'
     path: math/prime_mint.hpp
-    title: "(\u7D20\u6570mod\u306E) modint"
+    title: modint
   - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
@@ -82,17 +82,17 @@ data:
     \ a) {\n\t\tvalue = value * a.inv();\n\t\tvalue %= mod;\n\t}\n\tfriend istream&\
     \ operator>>(istream& is, mint& mt) {\n\t\tll v;\n\t\tis >> v;\n\t\tmt = mint(v);\n\
     \t\treturn is;\n\t}\n\tfriend ostream& operator << (ostream& os, mint& mt) {\n\
-    \t\treturn os << mt.val();\n\t}\n};\n\n///@brief (\u7D20\u6570mod\u306E) modint\n\
-    #line 5 \"test/Library-Checker/Point Set Range Composite.test.cpp\"\nusing mint=modint<MOD2>;\n\
-    \nstruct F\n{\n    mint a,b;\n};\n\nF op(F l,F r){\n    mint na = l.a * r.a;\n\
-    \    mint nb = (l.b * r.a + r.b);\n    return F{na, nb};\n}\nF e(){\n    return\
-    \ F{1,0};\n}\nint main() {\n    int n,q;\n    cin>>n>>q;\n    segtree<F,op,e>\
-    \ seg(n);\n    rep(i,n){\n        mint a,b;\n        cin>>a>>b;\n        seg.set(i,F{a,b});\n\
-    \    }\n    seg.build();\n    while(q--){\n        int t;\n        cin>>t;\n \
-    \       if(t==0){\n            int p;\n            mint c,d;\n            cin>>p>>c>>d;\n\
-    \            seg.update(p,F{c,d});\n        }else{\n            int l,r;\n   \
-    \         mint x;\n            cin>>l>>r>>x;\n            F res=seg.prod(l,r);\n\
-    \            mint ans=res.a*x+res.b;\n            cout<<ans<<'\\n';\n        }\n\
+    \t\treturn os << mt.val();\n\t}\n};\n\n///@brief modint\n#line 5 \"test/Library-Checker/Point\
+    \ Set Range Composite.test.cpp\"\nusing mint=modint<MOD2>;\n\nstruct F\n{\n  \
+    \  mint a,b;\n};\n\nF op(F l,F r){\n    mint na = l.a * r.a;\n    mint nb = (l.b\
+    \ * r.a + r.b);\n    return F{na, nb};\n}\nF e(){\n    return F{1,0};\n}\nint\
+    \ main() {\n    int n,q;\n    cin>>n>>q;\n    segtree<F,op,e> seg(n);\n    rep(i,n){\n\
+    \        mint a,b;\n        cin>>a>>b;\n        seg.set(i,F{a,b});\n    }\n  \
+    \  seg.build();\n    while(q--){\n        int t;\n        cin>>t;\n        if(t==0){\n\
+    \            int p;\n            mint c,d;\n            cin>>p>>c>>d;\n      \
+    \      seg.update(p,F{c,d});\n        }else{\n            int l,r;\n         \
+    \   mint x;\n            cin>>l>>r>>x;\n            F res=seg.prod(l,r);\n   \
+    \         mint ans=res.a*x+res.b;\n            cout<<ans<<'\\n';\n        }\n\
     \    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n#include\"template.hpp\"\n#include\"data-structure/segtree.hpp\"\n#include\"\
@@ -113,7 +113,7 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Point Set Range Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-21 13:24:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library-Checker/Point Set Range Composite.test.cpp

@@ -17,7 +17,7 @@ data:
       title: segmenttree
     - icon: ':heavy_check_mark:'
       path: data-structure/sparse_table.hpp
-      title: SparseTable
+      title: sparse_table
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -25,16 +25,16 @@ data:
       title: "dijkstra\u6CD5"
     - icon: ':heavy_check_mark:'
       path: graph/edge.hpp
-      title: "\u8FBA"
+      title: edge
     - icon: ':heavy_check_mark:'
       path: graph/euler_tour.hpp
-      title: "\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC"
+      title: EulerTour
     - icon: ':heavy_check_mark:'
       path: graph/lca.hpp
       title: LCA
     - icon: ':warning:'
       path: graph/mst.hpp
-      title: MST
+      title: "\u6700\u5C0F\u5168\u57DF\u6728"
   - name: .
     pages:
     - icon: ':warning:'
@@ -53,7 +53,7 @@ data:
       title: "\u96E2\u6563\u5BFE\u6570"
     - icon: ':heavy_check_mark:'
       path: math/ext_gcd.hpp
-      title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u6CD5"
+      title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5"
     - icon: ':warning:'
       path: math/fact.hpp
       title: "\u7D20\u56E0\u6570\u5206\u89E3"
@@ -65,7 +65,7 @@ data:
       title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
-      title: "\u3079\u304D\u4E57"
+      title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570"
@@ -74,7 +74,7 @@ data:
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     - icon: ':heavy_check_mark:'
       path: math/prime_mint.hpp
-      title: "(\u7D20\u6570mod\u306E) modint"
+      title: modint
   - name: string
     pages:
     - icon: ':heavy_check_mark:'

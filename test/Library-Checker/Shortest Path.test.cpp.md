@@ -6,7 +6,7 @@ data:
     title: "dijkstra\u6CD5"
   - icon: ':heavy_check_mark:'
     path: graph/edge.hpp
-    title: "\u8FBA"
+    title: edge
   - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
@@ -31,7 +31,7 @@ data:
     \ };\nconst int dy[4] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n\
     #line 1 \"graph/edge.hpp\"\nstruct edge{\n    int to;\n    ll cost;\n    edge(int\
-    \ to,ll cost):to(to),cost(cost){}\n};\n///@brief \u8FBA\n#line 3 \"graph/dijkstra.hpp\"\
+    \ to,ll cost):to(to),cost(cost){}\n};\n///@brief edge\n#line 3 \"graph/dijkstra.hpp\"\
     \npair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){\n\
     \    vector<ll> dist(g.size(),infl);\n    vector<int> pre(g.size(),-1);\n    using\
     \ st=pair<ll,int>;\n    priority_queue<st,vector<st>,greater<st>> que;\n    que.emplace(0,s);\n\
@@ -66,7 +66,7 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Shortest Path.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-21 13:24:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library-Checker/Shortest Path.test.cpp

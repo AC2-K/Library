@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/sparse_table.hpp
-    title: SparseTable
+    title: sparse_table
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -27,7 +27,7 @@ data:
     \ + 1);\n        for (int i = 2; i < look_up.size(); i++) {\n            look_up[i]\
     \ = look_up[i >> 1] + 1;\n        }\n    }\n\n    T prod(int l, int r) {\n   \
     \     int b = look_up[r - l];\n        return min(table[b][l], table[b][r - (1\
-    \ << b)]);\n    }\n};\n///@brief SparseTable\n#line 3 \"graph/lca.hpp\"\nclass\
+    \ << b)]);\n    }\n};\n///@brief sparse_table\n#line 3 \"graph/lca.hpp\"\nclass\
     \ LCA {\n    using graph = vector<vector<int>>;\n    int n;\n    graph g;\n  \
     \  vector<int> vs, in;\n    sparse_table<pair<int,int>> seg;\npublic:\n    LCA(const\
     \ graph& g) :g(g), n(g.size()),in(n) { }\n    void setup() {\n        int p =\
@@ -56,7 +56,7 @@ data:
   isVerificationFile: false
   path: graph/lca.hpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-21 13:24:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library-Checker/Lowest Common Ancestor.test.cpp

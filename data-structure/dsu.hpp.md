@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':warning:'
     path: graph/mst.hpp
-    title: MST
+    title: "\u6700\u5C0F\u5168\u57DF\u6728"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/Library-Checker/UnionFind.test.cpp

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/sparse_table.hpp
-    title: SparseTable
+    title: sparse_table
   - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
@@ -38,7 +38,7 @@ data:
     \       }\n        look_up.resize(sz + 1);\n        for (int i = 2; i < look_up.size();\
     \ i++) {\n            look_up[i] = look_up[i >> 1] + 1;\n        }\n    }\n\n\
     \    T prod(int l, int r) {\n        int b = look_up[r - l];\n        return min(table[b][l],\
-    \ table[b][r - (1 << b)]);\n    }\n};\n///@brief SparseTable\n#line 4 \"test/Library-Checker/Static\
+    \ table[b][r - (1 << b)]);\n    }\n};\n///@brief sparse_table\n#line 4 \"test/Library-Checker/Static\
     \ RMQ.test.cpp\"\nint main() {\n\tint n, q;\n\tcin >> n >> q;\n\tvector<int> a(n);\n\
     \tfor (auto& aa : a) {\n\t\tcin >> aa;\n\t}\n\n\tsparse_table<int> rmq(a);\n\t\
     while (q--) {\n\t\tint l, r;\n\t\tcin >> l >> r;\n\t\tcout << rmq.prod(l, r) <<\
@@ -54,7 +54,7 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Static RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 08:46:24+09:00'
+  timestamp: '2023-02-21 13:24:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library-Checker/Static RMQ.test.cpp
