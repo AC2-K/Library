@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/lca.hpp
     title: LCA
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
