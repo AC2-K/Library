@@ -45,9 +45,6 @@ data:
       title: template.hpp
   - name: math
     pages:
-    - icon: ':warning:'
-      path: math/BSGS.hpp
-      title: BabyStepGiantStep
     - icon: ':heavy_check_mark:'
       path: math/DLP.hpp
       title: "\u96E2\u6563\u5BFE\u6570"
