@@ -1,11 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/AOJ/DSL_2_D.test.cpp
+    title: test/AOJ/DSL_2_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL_2_E.test.cpp
+    title: test/AOJ/DSL_2_E.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: lazy_segtree
     links: []
@@ -75,10 +84,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data-structure/lazy_segtree.hpp
-  requiredBy: []
+  requiredBy:
+  - main.cpp
   timestamp: '2023-02-21 12:21:54+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/AOJ/DSL_2_D.test.cpp
+  - test/AOJ/DSL_2_E.test.cpp
 documentation_of: data-structure/lazy_segtree.hpp
 layout: document
 redirect_from:

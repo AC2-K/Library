@@ -9,7 +9,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/dsu.hpp
       title: disjoint set
-    - icon: ':warning:'
+    - icon: ':question:'
       path: data-structure/lazy_segtree.hpp
       title: lazy_segtree
     - icon: ':heavy_check_mark:'
@@ -40,7 +40,7 @@ data:
     - icon: ':warning:'
       path: main.cpp
       title: main.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: math
@@ -86,6 +86,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL_2_B.test.cpp
       title: test/AOJ/DSL_2_B.test.cpp
+    - icon: ':x:'
+      path: test/AOJ/DSL_2_D.test.cpp
+      title: test/AOJ/DSL_2_D.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/AOJ/DSL_2_E.test.cpp
+      title: test/AOJ/DSL_2_E.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL_1_D.test.cpp
       title: test/AOJ/NTL_1_D.test.cpp

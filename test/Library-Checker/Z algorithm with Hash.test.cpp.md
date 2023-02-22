@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: rolling hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

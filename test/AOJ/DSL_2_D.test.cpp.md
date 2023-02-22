@@ -9,13 +9,17 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    links: []
-  bundledCode: "#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace\
-    \ std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D
+  bundledCode: "#line 1 \"test/AOJ/DSL_2_D.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\"\
+    \n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
+    #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing ll = long long;\n//using i128=__int128_t;\n\
     using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
     \ int>;\nconst int inf = 1e9;\nconst ll infl = 1e18;\nconst ld eps = 1e-6;\nconst\
@@ -53,40 +57,38 @@ data:
     \ op(vl, vr);\n        }\n    }\n\npublic:\n    S prod(int l, int r) {\n     \
     \   assert(0 <= l && l <= r && r <= sz);\n        return prod(l, r, 0, sz, 0);\n\
     \    }\n\n    S operator[](int pos) {\n        return prod(pos, pos + 1);\n  \
-    \  }\n};\n//@brief lazy_segtree\n#line 3 \"main.cpp\"\n\nint op(int x,int y){return\
-    \ x+y;}\nint comp(int x,int y){return x+y;}\nint mapping(int x,int y){return x+y;}\n\
-    int e(){return 0;}\nint id(){return 0;}\n\nint main() {\n    int n,q;\n    cin>>n>>q;\n\
-    \    lazy_segtree<int,int,op,e,comp,id,mapping> seg(n);\n    while(q--){\n   \
-    \     int t;\n        cin>>t;\n        if(t==0){\n            int l,r;\n     \
-    \       cin>>l>>r;\n            int new_val;\n            cin>>new_val;\n    \
-    \        l--,r--;\n            seg.update(l,r+1,new_val);\n        }else{\n  \
-    \          int i;\n            cin>>i;\n            i--;\n            cout<<seg[i]<<'\\\
-    n';\n        }\n        /*\n        cout<<\"[\";\n        rep(i,n)cout<<seg[i]<<',';\n\
-    \        cout<<\"]\\n\";\n        */\n    }\n}\n"
-  code: "#include\"template.hpp\"\n#include\"data-structure/lazy_segtree.hpp\"\n\n\
-    int op(int x,int y){return x+y;}\nint comp(int x,int y){return x+y;}\nint mapping(int\
-    \ x,int y){return x+y;}\nint e(){return 0;}\nint id(){return 0;}\n\nint main()\
-    \ {\n    int n,q;\n    cin>>n>>q;\n    lazy_segtree<int,int,op,e,comp,id,mapping>\
+    \  }\n};\n//@brief lazy_segtree\n#line 5 \"test/AOJ/DSL_2_D.test.cpp\"\n\nint\
+    \ op(int x,int y){return x+y;}\nint comp(int x,int y){return y;}\nint mapping(int\
+    \ x,int y){return y;}\nint e(){return 0;}\nint id(){return 0;}\n\nint main(){\n\
+    \    int n,q;\n    cin>>n>>q;\n    lazy_segtree<int,int,op,e,comp,id,mapping>\
     \ seg(n);\n    while(q--){\n        int t;\n        cin>>t;\n        if(t==0){\n\
     \            int l,r;\n            cin>>l>>r;\n            int new_val;\n    \
-    \        cin>>new_val;\n            l--,r--;\n            seg.update(l,r+1,new_val);\n\
-    \        }else{\n            int i;\n            cin>>i;\n            i--;\n \
-    \           cout<<seg[i]<<'\\n';\n        }\n        /*\n        cout<<\"[\";\n\
-    \        rep(i,n)cout<<seg[i]<<',';\n        cout<<\"]\\n\";\n        */\n   \
-    \ }\n}"
+    \        cin>>new_val;\n            seg.update(l,r+1,new_val);\n        }else{\n\
+    \            int i;\n            cin>>i;\n            cout<<seg[i]<<'\\n';\n \
+    \       }\n    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\"\
+    \n\n#include\"template.hpp\"\n#include\"data-structure/lazy_segtree.hpp\"\n\n\
+    int op(int x,int y){return x+y;}\nint comp(int x,int y){return y;}\nint mapping(int\
+    \ x,int y){return y;}\nint e(){return 0;}\nint id(){return 0;}\n\nint main(){\n\
+    \    int n,q;\n    cin>>n>>q;\n    lazy_segtree<int,int,op,e,comp,id,mapping>\
+    \ seg(n);\n    while(q--){\n        int t;\n        cin>>t;\n        if(t==0){\n\
+    \            int l,r;\n            cin>>l>>r;\n            int new_val;\n    \
+    \        cin>>new_val;\n            seg.update(l,r+1,new_val);\n        }else{\n\
+    \            int i;\n            cin>>i;\n            cout<<seg[i]<<'\\n';\n \
+    \       }\n    }\n}"
   dependsOn:
   - template.hpp
   - data-structure/lazy_segtree.hpp
-  isVerificationFile: false
-  path: main.cpp
+  isVerificationFile: true
+  path: test/AOJ/DSL_2_D.test.cpp
   requiredBy: []
   timestamp: '2023-02-21 13:45:35+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: main.cpp
+documentation_of: test/AOJ/DSL_2_D.test.cpp
 layout: document
 redirect_from:
-- /library/main.cpp
-- /library/main.cpp.html
-title: main.cpp
+- /verify/test/AOJ/DSL_2_D.test.cpp
+- /verify/test/AOJ/DSL_2_D.test.cpp.html
+title: test/AOJ/DSL_2_D.test.cpp
 ---

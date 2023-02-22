@@ -1,11 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL_2_B.test.cpp
     title: test/AOJ/DSL_2_B.test.cpp
+  - icon: ':x:'
+    path: test/AOJ/DSL_2_D.test.cpp
+    title: test/AOJ/DSL_2_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL_2_E.test.cpp
+    title: test/AOJ/DSL_2_E.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL_1_D.test.cpp
     title: test/AOJ/NTL_1_D.test.cpp
@@ -48,9 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Library-Checker/Z algorithm with Hash.test.cpp
     title: test/Library-Checker/Z algorithm with Hash.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 1 "template.hpp"
@@ -138,9 +147,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: template.hpp
-  requiredBy: []
+  requiredBy:
+  - main.cpp
   timestamp: '2023-02-17 14:40:23+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Library-Checker/Static Range Sum.test.cpp
   - test/Library-Checker/Z algorithm with Hash.test.cpp
@@ -154,9 +164,11 @@ data:
   - test/Library-Checker/Shortest Path.test.cpp
   - test/Library-Checker/Static RMQ.test.cpp
   - test/Library-Checker/Point Add Range Sum.test.cpp
+  - test/AOJ/DSL_2_D.test.cpp
   - test/AOJ/NTL_1_D.test.cpp
   - test/AOJ/NTL_1_E.test.cpp
   - test/AOJ/DSL_2_B.test.cpp
+  - test/AOJ/DSL_2_E.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:
