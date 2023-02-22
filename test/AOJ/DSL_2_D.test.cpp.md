@@ -59,8 +59,8 @@ data:
     \    }\n\n    S operator[](int pos) {\n        return prod(pos, pos + 1);\n  \
     \  }\n};\n//@brief lazy_segtree\n#line 5 \"test/AOJ/DSL_2_D.test.cpp\"\n\nint\
     \ op(int x,int y){return x+y;}\nint comp(int x,int y){return y;}\nint mapping(int\
-    \ x,int y){return y;}\nint e(){return 0;}\nint id(){return 0;}\n\nint main(){\n\
-    \    int n,q;\n    cin>>n>>q;\n    lazy_segtree<int,int,op,e,comp,id,mapping>\
+    \ x,int y){return y;}\nint e(){return (1ll<<31)-1;}\nint id(){return (1ll<<31)-1;}\n\
+    \nint main(){\n    int n,q;\n    cin>>n>>q;\n    lazy_segtree<int,int,op,e,comp,id,mapping>\
     \ seg(n);\n    while(q--){\n        int t;\n        cin>>t;\n        if(t==0){\n\
     \            int l,r;\n            cin>>l>>r;\n            int new_val;\n    \
     \        cin>>new_val;\n            seg.update(l,r+1,new_val);\n        }else{\n\
@@ -69,8 +69,8 @@ data:
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\"\
     \n\n#include\"template.hpp\"\n#include\"data-structure/lazy_segtree.hpp\"\n\n\
     int op(int x,int y){return x+y;}\nint comp(int x,int y){return y;}\nint mapping(int\
-    \ x,int y){return y;}\nint e(){return 0;}\nint id(){return 0;}\n\nint main(){\n\
-    \    int n,q;\n    cin>>n>>q;\n    lazy_segtree<int,int,op,e,comp,id,mapping>\
+    \ x,int y){return y;}\nint e(){return (1ll<<31)-1;}\nint id(){return (1ll<<31)-1;}\n\
+    \nint main(){\n    int n,q;\n    cin>>n>>q;\n    lazy_segtree<int,int,op,e,comp,id,mapping>\
     \ seg(n);\n    while(q--){\n        int t;\n        cin>>t;\n        if(t==0){\n\
     \            int l,r;\n            cin>>l>>r;\n            int new_val;\n    \
     \        cin>>new_val;\n            seg.update(l,r+1,new_val);\n        }else{\n\
@@ -82,7 +82,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL_2_D.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 13:45:35+09:00'
+  timestamp: '2023-02-21 13:49:53+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/AOJ/DSL_2_D.test.cpp
