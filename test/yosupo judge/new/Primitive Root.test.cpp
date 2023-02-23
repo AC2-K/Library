@@ -1,4 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/primitive_root"
+
+#include"template.hpp"
 #include"math/primitive_root.hpp"
 int main(){
     int q;

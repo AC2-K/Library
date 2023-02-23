@@ -1,5 +1,6 @@
 #line 1 "main.cpp"
 #define PROBLEM "https://judge.yosupo.jp/problem/primitive_root"
+
 #line 1 "template.hpp"
 #include<bits/stdc++.h>
 using namespace std;
@@ -176,7 +177,7 @@ public:
     }
 };
 ///@brief fast factorize(Pollard Rhoの素因数分解)
-#line 5 "main.cpp"
+#line 4 "math/primitive_root.hpp"
 ll primitive_root(ll p){
     Rho rho;
     if(p == 2) return 1;
@@ -203,6 +204,9 @@ ll primitive_root(ll p){
         }
     }
 }
+
+//@brief primitive root(原始根)
+#line 5 "main.cpp"
 int main(){
     int q;
     cin>>q;
