@@ -24,4 +24,4 @@ public:
 		dfs(root, -1);
 	}
 };
-///@brief EulerTour
+///@brief EulerTour(オイラーツアー)

@@ -10,4 +10,4 @@ ll phi_func(ll n){
     }
     return res;
 }
-///@brief トーシェント関数
+///@brief phi function(トーシェント関数)

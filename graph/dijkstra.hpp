@@ -25,4 +25,4 @@ pair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){
     }
     return make_pair(dist,pre);
 }
-///@brief dijkstra法
+///@brief dijkstra(単一始点最短経路問題)

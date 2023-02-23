@@ -29,4 +29,4 @@ public:
         return min(table[b][l], table[b][r - (1 << b)]);
     }
 };
-///@brief sparse_table
+///@brief sparse table

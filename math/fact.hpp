@@ -12,4 +12,4 @@ vector<pair<ll, ll>> fact(ll n) {
     if (n != 1)ret.push_back(make_pair(n, 1));
     return ret;
 }
-///@brief 素因数分解
+///@brief factorize(素因数分解)

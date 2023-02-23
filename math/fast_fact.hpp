@@ -78,4 +78,4 @@ public:
         return res;
     }
 };
-///@brief Rho法
+///@brief fast factorize(Pollard Rhoの素因数分解)

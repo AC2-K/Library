@@ -39,4 +39,4 @@ public:
 		return cnt;
 	}
 };
-///@brief disjoint set
+///@brief disjoint set(union find)

@@ -33,4 +33,4 @@ public:
         return ans;
     }
 };
-///@brief 最小全域木
+///@brief Minimum Spannning Tree(最小全域木)

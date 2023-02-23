@@ -28,4 +28,4 @@ public:
         return seg.prod(in[u], in[v] + 1).second;
     }
 };
-///@brief LCA
+///@brief Lowest Common Ancestor(最小共通祖先)

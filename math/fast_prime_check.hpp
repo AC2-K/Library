@@ -50,4 +50,4 @@ public:
         return true;
     }
 };
-///@brief MillerRabinの素数判定
+///@brief fast prime check(MillerRabinの素数判定法)

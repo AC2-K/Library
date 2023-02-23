@@ -38,4 +38,4 @@ ll dlp(ll x, ll y, ll p) {
     }
     return -1;
 }
-///@brief 離散対数
+///@brief Discrete Logarithm(離散対数)

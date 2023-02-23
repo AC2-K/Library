@@ -70,4 +70,4 @@ public:
         return dat[n + pos - 1];
     }
 };
-/// @brief segmenttree
+/// @brief segment tree(セグメント木)

@@ -90,4 +90,4 @@ public:
         return prod(pos, pos + 1);
     }
 };
-//@brief lazy_segtree
+//@brief lazy segtree(遅延評価セグメント木)
