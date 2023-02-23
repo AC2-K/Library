@@ -3,14 +3,14 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/fast_fact.hpp
-    title: "Rho\u6CD5"
+    title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
   - icon: ':heavy_check_mark:'
     path: math/fast_prime_check.hpp
-    title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
+    title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
-    title: "\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+    title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -23,7 +23,7 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D
-  bundledCode: "#line 1 \"test/AOJ/NTL_1_D.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D\"\
+  bundledCode: "#line 1 \"test/AOJ/NTL/1/NTL_1_D.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D\"\
     \n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing ll = long long;\n//using i128=__int128_t;\n\
@@ -50,15 +50,15 @@ data:
     \ false;\n                        break;\n                    }\n            \
     \    }\n\n                if (flag) {\n                    return false;\n   \
     \             }\n            }\n        }\n        return true;\n    }\n};\n///@brief\
-    \ MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\n#line 3 \"math/fast_fact.hpp\"\n\
-    class Rho{\n    using i128=__int128_t;\n    mt19937 mt;\n    MillerRabin mr;\n\
-    \    long long c;\n    ll f(i128 x,ll n){\n        x%=n;\n        return (x*x%n+c)%n;\n\
-    \    }\npublic:\n    Rho(){\n        mt.seed(clock());\n    }\nprivate:\n    ll\
-    \ find_factor(ll n){\n        if(n==4){\n            return 2;\n        }\n  \
-    \      c=mt()%n;\n        ll x=mt()%n;\n        ll y=x;\n        ll d=1;\n\n \
-    \       while(d==1){\n            x=f(x,n);\n            y=f(f(y,n),n);\n    \
-    \        d=__gcd(abs(x-y),n);\n        }\n\n        if(d==n){\n            return\
-    \ -1;\n        }\n        return d;\n    }\n\n\n    vector<ll> rho_fact(const\
+    \ fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)\n#line 3 \"\
+    math/fast_fact.hpp\"\nclass Rho{\n    using i128=__int128_t;\n    mt19937 mt;\n\
+    \    MillerRabin mr;\n    long long c;\n    ll f(i128 x,ll n){\n        x%=n;\n\
+    \        return (x*x%n+c)%n;\n    }\npublic:\n    Rho(){\n        mt.seed(clock());\n\
+    \    }\nprivate:\n    ll find_factor(ll n){\n        if(n==4){\n            return\
+    \ 2;\n        }\n        c=mt()%n;\n        ll x=mt()%n;\n        ll y=x;\n  \
+    \      ll d=1;\n\n        while(d==1){\n            x=f(x,n);\n            y=f(f(y,n),n);\n\
+    \            d=__gcd(abs(x-y),n);\n        }\n\n        if(d==n){\n          \
+    \  return -1;\n        }\n        return d;\n    }\n\n\n    vector<ll> rho_fact(const\
     \ ll&n){\n        if(n<2){\n            return {};\n        }\n        if(mr.is_prime(n)){\n\
     \            return{n};\n        }\n        ll d=-1;\n        while(d==-1){\n\
     \            d=find_factor(n);\n        }\n        vector<ll> v1=fact(d);\n  \
@@ -71,11 +71,13 @@ data:
     \    }\n\npublic:\n    vector<ll> fact(const ll n){\n        vector<ll> res;\n\
     \        if(n<=1000){\n            res=naive_fact(n);\n        }else{\n      \
     \      res=rho_fact(n);\n        }\n        sort(all(res));\n        return res;\n\
-    \    }\n};\n///@brief Rho\u6CD5\n#line 3 \"math/phi_function.hpp\"\nll phi_func(ll\
-    \ n){\n    ll res=n;\n    Rho rho;\n    auto pf=rho.fact(n);\n    pf.erase(unique(all(pf)),pf.end());\
+    \    }\n};\n///@brief fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\
+    \u89E3)\n#line 3 \"math/phi_function.hpp\"\nll phi_func(ll n){\n    ll res=n;\n\
+    \    Rho rho;\n    auto pf=rho.fact(n);\n    pf.erase(unique(all(pf)),pf.end());\
     \     \n    for(auto&d:pf){\n        res=res/d*(d-1);\n    }\n    return res;\n\
-    }\n///@brief \u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570\n#line 5 \"test/AOJ/NTL_1_D.test.cpp\"\
-    \nint main(){\n    int n;\n    cin>>n;\n    cout<<phi_func(n)<<'\\n';\n}\n"
+    }\n///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)\n\
+    #line 5 \"test/AOJ/NTL/1/NTL_1_D.test.cpp\"\nint main(){\n    int n;\n    cin>>n;\n\
+    \    cout<<phi_func(n)<<'\\n';\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D\"\
     \n\n#include\"template.hpp\"\n#include\"math/phi_function.hpp\"\nint main(){\n\
     \    int n;\n    cin>>n;\n    cout<<phi_func(n)<<'\\n';\n}"
@@ -85,15 +87,15 @@ data:
   - math/fast_fact.hpp
   - math/fast_prime_check.hpp
   isVerificationFile: true
-  path: test/AOJ/NTL_1_D.test.cpp
+  path: test/AOJ/NTL/1/NTL_1_D.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/AOJ/NTL_1_D.test.cpp
+documentation_of: test/AOJ/NTL/1/NTL_1_D.test.cpp
 layout: document
 redirect_from:
-- /verify/test/AOJ/NTL_1_D.test.cpp
-- /verify/test/AOJ/NTL_1_D.test.cpp.html
-title: test/AOJ/NTL_1_D.test.cpp
+- /verify/test/AOJ/NTL/1/NTL_1_D.test.cpp
+- /verify/test/AOJ/NTL/1/NTL_1_D.test.cpp.html
+title: test/AOJ/NTL/1/NTL_1_D.test.cpp
 ---

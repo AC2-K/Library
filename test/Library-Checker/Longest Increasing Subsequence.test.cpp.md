@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree.hpp
-    title: segmenttree
-  - icon: ':heavy_check_mark:'
+    title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -50,12 +50,13 @@ data:
     \ 1) + 2, mid, r);\n            return op(vl, vr);\n        }\n    }\n\npublic:\n\
     \    //a[pos] <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos,\
     \ op(dat[n + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return\
-    \ dat[n + pos - 1];\n    }\n};\n/// @brief segmenttree\n#line 4 \"test/Library-Checker/Longest\
-    \ Increasing Subsequence.test.cpp\"\nusing S = P;\nS op(S x, S y) { return max(x,y);\
-    \ }\nS e() { return P(0,0); }\nvector<int> press(const vector<int>&A){\n    vector<int>\
-    \ B;\n    vector<int> T;\n    rep(i,A.size())T.push_back(A[i]);\n    sort(all(T));\n\
-    \    T.erase(unique(all(T)),T.end());\n    rep(i,A.size()){\n        int pos=lower_bound(all(T),A[i])-T.begin();\n\
-    \        B.push_back(pos);\n    }\n    return B;\n}\nint main() {\n    int n;\n\
+    \ dat[n + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\
+    \u30C8\u6728)\n#line 4 \"test/Library-Checker/Longest Increasing Subsequence.test.cpp\"\
+    \nusing S = P;\nS op(S x, S y) { return max(x,y); }\nS e() { return P(0,0); }\n\
+    vector<int> press(const vector<int>&A){\n    vector<int> B;\n    vector<int> T;\n\
+    \    rep(i,A.size())T.push_back(A[i]);\n    sort(all(T));\n    T.erase(unique(all(T)),T.end());\n\
+    \    rep(i,A.size()){\n        int pos=lower_bound(all(T),A[i])-T.begin();\n \
+    \       B.push_back(pos);\n    }\n    return B;\n}\nint main() {\n    int n;\n\
     \    cin>>n;\n    vector<int> a(n);\n    for(auto&aa:a){\n        cin>>aa;\n \
     \   }   \n    a=press(a);\n    vector<int> prv(n,-1);\n    iota(all(prv),0);\n\
     \    segtree<S,op,e> dp(n+1);\n    rep(i,n){\n        auto[mx,p]=dp.prod(0,a[i]);\n\
@@ -85,7 +86,7 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Longest Increasing Subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library-Checker/Longest Increasing Subsequence.test.cpp

@@ -3,10 +3,10 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/fast_fact.hpp
-    title: "Rho\u6CD5"
+    title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
   - icon: ':heavy_check_mark:'
     path: math/fast_prime_check.hpp
-    title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
+    title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -44,15 +44,15 @@ data:
     \ false;\n                        break;\n                    }\n            \
     \    }\n\n                if (flag) {\n                    return false;\n   \
     \             }\n            }\n        }\n        return true;\n    }\n};\n///@brief\
-    \ MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\n#line 3 \"math/fast_fact.hpp\"\n\
-    class Rho{\n    using i128=__int128_t;\n    mt19937 mt;\n    MillerRabin mr;\n\
-    \    long long c;\n    ll f(i128 x,ll n){\n        x%=n;\n        return (x*x%n+c)%n;\n\
-    \    }\npublic:\n    Rho(){\n        mt.seed(clock());\n    }\nprivate:\n    ll\
-    \ find_factor(ll n){\n        if(n==4){\n            return 2;\n        }\n  \
-    \      c=mt()%n;\n        ll x=mt()%n;\n        ll y=x;\n        ll d=1;\n\n \
-    \       while(d==1){\n            x=f(x,n);\n            y=f(f(y,n),n);\n    \
-    \        d=__gcd(abs(x-y),n);\n        }\n\n        if(d==n){\n            return\
-    \ -1;\n        }\n        return d;\n    }\n\n\n    vector<ll> rho_fact(const\
+    \ fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)\n#line 3 \"\
+    math/fast_fact.hpp\"\nclass Rho{\n    using i128=__int128_t;\n    mt19937 mt;\n\
+    \    MillerRabin mr;\n    long long c;\n    ll f(i128 x,ll n){\n        x%=n;\n\
+    \        return (x*x%n+c)%n;\n    }\npublic:\n    Rho(){\n        mt.seed(clock());\n\
+    \    }\nprivate:\n    ll find_factor(ll n){\n        if(n==4){\n            return\
+    \ 2;\n        }\n        c=mt()%n;\n        ll x=mt()%n;\n        ll y=x;\n  \
+    \      ll d=1;\n\n        while(d==1){\n            x=f(x,n);\n            y=f(f(y,n),n);\n\
+    \            d=__gcd(abs(x-y),n);\n        }\n\n        if(d==n){\n          \
+    \  return -1;\n        }\n        return d;\n    }\n\n\n    vector<ll> rho_fact(const\
     \ ll&n){\n        if(n<2){\n            return {};\n        }\n        if(mr.is_prime(n)){\n\
     \            return{n};\n        }\n        ll d=-1;\n        while(d==-1){\n\
     \            d=find_factor(n);\n        }\n        vector<ll> v1=fact(d);\n  \
@@ -65,12 +65,13 @@ data:
     \    }\n\npublic:\n    vector<ll> fact(const ll n){\n        vector<ll> res;\n\
     \        if(n<=1000){\n            res=naive_fact(n);\n        }else{\n      \
     \      res=rho_fact(n);\n        }\n        sort(all(res));\n        return res;\n\
-    \    }\n};\n///@brief Rho\u6CD5\n#line 23 \"test/Library-Checker/Factorize.test.cpp\"\
-    \nRho rho;\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n\
-    \    int q;\n    scanf(\"%d\",&q);\n    while(q--){\n        ll a;\n        scanf(\"\
-    %lld\",&a);\n        auto pf=rho.fact(a);\n        printf(\"%d \",(int)pf.size());\n\
-    \        for(auto&p:pf){\n            printf(\"%lld \",p);\n        }\n      \
-    \  printf(\"\\n\");\n    }\n}\n"
+    \    }\n};\n///@brief fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\
+    \u89E3)\n#line 23 \"test/Library-Checker/Factorize.test.cpp\"\nRho rho;\nint main()\
+    \ {\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n    int q;\n    scanf(\"\
+    %d\",&q);\n    while(q--){\n        ll a;\n        scanf(\"%lld\",&a);\n     \
+    \   auto pf=rho.fact(a);\n        printf(\"%d \",(int)pf.size());\n        for(auto&p:pf){\n\
+    \            printf(\"%lld \",p);\n        }\n        printf(\"\\n\");\n    }\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n#include<bits/stdc++.h>\n\
     using namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x)\
     \ (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\nusing ll =\
@@ -91,7 +92,7 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library-Checker/Factorize.test.cpp

@@ -9,10 +9,11 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
     links: []
   bundledCode: "#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace\
     \ std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
@@ -32,11 +33,11 @@ data:
     siz[rx] += siz[ry];\n\t\treturn true;\n\t}\n\n\tint size(int x) {\n\t\treturn\
     \ siz[root(x)];\n\t}\n\tint group_size() {\n\t\tint cnt = 0;\n\t\tfor (int i =\
     \ 0; i < N; i++)\n\t\t\tif (root(i) == i)\n\t\t\t\tcnt++;\n\t\treturn cnt;\n\t\
-    }\n};\n///@brief disjoint set(union find)\n#line 3 \"main.cpp\"\nint main(){\n\
-    \    int n,q;\n    cin>>n>>q;\n    DSU dsu(n);\n    while(q--){\n        int t,x,y;\n\
-    \        cin>>t>>x>>y;\n        if(t==0){\n            dsu.merge(x,y);\n     \
-    \   }else{\n            cout<<(dsu.same(x,y)?\"1\\n\":\"0\\n\");\n        }\n\
-    \    }\n}\n"
+    }\n};\n///@brief disjoint set(union find)\n#line 3 \"test/AOJ/DSL/1/DSL_1_A.test.cpp\"\
+    \nint main(){\n    int n,q;\n    cin>>n>>q;\n    DSU dsu(n);\n    while(q--){\n\
+    \        int t,x,y;\n        cin>>t>>x>>y;\n        if(t==0){\n            dsu.merge(x,y);\n\
+    \        }else{\n            cout<<(dsu.same(x,y)?\"1\\n\":\"0\\n\");\n      \
+    \  }\n    }\n}\n"
   code: "#include\"template.hpp\"\n#include\"data-structure/dsu.hpp\"\nint main(){\n\
     \    int n,q;\n    cin>>n>>q;\n    DSU dsu(n);\n    while(q--){\n        int t,x,y;\n\
     \        cin>>t>>x>>y;\n        if(t==0){\n            dsu.merge(x,y);\n     \
@@ -45,16 +46,16 @@ data:
   dependsOn:
   - template.hpp
   - data-structure/dsu.hpp
-  isVerificationFile: false
-  path: main.cpp
+  isVerificationFile: true
+  path: test/AOJ/DSL/1/DSL_1_A.test.cpp
   requiredBy: []
   timestamp: '2023-02-23 13:41:21+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: main.cpp
+documentation_of: test/AOJ/DSL/1/DSL_1_A.test.cpp
 layout: document
 redirect_from:
-- /library/main.cpp
-- /library/main.cpp.html
-title: main.cpp
+- /verify/test/AOJ/DSL/1/DSL_1_A.test.cpp
+- /verify/test/AOJ/DSL/1/DSL_1_A.test.cpp.html
+title: test/AOJ/DSL/1/DSL_1_A.test.cpp
 ---

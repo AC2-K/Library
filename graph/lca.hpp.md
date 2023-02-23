@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/sparse_table.hpp
-    title: sparse_table
+    title: sparse table
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -13,7 +13,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: LCA
+    document_title: "Lowest Common Ancestor(\u6700\u5C0F\u5171\u901A\u7956\u5148)"
     links: []
   bundledCode: "#line 1 \"data-structure/sparse_table.hpp\"\ntemplate<class T>\nclass\
     \ sparse_table {\n    vector<vector<T>> table;\n    vector<int> look_up;\npublic:\n\
@@ -27,7 +27,7 @@ data:
     \ + 1);\n        for (int i = 2; i < look_up.size(); i++) {\n            look_up[i]\
     \ = look_up[i >> 1] + 1;\n        }\n    }\n\n    T prod(int l, int r) {\n   \
     \     int b = look_up[r - l];\n        return min(table[b][l], table[b][r - (1\
-    \ << b)]);\n    }\n};\n///@brief sparse_table\n#line 3 \"graph/lca.hpp\"\nclass\
+    \ << b)]);\n    }\n};\n///@brief sparse table\n#line 3 \"graph/lca.hpp\"\nclass\
     \ LCA {\n    using graph = vector<vector<int>>;\n    int n;\n    graph g;\n  \
     \  vector<int> vs, in;\n    sparse_table<pair<int,int>> seg;\npublic:\n    LCA(const\
     \ graph& g) :g(g), n(g.size()),in(n) { }\n    void setup() {\n        int p =\
@@ -38,7 +38,8 @@ data:
     \        vec[p++] = { now_depth,v };\n            }\n        };\n        dfs(0,\
     \ -1, 0);\n        seg = sparse_table<pair<int, int>>(vec);\n    }\n\n    int\
     \ query(int u, int v) {\n        if (in[u] >= in[v])swap(u, v);\n        return\
-    \ seg.prod(in[u], in[v] + 1).second;\n    }\n};\n///@brief LCA\n"
+    \ seg.prod(in[u], in[v] + 1).second;\n    }\n};\n///@brief Lowest Common Ancestor(\u6700\
+    \u5C0F\u5171\u901A\u7956\u5148)\n"
   code: "#pragma once\n#include\"data-structure/sparse_table.hpp\"\nclass LCA {\n\
     \    using graph = vector<vector<int>>;\n    int n;\n    graph g;\n    vector<int>\
     \ vs, in;\n    sparse_table<pair<int,int>> seg;\npublic:\n    LCA(const graph&\
@@ -50,13 +51,14 @@ data:
     \ = { now_depth,v };\n            }\n        };\n        dfs(0, -1, 0);\n    \
     \    seg = sparse_table<pair<int, int>>(vec);\n    }\n\n    int query(int u, int\
     \ v) {\n        if (in[u] >= in[v])swap(u, v);\n        return seg.prod(in[u],\
-    \ in[v] + 1).second;\n    }\n};\n///@brief LCA"
+    \ in[v] + 1).second;\n    }\n};\n///@brief Lowest Common Ancestor(\u6700\u5C0F\
+    \u5171\u901A\u7956\u5148)"
   dependsOn:
   - data-structure/sparse_table.hpp
   isVerificationFile: false
   path: graph/lca.hpp
   requiredBy: []
-  timestamp: '2023-02-21 13:24:55+09:00'
+  timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library-Checker/Lowest Common Ancestor.test.cpp
@@ -65,5 +67,5 @@ layout: document
 redirect_from:
 - /library/graph/lca.hpp
 - /library/graph/lca.hpp.html
-title: LCA
+title: "Lowest Common Ancestor(\u6700\u5C0F\u5171\u901A\u7956\u5148)"
 ---

@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/dijkstra.hpp
-    title: "dijkstra\u6CD5"
-  - icon: ':heavy_check_mark:'
+    title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C)"
+  - icon: ':question:'
     path: graph/edge.hpp
     title: edge
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -40,9 +40,10 @@ data:
     \n        for(const auto&[nv,c]:g[v]){\n            if(dist[v]+c<dist[nv]){\n\
     \                dist[nv]=dist[v]+c;\n                pre[nv]=v;\n           \
     \     que.emplace(dist[nv],nv);\n            }\n        }\n    }\n    return make_pair(dist,pre);\n\
-    }\n///@brief dijkstra\u6CD5\n#line 4 \"test/Library-Checker/Shortest Path.test.cpp\"\
-    \nint main() {\n    int n,m,s,t;\n    cin>>n>>m>>s>>t;\n    vector<vector<edge>>\
-    \ g(n);\n    rep(i,m){\n        int a,b,c;\n        cin>>a>>b>>c;\n        g[a].emplace_back(b,c);\n\
+    }\n///@brief dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C\
+    )\n#line 4 \"test/Library-Checker/Shortest Path.test.cpp\"\nint main() {\n   \
+    \ int n,m,s,t;\n    cin>>n>>m>>s>>t;\n    vector<vector<edge>> g(n);\n    rep(i,m){\n\
+    \        int a,b,c;\n        cin>>a>>b>>c;\n        g[a].emplace_back(b,c);\n\
     \    }\n    auto [dist,trace]=dijkstra(s,g);\n    if(dist[t]>=infl){\n       \
     \ cout<<-1<<'\\n';\n        return 0;\n    }\n\n    int cur=t;\n    vector<int>\
     \ path;\n    while(cur!=trace[cur]){\n        path.emplace_back(cur);\n      \
@@ -66,7 +67,7 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Shortest Path.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 13:24:55+09:00'
+  timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library-Checker/Shortest Path.test.cpp

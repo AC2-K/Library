@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree.hpp
-    title: segmenttree
-  - icon: ':heavy_check_mark:'
+    title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -50,11 +50,12 @@ data:
     \ 1) + 2, mid, r);\n            return op(vl, vr);\n        }\n    }\n\npublic:\n\
     \    //a[pos] <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos,\
     \ op(dat[n + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return\
-    \ dat[n + pos - 1];\n    }\n};\n/// @brief segmenttree\n#line 4 \"test/Library-Checker/Static\
-    \ Range Sum.test.cpp\"\nnamespace for_segtree{\n    using S=ll;\n    S op(S x,S\
-    \ y){return x+y;}\n    S e(){return 0;}\n};\nint main(){\n    ios::sync_with_stdio(false);\n\
-    \    cin.tie(0);\n    int n,q;\n    cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n\
-    \        cin>>aa;\n    }\n\n    segtree<for_segtree::S,for_segtree::op,for_segtree::e>\
+    \ dat[n + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\
+    \u30C8\u6728)\n#line 4 \"test/Library-Checker/Static Range Sum.test.cpp\"\nnamespace\
+    \ for_segtree{\n    using S=ll;\n    S op(S x,S y){return x+y;}\n    S e(){return\
+    \ 0;}\n};\nint main(){\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n  \
+    \  int n,q;\n    cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n     \
+    \   cin>>aa;\n    }\n\n    segtree<for_segtree::S,for_segtree::op,for_segtree::e>\
     \ seg(a);\n    while(q--){\n        int l,r;\n        cin>>l>>r;\n        cout<<seg.prod(l,r)<<'\\\
     n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\"\
@@ -71,7 +72,7 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Static Range Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library-Checker/Static Range Sum.test.cpp

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree.hpp
-    title: segmenttree
-  - icon: ':heavy_check_mark:'
+    title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -50,14 +50,14 @@ data:
     \ 1) + 2, mid, r);\n            return op(vl, vr);\n        }\n    }\n\npublic:\n\
     \    //a[pos] <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos,\
     \ op(dat[n + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return\
-    \ dat[n + pos - 1];\n    }\n};\n/// @brief segmenttree\n#line 4 \"test/Library-Checker/Point\
-    \ Add Range Sum.test.cpp\"\nll op(ll x,ll y){return x+y;}\nll e(){return 0;}\n\
-    int main(){\n    int n,q;\n    cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n\
-    \        cin>>aa;\n    }\n\n    segtree<ll,op,e> seg(a);\n    while(q--){\n  \
-    \      int t;\n        cin>>t;\n        if(t==0){\n            int p,x;\n    \
-    \        cin>>p>>x;\n            seg.add(p,x);\n        }else{\n            int\
-    \ l,r;\n            cin>>l>>r;\n            cout<<seg.prod(l,r)<<'\\n';\n    \
-    \    }\n    }\n}\n"
+    \ dat[n + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\
+    \u30C8\u6728)\n#line 4 \"test/Library-Checker/Point Add Range Sum.test.cpp\"\n\
+    ll op(ll x,ll y){return x+y;}\nll e(){return 0;}\nint main(){\n    int n,q;\n\
+    \    cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n        cin>>aa;\n\
+    \    }\n\n    segtree<ll,op,e> seg(a);\n    while(q--){\n        int t;\n    \
+    \    cin>>t;\n        if(t==0){\n            int p,x;\n            cin>>p>>x;\n\
+    \            seg.add(p,x);\n        }else{\n            int l,r;\n           \
+    \ cin>>l>>r;\n            cout<<seg.prod(l,r)<<'\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     #include\"template.hpp\"\n#include\"data-structure/segtree.hpp\"\nll op(ll x,ll\
     \ y){return x+y;}\nll e(){return 0;}\nint main(){\n    int n,q;\n    cin>>n>>q;\n\
@@ -72,7 +72,7 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Point Add Range Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library-Checker/Point Add Range Sum.test.cpp

@@ -3,11 +3,11 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/sparse_table.hpp
-    title: sparse_table
+    title: sparse table
   - icon: ':heavy_check_mark:'
     path: graph/lca.hpp
-    title: LCA
-  - icon: ':heavy_check_mark:'
+    title: "Lowest Common Ancestor(\u6700\u5C0F\u5171\u901A\u7956\u5148)"
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -41,7 +41,7 @@ data:
     \       }\n        look_up.resize(sz + 1);\n        for (int i = 2; i < look_up.size();\
     \ i++) {\n            look_up[i] = look_up[i >> 1] + 1;\n        }\n    }\n\n\
     \    T prod(int l, int r) {\n        int b = look_up[r - l];\n        return min(table[b][l],\
-    \ table[b][r - (1 << b)]);\n    }\n};\n///@brief sparse_table\n#line 3 \"graph/lca.hpp\"\
+    \ table[b][r - (1 << b)]);\n    }\n};\n///@brief sparse table\n#line 3 \"graph/lca.hpp\"\
     \nclass LCA {\n    using graph = vector<vector<int>>;\n    int n;\n    graph g;\n\
     \    vector<int> vs, in;\n    sparse_table<pair<int,int>> seg;\npublic:\n    LCA(const\
     \ graph& g) :g(g), n(g.size()),in(n) { }\n    void setup() {\n        int p =\
@@ -52,12 +52,13 @@ data:
     \        vec[p++] = { now_depth,v };\n            }\n        };\n        dfs(0,\
     \ -1, 0);\n        seg = sparse_table<pair<int, int>>(vec);\n    }\n\n    int\
     \ query(int u, int v) {\n        if (in[u] >= in[v])swap(u, v);\n        return\
-    \ seg.prod(in[u], in[v] + 1).second;\n    }\n};\n///@brief LCA\n#line 5 \"test/Library-Checker/Lowest\
-    \ Common Ancestor.test.cpp\"\nint main(){\n    int n, q;\n    cin >> n >> q;\n\
-    \    vector<vector<int>> g(n);\n    for (int i = 1; i < n; i++) {\n        int\
-    \ p;\n        cin >> p;\n        g[p].emplace_back(i);\n        g[i].emplace_back(p);\n\
-    \    }\n    LCA lca(g);\n    lca.setup();\n    while (q--) {\n        int u, v;\n\
-    \        cin >> u >> v;\n        cout << lca.query(u, v) << '\\n';\n    }\n}\n"
+    \ seg.prod(in[u], in[v] + 1).second;\n    }\n};\n///@brief Lowest Common Ancestor(\u6700\
+    \u5C0F\u5171\u901A\u7956\u5148)\n#line 5 \"test/Library-Checker/Lowest Common\
+    \ Ancestor.test.cpp\"\nint main(){\n    int n, q;\n    cin >> n >> q;\n    vector<vector<int>>\
+    \ g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n\
+    \        g[p].emplace_back(i);\n        g[i].emplace_back(p);\n    }\n    LCA\
+    \ lca(g);\n    lca.setup();\n    while (q--) {\n        int u, v;\n        cin\
+    \ >> u >> v;\n        cout << lca.query(u, v) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include\"template.hpp\"\
     \n#include\"graph/lca.hpp\"\nint main(){\n    int n, q;\n    cin >> n >> q;\n\
     \    vector<vector<int>> g(n);\n    for (int i = 1; i < n; i++) {\n        int\
@@ -71,7 +72,7 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Lowest Common Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 13:24:55+09:00'
+  timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/Library-Checker/Lowest Common Ancestor.test.cpp

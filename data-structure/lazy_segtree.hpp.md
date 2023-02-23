@@ -4,16 +4,17 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL_2_D.test.cpp
-    title: test/AOJ/DSL_2_D.test.cpp
+    path: test/AOJ/DSL/2/DSL_2_D.test.cpp
+    title: test/AOJ/DSL/2/DSL_2_D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL_2_E.test.cpp
-    title: test/AOJ/DSL_2_E.test.cpp
+    path: test/AOJ/DSL/2/DSL_2_E.test.cpp
+    title: test/AOJ/DSL/2/DSL_2_E.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: lazy_segtree
+    document_title: "lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\
+      \u30C8\u6728)"
     links: []
   bundledCode: "#line 1 \"data-structure/lazy_segtree.hpp\"\ntemplate<\n    class\
     \ S, class F,\n    S(*op)(S, S), S(*e)(),\n    F(*comp)(F, F), F(*id)(),\n   \
@@ -46,7 +47,8 @@ data:
     \ op(vl, vr);\n        }\n    }\n\npublic:\n    S prod(int l, int r) {\n     \
     \   assert(0 <= l && l <= r && r <= sz);\n        return prod(l, r, 0, sz, 0);\n\
     \    }\n\n    S operator[](int pos) {\n        return prod(pos, pos + 1);\n  \
-    \  }\n};\n//@brief lazy_segtree\n"
+    \  }\n};\n//@brief lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\
+    \u30C8\u6728)\n"
   code: "template<\n    class S, class F,\n    S(*op)(S, S), S(*e)(),\n    F(*comp)(F,\
     \ F), F(*id)(),\n    S(*mapping)(S, F)\n>\nclass lazy_segtree {\n    int sz;\n\
     \    vector<S> dat;\n    vector<F> lz;\npublic:\n    lazy_segtree(int n) :lazy_segtree(vector<S>(n,\
@@ -77,20 +79,21 @@ data:
     \ op(vl, vr);\n        }\n    }\n\npublic:\n    S prod(int l, int r) {\n     \
     \   assert(0 <= l && l <= r && r <= sz);\n        return prod(l, r, 0, sz, 0);\n\
     \    }\n\n    S operator[](int pos) {\n        return prod(pos, pos + 1);\n  \
-    \  }\n};\n//@brief lazy_segtree"
+    \  }\n};\n//@brief lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\
+    \u30C8\u6728)"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
+  timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/DSL_2_D.test.cpp
-  - test/AOJ/DSL_2_E.test.cpp
+  - test/AOJ/DSL/2/DSL_2_D.test.cpp
+  - test/AOJ/DSL/2/DSL_2_E.test.cpp
 documentation_of: data-structure/lazy_segtree.hpp
 layout: document
 redirect_from:
 - /library/data-structure/lazy_segtree.hpp
 - /library/data-structure/lazy_segtree.hpp.html
-title: lazy_segtree
+title: "lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 ---

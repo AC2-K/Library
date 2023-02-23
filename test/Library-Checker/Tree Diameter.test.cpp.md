@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/dijkstra.hpp
-    title: "dijkstra\u6CD5"
-  - icon: ':heavy_check_mark:'
+    title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C)"
+  - icon: ':question:'
     path: graph/edge.hpp
     title: edge
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
@@ -40,11 +40,12 @@ data:
     \n        for(const auto&[nv,c]:g[v]){\n            if(dist[v]+c<dist[nv]){\n\
     \                dist[nv]=dist[v]+c;\n                pre[nv]=v;\n           \
     \     que.emplace(dist[nv],nv);\n            }\n        }\n    }\n    return make_pair(dist,pre);\n\
-    }\n///@brief dijkstra\u6CD5\n#line 4 \"test/Library-Checker/Tree Diameter.test.cpp\"\
-    \nint main() {\n    int n;\n    cin>>n;\n    vector<vector<edge>> g(n);\n    rep(i,n-1){\n\
-    \        int a,b,c;\n        cin>>a>>b>>c;\n        g[a].emplace_back(b,c);\n\
-    \        g[b].emplace_back(a,c);\n    }\n\n    auto dist=dijkstra(0,g).first;\n\
-    \    ll dist_max=*max_element(all(dist));\n    int v=find(all(dist),dist_max)-dist.begin();\n\
+    }\n///@brief dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C\
+    )\n#line 4 \"test/Library-Checker/Tree Diameter.test.cpp\"\nint main() {\n   \
+    \ int n;\n    cin>>n;\n    vector<vector<edge>> g(n);\n    rep(i,n-1){\n     \
+    \   int a,b,c;\n        cin>>a>>b>>c;\n        g[a].emplace_back(b,c);\n     \
+    \   g[b].emplace_back(a,c);\n    }\n\n    auto dist=dijkstra(0,g).first;\n   \
+    \ ll dist_max=*max_element(all(dist));\n    int v=find(all(dist),dist_max)-dist.begin();\n\
     \    dist=dijkstra(v,g).first;\n    dist_max=*max_element(all(dist));\n    int\
     \ u=find(all(dist),dist_max)-dist.begin();\n    cout<<dist_max<<' ';\n\n    int\
     \ cur=u;\n    vector<int> ans;\n    while(cur!=v){\n        ans.emplace_back(cur);\n\
@@ -71,8 +72,8 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Tree Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 13:24:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-02-23 13:41:21+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Library-Checker/Tree Diameter.test.cpp
 layout: document

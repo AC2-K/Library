@@ -3,14 +3,14 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
     title: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    document_title: EulerTour
+    document_title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
     links: []
   bundledCode: "#line 1 \"graph/euler_tour.hpp\"\nclass EulerTour {\n\tusing graph\
     \ = vector<vector<int>>;\n\tgraph g;\npublic:\n\tvector<int> in, out, depth,tour;\n\
@@ -20,7 +20,8 @@ data:
     \ v, int par = -1)-> void {\n\t\t\tin[v] = tour.size();\n\t\t\ttour.emplace_back(v);\n\
     \t\t\tfor (const auto& c : g[v])if (c != par) {\n\t\t\t\tdepth[c] = depth[v] +\
     \ 1;\n\t\t\t\tdfs(c, v);\n\t\t\t\ttour.emplace_back(v);\n\t\t\t}\n\t\t\tout[v]\
-    \ = tour.size() - 1;\n\t\t};\n\t\tdfs(root, -1);\n\t}\n};\n///@brief EulerTour\n"
+    \ = tour.size() - 1;\n\t\t};\n\t\tdfs(root, -1);\n\t}\n};\n///@brief EulerTour(\u30AA\
+    \u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)\n"
   code: "class EulerTour {\n\tusing graph = vector<vector<int>>;\n\tgraph g;\npublic:\n\
     \tvector<int> in, out, depth,tour;\n    EulerTour(int n) :g(n), depth(n), in(n),\
     \ out(n) {}\n\tvoid add_edge(int a, int b) {\n\t\tg[a].emplace_back(b);\n\t\t\
@@ -29,13 +30,14 @@ data:
     \ = tour.size();\n\t\t\ttour.emplace_back(v);\n\t\t\tfor (const auto& c : g[v])if\
     \ (c != par) {\n\t\t\t\tdepth[c] = depth[v] + 1;\n\t\t\t\tdfs(c, v);\n\t\t\t\t\
     tour.emplace_back(v);\n\t\t\t}\n\t\t\tout[v] = tour.size() - 1;\n\t\t};\n\t\t\
-    dfs(root, -1);\n\t}\n};\n///@brief EulerTour"
+    dfs(root, -1);\n\t}\n};\n///@brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\
+    \u30FC)"
   dependsOn: []
   isVerificationFile: false
   path: graph/euler_tour.hpp
   requiredBy: []
-  timestamp: '2023-02-21 13:24:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-02-23 13:41:21+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/Library-Checker/Vertex Add Subtree Sum.test.cpp
 documentation_of: graph/euler_tour.hpp
@@ -43,5 +45,5 @@ layout: document
 redirect_from:
 - /library/graph/euler_tour.hpp
 - /library/graph/euler_tour.hpp.html
-title: EulerTour
+title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
 ---

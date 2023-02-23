@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL_2_B.test.cpp
-    title: test/AOJ/DSL_2_B.test.cpp
+    path: test/AOJ/DSL/2/DSL_2_B.test.cpp
+    title: test/AOJ/DSL/2/DSL_2_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Library-Checker/Longest Increasing Subsequence.test.cpp
     title: test/Library-Checker/Longest Increasing Subsequence.test.cpp
@@ -18,14 +18,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Library-Checker/Static Range Sum.test.cpp
     title: test/Library-Checker/Static Range Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
     title: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
-    document_title: segmenttree
+    document_title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     links: []
   bundledCode: "#line 1 \"data-structure/segtree.hpp\"\ntemplate<class S, S(*op)(S,\
     \ S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S> dat;\n    void Init(int\
@@ -50,7 +50,8 @@ data:
     \ 1) + 2, mid, r);\n            return op(vl, vr);\n        }\n    }\n\npublic:\n\
     \    //a[pos] <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos,\
     \ op(dat[n + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return\
-    \ dat[n + pos - 1];\n    }\n};\n/// @brief segmenttree\n"
+    \ dat[n + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\
+    \u30C8\u6728)\n"
   code: "template<class S, S(*op)(S, S), S(*e)()>\nclass segtree {\n    int n;\n \
     \   vector<S> dat;\n    void Init(int n_) {\n        int x = 1;\n        while\
     \ (n_ > x) {\n            x <<= 1;\n        }\n        n = x;\n    }\npublic:\n\
@@ -74,24 +75,25 @@ data:
     \ r);\n            return op(vl, vr);\n        }\n    }\n\npublic:\n    //a[pos]\
     \ <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos, op(dat[n\
     \ + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return dat[n\
-    \ + pos - 1];\n    }\n};\n/// @brief segmenttree"
+    \ + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\
+    \u6728)"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/segtree.hpp
   requiredBy: []
-  timestamp: '2023-02-21 12:21:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-02-23 13:41:21+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/Library-Checker/Static Range Sum.test.cpp
   - test/Library-Checker/Vertex Add Subtree Sum.test.cpp
   - test/Library-Checker/Point Set Range Composite.test.cpp
   - test/Library-Checker/Longest Increasing Subsequence.test.cpp
   - test/Library-Checker/Point Add Range Sum.test.cpp
-  - test/AOJ/DSL_2_B.test.cpp
+  - test/AOJ/DSL/2/DSL_2_B.test.cpp
 documentation_of: data-structure/segtree.hpp
 layout: document
 redirect_from:
 - /library/data-structure/segtree.hpp
 - /library/data-structure/segtree.hpp.html
-title: segmenttree
+title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 ---

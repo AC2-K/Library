@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: data-structure/dsu.hpp
-    title: disjoint set
-  - icon: ':heavy_check_mark:'
+    title: disjoint set(union find)
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/unionfind
@@ -37,11 +37,11 @@ data:
     \ += siz[ry];\n\t\treturn true;\n\t}\n\n\tint size(int x) {\n\t\treturn siz[root(x)];\n\
     \t}\n\tint group_size() {\n\t\tint cnt = 0;\n\t\tfor (int i = 0; i < N; i++)\n\
     \t\t\tif (root(i) == i)\n\t\t\t\tcnt++;\n\t\treturn cnt;\n\t}\n};\n///@brief disjoint\
-    \ set\n#line 4 \"test/Library-Checker/UnionFind.test.cpp\"\nint main() {\n   \
-    \ int n,q;\n    cin>>n>>q;\n    DSU dsu(n);\n    while(q--){\n        int t,x,y;\n\
-    \        cin>>t>>x>>y;\n        if(t==0){\n            dsu.merge(x,y);\n     \
-    \   }else{\n            if(dsu.same(x,y))cout<<\"1\\n\";\n            else cout<<\"\
-    0\\n\";\n        }\n    }\n}\n"
+    \ set(union find)\n#line 4 \"test/Library-Checker/UnionFind.test.cpp\"\nint main()\
+    \ {\n    int n,q;\n    cin>>n>>q;\n    DSU dsu(n);\n    while(q--){\n        int\
+    \ t,x,y;\n        cin>>t>>x>>y;\n        if(t==0){\n            dsu.merge(x,y);\n\
+    \        }else{\n            if(dsu.same(x,y))cout<<\"1\\n\";\n            else\
+    \ cout<<\"0\\n\";\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n#include\"\
     template.hpp\"\n#include\"data-structure/dsu.hpp\"\nint main() {\n    int n,q;\n\
     \    cin>>n>>q;\n    DSU dsu(n);\n    while(q--){\n        int t,x,y;\n      \
@@ -54,8 +54,8 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 08:23:41+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-02-23 13:41:21+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Library-Checker/UnionFind.test.cpp
 layout: document

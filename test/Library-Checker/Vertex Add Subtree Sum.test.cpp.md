@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree.hpp
-    title: segmenttree
-  - icon: ':heavy_check_mark:'
+    title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+  - icon: ':x:'
     path: graph/euler_tour.hpp
-    title: EulerTour
+    title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
@@ -28,11 +28,11 @@ data:
     tour.emplace_back(v);\n\t\t\tfor (const auto& c : g[v])if (c != par) {\n\t\t\t\
     \tdepth[c] = depth[v] + 1;\n\t\t\t\tdfs(c, v);\n\t\t\t\ttour.emplace_back(v);\n\
     \t\t\t}\n\t\t\tout[v] = tour.size() - 1;\n\t\t};\n\t\tdfs(root, -1);\n\t}\n};\n\
-    ///@brief EulerTour\n#line 1 \"data-structure/segtree.hpp\"\ntemplate<class S,\
-    \ S(*op)(S, S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S> dat;\n  \
-    \  void Init(int n_) {\n        int x = 1;\n        while (n_ > x) {\n       \
-    \     x <<= 1;\n        }\n        n = x;\n    }\npublic:\n    segtree(int n_)\
-    \ : segtree(vector<S>(n_, e())) {   }\n    segtree(const vector<S>& v) :dat(4\
+    ///@brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)\n#line 1 \"data-structure/segtree.hpp\"\
+    \ntemplate<class S, S(*op)(S, S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S>\
+    \ dat;\n    void Init(int n_) {\n        int x = 1;\n        while (n_ > x) {\n\
+    \            x <<= 1;\n        }\n        n = x;\n    }\npublic:\n    segtree(int\
+    \ n_) : segtree(vector<S>(n_, e())) {   }\n    segtree(const vector<S>& v) :dat(4\
     \ * v.size()) {\n        Init(v.size());\n        for (int i = 0; i < v.size();\
     \ i++) {\n            set(i, v[i]);\n        }\n        build();\n    }\n    inline\
     \ void set(int pos, S val) {\n        assert(0 <= pos && pos < n);\n        dat[pos\
@@ -52,18 +52,19 @@ data:
     \       return op(vl, vr);\n        }\n    }\n\npublic:\n    //a[pos] <- a[pos]\u30FB\
     x\n    void add(int pos, S x) {\n        update(pos, op(dat[n + pos - 1], x));\n\
     \    }\n\n    S operator [](int pos) {\n        return dat[n + pos - 1];\n   \
-    \ }\n};\n/// @brief segmenttree\n#line 6 \"test/Library-Checker/Vertex Add Subtree\
-    \ Sum.test.cpp\"\nusing S = long long;\nS op(S x, S y) { return x+y; }\nS e()\
-    \ { return 0; }\nint main() {\n    int n, q;\n    cin >> n >> q;\n    vector<int>\
-    \ a(n);\n    for (auto& aa : a) {\n        cin >> aa;\n    }\n    EulerTour et(n);\n\
-    \    for (int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n      \
-    \  et.add_edge(p, i);\n    }\n    et.build(0);\n\n    segtree<S, op, e> seg(et.tour.size());\n\
-    \    for (int v = 0; v < n; v++) {\n        seg.set(et.in[v], a[v]);\n    }\n\
-    \    seg.build();\n    while (q--) {\n        int t;\n        cin >> t;\n    \
-    \    if (t == 0) {\n            int v;\n            cin >> v;\n            int\
-    \ x;\n            cin >> x;\n            seg.add(et.in[v], x);\n        }\n  \
-    \      else {\n            int v;\n            cin >> v;\n            cout <<\
-    \ seg.prod(et.in[v], et.out[v] + 1) << '\\n';\n        }\n    }\n}\n"
+    \ }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n#line\
+    \ 6 \"test/Library-Checker/Vertex Add Subtree Sum.test.cpp\"\nusing S = long long;\n\
+    S op(S x, S y) { return x+y; }\nS e() { return 0; }\nint main() {\n    int n,\
+    \ q;\n    cin >> n >> q;\n    vector<int> a(n);\n    for (auto& aa : a) {\n  \
+    \      cin >> aa;\n    }\n    EulerTour et(n);\n    for (int i = 1; i < n; i++)\
+    \ {\n        int p;\n        cin >> p;\n        et.add_edge(p, i);\n    }\n  \
+    \  et.build(0);\n\n    segtree<S, op, e> seg(et.tour.size());\n    for (int v\
+    \ = 0; v < n; v++) {\n        seg.set(et.in[v], a[v]);\n    }\n    seg.build();\n\
+    \    while (q--) {\n        int t;\n        cin >> t;\n        if (t == 0) {\n\
+    \            int v;\n            cin >> v;\n            int x;\n            cin\
+    \ >> x;\n            seg.add(et.in[v], x);\n        }\n        else {\n      \
+    \      int v;\n            cin >> v;\n            cout << seg.prod(et.in[v], et.out[v]\
+    \ + 1) << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#include\"graph/euler_tour.hpp\"\
     \n#include\"data-structure/segtree.hpp\"\nusing S = long long;\nS op(S x, S y)\
@@ -84,8 +85,8 @@ data:
   isVerificationFile: true
   path: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 13:24:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-02-23 13:41:21+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
 layout: document
