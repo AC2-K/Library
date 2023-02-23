@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: rolling hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -33,8 +33,12 @@ data:
     \nll mod_pow(ll base, ll exp, ll mod) {\n    if(base==0)return 0;\n    ll ans\
     \ = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) {\n    \
     \        ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
-    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n///@brief\
-    \ mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 4 \"string/rolling_hash.hpp\"\
+    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\ntemplate<typename\
+    \ T>\n__int128_t large_modpow(T base,T exp,T mod){\n    if(base==0)return 0;\n\
+    \    __int128_t ans = 1;\n    base %= mod;\n    while (exp > 0) {\n        if\
+    \ (exp & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n\
+    \        base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
+    \ ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 4 \"string/rolling_hash.hpp\"\
     \nclass RollingHash {\n\t\n\tstatic const ll mod = 998244343;\n\tstatic const\
     \ ll g = 3;\t//\u539F\u59CB\u6839\n\tll base;\n\tvector<ll> powers;\n\tstatic\
     \ inline ll generate_base() {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
@@ -69,7 +73,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/ALDS/14/B.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 15:50:32+09:00'
+  timestamp: '2023-02-23 23:47:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/ALDS/14/B.test.cpp

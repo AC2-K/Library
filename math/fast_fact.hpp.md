@@ -1,10 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fast_prime_check.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
@@ -15,9 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/math/Factorize.test.cpp
     title: test/yosupo judge/math/Factorize.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yosupo judge/math/Primitive Root.test.cpp
+    title: test/yosupo judge/math/Primitive Root.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3\
       )"
@@ -59,10 +65,8 @@ data:
     \ {\n                ret.push_back(div);\n                n /= div;\n        \
     \    }\n        }\n        if (n != 1)ret.push_back(n);\n        return ret;\n\
     \    }\n\npublic:\n    vector<ll> fact(const ll n){\n        vector<ll> res;\n\
-    \        if(n<=1000){\n            res=naive_fact(n);\n        }else{\n      \
-    \      res=rho_fact(n);\n        }\n        sort(all(res));\n        return res;\n\
-    \    }\n};\n///@brief fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\
-    \u89E3)\n"
+    \        res=rho_fact(n);\n        sort(all(res));\n        return res;\n    }\n\
+    };\n///@brief fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)\n"
   code: "#pragma once\n#include\"math/fast_prime_check.hpp\"\nclass Rho{\n    using\
     \ i128=__int128_t;\n    mt19937 mt;\n    MillerRabin mr;\n    long long c;\n \
     \   ll f(i128 x,ll n){\n        x%=n;\n        return (x*x%n+c)%n;\n    }\npublic:\n\
@@ -81,9 +85,8 @@ data:
     \        ll exp = 0;\n            while (n % div == 0) {\n                ret.push_back(div);\n\
     \                n /= div;\n            }\n        }\n        if (n != 1)ret.push_back(n);\n\
     \        return ret;\n    }\n\npublic:\n    vector<ll> fact(const ll n){\n   \
-    \     vector<ll> res;\n        if(n<=1000){\n            res=naive_fact(n);\n\
-    \        }else{\n            res=rho_fact(n);\n        }\n        sort(all(res));\n\
-    \        return res;\n    }\n};\n///@brief fast factorize(Pollard Rho\u306E\u7D20\
+    \     vector<ll> res;\n        res=rho_fact(n);\n        sort(all(res));\n   \
+    \     return res;\n    }\n};\n///@brief fast factorize(Pollard Rho\u306E\u7D20\
     \u56E0\u6570\u5206\u89E3)"
   dependsOn:
   - math/fast_prime_check.hpp
@@ -91,9 +94,11 @@ data:
   path: math/fast_fact.hpp
   requiredBy:
   - math/phi_function.hpp
-  timestamp: '2023-02-23 13:41:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - main.cpp
+  timestamp: '2023-02-23 23:47:33+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/yosupo judge/math/Primitive Root.test.cpp
   - test/yosupo judge/math/Factorize.test.cpp
   - test/AOJ/NTL/1/D.test.cpp
 documentation_of: math/fast_fact.hpp

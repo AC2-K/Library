@@ -2,7 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
+  - icon: ':question:'
     path: math/fast_fact.hpp
     title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
   - icon: ':heavy_check_mark:'
@@ -15,9 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/math/Factorize.test.cpp
     title: test/yosupo judge/math/Factorize.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yosupo judge/math/Primitive Root.test.cpp
+    title: test/yosupo judge/math/Primitive Root.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5\
       )"
@@ -66,9 +72,11 @@ data:
   requiredBy:
   - math/fast_fact.hpp
   - math/phi_function.hpp
+  - main.cpp
   timestamp: '2023-02-23 13:41:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/yosupo judge/math/Primitive Root.test.cpp
   - test/yosupo judge/math/Factorize.test.cpp
   - test/AOJ/NTL/1/D.test.cpp
 documentation_of: math/fast_prime_check.hpp

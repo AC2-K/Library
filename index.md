@@ -45,7 +45,7 @@ data:
     - icon: ':warning:'
       path: sub.cpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: math
@@ -60,13 +60,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/fact.hpp
       title: "factorize(\u7D20\u56E0\u6570\u5206\u89E3)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/fast_fact.hpp
       title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/fast_prime_check.hpp
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     - icon: ':heavy_check_mark:'
@@ -175,6 +175,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/math/Factorize.test.cpp
       title: test/yosupo judge/math/Factorize.test.cpp
+    - icon: ':x:'
+      path: test/yosupo judge/math/Primitive Root.test.cpp
+      title: test/yosupo judge/math/Primitive Root.test.cpp
   - name: test/yosupo judge/new
     pages:
     - icon: ':heavy_check_mark:'

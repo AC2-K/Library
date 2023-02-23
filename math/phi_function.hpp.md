@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fast_fact.hpp
     title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fast_prime_check.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
   _extendedRequiredBy: []
@@ -56,13 +56,12 @@ data:
     \ {\n                ret.push_back(div);\n                n /= div;\n        \
     \    }\n        }\n        if (n != 1)ret.push_back(n);\n        return ret;\n\
     \    }\n\npublic:\n    vector<ll> fact(const ll n){\n        vector<ll> res;\n\
-    \        if(n<=1000){\n            res=naive_fact(n);\n        }else{\n      \
-    \      res=rho_fact(n);\n        }\n        sort(all(res));\n        return res;\n\
-    \    }\n};\n///@brief fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\
-    \u89E3)\n#line 3 \"math/phi_function.hpp\"\nll phi_func(ll n){\n    ll res=n;\n\
-    \    Rho rho;\n    auto pf=rho.fact(n);\n    pf.erase(unique(all(pf)),pf.end());\
-    \     \n    for(auto&d:pf){\n        res=res/d*(d-1);\n    }\n    return res;\n\
-    }\n///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)\n"
+    \        res=rho_fact(n);\n        sort(all(res));\n        return res;\n    }\n\
+    };\n///@brief fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)\n\
+    #line 3 \"math/phi_function.hpp\"\nll phi_func(ll n){\n    ll res=n;\n    Rho\
+    \ rho;\n    auto pf=rho.fact(n);\n    pf.erase(unique(all(pf)),pf.end());    \
+    \ \n    for(auto&d:pf){\n        res=res/d*(d-1);\n    }\n    return res;\n}\n\
+    ///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)\n"
   code: "#pragma once\n#include\"math/fast_fact.hpp\"\nll phi_func(ll n){\n    ll\
     \ res=n;\n    Rho rho;\n    auto pf=rho.fact(n);\n    pf.erase(unique(all(pf)),pf.end());\
     \     \n    for(auto&d:pf){\n        res=res/d*(d-1);\n    }\n    return res;\n\
@@ -73,7 +72,7 @@ data:
   isVerificationFile: false
   path: math/phi_function.hpp
   requiredBy: []
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-02-23 23:47:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1/D.test.cpp

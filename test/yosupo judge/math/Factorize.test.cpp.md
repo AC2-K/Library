@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fast_fact.hpp
     title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fast_prime_check.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
   _extendedRequiredBy: []
@@ -63,15 +63,14 @@ data:
     \ {\n                ret.push_back(div);\n                n /= div;\n        \
     \    }\n        }\n        if (n != 1)ret.push_back(n);\n        return ret;\n\
     \    }\n\npublic:\n    vector<ll> fact(const ll n){\n        vector<ll> res;\n\
-    \        if(n<=1000){\n            res=naive_fact(n);\n        }else{\n      \
-    \      res=rho_fact(n);\n        }\n        sort(all(res));\n        return res;\n\
-    \    }\n};\n///@brief fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\
-    \u89E3)\n#line 23 \"test/yosupo judge/math/Factorize.test.cpp\"\nRho rho;\nint\
-    \ main() {\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n    int q;\n  \
-    \  scanf(\"%d\",&q);\n    while(q--){\n        ll a;\n        scanf(\"%lld\",&a);\n\
-    \        auto pf=rho.fact(a);\n        printf(\"%d \",(int)pf.size());\n     \
-    \   for(auto&p:pf){\n            printf(\"%lld \",p);\n        }\n        printf(\"\
-    \\n\");\n    }\n}\n"
+    \        res=rho_fact(n);\n        sort(all(res));\n        return res;\n    }\n\
+    };\n///@brief fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)\n\
+    #line 23 \"test/yosupo judge/math/Factorize.test.cpp\"\nRho rho;\nint main() {\n\
+    \    ios::sync_with_stdio(false);\n    cin.tie(0);\n    int q;\n    scanf(\"%d\"\
+    ,&q);\n    while(q--){\n        ll a;\n        scanf(\"%lld\",&a);\n        auto\
+    \ pf=rho.fact(a);\n        printf(\"%d \",(int)pf.size());\n        for(auto&p:pf){\n\
+    \            printf(\"%lld \",p);\n        }\n        printf(\"\\n\");\n    }\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n#include<bits/stdc++.h>\n\
     using namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x)\
     \ (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\nusing ll =\
@@ -92,7 +91,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 14:54:17+09:00'
+  timestamp: '2023-02-23 23:47:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/math/Factorize.test.cpp

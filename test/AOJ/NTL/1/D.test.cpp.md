@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fast_fact.hpp
     title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fast_prime_check.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -69,15 +69,14 @@ data:
     \ {\n                ret.push_back(div);\n                n /= div;\n        \
     \    }\n        }\n        if (n != 1)ret.push_back(n);\n        return ret;\n\
     \    }\n\npublic:\n    vector<ll> fact(const ll n){\n        vector<ll> res;\n\
-    \        if(n<=1000){\n            res=naive_fact(n);\n        }else{\n      \
-    \      res=rho_fact(n);\n        }\n        sort(all(res));\n        return res;\n\
-    \    }\n};\n///@brief fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\
-    \u89E3)\n#line 3 \"math/phi_function.hpp\"\nll phi_func(ll n){\n    ll res=n;\n\
-    \    Rho rho;\n    auto pf=rho.fact(n);\n    pf.erase(unique(all(pf)),pf.end());\
-    \     \n    for(auto&d:pf){\n        res=res/d*(d-1);\n    }\n    return res;\n\
-    }\n///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)\n\
-    #line 5 \"test/AOJ/NTL/1/D.test.cpp\"\nint main(){\n    int n;\n    cin>>n;\n\
-    \    cout<<phi_func(n)<<'\\n';\n}\n"
+    \        res=rho_fact(n);\n        sort(all(res));\n        return res;\n    }\n\
+    };\n///@brief fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)\n\
+    #line 3 \"math/phi_function.hpp\"\nll phi_func(ll n){\n    ll res=n;\n    Rho\
+    \ rho;\n    auto pf=rho.fact(n);\n    pf.erase(unique(all(pf)),pf.end());    \
+    \ \n    for(auto&d:pf){\n        res=res/d*(d-1);\n    }\n    return res;\n}\n\
+    ///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)\n#line\
+    \ 5 \"test/AOJ/NTL/1/D.test.cpp\"\nint main(){\n    int n;\n    cin>>n;\n    cout<<phi_func(n)<<'\\\
+    n';\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D\"\
     \n\n#include\"template.hpp\"\n#include\"math/phi_function.hpp\"\nint main(){\n\
     \    int n;\n    cin>>n;\n    cout<<phi_func(n)<<'\\n';\n}"
@@ -89,7 +88,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/NTL/1/D.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 14:54:17+09:00'
+  timestamp: '2023-02-23 23:47:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/NTL/1/D.test.cpp
