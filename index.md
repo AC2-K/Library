@@ -45,7 +45,7 @@ data:
     - icon: ':warning:'
       path: sub.cpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: math
@@ -66,7 +66,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/fast_prime_check.hpp
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     - icon: ':heavy_check_mark:'
@@ -80,7 +80,7 @@ data:
       title: modint
   - name: string
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
       title: rolling hash
   - name: test/AOJ/GRL/5
@@ -182,7 +182,7 @@ data:
       title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
   - name: test/yosupo judge/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/string/Z algorithm with Hash.test.cpp
       title: test/yosupo judge/string/Z algorithm with Hash.test.cpp
   - name: test/yosupo judge/tree
