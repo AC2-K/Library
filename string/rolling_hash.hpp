@@ -14,7 +14,7 @@ class RollingHash {
 	}
 	//idの振り方
 	ll mapping(char c) {
-		return (c - 'a');
+		return (c - 'a' + 1);
 	}
 	void expand(int siz) {
 		if (powers.size() < siz + 1) {
