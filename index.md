@@ -6,14 +6,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/cht.hpp
       title: ConvexHullTrick
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/dsu.hpp
       title: disjoint set(union find)
     - icon: ':heavy_check_mark:'
       path: data-structure/lazy_segtree.hpp
       title: "lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/segtree.hpp
       title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
@@ -21,14 +21,14 @@ data:
       title: sparse table
   - name: graph
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C\
         )"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/edge.hpp
       title: edge
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/euler_tour.hpp
       title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
     - icon: ':heavy_check_mark:'
@@ -42,7 +42,7 @@ data:
     - icon: ':warning:'
       path: main.cpp
       title: main.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: math
@@ -83,7 +83,7 @@ data:
   verificationCategories:
   - name: test/AOJ/DSL/1
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/1/DSL_1_A.test.cpp
       title: test/AOJ/DSL/1/DSL_1_A.test.cpp
   - name: test/AOJ/DSL/2
@@ -102,9 +102,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1/NTL_1_A.test.cpp
       title: test/AOJ/NTL/1/NTL_1_A.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1/NTL_1_B.test.cpp
-      title: test/AOJ/NTL/1/NTL_1_B.test.cpp
+      title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1/NTL_1_D.test.cpp
       title: test/AOJ/NTL/1/NTL_1_D.test.cpp
@@ -143,13 +143,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/Library-Checker/Static Range Sum.test.cpp
       title: test/Library-Checker/Static Range Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Library-Checker/Tree Diameter.test.cpp
       title: test/Library-Checker/Tree Diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Library-Checker/UnionFind.test.cpp
       title: test/Library-Checker/UnionFind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
       title: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
     - icon: ':heavy_check_mark:'

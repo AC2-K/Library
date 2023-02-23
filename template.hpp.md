@@ -6,7 +6,7 @@ data:
     path: main.cpp
     title: main.cpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/1/DSL_1_A.test.cpp
     title: test/AOJ/DSL/1/DSL_1_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/NTL_1_A.test.cpp
     title: test/AOJ/NTL/1/NTL_1_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/NTL/1/NTL_1_B.test.cpp
+    title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/NTL_1_D.test.cpp
     title: test/AOJ/NTL/1/NTL_1_D.test.cpp
@@ -54,18 +57,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Library-Checker/Static Range Sum.test.cpp
     title: test/Library-Checker/Static Range Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library-Checker/Tree Diameter.test.cpp
     title: test/Library-Checker/Tree Diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library-Checker/UnionFind.test.cpp
     title: test/Library-Checker/UnionFind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/Library-Checker/Z algorithm with Hash.test.cpp
     title: test/Library-Checker/Z algorithm with Hash.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 1 "template.hpp"
@@ -156,7 +159,7 @@ data:
   requiredBy:
   - main.cpp
   timestamp: '2023-02-17 14:40:23+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library-Checker/Static Range Sum.test.cpp
   - test/Library-Checker/Z algorithm with Hash.test.cpp
@@ -170,6 +173,7 @@ data:
   - test/Library-Checker/Shortest Path.test.cpp
   - test/Library-Checker/Static RMQ.test.cpp
   - test/Library-Checker/Point Add Range Sum.test.cpp
+  - test/AOJ/NTL/1/NTL_1_B.test.cpp
   - test/AOJ/NTL/1/NTL_1_D.test.cpp
   - test/AOJ/NTL/1/NTL_1_A.test.cpp
   - test/AOJ/NTL/1/NTL_1_E.test.cpp

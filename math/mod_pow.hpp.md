@@ -7,6 +7,9 @@ data:
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/AOJ/NTL/1/NTL_1_B.test.cpp
+    title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
+  - icon: ':heavy_check_mark:'
     path: test/Library-Checker/Discrete Logarithm.test.cpp
     title: test/Library-Checker/Discrete Logarithm.test.cpp
   _isVerificationFailed: false
@@ -35,6 +38,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library-Checker/Discrete Logarithm.test.cpp
+  - test/AOJ/NTL/1/NTL_1_B.test.cpp
 documentation_of: math/mod_pow.hpp
 layout: document
 redirect_from:

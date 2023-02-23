@@ -18,12 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/Library-Checker/Static Range Sum.test.cpp
     title: test/Library-Checker/Static Range Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
     title: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     links: []
@@ -82,7 +82,7 @@ data:
   path: data-structure/segtree.hpp
   requiredBy: []
   timestamp: '2023-02-23 13:41:21+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/Library-Checker/Static Range Sum.test.cpp
   - test/Library-Checker/Vertex Add Subtree Sum.test.cpp
