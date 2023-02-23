@@ -69,11 +69,7 @@ private:
 public:
     vector<ll> fact(const ll n){
         vector<ll> res;
-        if(n<=1000){
-            res=naive_fact(n);
-        }else{
-            res=rho_fact(n);
-        }
+        res=rho_fact(n);
         sort(all(res));
         return res;
     }

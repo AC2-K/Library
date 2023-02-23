@@ -1,6 +1,3 @@
-#line 1 "main.cpp"
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_14_B"
-
 #line 1 "template.hpp"
 #include<bits/stdc++.h>
 using namespace std;
@@ -22,8 +19,6 @@ const int dx[4] = { 1,0,-1,0 };
 const int dy[4] = { 0,1,0,-1 };
 template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
-#line 2 "string/rolling_hash.hpp"
-
 #line 1 "math/mod_pow.hpp"
 ll mod_pow(ll base, ll exp, ll mod) {
     if(base==0)return 0;
@@ -40,70 +35,187 @@ ll mod_pow(ll base, ll exp, ll mod) {
     }
     return ans;
 }
+template<typename T>
+__int128_t large_modpow(T base,T exp,T mod){
+    if(base==0)return 0;
+    __int128_t ans = 1;
+    base %= mod;
+    while (exp > 0) {
+        if (exp & 1) {
+            ans *= base;
+            ans %= mod;
+        }
+        base *= base;
+        base %= mod;
+        exp >>= 1;
+    }
+    return ans;
+}
 ///@brief mod pow(バイナリ法)
-#line 4 "string/rolling_hash.hpp"
-class RollingHash {
-	
-	static const ll mod = 998244343;
-	static const ll g = 3;	//原始根
-	ll base;
-	vector<ll> powers;
-	static inline ll generate_base() {
-		mt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());
-		uniform_int_distribution<ll> rand((ll)1, (ll)mod - 1);
-		return rand(engine);
-	}
-	//idの振り方
-	ll mapping(char c) {
-		return (c - 'a');
-	}
-	void expand(int siz) {
-		if (powers.size() < siz + 1) {
-			int pre_siz = powers.size();
-			powers.resize(siz + 1);
-			for (int i = pre_siz; i <= siz; i++) {
-				powers[i] = (powers[i - 1] * base) % mod;
-			}
-		}
-	}
+#line 1 "math/fast_prime_check.hpp"
+class MillerRabin {
+    using i128 = __int128_t;
+    const vector<ll> bases = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37 };    //intだと、2,7,61で十分
+    i128 mod_pow(i128 base, i128 exp, ll mod) {
+        i128 ans = 1;
+        base %= mod;
+        while (exp) {
+            if (exp & 1) {
+                ans *= base;
+                ans %= mod;
+            }
+            base *= base;
+            base %= mod;
+            exp >>= 1;
+        }
+        return ans;
+    }
+public:
+    bool is_prime(ll n) {
+        if (n < 2) {
+            return false;
+        }
+        ll d = n - 1;
+        ll q = 0;
+        while ((d & 1) == 0) {
+            d >>= 1;
+            q++;
+        }
+
+        for (const auto&a : bases) {
+            if (a == n) {
+                return true;
+            }
+
+            if (mod_pow(a, d, n) != 1) {
+                bool flag = true;
+                for (ll r = 0; r < q; r++) {
+                    ll pow = mod_pow(a, d * (1ll << r), n);
+                    if (pow == n - 1) {
+                        flag = false;
+                        break;
+                    }
+                }
+
+                if (flag) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+};
+///@brief fast prime check(MillerRabinの素数判定法)
+#line 3 "math/fast_fact.hpp"
+class Rho{
+    using i128=__int128_t;
+    mt19937 mt;
+    MillerRabin mr;
+    long long c;
+    ll f(i128 x,ll n){
+        x%=n;
+        return (x*x%n+c)%n;
+    }
+public:
+    Rho(){
+        mt.seed(clock());
+    }
+private:
+    ll find_factor(ll n){
+        if(n==4){
+            return 2;
+        }
+        c=mt()%n;
+        ll x=mt()%n;
+        ll y=x;
+        ll d=1;
+
+        while(d==1){
+            x=f(x,n);
+            y=f(f(y,n),n);
+            d=__gcd(abs(x-y),n);
+        }
+
+        if(d==n){
+            return -1;
+        }
+        return d;
+    }
+
+
+    vector<ll> rho_fact(const ll&n){
+        if(n<2){
+            return {};
+        }
+        if(mr.is_prime(n)){
+            return{n};
+        }
+        ll d=-1;
+        while(d==-1){
+            d=find_factor(n);
+        }
+        vector<ll> v1=fact(d);
+        vector<ll> v2=fact(n/d);
+        v1.insert(v1.end(),v2.begin(),v2.end());
+        return v1;
+    }
+    vector<ll> naive_fact(ll n){
+        vector<ll> ret;
+        for (ll div = 2; div * div <= n; div++) {
+            if (n % div != 0)continue;
+            ll exp = 0;
+            while (n % div == 0) {
+                ret.push_back(div);
+                n /= div;
+            }
+        }
+        if (n != 1)ret.push_back(n);
+        return ret;
+    }
 
 public:
-	RollingHash() :base(), powers{ 1 } {
-		ll r = mod - 1;
-		while(gcd(r,mod-1) != 1){
-			r = generate_base();
-		}
-
-		base = mod_pow(g,r,mod);
-	} 
-
-	vector<ll> build(string& s) {
-		vector<ll> hash(s.size() + 1);
-		for (int i = 0; i < s.size(); i++) {
-			hash[i + 1] = (hash[i] * base % mod + mapping(s[i])) % mod;
-		}
-		return hash;
-	}
-	ll range(vector<ll>&hash,int l, int r) {
-		expand(r - l);
-		return ((hash.at(r) + mod - hash.at(l) * powers[r - l]) % mod + mod) % mod;
-	}
+    vector<ll> fact(const ll n){
+        vector<ll> res;
+        res=rho_fact(n);
+        sort(all(res));
+        return res;
+    }
 };
-
-///@brief rolling hash
-#line 5 "main.cpp"
-int main() {
-	string T, P;
-	cin >> T >> P;
-	if (T.size() < P.size())exit(0);
-	RollingHash rh;
-	auto t = rh.build(T);
-	auto p = rh.build(P);
-	ll hash = rh.range(p,0, P.size());
-	for (int i = 0; i < T.size() - P.size() + 1; i++) {
-		if (rh.range(t, i, i + P.size()) == hash) {
-
-			cout << i << '\n';
-		}
-	}
+///@brief fast factorize(Pollard Rhoの素因数分解)
+#line 4 "main.cpp"
+ll primitive_root(ll p){
+    Rho rho;
+    if(p == 2) return 1;
+    auto pf = rho.fact(p - 1);
+    pf.erase(unique(all(pf)),pf.end());
+    for(auto&q:pf){
+        q=(p-1)/q;
+    }
+    using ull = unsigned long long;
+    static ull rnd = 7001;
+    while(1){
+        rnd^=rnd<<13; rnd^=rnd>>7; rnd^=rnd<<17;
+        ll g = rnd%p;
+        if(g == 0) continue;
+        bool is_ok = true;
+        for(const auto&q : pf){
+            if(large_modpow(g,q,p) == 1){ 
+                is_ok = false; 
+                break; 
+            }
+        }
+        if(is_ok){
+            return g;
+        }
+    }
+}
+int main(){
+    int q;
+    cin>>q;
+    while (q--){
+        ll p;
+        cin>>p;
+        ll ans=primitive_root(p);
+        cout<<ans<<'\n';
+    }
 }
