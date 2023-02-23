@@ -2,12 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: graph/lca.hpp
     title: "Lowest Common Ancestor(\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
   - icon: ':warning:'
     path: test/AOJ/GRL/5/C.cpp
     title: test/AOJ/GRL/5/C.cpp
@@ -15,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Static RMQ.test.cpp
     title: test/yosupo judge/data structure/Static RMQ.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
     title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: sparse table
     links: []
@@ -54,10 +51,9 @@ data:
   path: data-structure/sparse_table.hpp
   requiredBy:
   - graph/lca.hpp
-  - main.cpp
   - test/AOJ/GRL/5/C.cpp
   timestamp: '2023-02-23 13:41:21+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
   - test/yosupo judge/data structure/Static RMQ.test.cpp

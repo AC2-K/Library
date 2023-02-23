@@ -5,16 +5,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
+  - icon: ':question:'
+    path: string/rolling_hash.hpp
+    title: rolling hash
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/ALDS/14/B.test.cpp
+    title: test/AOJ/ALDS/14/B.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/B.test.cpp
     title: test/AOJ/NTL/1/B.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/math/Discrete Logarithm.test.cpp
     title: test/yosupo judge/math/Discrete Logarithm.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yosupo judge/string/Z algorithm with Hash.test.cpp
+    title: test/yosupo judge/string/Z algorithm with Hash.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     links: []
@@ -34,10 +43,13 @@ data:
   path: math/mod_pow.hpp
   requiredBy:
   - math/DLP.hpp
+  - string/rolling_hash.hpp
   timestamp: '2023-02-23 13:41:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/math/Discrete Logarithm.test.cpp
+  - test/yosupo judge/string/Z algorithm with Hash.test.cpp
+  - test/AOJ/ALDS/14/B.test.cpp
   - test/AOJ/NTL/1/B.test.cpp
 documentation_of: math/mod_pow.hpp
 layout: document

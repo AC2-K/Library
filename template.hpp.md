@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
-  - icon: ':warning:'
     path: test/AOJ/GRL/5/C.cpp
     title: test/AOJ/GRL/5/C.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/1/C.test.cpp
     title: test/AOJ/ALDS/1/C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/ALDS/14/B.test.cpp
+    title: test/AOJ/ALDS/14/B.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/1/A.test.cpp
     title: test/AOJ/DSL/1/A.test.cpp
@@ -72,10 +72,10 @@ data:
   - icon: ':x:'
     path: test/yosupo judge/string/Z algorithm with Hash.test.cpp
     title: test/yosupo judge/string/Z algorithm with Hash.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
     title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/tree/Tree Diameter.test.cpp
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
   _isVerificationFailed: true
@@ -169,7 +169,6 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
-  - main.cpp
   - test/AOJ/GRL/5/C.cpp
   timestamp: '2023-02-17 14:40:23+09:00'
   verificationStatus: LIBRARY_SOME_WA
@@ -187,6 +186,7 @@ data:
   - test/yosupo judge/data structure/Point Add Range Sum.test.cpp
   - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
   - test/AOJ/ALDS/1/C.test.cpp
+  - test/AOJ/ALDS/14/B.test.cpp
   - test/AOJ/NTL/1/E.test.cpp
   - test/AOJ/NTL/1/A.test.cpp
   - test/AOJ/NTL/1/D.test.cpp
