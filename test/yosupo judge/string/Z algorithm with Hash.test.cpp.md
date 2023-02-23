@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: string/rolling_hash.hpp
     title: rolling hash
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
@@ -34,15 +34,11 @@ data:
     \ base, ll exp, ll mod) {\n    if(base==0)return 0;\n    ll ans = 1;\n    base\
     \ %= mod;\n    while (exp > 0) {\n        if (exp & 1) {\n            ans *= base;\n\
     \            ans %= mod;\n        }\n        base *= base;\n        base %= mod;\n\
-    \        exp >>= 1;\n    }\n    return ans;\n}\ntemplate<typename T>\n__int128_t\
-    \ large_modpow(T base,T exp,T mod){\n    if(base==0)return 0;\n    __int128_t\
-    \ ans = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) {\n\
-    \            ans *= base;\n            ans %= mod;\n        }\n        base *=\
-    \ base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n\
-    ///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 4 \"string/rolling_hash.hpp\"\
-    \nclass RollingHash {\n\t\n\tstatic const ll mod = 998244343;\n\tstatic const\
-    \ ll g = 3;\t//\u539F\u59CB\u6839\n\tll base;\n\tvector<ll> powers;\n\tstatic\
-    \ inline ll generate_base() {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
+    \        exp >>= 1;\n    }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\
+    \u30CA\u30EA\u6CD5)\n#line 4 \"string/rolling_hash.hpp\"\nclass RollingHash {\n\
+    \t\n\tstatic const ll mod = 998244343;\n\tstatic const ll g = 3;\t//\u539F\u59CB\
+    \u6839\n\tll base;\n\tvector<ll> powers;\n\tstatic inline ll generate_base() {\n\
+    \t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
     \t\tuniform_int_distribution<ll> rand((ll)1, (ll)mod - 1);\n\t\treturn rand(engine);\n\
     \t}\n\t//id\u306E\u632F\u308A\u65B9\n\tll mapping(char c) {\n\t\treturn (c - 'a'\
     \ + 1);\n\t}\n\tvoid expand(int siz) {\n\t\tif (powers.size() < siz + 1) {\n\t\
@@ -76,8 +72,8 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/string/Z algorithm with Hash.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 23:47:33+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-02-24 00:27:24+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo judge/string/Z algorithm with Hash.test.cpp
 layout: document

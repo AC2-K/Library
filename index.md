@@ -44,7 +44,7 @@ data:
       title: main.cpp
     - icon: ':warning:'
       path: sub.cpp
-      title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
+      title: sub.cpp
     - icon: ':question:'
       path: template.hpp
       title: template.hpp
@@ -60,12 +60,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/fact.hpp
       title: "factorize(\u7D20\u56E0\u6570\u5206\u89E3)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/fast_fact.hpp
       title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/fast_prime_check.hpp
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
+    - icon: ':heavy_check_mark:'
+      path: math/large_mod.hpp
+      title: math/large_mod.hpp
     - icon: ':question:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
@@ -78,9 +81,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/prime_mint.hpp
       title: modint
+    - icon: ':heavy_check_mark:'
+      path: math/primitive_root.hpp
+      title: "primitive root(\u539F\u59CB\u6839)"
   - name: string
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: string/rolling_hash.hpp
       title: rolling hash
   - name: test/AOJ/GRL/5
@@ -175,17 +181,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/math/Factorize.test.cpp
       title: test/yosupo judge/math/Factorize.test.cpp
-    - icon: ':x:'
-      path: test/yosupo judge/math/Primitive Root.test.cpp
-      title: test/yosupo judge/math/Primitive Root.test.cpp
   - name: test/yosupo judge/new
     pages:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
       title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo judge/new/Primitive Root.test.cpp
+      title: test/yosupo judge/new/Primitive Root.test.cpp
   - name: test/yosupo judge/string
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/string/Z algorithm with Hash.test.cpp
       title: test/yosupo judge/string/Z algorithm with Hash.test.cpp
   - name: test/yosupo judge/tree
