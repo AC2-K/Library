@@ -45,7 +45,7 @@ data:
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: math
@@ -69,7 +69,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/large_mod.hpp
       title: math/large_mod.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     - icon: ':heavy_check_mark:'
@@ -86,7 +86,7 @@ data:
       title: "primitive root(\u539F\u59CB\u6839)"
   - name: string
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
       title: rolling hash
   - name: test/AOJ/GRL/5
@@ -189,11 +189,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/new/Primitive Root.test.cpp
       title: test/yosupo judge/new/Primitive Root.test.cpp
-  - name: test/yosupo judge/string
-    pages:
-    - icon: ':x:'
-      path: test/yosupo judge/string/Z algorithm with Hash.test.cpp
-      title: test/yosupo judge/string/Z algorithm with Hash.test.cpp
   - name: test/yosupo judge/tree
     pages:
     - icon: ':heavy_check_mark:'

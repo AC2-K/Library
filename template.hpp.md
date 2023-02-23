@@ -72,18 +72,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/new/Primitive Root.test.cpp
     title: test/yosupo judge/new/Primitive Root.test.cpp
-  - icon: ':x:'
-    path: test/yosupo judge/string/Z algorithm with Hash.test.cpp
-    title: test/yosupo judge/string/Z algorithm with Hash.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
     title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/tree/Tree Diameter.test.cpp
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 1 "template.hpp"
@@ -174,13 +171,12 @@ data:
   requiredBy:
   - test/AOJ/GRL/5/C.cpp
   timestamp: '2023-02-17 14:40:23+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/math/Discrete Logarithm.test.cpp
   - test/yosupo judge/graph/Shortest Path.test.cpp
   - test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
   - test/yosupo judge/tree/Tree Diameter.test.cpp
-  - test/yosupo judge/string/Z algorithm with Hash.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Line Add Get Min.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp

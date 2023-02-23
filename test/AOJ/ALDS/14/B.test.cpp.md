@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: rolling hash
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -35,9 +35,9 @@ data:
     \        ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
     \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n///@brief\
     \ mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 4 \"string/rolling_hash.hpp\"\
-    \nclass RollingHash {\n\t\n\tstatic const ll mod = 998244343;\n\tstatic const\
-    \ ll g = 3;\t//\u539F\u59CB\u6839\n\tll base;\n\tvector<ll> powers;\n\tstatic\
-    \ inline ll generate_base() {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
+    \nclass RollingHash {\n\tstatic const ll mod = 998244343;\n\tstatic const ll g\
+    \ = 3;\t//\u539F\u59CB\u6839\n\tll base;\n\tvector<ll> powers;\n\tstatic inline\
+    \ ll generate_base() {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
     \t\tuniform_int_distribution<ll> rand((ll)1, (ll)mod - 1);\n\t\treturn rand(engine);\n\
     \t}\n\t//id\u306E\u632F\u308A\u65B9\n\tll mapping(char c) {\n\t\treturn (c - 'a'\
     \ + 1);\n\t}\n\tvoid expand(int siz) {\n\t\tif (powers.size() < siz + 1) {\n\t\
@@ -69,7 +69,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/ALDS/14/B.test.cpp
   requiredBy: []
-  timestamp: '2023-02-24 00:27:24+09:00'
+  timestamp: '2023-02-24 00:38:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/ALDS/14/B.test.cpp
