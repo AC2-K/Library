@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Point Set Range Composite.test.cpp
-    title: test/Library-Checker/Point Set Range Composite.test.cpp
+    path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+    title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -78,7 +78,7 @@ data:
   timestamp: '2023-02-21 13:24:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Library-Checker/Point Set Range Composite.test.cpp
+  - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
 documentation_of: math/prime_mint.hpp
 layout: document
 redirect_from:

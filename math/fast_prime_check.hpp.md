@@ -10,11 +10,11 @@ data:
     title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/NTL_1_D.test.cpp
-    title: test/AOJ/NTL/1/NTL_1_D.test.cpp
+    path: test/AOJ/NTL/1/D.test.cpp
+    title: test/AOJ/NTL/1/D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Factorize.test.cpp
-    title: test/Library-Checker/Factorize.test.cpp
+    path: test/yosupo judge/math/Factorize.test.cpp
+    title: test/yosupo judge/math/Factorize.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -69,8 +69,8 @@ data:
   timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Library-Checker/Factorize.test.cpp
-  - test/AOJ/NTL/1/NTL_1_D.test.cpp
+  - test/yosupo judge/math/Factorize.test.cpp
+  - test/AOJ/NTL/1/D.test.cpp
 documentation_of: math/fast_prime_check.hpp
 layout: document
 redirect_from:

@@ -4,23 +4,23 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/DSL_2_B.test.cpp
-    title: test/AOJ/DSL/2/DSL_2_B.test.cpp
+    path: test/AOJ/DSL/2/B.test.cpp
+    title: test/AOJ/DSL/2/B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Longest Increasing Subsequence.test.cpp
-    title: test/Library-Checker/Longest Increasing Subsequence.test.cpp
+    path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
+    title: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Point Add Range Sum.test.cpp
-    title: test/Library-Checker/Point Add Range Sum.test.cpp
+    path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+    title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Point Set Range Composite.test.cpp
-    title: test/Library-Checker/Point Set Range Composite.test.cpp
+    path: test/yosupo judge/data structure/Static Range Sum.test.cpp
+    title: test/yosupo judge/data structure/Static Range Sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Static Range Sum.test.cpp
-    title: test/Library-Checker/Static Range Sum.test.cpp
+    path: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
+    title: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
-    title: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
+    path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
+    title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -84,12 +84,12 @@ data:
   timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Library-Checker/Static Range Sum.test.cpp
-  - test/Library-Checker/Vertex Add Subtree Sum.test.cpp
-  - test/Library-Checker/Point Set Range Composite.test.cpp
-  - test/Library-Checker/Longest Increasing Subsequence.test.cpp
-  - test/Library-Checker/Point Add Range Sum.test.cpp
-  - test/AOJ/DSL/2/DSL_2_B.test.cpp
+  - test/yosupo judge/data structure/Static Range Sum.test.cpp
+  - test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
+  - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+  - test/yosupo judge/data structure/Point Add Range Sum.test.cpp
+  - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
+  - test/AOJ/DSL/2/B.test.cpp
 documentation_of: data-structure/segtree.hpp
 layout: document
 redirect_from:

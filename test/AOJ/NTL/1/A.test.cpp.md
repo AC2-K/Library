@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/fact.hpp
     title: "factorize(\u7D20\u56E0\u6570\u5206\u89E3)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_A
-  bundledCode: "#line 1 \"test/AOJ/NTL/1/NTL_1_A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_A\"\
+  bundledCode: "#line 1 \"test/AOJ/NTL/1/A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_A\"\
     \n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing ll = long long;\n//using i128=__int128_t;\n\
@@ -32,7 +32,7 @@ data:
     \ % div == 0) {\n            exp++;\n            n /= div;\n        }\n      \
     \  ret.push_back(make_pair(div, exp));\n    }\n    if (n != 1)ret.push_back(make_pair(n,\
     \ 1));\n    return ret;\n}\n///@brief factorize(\u7D20\u56E0\u6570\u5206\u89E3\
-    )\n#line 5 \"test/AOJ/NTL/1/NTL_1_A.test.cpp\"\nint main(){\n    int n;\n    cin>>n;\n\
+    )\n#line 5 \"test/AOJ/NTL/1/A.test.cpp\"\nint main(){\n    int n;\n    cin>>n;\n\
     \    auto res=fact(n);\n    cout<<n<<':';\n    for(const auto&[p,e]:res){\n  \
     \      rep(i,e){\n            cout<<' '<<p;\n        }\n    }\n    cout<<'\\n';\n\
     }\n"
@@ -45,15 +45,15 @@ data:
   - template.hpp
   - math/fact.hpp
   isVerificationFile: true
-  path: test/AOJ/NTL/1/NTL_1_A.test.cpp
+  path: test/AOJ/NTL/1/A.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-02-23 14:54:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/AOJ/NTL/1/NTL_1_A.test.cpp
+documentation_of: test/AOJ/NTL/1/A.test.cpp
 layout: document
 redirect_from:
-- /verify/test/AOJ/NTL/1/NTL_1_A.test.cpp
-- /verify/test/AOJ/NTL/1/NTL_1_A.test.cpp.html
-title: test/AOJ/NTL/1/NTL_1_A.test.cpp
+- /verify/test/AOJ/NTL/1/A.test.cpp
+- /verify/test/AOJ/NTL/1/A.test.cpp.html
+title: test/AOJ/NTL/1/A.test.cpp
 ---

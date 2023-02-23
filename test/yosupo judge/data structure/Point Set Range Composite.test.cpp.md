@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/prime_mint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -20,7 +20,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
     links:
     - https://judge.yosupo.jp/problem/point_set_range_composite
-  bundledCode: "#line 1 \"test/Library-Checker/Point Set Range Composite.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo judge/data structure/Point Set Range Composite.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
     \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
@@ -83,8 +83,8 @@ data:
     \t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\tll v;\n\t\tis\
     \ >> v;\n\t\tmt = mint(v);\n\t\treturn is;\n\t}\n\tfriend ostream& operator <<\
     \ (ostream& os, mint& mt) {\n\t\treturn os << mt.val();\n\t}\n};\n\n///@brief\
-    \ modint\n#line 5 \"test/Library-Checker/Point Set Range Composite.test.cpp\"\n\
-    using mint=modint<MOD2>;\n\nstruct F\n{\n    mint a,b;\n};\n\nF op(F l,F r){\n\
+    \ modint\n#line 5 \"test/yosupo judge/data structure/Point Set Range Composite.test.cpp\"\
+    \nusing mint=modint<MOD2>;\n\nstruct F\n{\n    mint a,b;\n};\n\nF op(F l,F r){\n\
     \    mint na = l.a * r.a;\n    mint nb = (l.b * r.a + r.b);\n    return F{na,\
     \ nb};\n}\nF e(){\n    return F{1,0};\n}\nint main() {\n    int n,q;\n    cin>>n>>q;\n\
     \    segtree<F,op,e> seg(n);\n    rep(i,n){\n        mint a,b;\n        cin>>a>>b;\n\
@@ -111,15 +111,15 @@ data:
   - data-structure/segtree.hpp
   - math/prime_mint.hpp
   isVerificationFile: true
-  path: test/Library-Checker/Point Set Range Composite.test.cpp
+  path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-02-23 14:54:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Library-Checker/Point Set Range Composite.test.cpp
+documentation_of: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library-Checker/Point Set Range Composite.test.cpp
-- /verify/test/Library-Checker/Point Set Range Composite.test.cpp.html
-title: test/Library-Checker/Point Set Range Composite.test.cpp
+- /verify/test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+- /verify/test/yosupo judge/data structure/Point Set Range Composite.test.cpp.html
+title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
 ---

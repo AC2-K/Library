@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/segtree.hpp
     title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/longest_increasing_subsequence
     links:
     - https://judge.yosupo.jp/problem/longest_increasing_subsequence
-  bundledCode: "#line 1 \"test/Library-Checker/Longest Increasing Subsequence.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo judge/new/Longest Increasing Subsequence.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
     \n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
     \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
@@ -51,7 +51,7 @@ data:
     \    //a[pos] <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos,\
     \ op(dat[n + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return\
     \ dat[n + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\
-    \u30C8\u6728)\n#line 4 \"test/Library-Checker/Longest Increasing Subsequence.test.cpp\"\
+    \u30C8\u6728)\n#line 4 \"test/yosupo judge/new/Longest Increasing Subsequence.test.cpp\"\
     \nusing S = P;\nS op(S x, S y) { return max(x,y); }\nS e() { return P(0,0); }\n\
     vector<int> press(const vector<int>&A){\n    vector<int> B;\n    vector<int> T;\n\
     \    rep(i,A.size())T.push_back(A[i]);\n    sort(all(T));\n    T.erase(unique(all(T)),T.end());\n\
@@ -84,15 +84,15 @@ data:
   - template.hpp
   - data-structure/segtree.hpp
   isVerificationFile: true
-  path: test/Library-Checker/Longest Increasing Subsequence.test.cpp
+  path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-02-23 14:54:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Library-Checker/Longest Increasing Subsequence.test.cpp
+documentation_of: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library-Checker/Longest Increasing Subsequence.test.cpp
-- /verify/test/Library-Checker/Longest Increasing Subsequence.test.cpp.html
-title: test/Library-Checker/Longest Increasing Subsequence.test.cpp
+- /verify/test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
+- /verify/test/yosupo judge/new/Longest Increasing Subsequence.test.cpp.html
+title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
 ---

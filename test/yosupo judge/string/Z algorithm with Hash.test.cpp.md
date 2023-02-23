@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/rolling_hash.hpp
     title: rolling hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
     links:
     - https://judge.yosupo.jp/problem/zalgorithm
-  bundledCode: "#line 1 \"test/Library-Checker/Z algorithm with Hash.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#line 1 \"template.hpp\"\
+  bundledCode: "#line 1 \"test/yosupo judge/string/Z algorithm with Hash.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#line 1 \"template.hpp\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
     using ll = long long;\n//using i128=__int128_t;\nusing ld = long double;\nusing\
@@ -40,9 +40,9 @@ data:
     \ i++) {\n\t\t\thash[i + 1] = (hash[i] * base % mod + id(s[i])) % mod;\n\t\t}\n\
     \t\treturn hash;\n\t}\n\tll range(vector<ll>& hash, int l, int r) {\n\t\texpand(r\
     \ - l);\n\t\treturn ((hash[r] + mod - hash[l] * pow[r - l]) % mod + mod) % mod;\n\
-    \t}\n};\n///@brief rolling hash\n#line 4 \"test/Library-Checker/Z algorithm with\
-    \ Hash.test.cpp\"\nint main() {\n    string s;\n    cin>>s;\n    RollingHash rh;\n\
-    \    auto hash=rh.build(s);\n    rep(i,s.size()){\n        int ng=s.size()-i+1;\n\
+    \t}\n};\n///@brief rolling hash\n#line 4 \"test/yosupo judge/string/Z algorithm\
+    \ with Hash.test.cpp\"\nint main() {\n    string s;\n    cin>>s;\n    RollingHash\
+    \ rh;\n    auto hash=rh.build(s);\n    rep(i,s.size()){\n        int ng=s.size()-i+1;\n\
     \        int ok=0;\n        while(ok+1!=ng){\n            int md=(ok+ng)>>1;\n\
     \            if(rh.range(hash,i,i+md)==rh.range(hash,0,md)){\n               \
     \ ok=md;\n            }else{\n                ng=md;\n            }\n        }\n\
@@ -58,15 +58,15 @@ data:
   - template.hpp
   - string/rolling_hash.hpp
   isVerificationFile: true
-  path: test/Library-Checker/Z algorithm with Hash.test.cpp
+  path: test/yosupo judge/string/Z algorithm with Hash.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 12:11:37+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-02-23 14:54:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/Library-Checker/Z algorithm with Hash.test.cpp
+documentation_of: test/yosupo judge/string/Z algorithm with Hash.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library-Checker/Z algorithm with Hash.test.cpp
-- /verify/test/Library-Checker/Z algorithm with Hash.test.cpp.html
-title: test/Library-Checker/Z algorithm with Hash.test.cpp
+- /verify/test/yosupo judge/string/Z algorithm with Hash.test.cpp
+- /verify/test/yosupo judge/string/Z algorithm with Hash.test.cpp.html
+title: test/yosupo judge/string/Z algorithm with Hash.test.cpp
 ---

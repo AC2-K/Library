@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: graph/mst.hpp
     title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/1/DSL_1_A.test.cpp
-    title: test/AOJ/DSL/1/DSL_1_A.test.cpp
+    path: test/AOJ/DSL/1/A.test.cpp
+    title: test/AOJ/DSL/1/A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/UnionFind.test.cpp
-    title: test/Library-Checker/UnionFind.test.cpp
+    path: test/AOJ/GRL/2/A.test.cpp
+    title: test/AOJ/GRL/2/A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo judge/data structure/UnionFind.test.cpp
+    title: test/yosupo judge/data structure/UnionFind.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -47,12 +47,12 @@ data:
   path: data-structure/dsu.hpp
   requiredBy:
   - graph/mst.hpp
-  - main.cpp
   timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Library-Checker/UnionFind.test.cpp
-  - test/AOJ/DSL/1/DSL_1_A.test.cpp
+  - test/yosupo judge/data structure/UnionFind.test.cpp
+  - test/AOJ/DSL/1/A.test.cpp
+  - test/AOJ/GRL/2/A.test.cpp
 documentation_of: data-structure/dsu.hpp
 layout: document
 redirect_from:

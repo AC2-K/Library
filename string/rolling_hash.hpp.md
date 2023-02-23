@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Z algorithm with Hash.test.cpp
-    title: test/Library-Checker/Z algorithm with Hash.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yosupo judge/string/Z algorithm with Hash.test.cpp
+    title: test/yosupo judge/string/Z algorithm with Hash.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: rolling hash
     links: []
@@ -44,9 +44,9 @@ data:
   path: string/rolling_hash.hpp
   requiredBy: []
   timestamp: '2023-02-21 12:11:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/Library-Checker/Z algorithm with Hash.test.cpp
+  - test/yosupo judge/string/Z algorithm with Hash.test.cpp
 documentation_of: string/rolling_hash.hpp
 layout: document
 redirect_from:

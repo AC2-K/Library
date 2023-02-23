@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/segtree.hpp
     title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -17,21 +17,21 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
     links:
     - https://judge.yosupo.jp/problem/static_range_sum
-  bundledCode: "#line 1 \"test/Library-Checker/Static Range Sum.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#line 1 \"template.hpp\"\
-    \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
-    #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
-    using ll = long long;\n//using i128=__int128_t;\nusing ld = long double;\nusing\
-    \ graph = vector<vector<int>>;\nusing P = pair<int, int>;\nconst int inf = 1e9;\n\
-    const ll infl = 1e18;\nconst ld eps = 1e-6;\nconst long double pi = acos(-1);\n\
-    const ll MOD = 1e9 + 7;\nconst ll MOD2 = 998244353;\nconst int dx[4] = { 1,0,-1,0\
-    \ };\nconst int dy[4] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T\
-    \ y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 1 \"data-structure/segtree.hpp\"\ntemplate<class S, S(*op)(S, S), S(*e)()>\n\
-    class segtree {\n    int n;\n    vector<S> dat;\n    void Init(int n_) {\n   \
-    \     int x = 1;\n        while (n_ > x) {\n            x <<= 1;\n        }\n\
-    \        n = x;\n    }\npublic:\n    segtree(int n_) : segtree(vector<S>(n_, e()))\
-    \ {   }\n    segtree(const vector<S>& v) :dat(4 * v.size()) {\n        Init(v.size());\n\
+  bundledCode: "#line 1 \"test/yosupo judge/data structure/Static Range Sum.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#line\
+    \ 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i,\
+    \ N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
+    \ __builtin_popcount(x)\nusing ll = long long;\n//using i128=__int128_t;\nusing\
+    \ ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int, int>;\n\
+    const int inf = 1e9;\nconst ll infl = 1e18;\nconst ld eps = 1e-6;\nconst long\
+    \ double pi = acos(-1);\nconst ll MOD = 1e9 + 7;\nconst ll MOD2 = 998244353;\n\
+    const int dx[4] = { 1,0,-1,0 };\nconst int dy[4] = { 0,1,0,-1 };\ntemplate<class\
+    \ T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T\
+    \ y){if(x>y)x=y;}\n#line 1 \"data-structure/segtree.hpp\"\ntemplate<class S, S(*op)(S,\
+    \ S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S> dat;\n    void Init(int\
+    \ n_) {\n        int x = 1;\n        while (n_ > x) {\n            x <<= 1;\n\
+    \        }\n        n = x;\n    }\npublic:\n    segtree(int n_) : segtree(vector<S>(n_,\
+    \ e())) {   }\n    segtree(const vector<S>& v) :dat(4 * v.size()) {\n        Init(v.size());\n\
     \        for (int i = 0; i < v.size(); i++) {\n            set(i, v[i]);\n   \
     \     }\n        build();\n    }\n    inline void set(int pos, S val) {\n    \
     \    assert(0 <= pos && pos < n);\n        dat[pos + n - 1] = val;\n    }\n  \
@@ -51,11 +51,11 @@ data:
     \    //a[pos] <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos,\
     \ op(dat[n + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return\
     \ dat[n + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\
-    \u30C8\u6728)\n#line 4 \"test/Library-Checker/Static Range Sum.test.cpp\"\nnamespace\
-    \ for_segtree{\n    using S=ll;\n    S op(S x,S y){return x+y;}\n    S e(){return\
-    \ 0;}\n};\nint main(){\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n  \
-    \  int n,q;\n    cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n     \
-    \   cin>>aa;\n    }\n\n    segtree<for_segtree::S,for_segtree::op,for_segtree::e>\
+    \u30C8\u6728)\n#line 4 \"test/yosupo judge/data structure/Static Range Sum.test.cpp\"\
+    \nnamespace for_segtree{\n    using S=ll;\n    S op(S x,S y){return x+y;}\n  \
+    \  S e(){return 0;}\n};\nint main(){\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n\
+    \    int n,q;\n    cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n   \
+    \     cin>>aa;\n    }\n\n    segtree<for_segtree::S,for_segtree::op,for_segtree::e>\
     \ seg(a);\n    while(q--){\n        int l,r;\n        cin>>l>>r;\n        cout<<seg.prod(l,r)<<'\\\
     n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\"\
@@ -70,15 +70,15 @@ data:
   - template.hpp
   - data-structure/segtree.hpp
   isVerificationFile: true
-  path: test/Library-Checker/Static Range Sum.test.cpp
+  path: test/yosupo judge/data structure/Static Range Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-02-23 14:54:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Library-Checker/Static Range Sum.test.cpp
+documentation_of: test/yosupo judge/data structure/Static Range Sum.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library-Checker/Static Range Sum.test.cpp
-- /verify/test/Library-Checker/Static Range Sum.test.cpp.html
-title: test/Library-Checker/Static Range Sum.test.cpp
+- /verify/test/yosupo judge/data structure/Static Range Sum.test.cpp
+- /verify/test/yosupo judge/data structure/Static Range Sum.test.cpp.html
+title: test/yosupo judge/data structure/Static Range Sum.test.cpp
 ---

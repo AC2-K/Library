@@ -5,70 +5,82 @@ data:
   - icon: ':warning:'
     path: main.cpp
     title: main.cpp
+  - icon: ':warning:'
+    path: test/AOJ/GRL/5/C.cpp
+    title: test/AOJ/GRL/5/C.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/1/DSL_1_A.test.cpp
-    title: test/AOJ/DSL/1/DSL_1_A.test.cpp
+    path: test/AOJ/ALDS/1/C.test.cpp
+    title: test/AOJ/ALDS/1/C.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/DSL_2_B.test.cpp
-    title: test/AOJ/DSL/2/DSL_2_B.test.cpp
+    path: test/AOJ/DSL/1/A.test.cpp
+    title: test/AOJ/DSL/1/A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/DSL_2_D.test.cpp
-    title: test/AOJ/DSL/2/DSL_2_D.test.cpp
+    path: test/AOJ/DSL/2/B.test.cpp
+    title: test/AOJ/DSL/2/B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/DSL_2_E.test.cpp
-    title: test/AOJ/DSL/2/DSL_2_E.test.cpp
+    path: test/AOJ/DSL/2/D.test.cpp
+    title: test/AOJ/DSL/2/D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/NTL_1_A.test.cpp
-    title: test/AOJ/NTL/1/NTL_1_A.test.cpp
+    path: test/AOJ/DSL/2/E.test.cpp
+    title: test/AOJ/DSL/2/E.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/NTL_1_B.test.cpp
-    title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
+    path: test/AOJ/GRL/1/A.test.cpp
+    title: test/AOJ/GRL/1/A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/NTL_1_D.test.cpp
-    title: test/AOJ/NTL/1/NTL_1_D.test.cpp
+    path: test/AOJ/GRL/2/A.test.cpp
+    title: test/AOJ/GRL/2/A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/NTL_1_E.test.cpp
-    title: test/AOJ/NTL/1/NTL_1_E.test.cpp
+    path: test/AOJ/NTL/1/A.test.cpp
+    title: test/AOJ/NTL/1/A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Discrete Logarithm.test.cpp
-    title: test/Library-Checker/Discrete Logarithm.test.cpp
+    path: test/AOJ/NTL/1/B.test.cpp
+    title: test/AOJ/NTL/1/B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Line Add Get Min.test.cpp
-    title: test/Library-Checker/Line Add Get Min.test.cpp
+    path: test/AOJ/NTL/1/D.test.cpp
+    title: test/AOJ/NTL/1/D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Longest Increasing Subsequence.test.cpp
-    title: test/Library-Checker/Longest Increasing Subsequence.test.cpp
+    path: test/AOJ/NTL/1/E.test.cpp
+    title: test/AOJ/NTL/1/E.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Lowest Common Ancestor.test.cpp
-    title: test/Library-Checker/Lowest Common Ancestor.test.cpp
+    path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
+    title: test/yosupo judge/data structure/Line Add Get Min.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Point Add Range Sum.test.cpp
-    title: test/Library-Checker/Point Add Range Sum.test.cpp
+    path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
+    title: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Point Set Range Composite.test.cpp
-    title: test/Library-Checker/Point Set Range Composite.test.cpp
+    path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+    title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Shortest Path.test.cpp
-    title: test/Library-Checker/Shortest Path.test.cpp
+    path: test/yosupo judge/data structure/Static RMQ.test.cpp
+    title: test/yosupo judge/data structure/Static RMQ.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Static RMQ.test.cpp
-    title: test/Library-Checker/Static RMQ.test.cpp
+    path: test/yosupo judge/data structure/Static Range Sum.test.cpp
+    title: test/yosupo judge/data structure/Static Range Sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Static Range Sum.test.cpp
-    title: test/Library-Checker/Static Range Sum.test.cpp
+    path: test/yosupo judge/data structure/UnionFind.test.cpp
+    title: test/yosupo judge/data structure/UnionFind.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Tree Diameter.test.cpp
-    title: test/Library-Checker/Tree Diameter.test.cpp
+    path: test/yosupo judge/graph/Shortest Path.test.cpp
+    title: test/yosupo judge/graph/Shortest Path.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/UnionFind.test.cpp
-    title: test/Library-Checker/UnionFind.test.cpp
+    path: test/yosupo judge/math/Discrete Logarithm.test.cpp
+    title: test/yosupo judge/math/Discrete Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Z algorithm with Hash.test.cpp
-    title: test/Library-Checker/Z algorithm with Hash.test.cpp
-  _isVerificationFailed: false
+    path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
+    title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
+  - icon: ':x:'
+    path: test/yosupo judge/string/Z algorithm with Hash.test.cpp
+    title: test/yosupo judge/string/Z algorithm with Hash.test.cpp
+  - icon: ':x:'
+    path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
+    title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
+  - icon: ':x:'
+    path: test/yosupo judge/tree/Tree Diameter.test.cpp
+    title: test/yosupo judge/tree/Tree Diameter.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 1 "template.hpp"
@@ -158,29 +170,33 @@ data:
   path: template.hpp
   requiredBy:
   - main.cpp
+  - test/AOJ/GRL/5/C.cpp
   timestamp: '2023-02-17 14:40:23+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/Library-Checker/Static Range Sum.test.cpp
-  - test/Library-Checker/Z algorithm with Hash.test.cpp
-  - test/Library-Checker/Discrete Logarithm.test.cpp
-  - test/Library-Checker/Line Add Get Min.test.cpp
-  - test/Library-Checker/Point Set Range Composite.test.cpp
-  - test/Library-Checker/Lowest Common Ancestor.test.cpp
-  - test/Library-Checker/UnionFind.test.cpp
-  - test/Library-Checker/Tree Diameter.test.cpp
-  - test/Library-Checker/Longest Increasing Subsequence.test.cpp
-  - test/Library-Checker/Shortest Path.test.cpp
-  - test/Library-Checker/Static RMQ.test.cpp
-  - test/Library-Checker/Point Add Range Sum.test.cpp
-  - test/AOJ/NTL/1/NTL_1_B.test.cpp
-  - test/AOJ/NTL/1/NTL_1_D.test.cpp
-  - test/AOJ/NTL/1/NTL_1_A.test.cpp
-  - test/AOJ/NTL/1/NTL_1_E.test.cpp
-  - test/AOJ/DSL/2/DSL_2_D.test.cpp
-  - test/AOJ/DSL/2/DSL_2_B.test.cpp
-  - test/AOJ/DSL/2/DSL_2_E.test.cpp
-  - test/AOJ/DSL/1/DSL_1_A.test.cpp
+  - test/yosupo judge/math/Discrete Logarithm.test.cpp
+  - test/yosupo judge/graph/Shortest Path.test.cpp
+  - test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
+  - test/yosupo judge/tree/Tree Diameter.test.cpp
+  - test/yosupo judge/string/Z algorithm with Hash.test.cpp
+  - test/yosupo judge/data structure/Static Range Sum.test.cpp
+  - test/yosupo judge/data structure/Line Add Get Min.test.cpp
+  - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+  - test/yosupo judge/data structure/UnionFind.test.cpp
+  - test/yosupo judge/data structure/Static RMQ.test.cpp
+  - test/yosupo judge/data structure/Point Add Range Sum.test.cpp
+  - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
+  - test/AOJ/ALDS/1/C.test.cpp
+  - test/AOJ/NTL/1/E.test.cpp
+  - test/AOJ/NTL/1/A.test.cpp
+  - test/AOJ/NTL/1/D.test.cpp
+  - test/AOJ/NTL/1/B.test.cpp
+  - test/AOJ/DSL/2/E.test.cpp
+  - test/AOJ/DSL/2/D.test.cpp
+  - test/AOJ/DSL/2/B.test.cpp
+  - test/AOJ/DSL/1/A.test.cpp
+  - test/AOJ/GRL/2/A.test.cpp
+  - test/AOJ/GRL/1/A.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:

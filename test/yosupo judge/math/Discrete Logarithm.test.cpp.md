@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -20,7 +20,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
     links:
     - https://judge.yosupo.jp/problem/discrete_logarithm_mod
-  bundledCode: "#line 1 \"test/Library-Checker/Discrete Logarithm.test.cpp\"\n#define\
+  bundledCode: "#line 1 \"test/yosupo judge/math/Discrete Logarithm.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\n#line 1\
     \ \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i,\
     \ N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
@@ -47,9 +47,10 @@ data:
     \        (pr *= xm) %= p;\n        if (mp.find(pr) != mp.end()) {\n          \
     \  int j = mp[pr];\n            return m * i - j + add;\n        }\n    }\n  \
     \  return -1;\n}\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n#line\
-    \ 4 \"test/Library-Checker/Discrete Logarithm.test.cpp\"\nint main() {\n    ios::sync_with_stdio(false);\n\
-    \    cin.tie(0);\n    int t;\n    cin>>t;\n    while(t--){\n        int x,y,p;\n\
-    \        cin>>x>>y>>p;\n        cout<<dlp(x,y,p)<<'\\n';\n    }\n}\n"
+    \ 4 \"test/yosupo judge/math/Discrete Logarithm.test.cpp\"\nint main() {\n   \
+    \ ios::sync_with_stdio(false);\n    cin.tie(0);\n    int t;\n    cin>>t;\n   \
+    \ while(t--){\n        int x,y,p;\n        cin>>x>>y>>p;\n        cout<<dlp(x,y,p)<<'\\\
+    n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\
     \n#include\"template.hpp\"\n#include\"math/DLP.hpp\"\nint main() {\n    ios::sync_with_stdio(false);\n\
     \    cin.tie(0);\n    int t;\n    cin>>t;\n    while(t--){\n        int x,y,p;\n\
@@ -59,15 +60,15 @@ data:
   - math/DLP.hpp
   - math/mod_pow.hpp
   isVerificationFile: true
-  path: test/Library-Checker/Discrete Logarithm.test.cpp
+  path: test/yosupo judge/math/Discrete Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-02-23 14:54:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Library-Checker/Discrete Logarithm.test.cpp
+documentation_of: test/yosupo judge/math/Discrete Logarithm.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library-Checker/Discrete Logarithm.test.cpp
-- /verify/test/Library-Checker/Discrete Logarithm.test.cpp.html
-title: test/Library-Checker/Discrete Logarithm.test.cpp
+- /verify/test/yosupo judge/math/Discrete Logarithm.test.cpp
+- /verify/test/yosupo judge/math/Discrete Logarithm.test.cpp.html
+title: test/yosupo judge/math/Discrete Logarithm.test.cpp
 ---

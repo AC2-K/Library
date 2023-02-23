@@ -2,19 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/dijkstra.hpp
     title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Shortest Path.test.cpp
-    title: test/Library-Checker/Shortest Path.test.cpp
+    path: test/AOJ/GRL/1/A.test.cpp
+    title: test/AOJ/GRL/1/A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Tree Diameter.test.cpp
-    title: test/Library-Checker/Tree Diameter.test.cpp
-  _isVerificationFailed: false
+    path: test/yosupo judge/graph/Shortest Path.test.cpp
+    title: test/yosupo judge/graph/Shortest Path.test.cpp
+  - icon: ':x:'
+    path: test/yosupo judge/tree/Tree Diameter.test.cpp
+    title: test/yosupo judge/tree/Tree Diameter.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: edge
     links: []
@@ -28,10 +31,11 @@ data:
   requiredBy:
   - graph/dijkstra.hpp
   timestamp: '2023-02-21 13:24:55+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/Library-Checker/Tree Diameter.test.cpp
-  - test/Library-Checker/Shortest Path.test.cpp
+  - test/yosupo judge/graph/Shortest Path.test.cpp
+  - test/yosupo judge/tree/Tree Diameter.test.cpp
+  - test/AOJ/GRL/1/A.test.cpp
 documentation_of: graph/edge.hpp
 layout: document
 redirect_from:

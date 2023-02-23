@@ -7,6 +7,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/fast_prime_check.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
+  - icon: ':heavy_check_mark:'
+    path: math/phi_function.hpp
+    title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
+  - icon: ':question:'
+    path: template.hpp
+    title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -14,12 +20,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/factorize
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D
     links:
-    - https://judge.yosupo.jp/problem/factorize
-  bundledCode: "#line 1 \"test/Library-Checker/Factorize.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/factorize\"\n#include<bits/stdc++.h>\nusing\
-    \ namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D
+  bundledCode: "#line 1 \"test/AOJ/NTL/1/D.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D\"\
+    \n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
+    #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing ll = long long;\n//using i128=__int128_t;\n\
     using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
     \ int>;\nconst int inf = 1e9;\nconst ll infl = 1e18;\nconst ld eps = 1e-6;\nconst\
@@ -66,39 +72,30 @@ data:
     \        if(n<=1000){\n            res=naive_fact(n);\n        }else{\n      \
     \      res=rho_fact(n);\n        }\n        sort(all(res));\n        return res;\n\
     \    }\n};\n///@brief fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\
-    \u89E3)\n#line 23 \"test/Library-Checker/Factorize.test.cpp\"\nRho rho;\nint main()\
-    \ {\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n    int q;\n    scanf(\"\
-    %d\",&q);\n    while(q--){\n        ll a;\n        scanf(\"%lld\",&a);\n     \
-    \   auto pf=rho.fact(a);\n        printf(\"%d \",(int)pf.size());\n        for(auto&p:pf){\n\
-    \            printf(\"%lld \",p);\n        }\n        printf(\"\\n\");\n    }\n\
-    }\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n#include<bits/stdc++.h>\n\
-    using namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x)\
-    \ (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\nusing ll =\
-    \ long long;\n//using i128=__int128_t;\nusing ld = long double;\nusing graph =\
-    \ vector<vector<int>>;\nusing P = pair<int, int>;\nconst int inf = 1e9;\nconst\
-    \ ll infl = 1e18;\nconst ld eps = 1e-6;\nconst long double pi = acos(-1);\nconst\
-    \ ll MOD = 1e9 + 7;\nconst ll MOD2 = 998244353;\nconst int dx[4] = { 1,0,-1,0\
-    \ };\nconst int dy[4] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T\
-    \ y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #include\"math/fast_fact.hpp\"\nRho rho;\nint main() {\n    ios::sync_with_stdio(false);\n\
-    \    cin.tie(0);\n    int q;\n    scanf(\"%d\",&q);\n    while(q--){\n       \
-    \ ll a;\n        scanf(\"%lld\",&a);\n        auto pf=rho.fact(a);\n        printf(\"\
-    %d \",(int)pf.size());\n        for(auto&p:pf){\n            printf(\"%lld \"\
-    ,p);\n        }\n        printf(\"\\n\");\n    }\n}"
+    \u89E3)\n#line 3 \"math/phi_function.hpp\"\nll phi_func(ll n){\n    ll res=n;\n\
+    \    Rho rho;\n    auto pf=rho.fact(n);\n    pf.erase(unique(all(pf)),pf.end());\
+    \     \n    for(auto&d:pf){\n        res=res/d*(d-1);\n    }\n    return res;\n\
+    }\n///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)\n\
+    #line 5 \"test/AOJ/NTL/1/D.test.cpp\"\nint main(){\n    int n;\n    cin>>n;\n\
+    \    cout<<phi_func(n)<<'\\n';\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D\"\
+    \n\n#include\"template.hpp\"\n#include\"math/phi_function.hpp\"\nint main(){\n\
+    \    int n;\n    cin>>n;\n    cout<<phi_func(n)<<'\\n';\n}"
   dependsOn:
+  - template.hpp
+  - math/phi_function.hpp
   - math/fast_fact.hpp
   - math/fast_prime_check.hpp
   isVerificationFile: true
-  path: test/Library-Checker/Factorize.test.cpp
+  path: test/AOJ/NTL/1/D.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-02-23 14:54:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/Library-Checker/Factorize.test.cpp
+documentation_of: test/AOJ/NTL/1/D.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library-Checker/Factorize.test.cpp
-- /verify/test/Library-Checker/Factorize.test.cpp.html
-title: test/Library-Checker/Factorize.test.cpp
+- /verify/test/AOJ/NTL/1/D.test.cpp
+- /verify/test/AOJ/NTL/1/D.test.cpp.html
+title: test/AOJ/NTL/1/D.test.cpp
 ---

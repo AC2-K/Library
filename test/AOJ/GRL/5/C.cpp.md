@@ -18,7 +18,7 @@ data:
   attributes:
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_C
-  bundledCode: "#line 1 \"main.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_C\"\
+  bundledCode: "#line 1 \"test/AOJ/GRL/5/C.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_C\"\
     \n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing ll = long long;\n//using i128=__int128_t;\n\
@@ -51,12 +51,13 @@ data:
     \ -1, 0);\n        seg = sparse_table<pair<int, int>>(vec);\n    }\n\n    int\
     \ query(int u, int v) {\n        if (in[u] >= in[v])swap(u, v);\n        return\
     \ seg.prod(in[u], in[v] + 1).second;\n    }\n};\n///@brief Lowest Common Ancestor(\u6700\
-    \u5C0F\u5171\u901A\u7956\u5148)\n#line 5 \"main.cpp\"\n\n\nint main(){\n    int\
-    \ n;\n    cin>>n;\n    graph g(n);\n    rep(v,n){\n        int k;\n        cin>>k;\n\
-    \        rep(i,k){\n            int c;\n            cin>>c;\n            g[c].emplace_back(v);\n\
-    \            g[v].emplace_back(c);\n        }\n    }\n\n    LCA lca(g);\n    lca.setup();\n\
-    \n\n    int q;\n    cin>>q;\n    while(q--){\n        int u,v;\n        cin>>u>>v;\n\
-    \        cout<<lca.query(u,v)<<'\\n';\n    }\n}\n"
+    \u5C0F\u5171\u901A\u7956\u5148)\n#line 5 \"test/AOJ/GRL/5/C.cpp\"\n\n\nint main(){\n\
+    \    int n;\n    cin>>n;\n    graph g(n);\n    rep(v,n){\n        int k;\n   \
+    \     cin>>k;\n        rep(i,k){\n            int c;\n            cin>>c;\n  \
+    \          g[c].emplace_back(v);\n            g[v].emplace_back(c);\n        }\n\
+    \    }\n\n    LCA lca(g);\n    lca.setup();\n\n\n    int q;\n    cin>>q;\n   \
+    \ while(q--){\n        int u,v;\n        cin>>u>>v;\n        cout<<lca.query(u,v)<<'\\\
+    n';\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_C\"\
     \n\n#include\"template.hpp\"\n#include\"graph/lca.hpp\"\n\n\nint main(){\n   \
     \ int n;\n    cin>>n;\n    graph g(n);\n    rep(v,n){\n        int k;\n      \
@@ -70,15 +71,15 @@ data:
   - graph/lca.hpp
   - data-structure/sparse_table.hpp
   isVerificationFile: false
-  path: main.cpp
+  path: test/AOJ/GRL/5/C.cpp
   requiredBy: []
   timestamp: '2023-02-23 14:54:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: main.cpp
+documentation_of: test/AOJ/GRL/5/C.cpp
 layout: document
 redirect_from:
-- /library/main.cpp
-- /library/main.cpp.html
-title: main.cpp
+- /library/test/AOJ/GRL/5/C.cpp
+- /library/test/AOJ/GRL/5/C.cpp.html
+title: test/AOJ/GRL/5/C.cpp
 ---

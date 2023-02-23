@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/DSL_2_D.test.cpp
-    title: test/AOJ/DSL/2/DSL_2_D.test.cpp
+    path: test/AOJ/DSL/2/D.test.cpp
+    title: test/AOJ/DSL/2/D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/DSL_2_E.test.cpp
-    title: test/AOJ/DSL/2/DSL_2_E.test.cpp
+    path: test/AOJ/DSL/2/E.test.cpp
+    title: test/AOJ/DSL/2/E.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -88,8 +88,8 @@ data:
   timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/DSL/2/DSL_2_D.test.cpp
-  - test/AOJ/DSL/2/DSL_2_E.test.cpp
+  - test/AOJ/DSL/2/E.test.cpp
+  - test/AOJ/DSL/2/D.test.cpp
 documentation_of: data-structure/lazy_segtree.hpp
 layout: document
 redirect_from:

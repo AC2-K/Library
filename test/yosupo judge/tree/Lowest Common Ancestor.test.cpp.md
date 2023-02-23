@@ -1,27 +1,27 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/sparse_table.hpp
     title: sparse table
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/lca.hpp
     title: "Lowest Common Ancestor(\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
     - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"test/Library-Checker/Lowest Common Ancestor.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#line 1 \"template.hpp\"\
+  bundledCode: "#line 1 \"test/yosupo judge/tree/Lowest Common Ancestor.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#line 1 \"template.hpp\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
     using ll = long long;\n//using i128=__int128_t;\nusing ld = long double;\nusing\
@@ -53,7 +53,7 @@ data:
     \ -1, 0);\n        seg = sparse_table<pair<int, int>>(vec);\n    }\n\n    int\
     \ query(int u, int v) {\n        if (in[u] >= in[v])swap(u, v);\n        return\
     \ seg.prod(in[u], in[v] + 1).second;\n    }\n};\n///@brief Lowest Common Ancestor(\u6700\
-    \u5C0F\u5171\u901A\u7956\u5148)\n#line 5 \"test/Library-Checker/Lowest Common\
+    \u5C0F\u5171\u901A\u7956\u5148)\n#line 5 \"test/yosupo judge/tree/Lowest Common\
     \ Ancestor.test.cpp\"\nint main(){\n    int n, q;\n    cin >> n >> q;\n    vector<vector<int>>\
     \ g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n\
     \        g[p].emplace_back(i);\n        g[i].emplace_back(p);\n    }\n    LCA\
@@ -70,15 +70,15 @@ data:
   - graph/lca.hpp
   - data-structure/sparse_table.hpp
   isVerificationFile: true
-  path: test/Library-Checker/Lowest Common Ancestor.test.cpp
+  path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 13:41:21+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-02-23 14:54:17+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/Library-Checker/Lowest Common Ancestor.test.cpp
+documentation_of: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
 layout: document
 redirect_from:
-- /verify/test/Library-Checker/Lowest Common Ancestor.test.cpp
-- /verify/test/Library-Checker/Lowest Common Ancestor.test.cpp.html
-title: test/Library-Checker/Lowest Common Ancestor.test.cpp
+- /verify/test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
+- /verify/test/yosupo judge/tree/Lowest Common Ancestor.test.cpp.html
+title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
 ---

@@ -10,8 +10,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/NTL_1_D.test.cpp
-    title: test/AOJ/NTL/1/NTL_1_D.test.cpp
+    path: test/AOJ/NTL/1/D.test.cpp
+    title: test/AOJ/NTL/1/D.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -76,7 +76,7 @@ data:
   timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/NTL/1/NTL_1_D.test.cpp
+  - test/AOJ/NTL/1/D.test.cpp
 documentation_of: math/phi_function.hpp
 layout: document
 redirect_from:

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/dsu.hpp
     title: disjoint set(union find)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/1/DSL_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/1/DSL_1_A
-  bundledCode: "#line 1 \"test/AOJ/DSL/1/DSL_1_A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/1/DSL_1_A\"\
+  bundledCode: "#line 1 \"test/AOJ/DSL/1/A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/1/DSL_1_A\"\
     \n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing ll = long long;\n//using i128=__int128_t;\n\
@@ -36,7 +36,7 @@ data:
     siz[rx] += siz[ry];\n\t\treturn true;\n\t}\n\n\tint size(int x) {\n\t\treturn\
     \ siz[root(x)];\n\t}\n\tint group_size() {\n\t\tint cnt = 0;\n\t\tfor (int i =\
     \ 0; i < N; i++)\n\t\t\tif (root(i) == i)\n\t\t\t\tcnt++;\n\t\treturn cnt;\n\t\
-    }\n};\n///@brief disjoint set(union find)\n#line 5 \"test/AOJ/DSL/1/DSL_1_A.test.cpp\"\
+    }\n};\n///@brief disjoint set(union find)\n#line 5 \"test/AOJ/DSL/1/A.test.cpp\"\
     \nint main(){\n    int n,q;\n    cin>>n>>q;\n    DSU dsu(n);\n    while(q--){\n\
     \        int t,x,y;\n        cin>>t>>x>>y;\n        if(t==0){\n            dsu.merge(x,y);\n\
     \        }else{\n            cout<<(dsu.same(x,y)?\"1\\n\":\"0\\n\");\n      \
@@ -51,15 +51,15 @@ data:
   - template.hpp
   - data-structure/dsu.hpp
   isVerificationFile: true
-  path: test/AOJ/DSL/1/DSL_1_A.test.cpp
+  path: test/AOJ/DSL/1/A.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 13:56:43+09:00'
+  timestamp: '2023-02-23 14:54:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/AOJ/DSL/1/DSL_1_A.test.cpp
+documentation_of: test/AOJ/DSL/1/A.test.cpp
 layout: document
 redirect_from:
-- /verify/test/AOJ/DSL/1/DSL_1_A.test.cpp
-- /verify/test/AOJ/DSL/1/DSL_1_A.test.cpp.html
-title: test/AOJ/DSL/1/DSL_1_A.test.cpp
+- /verify/test/AOJ/DSL/1/A.test.cpp
+- /verify/test/AOJ/DSL/1/A.test.cpp.html
+title: test/AOJ/DSL/1/A.test.cpp
 ---

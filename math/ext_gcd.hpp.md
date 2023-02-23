@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/NTL_1_E.test.cpp
-    title: test/AOJ/NTL/1/NTL_1_E.test.cpp
+    path: test/AOJ/NTL/1/E.test.cpp
+    title: test/AOJ/NTL/1/E.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -31,7 +31,7 @@ data:
   timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/NTL/1/NTL_1_E.test.cpp
+  - test/AOJ/NTL/1/E.test.cpp
 documentation_of: math/ext_gcd.hpp
 layout: document
 redirect_from:

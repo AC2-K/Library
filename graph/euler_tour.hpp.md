@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
-    title: test/Library-Checker/Vertex Add Subtree Sum.test.cpp
+    path: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
+    title: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -39,7 +39,7 @@ data:
   timestamp: '2023-02-23 13:41:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/Library-Checker/Vertex Add Subtree Sum.test.cpp
+  - test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
 documentation_of: graph/euler_tour.hpp
 layout: document
 redirect_from:
