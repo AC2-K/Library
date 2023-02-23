@@ -1,3 +1,6 @@
+#line 1 "main.cpp"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_C"
+
 #line 1 "template.hpp"
 #include<bits/stdc++.h>
 using namespace std;
@@ -19,61 +22,96 @@ const int dx[4] = { 1,0,-1,0 };
 const int dy[4] = { 0,1,0,-1 };
 template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
-#line 1 "data-structure/dsu.hpp"
-class DSU {
-private:
-	vector<int> par, rank, siz;
-	int N;
+#line 1 "data-structure/sparse_table.hpp"
+template<class T>
+class sparse_table {
+    vector<vector<T>> table;
+    vector<int> look_up;
 public:
-	DSU(int n) : par(n, -1), rank(n, 0), siz(n, 1), N(n) {}
-
-	int root(int x) {
-		if (par[x] == -1)
-			return x;
-		else
-			return par[x] = root(par[x]);
-	}
-	bool same(int x, int y) {
-		return root(x) == root(y);
-	}
-
-	bool merge(int x, int y) {
-		int rx = root(x), ry = root(y);
-		if (rx == ry)
-			return false;
-
-		if (rank[rx] < rank[ry])
-			swap(rx, ry);
-		par[ry] = rx;
-
-		siz[rx] += siz[ry];
-		return true;
-	}
-
-	int size(int x) {
-		return siz[root(x)];
-	}
-	int group_size() {
-		int cnt = 0;
-		for (int i = 0; i < N; i++)
-			if (root(i) == i)
-				cnt++;
-		return cnt;
-	}
-};
-///@brief disjoint set(union find)
-#line 3 "main.cpp"
-int main(){
-    int n,q;
-    cin>>n>>q;
-    DSU dsu(n);
-    while(q--){
-        int t,x,y;
-        cin>>t>>x>>y;
-        if(t==0){
-            dsu.merge(x,y);
-        }else{
-            cout<<(dsu.same(x,y)?"1\n":"0\n");
+    sparse_table(const vector<T>& vec = {}) {
+        int sz = vec.size();
+        int log = 0;
+        while ((1 << log) <= sz) {
+            log++;
         }
+        table.assign(log, vector<T>(1 << log));
+        for (int i = 0; i < sz; i++) {
+            table[0][i] = vec[i];
+        }
+        for (int i = 1; i < log; i++) {
+            for (int j = 0; j + (1 << i) <= (1 << log); j++) {
+                table[i][j] = min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);
+            }
+        }
+        look_up.resize(sz + 1);
+        for (int i = 2; i < look_up.size(); i++) {
+            look_up[i] = look_up[i >> 1] + 1;
+        }
+    }
+
+    T prod(int l, int r) {
+        int b = look_up[r - l];
+        return min(table[b][l], table[b][r - (1 << b)]);
+    }
+};
+///@brief sparse table
+#line 3 "graph/lca.hpp"
+class LCA {
+    using graph = vector<vector<int>>;
+    int n;
+    graph g;
+    vector<int> vs, in;
+    sparse_table<pair<int,int>> seg;
+public:
+    LCA(const graph& g) :g(g), n(g.size()),in(n) { }
+    void setup() {
+        int p = 0;
+        vector<pair<int,int>> vec(2 * n);
+        function<void(int, int, int)> dfs = [&](int v, int par, int now_depth) -> void {
+            in[v] = p;
+            vec[p++]={now_depth,v};
+            for (const auto& ch : g[v])if (ch != par) {
+                dfs(ch, v, now_depth + 1);
+                vec[p++] = { now_depth,v };
+            }
+        };
+        dfs(0, -1, 0);
+        seg = sparse_table<pair<int, int>>(vec);
+    }
+
+    int query(int u, int v) {
+        if (in[u] >= in[v])swap(u, v);
+        return seg.prod(in[u], in[v] + 1).second;
+    }
+};
+///@brief Lowest Common Ancestor(最小共通祖先)
+#line 5 "main.cpp"
+
+
+int main(){
+    int n;
+    cin>>n;
+    graph g(n);
+    rep(v,n){
+        int k;
+        cin>>k;
+        rep(i,k){
+            int c;
+            cin>>c;
+            g[c].emplace_back(v);
+            g[v].emplace_back(c);
+        }
+    }
+
+    LCA lca(g);
+    lca.setup();
+
+
+    int q;
+    cin>>q;
+    while(q--){
+        int u,v;
+        cin>>u>>v;
+        cout<<lca.query(u,v)<<'\n';
     }
 }

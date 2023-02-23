@@ -2,7 +2,6 @@
 
 #include "template.hpp"
 #include "math/mod_pow.hpp"
-///@brief mod pow(バイナリ法)
 #line 3 "main.cpp"
 int main(){
     int n,m;
