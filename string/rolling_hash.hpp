@@ -2,7 +2,6 @@
 
 #include"math/mod_pow.hpp"
 class RollingHash {
-	
 	static const ll mod = 998244343;
 	static const ll g = 3;	//原始根
 	ll base;
