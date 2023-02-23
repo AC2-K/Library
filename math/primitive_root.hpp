@@ -1,5 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/primitive_root"
-#include"template.hpp"
+#pragma once
 #include"math/large_mod.hpp"
 #include"math/fast_fact.hpp"
 ll primitive_root(ll p){
@@ -28,13 +27,5 @@ ll primitive_root(ll p){
         }
     }
 }
-int main(){
-    int q;
-    cin>>q;
-    while (q--){
-        ll p;
-        cin>>p;
-        ll ans=primitive_root(p);
-        cout<<ans<<'\n';
-    }
-}
+
+//@brief primitive root(原始根)

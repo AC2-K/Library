@@ -1,3 +1,5 @@
+#line 1 "main.cpp"
+#define PROBLEM "https://judge.yosupo.jp/problem/primitive_root"
 #line 1 "template.hpp"
 #include<bits/stdc++.h>
 using namespace std;
@@ -19,39 +21,31 @@ const int dx[4] = { 1,0,-1,0 };
 const int dy[4] = { 0,1,0,-1 };
 template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
-#line 1 "math/mod_pow.hpp"
-ll mod_pow(ll base, ll exp, ll mod) {
-    if(base==0)return 0;
-    ll ans = 1;
-    base %= mod;
-    while (exp > 0) {
-        if (exp & 1) {
-            ans *= base;
-            ans %= mod;
-        }
-        base *= base;
-        base %= mod;
-        exp >>= 1;
-    }
-    return ans;
+#line 1 "math/large_mod.hpp"
+inline long long mod(long long a, long long m) {
+    return (a % m + m) % m;
+}
+inline long long mul(long long a, long long b, long long m) {
+    a = mod(a, m); b = mod(b, m);
+    if (b == 0) return 0;
+    long long res = mul(mod(a + a, m), b>>1, m);
+    if (b & 1) res = mod(res + a, m);
+    return res;
 }
 template<typename T>
-__int128_t large_modpow(T base,T exp,T mod){
+__uint128_t large_modpow(T base,T exp,T mod){
     if(base==0)return 0;
-    __int128_t ans = 1;
+    __uint128_t ans = 1;
     base %= mod;
-    while (exp > 0) {
+    while (exp) {
         if (exp & 1) {
-            ans *= base;
-            ans %= mod;
+            ans = mul(ans,base,mod);
         }
-        base *= base;
-        base %= mod;
+        base = mul(base,base,mod);
         exp >>= 1;
     }
     return ans;
 }
-///@brief mod pow(バイナリ法)
 #line 1 "math/fast_prime_check.hpp"
 class MillerRabin {
     using i128 = __int128_t;
@@ -182,7 +176,7 @@ public:
     }
 };
 ///@brief fast factorize(Pollard Rhoの素因数分解)
-#line 4 "main.cpp"
+#line 5 "main.cpp"
 ll primitive_root(ll p){
     Rho rho;
     if(p == 2) return 1;
@@ -195,10 +189,10 @@ ll primitive_root(ll p){
     static ull rnd = 7001;
     while(1){
         rnd^=rnd<<13; rnd^=rnd>>7; rnd^=rnd<<17;
-        ll g = rnd%p;
+        ll g = (ull)rnd%p;
         if(g == 0) continue;
         bool is_ok = true;
-        for(const auto&q : pf){
+        for(ll q : pf){
             if(large_modpow(g,q,p) == 1){ 
                 is_ok = false; 
                 break; 
