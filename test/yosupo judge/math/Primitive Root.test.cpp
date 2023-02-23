@@ -2,7 +2,7 @@
 #include"template.hpp"
 #include"math/mod_pow.hpp"
 #include"math/fast_fact.hpp"
-unsigned primitive_root(const unsigned ll p){
+unsigned long long primitive_root(const unsigned long long p){
     Rho rho;
     if(p == 2) return 1;
     auto pf = rho.fact(p - 1);
