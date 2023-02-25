@@ -19,6 +19,20 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/sparse_table.hpp
       title: sparse table
+  - name: .
+    pages:
+    - icon: ':warning:'
+      path: debug.hpp
+      title: debug.hpp
+    - icon: ':warning:'
+      path: main.cpp
+      title: main.cpp
+    - icon: ':warning:'
+      path: sub.cpp
+      title: sub.cpp
+    - icon: ':heavy_check_mark:'
+      path: template.hpp
+      title: template.hpp
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -37,17 +51,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/mst.hpp
       title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
-  - name: .
-    pages:
-    - icon: ':warning:'
-      path: main.cpp
-      title: main.cpp
-    - icon: ':warning:'
-      path: sub.cpp
-      title: sub.cpp
-    - icon: ':heavy_check_mark:'
-      path: template.hpp
-      title: template.hpp
   - name: math
     pages:
     - icon: ':heavy_check_mark:'
