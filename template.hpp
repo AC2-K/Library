@@ -3,8 +3,8 @@ using namespace std;
 #define rep(i, N)  for(int i=0;i<(N);i++)
 #define all(x) (x).begin(),(x).end()
 #define popcount(x) __builtin_popcount(x)
+using i128=__int128_t;
 using ll = long long;
-//using i128=__int128_t;
 using ld = long double;
 using graph = vector<vector<int>>;
 using P = pair<int, int>;
