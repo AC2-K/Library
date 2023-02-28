@@ -40,3 +40,4 @@ public:
 	}
 };
 ///@brief disjoint set(union find)
+///@docs docs/data-structure/dsu.md
