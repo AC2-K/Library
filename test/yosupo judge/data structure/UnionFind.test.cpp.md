@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/dsu.hpp
     title: disjoint set(union find)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -37,11 +37,11 @@ data:
     \ += siz[ry];\n\t\treturn true;\n\t}\n\n\tint size(int x) {\n\t\treturn siz[root(x)];\n\
     \t}\n\tint group_size() {\n\t\tint cnt = 0;\n\t\tfor (int i = 0; i < N; i++)\n\
     \t\t\tif (root(i) == i)\n\t\t\t\tcnt++;\n\t\treturn cnt;\n\t}\n};\n///@brief disjoint\
-    \ set(union find)\n#line 4 \"test/yosupo judge/data structure/UnionFind.test.cpp\"\
-    \nint main() {\n    int n,q;\n    cin>>n>>q;\n    DSU dsu(n);\n    while(q--){\n\
-    \        int t,x,y;\n        cin>>t>>x>>y;\n        if(t==0){\n            dsu.merge(x,y);\n\
-    \        }else{\n            if(dsu.same(x,y))cout<<\"1\\n\";\n            else\
-    \ cout<<\"0\\n\";\n        }\n    }\n}\n"
+    \ set(union find)\n///@docs docs/data-structure/dsu.md\n#line 4 \"test/yosupo\
+    \ judge/data structure/UnionFind.test.cpp\"\nint main() {\n    int n,q;\n    cin>>n>>q;\n\
+    \    DSU dsu(n);\n    while(q--){\n        int t,x,y;\n        cin>>t>>x>>y;\n\
+    \        if(t==0){\n            dsu.merge(x,y);\n        }else{\n            if(dsu.same(x,y))cout<<\"\
+    1\\n\";\n            else cout<<\"0\\n\";\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n#include\"\
     template.hpp\"\n#include\"data-structure/dsu.hpp\"\nint main() {\n    int n,q;\n\
     \    cin>>n>>q;\n    DSU dsu(n);\n    while(q--){\n        int t,x,y;\n      \
@@ -54,7 +54,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
+  timestamp: '2023-02-28 14:13:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/UnionFind.test.cpp

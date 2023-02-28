@@ -25,18 +25,19 @@ data:
     \ += siz[ry];\n\t\treturn true;\n\t}\n\n\tint size(int x) {\n\t\treturn siz[root(x)];\n\
     \t}\n\tint group_size() {\n\t\tint cnt = 0;\n\t\tfor (int i = 0; i < N; i++)\n\
     \t\t\tif (root(i) == i)\n\t\t\t\tcnt++;\n\t\treturn cnt;\n\t}\n};\n///@brief disjoint\
-    \ set(union find)\n#line 2 \"graph/mst.hpp\"\nclass MST{\n    DSU dsu;\n    struct\
-    \ Edge\n    {\n        int v1,v2;\n        int cost;\n        int id;\n      \
-    \  Edge(int v1,int v2,int cost,int id):v1(v1),v2(v2),cost(cost),id(id){  }\n \
-    \   };\n    vector<Edge> E;\n    vector<int> V1,V2;\npublic:\n    MST(int V):dsu(V){}\n\
-    \    void add_edge(int a,int b,ll cost){\n        int sz=E.size();\n        E.emplace_back(a,b,cost,sz);\n\
-    \        V1.emplace_back(a),V2.emplace_back(b);\n    }\n    ll result() {\n  \
-    \      sort(E.begin(), E.end(),[&](Edge e1,Edge e2){\n            return e1.cost<e2.cost;\n\
-    \        });\n        ll ans = 0;\n        rep(i, E.size()) {\n            int\
-    \ len = E[i].cost;\n            int id = E[i].id;\n            int a = V1[id],\
-    \ b = V2[id];\n            if (dsu.same(a, b))continue;\n            dsu.merge(a,\
-    \ b);\n            ans += len;\n        }\n        return ans;\n    }\n};\n///@brief\
-    \ Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)\n"
+    \ set(union find)\n///@docs docs/data-structure/dsu.md\n#line 2 \"graph/mst.hpp\"\
+    \nclass MST{\n    DSU dsu;\n    struct Edge\n    {\n        int v1,v2;\n     \
+    \   int cost;\n        int id;\n        Edge(int v1,int v2,int cost,int id):v1(v1),v2(v2),cost(cost),id(id){\
+    \  }\n    };\n    vector<Edge> E;\n    vector<int> V1,V2;\npublic:\n    MST(int\
+    \ V):dsu(V){}\n    void add_edge(int a,int b,ll cost){\n        int sz=E.size();\n\
+    \        E.emplace_back(a,b,cost,sz);\n        V1.emplace_back(a),V2.emplace_back(b);\n\
+    \    }\n    ll result() {\n        sort(E.begin(), E.end(),[&](Edge e1,Edge e2){\n\
+    \            return e1.cost<e2.cost;\n        });\n        ll ans = 0;\n     \
+    \   rep(i, E.size()) {\n            int len = E[i].cost;\n            int id =\
+    \ E[i].id;\n            int a = V1[id], b = V2[id];\n            if (dsu.same(a,\
+    \ b))continue;\n            dsu.merge(a, b);\n            ans += len;\n      \
+    \  }\n        return ans;\n    }\n};\n///@brief Minimum Spannning Tree(\u6700\u5C0F\
+    \u5168\u57DF\u6728)\n"
   code: "#include\"data-structure/dsu.hpp\"\nclass MST{\n    DSU dsu;\n    struct\
     \ Edge\n    {\n        int v1,v2;\n        int cost;\n        int id;\n      \
     \  Edge(int v1,int v2,int cost,int id):v1(v1),v2(v2),cost(cost),id(id){  }\n \
@@ -54,7 +55,7 @@ data:
   isVerificationFile: false
   path: graph/mst.hpp
   requiredBy: []
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-02-28 14:13:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/2/A.test.cpp

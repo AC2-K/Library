@@ -19,6 +19,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    _deprecated_at_docs: docs/data-structure/dsu.md
     document_title: disjoint set(union find)
     links: []
   bundledCode: "#line 1 \"data-structure/dsu.hpp\"\nclass DSU {\nprivate:\n\tvector<int>\
@@ -31,7 +32,7 @@ data:
     \ += siz[ry];\n\t\treturn true;\n\t}\n\n\tint size(int x) {\n\t\treturn siz[root(x)];\n\
     \t}\n\tint group_size() {\n\t\tint cnt = 0;\n\t\tfor (int i = 0; i < N; i++)\n\
     \t\t\tif (root(i) == i)\n\t\t\t\tcnt++;\n\t\treturn cnt;\n\t}\n};\n///@brief disjoint\
-    \ set(union find)\n"
+    \ set(union find)\n///@docs docs/data-structure/dsu.md\n"
   code: "class DSU {\nprivate:\n\tvector<int> par, rank, siz;\n\tint N;\npublic:\n\
     \tDSU(int n) : par(n, -1), rank(n, 0), siz(n, 1), N(n) {}\n\n\tint root(int x)\
     \ {\n\t\tif (par[x] == -1)\n\t\t\treturn x;\n\t\telse\n\t\t\treturn par[x] = root(par[x]);\n\
@@ -41,13 +42,13 @@ data:
     par[ry] = rx;\n\n\t\tsiz[rx] += siz[ry];\n\t\treturn true;\n\t}\n\n\tint size(int\
     \ x) {\n\t\treturn siz[root(x)];\n\t}\n\tint group_size() {\n\t\tint cnt = 0;\n\
     \t\tfor (int i = 0; i < N; i++)\n\t\t\tif (root(i) == i)\n\t\t\t\tcnt++;\n\t\t\
-    return cnt;\n\t}\n};\n///@brief disjoint set(union find)"
+    return cnt;\n\t}\n};\n///@brief disjoint set(union find)\n///@docs docs/data-structure/dsu.md"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/dsu.hpp
   requiredBy:
   - graph/mst.hpp
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-02-28 14:13:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/data structure/UnionFind.test.cpp
@@ -60,3 +61,5 @@ redirect_from:
 - /library/data-structure/dsu.hpp.html
 title: disjoint set(union find)
 ---
+# dsu
+素集合データ構造です。\
