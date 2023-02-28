@@ -51,12 +51,13 @@ data:
     \    //a[pos] <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos,\
     \ op(dat[n + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return\
     \ dat[n + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\
-    \u30C8\u6728)\n#line 4 \"test/yosupo judge/data structure/Static Range Sum.test.cpp\"\
-    \nnamespace for_segtree{\n    using S=ll;\n    S op(S x,S y){return x+y;}\n  \
-    \  S e(){return 0;}\n};\nint main(){\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n\
-    \    int n,q;\n    cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n   \
-    \     cin>>aa;\n    }\n\n    segtree<for_segtree::S,for_segtree::op,for_segtree::e>\
-    \ seg(a);\n    while(q--){\n        int l,r;\n        cin>>l>>r;\n        cout<<seg.prod(l,r)<<'\\\
+    \u30C8\u6728)\n///@docs docs/data-structure/segtree.md\n#line 4 \"test/yosupo\
+    \ judge/data structure/Static Range Sum.test.cpp\"\nnamespace for_segtree{\n \
+    \   using S=ll;\n    S op(S x,S y){return x+y;}\n    S e(){return 0;}\n};\nint\
+    \ main(){\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n    int n,q;\n \
+    \   cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n        cin>>aa;\n\
+    \    }\n\n    segtree<for_segtree::S,for_segtree::op,for_segtree::e> seg(a);\n\
+    \    while(q--){\n        int l,r;\n        cin>>l>>r;\n        cout<<seg.prod(l,r)<<'\\\
     n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\"\
     template.hpp\"\n#include\"data-structure/segtree.hpp\"\nnamespace for_segtree{\n\
@@ -72,7 +73,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Static Range Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
+  timestamp: '2023-02-28 15:33:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Static Range Sum.test.cpp

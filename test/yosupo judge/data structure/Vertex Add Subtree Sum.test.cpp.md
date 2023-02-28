@@ -53,18 +53,19 @@ data:
     \    //a[pos] <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos,\
     \ op(dat[n + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return\
     \ dat[n + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\
-    \u30C8\u6728)\n#line 6 \"test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp\"\
-    \nusing S = long long;\nS op(S x, S y) { return x+y; }\nS e() { return 0; }\n\
-    int main() {\n    int n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n    for\
-    \ (auto& aa : a) {\n        cin >> aa;\n    }\n    EulerTour et(n);\n    for (int\
-    \ i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n        et.add_edge(p,\
-    \ i);\n    }\n    et.build(0);\n\n    segtree<S, op, e> seg(et.tour.size());\n\
-    \    for (int v = 0; v < n; v++) {\n        seg.set(et.in[v], a[v]);\n    }\n\
-    \    seg.build();\n    while (q--) {\n        int t;\n        cin >> t;\n    \
-    \    if (t == 0) {\n            int v;\n            cin >> v;\n            int\
-    \ x;\n            cin >> x;\n            seg.add(et.in[v], x);\n        }\n  \
-    \      else {\n            int v;\n            cin >> v;\n            cout <<\
-    \ seg.prod(et.in[v], et.out[v] + 1) << '\\n';\n        }\n    }\n}\n"
+    \u30C8\u6728)\n///@docs docs/data-structure/segtree.md\n#line 6 \"test/yosupo\
+    \ judge/data structure/Vertex Add Subtree Sum.test.cpp\"\nusing S = long long;\n\
+    S op(S x, S y) { return x+y; }\nS e() { return 0; }\nint main() {\n    int n,\
+    \ q;\n    cin >> n >> q;\n    vector<int> a(n);\n    for (auto& aa : a) {\n  \
+    \      cin >> aa;\n    }\n    EulerTour et(n);\n    for (int i = 1; i < n; i++)\
+    \ {\n        int p;\n        cin >> p;\n        et.add_edge(p, i);\n    }\n  \
+    \  et.build(0);\n\n    segtree<S, op, e> seg(et.tour.size());\n    for (int v\
+    \ = 0; v < n; v++) {\n        seg.set(et.in[v], a[v]);\n    }\n    seg.build();\n\
+    \    while (q--) {\n        int t;\n        cin >> t;\n        if (t == 0) {\n\
+    \            int v;\n            cin >> v;\n            int x;\n            cin\
+    \ >> x;\n            seg.add(et.in[v], x);\n        }\n        else {\n      \
+    \      int v;\n            cin >> v;\n            cout << seg.prod(et.in[v], et.out[v]\
+    \ + 1) << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#include\"graph/euler_tour.hpp\"\
     \n#include\"data-structure/segtree.hpp\"\nusing S = long long;\nS op(S x, S y)\
@@ -85,7 +86,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 14:54:17+09:00'
+  timestamp: '2023-02-28 15:33:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp

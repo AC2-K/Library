@@ -50,13 +50,13 @@ data:
     \    //a[pos] <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos,\
     \ op(dat[n + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return\
     \ dat[n + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\
-    \u30C8\u6728)\n#line 4 \"test/AOJ/DSL/2/B.test.cpp\"\nusing S=ll;\nS op(S x,S\
-    \ y){return x+y;}\nS e(){return 0;}\nint main() {\n    int n,q;\n    cin>>n>>q;\n\
-    \    segtree<S,op,e> seg(n);\n    while(q--){\n        int t;\n        cin>>t;\n\
-    \        if(t==0){\n            ll i,x;\n            cin>>i>>x;\n            i--;\n\
-    \            seg.add(i,x);\n        }else{\n            int l,r;\n           \
-    \ cin>>l>>r;\n            l--,r--;\n            cout<<seg.prod(l,r+1)<<'\\n';\n\
-    \        }\n    }\n}\n"
+    \u30C8\u6728)\n///@docs docs/data-structure/segtree.md\n#line 4 \"test/AOJ/DSL/2/B.test.cpp\"\
+    \nusing S=ll;\nS op(S x,S y){return x+y;}\nS e(){return 0;}\nint main() {\n  \
+    \  int n,q;\n    cin>>n>>q;\n    segtree<S,op,e> seg(n);\n    while(q--){\n  \
+    \      int t;\n        cin>>t;\n        if(t==0){\n            ll i,x;\n     \
+    \       cin>>i>>x;\n            i--;\n            seg.add(i,x);\n        }else{\n\
+    \            int l,r;\n            cin>>l>>r;\n            l--,r--;\n        \
+    \    cout<<seg.prod(l,r+1)<<'\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_B\"\n#include\"\
     template.hpp\"\n#include\"data-structure/segtree.hpp\"\nusing S=ll;\nS op(S x,S\
     \ y){return x+y;}\nS e(){return 0;}\nint main() {\n    int n,q;\n    cin>>n>>q;\n\
@@ -71,7 +71,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2/B.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
+  timestamp: '2023-02-28 15:33:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2/B.test.cpp

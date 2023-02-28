@@ -51,13 +51,14 @@ data:
     \    //a[pos] <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos,\
     \ op(dat[n + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return\
     \ dat[n + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\
-    \u30C8\u6728)\n#line 4 \"test/yosupo judge/data structure/Point Add Range Sum.test.cpp\"\
-    \nll op(ll x,ll y){return x+y;}\nll e(){return 0;}\nint main(){\n    int n,q;\n\
-    \    cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n        cin>>aa;\n\
-    \    }\n\n    segtree<ll,op,e> seg(a);\n    while(q--){\n        int t;\n    \
-    \    cin>>t;\n        if(t==0){\n            int p,x;\n            cin>>p>>x;\n\
-    \            seg.add(p,x);\n        }else{\n            int l,r;\n           \
-    \ cin>>l>>r;\n            cout<<seg.prod(l,r)<<'\\n';\n        }\n    }\n}\n"
+    \u30C8\u6728)\n///@docs docs/data-structure/segtree.md\n#line 4 \"test/yosupo\
+    \ judge/data structure/Point Add Range Sum.test.cpp\"\nll op(ll x,ll y){return\
+    \ x+y;}\nll e(){return 0;}\nint main(){\n    int n,q;\n    cin>>n>>q;\n    vector<ll>\
+    \ a(n);\n    for(auto&aa:a){\n        cin>>aa;\n    }\n\n    segtree<ll,op,e>\
+    \ seg(a);\n    while(q--){\n        int t;\n        cin>>t;\n        if(t==0){\n\
+    \            int p,x;\n            cin>>p>>x;\n            seg.add(p,x);\n   \
+    \     }else{\n            int l,r;\n            cin>>l>>r;\n            cout<<seg.prod(l,r)<<'\\\
+    n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     #include\"template.hpp\"\n#include\"data-structure/segtree.hpp\"\nll op(ll x,ll\
     \ y){return x+y;}\nll e(){return 0;}\nint main(){\n    int n,q;\n    cin>>n>>q;\n\
@@ -72,7 +73,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
+  timestamp: '2023-02-28 15:33:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
