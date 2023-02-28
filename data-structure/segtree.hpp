@@ -71,3 +71,4 @@ public:
     }
 };
 /// @brief segment tree(セグメント木)
+///@docs docs/data-structure/segtree.md
