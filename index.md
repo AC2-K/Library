@@ -16,7 +16,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree.hpp
       title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/sparse_table.hpp
       title: sparse table
   - name: .
@@ -33,22 +33,22 @@ data:
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: graph
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C\
         )"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/edge.hpp
       title: edge
     - icon: ':heavy_check_mark:'
       path: graph/euler_tour.hpp
       title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/lca.hpp
       title: "Lowest Common Ancestor(\u6700\u5C0F\u5171\u901A\u7956\u5148)"
     - icon: ':heavy_check_mark:'
@@ -197,10 +197,10 @@ data:
       title: test/yosupo judge/new/Primitive Root.test.cpp
   - name: test/yosupo judge/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
       title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/tree/Tree Diameter.test.cpp
       title: test/yosupo judge/tree/Tree Diameter.test.cpp
 layout: toppage

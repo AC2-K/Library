@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
@@ -43,6 +46,7 @@ data:
   path: math/large_mod.hpp
   requiredBy:
   - math/primitive_root.hpp
+  - main.cpp
   - string/rolling_hash.hpp
   timestamp: '2023-02-28 20:50:59+09:00'
   verificationStatus: LIBRARY_ALL_AC

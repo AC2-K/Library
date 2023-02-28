@@ -49,11 +49,17 @@ data:
     \ for_hash::base);\n\t\t\tif (hash[i + 1] >= for_hash::mod) {\n\t\t\t\thash[i\
     \ + 1] -= for_hash::mod;\n\t\t\t}\n\t\t}\n\t}\n\tull range(int l, int r) const\
     \ {\n\t\tull ret = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);\n\t\treturn\
-    \ ret < for_hash::mod ? ret : ret - for_hash::mod;\n\t}\n};\n\n///@brief rolling\
-    \ hash\n#line 3 \"main.cpp\"\nint main() {\n\tstring t, p;\n\tcin >> t >> p;\n\
-    \tRollingHash hasht(t), hashp(p);\n\tfor (int i = 0; i + p.size() <= t.size();\
-    \ i++) {\n\t\tif (hasht.range(i, i + p.size()) == hashp.range(0,p.size())) {\n\
-    \t\t\tcout << i << '\\n';\n\t\t}\n\t}\n}\n"
+    \ ret < for_hash::mod ? ret : ret - for_hash::mod;\n\t}\n\tint size(){return str.size();}\n\
+    };\n\n///@brief rolling hash\n#line 3 \"main.cpp\"\n\nint main(){\n    int n;\n\
+    \    cin>>n;\n    vector<RollingHash> s(n);\n    rep(i,n){\n        string si;\n\
+    \        cin>>si;\n        s[i]=RollingHash(si);\n    }\n\n    unordered_map<int,unordered_map<ull,int>>\
+    \ prefixes;  //\u5148\u982Di\u6587\u5B57\u3092\u4E26\u3079\u307E\u304F\u3063\u305F\
+    \u3084\u3064\n    for(auto&h:s){\n        rep(len,h.size()+1){\n            prefixes[len][h.range(0,len)]++;\n\
+    \        }\n    }\n \n    for(auto&hs:s){\n        int ng=hs.size()+1;\n     \
+    \   int ok=0;\n        while(abs(ok-ng)>1){\n            int mid=(ok+ng)/2;\n\
+    \            if(prefixes[mid][hs.range(0,mid)]>=2){\n                ok=mid;\n\
+    \            }else{\n                ng=mid;\n            }\n        }\n     \
+    \   cout<<ok<<endl;\n    }\n\n}\n"
   code: "#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
@@ -94,16 +100,22 @@ data:
     \ for_hash::base);\n\t\t\tif (hash[i + 1] >= for_hash::mod) {\n\t\t\t\thash[i\
     \ + 1] -= for_hash::mod;\n\t\t\t}\n\t\t}\n\t}\n\tull range(int l, int r) const\
     \ {\n\t\tull ret = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);\n\t\treturn\
-    \ ret < for_hash::mod ? ret : ret - for_hash::mod;\n\t}\n};\n\n///@brief rolling\
-    \ hash\n#line 3 \"main.cpp\"\nint main() {\n\tstring t, p;\n\tcin >> t >> p;\n\
-    \tRollingHash hasht(t), hashp(p);\n\tfor (int i = 0; i + p.size() <= t.size();\
-    \ i++) {\n\t\tif (hasht.range(i, i + p.size()) == hashp.range(0,p.size())) {\n\
-    \t\t\tcout << i << '\\n';\n\t\t}\n\t}\n}\n"
+    \ ret < for_hash::mod ? ret : ret - for_hash::mod;\n\t}\n\tint size(){return str.size();}\n\
+    };\n\n///@brief rolling hash\n#line 3 \"main.cpp\"\n\nint main(){\n    int n;\n\
+    \    cin>>n;\n    vector<RollingHash> s(n);\n    rep(i,n){\n        string si;\n\
+    \        cin>>si;\n        s[i]=RollingHash(si);\n    }\n\n    unordered_map<int,unordered_map<ull,int>>\
+    \ prefixes;  //\u5148\u982Di\u6587\u5B57\u3092\u4E26\u3079\u307E\u304F\u3063\u305F\
+    \u3084\u3064\n    for(auto&h:s){\n        rep(len,h.size()+1){\n            prefixes[len][h.range(0,len)]++;\n\
+    \        }\n    }\n \n    for(auto&hs:s){\n        int ng=hs.size()+1;\n     \
+    \   int ok=0;\n        while(abs(ok-ng)>1){\n            int mid=(ok+ng)/2;\n\
+    \            if(prefixes[mid][hs.range(0,mid)]>=2){\n                ok=mid;\n\
+    \            }else{\n                ng=mid;\n            }\n        }\n     \
+    \   cout<<ok<<endl;\n    }\n\n}\n"
   dependsOn: []
   isVerificationFile: false
   path: out.cpp
   requiredBy: []
-  timestamp: '2023-02-28 20:50:59+09:00'
+  timestamp: '2023-02-28 21:29:40+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: out.cpp

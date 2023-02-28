@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/cht.hpp
     title: ConvexHullTrick
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -43,20 +43,20 @@ data:
     \ || next(it) == ls.end()){\n\t\t\treturn true;\n\t\t}\n\t\t//\u7CBE\u5EA6\u5927\
     \u4E08\u592B...?\n\t\treturn 1.*(it->b - prev(it)->b) * (next(it)->a - it->a)\
     \ < 1.*(it->b - next(it)->b) * (prev(it)->a - it->a);\t\n\t}\n\npublic:\n\tvoid\
-    \ add(T a,T b) {\n\t\tls.emplace(query_type ? -a : a, query_type ? -b : b);\n\
-    \        const auto&ln=(query_type?line{-a,-b}:line{a,b});\n        auto it=ls.find(ln);\n\
-    \t\tif (!is_needed(it)) {\n\t\t\tls.erase(it);\n\t\t\treturn;\n\t\t}\n\t\twhile\
-    \ (it != ls.begin() && !is_needed(prev(it))){\n            ls.erase(prev(it));\n\
-    \        }\n\t\twhile (next(it) != ls.end() && !is_needed(next(it))){\n      \
-    \      ls.erase(next(it));\n        }\n\t\tif (it != ls.begin()) {\n\t\t\tprev(it)->has_nxt\
-    \ = true;\n\t\t\tprev(it)->nxt_a = it->a;\n\t\t\tprev(it)->nxt_b = it->b;\n\t\t\
-    }\n\t\tif (next(it) != ls.end()) {\n\t\t\tit->has_nxt = true;\n\t\t\tit->nxt_a\
-    \ = next(it)->a;\n\t\t\tit->nxt_b = next(it)->b;\n\t\t}\n\t}\n\tT operator()(T\
-    \ x) const {\n\t\tconst auto& it = ls.lower_bound(line(x, 0, true));\n\n\t\tif\
-    \ (query_type) {\t\n\t\t\treturn -it->a * x - it->b;\n\t\t}\n\t\telse {\n\t\t\t\
-    return it->a * x + it->b;\n\t\t}\n\t}\n};\n///@brief ConvexHullTrick\n#line 5\
-    \ \"test/yosupo judge/data structure/Line Add Get Min.test.cpp\"\n\nint main(){\n\
-    \    int n,q;\n    cin>>n>>q;\n\n    CHT cht;    \n    for(int i=0;i<n;i++){\n\
+    \ add(T a,T b) {\n\t\tif(query_type){\n\t\t\tls.emplace(-a,-b);\n\t\t}else{\n\t\
+    \t\tls.emplace(a,b);\n\t\t}\n\n        const line&ln=(query_type?line{-a,-b}:line{a,b});\n\
+    \        auto it=ls.find(ln);\n\t\tif (!is_needed(it)) {\n\t\t\tls.erase(it);\n\
+    \t\t\treturn;\n\t\t}\n\t\twhile (it != ls.begin() && !is_needed(prev(it))){\n\
+    \            ls.erase(prev(it));\n        }\n\t\twhile (next(it) != ls.end() &&\
+    \ !is_needed(next(it))){\n            ls.erase(next(it));\n        }\n\t\tif (it\
+    \ != ls.begin()) {\n\t\t\tprev(it)->has_nxt = true;\n\t\t\tprev(it)->nxt_a = it->a;\n\
+    \t\t\tprev(it)->nxt_b = it->b;\n\t\t}\n\t\tif (next(it) != ls.end()) {\n\t\t\t\
+    it->has_nxt = true;\n\t\t\tit->nxt_a = next(it)->a;\n\t\t\tit->nxt_b = next(it)->b;\n\
+    \t\t}\n\t}\n\tT operator()(T x) const {\n\t\tconst auto& it = ls.lower_bound(line(x,\
+    \ 0, true));\n\n\t\tif (query_type) {\t\n\t\t\treturn -it->a * x - it->b;\n\t\t\
+    }\n\t\telse {\n\t\t\treturn it->a * x + it->b;\n\t\t}\n\t}\n};\n///@brief ConvexHullTrick\n\
+    #line 5 \"test/yosupo judge/data structure/Line Add Get Min.test.cpp\"\n\nint\
+    \ main(){\n    int n,q;\n    cin>>n>>q;\n\n    CHT cht;    \n    for(int i=0;i<n;i++){\n\
     \        ll a,b;\n        cin>>a>>b;\n        cht.add(a,b);\n    }\n    while(q--){\n\
     \        int t;\n        cin>>t;\n        if(t==0){\n            ll a,b;\n   \
     \         cin>>a>>b;\n            cht.add(a,b);\n        }else{\n            ll\
@@ -76,7 +76,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 20:50:59+09:00'
+  timestamp: '2023-02-28 21:29:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Line Add Get Min.test.cpp

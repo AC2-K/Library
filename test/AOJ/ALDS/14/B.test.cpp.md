@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: rolling hash
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -60,8 +60,9 @@ data:
     \ mul(hash[i], for_hash::base) + mapping(str[i]);\n\t\t\tpow[i + 1] = mul(pow[i],\
     \ for_hash::base);\n\t\t\tif (hash[i + 1] >= for_hash::mod) {\n\t\t\t\thash[i\
     \ + 1] -= for_hash::mod;\n\t\t\t}\n\t\t}\n\t}\n\tull range(int l, int r) const\
-    \ {\n\t\tull ret = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);\n\t\treturn\
-    \ ret < for_hash::mod ? ret : ret - for_hash::mod;\n\t}\n};\n\n///@brief rolling\
+    \ {\n\t\tull res = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);\n\t\treturn\
+    \ res < for_hash::mod ? res : res - for_hash::mod;\n\t}\n\tull get_all(){\n\t\t\
+    return hash.back();\n\t}\n\tint size(){return str.size();}\n};\n\n///@brief rolling\
     \ hash\n#line 5 \"test/AOJ/ALDS/14/B.test.cpp\"\nint main() {\n\tstring t, p;\n\
     \tcin >> t >> p;\n\tRollingHash hasht(t), hashp(p);\n\tfor (int i = 0; i + p.size()\
     \ <= t.size(); i++) {\n\t\tif (hasht.range(i, i + p.size()) == hashp.range(0,p.size()))\
@@ -78,7 +79,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/ALDS/14/B.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 20:50:59+09:00'
+  timestamp: '2023-02-28 21:29:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/ALDS/14/B.test.cpp

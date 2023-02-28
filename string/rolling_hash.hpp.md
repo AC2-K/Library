@@ -4,7 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/large_mod.hpp
     title: math/large_mod.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/14/B.test.cpp
@@ -45,8 +48,9 @@ data:
     \ mul(hash[i], for_hash::base) + mapping(str[i]);\n\t\t\tpow[i + 1] = mul(pow[i],\
     \ for_hash::base);\n\t\t\tif (hash[i + 1] >= for_hash::mod) {\n\t\t\t\thash[i\
     \ + 1] -= for_hash::mod;\n\t\t\t}\n\t\t}\n\t}\n\tull range(int l, int r) const\
-    \ {\n\t\tull ret = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);\n\t\treturn\
-    \ ret < for_hash::mod ? ret : ret - for_hash::mod;\n\t}\n};\n\n///@brief rolling\
+    \ {\n\t\tull res = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);\n\t\treturn\
+    \ res < for_hash::mod ? res : res - for_hash::mod;\n\t}\n\tull get_all(){\n\t\t\
+    return hash.back();\n\t}\n\tint size(){return str.size();}\n};\n\n///@brief rolling\
     \ hash\n"
   code: "#pragma once\n#include\"math/large_mod.hpp\"\nusing ull = uint_fast64_t;\n\
     \n\nnamespace for_hash {\n\tconstexpr ull mapping_max = (ull)'Z';\n\tull base\
@@ -70,15 +74,17 @@ data:
     \ mul(hash[i], for_hash::base) + mapping(str[i]);\n\t\t\tpow[i + 1] = mul(pow[i],\
     \ for_hash::base);\n\t\t\tif (hash[i + 1] >= for_hash::mod) {\n\t\t\t\thash[i\
     \ + 1] -= for_hash::mod;\n\t\t\t}\n\t\t}\n\t}\n\tull range(int l, int r) const\
-    \ {\n\t\tull ret = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);\n\t\treturn\
-    \ ret < for_hash::mod ? ret : ret - for_hash::mod;\n\t}\n};\n\n///@brief rolling\
+    \ {\n\t\tull res = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);\n\t\treturn\
+    \ res < for_hash::mod ? res : res - for_hash::mod;\n\t}\n\tull get_all(){\n\t\t\
+    return hash.back();\n\t}\n\tint size(){return str.size();}\n};\n\n///@brief rolling\
     \ hash"
   dependsOn:
   - math/large_mod.hpp
   isVerificationFile: false
   path: string/rolling_hash.hpp
-  requiredBy: []
-  timestamp: '2023-02-28 20:50:59+09:00'
+  requiredBy:
+  - main.cpp
+  timestamp: '2023-02-28 21:29:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/ALDS/14/B.test.cpp
