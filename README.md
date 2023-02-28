@@ -1,2 +1,2 @@
 # LibraryCPP
-- ここ:https://ac2-k.github.io/Library-CPP/
+- ここ:https://ac2-k.github.io/library/
