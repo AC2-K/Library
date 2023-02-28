@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/cht.hpp
     title: ConvexHullTrick
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -19,7 +19,7 @@ data:
     - https://judge.yosupo.jp/problem/line_add_get_min
   bundledCode: "#line 1 \"test/yosupo judge/data structure/Line Add Get Min.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n#line\
-    \ 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i,\
+    \ 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i,\
     \ N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
     \ __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\nusing\
     \ ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int, int>;\n\
@@ -76,7 +76,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
+  timestamp: '2023-02-28 20:50:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Line Add Get Min.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/segtree.hpp
     title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -18,7 +18,7 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_B
   bundledCode: "#line 1 \"test/AOJ/DSL/2/B.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_B\"\
-    \n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
+    \n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
     \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
     \ popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\n\
     using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
@@ -71,7 +71,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2/B.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 15:33:22+09:00'
+  timestamp: '2023-02-28 20:50:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2/B.test.cpp

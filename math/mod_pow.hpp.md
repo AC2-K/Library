@@ -5,13 +5,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':heavy_check_mark:'
-    path: string/rolling_hash.hpp
-    title: rolling hash
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/AOJ/ALDS/14/B.test.cpp
-    title: test/AOJ/ALDS/14/B.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/B.test.cpp
     title: test/AOJ/NTL/1/B.test.cpp
@@ -40,12 +34,10 @@ data:
   path: math/mod_pow.hpp
   requiredBy:
   - math/DLP.hpp
-  - string/rolling_hash.hpp
   timestamp: '2023-02-24 00:27:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/math/Discrete Logarithm.test.cpp
-  - test/AOJ/ALDS/14/B.test.cpp
   - test/AOJ/NTL/1/B.test.cpp
 documentation_of: math/mod_pow.hpp
 layout: document

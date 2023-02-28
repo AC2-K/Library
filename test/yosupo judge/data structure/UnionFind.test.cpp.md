@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/dsu.hpp
     title: disjoint set(union find)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -18,7 +18,7 @@ data:
     links:
     - https://judge.yosupo.jp/problem/unionfind
   bundledCode: "#line 1 \"test/yosupo judge/data structure/UnionFind.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n#line 1 \"template.hpp\"\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n#line 2 \"template.hpp\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
     using i128=__int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
@@ -54,7 +54,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 14:13:13+09:00'
+  timestamp: '2023-02-28 20:50:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/UnionFind.test.cpp

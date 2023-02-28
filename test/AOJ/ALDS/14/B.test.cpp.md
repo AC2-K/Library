@@ -2,12 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: math/mod_pow.hpp
-    title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
+    path: math/large_mod.hpp
+    title: math/large_mod.hpp
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: rolling hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -21,7 +21,7 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_14_B
   bundledCode: "#line 1 \"test/AOJ/ALDS/14/B.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_14_B\"\
-    \n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
+    \n\n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
     \ long long;\nusing ld = long double;\nusing graph = vector<vector<int>>;\nusing\
@@ -29,47 +29,56 @@ data:
     \ = 1e-6;\nconst long double pi = acos(-1);\nconst ll MOD = 1e9 + 7;\nconst ll\
     \ MOD2 = 998244353;\nconst int dx[4] = { 1,0,-1,0 };\nconst int dy[4] = { 0,1,0,-1\
     \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
-    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 2 \"string/rolling_hash.hpp\"\
-    \n\n#line 1 \"math/mod_pow.hpp\"\nll mod_pow(ll base, ll exp, ll mod) {\n    if(base==0)return\
-    \ 0;\n    ll ans = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp\
-    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
-    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 4 \"string/rolling_hash.hpp\"\
-    \nclass RollingHash {\n\tstatic const ll mod = 998244343;\n\tstatic const ll g\
-    \ = 3;\t//\u539F\u59CB\u6839\n\tll base;\n\tvector<ll> powers;\n\tstatic inline\
-    \ ll generate_base() {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
-    \t\tuniform_int_distribution<ll> rand((ll)1, (ll)mod - 1);\n\t\treturn rand(engine);\n\
-    \t}\n\t//id\u306E\u632F\u308A\u65B9\n\tll mapping(char c) {\n\t\treturn (c - 'a'\
-    \ + 1);\n\t}\n\tvoid expand(int siz) {\n\t\tif (powers.size() < siz + 1) {\n\t\
-    \t\tint pre_siz = powers.size();\n\t\t\tpowers.resize(siz + 1);\n\t\t\tfor (int\
-    \ i = pre_siz; i <= siz; i++) {\n\t\t\t\tpowers[i] = (powers[i - 1] * base) %\
-    \ mod;\n\t\t\t}\n\t\t}\n\t}\n\npublic:\n\tRollingHash() :base(), powers{ 1 } {\n\
-    \t\tll r = mod - 1;\n\t\twhile(gcd(r,mod-1) != 1){\n\t\t\tr = generate_base();\n\
-    \t\t}\n\n\t\tbase = mod_pow(g,r,mod);\n\t} \n\n\tvector<ll> build(string& s) {\n\
-    \t\tvector<ll> hash(s.size() + 1);\n\t\tfor (int i = 0; i < s.size(); i++) {\n\
-    \t\t\thash[i + 1] = (hash[i] * base % mod + mapping(s[i])) % mod;\n\t\t}\n\t\t\
-    return hash;\n\t}\n\tll range(vector<ll>&hash,int l, int r) {\n\t\texpand(r -\
-    \ l);\n\t\treturn ((hash.at(r) + mod - hash.at(l) * powers[r - l]) % mod + mod)\
-    \ % mod;\n\t}\n};\n\n///@brief rolling hash\n#line 5 \"test/AOJ/ALDS/14/B.test.cpp\"\
-    \nint main() {\n\tstring T, P;\n\tcin >> T >> P;\n\tif (T.size() < P.size())exit(0);\n\
-    \tRollingHash rh;\n\tauto t = rh.build(T);\n\tauto p = rh.build(P);\n\tll hash\
-    \ = rh.range(p,0, P.size());\n\tfor (int i = 0; i < T.size() - P.size() + 1; i++)\
-    \ {\n\t\tif (rh.range(t, i, i + P.size()) == hash) {\n\n\t\t\tcout << i << '\\\
-    n';\n\t\t}\n\t}\n}\n"
+    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"math/large_mod.hpp\"\n\
+    inline long long safe_mod(long long a, long long m) {\n    return (a % m + m)\
+    \ % m;\n}\ninline long long mul(long long a, long long b, long long m) {\n   \
+    \ a = safe_mod(a, m); b = safe_mod(b, m);\n    if (b == 0) return 0;\n    long\
+    \ long res = mul(safe_mod(a + a, m), b>>1, m);\n    if (b & 1) res = safe_mod(res\
+    \ + a, m);\n    return res;\n}\ntemplate<typename T>\n__uint128_t large_modpow(T\
+    \ base,T exp,T mod){\n    if(base==0)return 0;\n    __uint128_t ans = 1;\n   \
+    \ base %= mod;\n    while (exp) {\n        if (exp & 1) {\n            ans = mul(ans,base,mod);\n\
+    \        }\n        base = mul(base,base,mod);\n        exp >>= 1;\n    }\n  \
+    \  return ans;\n}\n#line 3 \"string/rolling_hash.hpp\"\nusing ull = uint_fast64_t;\n\
+    \n\nnamespace for_hash {\n\tconstexpr ull mapping_max = (ull)'Z';\n\tull base\
+    \ = -1;\t//base\u3092\u30E9\u30F3\u30C0\u30E0\u306B\u3068\u308B\n\tconstexpr ull\
+    \ mod = (1uL << 61) - 1;\n\tconstexpr ull primitive_root = 37;\n\tull strong_rand()\
+    \ {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
+    \t\tuniform_int_distribution<ull> rand(1uL, mod - 1);\n\t\treturn rand(engine);\n\
+    \t}\n\tvoid generate_base() {\n        if(base != -1) return;\n\t\tull r = mod\
+    \ - 1;\n\t\twhile (gcd(r, mod - 1) != 1 || r <= mapping_max) {\n\t\t\tr = strong_rand();\n\
+    \t\t}\n\t\tbase = large_modpow(primitive_root, r, mod);\n\t}\n};\n\nclass RollingHash\
+    \ {\n\tusing i128 = __int128_t;\t//\u5909\u3048\u307E\u3057\u3087\u3046\u306D\
+    ~\n\tstatic constexpr ull msk30 = (1ul << 30) - 1;\n\tstatic constexpr ull msk61\
+    \ = (1ul << 31) - 1;\n\tstring str;\n\tvector<ull> hash, pow;\n\n\n\tull mul(i128\
+    \ a, i128 b)const {\n\t\ti128 t = a * b;\n\n\t\tt = (t >> 61) + (t & for_hash::mod);\n\
+    \n\t\tif (t >= for_hash::mod) {\n\t\t\tt -= for_hash::mod;\n\t\t}\n\n\n\t\treturn\
+    \ t;\n\t}\n\n\tull mapping(const char& c) {\n\t\treturn (ull)c;\t//\u5909\u66F4\
+    \u3059\u308B?\n\t}\npublic:\n\tRollingHash() :str() {\t}\n\n\tRollingHash(const\
+    \ string& str) :str(str) {\n\t\tfor_hash::generate_base();\n\t\tbuild();\n\t}\n\
+    \n\tvoid build() {\n\t\thash.resize(str.size() + 1);\n\t\tpow.resize(str.size()\
+    \ + 1, 1);\n\n\t\tfor (int i = 0; i < str.size(); i++) {\n\t\t\thash[i + 1] =\
+    \ mul(hash[i], for_hash::base) + mapping(str[i]);\n\t\t\tpow[i + 1] = mul(pow[i],\
+    \ for_hash::base);\n\t\t\tif (hash[i + 1] >= for_hash::mod) {\n\t\t\t\thash[i\
+    \ + 1] -= for_hash::mod;\n\t\t\t}\n\t\t}\n\t}\n\tull range(int l, int r) const\
+    \ {\n\t\tull ret = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);\n\t\treturn\
+    \ ret < for_hash::mod ? ret : ret - for_hash::mod;\n\t}\n};\n\n///@brief rolling\
+    \ hash\n#line 5 \"test/AOJ/ALDS/14/B.test.cpp\"\nint main() {\n\tstring t, p;\n\
+    \tcin >> t >> p;\n\tRollingHash hasht(t), hashp(p);\n\tfor (int i = 0; i + p.size()\
+    \ <= t.size(); i++) {\n\t\tif (hasht.range(i, i + p.size()) == hashp.range(0,p.size()))\
+    \ {\n\t\t\tcout << i << '\\n';\n\t\t}\n\t}\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_14_B\"\n\
-    \n#include \"template.hpp\"\n#include\"string/rolling_hash.hpp\"\nint main() {\n\
-    \tstring T, P;\n\tcin >> T >> P;\n\tif (T.size() < P.size())exit(0);\n\tRollingHash\
-    \ rh;\n\tauto t = rh.build(T);\n\tauto p = rh.build(P);\n\tll hash = rh.range(p,0,\
-    \ P.size());\n\tfor (int i = 0; i < T.size() - P.size() + 1; i++) {\n\t\tif (rh.range(t,\
-    \ i, i + P.size()) == hash) {\n\n\t\t\tcout << i << '\\n';\n\t\t}\n\t}\n}\n"
+    \n#include\"template.hpp\"\n#include\"string/rolling_hash.hpp\"\nint main() {\n\
+    \tstring t, p;\n\tcin >> t >> p;\n\tRollingHash hasht(t), hashp(p);\n\tfor (int\
+    \ i = 0; i + p.size() <= t.size(); i++) {\n\t\tif (hasht.range(i, i + p.size())\
+    \ == hashp.range(0,p.size())) {\n\t\t\tcout << i << '\\n';\n\t\t}\n\t}\n}\n"
   dependsOn:
   - template.hpp
   - string/rolling_hash.hpp
-  - math/mod_pow.hpp
+  - math/large_mod.hpp
   isVerificationFile: true
   path: test/AOJ/ALDS/14/B.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
+  timestamp: '2023-02-28 20:50:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/ALDS/14/B.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/prime_check.hpp
     title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -18,7 +18,7 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all/ALDS1_1_C
   bundledCode: "#line 1 \"test/AOJ/ALDS/1/C.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all/ALDS1_1_C\"\
-    \n\n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
+    \n\n\n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
     \ long long;\nusing ld = long double;\nusing graph = vector<vector<int>>;\nusing\
@@ -49,7 +49,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/ALDS/1/C.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
+  timestamp: '2023-02-28 20:50:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/ALDS/1/C.test.cpp

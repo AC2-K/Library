@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/mst.hpp
     title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -21,7 +21,7 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/2/GRL_2_A
   bundledCode: "#line 1 \"test/AOJ/GRL/2/A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/2/GRL_2_A\"\
-    \n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
+    \n\n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
     \ long long;\nusing ld = long double;\nusing graph = vector<vector<int>>;\nusing\
@@ -67,7 +67,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/GRL/2/A.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 14:13:13+09:00'
+  timestamp: '2023-02-28 20:50:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/GRL/2/A.test.cpp

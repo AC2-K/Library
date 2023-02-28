@@ -1,27 +1,27 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/sparse_table.hpp
     title: sparse table
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: graph/lca.hpp
     title: "Lowest Common Ancestor(\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
     - https://judge.yosupo.jp/problem/lca
   bundledCode: "#line 1 \"test/yosupo judge/tree/Lowest Common Ancestor.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#line 1 \"template.hpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#line 2 \"template.hpp\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
     using i128=__int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
@@ -72,8 +72,8 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-02-28 20:50:59+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
 layout: document

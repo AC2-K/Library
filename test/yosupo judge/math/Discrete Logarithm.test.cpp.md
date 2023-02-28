@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -21,7 +21,7 @@ data:
     links:
     - https://judge.yosupo.jp/problem/discrete_logarithm_mod
   bundledCode: "#line 1 \"test/yosupo judge/math/Discrete Logarithm.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\n#line 1\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\n#line 2\
     \ \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i,\
     \ N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
     \ __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\nusing\
@@ -62,7 +62,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/math/Discrete Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 14:55:05+09:00'
+  timestamp: '2023-02-28 20:50:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/math/Discrete Logarithm.test.cpp

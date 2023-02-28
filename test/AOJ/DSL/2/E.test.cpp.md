@@ -5,7 +5,7 @@ data:
     path: data-structure/lazy_segtree.hpp
     title: "lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
       )"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -19,7 +19,7 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E
   bundledCode: "#line 1 \"test/AOJ/DSL/2/E.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
-    \n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
+    \n\n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
     \ long long;\nusing ld = long double;\nusing graph = vector<vector<int>>;\nusing\
@@ -84,7 +84,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2/E.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
+  timestamp: '2023-02-28 20:50:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2/E.test.cpp

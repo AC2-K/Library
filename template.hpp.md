@@ -72,18 +72,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/new/Primitive Root.test.cpp
     title: test/yosupo judge/new/Primitive Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
     title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/tree/Tree Diameter.test.cpp
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: '#line 1 "template.hpp"
+  bundledCode: '#line 2 "template.hpp"
 
     #include<bits/stdc++.h>
 
@@ -126,7 +126,9 @@ data:
     template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
 
     '
-  code: '#include<bits/stdc++.h>
+  code: '#pragma once
+
+    #include<bits/stdc++.h>
 
     using namespace std;
 
@@ -170,8 +172,8 @@ data:
   path: template.hpp
   requiredBy:
   - test/AOJ/GRL/5/C.cpp
-  timestamp: '2023-02-28 13:51:36+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-02-28 20:50:59+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/math/Discrete Logarithm.test.cpp
   - test/yosupo judge/graph/Shortest Path.test.cpp
