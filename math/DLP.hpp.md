@@ -31,7 +31,7 @@ data:
     \ *= x) %= p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; i++) {\n      \
     \  (pr *= xm) %= p;\n        if (mp.find(pr) != mp.end()) {\n            int j\
     \ = mp[pr];\n            return m * i - j + add;\n        }\n    }\n    return\
-    \ -1;\n}\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n"
+    \ -1;\n}\n\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n"
   code: "#pragma once\n#include\"math/mod_pow.hpp\"\n\nll dlp(ll x, ll y, ll p) {\n\
     \    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n  \
     \      if (y == 0) {\n            return 1;\n        }\n        else {\n     \
@@ -43,14 +43,14 @@ data:
     \ = j;\n        (pr *= x) %= p;\n    }\n    pr = k;\n    for (int i = 1; i <=\
     \ m; i++) {\n        (pr *= xm) %= p;\n        if (mp.find(pr) != mp.end()) {\n\
     \            int j = mp[pr];\n            return m * i - j + add;\n        }\n\
-    \    }\n    return -1;\n}\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570\
+    \    }\n    return -1;\n}\n\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570\
     )"
   dependsOn:
   - math/mod_pow.hpp
   isVerificationFile: false
   path: math/DLP.hpp
   requiredBy: []
-  timestamp: '2023-02-24 00:27:24+09:00'
+  timestamp: '2023-02-28 13:51:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/math/Discrete Logarithm.test.cpp

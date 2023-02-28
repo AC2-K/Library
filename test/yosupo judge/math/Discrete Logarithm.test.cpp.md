@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -24,7 +24,7 @@ data:
     \ PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\n#line 1\
     \ \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i,\
     \ N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
-    \ __builtin_popcount(x)\nusing ll = long long;\n//using i128=__int128_t;\nusing\
+    \ __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\nusing\
     \ ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int, int>;\n\
     const int inf = 1e9;\nconst ll infl = 1e18;\nconst ld eps = 1e-6;\nconst long\
     \ double pi = acos(-1);\nconst ll MOD = 1e9 + 7;\nconst ll MOD2 = 998244353;\n\
@@ -46,7 +46,7 @@ data:
     \     (pr *= x) %= p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; i++) {\n\
     \        (pr *= xm) %= p;\n        if (mp.find(pr) != mp.end()) {\n          \
     \  int j = mp[pr];\n            return m * i - j + add;\n        }\n    }\n  \
-    \  return -1;\n}\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n#line\
+    \  return -1;\n}\n\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n#line\
     \ 4 \"test/yosupo judge/math/Discrete Logarithm.test.cpp\"\nint main() {\n   \
     \ ios::sync_with_stdio(false);\n    cin.tie(0);\n    int t;\n    cin>>t;\n   \
     \ while(t--){\n        int x,y,p;\n        cin>>x>>y>>p;\n        cout<<dlp(x,y,p)<<'\\\
@@ -62,7 +62,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/math/Discrete Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-02-24 00:27:24+09:00'
+  timestamp: '2023-02-28 13:51:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/math/Discrete Logarithm.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/fact.hpp
     title: "factorize(\u7D20\u56E0\u6570\u5206\u89E3)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -20,17 +20,17 @@ data:
   bundledCode: "#line 1 \"test/AOJ/NTL/1/A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_A\"\
     \n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
-    #define popcount(x) __builtin_popcount(x)\nusing ll = long long;\n//using i128=__int128_t;\n\
-    using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
-    \ int>;\nconst int inf = 1e9;\nconst ll infl = 1e18;\nconst ld eps = 1e-6;\nconst\
-    \ long double pi = acos(-1);\nconst ll MOD = 1e9 + 7;\nconst ll MOD2 = 998244353;\n\
-    const int dx[4] = { 1,0,-1,0 };\nconst int dy[4] = { 0,1,0,-1 };\ntemplate<class\
-    \ T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T\
-    \ y){if(x>y)x=y;}\n#line 1 \"math/fact.hpp\"\nvector<pair<ll, ll>> fact(ll n)\
-    \ {\n    vector<pair<ll, ll>> ret;\n    for (ll div = 2; div * div <= n; div++)\
-    \ {\n        if (n % div != 0)continue;\n        ll exp = 0;\n        while (n\
-    \ % div == 0) {\n            exp++;\n            n /= div;\n        }\n      \
-    \  ret.push_back(make_pair(div, exp));\n    }\n    if (n != 1)ret.push_back(make_pair(n,\
+    #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
+    \ long long;\nusing ld = long double;\nusing graph = vector<vector<int>>;\nusing\
+    \ P = pair<int, int>;\nconst int inf = 1e9;\nconst ll infl = 1e18;\nconst ld eps\
+    \ = 1e-6;\nconst long double pi = acos(-1);\nconst ll MOD = 1e9 + 7;\nconst ll\
+    \ MOD2 = 998244353;\nconst int dx[4] = { 1,0,-1,0 };\nconst int dy[4] = { 0,1,0,-1\
+    \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
+    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"math/fact.hpp\"\nvector<pair<ll,\
+    \ ll>> fact(ll n) {\n    vector<pair<ll, ll>> ret;\n    for (ll div = 2; div *\
+    \ div <= n; div++) {\n        if (n % div != 0)continue;\n        ll exp = 0;\n\
+    \        while (n % div == 0) {\n            exp++;\n            n /= div;\n \
+    \       }\n        ret.push_back(make_pair(div, exp));\n    }\n    if (n != 1)ret.push_back(make_pair(n,\
     \ 1));\n    return ret;\n}\n///@brief factorize(\u7D20\u56E0\u6570\u5206\u89E3\
     )\n#line 5 \"test/AOJ/NTL/1/A.test.cpp\"\nint main(){\n    int n;\n    cin>>n;\n\
     \    auto res=fact(n);\n    cout<<n<<':';\n    for(const auto&[p,e]:res){\n  \
@@ -47,7 +47,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/NTL/1/A.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 14:54:17+09:00'
+  timestamp: '2023-02-28 13:51:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/NTL/1/A.test.cpp

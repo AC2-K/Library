@@ -30,16 +30,16 @@ data:
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/dijkstra.hpp
       title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C\
         )"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/edge.hpp
       title: edge
     - icon: ':heavy_check_mark:'
@@ -197,8 +197,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
       title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/tree/Tree Diameter.test.cpp
       title: test/yosupo judge/tree/Tree Diameter.test.cpp
 layout: toppage
 ---
+AC2K のライブラリです。\
+バグってたらごめんなさい...[Twitter](https://twitter.com/ac2000_cp)とかに連絡いただけるととても助かります。

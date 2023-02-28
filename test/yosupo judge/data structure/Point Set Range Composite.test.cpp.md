@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/prime_mint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -24,7 +24,7 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
     \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
-    \ popcount(x) __builtin_popcount(x)\nusing ll = long long;\n//using i128=__int128_t;\n\
+    \ popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\n\
     using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
     \ int>;\nconst int inf = 1e9;\nconst ll infl = 1e18;\nconst ld eps = 1e-6;\nconst\
     \ long double pi = acos(-1);\nconst ll MOD = 1e9 + 7;\nconst ll MOD2 = 998244353;\n\
@@ -113,7 +113,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 14:54:17+09:00'
+  timestamp: '2023-02-28 13:51:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Point Set Range Composite.test.cpp

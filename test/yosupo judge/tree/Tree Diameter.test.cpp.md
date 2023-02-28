@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/dijkstra.hpp
     title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/edge.hpp
     title: edge
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
@@ -24,7 +24,7 @@ data:
     \ PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n#line 1 \"template.hpp\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
-    using ll = long long;\n//using i128=__int128_t;\nusing ld = long double;\nusing\
+    using i128=__int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = vector<vector<int>>;\nusing P = pair<int, int>;\nconst int inf = 1e9;\n\
     const ll infl = 1e18;\nconst ld eps = 1e-6;\nconst long double pi = acos(-1);\n\
     const ll MOD = 1e9 + 7;\nconst ll MOD2 = 998244353;\nconst int dx[4] = { 1,0,-1,0\
@@ -72,8 +72,8 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/tree/Tree Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 14:54:17+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-02-28 13:51:36+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo judge/tree/Tree Diameter.test.cpp
 layout: document

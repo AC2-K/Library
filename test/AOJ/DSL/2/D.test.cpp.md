@@ -5,7 +5,7 @@ data:
     path: data-structure/lazy_segtree.hpp
     title: "lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
       )"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -21,16 +21,16 @@ data:
   bundledCode: "#line 1 \"test/AOJ/DSL/2/D.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\"\
     \n\n#line 1 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
-    #define popcount(x) __builtin_popcount(x)\nusing ll = long long;\n//using i128=__int128_t;\n\
-    using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
-    \ int>;\nconst int inf = 1e9;\nconst ll infl = 1e18;\nconst ld eps = 1e-6;\nconst\
-    \ long double pi = acos(-1);\nconst ll MOD = 1e9 + 7;\nconst ll MOD2 = 998244353;\n\
-    const int dx[4] = { 1,0,-1,0 };\nconst int dy[4] = { 0,1,0,-1 };\ntemplate<class\
-    \ T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T\
-    \ y){if(x>y)x=y;}\n#line 1 \"data-structure/lazy_segtree.hpp\"\ntemplate<\n  \
-    \  class S, class F,\n    S(*op)(S, S), S(*e)(),\n    F(*comp)(F, F), F(*id)(),\n\
-    \    S(*mapping)(S, F)\n>\nclass lazy_segtree {\n    int sz;\n    vector<S> dat;\n\
-    \    vector<F> lz;\npublic:\n    lazy_segtree(int n) :lazy_segtree(vector<S>(n,\
+    #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
+    \ long long;\nusing ld = long double;\nusing graph = vector<vector<int>>;\nusing\
+    \ P = pair<int, int>;\nconst int inf = 1e9;\nconst ll infl = 1e18;\nconst ld eps\
+    \ = 1e-6;\nconst long double pi = acos(-1);\nconst ll MOD = 1e9 + 7;\nconst ll\
+    \ MOD2 = 998244353;\nconst int dx[4] = { 1,0,-1,0 };\nconst int dy[4] = { 0,1,0,-1\
+    \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
+    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/lazy_segtree.hpp\"\
+    \ntemplate<\n    class S, class F,\n    S(*op)(S, S), S(*e)(),\n    F(*comp)(F,\
+    \ F), F(*id)(),\n    S(*mapping)(S, F)\n>\nclass lazy_segtree {\n    int sz;\n\
+    \    vector<S> dat;\n    vector<F> lz;\npublic:\n    lazy_segtree(int n) :lazy_segtree(vector<S>(n,\
     \ e())) {    }\n    lazy_segtree(const vector<S>& a) :dat(4 * a.size(), e()),\
     \ lz(4 * a.size(), id()) {\n        int x = 1;\n        while (a.size() > x) {\n\
     \            x <<= 1;\n        }\n        sz = x;\n        for (int i = 0; i <\
@@ -84,7 +84,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2/D.test.cpp
   requiredBy: []
-  timestamp: '2023-02-23 14:54:17+09:00'
+  timestamp: '2023-02-28 13:51:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2/D.test.cpp

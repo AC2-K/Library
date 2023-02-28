@@ -8,32 +8,30 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: '#line 2 "debug.hpp"
-
-    #include<iostream>
-
+  bundledCode: '#line 1 "debug.hpp"
 
     #ifdef ONLINE_JUDGE
+
 
     #define debug(x) void(0)
 
     #else
+
+    #define _GLIBCXX_DEBUG
 
     #define debug(x) cerr << __LINE__ << " : " << #x << " = " << (x) << endl
 
     #endif
 
     '
-  code: '#pragma once
+  code: '#ifdef ONLINE_JUDGE
 
-    #include<iostream>
-
-
-    #ifdef ONLINE_JUDGE
 
     #define debug(x) void(0)
 
     #else
+
+    #define _GLIBCXX_DEBUG
 
     #define debug(x) cerr << __LINE__ << " : " << #x << " = " << (x) << endl
 
@@ -42,7 +40,7 @@ data:
   isVerificationFile: false
   path: debug.hpp
   requiredBy: []
-  timestamp: '2023-02-25 04:09:32+09:00'
+  timestamp: '2023-02-28 13:51:36+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: debug.hpp
