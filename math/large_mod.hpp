@@ -1,11 +1,11 @@
-inline long long mod(long long a, long long m) {
+inline long long safe_mod(long long a, long long m) {
     return (a % m + m) % m;
 }
 inline long long mul(long long a, long long b, long long m) {
-    a = mod(a, m); b = mod(b, m);
+    a = safe_mod(a, m); b = safe_mod(b, m);
     if (b == 0) return 0;
-    long long res = mul(mod(a + a, m), b>>1, m);
-    if (b & 1) res = mod(res + a, m);
+    long long res = mul(safe_mod(a + a, m), b>>1, m);
+    if (b & 1) res = safe_mod(res + a, m);
     return res;
 }
 template<typename T>
