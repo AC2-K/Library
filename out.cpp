@@ -116,17 +116,41 @@ public:
 		ull ret = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);
 		return ret < for_hash::mod ? ret : ret - for_hash::mod;
 	}
+	int size(){return str.size();}
 };
 
 ///@brief rolling hash
 #line 3 "main.cpp"
-int main() {
-	string t, p;
-	cin >> t >> p;
-	RollingHash hasht(t), hashp(p);
-	for (int i = 0; i + p.size() <= t.size(); i++) {
-		if (hasht.range(i, i + p.size()) == hashp.range(0,p.size())) {
-			cout << i << '\n';
-		}
-	}
+
+int main(){
+    int n;
+    cin>>n;
+    vector<RollingHash> s(n);
+    rep(i,n){
+        string si;
+        cin>>si;
+        s[i]=RollingHash(si);
+    }
+
+    unordered_map<int,unordered_map<ull,int>> prefixes;  //先頭i文字を並べまくったやつ
+    for(auto&h:s){
+        rep(len,h.size()+1){
+            prefixes[len][h.range(0,len)]++;
+        }
+    }
+ 
+    for(auto&hs:s){
+        int ng=hs.size()+1;
+        int ok=0;
+        while(abs(ok-ng)>1){
+            int mid=(ok+ng)/2;
+            if(prefixes[mid][hs.range(0,mid)]>=2){
+                ok=mid;
+            }else{
+                ng=mid;
+            }
+        }
+        cout<<ok<<endl;
+    }
+
 }

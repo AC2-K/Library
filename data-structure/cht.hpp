@@ -39,8 +39,13 @@ class CHT {
 
 public:
 	void add(T a,T b) {
-		ls.emplace(query_type ? -a : a, query_type ? -b : b);
-        const auto&ln=(query_type?line{-a,-b}:line{a,b});
+		if(query_type){
+			ls.emplace(-a,-b);
+		}else{
+			ls.emplace(a,b);
+		}
+
+        const line&ln=(query_type?line{-a,-b}:line{a,b});
         auto it=ls.find(ln);
 		if (!is_needed(it)) {
 			ls.erase(it);

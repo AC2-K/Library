@@ -68,9 +68,13 @@ public:
 		}
 	}
 	ull range(int l, int r) const {
-		ull ret = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);
-		return ret < for_hash::mod ? ret : ret - for_hash::mod;
+		ull res = for_hash::mod + hash[r] - mul(hash[l], pow[r - l]);
+		return res < for_hash::mod ? res : res - for_hash::mod;
 	}
+	ull get_all(){
+		return hash.back();
+	}
+	int size(){return str.size();}
 };
 
 ///@brief rolling hash
