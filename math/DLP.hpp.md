@@ -13,6 +13,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    _deprecated_at_docs: docs/math/DLP.md
     document_title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
     links: []
   bundledCode: "#line 1 \"math/mod_pow.hpp\"\nll mod_pow(ll base, ll exp, ll mod)\
@@ -31,7 +32,7 @@ data:
     \ *= x) %= p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; i++) {\n      \
     \  (pr *= xm) %= p;\n        if (mp.find(pr) != mp.end()) {\n            int j\
     \ = mp[pr];\n            return m * i - j + add;\n        }\n    }\n    return\
-    \ -1;\n}\n\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n"
+    \ -1;\n}\n\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n///@docs docs/math/DLP.md\n"
   code: "#pragma once\n#include\"math/mod_pow.hpp\"\n\nll dlp(ll x, ll y, ll p) {\n\
     \    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n  \
     \      if (y == 0) {\n            return 1;\n        }\n        else {\n     \
@@ -44,13 +45,13 @@ data:
     \ m; i++) {\n        (pr *= xm) %= p;\n        if (mp.find(pr) != mp.end()) {\n\
     \            int j = mp[pr];\n            return m * i - j + add;\n        }\n\
     \    }\n    return -1;\n}\n\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570\
-    )"
+    )\n///@docs docs/math/DLP.md"
   dependsOn:
   - math/mod_pow.hpp
   isVerificationFile: false
   path: math/DLP.hpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
+  timestamp: '2023-02-28 14:55:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/math/Discrete Logarithm.test.cpp
@@ -61,3 +62,16 @@ redirect_from:
 - /library/math/DLP.hpp.html
 title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
 ---
+## 概要
+$X,Y,P$に対して、$X^n\equiv Y (\text{mod} P)$なる最小の**非負整数**$n$を求めます。ただし、存在しない場合は$-1$をreturnします。
+
+## 使い方
+```cpp
+long long dlp(long long x,long long y,long long p)
+```
+$x^n\equiv y(\text{mod} p)$なる最小の非負整数$n$を返します。存在しなければ$-1$を返します。計算量は$O(\sqrt M)$
+## 制約
+- $0\leq x,y <p$
+- $x,y\in\mathbb{Z}$
+- $M\in\mathbb{N}$
+- $0^0=1$と定めている

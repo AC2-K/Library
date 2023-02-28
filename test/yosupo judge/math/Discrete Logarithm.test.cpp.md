@@ -46,11 +46,11 @@ data:
     \     (pr *= x) %= p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; i++) {\n\
     \        (pr *= xm) %= p;\n        if (mp.find(pr) != mp.end()) {\n          \
     \  int j = mp[pr];\n            return m * i - j + add;\n        }\n    }\n  \
-    \  return -1;\n}\n\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n#line\
-    \ 4 \"test/yosupo judge/math/Discrete Logarithm.test.cpp\"\nint main() {\n   \
-    \ ios::sync_with_stdio(false);\n    cin.tie(0);\n    int t;\n    cin>>t;\n   \
-    \ while(t--){\n        int x,y,p;\n        cin>>x>>y>>p;\n        cout<<dlp(x,y,p)<<'\\\
-    n';\n    }\n}\n"
+    \  return -1;\n}\n\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n///@docs\
+    \ docs/math/DLP.md\n#line 4 \"test/yosupo judge/math/Discrete Logarithm.test.cpp\"\
+    \nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n    int t;\n\
+    \    cin>>t;\n    while(t--){\n        int x,y,p;\n        cin>>x>>y>>p;\n   \
+    \     cout<<dlp(x,y,p)<<'\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\
     \n#include\"template.hpp\"\n#include\"math/DLP.hpp\"\nint main() {\n    ios::sync_with_stdio(false);\n\
     \    cin.tie(0);\n    int t;\n    cin>>t;\n    while(t--){\n        int x,y,p;\n\
@@ -62,7 +62,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/math/Discrete Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
+  timestamp: '2023-02-28 14:55:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/math/Discrete Logarithm.test.cpp

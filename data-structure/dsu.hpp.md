@@ -85,7 +85,7 @@ bool same(int x,int y)
 ```cpp
 bool merge(int x,int y)
 ```
-頂点$x,y$の間に無向辺を張ります。ただし、すでに無向辺が張られていた場合は`false`を返して終了します。計算量は$O(\alpha(n))$\
+頂点$x,y$の間に無向辺を張ります。ただし、すでに無向辺が張られていた場合は`false`を返して終了します。計算量は$O(\alpha(n))$
 
 ```cpp
 int size(int x)
