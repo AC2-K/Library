@@ -5,7 +5,7 @@ $X,Y,P$に対して、$X^n\equiv Y (\text{mod} P)$なる最小の**非負整数*
 ```cpp
 long long dlp(long long x,long long y,long long p)
 ```
-$x^n\equiv y(\text{mod} p)$なる最小の非負整数$n$を返します。存在しなければ$-1$を返します。
+$x^n\equiv y(\text{mod} p)$なる最小の非負整数$n$を返します。存在しなければ$-1$を返します。計算量は$O(\sqrt M)$
 ## 制約
 - $0\leq x,y <p$
 - $x,y\in\mathbb{Z}$
