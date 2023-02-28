@@ -40,3 +40,4 @@ ll dlp(ll x, ll y, ll p) {
 }
 
 ///@brief Discrete Logarithm(離散対数)
+///@docs docs/math/DLP.md
