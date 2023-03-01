@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/fast_fact.hpp
     title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/fast_prime_check.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/large_mod.hpp
     title: math/large_mod.hpp
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/prime_list.hpp
     title: "\u7D20\u6570\u8868"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -38,12 +38,11 @@ data:
     \ = 1e-6;\nconst long double pi = acos(-1);\nconst ll MOD = 1e9 + 7;\nconst ll\
     \ MOD2 = 998244353;\nconst int dx[4] = { 1,0,-1,0 };\nconst int dy[4] = { 0,1,0,-1\
     \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
-    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"math/large_mod.hpp\"\n\
-    inline unsigned long long safe_mod(unsigned long long a, unsigned long long m)\
-    \ {\n    return (a % m + m) % m;\n}\nunsigned long long mul(unsigned long long\
-    \ a, unsigned long long b, unsigned long long m) {\n    a = safe_mod(a, m);\n\
-    \    b = safe_mod(b, m);\n    if (b == 0) return 0;\n    unsigned long long res\
-    \ = mul(safe_mod(a + a, m), b >> 1, m);\n    if (b & 1){\n        res = safe_mod(res\
+    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 2 \"math/large_mod.hpp\"\n\
+    inline long long safe_mod(long long a, long long m){\n    return (a % m + m) %\
+    \ m;\n}\nlong long mul(long long a, long long b, long long m) {\n    a = safe_mod(a,\
+    \ m);\n    b = safe_mod(b, m);\n    if (b == 0) return 0;\n    long long res =\
+    \ mul(safe_mod(a + a, m), b >> 1, m);\n    if (b & 1){\n        res = safe_mod(res\
     \ + a, m);\n    }\n    return res;\n}\ntemplate<typename T>\nT large_modpow(T\
     \ base,T exp,T mod){\n    T ans = 1 % mod;\n    base %= mod;\n    while (exp)\
     \ {\n        if (exp & 1) {\n            ans = mul(ans, base, mod);\n        }\n\
@@ -82,7 +81,7 @@ data:
     \ if (~n & 1uL){\n            return false;\n        }\n\n        \n        if\
     \ (n <= (1uL << 31)){\n            return is_prime_int(n);\n        }\n      \
     \  else{\n            return is_prime_long(n);\n        }\n    }\n};\n///@brief\
-    \ fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)\n#line 1 \"\
+    \ fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)\n#line 2 \"\
     math/prime_list.hpp\"\n//1000\u4EE5\u4E0B\u306E\u7D20\u6570\nconstexpr int prime_list1000[]\
     \ = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,\
     \ 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157,\
@@ -135,7 +134,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/NTL/1/D.test.cpp
   requiredBy: []
-  timestamp: '2023-03-01 17:10:18+09:00'
+  timestamp: '2023-03-01 17:28:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/NTL/1/D.test.cpp

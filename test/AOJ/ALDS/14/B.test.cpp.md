@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/large_mod.hpp
     title: math/large_mod.hpp
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: rolling hash
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -29,12 +29,11 @@ data:
     \ = 1e-6;\nconst long double pi = acos(-1);\nconst ll MOD = 1e9 + 7;\nconst ll\
     \ MOD2 = 998244353;\nconst int dx[4] = { 1,0,-1,0 };\nconst int dy[4] = { 0,1,0,-1\
     \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
-    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"math/large_mod.hpp\"\n\
-    inline unsigned long long safe_mod(unsigned long long a, unsigned long long m)\
-    \ {\n    return (a % m + m) % m;\n}\nunsigned long long mul(unsigned long long\
-    \ a, unsigned long long b, unsigned long long m) {\n    a = safe_mod(a, m);\n\
-    \    b = safe_mod(b, m);\n    if (b == 0) return 0;\n    unsigned long long res\
-    \ = mul(safe_mod(a + a, m), b >> 1, m);\n    if (b & 1){\n        res = safe_mod(res\
+    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 2 \"math/large_mod.hpp\"\n\
+    inline long long safe_mod(long long a, long long m){\n    return (a % m + m) %\
+    \ m;\n}\nlong long mul(long long a, long long b, long long m) {\n    a = safe_mod(a,\
+    \ m);\n    b = safe_mod(b, m);\n    if (b == 0) return 0;\n    long long res =\
+    \ mul(safe_mod(a + a, m), b >> 1, m);\n    if (b & 1){\n        res = safe_mod(res\
     \ + a, m);\n    }\n    return res;\n}\ntemplate<typename T>\nT large_modpow(T\
     \ base,T exp,T mod){\n    T ans = 1 % mod;\n    base %= mod;\n    while (exp)\
     \ {\n        if (exp & 1) {\n            ans = mul(ans, base, mod);\n        }\n\
@@ -84,7 +83,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/ALDS/14/B.test.cpp
   requiredBy: []
-  timestamp: '2023-03-01 17:03:56+09:00'
+  timestamp: '2023-03-01 17:28:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/ALDS/14/B.test.cpp
