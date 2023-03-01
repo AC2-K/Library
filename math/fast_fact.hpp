@@ -1,75 +1,77 @@
 #pragma once
 #include"math/fast_prime_check.hpp"
-class Rho{
-    using i128=__int128_t;
-    mt19937 mt;
-    MillerRabin mr;
-    long long c;
-    ll f(i128 x,ll n){
-        x%=n;
-        return (x*x%n+c)%n;
-    }
-public:
-    Rho(){
-        mt.seed(clock());
-    }
-private:
+#include"math/prime_list.hpp"
+namespace prime
+{
+    using ull = unsigned long long;
+    // Rho factorize
+    
     ll find_factor(ll n){
-        if(n==4){
+        static ull v = 7001;
+        v ^= v << 13, v ^= v >> 7, v ^= v << 17;
+        /*
+        if (n == 4){
             return 2;
         }
-        c=mt()%n;
-        ll x=mt()%n;
+        */
+
+        if (~n & 1uL){
+            return 2;
+        }
+        static ull c=v;
+        auto f = [&](i128 x) -> ll {
+            x %= n;
+            return (x * x % n + c) % n;
+        };
+        ll x = v % n;
         ll y=x;
         ll d=1;
 
-        while(d==1){
-            x=f(x,n);
-            y=f(f(y,n),n);
-            d=__gcd(abs(x-y),n);
+        while (d == 1){
+            x = f(x);
+            y = f(f(y));
+            d = __gcd(abs(x - y), n);
         }
 
-        if(d==n){
+        if (d == n){
             return -1;
         }
         return d;
     }
-
-
-    vector<ll> rho_fact(const ll&n){
-        if(n<2){
+    vector<ll> rho_fact(ll&n){
+        if (n < 2){
             return {};
         }
-        if(mr.is_prime(n)){
-            return{n};
+        if(is_prime(n)){
+            return {n};
         }
         ll d=-1;
-        while(d==-1){
+        while (d == -1){
             d=find_factor(n);
         }
-        vector<ll> v1=fact(d);
-        vector<ll> v2=fact(n/d);
-        v1.insert(v1.end(),v2.begin(),v2.end());
+        n /= d;
+        vector<ll> v1 = rho_fact(n);
+        vector<ll> v2 = rho_fact(d);
+        v1.insert(v1.end(), v2.begin(), v2.end());
         return v1;
     }
-    vector<ll> naive_fact(ll n){
-        vector<ll> ret;
-        for (ll div = 2; div * div <= n; div++) {
-            if (n % div != 0)continue;
-            ll exp = 0;
-            while (n % div == 0) {
-                ret.push_back(div);
-                n /= div;
+
+    vector<ll> naive_fact(ll&n){
+        vector<ll> res;
+        
+        for (const ll d :prime_list1000){
+            while (n % d == 0){
+                res.push_back(d);
+                n /= d;
             }
         }
-        if (n != 1)ret.push_back(n);
-        return ret;
+        return res;
     }
 
-public:
-    vector<ll> fact(const ll n){
-        vector<ll> res;
-        res=rho_fact(n);
+    vector<ll> fact(ll n){
+        vector<ll> res = naive_fact(n);
+        vector<ll> res2=rho_fact(n);
+        res.insert(res.end(), all(res2));
         sort(all(res));
         return res;
     }

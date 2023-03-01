@@ -1,9 +1,7 @@
 #pragma once
 #include"math/large_mod.hpp"
-using ull = uint_fast64_t;
-
-
 namespace for_hash {
+	using ull = uint_fast64_t;
 	constexpr ull mapping_max = (ull)'Z';
 	ull base = -1;	//baseをランダムにとる
 	constexpr ull mod = (1uL << 61) - 1;
@@ -24,6 +22,7 @@ namespace for_hash {
 };
 
 class RollingHash {
+	using ull = uint_fast64_t;
 	using i128 = __int128_t;	//変えましょうね~
 	static constexpr ull msk30 = (1ul << 30) - 1;
 	static constexpr ull msk61 = (1ul << 31) - 1;
