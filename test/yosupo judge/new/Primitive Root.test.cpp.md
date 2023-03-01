@@ -133,17 +133,17 @@ data:
     \ res2=rho_fact(n);\n        res.insert(res.end(), all(res2));\n        sort(all(res));\n\
     \        return res;\n    }\n};\n///@brief fast factorize(Pollard Rho\u306E\u7D20\
     \u56E0\u6570\u5206\u89E3)\n#line 4 \"math/primitive_root.hpp\"\nll primitive_root(ll\
-    \ p){\n    Rho rho;\n    if(p == 2) return 1;\n    auto pf = prime::fact(p - 1);\n\
-    \    pf.erase(unique(all(pf)),pf.end());\n    for(auto&q:pf){\n        q=(p-1)/q;\n\
-    \    }\n    using ull = unsigned long long;\n    static ull rnd = 7001;\n    while(1){\n\
-    \        rnd^=rnd<<13; rnd^=rnd>>7; rnd^=rnd<<17;\n        ll g = (ull)rnd%p;\n\
-    \        if(g == 0) continue;\n        bool is_ok = true;\n        for(ll q :\
-    \ pf){\n            if(large_modpow(g,q,p) == 1){ \n                is_ok = false;\
-    \ \n                break; \n            }\n        }\n        if(is_ok){\n  \
-    \          return g;\n        }\n    }\n}\n\n//@brief primitive root(\u539F\u59CB\
-    \u6839)\n#line 5 \"test/yosupo judge/new/Primitive Root.test.cpp\"\nint main(){\n\
-    \    int q;\n    cin>>q;\n    while (q--){\n        ll p;\n        cin>>p;\n \
-    \       ll ans=primitive_root(p);\n        cout<<ans<<'\\n';\n    }\n}\n"
+    \ p){\n    if(p == 2) return 1;\n    auto pf = prime::fact(p - 1);\n    pf.erase(unique(all(pf)),pf.end());\n\
+    \    for(auto&q:pf){\n        q=(p-1)/q;\n    }\n    using ull = unsigned long\
+    \ long;\n    static ull rnd = 7001;\n    while(1){\n        rnd^=rnd<<13; rnd^=rnd>>7;\
+    \ rnd^=rnd<<17;\n        ll g = (ull)rnd%p;\n        if(g == 0) continue;\n  \
+    \      bool is_ok = true;\n        for(ll q : pf){\n            if(large_modpow(g,q,p)\
+    \ == 1){ \n                is_ok = false; \n                break; \n        \
+    \    }\n        }\n        if(is_ok){\n            return g;\n        }\n    }\n\
+    }\n\n//@brief primitive root(\u539F\u59CB\u6839)\n#line 5 \"test/yosupo judge/new/Primitive\
+    \ Root.test.cpp\"\nint main(){\n    int q;\n    cin>>q;\n    while (q--){\n  \
+    \      ll p;\n        cin>>p;\n        ll ans=primitive_root(p);\n        cout<<ans<<'\\\
+    n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n\n#include\"\
     template.hpp\"\n#include\"math/primitive_root.hpp\"\nint main(){\n    int q;\n\
     \    cin>>q;\n    while (q--){\n        ll p;\n        cin>>p;\n        ll ans=primitive_root(p);\n\
@@ -159,7 +159,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/new/Primitive Root.test.cpp
   requiredBy: []
-  timestamp: '2023-03-01 17:03:56+09:00'
+  timestamp: '2023-03-01 17:07:37+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo judge/new/Primitive Root.test.cpp
