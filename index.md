@@ -25,6 +25,9 @@ data:
       path: debug.hpp
       title: debug.hpp
     - icon: ':warning:'
+      path: main.cpp
+      title: main.cpp
+    - icon: ':warning:'
       path: out.cpp
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
     - icon: ':warning:'
@@ -101,11 +104,6 @@ data:
       path: test/AOJ/GRL/5/C.cpp
       title: test/AOJ/GRL/5/C.cpp
   verificationCategories:
-  - name: .
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: main.test.cpp
-      title: main.test.cpp
   - name: test/AOJ/ALDS/1
     pages:
     - icon: ':heavy_check_mark:'

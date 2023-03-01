@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/fast_fact.hpp
     title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
@@ -18,9 +21,6 @@ data:
     path: string/rolling_hash.hpp
     title: rolling hash
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: main.test.cpp
-    title: main.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/14/B.test.cpp
     title: test/AOJ/ALDS/14/B.test.cpp
@@ -72,11 +72,11 @@ data:
   - math/fast_prime_check.hpp
   - math/phi_function.hpp
   - math/primitive_root.hpp
+  - main.cpp
   - string/rolling_hash.hpp
   timestamp: '2023-03-01 17:28:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - main.test.cpp
   - test/yosupo judge/math/Factorize.test.cpp
   - test/yosupo judge/new/Primitive Root.test.cpp
   - test/AOJ/ALDS/14/B.test.cpp

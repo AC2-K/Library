@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
+  - icon: ':warning:'
     path: test/AOJ/GRL/5/C.cpp
     title: test/AOJ/GRL/5/C.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: main.test.cpp
-    title: main.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/1/C.test.cpp
     title: test/AOJ/ALDS/1/C.test.cpp
@@ -177,11 +177,11 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
+  - main.cpp
   - test/AOJ/GRL/5/C.cpp
   timestamp: '2023-02-28 20:50:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - main.test.cpp
   - test/yosupo judge/math/Discrete Logarithm.test.cpp
   - test/yosupo judge/math/Factorize.test.cpp
   - test/yosupo judge/graph/Shortest Path.test.cpp
