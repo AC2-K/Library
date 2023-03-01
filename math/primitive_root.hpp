@@ -2,7 +2,6 @@
 #include"math/large_mod.hpp"
 #include"math/fast_fact.hpp"
 ll primitive_root(ll p){
-    Rho rho;
     if(p == 2) return 1;
     auto pf = prime::fact(p - 1);
     pf.erase(unique(all(pf)),pf.end());
