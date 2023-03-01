@@ -148,7 +148,7 @@ data:
   - math/phi_function.hpp
   - math/primitive_root.hpp
   - main.cpp
-  timestamp: '2023-03-01 17:03:56+09:00'
+  timestamp: '2023-03-01 17:10:18+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/math/Factorize.test.cpp

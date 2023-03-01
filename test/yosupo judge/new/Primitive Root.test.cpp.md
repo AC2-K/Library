@@ -11,9 +11,6 @@ data:
     path: math/large_mod.hpp
     title: math/large_mod.hpp
   - icon: ':question:'
-    path: math/large_mod.hpp
-    title: math/large_mod.hpp
-  - icon: ':question:'
     path: math/prime_list.hpp
     title: "\u7D20\u6570\u8868"
   - icon: ':x:'
@@ -154,12 +151,11 @@ data:
   - math/large_mod.hpp
   - math/fast_fact.hpp
   - math/fast_prime_check.hpp
-  - math/large_mod.hpp
   - math/prime_list.hpp
   isVerificationFile: true
   path: test/yosupo judge/new/Primitive Root.test.cpp
   requiredBy: []
-  timestamp: '2023-03-01 17:07:37+09:00'
+  timestamp: '2023-03-01 17:10:18+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo judge/new/Primitive Root.test.cpp

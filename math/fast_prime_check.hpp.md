@@ -78,9 +78,9 @@ data:
     \ (n <= (1uL << 31)){\n            return is_prime_int(n);\n        }\n      \
     \  else{\n            return is_prime_long(n);\n        }\n    }\n};\n///@brief\
     \ fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)\n"
-  code: "#pragma once\n#include \"large_mod.hpp\"\n\nnamespace prime\n{\n    using\
-    \ ull = unsigned long long;\n    // MillerRabin\n    bool is_prime_long(ull n){\n\
-    \        static const vector<ull> bases \n            = {2ull, 325ull, 9375ull,\
+  code: "#pragma once\n#include \"math/large_mod.hpp\"\n\nnamespace prime\n{\n   \
+    \ using ull = unsigned long long;\n    // MillerRabin\n    bool is_prime_long(ull\
+    \ n){\n        static const vector<ull> bases \n            = {2ull, 325ull, 9375ull,\
     \ 28178ull, 450775ull, 9780504ull, 1795265022ull};\n\n        ull d = n ^ 1uL;\n\
     \        ull q = __builtin_ctz(d);\n        d >>= q;\n\n        for (const auto\
     \ &a : bases){\n            if (a == n){\n                return true;\n     \
@@ -118,7 +118,7 @@ data:
   - math/phi_function.hpp
   - math/primitive_root.hpp
   - main.cpp
-  timestamp: '2023-03-01 17:03:56+09:00'
+  timestamp: '2023-03-01 17:10:18+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/math/Factorize.test.cpp

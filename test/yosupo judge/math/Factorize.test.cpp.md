@@ -134,7 +134,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-03-01 17:03:56+09:00'
+  timestamp: '2023-03-01 17:10:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/math/Factorize.test.cpp

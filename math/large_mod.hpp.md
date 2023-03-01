@@ -17,9 +17,6 @@ data:
   - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':x:'
-    path: math/primitive_root.hpp
-    title: "primitive root(\u539F\u59CB\u6839)"
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: rolling hash
@@ -33,9 +30,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/math/Factorize.test.cpp
     title: test/yosupo judge/math/Factorize.test.cpp
-  - icon: ':x:'
-    path: test/yosupo judge/new/Primitive Root.test.cpp
-    title: test/yosupo judge/new/Primitive Root.test.cpp
   - icon: ':x:'
     path: test/yosupo judge/new/Primitive Root.test.cpp
     title: test/yosupo judge/new/Primitive Root.test.cpp
@@ -80,14 +74,12 @@ data:
   - math/fast_prime_check.hpp
   - math/phi_function.hpp
   - math/primitive_root.hpp
-  - math/primitive_root.hpp
   - main.cpp
   - string/rolling_hash.hpp
   timestamp: '2023-03-01 17:03:56+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/math/Factorize.test.cpp
-  - test/yosupo judge/new/Primitive Root.test.cpp
   - test/yosupo judge/new/Primitive Root.test.cpp
   - test/AOJ/ALDS/14/B.test.cpp
   - test/AOJ/NTL/1/D.test.cpp
