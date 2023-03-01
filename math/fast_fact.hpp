@@ -5,73 +5,77 @@ namespace prime
 {
     using ull = unsigned long long;
     // Rho factorize
-    
-    ll find_factor(ll n){
+
+    ull find_factor(ull& n) {
+        if (is_prime(n)) {
+            return n;
+        }
         static ull v = 7001;
         v ^= v << 13, v ^= v >> 7, v ^= v << 17;
-        /*
-        if (n == 4){
-            return 2;
-        }
-        */
 
-        if (~n & 1uL){
+        if (~n & 1uL) {
             return 2;
         }
-        static ull c=v;
-        auto f = [&](i128 x) -> ll {
-            x %= n;
-            return (x * x % n + c) % n;
+        static ull c = v;
+        auto f = [&](i128 xx) -> ll {
+            xx %= n;
+            return (xx * xx % n + c) % n;
         };
         ll x = v % n;
-        ll y=x;
-        ll d=1;
+        ll y = x;
+        ull d = 1;
 
-        while (d == 1){
+        while (d == 1) {
             x = f(x);
             y = f(f(y));
-            d = __gcd(abs(x - y), n);
+            d = gcd(abs(x - y), n);
         }
 
-        if (d == n){
-            return -1;
+        if (d == n) {
+            return 0;
         }
         return d;
     }
-    vector<ll> rho_fact(ll&n){
-        if (n < 2){
+    vector<ull> rho_fact(ull& n) {
+        if (n < 2) {
             return {};
         }
-        if(is_prime(n)){
-            return {n};
+        if (is_prime(n)) {
+
         }
-        ll d=-1;
-        while (d == -1){
-            d=find_factor(n);
+        vector<ull> res;
+        while (n != 1) {
+            ull d = 0;
+            while (d == 0) {
+                d = find_factor(n);
+            }
+            while (n % d == 0) {
+                res.emplace_back(d);
+                n /= d;
+            }
         }
-        n /= d;
-        vector<ll> v1 = rho_fact(n);
-        vector<ll> v2 = rho_fact(d);
-        v1.insert(v1.end(), v2.begin(), v2.end());
-        return v1;
+
+        return res;
     }
 
-    vector<ll> naive_fact(ll&n){
-        vector<ll> res;
-        
-        for (const ll d :prime_list1000){
-            while (n % d == 0){
-                res.push_back(d);
+    vector<ull> naive_fact(ull& n) {
+        vector<ull> res;
+
+        for (const ull& d : small_prime) {
+            while (n % d == 0) {
+                res.emplace_back(d);
                 n /= d;
             }
         }
         return res;
     }
 
-    vector<ll> fact(ll n){
-        vector<ll> res = naive_fact(n);
-        vector<ll> res2=rho_fact(n);
-        res.insert(res.end(), all(res2));
+    vector<ull> fact(ull n) {
+        vector<ull> res = naive_fact(n);
+        if (n != 1) {
+            vector<ull> res2 = rho_fact(n);
+            res.insert(res.end(), all(res2));
+        }
         sort(all(res));
         return res;
     }
