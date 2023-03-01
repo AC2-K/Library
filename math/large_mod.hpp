@@ -1,11 +1,11 @@
-inline unsigned long long safe_mod(unsigned long long a, unsigned long long m) {
+inline long long safe_mod(long long a, long long m){
     return (a % m + m) % m;
 }
-unsigned long long mul(unsigned long long a, unsigned long long b, unsigned long long m) {
+long long mul(long long a, long long b, long long m) {
     a = safe_mod(a, m);
     b = safe_mod(b, m);
     if (b == 0) return 0;
-    unsigned long long res = mul(safe_mod(a + a, m), b >> 1, m);
+    long long res = mul(safe_mod(a + a, m), b >> 1, m);
     if (b & 1){
         res = safe_mod(res + a, m);
     }
