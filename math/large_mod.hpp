@@ -1,3 +1,4 @@
+#pragma once
 inline long long safe_mod(long long a, long long m){
     return (a % m + m) % m;
 }

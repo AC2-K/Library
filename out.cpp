@@ -1,6 +1,5 @@
 #line 1 "main.test.cpp"
-#define PROBLEM "https://judge.yosupo.jp/problem/factorize"
-
+#define PROBLEM "https://judge.yosupo.jp/problem/primitive_root"
 #line 2 "template.hpp"
 #include<bits/stdc++.h>
 using namespace std;
@@ -22,15 +21,15 @@ const int dx[4] = { 1,0,-1,0 };
 const int dy[4] = { 0,1,0,-1 };
 template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
 template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
-#line 1 "math/large_mod.hpp"
-inline unsigned long long safe_mod(unsigned long long a, unsigned long long m) {
+#line 2 "math/large_mod.hpp"
+inline long long safe_mod(long long a, long long m){
     return (a % m + m) % m;
 }
-unsigned long long mul(unsigned long long a, unsigned long long b, unsigned long long m) {
+long long mul(long long a, long long b, long long m) {
     a = safe_mod(a, m);
     b = safe_mod(b, m);
     if (b == 0) return 0;
-    unsigned long long res = mul(safe_mod(a + a, m), b >> 1, m);
+    long long res = mul(safe_mod(a + a, m), b >> 1, m);
     if (b & 1){
         res = safe_mod(res + a, m);
     }
@@ -158,7 +157,7 @@ namespace prime
     }
 };
 ///@brief fast prime check(MillerRabinの素数判定法)
-#line 1 "math/prime_list.hpp"
+#line 2 "math/prime_list.hpp"
 //1000以下の素数
 constexpr int prime_list1000[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997};
 ///@brief 素数表
@@ -200,32 +199,26 @@ namespace prime
         }
         return d;
     }
-    vector<ull> rho_fact(ull&n){
+    vector<ll> rho_fact(ll&n){
         if (n < 2){
             return {};
         }
         if(is_prime(n)){
             return {n};
         }
-        vector<ull> res;
-        while (n != 1){
-
-            ull d=-1;
-            while (d == -1){
-                d=find_factor(n);
-            }
-
-            while (n % d == 0){
-                res.emplace_back(d);
-                n /= d;
-            }
+        ll d=-1;
+        while (d == -1){
+            d=find_factor(n);
         }
-
-        return res;
+        n /= d;
+        vector<ll> v1 = rho_fact(n);
+        vector<ll> v2 = rho_fact(d);
+        v1.insert(v1.end(), v2.begin(), v2.end());
+        return v1;
     }
 
-    vector<ull> naive_fact(ull&n){
-        vector<ull> res;
+    vector<ll> naive_fact(ll&n){
+        vector<ll> res;
         
         for (const ll d :prime_list1000){
             while (n % d == 0){
@@ -236,30 +229,51 @@ namespace prime
         return res;
     }
 
-    vector<ull> fact(ull n){
-        vector<ull> res = naive_fact(n);
-        vector<ull> res2=rho_fact(n);
+    vector<ll> fact(ll n){
+        vector<ll> res = naive_fact(n);
+        vector<ll> res2=rho_fact(n);
         res.insert(res.end(), all(res2));
         sort(all(res));
         return res;
     }
 };
 ///@brief fast factorize(Pollard Rhoの素因数分解)
-#line 5 "main.test.cpp"
-int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    int q;
-    scanf("%d",&q);
-
-    while(q--){
-        ll a;
-        scanf("%lld", &a);
-        auto pf = prime::fact(a);
-        cout << pf.size() << ' ';
-        for (auto &p : pf){
-            cout << p << ' ';
+#line 4 "math/primitive_root.hpp"
+ll primitive_root(ll p){
+    if(p == 2) return 1;
+    auto pf = prime::fact(p - 1);
+    pf.erase(unique(all(pf)),pf.end());
+    for(auto&q:pf){
+        q=(p-1)/q;
+    }
+    using ull = unsigned long long;
+    static ull rnd = 7001;
+    while(1){
+        rnd^=rnd<<13; rnd^=rnd>>7; rnd^=rnd<<17;
+        ll g = (ull)rnd%p;
+        if(g == 0) continue;
+        bool is_ok = true;
+        for(ll q : pf){
+            if(large_modpow(g,q,p) == 1){ 
+                is_ok = false; 
+                break; 
+            }
         }
-        cout << '\n';
+        if(is_ok){
+            return g;
+        }
+    }
+}
+
+//@brief primitive root(原始根)
+#line 4 "main.test.cpp"
+int main(){
+    int q;
+    cin>>q;
+    while (q--){
+        ll p;
+        cin>>p;
+        ll ans=primitive_root(p);
+        cout<<ans<<'\n';
     }
 }
