@@ -1,5 +1,5 @@
 #pragma once
-#include "large_mod.hpp"
+#include "math/large_mod.hpp"
 
 namespace prime
 {
