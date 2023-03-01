@@ -29,11 +29,11 @@ data:
       title: main.cpp
     - icon: ':warning:'
       path: out.cpp
-      title: rolling hash
+      title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -66,13 +66,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/fact.hpp
       title: "factorize(\u7D20\u56E0\u6570\u5206\u89E3)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/fast_fact.hpp
       title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/fast_prime_check.hpp
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/large_mod.hpp
       title: math/large_mod.hpp
     - icon: ':heavy_check_mark:'
@@ -84,10 +84,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/prime_check.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
+    - icon: ':question:'
+      path: math/prime_list.hpp
+      title: "\u7D20\u6570\u8868"
     - icon: ':heavy_check_mark:'
       path: math/prime_mint.hpp
       title: modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
   - name: string
@@ -192,7 +195,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
       title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/new/Primitive Root.test.cpp
       title: test/yosupo judge/new/Primitive Root.test.cpp
   - name: test/yosupo judge/tree

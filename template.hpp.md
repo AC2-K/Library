@@ -70,9 +70,12 @@ data:
     path: test/yosupo judge/math/Discrete Logarithm.test.cpp
     title: test/yosupo judge/math/Discrete Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo judge/math/Factorize.test.cpp
+    title: test/yosupo judge/math/Factorize.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Primitive Root.test.cpp
     title: test/yosupo judge/new/Primitive Root.test.cpp
   - icon: ':heavy_check_mark:'
@@ -81,9 +84,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/tree/Tree Diameter.test.cpp
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -177,9 +180,10 @@ data:
   - main.cpp
   - test/AOJ/GRL/5/C.cpp
   timestamp: '2023-02-28 20:50:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/math/Discrete Logarithm.test.cpp
+  - test/yosupo judge/math/Factorize.test.cpp
   - test/yosupo judge/graph/Shortest Path.test.cpp
   - test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
   - test/yosupo judge/tree/Tree Diameter.test.cpp
