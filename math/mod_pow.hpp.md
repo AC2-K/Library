@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':x:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
@@ -10,7 +13,7 @@ data:
     title: math/fast_fact.hpp
   - icon: ':x:'
     path: math/fast_prime_check.hpp
-    title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
+    title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
   - icon: ':x:'
     path: math/phi_function.hpp
     title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
@@ -21,9 +24,6 @@ data:
     path: sub.cpp
     title: sub.cpp
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: main.test.cpp
-    title: main.test.cpp
   - icon: ':x:'
     path: test/AOJ/NTL/1/B.test.cpp
     title: test/AOJ/NTL/1/B.test.cpp
@@ -66,10 +66,10 @@ data:
   - math/phi_function.hpp
   - math/primitive_root.hpp
   - sub.cpp
+  - main.cpp
   timestamp: '2023-03-05 17:21:38+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - main.test.cpp
   - test/yosupo judge/math/Discrete Logarithm.test.cpp
   - test/yosupo judge/math/Factorize.test.cpp
   - test/yosupo judge/new/Primitive Root.test.cpp

@@ -25,6 +25,9 @@ data:
       path: debug.hpp
       title: debug.hpp
     - icon: ':warning:'
+      path: main.cpp
+      title: main.cpp
+    - icon: ':warning:'
       path: out.cpp
       title: Montgomery
     - icon: ':warning:'
@@ -71,14 +74,14 @@ data:
       title: math/fast_fact.hpp
     - icon: ':x:'
       path: math/fast_prime_check.hpp
-      title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
+      title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
     - icon: ':x:'
       path: math/large_mod.hpp
       title: math/large_mod.hpp
     - icon: ':x:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-    - icon: ':x:'
+    - icon: ':warning:'
       path: math/montgomery.hpp
       title: Montgomery
     - icon: ':x:'
@@ -104,11 +107,6 @@ data:
       path: test/AOJ/GRL/5/C.cpp
       title: test/AOJ/GRL/5/C.cpp
   verificationCategories:
-  - name: .
-    pages:
-    - icon: ':x:'
-      path: main.test.cpp
-      title: main.test.cpp
   - name: test/AOJ/ALDS/1
     pages:
     - icon: ':x:'

@@ -1,38 +1,11 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':x:'
-    path: math/fast_fact.hpp
-    title: math/fast_fact.hpp
-  - icon: ':x:'
-    path: math/fast_prime_check.hpp
-    title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
-  - icon: ':x:'
-    path: math/phi_function.hpp
-    title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-  - icon: ':x:'
-    path: math/primitive_root.hpp
-    title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':warning:'
-    path: sub.cpp
-    title: sub.cpp
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: main.test.cpp
-    title: main.test.cpp
-  - icon: ':x:'
-    path: test/AOJ/NTL/1/D.test.cpp
-    title: test/AOJ/NTL/1/D.test.cpp
-  - icon: ':x:'
-    path: test/yosupo judge/math/Factorize.test.cpp
-    title: test/yosupo judge/math/Factorize.test.cpp
-  - icon: ':x:'
-    path: test/yosupo judge/new/Primitive Root.test.cpp
-    title: test/yosupo judge/new/Primitive Root.test.cpp
-  _isVerificationFailed: true
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     document_title: Montgomery
     links:
@@ -181,19 +154,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/montgomery.hpp
-  requiredBy:
-  - math/fast_fact.hpp
-  - math/fast_prime_check.hpp
-  - math/phi_function.hpp
-  - math/primitive_root.hpp
-  - sub.cpp
+  requiredBy: []
   timestamp: '2023-03-05 17:21:38+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - main.test.cpp
-  - test/yosupo judge/math/Factorize.test.cpp
-  - test/yosupo judge/new/Primitive Root.test.cpp
-  - test/AOJ/NTL/1/D.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: math/montgomery.hpp
 layout: document
 redirect_from:
