@@ -6,6 +6,5 @@
 int main(){
     int n,m;
     cin>>n>>m;
-    cout<<mod_pow(n,m,MOD)<<'\n';
+    cout<<mod_pow<ll>(n,m,MOD)<<'\n';
 }
-
