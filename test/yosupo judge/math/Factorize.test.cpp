@@ -1,20 +1,18 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/factorize"
+
 #include"template.hpp"
 #include"math/fast_fact.hpp"
 int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(0);
     int q;
-    scanf("%d",&q);
-
-    while(q--){
-        ll a;
-        scanf("%lld", &a);
-        auto pf = prime::fact(a);
-        cout << pf.size() << ' ';
+    cin >> q;
+    while (q--){
+        __uint64_t x;
+        cin >> x;
+        const auto pf = fact(x);
+        printf("%d ", (int)pf.size());
         for (auto &p : pf){
-            cout << p << ' ';
+            printf("%lld ", p);
         }
-        cout << '\n';
+        puts("\n");
     }
 }

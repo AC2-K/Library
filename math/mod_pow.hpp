@@ -1,6 +1,5 @@
 template <class T, class U = T>
-U mod_pow(T base, T exp, T mod)
-{
+U mod_pow(T base, T exp, T mod){
     if(base==0)return 0;
     T ans = 1;
     base %= mod;

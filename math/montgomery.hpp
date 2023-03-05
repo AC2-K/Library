@@ -106,12 +106,12 @@ public:
 };
 typename montgomery64::u64 montgomery64::mod, montgomery64::r, montgomery64::n2;
 
-class ArbitraryModInt {
-    using mint = ArbitraryModInt;
+class montgomery32 {
+    using mint = montgomery32;
     using i32 = int32_t;
     using u32 = uint32_t;
     using u64 = uint64_t;
-
+    using u128 = __uint128_t;
     static u32 mod;
     static u32 r;
     static u32 n2;
@@ -131,10 +131,10 @@ public:
         assert(r * mod == 1);
     }
 protected:
-    i128 a;
+    u128 a;
 public:
-    ArbitraryModInt() : a(0) {}
-    ArbitraryModInt(const int64_t& b)
+    montgomery32() : a(0) {}
+    montgomery32(const int64_t& b)
         : a(reduce(u64(b% mod + mod)* n2)) {};
 
     static u32 reduce(const u64& b) {
@@ -157,7 +157,7 @@ public:
     }
 
     mint& operator/=(const mint& b) {
-        *this *= b.inverse();
+        *this *= b.inv();
         return *this;
     }
 
@@ -184,27 +184,27 @@ public:
     }
 
     friend ostream& operator<<(ostream& os, const mint& b) {
-        return os << b.get();
+        return os << b.val();
     }
 
     friend istream& operator>>(istream& is, mint& b) {
         int64_t t;
         is >> t;
-        b = ArbitraryModInt(t);
+        b = montgomery32(t);
         return (is);
     }
 
-    mint inverse() const { return pow(mod - 2); }
+    mint inv() const { return pow(mod - 2); }
 
-    u32 get() const {
+    u32 val() const {
         u32 ret = reduce(a);
         return ret >= mod ? ret - mod : ret;
-    }
+    }   
 
     static u32 get_mod() { return mod; }
 };
-typename ArbitraryModInt::u32 ArbitraryModInt::mod;
-typename ArbitraryModInt::u32 ArbitraryModInt::r;
-typename ArbitraryModInt::u32 ArbitraryModInt::n2;
+typename montgomery32::u32 montgomery32::mod;
+typename montgomery32::u32 montgomery32::r;
+typename montgomery32::u32 montgomery32::n2;
 /// @brief Montgomery
 ///by https://nyaannyaan.github.io/library/modint/modint-montgomery64.hpp,https://nyaannyaan.github.io/library/modint/arbitrary-prime-modint.hpp

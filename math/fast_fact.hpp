@@ -1,83 +1,98 @@
 #pragma once
 #include"math/fast_prime_check.hpp"
-#include"math/prime_list.hpp"
-namespace prime
-{
-    using ull = unsigned long long;
-    // Rho factorize
+namespace prime{
+    namespace pollard{
+        using i128 = __int128_t;
+        using u128 = __uint128_t;
+        using u64 = __uint64_t;
 
-    ull find_factor(ull& n) {
-        if (is_prime(n)) {
-            return n;
-        }
-        static ull v = 7001;
-        v ^= v << 13, v ^= v >> 7, v ^= v << 17;
-
-        if (~n & 1uL) {
-            return 2;
-        }
-        static ull c = v;
-        auto f = [&](i128 xx) -> ll {
-            xx %= n;
-            return (xx * xx % n + c) % n;
-        };
-        ll x = v % n;
-        ll y = x;
-        ull d = 1;
-
-        while (d == 1) {
-            x = f(x);
-            y = f(f(y));
-            d = gcd(abs(x - y), n);
-        }
-
-        if (d == n) {
-            return 0;
-        }
-        return d;
-    }
-    vector<ull> rho_fact(ull& n) {
-        if (n < 2) {
-            return {};
-        }
-        if (is_prime(n)) {
-
-        }
-        vector<ull> res;
-        while (n != 1) {
-            ull d = 0;
-            while (d == 0) {
-                d = find_factor(n);
+        template<typename T>
+        T gcd(T x, T y) {
+            while (y != 0) {
+                T ny = x % y;
+                T nx = y;
+                x = nx, y = ny;
             }
-            while (n % d == 0) {
-                res.emplace_back(d);
-                n /= d;
+            return x;
+        }
+        u64 find_factor(u64 n){
+            static u64 v = 7001;
+
+            if (~n & 1uL){
+                return 2;
             }
-        }
-
-        return res;
-    }
-
-    vector<ull> naive_fact(ull& n) {
-        vector<ull> res;
-
-        for (const ull& d : small_prime) {
-            while (n % d == 0) {
-                res.emplace_back(d);
-                n /= d;
+            if(is_prime(n)){
+                return n;
             }
+            while (1) {
+                v ^= v << 13, v ^= v >> 7, v ^= v << 17;
+                u64 c = v;
+                auto f = [&](u128 x) -> u128 {
+                    x %= n;
+                    return (x * x + c) % n;
+                };
+                v ^= v << 13, v ^= v >> 7, v ^= v << 17;
+                ll x = v % n;
+                ll y = f(x);
+                u64 d = 1;
+                while (d == 1){
+                    d = gcd((u64)abs(x - y), n);
+                    x = f(x);
+                    y = f(f(y));
+                }
+                if (1 < d && d < n) {
+                    return d;
+                }
+            }
+            exit(0);
         }
-        return res;
-    }
 
-    vector<ull> fact(ull n) {
-        vector<ull> res = naive_fact(n);
-        if (n != 1) {
-            vector<ull> res2 = rho_fact(n);
-            res.insert(res.end(), all(res2));
+        vector<u64> rho_fact(u64 n){
+            if (n < 2) {
+                return {};
+            }
+            if(is_prime(n)){
+                return {n};
+            }
+            vector<u64> v;
+            vector<u64> st{n};
+            while (st.size()){
+                u64 &m = st.back();
+                if (is_prime(m)){
+                    v.emplace_back(m);
+                    st.pop_back();
+                }else{
+                    u64 d = find_factor(m);
+                    m /= d;
+                    st.emplace_back(d);
+                }
+            }
+            return v;
         }
-        sort(all(res));
-        return res;
-    }
-};
-///@brief fast factorize(Pollard Rhoの素因数分解)
+        vector<u64> naive(u64&n){
+            static constexpr u64 basic_prime[] = {2, 3, 5, 7, 11, 13, 17, 1000000007, 998244353};
+            vector<u64> res;
+            for (const auto& p : basic_prime) {
+                while (n % p == 0) {
+                    n /= p;
+                    res.emplace_back(p);
+                }
+            }
+
+            return res;
+        }
+        vector<u64> fact(u64 n){
+            if (n < 2) {
+                return {};
+            }
+            vector<u64> v = naive(n);
+            if(n!=1){
+                vector<u64> v2 = rho_fact(n);
+                v.insert(v.end(), all(v2));
+            }
+            sort(all(v));
+            return v;
+        }
+    };  // namespace pollard
+};  // namespace prime
+using prime::pollard::fact;
