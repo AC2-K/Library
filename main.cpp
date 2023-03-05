@@ -10,7 +10,7 @@ int main(){
         cin >> x;
         const auto pf = fact(x);
         printf("%d ", (int)pf.size());
-        for(auto&p:pf){
+        for (auto &p : pf){
             printf("%lld ", p);
         }
         puts("\n");

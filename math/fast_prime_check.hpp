@@ -1,6 +1,5 @@
 #pragma once
 #include"math/mod_pow.hpp"
-#include"math/montgomery.hpp"
 namespace prime {
     namespace miller{
         using i128 = __int128_t;
@@ -57,4 +56,4 @@ namespace prime {
     };
 };
 using prime::miller::is_prime;
-///@brief fast prime check(MillerRabinの素数判定法)
+///@brief fast prime check(MillerRabinの素数判定)
