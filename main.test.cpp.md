@@ -14,9 +14,6 @@ data:
     path: math/montgomery.hpp
     title: Montgomery
   - icon: ':x:'
-    path: math/phi_function.hpp
-    title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-  - icon: ':x:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -26,10 +23,10 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D
+    PROBLEM: https://judge.yosupo.jp/problem/factorize
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D
-  bundledCode: "#line 1 \"test/AOJ/NTL/1/D.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D\"\
+    - https://judge.yosupo.jp/problem/factorize
+  bundledCode: "#line 1 \"main.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\
     \n\n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
@@ -173,32 +170,33 @@ data:
     \            if(n!=1){\n                vector<u64> v2 = rho_fact(n);\n      \
     \          v.insert(v.end(), all(v2));\n            }\n            sort(all(v));\n\
     \            return v;\n        }\n    };  // namespace pollard\n};  // namespace\
-    \ prime\nusing prime::pollard::fact;\n#line 3 \"math/phi_function.hpp\"\nll phi_func(ll\
-    \ n){\n    ll res=n;\n    auto pf=prime::fact(n);\n    pf.erase(unique(all(pf)),pf.end());\
-    \     \n    for(auto&d:pf){\n        res=res/d*(d-1);\n    }\n    return res;\n\
-    }\n///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)\n\
-    #line 5 \"test/AOJ/NTL/1/D.test.cpp\"\nint main(){\n    int n;\n    cin>>n;\n\
-    \    cout<<phi_func(n)<<'\\n';\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_D\"\
-    \n\n#include\"template.hpp\"\n#include\"math/phi_function.hpp\"\nint main(){\n\
-    \    int n;\n    cin>>n;\n    cout<<phi_func(n)<<'\\n';\n}"
+    \ prime\nusing prime::pollard::fact;\n#line 5 \"main.test.cpp\"\nint main(){\n\
+    \    int q;\n    cin >> q;\n    while (q--){\n        __uint64_t x;\n        cin\
+    \ >> x;\n        const auto pf = fact(x);\n        printf(\"%d \", (int)pf.size());\n\
+    \        for(auto&p:pf){\n            printf(\"%lld \", p);\n        }\n     \
+    \   puts(\"\\n\");\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n\n#include\"\
+    template.hpp\"\n#include\"math/fast_fact.hpp\"\nint main(){\n    int q;\n    cin\
+    \ >> q;\n    while (q--){\n        __uint64_t x;\n        cin >> x;\n        const\
+    \ auto pf = fact(x);\n        printf(\"%d \", (int)pf.size());\n        for(auto&p:pf){\n\
+    \            printf(\"%lld \", p);\n        }\n        puts(\"\\n\");\n    }\n\
+    }"
   dependsOn:
   - template.hpp
-  - math/phi_function.hpp
   - math/fast_fact.hpp
   - math/fast_prime_check.hpp
   - math/mod_pow.hpp
   - math/montgomery.hpp
   isVerificationFile: true
-  path: test/AOJ/NTL/1/D.test.cpp
+  path: main.test.cpp
   requiredBy: []
   timestamp: '2023-03-05 17:21:38+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/AOJ/NTL/1/D.test.cpp
+documentation_of: main.test.cpp
 layout: document
 redirect_from:
-- /verify/test/AOJ/NTL/1/D.test.cpp
-- /verify/test/AOJ/NTL/1/D.test.cpp.html
-title: test/AOJ/NTL/1/D.test.cpp
+- /verify/main.test.cpp
+- /verify/main.test.cpp.html
+title: main.test.cpp
 ---

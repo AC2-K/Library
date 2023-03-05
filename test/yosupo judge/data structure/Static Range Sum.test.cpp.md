@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree.hpp
     title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
@@ -23,41 +23,41 @@ data:
     \ N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
     \ __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\nusing\
     \ ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int, int>;\n\
-    const int inf = 1e9;\nconst ll infl = 1e18;\nconst ld eps = 1e-6;\nconst long\
-    \ double pi = acos(-1);\nconst ll MOD = 1e9 + 7;\nconst ll MOD2 = 998244353;\n\
-    const int dx[4] = { 1,0,-1,0 };\nconst int dy[4] = { 0,1,0,-1 };\ntemplate<class\
-    \ T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T\
-    \ y){if(x>y)x=y;}\n#line 1 \"data-structure/segtree.hpp\"\ntemplate<class S, S(*op)(S,\
-    \ S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S> dat;\n    void Init(int\
-    \ n_) {\n        int x = 1;\n        while (n_ > x) {\n            x <<= 1;\n\
-    \        }\n        n = x;\n    }\npublic:\n    segtree(int n_) : segtree(vector<S>(n_,\
-    \ e())) {   }\n    segtree(const vector<S>& v) :dat(4 * v.size()) {\n        Init(v.size());\n\
-    \        for (int i = 0; i < v.size(); i++) {\n            set(i, v[i]);\n   \
-    \     }\n        build();\n    }\n    inline void set(int pos, S val) {\n    \
-    \    assert(0 <= pos && pos < n);\n        dat[pos + n - 1] = val;\n    }\n  \
-    \  void build() {\n        for (int k = n - 2; k >= 0; k--) {\n            dat[k]\
-    \ = op(dat[(k << 1) + 1], dat[(k << 1) + 2]);\n        }\n    }\n\n    void update(int\
-    \ pos, S val) {\n        assert(0 <= pos && pos < n);\n        pos += n - 1;\n\
-    \        dat[pos] = val;\n        while (pos > 0) {\n            pos = (pos -\
-    \ 1) >> 1;\n            dat[pos] = op(dat[(pos << 1) + 1], dat[(pos << 1) + 2]);\n\
-    \        }\n    }\n    inline S prod(int a, int b) {\n        assert(0 <= a &&\
-    \ b <= n);\n        assert(a <= b);\n        if (a == 0 && b == n)return dat[0];\n\
-    \        return prod(a, b, 0, 0, n);\n    }\n\nprivate:\n    S prod(int a, int\
-    \ b, int id, int l, int r) {\n        if (r <= a || b <= l) {\n            return\
-    \ e();\n        }\n        else if (a <= l && r <= b) {\n            return dat[id];\n\
-    \        }\n        else {\n            int mid = (l + r) >> 1;\n            S\
-    \ vl = prod(a, b, (id << 1) + 1, l, mid);\n            S vr = prod(a, b, (id <<\
-    \ 1) + 2, mid, r);\n            return op(vl, vr);\n        }\n    }\n\npublic:\n\
-    \    //a[pos] <- a[pos]\u30FBx\n    void add(int pos, S x) {\n        update(pos,\
-    \ op(dat[n + pos - 1], x));\n    }\n\n    S operator [](int pos) {\n        return\
-    \ dat[n + pos - 1];\n    }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\
-    \u30C8\u6728)\n///@docs docs/data-structure/segtree.md\n#line 4 \"test/yosupo\
-    \ judge/data structure/Static Range Sum.test.cpp\"\nnamespace for_segtree{\n \
-    \   using S=ll;\n    S op(S x,S y){return x+y;}\n    S e(){return 0;}\n};\nint\
-    \ main(){\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n    int n,q;\n \
-    \   cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n        cin>>aa;\n\
-    \    }\n\n    segtree<for_segtree::S,for_segtree::op,for_segtree::e> seg(a);\n\
-    \    while(q--){\n        int l,r;\n        cin>>l>>r;\n        cout<<seg.prod(l,r)<<'\\\
+    constexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\n\
+    constexpr long double pi = acos(-1);\nconstexpr ll MOD = 1e9 + 7;\nconstexpr ll\
+    \ MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] =\
+    \ { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
+    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/segtree.hpp\"\
+    \ntemplate<class S, S(*op)(S, S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S>\
+    \ dat;\n    void Init(int n_) {\n        int x = 1;\n        while (n_ > x) {\n\
+    \            x <<= 1;\n        }\n        n = x;\n    }\npublic:\n    segtree(int\
+    \ n_) : segtree(vector<S>(n_, e())) {   }\n    segtree(const vector<S>& v) :dat(4\
+    \ * v.size()) {\n        Init(v.size());\n        for (int i = 0; i < v.size();\
+    \ i++) {\n            set(i, v[i]);\n        }\n        build();\n    }\n    inline\
+    \ void set(int pos, S val) {\n        assert(0 <= pos && pos < n);\n        dat[pos\
+    \ + n - 1] = val;\n    }\n    void build() {\n        for (int k = n - 2; k >=\
+    \ 0; k--) {\n            dat[k] = op(dat[(k << 1) + 1], dat[(k << 1) + 2]);\n\
+    \        }\n    }\n\n    void update(int pos, S val) {\n        assert(0 <= pos\
+    \ && pos < n);\n        pos += n - 1;\n        dat[pos] = val;\n        while\
+    \ (pos > 0) {\n            pos = (pos - 1) >> 1;\n            dat[pos] = op(dat[(pos\
+    \ << 1) + 1], dat[(pos << 1) + 2]);\n        }\n    }\n    inline S prod(int a,\
+    \ int b) {\n        assert(0 <= a && b <= n);\n        assert(a <= b);\n     \
+    \   if (a == 0 && b == n)return dat[0];\n        return prod(a, b, 0, 0, n);\n\
+    \    }\n\nprivate:\n    S prod(int a, int b, int id, int l, int r) {\n       \
+    \ if (r <= a || b <= l) {\n            return e();\n        }\n        else if\
+    \ (a <= l && r <= b) {\n            return dat[id];\n        }\n        else {\n\
+    \            int mid = (l + r) >> 1;\n            S vl = prod(a, b, (id << 1)\
+    \ + 1, l, mid);\n            S vr = prod(a, b, (id << 1) + 2, mid, r);\n     \
+    \       return op(vl, vr);\n        }\n    }\n\npublic:\n    //a[pos] <- a[pos]\u30FB\
+    x\n    void add(int pos, S x) {\n        update(pos, op(dat[n + pos - 1], x));\n\
+    \    }\n\n    S operator [](int pos) {\n        return dat[n + pos - 1];\n   \
+    \ }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n///@docs\
+    \ docs/data-structure/segtree.md\n#line 4 \"test/yosupo judge/data structure/Static\
+    \ Range Sum.test.cpp\"\nnamespace for_segtree{\n    using S=ll;\n    S op(S x,S\
+    \ y){return x+y;}\n    S e(){return 0;}\n};\nint main(){\n    ios::sync_with_stdio(false);\n\
+    \    cin.tie(0);\n    int n,q;\n    cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n\
+    \        cin>>aa;\n    }\n\n    segtree<for_segtree::S,for_segtree::op,for_segtree::e>\
+    \ seg(a);\n    while(q--){\n        int l,r;\n        cin>>l>>r;\n        cout<<seg.prod(l,r)<<'\\\
     n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\"\
     template.hpp\"\n#include\"data-structure/segtree.hpp\"\nnamespace for_segtree{\n\
@@ -73,8 +73,8 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Static Range Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 20:50:59+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-03-04 11:54:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Static Range Sum.test.cpp
 layout: document

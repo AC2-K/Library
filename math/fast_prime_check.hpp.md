@@ -1,125 +1,184 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: math/large_mod.hpp
-    title: math/large_mod.hpp
+  - icon: ':x:'
+    path: math/mod_pow.hpp
+    title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
+  - icon: ':x:'
+    path: math/montgomery.hpp
+    title: Montgomery
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/fast_fact.hpp
-    title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
-  - icon: ':heavy_check_mark:'
+    title: math/fast_fact.hpp
+  - icon: ':x:'
     path: math/phi_function.hpp
     title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
+  - icon: ':warning:'
+    path: sub.cpp
+    title: sub.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: main.test.cpp
+    title: main.test.cpp
+  - icon: ':x:'
     path: test/AOJ/NTL/1/D.test.cpp
     title: test/AOJ/NTL/1/D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/math/Factorize.test.cpp
     title: test/yosupo judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Primitive Root.test.cpp
     title: test/yosupo judge/new/Primitive Root.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5\
       )"
     links: []
-  bundledCode: "#line 2 \"math/large_mod.hpp\"\ninline long long safe_mod(long long\
-    \ a, long long m){\n    return (a % m + m) % m;\n}\nlong long mul(long long a,\
-    \ long long b, long long m) {\n    a = safe_mod(a, m);\n    b = safe_mod(b, m);\n\
-    \    if (b == 0) return 0;\n    long long res = mul(safe_mod(a + a, m), b >> 1,\
-    \ m);\n    if (b & 1){\n        res = safe_mod(res + a, m);\n    }\n    return\
-    \ res;\n}\ntemplate<typename T>\nT large_modpow(T base,T exp,T mod){\n    T ans\
-    \ = 1 % mod;\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n  \
-    \          ans = mul(ans, base, mod);\n        }\n        base = mul(base, base,\
-    \ mod);\n        exp >>= 1;\n    }\n    return ans;\n}\n\nunsigned long long i128_modpow(__uint128_t\
-    \ base, __uint128_t exp, unsigned long long mod){\n    i128 res = (mod == 1 ?\
-    \ 0 : 1);\n    base %= mod;\n    while (exp){\n        if (exp & 1){\n       \
-    \     res = (res * base) % mod;\n        }\n        base = (base * base) % mod;\n\
-    \        exp >>= 1;\n    }\n    return res;\n}\n#line 3 \"math/fast_prime_check.hpp\"\
-    \n\nnamespace prime\n{\n    using ull = unsigned long long;\n    // MillerRabin\n\
-    \    bool is_prime_long(ull n){\n        static const vector<ull> bases \n   \
-    \         = {2ull, 325ull, 9375ull, 28178ull, 450775ull, 9780504ull, 1795265022ull};\n\
-    \n        ull d = n ^ 1uL;\n        ull q = __builtin_ctz(d);\n        d >>= q;\n\
-    \n        for (const auto &a : bases){\n            if (a == n){\n           \
-    \     return true;\n            }\n            else if (a % n == 0){\n       \
-    \         return false;\n            }\n\n            if (i128_modpow(a, d, n)\
-    \ != 1){\n                bool is_prime_flag = true;\n                for (ull\
-    \ r = 0; r < q;r++){\n                    ull pw = i128_modpow(a, d * (1uL <<\
-    \ r), n);\n\n                    if(pw==n-1){\n                        is_prime_flag\
-    \ = false;\n                        break;\n                    }\n          \
-    \      }\n\n                if(is_prime_flag){\n                    return false;\n\
-    \                }\n            }\n        }\n        return true;\n    }\n\n\
-    \    bool is_prime_int(ull n){\n        static const vector<ull> bases \n    \
-    \        = {2ull, 7ull, 61ull};\n\n        ull d = n ^ 1uL;\n        ull q = __builtin_ctzll(d);\n\
-    \        d >>= q;\n        for (const auto &a : bases){\n            if (a ==\
-    \ n){\n                return true;\n            }\n            else if (a % n\
-    \ == 0){\n                return false;\n            }\n\n            if (i128_modpow(a,\
-    \ d, n) != 1){\n                bool is_prime_flag = true;\n                for\
-    \ (ull r = 0; r < q;r++){\n                    ull pw = i128_modpow(a, d * (1uL\
-    \ << r), n);\n\n                    if(pw==n-1){\n                        is_prime_flag\
-    \ = false;\n                        break;\n                    }\n          \
-    \      }\n\n                if(is_prime_flag){\n                    return false;\n\
-    \                }\n            }\n        }\n        return true;\n    }\n\n\
-    \    inline bool is_prime(ull n){\n        if (n < 2){\n            return false;\n\
-    \        }\n        if(n == 2){\n            return true;\n        }\n       \
-    \ if (~n & 1uL){\n            return false;\n        }\n\n        \n        if\
-    \ (n <= (1uL << 31)){\n            return is_prime_int(n);\n        }\n      \
-    \  else{\n            return is_prime_long(n);\n        }\n    }\n};\n///@brief\
-    \ fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)\n"
-  code: "#pragma once\n#include \"math/large_mod.hpp\"\n\nnamespace prime\n{\n   \
-    \ using ull = unsigned long long;\n    // MillerRabin\n    bool is_prime_long(ull\
-    \ n){\n        static const vector<ull> bases \n            = {2ull, 325ull, 9375ull,\
-    \ 28178ull, 450775ull, 9780504ull, 1795265022ull};\n\n        ull d = n ^ 1uL;\n\
-    \        ull q = __builtin_ctz(d);\n        d >>= q;\n\n        for (const auto\
-    \ &a : bases){\n            if (a == n){\n                return true;\n     \
-    \       }\n            else if (a % n == 0){\n                return false;\n\
-    \            }\n\n            if (i128_modpow(a, d, n) != 1){\n              \
-    \  bool is_prime_flag = true;\n                for (ull r = 0; r < q;r++){\n \
-    \                   ull pw = i128_modpow(a, d * (1uL << r), n);\n\n          \
-    \          if(pw==n-1){\n                        is_prime_flag = false;\n    \
-    \                    break;\n                    }\n                }\n\n    \
-    \            if(is_prime_flag){\n                    return false;\n         \
-    \       }\n            }\n        }\n        return true;\n    }\n\n    bool is_prime_int(ull\
-    \ n){\n        static const vector<ull> bases \n            = {2ull, 7ull, 61ull};\n\
-    \n        ull d = n ^ 1uL;\n        ull q = __builtin_ctzll(d);\n        d >>=\
-    \ q;\n        for (const auto &a : bases){\n            if (a == n){\n       \
-    \         return true;\n            }\n            else if (a % n == 0){\n   \
-    \             return false;\n            }\n\n            if (i128_modpow(a, d,\
-    \ n) != 1){\n                bool is_prime_flag = true;\n                for (ull\
-    \ r = 0; r < q;r++){\n                    ull pw = i128_modpow(a, d * (1uL <<\
-    \ r), n);\n\n                    if(pw==n-1){\n                        is_prime_flag\
-    \ = false;\n                        break;\n                    }\n          \
-    \      }\n\n                if(is_prime_flag){\n                    return false;\n\
-    \                }\n            }\n        }\n        return true;\n    }\n\n\
-    \    inline bool is_prime(ull n){\n        if (n < 2){\n            return false;\n\
-    \        }\n        if(n == 2){\n            return true;\n        }\n       \
-    \ if (~n & 1uL){\n            return false;\n        }\n\n        \n        if\
-    \ (n <= (1uL << 31)){\n            return is_prime_int(n);\n        }\n      \
-    \  else{\n            return is_prime_long(n);\n        }\n    }\n};\n///@brief\
-    \ fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
+  bundledCode: "#line 1 \"math/mod_pow.hpp\"\ntemplate <class T, class U = T>\nU mod_pow(T\
+    \ base, T exp, T mod){\n    if(base==0)return 0;\n    T ans = 1;\n    base %=\
+    \ mod;\n    while (exp > 0) {\n        if (exp & 1) {\n            ans *= base;\n\
+    \            ans %= mod;\n        }\n        base *= base;\n        base %= mod;\n\
+    \        exp >>= 1;\n    }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\
+    \u30CA\u30EA\u6CD5)\n#line 2 \"math/montgomery.hpp\"\nclass montgomery64 {\n \
+    \   using mint = montgomery64;\n    using i64 = int64_t;\n    using u64 = uint64_t;\n\
+    \    using u128 = __uint128_t;\n\n    static u64 mod;\n    static u64 r;\n   \
+    \ static u64 n2;\n\n    static u64 get_r() {\n        u64 ret = mod;\n       \
+    \ for (i64 i = 0; i < 5; ++i) ret *= 2 - mod * ret;\n        return ret;\n   \
+    \ }\npublic:\n    static void set_mod(const u128& m) {\n        assert(m < (i128(1)\
+    \ << 64));\n        assert((m & 1) == 1);\n        mod = m;\n        n2 = -u128(m)\
+    \ % m;\n        r = get_r();\n        assert(r * mod == 1);\n    }\n\nprotected:\n\
+    \    u128 a;\n\npublic:\n    montgomery64() : a(0) {}\n    template<typename T>\n\
+    \    montgomery64(const T& b) : a(reduce((u128(b) + mod)* n2)) {};\nprivate:\n\
+    \    template<class T>\n    static u64 reduce(const T& b) {\n        return (b\
+    \ + u128(u64(b) * u64(-r)) * mod) >> 64;\n    }\npublic:\n    template<class T>\n\
+    \    mint& operator=(const T& rhs) {\n        return (*this) = mint(rhs);\n  \
+    \  }\n\n    mint& operator+=(const mint& b) {\n        if (i64(a += b.a - 2 *\
+    \ mod) < 0) a += 2 * mod;\n        return *this;\n    }\n\n    mint& operator-=(const\
+    \ mint& b) {\n        if (i64(a -= b.a) < 0) a += 2 * mod;\n        return *this;\n\
+    \    }\n\n    mint& operator*=(const mint& b) {\n        a = reduce(u128(a) *\
+    \ b.a);\n        return *this;\n    }\n\n    mint& operator/=(const mint& b) {\n\
+    \        *this *= b.inv();\n        return *this;\n    }\n\n    mint operator+(const\
+    \ mint& b) const { return mint(*this) += b; }\n    mint operator-(const mint&\
+    \ b) const { return mint(*this) -= b; }\n    mint operator*(const mint& b) const\
+    \ { return mint(*this) *= b; }\n    mint operator/(const mint& b) const { return\
+    \ mint(*this) /= b; }\n    bool operator==(const mint& b) const {\n        return\
+    \ (a >= mod ? a - mod : a) == (b.a >= mod ? b.a - mod : b.a);\n    }\n    bool\
+    \ operator!=(const mint& b) const {\n        return (a >= mod ? a - mod : a) !=\
+    \ (b.a >= mod ? b.a - mod : b.a);\n    }\n    mint operator-() const { return\
+    \ mint() - mint(*this); }\n\n    mint pow(u128 n) const {\n        mint ret(1),\
+    \ mul(*this);\n        while (n > 0) {\n            if (n & 1) ret *= mul;\n \
+    \           mul *= mul;\n            n >>= 1;\n        }\n        return ret;\n\
+    \    }\n\n    friend ostream& operator<<(ostream& os, const mint& b) {\n     \
+    \   return os << b.val();\n    }\n\n    friend istream& operator>>(istream& is,\
+    \ mint& b) {\n        int64_t t;\n        is >> t;\n        b = montgomery64(t);\n\
+    \        return (is);\n    }\n\n    mint inv() const { return pow(mod - 2); }\n\
+    \n    u64 val() const {\n        u64 ret = reduce(a);\n        return ret >= mod\
+    \ ? ret - mod : ret;\n    }\n\n    static u64 get_mod() { return mod; }\n};\n\
+    typename montgomery64::u64 montgomery64::mod, montgomery64::r, montgomery64::n2;\n\
+    \nclass montgomery32 {\n    using mint = montgomery32;\n    using i32 = int32_t;\n\
+    \    using u32 = uint32_t;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\
+    \    static u32 mod;\n    static u32 r;\n    static u32 n2;\n\n    static u32\
+    \ get_r() {\n        u32 ret = mod;\n        for (i32 i = 0; i < 4; ++i) ret *=\
+    \ 2 - mod * ret;\n        return ret;\n    }\npublic:\n    static void set_mod(u32\
+    \ m) {\n        assert(m < (1ll << 31));\n        assert((m & 1) == 1);\n    \
+    \    mod = m;\n        n2 = -u64(m) % m;\n        r = get_r();\n        assert(r\
+    \ * mod == 1);\n    }\nprotected:\n    u128 a;\npublic:\n    montgomery32() :\
+    \ a(0) {}\n    montgomery32(const int64_t& b)\n        : a(reduce(u64(b% mod +\
+    \ mod)* n2)) {};\n\n    static u32 reduce(const u64& b) {\n        return (b +\
+    \ u64(u32(b) * u32(-r)) * mod) >> 32;\n    }\n\n    mint& operator+=(const mint&\
+    \ b) {\n        if (i32(a += b.a - 2 * mod) < 0) a += 2 * mod;\n        return\
+    \ *this;\n    }\n\n    mint& operator-=(const mint& b) {\n        if (i32(a -=\
+    \ b.a) < 0) a += 2 * mod;\n        return *this;\n    }\n\n    mint& operator*=(const\
+    \ mint& b) {\n        a = reduce(u64(a) * b.a);\n        return *this;\n    }\n\
+    \n    mint& operator/=(const mint& b) {\n        *this *= b.inv();\n        return\
+    \ *this;\n    }\n\n    mint operator+(const mint& b) const { return mint(*this)\
+    \ += b; }\n    mint operator-(const mint& b) const { return mint(*this) -= b;\
+    \ }\n    mint operator*(const mint& b) const { return mint(*this) *= b; }\n  \
+    \  mint operator/(const mint& b) const { return mint(*this) /= b; }\n    bool\
+    \ operator==(const mint& b) const {\n        return (a >= mod ? a - mod : a) ==\
+    \ (b.a >= mod ? b.a - mod : b.a);\n    }\n    bool operator!=(const mint& b) const\
+    \ {\n        return (a >= mod ? a - mod : a) != (b.a >= mod ? b.a - mod : b.a);\n\
+    \    }\n    mint operator-() const { return mint() - mint(*this); }\n\n    mint\
+    \ pow(u64 n) const {\n        mint ret(1), mul(*this);\n        while (n > 0)\
+    \ {\n            if (n & 1) ret *= mul;\n            mul *= mul;\n           \
+    \ n >>= 1;\n        }\n        return ret;\n    }\n\n    friend ostream& operator<<(ostream&\
+    \ os, const mint& b) {\n        return os << b.val();\n    }\n\n    friend istream&\
+    \ operator>>(istream& is, mint& b) {\n        int64_t t;\n        is >> t;\n \
+    \       b = montgomery32(t);\n        return (is);\n    }\n\n    mint inv() const\
+    \ { return pow(mod - 2); }\n\n    u32 val() const {\n        u32 ret = reduce(a);\n\
+    \        return ret >= mod ? ret - mod : ret;\n    }   \n\n    static u32 get_mod()\
+    \ { return mod; }\n};\ntypename montgomery32::u32 montgomery32::mod;\ntypename\
+    \ montgomery32::u32 montgomery32::r;\ntypename montgomery32::u32 montgomery32::n2;\n\
+    /// @brief Montgomery\n///by https://nyaannyaan.github.io/library/modint/modint-montgomery64.hpp,https://nyaannyaan.github.io/library/modint/arbitrary-prime-modint.hpp\n\
+    #line 4 \"math/fast_prime_check.hpp\"\nnamespace prime {\n    namespace miller{\n\
+    \        using i128 = __int128_t;\n        using u128 = __uint128_t;\n       \
+    \ using u64 = __uint64_t;\n        bool miller_rabin(u64 n,const u64 bases[],int\
+    \ siz) {\n            u64 d = n - 1;\n            u64 q = __builtin_ctz(d);\n\
+    \            d >>= q;\n\n            for(int i=0;i<siz;i++){\n               \
+    \ u64 a = bases[i];\n                if (a == n) {\n                    return\
+    \ true;\n                } else if (n % a == 0) {\n                    return\
+    \ false;\n                }\n                if (mod_pow<u128>(a, d, n) != 1)\
+    \ {\n                    bool flag = true;\n                    for (u64 r = 0;\
+    \ r < q; r++) {\n                        u64 pow = mod_pow<u128>(a, d * (1ll <<\
+    \ r), n);\n                        if (pow == n - 1) {\n                     \
+    \       flag = false;\n                            break;\n                  \
+    \      }\n                    }\n\n                    if (flag) {\n         \
+    \               return false;\n                    }\n                }\n    \
+    \        }\n            return true;\n        }\n\n\n        bool is_prime(u64\
+    \ n){\n            static constexpr u64 bases_int[3] = {2, 7, 61};  // int\u3060\
+    \u3068\u30012,7,61\u3067\u5341\u5206\n            static constexpr u64 bases_ll[7]\
+    \ = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};\n            if (n < 2)\
+    \ {\n                return false;\n            } else if (n == 2) {\n       \
+    \         return true;\n            } else if (~n & 1) {\n                return\
+    \ false;\n            }\n\n            if(n<(1ul<<31)){\n                return\
+    \ miller_rabin(n, bases_int, 3);\n            } else {\n                return\
+    \ miller_rabin(n, bases_ll, 7);\n            }\n        }\n    };\n};\nusing prime::miller::is_prime;\n\
+    ///@brief fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)\n"
+  code: "#pragma once\n#include\"math/mod_pow.hpp\"\n#include\"math/montgomery.hpp\"\
+    \nnamespace prime {\n    namespace miller{\n        using i128 = __int128_t;\n\
+    \        using u128 = __uint128_t;\n        using u64 = __uint64_t;\n        bool\
+    \ miller_rabin(u64 n,const u64 bases[],int siz) {\n            u64 d = n - 1;\n\
+    \            u64 q = __builtin_ctz(d);\n            d >>= q;\n\n            for(int\
+    \ i=0;i<siz;i++){\n                u64 a = bases[i];\n                if (a ==\
+    \ n) {\n                    return true;\n                } else if (n % a ==\
+    \ 0) {\n                    return false;\n                }\n               \
+    \ if (mod_pow<u128>(a, d, n) != 1) {\n                    bool flag = true;\n\
+    \                    for (u64 r = 0; r < q; r++) {\n                        u64\
+    \ pow = mod_pow<u128>(a, d * (1ll << r), n);\n                        if (pow\
+    \ == n - 1) {\n                            flag = false;\n                   \
+    \         break;\n                        }\n                    }\n\n       \
+    \             if (flag) {\n                        return false;\n           \
+    \         }\n                }\n            }\n            return true;\n    \
+    \    }\n\n\n        bool is_prime(u64 n){\n            static constexpr u64 bases_int[3]\
+    \ = {2, 7, 61};  // int\u3060\u3068\u30012,7,61\u3067\u5341\u5206\n          \
+    \  static constexpr u64 bases_ll[7] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};\n\
+    \            if (n < 2) {\n                return false;\n            } else if\
+    \ (n == 2) {\n                return true;\n            } else if (~n & 1) {\n\
+    \                return false;\n            }\n\n            if(n<(1ul<<31)){\n\
+    \                return miller_rabin(n, bases_int, 3);\n            } else {\n\
+    \                return miller_rabin(n, bases_ll, 7);\n            }\n       \
+    \ }\n    };\n};\nusing prime::miller::is_prime;\n///@brief fast prime check(MillerRabin\u306E\
+    \u7D20\u6570\u5224\u5B9A\u6CD5)"
   dependsOn:
-  - math/large_mod.hpp
+  - math/mod_pow.hpp
+  - math/montgomery.hpp
   isVerificationFile: false
   path: math/fast_prime_check.hpp
   requiredBy:
   - math/fast_fact.hpp
   - math/phi_function.hpp
   - math/primitive_root.hpp
-  - main.cpp
-  timestamp: '2023-03-01 17:28:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - sub.cpp
+  timestamp: '2023-03-05 17:21:38+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
+  - main.test.cpp
   - test/yosupo judge/math/Factorize.test.cpp
   - test/yosupo judge/new/Primitive Root.test.cpp
   - test/AOJ/NTL/1/D.test.cpp

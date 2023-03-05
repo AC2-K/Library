@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
     title: test/yosupo judge/data structure/Line Add Get Min.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: ConvexHullTrick
     links: []
@@ -73,7 +73,7 @@ data:
   path: data-structure/cht.hpp
   requiredBy: []
   timestamp: '2023-02-28 21:29:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo judge/data structure/Line Add Get Min.test.cpp
 documentation_of: data-structure/cht.hpp

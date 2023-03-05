@@ -3,90 +3,93 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
+    path: sub.cpp
+    title: sub.cpp
   - icon: ':warning:'
     path: test/AOJ/GRL/5/C.cpp
     title: test/AOJ/GRL/5/C.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: main.test.cpp
+    title: main.test.cpp
+  - icon: ':x:'
     path: test/AOJ/ALDS/1/C.test.cpp
     title: test/AOJ/ALDS/1/C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/ALDS/14/B.test.cpp
     title: test/AOJ/ALDS/14/B.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/DSL/1/A.test.cpp
     title: test/AOJ/DSL/1/A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/DSL/2/B.test.cpp
     title: test/AOJ/DSL/2/B.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/DSL/2/D.test.cpp
     title: test/AOJ/DSL/2/D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/DSL/2/E.test.cpp
     title: test/AOJ/DSL/2/E.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/GRL/1/A.test.cpp
     title: test/AOJ/GRL/1/A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/GRL/2/A.test.cpp
     title: test/AOJ/GRL/2/A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1/A.test.cpp
     title: test/AOJ/NTL/1/A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1/B.test.cpp
     title: test/AOJ/NTL/1/B.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1/D.test.cpp
     title: test/AOJ/NTL/1/D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1/E.test.cpp
     title: test/AOJ/NTL/1/E.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
     title: test/yosupo judge/data structure/Line Add Get Min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
     title: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
     title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/data structure/Static RMQ.test.cpp
     title: test/yosupo judge/data structure/Static RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/data structure/Static Range Sum.test.cpp
     title: test/yosupo judge/data structure/Static Range Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/data structure/UnionFind.test.cpp
     title: test/yosupo judge/data structure/UnionFind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/graph/Shortest Path.test.cpp
     title: test/yosupo judge/graph/Shortest Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/math/Discrete Logarithm.test.cpp
     title: test/yosupo judge/math/Discrete Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/math/Factorize.test.cpp
     title: test/yosupo judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Primitive Root.test.cpp
     title: test/yosupo judge/new/Primitive Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
     title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/tree/Tree Diameter.test.cpp
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -111,21 +114,21 @@ data:
 
     using P = pair<int, int>;
 
-    const int inf = 1e9;
+    constexpr int inf = 1e9;
 
-    const ll infl = 1e18;
+    constexpr ll infl = 1e18;
 
-    const ld eps = 1e-6;
+    constexpr ld eps = 1e-6;
 
-    const long double pi = acos(-1);
+    constexpr long double pi = acos(-1);
 
-    const ll MOD = 1e9 + 7;
+    constexpr ll MOD = 1e9 + 7;
 
-    const ll MOD2 = 998244353;
+    constexpr ll MOD2 = 998244353;
 
-    const int dx[4] = { 1,0,-1,0 };
+    constexpr int dx[] = { 1,0,-1,0 };
 
-    const int dy[4] = { 0,1,0,-1 };
+    constexpr int dy[] = { 0,1,0,-1 };
 
     template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
 
@@ -154,21 +157,21 @@ data:
 
     using P = pair<int, int>;
 
-    const int inf = 1e9;
+    constexpr int inf = 1e9;
 
-    const ll infl = 1e18;
+    constexpr ll infl = 1e18;
 
-    const ld eps = 1e-6;
+    constexpr ld eps = 1e-6;
 
-    const long double pi = acos(-1);
+    constexpr long double pi = acos(-1);
 
-    const ll MOD = 1e9 + 7;
+    constexpr ll MOD = 1e9 + 7;
 
-    const ll MOD2 = 998244353;
+    constexpr ll MOD2 = 998244353;
 
-    const int dx[4] = { 1,0,-1,0 };
+    constexpr int dx[] = { 1,0,-1,0 };
 
-    const int dy[4] = { 0,1,0,-1 };
+    constexpr int dy[] = { 0,1,0,-1 };
 
     template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
 
@@ -177,11 +180,12 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
-  - main.cpp
+  - sub.cpp
   - test/AOJ/GRL/5/C.cpp
-  timestamp: '2023-02-28 20:50:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-03-04 11:54:34+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
+  - main.test.cpp
   - test/yosupo judge/math/Discrete Logarithm.test.cpp
   - test/yosupo judge/math/Factorize.test.cpp
   - test/yosupo judge/graph/Shortest Path.test.cpp

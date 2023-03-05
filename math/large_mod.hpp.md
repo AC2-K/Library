@@ -2,40 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
-  - icon: ':heavy_check_mark:'
-    path: math/fast_fact.hpp
-    title: "fast factorize(Pollard Rho\u306E\u7D20\u56E0\u6570\u5206\u89E3)"
-  - icon: ':heavy_check_mark:'
-    path: math/fast_prime_check.hpp
-    title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\u6CD5)"
-  - icon: ':heavy_check_mark:'
-    path: math/phi_function.hpp
-    title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/rolling_hash.hpp
     title: rolling hash
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/ALDS/14/B.test.cpp
     title: test/AOJ/ALDS/14/B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/D.test.cpp
-    title: test/AOJ/NTL/1/D.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/math/Factorize.test.cpp
-    title: test/yosupo judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Primitive Root.test.cpp
     title: test/yosupo judge/new/Primitive Root.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/large_mod.hpp\"\ninline long long safe_mod(long long\
@@ -68,19 +50,13 @@ data:
   isVerificationFile: false
   path: math/large_mod.hpp
   requiredBy:
-  - math/fast_fact.hpp
-  - math/fast_prime_check.hpp
-  - math/phi_function.hpp
   - math/primitive_root.hpp
-  - main.cpp
   - string/rolling_hash.hpp
   timestamp: '2023-03-01 17:28:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo judge/math/Factorize.test.cpp
   - test/yosupo judge/new/Primitive Root.test.cpp
   - test/AOJ/ALDS/14/B.test.cpp
-  - test/AOJ/NTL/1/D.test.cpp
 documentation_of: math/large_mod.hpp
 layout: document
 redirect_from:
