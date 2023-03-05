@@ -97,25 +97,25 @@ data:
     \ v2 = rho_fact(n);\n                v.insert(v.end(), all(v2));\n           \
     \ }\n            sort(all(v));\n            return v;\n        }\n    };  // namespace\
     \ pollard\n};  // namespace prime\nusing prime::pollard::fact;\n#line 4 \"math/primitive_root.hpp\"\
-    \nll primitive_root(ll p){\n    if(p == 2) return 1;\n    auto pf = prime::fact(p\
-    \ - 1);\n    pf.erase(unique(all(pf)),pf.end());\n    for(auto&q:pf){\n      \
-    \  q=(p-1)/q;\n    }\n    using ull = unsigned long long;\n    static ull rnd\
-    \ = 7001;\n    while(1){\n        rnd^=rnd<<13; rnd^=rnd>>7; rnd^=rnd<<17;\n \
-    \       ll g = (ull)rnd%p;\n        if(g == 0) continue;\n        bool is_ok =\
-    \ true;\n        for(ll q : pf){\n            if(large_modpow(g,q,p) == 1){ \n\
-    \                is_ok = false; \n                break; \n            }\n   \
-    \     }\n        if(is_ok){\n            return g;\n        }\n    }\n}\n\n//@brief\
-    \ primitive root(\u539F\u59CB\u6839)\n"
+    \nll primitive_root(ll p){\n    if(p == 2) return 1;\n    auto pf = fact(p - 1);\n\
+    \    pf.erase(unique(all(pf)),pf.end());\n    for(auto&q:pf){\n        q=(p-1)/q;\n\
+    \    }\n    using ull = unsigned long long;\n    static ull rnd = 7001;\n    while(1){\n\
+    \        rnd^=rnd<<13; rnd^=rnd>>7; rnd^=rnd<<17;\n        ll g = (ull)rnd%p;\n\
+    \        if(g == 0) continue;\n        bool is_ok = true;\n        for(ll q :\
+    \ pf){\n            if(large_modpow(g,q,p) == 1){ \n                is_ok = false;\
+    \ \n                break; \n            }\n        }\n        if(is_ok){\n  \
+    \          return g;\n        }\n    }\n}\n\n//@brief primitive root(\u539F\u59CB\
+    \u6839)\n"
   code: "#pragma once\n#include\"math/large_mod.hpp\"\n#include\"math/fast_fact.hpp\"\
-    \nll primitive_root(ll p){\n    if(p == 2) return 1;\n    auto pf = prime::fact(p\
-    \ - 1);\n    pf.erase(unique(all(pf)),pf.end());\n    for(auto&q:pf){\n      \
-    \  q=(p-1)/q;\n    }\n    using ull = unsigned long long;\n    static ull rnd\
-    \ = 7001;\n    while(1){\n        rnd^=rnd<<13; rnd^=rnd>>7; rnd^=rnd<<17;\n \
-    \       ll g = (ull)rnd%p;\n        if(g == 0) continue;\n        bool is_ok =\
-    \ true;\n        for(ll q : pf){\n            if(large_modpow(g,q,p) == 1){ \n\
-    \                is_ok = false; \n                break; \n            }\n   \
-    \     }\n        if(is_ok){\n            return g;\n        }\n    }\n}\n\n//@brief\
-    \ primitive root(\u539F\u59CB\u6839)"
+    \nll primitive_root(ll p){\n    if(p == 2) return 1;\n    auto pf = fact(p - 1);\n\
+    \    pf.erase(unique(all(pf)),pf.end());\n    for(auto&q:pf){\n        q=(p-1)/q;\n\
+    \    }\n    using ull = unsigned long long;\n    static ull rnd = 7001;\n    while(1){\n\
+    \        rnd^=rnd<<13; rnd^=rnd>>7; rnd^=rnd<<17;\n        ll g = (ull)rnd%p;\n\
+    \        if(g == 0) continue;\n        bool is_ok = true;\n        for(ll q :\
+    \ pf){\n            if(large_modpow(g,q,p) == 1){ \n                is_ok = false;\
+    \ \n                break; \n            }\n        }\n        if(is_ok){\n  \
+    \          return g;\n        }\n    }\n}\n\n//@brief primitive root(\u539F\u59CB\
+    \u6839)"
   dependsOn:
   - math/large_mod.hpp
   - math/fast_fact.hpp
@@ -124,7 +124,7 @@ data:
   isVerificationFile: false
   path: math/primitive_root.hpp
   requiredBy: []
-  timestamp: '2023-03-05 17:53:35+09:00'
+  timestamp: '2023-03-05 18:17:40+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo judge/new/Primitive Root.test.cpp

@@ -100,7 +100,7 @@ data:
     \ v2 = rho_fact(n);\n                v.insert(v.end(), all(v2));\n           \
     \ }\n            sort(all(v));\n            return v;\n        }\n    };  // namespace\
     \ pollard\n};  // namespace prime\nusing prime::pollard::fact;\n#line 3 \"math/phi_function.hpp\"\
-    \nll phi_func(ll n){\n    ll res=n;\n    auto pf=prime::fact(n);\n    pf.erase(unique(all(pf)),pf.end());\
+    \nll phi_func(ll n){\n    ll res=n;\n    auto pf=fact(n);\n    pf.erase(unique(all(pf)),pf.end());\
     \     \n    for(auto&d:pf){\n        res=res/d*(d-1);\n    }\n    return res;\n\
     }\n///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)\n\
     #line 5 \"test/AOJ/NTL/1/D.test.cpp\"\nint main(){\n    int n;\n    cin>>n;\n\
@@ -117,7 +117,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/NTL/1/D.test.cpp
   requiredBy: []
-  timestamp: '2023-03-05 17:39:45+09:00'
+  timestamp: '2023-03-05 18:17:40+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/AOJ/NTL/1/D.test.cpp

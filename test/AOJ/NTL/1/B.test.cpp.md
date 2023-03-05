@@ -32,19 +32,19 @@ data:
     \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
     \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
     \ ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 5 \"test/AOJ/NTL/1/B.test.cpp\"\
-    \n#line 3 \"main.cpp\"\nint main(){\n    int n,m;\n    cin>>n>>m;\n    cout<<mod_pow(n,m,MOD)<<'\\\
-    n';\n}\n\n"
+    \n#line 3 \"main.cpp\"\nint main(){\n    int n,m;\n    cin>>n>>m;\n    cout<<mod_pow<ll>(n,m,MOD)<<'\\\
+    n';\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/NTL_1_B\"\n\n\
     #include \"template.hpp\"\n#include \"math/mod_pow.hpp\"\n#line 3 \"main.cpp\"\
-    \nint main(){\n    int n,m;\n    cin>>n>>m;\n    cout<<mod_pow(n,m,MOD)<<'\\n';\n\
-    }\n\n"
+    \nint main(){\n    int n,m;\n    cin>>n>>m;\n    cout<<mod_pow<ll>(n,m,MOD)<<'\\\
+    n';\n}"
   dependsOn:
   - template.hpp
   - math/mod_pow.hpp
   isVerificationFile: true
   path: test/AOJ/NTL/1/B.test.cpp
   requiredBy: []
-  timestamp: '2023-03-05 17:21:38+09:00'
+  timestamp: '2023-03-05 18:17:40+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/AOJ/NTL/1/B.test.cpp
