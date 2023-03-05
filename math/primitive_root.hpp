@@ -1,5 +1,5 @@
 #pragma once
-#include"math/large_mod.hpp"
+#include"math/mod_pow.hpp"
 #include"math/fast_fact.hpp"
 ll primitive_root(ll p){
     if(p == 2) return 1;
@@ -16,7 +16,7 @@ ll primitive_root(ll p){
         if(g == 0) continue;
         bool is_ok = true;
         for(ll q : pf){
-            if(large_modpow(g,q,p) == 1){ 
+            if(mod_pow<__uint128_t,__uint128_t>(g,q,p) == 1){ 
                 is_ok = false; 
                 break; 
             }

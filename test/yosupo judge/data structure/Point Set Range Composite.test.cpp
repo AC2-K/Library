@@ -2,7 +2,7 @@
 #include"template.hpp"
 #include"data-structure/segtree.hpp"
 #include"math/prime_mint.hpp"
-using mint=modint<MOD2>;
+using mint = modint<MOD2>;
 
 struct F
 {

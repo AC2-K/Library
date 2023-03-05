@@ -1,5 +1,6 @@
-template<const ll mod>class modint {
+template<const long long mod>class modint {
 private:
+	using ll = long long;
 	using mint = modint<mod>;
 	ll value = 0;
 public:

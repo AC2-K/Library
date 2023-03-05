@@ -2,7 +2,7 @@
 
 
 #include"template.hpp"
-#include"math/prime_check.hpp"
+#include"math/eratosthenes.hpp"
 
 int main(){
     constexpr int INPUT_MAX = 100000000;

@@ -144,3 +144,4 @@ namespace modint {
 	};
 	typename dynamic_modint::u64 dynamic_modint::mod, dynamic_modint::r, dynamic_modint::n2;
 };
+///@brief 動的modint

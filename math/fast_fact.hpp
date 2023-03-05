@@ -93,6 +93,24 @@ namespace prime{
             sort(all(v));
             return v;
         }
+
+        vector<pair<u64,int>> exp_fact(u64 n){
+            auto pf = fact(n);
+            vector<pair<u64, int>> res;
+            res.emplace_back(pf.front(), 1);
+            //rle
+            for (int i = 1; i < pf.size(); i++){
+                if(res.back().first==pf[i]){
+                    res.back().second++;
+                }else{
+                    res.emplace_back(pf[i], 1);
+                }
+            }
+
+            return res;
+        }
     };  // namespace pollard
 };  // namespace prime
 using prime::pollard::fact;
+
+///@brief 高速素因数分解(Pollard Rho法)
