@@ -5,11 +5,11 @@ data:
   - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: rolling hash
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/14/B.test.cpp
     title: test/AOJ/ALDS/14/B.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: test/yosupo judge/new/Primitive Root.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/large_mod.hpp\"\ninline long long safe_mod(long long\
@@ -45,7 +45,7 @@ data:
   - math/primitive_root.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-03-05 17:53:35+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/new/Primitive Root.test.cpp
   - test/AOJ/ALDS/14/B.test.cpp

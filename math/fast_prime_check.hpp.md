@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
   _extendedRequiredBy:
   - icon: ':warning:'
     path: main.cpp
     title: main.cpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/fast_fact.hpp
     title: math/fast_fact.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
   - icon: ':x:'
@@ -21,10 +21,10 @@ data:
     path: sub.cpp
     title: sub.cpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/D.test.cpp
     title: test/AOJ/NTL/1/D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/math/Factorize.test.cpp
     title: test/yosupo judge/math/Factorize.test.cpp
   - icon: ':x:'
@@ -32,7 +32,7 @@ data:
     title: test/yosupo judge/new/Primitive Root.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
     links: []
@@ -100,7 +100,7 @@ data:
   - sub.cpp
   - main.cpp
   timestamp: '2023-03-05 17:39:45+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/math/Factorize.test.cpp
   - test/yosupo judge/new/Primitive Root.test.cpp

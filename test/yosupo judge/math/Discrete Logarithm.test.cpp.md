@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
@@ -27,9 +27,9 @@ data:
     \ __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\nusing\
     \ ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int, int>;\n\
     constexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\n\
-    constexpr long double pi = acos(-1);\nconstexpr ll MOD = 1e9 + 7;\nconstexpr ll\
-    \ MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] =\
-    \ { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
+    const long double pi = acos(-1);\nconstexpr ll MOD = 1e9 + 7;\nconstexpr ll MOD2\
+    \ = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1\
+    \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
     \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"math/mod_pow.hpp\"\ntemplate\
     \ <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    if(base==0)return\
     \ 0;\n    T ans = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp\
@@ -62,8 +62,8 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/math/Discrete Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-03-05 17:21:38+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-05 19:36:24+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/math/Discrete Logarithm.test.cpp
 layout: document

@@ -3,20 +3,20 @@ data:
   libraryCategories:
   - name: data-structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/cht.hpp
       title: ConvexHullTrick
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/dsu.hpp
       title: disjoint set(union find)
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/lazy_segtree.hpp
       title: "lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/segtree.hpp
       title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':x:'
+    - icon: ':question:'
       path: data-structure/sparse_table.hpp
       title: sparse table
   - name: .
@@ -33,7 +33,7 @@ data:
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
     - icon: ':warning:'
@@ -41,10 +41,10 @@ data:
       title: test.py
   - name: graph
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: graph/dijkstra.hpp
       title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-    - icon: ':x:'
+    - icon: ':question:'
       path: graph/edge.hpp
       title: edge
     - icon: ':heavy_check_mark:'
@@ -53,43 +53,43 @@ data:
     - icon: ':x:'
       path: graph/lca.hpp
       title: "Lowest Common Ancestor(\u6700\u5C0F\u5171\u901A\u7956\u5148)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/mst.hpp
       title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
   - name: math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/DLP.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/ext_gcd.hpp
       title: "ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\
         \u9664\u6CD5)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/fact.hpp
       title: "factorize(\u7D20\u56E0\u6570\u5206\u89E3)"
-    - icon: ':x:'
+    - icon: ':question:'
       path: math/fast_fact.hpp
       title: math/fast_fact.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: math/fast_prime_check.hpp
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-    - icon: ':x:'
+    - icon: ':question:'
       path: math/large_mod.hpp
       title: math/large_mod.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     - icon: ':warning:'
       path: math/montgomery.hpp
       title: "Montgomery(\u30E2\u30F3\u30B4\u30E1\u30EA\u4E57\u7B97(from Nyaan's library))"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/prime_check.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/prime_mint.hpp
       title: modint
     - icon: ':x:'
@@ -97,7 +97,7 @@ data:
       title: "primitive root(\u539F\u59CB\u6839)"
   - name: string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
       title: rolling hash
   - name: test/AOJ/GRL/5
@@ -108,72 +108,72 @@ data:
   verificationCategories:
   - name: test/AOJ/ALDS/1
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/ALDS/1/C.test.cpp
       title: test/AOJ/ALDS/1/C.test.cpp
   - name: test/AOJ/ALDS/14
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/ALDS/14/B.test.cpp
       title: test/AOJ/ALDS/14/B.test.cpp
   - name: test/AOJ/DSL/1
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/1/A.test.cpp
       title: test/AOJ/DSL/1/A.test.cpp
   - name: test/AOJ/DSL/2
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2/B.test.cpp
       title: test/AOJ/DSL/2/B.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2/D.test.cpp
       title: test/AOJ/DSL/2/D.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2/E.test.cpp
       title: test/AOJ/DSL/2/E.test.cpp
   - name: test/AOJ/GRL/1
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/1/A.test.cpp
       title: test/AOJ/GRL/1/A.test.cpp
   - name: test/AOJ/GRL/2
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/2/A.test.cpp
       title: test/AOJ/GRL/2/A.test.cpp
   - name: test/AOJ/NTL/1
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1/A.test.cpp
       title: test/AOJ/NTL/1/A.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1/B.test.cpp
       title: test/AOJ/NTL/1/B.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1/D.test.cpp
       title: test/AOJ/NTL/1/D.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1/E.test.cpp
       title: test/AOJ/NTL/1/E.test.cpp
   - name: test/yosupo judge/data structure
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
       title: test/yosupo judge/data structure/Line Add Get Min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
       title: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
       title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/Static RMQ.test.cpp
       title: test/yosupo judge/data structure/Static RMQ.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/Static Range Sum.test.cpp
       title: test/yosupo judge/data structure/Static Range Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/UnionFind.test.cpp
       title: test/yosupo judge/data structure/UnionFind.test.cpp
     - icon: ':heavy_check_mark:'
@@ -181,20 +181,20 @@ data:
       title: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
   - name: test/yosupo judge/graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/graph/Shortest Path.test.cpp
       title: test/yosupo judge/graph/Shortest Path.test.cpp
   - name: test/yosupo judge/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/math/Discrete Logarithm.test.cpp
       title: test/yosupo judge/math/Discrete Logarithm.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/math/Factorize.test.cpp
       title: test/yosupo judge/math/Factorize.test.cpp
   - name: test/yosupo judge/new
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
       title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     - icon: ':x:'

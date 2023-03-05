@@ -9,7 +9,7 @@ data:
     path: test/AOJ/GRL/5/C.cpp
     title: test/AOJ/GRL/5/C.cpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Static RMQ.test.cpp
     title: test/yosupo judge/data structure/Static RMQ.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: sparse table
     links: []
@@ -53,7 +53,7 @@ data:
   - graph/lca.hpp
   - test/AOJ/GRL/5/C.cpp
   timestamp: '2023-02-23 13:41:21+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
   - test/yosupo judge/data structure/Static RMQ.test.cpp

@@ -12,70 +12,70 @@ data:
     path: test/AOJ/GRL/5/C.cpp
     title: test/AOJ/GRL/5/C.cpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/1/C.test.cpp
     title: test/AOJ/ALDS/1/C.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/14/B.test.cpp
     title: test/AOJ/ALDS/14/B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/1/A.test.cpp
     title: test/AOJ/DSL/1/A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/B.test.cpp
     title: test/AOJ/DSL/2/B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/D.test.cpp
     title: test/AOJ/DSL/2/D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/E.test.cpp
     title: test/AOJ/DSL/2/E.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/1/A.test.cpp
     title: test/AOJ/GRL/1/A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/2/A.test.cpp
     title: test/AOJ/GRL/2/A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/A.test.cpp
     title: test/AOJ/NTL/1/A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/B.test.cpp
     title: test/AOJ/NTL/1/B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/D.test.cpp
     title: test/AOJ/NTL/1/D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/E.test.cpp
     title: test/AOJ/NTL/1/E.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
     title: test/yosupo judge/data structure/Line Add Get Min.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
     title: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
     title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Static RMQ.test.cpp
     title: test/yosupo judge/data structure/Static RMQ.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Static Range Sum.test.cpp
     title: test/yosupo judge/data structure/Static Range Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/UnionFind.test.cpp
     title: test/yosupo judge/data structure/UnionFind.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/graph/Shortest Path.test.cpp
     title: test/yosupo judge/graph/Shortest Path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/math/Discrete Logarithm.test.cpp
     title: test/yosupo judge/math/Discrete Logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/math/Factorize.test.cpp
     title: test/yosupo judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
   - icon: ':x:'
@@ -89,7 +89,7 @@ data:
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -120,7 +120,7 @@ data:
 
     constexpr ld eps = 1e-6;
 
-    constexpr long double pi = acos(-1);
+    const long double pi = acos(-1);
 
     constexpr ll MOD = 1e9 + 7;
 
@@ -163,7 +163,7 @@ data:
 
     constexpr ld eps = 1e-6;
 
-    constexpr long double pi = acos(-1);
+    const long double pi = acos(-1);
 
     constexpr ll MOD = 1e9 + 7;
 
@@ -183,8 +183,8 @@ data:
   - sub.cpp
   - main.cpp
   - test/AOJ/GRL/5/C.cpp
-  timestamp: '2023-03-04 11:54:34+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-03-05 19:36:24+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/math/Discrete Logarithm.test.cpp
   - test/yosupo judge/math/Factorize.test.cpp
