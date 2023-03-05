@@ -206,5 +206,5 @@ public:
 typename montgomery32::u32 montgomery32::mod;
 typename montgomery32::u32 montgomery32::r;
 typename montgomery32::u32 montgomery32::n2;
-/// @brief Montgomery
+/// @brief Montgomery(モンゴメリ乗算(from Nyaan's library))
 ///by https://nyaannyaan.github.io/library/modint/modint-montgomery64.hpp,https://nyaannyaan.github.io/library/modint/arbitrary-prime-modint.hpp

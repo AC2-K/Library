@@ -25,16 +25,3 @@ T large_modpow(T base,T exp,T mod){
     }
     return ans;
 }
-
-unsigned long long i128_modpow(__uint128_t base, __uint128_t exp, unsigned long long mod){
-    i128 res = (mod == 1 ? 0 : 1);
-    base %= mod;
-    while (exp){
-        if (exp & 1){
-            res = (res * base) % mod;
-        }
-        base = (base * base) % mod;
-        exp >>= 1;
-    }
-    return res;
-}

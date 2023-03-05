@@ -6,7 +6,7 @@
 
 int main(){
     constexpr int INPUT_MAX = 100000000;
-    const auto&res = prime_checker(INPUT_MAX);
+    const auto res = prime_checker(INPUT_MAX);
 
     int n;
     scanf("%d",&n);
