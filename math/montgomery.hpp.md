@@ -7,7 +7,8 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: Montgomery
+    document_title: "Montgomery(\u30E2\u30F3\u30B4\u30E1\u30EA\u4E57\u7B97(from Nyaan's\
+      \ library))"
     links:
     - https://nyaannyaan.github.io/library/modint/modint-montgomery64.hpp,https://nyaannyaan.github.io/library/modint/arbitrary-prime-modint.hpp
   bundledCode: "#line 2 \"math/montgomery.hpp\"\nclass montgomery64 {\n    using mint\
@@ -80,7 +81,8 @@ data:
     \        return ret >= mod ? ret - mod : ret;\n    }   \n\n    static u32 get_mod()\
     \ { return mod; }\n};\ntypename montgomery32::u32 montgomery32::mod;\ntypename\
     \ montgomery32::u32 montgomery32::r;\ntypename montgomery32::u32 montgomery32::n2;\n\
-    /// @brief Montgomery\n///by https://nyaannyaan.github.io/library/modint/modint-montgomery64.hpp,https://nyaannyaan.github.io/library/modint/arbitrary-prime-modint.hpp\n"
+    /// @brief Montgomery(\u30E2\u30F3\u30B4\u30E1\u30EA\u4E57\u7B97(from Nyaan's\
+    \ library))\n///by https://nyaannyaan.github.io/library/modint/modint-montgomery64.hpp,https://nyaannyaan.github.io/library/modint/arbitrary-prime-modint.hpp\n"
   code: "#pragma once\nclass montgomery64 {\n    using mint = montgomery64;\n    using\
     \ i64 = int64_t;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\n\
     \    static u64 mod;\n    static u64 r;\n    static u64 n2;\n\n    static u64\
@@ -150,12 +152,13 @@ data:
     \        return ret >= mod ? ret - mod : ret;\n    }   \n\n    static u32 get_mod()\
     \ { return mod; }\n};\ntypename montgomery32::u32 montgomery32::mod;\ntypename\
     \ montgomery32::u32 montgomery32::r;\ntypename montgomery32::u32 montgomery32::n2;\n\
-    /// @brief Montgomery\n///by https://nyaannyaan.github.io/library/modint/modint-montgomery64.hpp,https://nyaannyaan.github.io/library/modint/arbitrary-prime-modint.hpp"
+    /// @brief Montgomery(\u30E2\u30F3\u30B4\u30E1\u30EA\u4E57\u7B97(from Nyaan's\
+    \ library))\n///by https://nyaannyaan.github.io/library/modint/modint-montgomery64.hpp,https://nyaannyaan.github.io/library/modint/arbitrary-prime-modint.hpp"
   dependsOn: []
   isVerificationFile: false
   path: math/montgomery.hpp
   requiredBy: []
-  timestamp: '2023-03-05 17:21:38+09:00'
+  timestamp: '2023-03-05 17:53:35+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/montgomery.hpp
@@ -163,5 +166,5 @@ layout: document
 redirect_from:
 - /library/math/montgomery.hpp
 - /library/math/montgomery.hpp.html
-title: Montgomery
+title: "Montgomery(\u30E2\u30F3\u30B4\u30E1\u30EA\u4E57\u7B97(from Nyaan's library))"
 ---

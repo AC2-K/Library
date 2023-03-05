@@ -43,8 +43,7 @@ data:
     pages:
     - icon: ':x:'
       path: graph/dijkstra.hpp
-      title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C\
-        )"
+      title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     - icon: ':x:'
       path: graph/edge.hpp
       title: edge
@@ -83,7 +82,7 @@ data:
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     - icon: ':warning:'
       path: math/montgomery.hpp
-      title: Montgomery
+      title: "Montgomery(\u30E2\u30F3\u30B4\u30E1\u30EA\u4E57\u7B97(from Nyaan's library))"
     - icon: ':x:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"

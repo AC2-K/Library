@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':x:'
     path: graph/dijkstra.hpp
-    title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C)"
+    title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
   _extendedVerifiedWith:
   - icon: ':x:'
     path: test/AOJ/GRL/1/A.test.cpp

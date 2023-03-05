@@ -32,12 +32,8 @@ data:
     \ res;\n}\ntemplate<typename T>\nT large_modpow(T base,T exp,T mod){\n    T ans\
     \ = 1 % mod;\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n  \
     \          ans = mul(ans, base, mod);\n        }\n        base = mul(base, base,\
-    \ mod);\n        exp >>= 1;\n    }\n    return ans;\n}\n\nunsigned long long i128_modpow(__uint128_t\
-    \ base, __uint128_t exp, unsigned long long mod){\n    i128 res = (mod == 1 ?\
-    \ 0 : 1);\n    base %= mod;\n    while (exp){\n        if (exp & 1){\n       \
-    \     res = (res * base) % mod;\n        }\n        base = (base * base) % mod;\n\
-    \        exp >>= 1;\n    }\n    return res;\n}\n#line 1 \"math/mod_pow.hpp\"\n\
-    template <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    if(base==0)return\
+    \ mod);\n        exp >>= 1;\n    }\n    return ans;\n}\n#line 1 \"math/mod_pow.hpp\"\
+    \ntemplate <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    if(base==0)return\
     \ 0;\n    T ans = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp\
     \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
     \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
@@ -128,7 +124,7 @@ data:
   isVerificationFile: false
   path: math/primitive_root.hpp
   requiredBy: []
-  timestamp: '2023-03-05 17:39:45+09:00'
+  timestamp: '2023-03-05 17:53:35+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo judge/new/Primitive Root.test.cpp

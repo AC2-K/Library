@@ -33,13 +33,13 @@ data:
     \ N; i++) {\n            primes[p * i] = false;\n        }\n    }\n\n    return\
     \ primes;\n}\n///@brief \u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9\
     \n#line 6 \"test/AOJ/ALDS/1/C.test.cpp\"\n\nint main(){\n    constexpr int INPUT_MAX\
-    \ = 100000000;\n    const auto&res = prime_checker(INPUT_MAX);\n\n    int n;\n\
+    \ = 100000000;\n    const auto res = prime_checker(INPUT_MAX);\n\n    int n;\n\
     \    scanf(\"%d\",&n);\n    int ans = 0;\n    while(n--){\n        int p;\n  \
     \      scanf(\"%d\",&p);\n        if(res[p]){\n            ans++;\n        }\n\
     \    }\n    printf(\"%d\\n\",ans);\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all/ALDS1_1_C\"\
     \n\n\n#include\"template.hpp\"\n#include\"math/prime_check.hpp\"\n\nint main(){\n\
-    \    constexpr int INPUT_MAX = 100000000;\n    const auto&res = prime_checker(INPUT_MAX);\n\
+    \    constexpr int INPUT_MAX = 100000000;\n    const auto res = prime_checker(INPUT_MAX);\n\
     \n    int n;\n    scanf(\"%d\",&n);\n    int ans = 0;\n    while(n--){\n     \
     \   int p;\n        scanf(\"%d\",&p);\n        if(res[p]){\n            ans++;\n\
     \        }\n    }\n    printf(\"%d\\n\",ans);\n}"
@@ -49,7 +49,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/ALDS/1/C.test.cpp
   requiredBy: []
-  timestamp: '2023-03-04 11:54:34+09:00'
+  timestamp: '2023-03-05 17:53:35+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/AOJ/ALDS/1/C.test.cpp

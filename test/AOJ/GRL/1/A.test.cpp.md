@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':x:'
     path: graph/dijkstra.hpp
-    title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C)"
+    title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
   - icon: ':x:'
     path: graph/edge.hpp
     title: edge
@@ -39,9 +39,9 @@ data:
     \           continue;\n        }\n\n        for(const auto&[nv,c]:g[v]){\n   \
     \         if(dist[v]+c<dist[nv]){\n                dist[nv]=dist[v]+c;\n     \
     \           pre[nv]=v;\n                que.emplace(dist[nv],nv);\n          \
-    \  }\n        }\n    }\n    return make_pair(dist,pre);\n}\n///@brief dijkstra(\u5358\
-    \u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C)\n#line 5 \"test/AOJ/GRL/1/A.test.cpp\"\
-    \n\nint main(){\n    int n,m,r;\n    cin>>n>>m>>r;\n    vector<vector<edge>> g(n);\n\
+    \  }\n        }\n    }\n    return make_pair(dist,pre);\n}\n///@brief dijkstra(\u30C0\
+    \u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)\n#line 5 \"test/AOJ/GRL/1/A.test.cpp\"\n\
+    \nint main(){\n    int n,m,r;\n    cin>>n>>m>>r;\n    vector<vector<edge>> g(n);\n\
     \    rep(i,m){\n        int s,t,w;\n        cin>>s>>t>>w;\n        g[s].emplace_back(t,w);\n\
     \    }\n\n    auto res=dijkstra(r,g).first;\n\n    rep(v,n){\n        if(res[v]>=infl)cout<<\"\
     INF\\n\";\n        else cout<<res[v]<<'\\n';\n    }\n}\n"
@@ -58,7 +58,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/GRL/1/A.test.cpp
   requiredBy: []
-  timestamp: '2023-03-04 11:54:34+09:00'
+  timestamp: '2023-03-05 17:53:35+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/AOJ/GRL/1/A.test.cpp

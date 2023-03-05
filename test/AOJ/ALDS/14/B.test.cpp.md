@@ -38,15 +38,10 @@ data:
     \ base,T exp,T mod){\n    T ans = 1 % mod;\n    base %= mod;\n    while (exp)\
     \ {\n        if (exp & 1) {\n            ans = mul(ans, base, mod);\n        }\n\
     \        base = mul(base, base, mod);\n        exp >>= 1;\n    }\n    return ans;\n\
-    }\n\nunsigned long long i128_modpow(__uint128_t base, __uint128_t exp, unsigned\
-    \ long long mod){\n    i128 res = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while\
-    \ (exp){\n        if (exp & 1){\n            res = (res * base) % mod;\n     \
-    \   }\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return\
-    \ res;\n}\n#line 3 \"string/rolling_hash.hpp\"\nnamespace for_hash {\n\tusing\
-    \ ull = uint_fast64_t;\n\tconstexpr ull mapping_max = (ull)'Z';\n\tull base =\
-    \ -1;\t//base\u3092\u30E9\u30F3\u30C0\u30E0\u306B\u3068\u308B\n\tconstexpr ull\
-    \ mod = (1uL << 61) - 1;\n\tconstexpr ull primitive_root = 37;\n\tull strong_rand()\
-    \ {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
+    }\n#line 3 \"string/rolling_hash.hpp\"\nnamespace for_hash {\n\tusing ull = uint_fast64_t;\n\
+    \tconstexpr ull mapping_max = (ull)'Z';\n\tull base = -1;\t//base\u3092\u30E9\u30F3\
+    \u30C0\u30E0\u306B\u3068\u308B\n\tconstexpr ull mod = (1uL << 61) - 1;\n\tconstexpr\
+    \ ull primitive_root = 37;\n\tull strong_rand() {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
     \t\tuniform_int_distribution<ull> rand(1uL, mod - 1);\n\t\treturn rand(engine);\n\
     \t}\n\tvoid generate_base() {\n        if(base != -1) return;\n\t\tull r = mod\
     \ - 1;\n\t\twhile (gcd(r, mod - 1) != 1 || r <= mapping_max) {\n\t\t\tr = strong_rand();\n\
@@ -83,7 +78,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/ALDS/14/B.test.cpp
   requiredBy: []
-  timestamp: '2023-03-04 11:54:34+09:00'
+  timestamp: '2023-03-05 17:53:35+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/AOJ/ALDS/14/B.test.cpp

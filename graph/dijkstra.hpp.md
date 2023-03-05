@@ -19,8 +19,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':x:'
   attributes:
-    document_title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\
-      \u984C)"
+    document_title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     links: []
   bundledCode: "#line 1 \"graph/edge.hpp\"\nstruct edge{\n    int to;\n    ll cost;\n\
     \    edge(int to,ll cost):to(to),cost(cost){}\n};\n///@brief edge\n#line 3 \"\
@@ -32,8 +31,7 @@ data:
     \n        for(const auto&[nv,c]:g[v]){\n            if(dist[v]+c<dist[nv]){\n\
     \                dist[nv]=dist[v]+c;\n                pre[nv]=v;\n           \
     \     que.emplace(dist[nv],nv);\n            }\n        }\n    }\n    return make_pair(dist,pre);\n\
-    }\n///@brief dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C\
-    )\n"
+    }\n///@brief dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)\n"
   code: "#pragma once\n#include\"edge.hpp\"\npair<vector<ll>,vector<int>> dijkstra(int\
     \ s,const vector<vector<edge>>&g){\n    vector<ll> dist(g.size(),infl);\n    vector<int>\
     \ pre(g.size(),-1);\n    using st=pair<ll,int>;\n    priority_queue<st,vector<st>,greater<st>>\
@@ -42,14 +40,14 @@ data:
     \           continue;\n        }\n\n        for(const auto&[nv,c]:g[v]){\n   \
     \         if(dist[v]+c<dist[nv]){\n                dist[nv]=dist[v]+c;\n     \
     \           pre[nv]=v;\n                que.emplace(dist[nv],nv);\n          \
-    \  }\n        }\n    }\n    return make_pair(dist,pre);\n}\n///@brief dijkstra(\u5358\
-    \u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C)"
+    \  }\n        }\n    }\n    return make_pair(dist,pre);\n}\n///@brief dijkstra(\u30C0\
+    \u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
   dependsOn:
   - graph/edge.hpp
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-03-05 17:53:35+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo judge/graph/Shortest Path.test.cpp
@@ -60,5 +58,5 @@ layout: document
 redirect_from:
 - /library/graph/dijkstra.hpp
 - /library/graph/dijkstra.hpp.html
-title: "dijkstra(\u5358\u4E00\u59CB\u70B9\u6700\u77ED\u7D4C\u8DEF\u554F\u984C)"
+title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
 ---
