@@ -99,3 +99,4 @@ private:
 
 
 ///@brief  dynamic_segtree(動的セグメント木)
+///@docs docs/data-structure/dynamic_segtree.md
