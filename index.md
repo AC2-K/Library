@@ -92,9 +92,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-    - icon: ':warning:'
-      path: math/prime_mint.hpp
-      title: modint
     - icon: ':heavy_check_mark:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
