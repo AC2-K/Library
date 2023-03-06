@@ -7,6 +7,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
+    document_title: "\u52D5\u7684modint"
     links: []
   bundledCode: "#line 1 \"math/dynamic_modint.hpp\"\nnamespace modint {\n\tclass dynamic_modint\
     \ {\n\t\tusing mint = dynamic_modint;\n\t\tusing i64 = int64_t;\n\t\tusing u64\
@@ -57,7 +58,7 @@ data:
     \t\t\treturn mint(lhs) /= rhs;\n\t\t}\n\t\tfriend mint operator/(const mint& lhs,\
     \ const u64& rhs) {\n\t\t\treturn mint(lhs) /= mint(rhs);\n\t\t}\n\n\t};\n\ttypename\
     \ dynamic_modint::u64 dynamic_modint::mod, dynamic_modint::r, dynamic_modint::n2;\n\
-    };\n"
+    };\n///@brief \u52D5\u7684modint\n"
   code: "namespace modint {\n\tclass dynamic_modint {\n\t\tusing mint = dynamic_modint;\n\
     \t\tusing i64 = int64_t;\n\t\tusing u64 = uint64_t;\n\t\tusing u128 = __uint128_t;\n\
     \n\t\tstatic u64 mod;\n\t\tstatic u64 r;\n\t\tstatic u64 n2;\n\n\t\tstatic u64\
@@ -106,12 +107,12 @@ data:
     \ u64& lhs, const mint& rhs) {\n\t\t\treturn mint(lhs) /= rhs;\n\t\t}\n\t\tfriend\
     \ mint operator/(const mint& lhs, const u64& rhs) {\n\t\t\treturn mint(lhs) /=\
     \ mint(rhs);\n\t\t}\n\n\t};\n\ttypename dynamic_modint::u64 dynamic_modint::mod,\
-    \ dynamic_modint::r, dynamic_modint::n2;\n};"
+    \ dynamic_modint::r, dynamic_modint::n2;\n};\n///@brief \u52D5\u7684modint"
   dependsOn: []
   isVerificationFile: false
   path: math/dynamic_modint.hpp
   requiredBy: []
-  timestamp: '2023-03-06 04:18:20+09:00'
+  timestamp: '2023-03-06 05:55:38+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/dynamic_modint.hpp
@@ -119,5 +120,5 @@ layout: document
 redirect_from:
 - /library/math/dynamic_modint.hpp
 - /library/math/dynamic_modint.hpp.html
-title: math/dynamic_modint.hpp
+title: "\u52D5\u7684modint"
 ---

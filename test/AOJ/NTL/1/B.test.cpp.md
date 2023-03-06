@@ -26,12 +26,12 @@ data:
     \ = 1e-6;\nconst long double pi = acos(-1);\nconstexpr int64_t MOD = 1e9 + 7;\n\
     constexpr int64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
     \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
-    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"math/mod_pow.hpp\"\
-    \ntemplate <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    if(base==0)return\
-    \ 0;\n    T ans = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp\
-    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
-    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 4 \"test/AOJ/NTL/1/B.test.cpp\"\
+    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 2 \"math/mod_pow.hpp\"\
+    \ntemplate <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    T ans\
+    \ = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) {\n    \
+    \        ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
+    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n///@brief\
+    \ mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 4 \"test/AOJ/NTL/1/B.test.cpp\"\
     \nint main(){\n    int n, m;\n    cin >> n >> m;\n    cout << mod_pow<ll>(n, m,\
     \ MOD) << '\\n';\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/NTL_1_B\"\n#include\
@@ -43,7 +43,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/NTL/1/B.test.cpp
   requiredBy: []
-  timestamp: '2023-03-06 04:18:20+09:00'
+  timestamp: '2023-03-06 05:55:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/NTL/1/B.test.cpp

@@ -3,18 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: math/primitive_root.hpp
-    title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: rolling hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/14/B.test.cpp
     title: test/AOJ/ALDS/14/B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/new/Primitive Root.test.cpp
-    title: test/yosupo judge/new/Primitive Root.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -43,11 +37,9 @@ data:
   path: math/large_mod.hpp
   requiredBy:
   - string/rolling_hash.hpp
-  - math/primitive_root.hpp
   timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo judge/new/Primitive Root.test.cpp
   - test/AOJ/ALDS/14/B.test.cpp
 documentation_of: math/large_mod.hpp
 layout: document

@@ -7,7 +7,7 @@ data:
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':heavy_check_mark:'
     path: math/fast_fact.hpp
-    title: math/fast_fact.hpp
+    title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: math/fast_prime_check.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
@@ -39,14 +39,13 @@ data:
   attributes:
     document_title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     links: []
-  bundledCode: "#line 1 \"math/mod_pow.hpp\"\ntemplate <class T, class U = T>\nU mod_pow(T\
-    \ base, T exp, T mod){\n    if(base==0)return 0;\n    T ans = 1;\n    base %=\
-    \ mod;\n    while (exp > 0) {\n        if (exp & 1) {\n            ans *= base;\n\
-    \            ans %= mod;\n        }\n        base *= base;\n        base %= mod;\n\
-    \        exp >>= 1;\n    }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\
-    \u30CA\u30EA\u6CD5)\n"
-  code: "template <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    if(base==0)return\
-    \ 0;\n    T ans = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp\
+  bundledCode: "#line 2 \"math/mod_pow.hpp\"\ntemplate <class T, class U = T>\nU mod_pow(T\
+    \ base, T exp, T mod){\n    T ans = 1;\n    base %= mod;\n    while (exp > 0)\
+    \ {\n        if (exp & 1) {\n            ans *= base;\n            ans %= mod;\n\
+    \        }\n        base *= base;\n        base %= mod;\n        exp >>= 1;\n\
+    \    }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n"
+  code: "#pragma once\ntemplate <class T, class U = T>\nU mod_pow(T base, T exp, T\
+    \ mod){\n    T ans = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp\
     \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
     \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
     \ ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
@@ -59,7 +58,7 @@ data:
   - math/fast_fact.hpp
   - math/fast_prime_check.hpp
   - math/phi_function.hpp
-  timestamp: '2023-03-06 04:18:20+09:00'
+  timestamp: '2023-03-06 05:55:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/new/Primitive Root.test.cpp

@@ -63,7 +63,10 @@ data:
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
     - icon: ':warning:'
       path: math/dynamic_modint.hpp
-      title: math/dynamic_modint.hpp
+      title: "\u52D5\u7684modint"
+    - icon: ':heavy_check_mark:'
+      path: math/eratosthenes.hpp
+      title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     - icon: ':heavy_check_mark:'
       path: math/ext_gcd.hpp
       title: "ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\
@@ -73,7 +76,7 @@ data:
       title: "factorize(\u7D20\u56E0\u6570\u5206\u89E3)"
     - icon: ':heavy_check_mark:'
       path: math/fast_fact.hpp
-      title: math/fast_fact.hpp
+      title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
     - icon: ':heavy_check_mark:'
       path: math/fast_prime_check.hpp
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
@@ -86,9 +89,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-    - icon: ':heavy_check_mark:'
-      path: math/prime_check.hpp
-      title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     - icon: ':heavy_check_mark:'
       path: math/prime_mint.hpp
       title: modint

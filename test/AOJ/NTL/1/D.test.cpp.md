@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/fast_fact.hpp
-    title: math/fast_fact.hpp
+    title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: math/fast_prime_check.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
@@ -35,12 +35,12 @@ data:
     \ ld eps = 1e-6;\nconst long double pi = acos(-1);\nconstexpr int64_t MOD = 1e9\
     \ + 7;\nconstexpr int64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\n\
     constexpr int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
-    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"math/mod_pow.hpp\"\
-    \ntemplate <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    if(base==0)return\
-    \ 0;\n    T ans = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp\
-    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
-    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 3 \"math/fast_prime_check.hpp\"\
+    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 2 \"math/mod_pow.hpp\"\
+    \ntemplate <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    T ans\
+    \ = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) {\n    \
+    \        ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
+    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n///@brief\
+    \ mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 3 \"math/fast_prime_check.hpp\"\
     \nnamespace prime {\n    namespace miller{\n        using i128 = __int128_t;\n\
     \        using u128 = __uint128_t;\n        using u64 = __uint64_t;\n        bool\
     \ miller_rabin(u64 n,const u64 bases[],int siz) {\n            u64 d = n - 1;\n\
@@ -98,9 +98,16 @@ data:
     \            if (n < 2) {\n                return {};\n            }\n       \
     \     vector<u64> v = naive(n);\n            if(n!=1){\n                vector<u64>\
     \ v2 = rho_fact(n);\n                v.insert(v.end(), all(v2));\n           \
-    \ }\n            sort(all(v));\n            return v;\n        }\n    };  // namespace\
-    \ pollard\n};  // namespace prime\nusing prime::pollard::fact;\n#line 3 \"math/phi_function.hpp\"\
-    \nll phi_func(ll n){\n    ll res=n;\n    auto pf=fact(n);\n    pf.erase(unique(all(pf)),pf.end());\
+    \ }\n            sort(all(v));\n            return v;\n        }\n\n        vector<pair<u64,int>>\
+    \ exp_fact(u64 n){\n            auto pf = fact(n);\n            vector<pair<u64,\
+    \ int>> res;\n            res.emplace_back(pf.front(), 1);\n            //rle\n\
+    \            for (int i = 1; i < pf.size(); i++){\n                if(res.back().first==pf[i]){\n\
+    \                    res.back().second++;\n                }else{\n          \
+    \          res.emplace_back(pf[i], 1);\n                }\n            }\n\n \
+    \           return res;\n        }\n    };  // namespace pollard\n};  // namespace\
+    \ prime\nusing prime::pollard::fact;\n\n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\
+    \u5206\u89E3(Pollard Rho\u6CD5)\n#line 3 \"math/phi_function.hpp\"\nll phi_func(ll\
+    \ n){\n    ll res=n;\n    auto pf=fact(n);\n    pf.erase(unique(all(pf)),pf.end());\
     \     \n    for(auto&d:pf){\n        res=res/d*(d-1);\n    }\n    return res;\n\
     }\n///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)\n\
     #line 5 \"test/AOJ/NTL/1/D.test.cpp\"\nint main(){\n    int n;\n    cin>>n;\n\
@@ -117,7 +124,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/NTL/1/D.test.cpp
   requiredBy: []
-  timestamp: '2023-03-06 04:18:20+09:00'
+  timestamp: '2023-03-06 05:55:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/NTL/1/D.test.cpp
