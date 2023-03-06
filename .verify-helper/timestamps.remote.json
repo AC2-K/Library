@@ -19,5 +19,10 @@
 "test/yosupo judge/data structure/UnionFind.test.cpp": "2023-03-06 04:18:20 +0900",
 "test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp": "2023-03-06 04:18:20 +0900",
 "test/yosupo judge/graph/Shortest Path.test.cpp": "2023-03-06 04:18:20 +0900",
-"test/yosupo judge/math/Discrete Logarithm.test.cpp": "2023-03-06 04:18:20 +0900"
+"test/yosupo judge/math/Discrete Logarithm.test.cpp": "2023-03-06 04:18:20 +0900",
+"test/yosupo judge/math/Factorize.test.cpp": "2023-03-06 04:18:20 +0900",
+"test/yosupo judge/new/Longest Increasing Subsequence.test.cpp": "2023-03-06 04:18:20 +0900",
+"test/yosupo judge/new/Primitive Root.test.cpp": "2023-03-06 04:18:20 +0900",
+"test/yosupo judge/tree/Lowest Common Ancestor.test.cpp": "2023-03-06 04:18:20 +0900",
+"test/yosupo judge/tree/Tree Diameter.test.cpp": "2023-03-06 04:18:20 +0900"
 }
