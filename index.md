@@ -9,7 +9,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/dsu.hpp
       title: disjoint set(union find)
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/dynamic_segtree.hpp
       title: "dynamic_segtree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
@@ -214,6 +214,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/tree/Tree Diameter.test.cpp
       title: test/yosupo judge/tree/Tree Diameter.test.cpp
+  - name: test/yuki
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yuki/No789.test.cpp
+      title: test/yuki/No789.test.cpp
 layout: toppage
 ---
 [![AC2K](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2FAC2K)](https://atcoder.jp/users/AC2K)
