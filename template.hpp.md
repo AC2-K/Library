@@ -3,9 +3,6 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
-  - icon: ':warning:'
     path: test/AOJ/GRL/5/C.cpp
     title: test/AOJ/GRL/5/C.cpp
   _extendedVerifiedWith:
@@ -177,7 +174,6 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
-  - main.cpp
   - test/AOJ/GRL/5/C.cpp
   timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_AC

@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/B.test.cpp
@@ -84,8 +81,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data-structure/segtree.hpp
-  requiredBy:
-  - main.cpp
+  requiredBy: []
   timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

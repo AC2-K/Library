@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: math/modint.hpp
+    title: math/modint.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -112,7 +115,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/dynamic_modint.hpp
-  requiredBy: []
+  requiredBy:
+  - math/modint.hpp
   timestamp: '2023-03-06 14:01:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

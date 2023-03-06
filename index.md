@@ -86,6 +86,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
+    - icon: ':warning:'
+      path: math/modint.hpp
+      title: math/modint.hpp
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
