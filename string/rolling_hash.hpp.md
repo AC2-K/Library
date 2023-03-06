@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/large_mod.hpp
     title: math/large_mod.hpp
   _extendedRequiredBy: []
