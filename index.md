@@ -213,8 +213,12 @@ data:
       title: test/yosupo judge/tree/Tree Diameter.test.cpp
 layout: toppage
 ---
+[![AC2K](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2FAC2K)](https://atcoder.jp/users/AC2K)\
+[![Actions Status](https://github.com/AC2-K/library/workflows/verify/badge.svg)](https://github.com/AC2-K/library/actions)
+[![GitHub Pages](https://img.shields.io/static/v1?label=GitHub+Pages&message=+&color=brightgreen&logo=github)](https://AC2-K.github.io/library/)
+[![](https://img.shields.io/badge/license-CC0_License-blue.svg)](https://github.com/AC2-K/library/blob/main/LICENSE)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/AC2-K/library?style=flat-square)\
 AC2K のライブラリです。\
-バグってたらごめんなさい...[Twitter](https://twitter.com/ac2000_cp)とかに連絡いただけるととても助かります。
-\
-\
-このライブラリは、基本的に$0$-indexです。(そうじゃないときはドキュメントに注釈を入れる...はず)
+バグってたらごめんなさい...[Twitter](https://twitter.com/ac2000_cp)とかに連絡いただけるととても助かります。\
+C++17の環境で動くことを確認している...はずです。\
+verify
