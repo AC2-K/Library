@@ -29,7 +29,7 @@ data:
       title: main.cpp
     - icon: ':warning:'
       path: out.cpp
-      title: out.cpp
+      title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
@@ -63,7 +63,7 @@ data:
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
     - icon: ':warning:'
       path: math/dynamic_modint.hpp
-      title: "\u52D5\u7684modint"
+      title: "dynamic modint(\u52D5\u7684modint)"
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
@@ -89,12 +89,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: math/prime_mint.hpp
       title: modint
     - icon: ':heavy_check_mark:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
+    - icon: ':heavy_check_mark:'
+      path: math/static_modint.hpp
+      title: "static modint(\u9759\u7684modint)"
   - name: string
     pages:
     - icon: ':heavy_check_mark:'

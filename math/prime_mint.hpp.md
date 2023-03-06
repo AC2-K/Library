@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-    title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     document_title: modint
     links: []
@@ -77,9 +74,8 @@ data:
   path: math/prime_mint.hpp
   requiredBy: []
   timestamp: '2023-03-06 05:55:38+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: math/prime_mint.hpp
 layout: document
 redirect_from:
