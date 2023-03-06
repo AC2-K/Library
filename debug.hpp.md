@@ -40,7 +40,7 @@ data:
   isVerificationFile: false
   path: debug.hpp
   requiredBy: []
-  timestamp: '2023-02-28 13:51:36+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: debug.hpp

@@ -42,9 +42,9 @@ data:
   isVerificationFile: false
   path: math/large_mod.hpp
   requiredBy:
-  - math/primitive_root.hpp
   - string/rolling_hash.hpp
-  timestamp: '2023-03-05 17:53:35+09:00'
+  - math/primitive_root.hpp
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/new/Primitive Root.test.cpp

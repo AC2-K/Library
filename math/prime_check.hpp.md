@@ -27,7 +27,7 @@ data:
   isVerificationFile: false
   path: math/prime_check.hpp
   requiredBy: []
-  timestamp: '2023-02-21 08:23:41+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/ALDS/1/C.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree.hpp
     title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   - icon: ':heavy_check_mark:'
@@ -86,7 +86,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 15:33:22+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp

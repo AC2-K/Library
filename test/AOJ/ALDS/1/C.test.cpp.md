@@ -23,9 +23,9 @@ data:
     #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
     \ long long;\nusing ld = long double;\nusing graph = vector<vector<int>>;\nusing\
     \ P = pair<int, int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr\
-    \ ld eps = 1e-6;\nconst long double pi = acos(-1);\nconstexpr ll MOD = 1e9 + 7;\n\
-    constexpr ll MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
-    \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
+    \ ld eps = 1e-6;\nconst long double pi = acos(-1);\nconstexpr int64_t MOD = 1e9\
+    \ + 7;\nconstexpr int64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\n\
+    constexpr int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
     template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"math/prime_check.hpp\"\
     \nvector<bool> prime_checker(int N) {\n    vector<bool> primes(N + 1, true);\n\
     \n    primes[0] = false;\n    primes[1] = false;\n\n    for (int p = 2; p <= N;\
@@ -49,7 +49,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/ALDS/1/C.test.cpp
   requiredBy: []
-  timestamp: '2023-03-05 19:36:24+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/ALDS/1/C.test.cpp

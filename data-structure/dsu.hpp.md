@@ -48,7 +48,7 @@ data:
   path: data-structure/dsu.hpp
   requiredBy:
   - graph/mst.hpp
-  timestamp: '2023-02-28 14:13:13+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/data structure/UnionFind.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree.hpp
     title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   - icon: ':question:'
@@ -24,10 +24,10 @@ data:
     \ __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\nusing\
     \ ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int, int>;\n\
     constexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\n\
-    const long double pi = acos(-1);\nconstexpr ll MOD = 1e9 + 7;\nconstexpr ll MOD2\
-    \ = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1\
-    \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
-    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/segtree.hpp\"\
+    const long double pi = acos(-1);\nconstexpr int64_t MOD = 1e9 + 7;\nconstexpr\
+    \ int64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int\
+    \ dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
+    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/segtree.hpp\"\
     \ntemplate<class S, S(*op)(S, S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S>\
     \ dat;\n    void Init(int n_) {\n        int x = 1;\n        while (n_ > x) {\n\
     \            x <<= 1;\n        }\n        n = x;\n    }\npublic:\n    segtree(int\
@@ -74,7 +74,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-03-05 19:36:24+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Point Add Range Sum.test.cpp

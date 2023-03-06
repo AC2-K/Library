@@ -13,7 +13,7 @@ data:
       path: data-structure/lazy_segtree.hpp
       title: "lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/segtree.hpp
       title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':question:'
@@ -29,7 +29,7 @@ data:
       title: main.cpp
     - icon: ':warning:'
       path: out.cpp
-      title: Montgomery
+      title: out.cpp
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
@@ -61,6 +61,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/DLP.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
+    - icon: ':warning:'
+      path: math/dynamic_modint.hpp
+      title: math/dynamic_modint.hpp
     - icon: ':heavy_check_mark:'
       path: math/ext_gcd.hpp
       title: "ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\
@@ -80,9 +83,6 @@ data:
     - icon: ':question:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-    - icon: ':warning:'
-      path: math/montgomery.hpp
-      title: "Montgomery(\u30E2\u30F3\u30B4\u30E1\u30EA\u4E57\u7B97(from Nyaan's library))"
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
@@ -189,12 +189,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/math/Discrete Logarithm.test.cpp
       title: test/yosupo judge/math/Discrete Logarithm.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/math/Factorize.test.cpp
       title: test/yosupo judge/math/Factorize.test.cpp
   - name: test/yosupo judge/new
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
       title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     - icon: ':x:'

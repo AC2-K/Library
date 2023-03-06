@@ -72,7 +72,7 @@ data:
   isVerificationFile: false
   path: data-structure/cht.hpp
   requiredBy: []
-  timestamp: '2023-02-28 21:29:40+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/data structure/Line Add Get Min.test.cpp

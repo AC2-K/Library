@@ -85,7 +85,7 @@ data:
   isVerificationFile: false
   path: data-structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/2/E.test.cpp

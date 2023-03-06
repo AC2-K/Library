@@ -15,9 +15,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/factorize
@@ -30,7 +30,7 @@ data:
     using i128=__int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = vector<vector<int>>;\nusing P = pair<int, int>;\nconstexpr int inf =\
     \ 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\nconst long double\
-    \ pi = acos(-1);\nconstexpr ll MOD = 1e9 + 7;\nconstexpr ll MOD2 = 998244353;\n\
+    \ pi = acos(-1);\nconstexpr int64_t MOD = 1e9 + 7;\nconstexpr int64_t MOD2 = 998244353;\n\
     constexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class\
     \ T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T\
     \ y){if(x>y)x=y;}\n#line 1 \"math/mod_pow.hpp\"\ntemplate <class T, class U =\
@@ -117,8 +117,8 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-03-05 19:36:24+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-03-06 04:18:20+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo judge/math/Factorize.test.cpp
 layout: document

@@ -62,7 +62,7 @@ data:
   path: graph/lca.hpp
   requiredBy:
   - test/AOJ/GRL/5/C.cpp
-  timestamp: '2023-02-23 13:41:21+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo judge/tree/Lowest Common Ancestor.test.cpp

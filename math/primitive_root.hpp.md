@@ -124,7 +124,7 @@ data:
   isVerificationFile: false
   path: math/primitive_root.hpp
   requiredBy: []
-  timestamp: '2023-03-05 18:17:40+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo judge/new/Primitive Root.test.cpp

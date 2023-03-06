@@ -47,11 +47,11 @@ data:
   isVerificationFile: false
   path: graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-03-05 17:53:35+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo judge/graph/Shortest Path.test.cpp
   - test/yosupo judge/tree/Tree Diameter.test.cpp
+  - test/yosupo judge/graph/Shortest Path.test.cpp
   - test/AOJ/GRL/1/A.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document

@@ -8,9 +8,6 @@ data:
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
@@ -21,7 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/D.test.cpp
     title: test/AOJ/NTL/1/D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/math/Factorize.test.cpp
     title: test/yosupo judge/math/Factorize.test.cpp
   - icon: ':x:'
@@ -138,14 +135,13 @@ data:
   isVerificationFile: false
   path: math/fast_fact.hpp
   requiredBy:
-  - math/phi_function.hpp
   - math/primitive_root.hpp
-  - main.cpp
-  timestamp: '2023-03-05 17:39:45+09:00'
+  - math/phi_function.hpp
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo judge/math/Factorize.test.cpp
   - test/yosupo judge/new/Primitive Root.test.cpp
+  - test/yosupo judge/math/Factorize.test.cpp
   - test/AOJ/NTL/1/D.test.cpp
 documentation_of: math/fast_fact.hpp
 layout: document

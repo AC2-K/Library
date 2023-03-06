@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
@@ -20,9 +17,6 @@ data:
   - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':warning:'
-    path: sub.cpp
-    title: sub.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/B.test.cpp
@@ -33,7 +27,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/math/Discrete Logarithm.test.cpp
     title: test/yosupo judge/math/Discrete Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/math/Factorize.test.cpp
     title: test/yosupo judge/math/Factorize.test.cpp
   - icon: ':x:'
@@ -60,19 +54,17 @@ data:
   isVerificationFile: false
   path: math/mod_pow.hpp
   requiredBy:
+  - math/primitive_root.hpp
   - math/DLP.hpp
   - math/fast_fact.hpp
   - math/fast_prime_check.hpp
   - math/phi_function.hpp
-  - math/primitive_root.hpp
-  - sub.cpp
-  - main.cpp
-  timestamp: '2023-03-05 17:21:38+09:00'
+  timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo judge/math/Discrete Logarithm.test.cpp
-  - test/yosupo judge/math/Factorize.test.cpp
   - test/yosupo judge/new/Primitive Root.test.cpp
+  - test/yosupo judge/math/Factorize.test.cpp
+  - test/yosupo judge/math/Discrete Logarithm.test.cpp
   - test/AOJ/NTL/1/D.test.cpp
   - test/AOJ/NTL/1/B.test.cpp
 documentation_of: math/mod_pow.hpp

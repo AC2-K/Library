@@ -18,12 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
     title: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/segtree.md
     document_title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
@@ -82,14 +82,14 @@ data:
   isVerificationFile: false
   path: data-structure/segtree.hpp
   requiredBy: []
-  timestamp: '2023-02-28 15:33:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-03-06 04:18:20+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
+  - test/yosupo judge/data structure/Point Add Range Sum.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-  - test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-  - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
   - test/AOJ/DSL/2/B.test.cpp
 documentation_of: data-structure/segtree.hpp
 layout: document
