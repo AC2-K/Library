@@ -10,6 +10,9 @@ data:
       path: data-structure/dsu.hpp
       title: disjoint set(union find)
     - icon: ':heavy_check_mark:'
+      path: data-structure/dual_segtree.hpp
+      title: "dual segtree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    - icon: ':heavy_check_mark:'
       path: data-structure/dynamic_segtree.hpp
       title: "dynamic_segtree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
@@ -106,6 +109,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
       title: rolling hash
+  - name: test/AOJ/DSL/2
+    pages:
+    - icon: ':warning:'
+      path: test/AOJ/DSL/2/D2.cpp
+      title: test/AOJ/DSL/2/D2.cpp
   - name: test/AOJ/GRL/5
     pages:
     - icon: ':warning:'
@@ -138,6 +146,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2/E.test.cpp
       title: test/AOJ/DSL/2/E.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/AOJ/DSL/2/E2.test.cpp
+      title: test/AOJ/DSL/2/E2.test.cpp
   - name: test/AOJ/GRL/1
     pages:
     - icon: ':heavy_check_mark:'
@@ -227,4 +238,4 @@ layout: toppage
 AC2K のライブラリです。\
 バグってたらごめんなさい...[Twitter](https://twitter.com/ac2000_cp)とかに連絡いただけるととても助かります。\
 C++17の環境で動くことを確認している...はずです。\
-verifyしてたりしてなかったり...\
+verifyしてたりしてなかったり...

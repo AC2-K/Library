@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: test/AOJ/DSL/2/D2.cpp
+    title: test/AOJ/DSL/2/D2.cpp
+  - icon: ':warning:'
     path: test/AOJ/GRL/5/C.cpp
     title: test/AOJ/GRL/5/C.cpp
   _extendedVerifiedWith:
@@ -24,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/E.test.cpp
     title: test/AOJ/DSL/2/E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2/E2.test.cpp
+    title: test/AOJ/DSL/2/E2.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/1/A.test.cpp
     title: test/AOJ/GRL/1/A.test.cpp
@@ -177,6 +183,7 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
+  - test/AOJ/DSL/2/D2.cpp
   - test/AOJ/GRL/5/C.cpp
   timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -204,6 +211,7 @@ data:
   - test/AOJ/DSL/1/A.test.cpp
   - test/AOJ/DSL/2/E.test.cpp
   - test/AOJ/DSL/2/D.test.cpp
+  - test/AOJ/DSL/2/E2.test.cpp
   - test/AOJ/DSL/2/B.test.cpp
   - test/AOJ/GRL/1/A.test.cpp
   - test/AOJ/GRL/2/A.test.cpp
