@@ -86,7 +86,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/fast_prime_check.hpp
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: math/large_mod.hpp
       title: math/large_mod.hpp
     - icon: ':heavy_check_mark:'
@@ -108,7 +108,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
-      title: rolling hash
+      title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   - name: test/AOJ/DSL/2
     pages:
     - icon: ':warning:'

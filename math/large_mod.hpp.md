@@ -1,17 +1,11 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: string/rolling_hash.hpp
-    title: rolling hash
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/AOJ/ALDS/14/B.test.cpp
-    title: test/AOJ/ALDS/14/B.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/large_mod.hpp\"\ninline long long safe_mod(long long\
@@ -35,12 +29,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/large_mod.hpp
-  requiredBy:
-  - string/rolling_hash.hpp
+  requiredBy: []
   timestamp: '2023-03-06 04:18:20+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/AOJ/ALDS/14/B.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: math/large_mod.hpp
 layout: document
 redirect_from:
