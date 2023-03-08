@@ -21,7 +21,7 @@ int main(){
             cin>>l>>r;
             int new_val;
             cin>>new_val;
-            seg.update(l,r+1,new_val);
+            seg.apply(l,r+1,new_val);
         }else{
             int i;
             cin>>i;

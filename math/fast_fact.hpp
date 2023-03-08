@@ -111,6 +111,6 @@ namespace prime{
         }
     };  // namespace pollard
 };  // namespace prime
-using prime::pollard::fact;
+using prime::pollard::fact,prime::pollard::exp_fact;
 
 ///@brief 高速素因数分解(Pollard Rho法)

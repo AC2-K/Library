@@ -44,7 +44,7 @@ private:
     }
 
 private:
-    void update(int L, int R, int l, int r, F x, int k) {
+    void apply(int L, int R, int l, int r, F x, int k) {
         eval(k);
         if (L <= l && r <= R) {
             lz[k] = comp(lz[k], x);
@@ -52,15 +52,15 @@ private:
         }
         else if (L < r && l < R) {
             int mid = (l + r) >> 1;
-            update(L, R, l, mid, x, 2 * k + 1);
-            update(L, R, mid, r, x, 2 * k + 2);
+            apply(L, R, l, mid, x, 2 * k + 1);
+            apply(L, R, mid, r, x, 2 * k + 2);
             dat[k] = op(dat[2 * k + 1], dat[2 * k + 2]);
         }
     }
 public:
-    void update(int l, int r, F x) {
+    void apply(int l, int r, F x) {
         assert(0 <= l && l <= r && r <= sz);
-        update(l, r, 0, sz, x, 0);
+        apply(l, r, 0, sz, x, 0);
     }
 
 private:

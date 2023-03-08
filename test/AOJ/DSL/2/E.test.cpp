@@ -22,7 +22,7 @@ int main() {
             int new_val;
             cin>>new_val;
             l--,r--;
-            seg.update(l,r+1,new_val);
+            seg.apply(l,r+1,new_val);
         }else{
             int i;
             cin>>i;
