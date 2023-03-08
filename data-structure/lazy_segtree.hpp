@@ -44,7 +44,7 @@ private:
     }
 
 private:
-    void apply(int L, int R, int l, int r, F x, int k) {
+    void internal_apply(int L, int R, int l, int r, const F& x, int k) {
         eval(k);
         if (L <= l && r <= R) {
             lz[k] = comp(lz[k], x);
@@ -52,19 +52,19 @@ private:
         }
         else if (L < r && l < R) {
             int mid = (l + r) >> 1;
-            apply(L, R, l, mid, x, 2 * k + 1);
-            apply(L, R, mid, r, x, 2 * k + 2);
+            internal_apply(L, R, l, mid, x, 2 * k + 1);
+            internal_apply(L, R, mid, r, x, 2 * k + 2);
             dat[k] = op(dat[2 * k + 1], dat[2 * k + 2]);
         }
     }
 public:
-    void apply(int l, int r, F x) {
+    void apply(int l, int r, const F& x) {
         assert(0 <= l && l <= r && r <= sz);
-        apply(l, r, 0, sz, x, 0);
+        internal_apply(l, r, 0, sz, x, 0);
     }
 
 private:
-    S prod(int L, int R, int l, int r, int k) {
+    S internal_prod(int L, int R, int l, int r, int k) {
         eval(k);
         if (r <= L || R <= l) {
             return e();
@@ -74,8 +74,8 @@ private:
         }
         else {
             int mid = (l + r) >> 1;
-            S vl = prod(L, R, l, mid, 2 * k + 1);
-            S vr = prod(L, R, mid, r, 2 * k + 2);
+            S vl = internal_prod(L, R, l, mid, 2 * k + 1);
+            S vr = internal_prod(L, R, mid, r, 2 * k + 2);
             return op(vl, vr);
         }
     }
@@ -83,7 +83,7 @@ private:
 public:
     S prod(int l, int r) {
         assert(0 <= l && l <= r && r <= sz);
-        return prod(l, r, 0, sz, 0);
+        return internal_prod(l, r, 0, sz, 0);
     }
 
     S operator[](int pos) {
