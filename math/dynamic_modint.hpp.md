@@ -6,9 +6,6 @@ data:
     title: math/barrett.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
-  - icon: ':warning:'
     path: math/modint.hpp
     title: math/modint.hpp
   _extendedVerifiedWith: []
@@ -111,7 +108,6 @@ data:
   path: math/dynamic_modint.hpp
   requiredBy:
   - math/modint.hpp
-  - main.cpp
   timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

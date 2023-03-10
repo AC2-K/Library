@@ -55,54 +55,52 @@ data:
     x\n    void add(int pos, S x) {\n        update(pos, op(dat[n + pos - 1], x));\n\
     \    }\n\n    S operator [](int pos) {\n        return dat[n + pos - 1];\n   \
     \ }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n///@docs\
-    \ docs/data-structure/segtree.md\n#line 2 \"math/static_modint.hpp\"\n\ntemplate<unsigned\
+    \ docs/data-structure/segtree.md\n#line 2 \"math/static_modint.hpp\"\ntemplate<unsigned\
     \ long long mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\
-    \tusing i64 = __int64_t;\n\tusing u64 = __uint64_t;\n\tusing u128 = __uint128_t;\n\
-    \tusing i128 = __int128_t;\n\n\ti128 v;\n\tvoid normalize(i128& v) {\n\t\tv %=\
-    \ mod;\n\t\tif (v < 0) {\n\t\t\tv += mod;\n\t\t}\n\t}\n\tpublic:\n\t\tstatic_modint(const\
-    \ u64& v_ = 0) :v(v_) { normalize(v); }\n\n\t\t//operator\n\t\tu64 val() const\
-    \ {\n\t\t\treturn (u64)v;\n\t\t}\n\t\tmint& operator+=(const mint& rhs) {\n\t\t\
-    \tv += rhs.val();\n\t\t\tnormalize(v);\n\t\t\treturn (*this);\n\t\t}\n\t\tmint&\
-    \ operator-=(const mint& rhs) {\n\t\t\tv -= rhs.val();\n\t\t\tnormalize(v);\n\t\
-    \t\treturn (*this);\n\t\t}\n\t\tmint& operator*=(const mint& rhs) {\n\t\t\tv *=\
-    \ rhs.val();\n\t\t\tnormalize(v);\n\t\t\treturn (*this);\n\t\t}\n\n\n\t\tmint\
-    \ operator+(const mint& r) const {\n\t\t\treturn mint(*this) += r;\n\t\t}\n\t\t\
-    mint operator-(const mint& r) const {\n\t\t\treturn mint(*this) -= r;\n\t\t}\n\
-    \t\tmint operator*(const mint& r) const {\n\t\t\treturn mint(*this) *= r;\n\t\t\
-    }\n\n\t\tmint& operator+=(const i64& rhs) {\n\t\t\tv += rhs;\n\t\t\tnormalize(v);\n\
-    \t\t\treturn (*this);\n\t\t}\n\t\tmint& operator-=(const i64& rhs) {\n\t\t\tv\
-    \ -= rhs;\n\t\t\tnormalize(v);\n\t\t\treturn (*this);\n\t\t}\n\t\tmint& operator*=(const\
-    \ i64& rhs) {\n\t\t\tv *= rhs;\n\t\t\tnormalize(v);\n\t\t\treturn (*this);\n\t\
-    \t}\n\t\tfriend mint operator+(const i64& l, const mint& r) {\n\t\t\treturn mint(l)\
-    \ += r;\n\t\t}\n\t\tfriend mint operator-(const i64& l, const mint& r) {\n\t\t\
-    \treturn mint(l) -= r;\n\t\t}\n\t\tfriend mint operator*(const i64& l, const mint&\
-    \ r) {\n\t\t\treturn mint(l) *= r;\n\t\t}\n\n\t\tmint operator+(const i64& r)\
-    \ {\n\t\t\treturn mint(*this) += r;\n\t\t}\n\t\tmint operator-(const i64& r) {\n\
-    \t\t\treturn mint(*this) -= r;\n\t\t}\n\t\tmint operator*(const i64& r) {\n\t\t\
-    \treturn mint(*this) *= r;\n\t\t}\n\n\n\t\tmint& operator=(const i64& r) {\n\t\
-    \t\treturn (*this) = mint(r);\n\t\t}\n\n\t\tbool operator==(const mint& r) {\n\
-    \t\t\treturn (*this).val() == r.val();\n\t\t}\n\t\tmint pow(u128 e) const {\n\t\
-    \t\tmint ans(1), base(*this);\n\t\t\twhile (e) {\n\t\t\t\tif (e & 1) {\n\t\t\t\
-    \t\tans *= base;\n\t\t\t\t}\n\t\t\t\tbase *= base;\n\t\t\t\te >>= 1;\n\t\t\t}\n\
-    \t\t\treturn ans;\n\t\t}\n\n\t\tmint inv() const {\n\t\t\treturn pow(mod - 2);\n\
-    \t\t}\n\n\t\tmint& operator/=(const mint& r) {\n\t\t\treturn (*this) *= r.inv();\n\
-    \t\t}\n\t\tfriend mint operator/(const mint& l, const i64& r) {\n\t\t\treturn\
-    \ mint(l) /= mint(r);\n\t\t}\n\n\t\t//iostream\n\t\tfriend ostream& operator<<(ostream&\
-    \ os, const mint& mt) {\n\t\t\tos << mt.val();\n\t\t\treturn os;\n\t\t}\n\t\t\
-    friend istream& operator>>(istream& is, mint& mt) {\n\t\t\ti64 vv;\n\t\t\tis >>\
-    \ vv;\n\t\t\tmt = vv;\n\t\t\treturn is;\n\t\t}\n\t};\n///@brief static modint(\u9759\
-    \u7684modint)\n#line 5 \"test/yosupo judge/data structure/Point Set Range Composite.test.cpp\"\
-    \nusing mint = static_modint<MOD2>;\n\nstruct F\n{\n    mint a,b;\n};\n\nF op(F\
-    \ l,F r){\n    mint na = l.a * r.a;\n    mint nb = (l.b * r.a + r.b);\n    return\
-    \ F{na, nb};\n}\nF e(){\n    return F{1,0};\n}\nint main() {\n    int n, q;\n\
-    \    cin >> n >> q;\n    segtree<F, op, e> seg(n);\n    rep(i, n){\n        mint\
-    \ a, b;\n        cin >> a >> b;\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n\
-    \    while (q--){\n        int t;\n        cin >> t;\n        if (t == 0){\n \
-    \           int p;\n            mint c, d;\n            cin >> p >> c >> d;\n\
-    \            seg.update(p, F{c, d});\n        }\n        else{\n            int\
-    \ l, r;\n            mint x;\n            cin >> l >> r >> x;\n            F res\
-    \ = seg.prod(l, r);\n            mint ans = res.a * x + res.b;\n            cout\
-    \ << ans << '\\n';\n        }\n    }\n}\n"
+    \tusing i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
+    \tusing i128 = __int128_t;\n\n\tu64 v;\n\tu64 normalize(i128 v_) {\n\t\tv_ %=\
+    \ mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\
+    \tstatic_modint() :v(0) {}\n\tstatic_modint(const i64& v_) :v(normalize(v_)) {\
+    \ }\n\n\t//operator\n\tu64 val() const {\n\t\treturn (u64)v;\n\t}\n\tmint& operator+=(const\
+    \ mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t\
+    }\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const mint& rhs) {\n\t\tv += mod\
+    \ - rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\
+    \t}\n\tmint& operator*=(const mint& rhs) {\n\t\ti128 m = v * rhs.val();\n\t\t\
+    v = normalize(m);\n\t\treturn (*this);\n\t}\n\n\n\tmint operator+(const mint&\
+    \ r) const {\n\t\treturn mint(*this) += r;\n\t}\n\tmint operator-(const mint&\
+    \ r) const {\n\t\treturn mint(*this) -= r;\n\t}\n\tmint operator*(const mint&\
+    \ r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\tmint& operator+=(const i64&\
+    \ rhs) {\n\t\t(*this) += mint(rhs);\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const\
+    \ i64& rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\t}\n\tmint& operator*=(const\
+    \ i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\t\treturn (*this);\n\t}\n\tfriend mint\
+    \ operator+(const i64& l, const mint& r) {\n\t\treturn mint(l) += r;\n\t}\n\t\
+    friend mint operator-(const i64& l, const mint& r) {\n\t\treturn mint(l) -= r;\n\
+    \t}\n\tfriend mint operator*(const i64& l, const mint& r) {\n\t\treturn mint(l)\
+    \ *= r;\n\t}\n\n\tmint operator+(const i64& r) {\n\t\treturn mint(*this) += r;\n\
+    \t}\n\tmint operator-(const i64& r) {\n\t\treturn mint(*this) -= r;\n\t}\n\tmint\
+    \ operator*(const i64& r) {\n\t\treturn mint(*this) *= r;\n\t}\n\n\n\tmint& operator=(const\
+    \ i64& r) {\n\t\treturn (*this) = mint(r);\n\t}\n\n\tbool operator==(const mint&\
+    \ r) {\n\t\treturn (*this).val() == r.val();\n\t}\n\tmint pow(u128 e) const {\n\
+    \t\tmint ans(1), base(*this);\n\t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans\
+    \ *= base;\n\t\t\t}\n\t\t\tbase *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\
+    \t}\n\n\tmint inv() const {\n\t\treturn pow(mod - 2);\n\t}\n\n\tmint& operator/=(const\
+    \ mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n\tfriend mint operator/(const\
+    \ mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\
+    \tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
+    \t\treturn os;\n\t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\
+    \ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n};\n///@brief static\
+    \ modint(\u9759\u7684modint)\n#line 5 \"test/yosupo judge/data structure/Point\
+    \ Set Range Composite.test.cpp\"\nusing mint = static_modint<MOD2>;\n\nstruct\
+    \ F\n{\n    mint a,b;\n};\n\nF op(F l,F r){\n    mint na = l.a * r.a;\n    mint\
+    \ nb = (l.b * r.a + r.b);\n    return F{na, nb};\n}\nF e(){\n    return F{1,0};\n\
+    }\nint main() {\n    int n, q;\n    cin >> n >> q;\n    segtree<F, op, e> seg(n);\n\
+    \    rep(i, n){\n        mint a, b;\n        cin >> a >> b;\n        seg.set(i,\
+    \ F{a, b});\n    }\n    seg.build();\n    while (q--){\n        int t;\n     \
+    \   cin >> t;\n        if (t == 0){\n            int p;\n            mint c, d;\n\
+    \            cin >> p >> c >> d;\n            seg.update(p, F{c, d});\n      \
+    \  }\n        else{\n            int l, r;\n            mint x;\n            cin\
+    \ >> l >> r >> x;\n            F res = seg.prod(l, r);\n            mint ans =\
+    \ res.a * x + res.b;\n            cout << ans << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n#include\"template.hpp\"\n#include\"data-structure/segtree.hpp\"\n#include\"\
     math/static_modint.hpp\"\nusing mint = static_modint<MOD2>;\n\nstruct F\n{\n \
@@ -123,7 +121,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-03-10 13:31:13+09:00'
+  timestamp: '2023-03-10 15:19:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Point Set Range Composite.test.cpp

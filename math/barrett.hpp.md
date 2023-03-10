@@ -3,9 +3,6 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
-  - icon: ':warning:'
     path: math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
   - icon: ':warning:'
@@ -41,7 +38,6 @@ data:
   requiredBy:
   - math/modint.hpp
   - math/dynamic_modint.hpp
-  - main.cpp
   timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

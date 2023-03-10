@@ -3,9 +3,6 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
-  - icon: ':warning:'
     path: sub.cpp
     title: sub.cpp
   - icon: ':warning:'
@@ -192,7 +189,6 @@ data:
   - sub.cpp
   - test/AOJ/GRL/5/C.cpp
   - test/AOJ/DSL/2/D2.cpp
-  - main.cpp
   timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
