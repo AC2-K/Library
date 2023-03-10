@@ -12,17 +12,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/dual_segtree.hpp
       title: "dual segtree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/dynamic_segtree.hpp
       title: "dynamic_segtree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
       path: data-structure/lazy_segtree.hpp
       title: "lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/segtree.hpp
       title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/sparse_table.hpp
       title: sparse table
   - name: .
@@ -35,11 +35,11 @@ data:
       title: main.cpp
     - icon: ':warning:'
       path: out.cpp
-      title: out.cpp
+      title: "static modint(\u9759\u7684modint)"
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
     - icon: ':warning:'
@@ -47,16 +47,16 @@ data:
       title: test.py
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/dijkstra.hpp
       title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/edge.hpp
       title: edge
     - icon: ':heavy_check_mark:'
       path: graph/euler_tour.hpp
       title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/lca.hpp
       title: "Lowest Common Ancestor(\u6700\u5C0F\u5171\u901A\u7956\u5148)"
     - icon: ':heavy_check_mark:'
@@ -67,6 +67,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/DLP.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
+    - icon: ':warning:'
+      path: math/barrett.hpp
+      title: math/barrett.hpp
     - icon: ':warning:'
       path: math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
@@ -80,16 +83,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/fact.hpp
       title: "factorize(\u7D20\u56E0\u6570\u5206\u89E3)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/fast_fact.hpp
       title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/fast_prime_check.hpp
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-    - icon: ':warning:'
-      path: math/large_mod.hpp
-      title: math/large_mod.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     - icon: ':warning:'
@@ -98,7 +98,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
     - icon: ':heavy_check_mark:'
@@ -211,23 +211,23 @@ data:
       title: test/yosupo judge/math/Factorize.test.cpp
   - name: test/yosupo judge/new
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
       title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/new/Primitive Root.test.cpp
       title: test/yosupo judge/new/Primitive Root.test.cpp
   - name: test/yosupo judge/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
       title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/tree/Tree Diameter.test.cpp
       title: test/yosupo judge/tree/Tree Diameter.test.cpp
   - name: test/yuki
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/No789.test.cpp
       title: test/yuki/No789.test.cpp
 layout: toppage

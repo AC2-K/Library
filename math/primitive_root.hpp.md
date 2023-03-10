@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fast_fact.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/fast_prime_check.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Primitive Root.test.cpp
     title: test/yosupo judge/new/Primitive Root.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "primitive root(\u539F\u59CB\u6839)"
     links: []
@@ -90,8 +90,8 @@ data:
     \               if(res.back().first==pf[i]){\n                    res.back().second++;\n\
     \                }else{\n                    res.emplace_back(pf[i], 1);\n   \
     \             }\n            }\n\n            return res;\n        }\n    }; \
-    \ // namespace pollard\n};  // namespace prime\nusing prime::pollard::fact;\n\n\
-    ///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\n#line\
+    \ // namespace pollard\n};  // namespace prime\nusing prime::pollard::fact,prime::pollard::exp_fact;\n\
+    \n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\n#line\
     \ 4 \"math/primitive_root.hpp\"\nll primitive_root(ll p){\n    if(p == 2) return\
     \ 1;\n    auto pf = fact(p - 1);\n    pf.erase(unique(all(pf)),pf.end());\n  \
     \  for(auto&q:pf){\n        q=(p-1)/q;\n    }\n    using ull = unsigned long long;\n\
@@ -118,8 +118,8 @@ data:
   isVerificationFile: false
   path: math/primitive_root.hpp
   requiredBy: []
-  timestamp: '2023-03-06 05:55:38+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-03-08 10:46:04+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo judge/new/Primitive Root.test.cpp
 documentation_of: math/primitive_root.hpp

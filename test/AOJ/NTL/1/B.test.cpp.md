@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -23,8 +23,8 @@ data:
     \ popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\n\
     using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
     \ int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps\
-    \ = 1e-6;\nconst long double pi = acos(-1);\nconstexpr int64_t MOD = 1e9 + 7;\n\
-    constexpr int64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
+    \ = 1e-6;\nconst long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
+    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
     \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
     template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 2 \"math/mod_pow.hpp\"\
     \ntemplate <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    T ans\
@@ -43,7 +43,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/NTL/1/B.test.cpp
   requiredBy: []
-  timestamp: '2023-03-06 05:55:38+09:00'
+  timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/NTL/1/B.test.cpp

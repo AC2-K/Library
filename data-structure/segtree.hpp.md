@@ -18,12 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
     title: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/segtree.md
     document_title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
@@ -83,13 +83,13 @@ data:
   path: data-structure/segtree.hpp
   requiredBy: []
   timestamp: '2023-03-06 04:18:20+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-  - test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-  - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
+  - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+  - test/yosupo judge/data structure/Point Add Range Sum.test.cpp
+  - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
   - test/AOJ/DSL/2/B.test.cpp
 documentation_of: data-structure/segtree.hpp
 layout: document
@@ -98,25 +98,21 @@ redirect_from:
 - /library/data-structure/segtree.hpp.html
 title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
 ---
+# SegmentTree(セグメント木)
 ## 概要
-SegmentTree:
-- 集合$S$,
-- 演算$\text{op}:S^2\to S$
-- $e\in{S}$
-
-について、$(S,\text{op},e)$がモノイドをなすとする。\
+$(S,\text{op},e)$がモノイドをなすとする。\
 このとき、$S$の列$a=(a_0,a_1,\dots,a_{n-1})$に対して以下の処理を$O(\log n)$で行う。
 
 1. $a_p\leftarrow v$
 1. $\prod_{i\in[l,r)}{a_i}$ を出力
 
-例えば$S\in\mathbb{Z}\cup\{\infty\},\text{op}=\min,e=\infty$とかにすると、一点更新のRMQになる。
+例えば$$S=\mathbb{Z}\cup\{\infty\},\text{op}=\min,e=\infty$$とかにすると、一点更新のRMQになる。
 ## 使い方
 ### コンストラクタ
 ```cpp
 segtree<S,op,e> seg(int n)
 ```
-$a$を$e$で埋めて生成します。\
+$a$を$e$で埋めて生成します。
 ```cpp
 segtree<S,op,e> seg(vector<S> a)
 ```
@@ -141,8 +137,8 @@ int e(){
     return inf;
 }
 segtree<int,op,e> seg(n);    //サイズnのsegtree
-segtree<int,op,e> seg(a);    //aで埋める
 ```
+
 ### メソッド
 ```cpp
 void seg.update(int p,S val)
@@ -150,6 +146,7 @@ void seg.update(int p,S val)
 $a_p\leftarrow \text{val}$とする。
 - 制約:$0\leq p<n$
 - 計算量:$O(\log n)$
+
 ```cpp
 S seg.prod(int l,int r)
 ```
@@ -165,7 +162,7 @@ $a_{\text{pos}}\leftarrow \text{op}(a_{\text{pos}},x)$とする
 - 計算量:$O(\log n)$
 
 ```cpp
-S seg(int pos)
+S seg[int pos]
 ```
 $a_{\text{pos}}$を返す。
 - 制約:$0\leq \text{pos} <n$

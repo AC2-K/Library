@@ -12,7 +12,6 @@ data:
 
     #ifdef ONLINE_JUDGE
 
-
     #define debug(x) void(0)
 
     #else
@@ -25,7 +24,6 @@ data:
 
     '
   code: '#ifdef ONLINE_JUDGE
-
 
     #define debug(x) void(0)
 
@@ -40,7 +38,7 @@ data:
   isVerificationFile: false
   path: debug.hpp
   requiredBy: []
-  timestamp: '2023-03-06 04:18:20+09:00'
+  timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: debug.hpp

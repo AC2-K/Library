@@ -1,22 +1,18 @@
+# SegmentTree(セグメント木)
 ## 概要
-SegmentTree:
-- 集合$S$,
-- 演算$\text{op}:S^2\to S$
-- $e\in{S}$
-
-について、$(S,\text{op},e)$がモノイドをなすとする。\
+$(S,\text{op},e)$がモノイドをなすとする。\
 このとき、$S$の列$a=(a_0,a_1,\dots,a_{n-1})$に対して以下の処理を$O(\log n)$で行う。
 
 1. $a_p\leftarrow v$
 1. $\prod_{i\in[l,r)}{a_i}$ を出力
 
-例えば$S\in\mathbb{Z}\cup\{\infty\},\text{op}=\min,e=\infty$とかにすると、一点更新のRMQになる。
+例えば$$S=\mathbb{Z}\cup\{\infty\},\text{op}=\min,e=\infty$$とかにすると、一点更新のRMQになる。
 ## 使い方
 ### コンストラクタ
 ```cpp
 segtree<S,op,e> seg(int n)
 ```
-$a$を$e$で埋めて生成します。\
+$a$を$e$で埋めて生成します。
 ```cpp
 segtree<S,op,e> seg(vector<S> a)
 ```
@@ -41,8 +37,8 @@ int e(){
     return inf;
 }
 segtree<int,op,e> seg(n);    //サイズnのsegtree
-segtree<int,op,e> seg(a);    //aで埋める
 ```
+
 ### メソッド
 ```cpp
 void seg.update(int p,S val)
@@ -50,6 +46,7 @@ void seg.update(int p,S val)
 $a_p\leftarrow \text{val}$とする。
 - 制約:$0\leq p<n$
 - 計算量:$O(\log n)$
+
 ```cpp
 S seg.prod(int l,int r)
 ```
@@ -65,7 +62,7 @@ $a_{\text{pos}}\leftarrow \text{op}(a_{\text{pos}},x)$とする
 - 計算量:$O(\log n)$
 
 ```cpp
-S seg(int pos)
+S seg[int pos]
 ```
 $a_{\text{pos}}$を返す。
 - 制約:$0\leq \text{pos} <n$

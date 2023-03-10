@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/dijkstra.hpp
     title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
   _extendedVerifiedWith:
@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/graph/Shortest Path.test.cpp
     title: test/yosupo judge/graph/Shortest Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/tree/Tree Diameter.test.cpp
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: edge
     links: []
@@ -31,10 +31,10 @@ data:
   requiredBy:
   - graph/dijkstra.hpp
   timestamp: '2023-03-06 04:18:20+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo judge/tree/Tree Diameter.test.cpp
   - test/yosupo judge/graph/Shortest Path.test.cpp
+  - test/yosupo judge/tree/Tree Diameter.test.cpp
   - test/AOJ/GRL/1/A.test.cpp
 documentation_of: graph/edge.hpp
 layout: document

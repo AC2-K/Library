@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/dijkstra.hpp
     title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/edge.hpp
     title: edge
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -27,14 +27,14 @@ data:
     using i128=__int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = vector<vector<int>>;\nusing P = pair<int, int>;\nconstexpr int inf =\
     \ 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\nconst long double\
-    \ pi = acos(-1);\nconstexpr int64_t MOD = 1e9 + 7;\nconstexpr int64_t MOD2 = 998244353;\n\
-    constexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class\
-    \ T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T\
-    \ y){if(x>y)x=y;}\n#line 1 \"graph/edge.hpp\"\nstruct edge{\n    int to;\n   \
-    \ ll cost;\n    edge(int to,ll cost):to(to),cost(cost){}\n};\n///@brief edge\n\
-    #line 3 \"graph/dijkstra.hpp\"\npair<vector<ll>,vector<int>> dijkstra(int s,const\
-    \ vector<vector<edge>>&g){\n    vector<ll> dist(g.size(),infl);\n    vector<int>\
-    \ pre(g.size(),-1);\n    using st=pair<ll,int>;\n    priority_queue<st,vector<st>,greater<st>>\
+    \ pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 =\
+    \ 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1\
+    \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
+    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"graph/edge.hpp\"\nstruct\
+    \ edge{\n    int to;\n    ll cost;\n    edge(int to,ll cost):to(to),cost(cost){}\n\
+    };\n///@brief edge\n#line 3 \"graph/dijkstra.hpp\"\npair<vector<ll>,vector<int>>\
+    \ dijkstra(int s,const vector<vector<edge>>&g){\n    vector<ll> dist(g.size(),infl);\n\
+    \    vector<int> pre(g.size(),-1);\n    using st=pair<ll,int>;\n    priority_queue<st,vector<st>,greater<st>>\
     \ que;\n    que.emplace(0,s);\n    dist[s]=0;\n    pre[s]=s;\n    while(!que.empty()){\n\
     \        auto[d,v]=que.top();\n        que.pop();\n        if(dist[v]!=d){\n \
     \           continue;\n        }\n\n        for(const auto&[nv,c]:g[v]){\n   \
@@ -67,7 +67,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/graph/Shortest Path.test.cpp
   requiredBy: []
-  timestamp: '2023-03-06 04:18:20+09:00'
+  timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/graph/Shortest Path.test.cpp

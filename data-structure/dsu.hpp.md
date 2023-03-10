@@ -52,8 +52,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/data structure/UnionFind.test.cpp
-  - test/AOJ/DSL/1/A.test.cpp
   - test/AOJ/GRL/2/A.test.cpp
+  - test/AOJ/DSL/1/A.test.cpp
 documentation_of: data-structure/dsu.hpp
 layout: document
 redirect_from:
@@ -61,6 +61,7 @@ redirect_from:
 - /library/data-structure/dsu.hpp.html
 title: disjoint set(union find)
 ---
+# Disjoint Set Unoin(UnionFind)
 ## 概要
 $n$頂点の無向グラフに対して、以下のクエリを$O(\alpha(n))$で処理します。
 1. 頂点$v,u$の間に無向辺を追加する

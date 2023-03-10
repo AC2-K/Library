@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/dsu.hpp
     title: disjoint set(union find)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -24,20 +24,20 @@ data:
     using i128=__int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = vector<vector<int>>;\nusing P = pair<int, int>;\nconstexpr int inf =\
     \ 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\nconst long double\
-    \ pi = acos(-1);\nconstexpr int64_t MOD = 1e9 + 7;\nconstexpr int64_t MOD2 = 998244353;\n\
-    constexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class\
-    \ T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T\
-    \ y){if(x>y)x=y;}\n#line 1 \"data-structure/dsu.hpp\"\nclass DSU {\nprivate:\n\
-    \tvector<int> par, rank, siz;\n\tint N;\npublic:\n\tDSU(int n) : par(n, -1), rank(n,\
-    \ 0), siz(n, 1), N(n) {}\n\n\tint root(int x) {\n\t\tif (par[x] == -1)\n\t\t\t\
-    return x;\n\t\telse\n\t\t\treturn par[x] = root(par[x]);\n\t}\n\tbool same(int\
-    \ x, int y) {\n\t\treturn root(x) == root(y);\n\t}\n\n\tbool merge(int x, int\
-    \ y) {\n\t\tint rx = root(x), ry = root(y);\n\t\tif (rx == ry)\n\t\t\treturn false;\n\
-    \n\t\tif (rank[rx] < rank[ry])\n\t\t\tswap(rx, ry);\n\t\tpar[ry] = rx;\n\n\t\t\
-    siz[rx] += siz[ry];\n\t\treturn true;\n\t}\n\n\tint size(int x) {\n\t\treturn\
-    \ siz[root(x)];\n\t}\n\tint group_size() {\n\t\tint cnt = 0;\n\t\tfor (int i =\
-    \ 0; i < N; i++)\n\t\t\tif (root(i) == i)\n\t\t\t\tcnt++;\n\t\treturn cnt;\n\t\
-    }\n};\n///@brief disjoint set(union find)\n///@docs docs/data-structure/dsu.md\n\
+    \ pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 =\
+    \ 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1\
+    \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
+    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/dsu.hpp\"\
+    \nclass DSU {\nprivate:\n\tvector<int> par, rank, siz;\n\tint N;\npublic:\n\t\
+    DSU(int n) : par(n, -1), rank(n, 0), siz(n, 1), N(n) {}\n\n\tint root(int x) {\n\
+    \t\tif (par[x] == -1)\n\t\t\treturn x;\n\t\telse\n\t\t\treturn par[x] = root(par[x]);\n\
+    \t}\n\tbool same(int x, int y) {\n\t\treturn root(x) == root(y);\n\t}\n\n\tbool\
+    \ merge(int x, int y) {\n\t\tint rx = root(x), ry = root(y);\n\t\tif (rx == ry)\n\
+    \t\t\treturn false;\n\n\t\tif (rank[rx] < rank[ry])\n\t\t\tswap(rx, ry);\n\t\t\
+    par[ry] = rx;\n\n\t\tsiz[rx] += siz[ry];\n\t\treturn true;\n\t}\n\n\tint size(int\
+    \ x) {\n\t\treturn siz[root(x)];\n\t}\n\tint group_size() {\n\t\tint cnt = 0;\n\
+    \t\tfor (int i = 0; i < N; i++)\n\t\t\tif (root(i) == i)\n\t\t\t\tcnt++;\n\t\t\
+    return cnt;\n\t}\n};\n///@brief disjoint set(union find)\n///@docs docs/data-structure/dsu.md\n\
     #line 4 \"test/yosupo judge/data structure/UnionFind.test.cpp\"\nint main() {\n\
     \    int n,q;\n    cin>>n>>q;\n    DSU dsu(n);\n    while(q--){\n        int t,x,y;\n\
     \        cin>>t>>x>>y;\n        if(t==0){\n            dsu.merge(x,y);\n     \
@@ -55,7 +55,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2023-03-06 04:18:20+09:00'
+  timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/UnionFind.test.cpp

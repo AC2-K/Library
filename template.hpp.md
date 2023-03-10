@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
+  - icon: ':warning:'
+    path: sub.cpp
+    title: sub.cpp
+  - icon: ':warning:'
     path: test/AOJ/DSL/2/D2.cpp
     title: test/AOJ/DSL/2/D2.cpp
   - icon: ':warning:'
@@ -75,24 +81,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/math/Factorize.test.cpp
     title: test/yosupo judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Primitive Root.test.cpp
     title: test/yosupo judge/new/Primitive Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
     title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/tree/Tree Diameter.test.cpp
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No789.test.cpp
     title: test/yuki/No789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -125,9 +131,9 @@ data:
 
     const long double pi = acos(-1);
 
-    constexpr int64_t MOD = 1e9 + 7;
+    constexpr uint64_t MOD = 1e9 + 7;
 
-    constexpr int64_t MOD2 = 998244353;
+    constexpr uint64_t MOD2 = 998244353;
 
     constexpr int dx[] = { 1,0,-1,0 };
 
@@ -168,9 +174,9 @@ data:
 
     const long double pi = acos(-1);
 
-    constexpr int64_t MOD = 1e9 + 7;
+    constexpr uint64_t MOD = 1e9 + 7;
 
-    constexpr int64_t MOD2 = 998244353;
+    constexpr uint64_t MOD2 = 998244353;
 
     constexpr int dx[] = { 1,0,-1,0 };
 
@@ -183,38 +189,40 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
-  - test/AOJ/DSL/2/D2.cpp
+  - sub.cpp
   - test/AOJ/GRL/5/C.cpp
-  timestamp: '2023-03-06 04:18:20+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - test/AOJ/DSL/2/D2.cpp
+  - main.cpp
+  timestamp: '2023-03-10 13:31:13+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No789.test.cpp
-  - test/yosupo judge/tree/Tree Diameter.test.cpp
-  - test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-  - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-  - test/yosupo judge/new/Primitive Root.test.cpp
-  - test/yosupo judge/graph/Shortest Path.test.cpp
-  - test/yosupo judge/math/Factorize.test.cpp
-  - test/yosupo judge/math/Discrete Logarithm.test.cpp
+  - test/yosupo judge/data structure/Static Range Sum.test.cpp
+  - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+  - test/yosupo judge/data structure/UnionFind.test.cpp
   - test/yosupo judge/data structure/Point Add Range Sum.test.cpp
   - test/yosupo judge/data structure/Static RMQ.test.cpp
   - test/yosupo judge/data structure/Line Add Get Min.test.cpp
-  - test/yosupo judge/data structure/UnionFind.test.cpp
-  - test/yosupo judge/data structure/Static Range Sum.test.cpp
-  - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+  - test/yosupo judge/new/Primitive Root.test.cpp
+  - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
+  - test/yosupo judge/graph/Shortest Path.test.cpp
+  - test/yosupo judge/math/Discrete Logarithm.test.cpp
+  - test/yosupo judge/math/Factorize.test.cpp
+  - test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
+  - test/yosupo judge/tree/Tree Diameter.test.cpp
+  - test/AOJ/GRL/2/A.test.cpp
+  - test/AOJ/GRL/1/A.test.cpp
+  - test/AOJ/DSL/2/D.test.cpp
+  - test/AOJ/DSL/2/E.test.cpp
+  - test/AOJ/DSL/2/B.test.cpp
+  - test/AOJ/DSL/2/E2.test.cpp
+  - test/AOJ/DSL/1/A.test.cpp
+  - test/AOJ/NTL/1/D.test.cpp
+  - test/AOJ/NTL/1/E.test.cpp
+  - test/AOJ/NTL/1/B.test.cpp
+  - test/AOJ/NTL/1/A.test.cpp
   - test/AOJ/ALDS/1/C.test.cpp
   - test/AOJ/ALDS/14/B.test.cpp
-  - test/AOJ/NTL/1/E.test.cpp
-  - test/AOJ/NTL/1/D.test.cpp
-  - test/AOJ/NTL/1/A.test.cpp
-  - test/AOJ/NTL/1/B.test.cpp
-  - test/AOJ/DSL/1/A.test.cpp
-  - test/AOJ/DSL/2/E.test.cpp
-  - test/AOJ/DSL/2/D.test.cpp
-  - test/AOJ/DSL/2/E2.test.cpp
-  - test/AOJ/DSL/2/B.test.cpp
-  - test/AOJ/GRL/1/A.test.cpp
-  - test/AOJ/GRL/2/A.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:

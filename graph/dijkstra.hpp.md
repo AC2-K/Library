@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/edge.hpp
     title: edge
   _extendedRequiredBy: []
@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/graph/Shortest Path.test.cpp
     title: test/yosupo judge/graph/Shortest Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/tree/Tree Diameter.test.cpp
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     links: []
@@ -48,10 +48,10 @@ data:
   path: graph/dijkstra.hpp
   requiredBy: []
   timestamp: '2023-03-06 04:18:20+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo judge/tree/Tree Diameter.test.cpp
   - test/yosupo judge/graph/Shortest Path.test.cpp
+  - test/yosupo judge/tree/Tree Diameter.test.cpp
   - test/AOJ/GRL/1/A.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document
