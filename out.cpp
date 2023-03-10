@@ -1,148 +1,142 @@
-#line 1 "sub.cpp"
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E"
-
-#line 2 "template.hpp"
+#line 1 "main.cpp"
 #include<bits/stdc++.h>
 using namespace std;
-#define rep(i, N)  for(int i=0;i<(N);i++)
-#define all(x) (x).begin(),(x).end()
-#define popcount(x) __builtin_popcount(x)
-using i128=__int128_t;
-using ll = long long;
-using ld = long double;
-using graph = vector<vector<int>>;
-using P = pair<int, int>;
-constexpr int inf = 1e9;
-constexpr ll infl = 1e18;
-constexpr ld eps = 1e-6;
-const long double pi = acos(-1);
-constexpr int64_t MOD = 1e9 + 7;
-constexpr int64_t MOD2 = 998244353;
-constexpr int dx[] = { 1,0,-1,0 };
-constexpr int dy[] = { 0,1,0,-1 };
-template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
-template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
-#line 1 "data-structure/lazy_segtree.hpp"
-template<
-    class S, class F,
-    S(*op)(S, S), S(*e)(),
-    F(*comp)(F, F), F(*id)(),
-    S(*mapping)(S, F)
->
-class lazy_segtree {
-    int sz;
-    vector<S> dat;
-    vector<F> lz;
-public:
-    lazy_segtree(int n) :lazy_segtree(vector<S>(n, e())) {    }
-    lazy_segtree(const vector<S>& a) :dat(4 * a.size(), e()), lz(4 * a.size(), id()) {
-        int x = 1;
-        while (a.size() > x) {
-            x <<= 1;
-        }
-        sz = x;
-        for (int i = 0; i < a.size(); i++) {
-            set(i, a[i]);
-        }
-        build();
-    }
-public:
-    void set(int pos, S x) {
-        assert(0 <= pos && pos < sz);
-        dat[pos + sz - 1] = x;
-    }
-    void build() {
-        for (int i = sz - 2; i >= 0; i--) {
-            dat[i] = op(dat[2 * i + 1], dat[2 * i + 2]);
-        }
-    }
 
-private:
-    void eval(int pos) {
-        if (lz[pos] == id()) return;
-        if (pos < sz - 1) {
-            lz[2 * pos + 1] = comp(lz[2 * pos + 1], lz[pos]);
-            lz[2 * pos + 2] = comp(lz[2 * pos + 2], lz[pos]);
-        }
-        dat[pos] = mapping(dat[pos], lz[pos]);
-        lz[pos] = id();
-    }
 
-private:
-    void internal_apply(int L, int R, int l, int r,const F& x, int k) {
-        eval(k);
-        if (L <= l && r <= R) {
-            lz[k] = comp(lz[k], x);
-            eval(k);
-        }
-        else if (L < r && l < R) {
-            int mid = (l + r) >> 1;
-            internal_apply(L, R, l, mid, x, 2 * k + 1);
-            internal_apply(L, R, mid, r, x, 2 * k + 2);
-            dat[k] = op(dat[2 * k + 1], dat[2 * k + 2]);
-        }
-    }
-public:
-    void apply(int l, int r,const F& x) {
-        assert(0 <= l && l <= r && r <= sz);
-        internal_apply(l, r, 0, sz, x, 0);
-    }
+#line 2 "math/static_modint.hpp"
+namespace modint {
+	template<unsigned long long mod>
+	class static_modint {
+	private:
+		using mint = static_modint<mod>;
+		using i64 = __int64_t;
+		using u64 = __uint64_t;
+		using u128 = __uint128_t;
+		using i128 = __int128_t;
 
-private:
-    S prod(int L, int R, int l, int r, int k) {
-        eval(k);
-        if (r <= L || R <= l) {
-            return e();
-        }
-        else if (L <= l && r <= R) {
-            return dat[k];
-        }
-        else {
-            int mid = (l + r) >> 1;
-            S vl = prod(L, R, l, mid, 2 * k + 1);
-            S vr = prod(L, R, mid, r, 2 * k + 2);
-            return op(vl, vr);
-        }
-    }
+		i128 v;
+		void normalize(i128& v) {
+			v %= mod;
+			if (v < 0) {
+				v += mod;
+			}
+		}
+	public:
+		static_modint(const u64& v_ = 0) :v(v_) { normalize(v); }
 
-public:
-    S prod(int l, int r) {
-        assert(0 <= l && l <= r && r <= sz);
-        return prod(l, r, 0, sz, 0);
-    }
 
-    S operator[](int pos) {
-        return prod(pos, pos + 1);
-    }
-};
-//@brief lazy segtree(遅延評価セグメント木)
-#line 5 "sub.cpp"
+		u64 val() const {
+			return (u64)v;
+		}
+		mint& operator+=(const mint& rhs) {
+			v += rhs.val();
+			normalize(v);
+			return (*this);
+		}
+		mint& operator-=(const mint& rhs) {
+			v -= rhs.val();
+			normalize(v);
+			return (*this);
+		}
+		mint& operator*=(const mint& rhs) {
+			v *= rhs.val();
+			normalize(v);
+			return (*this);
+		}
 
-int op(int x,int y){return x+y;}
-int comp(int x,int y){return x+y;}
-int mapping(int x,int y){return x+y;}
-int e(){return 0;}
-int id(){return 0;}
 
-int main() {
-    int n,q;
-    cin>>n>>q;
-    lazy_segtree<int,int,op,e,comp,id,mapping> seg(n);
-    while(q--){
-        int t;
-        cin>>t;
-        if(t==0){
-            int l,r;
-            cin>>l>>r;
-            int new_val;
-            cin>>new_val;
-            l--,r--;
-            seg.apply(l,r+1,new_val);
-        }else{
-            int i;
-            cin>>i;
-            i--;
-            cout<<seg[i]<<'\n';
-        }
-    }
+
+
+		mint operator+(const mint& r) const {
+			return mint(*this) += r;
+		}
+		mint operator-(const mint& r) const {
+			return mint(*this) -= r;
+		}
+		mint operator*(const mint& r) const {
+			return mint(*this) *= r;
+		}
+
+		mint& operator+=(const i64& rhs) {
+			v += rhs;
+			normalize(v);
+			return (*this);
+		}
+		mint& operator-=(const i64& rhs) {
+			v -= rhs;
+			normalize(v);
+			return (*this);
+		}
+		mint& operator*=(const i64& rhs) {
+			v *= rhs;
+			normalize(v);
+			return (*this);
+		}
+		friend mint operator+(const i64& l, const mint& r) {
+			return mint(l) += r;
+		}
+		friend mint operator-(const i64& l, const mint& r) {
+			return mint(l) -= r;
+		}
+		friend mint operator*(const i64& l, const mint& r) {
+			return mint(l) *= r;
+		}
+
+		mint operator+(const i64& r) {
+			return mint(*this) += r;
+		}
+		mint operator-(const i64& r) {
+			return mint(*this) -= r;
+		}
+		mint operator*(const i64& r) {
+			return mint(*this) *= r;
+		}
+
+
+		mint& operator=(const i64& r) {
+			return (*this) = mint(r);
+		}
+
+		bool operator==(const mint& r) {
+			return (*this).val() == r.val();
+		}
+		mint pow(u128 e) const {
+			mint ans(1), base(*this);
+			while (e) {
+				if (e & 1) {
+					ans *= base;
+				}
+				base *= base;
+				e >>= 1;
+			}
+			return ans;
+		}
+
+		mint inv() const {
+			return pow(mod - 2);
+		}
+
+		mint& operator/=(const mint& r) {
+			return (*this) *= r.inv();
+		}
+		friend mint operator/(const mint& l, const i64& r) {
+			return mint(l) /= mint(r);
+		}
+
+		//iostream
+		friend ostream& operator<<(ostream& os, const mint& mt) {
+			os << mt.val();
+			return os;
+		}
+		friend istream& operator>>(istream& is, mint& mt) {
+			i64 vv;
+			is >> vv;
+			mt = vv;
+			return is;
+		}
+	};
 }
+using modint::static_modint;
+
+///@brief static modint(静的modint)
+#line 6 "main.cpp"

@@ -1,25 +1,25 @@
 #pragma once
-namespace modint {
-	template<unsigned long long mod>
-	class static_modint {
-	private:
-		using mint = static_modint<mod>;
-		using i64 = __int64_t;
-		using u64 = __uint64_t;
-		using u128 = __uint128_t;
-		using i128 = __int128_t;
 
-		i128 v;
-		void normalize(i128& v) {
-			v %= mod;
-			if (v < 0) {
-				v += mod;
-			}
+template<unsigned long long mod>
+class static_modint {
+private:
+	using mint = static_modint<mod>;
+	using i64 = __int64_t;
+	using u64 = __uint64_t;
+	using u128 = __uint128_t;
+	using i128 = __int128_t;
+
+	i128 v;
+	void normalize(i128& v) {
+		v %= mod;
+		if (v < 0) {
+			v += mod;
 		}
+	}
 	public:
 		static_modint(const u64& v_ = 0) :v(v_) { normalize(v); }
 
-
+		//operator
 		u64 val() const {
 			return (u64)v;
 		}
@@ -38,8 +38,6 @@ namespace modint {
 			normalize(v);
 			return (*this);
 		}
-
-
 
 
 		mint operator+(const mint& r) const {
@@ -95,7 +93,7 @@ namespace modint {
 		bool operator==(const mint& r) {
 			return (*this).val() == r.val();
 		}
-		mint pow(u128 e) {
+		mint pow(u128 e) const {
 			mint ans(1), base(*this);
 			while (e) {
 				if (e & 1) {
@@ -107,7 +105,7 @@ namespace modint {
 			return ans;
 		}
 
-		mint inv() {
+		mint inv() const {
 			return pow(mod - 2);
 		}
 
@@ -130,7 +128,4 @@ namespace modint {
 			return is;
 		}
 	};
-}
-using modint::static_modint;
-
 ///@brief static modint(静的modint)

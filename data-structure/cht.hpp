@@ -1,4 +1,4 @@
-template<typename T = ll, bool query_type = false>
+template<class T = ll, bool query_type = false>
 class CHT {
 	class line {
 	public:
@@ -33,15 +33,16 @@ class CHT {
 		if (it == ls.begin() || next(it) == ls.end()){
 			return true;
 		}
-		//精度大丈夫...?
-		return 1.*(it->b - prev(it)->b) * (next(it)->a - it->a) < 1.*(it->b - next(it)->b) * (prev(it)->a - it->a);	
-	}
+        return 1. * (it->b - prev(it)->b) * (next(it)->a - it->a) <
+            1. * (it->b - next(it)->b) * (prev(it)->a - it->a);
+    }
 
 public:
 	void add(T a,T b) {
 		if(query_type){
 			ls.emplace(-a,-b);
-		}else{
+		}
+		else{
 			ls.emplace(a,b);
 		}
 
@@ -68,7 +69,7 @@ public:
 			it->nxt_b = next(it)->b;
 		}
 	}
-	T operator()(T x) const {
+	T operator()(T x) {
 		const auto& it = ls.lower_bound(line(x, 0, true));
 
 		if (query_type) {	
@@ -80,3 +81,4 @@ public:
 	}
 };
 ///@brief ConvexHullTrick
+///@docs docs/data-structure/cht.md
