@@ -81,4 +81,3 @@ public:
 	}
 };
 ///@brief ConvexHullTrick
-///@docs docs/data-structure/cht.md
