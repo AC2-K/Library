@@ -10,7 +10,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/data-structure/cht.md
     document_title: ConvexHullTrick
     links: []
   bundledCode: "#line 1 \"data-structure/cht.hpp\"\ntemplate<class T = ll, bool query_type\
@@ -40,7 +39,7 @@ data:
     \ = next(it)->a;\n\t\t\tit->nxt_b = next(it)->b;\n\t\t}\n\t}\n\tT operator()(T\
     \ x) {\n\t\tconst auto& it = ls.lower_bound(line(x, 0, true));\n\n\t\tif (query_type)\
     \ {\t\n\t\t\treturn -it->a * x - it->b;\n\t\t}\n\t\telse {\n\t\t\treturn it->a\
-    \ * x + it->b;\n\t\t}\n\t}\n};\n///@brief ConvexHullTrick\n///@docs docs/data-structure/cht.md\n"
+    \ * x + it->b;\n\t\t}\n\t}\n};\n///@brief ConvexHullTrick\n"
   code: "template<class T = ll, bool query_type = false>\nclass CHT {\n\tclass line\
     \ {\n\tpublic:\n\t\tT a, b;\n\t\tbool is_query;\n\t\tmutable T nxt_a, nxt_b;\n\
     \t\tmutable bool has_nxt;\n\t\tT get(T x)const { return a * x + b; }\n\t\tT get_nxt(T\
@@ -67,13 +66,12 @@ data:
     it->has_nxt = true;\n\t\t\tit->nxt_a = next(it)->a;\n\t\t\tit->nxt_b = next(it)->b;\n\
     \t\t}\n\t}\n\tT operator()(T x) {\n\t\tconst auto& it = ls.lower_bound(line(x,\
     \ 0, true));\n\n\t\tif (query_type) {\t\n\t\t\treturn -it->a * x - it->b;\n\t\t\
-    }\n\t\telse {\n\t\t\treturn it->a * x + it->b;\n\t\t}\n\t}\n};\n///@brief ConvexHullTrick\n\
-    ///@docs docs/data-structure/cht.md"
+    }\n\t\telse {\n\t\t\treturn it->a * x + it->b;\n\t\t}\n\t}\n};\n///@brief ConvexHullTrick"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/cht.hpp
   requiredBy: []
-  timestamp: '2023-03-10 13:31:13+09:00'
+  timestamp: '2023-03-10 14:43:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/data structure/Line Add Get Min.test.cpp

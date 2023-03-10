@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/cht.hpp
     title: ConvexHullTrick
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -55,13 +55,13 @@ data:
     \t\t}\n\t}\n\tT operator()(T x) {\n\t\tconst auto& it = ls.lower_bound(line(x,\
     \ 0, true));\n\n\t\tif (query_type) {\t\n\t\t\treturn -it->a * x - it->b;\n\t\t\
     }\n\t\telse {\n\t\t\treturn it->a * x + it->b;\n\t\t}\n\t}\n};\n///@brief ConvexHullTrick\n\
-    ///@docs docs/data-structure/cht.md\n#line 5 \"test/yosupo judge/data structure/Line\
-    \ Add Get Min.test.cpp\"\n\nint main(){\n    int n,q;\n    cin>>n>>q;\n\n    CHT\
-    \ cht;    \n    for(int i=0;i<n;i++){\n        ll a,b;\n        cin>>a>>b;\n \
-    \       cht.add(a,b);\n    }\n    while(q--){\n        int t;\n        cin>>t;\n\
-    \        if(t==0){\n            ll a,b;\n            cin>>a>>b;\n            cht.add(a,b);\n\
-    \        }else{\n            ll x;\n            cin>>x;\n            cout<<cht(x)<<'\\\
-    n';\n        }\n    }\n}\n"
+    #line 5 \"test/yosupo judge/data structure/Line Add Get Min.test.cpp\"\n\nint\
+    \ main(){\n    int n,q;\n    cin>>n>>q;\n\n    CHT cht;    \n    for(int i=0;i<n;i++){\n\
+    \        ll a,b;\n        cin>>a>>b;\n        cht.add(a,b);\n    }\n    while(q--){\n\
+    \        int t;\n        cin>>t;\n        if(t==0){\n            ll a,b;\n   \
+    \         cin>>a>>b;\n            cht.add(a,b);\n        }else{\n            ll\
+    \ x;\n            cin>>x;\n            cout<<cht(x)<<'\\n';\n        }\n    }\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n\
     #include\"template.hpp\"\n#include\"data-structure/cht.hpp\"\n\nint main(){\n\
     \    int n,q;\n    cin>>n>>q;\n\n    CHT cht;    \n    for(int i=0;i<n;i++){\n\
@@ -76,7 +76,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
   requiredBy: []
-  timestamp: '2023-03-10 13:31:13+09:00'
+  timestamp: '2023-03-10 14:43:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Line Add Get Min.test.cpp
