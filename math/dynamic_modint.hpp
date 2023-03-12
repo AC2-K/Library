@@ -13,20 +13,20 @@ class dynamic_modint32 {
 	u32 v;	//value
 public:
 	static void set_mod(const u32& mod_) {
-		brt = br(mod_);	//change burrett
+		brt = br(mod_);
 		mod = mod_;
 	}
 private:
 	u32 normalize(const i64& x) const {
-		u32 m = x % mod;
+		i32 m = x % mod;
 		if (m < 0) {
 			m += mod;
 		}
 		return m;
 	}
 public:
-	dynamic_modint32() :v(0) { assert(mod); }
-	dynamic_modint32(const i64& v_) :v(normalize(v_)) { assert(mod); }
+	dynamic_modint32() :v(0) { assert(mod); }	//modが決定済みである必要がある
+	dynamic_modint32(const i64& v_) :v(normalize(v_)) { assert(mod); }	
 
 	u32 val() const { return v; }
 

@@ -4,7 +4,7 @@ class dual_segtree {
 
 	int sz;
 
-	static const int lowest = -1;
+	const int lowest = -1;
 	vector<pair<int, F>> dat;
 
 
