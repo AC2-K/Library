@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett.hpp
     title: math/barrett.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: math/matrix.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -107,20 +107,23 @@ data:
     \ mat pw(*this);\n\n        while(e){\n            if(e&1){\n                pw\
     \ *= pw;\n            }\n            pw *= pw;\n            e >>= 1;\n       \
     \ }\n        return pr;\n    }\n};\n#line 5 \"test/yosupo judge/matrix/Matrix\
-    \ Product.test.cpp\"\nint main() {\n    mint::set_mod(MOD2);\n    ios::sync_with_stdio(false);\n\
-    \    cin.tie(0);\n    int n, m, k;\n    cin >> n >> m >> k;\n    using mat = Matrix<mint>;\n\
+    \ Product.test.cpp\"\n#pragma GCC target(\"avx2\")\n#pragma GCC optimize(\"O3\"\
+    )\n#pragma GCC optimize(\"unroll-loops\")\nusing mint = dynamic_modint32;\nint\
+    \ main() {\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n    int n, m, k;\n\
+    \    cin >> n >> m >> k;\n    mint::set_mod(MOD2);\n    using mat = Matrix<mint>;\n\
     \    mat a(n, m), b(m, k);\n    rep(i, n) rep(j, m) { cin >> a[i][j]; }\n    rep(i,\
     \ m) rep(j, k) { cin >> b[i][j]; }\n    auto res = a * b;\n    rep(i, n) {\n \
     \       rep(j, k) { cout << res[i][j] << ' '; }\n        cout << '\\n';\n    }\n\
     }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include\"\
     template.hpp\"\n#include\"math/dynamic_modint.hpp\"\n#include\"math/matrix.hpp\"\
-    \nint main() {\n    mint::set_mod(MOD2);\n    ios::sync_with_stdio(false);\n \
-    \   cin.tie(0);\n    int n, m, k;\n    cin >> n >> m >> k;\n    using mat = Matrix<mint>;\n\
-    \    mat a(n, m), b(m, k);\n    rep(i, n) rep(j, m) { cin >> a[i][j]; }\n    rep(i,\
-    \ m) rep(j, k) { cin >> b[i][j]; }\n    auto res = a * b;\n    rep(i, n) {\n \
-    \       rep(j, k) { cout << res[i][j] << ' '; }\n        cout << '\\n';\n    }\n\
-    }\n"
+    \n#pragma GCC target(\"avx2\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"\
+    unroll-loops\")\nusing mint = dynamic_modint32;\nint main() {\n    ios::sync_with_stdio(false);\n\
+    \    cin.tie(0);\n    int n, m, k;\n    cin >> n >> m >> k;\n    mint::set_mod(MOD2);\n\
+    \    using mat = Matrix<mint>;\n    mat a(n, m), b(m, k);\n    rep(i, n) rep(j,\
+    \ m) { cin >> a[i][j]; }\n    rep(i, m) rep(j, k) { cin >> b[i][j]; }\n    auto\
+    \ res = a * b;\n    rep(i, n) {\n        rep(j, k) { cout << res[i][j] << ' ';\
+    \ }\n        cout << '\\n';\n    }\n}\n"
   dependsOn:
   - template.hpp
   - math/dynamic_modint.hpp
@@ -129,8 +132,8 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-03-12 14:55:14+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-12 15:12:00+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/matrix/Matrix Product.test.cpp
 layout: document

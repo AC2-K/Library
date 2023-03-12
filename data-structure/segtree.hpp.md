@@ -4,12 +4,15 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: main.test.cpp
+    title: main.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/B.test.cpp
     title: test/AOJ/DSL/2/B.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
     title: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
     title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -21,9 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/segtree.md
     document_title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
@@ -83,8 +86,9 @@ data:
   path: data-structure/segtree.hpp
   requiredBy: []
   timestamp: '2023-03-06 04:18:20+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - main.test.cpp
   - test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp

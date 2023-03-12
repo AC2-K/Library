@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett.hpp
     title: math/barrett.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedRequiredBy: []
@@ -65,25 +65,22 @@ data:
     \ /= r; }\n};\ntypename dynamic_modint32::u32 dynamic_modint32::mod;\ntypename\
     \ dynamic_modint32::br dynamic_modint32::brt;\n\n///@brief dynamic modint(\u52D5\
     \u7684modint)\n///@docs docs/math/dynamic_modint.md\n#line 2 \"math/static_modint.hpp\"\
-    \n<<<<<<< HEAD\ntemplate<__uint64_t mod>\n=======\ntemplate<unsigned long long\
-    \ mod>\n>>>>>>> 9d32c20b7e4b89933c546ca0e0d26c3be9cd1eda\nclass static_modint\
-    \ {\nprivate:\n\tusing mint = static_modint<mod>;\n\tusing i64 = long long;\n\t\
-    using u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\tusing i128 = __int128_t;\n\
-    \n\tu64 v;\n<<<<<<< HEAD\n\tu64 normalize(i128 v_) const {\n=======\n\tu64 normalize(i128\
-    \ v_) {\n>>>>>>> 9d32c20b7e4b89933c546ca0e0d26c3be9cd1eda\n\t\tv_ %= mod;\n\t\t\
-    if (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\tstatic_modint()\
-    \ :v(0) {}\n\tstatic_modint(const i64& v_) :v(normalize(v_)) { }\n\n\t//operator\n\
-    \tu64 val() const {\n\t\treturn (u64)v;\n\t}\n\tmint& operator+=(const mint& rhs)\
-    \ {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn\
-    \ (*this);\n\t}\n\tmint& operator-=(const mint& rhs) {\n\t\tv += mod - rhs.val();\n\
-    \t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tmint&\
-    \ operator*=(const mint& rhs) {\n\t\ti128 m = v * rhs.val();\n\t\tv = normalize(m);\n\
-    \t\treturn (*this);\n\t}\n\n\n\tmint operator+(const mint& r) const {\n\t\treturn\
-    \ mint(*this) += r;\n\t}\n\tmint operator-(const mint& r) const {\n\t\treturn\
-    \ mint(*this) -= r;\n\t}\n\tmint operator*(const mint& r) const {\n\t\treturn\
-    \ mint(*this) *= r;\n\t}\n\n\tmint& operator+=(const i64& rhs) {\n\t\t(*this)\
-    \ += mint(rhs);\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const i64& rhs)\
-    \ {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\t}\n\tmint& operator*=(const\
+    \ntemplate<__uint64_t mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\
+    \tusing i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
+    \tusing i128 = __int128_t;\n\n\tu64 v;\n\tu64 normalize(i128 v_) const {\n\t\t\
+    v_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\n\
+    public:\n\tstatic_modint() :v(0) {}\n\tstatic_modint(const i64& v_) :v(normalize(v_))\
+    \ { }\n\n\t//operator\n\tu64 val() const {\n\t\treturn (u64)v;\n\t}\n\tmint& operator+=(const\
+    \ mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t\
+    }\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const mint& rhs) {\n\t\tv += mod\
+    \ - rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\
+    \t}\n\tmint& operator*=(const mint& rhs) {\n\t\ti128 m = v * rhs.val();\n\t\t\
+    v = normalize(m);\n\t\treturn (*this);\n\t}\n\n\n\tmint operator+(const mint&\
+    \ r) const {\n\t\treturn mint(*this) += r;\n\t}\n\tmint operator-(const mint&\
+    \ r) const {\n\t\treturn mint(*this) -= r;\n\t}\n\tmint operator*(const mint&\
+    \ r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\tmint& operator+=(const i64&\
+    \ rhs) {\n\t\t(*this) += mint(rhs);\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const\
+    \ i64& rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\t}\n\tmint& operator*=(const\
     \ i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\t\treturn (*this);\n\t}\n\tfriend mint\
     \ operator+(const i64& l, const mint& r) {\n\t\treturn mint(l) += r;\n\t}\n\t\
     friend mint operator-(const i64& l, const mint& r) {\n\t\treturn mint(l) -= r;\n\
@@ -114,7 +111,7 @@ data:
   isVerificationFile: false
   path: math/modint.hpp
   requiredBy: []
-  timestamp: '2023-03-12 14:56:25+09:00'
+  timestamp: '2023-03-12 15:12:00+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/modint.hpp

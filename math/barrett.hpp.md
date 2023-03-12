@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
   - icon: ':warning:'
     path: math/modint.hpp
     title: math/modint.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/matrix/Matrix Product.test.cpp
     title: test/yosupo judge/matrix/Matrix Product.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/barrett.hpp\"\nnamespace internal {\n\t//barret reduction\n\
@@ -42,7 +42,7 @@ data:
   - math/modint.hpp
   - math/dynamic_modint.hpp
   timestamp: '2023-03-12 14:55:14+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/matrix/Matrix Product.test.cpp
 documentation_of: math/barrett.hpp

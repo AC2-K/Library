@@ -20,8 +20,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
     links:
     - https://judge.yosupo.jp/problem/point_set_range_composite
-  bundledCode: "#line 1 \"test/yosupo judge/data structure/Point Set Range Composite.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
+  bundledCode: "#line 1 \"main.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
     \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
     \ popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\n\
@@ -89,18 +88,18 @@ data:
     \tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
     \t\treturn os;\n\t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\
     \ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n};\n///@brief static\
-    \ modint(\u9759\u7684modint)\n#line 5 \"test/yosupo judge/data structure/Point\
-    \ Set Range Composite.test.cpp\"\nusing mint = static_modint<MOD2>;\n\nstruct\
-    \ F\n{\n    mint a,b;\n};\n\nF op(F l,F r){\n    mint na = l.a * r.a;\n    mint\
-    \ nb = (l.b * r.a + r.b);\n    return F{na, nb};\n}\nF e(){\n    return F{1,0};\n\
-    }\nint main() {\n    int n, q;\n    cin >> n >> q;\n    segtree<F, op, e> seg(n);\n\
-    \    rep(i, n){\n        mint a, b;\n        cin >> a >> b;\n        seg.set(i,\
-    \ F{a, b});\n    }\n    seg.build();\n    while (q--){\n        int t;\n     \
-    \   cin >> t;\n        if (t == 0){\n            int p;\n            mint c, d;\n\
-    \            cin >> p >> c >> d;\n            seg.update(p, F{c, d});\n      \
-    \  }\n        else{\n            int l, r;\n            mint x;\n            cin\
-    \ >> l >> r >> x;\n            F res = seg.prod(l, r);\n            mint ans =\
-    \ res.a * x + res.b;\n            cout << ans << '\\n';\n        }\n    }\n}\n"
+    \ modint(\u9759\u7684modint)\n#line 5 \"main.test.cpp\"\nusing mint = static_modint<MOD2>;\n\
+    \nstruct F\n{\n    mint a,b;\n};\n\nF op(F l,F r){\n    mint na = l.a * r.a;\n\
+    \    mint nb = (l.b * r.a + r.b);\n    return F{na, nb};\n}\nF e(){\n    return\
+    \ F{1,0};\n}\nint main() {\n    int n, q;\n    cin >> n >> q;\n    segtree<F,\
+    \ op, e> seg(n);\n    rep(i, n){\n        mint a, b;\n        cin >> a >> b;\n\
+    \        seg.set(i, F{a, b});\n    }\n    seg.build();\n    while (q--){\n   \
+    \     int t;\n        cin >> t;\n        if (t == 0){\n            int p;\n  \
+    \          mint c, d;\n            cin >> p >> c >> d;\n            seg.update(p,\
+    \ F{c, d});\n        }\n        else{\n            int l, r;\n            mint\
+    \ x;\n            cin >> l >> r >> x;\n            F res = seg.prod(l, r);\n \
+    \           mint ans = res.a * x + res.b;\n            cout << ans << '\\n';\n\
+    \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n#include\"template.hpp\"\n#include\"data-structure/segtree.hpp\"\n#include\"\
     math/static_modint.hpp\"\nusing mint = static_modint<MOD2>;\n\nstruct F\n{\n \
@@ -119,15 +118,15 @@ data:
   - data-structure/segtree.hpp
   - math/static_modint.hpp
   isVerificationFile: true
-  path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+  path: main.test.cpp
   requiredBy: []
   timestamp: '2023-03-12 15:12:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+documentation_of: main.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-- /verify/test/yosupo judge/data structure/Point Set Range Composite.test.cpp.html
-title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+- /verify/main.test.cpp
+- /verify/main.test.cpp.html
+title: main.test.cpp
 ---

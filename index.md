@@ -19,7 +19,7 @@ data:
       path: data-structure/lazy_segtree.hpp
       title: "lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/segtree.hpp
       title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
@@ -31,15 +31,12 @@ data:
       path: debug.hpp
       title: debug.hpp
     - icon: ':warning:'
-      path: main.cpp
-      title: main.cpp
-    - icon: ':warning:'
       path: out.cpp
       title: out.cpp
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
     - icon: ':warning:'
@@ -67,10 +64,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/DLP.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/barrett.hpp
       title: math/barrett.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
     - icon: ':heavy_check_mark:'
@@ -89,7 +86,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/fast_prime_check.hpp
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: math/matrix.hpp
     - icon: ':heavy_check_mark:'
@@ -104,7 +101,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
   - name: string
@@ -123,6 +120,11 @@ data:
       path: test/AOJ/GRL/5/C.cpp
       title: test/AOJ/GRL/5/C.cpp
   verificationCategories:
+  - name: .
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: main.test.cpp
+      title: main.test.cpp
   - name: test/AOJ/ALDS/1
     pages:
     - icon: ':heavy_check_mark:'
@@ -184,7 +186,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
       title: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
       title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
     - icon: ':heavy_check_mark:'
@@ -214,7 +216,7 @@ data:
       title: test/yosupo judge/math/Factorize.test.cpp
   - name: test/yosupo judge/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/matrix/Matrix Product.test.cpp
       title: test/yosupo judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo judge/new
