@@ -2,12 +2,16 @@
 #include"template.hpp"
 #include"math/dynamic_modint.hpp"
 #include"math/matrix.hpp"
+#pragma GCC target("avx2")
+#pragma GCC optimize("O3")
+#pragma GCC optimize("unroll-loops")
+using mint = dynamic_modint32;
 int main() {
-    mint::set_mod(MOD2);
     ios::sync_with_stdio(false);
     cin.tie(0);
     int n, m, k;
     cin >> n >> m >> k;
+    mint::set_mod(MOD2);
     using mat = Matrix<mint>;
     mat a(n, m), b(m, k);
     rep(i, n) rep(j, m) { cin >> a[i][j]; }
