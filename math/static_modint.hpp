@@ -259,3 +259,4 @@ public:
 	}
 };
 ///@brief static modint(静的modint)
+///@docs docs/math/static_modint.md
