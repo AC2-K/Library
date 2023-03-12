@@ -1,25 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree.hpp
     title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
-  attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/point_set_range_composite
-    links:
-    - https://judge.yosupo.jp/problem/point_set_range_composite
+  _verificationStatusIcon: ':x:'
+  attributes: {}
   bundledCode: "#line 1 \"test/yosupo judge/data structure/Point Set Range Composite.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
@@ -55,23 +51,26 @@ data:
     x\n    void add(int pos, S x) {\n        update(pos, op(dat[n + pos - 1], x));\n\
     \    }\n\n    S operator [](int pos) {\n        return dat[n + pos - 1];\n   \
     \ }\n};\n/// @brief segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n///@docs\
-    \ docs/data-structure/segtree.md\n#line 2 \"math/static_modint.hpp\"\ntemplate<unsigned\
-    \ long long mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\
-    \tusing i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
-    \tusing i128 = __int128_t;\n\n\tu64 v;\n\tu64 normalize(i128 v_) {\n\t\tv_ %=\
-    \ mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\
-    \tstatic_modint() :v(0) {}\n\tstatic_modint(const i64& v_) :v(normalize(v_)) {\
-    \ }\n\n\t//operator\n\tu64 val() const {\n\t\treturn (u64)v;\n\t}\n\tmint& operator+=(const\
-    \ mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t\
-    }\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const mint& rhs) {\n\t\tv += mod\
-    \ - rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\
-    \t}\n\tmint& operator*=(const mint& rhs) {\n\t\ti128 m = v * rhs.val();\n\t\t\
-    v = normalize(m);\n\t\treturn (*this);\n\t}\n\n\n\tmint operator+(const mint&\
-    \ r) const {\n\t\treturn mint(*this) += r;\n\t}\n\tmint operator-(const mint&\
-    \ r) const {\n\t\treturn mint(*this) -= r;\n\t}\n\tmint operator*(const mint&\
-    \ r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\tmint& operator+=(const i64&\
-    \ rhs) {\n\t\t(*this) += mint(rhs);\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const\
-    \ i64& rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\t}\n\tmint& operator*=(const\
+    \ docs/data-structure/segtree.md\n#line 2 \"math/static_modint.hpp\"\n<<<<<<<\
+    \ HEAD\ntemplate<__uint64_t mod>\n=======\ntemplate<unsigned long long mod>\n\
+    >>>>>>> 9d32c20b7e4b89933c546ca0e0d26c3be9cd1eda\nclass static_modint {\nprivate:\n\
+    \tusing mint = static_modint<mod>;\n\tusing i64 = long long;\n\tusing u64 = unsigned\
+    \ long long;\n\tusing u128 = __uint128_t;\n\tusing i128 = __int128_t;\n\n\tu64\
+    \ v;\n<<<<<<< HEAD\n\tu64 normalize(i128 v_) const {\n=======\n\tu64 normalize(i128\
+    \ v_) {\n>>>>>>> 9d32c20b7e4b89933c546ca0e0d26c3be9cd1eda\n\t\tv_ %= mod;\n\t\t\
+    if (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\tstatic_modint()\
+    \ :v(0) {}\n\tstatic_modint(const i64& v_) :v(normalize(v_)) { }\n\n\t//operator\n\
+    \tu64 val() const {\n\t\treturn (u64)v;\n\t}\n\tmint& operator+=(const mint& rhs)\
+    \ {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn\
+    \ (*this);\n\t}\n\tmint& operator-=(const mint& rhs) {\n\t\tv += mod - rhs.val();\n\
+    \t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tmint&\
+    \ operator*=(const mint& rhs) {\n\t\ti128 m = v * rhs.val();\n\t\tv = normalize(m);\n\
+    \t\treturn (*this);\n\t}\n\n\n\tmint operator+(const mint& r) const {\n\t\treturn\
+    \ mint(*this) += r;\n\t}\n\tmint operator-(const mint& r) const {\n\t\treturn\
+    \ mint(*this) -= r;\n\t}\n\tmint operator*(const mint& r) const {\n\t\treturn\
+    \ mint(*this) *= r;\n\t}\n\n\tmint& operator+=(const i64& rhs) {\n\t\t(*this)\
+    \ += mint(rhs);\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const i64& rhs)\
+    \ {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\t}\n\tmint& operator*=(const\
     \ i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\t\treturn (*this);\n\t}\n\tfriend mint\
     \ operator+(const i64& l, const mint& r) {\n\t\treturn mint(l) += r;\n\t}\n\t\
     friend mint operator-(const i64& l, const mint& r) {\n\t\treturn mint(l) -= r;\n\
@@ -121,8 +120,8 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-03-10 15:19:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-03-12 14:56:25+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
 layout: document

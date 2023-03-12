@@ -18,8 +18,8 @@ data:
       )"
     links: []
   bundledCode: "#line 1 \"data-structure/dual_segtree.hpp\"\ntemplate<class F, F(*comp)(F,\
-    \ F), F(*id)()>\nclass dual_segtree {\n\tint n;\t\n\n\tint sz;\n\n\tstatic const\
-    \ int lowest = -1;\n\tvector<pair<int, F>> dat;\n\n\n\tint cur;\npublic:\n\tdual_segtree(const\
+    \ F), F(*id)()>\nclass dual_segtree {\n\tint n;\t\n\n\tint sz;\n\n\tconst int\
+    \ lowest = -1;\n\tvector<pair<int, F>> dat;\n\n\n\tint cur;\npublic:\n\tdual_segtree(const\
     \ int& n_) :n(n_), cur(0) {\n\t\tsz = 1;\n\t\twhile (sz < n) {\n\t\t\tsz <<= 1;\n\
     \t\t}\n\n\t\tdat.assign(sz << 1 , make_pair(lowest, id()));\n\t}\n\nprivate:\n\
     \tvoid innner_apply(const int& p, const int& l, const int& r, const int& L, const\
@@ -40,14 +40,14 @@ data:
     \t}\n};\n\n///@brief dual segtree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
     )\n///@docs docs/data-structure/dual_segtree.md\n"
   code: "template<class F, F(*comp)(F, F), F(*id)()>\nclass dual_segtree {\n\tint\
-    \ n;\t\n\n\tint sz;\n\n\tstatic const int lowest = -1;\n\tvector<pair<int, F>>\
-    \ dat;\n\n\n\tint cur;\npublic:\n\tdual_segtree(const int& n_) :n(n_), cur(0)\
-    \ {\n\t\tsz = 1;\n\t\twhile (sz < n) {\n\t\t\tsz <<= 1;\n\t\t}\n\n\t\tdat.assign(sz\
-    \ << 1 , make_pair(lowest, id()));\n\t}\n\nprivate:\n\tvoid innner_apply(const\
-    \ int& p, const int& l, const int& r, const int& L, const  int& R, const  F& f)\
-    \ {\n\t\tif (r <= L || R <= l) {\n\t\t\treturn;\n\t\t}\n\t\tif (L <= l && r <=\
-    \ R) {\n\t\t\tF nf = comp(dat[p].second, f);\n\t\t\tdat[p] = make_pair(cur, nf);\n\
-    \t\t\treturn;\n\t\t}\n\t\telse {\n\t\t\tint md = (l + r) >> 1;\n\t\t\tinnner_apply(2\
+    \ n;\t\n\n\tint sz;\n\n\tconst int lowest = -1;\n\tvector<pair<int, F>> dat;\n\
+    \n\n\tint cur;\npublic:\n\tdual_segtree(const int& n_) :n(n_), cur(0) {\n\t\t\
+    sz = 1;\n\t\twhile (sz < n) {\n\t\t\tsz <<= 1;\n\t\t}\n\n\t\tdat.assign(sz <<\
+    \ 1 , make_pair(lowest, id()));\n\t}\n\nprivate:\n\tvoid innner_apply(const int&\
+    \ p, const int& l, const int& r, const int& L, const  int& R, const  F& f) {\n\
+    \t\tif (r <= L || R <= l) {\n\t\t\treturn;\n\t\t}\n\t\tif (L <= l && r <= R) {\n\
+    \t\t\tF nf = comp(dat[p].second, f);\n\t\t\tdat[p] = make_pair(cur, nf);\n\t\t\
+    \treturn;\n\t\t}\n\t\telse {\n\t\t\tint md = (l + r) >> 1;\n\t\t\tinnner_apply(2\
     \ * p + 1, l, md, L, R, f);\n\t\t\tinnner_apply(2 * p + 2, md, r, L, R, f);\n\t\
     \t}\n\t}\npublic:\n\tvoid apply(const int& l, const int& r, const F& x) {\n\t\t\
     //assert(0 <= l && l <= r && r <= n);\n\t\tinnner_apply(0, 0, sz, l, r, x);\n\t\
@@ -65,7 +65,7 @@ data:
   path: data-structure/dual_segtree.hpp
   requiredBy:
   - test/AOJ/DSL/2/D2.cpp
-  timestamp: '2023-03-07 14:08:53+09:00'
+  timestamp: '2023-03-12 14:55:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/2/E2.test.cpp

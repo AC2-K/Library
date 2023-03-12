@@ -1,22 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: math/barrett.hpp
     title: math/barrett.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: math/modint.hpp
     title: math/modint.hpp
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo judge/matrix/Matrix Product.test.cpp
+    title: test/yosupo judge/matrix/Matrix Product.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/math/dynamic_modint.md
     document_title: "dynamic modint(\u52D5\u7684modint)"
     links: []
-  bundledCode: "#line 2 \"math/barrett.hpp\"\nnamespace internal {\n\t//burret reduction\n\
+  bundledCode: "#line 2 \"math/barrett.hpp\"\nnamespace internal {\n\t//barret reduction\n\
     \tclass barrett {\n\t\tusing u32 = uint32_t;\n\t\tusing u64 = uint64_t;\n\n\t\t\
     u32 m;\n\t\tu64 im;\n\tpublic:\n\t\texplicit barrett() = default;\n\t\texplicit\
     \ barrett(const u32& m_) :m(m_), im((u64)(-1) / m_ + 1) {}\n\n\t\tu32 get_mod()\
@@ -28,16 +31,17 @@ data:
     \ dynamic_modint32 {\n\tusing u32 = uint32_t;\n\tusing u64 = uint64_t;\n\n\tusing\
     \ i32 = int32_t;\n\tusing i64 = int64_t;\n\tusing br = internal::barrett;\n\n\t\
     static br brt;\n\tstatic u32 mod;\n\tu32 v;\t//value\npublic:\n\tstatic void set_mod(const\
-    \ u32& mod_) {\n\t\tbrt = br(mod_);\t//change burrett\n\t\tmod = mod_;\n\t}\n\
-    private:\n\tu32 normalize(const i64& x) const {\n\t\tu32 m = x % mod;\n\t\tif\
-    \ (m < 0) {\n\t\t\tm += mod;\n\t\t}\n\t\treturn m;\n\t}\npublic:\n\tdynamic_modint32()\
-    \ :v(0) { assert(mod); }\n\tdynamic_modint32(const i64& v_) :v(normalize(v_))\
-    \ { assert(mod); }\n\n\tu32 val() const { return v; }\n\n\tusing mint = dynamic_modint32;\n\
-    \n\t//operators\n\tmint& operator=(const i64& r) {\n\t\tv = normalize(r); \n\t\
-    \treturn (*this);\n\t}\n\tmint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\
-    \tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const\
-    \ mint&r) {\n\t\tv += mod - r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\
-    \n\t\treturn (*this);\n\t}\n\tmint& operator*=(const mint& r) {\n\t\tv = brt.mul(v,\
+    \ u32& mod_) {\n\t\tbrt = br(mod_);\n\t\tmod = mod_;\n\t}\nprivate:\n\tu32 normalize(const\
+    \ i64& x) const {\n\t\ti32 m = x % mod;\n\t\tif (m < 0) {\n\t\t\tm += mod;\n\t\
+    \t}\n\t\treturn m;\n\t}\npublic:\n\tdynamic_modint32() :v(0) { assert(mod); }\t\
+    //mod\u304C\u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\
+    \n\tdynamic_modint32(const i64& v_) :v(normalize(v_)) { assert(mod); }\t\n\n\t\
+    u32 val() const { return v; }\n\n\tusing mint = dynamic_modint32;\n\n\t//operators\n\
+    \tmint& operator=(const i64& r) {\n\t\tv = normalize(r); \n\t\treturn (*this);\n\
+    \t}\n\tmint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod) {\n\
+    \t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const mint&r)\
+    \ {\n\t\tv += mod - r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\n\t\t\
+    return (*this);\n\t}\n\tmint& operator*=(const mint& r) {\n\t\tv = brt.mul(v,\
     \ r.v);\n\t\treturn (*this);\n\t}\n\n\tmint operator+(const mint& r) const { return\
     \ mint(*this) += r; }\n\tmint operator-(const mint& r) const { return mint(*this)\
     \ -= r; }\n\tmint operator*(const mint& r) const { return mint(*this) *= r; }\n\
@@ -67,16 +71,17 @@ data:
     using u32 = uint32_t;\n\tusing u64 = uint64_t;\n\n\tusing i32 = int32_t;\n\tusing\
     \ i64 = int64_t;\n\tusing br = internal::barrett;\n\n\tstatic br brt;\n\tstatic\
     \ u32 mod;\n\tu32 v;\t//value\npublic:\n\tstatic void set_mod(const u32& mod_)\
-    \ {\n\t\tbrt = br(mod_);\t//change burrett\n\t\tmod = mod_;\n\t}\nprivate:\n\t\
-    u32 normalize(const i64& x) const {\n\t\tu32 m = x % mod;\n\t\tif (m < 0) {\n\t\
-    \t\tm += mod;\n\t\t}\n\t\treturn m;\n\t}\npublic:\n\tdynamic_modint32() :v(0)\
-    \ { assert(mod); }\n\tdynamic_modint32(const i64& v_) :v(normalize(v_)) { assert(mod);\
-    \ }\n\n\tu32 val() const { return v; }\n\n\tusing mint = dynamic_modint32;\n\n\
-    \t//operators\n\tmint& operator=(const i64& r) {\n\t\tv = normalize(r); \n\t\t\
-    return (*this);\n\t}\n\tmint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\t\
-    if (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const\
-    \ mint&r) {\n\t\tv += mod - r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\
-    \n\t\treturn (*this);\n\t}\n\tmint& operator*=(const mint& r) {\n\t\tv = brt.mul(v,\
+    \ {\n\t\tbrt = br(mod_);\n\t\tmod = mod_;\n\t}\nprivate:\n\tu32 normalize(const\
+    \ i64& x) const {\n\t\ti32 m = x % mod;\n\t\tif (m < 0) {\n\t\t\tm += mod;\n\t\
+    \t}\n\t\treturn m;\n\t}\npublic:\n\tdynamic_modint32() :v(0) { assert(mod); }\t\
+    //mod\u304C\u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\
+    \n\tdynamic_modint32(const i64& v_) :v(normalize(v_)) { assert(mod); }\t\n\n\t\
+    u32 val() const { return v; }\n\n\tusing mint = dynamic_modint32;\n\n\t//operators\n\
+    \tmint& operator=(const i64& r) {\n\t\tv = normalize(r); \n\t\treturn (*this);\n\
+    \t}\n\tmint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod) {\n\
+    \t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const mint&r)\
+    \ {\n\t\tv += mod - r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\n\t\t\
+    return (*this);\n\t}\n\tmint& operator*=(const mint& r) {\n\t\tv = brt.mul(v,\
     \ r.v);\n\t\treturn (*this);\n\t}\n\n\tmint operator+(const mint& r) const { return\
     \ mint(*this) += r; }\n\tmint operator-(const mint& r) const { return mint(*this)\
     \ -= r; }\n\tmint operator*(const mint& r) const { return mint(*this) *= r; }\n\
@@ -108,9 +113,10 @@ data:
   path: math/dynamic_modint.hpp
   requiredBy:
   - math/modint.hpp
-  timestamp: '2023-03-10 13:31:13+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-03-12 14:55:14+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/yosupo judge/matrix/Matrix Product.test.cpp
 documentation_of: math/dynamic_modint.hpp
 layout: document
 redirect_from:

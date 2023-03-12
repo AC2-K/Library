@@ -3,9 +3,6 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: sub.cpp
-    title: sub.cpp
-  - icon: ':warning:'
     path: test/AOJ/DSL/2/D2.cpp
     title: test/AOJ/DSL/2/D2.cpp
   - icon: ':warning:'
@@ -57,7 +54,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
     title: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
     title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -78,6 +75,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/math/Factorize.test.cpp
     title: test/yosupo judge/math/Factorize.test.cpp
+  - icon: ':x:'
+    path: test/yosupo judge/matrix/Matrix Product.test.cpp
+    title: test/yosupo judge/matrix/Matrix Product.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
@@ -93,9 +93,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No789.test.cpp
     title: test/yuki/No789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -186,11 +186,10 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
-  - sub.cpp
   - test/AOJ/GRL/5/C.cpp
   - test/AOJ/DSL/2/D2.cpp
   timestamp: '2023-03-10 13:31:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No789.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
@@ -206,6 +205,7 @@ data:
   - test/yosupo judge/math/Factorize.test.cpp
   - test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
   - test/yosupo judge/tree/Tree Diameter.test.cpp
+  - test/yosupo judge/matrix/Matrix Product.test.cpp
   - test/AOJ/GRL/2/A.test.cpp
   - test/AOJ/GRL/1/A.test.cpp
   - test/AOJ/DSL/2/D.test.cpp

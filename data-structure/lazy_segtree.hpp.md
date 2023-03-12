@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: sub.cpp
-    title: sub.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/D.test.cpp
@@ -89,8 +86,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data-structure/lazy_segtree.hpp
-  requiredBy:
-  - sub.cpp
+  requiredBy: []
   timestamp: '2023-03-08 10:57:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

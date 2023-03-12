@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
