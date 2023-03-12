@@ -1,5 +1,9 @@
 #pragma once
+<<<<<<< HEAD
 template<__uint64_t mod>
+=======
+template<unsigned long long mod>
+>>>>>>> 9d32c20b7e4b89933c546ca0e0d26c3be9cd1eda
 class static_modint {
 private:
 	using mint = static_modint<mod>;
@@ -9,7 +13,11 @@ private:
 	using i128 = __int128_t;
 
 	u64 v;
+<<<<<<< HEAD
 	u64 normalize(i128 v_) const {
+=======
+	u64 normalize(i128 v_) {
+>>>>>>> 9d32c20b7e4b89933c546ca0e0d26c3be9cd1eda
 		v_ %= mod;
 		if (v_ < 0) {
 			v_ += mod;
