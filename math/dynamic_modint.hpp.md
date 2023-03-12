@@ -1,20 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: math/barrett.hpp
     title: math/barrett.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: math/modint.hpp
     title: math/modint.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/matrix/Matrix Product.test.cpp
-    title: test/yosupo judge/matrix/Matrix Product.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     _deprecated_at_docs: docs/math/dynamic_modint.md
     document_title: "dynamic modint(\u52D5\u7684modint)"
@@ -114,9 +111,8 @@ data:
   requiredBy:
   - math/modint.hpp
   timestamp: '2023-03-12 14:55:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/yosupo judge/matrix/Matrix Product.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: math/dynamic_modint.hpp
 layout: document
 redirect_from:

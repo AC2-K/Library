@@ -4,9 +4,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: main.test.cpp
-    title: main.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/B.test.cpp
     title: test/AOJ/DSL/2/B.test.cpp
   - icon: ':heavy_check_mark:'
@@ -88,7 +85,6 @@ data:
   timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - main.test.cpp
   - test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp

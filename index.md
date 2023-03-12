@@ -32,7 +32,7 @@ data:
       title: debug.hpp
     - icon: ':warning:'
       path: out.cpp
-      title: out.cpp
+      title: "static modint(\u9759\u7684modint)"
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
@@ -64,10 +64,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/DLP.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: math/barrett.hpp
       title: math/barrett.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
     - icon: ':heavy_check_mark:'
