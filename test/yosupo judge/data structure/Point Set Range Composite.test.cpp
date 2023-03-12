@@ -2,7 +2,7 @@
 #include"template.hpp"
 #include"data-structure/segtree.hpp"
 #include"math/static_modint.hpp"
-using mint = static_modint<MOD2>;
+using mint = static_modint32<MOD2>;
 
 struct F
 {

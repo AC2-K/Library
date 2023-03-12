@@ -1,48 +1,23 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
+#define PROBLEM "https://judge.yosupo.jp/problem/matrix_product"
 #include"template.hpp"
-#include"data-structure/segtree.hpp"
 #include"math/static_modint.hpp"
-using mint = static_modint<MOD2>;
-
-struct F
-{
-    mint a,b;
-};
-
-F op(F l,F r){
-    mint na = l.a * r.a;
-    mint nb = (l.b * r.a + r.b);
-    return F{na, nb};
-}
-F e(){
-    return F{1,0};
-}
+#include"math/matrix.hpp"
+#pragma GCC target("avx2")
+#pragma GCC optimize("O3")
+#pragma GCC optimize("unroll-loops")
+using mint = static_modint32<MOD2>;
 int main() {
-    int n, q;
-    cin >> n >> q;
-    segtree<F, op, e> seg(n);
-    rep(i, n){
-        mint a, b;
-        cin >> a >> b;
-        seg.set(i, F{a, b});
-    }
-    seg.build();
-    while (q--){
-        int t;
-        cin >> t;
-        if (t == 0){
-            int p;
-            mint c, d;
-            cin >> p >> c >> d;
-            seg.update(p, F{c, d});
-        }
-        else{
-            int l, r;
-            mint x;
-            cin >> l >> r >> x;
-            F res = seg.prod(l, r);
-            mint ans = res.a * x + res.b;
-            cout << ans << '\n';
-        }
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    int n, m, k;
+    cin >> n >> m >> k;
+    using mat = Matrix<mint>;
+    mat a(n, m), b(m, k);
+    rep(i, n) rep(j, m) { cin >> a[i][j]; }
+    rep(i, m) rep(j, k) { cin >> b[i][j]; }
+    auto res = a * b;
+    rep(i, n) {
+        rep(j, k) { cout << res[i][j] << ' '; }
+        cout << '\n';
     }
 }
