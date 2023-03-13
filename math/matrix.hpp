@@ -2,18 +2,15 @@
 template<typename T>
 class Matrix {
     vector<vector<T>> dat;
-    int h, w;
-public:
+    int h = 0, w = 0;
+
+  public:
     Matrix(const vector<vector<T>>& dat)
         : dat(dat), h(dat.size()), w(dat.front().size()) {}
 
     Matrix(int h_, int w_, const T& v = T())
         : dat(h_, vector<T>(w_, v)){}
-    static Matrix<T> I(int sz) {
-        Matrix<T> ans(sz);
-        rep(i, sz) { ans[i][i] = 1; }
-        return ans;
-    }
+        
     using mat = Matrix<T>;
     //access
     vector<T>& operator[](int i) { return dat[i]; }
@@ -43,11 +40,10 @@ public:
         int ha = dat.size(), wa = dat.front().size();
         int hb = r.dat.size(), wb = r.dat.front().size();
         assert(wa == hb);
-
+     
         vector<vector<T>> res(ha, vector<T>(wb));
-        rep(i, ha) rep(j, wb) rep(k, wa) {
-            res[i][j] += dat[i][k] * r.dat[k][j];
-        }
+        rep(i, ha) rep(j, wb) rep(k, wa) { res[i][j] += dat[i][k] * r.dat[k][j]; }
+     
         swap(res, dat);
         return (*this);
     }
@@ -56,17 +52,22 @@ public:
     mat operator-(const mat& r) { return mat(*this) -= r; }
     mat operator*(const mat& r) { return mat(*this) *= r; }
 
-    mat pow(__uint64_t e) const {
-        mat pr=I(this->h);
-        mat pw(*this);
+    mat pow(__int64_t e) const {
+        assert(e >= 0);
+        int n = dat.size();
+        mat res(n, n, 0);
+        mat pr(*this);
+        for (int i = 0; i < n; i++) res[i][i] = 1;
 
-        while(e){
-            if(e&1){
-                pw *= pw;
-            }
-            pw *= pw;
+        while (e) {
+            if (e & 1) res *= pr;
+            pr *= pr;
+            
             e >>= 1;
         }
-        return pr;
+        
+        return res;
     }
 };
+/// @brief maxtirx(行列)
+/// @docs

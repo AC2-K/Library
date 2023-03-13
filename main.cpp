@@ -3,7 +3,7 @@
 #include"math/static_modint.hpp"
 #include"math/matrix.hpp"
 #pragma GCC target("avx2")
-#pragma GCC optimize("O3")
+#pragma GCC optimize("Ofast")
 #pragma GCC optimize("unroll-loops")
 using mint = static_modint32<MOD2>;
 int main() {
