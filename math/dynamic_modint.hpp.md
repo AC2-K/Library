@@ -128,10 +128,10 @@ modint構造体です。コンパイル時にmodが定まらないときに使�
 ```cpp
 dynamic_modint32::set_mod(mod)
 ```
-みたいにする必要があります。また、`mod`は`int`型の範囲に収まる**素数である**必要があります。\
-素数でない場合、逆元などの取得がバグります。
+みたいにする必要があります。また、逆元を使いたいときは`mod`は`int`型の範囲に収まる**素数である**必要があります。\
 ## verify
 良い感じのverifyが見つからなかったので自作しました...
+ここでは $+,-,*$ のテストをしています。
 ```cpp
 #include"template.hpp"
 #include"math/dynamic_modint.hpp"
@@ -177,8 +177,7 @@ int main(){
     }   
 }
 ```
-
-ここでは $+,-,*$ のテストをしています。
+こちらは$/$のテスト
 ```cpp
 #include"template.hpp"
 #include"math/dynamic_modint.hpp"
@@ -226,6 +225,5 @@ int main() {
     }
 }
 ```
-こちらは$/$のテスト
 
 どちらの正常に作動しました。

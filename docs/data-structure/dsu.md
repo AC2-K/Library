@@ -1,4 +1,3 @@
-# Disjoint Set Unoin(UnionFind)
 ## 概要
 $n$頂点の無向グラフに対して、以下のクエリを$O(\alpha(n))$で処理します。
 1. 頂点$v,u$の間に無向辺を追加する

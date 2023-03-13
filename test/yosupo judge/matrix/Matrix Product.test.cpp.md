@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
-    title: math/matrix.hpp
+    title: "maxtirx(\u884C\u5217)"
   - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
@@ -99,47 +99,47 @@ data:
     \ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n};\n///@brief static\
     \ modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n#line 2 \"\
     math/matrix.hpp\"\ntemplate<typename T>\nclass Matrix {\n    vector<vector<T>>\
-    \ dat;\n    int h, w;\npublic:\n    Matrix(const vector<vector<T>>& dat)\n   \
-    \     : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int h_,\
-    \ int w_, const T& v = T())\n        : dat(h_, vector<T>(w_, v)){}\n    static\
-    \ Matrix<T> I(int sz) {\n        Matrix<T> ans(sz);\n        rep(i, sz) { ans[i][i]\
-    \ = 1; }\n        return ans;\n    }\n    using mat = Matrix<T>;\n    //access\n\
-    \    vector<T>& operator[](int i) { return dat[i]; }\n\n    //operator\n    mat&\
-    \ operator+=(const mat& r) {\n        assert(r.h == this->h);\n        assert(r.w\
-    \ == this->w);\n        for (int i = 0; i < h; i++) {\n            for (int j\
-    \ = 0; j < w; j++) {\n                dat[i][j] += r.dat[i][j];\n            }\n\
-    \        }\n        return (*this);\n    }\n    mat& operator-=(const mat&r){\n\
+    \ dat;\n    int h = 0, w = 0;\n\n  public:\n    Matrix(const vector<vector<T>>&\
+    \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
+    \ h_, int w_, const T& v = T())\n        : dat(h_, vector<T>(w_, v)){}\n     \
+    \   \n    using mat = Matrix<T>;\n    //access\n    vector<T>& operator[](int\
+    \ i) { return dat[i]; }\n\n    //operator\n    mat& operator+=(const mat& r) {\n\
     \        assert(r.h == this->h);\n        assert(r.w == this->w);\n        for\
     \ (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n     \
-    \           dat[i][j] -= r.dat[i][j];\n            }\n        }\n        return\
-    \ (*this);\n    }\n    mat& operator*=(const mat& r) {\n        int ha = dat.size(),\
-    \ wa = dat.front().size();\n        int hb = r.dat.size(), wb = r.dat.front().size();\n\
-    \        assert(wa == hb);\n\n        vector<vector<T>> res(ha, vector<T>(wb));\n\
-    \        rep(i, ha) rep(j, wb) rep(k, wa) {\n            res[i][j] += dat[i][k]\
-    \ * r.dat[k][j];\n        }\n        swap(res, dat);\n        return (*this);\n\
-    \    }\n\n    mat operator+(const mat& r) { return mat(*this) += r; }\n    mat\
-    \ operator-(const mat& r) { return mat(*this) -= r; }\n    mat operator*(const\
-    \ mat& r) { return mat(*this) *= r; }\n\n    mat pow(__uint64_t e) const {\n \
-    \       mat pr=I(this->h);\n        mat pw(*this);\n\n        while(e){\n    \
-    \        if(e&1){\n                pw *= pw;\n            }\n            pw *=\
-    \ pw;\n            e >>= 1;\n        }\n        return pr;\n    }\n};\n#line 5\
+    \           dat[i][j] += r.dat[i][j];\n            }\n        }\n        return\
+    \ (*this);\n    }\n    mat& operator-=(const mat&r){\n        assert(r.h == this->h);\n\
+    \        assert(r.w == this->w);\n        for (int i = 0; i < h; i++) {\n    \
+    \        for (int j = 0; j < w; j++) {\n                dat[i][j] -= r.dat[i][j];\n\
+    \            }\n        }\n        return (*this);\n    }\n    mat& operator*=(const\
+    \ mat& r) {\n        int ha = dat.size(), wa = dat.front().size();\n        int\
+    \ hb = r.dat.size(), wb = r.dat.front().size();\n        assert(wa == hb);\n \
+    \    \n        vector<vector<T>> res(ha, vector<T>(wb));\n        rep(i, ha) rep(j,\
+    \ wb) rep(k, wa) { res[i][j] += dat[i][k] * r.dat[k][j]; }\n     \n        swap(res,\
+    \ dat);\n        return (*this);\n    }\n\n    mat operator+(const mat& r) { return\
+    \ mat(*this) += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r;\
+    \ }\n    mat operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
+    \ e) const {\n        assert(e >= 0);\n        int n = dat.size();\n        mat\
+    \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
+    \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
+    \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
+    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs\n#line 5\
     \ \"test/yosupo judge/matrix/Matrix Product.test.cpp\"\n#pragma GCC target(\"\
-    avx2\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"unroll-loops\")\n\
-    using mint = static_modint32<MOD2>;\nint main() {\n    ios::sync_with_stdio(false);\n\
+    avx2\")\n#pragma GCC optimize(\"Ofast\")\n#pragma GCC optimize(\"unroll-loops\"\
+    )\nusing mint = static_modint32<MOD2>;\nint main() {\n    ios::sync_with_stdio(false);\n\
     \    cin.tie(0);\n    int n, m, k;\n    cin >> n >> m >> k;\n    using mat = Matrix<mint>;\n\
     \    mat a(n, m), b(m, k);\n    rep(i, n) rep(j, m) { cin >> a[i][j]; }\n    rep(i,\
     \ m) rep(j, k) { cin >> b[i][j]; }\n    auto res = a * b;\n    rep(i, n) {\n \
     \       rep(j, k) { cout << res[i][j] << ' '; }\n        cout << '\\n';\n    }\n\
-    }\n"
+    }\n\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include\"\
     template.hpp\"\n#include\"math/static_modint.hpp\"\n#include\"math/matrix.hpp\"\
-    \n#pragma GCC target(\"avx2\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"\
+    \n#pragma GCC target(\"avx2\")\n#pragma GCC optimize(\"Ofast\")\n#pragma GCC optimize(\"\
     unroll-loops\")\nusing mint = static_modint32<MOD2>;\nint main() {\n    ios::sync_with_stdio(false);\n\
     \    cin.tie(0);\n    int n, m, k;\n    cin >> n >> m >> k;\n    using mat = Matrix<mint>;\n\
     \    mat a(n, m), b(m, k);\n    rep(i, n) rep(j, m) { cin >> a[i][j]; }\n    rep(i,\
     \ m) rep(j, k) { cin >> b[i][j]; }\n    auto res = a * b;\n    rep(i, n) {\n \
     \       rep(j, k) { cout << res[i][j] << ' '; }\n        cout << '\\n';\n    }\n\
-    }\n"
+    }\n\n"
   dependsOn:
   - template.hpp
   - math/static_modint.hpp
@@ -147,7 +147,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-03-12 16:37:53+09:00'
+  timestamp: '2023-03-13 22:19:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/matrix/Matrix Product.test.cpp

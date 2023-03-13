@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
+  - icon: ':warning:'
     path: test/AOJ/DSL/2/D2.cpp
     title: test/AOJ/DSL/2/D2.cpp
   - icon: ':warning:'
     path: test/AOJ/GRL/5/C.cpp
     title: test/AOJ/GRL/5/C.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: main.test.cpp
-    title: main.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/1/C.test.cpp
     title: test/AOJ/ALDS/1/C.test.cpp
@@ -191,10 +191,10 @@ data:
   requiredBy:
   - test/AOJ/GRL/5/C.cpp
   - test/AOJ/DSL/2/D2.cpp
+  - main.cpp
   timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - main.test.cpp
   - test/yuki/No789.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp

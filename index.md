@@ -31,8 +31,11 @@ data:
       path: debug.hpp
       title: debug.hpp
     - icon: ':warning:'
+      path: main.cpp
+      title: main.cpp
+    - icon: ':warning:'
       path: out.cpp
-      title: "static modint(\u9759\u7684modint)"
+      title: out.cpp
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
@@ -88,7 +91,7 @@ data:
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
-      title: math/matrix.hpp
+      title: "maxtirx(\u884C\u5217)"
     - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
@@ -120,11 +123,6 @@ data:
       path: test/AOJ/GRL/5/C.cpp
       title: test/AOJ/GRL/5/C.cpp
   verificationCategories:
-  - name: .
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: main.test.cpp
-      title: main.test.cpp
   - name: test/AOJ/ALDS/1
     pages:
     - icon: ':heavy_check_mark:'
@@ -246,6 +244,6 @@ layout: toppage
 [![](https://img.shields.io/badge/license-CC0_License-blue.svg)](https://github.com/AC2-K/library/blob/main/LICENSE)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/AC2-K/library?style=flat-square)\
 AC2K のライブラリです。\
+好きに使ってもらって構いません。\
 バグってたらごめんなさい...[Twitter](https://twitter.com/ac2000_cp)とかに連絡いただけるととても助かります。\
 C++17の環境で動くことを確認している...はずです。\
-verifyしてたりしてなかったり...

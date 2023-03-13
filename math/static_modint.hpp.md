@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
+  - icon: ':warning:'
     path: math/modint.hpp
     title: math/modint.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: main.test.cpp
-    title: main.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
     title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
@@ -163,10 +163,10 @@ data:
   path: math/static_modint.hpp
   requiredBy:
   - math/modint.hpp
+  - main.cpp
   timestamp: '2023-03-12 16:37:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - main.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   - test/yosupo judge/matrix/Matrix Product.test.cpp
 documentation_of: math/static_modint.hpp
@@ -184,4 +184,4 @@ modint構造体のstaticバージョンです。**法が定数である必要が
 
 のふたつがありますが、法が32bit整数の時は`static_modint32`を使ってください。\
 たとえば、法が$10^9+7$や$998244353$のときは`static_modint32`を使ったほうが速い...はずです。\
-ただし、法が32bit整数に収まらないときは`static_modint`の方を使ってください。
+ただし、法が32bit整数に収まらないときは`static_modint`の方を使ってください。\
