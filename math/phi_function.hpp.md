@@ -87,8 +87,8 @@ data:
     \            }\n            sort(all(v));\n            return v;\n        }\n\n\
     \        vector<pair<u64,int>> exp_fact(u64 n){\n            auto pf = fact(n);\n\
     \            vector<pair<u64, int>> res;\n            res.emplace_back(pf.front(),\
-    \ 1);\n            //rle\n            for (int i = 1; i < pf.size(); i++){\n \
-    \               if(res.back().first==pf[i]){\n                    res.back().second++;\n\
+    \ 1);\n            //rle\n            \n            for (int i = 1; i < pf.size();\
+    \ i++){\n                if(res.back().first==pf[i]){\n                    res.back().second++;\n\
     \                }else{\n                    res.emplace_back(pf[i], 1);\n   \
     \             }\n            }\n\n            return res;\n        }\n    }; \
     \ // namespace pollard\n};  // namespace prime\nusing prime::pollard::fact,prime::pollard::exp_fact;\n\
@@ -108,7 +108,7 @@ data:
   isVerificationFile: false
   path: math/phi_function.hpp
   requiredBy: []
-  timestamp: '2023-03-08 10:46:04+09:00'
+  timestamp: '2023-03-17 17:03:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1/D.test.cpp

@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/matrix/Matrix Product.test.cpp
@@ -27,7 +24,7 @@ data:
     \ (*this);\n    }\n    mat& operator-=(const mat&r){\n        assert(r.h == this->h);\n\
     \        assert(r.w == this->w);\n        for (int i = 0; i < h; i++) {\n    \
     \        for (int j = 0; j < w; j++) {\n                dat[i][j] -= r.dat[i][j];\n\
-    \            }\n        }\n        return (*this);\n    }\n    mat& operator*=(const\
+    \            }\n        }\n        return (*this);\n    }\n    \n    mat& operator*=(const\
     \ mat& r) {\n        int ha = dat.size(), wa = dat.front().size();\n        int\
     \ hb = r.dat.size(), wb = r.dat.front().size();\n        assert(wa == hb);\n \
     \    \n        vector<vector<T>> res(ha, vector<T>(wb));\n        rep(i, ha) rep(j,\
@@ -52,7 +49,7 @@ data:
     \ (*this);\n    }\n    mat& operator-=(const mat&r){\n        assert(r.h == this->h);\n\
     \        assert(r.w == this->w);\n        for (int i = 0; i < h; i++) {\n    \
     \        for (int j = 0; j < w; j++) {\n                dat[i][j] -= r.dat[i][j];\n\
-    \            }\n        }\n        return (*this);\n    }\n    mat& operator*=(const\
+    \            }\n        }\n        return (*this);\n    }\n    \n    mat& operator*=(const\
     \ mat& r) {\n        int ha = dat.size(), wa = dat.front().size();\n        int\
     \ hb = r.dat.size(), wb = r.dat.front().size();\n        assert(wa == hb);\n \
     \    \n        vector<vector<T>> res(ha, vector<T>(wb));\n        rep(i, ha) rep(j,\
@@ -68,9 +65,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/matrix.hpp
-  requiredBy:
-  - main.cpp
-  timestamp: '2023-03-13 22:19:49+09:00'
+  requiredBy: []
+  timestamp: '2023-03-17 17:03:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/matrix/Matrix Product.test.cpp

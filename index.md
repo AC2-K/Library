@@ -107,6 +107,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
+  - name: other
+    pages:
+    - icon: ':warning:'
+      path: other/Mo.hpp
+      title: other/Mo.hpp
   - name: string
     pages:
     - icon: ':heavy_check_mark:'

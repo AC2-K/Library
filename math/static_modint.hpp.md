@@ -3,9 +3,6 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
-  - icon: ':warning:'
     path: math/modint.hpp
     title: math/modint.hpp
   _extendedVerifiedWith:
@@ -163,7 +160,6 @@ data:
   path: math/static_modint.hpp
   requiredBy:
   - math/modint.hpp
-  - main.cpp
   timestamp: '2023-03-12 16:37:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -99,17 +99,17 @@ data:
     \ }\n            sort(all(v));\n            return v;\n        }\n\n        vector<pair<u64,int>>\
     \ exp_fact(u64 n){\n            auto pf = fact(n);\n            vector<pair<u64,\
     \ int>> res;\n            res.emplace_back(pf.front(), 1);\n            //rle\n\
-    \            for (int i = 1; i < pf.size(); i++){\n                if(res.back().first==pf[i]){\n\
-    \                    res.back().second++;\n                }else{\n          \
-    \          res.emplace_back(pf[i], 1);\n                }\n            }\n\n \
-    \           return res;\n        }\n    };  // namespace pollard\n};  // namespace\
-    \ prime\nusing prime::pollard::fact,prime::pollard::exp_fact;\n\n///@brief \u9AD8\
-    \u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\n#line 5 \"test/yosupo\
-    \ judge/math/Factorize.test.cpp\"\nint main(){\n    int q;\n    cin >> q;\n  \
-    \  while (q--){\n        __uint64_t x;\n        cin >> x;\n        const auto\
-    \ pf = fact(x);\n        printf(\"%d \", (int)pf.size());\n        for (auto &p\
-    \ : pf){\n            printf(\"%lld \", p);\n        }\n        puts(\"\\n\");\n\
-    \    }\n}\n"
+    \            \n            for (int i = 1; i < pf.size(); i++){\n            \
+    \    if(res.back().first==pf[i]){\n                    res.back().second++;\n\
+    \                }else{\n                    res.emplace_back(pf[i], 1);\n   \
+    \             }\n            }\n\n            return res;\n        }\n    }; \
+    \ // namespace pollard\n};  // namespace prime\nusing prime::pollard::fact,prime::pollard::exp_fact;\n\
+    \n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\n#line\
+    \ 5 \"test/yosupo judge/math/Factorize.test.cpp\"\nint main(){\n    int q;\n \
+    \   cin >> q;\n    while (q--){\n        __uint64_t x;\n        cin >> x;\n  \
+    \      const auto pf = fact(x);\n        printf(\"%d \", (int)pf.size());\n  \
+    \      for (auto &p : pf){\n            printf(\"%lld \", p);\n        }\n   \
+    \     puts(\"\\n\");\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n\n#include\"\
     template.hpp\"\n#include\"math/fast_fact.hpp\"\nint main(){\n    int q;\n    cin\
     \ >> q;\n    while (q--){\n        __uint64_t x;\n        cin >> x;\n        const\
@@ -124,7 +124,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-03-10 13:31:13+09:00'
+  timestamp: '2023-03-17 17:03:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/math/Factorize.test.cpp

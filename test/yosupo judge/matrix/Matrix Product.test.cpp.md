@@ -110,7 +110,7 @@ data:
     \ (*this);\n    }\n    mat& operator-=(const mat&r){\n        assert(r.h == this->h);\n\
     \        assert(r.w == this->w);\n        for (int i = 0; i < h; i++) {\n    \
     \        for (int j = 0; j < w; j++) {\n                dat[i][j] -= r.dat[i][j];\n\
-    \            }\n        }\n        return (*this);\n    }\n    mat& operator*=(const\
+    \            }\n        }\n        return (*this);\n    }\n    \n    mat& operator*=(const\
     \ mat& r) {\n        int ha = dat.size(), wa = dat.front().size();\n        int\
     \ hb = r.dat.size(), wb = r.dat.front().size();\n        assert(wa == hb);\n \
     \    \n        vector<vector<T>> res(ha, vector<T>(wb));\n        rep(i, ha) rep(j,\
@@ -147,7 +147,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-03-13 22:19:49+09:00'
+  timestamp: '2023-03-17 17:03:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/matrix/Matrix Product.test.cpp
