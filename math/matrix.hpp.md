@@ -10,6 +10,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    _deprecated_at_docs: docs/math/matrix.md
     document_title: "maxtirx(\u884C\u5217)"
     links: []
   bundledCode: "#line 2 \"math/matrix.hpp\"\ntemplate<typename T>\nclass Matrix {\n\
@@ -36,7 +37,7 @@ data:
     \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
     \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
     \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
-    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs\n"
+    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n"
   code: "#pragma once\ntemplate<typename T>\nclass Matrix {\n    vector<vector<T>>\
     \ dat;\n    int h = 0, w = 0;\n\n  public:\n    Matrix(const vector<vector<T>>&\
     \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
@@ -61,12 +62,12 @@ data:
     \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
     \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
     \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
-    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs"
+    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md"
   dependsOn: []
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2023-03-17 17:03:13+09:00'
+  timestamp: '2023-03-18 02:15:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/matrix/Matrix Product.test.cpp
@@ -77,3 +78,5 @@ redirect_from:
 - /library/math/matrix.hpp.html
 title: "maxtirx(\u884C\u5217)"
 ---
+## 概要
+行列です(書くこと無い)

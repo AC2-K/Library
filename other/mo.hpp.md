@@ -7,9 +7,10 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
+    _deprecated_at_docs: docs/other/mo.md
     document_title: mo's algorithm
     links: []
-  bundledCode: "#line 1 \"other/Mo.hpp\"\nclass Mo {\n    int n;\n    vector<pair<int,\
+  bundledCode: "#line 1 \"other/mo.hpp\"\nclass Mo {\n    int n;\n    vector<pair<int,\
     \ int>> lr;\n    vector<int> ord;\npublic:\n  explicit Mo(int n) : n(n) { lr.reserve(n);\
     \ }\n  void add(int l, int r) { lr.emplace_back(l, r); }\n\nprivate:\n    inline\
     \ void line_up() {\n        int q = lr.size();\n        int bs = n / min<int>(n,\
@@ -26,7 +27,8 @@ data:
     \ < lr[idx].first) erase_left(l++);\n            while (r > lr[idx].second) erase_right(--r);\n\
     \            out(idx);\n        }\n    }\n\n    template< typename A, typename\
     \ E, typename O >\n    void build(const A& add, const E& erase, const O& out)\
-    \ {\n        build(add, add, erase, erase, out);\n    }\n};\n/// @brief mo's algorithm\n"
+    \ {\n        build(add, add, erase, erase, out);\n    }\n};\n/// @brief mo's algorithm\n\
+    /// @docs docs/other/mo.md\n"
   code: "class Mo {\n    int n;\n    vector<pair<int, int>> lr;\n    vector<int> ord;\n\
     public:\n  explicit Mo(int n) : n(n) { lr.reserve(n); }\n  void add(int l, int\
     \ r) { lr.emplace_back(l, r); }\n\nprivate:\n    inline void line_up() {\n   \
@@ -44,18 +46,19 @@ data:
     \ < lr[idx].first) erase_left(l++);\n            while (r > lr[idx].second) erase_right(--r);\n\
     \            out(idx);\n        }\n    }\n\n    template< typename A, typename\
     \ E, typename O >\n    void build(const A& add, const E& erase, const O& out)\
-    \ {\n        build(add, add, erase, erase, out);\n    }\n};\n/// @brief mo's algorithm"
+    \ {\n        build(add, add, erase, erase, out);\n    }\n};\n/// @brief mo's algorithm\n\
+    /// @docs docs/other/mo.md"
   dependsOn: []
   isVerificationFile: false
-  path: other/Mo.hpp
+  path: other/mo.hpp
   requiredBy: []
-  timestamp: '2023-03-18 02:09:37+09:00'
+  timestamp: '2023-03-18 02:15:48+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: other/Mo.hpp
+documentation_of: other/mo.hpp
 layout: document
 redirect_from:
-- /library/other/Mo.hpp
-- /library/other/Mo.hpp.html
+- /library/other/mo.hpp
+- /library/other/mo.hpp.html
 title: mo's algorithm
 ---

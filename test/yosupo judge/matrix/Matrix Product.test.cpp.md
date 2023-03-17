@@ -122,8 +122,8 @@ data:
     \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
     \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
     \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
-    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs\n#line 5\
-    \ \"test/yosupo judge/matrix/Matrix Product.test.cpp\"\n#pragma GCC target(\"\
+    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n\
+    #line 5 \"test/yosupo judge/matrix/Matrix Product.test.cpp\"\n#pragma GCC target(\"\
     avx2\")\n#pragma GCC optimize(\"Ofast\")\n#pragma GCC optimize(\"unroll-loops\"\
     )\nusing mint = static_modint32<MOD2>;\nint main() {\n    ios::sync_with_stdio(false);\n\
     \    cin.tie(0);\n    int n, m, k;\n    cin >> n >> m >> k;\n    using mat = Matrix<mint>;\n\
@@ -147,7 +147,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-03-17 17:03:13+09:00'
+  timestamp: '2023-03-18 02:15:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/matrix/Matrix Product.test.cpp

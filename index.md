@@ -35,7 +35,7 @@ data:
       title: main.cpp
     - icon: ':warning:'
       path: out.cpp
-      title: mo's algorithm
+      title: out.cpp
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
@@ -110,7 +110,7 @@ data:
   - name: other
     pages:
     - icon: ':warning:'
-      path: other/Mo.hpp
+      path: other/mo.hpp
       title: mo's algorithm
   - name: string
     pages:
