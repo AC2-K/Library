@@ -99,6 +99,7 @@ namespace prime{
             vector<pair<u64, int>> res;
             res.emplace_back(pf.front(), 1);
             //rle
+            
             for (int i = 1; i < pf.size(); i++){
                 if(res.back().first==pf[i]){
                     res.back().second++;

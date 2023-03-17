@@ -36,6 +36,7 @@ class Matrix {
         }
         return (*this);
     }
+    
     mat& operator*=(const mat& r) {
         int ha = dat.size(), wa = dat.front().size();
         int hb = r.dat.size(), wb = r.dat.front().size();
