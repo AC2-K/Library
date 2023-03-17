@@ -38,3 +38,4 @@ public:
     }
 };
 /// @brief mo's algorithm
+/// @docs docs/other/mo.md

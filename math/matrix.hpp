@@ -71,4 +71,4 @@ class Matrix {
     }
 };
 /// @brief maxtirx(行列)
-/// @docs
+/// @docs docs/math/matrix.md
