@@ -100,26 +100,27 @@ data:
     \     vector<u64> v = naive(n);\n            if(n!=1){\n                vector<u64>\
     \ v2 = rho_fact(n);\n                v.insert(v.end(), all(v2));\n           \
     \ }\n            sort(all(v));\n            return v;\n        }\n\n        vector<pair<u64,int>>\
-    \ exp_fact(u64 n){\n            auto pf = fact(n);\n            vector<pair<u64,\
-    \ int>> res;\n            res.emplace_back(pf.front(), 1);\n            //rle\n\
-    \            \n            for (int i = 1; i < pf.size(); i++){\n            \
-    \    if(res.back().first==pf[i]){\n                    res.back().second++;\n\
-    \                }else{\n                    res.emplace_back(pf[i], 1);\n   \
-    \             }\n            }\n\n            return res;\n        }\n    }; \
-    \ // namespace pollard\n};  // namespace prime\nusing prime::pollard::fact,prime::pollard::exp_fact;\n\
-    \n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\n#line\
-    \ 4 \"math/primitive_root.hpp\"\nll primitive_root(ll p){\n    if(p == 2) return\
-    \ 1;\n    auto pf = fact(p - 1);\n    pf.erase(unique(all(pf)),pf.end());\n  \
-    \  for(auto&q:pf){\n        q=(p-1)/q;\n    }\n    using ull = unsigned long long;\n\
-    \    static ull rnd = 7001;\n    while(1){\n        rnd^=rnd<<13; rnd^=rnd>>7;\
-    \ rnd^=rnd<<17;\n        ll g = (ull)rnd%p;\n        if(g == 0) continue;\n  \
-    \      bool is_ok = true;\n        for(ll q : pf){\n            if(mod_pow<__uint128_t,__uint128_t>(g,q,p)\
-    \ == 1){ \n                is_ok = false; \n                break; \n        \
-    \    }\n        }\n        if(is_ok){\n            return g;\n        }\n    }\n\
-    }\n\n//@brief primitive root(\u539F\u59CB\u6839)\n#line 4 \"test/yosupo judge/new/Primitive\
-    \ Root.test.cpp\"\nint main(){\n    int q;\n    cin>>q;\n    while (q--){\n  \
-    \      ll p;\n        cin>>p;\n        ll ans=primitive_root(p);\n        cout<<ans<<'\\\
-    n';\n    }\n}\n"
+    \ exp_fact(u64 n){\n            auto pf = fact(n);\n            if(pf.empty()){\n\
+    \                return {};\n            }\n            vector<pair<u64, int>>\
+    \ res;\n            res.emplace_back(pf.front(), 1);\n            //rle\n    \
+    \        for (int i = 1; i < pf.size(); i++){\n                if(res.back().first==pf[i]){\n\
+    \                    res.back().second++;\n                }else{\n          \
+    \          res.emplace_back(pf[i], 1);\n                }\n            }\n\n \
+    \           return res;\n        }\n    };  // namespace pollard\n};  // namespace\
+    \ prime\nusing prime::pollard::fact,prime::pollard::exp_fact;\n\n///@brief \u9AD8\
+    \u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\n#line 4 \"math/primitive_root.hpp\"\
+    \nll primitive_root(ll p){\n    if(p == 2) return 1;\n    auto pf = fact(p - 1);\n\
+    \    pf.erase(unique(all(pf)),pf.end());\n    for(auto&q:pf){\n        q=(p-1)/q;\n\
+    \    }\n    using ull = unsigned long long;\n    static ull rnd = 7001;\n    while(1){\n\
+    \        rnd^=rnd<<13; rnd^=rnd>>7; rnd^=rnd<<17;\n        ll g = (ull)rnd%p;\n\
+    \        if(g == 0) continue;\n        bool is_ok = true;\n        for(ll q :\
+    \ pf){\n            if(mod_pow<__uint128_t,__uint128_t>(g,q,p) == 1){ \n     \
+    \           is_ok = false; \n                break; \n            }\n        }\n\
+    \        if(is_ok){\n            return g;\n        }\n    }\n}\n\n//@brief primitive\
+    \ root(\u539F\u59CB\u6839)\n#line 4 \"test/yosupo judge/new/Primitive Root.test.cpp\"\
+    \nint main(){\n    int q;\n    cin>>q;\n    while (q--){\n        ll p;\n    \
+    \    cin>>p;\n        ll ans=primitive_root(p);\n        cout<<ans<<'\\n';\n \
+    \   }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#include\"\
     template.hpp\"\n#include\"math/primitive_root.hpp\"\nint main(){\n    int q;\n\
     \    cin>>q;\n    while (q--){\n        ll p;\n        cin>>p;\n        ll ans=primitive_root(p);\n\
@@ -133,7 +134,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/new/Primitive Root.test.cpp
   requiredBy: []
-  timestamp: '2023-03-17 17:03:13+09:00'
+  timestamp: '2023-03-18 21:48:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/new/Primitive Root.test.cpp

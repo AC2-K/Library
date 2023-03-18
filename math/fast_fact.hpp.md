@@ -94,9 +94,10 @@ data:
     \          vector<u64> v2 = rho_fact(n);\n                v.insert(v.end(), all(v2));\n\
     \            }\n            sort(all(v));\n            return v;\n        }\n\n\
     \        vector<pair<u64,int>> exp_fact(u64 n){\n            auto pf = fact(n);\n\
-    \            vector<pair<u64, int>> res;\n            res.emplace_back(pf.front(),\
-    \ 1);\n            //rle\n            \n            for (int i = 1; i < pf.size();\
-    \ i++){\n                if(res.back().first==pf[i]){\n                    res.back().second++;\n\
+    \            if(pf.empty()){\n                return {};\n            }\n    \
+    \        vector<pair<u64, int>> res;\n            res.emplace_back(pf.front(),\
+    \ 1);\n            //rle\n            for (int i = 1; i < pf.size(); i++){\n \
+    \               if(res.back().first==pf[i]){\n                    res.back().second++;\n\
     \                }else{\n                    res.emplace_back(pf[i], 1);\n   \
     \             }\n            }\n\n            return res;\n        }\n    }; \
     \ // namespace pollard\n};  // namespace prime\nusing prime::pollard::fact,prime::pollard::exp_fact;\n\
@@ -136,9 +137,10 @@ data:
     \            if(n!=1){\n                vector<u64> v2 = rho_fact(n);\n      \
     \          v.insert(v.end(), all(v2));\n            }\n            sort(all(v));\n\
     \            return v;\n        }\n\n        vector<pair<u64,int>> exp_fact(u64\
-    \ n){\n            auto pf = fact(n);\n            vector<pair<u64, int>> res;\n\
-    \            res.emplace_back(pf.front(), 1);\n            //rle\n           \
-    \ \n            for (int i = 1; i < pf.size(); i++){\n                if(res.back().first==pf[i]){\n\
+    \ n){\n            auto pf = fact(n);\n            if(pf.empty()){\n         \
+    \       return {};\n            }\n            vector<pair<u64, int>> res;\n \
+    \           res.emplace_back(pf.front(), 1);\n            //rle\n            for\
+    \ (int i = 1; i < pf.size(); i++){\n                if(res.back().first==pf[i]){\n\
     \                    res.back().second++;\n                }else{\n          \
     \          res.emplace_back(pf[i], 1);\n                }\n            }\n\n \
     \           return res;\n        }\n    };  // namespace pollard\n};  // namespace\
@@ -152,7 +154,7 @@ data:
   requiredBy:
   - math/primitive_root.hpp
   - math/phi_function.hpp
-  timestamp: '2023-03-17 17:03:13+09:00'
+  timestamp: '2023-03-18 21:48:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/new/Primitive Root.test.cpp

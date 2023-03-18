@@ -36,9 +36,6 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':warning:'
-      path: sub.cpp
-      title: sub.cpp
     - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
