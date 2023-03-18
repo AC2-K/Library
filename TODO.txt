@@ -1,4 +1,0 @@
-LCAつくる
-EulerTourの抽象化を理解する
-
-DOCをつくる
