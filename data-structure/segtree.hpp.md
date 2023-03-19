@@ -16,9 +16,6 @@ data:
     path: test/yosupo judge/data structure/Static Range Sum.test.cpp
     title: test/yosupo judge/data structure/Static Range Sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
-    title: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
   _isVerificationFailed: false
@@ -85,7 +82,6 @@ data:
   timestamp: '2023-03-06 04:18:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   - test/yosupo judge/data structure/Point Add Range Sum.test.cpp

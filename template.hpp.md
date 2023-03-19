@@ -5,9 +5,6 @@ data:
   - icon: ':warning:'
     path: test/AOJ/DSL/2/D2.cpp
     title: test/AOJ/DSL/2/D2.cpp
-  - icon: ':warning:'
-    path: test/AOJ/GRL/5/C.cpp
-    title: test/AOJ/GRL/5/C.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/1/C.test.cpp
@@ -36,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/2/A.test.cpp
     title: test/AOJ/GRL/2/A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/GRL/5/C.test.cpp
+    title: test/AOJ/GRL/5/C.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/A.test.cpp
     title: test/AOJ/NTL/1/A.test.cpp
@@ -90,9 +90,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/tree/Tree Diameter.test.cpp
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yuki/No789.test.cpp
-    title: test/yuki/No789.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -186,12 +183,10 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
-  - test/AOJ/GRL/5/C.cpp
   - test/AOJ/DSL/2/D2.cpp
   timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/No789.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   - test/yosupo judge/data structure/UnionFind.test.cpp
@@ -207,6 +202,7 @@ data:
   - test/yosupo judge/tree/Tree Diameter.test.cpp
   - test/yosupo judge/matrix/Matrix Product.test.cpp
   - test/AOJ/GRL/2/A.test.cpp
+  - test/AOJ/GRL/5/C.test.cpp
   - test/AOJ/GRL/1/A.test.cpp
   - test/AOJ/DSL/2/D.test.cpp
   - test/AOJ/DSL/2/E.test.cpp

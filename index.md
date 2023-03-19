@@ -12,7 +12,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/dual_segtree.hpp
       title: "dual segtree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: data-structure/dynamic_segtree.hpp
       title: "dynamic_segtree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
@@ -53,9 +53,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/euler_tour.hpp
       title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-    - icon: ':heavy_check_mark:'
-      path: graph/lca.hpp
-      title: "Lowest Common Ancestor(\u6700\u5C0F\u5171\u901A\u7956\u5148)"
     - icon: ':heavy_check_mark:'
       path: graph/mst.hpp
       title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
@@ -119,11 +116,6 @@ data:
     - icon: ':warning:'
       path: test/AOJ/DSL/2/D2.cpp
       title: test/AOJ/DSL/2/D2.cpp
-  - name: test/AOJ/GRL/5
-    pages:
-    - icon: ':warning:'
-      path: test/AOJ/GRL/5/C.cpp
-      title: test/AOJ/GRL/5/C.cpp
   verificationCategories:
   - name: test/AOJ/ALDS/1
     pages:
@@ -164,6 +156,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/2/A.test.cpp
       title: test/AOJ/GRL/2/A.test.cpp
+  - name: test/AOJ/GRL/5
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/AOJ/GRL/5/C.test.cpp
+      title: test/AOJ/GRL/5/C.test.cpp
   - name: test/AOJ/NTL/1
     pages:
     - icon: ':heavy_check_mark:'
@@ -198,9 +195,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/UnionFind.test.cpp
       title: test/yosupo judge/data structure/UnionFind.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
-      title: test/yosupo judge/data structure/Vertex Add Subtree Sum.test.cpp
   - name: test/yosupo judge/graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -235,11 +229,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/tree/Tree Diameter.test.cpp
       title: test/yosupo judge/tree/Tree Diameter.test.cpp
-  - name: test/yuki
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yuki/No789.test.cpp
-      title: test/yuki/No789.test.cpp
 layout: toppage
 ---
 [![AC2K](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2FAC2K)](https://atcoder.jp/users/AC2K)
