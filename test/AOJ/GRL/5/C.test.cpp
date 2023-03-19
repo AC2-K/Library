@@ -1,33 +1,27 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_C"
 
 #include"template.hpp"
-#include"graph/lca.hpp"
-
-
+#include"graph/euler_tour.hpp"
 int main(){
     int n;
     cin>>n;
-    graph g(n);
-    rep(v,n){
+    EulerTour g(n);
+    rep(v, n) {
         int k;
         cin>>k;
         rep(i,k){
             int c;
             cin>>c;
-            g[c].emplace_back(v);
-            g[v].emplace_back(c);
+            g.add_edge(v, c);
         }
     }
 
-    LCA lca(g);
-    lca.setup();
-
-
+    g.build();
     int q;
-    cin>>q;
+    cin >> q;
     while(q--){
-        int u,v;
-        cin>>u>>v;
-        cout<<lca.query(u,v)<<'\n';
+        int u, v;
+        cin >> u >> v;
+        cout << g.lca(u, v) << '\n';
     }
 }

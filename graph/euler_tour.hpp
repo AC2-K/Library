@@ -1,27 +1,40 @@
+#include"data-structure/sparse_table.hpp"
 class EulerTour {
-	using graph = vector<vector<int>>;
+	int n;
 	graph g;
+	vector<int> tour;
+	vector<int> in, out, depth;
+    sparse_table<pair<int, int>> rmq;
 public:
-	vector<int> in, out, depth,tour;
-    EulerTour(int n) :g(n), depth(n), in(n), out(n) {}
-	void add_edge(int a, int b) {
-		g[a].emplace_back(b);
-		g[b].emplace_back(a);
+    EulerTour(int n) :n(n), g(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) { tour.reserve(2 * n - 1); }
+	void add_edge(int u, int v) {
+		g[u].emplace_back(v);
+		g[v].emplace_back(u);
 	}
+private:
+    void dfs(int v, int p = -1) {
+        in[v] = tour.size();
+        tour.emplace_back(v);
+        for (const auto& nv : g[v])if (nv != p) {
+            depth[nv] = depth[v] + 1;
+            dfs(nv, v);
+            tour.emplace_back(v);
+        }
+        out[v] = tour.size() - 1;
+    }
+public:
+    void build(int r = 0) {
+        dfs(r);
+        for (int i = 0; i < tour.size(); i++) {
+            rmq.set(i, { depth[tour[i]],tour[i] });
+        }
+        rmq.build();
+    }
 
-	void build(int root){
-		depth[root] = 0;
-		function<void(int, int)> dfs = [&](int v, int par = -1)-> void {
-			in[v] = tour.size();
-			tour.emplace_back(v);
-			for (const auto& c : g[v])if (c != par) {
-				depth[c] = depth[v] + 1;
-				dfs(c, v);
-				tour.emplace_back(v);
-			}
-			out[v] = tour.size() - 1;
-		};
-		dfs(root, -1);
-	}
+    pair<int, int> idx(int v) { return {in[v], out[v]}; }
+    int lca(int v, int u) {
+        if (in[v] > in[u] + 1) { swap(u, v); }
+        return rmq.prod(in[v], in[u] + 1).second;
+    }
 };
 ///@brief EulerTour(オイラーツアー)

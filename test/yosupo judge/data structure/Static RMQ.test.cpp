@@ -10,6 +10,7 @@ int main() {
 	}
 
 	sparse_table<int> rmq(a);
+	rmq.build();
 	while (q--) {
 		int l, r;
 		cin >> l >> r;

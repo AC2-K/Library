@@ -1,9 +1,15 @@
 template<class T>
 class sparse_table {
+    vector<T> vec;
     vector<vector<T>> table;
     vector<int> look_up;
 public:
-    sparse_table(const vector<T>& vec = {}) {
+    sparse_table(int n) :vec(n) {}
+    sparse_table(const vector<T>& vec = {}) :vec(vec) {}
+    void set(int p, const T& v) {
+        vec[p] = v;
+    }
+    void build() {
         int sz = vec.size();
         int log = 0;
         while ((1 << log) <= sz) {
