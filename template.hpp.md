@@ -67,6 +67,12 @@ data:
     path: test/yosupo judge/data structure/UnionFind.test.cpp
     title: test/yosupo judge/data structure/UnionFind.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
+    title: test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
+    title: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/graph/Shortest Path.test.cpp
     title: test/yosupo judge/graph/Shortest Path.test.cpp
   - icon: ':heavy_check_mark:'
@@ -189,8 +195,10 @@ data:
   verifiedWith:
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+  - test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
   - test/yosupo judge/data structure/UnionFind.test.cpp
   - test/yosupo judge/data structure/Point Add Range Sum.test.cpp
+  - test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
   - test/yosupo judge/data structure/Static RMQ.test.cpp
   - test/yosupo judge/data structure/Line Add Get Min.test.cpp
   - test/yosupo judge/new/Primitive Root.test.cpp

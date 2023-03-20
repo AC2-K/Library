@@ -13,6 +13,12 @@ data:
     path: test/yosupo judge/data structure/Static RMQ.test.cpp
     title: test/yosupo judge/data structure/Static RMQ.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
+    title: test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
+    title: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
     title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
   _isVerificationFailed: false
@@ -58,6 +64,8 @@ data:
   timestamp: '2023-03-20 07:27:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
+  - test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
   - test/yosupo judge/data structure/Static RMQ.test.cpp
   - test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
   - test/AOJ/GRL/5/C.test.cpp

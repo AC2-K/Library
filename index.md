@@ -195,6 +195,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/UnionFind.test.cpp
       title: test/yosupo judge/data structure/UnionFind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
+      title: test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
+      title: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
   - name: test/yosupo judge/graph
     pages:
     - icon: ':heavy_check_mark:'
