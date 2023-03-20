@@ -11,6 +11,7 @@ public:
 		g[u].emplace_back(v);
 		g[v].emplace_back(u);
 	}
+    graph get_graph(){return g;}
 private:
     void dfs(int v, int p = -1) {
         in[v] = tour.size();
@@ -36,5 +37,12 @@ public:
         if (in[v] > in[u] + 1) { swap(u, v); }
         return rmq.prod(in[v], in[u] + 1).second;
     }
+
+    int dist(int v,int u){
+        int p = lca(v, u);
+        return depth[v] + depth[u] - 2 * depth[p];
+    }
+
+    bool is_in_subtree(int par,int v){return (in[par] <= in[v] && out[v] <= out[par]);}
 };
 ///@brief EulerTour(オイラーツアー)
