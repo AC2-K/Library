@@ -43,22 +43,8 @@ data:
     \ in, out, depth;\n    sparse_table<pair<int, int>> rmq;\npublic:\n    EulerTour(int\
     \ n) :n(n), g(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) { tour.reserve(2\
     \ * n - 1); }\n\tvoid add_edge(int u, int v) {\n\t\tg[u].emplace_back(v);\n\t\t\
-    g[v].emplace_back(u);\n\t}\nprivate:\n    void dfs(int v, int p = -1) {\n    \
-    \    in[v] = tour.size();\n        tour.emplace_back(v);\n        for (const auto&\
-    \ nv : g[v])if (nv != p) {\n            depth[nv] = depth[v] + 1;\n          \
-    \  dfs(nv, v);\n            tour.emplace_back(v);\n        }\n        out[v] =\
-    \ tour.size() - 1;\n    }\npublic:\n    void build(int r = 0) {\n        dfs(r);\n\
-    \        for (int i = 0; i < tour.size(); i++) {\n            rmq.set(i, { depth[tour[i]],tour[i]\
-    \ });\n        }\n        rmq.build();\n    }\n\n    pair<int, int> idx(int v)\
-    \ { return {in[v], out[v]}; }\n    int lca(int v, int u) {\n        if (in[v]\
-    \ > in[u] + 1) { swap(u, v); }\n        return rmq.prod(in[v], in[u] + 1).second;\n\
-    \    }\n};\n///@brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)\n"
-  code: "#include\"data-structure/sparse_table.hpp\"\nclass EulerTour {\n\tint n;\n\
-    \tgraph g;\n\tvector<int> tour;\n\tvector<int> in, out, depth;\n    sparse_table<pair<int,\
-    \ int>> rmq;\npublic:\n    EulerTour(int n) :n(n), g(n), in(n, -1), out(n, -1),\
-    \ depth(n, -1), rmq(2 * n - 1) { tour.reserve(2 * n - 1); }\n\tvoid add_edge(int\
-    \ u, int v) {\n\t\tg[u].emplace_back(v);\n\t\tg[v].emplace_back(u);\n\t}\nprivate:\n\
-    \    void dfs(int v, int p = -1) {\n        in[v] = tour.size();\n        tour.emplace_back(v);\n\
+    g[v].emplace_back(u);\n\t}\n    graph get_graph(){return g;}\nprivate:\n    void\
+    \ dfs(int v, int p = -1) {\n        in[v] = tour.size();\n        tour.emplace_back(v);\n\
     \        for (const auto& nv : g[v])if (nv != p) {\n            depth[nv] = depth[v]\
     \ + 1;\n            dfs(nv, v);\n            tour.emplace_back(v);\n        }\n\
     \        out[v] = tour.size() - 1;\n    }\npublic:\n    void build(int r = 0)\
@@ -66,14 +52,35 @@ data:
     \      rmq.set(i, { depth[tour[i]],tour[i] });\n        }\n        rmq.build();\n\
     \    }\n\n    pair<int, int> idx(int v) { return {in[v], out[v]}; }\n    int lca(int\
     \ v, int u) {\n        if (in[v] > in[u] + 1) { swap(u, v); }\n        return\
-    \ rmq.prod(in[v], in[u] + 1).second;\n    }\n};\n///@brief EulerTour(\u30AA\u30A4\
-    \u30E9\u30FC\u30C4\u30A2\u30FC)"
+    \ rmq.prod(in[v], in[u] + 1).second;\n    }\n\n    int dist(int v,int u){\n  \
+    \      int p = lca(v, u);\n        return depth[v] + depth[u] - 2 * depth[p];\n\
+    \    }\n\n    bool is_in_subtree(int par,int v){return (in[par] <= in[v] && out[v]\
+    \ <= out[par]);}\n};\n///@brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\
+    \u30FC)\n"
+  code: "#include\"data-structure/sparse_table.hpp\"\nclass EulerTour {\n\tint n;\n\
+    \tgraph g;\n\tvector<int> tour;\n\tvector<int> in, out, depth;\n    sparse_table<pair<int,\
+    \ int>> rmq;\npublic:\n    EulerTour(int n) :n(n), g(n), in(n, -1), out(n, -1),\
+    \ depth(n, -1), rmq(2 * n - 1) { tour.reserve(2 * n - 1); }\n\tvoid add_edge(int\
+    \ u, int v) {\n\t\tg[u].emplace_back(v);\n\t\tg[v].emplace_back(u);\n\t}\n   \
+    \ graph get_graph(){return g;}\nprivate:\n    void dfs(int v, int p = -1) {\n\
+    \        in[v] = tour.size();\n        tour.emplace_back(v);\n        for (const\
+    \ auto& nv : g[v])if (nv != p) {\n            depth[nv] = depth[v] + 1;\n    \
+    \        dfs(nv, v);\n            tour.emplace_back(v);\n        }\n        out[v]\
+    \ = tour.size() - 1;\n    }\npublic:\n    void build(int r = 0) {\n        dfs(r);\n\
+    \        for (int i = 0; i < tour.size(); i++) {\n            rmq.set(i, { depth[tour[i]],tour[i]\
+    \ });\n        }\n        rmq.build();\n    }\n\n    pair<int, int> idx(int v)\
+    \ { return {in[v], out[v]}; }\n    int lca(int v, int u) {\n        if (in[v]\
+    \ > in[u] + 1) { swap(u, v); }\n        return rmq.prod(in[v], in[u] + 1).second;\n\
+    \    }\n\n    int dist(int v,int u){\n        int p = lca(v, u);\n        return\
+    \ depth[v] + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par,int\
+    \ v){return (in[par] <= in[v] && out[v] <= out[par]);}\n};\n///@brief EulerTour(\u30AA\
+    \u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
   dependsOn:
   - data-structure/sparse_table.hpp
   isVerificationFile: false
   path: graph/euler_tour.hpp
   requiredBy: []
-  timestamp: '2023-03-20 07:27:41+09:00'
+  timestamp: '2023-03-20 21:23:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
