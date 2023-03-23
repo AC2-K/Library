@@ -10,7 +10,7 @@ namespace prime {
             u64 q = __builtin_ctz(d);
             d >>= q;
 
-            for(int i=0;i<siz;i++){
+            for (int i = 0; i < siz; i++) {
                 u64 a = bases[i];
                 if (a == n) {
                     return true;
@@ -46,8 +46,7 @@ namespace prime {
             } else if (~n & 1) {
                 return false;
             }
-
-            if(n<(1ul<<31)){
+            if (n < (1ul << 31)) {
                 return miller_rabin(n, bases_int, 3);
             } else {
                 return miller_rabin(n, bases_ll, 7);

@@ -1,22 +1,41 @@
 class Mo {
     int n;
     vector<pair<int, int>> lr;
+    const int logn;
+    const long long maxn;
     vector<int> ord;
 public:
-  explicit Mo(int n) : n(n) { lr.reserve(n); }
-  void add(int l, int r) { lr.emplace_back(l, r); }
+    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }
+    void add(int l, int r) { lr.emplace_back(l, r); }
+    long long hilbertorder(int x, int y){
+        long long d = 0;
+        for (int s = 1 << (logn - 1); s; s >>= 1) {
+            bool rx = x & s, ry = y & s;
+            d = d << 2 | rx * 3 ^ static_cast<int>(ry);
+            if (!ry){
+                if (rx)
+                {
+                    x = maxn - x;
+                    y = maxn - y;
+                }
+                swap(x, y);
+            }
+        }
+        return d;
+    }
 
 private:
     inline void line_up() {
         int q = lr.size();
-        int bs = n / min<int>(n, (int)sqrt(q));
         ord.resize(q);
         iota(begin(ord), end(ord), 0);
+        vector<long long> tmp(q);
+        for (int i = 0; i < q; i++) {
+            tmp[i] = hilbertorder(lr[i].first, lr[i].second);
+        }
         sort(begin(ord), end(ord), [&](int a, int b) {
-            int ablock = lr[a].first / bs, bblock = lr[b].first / bs;
-            if (ablock != bblock) return ablock < bblock;
-            return (ablock & 1) ? lr[a].second > lr[b].second : lr[a].second < lr[b].second;
-            });
+            return tmp[a] < tmp[b];
+        });
     }
 public:
     template< typename AL, typename AR, typename EL, typename ER, typename O >

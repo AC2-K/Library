@@ -12,6 +12,7 @@ public:
 		g[v].emplace_back(u);
 	}
     graph get_graph(){return g;}
+    vector<int> get_tour(){return tour;}
 private:
     void dfs(int v, int p = -1) {
         in[v] = tour.size();
