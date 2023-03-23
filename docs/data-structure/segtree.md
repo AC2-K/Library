@@ -4,9 +4,8 @@ $(S,\text{op},e)$がモノイドをなすとする。\
 このとき、$S$の列$a=(a_0,a_1,\dots,a_{n-1})$に対して以下の処理を$O(\log n)$で行う。
 
 1. $a_p\leftarrow v$
-1. $\prod_{i\in[l,r)}{a_i}$ を出力
+1. 区間 $[l,r)$ の積を取得
 
-例えば$$S=\mathbb{Z}\cup\{\infty\},\text{op}=\min,e=\infty$$とかにすると、一点更新のRMQになる。
 ## 使い方
 ### コンストラクタ
 ```cpp
