@@ -49,25 +49,25 @@ data:
     \    sparse_table<pair<int, int>> rmq;\npublic:\n    EulerTour(int n) :n(n), g(n),\
     \ in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) { tour.reserve(2 * n - 1);\
     \ }\n\tvoid add_edge(int u, int v) {\n\t\tg[u].emplace_back(v);\n\t\tg[v].emplace_back(u);\n\
-    \t}\n    graph get_graph(){return g;}\nprivate:\n    void dfs(int v, int p = -1)\
-    \ {\n        in[v] = tour.size();\n        tour.emplace_back(v);\n        for\
-    \ (const auto& nv : g[v])if (nv != p) {\n            depth[nv] = depth[v] + 1;\n\
-    \            dfs(nv, v);\n            tour.emplace_back(v);\n        }\n     \
-    \   out[v] = tour.size() - 1;\n    }\npublic:\n    void build(int r = 0) {\n \
-    \       dfs(r);\n        for (int i = 0; i < tour.size(); i++) {\n           \
-    \ rmq.set(i, { depth[tour[i]],tour[i] });\n        }\n        rmq.build();\n \
-    \   }\n\n    pair<int, int> idx(int v) { return {in[v], out[v]}; }\n    int lca(int\
-    \ v, int u) {\n        if (in[v] > in[u] + 1) { swap(u, v); }\n        return\
-    \ rmq.prod(in[v], in[u] + 1).second;\n    }\n\n    int dist(int v,int u){\n  \
-    \      int p = lca(v, u);\n        return depth[v] + depth[u] - 2 * depth[p];\n\
-    \    }\n\n    bool is_in_subtree(int par,int v){return (in[par] <= in[v] && out[v]\
-    \ <= out[par]);}\n};\n///@brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\
-    \u30FC)\n#line 5 \"test/AOJ/GRL/5/C.test.cpp\"\nint main(){\n    int n;\n    cin>>n;\n\
-    \    EulerTour g(n);\n    rep(v, n) {\n        int k;\n        cin>>k;\n     \
-    \   rep(i,k){\n            int c;\n            cin>>c;\n            g.add_edge(v,\
-    \ c);\n        }\n    }\n\n    g.build();\n    int q;\n    cin >> q;\n    while(q--){\n\
-    \        int u, v;\n        cin >> u >> v;\n        cout << g.lca(u, v) << '\\\
-    n';\n    }\n}\n"
+    \t}\n    graph get_graph(){return g;}\n    vector<int> get_tour(){return tour;}\n\
+    private:\n    void dfs(int v, int p = -1) {\n        in[v] = tour.size();\n  \
+    \      tour.emplace_back(v);\n        for (const auto& nv : g[v])if (nv != p)\
+    \ {\n            depth[nv] = depth[v] + 1;\n            dfs(nv, v);\n        \
+    \    tour.emplace_back(v);\n        }\n        out[v] = tour.size() - 1;\n   \
+    \ }\npublic:\n    void build(int r = 0) {\n        dfs(r);\n        for (int i\
+    \ = 0; i < tour.size(); i++) {\n            rmq.set(i, { depth[tour[i]],tour[i]\
+    \ });\n        }\n        rmq.build();\n    }\n\n    pair<int, int> idx(int v)\
+    \ { return {in[v], out[v]}; }\n    int lca(int v, int u) {\n        if (in[v]\
+    \ > in[u] + 1) { swap(u, v); }\n        return rmq.prod(in[v], in[u] + 1).second;\n\
+    \    }\n\n    int dist(int v,int u){\n        int p = lca(v, u);\n        return\
+    \ depth[v] + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par,int\
+    \ v){return (in[par] <= in[v] && out[v] <= out[par]);}\n};\n///@brief EulerTour(\u30AA\
+    \u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)\n#line 5 \"test/AOJ/GRL/5/C.test.cpp\"\n\
+    int main(){\n    int n;\n    cin>>n;\n    EulerTour g(n);\n    rep(v, n) {\n \
+    \       int k;\n        cin>>k;\n        rep(i,k){\n            int c;\n     \
+    \       cin>>c;\n            g.add_edge(v, c);\n        }\n    }\n\n    g.build();\n\
+    \    int q;\n    cin >> q;\n    while(q--){\n        int u, v;\n        cin >>\
+    \ u >> v;\n        cout << g.lca(u, v) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_C\"\
     \n\n#include\"template.hpp\"\n#include\"graph/euler_tour.hpp\"\nint main(){\n\
     \    int n;\n    cin>>n;\n    EulerTour g(n);\n    rep(v, n) {\n        int k;\n\
@@ -82,7 +82,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/GRL/5/C.test.cpp
   requiredBy: []
-  timestamp: '2023-03-20 21:23:50+09:00'
+  timestamp: '2023-03-23 15:53:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/GRL/5/C.test.cpp

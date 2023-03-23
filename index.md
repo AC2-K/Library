@@ -31,11 +31,8 @@ data:
       path: debug.hpp
       title: debug.hpp
     - icon: ':warning:'
-      path: main.cpp
-      title: main.cpp
-    - icon: ':warning:'
       path: out.cpp
-      title: out.cpp
+      title: mo's algorithm
     - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
@@ -92,6 +89,9 @@ data:
     - icon: ':warning:'
       path: math/modint.hpp
       title: math/modint.hpp
+    - icon: ':warning:'
+      path: math/osak.hpp
+      title: math/osak.hpp
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
@@ -103,7 +103,7 @@ data:
       title: "static modint(\u9759\u7684modint)"
   - name: other
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: other/mo.hpp
       title: mo's algorithm
   - name: string
@@ -235,6 +235,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/tree/Tree Diameter.test.cpp
       title: test/yosupo judge/tree/Tree Diameter.test.cpp
+  - name: test/yuki
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yuki/No-1471.test.cpp
+      title: test/yuki/No-1471.test.cpp
 layout: toppage
 ---
 [![AC2K](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2FAC2K)](https://atcoder.jp/users/AC2K)
