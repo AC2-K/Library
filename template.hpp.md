@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: out.cpp
+    title: out.cpp
+  - icon: ':warning:'
     path: test/AOJ/DSL/2/D2.cpp
     title: test/AOJ/DSL/2/D2.cpp
   _extendedVerifiedWith:
@@ -36,9 +39,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5/C.test.cpp
     title: test/AOJ/GRL/5/C.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/A.test.cpp
-    title: test/AOJ/NTL/1/A.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/B.test.cpp
     title: test/AOJ/NTL/1/B.test.cpp
@@ -84,24 +84,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/matrix/Matrix Product.test.cpp
     title: test/yosupo judge/matrix/Matrix Product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/new/Primitive Root.test.cpp
     title: test/yosupo judge/new/Primitive Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
     title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/tree/Tree Diameter.test.cpp
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-1471.test.cpp
     title: test/yuki/No-1471.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -192,9 +192,10 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
+  - out.cpp
   - test/AOJ/DSL/2/D2.cpp
   timestamp: '2023-03-10 13:31:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No-1471.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
@@ -224,7 +225,6 @@ data:
   - test/AOJ/NTL/1/D.test.cpp
   - test/AOJ/NTL/1/E.test.cpp
   - test/AOJ/NTL/1/B.test.cpp
-  - test/AOJ/NTL/1/A.test.cpp
   - test/AOJ/ALDS/1/C.test.cpp
   - test/AOJ/ALDS/14/B.test.cpp
 documentation_of: template.hpp

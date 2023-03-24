@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
   _extendedRequiredBy: []
@@ -69,7 +69,7 @@ $x,y,p$に対して、$x^n\equiv y (\bmod p)$なる最小の**非負整数**$n$�
 ```cpp
 long long dlp(long long x,long long y,long long p)
 ```
-上のやつをときます
+上のやつを解きます
 
 - 計算量:$O(\sqrt P)$
 - 制約:

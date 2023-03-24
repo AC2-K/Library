@@ -3,28 +3,32 @@ data:
   libraryCategories:
   - name: data-structure
     pages:
+    - icon: ':warning:'
+      path: data-structure/BIT.hpp
+      title: Binary Index Tree
     - icon: ':heavy_check_mark:'
-      path: data-structure/cht.hpp
-      title: ConvexHullTrick
+      path: data-structure/CHT.hpp
+      title: Convex Hull Trick
     - icon: ':heavy_check_mark:'
       path: data-structure/dsu.hpp
-      title: disjoint set(union find)
+      title: Disjoint Set(Union find)
     - icon: ':heavy_check_mark:'
       path: data-structure/dual_segtree.hpp
-      title: "dual segtree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+      title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':warning:'
       path: data-structure/dynamic_segtree.hpp
-      title: "dynamic_segtree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
-      path: data-structure/lazy_segtree.hpp
-      title: "lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
+      title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
     - icon: ':heavy_check_mark:'
+      path: data-structure/lazy_segtree.hpp
+      title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
+        \u30E1\u30F3\u30C8\u6728)"
+    - icon: ':question:'
       path: data-structure/segtree.hpp
-      title: "segment tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
+      title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    - icon: ':question:'
       path: data-structure/sparse_table.hpp
-      title: sparse table
+      title: Sparse Table
   - name: .
     pages:
     - icon: ':warning:'
@@ -32,8 +36,8 @@ data:
       title: debug.hpp
     - icon: ':warning:'
       path: out.cpp
-      title: mo's algorithm
-    - icon: ':heavy_check_mark:'
+      title: out.cpp
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
     - icon: ':warning:'
@@ -41,13 +45,10 @@ data:
       title: test.py
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/dijkstra.hpp
-      title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-    - icon: ':heavy_check_mark:'
-      path: graph/edge.hpp
-      title: edge
-    - icon: ':heavy_check_mark:'
+      title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
+    - icon: ':question:'
       path: graph/euler_tour.hpp
       title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
     - icon: ':heavy_check_mark:'
@@ -72,18 +73,12 @@ data:
       title: "ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\
         \u9664\u6CD5)"
     - icon: ':heavy_check_mark:'
-      path: math/fact.hpp
-      title: "factorize(\u7D20\u56E0\u6570\u5206\u89E3)"
-    - icon: ':heavy_check_mark:'
-      path: math/fast_fact.hpp
-      title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-    - icon: ':heavy_check_mark:'
-      path: math/fast_prime_check.hpp
-      title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "maxtirx(\u884C\u5217)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
+      path: math/miller.hpp
+      title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
+    - icon: ':question:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     - icon: ':warning:'
@@ -91,13 +86,16 @@ data:
       title: math/modint.hpp
     - icon: ':warning:'
       path: math/osak.hpp
-      title: math/osak.hpp
+      title: "Osak\u6CD5"
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
+    - icon: ':question:'
+      path: math/rho.hpp
+      title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
     - icon: ':heavy_check_mark:'
       path: math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
@@ -164,9 +162,6 @@ data:
   - name: test/AOJ/NTL/1
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/AOJ/NTL/1/A.test.cpp
-      title: test/AOJ/NTL/1/A.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1/B.test.cpp
       title: test/AOJ/NTL/1/B.test.cpp
     - icon: ':heavy_check_mark:'
@@ -221,18 +216,18 @@ data:
       title: test/yosupo judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo judge/new
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
       title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/new/Primitive Root.test.cpp
       title: test/yosupo judge/new/Primitive Root.test.cpp
   - name: test/yosupo judge/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
       title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo judge/tree/Tree Diameter.test.cpp
       title: test/yosupo judge/tree/Tree Diameter.test.cpp
   - name: test/yuki

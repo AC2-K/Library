@@ -1,13 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/dijkstra.hpp
-    title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-  - icon: ':heavy_check_mark:'
-    path: graph/edge.hpp
-    title: edge
-  - icon: ':heavy_check_mark:'
+    title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -30,22 +27,22 @@ data:
     \ + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0\
     \ };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 1 \"graph/edge.hpp\"\nstruct edge{\n    int to;\n    ll cost;\n    edge(int\
-    \ to,ll cost):to(to),cost(cost){}\n};\n///@brief edge\n#line 3 \"graph/dijkstra.hpp\"\
-    \npair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){\n\
-    \    vector<ll> dist(g.size(),infl);\n    vector<int> pre(g.size(),-1);\n    using\
-    \ st=pair<ll,int>;\n    priority_queue<st,vector<st>,greater<st>> que;\n    que.emplace(0,s);\n\
-    \    dist[s]=0;\n    pre[s]=s;\n    while(!que.empty()){\n        auto[d,v]=que.top();\n\
-    \        que.pop();\n        if(dist[v]!=d){\n            continue;\n        }\n\
-    \n        for(const auto&[nv,c]:g[v]){\n            if(dist[v]+c<dist[nv]){\n\
-    \                dist[nv]=dist[v]+c;\n                pre[nv]=v;\n           \
-    \     que.emplace(dist[nv],nv);\n            }\n        }\n    }\n    return make_pair(dist,pre);\n\
-    }\n///@brief dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)\n#line 5 \"\
-    test/AOJ/GRL/1/A.test.cpp\"\n\nint main(){\n    int n,m,r;\n    cin>>n>>m>>r;\n\
-    \    vector<vector<edge>> g(n);\n    rep(i,m){\n        int s,t,w;\n        cin>>s>>t>>w;\n\
-    \        g[s].emplace_back(t,w);\n    }\n\n    auto res=dijkstra(r,g).first;\n\
-    \n    rep(v,n){\n        if(res[v]>=infl)cout<<\"INF\\n\";\n        else cout<<res[v]<<'\\\
-    n';\n    }\n}\n"
+    #line 2 \"graph/dijkstra.hpp\"\n\n\nstruct edge {\n\tint to;\n\tll cost;\n\tedge(int\
+    \ to, ll cost) : to(to), cost(cost) {}\n};\n/// @brief Dijkstra (\u30C0\u30A4\u30AF\
+    \u30B9\u30C8\u30E9\u6CD5)\n/// @note edge\u69CB\u9020\u4F53\u3092\u3055\u3089\u306B\
+    \u5BA3\u8A00\u3057\u306A\u3044\u3053\u3068!!!\npair<vector<uint64_t>, vector<int>>\
+    \ dijkstra(int s,\n\tconst vector<vector<edge>>& g) {\n\tvector<uint64_t> dist(g.size(),\
+    \ infl);\n\tvector<int> pre(g.size(), -1);\n\tpriority_queue<pair<ll, int>, vector<pair<ll,\
+    \ int>>, greater<pair<ll, int>>> que;\n\tque.emplace(0, s);\n\tdist[s] = 0;\n\t\
+    pre[s] = s;\n\twhile (!que.empty()) {\n\t\tauto [d, v] = que.top();\n\t\tque.pop();\n\
+    \t\tif (dist[v] != d) {\n\t\t\tcontinue;\n\t\t}\n\n\t\tfor (const auto& [nv, c]\
+    \ : g[v]) {\n\t\t\tif (dist[v] + c < dist[nv]) {\n\t\t\t\tdist[nv] = dist[v] +\
+    \ c;\n\t\t\t\tpre[nv] = v;\n\t\t\t\tque.emplace(dist[nv], nv);\n\t\t\t}\n\t\t\
+    }\n\t}\n\treturn { dist, pre };\n}\n#line 5 \"test/AOJ/GRL/1/A.test.cpp\"\n\n\
+    int main(){\n    int n,m,r;\n    cin>>n>>m>>r;\n    vector<vector<edge>> g(n);\n\
+    \    rep(i,m){\n        int s,t,w;\n        cin>>s>>t>>w;\n        g[s].emplace_back(t,w);\n\
+    \    }\n\n    auto res=dijkstra(r,g).first;\n\n    rep(v,n){\n        if(res[v]>=infl)cout<<\"\
+    INF\\n\";\n        else cout<<res[v]<<'\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_1_A\"\
     \n\n#include\"template.hpp\"\n#include\"graph/dijkstra.hpp\"\n\nint main(){\n\
     \    int n,m,r;\n    cin>>n>>m>>r;\n    vector<vector<edge>> g(n);\n    rep(i,m){\n\
@@ -55,11 +52,10 @@ data:
   dependsOn:
   - template.hpp
   - graph/dijkstra.hpp
-  - graph/edge.hpp
   isVerificationFile: true
   path: test/AOJ/GRL/1/A.test.cpp
   requiredBy: []
-  timestamp: '2023-03-10 13:31:13+09:00'
+  timestamp: '2023-03-25 02:02:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/GRL/1/A.test.cpp

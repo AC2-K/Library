@@ -20,35 +20,34 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/dsu.md
-    document_title: disjoint set(union find)
+    document_title: Disjoint Set(Union find)
     links: []
-  bundledCode: "#line 1 \"data-structure/dsu.hpp\"\nclass DSU {\nprivate:\n\tvector<int>\
-    \ par, rank, siz;\n\tint N;\npublic:\n\tDSU(int n) : par(n, -1), rank(n, 0), siz(n,\
-    \ 1), N(n) {}\n\n\tint root(int x) {\n\t\tif (par[x] == -1)\n\t\t\treturn x;\n\
-    \t\telse\n\t\t\treturn par[x] = root(par[x]);\n\t}\n\tbool same(int x, int y)\
-    \ {\n\t\treturn root(x) == root(y);\n\t}\n\n\tbool merge(int x, int y) {\n\t\t\
-    int rx = root(x), ry = root(y);\n\t\tif (rx == ry)\n\t\t\treturn false;\n\n\t\t\
-    if (rank[rx] < rank[ry])\n\t\t\tswap(rx, ry);\n\t\tpar[ry] = rx;\n\n\t\tsiz[rx]\
-    \ += siz[ry];\n\t\treturn true;\n\t}\n\n\tint size(int x) {\n\t\treturn siz[root(x)];\n\
-    \t}\n\tint group_size() {\n\t\tint cnt = 0;\n\t\tfor (int i = 0; i < N; i++)\n\
-    \t\t\tif (root(i) == i)\n\t\t\t\tcnt++;\n\t\treturn cnt;\n\t}\n};\n///@brief disjoint\
-    \ set(union find)\n///@docs docs/data-structure/dsu.md\n"
-  code: "class DSU {\nprivate:\n\tvector<int> par, rank, siz;\n\tint N;\npublic:\n\
-    \tDSU(int n) : par(n, -1), rank(n, 0), siz(n, 1), N(n) {}\n\n\tint root(int x)\
-    \ {\n\t\tif (par[x] == -1)\n\t\t\treturn x;\n\t\telse\n\t\t\treturn par[x] = root(par[x]);\n\
-    \t}\n\tbool same(int x, int y) {\n\t\treturn root(x) == root(y);\n\t}\n\n\tbool\
-    \ merge(int x, int y) {\n\t\tint rx = root(x), ry = root(y);\n\t\tif (rx == ry)\n\
-    \t\t\treturn false;\n\n\t\tif (rank[rx] < rank[ry])\n\t\t\tswap(rx, ry);\n\t\t\
-    par[ry] = rx;\n\n\t\tsiz[rx] += siz[ry];\n\t\treturn true;\n\t}\n\n\tint size(int\
-    \ x) {\n\t\treturn siz[root(x)];\n\t}\n\tint group_size() {\n\t\tint cnt = 0;\n\
-    \t\tfor (int i = 0; i < N; i++)\n\t\t\tif (root(i) == i)\n\t\t\t\tcnt++;\n\t\t\
-    return cnt;\n\t}\n};\n///@brief disjoint set(union find)\n///@docs docs/data-structure/dsu.md"
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
+    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
+    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 312, in update\n    raise BundleErrorAt(path, i + 1, \"#pragma once found\
+    \ in a non-first line\")\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt:\
+    \ data-structure/dsu.hpp: line 4: #pragma once found in a non-first line\n"
+  code: "/// @brief Disjoint Set(Union find)\n/// @docs docs/data-structure/dsu.md\n\
+    \n#pragma once\nclass DSU {\nprivate:\n\tvector<int> par, rank, siz;\n\tint N;\n\
+    public:\n\tDSU(int n) : par(n, -1), rank(n, 0), siz(n, 1), N(n) {}\n\n\tint root(int\
+    \ x) {\n\t\tif (par[x] == -1)\n\t\t\treturn x;\n\t\telse\n\t\t\treturn par[x]\
+    \ = root(par[x]);\n\t}\n\tbool same(int x, int y) {\n\t\treturn root(x) == root(y);\n\
+    \t}\n\n\tbool merge(int x, int y) {\n\t\tint rx = root(x), ry = root(y);\n\t\t\
+    if (rx == ry)\n\t\t\treturn false;\n\n\t\tif (rank[rx] < rank[ry])\n\t\t\tswap(rx,\
+    \ ry);\n\t\tpar[ry] = rx;\n\n\t\tsiz[rx] += siz[ry];\n\t\treturn true;\n\t}\n\n\
+    \tint size(int x) {\n\t\treturn siz[root(x)];\n\t}\n\tint group_size() {\n\t\t\
+    int cnt = 0;\n\t\tfor (int i = 0; i < N; i++)\n\t\t\tif (root(i) == i)\n\t\t\t\
+    \tcnt++;\n\t\treturn cnt;\n\t}\n};"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/dsu.hpp
   requiredBy:
   - graph/mst.hpp
-  timestamp: '2023-03-06 04:18:20+09:00'
+  timestamp: '2023-03-25 02:02:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/data structure/UnionFind.test.cpp
@@ -59,7 +58,7 @@ layout: document
 redirect_from:
 - /library/data-structure/dsu.hpp
 - /library/data-structure/dsu.hpp.html
-title: disjoint set(union find)
+title: Disjoint Set(Union find)
 ---
 ## 概要
 $n$頂点の無向グラフに対して、以下のクエリを$O(\alpha(n))$で処理します。

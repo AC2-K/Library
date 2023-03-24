@@ -7,20 +7,28 @@ data:
   - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':question:'
-    path: math/rho.hpp
-    title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: math/phi_function.hpp
+    title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
+  - icon: ':x:'
+    path: math/primitive_root.hpp
+    title: "primitive root(\u539F\u59CB\u6839)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1/D.test.cpp
     title: test/AOJ/NTL/1/D.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo judge/math/Factorize.test.cpp
+    title: test/yosupo judge/math/Factorize.test.cpp
+  - icon: ':x:'
+    path: test/yosupo judge/new/Primitive Root.test.cpp
+    title: test/yosupo judge/new/Primitive Root.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
-    document_title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570\
-      )"
+    document_title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
     links: []
   bundledCode: "#line 2 \"math/rho.hpp\"\n#include<bits/stdc++.h>\n#line 2 \"math/mod_pow.hpp\"\
     \ntemplate <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    T ans\
@@ -95,30 +103,71 @@ data:
     \ == pf[i]) {\n                    res.back().second++;\n                }\n \
     \               else {\n                    res.emplace_back(pf[i], 1);\n    \
     \            }\n            }\n\n            return res;\n        }\n    };  //\
-    \ namespace pollard\n};  // namespace prime\n#line 3 \"math/phi_function.hpp\"\
-    \nll phi_func(ll n){\n    ll res=n;\n    auto pf=prime::rho::factorize(n);\n \
-    \   pf.erase(unique(all(pf)),pf.end());     \n    for(auto&d:pf){\n        res=res/d*(d-1);\n\
-    \    }\n    return res;\n}\n///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\
-    \u30C8\u95A2\u6570)\n"
-  code: "#pragma once\n#include\"math/rho.hpp\"\nll phi_func(ll n){\n    ll res=n;\n\
-    \    auto pf=prime::rho::factorize(n);\n    pf.erase(unique(all(pf)),pf.end());\
-    \     \n    for(auto&d:pf){\n        res=res/d*(d-1);\n    }\n    return res;\n\
-    }\n///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
+    \ namespace pollard\n};  // namespace prime\n"
+  code: "#pragma once\n#include<bits/stdc++.h>\n#include\"math/miller.hpp\"\nusing\
+    \ namespace std;\n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard\
+    \ Rho\u6CD5)\nnamespace prime {\n    namespace rho {\n        using i128 = __int128_t;\n\
+    \        using u128 = __uint128_t;\n        using u64 = __uint64_t;\n\n      \
+    \  template<typename T>\n        T _gcd(T x, T y) {\n            while (y != 0)\
+    \ {\n                T ny = x % y;\n                T nx = y;\n              \
+    \  x = nx, y = ny;\n            }\n            return x;\n        }\n        u64\
+    \ find_factor(u64 n) {\n            static u64 v = 7001;\n\n            if (~n\
+    \ & 1uL) {\n                return 2;\n            }\n            if (prime::miller::is_prime(n))\
+    \ {\n                return n;\n            }\n            while (1) {\n     \
+    \           v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n                u64 c =\
+    \ v;\n                auto f = [&](u128 x) -> u128 {\n                    x %=\
+    \ n;\n                    return (x * x + c) % n;\n                };\n      \
+    \          v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n                ll x = v\
+    \ % n;\n                ll y = f(x);\n                u64 d = 1;\n           \
+    \     while (d == 1) {\n                    d = _gcd((u64)abs(x - y), n);\n  \
+    \                  x = f(x);\n                    y = f(f(y));\n             \
+    \   }\n                if (1 < d && d < n) {\n                    return d;\n\
+    \                }\n            }\n            exit(0);\n        }\n\n       \
+    \ vector<u64> rho_fact(u64 n) {\n            if (n < 2) {\n                return\
+    \ {};\n            }\n            if (prime::miller::is_prime(n)) {\n        \
+    \        return { n };\n            }\n            vector<u64> v;\n          \
+    \  vector<u64> st{ n };\n            while (st.size()) {\n                u64&\
+    \ m = st.back();\n                if (prime::miller::is_prime(m)) {\n        \
+    \            v.emplace_back(m);\n                    st.pop_back();\n        \
+    \        }\n                else {\n                    u64 d = find_factor(m);\n\
+    \                    m /= d;\n                    st.emplace_back(d);\n      \
+    \          }\n            }\n            return v;\n        }\n        vector<u64>\
+    \ naive(u64& n) {\n            static constexpr u64 basic_prime[] = { 2, 3, 5,\
+    \ 7, 11, 13, 17, 1000000007, 998244353 };\n            vector<u64> res;\n    \
+    \        for (const auto& p : basic_prime) {\n                while (n % p ==\
+    \ 0) {\n                    n /= p;\n                    res.emplace_back(p);\n\
+    \                }\n            }\n\n            return res;\n        }\n    \
+    \    vector<u64> factorize(u64 n) {\n            if (n < 2) {\n              \
+    \  return {};\n            }\n            vector<u64> v = naive(n);\n        \
+    \    if (n != 1) {\n                vector<u64> v2 = rho_fact(n);\n          \
+    \      v.insert(v.end(), all(v2));\n            }\n            sort(all(v));\n\
+    \            return v;\n        }\n\n        vector<pair<u64, int>> exp_factorize(u64\
+    \ n) {\n            auto pf = factorize(n);\n            if (pf.empty()) {\n \
+    \               return {};\n            }\n            vector<pair<u64, int>>\
+    \ res;\n            res.emplace_back(pf.front(), 1);\n            //rle\n    \
+    \        for (int i = 1; i < pf.size(); i++) {\n                if (res.back().first\
+    \ == pf[i]) {\n                    res.back().second++;\n                }\n \
+    \               else {\n                    res.emplace_back(pf[i], 1);\n    \
+    \            }\n            }\n\n            return res;\n        }\n    };  //\
+    \ namespace pollard\n};  // namespace prime"
   dependsOn:
-  - math/rho.hpp
   - math/miller.hpp
   - math/mod_pow.hpp
   isVerificationFile: false
-  path: math/phi_function.hpp
-  requiredBy: []
+  path: math/rho.hpp
+  requiredBy:
+  - math/primitive_root.hpp
+  - math/phi_function.hpp
   timestamp: '2023-03-25 02:02:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/yosupo judge/new/Primitive Root.test.cpp
+  - test/yosupo judge/math/Factorize.test.cpp
   - test/AOJ/NTL/1/D.test.cpp
-documentation_of: math/phi_function.hpp
+documentation_of: math/rho.hpp
 layout: document
 redirect_from:
-- /library/math/phi_function.hpp
-- /library/math/phi_function.hpp.html
-title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
+- /library/math/rho.hpp
+- /library/math/rho.hpp.html
+title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
 ---

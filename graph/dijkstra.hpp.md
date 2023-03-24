@@ -1,10 +1,10 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: graph/edge.hpp
-    title: edge
-  _extendedRequiredBy: []
+  _extendedDependsOn: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: out.cpp
+    title: out.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/1/A.test.cpp
@@ -12,43 +12,46 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/graph/Shortest Path.test.cpp
     title: test/yosupo judge/graph/Shortest Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo judge/tree/Tree Diameter.test.cpp
     title: test/yosupo judge/tree/Tree Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
-    document_title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
+    document_title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     links: []
-  bundledCode: "#line 1 \"graph/edge.hpp\"\nstruct edge{\n    int to;\n    ll cost;\n\
-    \    edge(int to,ll cost):to(to),cost(cost){}\n};\n///@brief edge\n#line 3 \"\
-    graph/dijkstra.hpp\"\npair<vector<ll>,vector<int>> dijkstra(int s,const vector<vector<edge>>&g){\n\
-    \    vector<ll> dist(g.size(),infl);\n    vector<int> pre(g.size(),-1);\n    using\
-    \ st=pair<ll,int>;\n    priority_queue<st,vector<st>,greater<st>> que;\n    que.emplace(0,s);\n\
-    \    dist[s]=0;\n    pre[s]=s;\n    while(!que.empty()){\n        auto[d,v]=que.top();\n\
-    \        que.pop();\n        if(dist[v]!=d){\n            continue;\n        }\n\
-    \n        for(const auto&[nv,c]:g[v]){\n            if(dist[v]+c<dist[nv]){\n\
-    \                dist[nv]=dist[v]+c;\n                pre[nv]=v;\n           \
-    \     que.emplace(dist[nv],nv);\n            }\n        }\n    }\n    return make_pair(dist,pre);\n\
-    }\n///@brief dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)\n"
-  code: "#pragma once\n#include\"edge.hpp\"\npair<vector<ll>,vector<int>> dijkstra(int\
-    \ s,const vector<vector<edge>>&g){\n    vector<ll> dist(g.size(),infl);\n    vector<int>\
-    \ pre(g.size(),-1);\n    using st=pair<ll,int>;\n    priority_queue<st,vector<st>,greater<st>>\
-    \ que;\n    que.emplace(0,s);\n    dist[s]=0;\n    pre[s]=s;\n    while(!que.empty()){\n\
-    \        auto[d,v]=que.top();\n        que.pop();\n        if(dist[v]!=d){\n \
-    \           continue;\n        }\n\n        for(const auto&[nv,c]:g[v]){\n   \
-    \         if(dist[v]+c<dist[nv]){\n                dist[nv]=dist[v]+c;\n     \
-    \           pre[nv]=v;\n                que.emplace(dist[nv],nv);\n          \
-    \  }\n        }\n    }\n    return make_pair(dist,pre);\n}\n///@brief dijkstra(\u30C0\
-    \u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-  dependsOn:
-  - graph/edge.hpp
+  bundledCode: "#line 2 \"graph/dijkstra.hpp\"\n\n\nstruct edge {\n\tint to;\n\tll\
+    \ cost;\n\tedge(int to, ll cost) : to(to), cost(cost) {}\n};\n/// @brief Dijkstra\
+    \ (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)\n/// @note edge\u69CB\u9020\u4F53\
+    \u3092\u3055\u3089\u306B\u5BA3\u8A00\u3057\u306A\u3044\u3053\u3068!!!\npair<vector<uint64_t>,\
+    \ vector<int>> dijkstra(int s,\n\tconst vector<vector<edge>>& g) {\n\tvector<uint64_t>\
+    \ dist(g.size(), infl);\n\tvector<int> pre(g.size(), -1);\n\tpriority_queue<pair<ll,\
+    \ int>, vector<pair<ll, int>>, greater<pair<ll, int>>> que;\n\tque.emplace(0,\
+    \ s);\n\tdist[s] = 0;\n\tpre[s] = s;\n\twhile (!que.empty()) {\n\t\tauto [d, v]\
+    \ = que.top();\n\t\tque.pop();\n\t\tif (dist[v] != d) {\n\t\t\tcontinue;\n\t\t\
+    }\n\n\t\tfor (const auto& [nv, c] : g[v]) {\n\t\t\tif (dist[v] + c < dist[nv])\
+    \ {\n\t\t\t\tdist[nv] = dist[v] + c;\n\t\t\t\tpre[nv] = v;\n\t\t\t\tque.emplace(dist[nv],\
+    \ nv);\n\t\t\t}\n\t\t}\n\t}\n\treturn { dist, pre };\n}\n"
+  code: "#pragma once\n\n\nstruct edge {\n\tint to;\n\tll cost;\n\tedge(int to, ll\
+    \ cost) : to(to), cost(cost) {}\n};\n/// @brief Dijkstra (\u30C0\u30A4\u30AF\u30B9\
+    \u30C8\u30E9\u6CD5)\n/// @note edge\u69CB\u9020\u4F53\u3092\u3055\u3089\u306B\u5BA3\
+    \u8A00\u3057\u306A\u3044\u3053\u3068!!!\npair<vector<uint64_t>, vector<int>> dijkstra(int\
+    \ s,\n\tconst vector<vector<edge>>& g) {\n\tvector<uint64_t> dist(g.size(), infl);\n\
+    \tvector<int> pre(g.size(), -1);\n\tpriority_queue<pair<ll, int>, vector<pair<ll,\
+    \ int>>, greater<pair<ll, int>>> que;\n\tque.emplace(0, s);\n\tdist[s] = 0;\n\t\
+    pre[s] = s;\n\twhile (!que.empty()) {\n\t\tauto [d, v] = que.top();\n\t\tque.pop();\n\
+    \t\tif (dist[v] != d) {\n\t\t\tcontinue;\n\t\t}\n\n\t\tfor (const auto& [nv, c]\
+    \ : g[v]) {\n\t\t\tif (dist[v] + c < dist[nv]) {\n\t\t\t\tdist[nv] = dist[v] +\
+    \ c;\n\t\t\t\tpre[nv] = v;\n\t\t\t\tque.emplace(dist[nv], nv);\n\t\t\t}\n\t\t\
+    }\n\t}\n\treturn { dist, pre };\n}\n"
+  dependsOn: []
   isVerificationFile: false
   path: graph/dijkstra.hpp
-  requiredBy: []
-  timestamp: '2023-03-06 04:18:20+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  requiredBy:
+  - out.cpp
+  timestamp: '2023-03-25 02:02:12+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo judge/graph/Shortest Path.test.cpp
   - test/yosupo judge/tree/Tree Diameter.test.cpp
@@ -58,5 +61,5 @@ layout: document
 redirect_from:
 - /library/graph/dijkstra.hpp
 - /library/graph/dijkstra.hpp.html
-title: "dijkstra(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
+title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
 ---
