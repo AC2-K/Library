@@ -1,3 +1,10 @@
+/// @brief Dynamic Segment Tree(動的セグメント木)
+/// @tparam S 要素の型
+/// @tparam op 二項演算
+/// @tparam e 単位元
+/// @docs docs/data-structure/dynamic_segtree.md
+
+#pragma once
 template<class S,S(*op)(S,S),S(*e)()>
 class dynamic_segtree {
 public:
@@ -96,7 +103,3 @@ private:
 		return op(internal_prod(p->left, l, mid, L, R), internal_prod(p->right, mid, r, L, R));
 	}
 };
-
-
-///@brief  dynamic_segtree(動的セグメント木)
-///@docs docs/data-structure/dynamic_segtree.md

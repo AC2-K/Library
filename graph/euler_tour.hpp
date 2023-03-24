@@ -1,4 +1,6 @@
 #include"data-structure/sparse_table.hpp"
+
+///@brief EulerTour(オイラーツアー)
 class EulerTour {
 	int n;
 	graph g;
@@ -46,4 +48,3 @@ public:
 
     bool is_in_subtree(int par,int v){return (in[par] <= in[v] && out[v] <= out[par]);}
 };
-///@brief EulerTour(オイラーツアー)

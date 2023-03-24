@@ -1,3 +1,9 @@
+/// @brief Convex Hull Trick
+/// @tparam T 
+/// @tparam query_type クエリのタイプ.trueにすると最大値を求めるように変更する
+/// @docs docs/data-structure/CHT.md
+
+#pragma once
 template<class T = ll, bool query_type = false>
 class CHT {
 	class line {
@@ -80,4 +86,3 @@ public:
 		}
 	}
 };
-///@brief ConvexHullTrick

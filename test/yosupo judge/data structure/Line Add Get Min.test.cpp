@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/line_add_get_min"
 
 #include"template.hpp"
-#include"data-structure/cht.hpp"
+#include"data-structure/CHT.hpp"
 
 int main(){
     int n,q;

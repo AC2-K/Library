@@ -1,6 +1,13 @@
+/// @brief Dual Segmenttree(双対セグメント木)
+/// @tparam F 要素の型
+/// @tparam comp 二項演算
+/// @tparam id 単位元
+/// @docs docs/data-structure/dual_segtree.md
+
+#pragma once
 template<class F, F(*comp)(F, F), F(*id)()>
 class dual_segtree {
-	int n;	
+	int n;
 
 	int sz;
 
@@ -9,6 +16,8 @@ class dual_segtree {
 
 
 	int cur;
+
+	const F id_val = id();
 public:
 	dual_segtree(const int& n_) :n(n_), cur(0) {
 		sz = 1;
@@ -16,7 +25,7 @@ public:
 			sz <<= 1;
 		}
 
-		dat.assign(sz << 1 , make_pair(lowest, id()));
+		dat.assign(sz << 1, make_pair(lowest, id_val));
 	}
 
 private:
@@ -55,9 +64,9 @@ public:
 
 		sort(path.begin(), path.end());
 
-		F res = id();
+		F res = id_val;
 		for (const auto& q : path) {
-			if (q.first == lowest || q.second == id()) {
+			if (q.first == lowest || q.second == id_val) {
 				continue;
 			}
 			res = comp(res, q.second);
@@ -65,7 +74,7 @@ public:
 
 		return res;
 	}
-    //debug
+	//debug
 	void print() {
 		cout << "[";
 		for (int i = 0; i < n; i++) {
@@ -74,6 +83,3 @@ public:
 		cout << "]\n";
 	}
 };
-
-///@brief dual segtree(双対セグメント木)
-///@docs docs/data-structure/dual_segtree.md

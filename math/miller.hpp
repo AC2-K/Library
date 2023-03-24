@@ -54,5 +54,4 @@ namespace prime {
         }
     };
 };
-using prime::miller::is_prime;
 ///@brief fast prime check(MillerRabinの素数判定)

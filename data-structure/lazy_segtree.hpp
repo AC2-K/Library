@@ -1,3 +1,7 @@
+/// @brief Segment Tree with Lazy Propagation(遅延評価セグメント木)
+/// @docs docs/data-structure/lazy_segtree.md
+
+#pragma once
 template<
     class S, class F,
     S(*op)(S, S), S(*e)(),

@@ -1,3 +1,7 @@
+/// @brief Disjoint Set(Union find)
+/// @docs docs/data-structure/dsu.md
+
+#pragma once
 class DSU {
 private:
 	vector<int> par, rank, siz;
@@ -39,5 +43,3 @@ public:
 		return cnt;
 	}
 };
-///@brief disjoint set(union find)
-///@docs docs/data-structure/dsu.md

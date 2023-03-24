@@ -1,3 +1,10 @@
+/// @brief Segment Tree(セグメント木)
+/// @tparam S 要素の型
+/// @tparam op 二項演算
+/// @tparam e 単位元
+/// @docs docs/data-structure/segtree.md
+
+#pragma once
 template<class S, S(*op)(S, S), S(*e)()>
 class segtree {
     int n;
@@ -70,5 +77,3 @@ public:
         return dat[n + pos - 1];
     }
 };
-/// @brief segment tree(セグメント木)
-///@docs docs/data-structure/segtree.md

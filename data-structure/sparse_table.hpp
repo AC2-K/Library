@@ -1,14 +1,17 @@
+/// @brief Sparse Table
+/// @tparam T 要素の型
+/// @docs docs/data-structure/sparse_table.md
+
+#pragma once
 template<class T>
 class sparse_table {
     vector<T> vec;
     vector<vector<T>> table;
     vector<int> look_up;
 public:
-    sparse_table(int n) :vec(n) {}
-    sparse_table(const vector<T>& vec = {}) :vec(vec) {}
-    void set(int p, const T& v) {
-        vec[p] = v;
-    }
+    sparse_table(int n) : vec(n) {}
+    sparse_table(const vector<T>& vec) : vec(vec) {}
+    void set(int p, const T& v) { vec[p] = v; }
     void build() {
         int sz = vec.size();
         int log = 0;
@@ -21,7 +24,8 @@ public:
         }
         for (int i = 1; i < log; i++) {
             for (int j = 0; j + (1 << i) <= (1 << log); j++) {
-                table[i][j] = min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);
+                table[i][j] =
+                    min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);
             }
         }
         look_up.resize(sz + 1);
@@ -35,4 +39,3 @@ public:
         return min(table[b][l], table[b][r - (1 << b)]);
     }
 };
-///@brief sparse table
