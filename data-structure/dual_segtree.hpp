@@ -7,22 +7,21 @@
 #pragma once
 template<class F, F(*comp)(F, F), F(*id)()>
 class dual_segtree {
-	int n;
-
-	int sz;
+	int n, sz, lg;
 
 	const int lowest = -1;
 	vector<pair<int, F>> dat;
 
-
 	int cur;
-
 	const F id_val = id();
+
 public:
-	dual_segtree(const int& n_) :n(n_), cur(0) {
+	dual_segtree(const int& n_) : n(n_), cur(0) {
 		sz = 1;
+		lg = 0;
 		while (sz < n) {
 			sz <<= 1;
+			lg++;
 		}
 
 		dat.assign(sz << 1, make_pair(lowest, id_val));
@@ -38,15 +37,13 @@ private:
 			dat[p] = make_pair(cur, nf);
 			return;
 		}
-		else {
-			int md = (l + r) >> 1;
-			innner_apply(2 * p + 1, l, md, L, R, f);
-			innner_apply(2 * p + 2, md, r, L, R, f);
-		}
+		int md = (l + r) >> 1;
+		innner_apply(2 * p + 1, l, md, L, R, f);
+		innner_apply(2 * p + 2, md, r, L, R, f);
 	}
 public:
 	void apply(const int& l, const int& r, const F& x) {
-		//assert(0 <= l && l <= r && r <= n);
+		assert(0 <= l && l <= r && r <= n);
 		innner_apply(0, 0, sz, l, r, x);
 		cur++;
 	}
@@ -56,11 +53,11 @@ public:
 
 		vector<pair<int, F>> path;
 		path.emplace_back(dat[p]);
+		path.reserve(lg);
 		while (p) {
 			p = (p - 1) >> 1;
 			path.emplace_back(dat[p]);
 		};
-
 
 		sort(path.begin(), path.end());
 
