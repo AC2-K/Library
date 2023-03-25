@@ -1,8 +1,12 @@
+/// @brief Segment Tree(セグメント木)
+/// @tparam S 要素の型
+/// @tparam op 二項演算
+/// @tparam e 単位元
+/// @docs /home/ac2000/main/library/docs/data-structure/segtree.md
 template<class S, S(*op)(S, S), S(*e)()>
 class segtree {
 	int lg, sz, n;
 	vector<S> dat;
-
 public:
 	segtree() :segtree(0) {}
 	segtree(int n) : segtree(vector<S>(n, e())) {}
@@ -40,6 +44,9 @@ public:
 	}
 
 	inline S prod(int l, int r) const {
+		if (l == 0 && r == n) {
+			return dat[1];
+		}
 		l += sz, r += sz;
 		S sml = e(), smr = e();
 		while (l != r) {

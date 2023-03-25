@@ -4,8 +4,7 @@
 /// @tparam e 単位元
 /// @docs docs/data-structure/dynamic_segtree.md
 
-#pragma once
-template<class S,S(*op)(S,S),S(*e)()>
+template<class S, S(*op)(S, S), S(*e)()>
 class dynamic_segtree {
 public:
 	dynamic_segtree(const size_t& n) :n(n), root(nullptr) {}
@@ -20,22 +19,25 @@ private:
 	node* root;
 	size_t n;
 public:
-	void update(const size_t& p, const S& x) { 
+	void update(const size_t& p, const S& x) {
 		assert(0 <= p && p < n);
-		internal_update(root, 0, n, p, x); 
+		internal_update(root, 0, n, p, x);
 	}
-	void add(const size_t& p, const S& x) { 
+	void add(const size_t& p, const S& x) {
 		assert(0 <= p && p < n);
-		internal_add(root, 0, n, p, x); 
+		internal_add(root, 0, n, p, x);
 	}
-	S operator[](const size_t& p) { 
+	S operator[](const size_t& p) {
 		assert(0 <= p && p < n);
-		return internal_access(root, 0, n, p); 
+		return internal_access(root, 0, n, p);
 	}
 	S prod(const size_t& l, const size_t& r) {
 		assert(0 <= l && l <= r && r <= n);
 		if (l == r) {
 			return e();
+		}
+		if (l == 0 && r == n) {
+			return root->val;
 		}
 
 		return internal_prod(root, 0, n, l, r);
@@ -56,8 +58,8 @@ private:
 		if (idx < mid) internal_update(p->left, l, mid, idx, new_val);
 		else internal_update(p->right, mid, r, idx, new_val);
 		p->val = e();
-		if (p->left!=nullptr) p->val = op(p->left->val, p->val);
-		if (p->right!=nullptr) p->val = op(p->val, p->right->val);
+		if (p->left != nullptr) p->val = op(p->left->val, p->val);
+		if (p->right != nullptr) p->val = op(p->val, p->right->val);
 	}
 	void internal_add(node*& p, const size_t& l, const size_t& r, const  size_t& idx, const S& new_val) {
 		if (p == nullptr) {
@@ -73,8 +75,8 @@ private:
 		if (idx < mid) internal_add(p->left, l, mid, idx, new_val);
 		else internal_add(p->right, mid, r, idx, new_val);
 		p->val = e();
-		if (p->left!=nullptr) p->val = op(p->left->val, p->val);
-		if (p->right!=nullptr) p->val = op(p->val, p->right->val);
+		if (p->left != nullptr) p->val = op(p->left->val, p->val);
+		if (p->right != nullptr) p->val = op(p->val, p->right->val);
 	}
 
 
