@@ -1,4 +1,3 @@
-#pragma once
 template<__uint64_t mod>
 class static_modint {
 private:
@@ -91,7 +90,7 @@ public:
 		return (*this) = mint(r);
 	}
 
-	bool operator==(const mint& r) {
+	bool operator==(const mint& r) const {
 		return (*this).val() == r.val();
 	}
 	mint pow(u128 e) const {
@@ -220,7 +219,7 @@ public:
 		return (*this) = mint(r);
 	}
 
-	bool operator==(const mint& r) {
+	bool operator==(const mint& r) const {
 		return (*this).val() == r.val();
 	}
 	mint pow(u64 e) const {
@@ -257,6 +256,7 @@ public:
 		mt = v_;
 		return is;
 	}
+
 };
 ///@brief static modint(静的modint)
 ///@docs docs/math/static_modint.md

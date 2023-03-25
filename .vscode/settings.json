@@ -11,6 +11,7 @@
         "bit": "cpp",
         "future": "cpp",
         "memory": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "vector": "cpp"
     }
 }
