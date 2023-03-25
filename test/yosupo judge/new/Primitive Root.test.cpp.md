@@ -120,13 +120,14 @@ data:
     \                is_ok = false;\n                break;\n            }\n     \
     \   }\n        if (is_ok) {\n            return g;\n        }\n    }\n}\n\n//@brief\
     \ primitive root(\u539F\u59CB\u6839)\n#line 4 \"test/yosupo judge/new/Primitive\
-    \ Root.test.cpp\"\nint main(){\n    int q;\n    cin>>q;\n    while (q--){\n  \
-    \      ll p;\n        cin>>p;\n        ll ans=primitive_root(p);\n        cout<<ans<<'\\\
-    n';\n    }\n}\n"
+    \ Root.test.cpp\"\nint main(){\n    int q;\n    scanf(\"%d\", &q);\n    while\
+    \ (q--) {\n        ll p;\n        scanf(\"%lld\", &p);\n        ll ans = primitive_root(p);\n\
+    \        printf(\"%lld\\n\", ans);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#include\"\
     template.hpp\"\n#include\"math/primitive_root.hpp\"\nint main(){\n    int q;\n\
-    \    cin>>q;\n    while (q--){\n        ll p;\n        cin>>p;\n        ll ans=primitive_root(p);\n\
-    \        cout<<ans<<'\\n';\n    }\n}\n"
+    \    scanf(\"%d\", &q);\n    while (q--) {\n        ll p;\n        scanf(\"%lld\"\
+    , &p);\n        ll ans = primitive_root(p);\n        printf(\"%lld\\n\", ans);\n\
+    \    }\n}\n"
   dependsOn:
   - template.hpp
   - math/primitive_root.hpp
@@ -136,7 +137,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/new/Primitive Root.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 02:02:12+09:00'
+  timestamp: '2023-03-25 20:37:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/new/Primitive Root.test.cpp

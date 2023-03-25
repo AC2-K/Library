@@ -61,7 +61,7 @@ data:
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
     - icon: ':warning:'
       path: math/barrett.hpp
-      title: math/barrett.hpp
+      title: barret reduction
     - icon: ':warning:'
       path: math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
@@ -81,9 +81,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-    - icon: ':warning:'
-      path: math/modint.hpp
-      title: math/modint.hpp
     - icon: ':warning:'
       path: math/osak.hpp
       title: "Osak\u6CD5"

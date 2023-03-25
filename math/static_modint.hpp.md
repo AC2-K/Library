@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: math/modint.hpp
-    title: math/modint.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
@@ -158,8 +155,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/static_modint.hpp
-  requiredBy:
-  - math/modint.hpp
+  requiredBy: []
   timestamp: '2023-03-12 16:37:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
