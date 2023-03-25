@@ -2,8 +2,6 @@
 /// @tparam Type 要素の型
 /// @tparam SumType "和が" 収まるような型
 /// @docs docs/data-structure/BIT.md
-
-#pragma once
 template <typename Type, typename SumType = Type>
 class BIT {
     int _n;

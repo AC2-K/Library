@@ -1,10 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_subtree_sum"
 #include"template.hpp"
-#include"data-structure/segtree.hpp"
+#include"data-structure/BIT.hpp"
 #include"graph/euler_tour.hpp"
-ll op(ll x, ll y) { return x + y; }
-
-ll e() { return 0; }
 int main() {
     int n, q;
     cin >> n >> q;
@@ -21,12 +18,11 @@ int main() {
     }
     g.build();
 
-    segtree<ll, op, e> seg(2 * n);
+    BIT<ll> seg(2 * n);
     for (int v = 0; v < n; v++) {
         int in = g.idx(v).first;
-        seg.set(in, a[v]);
+        seg.add(in, a[v]);
     }
-    seg.build();
     while (q--) {
         int t;
         cin >> t;
@@ -36,14 +32,14 @@ int main() {
             int x;
             cin >> x;
             int in = g.idx(v).first;
-            seg.apply(in, x);
+            seg.add(in, x);
         }
         else {
             int v;
             cin >> v;
             int in, out;
             tie(in, out) = g.idx(v);
-            cout << seg.prod(in,out + 1) << '\n';
+            cout << seg.sum(in,out + 1) << '\n';
         }
     }
 }
