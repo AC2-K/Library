@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
@@ -44,7 +44,7 @@ data:
     \ {\n        int t;\n        scanf(\"%d\", &t);\n        if (t == 0) {\n     \
     \       int p, x;\n            scanf(\"%d%d\", &p, &x);\n            seg.add(p,\
     \ x);\n        } else {\n            int l, r;\n            scanf(\"%d%d\", &l,\
-    \ &r);\n            printf(\"%lld\", seg.sum(l, r));\n        }\n    }\n}\n"
+    \ &r);\n            printf(\"%lld\\n\", seg.sum(l, r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     #include\"template.hpp\"\n#include\"data-structure/BIT.hpp\"\nint main() {\n \
     \   int n, q;\n    cin >> n >> q;\n    BIT<ll, ll> seg(n);\n    rep(i,n){\n  \
@@ -52,16 +52,16 @@ data:
     \   while (q--) {\n        int t;\n        scanf(\"%d\", &t);\n        if (t ==\
     \ 0) {\n            int p, x;\n            scanf(\"%d%d\", &p, &x);\n        \
     \    seg.add(p, x);\n        } else {\n            int l, r;\n            scanf(\"\
-    %d%d\", &l, &r);\n            printf(\"%lld\", seg.sum(l, r));\n        }\n  \
-    \  }\n}"
+    %d%d\", &l, &r);\n            printf(\"%lld\\n\", seg.sum(l, r));\n        }\n\
+    \    }\n}"
   dependsOn:
   - template.hpp
   - data-structure/BIT.hpp
   isVerificationFile: true
   path: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 20:03:04+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-25 20:12:15+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
 layout: document

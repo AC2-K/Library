@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data-structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/BIT.hpp
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
@@ -40,7 +40,7 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -178,7 +178,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
       title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
       title: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
     - icon: ':heavy_check_mark:'
