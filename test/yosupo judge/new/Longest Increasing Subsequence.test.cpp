@@ -4,46 +4,41 @@
 using S = P;
 S op(S x, S y) { return max(x,y); }
 S e() { return P(0,0); }
-vector<int> press(const vector<int>&A){
-    vector<int> B;
-    vector<int> T;
-    rep(i,A.size())T.push_back(A[i]);
-    sort(all(T));
-    T.erase(unique(all(T)),T.end());
-    rep(i,A.size()){
-        int pos=lower_bound(all(T),A[i])-T.begin();
-        B.push_back(pos);
-    }
-    return B;
-}
 int main() {
     int n;
-    cin>>n;
+    scanf("%d", &n);
     vector<int> a(n);
-    for(auto&aa:a){
-        cin>>aa;
-    }   
-    a=press(a);
-    vector<int> prv(n,-1);
-    iota(all(prv),0);
-    segtree<S,op,e> dp(n+1);
-    rep(i,n){
-        auto[mx,p]=dp.prod(0,a[i]);
-        if(mx+1>=dp[a[i]].first){
-            prv[i]=p;
-            dp.update(a[i],P(mx+1,i));
+    for (auto& aa : a) {
+        scanf("%d", &aa);
+    }
+    {
+        vector<int> tmp = a;
+        sort(all(tmp));
+        tmp.erase(unique(all(tmp)), tmp.end());
+        for (auto& aa : a) {
+            aa = lower_bound(all(tmp), aa) - tmp.begin();
         }
     }
-    auto[res,cur]=dp.prod(0,n+1);
+    vector<int> prv(n, -1);
+    iota(all(prv), 0);
+    segtree<S, op, e> dp(n + 1);
+    rep(i, n) {
+        auto [mx, p] = dp.prod(0, a[i]);
+        if (mx + 1 >= dp[a[i]].first) {
+            prv[i] = p;
+            dp.update(a[i], P(mx + 1, i));
+        }
+    }
+    auto [res, cur] = dp.prod(0, n + 1);
     vector<int> idx;
-    rep(i,res){
-        idx.push_back(cur);
-        cur=prv[cur];
+    idx.reserve((size_t)res);
+    rep(i, res) {
+        idx.emplace_back(cur);
+        cur = prv[cur];
     }
-    cout<<idx.size()<<'\n';
+    printf("%lld\n", idx.size());
     reverse(all(idx));
-    for(auto&i:idx){
-        cout<<i<<' ';
+    for (auto& i : idx) {
+        printf("%d ", i);
     }
-    cout<<'\n';
 }

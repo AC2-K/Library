@@ -1,6 +1,6 @@
 #pragma once
 namespace internal {
-	//barret reduction
+	///@brief barret reduction
 	class barrett {
 		using u32 = uint32_t;
 		using u64 = uint64_t;
