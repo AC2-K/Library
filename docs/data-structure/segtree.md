@@ -54,7 +54,7 @@ $\prod_{i\in[l,r)}{a_i}$を返す。ただし、$l=r$の時は$e$を返す。
 - 計算量:$O(\log n)$
 
 ```cpp
-void seg.add(int pos,S x)
+void seg.apply(int pos,S x)
 ```
 $a_{\text{pos}}\leftarrow \text{op}(a_{\text{pos}},x)$とする
 - 制約:$0\leq \text{pos}<n$

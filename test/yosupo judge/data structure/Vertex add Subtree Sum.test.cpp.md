@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: data-structure/segtree.hpp
-    title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    title: data-structure/segtree.hpp
   - icon: ':heavy_check_mark:'
     path: data-structure/sparse_table.hpp
     title: Sparse Table
@@ -34,34 +34,23 @@ data:
     constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
     \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
     template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/segtree.hpp\"\
-    \n/// @brief Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n/// @tparam S\
-    \ \u8981\u7D20\u306E\u578B\n/// @tparam op \u4E8C\u9805\u6F14\u7B97\n/// @tparam\
-    \ e \u5358\u4F4D\u5143\n/// @docs docs/data-structure/segtree.md\n\ntemplate<class\
-    \ S, S(*op)(S, S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S> dat;\n\
-    \    void Init(int n_) {\n        int x = 1;\n        while (n_ > x) {\n     \
-    \       x <<= 1;\n        }\n        n = x;\n    }\npublic:\n    segtree(int n_)\
-    \ : segtree(vector<S>(n_, e())) {   }\n    segtree(const vector<S>& v) :dat(4\
-    \ * v.size()) {\n        Init(v.size());\n        for (int i = 0; i < v.size();\
-    \ i++) {\n            set(i, v[i]);\n        }\n        build();\n    }\n    inline\
-    \ void set(int pos, S val) {\n        assert(0 <= pos && pos < n);\n        dat[pos\
-    \ + n - 1] = val;\n    }\n    void build() {\n        for (int k = n - 2; k >=\
-    \ 0; k--) {\n            dat[k] = op(dat[(k << 1) + 1], dat[(k << 1) + 2]);\n\
-    \        }\n    }\n\n    void update(int pos, S val) {\n        assert(0 <= pos\
-    \ && pos < n);\n        pos += n - 1;\n        dat[pos] = val;\n        while\
-    \ (pos > 0) {\n            pos = (pos - 1) >> 1;\n            dat[pos] = op(dat[(pos\
-    \ << 1) + 1], dat[(pos << 1) + 2]);\n        }\n    }\n    inline S prod(int a,\
-    \ int b) {\n        assert(0 <= a && b <= n);\n        assert(a <= b);\n     \
-    \   if (a == 0 && b == n)return dat[0];\n        return prod(a, b, 0, 0, n);\n\
-    \    }\n\nprivate:\n    S prod(int a, int b, int id, int l, int r) {\n       \
-    \ if (r <= a || b <= l) {\n            return e();\n        }\n        else if\
-    \ (a <= l && r <= b) {\n            return dat[id];\n        }\n        else {\n\
-    \            int mid = (l + r) >> 1;\n            S vl = prod(a, b, (id << 1)\
-    \ + 1, l, mid);\n            S vr = prod(a, b, (id << 1) + 2, mid, r);\n     \
-    \       return op(vl, vr);\n        }\n    }\n\npublic:\n    //a[pos] <- a[pos]\u30FB\
-    x\n    void add(int pos, S x) {\n        update(pos, op(dat[n + pos - 1], x));\n\
-    \    }\n\n    S operator [](int pos) {\n        return dat[n + pos - 1];\n   \
-    \ }\n};\n#line 1 \"data-structure/sparse_table.hpp\"\n/// @brief Sparse Table\n\
-    /// @tparam T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
+    \ntemplate<class S, S(*op)(S, S), S(*e)()>\nclass segtree {\n\tint lg, sz, n;\n\
+    \tvector<S> dat;\n\npublic:\n\tsegtree() :segtree(0) {}\n\tsegtree(int n) : segtree(vector<S>(n,\
+    \ e())) {}\n\tsegtree(const vector<S>& vec) : n((int)vec.size()) {\n\t\tsz = 1,\
+    \ lg = 0;\n\t\twhile (sz <= n) {\n\t\t\tsz <<= 1;\n\t\t\tlg++;\n\t\t}\n\n\t\t\
+    dat = vector<S>(sz << 1, e());\n\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\tset(i,\
+    \ vec[i]);\n\t\t}\n\t\tbuild();\n\t}\n\n\tinline void set(const int p, const S&\
+    \ v) {\n\t\tdat[sz + p] = v;\n\t}\n\tinline void build() {\n\t\tfor (int i = sz\
+    \ - 1; i > 0; i--) {\n\t\t\tdat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);\n\t\t\
+    }\n\t}\n\tS operator[](const int p) const { return dat[sz + p]; }\n\n\tinline\
+    \ void update(int p, const S& v) {\n\t\tp += sz;\n\t\tdat[p] = v;\n\t\twhile (p\
+    \ >>= 1) {\n\t\t\tdat[p] = op(dat[(p << 1)], dat[(p << 1) ^ 1]);\n\t\t}\n\t}\n\
+    \n\tinline S prod(int l, int r) const {\n\t\tl += sz, r += sz;\n\t\tS sml = e(),\
+    \ smr = e();\n\t\twhile (l != r) {\n\t\t\tif (l & 1)sml = op(sml, dat[l++]);\n\
+    \t\t\tif (r & 1)smr = op(dat[--r], smr);\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t\t\
+    return op(sml, smr);\n\t}\n\tinline void apply(int p, const S& v) {\n\t\tupdate(p,\
+    \ op(dat[sz + p], v));\n\t}\n};\n#line 1 \"data-structure/sparse_table.hpp\"\n\
+    /// @brief Sparse Table\n/// @tparam T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
     \ntemplate<class T>\nclass sparse_table {\n    vector<T> vec;\n    vector<vector<T>>\
     \ table;\n    vector<int> look_up;\npublic:\n    sparse_table(int n) : vec(n)\
     \ {}\n    sparse_table(const vector<T>& vec) : vec(vec) {}\n    void set(int p,\
@@ -103,7 +92,7 @@ data:
     \ a[v]);\n    }\n    seg.build();\n    while (q--) {\n        int t;\n       \
     \ cin >> t;\n        if (t == 0) {\n            int v;\n            cin >> v;\n\
     \            int x;\n            cin >> x;\n            int in = g.idx(v).first;\n\
-    \            seg.add(in, x);\n        }\n        else {\n            int v;\n\
+    \            seg.apply(in, x);\n        }\n        else {\n            int v;\n\
     \            cin >> v;\n            int in, out;\n            tie(in, out) = g.idx(v);\n\
     \            cout << seg.prod(in,out + 1) << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
@@ -117,10 +106,10 @@ data:
     \       seg.set(in, a[v]);\n    }\n    seg.build();\n    while (q--) {\n     \
     \   int t;\n        cin >> t;\n        if (t == 0) {\n            int v;\n   \
     \         cin >> v;\n            int x;\n            cin >> x;\n            int\
-    \ in = g.idx(v).first;\n            seg.add(in, x);\n        }\n        else {\n\
-    \            int v;\n            cin >> v;\n            int in, out;\n       \
-    \     tie(in, out) = g.idx(v);\n            cout << seg.prod(in,out + 1) << '\\\
-    n';\n        }\n    }\n}"
+    \ in = g.idx(v).first;\n            seg.apply(in, x);\n        }\n        else\
+    \ {\n            int v;\n            cin >> v;\n            int in, out;\n   \
+    \         tie(in, out) = g.idx(v);\n            cout << seg.prod(in,out + 1) <<\
+    \ '\\n';\n        }\n    }\n}"
   dependsOn:
   - template.hpp
   - data-structure/segtree.hpp
@@ -129,7 +118,7 @@ data:
   isVerificationFile: true
   path: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 14:30:40+09:00'
+  timestamp: '2023-03-25 19:44:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp

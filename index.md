@@ -25,7 +25,7 @@ data:
         \u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree.hpp
-      title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+      title: data-structure/segtree.hpp
     - icon: ':heavy_check_mark:'
       path: data-structure/sparse_table.hpp
       title: Sparse Table
@@ -35,14 +35,14 @@ data:
       path: debug.hpp
       title: debug.hpp
     - icon: ':warning:'
+      path: main.cpp
+      title: main.cpp
+    - icon: ':warning:'
       path: out.cpp
       title: out.cpp
     - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
-    - icon: ':warning:'
-      path: test.py
-      title: test.py
   - name: graph
     pages:
     - icon: ':heavy_check_mark:'
