@@ -14,6 +14,7 @@
 "test/AOJ/NTL/1/E.test.cpp": "2023-03-10 13:31:13 +0900",
 "test/yosupo judge/data structure/Line Add Get Min.test.cpp": "2023-03-25 02:02:12 +0900",
 "test/yosupo judge/data structure/Point Set Range Composite.test.cpp": "2023-03-25 19:44:33 +0900",
+"test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp": "2023-03-25 20:12:15 +0900",
 "test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp": "2023-03-25 20:03:04 +0900",
 "test/yosupo judge/data structure/Static RMQ.test.cpp": "2023-03-25 14:30:40 +0900",
 "test/yosupo judge/data structure/Static Range Sum.test.cpp": "2023-03-25 19:44:33 +0900",
