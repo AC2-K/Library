@@ -21,32 +21,50 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
     title: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/segtree.md
     document_title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
-    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 312, in update\n    raise BundleErrorAt(path, i + 1, \"#pragma once found\
-    \ in a non-first line\")\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt:\
-    \ data-structure/segtree.hpp: line 7: #pragma once found in a non-first line\n"
-  code: "/// @brief Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n/// @tparam\
-    \ S \u8981\u7D20\u306E\u578B\n/// @tparam op \u4E8C\u9805\u6F14\u7B97\n/// @tparam\
-    \ e \u5358\u4F4D\u5143\n/// @docs docs/data-structure/segtree.md\n\n#pragma once\n\
-    template<class S, S(*op)(S, S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S>\
+  bundledCode: "#line 1 \"data-structure/segtree.hpp\"\n/// @brief Segment Tree(\u30BB\
+    \u30B0\u30E1\u30F3\u30C8\u6728)\n/// @tparam S \u8981\u7D20\u306E\u578B\n/// @tparam\
+    \ op \u4E8C\u9805\u6F14\u7B97\n/// @tparam e \u5358\u4F4D\u5143\n/// @docs docs/data-structure/segtree.md\n\
+    \ntemplate<class S, S(*op)(S, S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S>\
     \ dat;\n    void Init(int n_) {\n        int x = 1;\n        while (n_ > x) {\n\
     \            x <<= 1;\n        }\n        n = x;\n    }\npublic:\n    segtree(int\
     \ n_) : segtree(vector<S>(n_, e())) {   }\n    segtree(const vector<S>& v) :dat(4\
+    \ * v.size()) {\n        Init(v.size());\n        for (int i = 0; i < v.size();\
+    \ i++) {\n            set(i, v[i]);\n        }\n        build();\n    }\n    inline\
+    \ void set(int pos, S val) {\n        assert(0 <= pos && pos < n);\n        dat[pos\
+    \ + n - 1] = val;\n    }\n    void build() {\n        for (int k = n - 2; k >=\
+    \ 0; k--) {\n            dat[k] = op(dat[(k << 1) + 1], dat[(k << 1) + 2]);\n\
+    \        }\n    }\n\n    void update(int pos, S val) {\n        assert(0 <= pos\
+    \ && pos < n);\n        pos += n - 1;\n        dat[pos] = val;\n        while\
+    \ (pos > 0) {\n            pos = (pos - 1) >> 1;\n            dat[pos] = op(dat[(pos\
+    \ << 1) + 1], dat[(pos << 1) + 2]);\n        }\n    }\n    inline S prod(int a,\
+    \ int b) {\n        assert(0 <= a && b <= n);\n        assert(a <= b);\n     \
+    \   if (a == 0 && b == n)return dat[0];\n        return prod(a, b, 0, 0, n);\n\
+    \    }\n\nprivate:\n    S prod(int a, int b, int id, int l, int r) {\n       \
+    \ if (r <= a || b <= l) {\n            return e();\n        }\n        else if\
+    \ (a <= l && r <= b) {\n            return dat[id];\n        }\n        else {\n\
+    \            int mid = (l + r) >> 1;\n            S vl = prod(a, b, (id << 1)\
+    \ + 1, l, mid);\n            S vr = prod(a, b, (id << 1) + 2, mid, r);\n     \
+    \       return op(vl, vr);\n        }\n    }\n\npublic:\n    //a[pos] <- a[pos]\u30FB\
+    x\n    void add(int pos, S x) {\n        update(pos, op(dat[n + pos - 1], x));\n\
+    \    }\n\n    S operator [](int pos) {\n        return dat[n + pos - 1];\n   \
+    \ }\n};\n"
+  code: "/// @brief Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n/// @tparam\
+    \ S \u8981\u7D20\u306E\u578B\n/// @tparam op \u4E8C\u9805\u6F14\u7B97\n/// @tparam\
+    \ e \u5358\u4F4D\u5143\n/// @docs docs/data-structure/segtree.md\n\ntemplate<class\
+    \ S, S(*op)(S, S), S(*e)()>\nclass segtree {\n    int n;\n    vector<S> dat;\n\
+    \    void Init(int n_) {\n        int x = 1;\n        while (n_ > x) {\n     \
+    \       x <<= 1;\n        }\n        n = x;\n    }\npublic:\n    segtree(int n_)\
+    \ : segtree(vector<S>(n_, e())) {   }\n    segtree(const vector<S>& v) :dat(4\
     \ * v.size()) {\n        Init(v.size());\n        for (int i = 0; i < v.size();\
     \ i++) {\n            set(i, v[i]);\n        }\n        build();\n    }\n    inline\
     \ void set(int pos, S val) {\n        assert(0 <= pos && pos < n);\n        dat[pos\
@@ -71,8 +89,8 @@ data:
   isVerificationFile: false
   path: data-structure/segtree.hpp
   requiredBy: []
-  timestamp: '2023-03-25 02:02:12+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-03-25 14:30:40+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
