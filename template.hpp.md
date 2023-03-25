@@ -3,9 +3,6 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
-  - icon: ':warning:'
     path: test/AOJ/DSL/2/D2.cpp
     title: test/AOJ/DSL/2/D2.cpp
   _extendedVerifiedWith:
@@ -52,11 +49,14 @@ data:
     path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
     title: test/yosupo judge/data structure/Line Add Get Min.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-    title: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
     title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+  - icon: ':x:'
+    path: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
+    title: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
+    title: test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Static RMQ.test.cpp
     title: test/yosupo judge/data structure/Static RMQ.test.cpp
@@ -99,9 +99,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-1471.test.cpp
     title: test/yuki/No-1471.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -193,17 +193,17 @@ data:
   path: template.hpp
   requiredBy:
   - test/AOJ/DSL/2/D2.cpp
-  - main.cpp
   timestamp: '2023-03-10 13:31:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No-1471.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   - test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
+  - test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
   - test/yosupo judge/data structure/UnionFind.test.cpp
-  - test/yosupo judge/data structure/Point Add Range Sum.test.cpp
   - test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
+  - test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/yosupo judge/data structure/Static RMQ.test.cpp
   - test/yosupo judge/data structure/Line Add Get Min.test.cpp
   - test/yosupo judge/new/Primitive Root.test.cpp

@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: data-structure/segtree.hpp
-    title: data-structure/segtree.hpp
+  - icon: ':question:'
+    path: data-structure/BIT.hpp
+    title: Binary Index Tree
   - icon: ':heavy_check_mark:'
     path: data-structure/sparse_table.hpp
     title: Sparse Table
   - icon: ':heavy_check_mark:'
     path: graph/euler_tour.hpp
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -33,24 +33,18 @@ data:
     \ = 1e-6;\nconst long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
     constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
     \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
-    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/segtree.hpp\"\
-    \ntemplate<class S, S(*op)(S, S), S(*e)()>\nclass segtree {\n\tint lg, sz, n;\n\
-    \tvector<S> dat;\n\npublic:\n\tsegtree() :segtree(0) {}\n\tsegtree(int n) : segtree(vector<S>(n,\
-    \ e())) {}\n\tsegtree(const vector<S>& vec) : n((int)vec.size()) {\n\t\tsz = 1,\
-    \ lg = 0;\n\t\twhile (sz <= n) {\n\t\t\tsz <<= 1;\n\t\t\tlg++;\n\t\t}\n\n\t\t\
-    dat = vector<S>(sz << 1, e());\n\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\tset(i,\
-    \ vec[i]);\n\t\t}\n\t\tbuild();\n\t}\n\n\tinline void set(const int p, const S&\
-    \ v) {\n\t\tdat[sz + p] = v;\n\t}\n\tinline void build() {\n\t\tfor (int i = sz\
-    \ - 1; i > 0; i--) {\n\t\t\tdat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);\n\t\t\
-    }\n\t}\n\tS operator[](const int p) const { return dat[sz + p]; }\n\n\tinline\
-    \ void update(int p, const S& v) {\n\t\tp += sz;\n\t\tdat[p] = v;\n\t\twhile (p\
-    \ >>= 1) {\n\t\t\tdat[p] = op(dat[(p << 1)], dat[(p << 1) ^ 1]);\n\t\t}\n\t}\n\
-    \n\tinline S prod(int l, int r) const {\n\t\tl += sz, r += sz;\n\t\tS sml = e(),\
-    \ smr = e();\n\t\twhile (l != r) {\n\t\t\tif (l & 1)sml = op(sml, dat[l++]);\n\
-    \t\t\tif (r & 1)smr = op(dat[--r], smr);\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t\t\
-    return op(sml, smr);\n\t}\n\tinline void apply(int p, const S& v) {\n\t\tupdate(p,\
-    \ op(dat[sz + p], v));\n\t}\n};\n#line 1 \"data-structure/sparse_table.hpp\"\n\
-    /// @brief Sparse Table\n/// @tparam T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
+    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/BIT.hpp\"\
+    \n/// @brief Binary Index Tree\n/// @tparam Type \u8981\u7D20\u306E\u578B\n///\
+    \ @tparam SumType \"\u548C\u304C\" \u53CE\u307E\u308B\u3088\u3046\u306A\u578B\n\
+    /// @docs docs/data-structure/BIT.md\ntemplate <typename Type, typename SumType\
+    \ = Type>\nclass BIT {\n    int _n;\n    vector<SumType> _dat;\npublic:\n    explicit\
+    \ BIT(int _n) : _n(_n), _dat(_n, SumType()) {}\n\n    inline void add(int p, Type\
+    \ v) {\n        p++;\n        for (; p <= _n; p += p & (-p)) {\n            _dat[p\
+    \ - 1] += SumType(v);\n        }\n    }\n\n    inline SumType sum(int p) {\n \
+    \       SumType res = 0;\n        for (; p > 0; p -= p & -p) {\n            res\
+    \ += _dat[p - 1];\n        }\n        return res;\n    }\n\n    inline SumType\
+    \ sum(int l, int r) { return sum(r) - sum(l); }\n};\n#line 1 \"data-structure/sparse_table.hpp\"\
+    \n/// @brief Sparse Table\n/// @tparam T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
     \ntemplate<class T>\nclass sparse_table {\n    vector<T> vec;\n    vector<vector<T>>\
     \ table;\n    vector<int> look_up;\npublic:\n    sparse_table(int n) : vec(n)\
     \ {}\n    sparse_table(const vector<T>& vec) : vec(vec) {}\n    void set(int p,\
@@ -83,42 +77,39 @@ data:
     \      int p = lca(v, u);\n        return depth[v] + depth[u] - 2 * depth[p];\n\
     \    }\n\n    bool is_in_subtree(int par,int v){return (in[par] <= in[v] && out[v]\
     \ <= out[par]);}\n};\n#line 5 \"test/yosupo judge/data structure/Vertex add Subtree\
-    \ Sum.test.cpp\"\nll op(ll x, ll y) { return x + y; }\n\nll e() { return 0; }\n\
-    int main() {\n    int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n    for\
+    \ Sum.test.cpp\"\nint main() {\n    int n, q;\n    cin >> n >> q;\n    vector<ll>\
+    \ a(n);\n    for (auto& aa : a) {\n        cin >> aa;\n    }\n\n    EulerTour\
+    \ g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n\
+    \        g.add_edge(i, p);\n    }\n    g.build();\n\n    BIT<ll> seg(2 * n);\n\
+    \    for (int v = 0; v < n; v++) {\n        int in = g.idx(v).first;\n       \
+    \ seg.add(in, a[v]);\n    }\n    while (q--) {\n        int t;\n        cin >>\
+    \ t;\n        if (t == 0) {\n            int v;\n            cin >> v;\n     \
+    \       int x;\n            cin >> x;\n            int in = g.idx(v).first;\n\
+    \            seg.add(in, x);\n        }\n        else {\n            int v;\n\
+    \            cin >> v;\n            int in, out;\n            tie(in, out) = g.idx(v);\n\
+    \            cout << seg.sum(in,out + 1) << '\\n';\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
+    \n#include\"template.hpp\"\n#include\"data-structure/BIT.hpp\"\n#include\"graph/euler_tour.hpp\"\
+    \nint main() {\n    int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n    for\
     \ (auto& aa : a) {\n        cin >> aa;\n    }\n\n    EulerTour g(n);\n    for\
     \ (int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n        g.add_edge(i,\
-    \ p);\n    }\n    g.build();\n\n    segtree<ll, op, e> seg(2 * n);\n    for (int\
-    \ v = 0; v < n; v++) {\n        int in = g.idx(v).first;\n        seg.set(in,\
-    \ a[v]);\n    }\n    seg.build();\n    while (q--) {\n        int t;\n       \
-    \ cin >> t;\n        if (t == 0) {\n            int v;\n            cin >> v;\n\
-    \            int x;\n            cin >> x;\n            int in = g.idx(v).first;\n\
-    \            seg.apply(in, x);\n        }\n        else {\n            int v;\n\
-    \            cin >> v;\n            int in, out;\n            tie(in, out) = g.idx(v);\n\
-    \            cout << seg.prod(in,out + 1) << '\\n';\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
-    \n#include\"template.hpp\"\n#include\"data-structure/segtree.hpp\"\n#include\"\
-    graph/euler_tour.hpp\"\nll op(ll x, ll y) { return x + y; }\n\nll e() { return\
-    \ 0; }\nint main() {\n    int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n\
-    \    for (auto& aa : a) {\n        cin >> aa;\n    }\n\n    EulerTour g(n);\n\
-    \    for (int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n      \
-    \  g.add_edge(i, p);\n    }\n    g.build();\n\n    segtree<ll, op, e> seg(2 *\
-    \ n);\n    for (int v = 0; v < n; v++) {\n        int in = g.idx(v).first;\n \
-    \       seg.set(in, a[v]);\n    }\n    seg.build();\n    while (q--) {\n     \
-    \   int t;\n        cin >> t;\n        if (t == 0) {\n            int v;\n   \
-    \         cin >> v;\n            int x;\n            cin >> x;\n            int\
-    \ in = g.idx(v).first;\n            seg.apply(in, x);\n        }\n        else\
-    \ {\n            int v;\n            cin >> v;\n            int in, out;\n   \
-    \         tie(in, out) = g.idx(v);\n            cout << seg.prod(in,out + 1) <<\
-    \ '\\n';\n        }\n    }\n}"
+    \ p);\n    }\n    g.build();\n\n    BIT<ll> seg(2 * n);\n    for (int v = 0; v\
+    \ < n; v++) {\n        int in = g.idx(v).first;\n        seg.add(in, a[v]);\n\
+    \    }\n    while (q--) {\n        int t;\n        cin >> t;\n        if (t ==\
+    \ 0) {\n            int v;\n            cin >> v;\n            int x;\n      \
+    \      cin >> x;\n            int in = g.idx(v).first;\n            seg.add(in,\
+    \ x);\n        }\n        else {\n            int v;\n            cin >> v;\n\
+    \            int in, out;\n            tie(in, out) = g.idx(v);\n            cout\
+    \ << seg.sum(in,out + 1) << '\\n';\n        }\n    }\n}"
   dependsOn:
   - template.hpp
-  - data-structure/segtree.hpp
+  - data-structure/BIT.hpp
   - graph/euler_tour.hpp
   - data-structure/sparse_table.hpp
   isVerificationFile: true
   path: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 19:44:33+09:00'
+  timestamp: '2023-03-25 20:03:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp

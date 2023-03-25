@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data-structure
     pages:
-    - icon: ':warning:'
+    - icon: ':question:'
       path: data-structure/BIT.hpp
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
@@ -40,7 +40,7 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -176,11 +176,14 @@ data:
       path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
       title: test/yosupo judge/data structure/Line Add Get Min.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-      title: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-    - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
       title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+    - icon: ':x:'
+      path: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
+      title: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
+      title: test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/data structure/Static RMQ.test.cpp
       title: test/yosupo judge/data structure/Static RMQ.test.cpp

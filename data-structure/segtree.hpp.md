@@ -1,29 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/B.test.cpp
     title: test/AOJ/DSL/2/B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-    title: test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
     title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
+    title: test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Static Range Sum.test.cpp
     title: test/yosupo judge/data structure/Static Range Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
-    title: test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
-    title: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
     title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
@@ -67,16 +58,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data-structure/segtree.hpp
-  requiredBy:
-  - main.cpp
+  requiredBy: []
   timestamp: '2023-03-25 19:44:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-  - test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
-  - test/yosupo judge/data structure/Point Add Range Sum.test.cpp
-  - test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
+  - test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
   - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
   - test/AOJ/DSL/2/B.test.cpp
 documentation_of: data-structure/segtree.hpp
