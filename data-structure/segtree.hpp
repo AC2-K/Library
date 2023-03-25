@@ -4,7 +4,6 @@
 /// @tparam e 単位元
 /// @docs docs/data-structure/segtree.md
 
-#pragma once
 template<class S, S(*op)(S, S), S(*e)()>
 class segtree {
     int n;

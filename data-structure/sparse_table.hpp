@@ -2,7 +2,6 @@
 /// @tparam T 要素の型
 /// @docs docs/data-structure/sparse_table.md
 
-#pragma once
 template<class T>
 class sparse_table {
     vector<T> vec;
