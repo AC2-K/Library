@@ -35,8 +35,8 @@ int main() {
             int v, x;
             cin >> v >> x;
             auto [in, out] = g.idx(v);
-            seg.add(in, x);
-            seg.add(out + 1, -x);
+            seg.apply(in, x);
+            seg.apply(out + 1, -x);
         }
         else {
             int v, u;
