@@ -15,7 +15,7 @@ int main() {
             ll i,x;
             cin>>i>>x;
             i--;
-            seg.add(i,x);
+            seg.apply(i,x);
         }else{
             int l,r;
             cin>>l>>r;

@@ -36,7 +36,7 @@ int main() {
             int x;
             cin >> x;
             int in = g.idx(v).first;
-            seg.add(in, x);
+            seg.apply(in, x);
         }
         else {
             int v;

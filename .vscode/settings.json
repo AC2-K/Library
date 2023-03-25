@@ -1,5 +1,16 @@
 {
     "files.associations": {
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "*.tcc": "cpp",
+        "optional": "cpp",
+        "fstream": "cpp",
+        "sstream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "utility": "cpp",
+        "bit": "cpp",
+        "future": "cpp",
+        "memory": "cpp",
+        "cmath": "cpp"
     }
 }

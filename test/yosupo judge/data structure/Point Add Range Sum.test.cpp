@@ -18,7 +18,7 @@ int main(){
         if(t==0){
             int p,x;
             cin>>p>>x;
-            seg.add(p,x);
+            seg.apply(p,x);
         }else{
             int l,r;
             cin>>l>>r;
