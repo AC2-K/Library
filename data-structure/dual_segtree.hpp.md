@@ -7,9 +7,6 @@ data:
     title: test/AOJ/DSL/2/D2.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: main.test.cpp
-    title: main.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/E2.test.cpp
     title: test/AOJ/DSL/2/E2.test.cpp
   - icon: ':heavy_check_mark:'
@@ -72,7 +69,6 @@ data:
   timestamp: '2023-03-26 08:02:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - main.test.cpp
   - test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
   - test/AOJ/DSL/2/E2.test.cpp
 documentation_of: data-structure/dual_segtree.hpp

@@ -4,9 +4,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: main.test.cpp
-    title: main.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
     title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -164,7 +161,6 @@ data:
   timestamp: '2023-03-26 08:02:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - main.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
   - test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
   - test/yosupo judge/matrix/Matrix Product.test.cpp

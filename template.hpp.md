@@ -7,9 +7,6 @@ data:
     title: test/AOJ/DSL/2/D2.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: main.test.cpp
-    title: main.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/1/C.test.cpp
     title: test/AOJ/ALDS/1/C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -66,6 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/Static Range Sum.test.cpp
     title: test/yosupo judge/data structure/Static Range Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
+    title: test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/data structure/UnionFind.test.cpp
     title: test/yosupo judge/data structure/UnionFind.test.cpp
@@ -202,7 +202,6 @@ data:
   timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - main.test.cpp
   - test/yuki/No-1471.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
@@ -210,6 +209,7 @@ data:
   - test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
   - test/yosupo judge/data structure/UnionFind.test.cpp
   - test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
+  - test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
   - test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/yosupo judge/data structure/Static RMQ.test.cpp
   - test/yosupo judge/data structure/Line Add Get Min.test.cpp
