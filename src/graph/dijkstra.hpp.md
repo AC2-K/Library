@@ -1,0 +1,49 @@
+---
+data:
+  _extendedDependsOn: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: hpp
+  _verificationStatusIcon: ':warning:'
+  attributes:
+    document_title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
+    links: []
+  bundledCode: "#line 1 \"src/graph/dijkstra.hpp\"\nstruct edge {\n\tint to;\n\tll\
+    \ cost;\n\tedge(int to, ll cost) : to(to), cost(cost) {}\n};\n/// @brief Dijkstra\
+    \ (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)\n/// @note edge\u69CB\u9020\u4F53\
+    \u3092\u3055\u3089\u306B\u5BA3\u8A00\u3057\u306A\u3044\u3053\u3068!!!\npair<vector<uint64_t>,\
+    \ vector<int>> dijkstra(int s,\n\tconst vector<vector<edge>>& g) {\n\tvector<uint64_t>\
+    \ dist(g.size(), infl);\n\tvector<int> pre(g.size(), -1);\n\tpriority_queue<pair<ll,\
+    \ int>, vector<pair<ll, int>>, greater<pair<ll, int>>> que;\n\tque.emplace(0,\
+    \ s);\n\tdist[s] = 0;\n\tpre[s] = s;\n\twhile (!que.empty()) {\n\t\tauto [d, v]\
+    \ = que.top();\n\t\tque.pop();\n\t\tif (dist[v] != d) {\n\t\t\tcontinue;\n\t\t\
+    }\n\n\t\tfor (const auto& [nv, c] : g[v]) {\n\t\t\tif (dist[v] + c < dist[nv])\
+    \ {\n\t\t\t\tdist[nv] = dist[v] + c;\n\t\t\t\tpre[nv] = v;\n\t\t\t\tque.emplace(dist[nv],\
+    \ nv);\n\t\t\t}\n\t\t}\n\t}\n\treturn { dist, pre };\n}\n"
+  code: "struct edge {\n\tint to;\n\tll cost;\n\tedge(int to, ll cost) : to(to), cost(cost)\
+    \ {}\n};\n/// @brief Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)\n///\
+    \ @note edge\u69CB\u9020\u4F53\u3092\u3055\u3089\u306B\u5BA3\u8A00\u3057\u306A\
+    \u3044\u3053\u3068!!!\npair<vector<uint64_t>, vector<int>> dijkstra(int s,\n\t\
+    const vector<vector<edge>>& g) {\n\tvector<uint64_t> dist(g.size(), infl);\n\t\
+    vector<int> pre(g.size(), -1);\n\tpriority_queue<pair<ll, int>, vector<pair<ll,\
+    \ int>>, greater<pair<ll, int>>> que;\n\tque.emplace(0, s);\n\tdist[s] = 0;\n\t\
+    pre[s] = s;\n\twhile (!que.empty()) {\n\t\tauto [d, v] = que.top();\n\t\tque.pop();\n\
+    \t\tif (dist[v] != d) {\n\t\t\tcontinue;\n\t\t}\n\n\t\tfor (const auto& [nv, c]\
+    \ : g[v]) {\n\t\t\tif (dist[v] + c < dist[nv]) {\n\t\t\t\tdist[nv] = dist[v] +\
+    \ c;\n\t\t\t\tpre[nv] = v;\n\t\t\t\tque.emplace(dist[nv], nv);\n\t\t\t}\n\t\t\
+    }\n\t}\n\treturn { dist, pre };\n}\n"
+  dependsOn: []
+  isVerificationFile: false
+  path: src/graph/dijkstra.hpp
+  requiredBy: []
+  timestamp: '2023-03-27 01:42:28+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: src/graph/dijkstra.hpp
+layout: document
+redirect_from:
+- /library/src/graph/dijkstra.hpp
+- /library/src/graph/dijkstra.hpp.html
+title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
+---
