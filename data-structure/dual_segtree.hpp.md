@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/E2.test.cpp
     title: test/AOJ/DSL/2/E2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/dual_segtree.md
     document_title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
@@ -67,7 +67,7 @@ data:
   requiredBy:
   - test/AOJ/DSL/2/D2.cpp
   timestamp: '2023-03-26 08:02:40+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - test/AOJ/DSL/2/E2.test.cpp

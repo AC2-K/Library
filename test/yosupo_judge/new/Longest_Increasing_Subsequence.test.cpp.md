@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/longest_increasing_subsequence
     links:
     - https://judge.yosupo.jp/problem/longest_increasing_subsequence
-  bundledCode: "#line 1 \"test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
     \n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
     \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
@@ -47,7 +47,7 @@ data:
     \ (l != r) {\n\t\t\tif (l & 1)sml = op(sml, dat[l++]);\n\t\t\tif (r & 1)smr =\
     \ op(dat[--r], smr);\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t\treturn op(sml, smr);\n\
     \t}\n\tinline void apply(int p, const S& v) {\n\t\tupdate(p, op(dat[sz + p], v));\n\
-    \t}\n};\n#line 4 \"test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp\"\
+    \t}\n};\n#line 4 \"test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp\"\
     \nusing S = P;\nS op(S x, S y) { return max(x,y); }\nS e() { return P(0,0); }\n\
     int main() {\n    int n;\n    scanf(\"%d\", &n);\n    vector<int> a(n);\n    for\
     \ (auto& aa : a) {\n        scanf(\"%d\", &aa);\n    }\n    {\n        vector<int>\
@@ -80,15 +80,15 @@ data:
   - template.hpp
   - data-structure/segtree.hpp
   isVerificationFile: true
-  path: test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp
+  path: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 20:22:21+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-26 20:37:47+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp
+documentation_of: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp
-- /verify/test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp.html
-title: test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp
+- /verify/test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
+- /verify/test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp.html
+title: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
 ---
