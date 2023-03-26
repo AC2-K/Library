@@ -1,39 +1,67 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: src/data-structure/BIT.hpp
+    title: Binary Index Tree
+  - icon: ':question:'
+    path: src/template.hpp
+    title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
-  attributes: {}
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
-    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
-    \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
-    \ File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: template.hpp:\
-    \ line -1: no such header\n"
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
+    links:
+    - https://judge.yosupo.jp/problem/point_add_range_sum
+  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n#line\
+    \ 2 \"src/template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
+    \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
+    \ popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\n\
+    using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
+    \ int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps\
+    \ = 1e-6;\nconst long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
+    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
+    \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
+    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"src/data-structure/BIT.hpp\"\
+    \n/// @brief Binary Index Tree\n/// @tparam Type \u8981\u7D20\u306E\u578B\n///\
+    \ @tparam SumType \"\u548C\u304C\" \u53CE\u307E\u308B\u3088\u3046\u306A\u578B\n\
+    /// @docs docs/data-structure/BIT.md\ntemplate <typename Type, typename SumType\
+    \ = Type>\nclass BIT {\n    int _n;\n    vector<SumType> _dat;\npublic:\n    explicit\
+    \ BIT(int _n) : _n(_n), _dat(_n, SumType()) {}\n\n    inline void add(int p, Type\
+    \ v) {\n        p++;\n        for (; p <= _n; p += p & (-p)) {\n            _dat[p\
+    \ - 1] += SumType(v);\n        }\n    }\n\n    inline SumType sum(int p) {\n \
+    \       SumType res = 0;\n        for (; p > 0; p -= p & -p) {\n            res\
+    \ += _dat[p - 1];\n        }\n        return res;\n    }\n\n    inline SumType\
+    \ sum(int l, int r) { return sum(r) - sum(l); }\n};\n#line 4 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
+    \nint main() {\n    int n, q;\n    cin >> n >> q;\n    BIT<ll, ll> seg(n);\n \
+    \   rep(i,n){\n        int a;\n        scanf(\"%d\", &a);\n        seg.add(i,\
+    \ a);\n    }\n\n    while (q--) {\n        int t;\n        scanf(\"%d\", &t);\n\
+    \        if (t == 0) {\n            int p, x;\n            scanf(\"%d%d\", &p,\
+    \ &x);\n            seg.add(p, x);\n        } else {\n            int l, r;\n\
+    \            scanf(\"%d%d\", &l, &r);\n            printf(\"%lld\\n\", seg.sum(l,\
+    \ r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
-    #include\"template.hpp\"\n#include\"data-structure/BIT.hpp\"\nint main() {\n \
-    \   int n, q;\n    cin >> n >> q;\n    BIT<ll, ll> seg(n);\n    rep(i,n){\n  \
-    \      int a;\n        scanf(\"%d\", &a);\n        seg.add(i, a);\n    }\n\n \
-    \   while (q--) {\n        int t;\n        scanf(\"%d\", &t);\n        if (t ==\
-    \ 0) {\n            int p, x;\n            scanf(\"%d%d\", &p, &x);\n        \
-    \    seg.add(p, x);\n        } else {\n            int l, r;\n            scanf(\"\
-    %d%d\", &l, &r);\n            printf(\"%lld\\n\", seg.sum(l, r));\n        }\n\
-    \    }\n}"
-  dependsOn: []
+    #include\"../../../src/template.hpp\"\n#include\"../../../src/data-structure/BIT.hpp\"\
+    \nint main() {\n    int n, q;\n    cin >> n >> q;\n    BIT<ll, ll> seg(n);\n \
+    \   rep(i,n){\n        int a;\n        scanf(\"%d\", &a);\n        seg.add(i,\
+    \ a);\n    }\n\n    while (q--) {\n        int t;\n        scanf(\"%d\", &t);\n\
+    \        if (t == 0) {\n            int p, x;\n            scanf(\"%d%d\", &p,\
+    \ &x);\n            seg.add(p, x);\n        } else {\n            int l, r;\n\
+    \            scanf(\"%d%d\", &l, &r);\n            printf(\"%lld\\n\", seg.sum(l,\
+    \ r));\n        }\n    }\n}"
+  dependsOn:
+  - src/template.hpp
+  - src/data-structure/BIT.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-27 02:22:18+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
 layout: document

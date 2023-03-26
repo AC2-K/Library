@@ -2,10 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/GRL/1/A.test.cpp
+    title: test/AOJ/GRL/1/A.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/graph/Shortest_Path.test.cpp
+    title: test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+    title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     links: []
@@ -38,8 +47,11 @@ data:
   path: src/graph/dijkstra.hpp
   requiredBy: []
   timestamp: '2023-03-27 01:42:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  - test/AOJ/GRL/1/A.test.cpp
 documentation_of: src/graph/dijkstra.hpp
 layout: document
 redirect_from:

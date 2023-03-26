@@ -2,13 +2,28 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/NTL/1/E.test.cpp
+    title: test/AOJ/NTL/1/E.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/matrix/Matrix Product.test.cpp
+    title: test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+    title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\
       \u4E92\u9664\u6CD5)"
@@ -35,8 +50,13 @@ data:
   requiredBy:
   - src/math/static_modint.hpp
   timestamp: '2023-03-27 01:42:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/AOJ/NTL/1/E.test.cpp
 documentation_of: src/math/ext_gcd.hpp
 layout: document
 redirect_from:

@@ -1,35 +1,87 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':question:'
+    path: src/data-structure/sparse_table.hpp
+    title: Sparse Table
+  - icon: ':question:'
+    path: src/graph/euler_tour.hpp
+    title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
+  - icon: ':question:'
+    path: src/template.hpp
+    title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
-  attributes: {}
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
-    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
-    \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
-    \ File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: template.hpp:\
-    \ line -1: no such header\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include\"template.hpp\"\
-    \n#include\"graph/euler_tour.hpp\"\nint main(){\n    int n, q;\n    cin >> n >>\
-    \ q;\n    EulerTour g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n\
-    \        cin >> p;\n        g.add_edge(p, i);\n    }\n    g.build();\n    while\
-    \ (q--) {\n        int u, v;\n        cin >> u >> v;\n        cout << g.lca(u,\
-    \ v) << '\\n';\n    }\n}"
-  dependsOn: []
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/lca
+    links:
+    - https://judge.yosupo.jp/problem/lca
+  bundledCode: "#line 1 \"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#line 2 \"src/template.hpp\"\
+    \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
+    #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
+    using i128=__int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
+    \ graph = vector<vector<int>>;\nusing P = pair<int, int>;\nconstexpr int inf =\
+    \ 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\nconst long double\
+    \ pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 =\
+    \ 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1\
+    \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
+    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"src/data-structure/sparse_table.hpp\"\
+    \n/// @brief Sparse Table\n/// @tparam T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
+    \ntemplate<class T>\nclass sparse_table {\n    vector<T> vec;\n    vector<vector<T>>\
+    \ table;\n    vector<int> look_up;\npublic:\n    sparse_table(int n) : vec(n)\
+    \ {}\n    sparse_table(const vector<T>& vec) : vec(vec) {}\n    void set(int p,\
+    \ const T& v) { vec[p] = v; }\n    void build() {\n        int sz = vec.size();\n\
+    \        int log = 0;\n        while ((1 << log) <= sz) {\n            log++;\n\
+    \        }\n        table.assign(log, vector<T>(1 << log));\n        for (int\
+    \ i = 0; i < sz; i++) {\n            table[0][i] = vec[i];\n        }\n      \
+    \  for (int i = 1; i < log; i++) {\n            for (int j = 0; j + (1 << i) <=\
+    \ (1 << log); j++) {\n                table[i][j] =\n                    min(table[i\
+    \ - 1][j], table[i - 1][j + (1 << (i - 1))]);\n            }\n        }\n    \
+    \    look_up.resize(sz + 1);\n        for (int i = 2; i < look_up.size(); i++)\
+    \ {\n            look_up[i] = look_up[i >> 1] + 1;\n        }\n    }\n\n    T\
+    \ prod(int l, int r) {\n        int b = look_up[r - l];\n        return min(table[b][l],\
+    \ table[b][r - (1 << b)]);\n    }\n};\n#line 2 \"src/graph/euler_tour.hpp\"\n\
+    ///@brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)\nclass EulerTour\
+    \ {\n\tint n;\n\tgraph g;\n\tvector<int> tour;\n\tvector<int> in, out, depth;\n\
+    \    sparse_table<pair<int, int>> rmq;\npublic:\n    EulerTour(int n) :n(n), g(n),\
+    \ in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) { tour.reserve(2 * n - 1);\
+    \ }\n\tvoid add_edge(int u, int v) {\n\t\tg[u].emplace_back(v);\n\t\tg[v].emplace_back(u);\n\
+    \t}\n    graph get_graph(){return g;}\n    vector<int> get_tour(){return tour;}\n\
+    private:\n    void dfs(int v, int p = -1) {\n        in[v] = tour.size();\n  \
+    \      tour.emplace_back(v);\n        for (const auto& nv : g[v])if (nv != p)\
+    \ {\n            depth[nv] = depth[v] + 1;\n            dfs(nv, v);\n        \
+    \    tour.emplace_back(v);\n        }\n        out[v] = tour.size() - 1;\n   \
+    \ }\npublic:\n    void build(int r = 0) {\n        dfs(r);\n        for (int i\
+    \ = 0; i < tour.size(); i++) {\n            rmq.set(i, { depth[tour[i]],tour[i]\
+    \ });\n        }\n        rmq.build();\n    }\n\n    pair<int, int> idx(int v)\
+    \ { return {in[v], out[v]}; }\n    int lca(int v, int u) {\n        if (in[v]\
+    \ > in[u] + 1) { swap(u, v); }\n        return rmq.prod(in[v], in[u] + 1).second;\n\
+    \    }\n\n    int dist(int v,int u){\n        int p = lca(v, u);\n        return\
+    \ depth[v] + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par,int\
+    \ v){return (in[par] <= in[v] && out[v] <= out[par]);}\n};\n#line 5 \"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp\"\
+    \nint main(){\n    int n, q;\n    cin >> n >> q;\n    EulerTour g(n);\n    for\
+    \ (int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n        g.add_edge(p,\
+    \ i);\n    }\n    g.build();\n    while (q--) {\n        int u, v;\n        cin\
+    \ >> u >> v;\n        cout << g.lca(u, v) << '\\n';\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include\"../../../src/template.hpp\"\
+    \n#include\"../../../src/graph/euler_tour.hpp\"\nint main(){\n    int n, q;\n\
+    \    cin >> n >> q;\n    EulerTour g(n);\n    for (int i = 1; i < n; i++) {\n\
+    \        int p;\n        cin >> p;\n        g.add_edge(p, i);\n    }\n    g.build();\n\
+    \    while (q--) {\n        int u, v;\n        cin >> u >> v;\n        cout <<\
+    \ g.lca(u, v) << '\\n';\n    }\n}"
+  dependsOn:
+  - src/template.hpp
+  - src/graph/euler_tour.hpp
+  - src/data-structure/sparse_table.hpp
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
+  timestamp: '2023-03-27 02:22:18+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp

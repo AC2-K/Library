@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+    title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+  - icon: ':x:'
+    path: test/yuki/No-1471.test.cpp
+    title: test/yuki/No-1471.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/other/mo.md
     document_title: mo's algorithm
@@ -65,8 +71,10 @@ data:
   path: src/other/mo.hpp
   requiredBy: []
   timestamp: '2023-03-27 01:42:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/yuki/No-1471.test.cpp
+  - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
 documentation_of: src/other/mo.hpp
 layout: document
 redirect_from:

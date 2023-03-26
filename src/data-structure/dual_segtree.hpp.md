@@ -1,11 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: test/AOJ/DSL/2/D2.cpp
+    title: test/AOJ/DSL/2/D2.cpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2/E2.test.cpp
+    title: test/AOJ/DSL/2/E2.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+    title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/dual_segtree.md
     document_title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
@@ -55,10 +64,13 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/dual_segtree.hpp
-  requiredBy: []
+  requiredBy:
+  - test/AOJ/DSL/2/D2.cpp
   timestamp: '2023-03-27 01:42:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  - test/AOJ/DSL/2/E2.test.cpp
 documentation_of: src/data-structure/dual_segtree.hpp
 layout: document
 redirect_from:

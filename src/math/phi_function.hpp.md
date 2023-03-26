@@ -1,20 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':question:'
     path: src/math/miller.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':warning:'
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':warning:'
+  - icon: ':question:'
     path: src/math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/NTL/1/D.test.cpp
+    title: test/AOJ/NTL/1/D.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570\
       )"
@@ -109,8 +112,9 @@ data:
   path: src/math/phi_function.hpp
   requiredBy: []
   timestamp: '2023-03-27 01:42:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/AOJ/NTL/1/D.test.cpp
 documentation_of: src/math/phi_function.hpp
 layout: document
 redirect_from:

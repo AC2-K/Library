@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo_judge/math/Discrete Logarithm.test.cpp
+    title: test/yosupo_judge/math/Discrete Logarithm.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/math/DLP.md
     document_title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
@@ -50,8 +53,9 @@ data:
   path: src/math/DLP.hpp
   requiredBy: []
   timestamp: '2023-03-27 01:42:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/yosupo_judge/math/Discrete Logarithm.test.cpp
 documentation_of: src/math/DLP.hpp
 layout: document
 redirect_from:

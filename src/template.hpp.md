@@ -1,11 +1,116 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: test/AOJ/DSL/2/D2.cpp
+    title: test/AOJ/DSL/2/D2.cpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/ALDS/1/C.test.cpp
+    title: test/AOJ/ALDS/1/C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/ALDS/14/B.test.cpp
+    title: test/AOJ/ALDS/14/B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/1/A.test.cpp
+    title: test/AOJ/DSL/1/A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2/B.test.cpp
+    title: test/AOJ/DSL/2/B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2/D.test.cpp
+    title: test/AOJ/DSL/2/D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2/E.test.cpp
+    title: test/AOJ/DSL/2/E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2/E2.test.cpp
+    title: test/AOJ/DSL/2/E2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/GRL/1/A.test.cpp
+    title: test/AOJ/GRL/1/A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/GRL/2/A.test.cpp
+    title: test/AOJ/GRL/2/A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/GRL/5/C.test.cpp
+    title: test/AOJ/GRL/5/C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/NTL/1/B.test.cpp
+    title: test/AOJ/NTL/1/B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/NTL/1/D.test.cpp
+    title: test/AOJ/NTL/1/D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/NTL/1/E.test.cpp
+    title: test/AOJ/NTL/1/E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
+    title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
+    title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+    title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/UnionFind.test.cpp
+    title: test/yosupo_judge/data_structure/UnionFind.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/graph/Shortest_Path.test.cpp
+    title: test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/math/Discrete Logarithm.test.cpp
+    title: test/yosupo_judge/math/Discrete Logarithm.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/math/Factorize.test.cpp
+    title: test/yosupo_judge/math/Factorize.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/matrix/Matrix Product.test.cpp
+    title: test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
+    title: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/new/Primitive_Root.test.cpp
+    title: test/yosupo_judge/new/Primitive_Root.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+    title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+    title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+    title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  - icon: ':x:'
+    path: test/yuki/No-1471.test.cpp
+    title: test/yuki/No-1471.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "src/template.hpp"
@@ -95,10 +200,45 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/template.hpp
-  requiredBy: []
+  requiredBy:
+  - test/AOJ/DSL/2/D2.cpp
   timestamp: '2023-03-27 01:51:11+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/yuki/No-1471.test.cpp
+  - test/yosupo_judge/new/Primitive_Root.test.cpp
+  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  - test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
+  - test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - test/yosupo_judge/math/Discrete Logarithm.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
+  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+  - test/yosupo_judge/data_structure/UnionFind.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - test/yosupo_judge/data_structure/Static_RMQ.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/AOJ/GRL/2/A.test.cpp
+  - test/AOJ/GRL/5/C.test.cpp
+  - test/AOJ/GRL/1/A.test.cpp
+  - test/AOJ/DSL/2/D.test.cpp
+  - test/AOJ/DSL/2/E.test.cpp
+  - test/AOJ/DSL/2/B.test.cpp
+  - test/AOJ/DSL/2/E2.test.cpp
+  - test/AOJ/DSL/1/A.test.cpp
+  - test/AOJ/NTL/1/D.test.cpp
+  - test/AOJ/NTL/1/E.test.cpp
+  - test/AOJ/NTL/1/B.test.cpp
+  - test/AOJ/ALDS/1/C.test.cpp
+  - test/AOJ/ALDS/14/B.test.cpp
 documentation_of: src/template.hpp
 layout: document
 redirect_from:

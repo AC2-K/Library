@@ -1,33 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':question:'
     path: src/math/miller.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':warning:'
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':warning:'
-    path: src/math/mod_pow.hpp
-    title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':warning:'
+  - icon: ':question:'
     path: src/math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo_judge/new/Primitive_Root.test.cpp
+    title: test/yosupo_judge/new/Primitive_Root.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "primitive root(\u539F\u59CB\u6839)"
     links: []
   bundledCode: "#line 1 \"src/math/mod_pow.hpp\"\ntemplate <class T, class U = T>\n\
     U mod_pow(T base, T exp, T mod){\n    T ans = 1;\n    base %= mod;\n    while\
-    \ (exp > 0) {\n        if (exp & 1) {\n            ans *= base;\n            ans\
-    \ %= mod;\n        }\n        base *= base;\n        base %= mod;\n        exp\
-    \ >>= 1;\n    }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\
-    \u6CD5)\n#line 1 \"src/math/mod_pow.hpp\"\ntemplate <class T, class U = T>\nU\
-    \ mod_pow(T base, T exp, T mod){\n    T ans = 1;\n    base %= mod;\n    while\
     \ (exp > 0) {\n        if (exp & 1) {\n            ans *= base;\n            ans\
     \ %= mod;\n        }\n        base *= base;\n        base %= mod;\n        exp\
     \ >>= 1;\n    }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\
@@ -99,7 +94,7 @@ data:
     \ == pf[i]) {\n                    res.back().second++;\n                }\n \
     \               else {\n                    res.emplace_back(pf[i], 1);\n    \
     \            }\n            }\n\n            return res;\n        }\n    };  //\
-    \ namespace pollard\n};  // namespace prime\n#line 3 \"src/math/primitive_root.hpp\"\
+    \ namespace pollard\n};  // namespace prime\n#line 2 \"src/math/primitive_root.hpp\"\
     \nuint64_t primitive_root(uint64_t p) {\n    if (p == 2) return 1;\n    auto pf\
     \ = prime::rho::factorize(p - 1);\n    pf.erase(unique(all(pf)), pf.end());\n\
     \    for (auto& q : pf) {\n        q = (p - 1) / q;\n    }\n    using ull = unsigned\
@@ -110,27 +105,27 @@ data:
     \                is_ok = false;\n                break;\n            }\n     \
     \   }\n        if (is_ok) {\n            return g;\n        }\n    }\n}\n\n//@brief\
     \ primitive root(\u539F\u59CB\u6839)\n"
-  code: "#include\"../math/mod_pow.hpp\"\n#include\"../math/rho.hpp\"\nuint64_t primitive_root(uint64_t\
-    \ p) {\n    if (p == 2) return 1;\n    auto pf = prime::rho::factorize(p - 1);\n\
-    \    pf.erase(unique(all(pf)), pf.end());\n    for (auto& q : pf) {\n        q\
-    \ = (p - 1) / q;\n    }\n    using ull = unsigned long long;\n    static ull rnd\
-    \ = 7001;\n    while (1) {\n        rnd ^= rnd << 13; rnd ^= rnd >> 7; rnd ^=\
-    \ rnd << 17;\n        ll g = (ull)rnd % p;\n        if (g == 0) continue;\n  \
-    \      bool is_ok = true;\n        for (ll q : pf) {\n            if (mod_pow<__uint128_t,\
-    \ __uint128_t>(g, q, p) == 1) {\n                is_ok = false;\n            \
-    \    break;\n            }\n        }\n        if (is_ok) {\n            return\
-    \ g;\n        }\n    }\n}\n\n//@brief primitive root(\u539F\u59CB\u6839)"
+  code: "#include\"../math/rho.hpp\"\nuint64_t primitive_root(uint64_t p) {\n    if\
+    \ (p == 2) return 1;\n    auto pf = prime::rho::factorize(p - 1);\n    pf.erase(unique(all(pf)),\
+    \ pf.end());\n    for (auto& q : pf) {\n        q = (p - 1) / q;\n    }\n    using\
+    \ ull = unsigned long long;\n    static ull rnd = 7001;\n    while (1) {\n   \
+    \     rnd ^= rnd << 13; rnd ^= rnd >> 7; rnd ^= rnd << 17;\n        ll g = (ull)rnd\
+    \ % p;\n        if (g == 0) continue;\n        bool is_ok = true;\n        for\
+    \ (ll q : pf) {\n            if (mod_pow<__uint128_t, __uint128_t>(g, q, p) ==\
+    \ 1) {\n                is_ok = false;\n                break;\n            }\n\
+    \        }\n        if (is_ok) {\n            return g;\n        }\n    }\n}\n\
+    \n//@brief primitive root(\u539F\u59CB\u6839)"
   dependsOn:
-  - src/math/mod_pow.hpp
   - src/math/rho.hpp
   - src/math/miller.hpp
   - src/math/mod_pow.hpp
   isVerificationFile: false
   path: src/math/primitive_root.hpp
   requiredBy: []
-  timestamp: '2023-03-27 01:42:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-03-27 02:26:57+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/yosupo_judge/new/Primitive_Root.test.cpp
 documentation_of: src/math/primitive_root.hpp
 layout: document
 redirect_from:

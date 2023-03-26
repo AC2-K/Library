@@ -2,13 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/mst.hpp
     title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/1/A.test.cpp
+    title: test/AOJ/DSL/1/A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/GRL/2/A.test.cpp
+    title: test/AOJ/GRL/2/A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/UnionFind.test.cpp
+    title: test/yosupo_judge/data_structure/UnionFind.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/dsu.md
     document_title: Disjoint Set(Union find)
@@ -41,8 +50,11 @@ data:
   requiredBy:
   - src/graph/mst.hpp
   timestamp: '2023-03-27 01:42:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo_judge/data_structure/UnionFind.test.cpp
+  - test/AOJ/GRL/2/A.test.cpp
+  - test/AOJ/DSL/1/A.test.cpp
 documentation_of: src/data-structure/dsu.hpp
 layout: document
 redirect_from:

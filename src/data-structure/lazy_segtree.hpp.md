@@ -2,10 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2/D.test.cpp
+    title: test/AOJ/DSL/2/D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2/E.test.cpp
+    title: test/AOJ/DSL/2/E.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/lazy_segtree.md
     document_title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\
@@ -86,8 +95,11 @@ data:
   path: src/data-structure/lazy_segtree.hpp
   requiredBy: []
   timestamp: '2023-03-27 01:42:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/AOJ/DSL/2/D.test.cpp
+  - test/AOJ/DSL/2/E.test.cpp
 documentation_of: src/data-structure/lazy_segtree.hpp
 layout: document
 redirect_from:

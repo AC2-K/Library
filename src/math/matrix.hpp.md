@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo_judge/matrix/Matrix Product.test.cpp
+    title: test/yosupo_judge/matrix/Matrix Product.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/math/matrix.md
     document_title: "maxtirx(\u884C\u5217)"
@@ -65,8 +68,9 @@ data:
   path: src/math/matrix.hpp
   requiredBy: []
   timestamp: '2023-03-27 01:42:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/yosupo_judge/matrix/Matrix Product.test.cpp
 documentation_of: src/math/matrix.hpp
 layout: document
 redirect_from:

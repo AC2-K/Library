@@ -2,10 +2,25 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2/B.test.cpp
+    title: test/AOJ/DSL/2/B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
+    title: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: /home/ac2000/main/library/docs/data-structure/segtree.md
     document_title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
@@ -55,8 +70,13 @@ data:
   path: src/data-structure/segtree.hpp
   requiredBy: []
   timestamp: '2023-03-27 01:42:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_SOME_WA
+  verifiedWith:
+  - test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
+  - test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/AOJ/DSL/2/B.test.cpp
 documentation_of: src/data-structure/segtree.hpp
 layout: document
 redirect_from:
