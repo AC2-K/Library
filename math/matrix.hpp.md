@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/matrix/Matrix Product.test.cpp
-    title: test/yosupo judge/matrix/Matrix Product.test.cpp
+    path: test/yosupo_judge/matrix/Matrix Product.test.cpp
+    title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -70,7 +70,7 @@ data:
   timestamp: '2023-03-18 02:15:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/matrix/Matrix Product.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:

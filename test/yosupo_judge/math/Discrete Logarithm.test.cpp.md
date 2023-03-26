@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -20,7 +20,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
     links:
     - https://judge.yosupo.jp/problem/discrete_logarithm_mod
-  bundledCode: "#line 1 \"test/yosupo judge/math/Discrete Logarithm.test.cpp\"\n#define\
+  bundledCode: "#line 1 \"test/yosupo_judge/math/Discrete Logarithm.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\n#line 2\
     \ \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i,\
     \ N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
@@ -47,7 +47,7 @@ data:
     \ (int i = 1; i <= m; i++) {\n        (pr *= xm) %= p;\n        if (mp.find(pr)\
     \ != mp.end()) {\n            int j = mp[pr];\n            return m * i - j +\
     \ add;\n        }\n    }\n    return -1;\n}\n\n///@brief Discrete Logarithm(\u96E2\
-    \u6563\u5BFE\u6570)\n///@docs docs/math/DLP.md\n#line 4 \"test/yosupo judge/math/Discrete\
+    \u6563\u5BFE\u6570)\n///@docs docs/math/DLP.md\n#line 4 \"test/yosupo_judge/math/Discrete\
     \ Logarithm.test.cpp\"\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n\
     \    int t;\n    cin>>t;\n    while(t--){\n        int x,y,p;\n        cin>>x>>y>>p;\n\
     \        cout<<dlp(x,y,p)<<'\\n';\n    }\n}\n"
@@ -60,15 +60,15 @@ data:
   - math/DLP.hpp
   - math/mod_pow.hpp
   isVerificationFile: true
-  path: test/yosupo judge/math/Discrete Logarithm.test.cpp
+  path: test/yosupo_judge/math/Discrete Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-03-10 13:31:13+09:00'
+  timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo judge/math/Discrete Logarithm.test.cpp
+documentation_of: test/yosupo_judge/math/Discrete Logarithm.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/math/Discrete Logarithm.test.cpp
-- /verify/test/yosupo judge/math/Discrete Logarithm.test.cpp.html
-title: test/yosupo judge/math/Discrete Logarithm.test.cpp
+- /verify/test/yosupo_judge/math/Discrete Logarithm.test.cpp
+- /verify/test/yosupo_judge/math/Discrete Logarithm.test.cpp.html
+title: test/yosupo_judge/math/Discrete Logarithm.test.cpp
 ---

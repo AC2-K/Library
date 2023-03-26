@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/math/Discrete Logarithm.test.cpp
-    title: test/yosupo judge/math/Discrete Logarithm.test.cpp
+    path: test/yosupo_judge/math/Discrete Logarithm.test.cpp
+    title: test/yosupo_judge/math/Discrete Logarithm.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -54,7 +54,7 @@ data:
   timestamp: '2023-03-06 05:55:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo judge/math/Discrete Logarithm.test.cpp
+  - test/yosupo_judge/math/Discrete Logarithm.test.cpp
 documentation_of: math/DLP.hpp
 layout: document
 redirect_from:

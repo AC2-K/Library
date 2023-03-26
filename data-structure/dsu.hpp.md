@@ -13,8 +13,8 @@ data:
     path: test/AOJ/GRL/2/A.test.cpp
     title: test/AOJ/GRL/2/A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/UnionFind.test.cpp
-    title: test/yosupo judge/data structure/UnionFind.test.cpp
+    path: test/yosupo_judge/data_structure/UnionFind.test.cpp
+    title: test/yosupo_judge/data_structure/UnionFind.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -50,7 +50,7 @@ data:
   timestamp: '2023-03-25 02:02:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo judge/data structure/UnionFind.test.cpp
+  - test/yosupo_judge/data_structure/UnionFind.test.cpp
   - test/AOJ/GRL/2/A.test.cpp
   - test/AOJ/DSL/1/A.test.cpp
 documentation_of: data-structure/dsu.hpp

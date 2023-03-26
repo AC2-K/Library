@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
     links:
     - https://judge.yosupo.jp/problem/point_add_range_sum
-  bundledCode: "#line 1 \"test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n#line\
     \ 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i,\
     \ N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
@@ -37,14 +37,14 @@ data:
     \ - 1] += SumType(v);\n        }\n    }\n\n    inline SumType sum(int p) {\n \
     \       SumType res = 0;\n        for (; p > 0; p -= p & -p) {\n            res\
     \ += _dat[p - 1];\n        }\n        return res;\n    }\n\n    inline SumType\
-    \ sum(int l, int r) { return sum(r) - sum(l); }\n};\n#line 4 \"test/yosupo judge/data\
-    \ structure/Point_Add_Range_Sum_BIT.test.cpp\"\nint main() {\n    int n, q;\n\
-    \    cin >> n >> q;\n    BIT<ll, ll> seg(n);\n    rep(i,n){\n        int a;\n\
-    \        scanf(\"%d\", &a);\n        seg.add(i, a);\n    }\n\n    while (q--)\
-    \ {\n        int t;\n        scanf(\"%d\", &t);\n        if (t == 0) {\n     \
-    \       int p, x;\n            scanf(\"%d%d\", &p, &x);\n            seg.add(p,\
-    \ x);\n        } else {\n            int l, r;\n            scanf(\"%d%d\", &l,\
-    \ &r);\n            printf(\"%lld\\n\", seg.sum(l, r));\n        }\n    }\n}\n"
+    \ sum(int l, int r) { return sum(r) - sum(l); }\n};\n#line 4 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
+    \nint main() {\n    int n, q;\n    cin >> n >> q;\n    BIT<ll, ll> seg(n);\n \
+    \   rep(i,n){\n        int a;\n        scanf(\"%d\", &a);\n        seg.add(i,\
+    \ a);\n    }\n\n    while (q--) {\n        int t;\n        scanf(\"%d\", &t);\n\
+    \        if (t == 0) {\n            int p, x;\n            scanf(\"%d%d\", &p,\
+    \ &x);\n            seg.add(p, x);\n        } else {\n            int l, r;\n\
+    \            scanf(\"%d%d\", &l, &r);\n            printf(\"%lld\\n\", seg.sum(l,\
+    \ r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     #include\"template.hpp\"\n#include\"data-structure/BIT.hpp\"\nint main() {\n \
     \   int n, q;\n    cin >> n >> q;\n    BIT<ll, ll> seg(n);\n    rep(i,n){\n  \
@@ -58,15 +58,15 @@ data:
   - template.hpp
   - data-structure/BIT.hpp
   isVerificationFile: true
-  path: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
+  path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 20:12:15+09:00'
+  timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
+documentation_of: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
-- /verify/test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp.html
-title: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
+- /verify/test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+- /verify/test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp.html
+title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
 ---

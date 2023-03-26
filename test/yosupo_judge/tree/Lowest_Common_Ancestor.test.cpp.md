@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/sparse_table.hpp
     title: Sparse Table
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/euler_tour.hpp
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
     - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"test/yosupo judge/tree/Lowest Common Ancestor.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#line 2 \"template.hpp\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
@@ -63,7 +63,7 @@ data:
     \ rmq.prod(in[v], in[u] + 1).second;\n    }\n\n    int dist(int v,int u){\n  \
     \      int p = lca(v, u);\n        return depth[v] + depth[u] - 2 * depth[p];\n\
     \    }\n\n    bool is_in_subtree(int par,int v){return (in[par] <= in[v] && out[v]\
-    \ <= out[par]);}\n};\n#line 5 \"test/yosupo judge/tree/Lowest Common Ancestor.test.cpp\"\
+    \ <= out[par]);}\n};\n#line 5 \"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp\"\
     \nint main(){\n    int n, q;\n    cin >> n >> q;\n    EulerTour g(n);\n    for\
     \ (int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n        g.add_edge(p,\
     \ i);\n    }\n    g.build();\n    while (q--) {\n        int u, v;\n        cin\
@@ -79,15 +79,15 @@ data:
   - graph/euler_tour.hpp
   - data-structure/sparse_table.hpp
   isVerificationFile: true
-  path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
+  path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 14:30:40+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-03-26 20:22:21+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
+documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-- /verify/test/yosupo judge/tree/Lowest Common Ancestor.test.cpp.html
-title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
+- /verify/test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+- /verify/test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp.html
+title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
 ---

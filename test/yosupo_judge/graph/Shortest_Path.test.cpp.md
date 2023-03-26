@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/dijkstra.hpp
     title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/shortest_path
     links:
     - https://judge.yosupo.jp/problem/shortest_path
-  bundledCode: "#line 1 \"test/yosupo judge/graph/Shortest Path.test.cpp\"\n#define\
+  bundledCode: "#line 1 \"test/yosupo_judge/graph/Shortest_Path.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n#line 2 \"template.hpp\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
@@ -39,8 +39,8 @@ data:
     \t\tif (dist[v] != d) {\n\t\t\tcontinue;\n\t\t}\n\n\t\tfor (const auto& [nv, c]\
     \ : g[v]) {\n\t\t\tif (dist[v] + c < dist[nv]) {\n\t\t\t\tdist[nv] = dist[v] +\
     \ c;\n\t\t\t\tpre[nv] = v;\n\t\t\t\tque.emplace(dist[nv], nv);\n\t\t\t}\n\t\t\
-    }\n\t}\n\treturn { dist, pre };\n}\n#line 4 \"test/yosupo judge/graph/Shortest\
-    \ Path.test.cpp\"\nint main() {\n    int n,m,s,t;\n    cin>>n>>m>>s>>t;\n    vector<vector<edge>>\
+    }\n\t}\n\treturn { dist, pre };\n}\n#line 4 \"test/yosupo_judge/graph/Shortest_Path.test.cpp\"\
+    \nint main() {\n    int n,m,s,t;\n    cin>>n>>m>>s>>t;\n    vector<vector<edge>>\
     \ g(n);\n    rep(i,m){\n        int a,b,c;\n        cin>>a>>b>>c;\n        g[a].emplace_back(b,c);\n\
     \    }\n    auto [dist,trace]=dijkstra(s,g);\n    if(dist[t]>=infl){\n       \
     \ cout<<-1<<'\\n';\n        return 0;\n    }\n\n    int cur=t;\n    vector<int>\
@@ -62,15 +62,15 @@ data:
   - template.hpp
   - graph/dijkstra.hpp
   isVerificationFile: true
-  path: test/yosupo judge/graph/Shortest Path.test.cpp
+  path: test/yosupo_judge/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 02:02:12+09:00'
+  timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo judge/graph/Shortest Path.test.cpp
+documentation_of: test/yosupo_judge/graph/Shortest_Path.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/graph/Shortest Path.test.cpp
-- /verify/test/yosupo judge/graph/Shortest Path.test.cpp.html
-title: test/yosupo judge/graph/Shortest Path.test.cpp
+- /verify/test/yosupo_judge/graph/Shortest_Path.test.cpp
+- /verify/test/yosupo_judge/graph/Shortest_Path.test.cpp.html
+title: test/yosupo_judge/graph/Shortest_Path.test.cpp
 ---

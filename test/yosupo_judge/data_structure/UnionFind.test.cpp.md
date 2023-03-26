@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/dsu.hpp
     title: Disjoint Set(Union find)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -38,15 +38,15 @@ data:
   - template.hpp
   - data-structure/dsu.hpp
   isVerificationFile: true
-  path: test/yosupo judge/data structure/UnionFind.test.cpp
+  path: test/yosupo_judge/data_structure/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 02:02:12+09:00'
+  timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo judge/data structure/UnionFind.test.cpp
+documentation_of: test/yosupo_judge/data_structure/UnionFind.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/data structure/UnionFind.test.cpp
-- /verify/test/yosupo judge/data structure/UnionFind.test.cpp.html
-title: test/yosupo judge/data structure/UnionFind.test.cpp
+- /verify/test/yosupo_judge/data_structure/UnionFind.test.cpp
+- /verify/test/yosupo_judge/data_structure/UnionFind.test.cpp.html
+title: test/yosupo_judge/data_structure/UnionFind.test.cpp
 ---

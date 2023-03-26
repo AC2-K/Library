@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
-    title: test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
+    path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+    title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-1471.test.cpp
     title: test/yuki/No-1471.test.cpp
@@ -74,7 +74,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No-1471.test.cpp
-  - test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
+  - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
 documentation_of: other/mo.hpp
 layout: document
 redirect_from:

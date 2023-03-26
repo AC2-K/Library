@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/sparse_table.hpp
     title: Sparse Table
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/euler_tour.hpp
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -20,19 +20,19 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
+    PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
     links:
-    - https://judge.yosupo.jp/problem/vertex_add_subtree_sum
-  bundledCode: "#line 1 \"test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\
-    #line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
-    \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
-    \ popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\n\
-    using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
-    \ int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps\
-    \ = 1e-6;\nconst long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
-    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
-    \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
+    - https://judge.yosupo.jp/problem/vertex_add_path_sum
+  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n#line\
+    \ 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i,\
+    \ N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
+    \ __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\nusing\
+    \ ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int, int>;\n\
+    constexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\n\
+    const long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr\
+    \ uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int\
+    \ dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
     template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/BIT.hpp\"\
     \n/// @brief Binary Index Tree\n/// @tparam Type \u8981\u7D20\u306E\u578B\n///\
     \ @tparam SumType \"\u548C\u304C\" \u53CE\u307E\u308B\u3088\u3046\u306A\u578B\n\
@@ -76,46 +76,54 @@ data:
     \ rmq.prod(in[v], in[u] + 1).second;\n    }\n\n    int dist(int v,int u){\n  \
     \      int p = lca(v, u);\n        return depth[v] + depth[u] - 2 * depth[p];\n\
     \    }\n\n    bool is_in_subtree(int par,int v){return (in[par] <= in[v] && out[v]\
-    \ <= out[par]);}\n};\n#line 5 \"test/yosupo judge/data structure/Vertex add Subtree\
-    \ Sum.test.cpp\"\nint main() {\n    int n, q;\n    cin >> n >> q;\n    vector<ll>\
-    \ a(n);\n    for (auto& aa : a) {\n        cin >> aa;\n    }\n\n    EulerTour\
-    \ g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n\
-    \        g.add_edge(i, p);\n    }\n    g.build();\n\n    BIT<ll> seg(2 * n);\n\
-    \    for (int v = 0; v < n; v++) {\n        int in = g.idx(v).first;\n       \
-    \ seg.add(in, a[v]);\n    }\n    while (q--) {\n        int t;\n        cin >>\
-    \ t;\n        if (t == 0) {\n            int v;\n            cin >> v;\n     \
-    \       int x;\n            cin >> x;\n            int in = g.idx(v).first;\n\
-    \            seg.add(in, x);\n        }\n        else {\n            int v;\n\
-    \            cin >> v;\n            int in, out;\n            tie(in, out) = g.idx(v);\n\
-    \            cout << seg.sum(in,out + 1) << '\\n';\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
-    \n#include\"template.hpp\"\n#include\"data-structure/BIT.hpp\"\n#include\"graph/euler_tour.hpp\"\
+    \ <= out[par]);}\n};\n#line 5 \"test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp\"\
     \nint main() {\n    int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n    for\
-    \ (auto& aa : a) {\n        cin >> aa;\n    }\n\n    EulerTour g(n);\n    for\
-    \ (int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n        g.add_edge(i,\
-    \ p);\n    }\n    g.build();\n\n    BIT<ll> seg(2 * n);\n    for (int v = 0; v\
-    \ < n; v++) {\n        int in = g.idx(v).first;\n        seg.add(in, a[v]);\n\
-    \    }\n    while (q--) {\n        int t;\n        cin >> t;\n        if (t ==\
-    \ 0) {\n            int v;\n            cin >> v;\n            int x;\n      \
-    \      cin >> x;\n            int in = g.idx(v).first;\n            seg.add(in,\
-    \ x);\n        }\n        else {\n            int v;\n            cin >> v;\n\
-    \            int in, out;\n            tie(in, out) = g.idx(v);\n            cout\
-    \ << seg.sum(in,out + 1) << '\\n';\n        }\n    }\n}"
+    \ (auto& aa : a) {\n        scanf(\"%lld\", &aa);\n    }\n\n    EulerTour g(n);\n\
+    \    for (int i = 0; i < n - 1; i++) {\n        int v, u;\n        scanf(\"%d%d\"\
+    , &v, &u);\n        g.add_edge(v, u);\n    }\n    g.build();\n\n    BIT<ll> seg(2\
+    \ * n);\n    for (int v = 0; v < n; v++) {\n        auto [in, out] = g.idx(v);\n\
+    \        seg.add(in, a[v]);\n        seg.add(out + 1, -a[v]);\n    }\n    while\
+    \ (q--) {\n        int t;\n        scanf(\"%d\", &t);\n        if (t == 0) {\n\
+    \            int v, x;\n            scanf(\"%d%d\", &v, &x);\n            auto\
+    \ [in, out] = g.idx(v);\n            seg.add(in, x);\n            seg.add(out\
+    \ + 1, -x);\n        } else {\n            int v, u;\n            scanf(\"%d%d\"\
+    , &v, &u);\n            ll ans = 0;\n            int p_in = g.idx(g.lca(v, u)).first;\n\
+    \            {\n                ans += seg.sum(p_in, g.idx(v).first + 1);\n  \
+    \          }\n            {\n                ans += seg.sum(p_in + 1, g.idx(u).first\
+    \ + 1);\n            }\n\n            printf(\"%lld\\n\", ans);\n        }\n \
+    \   }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
+    #include\"template.hpp\"\n#include\"data-structure/BIT.hpp\"\n#include\"graph/euler_tour.hpp\"\
+    \nint main() {\n    int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n    for\
+    \ (auto& aa : a) {\n        scanf(\"%lld\", &aa);\n    }\n\n    EulerTour g(n);\n\
+    \    for (int i = 0; i < n - 1; i++) {\n        int v, u;\n        scanf(\"%d%d\"\
+    , &v, &u);\n        g.add_edge(v, u);\n    }\n    g.build();\n\n    BIT<ll> seg(2\
+    \ * n);\n    for (int v = 0; v < n; v++) {\n        auto [in, out] = g.idx(v);\n\
+    \        seg.add(in, a[v]);\n        seg.add(out + 1, -a[v]);\n    }\n    while\
+    \ (q--) {\n        int t;\n        scanf(\"%d\", &t);\n        if (t == 0) {\n\
+    \            int v, x;\n            scanf(\"%d%d\", &v, &x);\n            auto\
+    \ [in, out] = g.idx(v);\n            seg.add(in, x);\n            seg.add(out\
+    \ + 1, -x);\n        } else {\n            int v, u;\n            scanf(\"%d%d\"\
+    , &v, &u);\n            ll ans = 0;\n            int p_in = g.idx(g.lca(v, u)).first;\n\
+    \            {\n                ans += seg.sum(p_in, g.idx(v).first + 1);\n  \
+    \          }\n            {\n                ans += seg.sum(p_in + 1, g.idx(u).first\
+    \ + 1);\n            }\n\n            printf(\"%lld\\n\", ans);\n        }\n \
+    \   }\n}"
   dependsOn:
   - template.hpp
   - data-structure/BIT.hpp
   - graph/euler_tour.hpp
   - data-structure/sparse_table.hpp
   isVerificationFile: true
-  path: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
+  path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 20:03:04+09:00'
+  timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
+documentation_of: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
-- /verify/test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp.html
-title: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
+- /verify/test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+- /verify/test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp.html
+title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
 ---

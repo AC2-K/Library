@@ -12,7 +12,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/dsu.hpp
       title: Disjoint Set(Union find)
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/dual_segtree.hpp
       title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':warning:'
@@ -23,10 +23,10 @@ data:
       path: data-structure/lazy_segtree.hpp
       title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
         \u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/segtree.hpp
       title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/sparse_table.hpp
       title: Sparse Table
   - name: .
@@ -40,15 +40,15 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/dijkstra.hpp
       title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/euler_tour.hpp
       title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
     - icon: ':heavy_check_mark:'
@@ -61,7 +61,7 @@ data:
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
     - icon: ':warning:'
       path: math/barrett.hpp
-      title: barret reduction
+      title: barrett reduction
     - icon: ':warning:'
       path: math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
@@ -75,10 +75,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "maxtirx(\u884C\u5217)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/miller.hpp
       title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     - icon: ':warning:'
@@ -87,13 +87,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/rho.hpp
       title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
   - name: other
@@ -167,75 +167,78 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1/E.test.cpp
       title: test/AOJ/NTL/1/E.test.cpp
-  - name: test/yosupo judge/data structure
+  - name: test/yosupo_judge/data_structure
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
-      title: test/yosupo judge/data structure/Line Add Get Min.test.cpp
+      path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
+      title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-      title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+      path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+      title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
-      title: test/yosupo judge/data structure/Point_Add_Range_Sum_BIT.test.cpp
+      path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+      title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
-      title: test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
+      path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+      title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/Static RMQ.test.cpp
-      title: test/yosupo judge/data structure/Static RMQ.test.cpp
+      path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+      title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/Static Range Sum.test.cpp
-      title: test/yosupo judge/data structure/Static Range Sum.test.cpp
+      path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
+      title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
-      title: test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
+      path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+      title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/UnionFind.test.cpp
-      title: test/yosupo judge/data structure/UnionFind.test.cpp
+      path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+      title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
-      title: test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp
+      path: test/yosupo_judge/data_structure/UnionFind.test.cpp
+      title: test/yosupo_judge/data_structure/UnionFind.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
-      title: test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp
-  - name: test/yosupo judge/graph
+      path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+      title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+      title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - name: test/yosupo_judge/graph
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/graph/Shortest Path.test.cpp
-      title: test/yosupo judge/graph/Shortest Path.test.cpp
-  - name: test/yosupo judge/math
+      path: test/yosupo_judge/graph/Shortest_Path.test.cpp
+      title: test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - name: test/yosupo_judge/math
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/math/Discrete Logarithm.test.cpp
-      title: test/yosupo judge/math/Discrete Logarithm.test.cpp
+      path: test/yosupo_judge/math/Discrete Logarithm.test.cpp
+      title: test/yosupo_judge/math/Discrete Logarithm.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/math/Factorize.test.cpp
-      title: test/yosupo judge/math/Factorize.test.cpp
-  - name: test/yosupo judge/matrix
+      path: test/yosupo_judge/math/Factorize.test.cpp
+      title: test/yosupo_judge/math/Factorize.test.cpp
+  - name: test/yosupo_judge/matrix
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/matrix/Matrix Product.test.cpp
-      title: test/yosupo judge/matrix/Matrix Product.test.cpp
-  - name: test/yosupo judge/new
+      path: test/yosupo_judge/matrix/Matrix Product.test.cpp
+      title: test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - name: test/yosupo_judge/new
     pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-      title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/new/Primitive Root.test.cpp
-      title: test/yosupo judge/new/Primitive Root.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
-      title: test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
-  - name: test/yosupo judge/tree
+    - icon: ':x:'
+      path: test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp
+      title: test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp
+    - icon: ':x:'
+      path: test/yosupo_judge/new/Primitive Root.test.cpp
+      title: test/yosupo_judge/new/Primitive Root.test.cpp
+    - icon: ':x:'
+      path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+      title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  - name: test/yosupo_judge/tree
     pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-      title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo judge/tree/Tree Diameter.test.cpp
-      title: test/yosupo judge/tree/Tree Diameter.test.cpp
+    - icon: ':x:'
+      path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+      title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+    - icon: ':x:'
+      path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+      title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
     pages:
     - icon: ':heavy_check_mark:'

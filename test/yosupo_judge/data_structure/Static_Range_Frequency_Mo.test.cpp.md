@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: other/mo.hpp
     title: mo's algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/static_range_frequency
     links:
     - https://judge.yosupo.jp/problem/static_range_frequency
-  bundledCode: "#line 1 \"test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\n\
     #line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
     \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
@@ -52,7 +52,7 @@ data:
     \            out(idx);\n        }\n    }\n\n    template< typename A, typename\
     \ E, typename O >\n    void build(const A& add, const E& erase, const O& out)\
     \ {\n        build(add, add, erase, erase, out);\n    }\n};\n/// @brief mo's algorithm\n\
-    /// @docs docs/other/mo.md\n#line 4 \"test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp\"\
+    /// @docs docs/other/mo.md\n#line 4 \"test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp\"\
     \nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    vector<int>\
     \ a(n);\n    for (auto& aa : a) {\n        scanf(\"%d\", &aa);\n    }\n    auto\
     \ pressed = a;\n    sort(pressed.begin(), pressed.end());\n    pressed.erase(unique(pressed.begin(),\
@@ -88,15 +88,15 @@ data:
   - template.hpp
   - other/mo.hpp
   isVerificationFile: true
-  path: test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
+  path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 18:34:28+09:00'
+  timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
+documentation_of: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
-- /verify/test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp.html
-title: test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp
+- /verify/test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+- /verify/test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp.html
+title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
 ---

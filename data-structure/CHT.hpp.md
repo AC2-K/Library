@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Line Add Get Min.test.cpp
-    title: test/yosupo judge/data structure/Line Add Get Min.test.cpp
+    path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
+    title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -60,7 +60,7 @@ data:
   timestamp: '2023-03-25 02:02:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo judge/data structure/Line Add Get Min.test.cpp
+  - test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
 documentation_of: data-structure/CHT.hpp
 layout: document
 redirect_from:

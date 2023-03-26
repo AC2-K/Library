@@ -4,17 +4,20 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-    title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+    path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/matrix/Matrix Product.test.cpp
-    title: test/yosupo judge/matrix/Matrix Product.test.cpp
+    path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
-    title: test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
-  _isVerificationFailed: false
+    path: test/yosupo_judge/matrix/Matrix Product.test.cpp
+    title: test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+    title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/math/static_modint.md
     document_title: "static modint(\u9759\u7684modint)"
@@ -81,12 +84,13 @@ data:
     \ {\n\t\tmint ans(1), base(*this);\n\t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\
     \tans *= base;\n\t\t\t}\n\t\t\tbase *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn\
     \ ans;\n\t}\n\n\tmint inv() const {\n\t\treturn pow(mod - 2);\n\t}\n\n\tmint&\
-    \ operator/=(const mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n\tfriend mint\
-    \ operator/(const mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t\
-    }\n\n\t//iostream\n\tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\
-    \t\tos << mt.val();\n\t\treturn os;\n\t}\n\tfriend istream& operator>>(istream&\
-    \ is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t\
-    }\n\n};\n///@brief static modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n"
+    \ operator/=(const mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n    mint operator/(const\
+    \ mint& r) { return mint(*this) *= r.inv(); }\n    friend mint operator/(const\
+    \ mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\
+    \tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
+    \t\treturn os;\n\t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\
+    \ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\n};\n///@brief static\
+    \ modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n"
   code: "template<__uint64_t mod>\nclass static_modint {\nprivate:\n\tusing mint =\
     \ static_modint<mod>;\n\tusing i64 = long long;\n\tusing u64 = unsigned long long;\n\
     \tusing u128 = __uint128_t;\n\tusing i128 = __int128_t;\n\n\tu64 v;\n\tu64 normalize(i64\
@@ -148,22 +152,24 @@ data:
     \ {\n\t\tmint ans(1), base(*this);\n\t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\
     \tans *= base;\n\t\t\t}\n\t\t\tbase *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn\
     \ ans;\n\t}\n\n\tmint inv() const {\n\t\treturn pow(mod - 2);\n\t}\n\n\tmint&\
-    \ operator/=(const mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n\tfriend mint\
-    \ operator/(const mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t\
-    }\n\n\t//iostream\n\tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\
-    \t\tos << mt.val();\n\t\treturn os;\n\t}\n\tfriend istream& operator>>(istream&\
-    \ is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t\
-    }\n\n};\n///@brief static modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md"
+    \ operator/=(const mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n    mint operator/(const\
+    \ mint& r) { return mint(*this) *= r.inv(); }\n    friend mint operator/(const\
+    \ mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\
+    \tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
+    \t\treturn os;\n\t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\
+    \ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\n};\n///@brief static\
+    \ modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md"
   dependsOn: []
   isVerificationFile: false
   path: math/static_modint.hpp
   requiredBy: []
-  timestamp: '2023-03-26 08:02:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-03-26 20:22:21+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-  - test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
-  - test/yosupo judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/matrix/Matrix Product.test.cpp
 documentation_of: math/static_modint.hpp
 layout: document
 redirect_from:

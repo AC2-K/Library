@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/miller.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/primitive_root
     links:
     - https://judge.yosupo.jp/problem/primitive_root
-  bundledCode: "#line 1 \"test/yosupo judge/new/Primitive Root.test.cpp\"\n#define\
+  bundledCode: "#line 1 \"test/yosupo_judge/new/Primitive Root.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#line 2 \"template.hpp\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
@@ -119,7 +119,7 @@ data:
     \ pf) {\n            if (mod_pow<__uint128_t, __uint128_t>(g, q, p) == 1) {\n\
     \                is_ok = false;\n                break;\n            }\n     \
     \   }\n        if (is_ok) {\n            return g;\n        }\n    }\n}\n\n//@brief\
-    \ primitive root(\u539F\u59CB\u6839)\n#line 4 \"test/yosupo judge/new/Primitive\
+    \ primitive root(\u539F\u59CB\u6839)\n#line 4 \"test/yosupo_judge/new/Primitive\
     \ Root.test.cpp\"\nint main(){\n    int q;\n    scanf(\"%d\", &q);\n    while\
     \ (q--) {\n        ll p;\n        scanf(\"%lld\", &p);\n        ll ans = primitive_root(p);\n\
     \        printf(\"%lld\\n\", ans);\n    }\n}\n"
@@ -135,15 +135,15 @@ data:
   - math/rho.hpp
   - math/miller.hpp
   isVerificationFile: true
-  path: test/yosupo judge/new/Primitive Root.test.cpp
+  path: test/yosupo_judge/new/Primitive Root.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 20:37:44+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-03-26 20:22:21+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/yosupo judge/new/Primitive Root.test.cpp
+documentation_of: test/yosupo_judge/new/Primitive Root.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/new/Primitive Root.test.cpp
-- /verify/test/yosupo judge/new/Primitive Root.test.cpp.html
-title: test/yosupo judge/new/Primitive Root.test.cpp
+- /verify/test/yosupo_judge/new/Primitive Root.test.cpp
+- /verify/test/yosupo_judge/new/Primitive Root.test.cpp.html
+title: test/yosupo_judge/new/Primitive Root.test.cpp
 ---

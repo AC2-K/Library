@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/miller.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/new/Primitive Root.test.cpp
-    title: test/yosupo judge/new/Primitive Root.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yosupo_judge/new/Primitive Root.test.cpp
+    title: test/yosupo_judge/new/Primitive Root.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "primitive root(\u539F\u59CB\u6839)"
     links: []
@@ -124,9 +124,9 @@ data:
   path: math/primitive_root.hpp
   requiredBy: []
   timestamp: '2023-03-25 02:02:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo judge/new/Primitive Root.test.cpp
+  - test/yosupo_judge/new/Primitive Root.test.cpp
 documentation_of: math/primitive_root.hpp
 layout: document
 redirect_from:

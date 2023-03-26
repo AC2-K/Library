@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: "maxtirx(\u884C\u5217)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -20,7 +20,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
     links:
     - https://judge.yosupo.jp/problem/matrix_product
-  bundledCode: "#line 1 \"test/yosupo judge/matrix/Matrix Product.test.cpp\"\n#define\
+  bundledCode: "#line 1 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#line 2 \"template.hpp\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
@@ -92,13 +92,14 @@ data:
     \ {\n\t\tmint ans(1), base(*this);\n\t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\
     \tans *= base;\n\t\t\t}\n\t\t\tbase *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn\
     \ ans;\n\t}\n\n\tmint inv() const {\n\t\treturn pow(mod - 2);\n\t}\n\n\tmint&\
-    \ operator/=(const mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n\tfriend mint\
-    \ operator/(const mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t\
-    }\n\n\t//iostream\n\tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\
-    \t\tos << mt.val();\n\t\treturn os;\n\t}\n\tfriend istream& operator>>(istream&\
-    \ is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t\
-    }\n\n};\n///@brief static modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n\
-    #line 2 \"math/matrix.hpp\"\ntemplate<typename T>\nclass Matrix {\n    vector<vector<T>>\
+    \ operator/=(const mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n    mint operator/(const\
+    \ mint& r) { return mint(*this) *= r.inv(); }\n    friend mint operator/(const\
+    \ mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\
+    \tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
+    \t\treturn os;\n\t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\
+    \ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\n};\n///@brief static\
+    \ modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n#line 2 \"\
+    math/matrix.hpp\"\ntemplate<typename T>\nclass Matrix {\n    vector<vector<T>>\
     \ dat;\n    int h = 0, w = 0;\n\n  public:\n    Matrix(const vector<vector<T>>&\
     \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
     \ h_, int w_, const T& v = T())\n        : dat(h_, vector<T>(w_, v)){}\n     \
@@ -123,7 +124,7 @@ data:
     \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
     \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
     \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n\
-    #line 5 \"test/yosupo judge/matrix/Matrix Product.test.cpp\"\n#pragma GCC target(\"\
+    #line 5 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#pragma GCC target(\"\
     avx2\")\n#pragma GCC optimize(\"Ofast\")\n#pragma GCC optimize(\"unroll-loops\"\
     )\nusing mint = static_modint32<MOD2>;\nint main() {\n    ios::sync_with_stdio(false);\n\
     \    cin.tie(0);\n    int n, m, k;\n    cin >> n >> m >> k;\n    using mat = Matrix<mint>;\n\
@@ -145,15 +146,15 @@ data:
   - math/static_modint.hpp
   - math/matrix.hpp
   isVerificationFile: true
-  path: test/yosupo judge/matrix/Matrix Product.test.cpp
+  path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 08:02:40+09:00'
+  timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo judge/matrix/Matrix Product.test.cpp
+documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/matrix/Matrix Product.test.cpp
-- /verify/test/yosupo judge/matrix/Matrix Product.test.cpp.html
-title: test/yosupo judge/matrix/Matrix Product.test.cpp
+- /verify/test/yosupo_judge/matrix/Matrix Product.test.cpp
+- /verify/test/yosupo_judge/matrix/Matrix Product.test.cpp.html
+title: test/yosupo_judge/matrix/Matrix Product.test.cpp
 ---

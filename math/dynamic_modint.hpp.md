@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':warning:'
     path: math/barrett.hpp
-    title: barret reduction
+    title: barrett reduction
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -13,7 +13,7 @@ data:
     _deprecated_at_docs: docs/math/dynamic_modint.md
     document_title: "dynamic modint(\u52D5\u7684modint)"
     links: []
-  bundledCode: "#line 2 \"math/barrett.hpp\"\nnamespace internal {\n\t///@brief barret\
+  bundledCode: "#line 2 \"math/barrett.hpp\"\nnamespace internal {\n\t///@brief barrett\
     \ reduction\n\tclass barrett {\n\t\tusing u32 = uint32_t;\n\t\tusing u64 = uint64_t;\n\
     \n\t\tu32 m;\n\t\tu64 im;\n\tpublic:\n\t\texplicit barrett() = default;\n\t\t\
     explicit barrett(const u32& m_) :m(m_), im((u64)(-1) / m_ + 1) {}\n\n\t\tu32 get_mod()\
@@ -106,7 +106,7 @@ data:
   isVerificationFile: false
   path: math/dynamic_modint.hpp
   requiredBy: []
-  timestamp: '2023-03-25 20:37:44+09:00'
+  timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: math/dynamic_modint.hpp

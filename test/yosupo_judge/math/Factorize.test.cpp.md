@@ -1,16 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/miller.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -23,7 +23,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/factorize
     links:
     - https://judge.yosupo.jp/problem/factorize
-  bundledCode: "#line 1 \"test/yosupo judge/math/Factorize.test.cpp\"\n#define PROBLEM\
+  bundledCode: "#line 1 \"test/yosupo_judge/math/Factorize.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/factorize\"\n\n#line 2 \"template.hpp\"\n\
     #include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
@@ -106,7 +106,7 @@ data:
     \ == pf[i]) {\n                    res.back().second++;\n                }\n \
     \               else {\n                    res.emplace_back(pf[i], 1);\n    \
     \            }\n            }\n\n            return res;\n        }\n    };  //\
-    \ namespace pollard\n};  // namespace prime\n#line 5 \"test/yosupo judge/math/Factorize.test.cpp\"\
+    \ namespace pollard\n};  // namespace prime\n#line 5 \"test/yosupo_judge/math/Factorize.test.cpp\"\
     \nint main(){\n    int q;\n    cin >> q;\n    while (q--){\n        __uint64_t\
     \ x;\n        cin >> x;\n        const auto pf = prime::rho::factorize(x);\n \
     \       printf(\"%d \", (int)pf.size());\n        for (auto &p : pf){\n      \
@@ -123,15 +123,15 @@ data:
   - math/miller.hpp
   - math/mod_pow.hpp
   isVerificationFile: true
-  path: test/yosupo judge/math/Factorize.test.cpp
+  path: test/yosupo_judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 02:02:12+09:00'
+  timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo judge/math/Factorize.test.cpp
+documentation_of: test/yosupo_judge/math/Factorize.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/math/Factorize.test.cpp
-- /verify/test/yosupo judge/math/Factorize.test.cpp.html
-title: test/yosupo judge/math/Factorize.test.cpp
+- /verify/test/yosupo_judge/math/Factorize.test.cpp
+- /verify/test/yosupo_judge/math/Factorize.test.cpp.html
+title: test/yosupo_judge/math/Factorize.test.cpp
 ---

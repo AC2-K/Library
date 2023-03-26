@@ -7,20 +7,20 @@ data:
     path: test/AOJ/DSL/2/B.test.cpp
     title: test/AOJ/DSL/2/B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-    title: test/yosupo judge/data structure/Point Set Range Composite.test.cpp
+    path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
-    title: test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
+    path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/data structure/Static Range Sum.test.cpp
-    title: test/yosupo judge/data structure/Static Range Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-    title: test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
-  _isVerificationFailed: false
+    path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp
+    title: test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: /home/ac2000/main/library/docs/data-structure/segtree.md
     document_title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
@@ -70,12 +70,12 @@ data:
   path: data-structure/segtree.hpp
   requiredBy: []
   timestamp: '2023-03-26 04:58:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo judge/data structure/Static Range Sum.test.cpp
-  - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
-  - test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp
-  - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
+  - test/yosupo_judge/new/Longest Increasing Subsequence.test.cpp
+  - test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/AOJ/DSL/2/B.test.cpp
 documentation_of: data-structure/segtree.hpp
 layout: document
