@@ -12,6 +12,7 @@
         "future": "cpp",
         "memory": "cpp",
         "cmath": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "tuple": "cpp"
     }
 }

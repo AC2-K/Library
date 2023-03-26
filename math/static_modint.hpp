@@ -241,7 +241,8 @@ public:
 	mint& operator/=(const mint& r) {
 		return (*this) *= r.inv();
 	}
-	friend mint operator/(const mint& l, const i64& r) {
+    mint operator/(const mint& r) { return mint(*this) *= r.inv(); }
+    friend mint operator/(const mint& l, const i64& r) {
 		return mint(l) /= mint(r);
 	}
 
