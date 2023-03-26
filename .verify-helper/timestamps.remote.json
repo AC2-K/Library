@@ -1,5 +1,4 @@
 {
-"main.test.cpp": "2023-03-26 08:02:40 +0900",
 "test/AOJ/ALDS/1/C.test.cpp": "2023-03-10 13:31:13 +0900",
 "test/AOJ/ALDS/14/B.test.cpp": "2023-03-10 13:31:13 +0900",
 "test/AOJ/DSL/1/A.test.cpp": "2023-03-25 02:02:12 +0900",
@@ -19,6 +18,7 @@
 "test/yosupo judge/data structure/Point_Add_Range_Sum_Segtree.test.cpp": "2023-03-26 04:58:56 +0900",
 "test/yosupo judge/data structure/Static RMQ.test.cpp": "2023-03-25 14:30:40 +0900",
 "test/yosupo judge/data structure/Static Range Sum.test.cpp": "2023-03-26 04:58:56 +0900",
+"test/yosupo judge/data structure/Static_Range_Frequency_Mo.test.cpp": "2023-03-26 18:34:28 +0900",
 "test/yosupo judge/data structure/UnionFind.test.cpp": "2023-03-25 02:02:12 +0900",
 "test/yosupo judge/data structure/Vertex Add Path Sum.test.cpp": "2023-03-25 20:03:04 +0900",
 "test/yosupo judge/data structure/Vertex add Subtree Sum.test.cpp": "2023-03-25 20:03:04 +0900",
