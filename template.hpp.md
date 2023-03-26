@@ -7,6 +7,9 @@ data:
     title: test/AOJ/DSL/2/D2.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: main.test.cpp
+    title: main.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/1/C.test.cpp
     title: test/AOJ/ALDS/1/C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -90,6 +93,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/new/Primitive Root.test.cpp
     title: test/yosupo judge/new/Primitive Root.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
+    title: test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
     title: test/yosupo judge/tree/Lowest Common Ancestor.test.cpp
@@ -196,6 +202,7 @@ data:
   timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - main.test.cpp
   - test/yuki/No-1471.test.cpp
   - test/yosupo judge/data structure/Static Range Sum.test.cpp
   - test/yosupo judge/data structure/Point Set Range Composite.test.cpp
@@ -207,6 +214,7 @@ data:
   - test/yosupo judge/data structure/Static RMQ.test.cpp
   - test/yosupo judge/data structure/Line Add Get Min.test.cpp
   - test/yosupo judge/new/Primitive Root.test.cpp
+  - test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
   - test/yosupo judge/new/Longest Increasing Subsequence.test.cpp
   - test/yosupo judge/graph/Shortest Path.test.cpp
   - test/yosupo judge/math/Discrete Logarithm.test.cpp

@@ -35,9 +35,6 @@ data:
       path: debug.hpp
       title: debug.hpp
     - icon: ':warning:'
-      path: main.cpp
-      title: main.cpp
-    - icon: ':warning:'
       path: out.cpp
       title: out.cpp
     - icon: ':heavy_check_mark:'
@@ -112,6 +109,11 @@ data:
       path: test/AOJ/DSL/2/D2.cpp
       title: test/AOJ/DSL/2/D2.cpp
   verificationCategories:
+  - name: .
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: main.test.cpp
+      title: main.test.cpp
   - name: test/AOJ/ALDS/1
     pages:
     - icon: ':heavy_check_mark:'
@@ -222,6 +224,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo judge/new/Primitive Root.test.cpp
       title: test/yosupo judge/new/Primitive Root.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
+      title: test/yosupo judge/new/Range_Affine_Point_Get.test.cpp
   - name: test/yosupo judge/tree
     pages:
     - icon: ':heavy_check_mark:'

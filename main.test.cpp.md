@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: math/matrix.hpp
-    title: "maxtirx(\u884C\u5217)"
+    path: data-structure/dual_segtree.hpp
+    title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
@@ -17,22 +17,42 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/matrix_product
+    PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
     links:
-    - https://judge.yosupo.jp/problem/matrix_product
-  bundledCode: "#line 1 \"test/yosupo judge/matrix/Matrix Product.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#line 2 \"template.hpp\"\
-    \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
-    #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
-    using i128=__int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
-    \ graph = vector<vector<int>>;\nusing P = pair<int, int>;\nconstexpr int inf =\
-    \ 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\nconst long double\
-    \ pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 =\
-    \ 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1\
-    \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
-    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"math/static_modint.hpp\"\
-    \ntemplate<__uint64_t mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\
-    \tusing i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
+    - https://judge.yosupo.jp/problem/range_affine_point_get
+  bundledCode: "#line 1 \"main.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
+    \n\n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
+    #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
+    #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
+    \ long long;\nusing ld = long double;\nusing graph = vector<vector<int>>;\nusing\
+    \ P = pair<int, int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr\
+    \ ld eps = 1e-6;\nconst long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9\
+    \ + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0\
+    \ };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T\
+    \ y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n\
+    #line 1 \"data-structure/dual_segtree.hpp\"\n\n/// @brief Dual Segmenttree(\u53CC\
+    \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n/// @tparam F \u8981\u7D20\u306E\u578B\
+    \n/// @tparam comp \u4E8C\u9805\u6F14\u7B97\n/// @tparam id \u5358\u4F4D\u5143\
+    \n/// @docs docs/data-structure/dual_segtree.md\ntemplate<class F, F(*comp)(F,\
+    \ F), F(*id)(), bool is_commutative = true >\nclass dual_segtree {\n\tvector<F>\
+    \ dat;\n\tint _n, sz, lg;\n\npublic:\n\tdual_segtree() :dual_segtree(0) {}\n\t\
+    dual_segtree(int _n) :_n(_n) {\n\t\tsz = 1, lg = 0;\n\t\twhile (sz < _n) {\n\t\
+    \t\tlg++;\n\t\t\tsz <<= 1;\n\t\t}\n\t\tdat.assign(sz << 1, id());\n\t}\n\nprivate:\n\
+    \tvoid all_apply(int p, const F& v) {\n\t\tdat[p] = comp(dat[p], v);\n\t}\n\t\
+    void push(int p) {\n\t\tif (dat[p] == id()) {\n\t\t\treturn;\n\t\t}\n\t\tall_apply(p\
+    \ << 1 | 0, dat[p]);\n\t\tall_apply(p << 1 | 1, dat[p]);\n\t\tdat[p] = id();\n\
+    \t}\npublic:\n\tF operator[](int p) {\n\t\tassert(0 <= p && p < _n);\n\n\t\tF\
+    \ res = id();\n\n\t\tp += sz;\n\t\tfor (int i = lg; i > 0; i--) {\n\t\t\tpush(p\
+    \ >> i);\n\t\t}\n\t\treturn dat[p];\n\t}\npublic:\n\n\tvoid apply(int l, int r,\
+    \ const F& v) {\n\t\tassert(0 <= l && l <= r && r <= _n);\n\t\tif (l == r)return;\n\
+    \t\tl += sz, r += sz;\n\t\tif (is_commutative) {\n\t\t\tfor (int i = lg; i > 0;\
+    \ i--) {\n\t\t\t\tif (((l >> i) << i) != l) {\n\t\t\t\t\tpush(l >> i);\n\t\t\t\
+    \t}\n\t\t\t\tif (((r >> i) << i) != r) {\n\t\t\t\t\tpush((r - 1) >> i);\n\t\t\t\
+    \t}\n\t\t\t}\n\t\t}\n\n\t\twhile (l < r) {\n\t\t\tif (l & 1) {\n\t\t\t\tall_apply(l++,\
+    \ v);\n\t\t\t}\n\t\t\tif (r & 1) {\n\t\t\t\tall_apply(--r, v);\n\t\t\t}\n\t\t\t\
+    l >>= 1, r >>= 1;\n\t\t}\n\t}\n};\n#line 1 \"math/static_modint.hpp\"\ntemplate<__uint64_t\
+    \ mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\t\
+    using i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
     \tusing i128 = __int128_t;\n\n\tu64 v;\n\tu64 normalize(i64 v_) const {\n\t\t\
     v_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\n\
     public:\n\tstatic_modint() :v(0) {}\n\tstatic_modint(const i64& v_) :v(normalize(v_))\
@@ -98,62 +118,42 @@ data:
     \t\tos << mt.val();\n\t\treturn os;\n\t}\n\tfriend istream& operator>>(istream&\
     \ is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t\
     }\n\n};\n///@brief static modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n\
-    #line 2 \"math/matrix.hpp\"\ntemplate<typename T>\nclass Matrix {\n    vector<vector<T>>\
-    \ dat;\n    int h = 0, w = 0;\n\n  public:\n    Matrix(const vector<vector<T>>&\
-    \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
-    \ h_, int w_, const T& v = T())\n        : dat(h_, vector<T>(w_, v)){}\n     \
-    \   \n    using mat = Matrix<T>;\n    //access\n    vector<T>& operator[](int\
-    \ i) { return dat[i]; }\n\n    //operator\n    mat& operator+=(const mat& r) {\n\
-    \        assert(r.h == this->h);\n        assert(r.w == this->w);\n        for\
-    \ (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n     \
-    \           dat[i][j] += r.dat[i][j];\n            }\n        }\n        return\
-    \ (*this);\n    }\n    mat& operator-=(const mat&r){\n        assert(r.h == this->h);\n\
-    \        assert(r.w == this->w);\n        for (int i = 0; i < h; i++) {\n    \
-    \        for (int j = 0; j < w; j++) {\n                dat[i][j] -= r.dat[i][j];\n\
-    \            }\n        }\n        return (*this);\n    }\n    \n    mat& operator*=(const\
-    \ mat& r) {\n        int ha = dat.size(), wa = dat.front().size();\n        int\
-    \ hb = r.dat.size(), wb = r.dat.front().size();\n        assert(wa == hb);\n \
-    \    \n        vector<vector<T>> res(ha, vector<T>(wb));\n        rep(i, ha) rep(j,\
-    \ wb) rep(k, wa) { res[i][j] += dat[i][k] * r.dat[k][j]; }\n     \n        swap(res,\
-    \ dat);\n        return (*this);\n    }\n\n    mat operator+(const mat& r) { return\
-    \ mat(*this) += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r;\
-    \ }\n    mat operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
-    \ e) const {\n        assert(e >= 0);\n        int n = dat.size();\n        mat\
-    \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
-    \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
-    \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
-    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n\
-    #line 5 \"test/yosupo judge/matrix/Matrix Product.test.cpp\"\n#pragma GCC target(\"\
-    avx2\")\n#pragma GCC optimize(\"Ofast\")\n#pragma GCC optimize(\"unroll-loops\"\
-    )\nusing mint = static_modint32<MOD2>;\nint main() {\n    ios::sync_with_stdio(false);\n\
-    \    cin.tie(0);\n    int n, m, k;\n    cin >> n >> m >> k;\n    using mat = Matrix<mint>;\n\
-    \    mat a(n, m), b(m, k);\n    rep(i, n) rep(j, m) { cin >> a[i][j]; }\n    rep(i,\
-    \ m) rep(j, k) { cin >> b[i][j]; }\n    auto res = a * b;\n    rep(i, n) {\n \
-    \       rep(j, k) { cout << res[i][j] << ' '; }\n        cout << '\\n';\n    }\n\
-    }\n\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include\"\
-    template.hpp\"\n#include\"math/static_modint.hpp\"\n#include\"math/matrix.hpp\"\
-    \n#pragma GCC target(\"avx2\")\n#pragma GCC optimize(\"Ofast\")\n#pragma GCC optimize(\"\
-    unroll-loops\")\nusing mint = static_modint32<MOD2>;\nint main() {\n    ios::sync_with_stdio(false);\n\
-    \    cin.tie(0);\n    int n, m, k;\n    cin >> n >> m >> k;\n    using mat = Matrix<mint>;\n\
-    \    mat a(n, m), b(m, k);\n    rep(i, n) rep(j, m) { cin >> a[i][j]; }\n    rep(i,\
-    \ m) rep(j, k) { cin >> b[i][j]; }\n    auto res = a * b;\n    rep(i, n) {\n \
-    \       rep(j, k) { cout << res[i][j] << ' '; }\n        cout << '\\n';\n    }\n\
-    }\n\n"
+    #line 6 \"main.test.cpp\"\nusing mint = static_modint32<MOD2>;\nusing Affine =\
+    \ pair<mint, mint>;\nAffine op(Affine g, Affine f) {\n\tauto a = f.first, b =\
+    \ f.second;\n\tauto c = g.first, d = g.second;\n\treturn Affine(a * c, a * d +\
+    \ b);\n}\nAffine e() { return Affine(1, 0); }\nint main() {\n\tint n, q;\n\tcin\
+    \ >> n >> q;\n\tdual_segtree<Affine, op, e> sg(n);\n\tvector<mint> a(n);\n\tfor\
+    \ (auto& aa : a) {\n\t\tcin >> aa;\n\t}\n\twhile (q--) {\n\t\tint t;\n\t\tcin\
+    \ >> t;   \n\t\tif (t == 0) {\n\t\t\tint l, r;\n\t\t\tmint b, c;\n\t\t\tcin >>\
+    \ l >> r >> b >> c;\n\t\t\tsg.apply(l, r, Affine(b, c));\n\t\t}\n\t\telse {\n\t\
+    \t\tint i;\n\t\t\tcin >> i;\n\t\t\tauto f = sg[i];\n\t\t\tmint ans = f.first *\
+    \ a[i] + f.second;\n\t\t\tcout << ans << '\\n';\n\t\t}\n\t}\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
+    \n\n#include\"template.hpp\"\n#include\"data-structure/dual_segtree.hpp\"\n#include\"\
+    math/static_modint.hpp\"\nusing mint = static_modint32<MOD2>;\nusing Affine =\
+    \ pair<mint, mint>;\nAffine op(Affine g, Affine f) {\n\tauto a = f.first, b =\
+    \ f.second;\n\tauto c = g.first, d = g.second;\n\treturn Affine(a * c, a * d +\
+    \ b);\n}\nAffine e() { return Affine(1, 0); }\nint main() {\n\tint n, q;\n\tcin\
+    \ >> n >> q;\n\tdual_segtree<Affine, op, e> sg(n);\n\tvector<mint> a(n);\n\tfor\
+    \ (auto& aa : a) {\n\t\tcin >> aa;\n\t}\n\twhile (q--) {\n\t\tint t;\n\t\tcin\
+    \ >> t;   \n\t\tif (t == 0) {\n\t\t\tint l, r;\n\t\t\tmint b, c;\n\t\t\tcin >>\
+    \ l >> r >> b >> c;\n\t\t\tsg.apply(l, r, Affine(b, c));\n\t\t}\n\t\telse {\n\t\
+    \t\tint i;\n\t\t\tcin >> i;\n\t\t\tauto f = sg[i];\n\t\t\tmint ans = f.first *\
+    \ a[i] + f.second;\n\t\t\tcout << ans << '\\n';\n\t\t}\n\t}\n}\n"
   dependsOn:
   - template.hpp
+  - data-structure/dual_segtree.hpp
   - math/static_modint.hpp
-  - math/matrix.hpp
   isVerificationFile: true
-  path: test/yosupo judge/matrix/Matrix Product.test.cpp
+  path: main.test.cpp
   requiredBy: []
   timestamp: '2023-03-26 08:02:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo judge/matrix/Matrix Product.test.cpp
+documentation_of: main.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo judge/matrix/Matrix Product.test.cpp
-- /verify/test/yosupo judge/matrix/Matrix Product.test.cpp.html
-title: test/yosupo judge/matrix/Matrix Product.test.cpp
+- /verify/main.test.cpp
+- /verify/main.test.cpp.html
+title: main.test.cpp
 ---
