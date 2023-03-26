@@ -78,5 +78,3 @@ redirect_from:
 - /library/math/matrix.hpp.html
 title: "maxtirx(\u884C\u5217)"
 ---
-## 概要
-行列です(書くこと無い)

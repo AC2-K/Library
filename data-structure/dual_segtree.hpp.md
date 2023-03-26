@@ -73,6 +73,7 @@ $(F,\circ,\text{id})$ をモノイドとする。\
 - $v\in F$ と区間 $[l,r)$ が与えられる。 $i\in [l,r)$ なる全ての $i$ に対して $a_i\leftarrow a_i\circ v$ と更新する。
 
 - $i$ が与えられたとき、 $a_i$ を求める。
+
 ## 使いかた
 ### コンストラクタ
 ```cpp
@@ -92,7 +93,7 @@ void apply(int l,int r,F x)
 - 計算量: $O(\log n)$
 
 ```cpp
-seg[int i]
+F seg[int i]
 ```
 $a_i$ を取得します
 - 計算量 $O(\log n)$
