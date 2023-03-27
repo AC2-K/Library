@@ -43,7 +43,7 @@ class Matrix {
         assert(wa == hb);
      
         vector<vector<T>> res(ha, vector<T>(wb));
-        rep(i, ha) rep(j, wb) rep(k, wa) { res[i][j] += dat[i][k] * r.dat[k][j]; }
+        rep(i, ha) rep(k, wa) rep(j, wb) { res[i][j] += dat[i][k] * r.dat[k][j]; }
      
         swap(res, dat);
         return (*this);

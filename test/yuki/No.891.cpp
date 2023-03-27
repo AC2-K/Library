@@ -3,7 +3,7 @@
 #include"template.hpp"
 #include"math/static_modint.hpp"
 #include"math/matrix.hpp"
-using mint = static_modint32<MOD>;
+using mint = static_modint32<MOD2>;
 int main() {
     int a, b, n;
     cin >> a >> b >> n;
