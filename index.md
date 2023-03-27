@@ -15,7 +15,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/dual_segtree.hpp
       title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/dynamic_segtree.hpp
       title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
@@ -244,6 +244,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/No-1471.test.cpp
       title: test/yuki/No-1471.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yuki/No-789_BIT.test.cpp
+      title: test/yuki/No-789_BIT.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yuki/No-789_dynamic.test.cpp
+      title: test/yuki/No-789_dynamic.test.cpp
 layout: toppage
 ---
 [![AC2K](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2FAC2K)](https://atcoder.jp/users/AC2K)

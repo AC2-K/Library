@@ -111,6 +111,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-1471.test.cpp
     title: test/yuki/No-1471.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/No-789_BIT.test.cpp
+    title: test/yuki/No-789_BIT.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/No-789_dynamic.test.cpp
+    title: test/yuki/No-789_dynamic.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -210,6 +216,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No-1471.test.cpp
+  - test/yuki/No-789_BIT.test.cpp
+  - test/yuki/No-789_dynamic.test.cpp
   - test/yosupo_judge/new/Primitive_Root.test.cpp
   - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
