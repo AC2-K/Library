@@ -111,6 +111,11 @@ data:
     - icon: ':warning:'
       path: test/AOJ/DSL/2/D2.cpp
       title: test/AOJ/DSL/2/D2.cpp
+  - name: test/yuki
+    pages:
+    - icon: ':warning:'
+      path: test/yuki/No.891.cpp
+      title: test/yuki/No.891.cpp
   verificationCategories:
   - name: test/AOJ/ALDS/1
     pages:

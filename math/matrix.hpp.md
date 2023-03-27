@@ -1,7 +1,13 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
+  - icon: ':warning:'
+    path: test/yuki/No.891.cpp
+    title: test/yuki/No.891.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
@@ -28,8 +34,8 @@ data:
     \            }\n        }\n        return (*this);\n    }\n    \n    mat& operator*=(const\
     \ mat& r) {\n        int ha = dat.size(), wa = dat.front().size();\n        int\
     \ hb = r.dat.size(), wb = r.dat.front().size();\n        assert(wa == hb);\n \
-    \    \n        vector<vector<T>> res(ha, vector<T>(wb));\n        rep(i, ha) rep(j,\
-    \ wb) rep(k, wa) { res[i][j] += dat[i][k] * r.dat[k][j]; }\n     \n        swap(res,\
+    \    \n        vector<vector<T>> res(ha, vector<T>(wb));\n        rep(i, ha) rep(k,\
+    \ wa) rep(j, wb) { res[i][j] += dat[i][k] * r.dat[k][j]; }\n     \n        swap(res,\
     \ dat);\n        return (*this);\n    }\n\n    mat operator+(const mat& r) { return\
     \ mat(*this) += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r;\
     \ }\n    mat operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
@@ -53,8 +59,8 @@ data:
     \            }\n        }\n        return (*this);\n    }\n    \n    mat& operator*=(const\
     \ mat& r) {\n        int ha = dat.size(), wa = dat.front().size();\n        int\
     \ hb = r.dat.size(), wb = r.dat.front().size();\n        assert(wa == hb);\n \
-    \    \n        vector<vector<T>> res(ha, vector<T>(wb));\n        rep(i, ha) rep(j,\
-    \ wb) rep(k, wa) { res[i][j] += dat[i][k] * r.dat[k][j]; }\n     \n        swap(res,\
+    \    \n        vector<vector<T>> res(ha, vector<T>(wb));\n        rep(i, ha) rep(k,\
+    \ wa) rep(j, wb) { res[i][j] += dat[i][k] * r.dat[k][j]; }\n     \n        swap(res,\
     \ dat);\n        return (*this);\n    }\n\n    mat operator+(const mat& r) { return\
     \ mat(*this) += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r;\
     \ }\n    mat operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
@@ -66,8 +72,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: math/matrix.hpp
-  requiredBy: []
-  timestamp: '2023-03-18 02:15:48+09:00'
+  requiredBy:
+  - test/yuki/No.891.cpp
+  - main.cpp
+  timestamp: '2023-03-27 20:50:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/matrix/Matrix Product.test.cpp

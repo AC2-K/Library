@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-789_dynamic.test.cpp
@@ -95,8 +92,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: data-structure/dynamic_segtree.hpp
-  requiredBy:
-  - main.cpp
+  requiredBy: []
   timestamp: '2023-03-27 20:28:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
