@@ -32,5 +32,7 @@
 "test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp": "2023-03-26 20:22:21 +0900",
 "test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp": "2023-03-26 20:22:21 +0900",
 "test/yosupo_judge/tree/Tree_Diameter.test.cpp": "2023-03-26 20:22:21 +0900",
-"test/yuki/No-1471.test.cpp": "2023-03-23 15:53:48 +0900"
+"test/yuki/No-1471.test.cpp": "2023-03-23 15:53:48 +0900",
+"test/yuki/No-789_BIT.test.cpp": "2023-03-27 20:28:55 +0900",
+"test/yuki/No-789_dynamic.test.cpp": "2023-03-27 20:28:55 +0900"
 }
