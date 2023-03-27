@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/math/eratosthenes.hpp
+    path: math/eratosthenes.hpp
     title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-  - icon: ':question:'
-    path: src/template.hpp
-    title: src/template.hpp
+  - icon: ':heavy_check_mark:'
+    path: template.hpp
+    title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -18,7 +18,7 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all/ALDS1_1_C
   bundledCode: "#line 1 \"test/AOJ/ALDS/1/C.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all/ALDS1_1_C\"\
-    \n\n#line 2 \"src/template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
+    \n\n\n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
     \ long long;\nusing ld = long double;\nusing graph = vector<vector<int>>;\nusing\
@@ -27,29 +27,29 @@ data:
     \ + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0\
     \ };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 1 \"src/math/eratosthenes.hpp\"\nvector<bool> prime_checker(int N){\n  \
-    \  vector<bool> primes(N + 1, true);\n\n    primes[0] = false;\n    primes[1]\
-    \ = false;\n\n    for (int p = 2; p <= N; ++p) {\n        if (!primes[p]) continue;\n\
-    \        for (int i = 2; p * i <= N; i++) {\n            primes[p * i] = false;\n\
-    \        }\n    }\n\n    return primes;\n}\n///@brief \u30A8\u30E9\u30C8\u30B9\
-    \u30C6\u30CD\u30B9\u306E\u7BE9\n#line 5 \"test/AOJ/ALDS/1/C.test.cpp\"\nint main(){\n\
+    #line 2 \"math/eratosthenes.hpp\"\nvector<bool> prime_checker(int N){\n    vector<bool>\
+    \ primes(N + 1, true);\n\n    primes[0] = false;\n    primes[1] = false;\n\n \
+    \   for (int p = 2; p <= N; ++p) {\n        if (!primes[p]) continue;\n      \
+    \  for (int i = 2; p * i <= N; i++) {\n            primes[p * i] = false;\n  \
+    \      }\n    }\n\n    return primes;\n}\n///@brief \u30A8\u30E9\u30C8\u30B9\u30C6\
+    \u30CD\u30B9\u306E\u7BE9\n#line 6 \"test/AOJ/ALDS/1/C.test.cpp\"\n\nint main(){\n\
     \    constexpr int INPUT_MAX = 100000000;\n    const auto res = prime_checker(INPUT_MAX);\n\
     \n    int n;\n    scanf(\"%d\",&n);\n    int ans = 0;\n    while(n--){\n     \
     \   int p;\n        scanf(\"%d\",&p);\n        if(res[p]){\n            ans++;\n\
     \        }\n    }\n    printf(\"%d\\n\",ans);\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/all/ALDS1_1_C\"\
-    \n\n#include\"../../../../src/template.hpp\"\n#include\"../../../../src/math/eratosthenes.hpp\"\
-    \nint main(){\n    constexpr int INPUT_MAX = 100000000;\n    const auto res =\
-    \ prime_checker(INPUT_MAX);\n\n    int n;\n    scanf(\"%d\",&n);\n    int ans\
-    \ = 0;\n    while(n--){\n        int p;\n        scanf(\"%d\",&p);\n        if(res[p]){\n\
-    \            ans++;\n        }\n    }\n    printf(\"%d\\n\",ans);\n}\n"
+    \n\n\n#include\"template.hpp\"\n#include\"math/eratosthenes.hpp\"\n\nint main(){\n\
+    \    constexpr int INPUT_MAX = 100000000;\n    const auto res = prime_checker(INPUT_MAX);\n\
+    \n    int n;\n    scanf(\"%d\",&n);\n    int ans = 0;\n    while(n--){\n     \
+    \   int p;\n        scanf(\"%d\",&p);\n        if(res[p]){\n            ans++;\n\
+    \        }\n    }\n    printf(\"%d\\n\",ans);\n}\n"
   dependsOn:
-  - src/template.hpp
-  - src/math/eratosthenes.hpp
+  - template.hpp
+  - math/eratosthenes.hpp
   isVerificationFile: true
   path: test/AOJ/ALDS/1/C.test.cpp
   requiredBy: []
-  timestamp: '2023-03-27 02:22:18+09:00'
+  timestamp: '2023-03-10 13:31:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/ALDS/1/C.test.cpp

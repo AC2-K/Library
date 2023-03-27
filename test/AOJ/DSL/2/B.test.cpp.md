@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: src/data-structure/segtree.hpp
+  - icon: ':heavy_check_mark:'
+    path: data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':question:'
-    path: src/template.hpp
-    title: src/template.hpp
+  - icon: ':heavy_check_mark:'
+    path: template.hpp
+    title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -18,18 +18,18 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_B
   bundledCode: "#line 1 \"test/AOJ/DSL/2/B.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_B\"\
-    \n#line 2 \"src/template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
-    #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
-    #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
-    \ long long;\nusing ld = long double;\nusing graph = vector<vector<int>>;\nusing\
-    \ P = pair<int, int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr\
-    \ ld eps = 1e-6;\nconst long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9\
-    \ + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0\
-    \ };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T\
-    \ y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 1 \"src/data-structure/segtree.hpp\"\n/// @brief Segment Tree(\u30BB\u30B0\
-    \u30E1\u30F3\u30C8\u6728)\n/// @tparam S \u8981\u7D20\u306E\u578B\n/// @tparam\
-    \ op \u4E8C\u9805\u6F14\u7B97\n/// @tparam e \u5358\u4F4D\u5143\n/// @docs /home/ac2000/main/library/docs/data-structure/segtree.md\n\
+    \n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
+    \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
+    \ popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\n\
+    using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
+    \ int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps\
+    \ = 1e-6;\nconst long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
+    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
+    \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
+    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/segtree.hpp\"\
+    \n/// @brief Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n/// @tparam S\
+    \ \u8981\u7D20\u306E\u578B\n/// @tparam op \u4E8C\u9805\u6F14\u7B97\n/// @tparam\
+    \ e \u5358\u4F4D\u5143\n/// @docs /home/ac2000/main/library/docs/data-structure/segtree.md\n\
     template<class S, S(*op)(S, S), S(*e)()>\nclass segtree {\n\tint lg, sz, n;\n\t\
     vector<S> dat;\npublic:\n\tsegtree() :segtree(0) {}\n\tsegtree(int n) : segtree(vector<S>(n,\
     \ e())) {}\n\tsegtree(const vector<S>& vec) : n((int)vec.size()) {\n\t\tsz = 1,\
@@ -53,20 +53,20 @@ data:
     \        }else{\n            int l,r;\n            cin>>l>>r;\n            l--,r--;\n\
     \            cout<<seg.prod(l,r+1)<<'\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_B\"\n#include\"\
-    ../../../../src/template.hpp\"\n#include\"../../../../src/data-structure/segtree.hpp\"\
-    \nusing S=ll;\nS op(S x,S y){return x+y;}\nS e(){return 0;}\nint main() {\n  \
-    \  int n,q;\n    cin>>n>>q;\n    segtree<S,op,e> seg(n);\n    while(q--){\n  \
-    \      int t;\n        cin>>t;\n        if(t==0){\n            ll i,x;\n     \
-    \       cin>>i>>x;\n            i--;\n            seg.apply(i,x);\n        }else{\n\
-    \            int l,r;\n            cin>>l>>r;\n            l--,r--;\n        \
-    \    cout<<seg.prod(l,r+1)<<'\\n';\n        }\n    }\n}\n"
+    template.hpp\"\n#include\"data-structure/segtree.hpp\"\nusing S=ll;\nS op(S x,S\
+    \ y){return x+y;}\nS e(){return 0;}\nint main() {\n    int n,q;\n    cin>>n>>q;\n\
+    \    segtree<S,op,e> seg(n);\n    while(q--){\n        int t;\n        cin>>t;\n\
+    \        if(t==0){\n            ll i,x;\n            cin>>i>>x;\n            i--;\n\
+    \            seg.apply(i,x);\n        }else{\n            int l,r;\n         \
+    \   cin>>l>>r;\n            l--,r--;\n            cout<<seg.prod(l,r+1)<<'\\n';\n\
+    \        }\n    }\n}\n"
   dependsOn:
-  - src/template.hpp
-  - src/data-structure/segtree.hpp
+  - template.hpp
+  - data-structure/segtree.hpp
   isVerificationFile: true
   path: test/AOJ/DSL/2/B.test.cpp
   requiredBy: []
-  timestamp: '2023-03-27 02:22:18+09:00'
+  timestamp: '2023-03-26 04:58:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2/B.test.cpp

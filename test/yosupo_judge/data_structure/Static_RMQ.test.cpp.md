@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: src/data-structure/sparse_table.hpp
+  - icon: ':heavy_check_mark:'
+    path: data-structure/sparse_table.hpp
     title: Sparse Table
-  - icon: ':question:'
-    path: src/template.hpp
-    title: src/template.hpp
+  - icon: ':heavy_check_mark:'
+    path: template.hpp
+    title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -18,7 +18,7 @@ data:
     links:
     - https://judge.yosupo.jp/problem/staticrmq
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Static_RMQ.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n#line 2 \"src/template.hpp\"\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n#line 2 \"template.hpp\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
     using i128=__int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
@@ -27,7 +27,7 @@ data:
     \ pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 =\
     \ 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1\
     \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
-    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"src/data-structure/sparse_table.hpp\"\
+    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/sparse_table.hpp\"\
     \n/// @brief Sparse Table\n/// @tparam T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
     \ntemplate<class T>\nclass sparse_table {\n    vector<T> vec;\n    vector<vector<T>>\
     \ table;\n    vector<int> look_up;\npublic:\n    sparse_table(int n) : vec(n)\
@@ -48,18 +48,18 @@ data:
     \twhile (q--) {\n\t\tint l, r;\n\t\tcin >> l >> r;\n\t\tcout << rmq.prod(l, r)\
     \ << '\\n';\n\t}\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n#include\"\
-    ../../../src/template.hpp\"\n#include\"../../../src/data-structure/sparse_table.hpp\"\
-    \nint main() {\n\tint n, q;\n\tcin >> n >> q;\n\tvector<int> a(n);\n\tfor (auto&\
-    \ aa : a) {\n\t\tcin >> aa;\n\t}\n\n\tsparse_table<int> rmq(a);\n\trmq.build();\n\
-    \twhile (q--) {\n\t\tint l, r;\n\t\tcin >> l >> r;\n\t\tcout << rmq.prod(l, r)\
-    \ << '\\n';\n\t}\n}"
+    template.hpp\"\n#include\"data-structure/sparse_table.hpp\"\nint main() {\n\t\
+    int n, q;\n\tcin >> n >> q;\n\tvector<int> a(n);\n\tfor (auto& aa : a) {\n\t\t\
+    cin >> aa;\n\t}\n\n\tsparse_table<int> rmq(a);\n\trmq.build();\n\twhile (q--)\
+    \ {\n\t\tint l, r;\n\t\tcin >> l >> r;\n\t\tcout << rmq.prod(l, r) << '\\n';\n\
+    \t}\n}"
   dependsOn:
-  - src/template.hpp
-  - src/data-structure/sparse_table.hpp
+  - template.hpp
+  - data-structure/sparse_table.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-03-27 02:22:18+09:00'
+  timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_RMQ.test.cpp

@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: src/math/miller.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/miller.hpp
     title: "fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':question:'
-    path: src/math/mod_pow.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-  - icon: ':question:'
-    path: src/math/rho.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':question:'
-    path: src/template.hpp
-    title: src/template.hpp
+  - icon: ':heavy_check_mark:'
+    path: template.hpp
+    title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/factorize
     links:
     - https://judge.yosupo.jp/problem/factorize
   bundledCode: "#line 1 \"test/yosupo_judge/math/Factorize.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/factorize\"\n\n#line 2 \"src/template.hpp\"\
-    \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
+    \ \"https://judge.yosupo.jp/problem/factorize\"\n\n#line 2 \"template.hpp\"\n\
+    #include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
     using i128=__int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = vector<vector<int>>;\nusing P = pair<int, int>;\nconstexpr int inf =\
@@ -33,12 +33,12 @@ data:
     \ pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 =\
     \ 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1\
     \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
-    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"src/math/mod_pow.hpp\"\n\
-    template <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    T ans =\
-    \ 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) {\n      \
-    \      ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
-    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n///@brief\
-    \ mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 2 \"src/math/miller.hpp\"\nnamespace\
+    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 2 \"math/mod_pow.hpp\"\ntemplate\
+    \ <class T, class U = T>\nU mod_pow(T base, T exp, T mod){\n    T ans = 1;\n \
+    \   base %= mod;\n    while (exp > 0) {\n        if (exp & 1) {\n            ans\
+    \ *= base;\n            ans %= mod;\n        }\n        base *= base;\n      \
+    \  base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n///@brief mod\
+    \ pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n#line 3 \"math/miller.hpp\"\nnamespace\
     \ prime {\n    namespace miller{\n        using i128 = __int128_t;\n        using\
     \ u128 = __uint128_t;\n        using u64 = __uint64_t;\n        bool miller_rabin(u64\
     \ n,const u64 bases[],int siz) {\n            u64 d = n - 1;\n            u64\
@@ -62,23 +62,23 @@ data:
     \ {\n                return miller_rabin(n, bases_int, 3);\n            } else\
     \ {\n                return miller_rabin(n, bases_ll, 7);\n            }\n   \
     \     }\n    };\n};\n///@brief fast prime check(MillerRabin\u306E\u7D20\u6570\u5224\
-    \u5B9A)\n#line 2 \"src/math/rho.hpp\"\n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\
-    \u5206\u89E3(Pollard Rho\u6CD5)\nnamespace prime {\n    namespace rho {\n    \
-    \    using i128 = __int128_t;\n        using u128 = __uint128_t;\n        using\
-    \ u64 = __uint64_t;\n\n        template<typename T>\n        T _gcd(T x, T y)\
-    \ {\n            while (y != 0) {\n                T ny = x % y;\n           \
-    \     T nx = y;\n                x = nx, y = ny;\n            }\n            return\
-    \ x;\n        }\n        u64 find_factor(u64 n) {\n            static u64 v =\
-    \ 7001;\n\n            if (~n & 1uL) {\n                return 2;\n          \
-    \  }\n            if (prime::miller::is_prime(n)) {\n                return n;\n\
-    \            }\n            while (1) {\n                v ^= v << 13, v ^= v\
-    \ >> 7, v ^= v << 17;\n                u64 c = v;\n                auto f = [&](u128\
-    \ x) -> u128 {\n                    x %= n;\n                    return (x * x\
-    \ + c) % n;\n                };\n                v ^= v << 13, v ^= v >> 7, v\
-    \ ^= v << 17;\n                ll x = v % n;\n                ll y = f(x);\n \
-    \               u64 d = 1;\n                while (d == 1) {\n               \
-    \     d = _gcd((u64)abs(x - y), n);\n                    x = f(x);\n         \
-    \           y = f(f(y));\n                }\n                if (1 < d && d <\
+    \u5B9A)\n#line 4 \"math/rho.hpp\"\nusing namespace std;\n///@brief \u9AD8\u901F\
+    \u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\nnamespace prime {\n    namespace\
+    \ rho {\n        using i128 = __int128_t;\n        using u128 = __uint128_t;\n\
+    \        using u64 = __uint64_t;\n\n        template<typename T>\n        T _gcd(T\
+    \ x, T y) {\n            while (y != 0) {\n                T ny = x % y;\n   \
+    \             T nx = y;\n                x = nx, y = ny;\n            }\n    \
+    \        return x;\n        }\n        u64 find_factor(u64 n) {\n            static\
+    \ u64 v = 7001;\n\n            if (~n & 1uL) {\n                return 2;\n  \
+    \          }\n            if (prime::miller::is_prime(n)) {\n                return\
+    \ n;\n            }\n            while (1) {\n                v ^= v << 13, v\
+    \ ^= v >> 7, v ^= v << 17;\n                u64 c = v;\n                auto f\
+    \ = [&](u128 x) -> u128 {\n                    x %= n;\n                    return\
+    \ (x * x + c) % n;\n                };\n                v ^= v << 13, v ^= v >>\
+    \ 7, v ^= v << 17;\n                ll x = v % n;\n                ll y = f(x);\n\
+    \                u64 d = 1;\n                while (d == 1) {\n              \
+    \      d = _gcd((u64)abs(x - y), n);\n                    x = f(x);\n        \
+    \            y = f(f(y));\n                }\n                if (1 < d && d <\
     \ n) {\n                    return d;\n                }\n            }\n    \
     \        exit(0);\n        }\n\n        vector<u64> rho_fact(u64 n) {\n      \
     \      if (n < 2) {\n                return {};\n            }\n            if\
@@ -112,21 +112,21 @@ data:
     \       printf(\"%d \", (int)pf.size());\n        for (auto &p : pf){\n      \
     \      printf(\"%lld \", p);\n        }\n        puts(\"\\n\");\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n\n#include\"\
-    ../../../src/template.hpp\"\n#include\"../../../src/math/rho.hpp\"\nint main(){\n\
-    \    int q;\n    cin >> q;\n    while (q--){\n        __uint64_t x;\n        cin\
-    \ >> x;\n        const auto pf = prime::rho::factorize(x);\n        printf(\"\
-    %d \", (int)pf.size());\n        for (auto &p : pf){\n            printf(\"%lld\
-    \ \", p);\n        }\n        puts(\"\\n\");\n    }\n}"
+    template.hpp\"\n#include\"math/rho.hpp\"\nint main(){\n    int q;\n    cin >>\
+    \ q;\n    while (q--){\n        __uint64_t x;\n        cin >> x;\n        const\
+    \ auto pf = prime::rho::factorize(x);\n        printf(\"%d \", (int)pf.size());\n\
+    \        for (auto &p : pf){\n            printf(\"%lld \", p);\n        }\n \
+    \       puts(\"\\n\");\n    }\n}"
   dependsOn:
-  - src/template.hpp
-  - src/math/rho.hpp
-  - src/math/miller.hpp
-  - src/math/mod_pow.hpp
+  - template.hpp
+  - math/rho.hpp
+  - math/miller.hpp
+  - math/mod_pow.hpp
   isVerificationFile: true
   path: test/yosupo_judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-03-27 02:22:18+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-26 20:22:21+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Factorize.test.cpp
 layout: document

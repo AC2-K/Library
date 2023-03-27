@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: src/data-structure/lazy_segtree.hpp
+  - icon: ':heavy_check_mark:'
+    path: data-structure/lazy_segtree.hpp
     title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
       \u30E1\u30F3\u30C8\u6728)"
-  - icon: ':question:'
-    path: src/template.hpp
-    title: src/template.hpp
+  - icon: ':heavy_check_mark:'
+    path: template.hpp
+    title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -19,7 +19,7 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E
   bundledCode: "#line 1 \"test/AOJ/DSL/2/E.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
-    \n\n#line 2 \"src/template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
+    \n\n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
     \ long long;\nusing ld = long double;\nusing graph = vector<vector<int>>;\nusing\
@@ -28,10 +28,10 @@ data:
     \ + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0\
     \ };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 1 \"src/data-structure/lazy_segtree.hpp\"\n/// @brief Segment Tree with\
-    \ Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
-    )\n/// @docs docs/data-structure/lazy_segtree.md\ntemplate<\n    class S, class\
-    \ F,\n    S(*op)(S, S), S(*e)(),\n    F(*comp)(F, F), F(*id)(),\n    S(*mapping)(S,\
+    #line 1 \"data-structure/lazy_segtree.hpp\"\n/// @brief Segment Tree with Lazy\
+    \ Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n\
+    /// @docs docs/data-structure/lazy_segtree.md\ntemplate<\n    class S, class F,\n\
+    \    S(*op)(S, S), S(*e)(),\n    F(*comp)(F, F), F(*id)(),\n    S(*mapping)(S,\
     \ F)\n>\nclass lazy_segtree {\n    int sz;\n    vector<S> dat;\n    vector<F>\
     \ lz;\npublic:\n    lazy_segtree(int n) :lazy_segtree(vector<S>(n, e())) {   \
     \ }\n    lazy_segtree(const vector<S>& a) :dat(4 * a.size(), e()), lz(4 * a.size(),\
@@ -72,22 +72,22 @@ data:
     \        }else{\n            int i;\n            cin>>i;\n            i--;\n \
     \           cout<<seg[i]<<'\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
-    \n\n#include\"../../../../src/template.hpp\"\n#include\"../../../../src/data-structure/lazy_segtree.hpp\"\
-    \n\nint op(int x,int y){return x+y;}\nint comp(int x,int y){return x+y;}\nint\
-    \ mapping(int x,int y){return x+y;}\nint e(){return 0;}\nint id(){return 0;}\n\
-    \nint main() {\n    int n,q;\n    cin>>n>>q;\n    lazy_segtree<int,int,op,e,comp,id,mapping>\
+    \n\n#include\"template.hpp\"\n#include\"data-structure/lazy_segtree.hpp\"\n\n\
+    int op(int x,int y){return x+y;}\nint comp(int x,int y){return x+y;}\nint mapping(int\
+    \ x,int y){return x+y;}\nint e(){return 0;}\nint id(){return 0;}\n\nint main()\
+    \ {\n    int n,q;\n    cin>>n>>q;\n    lazy_segtree<int,int,op,e,comp,id,mapping>\
     \ seg(n);\n    while(q--){\n        int t;\n        cin>>t;\n        if(t==0){\n\
     \            int l,r;\n            cin>>l>>r;\n            int new_val;\n    \
     \        cin>>new_val;\n            l--,r--;\n            seg.apply(l,r+1,new_val);\n\
     \        }else{\n            int i;\n            cin>>i;\n            i--;\n \
     \           cout<<seg[i]<<'\\n';\n        }\n    }\n}"
   dependsOn:
-  - src/template.hpp
-  - src/data-structure/lazy_segtree.hpp
+  - template.hpp
+  - data-structure/lazy_segtree.hpp
   isVerificationFile: true
   path: test/AOJ/DSL/2/E.test.cpp
   requiredBy: []
-  timestamp: '2023-03-27 02:22:18+09:00'
+  timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2/E.test.cpp
