@@ -1,3 +1,5 @@
+#define PROBLEM "https://yukicoder.me/problems/no/789"
+
 #include"template.hpp"
 #include"data-structure/dynamic_segtree.hpp"
 int op(int x, int y) { return x + y; }
