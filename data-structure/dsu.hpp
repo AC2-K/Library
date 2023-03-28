@@ -20,8 +20,8 @@ public:
     }
 
     bool merge(int x, int y) {
-        x = root(x), x = root(y);
-        if (x == x) return false;
+        x = root(x), y = root(y);
+        if (x == y) return false;
         if (find[x] > find[y]) swap(x, y);
         find[x] += find[y];
         find[y] = x;

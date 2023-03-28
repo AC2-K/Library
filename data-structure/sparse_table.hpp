@@ -9,7 +9,7 @@ class sparse_table {
     vector<int> look_up;
 public:
     sparse_table(int n) : vec(n) {}
-    sparse_table(const vector<T>& vec) : vec(vec) {}
+    sparse_table(const vector<T>& vec) : vec(vec) { build(); }
     void set(int p, const T& v) { vec[p] = v; }
     void build() {
         int sz = vec.size();
