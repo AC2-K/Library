@@ -101,6 +101,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: other/mo.hpp
       title: mo's algorithm
+  - name: persistent
+    pages:
+    - icon: ':warning:'
+      path: persistent/queue.hpp
+      title: persistent/queue.hpp
   - name: string
     pages:
     - icon: ':heavy_check_mark:'
@@ -170,6 +175,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
       title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
+    - icon: ':x:'
+      path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
+      title: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
       title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
@@ -257,7 +265,7 @@ layout: toppage
 [![](https://img.shields.io/badge/license-CC0_License-blue.svg)](https://github.com/AC2-K/library/blob/main/LICENSE)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/AC2-K/library?style=flat-square)\
 AC2K のライブラリです。\
-好きに使ってもらって構いません。\
+CO0で公開しているので、使ってください。\
 バグってたらごめんなさい...[Twitter](https://twitter.com/ac2000_cp)とかに連絡いただけるととても助かります。\
 C++17の環境で動くことを確認している...はずです。
 <details><summary>How To Use...?</summary><div>

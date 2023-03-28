@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/1/C.test.cpp
@@ -212,8 +209,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: template.hpp
-  requiredBy:
-  - main.cpp
+  requiredBy: []
   timestamp: '2023-03-28 10:54:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

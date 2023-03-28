@@ -44,7 +44,7 @@ data:
   isVerificationFile: false
   path: graph/mst.hpp
   requiredBy: []
-  timestamp: '2023-03-28 11:28:51+09:00'
+  timestamp: '2023-03-29 01:52:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/2/A.test.cpp

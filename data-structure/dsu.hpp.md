@@ -32,21 +32,24 @@ data:
     \ in a non-first line\")\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt:\
     \ data-structure/dsu.hpp: line 3: #pragma once found in a non-first line\n"
   code: "/// @brief Disjoint Set(Union find)\n/// @docs docs/data-structure/dsu.md\n\
-    #pragma once\nclass DSU {\nprivate:\n    vector<int> find;\npublic:\n    DSU(int\
-    \ n) : find(n, -1) {    }\n\n    int root(int x) {\n        if (find[x] < 0) {\n\
-    \            return x;\n        }\n        else {\n            return find[x]\
-    \ = root(find[x]);\n        }\n    }\n    bool same(int x, int y) {\n        return\
-    \ root(x) == root(y);\n    }\n\n    bool merge(int x, int y) {\n        x = root(x),\
-    \ y = root(y);\n        if (x == y) return false;\n        if (find[x] > find[y])\
-    \ swap(x, y);\n        find[x] += find[y];\n        find[y] = x;\n        return\
-    \ true;\n    }\n\n    int size(int x) {\n        return -find[root(x)];\n    }\n\
-    };"
+    #pragma once\nclass DSU {\nprivate:\n    vector<int> find, rank;\npublic:\n  \
+    \  DSU(int n) : find(n, -1), rank(n, 1) {}\n\n    int root(int x) {\n        if\
+    \ (find[x] < 0) {\n            return x;\n        }\n        else {\n        \
+    \    return find[x] = root(find[x]);\n        }\n    }\n    bool same(int x, int\
+    \ y) {\n        return root(x) == root(y);\n    }\n\n    bool merge(int x, int\
+    \ y) {\n        x = root(x), y = root(y);\n        if (x == y) return false;\n\
+    \        if (rank[x] < rank[y]) swap(x, y);\n        if (rank[x] == rank[y]) rank[x]++;\
+    \ \n        find[x] += find[y];\n        find[y] = x;\n        return true;\n\
+    \    }\n\n    int size(int x) {\n        return -find[root(x)];\n    }\n\n   \
+    \ inline int group_size() {\n        int c = 0;\n        for (int v = 0; v < find.size();\
+    \ v++) {\n            if (find[v] < 0) {\n                c++;\n            }\n\
+    \        }\n        return c;\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/dsu.hpp
   requiredBy:
   - graph/mst.hpp
-  timestamp: '2023-03-28 11:28:51+09:00'
+  timestamp: '2023-03-29 01:52:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/UnionFind.test.cpp
