@@ -260,6 +260,11 @@ AC2K のライブラリです。\
 好きに使ってもらって構いません。\
 バグってたらごめんなさい...[Twitter](https://twitter.com/ac2000_cp)とかに連絡いただけるととても助かります。\
 C++17の環境で動くことを確認している...はずです。
-<details><summary>This is TEST!!!</summary><div>
-HelloWorld
+<details><summary>How To Use...?</summary><div>
+コピペして使うときは、コードの右上にある`Copy`を押してコピーしてください。\
+また、ソースコードの上に
+```cpp
+#include"hoge.hpp"
+```
+みたいに書いてるときは、他のファイルも開く必要があるかもので、ソースファイルの同じく右上にある`Bundle`で展開してからコピーしてください。
 </div></details>
