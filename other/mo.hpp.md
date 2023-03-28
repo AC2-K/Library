@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   - icon: ':x:'
@@ -11,7 +11,7 @@ data:
     title: test/yuki/No-1471.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/other/mo.md
     document_title: mo's algorithm
@@ -71,7 +71,7 @@ data:
   path: other/mo.hpp
   requiredBy: []
   timestamp: '2023-03-23 15:53:48+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No-1471.test.cpp
   - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp

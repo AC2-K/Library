@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/matrix.hpp
     title: "maxtirx(\u884C\u5217)"
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -153,7 +153,7 @@ data:
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
   timestamp: '2023-03-28 10:54:47+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
 layout: document

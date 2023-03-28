@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/dsu.hpp
     title: Disjoint Set(Union find)
   - icon: ':heavy_check_mark:'
@@ -32,7 +32,7 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 312, in update\n    raise BundleErrorAt(path, i + 1, \"#pragma once found\
     \ in a non-first line\")\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt:\
-    \ data-structure/dsu.hpp: line 4: #pragma once found in a non-first line\n"
+    \ data-structure/dsu.hpp: line 3: #pragma once found in a non-first line\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/2/GRL_2_A\"\
     \n\n#include\"template.hpp\"\n#include\"graph/mst.hpp\"\n\nint main(){\n    int\
     \ n,m;\n    cin>>n>>m;\n    MST g(n);\n    rep(i,m){\n        int s,t,w;\n   \
@@ -45,7 +45,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/GRL/2/A.test.cpp
   requiredBy: []
-  timestamp: '2023-03-28 10:54:47+09:00'
+  timestamp: '2023-03-28 11:28:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/GRL/2/A.test.cpp

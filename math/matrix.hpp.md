@@ -6,7 +6,7 @@ data:
     path: main.cpp
     title: main.cpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - icon: ':x:'
@@ -14,7 +14,7 @@ data:
     title: test/yuki/No.891.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/math/matrix.md
     document_title: "maxtirx(\u884C\u5217)"
@@ -75,7 +75,7 @@ data:
   requiredBy:
   - main.cpp
   timestamp: '2023-03-27 20:50:14+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No.891.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp

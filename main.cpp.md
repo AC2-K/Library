@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/matrix.hpp
     title: "maxtirx(\u884C\u5217)"
   - icon: ':question:'

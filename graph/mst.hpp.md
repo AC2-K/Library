@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/dsu.hpp
     title: Disjoint Set(Union find)
   _extendedRequiredBy: []
@@ -25,7 +25,7 @@ data:
     \  File \"/opt/hostedtoolcache/Python/3.11.2/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 312, in update\n    raise BundleErrorAt(path, i + 1, \"#pragma once found\
     \ in a non-first line\")\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt:\
-    \ data-structure/dsu.hpp: line 4: #pragma once found in a non-first line\n"
+    \ data-structure/dsu.hpp: line 3: #pragma once found in a non-first line\n"
   code: "#include\"data-structure/dsu.hpp\"\n\n\n///@brief Minimum Spannning Tree(\u6700\
     \u5C0F\u5168\u57DF\u6728)\nclass MST {\n    DSU dsu;\n    struct Edge {\n    \
     \    int v1, v2;\n        int cost;\n        int id;\n        Edge(int v1, int\
@@ -44,7 +44,7 @@ data:
   isVerificationFile: false
   path: graph/mst.hpp
   requiredBy: []
-  timestamp: '2023-03-28 10:54:47+09:00'
+  timestamp: '2023-03-28 11:28:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/2/A.test.cpp

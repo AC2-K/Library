@@ -12,10 +12,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - icon: ':x:'
