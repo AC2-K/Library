@@ -1,4 +1,3 @@
-#pragma once
 template<typename T>
 class Matrix {
     vector<vector<T>> dat;
