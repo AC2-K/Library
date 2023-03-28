@@ -3,17 +3,17 @@
 #include"data-structure/sparse_table.hpp"
 int main() {
 	int n, q;
-	cin >> n >> q;
-	vector<int> a(n);
-	for (auto& aa : a) {
-		cin >> aa;
+	scanf("%d%d", &n, &q);
+	sparse_table<int> rmq(n);
+	rep(i, n) {
+		int ai;
+		scanf("%d", &ai);
+		rmq.set(i, ai);
 	}
-
-	sparse_table<int> rmq(a);
 	rmq.build();
 	while (q--) {
 		int l, r;
-		cin >> l >> r;
-		cout << rmq.prod(l, r) << '\n';
+		scanf("%d%d", &l, &r);
+		printf("%d\n", &rmq);
 	}
 }
