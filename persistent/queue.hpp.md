@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: main.test.cpp
+    title: main.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
+    title: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"persistent/queue.hpp\"\ntemplate<typename T, int lg = 20>\n\
@@ -48,8 +54,10 @@ data:
   path: persistent/queue.hpp
   requiredBy: []
   timestamp: '2023-03-29 01:52:41+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - main.test.cpp
+  - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
 documentation_of: persistent/queue.hpp
 layout: document
 redirect_from:

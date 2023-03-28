@@ -35,9 +35,6 @@ data:
       path: debug.hpp
       title: debug.hpp
     - icon: ':warning:'
-      path: main.cpp
-      title: main.cpp
-    - icon: ':warning:'
       path: out.cpp
       title: out.cpp
     - icon: ':heavy_check_mark:'
@@ -103,7 +100,7 @@ data:
       title: mo's algorithm
   - name: persistent
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: persistent/queue.hpp
       title: persistent/queue.hpp
   - name: string
@@ -112,6 +109,11 @@ data:
       path: string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   verificationCategories:
+  - name: .
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: main.test.cpp
+      title: main.test.cpp
   - name: test/AOJ/ALDS/1
     pages:
     - icon: ':heavy_check_mark:'
@@ -175,7 +177,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
       title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
       title: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
     - icon: ':heavy_check_mark:'
@@ -265,8 +267,8 @@ layout: toppage
 [![](https://img.shields.io/badge/license-CC0_License-blue.svg)](https://github.com/AC2-K/library/blob/main/LICENSE)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/AC2-K/library?style=flat-square)\
 AC2K のライブラリです。\
-CO0で公開しているので、使ってください。\
-バグってたらごめんなさい...[Twitter](https://twitter.com/ac2000_cp)とかに連絡いただけるととても助かります。\
+CO0で公開しているので、好きに使ってください~\
+バグってたときは[Twitter](https://twitter.com/ac2000_cp)とかに連絡いただけるととても助かります。\
 C++17の環境で動くことを確認している...はずです。
 <details><summary>How To Use...?</summary><div>
 コピペして使うときは、コードの右上にある"Copy"を押してコピーしてください。
