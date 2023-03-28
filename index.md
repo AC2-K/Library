@@ -260,3 +260,6 @@ AC2K のライブラリです。\
 好きに使ってもらって構いません。\
 バグってたらごめんなさい...[Twitter](https://twitter.com/ac2000_cp)とかに連絡いただけるととても助かります。\
 C++17の環境で動くことを確認している...はずです。
+<details><summary>This is TEST!!!</summary><div>
+HelloWorld
+</div></details>
