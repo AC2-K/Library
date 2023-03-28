@@ -12,15 +12,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
     title: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: /home/ac2000/main/library/docs/data-structure/segtree.md
     document_title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
@@ -70,7 +70,7 @@ data:
   path: data-structure/segtree.hpp
   requiredBy: []
   timestamp: '2023-03-26 04:58:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
   - test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp

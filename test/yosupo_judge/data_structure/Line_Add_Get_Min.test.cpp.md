@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/CHT.hpp
     title: Convex Hull Trick
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -42,7 +42,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 20:22:21+09:00'
+  timestamp: '2023-03-28 10:54:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp

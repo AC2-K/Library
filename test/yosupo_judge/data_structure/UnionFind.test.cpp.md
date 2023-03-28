@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/dsu.hpp
     title: Disjoint Set(Union find)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/unionfind
@@ -28,20 +28,21 @@ data:
     , line 312, in update\n    raise BundleErrorAt(path, i + 1, \"#pragma once found\
     \ in a non-first line\")\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt:\
     \ data-structure/dsu.hpp: line 4: #pragma once found in a non-first line\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n#include\"\
-    template.hpp\"\n#include\"data-structure/dsu.hpp\"\nint main() {\n    int n,q;\n\
-    \    cin>>n>>q;\n    DSU dsu(n);\n    while(q--){\n        int t,x,y;\n      \
-    \  cin>>t>>x>>y;\n        if(t==0){\n            dsu.merge(x,y);\n        }else{\n\
-    \            if(dsu.same(x,y))cout<<\"1\\n\";\n            else cout<<\"0\\n\"\
-    ;\n        }\n    }\n}"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#include\
+    \ \"template.hpp\"\n#include \"data-structure/dsu.hpp\"\nint main() {\n    int\
+    \ n, q;\n    scanf(\"%d%d\", &n, &q);\n    DSU dsu(n);\n    while (q--) {\n  \
+    \      int t, x, y;\n        scanf(\"%d%d%d\", &t, &x, &y);\n        if (t ==\
+    \ 0) {\n            dsu.merge(x, y);\n        }\n        else {\n            if\
+    \ (dsu.same(x, y))puts(\"1\");\n            else puts(\"0\");\n        }\n   \
+    \ }\n}"
   dependsOn:
   - template.hpp
   - data-structure/dsu.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 20:22:21+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-03-28 11:00:24+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/UnionFind.test.cpp
 layout: document

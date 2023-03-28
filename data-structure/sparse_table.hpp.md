@@ -2,28 +2,28 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/euler_tour.hpp
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5/C.test.cpp
     title: test/AOJ/GRL/5/C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/sparse_table.md
     document_title: Sparse Table
@@ -65,7 +65,7 @@ data:
   requiredBy:
   - graph/euler_tour.hpp
   timestamp: '2023-03-25 14:30:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp

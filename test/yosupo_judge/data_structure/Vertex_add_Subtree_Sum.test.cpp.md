@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/sparse_table.hpp
     title: Sparse Table
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/euler_tour.hpp
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
@@ -32,19 +32,20 @@ data:
     \ int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps\
     \ = 1e-6;\nconst long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
     constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
-    \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\n\
-    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/BIT.hpp\"\
-    \n/// @brief Binary Index Tree\n/// @tparam Type \u8981\u7D20\u306E\u578B\n///\
-    \ @tparam SumType \"\u548C\u304C\" \u53CE\u307E\u308B\u3088\u3046\u306A\u578B\n\
-    /// @docs docs/data-structure/BIT.md\ntemplate <typename Type, typename SumType\
-    \ = Type>\nclass BIT {\n    int _n;\n    vector<SumType> _dat;\npublic:\n    explicit\
-    \ BIT(int _n) : _n(_n), _dat(_n, SumType()) {}\n\n    inline void add(int p, Type\
-    \ v) {\n        p++;\n        for (; p <= _n; p += p & (-p)) {\n            _dat[p\
-    \ - 1] += SumType(v);\n        }\n    }\n\n    inline SumType sum(int p) {\n \
-    \       SumType res = 0;\n        for (; p > 0; p -= p & -p) {\n            res\
-    \ += _dat[p - 1];\n        }\n        return res;\n    }\n\n    inline SumType\
-    \ sum(int l, int r) { return sum(r) - sum(l); }\n};\n#line 1 \"data-structure/sparse_table.hpp\"\
-    \n/// @brief Sparse Table\n/// @tparam T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
+    \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline void chmax(T&x,T\
+    \ y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
+    #line 1 \"data-structure/BIT.hpp\"\n/// @brief Binary Index Tree\n/// @tparam\
+    \ Type \u8981\u7D20\u306E\u578B\n/// @tparam SumType \"\u548C\u304C\" \u53CE\u307E\
+    \u308B\u3088\u3046\u306A\u578B\n/// @docs docs/data-structure/BIT.md\ntemplate\
+    \ <typename Type, typename SumType = Type>\nclass BIT {\n    int _n;\n    vector<SumType>\
+    \ _dat;\npublic:\n    explicit BIT(int _n) : _n(_n), _dat(_n, SumType()) {}\n\n\
+    \    inline void add(int p, Type v) {\n        p++;\n        for (; p <= _n; p\
+    \ += p & (-p)) {\n            _dat[p - 1] += SumType(v);\n        }\n    }\n\n\
+    \    inline SumType sum(int p) {\n        SumType res = 0;\n        for (; p >\
+    \ 0; p -= p & -p) {\n            res += _dat[p - 1];\n        }\n        return\
+    \ res;\n    }\n\n    inline SumType sum(int l, int r) { return sum(r) - sum(l);\
+    \ }\n};\n#line 1 \"data-structure/sparse_table.hpp\"\n/// @brief Sparse Table\n\
+    /// @tparam T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
     \ntemplate<class T>\nclass sparse_table {\n    vector<T> vec;\n    vector<vector<T>>\
     \ table;\n    vector<int> look_up;\npublic:\n    sparse_table(int n) : vec(n)\
     \ {}\n    sparse_table(const vector<T>& vec) : vec(vec) {}\n    void set(int p,\
@@ -109,8 +110,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 20:22:21+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-03-28 10:54:47+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
 layout: document

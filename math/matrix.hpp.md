@@ -5,16 +5,16 @@ data:
   - icon: ':warning:'
     path: main.cpp
     title: main.cpp
-  - icon: ':warning:'
-    path: test/yuki/No.891.cpp
-    title: test/yuki/No.891.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yuki/No.891.test.cpp
+    title: test/yuki/No.891.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/math/matrix.md
     document_title: "maxtirx(\u884C\u5217)"
@@ -73,11 +73,11 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy:
-  - test/yuki/No.891.cpp
   - main.cpp
   timestamp: '2023-03-27 20:50:14+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
+  - test/yuki/No.891.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
 documentation_of: math/matrix.hpp
 layout: document

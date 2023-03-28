@@ -6,18 +6,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No-789_BIT.test.cpp
     title: test/yuki/No-789_BIT.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/BIT.md
     document_title: Binary Index Tree
@@ -48,7 +48,7 @@ data:
   path: data-structure/BIT.hpp
   requiredBy: []
   timestamp: '2023-03-25 20:03:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No-789_BIT.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp

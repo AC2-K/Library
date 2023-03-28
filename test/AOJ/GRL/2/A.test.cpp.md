@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/dsu.hpp
     title: Disjoint Set(Union find)
   - icon: ':heavy_check_mark:'
     path: graph/mst.hpp
     title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -45,7 +45,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/GRL/2/A.test.cpp
   requiredBy: []
-  timestamp: '2023-03-25 02:02:12+09:00'
+  timestamp: '2023-03-28 10:54:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/GRL/2/A.test.cpp

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/sparse_table.hpp
     title: Sparse Table
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/staticrmq
@@ -26,10 +26,11 @@ data:
     \ 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\nconst long double\
     \ pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 =\
     \ 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1\
-    \ };\ntemplate<class T>inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class\
-    \ T>inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/sparse_table.hpp\"\
-    \n/// @brief Sparse Table\n/// @tparam T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
-    \ntemplate<class T>\nclass sparse_table {\n    vector<T> vec;\n    vector<vector<T>>\
+    \ };\ntemplate<class T>static constexpr inline void chmax(T&x,T y){if(x<y)x=y;}\n\
+    template<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n#line\
+    \ 1 \"data-structure/sparse_table.hpp\"\n/// @brief Sparse Table\n/// @tparam\
+    \ T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\n\
+    template<class T>\nclass sparse_table {\n    vector<T> vec;\n    vector<vector<T>>\
     \ table;\n    vector<int> look_up;\npublic:\n    sparse_table(int n) : vec(n)\
     \ {}\n    sparse_table(const vector<T>& vec) : vec(vec) {}\n    void set(int p,\
     \ const T& v) { vec[p] = v; }\n    void build() {\n        int sz = vec.size();\n\
@@ -43,24 +44,24 @@ data:
     \ {\n            look_up[i] = look_up[i >> 1] + 1;\n        }\n    }\n\n    T\
     \ prod(int l, int r) {\n        int b = look_up[r - l];\n        return min(table[b][l],\
     \ table[b][r - (1 << b)]);\n    }\n};\n#line 4 \"test/yosupo_judge/data_structure/Static_RMQ.test.cpp\"\
-    \nint main() {\n\tint n, q;\n\tcin >> n >> q;\n\tvector<int> a(n);\n\tfor (auto&\
-    \ aa : a) {\n\t\tcin >> aa;\n\t}\n\n\tsparse_table<int> rmq(a);\n\trmq.build();\n\
-    \twhile (q--) {\n\t\tint l, r;\n\t\tcin >> l >> r;\n\t\tcout << rmq.prod(l, r)\
-    \ << '\\n';\n\t}\n}\n"
+    \nint main() {\n\tint n, q;\n\tscanf(\"%d%d\", &n, &q);\n\tsparse_table<int> rmq(n);\n\
+    \trep(i, n) {\n\t\tint ai;\n\t\tscanf(\"%d\", &ai);\n\t\trmq.set(i, ai);\n\t}\n\
+    \trmq.build();\n\twhile (q--) {\n\t\tint l, r;\n\t\tscanf(\"%d%d\", &l, &r);\n\
+    \t\tprintf(\"%d\\n\", &rmq);\n\t}\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n#include\"\
     template.hpp\"\n#include\"data-structure/sparse_table.hpp\"\nint main() {\n\t\
-    int n, q;\n\tcin >> n >> q;\n\tvector<int> a(n);\n\tfor (auto& aa : a) {\n\t\t\
-    cin >> aa;\n\t}\n\n\tsparse_table<int> rmq(a);\n\trmq.build();\n\twhile (q--)\
-    \ {\n\t\tint l, r;\n\t\tcin >> l >> r;\n\t\tcout << rmq.prod(l, r) << '\\n';\n\
-    \t}\n}"
+    int n, q;\n\tscanf(\"%d%d\", &n, &q);\n\tsparse_table<int> rmq(n);\n\trep(i, n)\
+    \ {\n\t\tint ai;\n\t\tscanf(\"%d\", &ai);\n\t\trmq.set(i, ai);\n\t}\n\trmq.build();\n\
+    \twhile (q--) {\n\t\tint l, r;\n\t\tscanf(\"%d%d\", &l, &r);\n\t\tprintf(\"%d\\\
+    n\", &rmq);\n\t}\n}"
   dependsOn:
   - template.hpp
   - data-structure/sparse_table.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-03-26 20:22:21+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-03-28 11:00:24+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
 layout: document

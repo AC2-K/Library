@@ -5,12 +5,6 @@ data:
   - icon: ':warning:'
     path: main.cpp
     title: main.cpp
-  - icon: ':warning:'
-    path: test/AOJ/DSL/2/D2.cpp
-    title: test/AOJ/DSL/2/D2.cpp
-  - icon: ':warning:'
-    path: test/yuki/No.891.cpp
-    title: test/yuki/No.891.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/1/C.test.cpp
@@ -27,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/D.test.cpp
     title: test/AOJ/DSL/2/D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2/D2.test.cpp
+    title: test/AOJ/DSL/2/D2.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2/E.test.cpp
     title: test/AOJ/DSL/2/E.test.cpp
@@ -66,63 +63,66 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Discrete Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
     title: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/new/Primitive_Root.test.cpp
     title: test/yosupo_judge/new/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No-1471.test.cpp
     title: test/yuki/No-1471.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No-789_BIT.test.cpp
     title: test/yuki/No-789_BIT.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No-789_dynamic.test.cpp
     title: test/yuki/No-789_dynamic.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yuki/No.891.test.cpp
+    title: test/yuki/No.891.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -163,9 +163,9 @@ data:
 
     constexpr int dy[] = { 0,1,0,-1 };
 
-    template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
+    template<class T>static constexpr inline void chmax(T&x,T y){if(x<y)x=y;}
 
-    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}
+    template<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}
 
     '
   code: '#pragma once
@@ -206,22 +206,21 @@ data:
 
     constexpr int dy[] = { 0,1,0,-1 };
 
-    template<class T>inline void chmax(T&x,T y){if(x<y)x=y;}
+    template<class T>static constexpr inline void chmax(T&x,T y){if(x<y)x=y;}
 
-    template<class T>inline void chmin(T&x,T y){if(x>y)x=y;}'
+    template<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}'
   dependsOn: []
   isVerificationFile: false
   path: template.hpp
   requiredBy:
-  - test/yuki/No.891.cpp
-  - test/AOJ/DSL/2/D2.cpp
   - main.cpp
-  timestamp: '2023-03-10 13:31:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-03-28 10:54:47+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No-1471.test.cpp
   - test/yuki/No-789_BIT.test.cpp
   - test/yuki/No-789_dynamic.test.cpp
+  - test/yuki/No.891.test.cpp
   - test/yosupo_judge/new/Primitive_Root.test.cpp
   - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
@@ -249,6 +248,7 @@ data:
   - test/AOJ/DSL/2/E.test.cpp
   - test/AOJ/DSL/2/B.test.cpp
   - test/AOJ/DSL/2/E2.test.cpp
+  - test/AOJ/DSL/2/D2.test.cpp
   - test/AOJ/DSL/1/A.test.cpp
   - test/AOJ/NTL/1/D.test.cpp
   - test/AOJ/NTL/1/E.test.cpp

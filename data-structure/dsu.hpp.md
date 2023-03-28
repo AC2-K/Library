@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/2/A.test.cpp
     title: test/AOJ/GRL/2/A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/dsu.md
     document_title: Disjoint Set(Union find)
@@ -32,23 +32,22 @@ data:
     \ in a non-first line\")\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt:\
     \ data-structure/dsu.hpp: line 4: #pragma once found in a non-first line\n"
   code: "/// @brief Disjoint Set(Union find)\n/// @docs docs/data-structure/dsu.md\n\
-    \n#pragma once\nclass DSU {\nprivate:\n\tvector<int> par, rank, siz;\n\tint N;\n\
-    public:\n\tDSU(int n) : par(n, -1), rank(n, 0), siz(n, 1), N(n) {}\n\n\tint root(int\
-    \ x) {\n\t\tif (par[x] == -1)\n\t\t\treturn x;\n\t\telse\n\t\t\treturn par[x]\
-    \ = root(par[x]);\n\t}\n\tbool same(int x, int y) {\n\t\treturn root(x) == root(y);\n\
-    \t}\n\n\tbool merge(int x, int y) {\n\t\tint rx = root(x), ry = root(y);\n\t\t\
-    if (rx == ry)\n\t\t\treturn false;\n\n\t\tif (rank[rx] < rank[ry])\n\t\t\tswap(rx,\
-    \ ry);\n\t\tpar[ry] = rx;\n\n\t\tsiz[rx] += siz[ry];\n\t\treturn true;\n\t}\n\n\
-    \tint size(int x) {\n\t\treturn siz[root(x)];\n\t}\n\tint group_size() {\n\t\t\
-    int cnt = 0;\n\t\tfor (int i = 0; i < N; i++)\n\t\t\tif (root(i) == i)\n\t\t\t\
-    \tcnt++;\n\t\treturn cnt;\n\t}\n};"
+    \n#pragma once\nclass DSU {\nprivate:\n    vector<int> find;\npublic:\n    DSU(int\
+    \ n) : find(n, -1) {    }\n\n    int root(int x) {\n        if (find[x] < 0) {\n\
+    \            return x;\n        }\n        else {\n            return find[x]\
+    \ = root(find[x]);\n        }\n    }\n    bool same(int x, int y) {\n        return\
+    \ root(x) == root(y);\n    }\n\n    bool merge(int x, int y) {\n        int rx\
+    \ = root(x), ry = root(y);\n        if (rx == ry)\n            return false;\n\
+    \n        if (find[rx] >= find[ry]) {\n            swap(rx, ry);\n        }\n\
+    \        find[rx] += find[ry];\n        find[ry] = rx;\n        return true;\n\
+    \    }\n\n    int size(int x) {\n        return -find[root(x)];\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/dsu.hpp
   requiredBy:
   - graph/mst.hpp
-  timestamp: '2023-03-25 02:02:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-03-28 10:54:47+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/UnionFind.test.cpp
   - test/AOJ/GRL/2/A.test.cpp

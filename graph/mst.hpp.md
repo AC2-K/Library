@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/dsu.hpp
     title: Disjoint Set(Union find)
   _extendedRequiredBy: []
@@ -44,7 +44,7 @@ data:
   isVerificationFile: false
   path: graph/mst.hpp
   requiredBy: []
-  timestamp: '2023-03-25 02:02:12+09:00'
+  timestamp: '2023-03-28 10:54:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/2/A.test.cpp
