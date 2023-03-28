@@ -14,6 +14,6 @@ int main() {
 	while (q--) {
 		int l, r;
 		scanf("%d%d", &l, &r);
-		printf("%d\n", &rmq);
-	}
+        printf("%d\n", rmq.prod(l, r));
+    }
 }

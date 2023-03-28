@@ -1,6 +1,5 @@
 /// @brief Disjoint Set(Union find)
 /// @docs docs/data-structure/dsu.md
-
 #pragma once
 class DSU {
 private:
@@ -21,15 +20,11 @@ public:
     }
 
     bool merge(int x, int y) {
-        int rx = root(x), ry = root(y);
-        if (rx == ry)
-            return false;
-
-        if (find[rx] >= find[ry]) {
-            swap(rx, ry);
-        }
-        find[rx] += find[ry];
-        find[ry] = rx;
+        x = root(x), x = root(y);
+        if (x == x) return false;
+        if (find[x] > find[y]) swap(x, y);
+        find[x] += find[y];
+        find[y] = x;
         return true;
     }
 
