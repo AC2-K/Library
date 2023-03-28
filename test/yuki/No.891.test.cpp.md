@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: "maxtirx(\u884C\u5217)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/891
@@ -101,7 +101,7 @@ data:
     \tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
     \t\treturn os;\n\t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\
     \ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\n};\n///@brief static\
-    \ modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n#line 2 \"\
+    \ modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n#line 1 \"\
     math/matrix.hpp\"\ntemplate<typename T>\nclass Matrix {\n    vector<vector<T>>\
     \ dat;\n    int h = 0, w = 0;\n\n  public:\n    Matrix(const vector<vector<T>>&\
     \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
@@ -127,14 +127,14 @@ data:
     \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
     \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
     \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n\
-    #line 6 \"test/yuki/No.891.test.cpp\"\nusing mint = static_modint32<MOD2>;\nint\
+    #line 6 \"test/yuki/No.891.test.cpp\"\nusing mint = static_modint32<MOD>;\nint\
     \ main() {\n    int a, b, n;\n    cin >> a >> b >> n;\n    Matrix<mint> A({{a,\
     \ b}, {1, 0}});\n    A = A.pow(n);\n    cout << A[1][0] << '\\n';\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/891\"\n\n#include\"template.hpp\"\
     \n#include\"math/static_modint.hpp\"\n#include\"math/matrix.hpp\"\nusing mint\
-    \ = static_modint32<MOD2>;\nint main() {\n    int a, b, n;\n    cin >> a >> b\
-    \ >> n;\n    Matrix<mint> A({{a, b}, {1, 0}});\n    A = A.pow(n);\n    cout <<\
-    \ A[1][0] << '\\n';\n}\n"
+    \ = static_modint32<MOD>;\nint main() {\n    int a, b, n;\n    cin >> a >> b >>\
+    \ n;\n    Matrix<mint> A({{a, b}, {1, 0}});\n    A = A.pow(n);\n    cout << A[1][0]\
+    \ << '\\n';\n}\n"
   dependsOn:
   - template.hpp
   - math/static_modint.hpp
@@ -142,8 +142,8 @@ data:
   isVerificationFile: true
   path: test/yuki/No.891.test.cpp
   requiredBy: []
-  timestamp: '2023-03-28 10:54:47+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-28 13:32:48+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yuki/No.891.test.cpp
 layout: document

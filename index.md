@@ -40,7 +40,7 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -72,7 +72,7 @@ data:
       path: math/ext_gcd.hpp
       title: "ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\
         \u9664\u6CD5)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "maxtirx(\u884C\u5217)"
     - icon: ':heavy_check_mark:'
@@ -93,7 +93,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/rho.hpp
       title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
   - name: other
@@ -248,7 +248,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/No-789_dynamic.test.cpp
       title: test/yuki/No-789_dynamic.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No.891.test.cpp
       title: test/yuki/No.891.test.cpp
 layout: toppage
