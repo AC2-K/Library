@@ -31,5 +31,9 @@
 "test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp": "2023-03-28 10:54:47 +0900",
 "test/yosupo_judge/new/Primitive_Root.test.cpp": "2023-03-28 10:54:47 +0900",
 "test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp": "2023-03-28 10:54:47 +0900",
-"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp": "2023-03-28 11:28:51 +0900"
+"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp": "2023-03-28 11:28:51 +0900",
+"test/yosupo_judge/tree/Tree_Diameter.test.cpp": "2023-03-28 10:54:47 +0900",
+"test/yuki/No-1471.test.cpp": "2023-03-28 10:54:47 +0900",
+"test/yuki/No-789_BIT.test.cpp": "2023-03-28 10:54:47 +0900",
+"test/yuki/No-789_dynamic.test.cpp": "2023-03-28 10:54:47 +0900"
 }
