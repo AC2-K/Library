@@ -1,3 +1,14 @@
+template<class T>
+static constexpr inline T _gcd(T a,T b){
+    T s = a, t = b;
+    while (s % t != 0) {
+        T u = s % t;
+
+        s = t;
+        t = u;
+    }
+    return t;
+}
 static constexpr inline ll ext_gcd(ll a, ll b, ll &x, ll &y) {
     x = 1, y = 0;
     ll nx = 0, ny = 1;

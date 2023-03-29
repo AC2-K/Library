@@ -1,6 +1,6 @@
 #pragma once
 #include"math/mod_pow.hpp"
-
+#include"math/gcd.hpp"
 ll dlp(ll x, ll y, ll p) {
     if (y == 1 || p == 1) {
         return 0;
@@ -17,7 +17,7 @@ ll dlp(ll x, ll y, ll p) {
     unordered_map<ll, int> mp;
     ll xm = mod_pow(x, m, p);
     ll add = 0, g, k = 1 % p;
-    while ((g = gcd(x, p)) > 1) {
+    while ((g = _gcd(x, p)) > 1) {
         if (y == k)return add;
         if (y % g)return -1;
         y /= g, p /= g, add++;

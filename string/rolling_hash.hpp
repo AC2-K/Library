@@ -1,5 +1,6 @@
 #pragma once
 #include"math/mod_pow.hpp"
+#include"math/gcd.hpp"
 class RollingHash {
 	using ull = uint_fast64_t;
     using i128 = __int128_t;
@@ -45,7 +46,7 @@ private:
 		}
 		ull r = mod - 1;
 
-		while (gcd(r, mod - 1) != 1 || r <= mapping_max){
+		while (_gcd(r, mod - 1) != 1 || r <= mapping_max){
 			r = generate();
 		}
 		base = mod_pow<__uint128_t>(primitive_root, r, mod);

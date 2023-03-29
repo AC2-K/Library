@@ -26,6 +26,7 @@
         "tuple": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "numeric": "cpp"
     }
 }
