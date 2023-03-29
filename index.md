@@ -254,6 +254,9 @@ data:
       path: test/yuki/No-1471.test.cpp
       title: test/yuki/No-1471.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/yuki/No-430.test.cpp
+      title: test/yuki/No-430.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No-789_BIT.test.cpp
       title: test/yuki/No-789_BIT.test.cpp
     - icon: ':heavy_check_mark:'

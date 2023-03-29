@@ -67,11 +67,11 @@ data:
   timestamp: '2023-03-28 11:28:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/GRL/5/C.test.cpp
-  - test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Static_RMQ.test.cpp
+  - test/AOJ/GRL/5/C.test.cpp
 documentation_of: data-structure/sparse_table.hpp
 layout: document
 redirect_from:

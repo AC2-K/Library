@@ -39,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Primitive_Root.test.cpp
     title: test/yosupo_judge/new/Primitive_Root.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/No-430.test.cpp
+    title: test/yuki/No-430.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -60,20 +63,21 @@ data:
   path: math/mod_pow.hpp
   requiredBy:
   - math/DLP.hpp
-  - math/rho.hpp
   - math/primitive_root.hpp
-  - math/phi_function.hpp
+  - math/rho.hpp
   - math/miller.hpp
+  - math/phi_function.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-03-06 05:55:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/ALDS/14/B.test.cpp
-  - test/AOJ/NTL/1/D.test.cpp
-  - test/AOJ/NTL/1/B.test.cpp
+  - test/yuki/No-430.test.cpp
+  - test/yosupo_judge/new/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete Logarithm.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
-  - test/yosupo_judge/new/Primitive_Root.test.cpp
+  - test/AOJ/NTL/1/D.test.cpp
+  - test/AOJ/NTL/1/B.test.cpp
+  - test/AOJ/ALDS/14/B.test.cpp
 documentation_of: math/mod_pow.hpp
 layout: document
 redirect_from:

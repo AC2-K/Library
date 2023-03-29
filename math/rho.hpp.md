@@ -161,9 +161,9 @@ data:
   timestamp: '2023-03-25 02:02:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/NTL/1/D.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/new/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/AOJ/NTL/1/D.test.cpp
 documentation_of: math/rho.hpp
 layout: document
 redirect_from:
