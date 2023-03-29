@@ -5,7 +5,7 @@
 
 int main() {
 	int q;
-	cin >> q;
+	scanf("%d", &q);
 	vector<persistent_queue<int>> v(q + 1);
 	for (int i = 1; i <= q; i++) {
 		int t, idx;
