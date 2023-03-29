@@ -3,8 +3,8 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/gcd.hpp
-    title: "ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\
-      \u6CD5)"
+    title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
+      \u3069)"
   - icon: ':heavy_check_mark:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
@@ -39,16 +39,16 @@ data:
     \ mod;\n    while (exp > 0) {\n        if (exp & 1) {\n            ans *= base;\n\
     \            ans %= mod;\n        }\n        base *= base;\n        base %= mod;\n\
     \        exp >>= 1;\n    }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\
-    \u30CA\u30EA\u6CD5)\n#line 1 \"math/gcd.hpp\"\ntemplate<class T>\nstatic constexpr\
+    \u30CA\u30EA\u6CD5)\n#line 1 \"math/gcd.hpp\"\ntemplate<typename T>\nstatic constexpr\
     \ inline T _gcd(T a,T b){\n    T s = a, t = b;\n    while (s % t != 0) {\n   \
     \     T u = s % t;\n\n        s = t;\n        t = u;\n    }\n    return t;\n}\n\
-    static constexpr inline ll ext_gcd(ll a, ll b, ll &x, ll &y) {\n    x = 1, y =\
-    \ 0;\n    ll nx = 0, ny = 1;\n    while(b) {\n        long long q = a / b;\n \
-    \       tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx, x\
-    \ - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return a;\n\
-    }\n\n/// @brief ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\
-    \u4E92\u9664\u6CD5)\n/// @return ax+by=gcd(a,b)\u306A\u308Bx,y\u3092\u683C\u7D0D\
-    \u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n#line 4 \"string/rolling_hash.hpp\"\
+    template<typename T>\nstatic constexpr inline T ext_gcd(T a, T b, T &x, T &y)\
+    \ {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T q = a\
+    \ / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx,\
+    \ x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return\
+    \ a;\n}\n/// @return ax+by=gcd(a,b)\u306A\u308Bx,y\u3092\u683C\u7D0D\u3059\u308B\
+    ,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n/// @brief gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\
+    \u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069)\n#line 4 \"string/rolling_hash.hpp\"\
     \nclass RollingHash {\n\tusing ull = uint_fast64_t;\n    using i128 = __int128_t;\n\
     \    using u128 = __uint128_t;\n    // mod\n\tstatic constexpr ull msk30 = (1ul\
     \ << 30) - 1;\n\tstatic constexpr ull msk61 = (1ul << 31) - 1;\n\tconst string\
@@ -98,7 +98,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/ALDS/14/B.test.cpp
   requiredBy: []
-  timestamp: '2023-03-29 14:26:00+09:00'
+  timestamp: '2023-03-29 14:48:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/ALDS/14/B.test.cpp
