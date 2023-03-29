@@ -24,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Primitive_Root.test.cpp
     title: test/yosupo_judge/new/Primitive_Root.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/No-3030.test.cpp
+    title: test/yuki/No-3030.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -94,6 +97,7 @@ data:
   timestamp: '2023-03-25 02:02:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yuki/No-3030.test.cpp
   - test/yosupo_judge/new/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/AOJ/NTL/1/D.test.cpp

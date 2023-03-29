@@ -40,6 +40,9 @@ data:
     path: test/yosupo_judge/new/Primitive_Root.test.cpp
     title: test/yosupo_judge/new/Primitive_Root.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/No-3030.test.cpp
+    title: test/yuki/No-3030.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No-430.test.cpp
     title: test/yuki/No-430.test.cpp
   _isVerificationFailed: false
@@ -71,6 +74,7 @@ data:
   timestamp: '2023-03-06 05:55:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yuki/No-3030.test.cpp
   - test/yuki/No-430.test.cpp
   - test/yosupo_judge/new/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete Logarithm.test.cpp

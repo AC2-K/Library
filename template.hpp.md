@@ -112,6 +112,9 @@ data:
     path: test/yuki/No-1471.test.cpp
     title: test/yuki/No-1471.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yuki/No-3030.test.cpp
+    title: test/yuki/No-3030.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No-430.test.cpp
     title: test/yuki/No-430.test.cpp
   - icon: ':heavy_check_mark:'
@@ -220,6 +223,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No-1471.test.cpp
+  - test/yuki/No-3030.test.cpp
   - test/yuki/No-789_BIT.test.cpp
   - test/yuki/No-430.test.cpp
   - test/yuki/No-789_dynamic.test.cpp
