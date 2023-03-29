@@ -72,8 +72,8 @@ data:
     \ T>\n        T _gcd(T x, T y) {\n            while (y != 0) {\n             \
     \   T ny = x % y;\n                T nx = y;\n                x = nx, y = ny;\n\
     \            }\n            return x;\n        }\n        u64 find_factor(u64\
-    \ n) {\n            static u64 v = 7001;\n\n            if (~n & 1uL) {\n    \
-    \            return 2;\n            }\n            if (prime::miller::is_prime(n))\
+    \ n) {\n            static u64 v = rand();\n\n            if (~n & 1uL) {\n  \
+    \              return 2;\n            }\n            if (prime::miller::is_prime(n))\
     \ {\n                return n;\n            }\n            while (1) {\n     \
     \           v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n                u64 c =\
     \ v;\n                auto f = [&](u128 x) -> u128 {\n                    x %=\
@@ -138,7 +138,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2023-03-28 10:54:47+09:00'
+  timestamp: '2023-03-29 13:45:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Primitive_Root.test.cpp
