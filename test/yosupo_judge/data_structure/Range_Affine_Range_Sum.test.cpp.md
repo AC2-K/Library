@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/lazy_segtree.hpp
     title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
       \u30E1\u30F3\u30C8\u6728)"
-  - icon: ':question:'
-    path: math/ext_gcd.hpp
+  - icon: ':heavy_check_mark:'
+    path: math/gcd.hpp
     title: "ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\
       \u6CD5)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -70,45 +70,48 @@ data:
     public:\n    S prod(int l, int r) {\n        assert(0 <= l && l <= r && r <= sz);\n\
     \        return internal_prod(l, r, 0, sz, 0);\n    }\n\n    S operator[](int\
     \ pos) {\n        return prod(pos, pos + 1);\n    }\n};\n//@brief lazy segtree(\u9045\
-    \u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n#line 1 \"math/ext_gcd.hpp\"\
-    \nstatic constexpr inline ll ext_gcd(ll a, ll b, ll &x, ll &y) {\n    x = 1, y\
-    \ = 0;\n    ll nx = 0, ny = 1;\n    while(b) {\n        long long q = a / b;\n\
-    \        tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx,\
-    \ x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return\
-    \ a;\n}\n\n/// @brief ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\
-    \u306E\u4E92\u9664\u6CD5)\n/// @return ax+by=gcd(a,b)\u306A\u308Bx,y\u3092\u683C\
-    \u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n#line 2 \"math/static_modint.hpp\"\
-    \ntemplate<__uint64_t mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\
-    \tusing i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
-    \tusing i128 = __int128_t;\n\n\tu64 v;\n\tu64 normalize(i64 v_) const {\n\t\t\
-    v_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\n\
-    public:\n\tconstexpr static_modint() :v(0) {}\n\tconstexpr static_modint(const\
-    \ i64& v_) :v(normalize(v_)) { }\n\n\t//operator\n\tconstexpr u64 val() const\
-    \ {\n\t\treturn v;\n\t}\n\tconstexpr mint& operator+=(const mint& rhs) {\n\t\t\
-    v += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\
-    \t}\n\tconstexpr mint& operator-=(const mint& rhs) {\n\t\tv += mod - rhs.val();\n\
-    \t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr\
-    \ mint& operator*=(const mint& rhs) {\n\t\tv = (u128)v * rhs.val() % mod;\n\t\t\
-    return (*this);\n\t}\n\n\n\tconstexpr mint operator+(const mint& r) const {\n\t\
-    \treturn mint(*this) += r;\n\t}\n\tconstexpr mint operator-(const mint& r) const\
-    \ {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint operator*(const mint&\
-    \ r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\tconstexpr mint& operator+=(const\
-    \ i64& rhs) {\n\t\t(*this) += mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr\
-    \ mint& operator-=(const i64& rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\
-    \t}\n\tconstexpr mint& operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\
-    \t\treturn (*this);\n\t}\n\tconstexpr friend mint operator+(const i64& l, const\
-    \ mint& r) {\n\t\treturn mint(l) += r;\n\t}\n\tconstexpr friend mint operator-(const\
-    \ i64& l, const mint& r) {\n\t\treturn mint(l) -= r;\n\t}\n\tconstexpr friend\
-    \ mint operator*(const i64& l, const mint& r) {\n\t\treturn mint(l) *= r;\n\t\
-    }\n\n\tconstexpr mint operator+(const i64& r) {\n\t\treturn mint(*this) += r;\n\
-    \t}\n\tconstexpr mint operator-(const i64& r) {\n\t\treturn mint(*this) -= r;\n\
-    \t}\n\tconstexpr mint operator*(const i64& r) {\n\t\treturn mint(*this) *= r;\n\
-    \t}\n\n\n\tconstexpr mint& operator=(const i64& r) {\n\t\treturn (*this) = mint(r);\n\
-    \t}\n\n\tconstexpr bool operator==(const mint& r) const {\n\t\treturn (*this).val()\
-    \ == r.val();\n\t}\n\tconstexpr mint pow(u128 e) const {\n\t\tmint ans(1), base(*this);\n\
-    \t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans *= base;\n\t\t\t}\n\t\t\tbase\
-    \ *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tconstexpr mint inv()\
-    \ const {\n\t\tll x, y;\n        auto d = ext_gcd(mod, val, x, y);\n        assert(d\
+    \u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n#line 1 \"math/gcd.hpp\"\
+    \ntemplate<class T>\nstatic constexpr inline T _gcd(T a,T b){\n    T s = a, t\
+    \ = b;\n    while (s % t != 0) {\n        T u = s % t;\n\n        s = t;\n   \
+    \     t = u;\n    }\n    return t;\n}\nstatic constexpr inline ll ext_gcd(ll a,\
+    \ ll b, ll &x, ll &y) {\n    x = 1, y = 0;\n    ll nx = 0, ny = 1;\n    while(b)\
+    \ {\n        long long q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n\
+    \        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny,\
+    \ y - ny*q);\n    }\n    return a;\n}\n\n/// @brief ext gcd(\u62E1\u5F35\u30E6\
+    \u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5)\n/// @return ax+by=gcd(a,b)\u306A\
+    \u308Bx,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n#line\
+    \ 2 \"math/static_modint.hpp\"\ntemplate<__uint64_t mod>\nclass static_modint\
+    \ {\nprivate:\n\tusing mint = static_modint<mod>;\n\tusing i64 = long long;\n\t\
+    using u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\tusing i128 = __int128_t;\n\
+    \n\tu64 v;\n\tu64 normalize(i64 v_) const {\n\t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\
+    \t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\tconstexpr static_modint()\
+    \ :v(0) {}\n\tconstexpr static_modint(const i64& v_) :v(normalize(v_)) { }\n\n\
+    \t//operator\n\tconstexpr u64 val() const {\n\t\treturn v;\n\t}\n\tconstexpr mint&\
+    \ operator+=(const mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\
+    \tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const\
+    \ mint& rhs) {\n\t\tv += mod - rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\
+    \t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator*=(const mint& rhs)\
+    \ {\n\t\tv = (u128)v * rhs.val() % mod;\n\t\treturn (*this);\n\t}\n\n\n\tconstexpr\
+    \ mint operator+(const mint& r) const {\n\t\treturn mint(*this) += r;\n\t}\n\t\
+    constexpr mint operator-(const mint& r) const {\n\t\treturn mint(*this) -= r;\n\
+    \t}\n\tconstexpr mint operator*(const mint& r) const {\n\t\treturn mint(*this)\
+    \ *= r;\n\t}\n\n\tconstexpr mint& operator+=(const i64& rhs) {\n\t\t(*this) +=\
+    \ mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const i64&\
+    \ rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr mint&\
+    \ operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\t\treturn (*this);\n\
+    \t}\n\tconstexpr friend mint operator+(const i64& l, const mint& r) {\n\t\treturn\
+    \ mint(l) += r;\n\t}\n\tconstexpr friend mint operator-(const i64& l, const mint&\
+    \ r) {\n\t\treturn mint(l) -= r;\n\t}\n\tconstexpr friend mint operator*(const\
+    \ i64& l, const mint& r) {\n\t\treturn mint(l) *= r;\n\t}\n\n\tconstexpr mint\
+    \ operator+(const i64& r) {\n\t\treturn mint(*this) += r;\n\t}\n\tconstexpr mint\
+    \ operator-(const i64& r) {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint\
+    \ operator*(const i64& r) {\n\t\treturn mint(*this) *= r;\n\t}\n\n\n\tconstexpr\
+    \ mint& operator=(const i64& r) {\n\t\treturn (*this) = mint(r);\n\t}\n\n\tconstexpr\
+    \ bool operator==(const mint& r) const {\n\t\treturn (*this).val() == r.val();\n\
+    \t}\n\tconstexpr mint pow(u128 e) const {\n\t\tmint ans(1), base(*this);\n\t\t\
+    while (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans *= base;\n\t\t\t}\n\t\t\tbase *=\
+    \ base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tconstexpr mint inv()\
+    \ const {\n\t\tll x, y;\n        auto d = ext_gcd(mod, v, x, y);\n        assert(d\
     \ == 1);\n        return y;\n\t}\n\n\tconstexpr mint& operator/=(const mint& r)\
     \ {\n\t\treturn (*this) *= r.inv();\n\t}\n\tconstexpr friend mint operator/(const\
     \ mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\
@@ -145,8 +148,8 @@ data:
     \ == r.val();\n\t}\n\tconstexpr mint pow(u64 e) const {\n\t\tmint ans(1), base(*this);\n\
     \t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans *= base;\n\t\t\t}\n\t\t\tbase\
     \ *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tconstexpr mint inv()\
-    \ const {\n        ll x, y;\n        auto d = ext_gcd(mod, val, x, y);\n     \
-    \   assert(d == 1);\n        return y;\n    }\n\n\tconstexpr mint& operator/=(const\
+    \ const {\n        ll x, y;\n        auto d = ext_gcd(mod, v, x, y);\n       \
+    \ assert(d == 1);\n        return y;\n    }\n\n\tconstexpr mint& operator/=(const\
     \ mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n    constexpr mint operator/(const\
     \ mint& r) { return mint(*this) *= r.inv(); }\n    constexpr friend mint operator/(const\
     \ mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\
@@ -192,12 +195,12 @@ data:
   - template.hpp
   - data-structure/lazy_segtree.hpp
   - math/static_modint.hpp
-  - math/ext_gcd.hpp
+  - math/gcd.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-03-29 14:13:41+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-29 14:26:00+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
 layout: document

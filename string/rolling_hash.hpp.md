@@ -2,6 +2,10 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: math/gcd.hpp
+    title: "ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\
+      \u6CD5)"
+  - icon: ':heavy_check_mark:'
     path: math/mod_pow.hpp
     title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
   _extendedRequiredBy: []
@@ -24,20 +28,29 @@ data:
     \ {\n        if (exp & 1) {\n            ans *= base;\n            ans %= mod;\n\
     \        }\n        base *= base;\n        base %= mod;\n        exp >>= 1;\n\
     \    }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n\
-    #line 3 \"string/rolling_hash.hpp\"\nclass RollingHash {\n\tusing ull = uint_fast64_t;\n\
-    \    using i128 = __int128_t;\n    using u128 = __uint128_t;\n    // mod\n\tstatic\
-    \ constexpr ull msk30 = (1ul << 30) - 1;\n\tstatic constexpr ull msk61 = (1ul\
-    \ << 31) - 1;\n\tconst string str;\n\tvector<ull> hash, pow;\n\n    static constexpr\
-    \ ull mod = (1uL << 61) - 1;\n    static constexpr ull primitive_root = 37;\n\
-    public:\n\tstatic const uint mapping_max = (uint)'Z' + 2;\n\tstatic ull base;\n\
-    private:\n\tconstexpr ull mul(const u128& a,const u128& b) const {\n        u128\
-    \ t = a * b;\n\n\t\tt = (t >> 61) + (t & mod);\n\n\t\tif (t >= mod) {\n\t\t\t\
-    t -= mod;\n\t\t}\n\n\n\t\treturn t;\n    }\n\n    constexpr ull mapping(const\
+    #line 1 \"math/gcd.hpp\"\ntemplate<class T>\nstatic constexpr inline T _gcd(T\
+    \ a,T b){\n    T s = a, t = b;\n    while (s % t != 0) {\n        T u = s % t;\n\
+    \n        s = t;\n        t = u;\n    }\n    return t;\n}\nstatic constexpr inline\
+    \ ll ext_gcd(ll a, ll b, ll &x, ll &y) {\n    x = 1, y = 0;\n    ll nx = 0, ny\
+    \ = 1;\n    while(b) {\n        long long q = a / b;\n        tie(a, b) = make_pair(b,\
+    \ a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) =\
+    \ make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n\n/// @brief ext gcd(\u62E1\
+    \u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5)\n/// @return\
+    \ ax+by=gcd(a,b)\u306A\u308Bx,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\
+    \u306Bgcd(a,b)\n#line 4 \"string/rolling_hash.hpp\"\nclass RollingHash {\n\tusing\
+    \ ull = uint_fast64_t;\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
+    \    // mod\n\tstatic constexpr ull msk30 = (1ul << 30) - 1;\n\tstatic constexpr\
+    \ ull msk61 = (1ul << 31) - 1;\n\tconst string str;\n\tvector<ull> hash, pow;\n\
+    \n    static constexpr ull mod = (1uL << 61) - 1;\n    static constexpr ull primitive_root\
+    \ = 37;\npublic:\n\tstatic const uint mapping_max = (uint)'Z' + 2;\n\tstatic ull\
+    \ base;\nprivate:\n\tconstexpr ull mul(const u128& a,const u128& b) const {\n\
+    \        u128 t = a * b;\n\n\t\tt = (t >> 61) + (t & mod);\n\n\t\tif (t >= mod)\
+    \ {\n\t\t\tt -= mod;\n\t\t}\n\n\n\t\treturn t;\n    }\n\n    constexpr ull mapping(const\
     \ char& c) const {\n\t\treturn (ull)c;\t//\u5909\u66F4\u3059\u308B?\n\t}\n\n\n\
     \    static inline ull generate() {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
     \t\tuniform_int_distribution<ull> rand(1uL, mod - 1);\n\t\treturn rand(engine);\n\
     \t}\t\n    static inline void generate_base() {\n\t\tif (base != 0){\n\t\t\treturn;\n\
-    \t\t}\n\t\tull r = mod - 1;\n\n\t\twhile (gcd(r, mod - 1) != 1 || r <= mapping_max){\n\
+    \t\t}\n\t\tull r = mod - 1;\n\n\t\twhile (_gcd(r, mod - 1) != 1 || r <= mapping_max){\n\
     \t\t\tr = generate();\n\t\t}\n\t\tbase = mod_pow<__uint128_t>(primitive_root,\
     \ r, mod);\n\t}\npublic:\n\tRollingHash() :str() {\t}\n\n\tRollingHash(const string&\
     \ str) :str(str) {\n\t\tgenerate_base();\n\t\tbuild();\n\t}\n\n\tvoid build()\
@@ -57,20 +70,21 @@ data:
     \ = md;\n            }\n\t\t}\n\n\t\treturn ok;\n    }\n};\ntypename RollingHash::ull\
     \ RollingHash::base;\n\n///@brief Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\
     \u30C3\u30B7\u30E5)\n"
-  code: "#pragma once\n#include\"math/mod_pow.hpp\"\nclass RollingHash {\n\tusing\
-    \ ull = uint_fast64_t;\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
-    \    // mod\n\tstatic constexpr ull msk30 = (1ul << 30) - 1;\n\tstatic constexpr\
-    \ ull msk61 = (1ul << 31) - 1;\n\tconst string str;\n\tvector<ull> hash, pow;\n\
-    \n    static constexpr ull mod = (1uL << 61) - 1;\n    static constexpr ull primitive_root\
-    \ = 37;\npublic:\n\tstatic const uint mapping_max = (uint)'Z' + 2;\n\tstatic ull\
-    \ base;\nprivate:\n\tconstexpr ull mul(const u128& a,const u128& b) const {\n\
-    \        u128 t = a * b;\n\n\t\tt = (t >> 61) + (t & mod);\n\n\t\tif (t >= mod)\
-    \ {\n\t\t\tt -= mod;\n\t\t}\n\n\n\t\treturn t;\n    }\n\n    constexpr ull mapping(const\
-    \ char& c) const {\n\t\treturn (ull)c;\t//\u5909\u66F4\u3059\u308B?\n\t}\n\n\n\
-    \    static inline ull generate() {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
+  code: "#pragma once\n#include\"math/mod_pow.hpp\"\n#include\"math/gcd.hpp\"\nclass\
+    \ RollingHash {\n\tusing ull = uint_fast64_t;\n    using i128 = __int128_t;\n\
+    \    using u128 = __uint128_t;\n    // mod\n\tstatic constexpr ull msk30 = (1ul\
+    \ << 30) - 1;\n\tstatic constexpr ull msk61 = (1ul << 31) - 1;\n\tconst string\
+    \ str;\n\tvector<ull> hash, pow;\n\n    static constexpr ull mod = (1uL << 61)\
+    \ - 1;\n    static constexpr ull primitive_root = 37;\npublic:\n\tstatic const\
+    \ uint mapping_max = (uint)'Z' + 2;\n\tstatic ull base;\nprivate:\n\tconstexpr\
+    \ ull mul(const u128& a,const u128& b) const {\n        u128 t = a * b;\n\n\t\t\
+    t = (t >> 61) + (t & mod);\n\n\t\tif (t >= mod) {\n\t\t\tt -= mod;\n\t\t}\n\n\n\
+    \t\treturn t;\n    }\n\n    constexpr ull mapping(const char& c) const {\n\t\t\
+    return (ull)c;\t//\u5909\u66F4\u3059\u308B?\n\t}\n\n\n    static inline ull generate()\
+    \ {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
     \t\tuniform_int_distribution<ull> rand(1uL, mod - 1);\n\t\treturn rand(engine);\n\
     \t}\t\n    static inline void generate_base() {\n\t\tif (base != 0){\n\t\t\treturn;\n\
-    \t\t}\n\t\tull r = mod - 1;\n\n\t\twhile (gcd(r, mod - 1) != 1 || r <= mapping_max){\n\
+    \t\t}\n\t\tull r = mod - 1;\n\n\t\twhile (_gcd(r, mod - 1) != 1 || r <= mapping_max){\n\
     \t\t\tr = generate();\n\t\t}\n\t\tbase = mod_pow<__uint128_t>(primitive_root,\
     \ r, mod);\n\t}\npublic:\n\tRollingHash() :str() {\t}\n\n\tRollingHash(const string&\
     \ str) :str(str) {\n\t\tgenerate_base();\n\t\tbuild();\n\t}\n\n\tvoid build()\
@@ -92,10 +106,11 @@ data:
     \u30C3\u30B7\u30E5)"
   dependsOn:
   - math/mod_pow.hpp
+  - math/gcd.hpp
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-03-29 13:33:24+09:00'
+  timestamp: '2023-03-29 14:26:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No-430.test.cpp
