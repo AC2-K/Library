@@ -29,8 +29,8 @@ public:
 	dynamic_modint32(const i64& v_) :v(normalize(v_)) { assert(mod); }	
 
 	u32 val() const { return v; }
-
-	using mint = dynamic_modint32;
+    static u32 get_mod() { return mod; }
+    using mint = dynamic_modint32;
 
 	//operators
 	mint& operator=(const i64& r) {
@@ -95,7 +95,7 @@ public:
 			e >>= 1;
 			base *= base;
 		}
-		return base;
+		return res;
 	}
 	mint inv() const {
 		return pow(mod - 2);

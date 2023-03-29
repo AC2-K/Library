@@ -27,6 +27,7 @@
         "valarray": "cpp",
         "variant": "cpp",
         "list": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "initializer_list": "cpp"
     }
 }

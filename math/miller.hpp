@@ -5,7 +5,7 @@ namespace prime {
         using i128 = __int128_t;
         using u128 = __uint128_t;
         using u64 = __uint64_t;
-        bool miller_rabin(u64 n,const u64 bases[],int siz) {
+        constexpr bool miller_rabin(u64 n,const u64 bases[],int siz) {
             u64 d = n - 1;
             u64 q = __builtin_ctz(d);
             d >>= q;
@@ -35,10 +35,10 @@ namespace prime {
             return true;
         }
 
-
-        bool is_prime(u64 n){
-            static constexpr u64 bases_int[3] = {2, 7, 61};  // intだと、2,7,61で十分
-            static constexpr u64 bases_ll[7] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
+        constexpr u64 bases_int[3] = {2, 7, 61};  // intだと、2,7,61で十分
+        constexpr u64 bases_ll[7] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
+        constexpr bool is_prime(u64 n){
+            
             if (n < 2) {
                 return false;
             } else if (n == 2) {

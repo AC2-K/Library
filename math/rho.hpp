@@ -1,7 +1,6 @@
 #pragma once
-#include<bits/stdc++.h>
 #include"math/miller.hpp"
-using namespace std;
+#include"math/gcd.hpp"
 ///@brief 高速素因数分解(Pollard Rho法)
 namespace prime {
     namespace rho {
@@ -9,17 +8,8 @@ namespace prime {
         using u128 = __uint128_t;
         using u64 = __uint64_t;
 
-        template<typename T>
-        T _gcd(T x, T y) {
-            while (y != 0) {
-                T ny = x % y;
-                T nx = y;
-                x = nx, y = ny;
-            }
-            return x;
-        }
-        u64 find_factor(u64 n) {
-            static u64 v = rand();
+        inline u64 find_factor(u64 n) {
+            u64 v = rand();
 
             if (~n & 1uL) {
                 return 2;
@@ -50,7 +40,7 @@ namespace prime {
             exit(0);
         }
 
-        vector<u64> rho_fact(u64 n) {
+        inline vector<u64> rho_fact(u64 n) {
             if (n < 2) {
                 return {};
             }
@@ -73,8 +63,9 @@ namespace prime {
             }
             return v;
         }
-        vector<u64> naive(u64& n) {
-            static constexpr u64 basic_prime[] = { 2, 3, 5, 7, 11, 13, 17, 1000000007, 998244353 };
+        constexpr u64 basic_prime[] = { 2, 3, 5, 7, 11, 13, 17, 1000000007, 998244353 };
+        inline vector<u64> naive(u64& n) {
+            
             vector<u64> res;
             for (const auto& p : basic_prime) {
                 while (n % p == 0) {
@@ -85,7 +76,7 @@ namespace prime {
 
             return res;
         }
-        vector<u64> factorize(u64 n) {
+        inline vector<u64> factorize(u64 n) {
             if (n < 2) {
                 return {};
             }

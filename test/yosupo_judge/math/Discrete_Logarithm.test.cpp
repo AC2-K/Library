@@ -2,13 +2,11 @@
 #include"template.hpp"
 #include"math/DLP.hpp"
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
     int t;
-    cin>>t;
-    while(t--){
-        int x,y,p;
-        cin>>x>>y>>p;
-        cout<<dlp(x,y,p)<<'\n';
+    scanf("%d", &t);
+    while (t--) {
+        int x, y, p;
+        scanf("%d%d%d", &x, &y, &p);
+        printf("%lld\n", dlp(x, y, p));
     }
 }

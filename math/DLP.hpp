@@ -1,7 +1,7 @@
 #pragma once
 #include"math/mod_pow.hpp"
 #include"math/gcd.hpp"
-ll dlp(ll x, ll y, ll p) {
+inline ll dlp(ll x, ll y, ll p) {
     if (y == 1 || p == 1) {
         return 0;
     }
