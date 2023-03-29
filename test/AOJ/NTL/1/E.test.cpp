@@ -4,7 +4,7 @@
 #include"math/gcd.hpp"
 
 int main(){
-    int a, b;
+    ll a, b;
     cin >> a >> b;
     ll x, y;
     ext_gcd(a, b, x, y);

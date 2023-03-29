@@ -1,4 +1,5 @@
 #include"math/gcd.hpp"
+#include"template.hpp"
 template<__uint64_t mod>
 class static_modint {
 private:
@@ -108,9 +109,9 @@ public:
 
 	constexpr mint inv() const {
 		ll x, y;
-        auto d = ext_gcd(mod, v, x, y);
+        auto d = ext_gcd((ll)mod, (ll)v, x, y);
         assert(d == 1);
-        return y;
+        return mint(y);
 	}
 
 	constexpr mint& operator/=(const mint& r) {
@@ -240,9 +241,9 @@ public:
 
 	constexpr mint inv() const {
         ll x, y;
-        auto d = ext_gcd(mod, v, x, y);
+        auto d = ext_gcd((ll)mod, (ll)v, x, y);
         assert(d == 1);
-        return y;
+        return mint(y);
     }
 
 	constexpr mint& operator/=(const mint& r) {
