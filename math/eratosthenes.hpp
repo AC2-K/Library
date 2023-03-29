@@ -1,5 +1,5 @@
 #pragma once
-static constexpr inline vector<bool> prime_checker(int N){
+inline vector<bool> prime_checker(int N){
     vector<bool> primes(N + 1, true);
 
     primes[0] = false;
