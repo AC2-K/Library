@@ -1,3 +1,4 @@
+#include"math/ext_gcd.hpp"
 template<__uint64_t mod>
 class static_modint {
 private:
@@ -16,84 +17,84 @@ private:
 		return v_;
 	}
 public:
-	static_modint() :v(0) {}
-	static_modint(const i64& v_) :v(normalize(v_)) { }
+	constexpr static_modint() :v(0) {}
+	constexpr static_modint(const i64& v_) :v(normalize(v_)) { }
 
 	//operator
-	u64 val() const {
+	constexpr u64 val() const {
 		return v;
 	}
-	mint& operator+=(const mint& rhs) {
+	constexpr mint& operator+=(const mint& rhs) {
 		v += rhs.val();
 		if (v >= mod) {
 			v -= mod;
 		}
 		return (*this);
 	}
-	mint& operator-=(const mint& rhs) {
+	constexpr mint& operator-=(const mint& rhs) {
 		v += mod - rhs.val();
 		if (v >= mod) {
 			v -= mod;
 		}
 		return (*this);
 	}
-	mint& operator*=(const mint& rhs) {
+	constexpr mint& operator*=(const mint& rhs) {
 		v = (u128)v * rhs.val() % mod;
 		return (*this);
 	}
 
 
-	mint operator+(const mint& r) const {
+	constexpr mint operator+(const mint& r) const {
 		return mint(*this) += r;
 	}
-	mint operator-(const mint& r) const {
+	constexpr mint operator-(const mint& r) const {
 		return mint(*this) -= r;
 	}
-	mint operator*(const mint& r) const {
+	constexpr mint operator*(const mint& r) const {
 		return mint(*this) *= r;
 	}
 
-	mint& operator+=(const i64& rhs) {
+	constexpr mint& operator+=(const i64& rhs) {
 		(*this) += mint(rhs);
 		return (*this);
 	}
-	mint& operator-=(const i64& rhs) {
+	constexpr mint& operator-=(const i64& rhs) {
 		(*this) -= mint(rhs);
 		return (*this);
 	}
-	mint& operator*=(const i64& rhs) {
+	constexpr mint& operator*=(const i64& rhs) {
 		(*this) *= mint(rhs);
 		return (*this);
 	}
-	friend mint operator+(const i64& l, const mint& r) {
+	constexpr friend mint operator+(const i64& l, const mint& r) {
 		return mint(l) += r;
 	}
-	friend mint operator-(const i64& l, const mint& r) {
+	constexpr friend mint operator-(const i64& l, const mint& r) {
 		return mint(l) -= r;
 	}
-	friend mint operator*(const i64& l, const mint& r) {
+	constexpr friend mint operator*(const i64& l, const mint& r) {
 		return mint(l) *= r;
 	}
 
-	mint operator+(const i64& r) {
+	constexpr mint operator+(const i64& r) {
 		return mint(*this) += r;
 	}
-	mint operator-(const i64& r) {
+	constexpr mint operator-(const i64& r) {
 		return mint(*this) -= r;
 	}
-	mint operator*(const i64& r) {
+	constexpr mint operator*(const i64& r) {
 		return mint(*this) *= r;
 	}
 
 
-	mint& operator=(const i64& r) {
+	constexpr mint& operator=(const i64& r) {
 		return (*this) = mint(r);
 	}
 
-	bool operator==(const mint& r) const {
+	constexpr bool operator==(const mint& r) const {
 		return (*this).val() == r.val();
 	}
-	mint pow(u128 e) const {
+	constexpr mint pow(u128 e) const {
 		mint ans(1), base(*this);
 		while (e) {
 			if (e & 1) {
@@ -105,23 +106,26 @@ public:
 		return ans;
 	}
 
-	mint inv() const {
-		return pow(mod - 2);
+	constexpr mint inv() const {
+		ll x, y;
+        auto d = ext_gcd(mod, val, x, y);
+        assert(d == 1);
+        return y;
 	}
 
-	mint& operator/=(const mint& r) {
+	constexpr mint& operator/=(const mint& r) {
 		return (*this) *= r.inv();
 	}
-	friend mint operator/(const mint& l, const i64& r) {
+	constexpr friend mint operator/(const mint& l, const i64& r) {
 		return mint(l) /= mint(r);
 	}
 
 	//iostream
-	friend ostream& operator<<(ostream& os, const mint& mt) {
+	constexpr friend ostream& operator<<(ostream& os, const mint& mt) {
 		os << mt.val();
 		return os;
 	}
-	friend istream& operator>>(istream& is, mint& mt) {
+	constexpr friend istream& operator>>(istream& is, mint& mt) {
 		i64 v_;
 		is >> v_;
 		mt = v_;
@@ -135,10 +139,10 @@ private:
 	using i32 = __int32_t;
 	using u32 = __uint32_t;
 	using i64 = __int64_t;
-	using u64 = unsigned long long;
+	using u64 = __uint64_t;
 
 	u32 v;
-	u32 normalize(i64 v_) const {
+	inline u32 normalize(i64 v_) const {
 		v_ %= mod;
 		if (v_ < 0) {
 			v_ += mod;
@@ -235,23 +239,26 @@ public:
 	}
 
 	constexpr mint inv() const {
-		return pow(mod - 2);
-	}
+        ll x, y;
+        auto d = ext_gcd(mod, val, x, y);
+        assert(d == 1);
+        return y;
+    }
 
 	constexpr mint& operator/=(const mint& r) {
 		return (*this) *= r.inv();
 	}
     constexpr mint operator/(const mint& r) { return mint(*this) *= r.inv(); }
-    friend mint operator/(const mint& l, const i64& r) {
+    constexpr friend mint operator/(const mint& l, const i64& r) {
 		return mint(l) /= mint(r);
 	}
 
 	//iostream
-	friend ostream& operator<<(ostream& os, const mint& mt) {
+	constexpr friend ostream& operator<<(ostream& os, const mint& mt) {
 		os << mt.val();
 		return os;
 	}
-	friend istream& operator>>(istream& is, mint& mt) {
+	constexpr friend istream& operator>>(istream& is, mint& mt) {
 		i64 v_;
 		is >> v_;
 		mt = v_;

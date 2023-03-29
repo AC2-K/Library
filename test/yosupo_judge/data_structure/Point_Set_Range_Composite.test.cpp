@@ -2,6 +2,10 @@
 #include"template.hpp"
 #include"data-structure/segtree.hpp"
 #include"math/static_modint.hpp"
+
+#pragma GCC target("avx2")
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize("unroll-loops")
 using mint = static_modint32<MOD2>;
 
 struct F

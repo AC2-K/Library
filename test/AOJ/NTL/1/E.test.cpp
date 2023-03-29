@@ -4,9 +4,9 @@
 #include"math/ext_gcd.hpp"
 
 int main(){
-    int a,b;
-    cin>>a>>b;
-    ll x,y;
-    ext_gcd(a,b,x,y);
-    cout<<x<<' '<<y<<'\n';
+    int a, b;
+    cin >> a >> b;
+    ll x, y;
+    ext_gcd(a, b, x, y);
+    cout << x << ' ' << y << '\n';
 }
