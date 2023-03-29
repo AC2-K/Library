@@ -19,7 +19,7 @@ namespace prime {
             return x;
         }
         u64 find_factor(u64 n) {
-            static u64 v = 7001;
+            static u64 v = rand();
 
             if (~n & 1uL) {
                 return 2;
