@@ -7,16 +7,16 @@ class RollingHash {
     // mod
 	static constexpr ull msk30 = (1ul << 30) - 1;
 	static constexpr ull msk61 = (1ul << 31) - 1;
-	string str;
+	const string str;
 	vector<ull> hash, pow;
 
-    static const ull mod = (1uL << 61) - 1;
-    static const ull primitive_root = 37;
+    static constexpr ull mod = (1uL << 61) - 1;
+    static constexpr ull primitive_root = 37;
 public:
-	static const uint mapping_max = 'Z' + 1;
+	static const uint mapping_max = (uint)'Z' + 2;
 	static ull base;
 private:
-	ull mul(const u128& a,const u128& b) const {
+	constexpr ull mul(const u128& a,const u128& b) const {
         u128 t = a * b;
 
 		t = (t >> 61) + (t & mod);
@@ -29,24 +29,24 @@ private:
 		return t;
     }
 
-    ull mapping(const char& c) const {
+    constexpr ull mapping(const char& c) const {
 		return (ull)c;	//変更する?
 	}
 
 
-    static ull strong_rand() {
+    static inline ull generate() {
 		mt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());
 		uniform_int_distribution<ull> rand(1uL, mod - 1);
 		return rand(engine);
 	}	
-    static void generate_base() {
+    static inline void generate_base() {
 		if (base != 0){
 			return;
 		}
 		ull r = mod - 1;
 
 		while (gcd(r, mod - 1) != 1 || r <= mapping_max){
-			r = strong_rand();
+			r = generate();
 		}
 		base = mod_pow<__uint128_t>(primitive_root, r, mod);
 	}
@@ -71,7 +71,9 @@ public:
 		}
 	}
 	ull range(int l, int r) const {
-		ull res = mod + hash[r] - mul(hash[l], pow[r - l]);
+        assert(0 <= l && l <= r && r <= str.size());
+
+        ull res = mod + hash[r] - mul(hash[l], pow[r - l]);
 		return res < mod ? res : res - mod;
 	}
 	ull get_all() const {
