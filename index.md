@@ -40,7 +40,7 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -65,7 +65,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     - icon: ':heavy_check_mark:'
@@ -120,7 +120,7 @@ data:
   verificationCategories:
   - name: test/AOJ/ALDS
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/ALDS/1_C.test.cpp
       title: test/AOJ/ALDS/1_C.test.cpp
   - name: test/AOJ/DSL
