@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/ALDS/1/C.test.cpp
-    title: test/AOJ/ALDS/1/C.test.cpp
+    path: test/AOJ/ALDS/1_C.test.cpp
+    title: test/AOJ/ALDS/1_C.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -31,7 +31,7 @@ data:
   timestamp: '2023-03-06 05:55:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/ALDS/1/C.test.cpp
+  - test/AOJ/ALDS/1_C.test.cpp
 documentation_of: math/eratosthenes.hpp
 layout: document
 redirect_from:

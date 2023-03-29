@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/GRL/2/A.test.cpp
-    title: test/AOJ/GRL/2/A.test.cpp
+    path: test/AOJ/GRL/2_A.test.cpp
+    title: test/AOJ/GRL/2_A.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -47,7 +47,7 @@ data:
   timestamp: '2023-03-29 11:57:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/GRL/2/A.test.cpp
+  - test/AOJ/GRL/2_A.test.cpp
 documentation_of: graph/mst.hpp
 layout: document
 redirect_from:

@@ -11,9 +11,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/ALDS/14/B.test.cpp
-    title: test/AOJ/ALDS/14/B.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/yuki/No-430.test.cpp
     title: test/yuki/No-430.test.cpp
   _isVerificationFailed: false
@@ -114,7 +111,6 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No-430.test.cpp
-  - test/AOJ/ALDS/14/B.test.cpp
 documentation_of: string/rolling_hash.hpp
 layout: document
 redirect_from:

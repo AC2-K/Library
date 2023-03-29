@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/D2.test.cpp
-    title: test/AOJ/DSL/2/D2.test.cpp
+    path: test/AOJ/DSL/2_D_dual.test.cpp
+    title: test/AOJ/DSL/2_D_dual.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/E2.test.cpp
-    title: test/AOJ/DSL/2/E2.test.cpp
+    path: test/AOJ/DSL/2_E_dual.test.cpp
+    title: test/AOJ/DSL/2_E_dual.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
@@ -69,8 +69,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
-  - test/AOJ/DSL/2/E2.test.cpp
-  - test/AOJ/DSL/2/D2.test.cpp
+  - test/AOJ/DSL/2_E_dual.test.cpp
+  - test/AOJ/DSL/2_D_dual.test.cpp
 documentation_of: data-structure/dual_segtree.hpp
 layout: document
 redirect_from:

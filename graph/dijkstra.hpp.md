@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/GRL/1/A.test.cpp
-    title: test/AOJ/GRL/1/A.test.cpp
+    path: test/AOJ/GRL/1_A.test.cpp
+    title: test/AOJ/GRL/1_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
@@ -51,7 +51,7 @@ data:
   verifiedWith:
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - test/AOJ/GRL/1/A.test.cpp
+  - test/AOJ/GRL/1_A.test.cpp
 documentation_of: graph/dijkstra.hpp
 layout: document
 redirect_from:

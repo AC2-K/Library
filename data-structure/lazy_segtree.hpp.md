@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/D.test.cpp
-    title: test/AOJ/DSL/2/D.test.cpp
+    path: test/AOJ/DSL/2_D_lazy.test.cpp
+    title: test/AOJ/DSL/2_D_lazy.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/E.test.cpp
-    title: test/AOJ/DSL/2/E.test.cpp
+    path: test/AOJ/DSL/2_E_lazy.test.cpp
+    title: test/AOJ/DSL/2_E_lazy.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
@@ -98,8 +98,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - test/AOJ/DSL/2/D.test.cpp
-  - test/AOJ/DSL/2/E.test.cpp
+  - test/AOJ/DSL/2_D_lazy.test.cpp
+  - test/AOJ/DSL/2_E_lazy.test.cpp
 documentation_of: data-structure/lazy_segtree.hpp
 layout: document
 redirect_from:

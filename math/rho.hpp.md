@@ -16,8 +16,8 @@ data:
     title: "primitive root(\u539F\u59CB\u6839)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/D.test.cpp
-    title: test/AOJ/NTL/1/D.test.cpp
+    path: test/AOJ/NTL/1_D.test.cpp
+    title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
@@ -163,7 +163,7 @@ data:
   verifiedWith:
   - test/yosupo_judge/new/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
-  - test/AOJ/NTL/1/D.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: math/rho.hpp
 layout: document
 redirect_from:

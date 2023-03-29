@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: other/mo.hpp
+    path: misc/mo.hpp
     title: mo's algorithm
   - icon: ':heavy_check_mark:'
     path: template.hpp
@@ -28,7 +28,7 @@ data:
     constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
     \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 1 \"other/mo.hpp\"\nclass Mo {\n    int n;\n    vector<pair<int, int>> lr;\n\
+    #line 1 \"misc/mo.hpp\"\nclass Mo {\n    int n;\n    vector<pair<int, int>> lr;\n\
     \    const int logn;\n    const long long maxn;\n    vector<int> ord;\npublic:\n\
     \    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }\n\
     \    void add(int l, int r) { lr.emplace_back(l, r); }\n    long long hilbertorder(int\
@@ -69,7 +69,7 @@ data:
     \  mo.build(add, del, out);\n    for (auto& aa : ans) {\n        printf(\"%d\\\
     n\", aa);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
-    \n#include\"template.hpp\"\n#include\"other/mo.hpp\"\nint main() {\n    int n,\
+    \n#include\"template.hpp\"\n#include\"misc/mo.hpp\"\nint main() {\n    int n,\
     \ q;\n    scanf(\"%d%d\", &n, &q);\n\n    vector<int> a(n);\n    for (auto& aa\
     \ : a) {\n        scanf(\"%d\", &aa);\n    }\n    auto pressed = a;\n    sort(pressed.begin(),\
     \ pressed.end());\n    pressed.erase(unique(pressed.begin(), pressed.end()), pressed.end());\n\
@@ -86,11 +86,11 @@ data:
     \ for (auto& aa : ans) {\n        printf(\"%d\\n\", aa);\n    }\n}"
   dependsOn:
   - template.hpp
-  - other/mo.hpp
+  - misc/mo.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-03-28 10:54:47+09:00'
+  timestamp: '2023-03-29 20:32:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp

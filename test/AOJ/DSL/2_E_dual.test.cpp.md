@@ -14,10 +14,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_D
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_E
     links:
-    - https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_D
-  bundledCode: "#line 1 \"test/AOJ/DSL/2/D2.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_D\"\
+    - https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_E
+  bundledCode: "#line 1 \"test/AOJ/DSL/2_E_dual.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_E\"\
     \n\n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
@@ -48,34 +48,34 @@ data:
     \t\tpush((r - 1) >> i);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\twhile (l < r) {\n\t\t\
     \tif (l & 1) {\n\t\t\t\tall_apply(l++, v);\n\t\t\t}\n\t\t\tif (r & 1) {\n\t\t\t\
     \tall_apply(--r, v);\n\t\t\t}\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t}\n};\n#line\
-    \ 5 \"test/AOJ/DSL/2/D2.test.cpp\"\n\nusing ull = unsigned long long;\null op(ull\
-    \ x, ull y) {\n\treturn y;\t\n}\null e() {\n\treturn (1ll << 31) - 1;\n}\nint\
-    \ main() {\n\tint n, q;\n\tcin >> n >> q;\n\tdual_segtree<ull,op, e> seg(n);\n\
-    \twhile (q--) {\n\t\tint ty;\n\t\tcin >> ty;\n\t\tif (ty == 0) {\n\t\t\tint l,\
-    \ r;\n\t\t\tull x;\n\t\t\tcin >> l >> r >> x;\n\t\t\tseg.apply(l, r + 1, x);\n\
-    \t\t}\n\t\telse {\n\t\t\tint i;\n\t\t\tcin >> i;\n\t\t\tcout << seg[i] << '\\\
-    n';\n\t\t}\n\t\t//seg.print();\n\t}\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_D\"\n\n\
-    #include\"template.hpp\"\n#include\"data-structure/dual_segtree.hpp\"\n\nusing\
-    \ ull = unsigned long long;\null op(ull x, ull y) {\n\treturn y;\t\n}\null e()\
-    \ {\n\treturn (1ll << 31) - 1;\n}\nint main() {\n\tint n, q;\n\tcin >> n >> q;\n\
-    \tdual_segtree<ull,op, e> seg(n);\n\twhile (q--) {\n\t\tint ty;\n\t\tcin >> ty;\n\
-    \t\tif (ty == 0) {\n\t\t\tint l, r;\n\t\t\tull x;\n\t\t\tcin >> l >> r >> x;\n\
-    \t\t\tseg.apply(l, r + 1, x);\n\t\t}\n\t\telse {\n\t\t\tint i;\n\t\t\tcin >> i;\n\
-    \t\t\tcout << seg[i] << '\\n';\n\t\t}\n\t\t//seg.print();\n\t}\n}\n"
+    \ 5 \"test/AOJ/DSL/2_E_dual.test.cpp\"\nusing ull = unsigned long long;\null op(ull\
+    \ x, ull y) {\n\treturn x + y;\n}\null e() {\n\treturn 0;\n}\nint main() {\n\t\
+    int n, q;\n\tcin >> n >> q;\n\tdual_segtree<ull,op, e> seg(n);\n\twhile (q--)\
+    \ {\n\t\tint ty;\n\t\tcin >> ty;\n\t\tif (ty == 0) {\n\t\t\tint l, r;\n\t\t\t\
+    ull x;\n\t\t\tcin >> l >> r >> x;\n\t\t\tl--, r--;\n\t\t\tseg.apply(l, r + 1,\
+    \ x);\n\t\t}\n\t\telse {\n\t\t\tint i;\n\t\t\tcin >> i;\n\t\t\ti--;\n\t\t\tcout\
+    \ << seg[i] << '\\n';\n\t\t}\n\t\t//seg.print();\n\t}\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_E\"\n\n\
+    #include\"template.hpp\"\n#include\"data-structure/dual_segtree.hpp\"\nusing ull\
+    \ = unsigned long long;\null op(ull x, ull y) {\n\treturn x + y;\n}\null e() {\n\
+    \treturn 0;\n}\nint main() {\n\tint n, q;\n\tcin >> n >> q;\n\tdual_segtree<ull,op,\
+    \ e> seg(n);\n\twhile (q--) {\n\t\tint ty;\n\t\tcin >> ty;\n\t\tif (ty == 0) {\n\
+    \t\t\tint l, r;\n\t\t\tull x;\n\t\t\tcin >> l >> r >> x;\n\t\t\tl--, r--;\n\t\t\
+    \tseg.apply(l, r + 1, x);\n\t\t}\n\t\telse {\n\t\t\tint i;\n\t\t\tcin >> i;\n\t\
+    \t\ti--;\n\t\t\tcout << seg[i] << '\\n';\n\t\t}\n\t\t//seg.print();\n\t}\n}\n"
   dependsOn:
   - template.hpp
   - data-structure/dual_segtree.hpp
   isVerificationFile: true
-  path: test/AOJ/DSL/2/D2.test.cpp
+  path: test/AOJ/DSL/2_E_dual.test.cpp
   requiredBy: []
-  timestamp: '2023-03-28 10:54:47+09:00'
+  timestamp: '2023-03-29 20:32:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/AOJ/DSL/2/D2.test.cpp
+documentation_of: test/AOJ/DSL/2_E_dual.test.cpp
 layout: document
 redirect_from:
-- /verify/test/AOJ/DSL/2/D2.test.cpp
-- /verify/test/AOJ/DSL/2/D2.test.cpp.html
-title: test/AOJ/DSL/2/D2.test.cpp
+- /verify/test/AOJ/DSL/2_E_dual.test.cpp
+- /verify/test/AOJ/DSL/2_E_dual.test.cpp.html
+title: test/AOJ/DSL/2_E_dual.test.cpp
 ---

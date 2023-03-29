@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/B.test.cpp
-    title: test/AOJ/DSL/2/B.test.cpp
+    path: test/AOJ/DSL/2_B.test.cpp
+    title: test/AOJ/DSL/2_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
@@ -76,7 +76,7 @@ data:
   - test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/AOJ/DSL/2/B.test.cpp
+  - test/AOJ/DSL/2_B.test.cpp
 documentation_of: data-structure/segtree.hpp
 layout: document
 redirect_from:

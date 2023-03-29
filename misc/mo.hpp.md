@@ -16,7 +16,7 @@ data:
     _deprecated_at_docs: docs/other/mo.md
     document_title: mo's algorithm
     links: []
-  bundledCode: "#line 1 \"other/mo.hpp\"\nclass Mo {\n    int n;\n    vector<pair<int,\
+  bundledCode: "#line 1 \"misc/mo.hpp\"\nclass Mo {\n    int n;\n    vector<pair<int,\
     \ int>> lr;\n    const int logn;\n    const long long maxn;\n    vector<int> ord;\n\
     public:\n    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n);\
     \ }\n    void add(int l, int r) { lr.emplace_back(l, r); }\n    long long hilbertorder(int\
@@ -68,17 +68,17 @@ data:
     /// @docs docs/other/mo.md"
   dependsOn: []
   isVerificationFile: false
-  path: other/mo.hpp
+  path: misc/mo.hpp
   requiredBy: []
-  timestamp: '2023-03-23 15:53:48+09:00'
+  timestamp: '2023-03-29 20:32:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No-1471.test.cpp
   - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-documentation_of: other/mo.hpp
+documentation_of: misc/mo.hpp
 layout: document
 redirect_from:
-- /library/other/mo.hpp
-- /library/other/mo.hpp.html
+- /library/misc/mo.hpp
+- /library/misc/mo.hpp.html
 title: mo's algorithm
 ---

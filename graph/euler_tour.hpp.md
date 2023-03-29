@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/GRL/5/C.test.cpp
-    title: test/AOJ/GRL/5/C.test.cpp
+    path: test/AOJ/GRL/5_C.test.cpp
+    title: test/AOJ/GRL/5_C.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
@@ -89,7 +89,7 @@ data:
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - test/AOJ/GRL/5/C.test.cpp
+  - test/AOJ/GRL/5_C.test.cpp
 documentation_of: graph/euler_tour.hpp
 layout: document
 redirect_from:

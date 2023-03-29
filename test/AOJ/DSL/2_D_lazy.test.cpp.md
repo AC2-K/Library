@@ -18,7 +18,7 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D
-  bundledCode: "#line 1 \"test/AOJ/DSL/2/D.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\"\
+  bundledCode: "#line 1 \"test/AOJ/DSL/2_D_lazy.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\"\
     \n\n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n\
     #define rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n\
     #define popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll =\
@@ -63,14 +63,15 @@ data:
     \ l && l <= r && r <= sz);\n        return internal_prod(l, r, 0, sz, 0);\n  \
     \  }\n\n    S operator[](int pos) {\n        return prod(pos, pos + 1);\n    }\n\
     };\n//@brief lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\
-    \u6728)\n#line 5 \"test/AOJ/DSL/2/D.test.cpp\"\n\nint op(int x,int y){return min(x,y);}\n\
-    int comp(int x,int y){return y;}\nint mapping(int x,int y){return y;}\nint e(){return\
-    \ (1ll<<31)-1;}\nint id(){return (1ll<<31)-1;}\n\nint main(){\n    int n,q;\n\
-    \    cin>>n>>q;\n    lazy_segtree<int,int,op,e,comp,id,mapping> seg(n);\n    while(q--){\n\
-    \        int t;\n        cin>>t;\n        if(t==0){\n            int l,r;\n  \
-    \          cin>>l>>r;\n            int new_val;\n            cin>>new_val;\n \
-    \           seg.apply(l,r+1,new_val);\n        }else{\n            int i;\n  \
-    \          cin>>i;\n            cout<<seg[i]<<'\\n';\n        }\n    }\n}\n"
+    \u6728)\n#line 5 \"test/AOJ/DSL/2_D_lazy.test.cpp\"\n\nint op(int x,int y){return\
+    \ min(x,y);}\nint comp(int x,int y){return y;}\nint mapping(int x,int y){return\
+    \ y;}\nint e(){return (1ll<<31)-1;}\nint id(){return (1ll<<31)-1;}\n\nint main(){\n\
+    \    int n,q;\n    cin>>n>>q;\n    lazy_segtree<int,int,op,e,comp,id,mapping>\
+    \ seg(n);\n    while(q--){\n        int t;\n        cin>>t;\n        if(t==0){\n\
+    \            int l,r;\n            cin>>l>>r;\n            int new_val;\n    \
+    \        cin>>new_val;\n            seg.apply(l,r+1,new_val);\n        }else{\n\
+    \            int i;\n            cin>>i;\n            cout<<seg[i]<<'\\n';\n \
+    \       }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\"\
     \n\n#include\"template.hpp\"\n#include\"data-structure/lazy_segtree.hpp\"\n\n\
     int op(int x,int y){return min(x,y);}\nint comp(int x,int y){return y;}\nint mapping(int\
@@ -85,15 +86,15 @@ data:
   - template.hpp
   - data-structure/lazy_segtree.hpp
   isVerificationFile: true
-  path: test/AOJ/DSL/2/D.test.cpp
+  path: test/AOJ/DSL/2_D_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-03-28 10:54:47+09:00'
+  timestamp: '2023-03-29 20:32:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/AOJ/DSL/2/D.test.cpp
+documentation_of: test/AOJ/DSL/2_D_lazy.test.cpp
 layout: document
 redirect_from:
-- /verify/test/AOJ/DSL/2/D.test.cpp
-- /verify/test/AOJ/DSL/2/D.test.cpp.html
-title: test/AOJ/DSL/2/D.test.cpp
+- /verify/test/AOJ/DSL/2_D_lazy.test.cpp
+- /verify/test/AOJ/DSL/2_D_lazy.test.cpp.html
+title: test/AOJ/DSL/2_D_lazy.test.cpp
 ---

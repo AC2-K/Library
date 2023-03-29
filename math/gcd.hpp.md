@@ -13,11 +13,8 @@ data:
     title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/ALDS/14/B.test.cpp
-    title: test/AOJ/ALDS/14/B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/E.test.cpp
-    title: test/AOJ/NTL/1/E.test.cpp
+    path: test/AOJ/NTL/1_E.test.cpp
+    title: test/AOJ/NTL/1_E.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
@@ -83,8 +80,7 @@ data:
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - test/AOJ/NTL/1/E.test.cpp
-  - test/AOJ/ALDS/14/B.test.cpp
+  - test/AOJ/NTL/1_E.test.cpp
 documentation_of: math/gcd.hpp
 layout: document
 redirect_from:

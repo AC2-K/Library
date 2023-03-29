@@ -2,52 +2,55 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/ALDS/1/C.test.cpp
-    title: test/AOJ/ALDS/1/C.test.cpp
+    path: test/AOJ/ALDS/1_C.test.cpp
+    title: test/AOJ/ALDS/1_C.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/ALDS/14/B.test.cpp
-    title: test/AOJ/ALDS/14/B.test.cpp
+    path: test/AOJ/DSL/1_A.test.cpp
+    title: test/AOJ/DSL/1_A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/1/A.test.cpp
-    title: test/AOJ/DSL/1/A.test.cpp
+    path: test/AOJ/DSL/2_B.test.cpp
+    title: test/AOJ/DSL/2_B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/B.test.cpp
-    title: test/AOJ/DSL/2/B.test.cpp
+    path: test/AOJ/DSL/2_D_dual.test.cpp
+    title: test/AOJ/DSL/2_D_dual.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/D.test.cpp
-    title: test/AOJ/DSL/2/D.test.cpp
+    path: test/AOJ/DSL/2_D_lazy.test.cpp
+    title: test/AOJ/DSL/2_D_lazy.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/D2.test.cpp
-    title: test/AOJ/DSL/2/D2.test.cpp
+    path: test/AOJ/DSL/2_E_dual.test.cpp
+    title: test/AOJ/DSL/2_E_dual.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/E.test.cpp
-    title: test/AOJ/DSL/2/E.test.cpp
+    path: test/AOJ/DSL/2_E_lazy.test.cpp
+    title: test/AOJ/DSL/2_E_lazy.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/2/E2.test.cpp
-    title: test/AOJ/DSL/2/E2.test.cpp
+    path: test/AOJ/DSL/5_B.test.cpp
+    title: test/AOJ/DSL/5_B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/GRL/1/A.test.cpp
-    title: test/AOJ/GRL/1/A.test.cpp
+    path: test/AOJ/GRL/1_A.test.cpp
+    title: test/AOJ/GRL/1_A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/GRL/2/A.test.cpp
-    title: test/AOJ/GRL/2/A.test.cpp
+    path: test/AOJ/GRL/2_A.test.cpp
+    title: test/AOJ/GRL/2_A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/GRL/5/C.test.cpp
-    title: test/AOJ/GRL/5/C.test.cpp
+    path: test/AOJ/GRL/5_C.test.cpp
+    title: test/AOJ/GRL/5_C.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/B.test.cpp
-    title: test/AOJ/NTL/1/B.test.cpp
+    path: test/AOJ/NTL/1_B.test.cpp
+    title: test/AOJ/NTL/1_B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/D.test.cpp
-    title: test/AOJ/NTL/1/D.test.cpp
+    path: test/AOJ/NTL/1_D.test.cpp
+    title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/E.test.cpp
-    title: test/AOJ/NTL/1/E.test.cpp
+    path: test/AOJ/NTL/1_E.test.cpp
+    title: test/AOJ/NTL/1_E.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
     title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
@@ -223,6 +226,7 @@ data:
   path: template.hpp
   requiredBy:
   - math/static_modint.hpp
+  - main.cpp
   timestamp: '2023-03-28 10:54:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -253,20 +257,20 @@ data:
   - test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - test/AOJ/GRL/2/A.test.cpp
-  - test/AOJ/GRL/5/C.test.cpp
-  - test/AOJ/GRL/1/A.test.cpp
-  - test/AOJ/DSL/2/D.test.cpp
-  - test/AOJ/DSL/2/E.test.cpp
-  - test/AOJ/DSL/2/B.test.cpp
-  - test/AOJ/DSL/2/E2.test.cpp
-  - test/AOJ/DSL/2/D2.test.cpp
-  - test/AOJ/DSL/1/A.test.cpp
-  - test/AOJ/NTL/1/D.test.cpp
-  - test/AOJ/NTL/1/E.test.cpp
-  - test/AOJ/NTL/1/B.test.cpp
-  - test/AOJ/ALDS/1/C.test.cpp
-  - test/AOJ/ALDS/14/B.test.cpp
+  - test/AOJ/GRL/2_A.test.cpp
+  - test/AOJ/GRL/1_A.test.cpp
+  - test/AOJ/GRL/5_C.test.cpp
+  - test/AOJ/DSL/5_B.test.cpp
+  - test/AOJ/DSL/2_D_lazy.test.cpp
+  - test/AOJ/DSL/2_E_dual.test.cpp
+  - test/AOJ/DSL/1_A.test.cpp
+  - test/AOJ/DSL/2_B.test.cpp
+  - test/AOJ/DSL/2_E_lazy.test.cpp
+  - test/AOJ/DSL/2_D_dual.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
+  - test/AOJ/NTL/1_E.test.cpp
+  - test/AOJ/NTL/1_B.test.cpp
+  - test/AOJ/ALDS/1_C.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:

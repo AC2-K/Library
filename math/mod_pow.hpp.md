@@ -22,14 +22,11 @@ data:
     title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/ALDS/14/B.test.cpp
-    title: test/AOJ/ALDS/14/B.test.cpp
+    path: test/AOJ/NTL/1_B.test.cpp
+    title: test/AOJ/NTL/1_B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/B.test.cpp
-    title: test/AOJ/NTL/1/B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/D.test.cpp
-    title: test/AOJ/NTL/1/D.test.cpp
+    path: test/AOJ/NTL/1_D.test.cpp
+    title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete Logarithm.test.cpp
@@ -79,9 +76,8 @@ data:
   - test/yosupo_judge/new/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete Logarithm.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
-  - test/AOJ/NTL/1/D.test.cpp
-  - test/AOJ/NTL/1/B.test.cpp
-  - test/AOJ/ALDS/14/B.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
+  - test/AOJ/NTL/1_B.test.cpp
 documentation_of: math/mod_pow.hpp
 layout: document
 redirect_from:

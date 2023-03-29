@@ -7,8 +7,8 @@ data:
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/GRL/5/C.test.cpp
-    title: test/AOJ/GRL/5/C.test.cpp
+    path: test/AOJ/GRL/5_C.test.cpp
+    title: test/AOJ/GRL/5_C.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
@@ -71,7 +71,7 @@ data:
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-  - test/AOJ/GRL/5/C.test.cpp
+  - test/AOJ/GRL/5_C.test.cpp
 documentation_of: data-structure/sparse_table.hpp
 layout: document
 redirect_from:

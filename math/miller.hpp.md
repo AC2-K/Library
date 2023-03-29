@@ -16,8 +16,8 @@ data:
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1/D.test.cpp
-    title: test/AOJ/NTL/1/D.test.cpp
+    path: test/AOJ/NTL/1_D.test.cpp
+    title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
@@ -100,7 +100,7 @@ data:
   - test/yuki/No-3030.test.cpp
   - test/yosupo_judge/new/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
-  - test/AOJ/NTL/1/D.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: math/miller.hpp
 layout: document
 redirect_from:

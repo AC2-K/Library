@@ -7,11 +7,11 @@ data:
     title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/DSL/1/A.test.cpp
-    title: test/AOJ/DSL/1/A.test.cpp
+    path: test/AOJ/DSL/1_A.test.cpp
+    title: test/AOJ/DSL/1_A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/GRL/2/A.test.cpp
-    title: test/AOJ/GRL/2/A.test.cpp
+    path: test/AOJ/GRL/2_A.test.cpp
+    title: test/AOJ/GRL/2_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
@@ -53,8 +53,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/UnionFind.test.cpp
-  - test/AOJ/GRL/2/A.test.cpp
-  - test/AOJ/DSL/1/A.test.cpp
+  - test/AOJ/GRL/2_A.test.cpp
+  - test/AOJ/DSL/1_A.test.cpp
 documentation_of: data-structure/dsu.hpp
 layout: document
 redirect_from:
