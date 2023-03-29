@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_frequency"
 #include"template.hpp"
-#include"other/mo.hpp"
+#include"misc/mo.hpp"
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);

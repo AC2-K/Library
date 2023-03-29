@@ -1,6 +1,6 @@
 #define PROBLEM "https://yukicoder.me/problems/no/1471"
 #include"template.hpp"
-#include"other/mo.hpp"
+#include"misc/mo.hpp"
 int main(){
     int n,q;
     scanf("%d %d",&n,&q);
