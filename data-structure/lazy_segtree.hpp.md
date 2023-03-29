@@ -97,9 +97,9 @@ data:
   timestamp: '2023-03-26 20:22:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/AOJ/DSL/2/D.test.cpp
   - test/AOJ/DSL/2/E.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
 documentation_of: data-structure/lazy_segtree.hpp
 layout: document
 redirect_from:

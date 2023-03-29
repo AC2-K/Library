@@ -60,20 +60,20 @@ data:
   path: math/mod_pow.hpp
   requiredBy:
   - math/DLP.hpp
-  - math/primitive_root.hpp
   - math/rho.hpp
-  - math/miller.hpp
+  - math/primitive_root.hpp
   - math/phi_function.hpp
+  - math/miller.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-03-06 05:55:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/new/Primitive_Root.test.cpp
-  - test/yosupo_judge/math/Discrete Logarithm.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/AOJ/ALDS/14/B.test.cpp
   - test/AOJ/NTL/1/D.test.cpp
   - test/AOJ/NTL/1/B.test.cpp
-  - test/AOJ/ALDS/14/B.test.cpp
+  - test/yosupo_judge/math/Discrete Logarithm.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/new/Primitive_Root.test.cpp
 documentation_of: math/mod_pow.hpp
 layout: document
 redirect_from:

@@ -176,9 +176,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No.891.test.cpp
-  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
 documentation_of: math/static_modint.hpp
 layout: document

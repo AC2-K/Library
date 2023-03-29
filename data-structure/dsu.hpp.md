@@ -36,12 +36,12 @@ data:
     \  DSU(int n) : find(n, -1), rank(n, 1) {}\n\n    int root(int x) {\n        if\
     \ (find[x] < 0) {\n            return x;\n        }\n        else {\n        \
     \    return find[x] = root(find[x]);\n        }\n    }\n    bool same(int x, int\
-    \ y) {\n        return root(x) == root(y);\n    }\n\n    bool merge(int x, int\
-    \ y) {\n        x = root(x), y = root(y);\n        if (x == y) return false;\n\
-    \        if (rank[x] < rank[y]) swap(x, y);\n        if (rank[x] == rank[y]) rank[x]++;\
-    \ \n        find[x] += find[y];\n        find[y] = x;\n        return true;\n\
-    \    }\n\n    int size(int x) {\n        return -find[root(x)];\n    }\n\n   \
-    \ inline int group_size() {\n        int c = 0;\n        for (int v = 0; v < find.size();\
+    \ y) {\n        return root(x) == root(y);\n    }\n\n    int merge(int x, int\
+    \ y) {\n        x = root(x), y = root(y);\n        if (x == y) return x;\n   \
+    \     if (rank[x] < rank[y]) swap(x, y);\n        if (rank[x] == rank[y]) rank[x]++;\
+    \ \n        find[x] += find[y];\n        find[y] = x;\n        return x;\n   \
+    \ }\n\n    int size(int x) {\n        return -find[root(x)];\n    }\n\n    inline\
+    \ int group_size() {\n        int c = 0;\n        for (int v = 0; v < find.size();\
     \ v++) {\n            if (find[v] < 0) {\n                c++;\n            }\n\
     \        }\n        return c;\n    }\n};"
   dependsOn: []
@@ -49,12 +49,12 @@ data:
   path: data-structure/dsu.hpp
   requiredBy:
   - graph/mst.hpp
-  timestamp: '2023-03-29 01:52:41+09:00'
+  timestamp: '2023-03-29 11:57:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/data_structure/UnionFind.test.cpp
-  - test/AOJ/GRL/2/A.test.cpp
   - test/AOJ/DSL/1/A.test.cpp
+  - test/AOJ/GRL/2/A.test.cpp
+  - test/yosupo_judge/data_structure/UnionFind.test.cpp
 documentation_of: data-structure/dsu.hpp
 layout: document
 redirect_from:
@@ -72,28 +72,34 @@ $\alpha$ はアッカーマン関数の逆関数です。
 ```cpp
 DSU dsu(int n)
 ```
-$n$頂点$0$辺の無向グラフを生成します。計算量は$O(n)$
+$n$頂点$0$辺の無向グラフを生成します。
+- 計算量:$O(n)$
 
 ```cpp
 int root(int x)
 ```
-頂点$x$の属する連結成分の代表元を返します。計算量は$O(\alpha(n))$
+頂点$x$の属する連結成分の代表元を返します。
+- 計算量:$O(\alpha(n))$
 
 ```cpp
 bool same(int x,int y)
 ```
-頂点$x,y$が連結かを判定します。計算量は$O(\alpha(n))$
+頂点$x,y$が連結かを判定します。
+- 計算量:$O(\alpha(n))$
 ```cpp
-bool merge(int x,int y)
+int merge(int x,int y)
 ```
-頂点$x,y$の間に無向辺を張ります。ただし、すでに無向辺が張られていた場合は`false`を返して終了します。計算量は$O(\alpha(n))$
+頂点$x,y$の間に無向辺を張ります。また、マージ後の代表元の番号を返します。
+- 計算量: $O(\alpha(n))$
 
 ```cpp
 int size(int x)
 ```
-頂点$x$の属する連結成分の頂点数を求めます。計算量は$O(\alpha(n))$
+頂点$x$の属する連結成分の頂点数を求めます。
+- 計算量:$O(\alpha(n))$
 
 ```cpp
 int group_size()
 ```
-連結成分の個数を求めます。計算量は$O(\alpha(n))$
+連結成分の個数を求めます。
+- 計算量:$O(n)$

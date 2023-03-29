@@ -68,9 +68,9 @@ data:
   timestamp: '2023-03-26 08:02:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
-  - test/AOJ/DSL/2/E2.test.cpp
   - test/AOJ/DSL/2/D2.test.cpp
+  - test/AOJ/DSL/2/E2.test.cpp
+  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
 documentation_of: data-structure/dual_segtree.hpp
 layout: document
 redirect_from:
