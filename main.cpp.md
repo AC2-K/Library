@@ -1,63 +1,23 @@
 ---
 data:
-  _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
-    path: misc/2DSum.hpp
-    title: misc/2DSum.hpp
-  - icon: ':heavy_check_mark:'
-    path: template.hpp
-    title: template.hpp
+  _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/5/DSL_5_B
-  bundledCode: "#line 1 \"main.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/5/DSL_5_B\"\
-    \n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
-    \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
-    \ popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\n\
-    using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
-    \ int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps\
-    \ = 1e-6;\nconst long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
-    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
-    \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline void chmax(T&x,T\
-    \ y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 1 \"misc/2DSum.hpp\"\ntemplate<typename T>\nclass Sum2D {\n\tvector<vector<T>>\
-    \ dat;\n\tvector<vector<T>> s;\npublic:\n\tconst int h;\n\tconst int w;\n\t\n\t\
-    Sum2D(int h, int w) :h(h), w(w), dat(h, vector<T>(w, T())), s(h + 1, vector<T>(w\
-    \ + 1, T())) {}\n\tinline void build() {\n\t\tfor (int i = 0; i < h; ++i) {\n\t\
-    \t\tfor (int j = 0; j < w; ++j) {\n\t\t\t\ts[i + 1][j + 1] = s[i][j + 1] + s[i\
-    \ + 1][j] - s[i][j] + dat[i][j];\n\t\t\t}\n\t\t}\n\t}\n\tinline T sum(int i1,\
-    \ int j1, int i2, int j2) {\n\t\treturn s[i2][j2] - s[i1][j2] - s[i2][j1] + s[i1][j1];\n\
-    \t}\n\n\tinline vector<T>& operator[](int i) { return dat[i]; }\n};\n\n\ntemplate<typename\
-    \ T>\nclass Imos2D {\n\tSum2D<T> d;\npublic:\n\tconst int h;\n\tconst int w;\n\
-    \n\tImos2D(int h, int w) :h(h), w(w), d(h + 1, w + 1) {}\n\tinline void add(int\
-    \ i1, int j1, int i2, int j2, const T& v) {\n\t\td[i1][j1] += v, d[i2][j2] +=\
-    \ v;\n\t\td[i1][j2] -= v, d[i2][j1] -= v;\n\t}\n\tinline T at(int i, int j) {\
-    \ return d.sum(0, 0, i + 1, j + 1); }\n\n\tinline void build() { d.build(); }\n\
-    };\n#line 4 \"main.cpp\"\n\nint main(){\n    constexpr int h = 1000;\n    constexpr\
-    \ int w = 1000;\n\n    int n;\n    scanf(\"%d\", &n);\n    Imos2D<int> c(h, w);\n\
-    \    rep(i, n) {\n        int x1, x2, y1, y2;\n        scanf(\"%d%d%d%d\", &x1,\
-    \ &y1, &x2, &y2);\n\n        c.add(x1, y1, x2, y2, 1);\n    }\n    c.build();\n\
-    \    int ans = 0;\n    rep(i, h) rep(j, w) { chmax(ans, c.at(i, j)); }\n    printf(\"\
-    %d\\n\", ans);\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/5/DSL_5_B\"\
-    \n#include\"template.hpp\"\n#include\"misc/2DSum.hpp\"\n\nint main(){\n    constexpr\
-    \ int h = 1000;\n    constexpr int w = 1000;\n\n    int n;\n    scanf(\"%d\",\
-    \ &n);\n    Imos2D<int> c(h, w);\n    rep(i, n) {\n        int x1, x2, y1, y2;\n\
-    \        scanf(\"%d%d%d%d\", &x1, &y1, &x2, &y2);\n\n        c.add(x1, y1, x2,\
-    \ y2, 1);\n    }\n    c.build();\n    int ans = 0;\n    rep(i, h) rep(j, w) {\
-    \ chmax(ans, c.at(i, j)); }\n    printf(\"%d\\n\", ans);\n}"
-  dependsOn:
-  - template.hpp
-  - misc/2DSum.hpp
+    links: []
+  bundledCode: '#line 1 "main.cpp"
+
+
+    '
+  code: ''
+  dependsOn: []
   isVerificationFile: false
   path: main.cpp
   requiredBy: []
-  timestamp: '2023-03-29 20:32:47+09:00'
+  timestamp: '2023-03-29 21:25:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: main.cpp

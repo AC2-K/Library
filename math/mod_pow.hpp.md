@@ -28,8 +28,8 @@ data:
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Discrete Logarithm.test.cpp
-    title: test/yosupo_judge/math/Discrete Logarithm.test.cpp
+    path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
@@ -48,16 +48,17 @@ data:
   attributes:
     document_title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     links: []
-  bundledCode: "#line 2 \"math/mod_pow.hpp\"\ntemplate <class T, class U = T>\nU mod_pow(T\
-    \ base, T exp, T mod){\n    T ans = 1;\n    base %= mod;\n    while (exp > 0)\
-    \ {\n        if (exp & 1) {\n            ans *= base;\n            ans %= mod;\n\
-    \        }\n        base *= base;\n        base %= mod;\n        exp >>= 1;\n\
-    \    }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)\n"
-  code: "#pragma once\ntemplate <class T, class U = T>\nU mod_pow(T base, T exp, T\
-    \ mod){\n    T ans = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp\
-    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
-    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
+  bundledCode: "#line 2 \"math/mod_pow.hpp\"\ntemplate <class T, class U = T>\nconstexpr\
+    \ U mod_pow(T base, T exp, T mod){\n    T ans = 1;\n    base %= mod;\n    while\
+    \ (exp > 0) {\n        if (exp & 1) {\n            ans *= base;\n            ans\
+    \ %= mod;\n        }\n        base *= base;\n        base %= mod;\n        exp\
+    \ >>= 1;\n    }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\
+    \u6CD5)\n"
+  code: "#pragma once\ntemplate <class T, class U = T>\nconstexpr U mod_pow(T base,\
+    \ T exp, T mod){\n    T ans = 1;\n    base %= mod;\n    while (exp > 0) {\n  \
+    \      if (exp & 1) {\n            ans *= base;\n            ans %= mod;\n   \
+    \     }\n        base *= base;\n        base %= mod;\n        exp >>= 1;\n   \
+    \ }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
   dependsOn: []
   isVerificationFile: false
   path: math/mod_pow.hpp
@@ -68,13 +69,13 @@ data:
   - math/miller.hpp
   - math/phi_function.hpp
   - string/rolling_hash.hpp
-  timestamp: '2023-03-06 05:55:38+09:00'
+  timestamp: '2023-03-29 21:25:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No-3030.test.cpp
   - test/yuki/No-430.test.cpp
   - test/yosupo_judge/new/Primitive_Root.test.cpp
-  - test/yosupo_judge/math/Discrete Logarithm.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
   - test/AOJ/NTL/1_B.test.cpp

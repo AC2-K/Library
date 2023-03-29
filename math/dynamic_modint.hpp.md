@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett.hpp
     title: barrett reduction
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/dynamic_modint.md
     document_title: "dynamic modint(\u52D5\u7684modint)"
@@ -30,37 +33,38 @@ data:
     \t}\n\t\treturn m;\n\t}\npublic:\n\tdynamic_modint32() :v(0) { assert(mod); }\t\
     //mod\u304C\u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\
     \n\tdynamic_modint32(const i64& v_) :v(normalize(v_)) { assert(mod); }\t\n\n\t\
-    u32 val() const { return v; }\n\n\tusing mint = dynamic_modint32;\n\n\t//operators\n\
-    \tmint& operator=(const i64& r) {\n\t\tv = normalize(r); \n\t\treturn (*this);\n\
-    \t}\n\tmint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod) {\n\
-    \t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const mint&r)\
-    \ {\n\t\tv += mod - r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\n\t\t\
-    return (*this);\n\t}\n\tmint& operator*=(const mint& r) {\n\t\tv = brt.mul(v,\
-    \ r.v);\n\t\treturn (*this);\n\t}\n\n\tmint operator+(const mint& r) const { return\
-    \ mint(*this) += r; }\n\tmint operator-(const mint& r) const { return mint(*this)\
-    \ -= r; }\n\tmint operator*(const mint& r) const { return mint(*this) *= r; }\n\
-    \n\n\n\tmint& operator+= (const i64& r) { return (*this) += mint(r); }\n\tmint&\
-    \ operator-= (const i64& r) { return (*this) -= mint(r); }\n\tmint& operator*=\
-    \ (const i64& r) { return (*this) *= mint(r); }\n\n\tfriend mint operator+(const\
-    \ i64& l, const mint& r) { return mint(l) += r; }\n\tfriend mint operator+(const\
-    \ mint& l, const i64& r) { return mint(l) += r; }\n\tfriend mint operator-(const\
-    \ i64& l, const mint& r) { return mint(l) -= r; }\n\tfriend mint operator-(const\
-    \ mint& l, const i64& r) { return mint(l) -= r; }\n\tfriend mint operator*(const\
-    \ i64& l, const mint& r) { return mint(l) *= r; }\n\tfriend mint operator*(const\
-    \ mint& l, const i64& r) { return mint(l) += r; }\n\n\n\tfriend ostream& operator<<(ostream&\
-    \ os, const mint& mt) {\n\t\tos << mt.val();\n\t\treturn os;\n\t}\n\tfriend istream&\
-    \ operator>>(istream& is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\
-    \t\treturn is;\n\t}\n\tmint pow(u64 e) const {\n\t\tmint res(1), base(*this);\n\
-    \n\t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tres *= base;\n\t\t\t}\n\t\t\te\
-    \ >>= 1;\n\t\t\tbase *= base;\n\t\t}\n\t\treturn base;\n\t}\n\tmint inv() const\
-    \ {\n\t\treturn pow(mod - 2);\n\t}\n\n\tmint& operator/=(const mint& r) { return\
-    \ (*this) *= r.inv(); }\n\tmint operator/(const mint& r) const { return mint(*this)\
-    \ *= r.inv(); }\n\tmint& operator/=(const i64& r) { return (*this) /= mint(r);\
-    \ }\n\tfriend mint operator/(const mint& l, const i64& r) { return mint(l) /=\
-    \ r; }\n\tfriend mint operator/(const i64& l, const mint& r) { return mint(l)\
-    \ /= r; }\n};\ntypename dynamic_modint32::u32 dynamic_modint32::mod;\ntypename\
-    \ dynamic_modint32::br dynamic_modint32::brt;\n\n///@brief dynamic modint(\u52D5\
-    \u7684modint)\n///@docs docs/math/dynamic_modint.md\n"
+    u32 val() const { return v; }\n    static u32 get_mod() { return mod; }\n    using\
+    \ mint = dynamic_modint32;\n\n\t//operators\n\tmint& operator=(const i64& r) {\n\
+    \t\tv = normalize(r); \n\t\treturn (*this);\n\t}\n\tmint& operator+=(const mint&\
+    \ r) {\n\t\tv += r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn\
+    \ (*this);\n\t}\n\tmint& operator-=(const mint&r) {\n\t\tv += mod - r.v;\n\t\t\
+    if (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\n\t\treturn (*this);\n\t}\n\tmint& operator*=(const\
+    \ mint& r) {\n\t\tv = brt.mul(v, r.v);\n\t\treturn (*this);\n\t}\n\n\tmint operator+(const\
+    \ mint& r) const { return mint(*this) += r; }\n\tmint operator-(const mint& r)\
+    \ const { return mint(*this) -= r; }\n\tmint operator*(const mint& r) const {\
+    \ return mint(*this) *= r; }\n\n\n\n\tmint& operator+= (const i64& r) { return\
+    \ (*this) += mint(r); }\n\tmint& operator-= (const i64& r) { return (*this) -=\
+    \ mint(r); }\n\tmint& operator*= (const i64& r) { return (*this) *= mint(r); }\n\
+    \n\tfriend mint operator+(const i64& l, const mint& r) { return mint(l) += r;\
+    \ }\n\tfriend mint operator+(const mint& l, const i64& r) { return mint(l) +=\
+    \ r; }\n\tfriend mint operator-(const i64& l, const mint& r) { return mint(l)\
+    \ -= r; }\n\tfriend mint operator-(const mint& l, const i64& r) { return mint(l)\
+    \ -= r; }\n\tfriend mint operator*(const i64& l, const mint& r) { return mint(l)\
+    \ *= r; }\n\tfriend mint operator*(const mint& l, const i64& r) { return mint(l)\
+    \ += r; }\n\n\n\tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\t\
+    \tos << mt.val();\n\t\treturn os;\n\t}\n\tfriend istream& operator>>(istream&\
+    \ is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t\
+    }\n\tmint pow(u64 e) const {\n\t\tmint res(1), base(*this);\n\n\t\twhile (e) {\n\
+    \t\t\tif (e & 1) {\n\t\t\t\tres *= base;\n\t\t\t}\n\t\t\te >>= 1;\n\t\t\tbase\
+    \ *= base;\n\t\t}\n\t\treturn res;\n\t}\n\tmint inv() const {\n\t\treturn pow(mod\
+    \ - 2);\n\t}\n\n\tmint& operator/=(const mint& r) { return (*this) *= r.inv();\
+    \ }\n\tmint operator/(const mint& r) const { return mint(*this) *= r.inv(); }\n\
+    \tmint& operator/=(const i64& r) { return (*this) /= mint(r); }\n\tfriend mint\
+    \ operator/(const mint& l, const i64& r) { return mint(l) /= r; }\n\tfriend mint\
+    \ operator/(const i64& l, const mint& r) { return mint(l) /= r; }\n};\ntypename\
+    \ dynamic_modint32::u32 dynamic_modint32::mod;\ntypename dynamic_modint32::br\
+    \ dynamic_modint32::brt;\n\n///@brief dynamic modint(\u52D5\u7684modint)\n///@docs\
+    \ docs/math/dynamic_modint.md\n"
   code: "#pragma once\n#include\"math/barrett.hpp\"\nclass dynamic_modint32 {\n\t\
     using u32 = uint32_t;\n\tusing u64 = uint64_t;\n\n\tusing i32 = int32_t;\n\tusing\
     \ i64 = int64_t;\n\tusing br = internal::barrett;\n\n\tstatic br brt;\n\tstatic\
@@ -70,45 +74,47 @@ data:
     \t}\n\t\treturn m;\n\t}\npublic:\n\tdynamic_modint32() :v(0) { assert(mod); }\t\
     //mod\u304C\u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\
     \n\tdynamic_modint32(const i64& v_) :v(normalize(v_)) { assert(mod); }\t\n\n\t\
-    u32 val() const { return v; }\n\n\tusing mint = dynamic_modint32;\n\n\t//operators\n\
-    \tmint& operator=(const i64& r) {\n\t\tv = normalize(r); \n\t\treturn (*this);\n\
-    \t}\n\tmint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod) {\n\
-    \t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tmint& operator-=(const mint&r)\
-    \ {\n\t\tv += mod - r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\n\t\t\
-    return (*this);\n\t}\n\tmint& operator*=(const mint& r) {\n\t\tv = brt.mul(v,\
-    \ r.v);\n\t\treturn (*this);\n\t}\n\n\tmint operator+(const mint& r) const { return\
-    \ mint(*this) += r; }\n\tmint operator-(const mint& r) const { return mint(*this)\
-    \ -= r; }\n\tmint operator*(const mint& r) const { return mint(*this) *= r; }\n\
-    \n\n\n\tmint& operator+= (const i64& r) { return (*this) += mint(r); }\n\tmint&\
-    \ operator-= (const i64& r) { return (*this) -= mint(r); }\n\tmint& operator*=\
-    \ (const i64& r) { return (*this) *= mint(r); }\n\n\tfriend mint operator+(const\
-    \ i64& l, const mint& r) { return mint(l) += r; }\n\tfriend mint operator+(const\
-    \ mint& l, const i64& r) { return mint(l) += r; }\n\tfriend mint operator-(const\
-    \ i64& l, const mint& r) { return mint(l) -= r; }\n\tfriend mint operator-(const\
-    \ mint& l, const i64& r) { return mint(l) -= r; }\n\tfriend mint operator*(const\
-    \ i64& l, const mint& r) { return mint(l) *= r; }\n\tfriend mint operator*(const\
-    \ mint& l, const i64& r) { return mint(l) += r; }\n\n\n\tfriend ostream& operator<<(ostream&\
-    \ os, const mint& mt) {\n\t\tos << mt.val();\n\t\treturn os;\n\t}\n\tfriend istream&\
-    \ operator>>(istream& is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\
-    \t\treturn is;\n\t}\n\tmint pow(u64 e) const {\n\t\tmint res(1), base(*this);\n\
-    \n\t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tres *= base;\n\t\t\t}\n\t\t\te\
-    \ >>= 1;\n\t\t\tbase *= base;\n\t\t}\n\t\treturn base;\n\t}\n\tmint inv() const\
-    \ {\n\t\treturn pow(mod - 2);\n\t}\n\n\tmint& operator/=(const mint& r) { return\
-    \ (*this) *= r.inv(); }\n\tmint operator/(const mint& r) const { return mint(*this)\
-    \ *= r.inv(); }\n\tmint& operator/=(const i64& r) { return (*this) /= mint(r);\
-    \ }\n\tfriend mint operator/(const mint& l, const i64& r) { return mint(l) /=\
-    \ r; }\n\tfriend mint operator/(const i64& l, const mint& r) { return mint(l)\
-    \ /= r; }\n};\ntypename dynamic_modint32::u32 dynamic_modint32::mod;\ntypename\
-    \ dynamic_modint32::br dynamic_modint32::brt;\n\n///@brief dynamic modint(\u52D5\
-    \u7684modint)\n///@docs docs/math/dynamic_modint.md"
+    u32 val() const { return v; }\n    static u32 get_mod() { return mod; }\n    using\
+    \ mint = dynamic_modint32;\n\n\t//operators\n\tmint& operator=(const i64& r) {\n\
+    \t\tv = normalize(r); \n\t\treturn (*this);\n\t}\n\tmint& operator+=(const mint&\
+    \ r) {\n\t\tv += r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn\
+    \ (*this);\n\t}\n\tmint& operator-=(const mint&r) {\n\t\tv += mod - r.v;\n\t\t\
+    if (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\n\t\treturn (*this);\n\t}\n\tmint& operator*=(const\
+    \ mint& r) {\n\t\tv = brt.mul(v, r.v);\n\t\treturn (*this);\n\t}\n\n\tmint operator+(const\
+    \ mint& r) const { return mint(*this) += r; }\n\tmint operator-(const mint& r)\
+    \ const { return mint(*this) -= r; }\n\tmint operator*(const mint& r) const {\
+    \ return mint(*this) *= r; }\n\n\n\n\tmint& operator+= (const i64& r) { return\
+    \ (*this) += mint(r); }\n\tmint& operator-= (const i64& r) { return (*this) -=\
+    \ mint(r); }\n\tmint& operator*= (const i64& r) { return (*this) *= mint(r); }\n\
+    \n\tfriend mint operator+(const i64& l, const mint& r) { return mint(l) += r;\
+    \ }\n\tfriend mint operator+(const mint& l, const i64& r) { return mint(l) +=\
+    \ r; }\n\tfriend mint operator-(const i64& l, const mint& r) { return mint(l)\
+    \ -= r; }\n\tfriend mint operator-(const mint& l, const i64& r) { return mint(l)\
+    \ -= r; }\n\tfriend mint operator*(const i64& l, const mint& r) { return mint(l)\
+    \ *= r; }\n\tfriend mint operator*(const mint& l, const i64& r) { return mint(l)\
+    \ += r; }\n\n\n\tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\t\
+    \tos << mt.val();\n\t\treturn os;\n\t}\n\tfriend istream& operator>>(istream&\
+    \ is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t\
+    }\n\tmint pow(u64 e) const {\n\t\tmint res(1), base(*this);\n\n\t\twhile (e) {\n\
+    \t\t\tif (e & 1) {\n\t\t\t\tres *= base;\n\t\t\t}\n\t\t\te >>= 1;\n\t\t\tbase\
+    \ *= base;\n\t\t}\n\t\treturn res;\n\t}\n\tmint inv() const {\n\t\treturn pow(mod\
+    \ - 2);\n\t}\n\n\tmint& operator/=(const mint& r) { return (*this) *= r.inv();\
+    \ }\n\tmint operator/(const mint& r) const { return mint(*this) *= r.inv(); }\n\
+    \tmint& operator/=(const i64& r) { return (*this) /= mint(r); }\n\tfriend mint\
+    \ operator/(const mint& l, const i64& r) { return mint(l) /= r; }\n\tfriend mint\
+    \ operator/(const i64& l, const mint& r) { return mint(l) /= r; }\n};\ntypename\
+    \ dynamic_modint32::u32 dynamic_modint32::mod;\ntypename dynamic_modint32::br\
+    \ dynamic_modint32::brt;\n\n///@brief dynamic modint(\u52D5\u7684modint)\n///@docs\
+    \ docs/math/dynamic_modint.md"
   dependsOn:
   - math/barrett.hpp
   isVerificationFile: false
   path: math/dynamic_modint.hpp
   requiredBy: []
-  timestamp: '2023-03-26 20:22:21+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-03-29 21:25:13+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
 documentation_of: math/dynamic_modint.hpp
 layout: document
 redirect_from:

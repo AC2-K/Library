@@ -2,13 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: barrett reduction
     links: []
@@ -36,8 +39,9 @@ data:
   requiredBy:
   - math/dynamic_modint.hpp
   timestamp: '2023-03-26 20:22:21+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
 documentation_of: math/barrett.hpp
 layout: document
 redirect_from:

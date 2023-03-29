@@ -2,14 +2,11 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/ALDS/1_C.test.cpp
     title: test/AOJ/ALDS/1_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -91,8 +88,11 @@ data:
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Discrete Logarithm.test.cpp
-    title: test/yosupo_judge/math/Discrete Logarithm.test.cpp
+    path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
@@ -132,9 +132,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No.891.test.cpp
     title: test/yuki/No.891.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -226,9 +226,8 @@ data:
   path: template.hpp
   requiredBy:
   - math/static_modint.hpp
-  - main.cpp
   timestamp: '2023-03-28 10:54:47+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No-1471.test.cpp
   - test/yuki/No-3030.test.cpp
@@ -240,7 +239,8 @@ data:
   - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - test/yosupo_judge/math/Discrete Logarithm.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp

@@ -6,12 +6,24 @@ data:
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':heavy_check_mark:'
+    path: math/phi_function.hpp
+    title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
+  - icon: ':heavy_check_mark:'
+    path: math/primitive_root.hpp
+    title: "primitive root(\u539F\u59CB\u6839)"
+  - icon: ':heavy_check_mark:'
+    path: math/rho.hpp
+    title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
+  - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/NTL/1_D.test.cpp
+    title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_E.test.cpp
     title: test/AOJ/NTL/1_E.test.cpp
@@ -22,11 +34,20 @@ data:
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Discrete Logarithm.test.cpp
-    title: test/yosupo_judge/math/Discrete Logarithm.test.cpp
+    path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Factorize.test.cpp
+    title: test/yosupo_judge/math/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/new/Primitive_Root.test.cpp
+    title: test/yosupo_judge/new/Primitive_Root.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
@@ -68,18 +89,25 @@ data:
   path: math/gcd.hpp
   requiredBy:
   - math/DLP.hpp
+  - math/primitive_root.hpp
+  - math/rho.hpp
   - math/static_modint.hpp
+  - math/phi_function.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-03-29 14:48:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No-430.test.cpp
   - test/yuki/No.891.test.cpp
+  - test/yosupo_judge/new/Primitive_Root.test.cpp
   - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
-  - test/yosupo_judge/math/Discrete Logarithm.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
   - test/AOJ/NTL/1_E.test.cpp
 documentation_of: math/gcd.hpp
 layout: document

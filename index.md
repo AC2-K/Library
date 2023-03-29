@@ -40,7 +40,7 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -59,13 +59,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/DLP.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/barrett.hpp
       title: barrett reduction
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     - icon: ':heavy_check_mark:'
@@ -120,7 +120,7 @@ data:
   verificationCategories:
   - name: test/AOJ/ALDS
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/AOJ/ALDS/1_C.test.cpp
       title: test/AOJ/ALDS/1_C.test.cpp
   - name: test/AOJ/DSL
@@ -214,8 +214,11 @@ data:
   - name: test/yosupo_judge/math
     pages:
     - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/math/Discrete Logarithm.test.cpp
-      title: test/yosupo_judge/math/Discrete Logarithm.test.cpp
+      path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+      title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+      title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
