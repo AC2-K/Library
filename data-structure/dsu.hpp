@@ -19,14 +19,14 @@ public:
         return root(x) == root(y);
     }
 
-    bool merge(int x, int y) {
+    int merge(int x, int y) {
         x = root(x), y = root(y);
-        if (x == y) return false;
+        if (x == y) return x;
         if (rank[x] < rank[y]) swap(x, y);
         if (rank[x] == rank[y]) rank[x]++; 
         find[x] += find[y];
         find[y] = x;
-        return true;
+        return x;
     }
 
     int size(int x) {

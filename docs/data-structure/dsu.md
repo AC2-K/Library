@@ -20,9 +20,9 @@ bool same(int x,int y)
 ```
 頂点$x,y$が連結かを判定します。計算量は$O(\alpha(n))$
 ```cpp
-bool merge(int x,int y)
+int merge(int x,int y)
 ```
-頂点$x,y$の間に無向辺を張ります。ただし、すでに無向辺が張られていた場合は`false`を返して終了します。計算量は$O(\alpha(n))$
+頂点$x,y$の間に無向辺を張ります。また、マージ後の代表元の番号を返します。
 
 ```cpp
 int size(int x)
