@@ -35,6 +35,9 @@ data:
       path: debug.hpp
       title: debug.hpp
     - icon: ':warning:'
+      path: main.cpp
+      title: main.cpp
+    - icon: ':warning:'
       path: out.cpp
       title: out.cpp
     - icon: ':heavy_check_mark:'
@@ -103,17 +106,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: persistent/queue.hpp
       title: persistent/queue.hpp
+    - icon: ':warning:'
+      path: persistent/stack.hpp
+      title: persistent/stack.hpp
   - name: string
     pages:
     - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   verificationCategories:
-  - name: .
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: main.test.cpp
-      title: main.test.cpp
   - name: test/AOJ/ALDS/1
     pages:
     - icon: ':heavy_check_mark:'

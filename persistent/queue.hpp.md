@@ -4,9 +4,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: main.test.cpp
-    title: main.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
     title: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   _isVerificationFailed: false
@@ -56,7 +53,6 @@ data:
   timestamp: '2023-03-29 01:52:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - main.test.cpp
   - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
 documentation_of: persistent/queue.hpp
 layout: document

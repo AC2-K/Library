@@ -46,25 +46,25 @@ data:
     \t\t}\n\n\t\treturn persistent_queue(cur, back_ptr, siz - 1);\n\t}\n\n\tT front()\
     \ { assert(siz); return front_ptr->val; }\n\tT back() { assert(siz); return back_ptr->val;\
     \ }\n};\n#line 5 \"test/yosupo_judge/data_structure/Persistent_Queue.test.cpp\"\
-    \n\nint main() {\n\tint q;\n\tcin >> q;\n\tvector<persistent_queue<int>> v(q +\
-    \ 1);\n\tfor (int i = 1; i <= q; i++) {\n\t\tint t, idx;\n\t\tscanf(\"%d%d\",\
-    \ &t, &idx);\n\t\tidx++;\n\n\t\tif (t == 0) {\n\t\t\tint s;\n\t\t\tscanf(\"%d\"\
+    \n\nint main() {\n\tint q;\n\tscanf(\"%d\", &q);\n\tvector<persistent_queue<int>>\
+    \ v(q + 1);\n\tfor (int i = 1; i <= q; i++) {\n\t\tint t, idx;\n\t\tscanf(\"%d%d\"\
+    , &t, &idx);\n\t\tidx++;\n\n\t\tif (t == 0) {\n\t\t\tint s;\n\t\t\tscanf(\"%d\"\
     , &s);\n\t\t\tv[i] = v[idx].push(s);\n\t\t}\n\t\telse {\n\t\t\tprintf(\"%d\\n\"\
     , v[idx].front());\n\t\t\tv[i] = v[idx].pop();\n\t\t}\n\t}\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n\n\
     #include\"template.hpp\"\n#include\"persistent/queue.hpp\"\n\nint main() {\n\t\
-    int q;\n\tcin >> q;\n\tvector<persistent_queue<int>> v(q + 1);\n\tfor (int i =\
-    \ 1; i <= q; i++) {\n\t\tint t, idx;\n\t\tscanf(\"%d%d\", &t, &idx);\n\t\tidx++;\n\
-    \n\t\tif (t == 0) {\n\t\t\tint s;\n\t\t\tscanf(\"%d\", &s);\n\t\t\tv[i] = v[idx].push(s);\n\
-    \t\t}\n\t\telse {\n\t\t\tprintf(\"%d\\n\", v[idx].front());\n\t\t\tv[i] = v[idx].pop();\n\
-    \t\t}\n\t}\n}"
+    int q;\n\tscanf(\"%d\", &q);\n\tvector<persistent_queue<int>> v(q + 1);\n\tfor\
+    \ (int i = 1; i <= q; i++) {\n\t\tint t, idx;\n\t\tscanf(\"%d%d\", &t, &idx);\n\
+    \t\tidx++;\n\n\t\tif (t == 0) {\n\t\t\tint s;\n\t\t\tscanf(\"%d\", &s);\n\t\t\t\
+    v[i] = v[idx].push(s);\n\t\t}\n\t\telse {\n\t\t\tprintf(\"%d\\n\", v[idx].front());\n\
+    \t\t\tv[i] = v[idx].pop();\n\t\t}\n\t}\n}"
   dependsOn:
   - template.hpp
   - persistent/queue.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-03-29 01:57:02+09:00'
+  timestamp: '2023-03-29 11:45:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp

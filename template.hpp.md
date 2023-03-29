@@ -4,9 +4,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: main.test.cpp
-    title: main.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/AOJ/ALDS/1/C.test.cpp
     title: test/AOJ/ALDS/1/C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -219,7 +216,6 @@ data:
   timestamp: '2023-03-28 10:54:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - main.test.cpp
   - test/yuki/No-1471.test.cpp
   - test/yuki/No-789_BIT.test.cpp
   - test/yuki/No-789_dynamic.test.cpp
