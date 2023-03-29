@@ -1,20 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: math/ext_gcd.hpp
+    title: "ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\
+      \u6CD5)"
+  - icon: ':x:'
     path: math/matrix.hpp
     title: "maxtirx(\u884C\u5217)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -31,55 +35,66 @@ data:
     \ 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1\
     \ };\ntemplate<class T>static constexpr inline void chmax(T&x,T y){if(x<y)x=y;}\n\
     template<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n#line\
-    \ 1 \"math/static_modint.hpp\"\ntemplate<__uint64_t mod>\nclass static_modint\
-    \ {\nprivate:\n\tusing mint = static_modint<mod>;\n\tusing i64 = long long;\n\t\
-    using u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\tusing i128 = __int128_t;\n\
-    \n\tu64 v;\n\tu64 normalize(i64 v_) const {\n\t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\
-    \t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\tstatic_modint() :v(0)\
-    \ {}\n\tstatic_modint(const i64& v_) :v(normalize(v_)) { }\n\n\t//operator\n\t\
-    u64 val() const {\n\t\treturn v;\n\t}\n\tmint& operator+=(const mint& rhs) {\n\
-    \t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\
-    \t}\n\tmint& operator-=(const mint& rhs) {\n\t\tv += mod - rhs.val();\n\t\tif\
-    \ (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tmint& operator*=(const\
-    \ mint& rhs) {\n\t\tv = (u128)v * rhs.val() % mod;\n\t\treturn (*this);\n\t}\n\
-    \n\n\tmint operator+(const mint& r) const {\n\t\treturn mint(*this) += r;\n\t\
-    }\n\tmint operator-(const mint& r) const {\n\t\treturn mint(*this) -= r;\n\t}\n\
-    \tmint operator*(const mint& r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\
-    \tmint& operator+=(const i64& rhs) {\n\t\t(*this) += mint(rhs);\n\t\treturn (*this);\n\
-    \t}\n\tmint& operator-=(const i64& rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn\
-    \ (*this);\n\t}\n\tmint& operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\
-    \t\treturn (*this);\n\t}\n\tfriend mint operator+(const i64& l, const mint& r)\
-    \ {\n\t\treturn mint(l) += r;\n\t}\n\tfriend mint operator-(const i64& l, const\
-    \ mint& r) {\n\t\treturn mint(l) -= r;\n\t}\n\tfriend mint operator*(const i64&\
-    \ l, const mint& r) {\n\t\treturn mint(l) *= r;\n\t}\n\n\tmint operator+(const\
-    \ i64& r) {\n\t\treturn mint(*this) += r;\n\t}\n\tmint operator-(const i64& r)\
-    \ {\n\t\treturn mint(*this) -= r;\n\t}\n\tmint operator*(const i64& r) {\n\t\t\
-    return mint(*this) *= r;\n\t}\n\n\n\tmint& operator=(const i64& r) {\n\t\treturn\
-    \ (*this) = mint(r);\n\t}\n\n\tbool operator==(const mint& r) const {\n\t\treturn\
-    \ (*this).val() == r.val();\n\t}\n\tmint pow(u128 e) const {\n\t\tmint ans(1),\
-    \ base(*this);\n\t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans *= base;\n\t\t\
-    \t}\n\t\t\tbase *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tmint\
-    \ inv() const {\n\t\treturn pow(mod - 2);\n\t}\n\n\tmint& operator/=(const mint&\
-    \ r) {\n\t\treturn (*this) *= r.inv();\n\t}\n\tfriend mint operator/(const mint&\
-    \ l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\t\
-    friend ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
-    \t\treturn os;\n\t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\
-    \ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n};\ntemplate<__uint32_t\
-    \ mod>\nclass static_modint32 {\nprivate:\n\tusing mint = static_modint32<mod>;\n\
-    \tusing i32 = __int32_t;\n\tusing u32 = __uint32_t;\n\tusing i64 = __int64_t;\n\
-    \tusing u64 = unsigned long long;\n\n\tu32 v;\n\tu32 normalize(i64 v_) const {\n\
-    \t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t\
-    }\npublic:\n\tconstexpr static_modint32() :v(0) {}\n\tconstexpr static_modint32(const\
-    \ i64& v_) :v(normalize(v_)) { }\n\n\t//operator\n\tconstexpr u64 val() const\
-    \ {\n\t\treturn (u64)v;\n\t}\n\tconstexpr mint& operator+=(const mint& rhs) {\n\
-    \t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\
-    \t}\n\tconstexpr mint& operator-=(const mint& rhs) {\n\t\tv += mod - rhs.val();\n\
-    \t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr\
-    \ mint& operator*=(const mint& rhs) {\n\t\tv = (u64)v * rhs.val() % mod;\n\t\t\
-    return (*this);\n\t}\n\n\tconstexpr mint operator+(const mint& r) const {\n\t\t\
-    return mint(*this) += r;\n\t}\n\tconstexpr mint operator-(const mint& r) const\
-    \ {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint operator*(const mint&\
-    \ r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\tconstexpr mint& operator+=(const\
+    \ 1 \"math/ext_gcd.hpp\"\nstatic constexpr inline ll ext_gcd(ll a, ll b, ll &x,\
+    \ ll &y) {\n    x = 1, y = 0;\n    ll nx = 0, ny = 1;\n    while(b) {\n      \
+    \  long long q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x,\
+    \ nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n\
+    \    }\n    return a;\n}\n\n/// @brief ext gcd(\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\
+    \u30C3\u30C9\u306E\u4E92\u9664\u6CD5)\n/// @return ax+by=gcd(a,b)\u306A\u308B\
+    x,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n#line 2 \"\
+    math/static_modint.hpp\"\ntemplate<__uint64_t mod>\nclass static_modint {\nprivate:\n\
+    \tusing mint = static_modint<mod>;\n\tusing i64 = long long;\n\tusing u64 = unsigned\
+    \ long long;\n\tusing u128 = __uint128_t;\n\tusing i128 = __int128_t;\n\n\tu64\
+    \ v;\n\tu64 normalize(i64 v_) const {\n\t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\
+    \tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\tconstexpr static_modint()\
+    \ :v(0) {}\n\tconstexpr static_modint(const i64& v_) :v(normalize(v_)) { }\n\n\
+    \t//operator\n\tconstexpr u64 val() const {\n\t\treturn v;\n\t}\n\tconstexpr mint&\
+    \ operator+=(const mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\
+    \tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const\
+    \ mint& rhs) {\n\t\tv += mod - rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\
+    \t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator*=(const mint& rhs)\
+    \ {\n\t\tv = (u128)v * rhs.val() % mod;\n\t\treturn (*this);\n\t}\n\n\n\tconstexpr\
+    \ mint operator+(const mint& r) const {\n\t\treturn mint(*this) += r;\n\t}\n\t\
+    constexpr mint operator-(const mint& r) const {\n\t\treturn mint(*this) -= r;\n\
+    \t}\n\tconstexpr mint operator*(const mint& r) const {\n\t\treturn mint(*this)\
+    \ *= r;\n\t}\n\n\tconstexpr mint& operator+=(const i64& rhs) {\n\t\t(*this) +=\
+    \ mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const i64&\
+    \ rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr mint&\
+    \ operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\t\treturn (*this);\n\
+    \t}\n\tconstexpr friend mint operator+(const i64& l, const mint& r) {\n\t\treturn\
+    \ mint(l) += r;\n\t}\n\tconstexpr friend mint operator-(const i64& l, const mint&\
+    \ r) {\n\t\treturn mint(l) -= r;\n\t}\n\tconstexpr friend mint operator*(const\
+    \ i64& l, const mint& r) {\n\t\treturn mint(l) *= r;\n\t}\n\n\tconstexpr mint\
+    \ operator+(const i64& r) {\n\t\treturn mint(*this) += r;\n\t}\n\tconstexpr mint\
+    \ operator-(const i64& r) {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint\
+    \ operator*(const i64& r) {\n\t\treturn mint(*this) *= r;\n\t}\n\n\n\tconstexpr\
+    \ mint& operator=(const i64& r) {\n\t\treturn (*this) = mint(r);\n\t}\n\n\tconstexpr\
+    \ bool operator==(const mint& r) const {\n\t\treturn (*this).val() == r.val();\n\
+    \t}\n\tconstexpr mint pow(u128 e) const {\n\t\tmint ans(1), base(*this);\n\t\t\
+    while (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans *= base;\n\t\t\t}\n\t\t\tbase *=\
+    \ base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tconstexpr mint inv()\
+    \ const {\n\t\tll x, y;\n        auto d = ext_gcd(mod, val, x, y);\n        assert(d\
+    \ == 1);\n        return y;\n\t}\n\n\tconstexpr mint& operator/=(const mint& r)\
+    \ {\n\t\treturn (*this) *= r.inv();\n\t}\n\tconstexpr friend mint operator/(const\
+    \ mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\
+    \tconstexpr friend ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos\
+    \ << mt.val();\n\t\treturn os;\n\t}\n\tconstexpr friend istream& operator>>(istream&\
+    \ is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t\
+    }\n};\ntemplate<__uint32_t mod>\nclass static_modint32 {\nprivate:\n\tusing mint\
+    \ = static_modint32<mod>;\n\tusing i32 = __int32_t;\n\tusing u32 = __uint32_t;\n\
+    \tusing i64 = __int64_t;\n\tusing u64 = __uint64_t;\n\n\tu32 v;\n\tinline u32\
+    \ normalize(i64 v_) const {\n\t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\
+    \t\t}\n\t\treturn v_;\n\t}\npublic:\n\tconstexpr static_modint32() :v(0) {}\n\t\
+    constexpr static_modint32(const i64& v_) :v(normalize(v_)) { }\n\n\t//operator\n\
+    \tconstexpr u64 val() const {\n\t\treturn (u64)v;\n\t}\n\tconstexpr mint& operator+=(const\
+    \ mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t\
+    }\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const mint& rhs) {\n\
+    \t\tv += mod - rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn\
+    \ (*this);\n\t}\n\tconstexpr mint& operator*=(const mint& rhs) {\n\t\tv = (u64)v\
+    \ * rhs.val() % mod;\n\t\treturn (*this);\n\t}\n\n\tconstexpr mint operator+(const\
+    \ mint& r) const {\n\t\treturn mint(*this) += r;\n\t}\n\tconstexpr mint operator-(const\
+    \ mint& r) const {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint operator*(const\
+    \ mint& r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\tconstexpr mint& operator+=(const\
     \ i64& rhs) {\n\t\t(*this) += mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr\
     \ mint& operator-=(const i64& rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\
     \t}\n\tconstexpr mint& operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\
@@ -95,15 +110,16 @@ data:
     \ == r.val();\n\t}\n\tconstexpr mint pow(u64 e) const {\n\t\tmint ans(1), base(*this);\n\
     \t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans *= base;\n\t\t\t}\n\t\t\tbase\
     \ *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tconstexpr mint inv()\
-    \ const {\n\t\treturn pow(mod - 2);\n\t}\n\n\tconstexpr mint& operator/=(const\
+    \ const {\n        ll x, y;\n        auto d = ext_gcd(mod, val, x, y);\n     \
+    \   assert(d == 1);\n        return y;\n    }\n\n\tconstexpr mint& operator/=(const\
     \ mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n    constexpr mint operator/(const\
-    \ mint& r) { return mint(*this) *= r.inv(); }\n    friend mint operator/(const\
+    \ mint& r) { return mint(*this) *= r.inv(); }\n    constexpr friend mint operator/(const\
     \ mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\
-    \tfriend ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
-    \t\treturn os;\n\t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\
-    \ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\n};\n///@brief static\
-    \ modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n#line 1 \"\
-    math/matrix.hpp\"\ntemplate<typename T>\nclass Matrix {\n    vector<vector<T>>\
+    \tconstexpr friend ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos\
+    \ << mt.val();\n\t\treturn os;\n\t}\n\tconstexpr friend istream& operator>>(istream&\
+    \ is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t\
+    }\n\n};\n///@brief static modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n\
+    #line 1 \"math/matrix.hpp\"\ntemplate<typename T>\nclass Matrix {\n    vector<vector<T>>\
     \ dat;\n    int h = 0, w = 0;\n\n  public:\n    Matrix(const vector<vector<T>>&\
     \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
     \ h_, int w_, const T& v = T())\n        : dat(h_, vector<T>(w_, v)){}\n     \
@@ -148,12 +164,13 @@ data:
   dependsOn:
   - template.hpp
   - math/static_modint.hpp
+  - math/ext_gcd.hpp
   - math/matrix.hpp
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-03-28 13:32:48+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-03-29 14:13:41+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
 layout: document
