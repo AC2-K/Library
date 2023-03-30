@@ -15,8 +15,9 @@ public:
 	persistent_stack() :head(nullptr) {}
 
 
-	T top() const { assert(sz); return head->val; }
-	persistent_stack pop() const { assert(sz); return persistent_stack(head->prev, sz - 1); }
+	T top() const { assert(head); return head->val; }
+	persistent_stack pop() const { assert(head); return persistent_stack(head->prev, sz - 1); }
 	persistent_stack push(const T& v) const { return persistent_stack(new Node{ v,head }, sz + 1); }
 	int size()const { return sz; }
+    bool empty() const { return (head == nullptr); }
 };

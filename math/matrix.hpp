@@ -40,10 +40,16 @@ class Matrix {
         int ha = dat.size(), wa = dat.front().size();
         int hb = r.dat.size(), wb = r.dat.front().size();
         assert(wa == hb);
-     
+
         vector<vector<T>> res(ha, vector<T>(wb));
-        rep(i, ha) rep(k, wa) rep(j, wb) { res[i][j] += dat[i][k] * r.dat[k][j]; }
-     
+        for (int i = 0; i < ha; i++) {
+            for (int k = 0; k < wa; k++){
+                for (int j = 0; j < wb; j++) {
+                    res[i][j] += dat[i][k] * r.dat[k][j];
+                }
+            }
+        }
+
         swap(res, dat);
         return (*this);
     }
@@ -52,8 +58,7 @@ class Matrix {
     mat operator-(const mat& r) { return mat(*this) -= r; }
     mat operator*(const mat& r) { return mat(*this) *= r; }
 
-    mat pow(__int64_t e) const {
-        assert(e >= 0);
+    explicit mat pow(__uint64_t e) const {
         int n = dat.size();
         mat res(n, n, 0);
         mat pr(*this);

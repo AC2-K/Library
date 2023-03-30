@@ -1,6 +1,5 @@
 /// @brief Disjoint Set(Union find)
 /// @docs docs/data-structure/dsu.md
-#pragma once
 class DSU {
 private:
     vector<int> find, rank;
