@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett.hpp
     title: barrett reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/gcd.hpp
     title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
       \u3069)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -56,11 +56,11 @@ data:
     \t\tz *= b;\n#ifdef _MSC_VER\n\t\t\tu64 x;\n\n\t\t\t_umul128(z, im, &x);\n#else\n\
     \t\t\tu64 x = (u64)(((__uint128_t)(z)*im) >> 64);\n#endif\n\n\t\t\tu32 v = (u32)(z\
     \ - x * m);\n\n\t\t\tif (v >= m)v += m;\n\t\t\treturn v;\n\t\t}\n\t};\n}\n#line\
-    \ 1 \"math/montgomery.hpp\"\nnamespace internal {\n    using u32 = uint32_t;\n\
+    \ 2 \"math/montgomery.hpp\"\nnamespace internal {\n    using u32 = uint32_t;\n\
     \    using u64 = uint64_t;\n    using i32 = int32_t;\n    using i64 = int64_t;\n\
     \    using u128 = __uint128_t;\n    using i128 = __int128_t;\n    /// @brief MontgomeryReduction\n\
     \    template<typename T,typename LargeT>\n    class MontgomeryReduction64 {\n\
-    \n        static constexpr int lg = numeric_limits<T>::digits;\n        T mod,\
+    \        static constexpr int lg = numeric_limits<T>::digits;\n        T mod,\
     \ r, r2, minv;\n        T calc_inv() {\n            T t = 0, res = 0;\n      \
     \      for (int i = 0; i < lg; i++) {\n                if (~t & 1) {\n       \
     \             t += mod;\n                    res += static_cast<T>(1) << i;\n\
@@ -199,7 +199,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 22:20:27+09:00'
+  timestamp: '2023-03-31 22:26:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp

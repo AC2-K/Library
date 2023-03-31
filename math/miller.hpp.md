@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett.hpp
     title: barrett reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/montgomery.hpp
     title: MontgomeryReduction
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Primitive_Root.test.cpp
     title: test/yosupo_judge/new/Primitive_Root.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-3030.test.cpp
     title: test/yuki/No-3030.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
     links: []
@@ -47,11 +47,11 @@ data:
     \ {\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\tu64 z = a;\n\t\t\tz *= b;\n#ifdef _MSC_VER\n\
     \t\t\tu64 x;\n\n\t\t\t_umul128(z, im, &x);\n#else\n\t\t\tu64 x = (u64)(((__uint128_t)(z)*im)\
     \ >> 64);\n#endif\n\n\t\t\tu32 v = (u32)(z - x * m);\n\n\t\t\tif (v >= m)v +=\
-    \ m;\n\t\t\treturn v;\n\t\t}\n\t};\n}\n#line 1 \"math/montgomery.hpp\"\nnamespace\
+    \ m;\n\t\t\treturn v;\n\t\t}\n\t};\n}\n#line 2 \"math/montgomery.hpp\"\nnamespace\
     \ internal {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n    using\
     \ i32 = int32_t;\n    using i64 = int64_t;\n    using u128 = __uint128_t;\n  \
     \  using i128 = __int128_t;\n    /// @brief MontgomeryReduction\n    template<typename\
-    \ T,typename LargeT>\n    class MontgomeryReduction64 {\n\n        static constexpr\
+    \ T,typename LargeT>\n    class MontgomeryReduction64 {\n        static constexpr\
     \ int lg = numeric_limits<T>::digits;\n        T mod, r, r2, minv;\n        T\
     \ calc_inv() {\n            T t = 0, res = 0;\n            for (int i = 0; i <\
     \ lg; i++) {\n                if (~t & 1) {\n                    t += mod;\n \
@@ -207,8 +207,8 @@ data:
   - math/rho.hpp
   - math/primitive_root.hpp
   - math/phi_function.hpp
-  timestamp: '2023-03-31 22:20:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-03-31 22:26:02+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
   - test/yuki/No-3030.test.cpp

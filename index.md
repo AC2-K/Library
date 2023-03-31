@@ -40,7 +40,7 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -59,41 +59,41 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/DLP.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/barrett.hpp
       title: barrett reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/dynamic_modint.hpp
       title: dynamic_modint(64bit)
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/gcd.hpp
       title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
         \u3069)"
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "maxtirx(\u884C\u5217)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/miller.hpp
       title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
       title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/montgomery.hpp
       title: MontgomeryReduction
     - icon: ':warning:'
       path: math/osak.hpp
       title: "Osak\u6CD5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/rho.hpp
       title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
     - icon: ':heavy_check_mark:'
@@ -165,7 +165,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_B.test.cpp
       title: test/AOJ/NTL/1_B.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_D.test.cpp
       title: test/AOJ/NTL/1_D.test.cpp
     - icon: ':heavy_check_mark:'
@@ -222,7 +222,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
   - name: test/yosupo_judge/matrix
@@ -235,7 +235,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/new/Primitive_Root.test.cpp
       title: test/yosupo_judge/new/Primitive_Root.test.cpp
     - icon: ':heavy_check_mark:'
