@@ -59,7 +59,7 @@ class Matrix {
     mat operator*(const mat& r) { return mat(*this) *= r; }
 
     mat pow(__int64_t e) const {
-        assert(e > 0);
+        assert(e >= 0);
         int n = dat.size();
         mat res(n, n, 0);
         mat pr(*this);
