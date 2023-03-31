@@ -5,14 +5,14 @@ data:
     path: data-structure/lazy_segtree.hpp
     title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
       \u30E1\u30F3\u30C8\u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/gcd.hpp
     title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
       \u3069)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

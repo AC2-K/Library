@@ -14,7 +14,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   - icon: ':heavy_check_mark:'
@@ -42,7 +42,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - icon: ':heavy_check_mark:'
@@ -54,12 +54,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-430.test.cpp
     title: test/yuki/No-430.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No.891.test.cpp
     title: test/yuki/No.891.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\
       \u306A\u3069)"
@@ -88,27 +88,27 @@ data:
   isVerificationFile: false
   path: math/gcd.hpp
   requiredBy:
-  - math/DLP.hpp
-  - math/primitive_root.hpp
-  - math/rho.hpp
   - math/static_modint.hpp
+  - math/DLP.hpp
+  - math/rho.hpp
+  - math/primitive_root.hpp
   - math/phi_function.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-03-29 14:48:44+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/No-430.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
+  - test/AOJ/NTL/1_E.test.cpp
   - test/yuki/No.891.test.cpp
-  - test/yosupo_judge/new/Primitive_Root.test.cpp
-  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  - test/yuki/No-430.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/new/Primitive_Root.test.cpp
+  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - test/AOJ/NTL/1_D.test.cpp
-  - test/AOJ/NTL/1_E.test.cpp
 documentation_of: math/gcd.hpp
 layout: document
 redirect_from:

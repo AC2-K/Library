@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/gcd.hpp
     title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
       \u3069)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/matrix.hpp
     title: "maxtirx(\u884C\u5217)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://yukicoder.me/problems/no/891
@@ -135,17 +135,19 @@ data:
     \ = 0; j < w; j++) {\n                dat[i][j] -= r.dat[i][j];\n            }\n\
     \        }\n        return (*this);\n    }\n    \n    mat& operator*=(const mat&\
     \ r) {\n        int ha = dat.size(), wa = dat.front().size();\n        int hb\
-    \ = r.dat.size(), wb = r.dat.front().size();\n        assert(wa == hb);\n    \
-    \ \n        vector<vector<T>> res(ha, vector<T>(wb));\n        rep(i, ha) rep(k,\
-    \ wa) rep(j, wb) { res[i][j] += dat[i][k] * r.dat[k][j]; }\n     \n        swap(res,\
-    \ dat);\n        return (*this);\n    }\n\n    mat operator+(const mat& r) { return\
-    \ mat(*this) += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r;\
-    \ }\n    mat operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
-    \ e) const {\n        assert(e >= 0);\n        int n = dat.size();\n        mat\
-    \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
-    \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
-    \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
-    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n\
+    \ = r.dat.size(), wb = r.dat.front().size();\n        assert(wa == hb);\n\n  \
+    \      vector<vector<T>> res(ha, vector<T>(wb));\n        for (int i = 0; i <\
+    \ ha; i++) {\n            for (int k = 0; k < wa; k++){\n                for (int\
+    \ j = 0; j < wb; j++) {\n                    res[i][j] += dat[i][k] * r.dat[k][j];\n\
+    \                }\n            }\n        }\n\n        swap(res, dat);\n    \
+    \    return (*this);\n    }\n\n    mat operator+(const mat& r) { return mat(*this)\
+    \ += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r; }\n    mat\
+    \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    explicit mat pow(__uint64_t\
+    \ e) const {\n        int n = dat.size();\n        mat res(n, n, 0);\n       \
+    \ mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i] = 1;\n\n     \
+    \   while (e) {\n            if (e & 1) res *= pr;\n            pr *= pr;\n  \
+    \          \n            e >>= 1;\n        }\n        \n        return res;\n\
+    \    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n\
     #line 6 \"test/yuki/No.891.test.cpp\"\nusing mint = static_modint32<MOD>;\nint\
     \ main() {\n    int a, b, n;\n    cin >> a >> b >> n;\n    Matrix<mint> A({{a,\
     \ b}, {1, 0}});\n    A = A.pow(n);\n    cout << A[1][0] << '\\n';\n}\n"
@@ -162,8 +164,8 @@ data:
   isVerificationFile: true
   path: test/yuki/No.891.test.cpp
   requiredBy: []
-  timestamp: '2023-03-29 14:48:44+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-03-30 16:15:39+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yuki/No.891.test.cpp
 layout: document

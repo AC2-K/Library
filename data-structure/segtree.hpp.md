@@ -72,11 +72,11 @@ data:
   timestamp: '2023-03-26 04:58:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
+  - test/AOJ/DSL/2_B.test.cpp
+  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/AOJ/DSL/2_B.test.cpp
+  - test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
 documentation_of: data-structure/segtree.hpp
 layout: document
 redirect_from:
