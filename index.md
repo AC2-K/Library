@@ -72,7 +72,7 @@ data:
       path: math/gcd.hpp
       title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
         \u3069)"
-    - icon: ':x:'
+    - icon: ':question:'
       path: math/matrix.hpp
       title: "maxtirx(\u884C\u5217)"
     - icon: ':heavy_check_mark:'
@@ -224,7 +224,7 @@ data:
       title: test/yosupo_judge/math/Factorize.test.cpp
   - name: test/yosupo_judge/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/new

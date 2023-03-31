@@ -5,7 +5,7 @@ data:
     path: math/gcd.hpp
     title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
       \u3069)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/matrix.hpp
     title: "maxtirx(\u884C\u5217)"
   - icon: ':question:'
@@ -142,12 +142,12 @@ data:
     \                }\n            }\n        }\n\n        swap(res, dat);\n    \
     \    return (*this);\n    }\n\n    mat operator+(const mat& r) { return mat(*this)\
     \ += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r; }\n    mat\
-    \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    explicit mat pow(__uint64_t\
-    \ e) const {\n        int n = dat.size();\n        mat res(n, n, 0);\n       \
-    \ mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i] = 1;\n\n     \
-    \   while (e) {\n            if (e & 1) res *= pr;\n            pr *= pr;\n  \
-    \          \n            e >>= 1;\n        }\n        \n        return res;\n\
-    \    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n\
+    \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
+    \ e) const {\n        assert(e > 0);\n        int n = dat.size();\n        mat\
+    \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
+    \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
+    \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
+    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n\
     #line 6 \"test/yuki/No.891.test.cpp\"\nusing mint = static_modint32<MOD>;\nint\
     \ main() {\n    int a, b, n;\n    cin >> a >> b >> n;\n    Matrix<mint> A({{a,\
     \ b}, {1, 0}});\n    A = A.pow(n);\n    cout << A[1][0] << '\\n';\n}\n"
@@ -164,7 +164,7 @@ data:
   isVerificationFile: true
   path: test/yuki/No.891.test.cpp
   requiredBy: []
-  timestamp: '2023-03-30 16:15:39+09:00'
+  timestamp: '2023-03-31 15:33:49+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yuki/No.891.test.cpp

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - icon: ':x:'
@@ -11,7 +11,7 @@ data:
     title: test/yuki/No.891.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/math/matrix.md
     document_title: "maxtirx(\u884C\u5217)"
@@ -37,12 +37,12 @@ data:
     \                }\n            }\n        }\n\n        swap(res, dat);\n    \
     \    return (*this);\n    }\n\n    mat operator+(const mat& r) { return mat(*this)\
     \ += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r; }\n    mat\
-    \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    explicit mat pow(__uint64_t\
-    \ e) const {\n        int n = dat.size();\n        mat res(n, n, 0);\n       \
-    \ mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i] = 1;\n\n     \
-    \   while (e) {\n            if (e & 1) res *= pr;\n            pr *= pr;\n  \
-    \          \n            e >>= 1;\n        }\n        \n        return res;\n\
-    \    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n"
+    \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
+    \ e) const {\n        assert(e > 0);\n        int n = dat.size();\n        mat\
+    \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
+    \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
+    \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
+    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n"
   code: "template<typename T>\nclass Matrix {\n    vector<vector<T>> dat;\n    int\
     \ h = 0, w = 0;\n\n  public:\n    Matrix(const vector<vector<T>>& dat)\n     \
     \   : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int h_,\
@@ -64,18 +64,18 @@ data:
     \                }\n            }\n        }\n\n        swap(res, dat);\n    \
     \    return (*this);\n    }\n\n    mat operator+(const mat& r) { return mat(*this)\
     \ += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r; }\n    mat\
-    \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    explicit mat pow(__uint64_t\
-    \ e) const {\n        int n = dat.size();\n        mat res(n, n, 0);\n       \
-    \ mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i] = 1;\n\n     \
-    \   while (e) {\n            if (e & 1) res *= pr;\n            pr *= pr;\n  \
-    \          \n            e >>= 1;\n        }\n        \n        return res;\n\
-    \    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md"
+    \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
+    \ e) const {\n        assert(e > 0);\n        int n = dat.size();\n        mat\
+    \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
+    \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
+    \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
+    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md"
   dependsOn: []
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2023-03-30 16:15:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-03-31 15:33:49+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No.891.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
