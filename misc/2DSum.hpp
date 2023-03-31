@@ -1,3 +1,6 @@
+
+/// @brief 2次元累積和
+/// @tparam T 重みの型
 template<typename T>
 class Sum2D {
 	vector<vector<T>> dat;
@@ -21,7 +24,8 @@ public:
 	inline vector<T>& operator[](int i) { return dat[i]; }
 };
 
-
+/// @brief 二次元imos法
+/// @tparam T 重みの型
 template<typename T>
 class Imos2D {
 	Sum2D<T> d;

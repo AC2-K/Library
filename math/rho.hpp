@@ -1,13 +1,16 @@
 #pragma once
 #include"math/miller.hpp"
 #include"math/gcd.hpp"
+#include"math/montgomery.hpp"
 ///@brief 高速素因数分解(Pollard Rho法)
 namespace prime {
     namespace rho {
         using i128 = __int128_t;
         using u128 = __uint128_t;
-        using u64 = __uint64_t;
+        using u64 = uint64_t;
+        using u32 = uint32_t;
 
+        template<typename mint>
         inline u64 find_factor(u64 n) {
             u64 v = rand();
 
@@ -17,19 +20,22 @@ namespace prime {
             if (prime::miller::is_prime(n)) {
                 return n;
             }
+
+            if (mint::get_mod() != n) {
+                mint::set_mod(n);
+            }
             while (1) {
                 v ^= v << 13, v ^= v >> 7, v ^= v << 17;
                 u64 c = v;
-                auto f = [&](u128 x) -> u128 {
-                    x %= n;
-                    return (x * x + c) % n;
+                auto f = [&](mint x) -> mint {
+                    return x.pow(2) + c;
                 };
                 v ^= v << 13, v ^= v >> 7, v ^= v << 17;
-                ll x = v % n;
-                ll y = f(x);
+                mint x = v;
+                mint y = f(x);
                 u64 d = 1;
                 while (d == 1) {
-                    d = _gcd((u64)abs(x - y), n);
+                    d = _gcd<long long>(abs((long long)x.val() - (long long)y.val()), n);
                     x = f(x);
                     y = f(f(y));
                 }
@@ -39,7 +45,7 @@ namespace prime {
             }
             exit(0);
         }
-
+        template<typename mint>
         inline vector<u64> rho_fact(u64 n) {
             if (n < 2) {
                 return {};
@@ -56,45 +62,29 @@ namespace prime {
                     st.pop_back();
                 }
                 else {
-                    u64 d = find_factor(m);
+                    u64 d = find_factor<mint>(m);
                     m /= d;
                     st.emplace_back(d);
                 }
             }
             return v;
         }
-        constexpr u64 basic_prime[] = { 2, 3, 5, 7, 11, 13, 17, 1000000007, 998244353 };
-        inline vector<u64> naive(u64& n) {
-            
-            vector<u64> res;
-            for (const auto& p : basic_prime) {
-                while (n % p == 0) {
-                    n /= p;
-                    res.emplace_back(p);
-                }
-            }
-
-            return res;
-        }
         inline vector<u64> factorize(u64 n) {
             if (n < 2) {
                 return {};
             }
-            vector<u64> v = naive(n);
-            if (n != 1) {
-                vector<u64> v2 = rho_fact(n);
-                v.insert(v.end(), all(v2));
-            }
-            sort(all(v));
+            auto v = (n < (1uL << 31) ? rho_fact<dynamic_modint<u32, u64>>(n) : rho_fact<dynamic_modint<u64, u128>>(n));
+            sort(v.begin(), v.end());
             return v;
         }
 
-        vector<pair<u64, int>> exp_factorize(u64 n) {
-            auto pf = factorize(n);
+        inline vector<pair<u64, int>> exp_factorize(u64 n) {
+            vector<u64> pf = factorize(n);
             if (pf.empty()) {
                 return {};
             }
             vector<pair<u64, int>> res;
+            res.emplace_back(pf.front(), 1);
             res.emplace_back(pf.front(), 1);
             //rle
             for (int i = 1; i < pf.size(); i++) {
