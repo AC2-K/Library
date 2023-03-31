@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/gcd.hpp
     title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
       \u3069)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/matrix.hpp
     title: "maxtirx(\u884C\u5217)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -144,7 +144,7 @@ data:
     \    return (*this);\n    }\n\n    mat operator+(const mat& r) { return mat(*this)\
     \ += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r; }\n    mat\
     \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
-    \ e) const {\n        assert(e > 0);\n        int n = dat.size();\n        mat\
+    \ e) const {\n        assert(e >= 0);\n        int n = dat.size();\n        mat\
     \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
     \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
     \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
@@ -174,7 +174,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 15:33:49+09:00'
+  timestamp: '2023-03-31 15:46:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp

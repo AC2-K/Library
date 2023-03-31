@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No.891.test.cpp
     title: test/yuki/No.891.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/matrix.md
     document_title: "maxtirx(\u884C\u5217)"
@@ -38,7 +38,7 @@ data:
     \    return (*this);\n    }\n\n    mat operator+(const mat& r) { return mat(*this)\
     \ += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r; }\n    mat\
     \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
-    \ e) const {\n        assert(e > 0);\n        int n = dat.size();\n        mat\
+    \ e) const {\n        assert(e >= 0);\n        int n = dat.size();\n        mat\
     \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
     \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
     \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
@@ -65,7 +65,7 @@ data:
     \    return (*this);\n    }\n\n    mat operator+(const mat& r) { return mat(*this)\
     \ += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r; }\n    mat\
     \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
-    \ e) const {\n        assert(e > 0);\n        int n = dat.size();\n        mat\
+    \ e) const {\n        assert(e >= 0);\n        int n = dat.size();\n        mat\
     \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
     \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
     \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
@@ -74,8 +74,8 @@ data:
   isVerificationFile: false
   path: math/matrix.hpp
   requiredBy: []
-  timestamp: '2023-03-31 15:33:49+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-03-31 15:46:56+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No.891.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
