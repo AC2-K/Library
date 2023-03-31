@@ -34,16 +34,16 @@ data:
     \ + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0\
     \ };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline\
     \ void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void\
-    \ chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"math/gcd.hpp\"\ntemplate<typename T>\n\
-    static constexpr inline T _gcd(T a,T b){\n    T s = a, t = b;\n    while (s %\
-    \ t != 0) {\n        T u = s % t;\n\n        s = t;\n        t = u;\n    }\n \
-    \   return t;\n}\ntemplate<typename T>\nstatic constexpr inline T ext_gcd(T a,\
-    \ T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n\
-    \        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x,\
-    \ nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n\
-    \    }\n    return a;\n}\n/// @return ax+by=gcd(a,b)\u306A\u308Bx,y\u3092\u683C\
-    \u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n/// @brief gcd(\u30E6\u30FC\
-    \u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069)\n#line 3 \"math/static_modint.hpp\"\
+    \ chmin(T&x,T y){if(x>y)x=y;}\n#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\n\
+    constexpr inline T _gcd(T a,T b){\n    T s = a, t = b;\n    while (s % t != 0)\
+    \ {\n        T u = s % t;\n\n        s = t;\n        t = u;\n    }\n    return\
+    \ t;\n}\ntemplate<typename T>\nconstexpr inline T ext_gcd(T a, T b, T &x, T &y)\
+    \ {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T q = a\
+    \ / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx,\
+    \ x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return\
+    \ a;\n}\n/// @return ax+by=gcd(a,b)\u306A\u308Bx,y\u3092\u683C\u7D0D\u3059\u308B\
+    ,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n/// @brief gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\
+    \u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069)\n#line 3 \"math/static_modint.hpp\"\
     \ntemplate<__uint64_t mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\
     \tusing i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
     \tusing i128 = __int128_t;\n\n\tu64 v;\n\tu64 normalize(i64 v_) const {\n\t\t\
@@ -164,7 +164,7 @@ data:
   isVerificationFile: true
   path: test/yuki/No.891.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 15:46:56+09:00'
+  timestamp: '2023-03-31 23:13:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yuki/No.891.test.cpp

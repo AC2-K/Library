@@ -49,7 +49,7 @@ $a_p\leftarrow \text{val}$とする。
 ```cpp
 S seg.prod(int l,int r)
 ```
-$\prod_{i\in[l,r)}{a_i}$を返す。ただし、$l=r$の時は$e$を返す。
+区間積を求める。ただし、$l=r$の時は$e$を返す。
 - 制約:$0\leq l\leq r <n$
 - 計算量:$O(\log n)$
 

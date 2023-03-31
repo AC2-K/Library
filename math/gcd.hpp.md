@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
@@ -64,19 +67,19 @@ data:
     document_title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\
       \u306A\u3069)"
     links: []
-  bundledCode: "#line 1 \"math/gcd.hpp\"\ntemplate<typename T>\nstatic constexpr inline\
-    \ T _gcd(T a,T b){\n    T s = a, t = b;\n    while (s % t != 0) {\n        T u\
-    \ = s % t;\n\n        s = t;\n        t = u;\n    }\n    return t;\n}\ntemplate<typename\
-    \ T>\nstatic constexpr inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y\
-    \ = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T q = a / b;\n        tie(a,\
-    \ b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n \
-    \       tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n/// @return\
+  bundledCode: "#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T\
+    \ _gcd(T a,T b){\n    T s = a, t = b;\n    while (s % t != 0) {\n        T u =\
+    \ s % t;\n\n        s = t;\n        t = u;\n    }\n    return t;\n}\ntemplate<typename\
+    \ T>\nconstexpr inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n\
+    \    T nx = 0, ny = 1;\n    while(b) {\n        T q = a / b;\n        tie(a, b)\
+    \ = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n    \
+    \    tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n/// @return\
     \ ax+by=gcd(a,b)\u306A\u308Bx,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\
     \u306Bgcd(a,b)\n\n/// @brief gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\
     \u9664\u6CD5\u306A\u3069)\n"
-  code: "template<typename T>\nstatic constexpr inline T _gcd(T a,T b){\n    T s =\
-    \ a, t = b;\n    while (s % t != 0) {\n        T u = s % t;\n\n        s = t;\n\
-    \        t = u;\n    }\n    return t;\n}\ntemplate<typename T>\nstatic constexpr\
+  code: "#pragma once\ntemplate<typename T>\nconstexpr inline T _gcd(T a,T b){\n \
+    \   T s = a, t = b;\n    while (s % t != 0) {\n        T u = s % t;\n\n      \
+    \  s = t;\n        t = u;\n    }\n    return t;\n}\ntemplate<typename T>\nconstexpr\
     \ inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny\
     \ = 1;\n    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b,\
     \ a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) =\
@@ -88,13 +91,14 @@ data:
   isVerificationFile: false
   path: math/gcd.hpp
   requiredBy:
+  - main.cpp
   - math/static_modint.hpp
   - math/DLP.hpp
   - math/rho.hpp
   - math/primitive_root.hpp
   - math/phi_function.hpp
   - string/rolling_hash.hpp
-  timestamp: '2023-03-29 14:48:44+09:00'
+  timestamp: '2023-03-31 23:13:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

@@ -166,55 +166,54 @@ data:
     \            }\n            else {\n                return miller_rabin<dynamic_modint<u64,u128>>(n,\
     \ bases_ll, 7);\n            }\n        }\n    };\n};\n///@brief MillerRabin\u306E\
     \u7D20\u6570\u5224\u5B9A\n///@brief MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\n\
-    #line 1 \"math/gcd.hpp\"\ntemplate<typename T>\nstatic constexpr inline T _gcd(T\
-    \ a,T b){\n    T s = a, t = b;\n    while (s % t != 0) {\n        T u = s % t;\n\
-    \n        s = t;\n        t = u;\n    }\n    return t;\n}\ntemplate<typename T>\n\
-    static constexpr inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n\
-    \    T nx = 0, ny = 1;\n    while(b) {\n        T q = a / b;\n        tie(a, b)\
-    \ = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n    \
-    \    tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n/// @return\
-    \ ax+by=gcd(a,b)\u306A\u308Bx,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\
-    \u306Bgcd(a,b)\n\n/// @brief gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\
-    \u9664\u6CD5\u306A\u3069)\n#line 5 \"math/rho.hpp\"\n///@brief \u9AD8\u901F\u7D20\
-    \u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\nnamespace prime {\n    namespace\
-    \ rho {\n        using i128 = __int128_t;\n        using u128 = __uint128_t;\n\
-    \        using u64 = uint64_t;\n        using u32 = uint32_t;\n\n        template<typename\
-    \ mint>\n        inline u64 find_factor(u64 n) {\n            u64 v = rand();\n\
-    \n            if (~n & 1uL) {\n                return 2;\n            }\n    \
-    \        if (prime::miller::is_prime(n)) {\n                return n;\n      \
-    \      }\n\n            if (mint::get_mod() != n) {\n                mint::set_mod(n);\n\
-    \            }\n            while (1) {\n                v ^= v << 13, v ^= v\
-    \ >> 7, v ^= v << 17;\n                u64 c = v;\n                auto f = [&](mint\
-    \ x) -> mint {\n                    return x.pow(2) + c;\n                };\n\
-    \                v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n                mint\
-    \ x = v;\n                mint y = f(x);\n                u64 d = 1;\n       \
-    \         while (d == 1) {\n                    d = _gcd<long long>(abs((long\
-    \ long)x.val() - (long long)y.val()), n);\n                    x = f(x);\n   \
-    \                 y = f(f(y));\n                }\n                if (1 < d &&\
-    \ d < n) {\n                    return d;\n                }\n            }\n\
-    \            exit(0);\n        }\n        template<typename mint>\n        inline\
-    \ vector<u64> rho_fact(u64 n) {\n            if (n < 2) {\n                return\
-    \ {};\n            }\n            if (prime::miller::is_prime(n)) {\n        \
-    \        return { n };\n            }\n            vector<u64> v;\n          \
-    \  vector<u64> st{ n };\n            while (st.size()) {\n                u64&\
-    \ m = st.back();\n                if (prime::miller::is_prime(m)) {\n        \
-    \            v.emplace_back(m);\n                    st.pop_back();\n        \
-    \        }\n                else {\n                    u64 d = find_factor<mint>(m);\n\
-    \                    m /= d;\n                    st.emplace_back(d);\n      \
-    \          }\n            }\n            return v;\n        }\n        inline\
-    \ vector<u64> factorize(u64 n) {\n            if (n < 2) {\n                return\
-    \ {};\n            }\n            auto v = (n < (1uL << 31) ? rho_fact<dynamic_modint<u32,\
-    \ u64>>(n) : rho_fact<dynamic_modint<u64, u128>>(n));\n            sort(v.begin(),\
-    \ v.end());\n            return v;\n        }\n\n        inline vector<pair<u64,\
-    \ int>> exp_factorize(u64 n) {\n            vector<u64> pf = factorize(n);\n \
-    \           if (pf.empty()) {\n                return {};\n            }\n   \
-    \         vector<pair<u64, int>> res;\n            res.emplace_back(pf.front(),\
-    \ 1);\n            res.emplace_back(pf.front(), 1);\n            //rle\n     \
-    \       for (int i = 1; i < pf.size(); i++) {\n                if (res.back().first\
-    \ == pf[i]) {\n                    res.back().second++;\n                }\n \
-    \               else {\n                    res.emplace_back(pf[i], 1);\n    \
-    \            }\n            }\n\n            return res;\n        }\n    };  //\
-    \ namespace pollard\n};  // namespace prime\n#line 3 \"math/phi_function.hpp\"\
+    #line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T _gcd(T a,T\
+    \ b){\n    T s = a, t = b;\n    while (s % t != 0) {\n        T u = s % t;\n\n\
+    \        s = t;\n        t = u;\n    }\n    return t;\n}\ntemplate<typename T>\n\
+    constexpr inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx\
+    \ = 0, ny = 1;\n    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b,\
+    \ a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) =\
+    \ make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n/// @return ax+by=gcd(a,b)\u306A\
+    \u308Bx,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n///\
+    \ @brief gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
+    \u3069)\n#line 5 \"math/rho.hpp\"\n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\
+    \u89E3(Pollard Rho\u6CD5)\nnamespace prime {\n    namespace rho {\n        using\
+    \ i128 = __int128_t;\n        using u128 = __uint128_t;\n        using u64 = uint64_t;\n\
+    \        using u32 = uint32_t;\n\n        template<typename mint>\n        inline\
+    \ u64 find_factor(u64 n) {\n            u64 v = rand();\n\n            if (~n\
+    \ & 1uL) {\n                return 2;\n            }\n            if (prime::miller::is_prime(n))\
+    \ {\n                return n;\n            }\n\n            if (mint::get_mod()\
+    \ != n) {\n                mint::set_mod(n);\n            }\n            while\
+    \ (1) {\n                v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n          \
+    \      u64 c = v;\n                auto f = [&](mint x) -> mint {\n          \
+    \          return x.pow(2) + c;\n                };\n                v ^= v <<\
+    \ 13, v ^= v >> 7, v ^= v << 17;\n                mint x = v;\n              \
+    \  mint y = f(x);\n                u64 d = 1;\n                while (d == 1)\
+    \ {\n                    d = _gcd<long long>(abs((long long)x.val() - (long long)y.val()),\
+    \ n);\n                    x = f(x);\n                    y = f(f(y));\n     \
+    \           }\n                if (1 < d && d < n) {\n                    return\
+    \ d;\n                }\n            }\n            exit(0);\n        }\n    \
+    \    template<typename mint>\n        inline vector<u64> rho_fact(u64 n) {\n \
+    \           if (n < 2) {\n                return {};\n            }\n        \
+    \    if (prime::miller::is_prime(n)) {\n                return { n };\n      \
+    \      }\n            vector<u64> v;\n            vector<u64> st{ n };\n     \
+    \       while (st.size()) {\n                u64& m = st.back();\n           \
+    \     if (prime::miller::is_prime(m)) {\n                    v.emplace_back(m);\n\
+    \                    st.pop_back();\n                }\n                else {\n\
+    \                    u64 d = find_factor<mint>(m);\n                    m /= d;\n\
+    \                    st.emplace_back(d);\n                }\n            }\n \
+    \           return v;\n        }\n        inline vector<u64> factorize(u64 n)\
+    \ {\n            if (n < 2) {\n                return {};\n            }\n   \
+    \         auto v = (n < (1uL << 31) ? rho_fact<dynamic_modint<u32, u64>>(n) :\
+    \ rho_fact<dynamic_modint<u64, u128>>(n));\n            sort(v.begin(), v.end());\n\
+    \            return v;\n        }\n\n        inline vector<pair<u64, int>> exp_factorize(u64\
+    \ n) {\n            vector<u64> pf = factorize(n);\n            if (pf.empty())\
+    \ {\n                return {};\n            }\n            vector<pair<u64, int>>\
+    \ res;\n            res.emplace_back(pf.front(), 1);\n            res.emplace_back(pf.front(),\
+    \ 1);\n            //rle\n            for (int i = 1; i < pf.size(); i++) {\n\
+    \                if (res.back().first == pf[i]) {\n                    res.back().second++;\n\
+    \                }\n                else {\n                    res.emplace_back(pf[i],\
+    \ 1);\n                }\n            }\n\n            return res;\n        }\n\
+    \    };  // namespace pollard\n};  // namespace prime\n#line 3 \"math/phi_function.hpp\"\
     \nll phi_func(ll n){\n    ll res=n;\n    auto pf=prime::rho::factorize(n);\n \
     \   pf.erase(unique(all(pf)),pf.end());     \n    for(auto&d:pf){\n        res=res/d*(d-1);\n\
     \    }\n    return res;\n}\n///@brief phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\
@@ -233,7 +232,7 @@ data:
   isVerificationFile: false
   path: math/phi_function.hpp
   requiredBy: []
-  timestamp: '2023-03-31 22:26:02+09:00'
+  timestamp: '2023-03-31 23:13:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

@@ -2,12 +2,12 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':heavy_check_mark:'
-    path: math/primitive_root.hpp
-    title: "primitive root(\u539F\u59CB\u6839)"
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
@@ -18,9 +18,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Primitive_Root.test.cpp
-    title: test/yosupo_judge/new/Primitive_Root.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-430.test.cpp
     title: test/yuki/No-430.test.cpp
@@ -45,8 +42,8 @@ data:
   isVerificationFile: false
   path: math/mod_pow.hpp
   requiredBy:
+  - main.cpp
   - math/DLP.hpp
-  - math/primitive_root.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-03-29 21:25:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -54,7 +51,6 @@ data:
   - test/AOJ/NTL/1_B.test.cpp
   - test/yuki/No-430.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/yosupo_judge/new/Primitive_Root.test.cpp
 documentation_of: math/mod_pow.hpp
 layout: document
 redirect_from:
