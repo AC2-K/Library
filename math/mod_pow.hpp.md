@@ -5,18 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':heavy_check_mark:'
-    path: math/miller.hpp
-    title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
-    path: math/phi_function.hpp
-    title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':heavy_check_mark:'
-    path: math/rho.hpp
-    title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: string/rolling_hash.hpp
     title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
@@ -25,26 +16,17 @@ data:
     path: test/AOJ/NTL/1_B.test.cpp
     title: test/AOJ/NTL/1_B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/NTL/1_D.test.cpp
-    title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Factorize.test.cpp
-    title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/new/Primitive_Root.test.cpp
     title: test/yosupo_judge/new/Primitive_Root.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yuki/No-3030.test.cpp
-    title: test/yuki/No-3030.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/yuki/No-430.test.cpp
     title: test/yuki/No-430.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
     links: []
@@ -64,20 +46,14 @@ data:
   path: math/mod_pow.hpp
   requiredBy:
   - math/DLP.hpp
-  - math/rho.hpp
   - math/primitive_root.hpp
-  - math/phi_function.hpp
-  - math/miller.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-03-29 21:25:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/AOJ/NTL/1_D.test.cpp
   - test/AOJ/NTL/1_B.test.cpp
-  - test/yuki/No-3030.test.cpp
   - test/yuki/No-430.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/new/Primitive_Root.test.cpp
 documentation_of: math/mod_pow.hpp
 layout: document
