@@ -1,5 +1,6 @@
+#pragma once
 template<typename T>
-static constexpr inline T _gcd(T a,T b){
+constexpr inline T _gcd(T a,T b){
     T s = a, t = b;
     while (s % t != 0) {
         T u = s % t;
@@ -10,7 +11,7 @@ static constexpr inline T _gcd(T a,T b){
     return t;
 }
 template<typename T>
-static constexpr inline T ext_gcd(T a, T b, T &x, T &y) {
+constexpr inline T ext_gcd(T a, T b, T &x, T &y) {
     x = 1, y = 0;
     T nx = 0, ny = 1;
     while(b) {
