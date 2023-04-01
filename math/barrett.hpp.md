@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
@@ -10,7 +13,7 @@ data:
     title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
-    title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
+    title: "phi function(\\phi \u95A2\u6570)"
   - icon: ':heavy_check_mark:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
@@ -61,6 +64,7 @@ data:
   isVerificationFile: false
   path: math/barrett.hpp
   requiredBy:
+  - main.cpp
   - math/rho.hpp
   - math/dynamic_modint.hpp
   - math/primitive_root.hpp

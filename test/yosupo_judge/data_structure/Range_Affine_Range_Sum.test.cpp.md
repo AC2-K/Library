@@ -71,17 +71,22 @@ data:
     \        return internal_prod(l, r, 0, sz, 0);\n    }\n\n    S operator[](int\
     \ pos) {\n        return prod(pos, pos + 1);\n    }\n};\n//@brief lazy segtree(\u9045\
     \u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n#line 2 \"math/gcd.hpp\"\
-    \ntemplate<typename T>\nconstexpr inline T _gcd(T a,T b){\n    T s = a, t = b;\n\
-    \    while (s % t != 0) {\n        T u = s % t;\n\n        s = t;\n        t =\
-    \ u;\n    }\n    return t;\n}\ntemplate<typename T>\nconstexpr inline T ext_gcd(T\
-    \ a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b)\
-    \ {\n        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x,\
-    \ nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n\
-    \    }\n    return a;\n}\n/// @return ax+by=gcd(a,b)\u306A\u308Bx,y\u3092\u683C\
-    \u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n/// @brief gcd(\u30E6\u30FC\
-    \u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069)\n#line 3 \"math/static_modint.hpp\"\
-    \ntemplate<__uint64_t mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\
-    \tusing i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
+    \ntemplate<typename T>\nconstexpr inline T _gcd(T a, T b) {\n    assert(a >= 0\
+    \ && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = min(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (a == 0 || b == 0) {\n            return a +\
+    \ b;\n        }\n        if (a > b) {\n            a -= b;\n            a >>=\
+    \ __builtin_ctzll(a);\n        }else{\n            b -= a;\n            b >>=\
+    \ __builtin_ctzll(b);\n        }\n    }\n\n    return a << d;\n}\ntemplate<typename\
+    \ T>\nconstexpr inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n\
+    \    T nx = 0, ny = 1;\n    while(b) {\n        T q = a / b;\n        tie(a, b)\
+    \ = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n    \
+    \    tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n/// @return\
+    \ ax + by = gcd(a,b)\u306A\u308Bx,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\
+    \u5024\u306Bgcd(a,b)\n\n/// @brief gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\
+    \u4E92\u9664\u6CD5\u306A\u3069)\n#line 3 \"math/static_modint.hpp\"\ntemplate<__uint64_t\
+    \ mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\t\
+    using i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
     \tusing i128 = __int128_t;\n\n\tu64 v;\n\tu64 normalize(i64 v_) const {\n\t\t\
     v_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\n\
     public:\n\tconstexpr static_modint() :v(0) {}\n\tconstexpr static_modint(const\
@@ -199,7 +204,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 23:13:07+09:00'
+  timestamp: '2023-04-01 11:49:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp

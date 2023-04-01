@@ -80,7 +80,7 @@ data:
       title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
-      title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
+      title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
     - icon: ':heavy_check_mark:'
       path: math/montgomery.hpp
       title: MontgomeryReduction
@@ -89,7 +89,7 @@ data:
       title: "Osak\u6CD5"
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
-      title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
+      title: "phi function(\\phi \u95A2\u6570)"
     - icon: ':heavy_check_mark:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"

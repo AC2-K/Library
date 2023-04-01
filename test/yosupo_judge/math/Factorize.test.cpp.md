@@ -119,8 +119,7 @@ data:
     \ internal::MontgomeryReduction64<T, LargeT> mr;\n\n      public:\n        static\
     \ void set_mod(const T& mod_) {\n                mr.set_mod(mod_);\n         \
     \       mod = mod_;\n        }\n\n        static T get_mod() { return mod; }\n\
-    \n      private:\n        T v;  // \u30E2\u30F3\u30B4\u30E1\u30EA\u306E\u307B\u3046\
-    \u3067\u4FDD\u6301\u3059\u308B\n      public:\n        dynamic_modint(const T&\
+    \n      private:\n        T v;\n      public:\n        dynamic_modint(const T&\
     \ v_ = 0) {\n                assert(mod);\n                v = mr.generate(v_);\n\
     \        }\n        T val() const { return mr.reduce(v); }\n\n        using mint\
     \ = dynamic_modint<T, LargeT>;\n        mint& operator+=(const mint& r) {\n  \
@@ -177,22 +176,26 @@ data:
     \                return miller_rabin<dynamic_modint<u32,u64>>(n, bases_int, 3);\n\
     \            }\n            else {\n                return miller_rabin<dynamic_modint<u64,u128>>(n,\
     \ bases_ll, 7);\n            }\n        }\n    };\n};\n///@brief MillerRabin\u306E\
-    \u7D20\u6570\u5224\u5B9A\n///@brief MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\n\
-    #line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T _gcd(T a,T\
-    \ b){\n    T s = a, t = b;\n    while (s % t != 0) {\n        T u = s % t;\n\n\
-    \        s = t;\n        t = u;\n    }\n    return t;\n}\ntemplate<typename T>\n\
-    constexpr inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx\
-    \ = 0, ny = 1;\n    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b,\
-    \ a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) =\
-    \ make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n/// @return ax+by=gcd(a,b)\u306A\
-    \u308Bx,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n///\
-    \ @brief gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
-    \u3069)\n#line 5 \"math/rho.hpp\"\n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\
-    \u89E3(Pollard Rho\u6CD5)\nnamespace prime {\n    namespace rho {\n        using\
-    \ i128 = __int128_t;\n        using u128 = __uint128_t;\n        using u64 = uint64_t;\n\
+    \u7D20\u6570\u5224\u5B9A\n#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr\
+    \ inline T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
+    \ b == 0) return a + b;\n    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
+    \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        }else{\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate<typename T>\nconstexpr inline\
+    \ T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
+    \    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n\
+    \        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny,\
+    \ y - ny*q);\n    }\n    return a;\n}\n/// @return ax + by = gcd(a,b)\u306A\u308B\
+    x,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n/// @brief\
+    \ gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069\
+    )\n#line 5 \"math/rho.hpp\"\n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3\
+    (Pollard Rho\u6CD5)\nnamespace prime {\n    namespace rho {\n        using i128\
+    \ = __int128_t;\n        using u128 = __uint128_t;\n        using u64 = uint64_t;\n\
     \        using u32 = uint32_t;\n\n        template<typename mint>\n        inline\
-    \ u64 find_factor(u64 n) {\n            u64 v = rand();\n\n            if (~n\
-    \ & 1uL) {\n                return 2;\n            }\n            if (prime::miller::is_prime(n))\
+    \ u64 find_factor(u64 n) {\n            static u64 v = 20001;\n\n            if\
+    \ (~n & 1uL) {\n                return 2;\n            }\n            if (prime::miller::is_prime(n))\
     \ {\n                return n;\n            }\n\n            if (mint::get_mod()\
     \ != n) {\n                mint::set_mod(n);\n            }\n            while\
     \ (1) {\n                v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n          \
@@ -220,12 +223,12 @@ data:
     \            return v;\n        }\n\n        inline vector<pair<u64, int>> exp_factorize(u64\
     \ n) {\n            vector<u64> pf = factorize(n);\n            if (pf.empty())\
     \ {\n                return {};\n            }\n            vector<pair<u64, int>>\
-    \ res;\n            res.emplace_back(pf.front(), 1);\n            res.emplace_back(pf.front(),\
-    \ 1);\n            //rle\n            for (int i = 1; i < pf.size(); i++) {\n\
-    \                if (res.back().first == pf[i]) {\n                    res.back().second++;\n\
-    \                }\n                else {\n                    res.emplace_back(pf[i],\
-    \ 1);\n                }\n            }\n\n            return res;\n        }\n\
-    \    };  // namespace pollard\n};  // namespace prime\n#line 5 \"test/yosupo_judge/math/Factorize.test.cpp\"\
+    \ res;\n            res.emplace_back(pf.front(), 1);\n            //rle\n    \
+    \        for (int i = 1; i < pf.size(); i++) {\n                if (res.back().first\
+    \ == pf[i]) {\n                    res.back().second++;\n                }\n \
+    \               else {\n                    res.emplace_back(pf[i], 1);\n    \
+    \            }\n            }\n\n            return res;\n        }\n    };  //\
+    \ namespace pollard\n};  // namespace prime\n#line 5 \"test/yosupo_judge/math/Factorize.test.cpp\"\
     \nint main(){\n    int q;\n    scanf(\"%d\", &q);\n    while (q--) {\n       \
     \ uint64_t x;\n        scanf(\"%lld\", &x);\n        const auto pf = prime::rho::factorize(x);\n\
     \        printf(\"%d \", (int)pf.size());\n        for (auto &p : pf){\n     \
@@ -247,7 +250,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-03-31 23:13:07+09:00'
+  timestamp: '2023-04-01 11:49:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Factorize.test.cpp

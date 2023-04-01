@@ -7,7 +7,7 @@ data:
       \u3069)"
   - icon: ':heavy_check_mark:'
     path: math/mod_pow.hpp
-    title: "mod pow(\u30D0\u30A4\u30CA\u30EA\u6CD5)"
+    title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -21,28 +21,33 @@ data:
       )"
     links: []
   bundledCode: "#line 2 \"math/mod_pow.hpp\"\ntemplate <class T, class U = T>\nconstexpr\
-    \ U mod_pow(T base, T exp, T mod){\n    T ans = 1;\n    base %= mod;\n    while\
-    \ (exp > 0) {\n        if (exp & 1) {\n            ans *= base;\n            ans\
-    \ %= mod;\n        }\n        base *= base;\n        base %= mod;\n        exp\
-    \ >>= 1;\n    }\n    return ans;\n}\n///@brief mod pow(\u30D0\u30A4\u30CA\u30EA\
-    \u6CD5)\n#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T _gcd(T\
-    \ a,T b){\n    T s = a, t = b;\n    while (s % t != 0) {\n        T u = s % t;\n\
-    \n        s = t;\n        t = u;\n    }\n    return t;\n}\ntemplate<typename T>\n\
-    constexpr inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx\
-    \ = 0, ny = 1;\n    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b,\
-    \ a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) =\
-    \ make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n/// @return ax+by=gcd(a,b)\u306A\
-    \u308Bx,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n///\
-    \ @brief gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
-    \u3069)\n#line 4 \"string/rolling_hash.hpp\"\nclass RollingHash {\n\tusing ull\
-    \ = uint_fast64_t;\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
-    \    // mod\n\tstatic constexpr ull msk30 = (1ul << 30) - 1;\n\tstatic constexpr\
-    \ ull msk61 = (1ul << 31) - 1;\n\tconst string str;\n\tvector<ull> hash, pow;\n\
-    \n    static constexpr ull mod = (1uL << 61) - 1;\n    static constexpr ull primitive_root\
-    \ = 37;\npublic:\n\tstatic const uint mapping_max = (uint)'Z' + 2;\n\tstatic ull\
-    \ base;\nprivate:\n\tconstexpr ull mul(const u128& a,const u128& b) const {\n\
-    \        u128 t = a * b;\n\n\t\tt = (t >> 61) + (t & mod);\n\n\t\tif (t >= mod)\
-    \ {\n\t\t\tt -= mod;\n\t\t}\n\n\n\t\treturn t;\n    }\n\n    constexpr ull mapping(const\
+    \ T mod_pow(T base, T exp, T mod){\n    U ans = 1;\n    base %= mod;\n    while\
+    \ (exp) {\n        if (exp & 1) {\n            ans *= base;\n            ans %=\
+    \ mod;\n        }\n        base *= base;\n        base %= mod;\n        exp >>=\
+    \ 1;\n    }\n    return ans;\n}\n///@brief mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\
+    \u4E57\u6CD5)\n#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline\
+    \ T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0)\
+    \ return a + b;\n    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n  \
+    \  a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
+    \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        }else{\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate<typename T>\nconstexpr inline\
+    \ T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
+    \    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n\
+    \        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny,\
+    \ y - ny*q);\n    }\n    return a;\n}\n/// @return ax + by = gcd(a,b)\u306A\u308B\
+    x,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n/// @brief\
+    \ gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069\
+    )\n#line 4 \"string/rolling_hash.hpp\"\nclass RollingHash {\n\tusing ull = uint_fast64_t;\n\
+    \    using i128 = __int128_t;\n    using u128 = __uint128_t;\n    // mod\n\tstatic\
+    \ constexpr ull msk30 = (1ul << 30) - 1;\n\tstatic constexpr ull msk61 = (1ul\
+    \ << 31) - 1;\n\tconst string str;\n\tvector<ull> hash, pow;\n\n    static constexpr\
+    \ ull mod = (1uL << 61) - 1;\n    static constexpr ull primitive_root = 37;\n\
+    public:\n\tstatic const uint mapping_max = (uint)'Z' + 2;\n\tstatic ull base;\n\
+    private:\n\tconstexpr ull mul(const u128& a,const u128& b) const {\n        u128\
+    \ t = a * b;\n\n\t\tt = (t >> 61) + (t & mod);\n\n\t\tif (t >= mod) {\n\t\t\t\
+    t -= mod;\n\t\t}\n\n\n\t\treturn t;\n    }\n\n    constexpr ull mapping(const\
     \ char& c) const {\n\t\treturn (ull)c;\t//\u5909\u66F4\u3059\u308B?\n\t}\n\n\n\
     \    static inline ull generate() {\n\t\tmt19937_64 engine(chrono::steady_clock::now().time_since_epoch().count());\n\
     \t\tuniform_int_distribution<ull> rand(1uL, mod - 1);\n\t\treturn rand(engine);\n\
@@ -107,7 +112,7 @@ data:
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-03-31 23:13:07+09:00'
+  timestamp: '2023-04-01 11:49:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No-430.test.cpp

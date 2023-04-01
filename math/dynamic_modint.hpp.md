@@ -8,12 +8,15 @@ data:
     path: math/montgomery.hpp
     title: MontgomeryReduction
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/miller.hpp
     title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
-    title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
+    title: "phi function(\\phi \u95A2\u6570)"
   - icon: ':heavy_check_mark:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
@@ -118,8 +121,7 @@ data:
     \ internal::MontgomeryReduction64<T, LargeT> mr;\n\n      public:\n        static\
     \ void set_mod(const T& mod_) {\n                mr.set_mod(mod_);\n         \
     \       mod = mod_;\n        }\n\n        static T get_mod() { return mod; }\n\
-    \n      private:\n        T v;  // \u30E2\u30F3\u30B4\u30E1\u30EA\u306E\u307B\u3046\
-    \u3067\u4FDD\u6301\u3059\u308B\n      public:\n        dynamic_modint(const T&\
+    \n      private:\n        T v;\n      public:\n        dynamic_modint(const T&\
     \ v_ = 0) {\n                assert(mod);\n                v = mr.generate(v_);\n\
     \        }\n        T val() const { return mr.reduce(v); }\n\n        using mint\
     \ = dynamic_modint<T, LargeT>;\n        mint& operator+=(const mint& r) {\n  \
@@ -200,8 +202,7 @@ data:
     \        static internal::MontgomeryReduction64<T, LargeT> mr;\n\n      public:\n\
     \        static void set_mod(const T& mod_) {\n                mr.set_mod(mod_);\n\
     \                mod = mod_;\n        }\n\n        static T get_mod() { return\
-    \ mod; }\n\n      private:\n        T v;  // \u30E2\u30F3\u30B4\u30E1\u30EA\u306E\
-    \u307B\u3046\u3067\u4FDD\u6301\u3059\u308B\n      public:\n        dynamic_modint(const\
+    \ mod; }\n\n      private:\n        T v;\n      public:\n        dynamic_modint(const\
     \ T& v_ = 0) {\n                assert(mod);\n                v = mr.generate(v_);\n\
     \        }\n        T val() const { return mr.reduce(v); }\n\n        using mint\
     \ = dynamic_modint<T, LargeT>;\n        mint& operator+=(const mint& r) {\n  \
@@ -241,11 +242,12 @@ data:
   isVerificationFile: false
   path: math/dynamic_modint.hpp
   requiredBy:
+  - main.cpp
   - math/rho.hpp
   - math/primitive_root.hpp
   - math/phi_function.hpp
   - math/miller.hpp
-  timestamp: '2023-03-31 22:26:02+09:00'
+  timestamp: '2023-04-01 11:49:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

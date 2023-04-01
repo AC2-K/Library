@@ -10,7 +10,7 @@ data:
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
-    title: "phi function(\u30C8\u30FC\u30B7\u30A7\u30F3\u30C8\u95A2\u6570)"
+    title: "phi function(\\phi \u95A2\u6570)"
   - icon: ':heavy_check_mark:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
@@ -68,25 +68,34 @@ data:
       \u306A\u3069)"
     links: []
   bundledCode: "#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T\
-    \ _gcd(T a,T b){\n    T s = a, t = b;\n    while (s % t != 0) {\n        T u =\
-    \ s % t;\n\n        s = t;\n        t = u;\n    }\n    return t;\n}\ntemplate<typename\
-    \ T>\nconstexpr inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n\
-    \    T nx = 0, ny = 1;\n    while(b) {\n        T q = a / b;\n        tie(a, b)\
-    \ = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n    \
-    \    tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n/// @return\
-    \ ax+by=gcd(a,b)\u306A\u308Bx,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\
-    \u306Bgcd(a,b)\n\n/// @brief gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\
-    \u9664\u6CD5\u306A\u3069)\n"
-  code: "#pragma once\ntemplate<typename T>\nconstexpr inline T _gcd(T a,T b){\n \
-    \   T s = a, t = b;\n    while (s % t != 0) {\n        T u = s % t;\n\n      \
-    \  s = t;\n        t = u;\n    }\n    return t;\n}\ntemplate<typename T>\nconstexpr\
-    \ inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny\
-    \ = 1;\n    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b,\
-    \ a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) =\
-    \ make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n/// @return ax+by=gcd(a,b)\u306A\
-    \u308Bx,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n///\
-    \ @brief gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
-    \u3069)"
+    \ _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return\
+    \ a + b;\n    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>=\
+    \ __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n      \
+    \  if (a == 0 || b == 0) {\n            return a + b;\n        }\n        if (a\
+    \ > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n       \
+    \ }else{\n            b -= a;\n            b >>= __builtin_ctzll(b);\n       \
+    \ }\n    }\n\n    return a << d;\n}\ntemplate<typename T>\nconstexpr inline T\
+    \ ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
+    \    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n\
+    \        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny,\
+    \ y - ny*q);\n    }\n    return a;\n}\n/// @return ax + by = gcd(a,b)\u306A\u308B\
+    x,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n/// @brief\
+    \ gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069\
+    )\n"
+  code: "#pragma once\ntemplate<typename T>\nconstexpr inline T _gcd(T a, T b) {\n\
+    \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
+    \ d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
+    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (a == 0 || b ==\
+    \ 0) {\n            return a + b;\n        }\n        if (a > b) {\n         \
+    \   a -= b;\n            a >>= __builtin_ctzll(a);\n        }else{\n         \
+    \   b -= a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return\
+    \ a << d;\n}\ntemplate<typename T>\nconstexpr inline T ext_gcd(T a, T b, T &x,\
+    \ T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T\
+    \ q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx,\
+    \ x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return\
+    \ a;\n}\n/// @return ax + by = gcd(a,b)\u306A\u308Bx,y\u3092\u683C\u7D0D\u3059\
+    \u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n/// @brief gcd(\u30E6\u30FC\u30AF\u30EA\
+    \u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069)"
   dependsOn: []
   isVerificationFile: false
   path: math/gcd.hpp
@@ -98,7 +107,7 @@ data:
   - math/primitive_root.hpp
   - math/phi_function.hpp
   - string/rolling_hash.hpp
-  timestamp: '2023-03-31 23:13:07+09:00'
+  timestamp: '2023-04-01 11:49:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
