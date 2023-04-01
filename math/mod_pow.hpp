@@ -1,9 +1,9 @@
 #pragma once
 template <class T, class U = T>
-constexpr U mod_pow(T base, T exp, T mod){
-    T ans = 1;
+constexpr T mod_pow(T base, T exp, T mod){
+    U ans = 1;
     base %= mod;
-    while (exp > 0) {
+    while (exp) {
         if (exp & 1) {
             ans *= base;
             ans %= mod;
@@ -14,4 +14,4 @@ constexpr U mod_pow(T base, T exp, T mod){
     }
     return ans;
 }
-///@brief mod pow(バイナリ法)
+///@brief mod pow(繰り返しニ乗法)

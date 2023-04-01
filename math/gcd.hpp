@@ -1,14 +1,24 @@
 #pragma once
 template<typename T>
-constexpr inline T _gcd(T a,T b){
-    T s = a, t = b;
-    while (s % t != 0) {
-        T u = s % t;
-
-        s = t;
-        t = u;
+constexpr inline T _gcd(T a, T b) {
+    assert(a >= 0 && b >= 0);
+    if (a == 0 || b == 0) return a + b;
+    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));
+    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);
+    while (a != b) {
+        if (a == 0 || b == 0) {
+            return a + b;
+        }
+        if (a > b) {
+            a -= b;
+            a >>= __builtin_ctzll(a);
+        }else{
+            b -= a;
+            b >>= __builtin_ctzll(b);
+        }
     }
-    return t;
+
+    return a << d;
 }
 template<typename T>
 constexpr inline T ext_gcd(T a, T b, T &x, T &y) {
@@ -22,6 +32,6 @@ constexpr inline T ext_gcd(T a, T b, T &x, T &y) {
     }
     return a;
 }
-/// @return ax+by=gcd(a,b)なるx,yを格納する,返り値にgcd(a,b)
+/// @return ax + by = gcd(a,b)なるx,yを格納する,返り値にgcd(a,b)
 
 /// @brief gcd(ユークリッドの互除法など)

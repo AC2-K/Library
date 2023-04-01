@@ -12,7 +12,7 @@ namespace prime {
 
         template<typename mint>
         inline u64 find_factor(u64 n) {
-            u64 v = rand();
+            static u64 v = 20001;
 
             if (~n & 1uL) {
                 return 2;
@@ -84,7 +84,6 @@ namespace prime {
                 return {};
             }
             vector<pair<u64, int>> res;
-            res.emplace_back(pf.front(), 1);
             res.emplace_back(pf.front(), 1);
             //rle
             for (int i = 1; i < pf.size(); i++) {

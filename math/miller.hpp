@@ -60,4 +60,3 @@ namespace prime {
     };
 };
 ///@brief MillerRabinの素数判定
-///@brief MillerRabinの素数判定

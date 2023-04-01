@@ -130,7 +130,7 @@ template <typename T = uint32_t, typename LargeT = uint64_t>
         static T get_mod() { return mod; }
 
       private:
-        T v;  // モンゴメリのほうで保持する
+        T v;
       public:
         dynamic_modint(const T& v_ = 0) {
                 assert(mod);

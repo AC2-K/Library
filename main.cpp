@@ -1,12 +1,18 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/discrete_logarithm_mod"
+#define PROBLEM "https://judge.yosupo.jp/problem/factorize"
+
 #include"template.hpp"
-#include"math/DLP.hpp"
-int main() {
-    int t;
-    scanf("%d", &t);
-    while (t--) {
-        int x, y, p;
-        scanf("%d%d%d", &x, &y, &p);
-        printf("%lld\n", dlp(x, y, p));
+#include"math/rho.hpp"
+int main(){
+    int q;
+    scanf("%d", &q);
+    while (q--) {
+        uint64_t x;
+        scanf("%lld", &x);
+        const auto pf = prime::rho::factorize(x);
+        printf("%d ", (int)pf.size());
+        for (auto &p : pf){
+            printf("%lld ", p);
+        }
+        puts("");
     }
 }
