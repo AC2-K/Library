@@ -32,6 +32,3 @@ constexpr inline T ext_gcd(T a, T b, T &x, T &y) {
     }
     return a;
 }
-/// @return ax + by = gcd(a,b)なるx,yを格納する,返り値にgcd(a,b)
-
-/// @brief gcd(ユークリッドの互除法など)
