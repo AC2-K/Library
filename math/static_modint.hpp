@@ -117,7 +117,13 @@ public:
 	constexpr mint& operator/=(const mint& r) {
 		return (*this) *= r.inv();
 	}
+	constexpr mint inv(const mint&r)const{
+		return mint(*this) *= r.inv();
+	}
 	constexpr friend mint operator/(const mint& l, const i64& r) {
+		return mint(l) /= mint(r);
+	}
+	constexpr friend mint operator/(const i64& l, const mint& r) {
 		return mint(l) /= mint(r);
 	}
 
@@ -249,10 +255,14 @@ public:
 	constexpr mint& operator/=(const mint& r) {
 		return (*this) *= r.inv();
 	}
-    constexpr mint operator/(const mint& r) { return mint(*this) *= r.inv(); }
+    constexpr mint operator/(const mint& r) const { return mint(*this) *= r.inv(); }
     constexpr friend mint operator/(const mint& l, const i64& r) {
 		return mint(l) /= mint(r);
 	}
+	constexpr friend mint operator/(const i64& l, const mint& r) {
+		return mint(l) /= mint(r);
+	}
+
 
 	//iostream
 	constexpr friend ostream& operator<<(ostream& os, const mint& mt) {
