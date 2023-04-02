@@ -22,7 +22,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -223,11 +223,11 @@ data:
     \ int>> exp_factorize(u64 n) {\n            vector<u64> pf = factorize(n);\n \
     \           if (pf.empty()) {\n                return {};\n            }\n   \
     \         vector<pair<u64, int>> res;\n            res.emplace_back(pf.front(),\
-    \ 1);\n            //rle\n            for (int i = 1; i < pf.size(); i++) {\n\
-    \                if (res.back().first == pf[i]) {\n                    res.back().second++;\n\
-    \                }\n                else {\n                    res.emplace_back(pf[i],\
-    \ 1);\n                }\n            }\n\n            return res;\n        }\n\
-    \    };  // namespace pollard\n};  // namespace prime\n#line 4 \"math/primitive_root.hpp\"\
+    \ 1);\n            for (int i = 1; i < pf.size(); i++) {\n                if (res.back().first\
+    \ == pf[i]) {\n                    res.back().second++;\n                }\n \
+    \               else {\n                    res.emplace_back(pf[i], 1);\n    \
+    \            }\n            }\n\n            return res;\n        }\n    };  //\
+    \ namespace pollard\n};  // namespace prime\n#line 4 \"math/primitive_root.hpp\"\
     \ninline uint64_t primitive_root(uint64_t p) {\n    if (p == 2) return 1;\n  \
     \  auto pf = prime::rho::factorize(p - 1);\n    pf.erase(unique(all(pf)), pf.end());\n\
     \    for (auto& q : pf) {\n        q = (p - 1) / q;\n    }\n    using ull = unsigned\
@@ -260,7 +260,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2023-04-02 12:04:52+09:00'
+  timestamp: '2023-04-02 14:35:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Primitive_Root.test.cpp

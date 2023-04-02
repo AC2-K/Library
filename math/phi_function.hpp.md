@@ -207,11 +207,11 @@ data:
     \ int>> exp_factorize(u64 n) {\n            vector<u64> pf = factorize(n);\n \
     \           if (pf.empty()) {\n                return {};\n            }\n   \
     \         vector<pair<u64, int>> res;\n            res.emplace_back(pf.front(),\
-    \ 1);\n            //rle\n            for (int i = 1; i < pf.size(); i++) {\n\
-    \                if (res.back().first == pf[i]) {\n                    res.back().second++;\n\
-    \                }\n                else {\n                    res.emplace_back(pf[i],\
-    \ 1);\n                }\n            }\n\n            return res;\n        }\n\
-    \    };  // namespace pollard\n};  // namespace prime\n#line 3 \"math/phi_function.hpp\"\
+    \ 1);\n            for (int i = 1; i < pf.size(); i++) {\n                if (res.back().first\
+    \ == pf[i]) {\n                    res.back().second++;\n                }\n \
+    \               else {\n                    res.emplace_back(pf[i], 1);\n    \
+    \            }\n            }\n\n            return res;\n        }\n    };  //\
+    \ namespace pollard\n};  // namespace prime\n#line 3 \"math/phi_function.hpp\"\
     \nll phi_func(ll n){\n    ll res = n;\n    auto pf = prime::rho::factorize(n);\n\
     \    pf.erase(unique(all(pf)), pf.end());\n    for(auto&d:pf){\n        res=res/d*(d-1);\n\
     \    }\n    return res;\n}\n///@brief phi function(\\phi \u95A2\u6570)\n"
@@ -229,7 +229,7 @@ data:
   isVerificationFile: false
   path: math/phi_function.hpp
   requiredBy: []
-  timestamp: '2023-04-02 12:04:52+09:00'
+  timestamp: '2023-04-02 14:35:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

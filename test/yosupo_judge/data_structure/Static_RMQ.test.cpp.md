@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/sparse_table.hpp
     title: Sparse Table
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -29,7 +29,7 @@ data:
     \ };\ntemplate<class T>static constexpr inline void chmax(T&x,T y){if(x<y)x=y;}\n\
     template<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n#line\
     \ 1 \"data-structure/sparse_table.hpp\"\n/// @brief Sparse Table\n/// @tparam\
-    \ T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\n\
+    \ T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
     template<class T>\nclass sparse_table {\n    vector<T> vec;\n    vector<vector<T>>\
     \ table;\n    vector<int> look_up;\npublic:\n    sparse_table(int n) : vec(n)\
     \ {}\n    sparse_table(const vector<T>& vec) : vec(vec) { build(); }\n    void\
@@ -61,7 +61,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-03-28 11:28:51+09:00'
+  timestamp: '2023-04-02 14:35:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_RMQ.test.cpp

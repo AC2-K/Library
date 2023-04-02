@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

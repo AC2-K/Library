@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/gcd.hpp
     title: math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

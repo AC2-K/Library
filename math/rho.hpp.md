@@ -216,11 +216,11 @@ data:
     \ int>> exp_factorize(u64 n) {\n            vector<u64> pf = factorize(n);\n \
     \           if (pf.empty()) {\n                return {};\n            }\n   \
     \         vector<pair<u64, int>> res;\n            res.emplace_back(pf.front(),\
-    \ 1);\n            //rle\n            for (int i = 1; i < pf.size(); i++) {\n\
-    \                if (res.back().first == pf[i]) {\n                    res.back().second++;\n\
-    \                }\n                else {\n                    res.emplace_back(pf[i],\
-    \ 1);\n                }\n            }\n\n            return res;\n        }\n\
-    \    };  // namespace pollard\n};  // namespace prime\n"
+    \ 1);\n            for (int i = 1; i < pf.size(); i++) {\n                if (res.back().first\
+    \ == pf[i]) {\n                    res.back().second++;\n                }\n \
+    \               else {\n                    res.emplace_back(pf[i], 1);\n    \
+    \            }\n            }\n\n            return res;\n        }\n    };  //\
+    \ namespace pollard\n};  // namespace prime\n"
   code: "#pragma once\n#include\"math/miller.hpp\"\n#include\"math/gcd.hpp\"\n#include\"\
     math/montgomery.hpp\"\n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard\
     \ Rho\u6CD5)\nnamespace prime {\n    namespace rho {\n        using i128 = __int128_t;\n\
@@ -255,12 +255,12 @@ data:
     \            return v;\n        }\n\n        inline vector<pair<u64, int>> exp_factorize(u64\
     \ n) {\n            vector<u64> pf = factorize(n);\n            if (pf.empty())\
     \ {\n                return {};\n            }\n            vector<pair<u64, int>>\
-    \ res;\n            res.emplace_back(pf.front(), 1);\n            //rle\n    \
-    \        for (int i = 1; i < pf.size(); i++) {\n                if (res.back().first\
-    \ == pf[i]) {\n                    res.back().second++;\n                }\n \
-    \               else {\n                    res.emplace_back(pf[i], 1);\n    \
-    \            }\n            }\n\n            return res;\n        }\n    };  //\
-    \ namespace pollard\n};  // namespace prime"
+    \ res;\n            res.emplace_back(pf.front(), 1);\n            for (int i =\
+    \ 1; i < pf.size(); i++) {\n                if (res.back().first == pf[i]) {\n\
+    \                    res.back().second++;\n                }\n               \
+    \ else {\n                    res.emplace_back(pf[i], 1);\n                }\n\
+    \            }\n\n            return res;\n        }\n    };  // namespace pollard\n\
+    };  // namespace prime"
   dependsOn:
   - math/miller.hpp
   - math/dynamic_modint.hpp
@@ -272,7 +272,7 @@ data:
   requiredBy:
   - math/primitive_root.hpp
   - math/phi_function.hpp
-  timestamp: '2023-04-02 12:04:52+09:00'
+  timestamp: '2023-04-02 14:35:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
