@@ -28,6 +28,8 @@
         "variant": "cpp",
         "list": "cpp",
         "numeric": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp"
     }
 }

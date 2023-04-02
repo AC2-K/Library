@@ -1,3 +1,5 @@
+#define PROBLEM "https://judge.yosupo.jp/problem/range_kth_smallest"
+
 #include"template.hpp"
 #include"data-structure/BIT.hpp"
 #include"misc/mo.hpp"
