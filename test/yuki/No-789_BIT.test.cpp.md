@@ -28,21 +28,24 @@ data:
     \ };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline\
     \ void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void\
     \ chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"data-structure/BIT.hpp\"\n/// @brief\
-    \ Binary Index Tree\n/// @tparam Type \u8981\u7D20\u306E\u578B\n/// @tparam SumType\
+    \ Binary Index Tree\n/// @tparam T \u8981\u7D20\u306E\u578B\n/// @tparam SumT\
     \ \"\u548C\u304C\" \u53CE\u307E\u308B\u3088\u3046\u306A\u578B\n/// @docs docs/data-structure/BIT.md\n\
-    template <typename Type, typename SumType = Type>\nclass BIT {\n    int _n;\n\
-    \    vector<SumType> _dat;\npublic:\n    explicit BIT(int _n) : _n(_n), _dat(_n,\
-    \ SumType()) {}\n\n    inline void add(int p, Type v) {\n        p++;\n      \
-    \  for (; p <= _n; p += p & (-p)) {\n            _dat[p - 1] += SumType(v);\n\
-    \        }\n    }\n\n    inline SumType sum(int p) {\n        SumType res = 0;\n\
-    \        for (; p > 0; p -= p & -p) {\n            res += _dat[p - 1];\n     \
-    \   }\n        return res;\n    }\n\n    inline SumType sum(int l, int r) { return\
-    \ sum(r) - sum(l); }\n};\n#line 5 \"test/yuki/No-789_BIT.test.cpp\"\nint main()\
-    \ {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    int n;\n   \
-    \ cin >> n;\n    ll s = 0;\n    vector<int> idx;\n    idx.reserve(2 * n);\n  \
-    \  vector<tuple<int, int, int>> query(n);\n    for (auto& [t, a, b] : query) {\n\
-    \        cin >> t >> a >> b;\n        idx.emplace_back(a);\n        if (t == 1)\
-    \ idx.emplace_back(b);\n    }\n    sort(all(idx));\n    idx.erase(unique(all(idx)),\
+    template<typename T,typename SumT = T>\nclass BIT {\n\tvector<SumT> bit;\n\tint\
+    \ n;\npublic:\n    BIT(int n) :n(n), bit(n + 1, T()) {}\n\tvoid add(int p, const\
+    \ T& w) {\n\t\tp++;\n\t\tfor (int x = p; x <= n; x += x & -x) {\n\t\t\tbit[x]\
+    \ += w;\n\t\t}\n\t}\n\n\tSumT sum(int p)const {\n\t\tT s = 0;\n\n\t\tfor (int\
+    \ x = p; x > 0; x -= x & -x) {\n\t\t\ts += bit[x];\n\t\t}\n\t\treturn s;\n\t}\n\
+    \n\tSumT sum(int l, int r)const {\n\t\treturn sum(r) - sum(l);\n\t}\n\n    \n\
+    \    int lower_bound(SumT w)const {\n        if (w <= 0)return 0;\n\n        int\
+    \ x = 0;\n        int k = 1;\n        while (k < n)k <<= 1;\n        for (; k\
+    \ > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] < w) {\n         \
+    \       w -= bit[x + k];\n                x += k;\n            }\n        }\n\n\
+    \        return x + 1;\n    }\n}; \n#line 5 \"test/yuki/No-789_BIT.test.cpp\"\n\
+    int main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    int\
+    \ n;\n    cin >> n;\n    ll s = 0;\n    vector<int> idx;\n    idx.reserve(2 *\
+    \ n);\n    vector<tuple<int, int, int>> query(n);\n    for (auto& [t, a, b] :\
+    \ query) {\n        cin >> t >> a >> b;\n        idx.emplace_back(a);\n      \
+    \  if (t == 1) idx.emplace_back(b);\n    }\n    sort(all(idx));\n    idx.erase(unique(all(idx)),\
     \ idx.end());\n    BIT<ll> sg(2 * n + 1);\n    for (auto& [t, a, b] : query) {\n\
     \        if (t == 0) {\n            a = lower_bound(all(idx), a) - idx.begin();\n\
     \            sg.add(a, b);\n        } else {\n            a = lower_bound(all(idx),\
@@ -67,7 +70,7 @@ data:
   isVerificationFile: true
   path: test/yuki/No-789_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-03-28 10:54:47+09:00'
+  timestamp: '2023-04-02 12:04:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yuki/No-789_BIT.test.cpp

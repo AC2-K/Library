@@ -3,8 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: math/gcd.hpp
-    title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
-      \u3069)"
+    title: math/gcd.hpp
   - icon: ':heavy_check_mark:'
     path: math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
@@ -36,22 +35,19 @@ data:
     \ T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
     \    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n\
     \        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny,\
-    \ y - ny*q);\n    }\n    return a;\n}\n/// @return ax + by = gcd(a,b)\u306A\u308B\
-    x,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n/// @brief\
-    \ gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069\
-    )\n#line 4 \"math/DLP.hpp\"\ninline ll dlp(ll x, ll y, ll p) {\n    if (y == 1\
-    \ || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n        if (y ==\
-    \ 0) {\n            return 1;\n        }\n        else {\n            return -1;\n\
-    \        }\n    }\n    ll m = sqrt(p) + 1;\n    unordered_map<ll, int> mp;\n \
-    \   ll xm = mod_pow(x, m, p);\n    ll add = 0, g, k = 1 % p;\n    while ((g =\
-    \ _gcd(x, p)) > 1) {\n        if (y == k)return add;\n        if (y % g)return\
-    \ -1;\n        y /= g, p /= g, add++;\n        k = (k * (x / g)) % p;\n    }\n\
-    \    ll pr = y;\n    for (int j = 0; j <= m; j++) {\n        mp[pr] = j;\n   \
-    \     (pr *= x) %= p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; i++) {\n\
-    \        (pr *= xm) %= p;\n        if (mp.find(pr) != mp.end()) {\n          \
-    \  int j = mp[pr];\n            return m * i - j + add;\n        }\n    }\n  \
-    \  return -1;\n}\n\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n///@docs\
-    \ docs/math/DLP.md\n"
+    \ y - ny*q);\n    }\n    return a;\n}\n#line 4 \"math/DLP.hpp\"\ninline ll dlp(ll\
+    \ x, ll y, ll p) {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n  \
+    \  if (x == 0) {\n        if (y == 0) {\n            return 1;\n        }\n  \
+    \      else {\n            return -1;\n        }\n    }\n    ll m = sqrt(p) +\
+    \ 1;\n    unordered_map<ll, int> mp;\n    ll xm = mod_pow(x, m, p);\n    ll add\
+    \ = 0, g, k = 1 % p;\n    while ((g = _gcd(x, p)) > 1) {\n        if (y == k)return\
+    \ add;\n        if (y % g)return -1;\n        y /= g, p /= g, add++;\n       \
+    \ k = (k * (x / g)) % p;\n    }\n    ll pr = y;\n    for (int j = 0; j <= m; j++)\
+    \ {\n        mp[pr] = j;\n        (pr *= x) %= p;\n    }\n    pr = k;\n    for\
+    \ (int i = 1; i <= m; i++) {\n        (pr *= xm) %= p;\n        if (mp.find(pr)\
+    \ != mp.end()) {\n            int j = mp[pr];\n            return m * i - j +\
+    \ add;\n        }\n    }\n    return -1;\n}\n\n///@brief Discrete Logarithm(\u96E2\
+    \u6563\u5BFE\u6570)\n///@docs docs/math/DLP.md\n"
   code: "#pragma once\n#include\"math/mod_pow.hpp\"\n#include\"math/gcd.hpp\"\ninline\
     \ ll dlp(ll x, ll y, ll p) {\n    if (y == 1 || p == 1) {\n        return 0;\n\
     \    }\n    if (x == 0) {\n        if (y == 0) {\n            return 1;\n    \
@@ -71,7 +67,7 @@ data:
   isVerificationFile: false
   path: math/DLP.hpp
   requiredBy: []
-  timestamp: '2023-04-01 11:49:16+09:00'
+  timestamp: '2023-04-02 12:04:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp

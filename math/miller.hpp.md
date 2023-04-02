@@ -11,9 +11,6 @@ data:
     path: math/montgomery.hpp
     title: MontgomeryReduction
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "phi function(\\phi \u95A2\u6570)"
@@ -206,7 +203,6 @@ data:
   isVerificationFile: false
   path: math/miller.hpp
   requiredBy:
-  - main.cpp
   - math/rho.hpp
   - math/primitive_root.hpp
   - math/phi_function.hpp

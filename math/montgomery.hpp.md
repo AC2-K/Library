@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
@@ -86,7 +83,6 @@ data:
   isVerificationFile: false
   path: math/montgomery.hpp
   requiredBy:
-  - main.cpp
   - math/rho.hpp
   - math/dynamic_modint.hpp
   - math/primitive_root.hpp

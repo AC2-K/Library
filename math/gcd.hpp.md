@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
@@ -64,8 +61,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\
-      \u306A\u3069)"
     links: []
   bundledCode: "#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T\
     \ _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return\
@@ -78,10 +73,7 @@ data:
     \ ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
     \    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n\
     \        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny,\
-    \ y - ny*q);\n    }\n    return a;\n}\n/// @return ax + by = gcd(a,b)\u306A\u308B\
-    x,y\u3092\u683C\u7D0D\u3059\u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n/// @brief\
-    \ gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069\
-    )\n"
+    \ y - ny*q);\n    }\n    return a;\n}\n"
   code: "#pragma once\ntemplate<typename T>\nconstexpr inline T _gcd(T a, T b) {\n\
     \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
     \ d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
@@ -93,21 +85,18 @@ data:
     \ T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T\
     \ q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx,\
     \ x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return\
-    \ a;\n}\n/// @return ax + by = gcd(a,b)\u306A\u308Bx,y\u3092\u683C\u7D0D\u3059\
-    \u308B,\u8FD4\u308A\u5024\u306Bgcd(a,b)\n\n/// @brief gcd(\u30E6\u30FC\u30AF\u30EA\
-    \u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069)"
+    \ a;\n}"
   dependsOn: []
   isVerificationFile: false
   path: math/gcd.hpp
   requiredBy:
-  - main.cpp
   - math/static_modint.hpp
   - math/DLP.hpp
   - math/rho.hpp
   - math/primitive_root.hpp
   - math/phi_function.hpp
   - string/rolling_hash.hpp
-  timestamp: '2023-04-01 11:49:16+09:00'
+  timestamp: '2023-04-02 12:04:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
@@ -127,6 +116,5 @@ layout: document
 redirect_from:
 - /library/math/gcd.hpp
 - /library/math/gcd.hpp.html
-title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\u3069\
-  )"
+title: math/gcd.hpp
 ---

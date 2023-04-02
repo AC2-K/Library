@@ -8,9 +8,6 @@ data:
     path: math/montgomery.hpp
     title: MontgomeryReduction
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/miller.hpp
     title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
@@ -242,7 +239,6 @@ data:
   isVerificationFile: false
   path: math/dynamic_modint.hpp
   requiredBy:
-  - main.cpp
   - math/rho.hpp
   - math/primitive_root.hpp
   - math/phi_function.hpp

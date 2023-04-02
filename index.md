@@ -70,8 +70,7 @@ data:
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     - icon: ':heavy_check_mark:'
       path: math/gcd.hpp
-      title: "gcd(\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5\u306A\
-        \u3069)"
+      title: math/gcd.hpp
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "maxtirx(\u884C\u5217)"
