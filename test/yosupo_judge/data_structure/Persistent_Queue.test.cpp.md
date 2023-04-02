@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: persistent/queue.hpp
     title: persistent/queue.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
