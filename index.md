@@ -54,6 +54,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/mst.hpp
       title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
+    - icon: ':warning:'
+      path: graph/namori.hpp
+      title: graph/namori.hpp
   - name: math
     pages:
     - icon: ':heavy_check_mark:'

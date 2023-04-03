@@ -114,26 +114,29 @@ data:
     \ base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tconstexpr mint inv()\
     \ const {\n\t\tll x, y;\n        auto d = ext_gcd((ll)mod, (ll)v, x, y);\n   \
     \     assert(d == 1);\n        return mint(y);\n\t}\n\n\tconstexpr mint& operator/=(const\
-    \ mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n\tconstexpr friend mint operator/(const\
-    \ mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\
-    \tconstexpr friend ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos\
-    \ << mt.val();\n\t\treturn os;\n\t}\n\tconstexpr friend istream& operator>>(istream&\
-    \ is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t\
-    }\n};\ntemplate<__uint32_t mod>\nclass static_modint32 {\nprivate:\n\tusing mint\
-    \ = static_modint32<mod>;\n\tusing i32 = __int32_t;\n\tusing u32 = __uint32_t;\n\
-    \tusing i64 = __int64_t;\n\tusing u64 = __uint64_t;\n\n\tu32 v;\n\tinline u32\
-    \ normalize(i64 v_) const {\n\t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\
-    \t\t}\n\t\treturn v_;\n\t}\npublic:\n\tconstexpr static_modint32() :v(0) {}\n\t\
-    constexpr static_modint32(const i64& v_) :v(normalize(v_)) { }\n\n\t//operator\n\
-    \tconstexpr u64 val() const {\n\t\treturn (u64)v;\n\t}\n\tconstexpr mint& operator+=(const\
-    \ mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t\
-    }\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const mint& rhs) {\n\
-    \t\tv += mod - rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn\
-    \ (*this);\n\t}\n\tconstexpr mint& operator*=(const mint& rhs) {\n\t\tv = (u64)v\
-    \ * rhs.val() % mod;\n\t\treturn (*this);\n\t}\n\n\tconstexpr mint operator+(const\
-    \ mint& r) const {\n\t\treturn mint(*this) += r;\n\t}\n\tconstexpr mint operator-(const\
-    \ mint& r) const {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint operator*(const\
-    \ mint& r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\tconstexpr mint& operator+=(const\
+    \ mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n\tconstexpr mint inv(const\
+    \ mint&r)const{\n\t\treturn mint(*this) *= r.inv();\n\t}\n\tconstexpr friend mint\
+    \ operator/(const mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t\
+    }\n\tconstexpr friend mint operator/(const i64& l, const mint& r) {\n\t\treturn\
+    \ mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\tconstexpr friend ostream& operator<<(ostream&\
+    \ os, const mint& mt) {\n\t\tos << mt.val();\n\t\treturn os;\n\t}\n\tconstexpr\
+    \ friend istream& operator>>(istream& is, mint& mt) {\n\t\ti64 v_;\n\t\tis >>\
+    \ v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n};\ntemplate<__uint32_t mod>\nclass\
+    \ static_modint32 {\nprivate:\n\tusing mint = static_modint32<mod>;\n\tusing i32\
+    \ = __int32_t;\n\tusing u32 = __uint32_t;\n\tusing i64 = __int64_t;\n\tusing u64\
+    \ = __uint64_t;\n\n\tu32 v;\n\tinline u32 normalize(i64 v_) const {\n\t\tv_ %=\
+    \ mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\
+    \tconstexpr static_modint32() :v(0) {}\n\tconstexpr static_modint32(const i64&\
+    \ v_) :v(normalize(v_)) { }\n\n\t//operator\n\tconstexpr u64 val() const {\n\t\
+    \treturn (u64)v;\n\t}\n\tconstexpr mint& operator+=(const mint& rhs) {\n\t\tv\
+    \ += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\
+    \t}\n\tconstexpr mint& operator-=(const mint& rhs) {\n\t\tv += mod - rhs.val();\n\
+    \t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr\
+    \ mint& operator*=(const mint& rhs) {\n\t\tv = (u64)v * rhs.val() % mod;\n\t\t\
+    return (*this);\n\t}\n\n\tconstexpr mint operator+(const mint& r) const {\n\t\t\
+    return mint(*this) += r;\n\t}\n\tconstexpr mint operator-(const mint& r) const\
+    \ {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint operator*(const mint&\
+    \ r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\tconstexpr mint& operator+=(const\
     \ i64& rhs) {\n\t\t(*this) += mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr\
     \ mint& operator-=(const i64& rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\
     \t}\n\tconstexpr mint& operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\
@@ -152,29 +155,30 @@ data:
     \ const {\n        ll x, y;\n        auto d = ext_gcd((ll)mod, (ll)v, x, y);\n\
     \        assert(d == 1);\n        return mint(y);\n    }\n\n\tconstexpr mint&\
     \ operator/=(const mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n    constexpr\
-    \ mint operator/(const mint& r) { return mint(*this) *= r.inv(); }\n    constexpr\
-    \ friend mint operator/(const mint& l, const i64& r) {\n\t\treturn mint(l) /=\
-    \ mint(r);\n\t}\n\n\t//iostream\n\tconstexpr friend ostream& operator<<(ostream&\
-    \ os, const mint& mt) {\n\t\tos << mt.val();\n\t\treturn os;\n\t}\n\tconstexpr\
-    \ friend istream& operator>>(istream& is, mint& mt) {\n\t\ti64 v_;\n\t\tis >>\
-    \ v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\n};\n///@brief static modint(\u9759\
-    \u7684modint)\n///@docs docs/math/static_modint.md\n#line 5 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\
-    \nusing mint = static_modint32<MOD2>;\nstruct S {\n    mint s;\n    int len;\n\
-    };\nS op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }\nS e() { return S{0,\
-    \ 0}; }\nusing Affine = pair<mint, mint>;\nAffine composition(Affine g, Affine\
-    \ f) {\n\t//f(g)\n\t//a(cx+d)+b\n\tauto a = f.first, b = f.second;\n\tauto c =\
-    \ g.first, d = g.second;\n\treturn Affine(a * c, a * d + b);\n}\nAffine id() {\
-    \ return Affine(1, 0); }\nS mapping(S d, Affine f) {\n    mint a = f.first, b\
-    \ = f.second;\n    d.s *= a, d.s += b * d.len;\n    return d;\n};\n\nint main(){\n\
-    \    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n    int n, q;\n    cin\
-    \ >> n >> q;\n    lazy_segtree<S, Affine, op, e, composition, id, mapping> sg(n);\n\
-    \    rep(i,n){\n        mint a;\n        cin >> a;\n        sg.set(i, {a, 1});\n\
-    \    }\n    sg.build();\n    while(q--){\n        int t;\n        cin >> t;\n\
-    \        if (t == 0) {\n            int l, r;\n            mint b, c;\n      \
-    \      cin >> l >> r >> b >> c;\n            sg.apply(l, r, Affine(b, c));\n \
-    \       } else {\n            int l, r;\n            cin >> l >> r;\n        \
-    \    auto res = sg.prod(l, r);\n            cout << res.s << '\\n';\n        }\n\
-    \    }\n}\n"
+    \ mint operator/(const mint& r) const { return mint(*this) *= r.inv(); }\n   \
+    \ constexpr friend mint operator/(const mint& l, const i64& r) {\n\t\treturn mint(l)\
+    \ /= mint(r);\n\t}\n\tconstexpr friend mint operator/(const i64& l, const mint&\
+    \ r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\n\t//iostream\n\tconstexpr friend\
+    \ ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\t\t\
+    return os;\n\t}\n\tconstexpr friend istream& operator>>(istream& is, mint& mt)\
+    \ {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\n};\n///@brief\
+    \ static modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n#line\
+    \ 5 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\nusing\
+    \ mint = static_modint32<MOD2>;\nstruct S {\n    mint s;\n    int len;\n};\nS\
+    \ op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }\nS e() { return S{0, 0};\
+    \ }\nusing Affine = pair<mint, mint>;\nAffine composition(Affine g, Affine f)\
+    \ {\n\t//f(g)\n\t//a(cx+d)+b\n\tauto a = f.first, b = f.second;\n\tauto c = g.first,\
+    \ d = g.second;\n\treturn Affine(a * c, a * d + b);\n}\nAffine id() { return Affine(1,\
+    \ 0); }\nS mapping(S d, Affine f) {\n    mint a = f.first, b = f.second;\n   \
+    \ d.s *= a, d.s += b * d.len;\n    return d;\n};\n\nint main(){\n    ios::sync_with_stdio(false);\n\
+    \    cin.tie(nullptr);\n    int n, q;\n    cin >> n >> q;\n    lazy_segtree<S,\
+    \ Affine, op, e, composition, id, mapping> sg(n);\n    rep(i,n){\n        mint\
+    \ a;\n        cin >> a;\n        sg.set(i, {a, 1});\n    }\n    sg.build();\n\
+    \    while(q--){\n        int t;\n        cin >> t;\n        if (t == 0) {\n \
+    \           int l, r;\n            mint b, c;\n            cin >> l >> r >> b\
+    \ >> c;\n            sg.apply(l, r, Affine(b, c));\n        } else {\n       \
+    \     int l, r;\n            cin >> l >> r;\n            auto res = sg.prod(l,\
+    \ r);\n            cout << res.s << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
     \n#include\"template.hpp\"\n#include\"data-structure/lazy_segtree.hpp\"\n#include\"\
     math/static_modint.hpp\"\nusing mint = static_modint32<MOD2>;\nstruct S {\n  \
@@ -201,7 +205,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-02 12:04:52+09:00'
+  timestamp: '2023-04-02 21:50:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
