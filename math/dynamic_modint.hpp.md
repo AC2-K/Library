@@ -31,8 +31,8 @@ data:
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Primitive_Root.test.cpp
-    title: test/yosupo_judge/new/Primitive_Root.test.cpp
+    path: test/yosupo_judge/math/Primitive_Root.test.cpp
+    title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-3030.test.cpp
     title: test/yuki/No-3030.test.cpp
@@ -248,9 +248,9 @@ data:
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
   - test/yuki/No-3030.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
-  - test/yosupo_judge/new/Primitive_Root.test.cpp
 documentation_of: math/dynamic_modint.hpp
 layout: document
 redirect_from:

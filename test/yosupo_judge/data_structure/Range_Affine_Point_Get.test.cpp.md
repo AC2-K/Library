@@ -23,9 +23,9 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
     links:
     - https://judge.yosupo.jp/problem/range_affine_point_get
-  bundledCode: "#line 1 \"test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\n\n\
-    #line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
+  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\n\
+    \n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define\
     \ rep(i, N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define\
     \ popcount(x) __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\n\
     using ld = long double;\nusing graph = vector<vector<int>>;\nusing P = pair<int,\
@@ -147,17 +147,17 @@ data:
     return os;\n\t}\n\tconstexpr friend istream& operator>>(istream& is, mint& mt)\
     \ {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\n};\n///@brief\
     \ static modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n#line\
-    \ 6 \"test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp\"\nusing mint = static_modint32<MOD2>;\n\
-    using Affine = pair<mint, mint>;\nAffine op(Affine g, Affine f) {\n\tauto a =\
-    \ f.first, b = f.second;\n\tauto c = g.first, d = g.second;\n\treturn Affine(a\
-    \ * c, a * d + b);\n}\nAffine e() { return Affine(1, 0); }\nint main() {\n   \
-    \ ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\tint n, q;\n\tcin >> n\
-    \ >> q;\n\tdual_segtree<Affine, op, e> sg(n);\n\tvector<mint> a(n);\n\tfor (auto&\
-    \ aa : a) {\n\t\tcin >> aa;\n\t}\n\twhile (q--) {\n\t\tint t;\n\t\tcin >> t; \
-    \  \n\t\tif (t == 0) {\n\t\t\tint l, r;\n\t\t\tmint b, c;\n\t\t\tcin >> l >> r\
-    \ >> b >> c;\n\t\t\tsg.apply(l, r, Affine(b, c));\n\t\t}\n\t\telse {\n\t\t\tint\
-    \ i;\n\t\t\tcin >> i;\n\t\t\tauto f = sg[i];\n\t\t\tmint ans = f.first * a[i]\
-    \ + f.second;\n\t\t\tcout << ans << '\\n';\n\t\t}\n\t}\n}\n"
+    \ 6 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\nusing\
+    \ mint = static_modint32<MOD2>;\nusing Affine = pair<mint, mint>;\nAffine op(Affine\
+    \ g, Affine f) {\n\tauto a = f.first, b = f.second;\n\tauto c = g.first, d = g.second;\n\
+    \treturn Affine(a * c, a * d + b);\n}\nAffine e() { return Affine(1, 0); }\nint\
+    \ main() {\n    ios::sync_with_stdio(false);\n    cin.tie(nullptr);\n\tint n,\
+    \ q;\n\tcin >> n >> q;\n\tdual_segtree<Affine, op, e> sg(n);\n\tvector<mint> a(n);\n\
+    \tfor (auto& aa : a) {\n\t\tcin >> aa;\n\t}\n\twhile (q--) {\n\t\tint t;\n\t\t\
+    cin >> t;   \n\t\tif (t == 0) {\n\t\t\tint l, r;\n\t\t\tmint b, c;\n\t\t\tcin\
+    \ >> l >> r >> b >> c;\n\t\t\tsg.apply(l, r, Affine(b, c));\n\t\t}\n\t\telse {\n\
+    \t\t\tint i;\n\t\t\tcin >> i;\n\t\t\tauto f = sg[i];\n\t\t\tmint ans = f.first\
+    \ * a[i] + f.second;\n\t\t\tcout << ans << '\\n';\n\t\t}\n\t}\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
     \n\n#include\"template.hpp\"\n#include\"data-structure/dual_segtree.hpp\"\n#include\"\
     math/static_modint.hpp\"\nusing mint = static_modint32<MOD2>;\nusing Affine =\
@@ -177,15 +177,15 @@ data:
   - math/static_modint.hpp
   - math/gcd.hpp
   isVerificationFile: true
-  path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-04-02 21:50:54+09:00'
+  timestamp: '2023-04-03 15:29:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
-- /verify/test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp.html
-title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+- /verify/test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+- /verify/test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp.html
+title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
 ---

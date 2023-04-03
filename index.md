@@ -9,6 +9,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/CHT.hpp
       title: Convex Hull Trick
+    - icon: ':warning:'
+      path: data-structure/binary_trie.hpp
+      title: data-structure/binary_trie.hpp
     - icon: ':heavy_check_mark:'
       path: data-structure/dsu.hpp
       title: Disjoint Set(Union find)
@@ -191,6 +194,9 @@ data:
       path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+      title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -230,22 +236,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
+      title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/math/Primitive_Root.test.cpp
+      title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - name: test/yosupo_judge/matrix
     pages:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - name: test/yosupo_judge/new
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
-      title: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/new/Primitive_Root.test.cpp
-      title: test/yosupo_judge/new/Primitive_Root.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
-      title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - name: test/yosupo_judge/tree
     pages:
     - icon: ':heavy_check_mark:'

@@ -31,6 +31,9 @@ data:
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+    title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -43,14 +46,11 @@ data:
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Primitive_Root.test.cpp
+    title: test/yosupo_judge/math/Primitive_Root.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Primitive_Root.test.cpp
-    title: test/yosupo_judge/new/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
-    title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-430.test.cpp
     title: test/yuki/No-430.test.cpp
@@ -103,13 +103,13 @@ data:
   - test/AOJ/NTL/1_E.test.cpp
   - test/yuki/No.891.test.cpp
   - test/yuki/No-430.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - test/yosupo_judge/new/Primitive_Root.test.cpp
-  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
 documentation_of: math/gcd.hpp
 layout: document

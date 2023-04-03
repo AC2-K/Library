@@ -35,7 +35,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/primitive_root
     links:
     - https://judge.yosupo.jp/problem/primitive_root
-  bundledCode: "#line 1 \"test/yosupo_judge/new/Primitive_Root.test.cpp\"\n#define\
+  bundledCode: "#line 1 \"test/yosupo_judge/math/Primitive_Root.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#line 2 \"template.hpp\"\
     \n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i, N)  for(int i=0;i<(N);i++)\n\
     #define all(x) (x).begin(),(x).end()\n#define popcount(x) __builtin_popcount(x)\n\
@@ -239,7 +239,7 @@ data:
     \ q : pf) {\n            if (dynamic_modint<uint64_t, __uint128_t>(g).pow(q).val()\
     \ == 1) {\n                is_ok = false;\n                break;\n          \
     \  }\n        }\n        if (is_ok) {\n            return g.val();\n        }\n\
-    \    }\n}\n\n//@brief primitive root(\u539F\u59CB\u6839)\n#line 4 \"test/yosupo_judge/new/Primitive_Root.test.cpp\"\
+    \    }\n}\n\n//@brief primitive root(\u539F\u59CB\u6839)\n#line 4 \"test/yosupo_judge/math/Primitive_Root.test.cpp\"\
     \nint main(){\n    int q;\n    scanf(\"%d\", &q);\n    while (q--) {\n       \
     \ ll p;\n        scanf(\"%lld\", &p);\n        ll ans = primitive_root(p);\n \
     \       printf(\"%lld\\n\", ans);\n    }\n}\n"
@@ -258,15 +258,15 @@ data:
   - math/miller.hpp
   - math/gcd.hpp
   isVerificationFile: true
-  path: test/yosupo_judge/new/Primitive_Root.test.cpp
+  path: test/yosupo_judge/math/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2023-04-02 14:35:20+09:00'
+  timestamp: '2023-04-03 15:29:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo_judge/new/Primitive_Root.test.cpp
+documentation_of: test/yosupo_judge/math/Primitive_Root.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo_judge/new/Primitive_Root.test.cpp
-- /verify/test/yosupo_judge/new/Primitive_Root.test.cpp.html
-title: test/yosupo_judge/new/Primitive_Root.test.cpp
+- /verify/test/yosupo_judge/math/Primitive_Root.test.cpp
+- /verify/test/yosupo_judge/math/Primitive_Root.test.cpp.html
+title: test/yosupo_judge/math/Primitive_Root.test.cpp
 ---

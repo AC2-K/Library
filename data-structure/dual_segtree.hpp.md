@@ -10,8 +10,8 @@ data:
     path: test/AOJ/DSL/2_E_dual.test.cpp
     title: test/AOJ/DSL/2_E_dual.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
-    title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+    path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+    title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -70,7 +70,7 @@ data:
   verifiedWith:
   - test/AOJ/DSL/2_D_dual.test.cpp
   - test/AOJ/DSL/2_E_dual.test.cpp
-  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
 documentation_of: data-structure/dual_segtree.hpp
 layout: document
 redirect_from:

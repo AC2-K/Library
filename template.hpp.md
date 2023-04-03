@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
@@ -64,6 +67,9 @@ data:
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+    title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -100,17 +106,14 @@ data:
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
+    title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Primitive_Root.test.cpp
+    title: test/yosupo_judge/math/Primitive_Root.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
-    title: test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Primitive_Root.test.cpp
-    title: test/yosupo_judge/new/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
-    title: test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
@@ -228,6 +231,7 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
+  - main.cpp
   - math/static_modint.hpp
   timestamp: '2023-03-28 10:54:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -253,11 +257,14 @@ data:
   - test/yuki/No-3030.test.cpp
   - test/yuki/No-430.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Static_RMQ.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/yosupo_judge/data_structure/UnionFind.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
@@ -271,9 +278,6 @@ data:
   - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
-  - test/yosupo_judge/new/Primitive_Root.test.cpp
-  - test/yosupo_judge/new/Range_Affine_Point_Get.test.cpp
-  - test/yosupo_judge/new/Longest_Increasing_Subsequence.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
 documentation_of: template.hpp
 layout: document
