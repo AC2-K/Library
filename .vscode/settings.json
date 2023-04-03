@@ -30,6 +30,7 @@
         "numeric": "cpp",
         "initializer_list": "cpp",
         "cmath": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "type_traits": "cpp"
     }
 }
