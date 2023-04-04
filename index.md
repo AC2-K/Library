@@ -22,6 +22,9 @@ data:
       path: data-structure/dynamic_segtree.hpp
       title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
+    - icon: ':warning:'
+      path: data-structure/hash_map.hpp
+      title: HashMap
     - icon: ':heavy_check_mark:'
       path: data-structure/lazy_segtree.hpp
       title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
