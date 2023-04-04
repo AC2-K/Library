@@ -179,6 +179,9 @@ data:
   - name: test/yosupo_judge/data_structure
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+      title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
       title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
     - icon: ':heavy_check_mark:'

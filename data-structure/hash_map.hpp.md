@@ -7,6 +7,9 @@ data:
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+    title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
@@ -64,6 +67,7 @@ data:
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+  - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
 documentation_of: data-structure/hash_map.hpp
 layout: document
 redirect_from:
