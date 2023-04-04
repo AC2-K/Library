@@ -29,6 +29,7 @@
 "test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp": "2023-04-02 14:35:20 +0900",
 "test/yosupo_judge/graph/Shortest_Path.test.cpp": "2023-03-28 10:54:47 +0900",
 "test/yosupo_judge/math/Discrete_Logarithm.test.cpp": "2023-04-04 17:33:20 +0900",
+"test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp": "2023-04-04 17:37:35 +0900",
 "test/yosupo_judge/math/Factorize.test.cpp": "2023-04-04 17:33:20 +0900",
 "test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp": "2023-04-03 15:29:22 +0900",
 "test/yosupo_judge/math/Primitive_Root.test.cpp": "2023-04-04 17:33:20 +0900",
