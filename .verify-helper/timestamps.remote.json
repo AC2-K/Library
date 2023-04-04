@@ -13,6 +13,7 @@
 "test/AOJ/NTL/1_B.test.cpp": "2023-04-01 11:49:16 +0900",
 "test/AOJ/NTL/1_D.test.cpp": "2023-04-04 17:33:20 +0900",
 "test/AOJ/NTL/1_E.test.cpp": "2023-04-02 12:04:52 +0900",
+"test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp": "2023-04-04 18:07:38 +0900",
 "test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp": "2023-03-28 10:54:47 +0900",
 "test/yosupo_judge/data_structure/Persistent_Queue.test.cpp": "2023-03-29 11:45:13 +0900",
 "test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp": "2023-04-02 12:04:52 +0900",
