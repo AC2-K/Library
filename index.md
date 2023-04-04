@@ -9,9 +9,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/CHT.hpp
       title: Convex Hull Trick
-    - icon: ':warning:'
-      path: data-structure/binary_trie.hpp
-      title: data-structure/binary_trie.hpp
     - icon: ':heavy_check_mark:'
       path: data-structure/dsu.hpp
       title: Disjoint Set(Union find)
@@ -22,7 +19,7 @@ data:
       path: data-structure/dynamic_segtree.hpp
       title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/hash_map.hpp
       title: HashMap
     - icon: ':heavy_check_mark:'
@@ -46,7 +43,7 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -68,16 +65,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/DLP.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/barrett.hpp
       title: barrett reduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/dynamic_modint.hpp
       title: dynamic_modint(64bit)
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/gcd.hpp
       title: math/gcd.hpp
     - icon: ':heavy_check_mark:'
@@ -89,7 +86,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/montgomery.hpp
       title: MontgomeryReduction
     - icon: ':warning:'
@@ -233,7 +230,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
     - icon: ':heavy_check_mark:'

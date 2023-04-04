@@ -96,7 +96,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   - icon: ':heavy_check_mark:'
@@ -135,9 +135,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No.891.test.cpp
     title: test/yuki/No.891.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -230,7 +230,7 @@ data:
   requiredBy:
   - math/static_modint.hpp
   timestamp: '2023-03-28 10:54:47+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/ALDS/1_C.test.cpp
   - test/AOJ/DSL/5_B.test.cpp
