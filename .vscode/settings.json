@@ -32,6 +32,9 @@
         "cmath": "cpp",
         "complex": "cpp",
         "type_traits": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "bitset": "cpp",
+        "system_error": "cpp",
+        "typeindex": "cpp"
     }
 }

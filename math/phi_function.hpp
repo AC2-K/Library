@@ -4,8 +4,8 @@ ll phi_func(ll n){
     ll res = n;
     auto pf = prime::rho::factorize(n);
     pf.erase(unique(all(pf)), pf.end());
-    for(auto&d:pf){
-        res=res/d*(d-1);
+    for (auto& d : pf) {
+        res = res / d * (d - 1);
     }
     return res;
 }

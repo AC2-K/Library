@@ -12,7 +12,7 @@ inline uint64_t primitive_root(uint64_t p) {
     if (dynamic_modint<uint64_t, __uint128_t>::get_mod() != p) {
         dynamic_modint<uint64_t, __uint128_t>::set_mod(p);
     }
-    ull rng = rand();
+    static ull rng = 2020;
     while (1) {
         rng ^= rng << 13; rng ^= rng >> 7; rng ^= rng << 17;
         dynamic_modint<uint64_t, __uint128_t> g(rng);
