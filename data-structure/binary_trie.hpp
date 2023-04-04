@@ -20,7 +20,10 @@ class binary_trie {
 	node* sub(node* t,const T& val, int b = w - 1) {
 		assert(t);
 		t->cnt -= 1;
-		if (t->cnt == 0) return nullptr;
+		if (t->cnt == 0) {
+			delete t;
+			return nullptr;
+		}
 		if (b < 0) return t;
 		bool f = (val >> b) & static_cast<T>(1);
 		t->ch[f] = sub(t->ch[f], val, b - 1);
@@ -64,13 +67,9 @@ public:
 		}
 		return t->cnt;
 	}
-	T max_element(T bias = 0) const {
-		return get_max(root, bias);
-	}
-	T min_element(T bias = 0) const {
-		return get_max(root, ~bias);
-	}
-	T operator[](int k) const {
+        T max_element(T bias = 0) const { return kth(get_max(root, bias)); }
+        T min_element(T bias = 0) const { return kth(get_max(root, ~bias)); }
+        T kth(int k) const {
 		assert(0 <= k && k < size());
 		return get(root, k);
 	}
