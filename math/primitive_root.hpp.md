@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett.hpp
     title: barrett reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/gcd.hpp
     title: math/gcd.hpp
   - icon: ':heavy_check_mark:'
     path: math/miller.hpp
     title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/montgomery.hpp
     title: MontgomeryReduction
   - icon: ':heavy_check_mark:'

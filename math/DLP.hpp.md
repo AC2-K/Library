@@ -4,19 +4,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/hash_map.hpp
     title: HashMap
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett.hpp
     title: barrett reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/gcd.hpp
     title: math/gcd.hpp
   - icon: ':heavy_check_mark:'
     path: math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/montgomery.hpp
     title: MontgomeryReduction
   _extendedRequiredBy: []
@@ -24,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -243,6 +246,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
 documentation_of: math/DLP.hpp
 layout: document
 redirect_from:

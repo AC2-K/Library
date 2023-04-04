@@ -16,6 +16,9 @@ data:
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No-430.test.cpp
     title: test/yuki/No-430.test.cpp
   _isVerificationFailed: false
@@ -48,6 +51,7 @@ data:
   - test/AOJ/NTL/1_B.test.cpp
   - test/yuki/No-430.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
 documentation_of: math/mod_pow.hpp
 layout: document
 redirect_from:

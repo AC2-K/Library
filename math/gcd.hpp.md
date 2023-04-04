@@ -39,7 +39,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   - icon: ':heavy_check_mark:'
@@ -57,9 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No.891.test.cpp
     title: test/yuki/No.891.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T\
@@ -97,7 +97,7 @@ data:
   - math/phi_function.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-04-02 12:04:52+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
   - test/AOJ/NTL/1_E.test.cpp

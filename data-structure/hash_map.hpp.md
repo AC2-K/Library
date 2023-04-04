@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -60,6 +63,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
 documentation_of: data-structure/hash_map.hpp
 layout: document
 redirect_from:

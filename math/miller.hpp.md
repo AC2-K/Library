@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett.hpp
     title: barrett reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/montgomery.hpp
     title: MontgomeryReduction
   _extendedRequiredBy:

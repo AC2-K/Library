@@ -7,22 +7,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett.hpp
     title: barrett reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/gcd.hpp
     title: math/gcd.hpp
   - icon: ':heavy_check_mark:'
     path: math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []

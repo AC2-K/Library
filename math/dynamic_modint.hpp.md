@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/barrett.hpp
     title: barrett reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/montgomery.hpp
     title: MontgomeryReduction
   _extendedRequiredBy:
@@ -30,7 +30,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   - icon: ':heavy_check_mark:'
@@ -42,9 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-3030.test.cpp
     title: test/yuki/No-3030.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/dynamic_modint.md
     document_title: dynamic_modint(64bit)
@@ -252,7 +252,7 @@ data:
   - math/phi_function.hpp
   - math/miller.hpp
   timestamp: '2023-04-04 17:33:20+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
   - test/yuki/No-3030.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/gcd.hpp
     title: math/gcd.hpp
   - icon: ':heavy_check_mark:'

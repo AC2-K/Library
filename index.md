@@ -43,7 +43,7 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -65,16 +65,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/DLP.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/barrett.hpp
       title: barrett reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/dynamic_modint.hpp
       title: dynamic_modint(64bit)
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/gcd.hpp
       title: math/gcd.hpp
     - icon: ':heavy_check_mark:'
@@ -86,7 +86,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/montgomery.hpp
       title: MontgomeryReduction
     - icon: ':warning:'
@@ -230,7 +230,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
     - icon: ':heavy_check_mark:'
