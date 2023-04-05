@@ -13,9 +13,9 @@ class hash_map {
     using u32 = uint32_t;
     using u64 = uint64_t;
 
-    u64* flag = new u64[n];
+    bitset<n> flag;
     Key* keys = new Key[n];
-    Val* vals = new Val[n];
+    Val* vals=new Val[n];
 
     static constexpr u32 shift = 64 - __lg(n);
 
@@ -23,8 +23,6 @@ class hash_map {
     inline u32 get_hash(const Key& k) const {
         return ((u64)k * r) >> shift;
     }
-
-    static constexpr uint8_t mod_msk = (1 << 6) - 1;
 
   public:   
     explicit constexpr hash_map(){
@@ -36,15 +34,23 @@ class hash_map {
         u32 hash = get_hash(k);
 
         while (1) {
-            if (!(flag[hash >> 6] &
-                  (static_cast<u64>(1) << (hash & mod_msk)))) {
+            if (!flag.test(hash)) {
                 keys[hash] = k;
-                flag[hash >> 6] |= static_cast<u64>(1)
-                                   << (hash & mod_msk);
+                flag.set(hash);
                 return vals[hash] = default_val;
             }
 
             if (keys[hash] == k)return vals[hash];
+            hash = (hash + 1) & (n - 1);
+        }
+    }
+
+
+    bool exists(const Key&k)const{
+        u32 hash = get_hash(k);
+        while (1) {
+            if (!flag.test(hash)) return false;
+            if (keys[hash] == k) return true;
             hash = (hash + 1) & (n - 1);
         }
     }

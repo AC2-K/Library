@@ -3,7 +3,7 @@
 #include"math/gcd.hpp"
 #include"data-structure/hash_map.hpp"
 #include"math/dynamic_modint.hpp"
-inline ll dlp(uint64_t x, uint64_t y, uint64_t p) {
+ll dlp(uint64_t x, uint64_t y, uint64_t p) {
     if (y == 1 || p == 1) {
         return 0;
     }
@@ -25,6 +25,7 @@ inline ll dlp(uint64_t x, uint64_t y, uint64_t p) {
         y /= g, p /= g, add++;
         k = (k * (x / g)) % p;
     }
+
     ll pr = y;
     for (int j = 0; j <= m; j++) {
         mp[pr] = j;
@@ -33,7 +34,7 @@ inline ll dlp(uint64_t x, uint64_t y, uint64_t p) {
     pr = k;
     for (int i = 1; i <= m; i++) {
         (pr *= xm) %= p;
-        if (mp[pr]) {
+        if (mp.exists(pr)) {
             int j = mp[pr];
             return m * i - j + add;
         }
@@ -54,7 +55,7 @@ ll dlp32(uint32_t x, uint32_t y, uint32_t p) {
         }
     }
     uint32_t m = (uint32_t)ceil(sqrt(p));
-    using mint = dynamic_modint32<10>;
+    using mint = barrett_modint<10>;
     if (mint::get_mod() != p) {
         mint::set_mod(p);
     }
@@ -78,7 +79,7 @@ ll dlp32(uint32_t x, uint32_t y, uint32_t p) {
     pr = k;
     for (int i = 1; i <= m; i++) {
         pr *= xm;
-        if (mp[pr.val()]) {
+        if (mp.exists(pr.val())) {
             int j = mp[pr.val()];
             return m * i - j + add;
         }

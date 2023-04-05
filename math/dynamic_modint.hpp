@@ -2,7 +2,7 @@
 #include"math/barrett.hpp"
 #include"math/montgomery.hpp"
 template<int id=-1>
-class dynamic_modint32 {
+class barrett_modint {
 	using u32 = uint32_t;
 	using u64 = uint64_t;
 
@@ -18,25 +18,17 @@ public:
 		brt = br(mod_);
 		mod = mod_;
 	}
-private:
-	constexpr u32 normalize(i64 x) const {
-		i32 m = x % mod;
-		if (m < 0) {
-			m += mod;
-		}
-		return m;
-	}
 public:
-	explicit constexpr dynamic_modint32() :v(0) { assert(mod); }	//modが決定済みである必要がある
-	explicit constexpr dynamic_modint32(i64 v_) :v(normalize(v_)) { assert(mod); }	
+	explicit constexpr barrett_modint() :v(0) { assert(mod); }	//modが決定済みである必要がある
+	explicit constexpr barrett_modint(i64 v_) :v(brt.reduce(v_)) { assert(mod); }	
 
 	u32 val() const { return v; }
     static u32 get_mod() { return mod; }
-    using mint = dynamic_modint32;
+    using mint = barrett_modint;
 
 	//operators
 	constexpr mint& operator=(i64 r) {
-		v = normalize(r); 
+		v = brt.reduce(r); 
 		return (*this);
 	}
 	constexpr mint& operator+=(const mint& r) {
@@ -105,25 +97,25 @@ public:
 
 	mint& operator/=(const mint& r) { return (*this) *= r.inv(); }
 	mint operator/(const mint& r) const { return mint(*this) *= r.inv(); }
-	mint& operator/=(const i64& r) { return (*this) /= mint(r); }
-	friend mint operator/(const mint& l, const i64& r) { return mint(l) /= r; }
-	friend mint operator/(const i64& l, const mint& r) { return mint(l) /= r; }
+	mint& operator/=(i64 r) { return (*this) /= mint(r); }
+	friend mint operator/(const mint& l, i64 r) { return mint(l) /= r; }
+	friend mint operator/(i64 l, const mint& r) { return mint(l) /= r; }
 };
-template<int id>typename dynamic_modint32<id>::u32 dynamic_modint32<id>::mod;
-template<int id>typename dynamic_modint32<id>::br dynamic_modint32<id>::brt;
+template<int id>typename barrett_modint<id>::u32 barrett_modint<id>::mod;
+template<int id>typename barrett_modint<id>::br barrett_modint<id>::brt;
 
 
 /// @brief dynamic_modint(64bit)
 /// @tparam T 型(64bit,32bitなど)
 /// @tparam LargeT 積が収まってくれる型
 /// @note T,LargeTのいずれもunsignedで渡す
-template <typename T = uint32_t, typename LargeT = uint64_t>
- class dynamic_modint {
+template <typename T = uint32_t, typename LargeT = uint64_t, int id = -1>
+class dynamic_modint {
         static T mod;
         static internal::MontgomeryReduction64<T, LargeT> mr;
 
       public:
-        static void set_mod(const T& mod_) {
+        static void set_mod(T mod_) {
                 mr.set_mod(mod_);
                 mod = mod_;
         }
@@ -133,7 +125,7 @@ template <typename T = uint32_t, typename LargeT = uint64_t>
       private:
         T v;
       public:
-        dynamic_modint(const T& v_ = 0) {
+        dynamic_modint(T v_ = 0) {
                 assert(mod);
                 v = mr.generate(v_);
         }
@@ -199,17 +191,16 @@ template <typename T = uint32_t, typename LargeT = uint64_t>
 
         mint& operator/=(const mint& r) { return (*this) *= r.inv(); }
         mint operator/(const mint& r) const { return mint(*this) *= r.inv(); }
-        mint& operator/=(const T& r) { return (*this) /= mint(r); }
-        friend mint operator/(const mint& l, const T& r) {
+        mint& operator/=(T r) { return (*this) /= mint(r); }
+        friend mint operator/(const mint& l, T r) {
                 return mint(l) /= r;
         }
-        friend mint operator/(const T& l, const mint& r) {
+        friend mint operator/(T l, const mint& r) {
                 return mint(l) /= r;
         }
 };
-template<typename T, typename LargeT>T dynamic_modint<T, LargeT>::mod;
-template<typename T,typename LargeT>internal::MontgomeryReduction64<T,LargeT> dynamic_modint<T,LargeT>::mr;
-
+template<typename T, typename LargeT,int id>T dynamic_modint<T, LargeT,id>::mod;
+template<typename T,typename LargeT,int id>internal::MontgomeryReduction64<T,LargeT> dynamic_modint<T,LargeT,id>::mr;
 
 
 ///@brief dynamic modint(動的modint)

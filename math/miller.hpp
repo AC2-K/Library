@@ -40,7 +40,7 @@ namespace prime {
 
         constexpr u64 bases_int[3] = { 2, 7, 61 };  // intだと、2,7,61で十分
         constexpr u64 bases_ll[7] = { 2, 325, 9375, 28178, 450775, 9780504, 1795265022 };
-        constexpr bool inline is_prime(u64 n) {
+        constexpr bool is_prime(u64 n) {
             if (n < 2) {
                 return false;
             }
@@ -51,10 +51,10 @@ namespace prime {
                 return false;
             }
             if (n < (1ul << 31)) {
-                return miller_rabin<dynamic_modint<u32,u64>>(n, bases_int, 3);
+                return miller_rabin<barrett_modint<-1>>(n, bases_int, 3);
             }
             else {
-                return miller_rabin<dynamic_modint<u64,u128>>(n, bases_ll, 7);
+                return miller_rabin<dynamic_modint<u64,u128,-1>>(n, bases_ll, 7);
             }
         }
     };
