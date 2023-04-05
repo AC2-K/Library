@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
@@ -89,6 +92,7 @@ data:
   isVerificationFile: false
   path: math/montgomery.hpp
   requiredBy:
+  - main.cpp
   - math/DLP.hpp
   - math/rho.hpp
   - math/dynamic_modint.hpp

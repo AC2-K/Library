@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
@@ -231,6 +234,7 @@ data:
   isVerificationFile: false
   path: template.hpp
   requiredBy:
+  - main.cpp
   - math/static_modint.hpp
   timestamp: '2023-03-28 10:54:47+09:00'
   verificationStatus: LIBRARY_ALL_AC

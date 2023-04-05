@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: main.cpp
+    title: main.cpp
   - icon: ':heavy_check_mark:'
     path: math/DLP.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
@@ -43,6 +46,7 @@ data:
   isVerificationFile: false
   path: math/mod_pow.hpp
   requiredBy:
+  - main.cpp
   - math/DLP.hpp
   - string/rolling_hash.hpp
   timestamp: '2023-04-01 11:49:16+09:00'
