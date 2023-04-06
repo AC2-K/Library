@@ -2,17 +2,17 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/euler_tour.hpp
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - icon: ':x:'
@@ -23,7 +23,7 @@ data:
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/sparse_table.md
     document_title: Sparse Table(Range Min)
@@ -36,7 +36,7 @@ data:
     \    sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }\n    void\
     \ set(int p, const T& v) { vec[p] = v; }\n    void build() {\n        int sz =\
     \ vec.size();\n        int log = 0;\n        while ((1 << log) <= sz) {\n    \
-    \        log++;\n        }\n        table.assign(log, vector<T>(1 << log));\n\
+    \        log++;\n        }\n        table.assign(log, std::vector<T>(1 << log));\n\
     \        for (int i = 0; i < sz; i++) {\n            table[0][i] = vec[i];\n \
     \       }\n        for (int i = 1; i < log; i++) {\n            for (int j = 0;\
     \ j + (1 << i) <= (1 << log); j++) {\n                table[i][j] =\n        \
@@ -53,14 +53,14 @@ data:
     \ {}\n    sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }\n  \
     \  void set(int p, const T& v) { vec[p] = v; }\n    void build() {\n        int\
     \ sz = vec.size();\n        int log = 0;\n        while ((1 << log) <= sz) {\n\
-    \            log++;\n        }\n        table.assign(log, vector<T>(1 << log));\n\
-    \        for (int i = 0; i < sz; i++) {\n            table[0][i] = vec[i];\n \
-    \       }\n        for (int i = 1; i < log; i++) {\n            for (int j = 0;\
-    \ j + (1 << i) <= (1 << log); j++) {\n                table[i][j] =\n        \
-    \            std::min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);\n  \
-    \          }\n        }\n        look_up.resize(sz + 1);\n        for (int i =\
-    \ 2; i < (int)look_up.size(); i++) {\n            look_up[i] = look_up[i >> 1]\
-    \ + 1;\n        }\n    }\n\n    T prod(int l, int r) {\n        int b = look_up[r\
+    \            log++;\n        }\n        table.assign(log, std::vector<T>(1 <<\
+    \ log));\n        for (int i = 0; i < sz; i++) {\n            table[0][i] = vec[i];\n\
+    \        }\n        for (int i = 1; i < log; i++) {\n            for (int j =\
+    \ 0; j + (1 << i) <= (1 << log); j++) {\n                table[i][j] =\n     \
+    \               std::min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);\n\
+    \            }\n        }\n        look_up.resize(sz + 1);\n        for (int i\
+    \ = 2; i < (int)look_up.size(); i++) {\n            look_up[i] = look_up[i >>\
+    \ 1] + 1;\n        }\n    }\n\n    T prod(int l, int r) {\n        int b = look_up[r\
     \ - l];\n        return std::min(table[b][l], table[b][r - (1 << b)]);\n    }\n\
     };\n};  // namespace library"
   dependsOn: []
@@ -68,8 +68,8 @@ data:
   path: data-structure/sparse_table.hpp
   requiredBy:
   - graph/euler_tour.hpp
-  timestamp: '2023-04-06 18:29:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-04-06 20:41:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/GRL/5_C.test.cpp
   - test/yosupo_judge/data_structure/Static_RMQ.test.cpp

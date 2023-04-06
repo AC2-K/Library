@@ -4,10 +4,10 @@ data:
   - icon: ':question:'
     path: data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':x:'
+  - icon: ':question:'
     path: data-structure/sparse_table.hpp
     title: Sparse Table(Range Min)
-  - icon: ':x:'
+  - icon: ':question:'
     path: graph/euler_tour.hpp
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_path_sum
@@ -55,14 +55,14 @@ data:
     \ {}\n    sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }\n  \
     \  void set(int p, const T& v) { vec[p] = v; }\n    void build() {\n        int\
     \ sz = vec.size();\n        int log = 0;\n        while ((1 << log) <= sz) {\n\
-    \            log++;\n        }\n        table.assign(log, vector<T>(1 << log));\n\
-    \        for (int i = 0; i < sz; i++) {\n            table[0][i] = vec[i];\n \
-    \       }\n        for (int i = 1; i < log; i++) {\n            for (int j = 0;\
-    \ j + (1 << i) <= (1 << log); j++) {\n                table[i][j] =\n        \
-    \            std::min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);\n  \
-    \          }\n        }\n        look_up.resize(sz + 1);\n        for (int i =\
-    \ 2; i < (int)look_up.size(); i++) {\n            look_up[i] = look_up[i >> 1]\
-    \ + 1;\n        }\n    }\n\n    T prod(int l, int r) {\n        int b = look_up[r\
+    \            log++;\n        }\n        table.assign(log, std::vector<T>(1 <<\
+    \ log));\n        for (int i = 0; i < sz; i++) {\n            table[0][i] = vec[i];\n\
+    \        }\n        for (int i = 1; i < log; i++) {\n            for (int j =\
+    \ 0; j + (1 << i) <= (1 << log); j++) {\n                table[i][j] =\n     \
+    \               std::min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);\n\
+    \            }\n        }\n        look_up.resize(sz + 1);\n        for (int i\
+    \ = 2; i < (int)look_up.size(); i++) {\n            look_up[i] = look_up[i >>\
+    \ 1] + 1;\n        }\n    }\n\n    T prod(int l, int r) {\n        int b = look_up[r\
     \ - l];\n        return std::min(table[b][l], table[b][r - (1 << b)]);\n    }\n\
     };\n};  // namespace library\n#line 3 \"graph/euler_tour.hpp\"\nnamespace library\
     \ {\n\n///@brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)\nclass\
@@ -126,8 +126,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 18:29:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-06 20:41:27+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
 layout: document

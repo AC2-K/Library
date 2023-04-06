@@ -1,30 +1,30 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: internal/barrett.hpp
     title: barrett reduction
-  - icon: ':x:'
+  - icon: ':question:'
     path: internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
   - icon: ':question:'
     path: math/gcd.hpp
     title: math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/miller.hpp
     title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "$\\phi$ \u95A2\u6570"
   - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':x:'
@@ -35,7 +35,7 @@ data:
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
     links: []
@@ -79,7 +79,7 @@ data:
     \ :v(0) { assert(mod); }\t//mod\u304C\u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\
     \u5FC5\u8981\u304C\u3042\u308B\n\texplicit constexpr barrett_modint(i64 v_) :v(brt.reduce(v_))\
     \ { assert(mod); }\t\n\n\tu32 val() const { return v; }\n    static u32 get_mod()\
-    \ { return mod; }\n    using mint = barrett_modint;\n\n\t//operators\n\tconstexpr\
+    \ { return mod; }\n    using mint = barrett_modint<id>;\n\n\t//operators\n\tconstexpr\
     \ mint& operator=(i64 r) {\n\t\tv = brt.reduce(r); \n\t\treturn (*this);\n\t}\n\
     \tconstexpr mint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod)\
     \ {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const\
@@ -97,15 +97,15 @@ data:
     \ }\n\tfriend mint operator-(const mint& l, i64 r) { return mint(l) -= r; }\n\t\
     friend mint operator*(i64 l, const mint& r) { return mint(l) *= r; }\n\tfriend\
     \ mint operator*(const mint& l, i64 r) { return mint(l) += r; }\n\n\n\tfriend\
-    \ ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\t\t\
-    return os;\n\t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\ti64\
-    \ v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\tconstexpr mint pow(u64\
-    \ e) const {\n\t\tmint res(1), base(*this);\n\n\t\twhile (e) {\n\t\t\tif (e &\
-    \ 1) {\n\t\t\t\tres *= base;\n\t\t\t}\n\t\t\te >>= 1;\n\t\t\tbase *= base;\n\t\
-    \t}\n\t\treturn res;\n\t}\n\tconstexpr mint inv() const {\n\t\treturn pow(mod\
-    \ - 2);\n\t}\n\n\tmint& operator/=(const mint& r) { return (*this) *= r.inv();\
-    \ }\n\tmint operator/(const mint& r) const { return mint(*this) *= r.inv(); }\n\
-    \tmint& operator/=(i64 r) { return (*this) /= mint(r); }\n\tfriend mint operator/(const\
+    \ std::ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
+    \t\treturn os;\n\t}\n\tfriend std::istream& operator>>(istream& is, mint& mt)\
+    \ {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\tconstexpr\
+    \ mint pow(u64 e) const {\n\t\tmint res(1), base(*this);\n\n\t\twhile (e) {\n\t\
+    \t\tif (e & 1) {\n\t\t\t\tres *= base;\n\t\t\t}\n\t\t\te >>= 1;\n\t\t\tbase *=\
+    \ base;\n\t\t}\n\t\treturn res;\n\t}\n\tconstexpr mint inv() const {\n\t\treturn\
+    \ pow(mod - 2);\n\t}\n\n\tmint& operator/=(const mint& r) { return (*this) *=\
+    \ r.inv(); }\n\tmint operator/(const mint& r) const { return mint(*this) *= r.inv();\
+    \ }\n\tmint& operator/=(i64 r) { return (*this) /= mint(r); }\n\tfriend mint operator/(const\
     \ mint& l, i64 r) { return mint(l) /= r; }\n\tfriend mint operator/(i64 l, const\
     \ mint& r) { return mint(l) /= r; }\n};\n};  // namespace library\ntemplate <int\
     \ id> typename library::barrett_modint<id>::u32 library::barrett_modint<id>::mod;\n\
@@ -118,35 +118,36 @@ data:
     \       T v;\n      public:\n        dynamic_modint(T v_ = 0) {\n            \
     \    assert(mod);\n                v = mr.generate(v_);\n        }\n        T\
     \ val() const { return mr.reduce(v); }\n\n        using mint = dynamic_modint<T,\
-    \ LargeT>;\n        mint& operator+=(const mint& r) {\n                v += r.v;\n\
-    \                if (v >= mr.get_mod()) {\n                        v -= mr.get_mod();\n\
-    \                }\n\n                return (*this);\n        }\n\n        mint&\
-    \ operator-=(const mint& r) {\n                v += mr.get_mod() - r.v;\n    \
-    \            if (v >= mr.get_mod) {\n                        v -= mr.get_mod();\n\
-    \                }\n\n                return (*this);\n        }\n\n        mint&\
-    \ operator*=(const mint& r) {\n                v = mr.mult(v, r.v);\n        \
-    \        return (*this);\n        }\n\n        mint operator+(const mint& r) {\
-    \ return mint(*this) += r; }\n        mint operator-(const mint& r) { return mint(*this)\
-    \ -= r; }\n        mint operator*(const mint& r) { return mint(*this) *= r; }\n\
-    \n        mint& operator=(const T& v_) {\n                (*this) = mint(v_);\n\
-    \                return (*this);\n        }\n\n        friend ostream& operator<<(ostream&\
-    \ os, const mint& mt) {\n                os << mt.val();\n                return\
-    \ os;\n        }\n        friend istream& operator>>(istream& is, mint& mt) {\n\
-    \                T v_;\n                is >> v_;\n                mt = v_;\n\
-    \                return is;\n        }\n        template <typename P> mint pow(P\
-    \ e) const {\n                assert(e >= 0);\n                mint res(1), base(*this);\n\
-    \n                while (e) {\n                        if (e & 1) {\n        \
-    \                        res *= base;\n                        }\n           \
-    \             e >>= 1;\n                        base *= base;\n              \
-    \  }\n                return res;\n        }\n        mint inv() const { return\
-    \ pow(mod - 2); }\n\n        mint& operator/=(const mint& r) { return (*this)\
-    \ *= r.inv(); }\n        mint operator/(const mint& r) const { return mint(*this)\
-    \ *= r.inv(); }\n        mint& operator/=(T r) { return (*this) /= mint(r); }\n\
-    \        friend mint operator/(const mint& l, T r) {\n                return mint(l)\
-    \ /= r;\n        }\n        friend mint operator/(T l, const mint& r) {\n    \
-    \            return mint(l) /= r;\n        }\n};\n\n};  // namespace library\n\
-    \ntemplate <typename T, typename LargeT, int id>\nT library::dynamic_modint<T,\
-    \ LargeT, id>::mod;\ntemplate <typename T, typename LargeT, int id>\nlibrary::internal::MontgomeryReduction<T,\
+    \ LargeT,id>;\n        mint& operator+=(const mint& r) {\n                v +=\
+    \ r.v;\n                if (v >= mr.get_mod()) {\n                        v -=\
+    \ mr.get_mod();\n                }\n\n                return (*this);\n      \
+    \  }\n\n        mint& operator-=(const mint& r) {\n                v += mr.get_mod()\
+    \ - r.v;\n                if (v >= mr.get_mod) {\n                        v -=\
+    \ mr.get_mod();\n                }\n\n                return (*this);\n      \
+    \  }\n\n        mint& operator*=(const mint& r) {\n                v = mr.mult(v,\
+    \ r.v);\n                return (*this);\n        }\n\n        mint operator+(const\
+    \ mint& r) { return mint(*this) += r; }\n        mint operator-(const mint& r)\
+    \ { return mint(*this) -= r; }\n        mint operator*(const mint& r) { return\
+    \ mint(*this) *= r; }\n\n        mint& operator=(const T& v_) {\n            \
+    \    (*this) = mint(v_);\n                return (*this);\n        }\n\n     \
+    \   friend std::ostream& operator<<(ostream& os, const mint& mt) {\n         \
+    \       os << mt.val();\n                return os;\n        }\n        friend\
+    \ std::istream& operator>>(istream& is, mint& mt) {\n                T v_;\n \
+    \               is >> v_;\n                mt = v_;\n                return is;\n\
+    \        }\n        template <typename P> mint pow(P e) const {\n            \
+    \    assert(e >= 0);\n                mint res(1), base(*this);\n\n          \
+    \      while (e) {\n                        if (e & 1) {\n                   \
+    \             res *= base;\n                        }\n                      \
+    \  e >>= 1;\n                        base *= base;\n                }\n      \
+    \          return res;\n        }\n        mint inv() const { return pow(mod -\
+    \ 2); }\n\n        mint& operator/=(const mint& r) { return (*this) *= r.inv();\
+    \ }\n        mint operator/(const mint& r) const { return mint(*this) *= r.inv();\
+    \ }\n        mint& operator/=(T r) { return (*this) /= mint(r); }\n        friend\
+    \ mint operator/(const mint& l, T r) {\n                return mint(l) /= r;\n\
+    \        }\n        friend mint operator/(T l, const mint& r) {\n            \
+    \    return mint(l) /= r;\n        }\n};\n\n};  // namespace library\n\ntemplate\
+    \ <typename T, typename LargeT, int id>\nT library::dynamic_modint<T, LargeT,\
+    \ id>::mod;\ntemplate <typename T, typename LargeT, int id>\nlibrary::internal::MontgomeryReduction<T,\
     \ LargeT>\n    library::dynamic_modint<T, LargeT, id>::mr;\n\n///@brief dynamic\
     \ modint(\u52D5\u7684modint)\n///@docs docs/math/dynamic_modint.md\n#line 3 \"\
     math/miller.hpp\"\nnamespace library {\n    namespace miller {\n        using\
@@ -173,7 +174,7 @@ data:
     \ bases_ll, 7);\n            }\n        }\n    };\n};\n///@brief MillerRabin\u306E\
     \u7D20\u6570\u5224\u5B9A\n#line 1 \"math/gcd.hpp\"\n#include <tuple>\nnamespace\
     \ library {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) {\n    assert(a\
-    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = min(__builtin_ctzll(a),\
+    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
     \    while (a != b) {\n        if (a == 0 || b == 0) {\n            return a +\
     \ b;\n        }\n        if (a > b) {\n            a -= b;\n            a >>=\
@@ -188,10 +189,10 @@ data:
     \ library {\nnamespace rho {\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
     using u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate <typename mint> \nu64\
     \ find_factor(u64 n) {\n    static u64 v = 20001;   //rng\n    \n    if (~n &\
-    \ 1uL) {\n        return 2;\n    }\n    if (prime::miller::is_prime(n)) {\n  \
-    \      return n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
+    \ 1uL) {\n        return 2;\n    }\n    if (library::miller::is_prime(n)) {\n\
+    \        return n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
     \    }\n    while (1) {\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n  \
-    \      u64 c = v;\n        auto f = [&](mint x) -> mint { return x.pow(2) + c;\
+    \      mint c(v);\n        auto f = [&](mint x) -> mint { return x.pow(2) + c;\
     \ };\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n        mint x = v;\n\
     \        mint y = f(x);\n        u64 d = 1;\n        while (d == 1) {\n      \
     \      d = _gcd<long long>(abs((long long)x.val() - (long long)y.val()),\n   \
@@ -200,7 +201,7 @@ data:
     \    }\n    return -1;  \n}\ntemplate<typename mint>\nstd::vector<u64> rho_fact(u64\
     \ n) {\n    if (n < 2) {\n        return {};\n    }\n    if (library::miller::is_prime(n))\
     \ {\n        return { n };\n    }\n    std::vector<u64> v;\n    std::vector<u64>\
-    \ st{n};\n    while (st.size()) {\n        u64& m = st.back();\n        if (prime::miller::is_prime(m))\
+    \ st{n};\n    while (st.size()) {\n        u64& m = st.back();\n        if (library::miller::is_prime(m))\
     \ {\n            v.emplace_back(m);\n            st.pop_back();\n        }else\
     \ {\n            u64 d = find_factor<mint>(m);\n            m /= d;\n        \
     \    st.emplace_back(d);\n        }\n    }\n    return v;\n}\nstd::vector<u64>\
@@ -219,10 +220,10 @@ data:
     (Pollard Rho\u6CD5)\nnamespace library {\nnamespace rho {\nusing i128 = __int128_t;\n\
     using u128 = __uint128_t;\nusing u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate\
     \ <typename mint> \nu64 find_factor(u64 n) {\n    static u64 v = 20001;   //rng\n\
-    \    \n    if (~n & 1uL) {\n        return 2;\n    }\n    if (prime::miller::is_prime(n))\
+    \    \n    if (~n & 1uL) {\n        return 2;\n    }\n    if (library::miller::is_prime(n))\
     \ {\n        return n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
     \    }\n    while (1) {\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n  \
-    \      u64 c = v;\n        auto f = [&](mint x) -> mint { return x.pow(2) + c;\
+    \      mint c(v);\n        auto f = [&](mint x) -> mint { return x.pow(2) + c;\
     \ };\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n        mint x = v;\n\
     \        mint y = f(x);\n        u64 d = 1;\n        while (d == 1) {\n      \
     \      d = _gcd<long long>(abs((long long)x.val() - (long long)y.val()),\n   \
@@ -231,7 +232,7 @@ data:
     \    }\n    return -1;  \n}\ntemplate<typename mint>\nstd::vector<u64> rho_fact(u64\
     \ n) {\n    if (n < 2) {\n        return {};\n    }\n    if (library::miller::is_prime(n))\
     \ {\n        return { n };\n    }\n    std::vector<u64> v;\n    std::vector<u64>\
-    \ st{n};\n    while (st.size()) {\n        u64& m = st.back();\n        if (prime::miller::is_prime(m))\
+    \ st{n};\n    while (st.size()) {\n        u64& m = st.back();\n        if (library::miller::is_prime(m))\
     \ {\n            v.emplace_back(m);\n            st.pop_back();\n        }else\
     \ {\n            u64 d = find_factor<mint>(m);\n            m /= d;\n        \
     \    st.emplace_back(d);\n        }\n    }\n    return v;\n}\nstd::vector<u64>\
@@ -256,8 +257,8 @@ data:
   requiredBy:
   - math/phi_function.hpp
   - math/primitive_root.hpp
-  timestamp: '2023-04-06 18:29:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-04-06 20:41:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp

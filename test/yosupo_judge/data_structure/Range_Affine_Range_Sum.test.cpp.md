@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/lazy_segtree.hpp
     title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
       \u30E1\u30F3\u30C8\u6728)"
   - icon: ':question:'
     path: math/gcd.hpp
     title: math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   - icon: ':question:'
@@ -16,9 +16,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -72,7 +72,7 @@ data:
     \n\n/// @docs docs/data-structure/lazy_segtree.md\n#line 2 \"math/gcd.hpp\"\n\
     namespace library {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) {\n\
     \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
-    \ d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
+    \ d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
     \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (a == 0 || b ==\
     \ 0) {\n            return a + b;\n        }\n        if (a > b) {\n         \
     \   a -= b;\n            a >>= __builtin_ctzll(a);\n        }else{\n         \
@@ -81,7 +81,7 @@ data:
     \ T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T\
     \ q = a / b;\n        std::tie(a, b) = std::make_pair(b, a % b);\n        std::tie(x,\
     \ nx) = std::make_pair(nx, x - nx * q);\n        std::tie(y, ny) = std::make_pair(ny,\
-    \ y - ny * q);\n    }\n    return a;\n}\n\n};  // namespace library\n#line 2 \"\
+    \ y - ny * q);\n    }\n    return a;\n}\n\n};  // namespace library\n#line 4 \"\
     math/static_modint.hpp\"\n\nnamespace library{\n    \n///@brief static modint(\u9759\
     \u7684modint)\ntemplate<__uint64_t mod>\nclass static_modint {\nprivate:\n\tusing\
     \ mint = static_modint<mod>;\n\tusing i64 = long long;\n\tusing u64 = unsigned\
@@ -120,52 +120,54 @@ data:
     \ mint&r)const{\n\t\treturn mint(*this) *= r.inv();\n\t}\n\tconstexpr friend mint\
     \ operator/(const mint& l, const i64& r) {\n\t\treturn mint(l) /= mint(r);\n\t\
     }\n\tconstexpr friend mint operator/(const i64& l, const mint& r) {\n\t\treturn\
-    \ mint(l) /= mint(r);\n\t}\n\n\t//iostream\n\tconstexpr friend ostream& operator<<(ostream&\
-    \ os, const mint& mt) {\n\t\tos << mt.val();\n\t\treturn os;\n\t}\n\tconstexpr\
-    \ friend istream& operator>>(istream& is, mint& mt) {\n\t\ti64 v_;\n\t\tis >>\
-    \ v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n};\n\n\n///@brief static modint(32bit\
-    \ ver)\ntemplate<__uint32_t mod>\nclass static_modint32 {\nprivate:\n\tusing mint\
-    \ = static_modint32<mod>;\n\tusing i32 = __int32_t;\n\tusing u32 = __uint32_t;\n\
-    \tusing i64 = __int64_t;\n\tusing u64 = __uint64_t;\n\n\tu32 v;\n\tinline u32\
-    \ normalize(i64 v_) const {\n\t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\
-    \t\t}\n\t\treturn v_;\n\t}\npublic:\n\tconstexpr static_modint32() :v(0) {}\n\t\
-    constexpr static_modint32(const i64& v_) :v(normalize(v_)) { }\n\n\t//operator\n\
-    \tconstexpr u64 val() const {\n\t\treturn (u64)v;\n\t}\n\tconstexpr mint& operator+=(const\
-    \ mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t\
-    }\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const mint& rhs) {\n\
-    \t\tv += mod - rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn\
-    \ (*this);\n\t}\n\tconstexpr mint& operator*=(const mint& rhs) {\n\t\tv = (u64)v\
-    \ * rhs.val() % mod;\n\t\treturn (*this);\n\t}\n\n\tconstexpr mint operator+(const\
-    \ mint& r) const {\n\t\treturn mint(*this) += r;\n\t}\n\tconstexpr mint operator-(const\
-    \ mint& r) const {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint operator*(const\
-    \ mint& r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\tconstexpr mint& operator+=(const\
-    \ i64& rhs) {\n\t\t(*this) += mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr\
-    \ mint& operator-=(const i64& rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\
-    \t}\n\tconstexpr mint& operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\
-    \t\treturn (*this);\n\t}\n\tconstexpr friend mint operator+(const i64& l, const\
-    \ mint& r) {\n\t\treturn mint(l) += r;\n\t}\n\tconstexpr friend mint operator-(const\
-    \ i64& l, const mint& r) {\n\t\treturn mint(l) -= r;\n\t}\n\tconstexpr friend\
-    \ mint operator*(const i64& l, const mint& r) {\n\t\treturn mint(l) *= r;\n\t\
-    }\n\n\tconstexpr mint operator+(const i64& r) {\n\t\treturn mint(*this) += r;\n\
-    \t}\n\tconstexpr mint operator-(const i64& r) {\n\t\treturn mint(*this) -= r;\n\
-    \t}\n\tconstexpr mint operator*(const i64& r) {\n\t\treturn mint(*this) *= r;\n\
-    \t}\n\n\n\tconstexpr mint& operator=(const i64& r) {\n\t\treturn (*this) = mint(r);\n\
-    \t}\n\n\tconstexpr bool operator==(const mint& r) const {\n\t\treturn (*this).val()\
-    \ == r.val();\n\t}\n\tconstexpr mint pow(u64 e) const {\n\t\tmint ans(1), base(*this);\n\
-    \t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans *= base;\n\t\t\t}\n\t\t\tbase\
-    \ *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tconstexpr mint inv()\
+    \ mint(l) /= mint(r);\n\t}\n\n\t//istd::ostream\n\tconstexpr friend std::ostream&\
+    \ operator<<(std::ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\t\treturn\
+    \ os;\n\t}\n\tconstexpr friend std::istream& operator>>(std::istream& is, mint&\
+    \ mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n};\n\n\
+    \n///@brief static modint(32bit ver)\ntemplate<__uint32_t mod>\nclass static_modint32\
+    \ {\nprivate:\n\tusing mint = static_modint32<mod>;\n\tusing i32 = __int32_t;\n\
+    \tusing u32 = __uint32_t;\n\tusing i64 = __int64_t;\n\tusing u64 = __uint64_t;\n\
+    \n\tu32 v;\n\tinline u32 normalize(i64 v_) const {\n\t\tv_ %= mod;\n\t\tif (v_\
+    \ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\tconstexpr static_modint32()\
+    \ :v(0) {}\n\tconstexpr static_modint32(const i64& v_) :v(normalize(v_)) { }\n\
+    \n\t//operator\n\tconstexpr u64 val() const {\n\t\treturn (u64)v;\n\t}\n\tconstexpr\
+    \ mint& operator+=(const mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod)\
+    \ {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const\
+    \ mint& rhs) {\n\t\tv += mod - rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\
+    \t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator*=(const mint& rhs)\
+    \ {\n\t\tv = (u64)v * rhs.val() % mod;\n\t\treturn (*this);\n\t}\n\n\tconstexpr\
+    \ mint operator+(const mint& r) const {\n\t\treturn mint(*this) += r;\n\t}\n\t\
+    constexpr mint operator-(const mint& r) const {\n\t\treturn mint(*this) -= r;\n\
+    \t}\n\tconstexpr mint operator*(const mint& r) const {\n\t\treturn mint(*this)\
+    \ *= r;\n\t}\n\n\tconstexpr mint& operator+=(const i64& rhs) {\n\t\t(*this) +=\
+    \ mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const i64&\
+    \ rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr mint&\
+    \ operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\t\treturn (*this);\n\
+    \t}\n\tconstexpr friend mint operator+(const i64& l, const mint& r) {\n\t\treturn\
+    \ mint(l) += r;\n\t}\n\tconstexpr friend mint operator-(const i64& l, const mint&\
+    \ r) {\n\t\treturn mint(l) -= r;\n\t}\n\tconstexpr friend mint operator*(const\
+    \ i64& l, const mint& r) {\n\t\treturn mint(l) *= r;\n\t}\n\n\tconstexpr mint\
+    \ operator+(const i64& r) {\n\t\treturn mint(*this) += r;\n\t}\n\tconstexpr mint\
+    \ operator-(const i64& r) {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint\
+    \ operator*(const i64& r) {\n\t\treturn mint(*this) *= r;\n\t}\n\n\n\tconstexpr\
+    \ mint& operator=(const i64& r) {\n\t\treturn (*this) = mint(r);\n\t}\n\n\tconstexpr\
+    \ bool operator==(const mint& r) const {\n\t\treturn (*this).val() == r.val();\n\
+    \t}\n\tconstexpr mint pow(u64 e) const {\n\t\tmint ans(1), base(*this);\n\t\t\
+    while (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans *= base;\n\t\t\t}\n\t\t\tbase *=\
+    \ base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tconstexpr mint inv()\
     \ const {\n        ll x, y;\n        auto d = ext_gcd((ll)mod, (ll)v, x, y);\n\
     \        assert(d == 1);\n        return mint(y);\n    }\n\n\tconstexpr mint&\
     \ operator/=(const mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n    constexpr\
     \ mint operator/(const mint& r) const { return mint(*this) *= r.inv(); }\n   \
     \ constexpr friend mint operator/(const mint& l, const i64& r) {\n\t\treturn mint(l)\
     \ /= mint(r);\n\t}\n\tconstexpr friend mint operator/(const i64& l, const mint&\
-    \ r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\n\t//iostream\n\tconstexpr friend\
-    \ ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\t\t\
-    return os;\n\t}\n\tconstexpr friend istream& operator>>(istream& is, mint& mt)\
-    \ {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\n};\n\n};\
-    \  // namespace library\n\n///@docs docs/math/static_modint.md\n#line 5 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace library;\nusing mint = static_modint32<MOD2>;\n\
+    \ r) {\n\t\treturn mint(l) /= mint(r);\n\t}\n\n\n\t//istd::ostream\n\tconstexpr\
+    \ friend std::ostream& operator<<(std::ostream& os, const mint& mt) {\n\t\tos\
+    \ << mt.val();\n\t\treturn os;\n\t}\n\tconstexpr friend std::istream& operator>>(std::istream&\
+    \ is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t\
+    }\n\n};\n\n};  // namespace library\n\n///@docs docs/math/static_modint.md\n#line\
+    \ 5 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\n\nusing\
+    \ namespace std;\nusing namespace library;\nusing mint = static_modint32<MOD2>;\n\
     struct S {\n    mint s;\n    int len;\n};\nS op(S a, S b) { return S{a.s + b.s,\
     \ a.len + b.len}; }\nS e() { return S{0, 0}; }\nusing Affine = pair<mint, mint>;\n\
     Affine composition(Affine g, Affine f) {\n\t//f(g)\n\t//a(cx+d)+b\n\tauto a =\
@@ -207,8 +209,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 18:29:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-06 20:41:27+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
 layout: document

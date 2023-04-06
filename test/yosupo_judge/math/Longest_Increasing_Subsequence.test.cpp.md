@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/longest_increasing_subsequence
@@ -35,24 +35,24 @@ data:
     \ dat;\npublic:\n\tsegtree() :segtree(0) {}\n\tsegtree(int n) : segtree(std::vector<S>(n,\
     \ e())) {}\n\tsegtree(const std::vector<S>& vec) : n((int)vec.size()) {\n\t\t\
     sz = 1, lg = 0;\n\t\twhile (sz <= n) {\n\t\t\tsz <<= 1;\n\t\t\tlg++;\n\t\t}\n\n\
-    \t\tdat = vector<S>(sz << 1, e());\n\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\t\
-    set(i, vec[i]);\n\t\t}\n\t\tbuild();\n\t}\n\n\tinline void set(const int p, const\
-    \ S& v) {\n\t\tdat[sz + p] = v;\n\t}\n\tinline void build() {\n\t\tfor (int i\
-    \ = sz - 1; i > 0; i--) {\n\t\t\tdat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);\n\
-    \t\t}\n\t}\n\tS operator[](const int p) const { return dat[sz + p]; }\n\n\tvoid\
-    \ update(int p, const S& v) {\n\t\tp += sz;\n\t\tdat[p] = v;\n\t\twhile (p >>=\
-    \ 1) {\n\t\t\tdat[p] = op(dat[(p << 1)], dat[(p << 1) ^ 1]);\n\t\t}\n\t}\n\n\t\
-    S prod(int l, int r) const {\n\t\tif (l == 0 && r == n) {\n\t\t\treturn dat[1];\n\
-    \t\t}\n\t\tl += sz, r += sz;\n\t\tS sml = e(), smr = e();\n\t\twhile (l != r)\
-    \ {\n\t\t\tif (l & 1)sml = op(sml, dat[l++]);\n\t\t\tif (r & 1)smr = op(dat[--r],\
-    \ smr);\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t\treturn op(sml, smr);\n\t}\n\tinline\
-    \ void apply(int p, const S& v) {\n\t\tupdate(p, op(dat[sz + p], v));\n\t}\n};\n\
-    };  // namespace library\n\n\n/// @docs docs/data-structure/segtree.md\n#line\
-    \ 4 \"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp\"\n\nusing\
-    \ namespace std;\nusing namespace library;\nusing S = P;\nS op(S x, S y) { return\
-    \ max(x,y); }\nS e() { return P(0,0); }\nint main() {\n    int n;\n    scanf(\"\
-    %d\", &n);\n    vector<int> a(n);\n    for (auto& aa : a) {\n        scanf(\"\
-    %d\", &aa);\n    }\n    {\n        vector<int> tmp = a;\n        sort(all(tmp));\n\
+    \t\tdat = std::vector<S>(sz << 1, e());\n\n\t\tfor (int i = 0; i < n; i++) {\n\
+    \t\t\tset(i, vec[i]);\n\t\t}\n\t\tbuild();\n\t}\n\n\tinline void set(const int\
+    \ p, const S& v) {\n\t\tdat[sz + p] = v;\n\t}\n\tinline void build() {\n\t\tfor\
+    \ (int i = sz - 1; i > 0; i--) {\n\t\t\tdat[i] = op(dat[i << 1], dat[(i << 1)\
+    \ ^ 1]);\n\t\t}\n\t}\n\tS operator[](const int p) const { return dat[sz + p];\
+    \ }\n\n\tvoid update(int p, const S& v) {\n\t\tp += sz;\n\t\tdat[p] = v;\n\t\t\
+    while (p >>= 1) {\n\t\t\tdat[p] = op(dat[(p << 1)], dat[(p << 1) ^ 1]);\n\t\t\
+    }\n\t}\n\n\tS prod(int l, int r) const {\n\t\tif (l == 0 && r == n) {\n\t\t\t\
+    return dat[1];\n\t\t}\n\t\tl += sz, r += sz;\n\t\tS sml = e(), smr = e();\n\t\t\
+    while (l != r) {\n\t\t\tif (l & 1)sml = op(sml, dat[l++]);\n\t\t\tif (r & 1)smr\
+    \ = op(dat[--r], smr);\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t\treturn op(sml, smr);\n\
+    \t}\n\tinline void apply(int p, const S& v) {\n\t\tupdate(p, op(dat[sz + p], v));\n\
+    \t}\n};\n};  // namespace library\n\n\n/// @docs docs/data-structure/segtree.md\n\
+    #line 4 \"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp\"\n\n\
+    using namespace std;\nusing namespace library;\nusing S = P;\nS op(S x, S y) {\
+    \ return max(x,y); }\nS e() { return P(0,0); }\nint main() {\n    int n;\n   \
+    \ scanf(\"%d\", &n);\n    vector<int> a(n);\n    for (auto& aa : a) {\n      \
+    \  scanf(\"%d\", &aa);\n    }\n    {\n        vector<int> tmp = a;\n        sort(all(tmp));\n\
     \        tmp.erase(unique(all(tmp)), tmp.end());\n        for (auto& aa : a) {\n\
     \            aa = lower_bound(all(tmp), aa) - tmp.begin();\n        }\n    }\n\
     \    vector<int> prv(n, -1);\n    iota(all(prv), 0);\n    segtree<S, op, e> dp(n\
@@ -85,8 +85,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 18:29:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-06 20:41:27+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
 layout: document

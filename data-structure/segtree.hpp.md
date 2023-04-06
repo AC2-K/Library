@@ -6,21 +6,21 @@ data:
   - icon: ':x:'
     path: test/AOJ/DSL/2_B.test.cpp
     title: test/AOJ/DSL/2_B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_Range_Sum_segtree.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Sum_segtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
     title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/segtree.md
     document_title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
@@ -32,9 +32,9 @@ data:
     class segtree {\n\tint lg, sz, n;\n\tstd::vector<S> dat;\npublic:\n\tsegtree()\
     \ :segtree(0) {}\n\tsegtree(int n) : segtree(std::vector<S>(n, e())) {}\n\tsegtree(const\
     \ std::vector<S>& vec) : n((int)vec.size()) {\n\t\tsz = 1, lg = 0;\n\t\twhile\
-    \ (sz <= n) {\n\t\t\tsz <<= 1;\n\t\t\tlg++;\n\t\t}\n\n\t\tdat = vector<S>(sz <<\
-    \ 1, e());\n\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\tset(i, vec[i]);\n\t\t}\n\
-    \t\tbuild();\n\t}\n\n\tinline void set(const int p, const S& v) {\n\t\tdat[sz\
+    \ (sz <= n) {\n\t\t\tsz <<= 1;\n\t\t\tlg++;\n\t\t}\n\n\t\tdat = std::vector<S>(sz\
+    \ << 1, e());\n\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\tset(i, vec[i]);\n\t\t\
+    }\n\t\tbuild();\n\t}\n\n\tinline void set(const int p, const S& v) {\n\t\tdat[sz\
     \ + p] = v;\n\t}\n\tinline void build() {\n\t\tfor (int i = sz - 1; i > 0; i--)\
     \ {\n\t\t\tdat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);\n\t\t}\n\t}\n\tS operator[](const\
     \ int p) const { return dat[sz + p]; }\n\n\tvoid update(int p, const S& v) {\n\
@@ -53,25 +53,25 @@ data:
     \ dat;\npublic:\n\tsegtree() :segtree(0) {}\n\tsegtree(int n) : segtree(std::vector<S>(n,\
     \ e())) {}\n\tsegtree(const std::vector<S>& vec) : n((int)vec.size()) {\n\t\t\
     sz = 1, lg = 0;\n\t\twhile (sz <= n) {\n\t\t\tsz <<= 1;\n\t\t\tlg++;\n\t\t}\n\n\
-    \t\tdat = vector<S>(sz << 1, e());\n\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\t\
-    set(i, vec[i]);\n\t\t}\n\t\tbuild();\n\t}\n\n\tinline void set(const int p, const\
-    \ S& v) {\n\t\tdat[sz + p] = v;\n\t}\n\tinline void build() {\n\t\tfor (int i\
-    \ = sz - 1; i > 0; i--) {\n\t\t\tdat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);\n\
-    \t\t}\n\t}\n\tS operator[](const int p) const { return dat[sz + p]; }\n\n\tvoid\
-    \ update(int p, const S& v) {\n\t\tp += sz;\n\t\tdat[p] = v;\n\t\twhile (p >>=\
-    \ 1) {\n\t\t\tdat[p] = op(dat[(p << 1)], dat[(p << 1) ^ 1]);\n\t\t}\n\t}\n\n\t\
-    S prod(int l, int r) const {\n\t\tif (l == 0 && r == n) {\n\t\t\treturn dat[1];\n\
-    \t\t}\n\t\tl += sz, r += sz;\n\t\tS sml = e(), smr = e();\n\t\twhile (l != r)\
-    \ {\n\t\t\tif (l & 1)sml = op(sml, dat[l++]);\n\t\t\tif (r & 1)smr = op(dat[--r],\
-    \ smr);\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t\treturn op(sml, smr);\n\t}\n\tinline\
-    \ void apply(int p, const S& v) {\n\t\tupdate(p, op(dat[sz + p], v));\n\t}\n};\n\
-    };  // namespace library\n\n\n/// @docs docs/data-structure/segtree.md"
+    \t\tdat = std::vector<S>(sz << 1, e());\n\n\t\tfor (int i = 0; i < n; i++) {\n\
+    \t\t\tset(i, vec[i]);\n\t\t}\n\t\tbuild();\n\t}\n\n\tinline void set(const int\
+    \ p, const S& v) {\n\t\tdat[sz + p] = v;\n\t}\n\tinline void build() {\n\t\tfor\
+    \ (int i = sz - 1; i > 0; i--) {\n\t\t\tdat[i] = op(dat[i << 1], dat[(i << 1)\
+    \ ^ 1]);\n\t\t}\n\t}\n\tS operator[](const int p) const { return dat[sz + p];\
+    \ }\n\n\tvoid update(int p, const S& v) {\n\t\tp += sz;\n\t\tdat[p] = v;\n\t\t\
+    while (p >>= 1) {\n\t\t\tdat[p] = op(dat[(p << 1)], dat[(p << 1) ^ 1]);\n\t\t\
+    }\n\t}\n\n\tS prod(int l, int r) const {\n\t\tif (l == 0 && r == n) {\n\t\t\t\
+    return dat[1];\n\t\t}\n\t\tl += sz, r += sz;\n\t\tS sml = e(), smr = e();\n\t\t\
+    while (l != r) {\n\t\t\tif (l & 1)sml = op(sml, dat[l++]);\n\t\t\tif (r & 1)smr\
+    \ = op(dat[--r], smr);\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t\treturn op(sml, smr);\n\
+    \t}\n\tinline void apply(int p, const S& v) {\n\t\tupdate(p, op(dat[sz + p], v));\n\
+    \t}\n};\n};  // namespace library\n\n\n/// @docs docs/data-structure/segtree.md"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/segtree.hpp
   requiredBy: []
-  timestamp: '2023-04-06 18:29:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-04-06 20:41:27+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/DSL/2_B.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp

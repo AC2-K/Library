@@ -8,35 +8,35 @@ data:
   - icon: ':x:'
     path: math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "$\\phi$ \u95A2\u6570"
   - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   - icon: ':x:'
     path: string/rolling_hash.hpp
     title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_E.test.cpp
     title: test/AOJ/NTL/1_E.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':x:'
@@ -64,7 +64,7 @@ data:
     links: []
   bundledCode: "#line 1 \"math/gcd.hpp\"\n#include <tuple>\nnamespace library {\n\
     template <typename T> constexpr inline T _gcd(T a, T b) {\n    assert(a >= 0 &&\
-    \ b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = min(__builtin_ctzll(a),\
+    \ b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
     \    while (a != b) {\n        if (a == 0 || b == 0) {\n            return a +\
     \ b;\n        }\n        if (a > b) {\n            a -= b;\n            a >>=\
@@ -77,8 +77,8 @@ data:
     \  }\n    return a;\n}\n\n};  // namespace library\n"
   code: "#include <tuple>\nnamespace library {\ntemplate <typename T> constexpr inline\
     \ T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0)\
-    \ return a + b;\n    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n  \
-    \  a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \ return a + b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
     \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
     \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
     \        }else{\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
@@ -99,7 +99,7 @@ data:
   - math/phi_function.hpp
   - math/primitive_root.hpp
   - math/static_modint.hpp
-  timestamp: '2023-04-06 18:29:27+09:00'
+  timestamp: '2023-04-06 20:41:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

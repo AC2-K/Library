@@ -4,13 +4,13 @@ data:
   - icon: ':question:'
     path: data-structure/hash_map.hpp
     title: HashMap
-  - icon: ':x:'
+  - icon: ':question:'
     path: internal/barrett.hpp
     title: barrett reduction
-  - icon: ':x:'
+  - icon: ':question:'
     path: internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
   - icon: ':question:'
@@ -54,7 +54,7 @@ data:
     \ 1;\n    }\n    return ans;\n}\n\n};  // namespace library\n#line 2 \"math/gcd.hpp\"\
     \nnamespace library {\ntemplate <typename T> constexpr inline T _gcd(T a, T b)\
     \ {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n\
-    \    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
+    \    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
     \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (a == 0 || b ==\
     \ 0) {\n            return a + b;\n        }\n        if (a > b) {\n         \
     \   a -= b;\n            a >>= __builtin_ctzll(a);\n        }else{\n         \
@@ -124,7 +124,7 @@ data:
     \ :v(0) { assert(mod); }\t//mod\u304C\u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\
     \u5FC5\u8981\u304C\u3042\u308B\n\texplicit constexpr barrett_modint(i64 v_) :v(brt.reduce(v_))\
     \ { assert(mod); }\t\n\n\tu32 val() const { return v; }\n    static u32 get_mod()\
-    \ { return mod; }\n    using mint = barrett_modint;\n\n\t//operators\n\tconstexpr\
+    \ { return mod; }\n    using mint = barrett_modint<id>;\n\n\t//operators\n\tconstexpr\
     \ mint& operator=(i64 r) {\n\t\tv = brt.reduce(r); \n\t\treturn (*this);\n\t}\n\
     \tconstexpr mint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod)\
     \ {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const\
@@ -142,15 +142,15 @@ data:
     \ }\n\tfriend mint operator-(const mint& l, i64 r) { return mint(l) -= r; }\n\t\
     friend mint operator*(i64 l, const mint& r) { return mint(l) *= r; }\n\tfriend\
     \ mint operator*(const mint& l, i64 r) { return mint(l) += r; }\n\n\n\tfriend\
-    \ ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\t\t\
-    return os;\n\t}\n\tfriend istream& operator>>(istream& is, mint& mt) {\n\t\ti64\
-    \ v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\tconstexpr mint pow(u64\
-    \ e) const {\n\t\tmint res(1), base(*this);\n\n\t\twhile (e) {\n\t\t\tif (e &\
-    \ 1) {\n\t\t\t\tres *= base;\n\t\t\t}\n\t\t\te >>= 1;\n\t\t\tbase *= base;\n\t\
-    \t}\n\t\treturn res;\n\t}\n\tconstexpr mint inv() const {\n\t\treturn pow(mod\
-    \ - 2);\n\t}\n\n\tmint& operator/=(const mint& r) { return (*this) *= r.inv();\
-    \ }\n\tmint operator/(const mint& r) const { return mint(*this) *= r.inv(); }\n\
-    \tmint& operator/=(i64 r) { return (*this) /= mint(r); }\n\tfriend mint operator/(const\
+    \ std::ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
+    \t\treturn os;\n\t}\n\tfriend std::istream& operator>>(istream& is, mint& mt)\
+    \ {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\tconstexpr\
+    \ mint pow(u64 e) const {\n\t\tmint res(1), base(*this);\n\n\t\twhile (e) {\n\t\
+    \t\tif (e & 1) {\n\t\t\t\tres *= base;\n\t\t\t}\n\t\t\te >>= 1;\n\t\t\tbase *=\
+    \ base;\n\t\t}\n\t\treturn res;\n\t}\n\tconstexpr mint inv() const {\n\t\treturn\
+    \ pow(mod - 2);\n\t}\n\n\tmint& operator/=(const mint& r) { return (*this) *=\
+    \ r.inv(); }\n\tmint operator/(const mint& r) const { return mint(*this) *= r.inv();\
+    \ }\n\tmint& operator/=(i64 r) { return (*this) /= mint(r); }\n\tfriend mint operator/(const\
     \ mint& l, i64 r) { return mint(l) /= r; }\n\tfriend mint operator/(i64 l, const\
     \ mint& r) { return mint(l) /= r; }\n};\n};  // namespace library\ntemplate <int\
     \ id> typename library::barrett_modint<id>::u32 library::barrett_modint<id>::mod;\n\
@@ -163,35 +163,36 @@ data:
     \       T v;\n      public:\n        dynamic_modint(T v_ = 0) {\n            \
     \    assert(mod);\n                v = mr.generate(v_);\n        }\n        T\
     \ val() const { return mr.reduce(v); }\n\n        using mint = dynamic_modint<T,\
-    \ LargeT>;\n        mint& operator+=(const mint& r) {\n                v += r.v;\n\
-    \                if (v >= mr.get_mod()) {\n                        v -= mr.get_mod();\n\
-    \                }\n\n                return (*this);\n        }\n\n        mint&\
-    \ operator-=(const mint& r) {\n                v += mr.get_mod() - r.v;\n    \
-    \            if (v >= mr.get_mod) {\n                        v -= mr.get_mod();\n\
-    \                }\n\n                return (*this);\n        }\n\n        mint&\
-    \ operator*=(const mint& r) {\n                v = mr.mult(v, r.v);\n        \
-    \        return (*this);\n        }\n\n        mint operator+(const mint& r) {\
-    \ return mint(*this) += r; }\n        mint operator-(const mint& r) { return mint(*this)\
-    \ -= r; }\n        mint operator*(const mint& r) { return mint(*this) *= r; }\n\
-    \n        mint& operator=(const T& v_) {\n                (*this) = mint(v_);\n\
-    \                return (*this);\n        }\n\n        friend ostream& operator<<(ostream&\
-    \ os, const mint& mt) {\n                os << mt.val();\n                return\
-    \ os;\n        }\n        friend istream& operator>>(istream& is, mint& mt) {\n\
-    \                T v_;\n                is >> v_;\n                mt = v_;\n\
-    \                return is;\n        }\n        template <typename P> mint pow(P\
-    \ e) const {\n                assert(e >= 0);\n                mint res(1), base(*this);\n\
-    \n                while (e) {\n                        if (e & 1) {\n        \
-    \                        res *= base;\n                        }\n           \
-    \             e >>= 1;\n                        base *= base;\n              \
-    \  }\n                return res;\n        }\n        mint inv() const { return\
-    \ pow(mod - 2); }\n\n        mint& operator/=(const mint& r) { return (*this)\
-    \ *= r.inv(); }\n        mint operator/(const mint& r) const { return mint(*this)\
-    \ *= r.inv(); }\n        mint& operator/=(T r) { return (*this) /= mint(r); }\n\
-    \        friend mint operator/(const mint& l, T r) {\n                return mint(l)\
-    \ /= r;\n        }\n        friend mint operator/(T l, const mint& r) {\n    \
-    \            return mint(l) /= r;\n        }\n};\n\n};  // namespace library\n\
-    \ntemplate <typename T, typename LargeT, int id>\nT library::dynamic_modint<T,\
-    \ LargeT, id>::mod;\ntemplate <typename T, typename LargeT, int id>\nlibrary::internal::MontgomeryReduction<T,\
+    \ LargeT,id>;\n        mint& operator+=(const mint& r) {\n                v +=\
+    \ r.v;\n                if (v >= mr.get_mod()) {\n                        v -=\
+    \ mr.get_mod();\n                }\n\n                return (*this);\n      \
+    \  }\n\n        mint& operator-=(const mint& r) {\n                v += mr.get_mod()\
+    \ - r.v;\n                if (v >= mr.get_mod) {\n                        v -=\
+    \ mr.get_mod();\n                }\n\n                return (*this);\n      \
+    \  }\n\n        mint& operator*=(const mint& r) {\n                v = mr.mult(v,\
+    \ r.v);\n                return (*this);\n        }\n\n        mint operator+(const\
+    \ mint& r) { return mint(*this) += r; }\n        mint operator-(const mint& r)\
+    \ { return mint(*this) -= r; }\n        mint operator*(const mint& r) { return\
+    \ mint(*this) *= r; }\n\n        mint& operator=(const T& v_) {\n            \
+    \    (*this) = mint(v_);\n                return (*this);\n        }\n\n     \
+    \   friend std::ostream& operator<<(ostream& os, const mint& mt) {\n         \
+    \       os << mt.val();\n                return os;\n        }\n        friend\
+    \ std::istream& operator>>(istream& is, mint& mt) {\n                T v_;\n \
+    \               is >> v_;\n                mt = v_;\n                return is;\n\
+    \        }\n        template <typename P> mint pow(P e) const {\n            \
+    \    assert(e >= 0);\n                mint res(1), base(*this);\n\n          \
+    \      while (e) {\n                        if (e & 1) {\n                   \
+    \             res *= base;\n                        }\n                      \
+    \  e >>= 1;\n                        base *= base;\n                }\n      \
+    \          return res;\n        }\n        mint inv() const { return pow(mod -\
+    \ 2); }\n\n        mint& operator/=(const mint& r) { return (*this) *= r.inv();\
+    \ }\n        mint operator/(const mint& r) const { return mint(*this) *= r.inv();\
+    \ }\n        mint& operator/=(T r) { return (*this) /= mint(r); }\n        friend\
+    \ mint operator/(const mint& l, T r) {\n                return mint(l) /= r;\n\
+    \        }\n        friend mint operator/(T l, const mint& r) {\n            \
+    \    return mint(l) /= r;\n        }\n};\n\n};  // namespace library\n\ntemplate\
+    \ <typename T, typename LargeT, int id>\nT library::dynamic_modint<T, LargeT,\
+    \ id>::mod;\ntemplate <typename T, typename LargeT, int id>\nlibrary::internal::MontgomeryReduction<T,\
     \ LargeT>\n    library::dynamic_modint<T, LargeT, id>::mr;\n\n///@brief dynamic\
     \ modint(\u52D5\u7684modint)\n///@docs docs/math/dynamic_modint.md\n#line 7 \"\
     math/mod_log.hpp\"\n\nnamespace library {\nnamespace internal{\n    long long\
@@ -249,7 +250,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 18:29:27+09:00'
+  timestamp: '2023-04-06 20:41:27+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
