@@ -1,53 +1,47 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/barrett.hpp
     title: barrett reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/montgomery.hpp
     title: MontgomeryReduction
   _extendedRequiredBy:
-  - icon: ':warning:'
-    path: main.cpp
-    title: main.cpp
-  - icon: ':heavy_check_mark:'
-    path: math/DLP.hpp
-    title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/miller.hpp
     title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
+  - icon: ':x:'
+    path: math/mod_log.hpp
+    title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "phi function(\\phi \u95A2\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
-    title: test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No-3030.test.cpp
     title: test/yuki/No-3030.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/math/dynamic_modint.md
     document_title: dynamic_modint(64bit)
@@ -248,21 +242,19 @@ data:
   isVerificationFile: false
   path: math/dynamic_modint.hpp
   requiredBy:
-  - main.cpp
-  - math/DLP.hpp
+  - math/mod_log.hpp
   - math/rho.hpp
-  - math/primitive_root.hpp
-  - math/phi_function.hpp
   - math/miller.hpp
+  - math/phi_function.hpp
+  - math/primitive_root.hpp
   timestamp: '2023-04-05 12:24:40+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
-  - test/yuki/No-3030.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm_32bit.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yuki/No-3030.test.cpp
 documentation_of: math/dynamic_modint.hpp
 layout: document
 redirect_from:

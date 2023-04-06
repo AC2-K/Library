@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/hash_map.hpp
     title: HashMap
-  - icon: ':heavy_check_mark:'
-    path: math/DLP.hpp
-    title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/barrett.hpp
     title: barrett reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/gcd.hpp
     title: math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
+    path: math/mod_log.hpp
+    title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
@@ -63,37 +63,39 @@ data:
     \ q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx,\
     \ x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return\
     \ a;\n}\n#line 1 \"data-structure/hash_map.hpp\"\n/// @brief HashMap\n/// @tparam\
-    \ Key Key\u306E\u578B\n/// @tparam Val Value\u306E\u578B\n/// @brief HashMap(open\
-    \ address)\n/// @tparam Key Key\u306E\u578B\n/// @tparam Val Value\u306E\u578B\
-    \ntemplate <typename Key,\n          typename Val,\n          uint32_t n = 1 <<\
-    \ 20,\n          Val default_val = Val()\n          >\nclass hash_map {\n    using\
-    \ u32 = uint32_t;\n    using u64 = uint64_t;\n\n    bitset<n> flag;\n    Key*\
-    \ keys = new Key[n];\n    Val* vals=new Val[n];\n\n    static constexpr u32 shift\
-    \ = 64 - __lg(n);\n\n    u64 r;\n    inline u32 get_hash(const Key& k) const {\n\
-    \        return ((u64)k * r) >> shift;\n    }\n\n  public:   \n    explicit constexpr\
-    \ hash_map(){\n        r = chrono::steady_clock::now().time_since_epoch().count();\n\
+    \ Key Key\u306E\u578B\n/// @tparam Val Value\u306E\u578B\ntemplate <typename Key,\n\
+    \          typename Val,\n          uint32_t n = 1 << 20,\n          Val default_val\
+    \ = Val()\n          >\nclass hash_map {\n    using u32 = uint32_t;\n    using\
+    \ u64 = uint64_t;\n\n    u64* flag = new u64[n];\n    Key* keys = new Key[n];\n\
+    \    Val* vals = new Val[n];\n\n    static constexpr u32 shift = 64 - __lg(n);\n\
+    \n    u64 r;\n    inline u32 get_hash(const Key& k) const {\n        return ((u64)k\
+    \ * r) >> shift;\n    }\n\n    static constexpr uint8_t mod_msk = (1 << 6) - 1;\n\
+    \n  public:   \n    explicit constexpr hash_map(){\n        r = chrono::steady_clock::now().time_since_epoch().count();\n\
     \        r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const\
     \ Key& k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n        \
-    \    if (!flag.test(hash)) {\n                keys[hash] = k;\n              \
-    \  flag.set(hash);\n                return vals[hash] = default_val;\n       \
-    \     }\n\n            if (keys[hash] == k)return vals[hash];\n            hash\
-    \ = (hash + 1) & (n - 1);\n        }\n    }\n\n\n    bool exists(const Key&k)const{\n\
-    \        u32 hash = get_hash(k);\n        while (1) {\n            if (!flag.test(hash))\
-    \ return false;\n            if (keys[hash] == k) return true;\n            hash\
-    \ = (hash + 1) & (n - 1);\n        }\n    }\n};\n#line 2 \"math/barrett.hpp\"\n\
-    namespace internal {\n\t///@brief barrett reduction\n\tclass barrett {\n\t\tusing\
-    \ u32 = uint32_t;\n\t\tusing u64 = uint64_t;\n\n\t\tu64 m;\n\t\tu64 im;\n\tpublic:\n\
-    \t\texplicit barrett() = default;\n\t\texplicit barrett(u64 m_) :m(m_), im((u64)(long\
-    \ double)static_cast<u64>(-1) / m_ + 1) {}\n\n\t\tu64 get_mod() const { return\
-    \ m; }\n\t\tu64 reduce(int64_t a)const{\n        \tif (a < 0) return m - reduce(-a);\n\
-    \            u64 q = ((__uint128_t)a * im) >> 64;\n            a -= m * q;\n \
-    \           if (a >= m) a -= m;\n            return a;\n        }\n\t\tu64 mul(u64\
-    \ a, u64 b) {\n\t\t\tif (a == 0 || b == 0) {\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\
-    \tu64 z = a;\n\t\t\tz *= b;\n\t\t\tu64 x = (u64)(((__uint128_t)(z)*im) >> 64);\n\
-    \n\t\t\tu32 v = (u32)(z - x * m);\n\n\t\t\tif (v >= m)v += m;\n\t\t\treturn v;\n\
-    \t\t}\n\t};\n}\n#line 2 \"math/montgomery.hpp\"\nnamespace internal {\n    using\
-    \ u32 = uint32_t;\n    using u64 = uint64_t;\n    using i32 = int32_t;\n    using\
-    \ i64 = int64_t;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\
+    \    if (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash\
+    \ & mod_msk)))) {\n                keys[hash] = k;\n                flag[hash\
+    \ >> 6] |= static_cast<u64>(1)\n                                   << (hash &\
+    \ mod_msk);\n                return vals[hash] = default_val;\n            }\n\
+    \n            if (keys[hash] == k)return vals[hash];\n            hash = (hash\
+    \ + 1) & (n - 1);\n        }\n    }\n\n    const Val* find(const Key&k)const{\n\
+    \        u32 hash = get_hash(k);\n        while (1) {\n            if (!(flag[hash\
+    \ >> 6] &\n                  (static_cast<u64>(1) << (hash & mod_msk))))\n   \
+    \             return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
+    \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n#line 2 \"math/barrett.hpp\"\
+    \nnamespace internal {\n\t///@brief barrett reduction\n\tclass barrett {\n\t\t\
+    using u32 = uint32_t;\n\t\tusing u64 = uint64_t;\n\n\t\tu64 m;\n\t\tu64 im;\n\t\
+    public:\n\t\texplicit barrett() = default;\n\t\texplicit barrett(u64 m_) :m(m_),\
+    \ im((u64)(long double)static_cast<u64>(-1) / m_ + 1) {}\n\n\t\tu64 get_mod()\
+    \ const { return m; }\n\t\tu64 reduce(int64_t a)const{\n        \tif (a < 0) return\
+    \ m - reduce(-a);\n            u64 q = ((__uint128_t)a * im) >> 64;\n        \
+    \    a -= m * q;\n            if (a >= m) a -= m;\n            return a;\n   \
+    \     }\n\t\tu64 mul(u64 a, u64 b) {\n\t\t\tif (a == 0 || b == 0) {\n\t\t\t\t\
+    return 0;\n\t\t\t}\n\t\t\tu64 z = a;\n\t\t\tz *= b;\n\t\t\tu64 x = (u64)(((__uint128_t)(z)*im)\
+    \ >> 64);\n\n\t\t\tu32 v = (u32)(z - x * m);\n\n\t\t\tif (v >= m)v += m;\n\t\t\
+    \treturn v;\n\t\t}\n\t};\n}\n#line 2 \"math/montgomery.hpp\"\nnamespace internal\
+    \ {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n    using i32 = int32_t;\n\
+    \    using i64 = int64_t;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\
     \    /// @brief MontgomeryReduction\n    template<typename T,typename LargeT>\n\
     \    class MontgomeryReduction64 {\n        static constexpr int lg = numeric_limits<T>::digits;\n\
     \        T mod, r, r2, minv;\n        T calc_inv() {\n            T t = 0, res\
@@ -190,42 +192,51 @@ data:
     \ LargeT,int id>T dynamic_modint<T, LargeT,id>::mod;\ntemplate<typename T,typename\
     \ LargeT,int id>internal::MontgomeryReduction64<T,LargeT> dynamic_modint<T,LargeT,id>::mr;\n\
     \n\n///@brief dynamic modint(\u52D5\u7684modint)\n///@docs docs/math/dynamic_modint.md\n\
-    #line 6 \"math/DLP.hpp\"\nll dlp(uint64_t x, uint64_t y, uint64_t p) {\n    if\
-    \ (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n        if\
-    \ (y == 0) {\n            return 1;\n        }\n        else {\n            return\
-    \ -1;\n        }\n    }\n    uint32_t m = (uint32_t)sqrt(p) + 1;\n    hash_map<uint64_t,\
-    \ int> mp;\n    uint64_t xm = mod_pow<uint64_t>(x, m, p);\n    uint64_t add =\
-    \ 0, g, k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n        if\
-    \ (y == k)return add;\n        if (y % g)return -1;\n        y /= g, p /= g, add++;\n\
-    \        k = (k * (x / g)) % p;\n    }\n\n    ll pr = y;\n    for (int j = 0;\
-    \ j <= m; j++) {\n        mp[pr] = j;\n        (pr *= x) %= p;\n    }\n    pr\
-    \ = k;\n    for (int i = 1; i <= m; i++) {\n        (pr *= xm) %= p;\n       \
-    \ if (mp.exists(pr)) {\n            int j = mp[pr];\n            return m * i\
-    \ - j + add;\n        }\n    }\n    return -1;\n}\n\nll dlp32(uint32_t x, uint32_t\
-    \ y, uint32_t p) {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n  \
-    \  if (x == 0) {\n        if (y == 0) {\n            return 1;\n        }\n  \
-    \      else {\n            return -1;\n        }\n    }\n    uint32_t m = (uint32_t)ceil(sqrt(p));\n\
-    \    using mint = barrett_modint<10>;\n    if (mint::get_mod() != p) {\n     \
-    \   mint::set_mod(p);\n    }\n    uint64_t add = 0, g = 0;\n    mint k(1);\n \
-    \   while ((g = _gcd(x, p)) != 1) {\n        if (y == k.val())return add;\n  \
-    \      if (y % g)return -1;\n        y /= g, p /= g, add++;\n        k = (k.val()\
-    \ * (x / g));\n    }\n\n    hash_map<uint32_t, uint32_t, 1 << 16> mp;\n\n    mint\
-    \ xm = mint(x).pow(m);\n    mint pr = mint(y);\n    for (int j = 0; j <= m; j++)\
-    \ {\n        mp[pr.val()] = j;\n        pr *= x;\n    }\n    pr = k;\n    for\
-    \ (int i = 1; i <= m; i++) {\n        pr *= xm;\n        if (mp.exists(pr.val()))\
-    \ {\n            int j = mp[pr.val()];\n            return m * i - j + add;\n\
-    \        }\n    }\n    return -1;\n}\n///@brief Discrete Logarithm(\u96E2\u6563\
-    \u5BFE\u6570)\n///@docs docs/math/DLP.md\n#line 4 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
+    #line 6 \"math/mod_log.hpp\"\nnamespace internal{\n    ll __mod_log(uint64_t x,\
+    \ uint64_t y, uint64_t p) {\n        if (y == 1 || p == 1) {\n            return\
+    \ 0;\n        }\n        if (x == 0) {\n            if (y == 0) {\n          \
+    \      return 1;\n            }\n            else {\n                return -1;\n\
+    \            }\n        }\n        uint32_t m = (uint32_t)sqrt(p) + 1;\n     \
+    \   hash_map<uint64_t, int> mp;\n        uint64_t xm = mod_pow<uint64_t>(x, m,\
+    \ p);\n        uint64_t add = 0, g, k = (p == 1 ? 0 : 1);\n        while ((g =\
+    \ _gcd(x, p)) > 1) {\n            if (y == k)return add;\n            if (y %\
+    \ g)return -1;\n            y /= g, p /= g, add++;\n            k = (k * (x /\
+    \ g)) % p;\n        }\n\n        ll pr = y;\n        for (int j = 0; j <= m; j++)\
+    \ {\n            mp[pr] = j;\n            (pr *= x) %= p;\n        }\n       \
+    \ pr = k;\n        for (int i = 1; i <= m; i++) {\n            (pr *= xm) %= p;\n\
+    \            auto ptr = mp.find(pr);\n            if (ptr) {\n               \
+    \ int j = *ptr;\n                return m * i - j + add;\n            }\n    \
+    \    }\n        return -1;\n    }\n\n    ll __mod_log32(uint32_t x, uint32_t y,\
+    \ uint32_t p) {\n        if (y == 1 || p == 1) {\n            return 0;\n    \
+    \    }\n        if (x == 0) {\n            if (y == 0) {\n                return\
+    \ 1;\n            }\n            else {\n                return -1;\n        \
+    \    }\n        }\n        uint32_t m = (uint32_t)ceil(sqrt(p));\n        using\
+    \ mint = barrett_modint<10>;\n        if (mint::get_mod() != p) {\n          \
+    \  mint::set_mod(p);\n        }\n        uint64_t add = 0, g = 0;\n        mint\
+    \ k(1);\n        while ((g = _gcd(x, p)) != 1) {\n            if (y == k.val())return\
+    \ add;\n            if (y % g)return -1;\n            y /= g, p /= g, add++;\n\
+    \            k = (k.val() * (x / g));\n        }\n\n        hash_map<uint32_t,\
+    \ uint32_t, 1 << 16> mp;\n\n        mint xm = mint(x).pow(m);\n        mint pr\
+    \ = mint(y);\n        for (int j = 0; j <= m; j++) {\n            mp[pr.val()]\
+    \ = j;\n            pr *= x;\n        }\n        pr = k;\n        for (int i =\
+    \ 1; i <= m; i++) {\n            pr *= xm;\n            auto ptr = mp.find(pr.val());\n\
+    \            if (ptr) {\n                int j = *ptr;\n                return\
+    \ m * i - j + add;\n            }\n        }\n        return -1;\n    }\n};\n\n\
+    \ntemplate<typename T>\ninline ll mod_log(T a,T b,T c){\n    if (c < 1 << 30)\
+    \ {\n        return internal::__mod_log32(a, b, c);\n    } else {\n        return\
+    \ internal::__mod_log(a, b, c);\n    }\n}\n///@brief Discrete Logarithm(\u96E2\
+    \u6563\u5BFE\u6570)\n///@docs docs/math/DLP.md\n#line 4 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
     \nint main() {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n      \
     \  int x, y, p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\\
-    n\", dlp(x, y, p));\n    }\n}\n"
+    n\", mod_log(x, y, p));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\
-    \n#include\"template.hpp\"\n#include\"math/DLP.hpp\"\nint main() {\n    int t;\n\
-    \    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y, p;\n        scanf(\"\
-    %d%d%d\", &x, &y, &p);\n        printf(\"%lld\\n\", dlp(x, y, p));\n    }\n}"
+    \n#include\"template.hpp\"\n#include\"math/mod_log.hpp\"\nint main() {\n    int\
+    \ t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y, p;\n      \
+    \  scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\n\", mod_log(x, y, p));\n\
+    \    }\n}"
   dependsOn:
   - template.hpp
-  - math/DLP.hpp
+  - math/mod_log.hpp
   - math/mod_pow.hpp
   - math/gcd.hpp
   - data-structure/hash_map.hpp
@@ -235,8 +246,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-04-05 12:24:40+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-04-06 14:34:46+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 layout: document
