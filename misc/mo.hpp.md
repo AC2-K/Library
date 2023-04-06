@@ -78,9 +78,9 @@ data:
   timestamp: '2023-04-06 21:43:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/No-1471.test.cpp
   - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
+  - test/yuki/No-1471.test.cpp
 documentation_of: misc/mo.hpp
 layout: document
 redirect_from:

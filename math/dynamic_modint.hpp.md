@@ -31,9 +31,6 @@ data:
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':x:'
-    path: test/yosupo_judge/math/Factorize.test.cpp
-    title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - icon: ':heavy_check_mark:'
@@ -241,19 +238,18 @@ data:
   isVerificationFile: false
   path: math/dynamic_modint.hpp
   requiredBy:
+  - math/mod_log.hpp
+  - math/rho.hpp
   - math/miller.hpp
   - math/phi_function.hpp
-  - math/mod_log.hpp
   - math/primitive_root.hpp
-  - math/rho.hpp
   timestamp: '2023-04-06 22:49:39+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/No-3030.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yuki/No-3030.test.cpp
 documentation_of: math/dynamic_modint.hpp
 layout: document
 redirect_from:

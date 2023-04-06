@@ -43,9 +43,6 @@ data:
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':x:'
-    path: test/yosupo_judge/math/Factorize.test.cpp
-    title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - icon: ':x:'
@@ -93,26 +90,25 @@ data:
   path: math/gcd.hpp
   requiredBy:
   - string/rolling_hash.hpp
-  - math/phi_function.hpp
-  - math/mod_log.hpp
-  - math/static_modint.hpp
-  - math/primitive_root.hpp
-  - math/rho.hpp
   - main.cpp
+  - math/mod_log.hpp
+  - math/rho.hpp
+  - math/phi_function.hpp
+  - math/primitive_root.hpp
+  - math/static_modint.hpp
   timestamp: '2023-04-06 22:29:32+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/No.891.test.cpp
-  - test/yuki/No-430.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
+  - test/AOJ/NTL/1_E.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - test/AOJ/NTL/1_E.test.cpp
-  - test/AOJ/NTL/1_D.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yuki/No-430.test.cpp
+  - test/yuki/No.891.test.cpp
 documentation_of: math/gcd.hpp
 layout: document
 redirect_from:

@@ -75,9 +75,9 @@ data:
   timestamp: '2023-04-06 18:29:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/No-430.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yuki/No-430.test.cpp
 documentation_of: data-structure/hash_map.hpp
 layout: document
 redirect_from:

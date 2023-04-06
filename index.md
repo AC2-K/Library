@@ -227,7 +227,7 @@ data:
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     - icon: ':x:'
       path: test/yosupo_judge/math/Factorize.test.cpp
-      title: test/yosupo_judge/math/Factorize.test.cpp
+      title: barrett reduction
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp

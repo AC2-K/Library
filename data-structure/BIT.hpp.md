@@ -60,11 +60,11 @@ data:
   timestamp: '2023-04-06 18:29:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yuki/No-789_BIT.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/yuki/No-789_BIT.test.cpp
 documentation_of: data-structure/BIT.hpp
 layout: document
 redirect_from:

@@ -217,11 +217,11 @@ data:
   timestamp: '2023-04-06 22:29:32+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/No.891.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yuki/No.891.test.cpp
 documentation_of: math/static_modint.hpp
 layout: document
 redirect_from:
