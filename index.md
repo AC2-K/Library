@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data-structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/BIT.hpp
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
@@ -15,7 +15,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/dual_segtree.hpp
       title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/dynamic_segtree.hpp
       title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
@@ -29,7 +29,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/segtree.hpp
       title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/sparse_table.hpp
       title: Sparse Table(Range Min)
   - name: .
@@ -51,7 +51,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: graph/euler_tour.hpp
       title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
     - icon: ':heavy_check_mark:'
@@ -111,7 +111,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/2DSum.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
       title: mo's algorithm
   - name: persistent
@@ -241,24 +241,24 @@ data:
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   - name: test/yuki
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No-1471.test.cpp
       title: test/yuki/No-1471.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No-3030.test.cpp
       title: test/yuki/No-3030.test.cpp
     - icon: ':x:'
       path: test/yuki/No-430.test.cpp
       title: test/yuki/No-430.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No-789_BIT.test.cpp
       title: test/yuki/No-789_BIT.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No-789_dynamic.test.cpp
       title: test/yuki/No-789_dynamic.test.cpp
     - icon: ':x:'

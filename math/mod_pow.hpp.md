@@ -45,9 +45,9 @@ data:
   timestamp: '2023-04-06 18:29:27+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/AOJ/NTL/1_B.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yuki/No-430.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/AOJ/NTL/1_B.test.cpp
 documentation_of: math/mod_pow.hpp
 layout: document
 redirect_from:

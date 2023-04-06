@@ -33,7 +33,7 @@ data:
   - icon: ':x:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No-3030.test.cpp
     title: test/yuki/No-3030.test.cpp
   _isVerificationFailed: true
@@ -43,21 +43,8 @@ data:
     document_title: barrett reduction
     links: []
   bundledCode: "#line 1 \"internal/barrett.hpp\"\nnamespace library {\nnamespace internal\
-    \ {\n/// @brief barrett reduction\n/// reference: AtCoderLibrary\nclass barrett\
-    \ {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64 m;\n    u64\
-    \ im;\n\n  public:\n    explicit barrett() = default;\n    explicit barrett(u64\
-    \ m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1) / m_ + 1) {}\n\
-    \n    u64 get_mod() const { return m; }\n    u64 reduce(int64_t a) const {\n \
-    \       if (a < 0) return m - reduce(-a);\n        u64 q = ((__uint128_t)a * im)\
-    \ >> 64;\n        a -= m * q;\n        if (a >= m) a -= m;\n        return a;\n\
-    \    }\n    u64 mul(u64 a, u64 b) {\n        if (a == 0 || b == 0) {\n       \
-    \     return 0;\n        }\n        u64 z = a;\n        z *= b;\n        u64 x\
-    \ = (u64)(((__uint128_t)(z)*im) >> 64);\n\n        u32 v = (u32)(z - x * m);\n\
-    \n        if (v >= m) v += m;\n        return v;\n    }\n};\n};  // namespace\
-    \ internal\n};  // namespace library\n"
-  code: "namespace library {\nnamespace internal {\n/// @brief barrett reduction\n\
-    /// reference: AtCoderLibrary\nclass barrett {\n    using u32 = uint32_t;\n  \
-    \  using u64 = uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n    explicit\
+    \ {\n/// @brief barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n\
+    \    using u64 = uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n    explicit\
     \ barrett() = default;\n    explicit barrett(u64 m_)\n        : m(m_), im((u64)(long\
     \ double)static_cast<u64>(-1) / m_ + 1) {}\n\n    u64 get_mod() const { return\
     \ m; }\n    u64 reduce(int64_t a) const {\n        if (a < 0) return m - reduce(-a);\n\
@@ -66,25 +53,37 @@ data:
     \      if (a == 0 || b == 0) {\n            return 0;\n        }\n        u64\
     \ z = a;\n        z *= b;\n        u64 x = (u64)(((__uint128_t)(z)*im) >> 64);\n\
     \n        u32 v = (u32)(z - x * m);\n\n        if (v >= m) v += m;\n        return\
-    \ v;\n    }\n};\n};  // namespace internal\n};  // namespace library"
+    \ v;\n    }\n};\n};  // namespace internal\n};  // namespace library\n"
+  code: "namespace library {\nnamespace internal {\n/// @brief barrett reduction\n\
+    class barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64\
+    \ m;\n    u64 im;\n\n  public:\n    explicit barrett() = default;\n    explicit\
+    \ barrett(u64 m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1)\
+    \ / m_ + 1) {}\n\n    u64 get_mod() const { return m; }\n    u64 reduce(int64_t\
+    \ a) const {\n        if (a < 0) return m - reduce(-a);\n        u64 q = ((__uint128_t)a\
+    \ * im) >> 64;\n        a -= m * q;\n        if (a >= m) a -= m;\n        return\
+    \ a;\n    }\n    u64 mul(u64 a, u64 b) {\n        if (a == 0 || b == 0) {\n  \
+    \          return 0;\n        }\n        u64 z = a;\n        z *= b;\n       \
+    \ u64 x = (u64)(((__uint128_t)(z)*im) >> 64);\n\n        u32 v = (u32)(z - x *\
+    \ m);\n\n        if (v >= m) v += m;\n        return v;\n    }\n};\n};  // namespace\
+    \ internal\n};  // namespace library"
   dependsOn: []
   isVerificationFile: false
   path: internal/barrett.hpp
   requiredBy:
-  - math/mod_log.hpp
-  - math/rho.hpp
-  - math/miller.hpp
   - math/dynamic_modint.hpp
+  - math/miller.hpp
   - math/phi_function.hpp
+  - math/mod_log.hpp
   - math/primitive_root.hpp
-  timestamp: '2023-04-06 22:29:32+09:00'
+  - math/rho.hpp
+  timestamp: '2023-04-06 22:49:39+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/AOJ/NTL/1_D.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yuki/No-3030.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yuki/No-3030.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: internal/barrett.hpp
 layout: document
 redirect_from:

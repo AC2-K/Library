@@ -30,7 +30,7 @@ data:
   - icon: ':x:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No-3030.test.cpp
     title: test/yuki/No-3030.test.cpp
   _isVerificationFailed: true
@@ -40,35 +40,34 @@ data:
     document_title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
     links: []
   bundledCode: "#line 1 \"internal/barrett.hpp\"\nnamespace library {\nnamespace internal\
-    \ {\n/// @brief barrett reduction\n/// reference: AtCoderLibrary\nclass barrett\
-    \ {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64 m;\n    u64\
-    \ im;\n\n  public:\n    explicit barrett() = default;\n    explicit barrett(u64\
-    \ m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1) / m_ + 1) {}\n\
-    \n    u64 get_mod() const { return m; }\n    u64 reduce(int64_t a) const {\n \
-    \       if (a < 0) return m - reduce(-a);\n        u64 q = ((__uint128_t)a * im)\
-    \ >> 64;\n        a -= m * q;\n        if (a >= m) a -= m;\n        return a;\n\
-    \    }\n    u64 mul(u64 a, u64 b) {\n        if (a == 0 || b == 0) {\n       \
-    \     return 0;\n        }\n        u64 z = a;\n        z *= b;\n        u64 x\
-    \ = (u64)(((__uint128_t)(z)*im) >> 64);\n\n        u32 v = (u32)(z - x * m);\n\
-    \n        if (v >= m) v += m;\n        return v;\n    }\n};\n};  // namespace\
-    \ internal\n};  // namespace library\n#line 2 \"internal/montgomery.hpp\"\nnamespace\
-    \ library {\n\nnamespace internal {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\n\
-    using i32 = int32_t;\nusing i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128\
-    \ = __int128_t;\n/// @brief MontgomeryReduction\ntemplate <typename T, typename\
-    \ LargeT>\nclass MontgomeryReduction {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
-    \    T mod, r, r2, minv;\n    T calc_inv() {\n        T t = 0, res = 0;\n    \
-    \    for (int i = 0; i < lg; i++) {\n            if (~t & 1) {\n             \
-    \   t += mod;\n                res += static_cast<T>(1) << i;\n            }\n\
-    \            t >>= 1;\n        }\n        return res;\n    }\n\n  public:\n  \
-    \  MontgomeryReduction() = default;\n    constexpr T get_mod() { return mod; }\n\
-    \    constexpr int get_lg() { return lg; }\n\n    void set_mod(const T& m) {\n\
-    \n        assert(m > 0);\n        assert(m & 1);\n\n        mod = m;\n\n     \
-    \   r = (-static_cast<T>(mod)) % mod;\n        r2 = (-static_cast<LargeT>(mod))\
-    \ % mod;\n        minv = calc_inv();\n    }\n\n    T reduce(LargeT x) const {\n\
-    \        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x) * minv)\
-    \ * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return res;\n\
-    \    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T mult(T\
-    \ x, T y) { return reduce(static_cast<LargeT>(x) * y); }\n};\n};  // namespace\
+    \ {\n/// @brief barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n\
+    \    using u64 = uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n    explicit\
+    \ barrett() = default;\n    explicit barrett(u64 m_)\n        : m(m_), im((u64)(long\
+    \ double)static_cast<u64>(-1) / m_ + 1) {}\n\n    u64 get_mod() const { return\
+    \ m; }\n    u64 reduce(int64_t a) const {\n        if (a < 0) return m - reduce(-a);\n\
+    \        u64 q = ((__uint128_t)a * im) >> 64;\n        a -= m * q;\n        if\
+    \ (a >= m) a -= m;\n        return a;\n    }\n    u64 mul(u64 a, u64 b) {\n  \
+    \      if (a == 0 || b == 0) {\n            return 0;\n        }\n        u64\
+    \ z = a;\n        z *= b;\n        u64 x = (u64)(((__uint128_t)(z)*im) >> 64);\n\
+    \n        u32 v = (u32)(z - x * m);\n\n        if (v >= m) v += m;\n        return\
+    \ v;\n    }\n};\n};  // namespace internal\n};  // namespace library\n#line 2\
+    \ \"internal/montgomery.hpp\"\nnamespace library {\n\nnamespace internal {\nusing\
+    \ u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing i64 = int64_t;\n\
+    using u128 = __uint128_t;\nusing i128 = __int128_t;\n/// @brief MontgomeryReduction\n\
+    template <typename T, typename LargeT>\nclass MontgomeryReduction {\n    static\
+    \ constexpr int lg = std::numeric_limits<T>::digits;\n    T mod, r, r2, minv;\n\
+    \    T calc_inv() {\n        T t = 0, res = 0;\n        for (int i = 0; i < lg;\
+    \ i++) {\n            if (~t & 1) {\n                t += mod;\n             \
+    \   res += static_cast<T>(1) << i;\n            }\n            t >>= 1;\n    \
+    \    }\n        return res;\n    }\n\n  public:\n    MontgomeryReduction() = default;\n\
+    \    constexpr T get_mod() { return mod; }\n    constexpr int get_lg() { return\
+    \ lg; }\n\n    void set_mod(const T& m) {\n\n        assert(m > 0);\n        assert(m\
+    \ & 1);\n\n        mod = m;\n\n        r = (-static_cast<T>(mod)) % mod;\n   \
+    \     r2 = (-static_cast<LargeT>(mod)) % mod;\n        minv = calc_inv();\n  \
+    \  }\n\n    T reduce(LargeT x) const {\n        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x)\
+    \ * minv) * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return\
+    \ res;\n    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T\
+    \ mult(T x, T y) { return reduce(static_cast<LargeT>(x) * y); }\n};\n};  // namespace\
     \ internal\n};  // namespace library\n#line 4 \"math/dynamic_modint.hpp\"\nnamespace\
     \ library{\ntemplate<int id=-1>\nclass barrett_modint {\n\tusing u32 = uint32_t;\n\
     \tusing u64 = uint64_t;\n\n\tusing i32 = int32_t;\n\tusing i64 = int64_t;\n\t\
@@ -203,16 +202,16 @@ data:
   isVerificationFile: false
   path: math/miller.hpp
   requiredBy:
-  - math/rho.hpp
   - math/phi_function.hpp
   - math/primitive_root.hpp
-  timestamp: '2023-04-06 22:29:32+09:00'
+  - math/rho.hpp
+  timestamp: '2023-04-06 22:49:39+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/AOJ/NTL/1_D.test.cpp
+  - test/yuki/No-3030.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yuki/No-3030.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: math/miller.hpp
 layout: document
 redirect_from:

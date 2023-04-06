@@ -47,47 +47,47 @@ data:
     \ { 0,1,0,-1 };\ntemplate<class T>static constexpr inline void chmax(T&x,T y){if(x<y)x=y;}\n\
     template<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n#line\
     \ 1 \"internal/barrett.hpp\"\nnamespace library {\nnamespace internal {\n/// @brief\
-    \ barrett reduction\n/// reference: AtCoderLibrary\nclass barrett {\n    using\
-    \ u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n\
-    \    explicit barrett() = default;\n    explicit barrett(u64 m_)\n        : m(m_),\
-    \ im((u64)(long double)static_cast<u64>(-1) / m_ + 1) {}\n\n    u64 get_mod()\
-    \ const { return m; }\n    u64 reduce(int64_t a) const {\n        if (a < 0) return\
-    \ m - reduce(-a);\n        u64 q = ((__uint128_t)a * im) >> 64;\n        a -=\
-    \ m * q;\n        if (a >= m) a -= m;\n        return a;\n    }\n    u64 mul(u64\
-    \ a, u64 b) {\n        if (a == 0 || b == 0) {\n            return 0;\n      \
-    \  }\n        u64 z = a;\n        z *= b;\n        u64 x = (u64)(((__uint128_t)(z)*im)\
-    \ >> 64);\n\n        u32 v = (u32)(z - x * m);\n\n        if (v >= m) v += m;\n\
-    \        return v;\n    }\n};\n};  // namespace internal\n};  // namespace library\n\
-    #line 2 \"internal/montgomery.hpp\"\nnamespace library {\n\nnamespace internal\
-    \ {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing\
-    \ i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n/// @brief\
-    \ MontgomeryReduction\ntemplate <typename T, typename LargeT>\nclass MontgomeryReduction\
-    \ {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n    T mod,\
-    \ r, r2, minv;\n    T calc_inv() {\n        T t = 0, res = 0;\n        for (int\
-    \ i = 0; i < lg; i++) {\n            if (~t & 1) {\n                t += mod;\n\
-    \                res += static_cast<T>(1) << i;\n            }\n            t\
-    \ >>= 1;\n        }\n        return res;\n    }\n\n  public:\n    MontgomeryReduction()\
-    \ = default;\n    constexpr T get_mod() { return mod; }\n    constexpr int get_lg()\
-    \ { return lg; }\n\n    void set_mod(const T& m) {\n\n        assert(m > 0);\n\
-    \        assert(m & 1);\n\n        mod = m;\n\n        r = (-static_cast<T>(mod))\
-    \ % mod;\n        r2 = (-static_cast<LargeT>(mod)) % mod;\n        minv = calc_inv();\n\
-    \    }\n\n    T reduce(LargeT x) const {\n        u64 res =\n            (x +\
-    \ static_cast<LargeT>(static_cast<T>(x) * minv) * mod) >> lg;\n\n        if (res\
-    \ >= mod) res -= mod;\n        return res;\n    }\n\n    T generate(LargeT x)\
-    \ { return reduce(x * r2); }\n\n    T mult(T x, T y) { return reduce(static_cast<LargeT>(x)\
-    \ * y); }\n};\n};  // namespace internal\n};  // namespace library\n#line 4 \"\
-    math/dynamic_modint.hpp\"\nnamespace library{\ntemplate<int id=-1>\nclass barrett_modint\
-    \ {\n\tusing u32 = uint32_t;\n\tusing u64 = uint64_t;\n\n\tusing i32 = int32_t;\n\
-    \tusing i64 = int64_t;\n\tusing br = internal::barrett;\n\n\tstatic br brt;\n\t\
-    static u32 mod;\n\tu32 v;\t//value\npublic:\n\tstatic void set_mod(u32 mod_) {\n\
-    \t\tbrt = br(mod_);\n\t\tmod = mod_;\n\t}\npublic:\n\texplicit constexpr barrett_modint()\
-    \ :v(0) { assert(mod); }\t//mod\u304C\u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\
-    \u5FC5\u8981\u304C\u3042\u308B\n\texplicit constexpr barrett_modint(i64 v_) :v(brt.reduce(v_))\
-    \ { assert(mod); }\t\n\n\tu32 val() const { return v; }\n    static u32 get_mod()\
-    \ { return mod; }\n    using mint = barrett_modint<id>;\n\n\t//operators\n\tconstexpr\
-    \ mint& operator=(i64 r) {\n\t\tv = brt.reduce(r); \n\t\treturn (*this);\n\t}\n\
-    \tconstexpr mint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod)\
-    \ {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const\
+    \ barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n    using u64\
+    \ = uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n    explicit barrett()\
+    \ = default;\n    explicit barrett(u64 m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1)\
+    \ / m_ + 1) {}\n\n    u64 get_mod() const { return m; }\n    u64 reduce(int64_t\
+    \ a) const {\n        if (a < 0) return m - reduce(-a);\n        u64 q = ((__uint128_t)a\
+    \ * im) >> 64;\n        a -= m * q;\n        if (a >= m) a -= m;\n        return\
+    \ a;\n    }\n    u64 mul(u64 a, u64 b) {\n        if (a == 0 || b == 0) {\n  \
+    \          return 0;\n        }\n        u64 z = a;\n        z *= b;\n       \
+    \ u64 x = (u64)(((__uint128_t)(z)*im) >> 64);\n\n        u32 v = (u32)(z - x *\
+    \ m);\n\n        if (v >= m) v += m;\n        return v;\n    }\n};\n};  // namespace\
+    \ internal\n};  // namespace library\n#line 2 \"internal/montgomery.hpp\"\nnamespace\
+    \ library {\n\nnamespace internal {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\n\
+    using i32 = int32_t;\nusing i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128\
+    \ = __int128_t;\n/// @brief MontgomeryReduction\ntemplate <typename T, typename\
+    \ LargeT>\nclass MontgomeryReduction {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
+    \    T mod, r, r2, minv;\n    T calc_inv() {\n        T t = 0, res = 0;\n    \
+    \    for (int i = 0; i < lg; i++) {\n            if (~t & 1) {\n             \
+    \   t += mod;\n                res += static_cast<T>(1) << i;\n            }\n\
+    \            t >>= 1;\n        }\n        return res;\n    }\n\n  public:\n  \
+    \  MontgomeryReduction() = default;\n    constexpr T get_mod() { return mod; }\n\
+    \    constexpr int get_lg() { return lg; }\n\n    void set_mod(const T& m) {\n\
+    \n        assert(m > 0);\n        assert(m & 1);\n\n        mod = m;\n\n     \
+    \   r = (-static_cast<T>(mod)) % mod;\n        r2 = (-static_cast<LargeT>(mod))\
+    \ % mod;\n        minv = calc_inv();\n    }\n\n    T reduce(LargeT x) const {\n\
+    \        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x) * minv)\
+    \ * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return res;\n\
+    \    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T mult(T\
+    \ x, T y) { return reduce(static_cast<LargeT>(x) * y); }\n};\n};  // namespace\
+    \ internal\n};  // namespace library\n#line 4 \"math/dynamic_modint.hpp\"\nnamespace\
+    \ library{\ntemplate<int id=-1>\nclass barrett_modint {\n\tusing u32 = uint32_t;\n\
+    \tusing u64 = uint64_t;\n\n\tusing i32 = int32_t;\n\tusing i64 = int64_t;\n\t\
+    using br = internal::barrett;\n\n\tstatic br brt;\n\tstatic u32 mod;\n\tu32 v;\t\
+    //value\npublic:\n\tstatic void set_mod(u32 mod_) {\n\t\tbrt = br(mod_);\n\t\t\
+    mod = mod_;\n\t}\npublic:\n\texplicit constexpr barrett_modint() :v(0) { assert(mod);\
+    \ }\t//mod\u304C\u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308B\n\texplicit constexpr barrett_modint(i64 v_) :v(brt.reduce(v_)) { assert(mod);\
+    \ }\t\n\n\tu32 val() const { return v; }\n    static u32 get_mod() { return mod;\
+    \ }\n    using mint = barrett_modint<id>;\n\n\t//operators\n\tconstexpr mint&\
+    \ operator=(i64 r) {\n\t\tv = brt.reduce(r); \n\t\treturn (*this);\n\t}\n\tconstexpr\
+    \ mint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod) {\n\t\t\t\
+    v -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const\
     \ mint&r) {\n\t\tv += mod - r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\
     \n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator*=(const mint& r) {\n\t\t\
     v = brt.mul(v, r.v);\n\t\treturn (*this);\n\t}\n\n\tconstexpr mint operator+(const\
@@ -253,7 +253,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 22:29:32+09:00'
+  timestamp: '2023-04-06 22:49:39+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Primitive_Root.test.cpp

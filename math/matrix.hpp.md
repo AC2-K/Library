@@ -80,8 +80,8 @@ data:
   timestamp: '2023-04-06 18:29:27+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo_judge/matrix/Matrix Product.test.cpp
   - test/yuki/No.891.test.cpp
+  - test/yosupo_judge/matrix/Matrix Product.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:
