@@ -1,9 +1,6 @@
 /// @brief HashMap
 /// @tparam Key Keyの型
 /// @tparam Val Valueの型
-/// @brief HashMap(open address)
-/// @tparam Key Keyの型
-/// @tparam Val Valueの型
 template <typename Key,
           typename Val,
           uint32_t n = 1 << 20,
@@ -13,9 +10,9 @@ class hash_map {
     using u32 = uint32_t;
     using u64 = uint64_t;
 
-    bitset<n> flag;
+    u64* flag = new u64[n];
     Key* keys = new Key[n];
-    Val* vals=new Val[n];
+    Val* vals = new Val[n];
 
     static constexpr u32 shift = 64 - __lg(n);
 
@@ -23,6 +20,8 @@ class hash_map {
     inline u32 get_hash(const Key& k) const {
         return ((u64)k * r) >> shift;
     }
+
+    static constexpr uint8_t mod_msk = (1 << 6) - 1;
 
   public:   
     explicit constexpr hash_map(){
@@ -34,9 +33,11 @@ class hash_map {
         u32 hash = get_hash(k);
 
         while (1) {
-            if (!flag.test(hash)) {
+            if (!(flag[hash >> 6] &
+                  (static_cast<u64>(1) << (hash & mod_msk)))) {
                 keys[hash] = k;
-                flag.set(hash);
+                flag[hash >> 6] |= static_cast<u64>(1)
+                                   << (hash & mod_msk);
                 return vals[hash] = default_val;
             }
 
@@ -45,12 +46,13 @@ class hash_map {
         }
     }
 
-
-    bool exists(const Key&k)const{
+    const Val* find(const Key&k)const{
         u32 hash = get_hash(k);
         while (1) {
-            if (!flag.test(hash)) return false;
-            if (keys[hash] == k) return true;
+            if (!(flag[hash >> 6] &
+                  (static_cast<u64>(1) << (hash & mod_msk))))
+                return nullptr;
+            if (keys[hash] == k) return &(vals[hash]);
             hash = (hash + 1) & (n - 1);
         }
     }
