@@ -55,7 +55,7 @@ data:
     \ 1) >> i);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\twhile (l < r) {\n\t\t\tif (l & 1)\
     \ {\n\t\t\t\tall_apply(l++, v);\n\t\t\t}\n\t\t\tif (r & 1) {\n\t\t\t\tall_apply(--r,\
     \ v);\n\t\t\t}\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t}\n};\n};  // namespace library\n\
-    \n\n\n/// @docs docs/data-structure/dual_segtree.md\n#line 2 \"math/gcd.hpp\"\n\
+    \n\n\n/// @docs docs/data-structure/dual_segtree.md\n#line 3 \"math/gcd.hpp\"\n\
     namespace library {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) {\n\
     \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
     \ d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
@@ -185,7 +185,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 20:41:27+09:00'
+  timestamp: '2023-04-06 22:29:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp

@@ -62,7 +62,7 @@ data:
   _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"math/gcd.hpp\"\n#include <tuple>\nnamespace library {\n\
+  bundledCode: "#line 2 \"math/gcd.hpp\"\n#include <tuple>\nnamespace library {\n\
     template <typename T> constexpr inline T _gcd(T a, T b) {\n    assert(a >= 0 &&\
     \ b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
@@ -75,9 +75,9 @@ data:
     \ b) = std::make_pair(b, a % b);\n        std::tie(x, nx) = std::make_pair(nx,\
     \ x - nx * q);\n        std::tie(y, ny) = std::make_pair(ny, y - ny * q);\n  \
     \  }\n    return a;\n}\n\n};  // namespace library\n"
-  code: "#include <tuple>\nnamespace library {\ntemplate <typename T> constexpr inline\
-    \ T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0)\
-    \ return a + b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+  code: "#pragma once\n#include <tuple>\nnamespace library {\ntemplate <typename T>\
+    \ constexpr inline T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a\
+    \ == 0 || b == 0) return a + b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
     \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
     \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
     \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
@@ -99,7 +99,7 @@ data:
   - math/phi_function.hpp
   - math/primitive_root.hpp
   - math/static_modint.hpp
-  timestamp: '2023-04-06 20:41:27+09:00'
+  timestamp: '2023-04-06 22:29:32+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

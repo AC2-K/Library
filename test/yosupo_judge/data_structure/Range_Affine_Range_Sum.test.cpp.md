@@ -69,7 +69,7 @@ data:
     public:\n    S prod(int l, int r) {\n        assert(0 <= l && l <= r && r <= sz);\n\
     \        return internal_prod(l, r, 0, sz, 0);\n    }\n\n    S operator[](int\
     \ pos) {\n        return prod(pos, pos + 1);\n    }\n};\n\n};  // namespace library\n\
-    \n\n/// @docs docs/data-structure/lazy_segtree.md\n#line 2 \"math/gcd.hpp\"\n\
+    \n\n/// @docs docs/data-structure/lazy_segtree.md\n#line 3 \"math/gcd.hpp\"\n\
     namespace library {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) {\n\
     \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
     \ d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
@@ -209,7 +209,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 20:41:27+09:00'
+  timestamp: '2023-04-06 22:29:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp

@@ -13,7 +13,7 @@ data:
     _deprecated_at_docs: docs/math/static_modint.md
     document_title: "static modint(\u9759\u7684modint)"
     links: []
-  bundledCode: "#line 1 \"math/gcd.hpp\"\n#include <tuple>\nnamespace library {\n\
+  bundledCode: "#line 2 \"math/gcd.hpp\"\n#include <tuple>\nnamespace library {\n\
     template <typename T> constexpr inline T _gcd(T a, T b) {\n    assert(a >= 0 &&\
     \ b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
@@ -196,7 +196,7 @@ data:
   isVerificationFile: false
   path: main.cpp
   requiredBy: []
-  timestamp: '2023-04-06 20:41:27+09:00'
+  timestamp: '2023-04-06 22:29:32+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: main.cpp

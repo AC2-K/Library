@@ -54,7 +54,7 @@ data:
     \ = op(dat[--r], smr);\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t\treturn op(sml, smr);\n\
     \t}\n\tinline void apply(int p, const S& v) {\n\t\tupdate(p, op(dat[sz + p], v));\n\
     \t}\n};\n};  // namespace library\n\n\n/// @docs docs/data-structure/segtree.md\n\
-    #line 2 \"math/gcd.hpp\"\nnamespace library {\ntemplate <typename T> constexpr\
+    #line 3 \"math/gcd.hpp\"\nnamespace library {\ntemplate <typename T> constexpr\
     \ inline T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
     \ b == 0) return a + b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
     \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
@@ -189,7 +189,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 20:41:27+09:00'
+  timestamp: '2023-04-06 22:29:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp

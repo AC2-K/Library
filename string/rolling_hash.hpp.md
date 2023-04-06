@@ -25,7 +25,7 @@ data:
     \ mod;\n    while (exp) {\n        if (exp & 1) {\n            ans *= base;\n\
     \            ans %= mod;\n        }\n        base *= base;\n        base %= mod;\n\
     \        exp >>= 1;\n    }\n    return ans;\n}\n\n};  // namespace library\n#line\
-    \ 1 \"math/gcd.hpp\"\n#include <tuple>\nnamespace library {\ntemplate <typename\
+    \ 2 \"math/gcd.hpp\"\n#include <tuple>\nnamespace library {\ntemplate <typename\
     \ T> constexpr inline T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if\
     \ (a == 0 || b == 0) return a + b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
     \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
@@ -111,7 +111,7 @@ data:
   isVerificationFile: false
   path: string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-04-06 20:41:27+09:00'
+  timestamp: '2023-04-06 22:29:32+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yuki/No-430.test.cpp

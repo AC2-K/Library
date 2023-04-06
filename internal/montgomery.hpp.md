@@ -42,29 +42,10 @@ data:
   attributes:
     document_title: MontgomeryReduction
     links: []
-  bundledCode: "#line 2 \"internal/montgomery.hpp\"\n#include <iostream>\nnamespace\
-    \ library {\nnamespace internal {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\n\
-    using i32 = int32_t;\nusing i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128\
-    \ = __int128_t;\n/// @brief MontgomeryReduction\ntemplate <typename T, typename\
-    \ LargeT>\nclass MontgomeryReduction {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
-    \    T mod, r, r2, minv;\n    T calc_inv() {\n        T t = 0, res = 0;\n    \
-    \    for (int i = 0; i < lg; i++) {\n            if (~t & 1) {\n             \
-    \   t += mod;\n                res += static_cast<T>(1) << i;\n            }\n\
-    \            t >>= 1;\n        }\n        return res;\n    }\n\n  public:\n  \
-    \  MontgomeryReduction() = default;\n    constexpr T get_mod() { return mod; }\n\
-    \    constexpr int get_lg() { return lg; }\n\n    void set_mod(const T& m) {\n\
-    \n        assert(m > 0);\n        assert(m & 1);\n\n        mod = m;\n\n     \
-    \   r = (-static_cast<T>(mod)) % mod;\n        r2 = (-static_cast<LargeT>(mod))\
-    \ % mod;\n        minv = calc_inv();\n    }\n\n    T reduce(LargeT x) const {\n\
-    \        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x) * minv)\
-    \ * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return res;\n\
-    \    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T mult(T\
-    \ x, T y) { return reduce(static_cast<LargeT>(x) * y); }\n};\n};  // namespace\
-    \ internal\n};  // namespace library\n"
-  code: "#pragma once\n#include <iostream>\nnamespace library {\nnamespace internal\
-    \ {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing\
-    \ i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n/// @brief\
-    \ MontgomeryReduction\ntemplate <typename T, typename LargeT>\nclass MontgomeryReduction\
+  bundledCode: "#line 2 \"internal/montgomery.hpp\"\nnamespace library {\n\nnamespace\
+    \ internal {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\n\
+    using i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n///\
+    \ @brief MontgomeryReduction\ntemplate <typename T, typename LargeT>\nclass MontgomeryReduction\
     \ {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n    T mod,\
     \ r, r2, minv;\n    T calc_inv() {\n        T t = 0, res = 0;\n        for (int\
     \ i = 0; i < lg; i++) {\n            if (~t & 1) {\n                t += mod;\n\
@@ -78,7 +59,25 @@ data:
     \ static_cast<LargeT>(static_cast<T>(x) * minv) * mod) >> lg;\n\n        if (res\
     \ >= mod) res -= mod;\n        return res;\n    }\n\n    T generate(LargeT x)\
     \ { return reduce(x * r2); }\n\n    T mult(T x, T y) { return reduce(static_cast<LargeT>(x)\
-    \ * y); }\n};\n};  // namespace internal\n};  // namespace library"
+    \ * y); }\n};\n};  // namespace internal\n};  // namespace library\n"
+  code: "#pragma once \nnamespace library {\n\nnamespace internal {\nusing u32 = uint32_t;\n\
+    using u64 = uint64_t;\nusing i32 = int32_t;\nusing i64 = int64_t;\nusing u128\
+    \ = __uint128_t;\nusing i128 = __int128_t;\n/// @brief MontgomeryReduction\ntemplate\
+    \ <typename T, typename LargeT>\nclass MontgomeryReduction {\n    static constexpr\
+    \ int lg = std::numeric_limits<T>::digits;\n    T mod, r, r2, minv;\n    T calc_inv()\
+    \ {\n        T t = 0, res = 0;\n        for (int i = 0; i < lg; i++) {\n     \
+    \       if (~t & 1) {\n                t += mod;\n                res += static_cast<T>(1)\
+    \ << i;\n            }\n            t >>= 1;\n        }\n        return res;\n\
+    \    }\n\n  public:\n    MontgomeryReduction() = default;\n    constexpr T get_mod()\
+    \ { return mod; }\n    constexpr int get_lg() { return lg; }\n\n    void set_mod(const\
+    \ T& m) {\n\n        assert(m > 0);\n        assert(m & 1);\n\n        mod = m;\n\
+    \n        r = (-static_cast<T>(mod)) % mod;\n        r2 = (-static_cast<LargeT>(mod))\
+    \ % mod;\n        minv = calc_inv();\n    }\n\n    T reduce(LargeT x) const {\n\
+    \        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x) * minv)\
+    \ * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return res;\n\
+    \    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T mult(T\
+    \ x, T y) { return reduce(static_cast<LargeT>(x) * y); }\n};\n};  // namespace\
+    \ internal\n};  // namespace library\n"
   dependsOn: []
   isVerificationFile: false
   path: internal/montgomery.hpp
@@ -89,7 +88,7 @@ data:
   - math/dynamic_modint.hpp
   - math/phi_function.hpp
   - math/primitive_root.hpp
-  timestamp: '2023-04-06 18:29:27+09:00'
+  timestamp: '2023-04-06 22:29:32+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

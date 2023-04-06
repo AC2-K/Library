@@ -28,7 +28,7 @@ data:
     _deprecated_at_docs: docs/math/static_modint.md
     document_title: "static modint(\u9759\u7684modint)"
     links: []
-  bundledCode: "#line 2 \"math/static_modint.hpp\"\n#include<iostream>\n#line 1 \"\
+  bundledCode: "#line 2 \"math/static_modint.hpp\"\n#include<iostream>\n#line 2 \"\
     math/gcd.hpp\"\n#include <tuple>\nnamespace library {\ntemplate <typename T> constexpr\
     \ inline T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
     \ b == 0) return a + b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
@@ -214,7 +214,7 @@ data:
   isVerificationFile: false
   path: math/static_modint.hpp
   requiredBy: []
-  timestamp: '2023-04-06 20:41:27+09:00'
+  timestamp: '2023-04-06 22:29:32+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp

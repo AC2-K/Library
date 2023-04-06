@@ -42,49 +42,49 @@ data:
     \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
     \ dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class T>static\
     \ constexpr inline void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class T>static constexpr\
-    \ inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 3 \"internal/barrett.hpp\"\n\
-    namespace library {\nnamespace internal {\n/// @brief barrett reduction\nclass\
-    \ barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64 m;\n\
-    \    u64 im;\n\n  public:\n    explicit barrett() = default;\n    constexpr explicit\
-    \ barrett(u64 m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1)\
-    \ / m_ + 1) {}\n\n    inline u64 get_mod() const { return m; }\n    inline u64\
-    \ reduce(int64_t a) const {\n        if (a < 0) return m - reduce(-a);\n     \
-    \   u64 q = ((__uint128_t)a * im) >> 64;\n        a -= m * q;\n        if (a >=\
-    \ m) a -= m;\n        return a;\n    }\n    inline u64 mul(u64 a, u64 b) {\n \
-    \       if (a == 0 || b == 0) {\n            return 0;\n        }\n        u64\
-    \ z = a;\n        z *= b;\n        u64 x = (u64)(((__uint128_t)(z)*im) >> 64);\n\
-    \n        u32 v = (u32)(z - x * m);\n\n        if (v >= m) v += m;\n        return\
-    \ v;\n    }\n};\n};  // namespace internal\n};  // namespace library\n#line 3\
-    \ \"internal/montgomery.hpp\"\nnamespace library {\nnamespace internal {\nusing\
-    \ u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing i64 = int64_t;\n\
-    using u128 = __uint128_t;\nusing i128 = __int128_t;\n/// @brief MontgomeryReduction\n\
-    template <typename T, typename LargeT>\nclass MontgomeryReduction {\n    static\
-    \ constexpr int lg = std::numeric_limits<T>::digits;\n    T mod, r, r2, minv;\n\
-    \    T calc_inv() {\n        T t = 0, res = 0;\n        for (int i = 0; i < lg;\
-    \ i++) {\n            if (~t & 1) {\n                t += mod;\n             \
-    \   res += static_cast<T>(1) << i;\n            }\n            t >>= 1;\n    \
-    \    }\n        return res;\n    }\n\n  public:\n    MontgomeryReduction() = default;\n\
-    \    constexpr T get_mod() { return mod; }\n    constexpr int get_lg() { return\
-    \ lg; }\n\n    void set_mod(const T& m) {\n\n        assert(m > 0);\n        assert(m\
-    \ & 1);\n\n        mod = m;\n\n        r = (-static_cast<T>(mod)) % mod;\n   \
-    \     r2 = (-static_cast<LargeT>(mod)) % mod;\n        minv = calc_inv();\n  \
-    \  }\n\n    T reduce(LargeT x) const {\n        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x)\
-    \ * minv) * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return\
-    \ res;\n    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T\
-    \ mult(T x, T y) { return reduce(static_cast<LargeT>(x) * y); }\n};\n};  // namespace\
-    \ internal\n};  // namespace library\n#line 4 \"math/dynamic_modint.hpp\"\n\n\
-    namespace library{\ntemplate<int id=-1>\nclass barrett_modint {\n\tusing u32 =\
-    \ uint32_t;\n\tusing u64 = uint64_t;\n\n\tusing i32 = int32_t;\n\tusing i64 =\
-    \ int64_t;\n\tusing br = internal::barrett;\n\n\tstatic br brt;\n\tstatic u32\
-    \ mod;\n\tu32 v;\t//value\npublic:\n\tstatic void set_mod(u32 mod_) {\n\t\tbrt\
-    \ = br(mod_);\n\t\tmod = mod_;\n\t}\npublic:\n\texplicit constexpr barrett_modint()\
-    \ :v(0) { assert(mod); }\t//mod\u304C\u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\
-    \u5FC5\u8981\u304C\u3042\u308B\n\texplicit constexpr barrett_modint(i64 v_) :v(brt.reduce(v_))\
-    \ { assert(mod); }\t\n\n\tu32 val() const { return v; }\n    static u32 get_mod()\
-    \ { return mod; }\n    using mint = barrett_modint<id>;\n\n\t//operators\n\tconstexpr\
-    \ mint& operator=(i64 r) {\n\t\tv = brt.reduce(r); \n\t\treturn (*this);\n\t}\n\
-    \tconstexpr mint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod)\
-    \ {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const\
+    \ inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 1 \"internal/barrett.hpp\"\n\
+    namespace library {\nnamespace internal {\n/// @brief barrett reduction\n/// reference:\
+    \ AtCoderLibrary\nclass barrett {\n    using u32 = uint32_t;\n    using u64 =\
+    \ uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n    explicit barrett() =\
+    \ default;\n    explicit barrett(u64 m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1)\
+    \ / m_ + 1) {}\n\n    u64 get_mod() const { return m; }\n    u64 reduce(int64_t\
+    \ a) const {\n        if (a < 0) return m - reduce(-a);\n        u64 q = ((__uint128_t)a\
+    \ * im) >> 64;\n        a -= m * q;\n        if (a >= m) a -= m;\n        return\
+    \ a;\n    }\n    u64 mul(u64 a, u64 b) {\n        if (a == 0 || b == 0) {\n  \
+    \          return 0;\n        }\n        u64 z = a;\n        z *= b;\n       \
+    \ u64 x = (u64)(((__uint128_t)(z)*im) >> 64);\n\n        u32 v = (u32)(z - x *\
+    \ m);\n\n        if (v >= m) v += m;\n        return v;\n    }\n};\n};  // namespace\
+    \ internal\n};  // namespace library\n#line 2 \"internal/montgomery.hpp\"\nnamespace\
+    \ library {\n\nnamespace internal {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\n\
+    using i32 = int32_t;\nusing i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128\
+    \ = __int128_t;\n/// @brief MontgomeryReduction\ntemplate <typename T, typename\
+    \ LargeT>\nclass MontgomeryReduction {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
+    \    T mod, r, r2, minv;\n    T calc_inv() {\n        T t = 0, res = 0;\n    \
+    \    for (int i = 0; i < lg; i++) {\n            if (~t & 1) {\n             \
+    \   t += mod;\n                res += static_cast<T>(1) << i;\n            }\n\
+    \            t >>= 1;\n        }\n        return res;\n    }\n\n  public:\n  \
+    \  MontgomeryReduction() = default;\n    constexpr T get_mod() { return mod; }\n\
+    \    constexpr int get_lg() { return lg; }\n\n    void set_mod(const T& m) {\n\
+    \n        assert(m > 0);\n        assert(m & 1);\n\n        mod = m;\n\n     \
+    \   r = (-static_cast<T>(mod)) % mod;\n        r2 = (-static_cast<LargeT>(mod))\
+    \ % mod;\n        minv = calc_inv();\n    }\n\n    T reduce(LargeT x) const {\n\
+    \        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x) * minv)\
+    \ * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return res;\n\
+    \    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T mult(T\
+    \ x, T y) { return reduce(static_cast<LargeT>(x) * y); }\n};\n};  // namespace\
+    \ internal\n};  // namespace library\n#line 4 \"math/dynamic_modint.hpp\"\nnamespace\
+    \ library{\ntemplate<int id=-1>\nclass barrett_modint {\n\tusing u32 = uint32_t;\n\
+    \tusing u64 = uint64_t;\n\n\tusing i32 = int32_t;\n\tusing i64 = int64_t;\n\t\
+    using br = internal::barrett;\n\n\tstatic br brt;\n\tstatic u32 mod;\n\tu32 v;\t\
+    //value\npublic:\n\tstatic void set_mod(u32 mod_) {\n\t\tbrt = br(mod_);\n\t\t\
+    mod = mod_;\n\t}\npublic:\n\texplicit constexpr barrett_modint() :v(0) { assert(mod);\
+    \ }\t//mod\u304C\u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
+    \u308B\n\texplicit constexpr barrett_modint(i64 v_) :v(brt.reduce(v_)) { assert(mod);\
+    \ }\t\n\n\tu32 val() const { return v; }\n    static u32 get_mod() { return mod;\
+    \ }\n    using mint = barrett_modint<id>;\n\n\t//operators\n\tconstexpr mint&\
+    \ operator=(i64 r) {\n\t\tv = brt.reduce(r); \n\t\treturn (*this);\n\t}\n\tconstexpr\
+    \ mint& operator+=(const mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod) {\n\t\t\t\
+    v -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const\
     \ mint&r) {\n\t\tv += mod - r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\
     \n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator*=(const mint& r) {\n\t\t\
     v = brt.mul(v, r.v);\n\t\treturn (*this);\n\t}\n\n\tconstexpr mint operator+(const\
@@ -173,37 +173,38 @@ data:
     \            else if (~n & 1) {\n                return false;\n            }\n\
     \            if (n < (1ul << 31)) {\n                return miller_rabin<barrett_modint<-1>>(n,\
     \ bases_int, 3);\n            }\n            else {\n                return miller_rabin<dynamic_modint<u64,u128,-1>>(n,\
-    \ bases_ll, 7);\n            }\n        }\n    };\n};\n///@brief MillerRabin\u306E\
-    \u7D20\u6570\u5224\u5B9A\n#line 2 \"math/gcd.hpp\"\nnamespace library {\ntemplate\
-    \ <typename T> constexpr inline T _gcd(T a, T b) {\n    assert(a >= 0 && b >=\
-    \ 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (a == 0 || b == 0) {\n            return a +\
-    \ b;\n        }\n        if (a > b) {\n            a -= b;\n            a >>=\
-    \ __builtin_ctzll(a);\n        }else{\n            b -= a;\n            b >>=\
-    \ __builtin_ctzll(b);\n        }\n    }\n\n    return a << d;\n}\ntemplate<typename\
-    \ T>\nconstexpr inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n\
-    \    T nx = 0, ny = 1;\n    while(b) {\n        T q = a / b;\n        std::tie(a,\
-    \ b) = std::make_pair(b, a % b);\n        std::tie(x, nx) = std::make_pair(nx,\
-    \ x - nx * q);\n        std::tie(y, ny) = std::make_pair(ny, y - ny * q);\n  \
-    \  }\n    return a;\n}\n\n};  // namespace library\n#line 6 \"math/rho.hpp\"\n\
-    ///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\nnamespace\
-    \ library {\nnamespace rho {\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate <typename mint> \nu64\
-    \ find_factor(u64 n) {\n    static u64 v = 20001;   //rng\n    \n    if (~n &\
-    \ 1uL) {\n        return 2;\n    }\n    if (library::miller::is_prime(n)) {\n\
-    \        return n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
-    \    }\n    while (1) {\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n  \
-    \      mint c(v);\n        auto f = [&](mint x) -> mint { return x.pow(2) + c;\
-    \ };\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n        mint x = v;\n\
-    \        mint y = f(x);\n        u64 d = 1;\n        while (d == 1) {\n      \
-    \      d = _gcd<long long>(abs((long long)x.val() - (long long)y.val()),\n   \
-    \                             n);\n            x = f(x);\n            y = f(f(y));\n\
-    \        }\n        if (1 < d && d < n) {\n            return d;\n        }\n\
-    \    }\n    return -1;  \n}\ntemplate<typename mint>\nstd::vector<u64> rho_fact(u64\
-    \ n) {\n    if (n < 2) {\n        return {};\n    }\n    if (library::miller::is_prime(n))\
-    \ {\n        return { n };\n    }\n    std::vector<u64> v;\n    std::vector<u64>\
-    \ st{n};\n    while (st.size()) {\n        u64& m = st.back();\n        if (library::miller::is_prime(m))\
+    \ bases_ll, 7);\n            }\n        }\n    };  // namespace miller\n};  //\
+    \ namespace library\n/// @brief MillerRabin\u306E\u7D20\u6570\u5224\u5B9A\n#line\
+    \ 3 \"math/gcd.hpp\"\nnamespace library {\ntemplate <typename T> constexpr inline\
+    \ T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0)\
+    \ return a + b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
+    \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        }else{\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate<typename T>\nconstexpr inline\
+    \ T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
+    \    while(b) {\n        T q = a / b;\n        std::tie(a, b) = std::make_pair(b,\
+    \ a % b);\n        std::tie(x, nx) = std::make_pair(nx, x - nx * q);\n       \
+    \ std::tie(y, ny) = std::make_pair(ny, y - ny * q);\n    }\n    return a;\n}\n\
+    \n};  // namespace library\n#line 6 \"math/rho.hpp\"\n///@brief \u9AD8\u901F\u7D20\
+    \u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\nnamespace library {\nnamespace rho\
+    \ {\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing u64 = uint64_t;\n\
+    using u32 = uint32_t;\n\ntemplate <typename mint> \nu64 find_factor(u64 n) {\n\
+    \    static u64 v = 20001;   //rng\n    \n    if (~n & 1uL) {\n        return\
+    \ 2;\n    }\n    if (library::miller::is_prime(n)) {\n        return n;\n    }\n\
+    \n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n    }\n    while\
+    \ (1) {\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n        mint c(v);\n\
+    \        auto f = [&](mint x) -> mint { return x.pow(2) + c; };\n        v ^=\
+    \ v << 13, v ^= v >> 7, v ^= v << 17;\n        mint x = v;\n        mint y = f(x);\n\
+    \        u64 d = 1;\n        while (d == 1) {\n            d = _gcd<long long>(abs((long\
+    \ long)x.val() - (long long)y.val()),\n                                n);\n \
+    \           x = f(x);\n            y = f(f(y));\n        }\n        if (1 < d\
+    \ && d < n) {\n            return d;\n        }\n    }\n    return -1;  \n}\n\
+    template<typename mint>\nstd::vector<u64> rho_fact(u64 n) {\n    if (n < 2) {\n\
+    \        return {};\n    }\n    if (library::miller::is_prime(n)) {\n        return\
+    \ { n };\n    }\n    std::vector<u64> v;\n    std::vector<u64> st{n};\n    while\
+    \ (st.size()) {\n        u64& m = st.back();\n        if (library::miller::is_prime(m))\
     \ {\n            v.emplace_back(m);\n            st.pop_back();\n        }else\
     \ {\n            u64 d = find_factor<mint>(m);\n            m /= d;\n        \
     \    st.emplace_back(d);\n        }\n    }\n    return v;\n}\nstd::vector<u64>\
@@ -239,7 +240,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 21:43:06+09:00'
+  timestamp: '2023-04-06 22:29:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Factorize.test.cpp
