@@ -16,7 +16,7 @@ data:
   - icon: ':question:'
     path: math/gcd.hpp
     title: math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
@@ -86,14 +86,14 @@ data:
     \             return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
     \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n\n\n};  // namespace\
     \ library\n#line 3 \"internal/barrett.hpp\"\nnamespace library {\nnamespace internal\
-    \ {\n/// @brief barrett reduction\n/// reference: AtCoderLibrary\nclass barrett\
-    \ {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64 m;\n    u64\
-    \ im;\n\n  public:\n    explicit barrett() = default;\n    explicit barrett(u64\
-    \ m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1) / m_ + 1) {}\n\
-    \n    u64 get_mod() const { return m; }\n    u64 reduce(int64_t a) const {\n \
-    \       if (a < 0) return m - reduce(-a);\n        u64 q = ((__uint128_t)a * im)\
-    \ >> 64;\n        a -= m * q;\n        if (a >= m) a -= m;\n        return a;\n\
-    \    }\n    u64 mul(u64 a, u64 b) {\n        if (a == 0 || b == 0) {\n       \
+    \ {\n/// @brief barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n\
+    \    using u64 = uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n    explicit\
+    \ barrett() = default;\n    constexpr explicit barrett(u64 m_)\n        : m(m_),\
+    \ im((u64)(long double)static_cast<u64>(-1) / m_ + 1) {}\n\n    inline u64 get_mod()\
+    \ const { return m; }\n    inline u64 reduce(int64_t a) const {\n        if (a\
+    \ < 0) return m - reduce(-a);\n        u64 q = ((__uint128_t)a * im) >> 64;\n\
+    \        a -= m * q;\n        if (a >= m) a -= m;\n        return a;\n    }\n\
+    \    inline u64 mul(u64 a, u64 b) {\n        if (a == 0 || b == 0) {\n       \
     \     return 0;\n        }\n        u64 z = a;\n        z *= b;\n        u64 x\
     \ = (u64)(((__uint128_t)(z)*im) >> 64);\n\n        u32 v = (u32)(z - x * m);\n\
     \n        if (v >= m) v += m;\n        return v;\n    }\n};\n};  // namespace\
@@ -142,9 +142,9 @@ data:
     \ }\n\tfriend mint operator-(const mint& l, i64 r) { return mint(l) -= r; }\n\t\
     friend mint operator*(i64 l, const mint& r) { return mint(l) *= r; }\n\tfriend\
     \ mint operator*(const mint& l, i64 r) { return mint(l) += r; }\n\n\n\tfriend\
-    \ std::ostream& operator<<(ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
-    \t\treturn os;\n\t}\n\tfriend std::istream& operator>>(istream& is, mint& mt)\
-    \ {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\tconstexpr\
+    \ std::ostream& operator<<(std::ostream& os, const mint& mt) {\n\t\tos << mt.val();\n\
+    \t\treturn os;\n\t}\n\tfriend std::istream& operator>>(std::istream& is, mint&\
+    \ mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t}\n\tconstexpr\
     \ mint pow(u64 e) const {\n\t\tmint res(1), base(*this);\n\n\t\twhile (e) {\n\t\
     \t\tif (e & 1) {\n\t\t\t\tres *= base;\n\t\t\t}\n\t\t\te >>= 1;\n\t\t\tbase *=\
     \ base;\n\t\t}\n\t\treturn res;\n\t}\n\tconstexpr mint inv() const {\n\t\treturn\
@@ -175,10 +175,10 @@ data:
     \ { return mint(*this) -= r; }\n        mint operator*(const mint& r) { return\
     \ mint(*this) *= r; }\n\n        mint& operator=(const T& v_) {\n            \
     \    (*this) = mint(v_);\n                return (*this);\n        }\n\n     \
-    \   friend std::ostream& operator<<(ostream& os, const mint& mt) {\n         \
-    \       os << mt.val();\n                return os;\n        }\n        friend\
-    \ std::istream& operator>>(istream& is, mint& mt) {\n                T v_;\n \
-    \               is >> v_;\n                mt = v_;\n                return is;\n\
+    \   friend std::ostream& operator<<(std::ostream& os, const mint& mt) {\n    \
+    \            os << mt.val();\n                return os;\n        }\n        friend\
+    \ std::istream& operator>>(std::istream& is, mint& mt) {\n                T v_;\n\
+    \                is >> v_;\n                mt = v_;\n                return is;\n\
     \        }\n        template <typename P> mint pow(P e) const {\n            \
     \    assert(e >= 0);\n                mint res(1), base(*this);\n\n          \
     \      while (e) {\n                        if (e & 1) {\n                   \
@@ -250,8 +250,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 20:41:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-06 21:43:06+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 layout: document

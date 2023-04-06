@@ -72,34 +72,36 @@ data:
     \ -1), rmq(2 * n - 1) { tour.reserve(2 * n - 1); }\n\tvoid add_edge(int u, int\
     \ v) {\n\t\tg[u].emplace_back(v);\n\t\tg[v].emplace_back(u);\n\t}\n    std::vector<std::vector<int>>\
     \ get_graph(){return g;}\n    std::vector<int> get_tour(){return tour;}\nprivate:\n\
-    \    void dfs(int v, int p = -1) {\n        in[v] = tour.size();\n        tour.emplace_back(v);\n\
-    \        for (const auto& nv : g[v])if (nv != p) {\n            depth[nv] = depth[v]\
-    \ + 1;\n            dfs(nv, v);\n            tour.emplace_back(v);\n        }\n\
-    \        out[v] = tour.size() - 1;\n    }\npublic:\n    void build(int r = 0)\
-    \ {\n        dfs(r);\n        for (int i = 0; i < tour.size(); i++) {\n      \
-    \      rmq.set(i, { depth[tour[i]],tour[i] });\n        }\n        rmq.build();\n\
-    \    }\n\n    std::pair<int, int> idx(int v) { return {in[v], out[v]}; }\n   \
-    \ int lca(int v, int u) {\n        if (in[v] > in[u] + 1) { std::swap(u, v); }\n\
-    \        return rmq.prod(in[v], in[u] + 1).second;\n    }\n\n    int dist(int\
-    \ v,int u){\n        int p = lca(v, u);\n        return depth[v] + depth[u] -\
-    \ 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par,int v){return (in[par]\
-    \ <= in[v] && out[v] <= out[par]);}\n};\n\n};  // namespace library\n#line 5 \"\
-    test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp\"\n\nusing namespace\
-    \ std;\nusing namespace library;\nint main() {\n    int n, q;\n    scanf(\"%d%d\"\
-    , &n, &q);\n    vector<ll> a(n);\n    for (auto& aa : a) {\n        scanf(\"%lld\"\
-    , &aa);\n    }\n\n    EulerTour g(n);\n    for (int i = 0; i < n - 1; i++) {\n\
-    \        int v, u;\n        scanf(\"%d%d\", &v, &u);\n        g.add_edge(v, u);\n\
-    \    }\n    g.build();\n\n    BIT<ll> seg(2 * n);\n    for (int v = 0; v < n;\
-    \ v++) {\n        auto [in, out] = g.idx(v);\n        seg.add(in, a[v]);\n   \
-    \     seg.add(out + 1, -a[v]);\n    }\n    while (q--) {\n        int t;\n   \
-    \     scanf(\"%d\", &t);\n        if (t == 0) {\n            int v, x;\n     \
-    \       scanf(\"%d%d\", &v, &x);\n            auto [in, out] = g.idx(v);\n   \
-    \         seg.add(in, x);\n            seg.add(out + 1, -x);\n        } else {\n\
-    \            int v, u;\n            scanf(\"%d%d\", &v, &u);\n            ll ans\
-    \ = 0;\n            int p_in = g.idx(g.lca(v, u)).first;\n            {\n    \
-    \            ans += seg.sum(p_in, g.idx(v).first + 1);\n            }\n      \
-    \      {\n                ans += seg.sum(p_in + 1, g.idx(u).first + 1);\n    \
-    \        }\n\n            printf(\"%lld\\n\", ans);\n        }\n    }\n}\n"
+    public:\n  \n  void build(int r = 0) {\n        auto dfs = [&](const auto& self,\
+    \ int v, int p) -> void {\n            in[v] = tour.size();\n            tour.emplace_back(v);\n\
+    \            for (const auto& nv : g[v]) {\n                if (nv != p) {\n \
+    \                   depth[nv] = depth[v] + 1;\n                    self(self,\
+    \ nv, v);\n                    tour.emplace_back(v);\n                }\n    \
+    \            out[v] = tour.size() - 1;\n            }\n        };\n        dfs(dfs,\
+    \ r, -1);\n        for (int i = 0; i < (int)tour.size(); i++) {\n            rmq.set(i,\
+    \ {depth[tour[i]], tour[i]});\n        }\n        rmq.build();\n    }\n\n    std::pair<int,\
+    \ int> idx(int v) { return {in[v], out[v]}; }\n    int lca(int v, int u) {\n \
+    \       if (in[v] > in[u] + 1) { std::swap(u, v); }\n        return rmq.prod(in[v],\
+    \ in[u] + 1).second;\n    }\n\n    int dist(int v,int u){\n        int p = lca(v,\
+    \ u);\n        return depth[v] + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int\
+    \ par,int v){return (in[par] <= in[v] && out[v] <= out[par]);}\n};\n\n};  // namespace\
+    \ library\n#line 5 \"test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace library;\nint main() {\n    int n, q;\n\
+    \    scanf(\"%d%d\", &n, &q);\n    vector<ll> a(n);\n    for (auto& aa : a) {\n\
+    \        scanf(\"%lld\", &aa);\n    }\n\n    EulerTour g(n);\n    for (int i =\
+    \ 0; i < n - 1; i++) {\n        int v, u;\n        scanf(\"%d%d\", &v, &u);\n\
+    \        g.add_edge(v, u);\n    }\n    g.build();\n\n    BIT<ll> seg(2 * n);\n\
+    \    for (int v = 0; v < n; v++) {\n        auto [in, out] = g.idx(v);\n     \
+    \   seg.add(in, a[v]);\n        seg.add(out + 1, -a[v]);\n    }\n    while (q--)\
+    \ {\n        int t;\n        scanf(\"%d\", &t);\n        if (t == 0) {\n     \
+    \       int v, x;\n            scanf(\"%d%d\", &v, &x);\n            auto [in,\
+    \ out] = g.idx(v);\n            seg.add(in, x);\n            seg.add(out + 1,\
+    \ -x);\n        } else {\n            int v, u;\n            scanf(\"%d%d\", &v,\
+    \ &u);\n            ll ans = 0;\n            int p_in = g.idx(g.lca(v, u)).first;\n\
+    \            {\n                ans += seg.sum(p_in, g.idx(v).first + 1);\n  \
+    \          }\n            {\n                ans += seg.sum(p_in + 1, g.idx(u).first\
+    \ + 1);\n            }\n\n            printf(\"%lld\\n\", ans);\n        }\n \
+    \   }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
     #include\"template.hpp\"\n#include\"data-structure/BIT.hpp\"\n#include\"graph/euler_tour.hpp\"\
     \n\nusing namespace std;\nusing namespace library;\nint main() {\n    int n, q;\n\
@@ -126,7 +128,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 20:41:27+09:00'
+  timestamp: '2023-04-06 21:43:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp

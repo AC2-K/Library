@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/dsu.hpp
     title: Disjoint Set(Union find)
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/2_A.test.cpp
     title: test/AOJ/GRL/2_A.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
     links: []
@@ -31,38 +31,38 @@ data:
     \u6728)\nclass MST {\n    DSU dsu;\n    struct Edge {\n        int v1, v2;\n \
     \       int cost;\n        int id;\n        Edge(int v1, int v2, int cost, int\
     \ id) :v1(v1), v2(v2), cost(cost), id(id) {  }\n    };\n    std::vector<Edge>\
-    \ E;\n    std::vector<int> V1, V2;\npublic:\n    MST(int V) :dsu(V) {E.reserve(V);}\n\
-    \    void add_edge(int a, int b, long long cost) {\n        int sz = E.size();\n\
-    \        E.emplace_back(a, b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n\
-    \    }\n    long long result() {\n        std::sort(E.begin(), E.end(), [&](Edge\
-    \ e1, Edge e2) {\n            return e1.cost < e2.cost;\n        });\n       \
-    \ long long ans = 0;\n        for (int i = 0; (int)E.size(); i++) {\n        \
-    \    int len = E[i].cost;\n            int id = E[i].id;\n            int a =\
-    \ V1[id], b = V2[id];\n            if (dsu.same(a, b)) continue;\n           \
-    \ dsu.merge(a, b);\n            ans += len;\n        }\n        return ans;\n\
-    \    }\n};\n\n};  // namespace library\n"
+    \ E;\n    std::vector<int> V1, V2;\npublic:\n    MST(int V) :dsu(V) {}\n    void\
+    \ add_edge(int a, int b, long long cost) {\n        int sz = E.size();\n     \
+    \   E.emplace_back(a, b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n\
+    \    }\n    long long result() {\n        std::sort(E.begin(), E.end(), [&](const\
+    \ Edge& e1,const Edge& e2) {\n            return e1.cost < e2.cost;\n        });\n\
+    \        long long ans = 0;\n        for (int i = 0; i < (int)E.size(); i++) {\n\
+    \            int len = E[i].cost;\n            int id = E[i].id;\n           \
+    \ int a = V1[id], b = V2[id];\n            if (dsu.same(a, b)) continue;\n   \
+    \         dsu.merge(a, b);\n            ans += len;\n        }\n        return\
+    \ ans;\n    }\n};\n\n};  // namespace library\n"
   code: "#pragma once\n#include<algorithm>\n#include\"data-structure/dsu.hpp\"\nnamespace\
     \ library {\n///@brief Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)\n\
     class MST {\n    DSU dsu;\n    struct Edge {\n        int v1, v2;\n        int\
     \ cost;\n        int id;\n        Edge(int v1, int v2, int cost, int id) :v1(v1),\
     \ v2(v2), cost(cost), id(id) {  }\n    };\n    std::vector<Edge> E;\n    std::vector<int>\
-    \ V1, V2;\npublic:\n    MST(int V) :dsu(V) {E.reserve(V);}\n    void add_edge(int\
-    \ a, int b, long long cost) {\n        int sz = E.size();\n        E.emplace_back(a,\
-    \ b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n    }\n    long\
-    \ long result() {\n        std::sort(E.begin(), E.end(), [&](Edge e1, Edge e2)\
-    \ {\n            return e1.cost < e2.cost;\n        });\n        long long ans\
-    \ = 0;\n        for (int i = 0; (int)E.size(); i++) {\n            int len = E[i].cost;\n\
-    \            int id = E[i].id;\n            int a = V1[id], b = V2[id];\n    \
-    \        if (dsu.same(a, b)) continue;\n            dsu.merge(a, b);\n       \
-    \     ans += len;\n        }\n        return ans;\n    }\n};\n\n};  // namespace\
-    \ library"
+    \ V1, V2;\npublic:\n    MST(int V) :dsu(V) {}\n    void add_edge(int a, int b,\
+    \ long long cost) {\n        int sz = E.size();\n        E.emplace_back(a, b,\
+    \ cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n    }\n    long\
+    \ long result() {\n        std::sort(E.begin(), E.end(), [&](const Edge& e1,const\
+    \ Edge& e2) {\n            return e1.cost < e2.cost;\n        });\n        long\
+    \ long ans = 0;\n        for (int i = 0; i < (int)E.size(); i++) {\n         \
+    \   int len = E[i].cost;\n            int id = E[i].id;\n            int a = V1[id],\
+    \ b = V2[id];\n            if (dsu.same(a, b)) continue;\n            dsu.merge(a,\
+    \ b);\n            ans += len;\n        }\n        return ans;\n    }\n};\n\n\
+    };  // namespace library"
   dependsOn:
   - data-structure/dsu.hpp
   isVerificationFile: false
   path: graph/mst.hpp
   requiredBy: []
-  timestamp: '2023-04-06 18:29:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-04-06 21:43:06+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/2_A.test.cpp
 documentation_of: graph/mst.hpp
