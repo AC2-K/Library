@@ -34,12 +34,13 @@ data:
     \t}\npublic:\n\tF operator[](int p) {\n\t\tassert(0 <= p && p < _n);\n\n\t\tF\
     \ res = id();\n\n\t\tp += sz;\n\t\tfor (int i = lg; i > 0; i--) {\n\t\t\tpush(p\
     \ >> i);\n\t\t}\n\t\treturn dat[p];\n\t}\npublic:\n\n\tvoid apply(int l, int r,\
-    \ const F& v) {\n\t\tif (l == r)return;\n\t\tl += sz, r += sz;\n\t\tif (is_commutative)\
-    \ {\n\t\t\tfor (int i = lg; i > 0; i--) {\n\t\t\t\tif (((l >> i) << i) != l) {\n\
-    \t\t\t\t\tpush(l >> i);\n\t\t\t\t}\n\t\t\t\tif (((r >> i) << i) != r) {\n\t\t\t\
-    \t\tpush((r - 1) >> i);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\twhile (l < r) {\n\t\t\
-    \tif (l & 1) {\n\t\t\t\tall_apply(l++, v);\n\t\t\t}\n\t\t\tif (r & 1) {\n\t\t\t\
-    \tall_apply(--r, v);\n\t\t\t}\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t}\n};\n"
+    \ const F& v) {\n\t\tassert(0 <= l && l <= r && r <= _n);\n\t\tif (l == r)return;\n\
+    \t\tl += sz, r += sz;\n\t\tif (is_commutative) {\n\t\t\tfor (int i = lg; i > 0;\
+    \ i--) {\n\t\t\t\tif (((l >> i) << i) != l) {\n\t\t\t\t\tpush(l >> i);\n\t\t\t\
+    \t}\n\t\t\t\tif (((r >> i) << i) != r) {\n\t\t\t\t\tpush((r - 1) >> i);\n\t\t\t\
+    \t}\n\t\t\t}\n\t\t}\n\n\t\twhile (l < r) {\n\t\t\tif (l & 1) {\n\t\t\t\tall_apply(l++,\
+    \ v);\n\t\t\t}\n\t\t\tif (r & 1) {\n\t\t\t\tall_apply(--r, v);\n\t\t\t}\n\t\t\t\
+    l >>= 1, r >>= 1;\n\t\t}\n\t}\n};\n"
   code: "\n/// @brief Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
     )\n/// @tparam F \u8981\u7D20\u306E\u578B\n/// @tparam comp \u4E8C\u9805\u6F14\
     \u7B97\n/// @tparam id \u5358\u4F4D\u5143\n/// @docs docs/data-structure/dual_segtree.md\n\
@@ -53,18 +54,18 @@ data:
     \ 1, dat[p]);\n\t\tdat[p] = id();\n\t}\npublic:\n\tF operator[](int p) {\n\t\t\
     assert(0 <= p && p < _n);\n\n\t\tF res = id();\n\n\t\tp += sz;\n\t\tfor (int i\
     \ = lg; i > 0; i--) {\n\t\t\tpush(p >> i);\n\t\t}\n\t\treturn dat[p];\n\t}\npublic:\n\
-    \n\tvoid apply(int l, int r, const F& v) {\n\t\tif (l == r)return;\n\t\tl += sz,\
-    \ r += sz;\n\t\tif (is_commutative) {\n\t\t\tfor (int i = lg; i > 0; i--) {\n\t\
-    \t\t\tif (((l >> i) << i) != l) {\n\t\t\t\t\tpush(l >> i);\n\t\t\t\t}\n\t\t\t\t\
-    if (((r >> i) << i) != r) {\n\t\t\t\t\tpush((r - 1) >> i);\n\t\t\t\t}\n\t\t\t\
-    }\n\t\t}\n\n\t\twhile (l < r) {\n\t\t\tif (l & 1) {\n\t\t\t\tall_apply(l++, v);\n\
-    \t\t\t}\n\t\t\tif (r & 1) {\n\t\t\t\tall_apply(--r, v);\n\t\t\t}\n\t\t\tl >>=\
-    \ 1, r >>= 1;\n\t\t}\n\t}\n};"
+    \n\tvoid apply(int l, int r, const F& v) {\n\t\tassert(0 <= l && l <= r && r <=\
+    \ _n);\n\t\tif (l == r)return;\n\t\tl += sz, r += sz;\n\t\tif (is_commutative)\
+    \ {\n\t\t\tfor (int i = lg; i > 0; i--) {\n\t\t\t\tif (((l >> i) << i) != l) {\n\
+    \t\t\t\t\tpush(l >> i);\n\t\t\t\t}\n\t\t\t\tif (((r >> i) << i) != r) {\n\t\t\t\
+    \t\tpush((r - 1) >> i);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\twhile (l < r) {\n\t\t\
+    \tif (l & 1) {\n\t\t\t\tall_apply(l++, v);\n\t\t\t}\n\t\t\tif (r & 1) {\n\t\t\t\
+    \tall_apply(--r, v);\n\t\t\t}\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t}\n};"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/dual_segtree.hpp
   requiredBy: []
-  timestamp: '2023-04-06 14:34:46+09:00'
+  timestamp: '2023-03-26 08:02:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/2_E_dual.test.cpp
