@@ -60,11 +60,16 @@ data:
     - icon: ':warning:'
       path: graph/namori.hpp
       title: graph/namori.hpp
-  - name: math
+  - name: internal
     pages:
     - icon: ':heavy_check_mark:'
-      path: math/barrett.hpp
+      path: internal/barrett.hpp
       title: barrett reduction
+    - icon: ':heavy_check_mark:'
+      path: internal/montgomery.hpp
+      title: MontgomeryReduction
+  - name: math
+    pages:
     - icon: ':heavy_check_mark:'
       path: math/dynamic_modint.hpp
       title: dynamic_modint(64bit)
@@ -86,9 +91,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
-    - icon: ':heavy_check_mark:'
-      path: math/montgomery.hpp
-      title: MontgomeryReduction
     - icon: ':warning:'
       path: math/osak.hpp
       title: "Osak\u6CD5"

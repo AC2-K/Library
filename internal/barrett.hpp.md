@@ -42,12 +42,12 @@ data:
   attributes:
     document_title: barrett reduction
     links: []
-  bundledCode: "#line 2 \"math/barrett.hpp\"\nnamespace internal {\n\t///@brief barrett\
-    \ reduction\n\tclass barrett {\n\t\tusing u32 = uint32_t;\n\t\tusing u64 = uint64_t;\n\
-    \n\t\tu64 m;\n\t\tu64 im;\n\tpublic:\n\t\texplicit barrett() = default;\n\t\t\
-    explicit barrett(u64 m_) :m(m_), im((u64)(long double)static_cast<u64>(-1) / m_\
-    \ + 1) {}\n\n\t\tu64 get_mod() const { return m; }\n\t\tu64 reduce(int64_t a)const{\n\
-    \        \tif (a < 0) return m - reduce(-a);\n            u64 q = ((__uint128_t)a\
+  bundledCode: "#line 2 \"internal/barrett.hpp\"\nnamespace internal {\n\t///@brief\
+    \ barrett reduction\n\tclass barrett {\n\t\tusing u32 = uint32_t;\n\t\tusing u64\
+    \ = uint64_t;\n\n\t\tu64 m;\n\t\tu64 im;\n\tpublic:\n\t\texplicit barrett() =\
+    \ default;\n\t\texplicit barrett(u64 m_) :m(m_), im((u64)(long double)static_cast<u64>(-1)\
+    \ / m_ + 1) {}\n\n\t\tu64 get_mod() const { return m; }\n\t\tu64 reduce(int64_t\
+    \ a)const{\n        \tif (a < 0) return m - reduce(-a);\n            u64 q = ((__uint128_t)a\
     \ * im) >> 64;\n            a -= m * q;\n            if (a >= m) a -= m;\n   \
     \         return a;\n        }\n\t\tu64 mul(u64 a, u64 b) {\n\t\t\tif (a == 0\
     \ || b == 0) {\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\tu64 z = a;\n\t\t\tz *= b;\n\t\
@@ -66,7 +66,7 @@ data:
     \treturn v;\n\t\t}\n\t};\n}"
   dependsOn: []
   isVerificationFile: false
-  path: math/barrett.hpp
+  path: internal/barrett.hpp
   requiredBy:
   - math/mod_log.hpp
   - math/rho.hpp
@@ -74,7 +74,7 @@ data:
   - math/dynamic_modint.hpp
   - math/phi_function.hpp
   - math/primitive_root.hpp
-  timestamp: '2023-04-05 12:24:40+09:00'
+  timestamp: '2023-04-07 10:30:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
@@ -82,10 +82,10 @@ data:
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yuki/No-3030.test.cpp
-documentation_of: math/barrett.hpp
+documentation_of: internal/barrett.hpp
 layout: document
 redirect_from:
-- /library/math/barrett.hpp
-- /library/math/barrett.hpp.html
+- /library/internal/barrett.hpp
+- /library/internal/barrett.hpp.html
 title: barrett reduction
 ---

@@ -5,8 +5,11 @@ data:
     path: data-structure/hash_map.hpp
     title: HashMap
   - icon: ':heavy_check_mark:'
-    path: math/barrett.hpp
+    path: internal/barrett.hpp
     title: barrett reduction
+  - icon: ':heavy_check_mark:'
+    path: internal/montgomery.hpp
+    title: MontgomeryReduction
   - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
@@ -19,9 +22,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
-  - icon: ':heavy_check_mark:'
-    path: math/montgomery.hpp
-    title: MontgomeryReduction
   - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
@@ -82,7 +82,7 @@ data:
     \        u32 hash = get_hash(k);\n        while (1) {\n            if (!(flag[hash\
     \ >> 6] &\n                  (static_cast<u64>(1) << (hash & mod_msk))))\n   \
     \             return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
-    \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n#line 2 \"math/barrett.hpp\"\
+    \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n#line 2 \"internal/barrett.hpp\"\
     \nnamespace internal {\n\t///@brief barrett reduction\n\tclass barrett {\n\t\t\
     using u32 = uint32_t;\n\t\tusing u64 = uint64_t;\n\n\t\tu64 m;\n\t\tu64 im;\n\t\
     public:\n\t\texplicit barrett() = default;\n\t\texplicit barrett(u64 m_) :m(m_),\
@@ -93,7 +93,7 @@ data:
     \     }\n\t\tu64 mul(u64 a, u64 b) {\n\t\t\tif (a == 0 || b == 0) {\n\t\t\t\t\
     return 0;\n\t\t\t}\n\t\t\tu64 z = a;\n\t\t\tz *= b;\n\t\t\tu64 x = (u64)(((__uint128_t)(z)*im)\
     \ >> 64);\n\n\t\t\tu32 v = (u32)(z - x * m);\n\n\t\t\tif (v >= m)v += m;\n\t\t\
-    \treturn v;\n\t\t}\n\t};\n}\n#line 2 \"math/montgomery.hpp\"\nnamespace internal\
+    \treturn v;\n\t\t}\n\t};\n}\n#line 2 \"internal/montgomery.hpp\"\nnamespace internal\
     \ {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n    using i32 = int32_t;\n\
     \    using i64 = int64_t;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\
     \    /// @brief MontgomeryReduction\n    template<typename T,typename LargeT>\n\
@@ -113,16 +113,17 @@ data:
     \  return res;\n        }\n\n        T generate(LargeT x) {\n            return\
     \ reduce(x * r2);\n        }\n\n        T mult(T x, T y) {\n            return\
     \ reduce(static_cast<LargeT>(x) * y);\n        }\n    };\n};\n#line 4 \"math/dynamic_modint.hpp\"\
-    \ntemplate<int id=-1>\nclass barrett_modint {\n\tusing u32 = uint32_t;\n\tusing\
-    \ u64 = uint64_t;\n\n\tusing i32 = int32_t;\n\tusing i64 = int64_t;\n\tusing br\
-    \ = internal::barrett;\n\n\tstatic br brt;\n\tstatic u32 mod;\n\tu32 v;\t//value\n\
-    public:\n\tstatic void set_mod(u32 mod_) {\n\t\tbrt = br(mod_);\n\t\tmod = mod_;\n\
-    \t}\npublic:\n\texplicit constexpr barrett_modint() :v(0) { assert(mod); }\t//mod\u304C\
-    \u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\n\texplicit\
-    \ constexpr barrett_modint(i64 v_) :v(brt.reduce(v_)) { assert(mod); }\t\n\n\t\
-    u32 val() const { return v; }\n    static u32 get_mod() { return mod; }\n    using\
-    \ mint = barrett_modint;\n\n\t//operators\n\tconstexpr mint& operator=(i64 r)\
-    \ {\n\t\tv = brt.reduce(r); \n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator+=(const\
+    \ntemplate <int id = -1>\nclass barrett_modint {\n    using u32 = uint32_t;\n\
+    \    using u64 = uint64_t;\n\n    using i32 = int32_t;\n    using i64 = int64_t;\n\
+    \    using br = internal::barrett;\n\n    static br brt;\n    static u32 mod;\n\
+    \    u32 v;  // value\n  public:\n    static void set_mod(u32 mod_) {\n      \
+    \  brt = br(mod_);\n        mod = mod_;\n    }\n\n  public:\n    explicit constexpr\
+    \ barrett_modint() : v(0) {\n        assert(mod);\n    }  // mod\u304C\u6C7A\u5B9A\
+    \u6E08\u307F\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\n    explicit constexpr\
+    \ barrett_modint(i64 v_) : v(brt.reduce(v_)) {\n        assert(mod);\n    }\n\n\
+    \    u32 val() const { return v; }\n    static u32 get_mod() { return mod; }\n\
+    \    using mint = barrett_modint<id>;\n\n\t//operators\n\tconstexpr mint& operator=(i64\
+    \ r) {\n\t\tv = brt.reduce(r); \n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator+=(const\
     \ mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\t\
     return (*this);\n\t}\n\tconstexpr mint& operator-=(const mint&r) {\n\t\tv += mod\
     \ - r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\n\t\treturn (*this);\n\
@@ -161,9 +162,9 @@ data:
     \ mod; }\n\n      private:\n        T v;\n      public:\n        dynamic_modint(T\
     \ v_ = 0) {\n                assert(mod);\n                v = mr.generate(v_);\n\
     \        }\n        T val() const { return mr.reduce(v); }\n\n        using mint\
-    \ = dynamic_modint<T, LargeT>;\n        mint& operator+=(const mint& r) {\n  \
-    \              v += r.v;\n                if (v >= mr.get_mod()) {\n         \
-    \               v -= mr.get_mod();\n                }\n\n                return\
+    \ = dynamic_modint<T, LargeT, id>;\n        mint& operator+=(const mint& r) {\n\
+    \                v += r.v;\n                if (v >= mr.get_mod()) {\n       \
+    \                 v -= mr.get_mod();\n                }\n\n                return\
     \ (*this);\n        }\n\n        mint& operator-=(const mint& r) {\n         \
     \       v += mr.get_mod() - r.v;\n                if (v >= mr.get_mod) {\n   \
     \                     v -= mr.get_mod();\n                }\n\n              \
@@ -241,12 +242,12 @@ data:
   - math/gcd.hpp
   - data-structure/hash_map.hpp
   - math/dynamic_modint.hpp
-  - math/barrett.hpp
-  - math/montgomery.hpp
+  - internal/barrett.hpp
+  - internal/montgomery.hpp
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-04-06 15:07:36+09:00'
+  timestamp: '2023-04-07 10:30:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp

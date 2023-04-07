@@ -42,8 +42,8 @@ data:
   attributes:
     document_title: MontgomeryReduction
     links: []
-  bundledCode: "#line 2 \"math/montgomery.hpp\"\nnamespace internal {\n    using u32\
-    \ = uint32_t;\n    using u64 = uint64_t;\n    using i32 = int32_t;\n    using\
+  bundledCode: "#line 2 \"internal/montgomery.hpp\"\nnamespace internal {\n    using\
+    \ u32 = uint32_t;\n    using u64 = uint64_t;\n    using i32 = int32_t;\n    using\
     \ i64 = int64_t;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\
     \    /// @brief MontgomeryReduction\n    template<typename T,typename LargeT>\n\
     \    class MontgomeryReduction64 {\n        static constexpr int lg = numeric_limits<T>::digits;\n\
@@ -84,7 +84,7 @@ data:
     \ reduce(static_cast<LargeT>(x) * y);\n        }\n    };\n};\n"
   dependsOn: []
   isVerificationFile: false
-  path: math/montgomery.hpp
+  path: internal/montgomery.hpp
   requiredBy:
   - math/mod_log.hpp
   - math/rho.hpp
@@ -92,7 +92,7 @@ data:
   - math/dynamic_modint.hpp
   - math/phi_function.hpp
   - math/primitive_root.hpp
-  timestamp: '2023-03-31 22:26:02+09:00'
+  timestamp: '2023-04-07 10:30:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
@@ -100,10 +100,10 @@ data:
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yuki/No-3030.test.cpp
-documentation_of: math/montgomery.hpp
+documentation_of: internal/montgomery.hpp
 layout: document
 redirect_from:
-- /library/math/montgomery.hpp
-- /library/math/montgomery.hpp.html
+- /library/internal/montgomery.hpp
+- /library/internal/montgomery.hpp.html
 title: MontgomeryReduction
 ---
