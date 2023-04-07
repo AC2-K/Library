@@ -2,11 +2,11 @@
 
 
 #include"template.hpp"
-#include"math/eratosthenes.hpp"
+#include"math/sieve.hpp"
 
 int main(){
     constexpr int INPUT_MAX = 100000000;
-    const auto res = prime_checker(INPUT_MAX);
+    const auto res = sieve(INPUT_MAX);
 
     int n;
     scanf("%d",&n);

@@ -1,6 +1,9 @@
 #pragma once
-inline vector<bool> prime_checker(int N){
-    vector<bool> primes(N + 1, true);
+#include<vector>
+
+/// @brief エラトステネスの篩
+std::vector<bool> sieve(int N){
+    std::vector<bool> primes(N + 1, true);
 
     primes[0] = false;
     primes[1] = false;
@@ -14,4 +17,3 @@ inline vector<bool> prime_checker(int N){
 
     return primes;
 }
-///@brief エラトステネスの篩
