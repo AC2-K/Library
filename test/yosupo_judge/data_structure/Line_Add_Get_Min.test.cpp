@@ -11,7 +11,7 @@ int main(){
     for(int i=0;i<n;i++){
         ll a,b;
         cin>>a>>b;
-        cht.add(a,b);
+        cht.insert(a,b);
     }
     while(q--){
         int t;
@@ -19,7 +19,7 @@ int main(){
         if(t==0){
             ll a,b;
             cin>>a>>b;
-            cht.add(a,b);
+            cht.insert(a,b);
         }else{
             ll x;
             cin>>x;

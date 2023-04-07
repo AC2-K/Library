@@ -1,10 +1,10 @@
+#pragma once
+#include <vector>
 /// @brief Binary Index Tree
-/// @tparam T 要素の型
-/// @tparam SumT "和が" 収まるような型
 /// @docs docs/data-structure/BIT.md
 template<typename T,typename SumT = T>
 class BIT {
-	vector<SumT> bit;
+	std::vector<SumT> bit;
 	int n;
 public:
     BIT(int n) :n(n), bit(n + 1, T()) {}

@@ -1,23 +1,22 @@
+#pragma once
+#include <vector>
+
 /// @brief Disjoint Set(Union find)
-/// @docs docs/data-structure/dsu.md
 class DSU {
-private:
-    vector<int> find, rank;
-public:
+  private:
+    std::vector<int> find, rank;
+
+  public:
     DSU(int n) : find(n, -1), rank(n, 1) {}
 
     int root(int x) {
         if (find[x] < 0) {
             return x;
-        }
-        else {
+        } else {
             return find[x] = root(find[x]);
         }
     }
-    bool same(int x, int y) {
-        return root(x) == root(y);
-    }
-
+    bool same(int x, int y) { return root(x) == root(y); }
     int merge(int x, int y) {
         x = root(x), y = root(y);
         if (x == y) return x;
@@ -27,18 +26,7 @@ public:
         find[y] = x;
         return x;
     }
-
-    int size(int x) {
-        return -find[root(x)];
-    }
-
-    inline int group_size() {
-        int c = 0;
-        for (int v = 0; v < find.size(); v++) {
-            if (find[v] < 0) {
-                c++;
-            }
-        }
-        return c;
-    }
+    int size(int x) { return -find[root(x)]; }
 };
+
+/// @docs docs/data-structure/dsu.md
