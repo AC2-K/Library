@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: internal/barrett.hpp
     title: barrett reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
-    title: dynamic_modint
-  - icon: ':question:'
+    title: dynamic_modint(64bit)
+  - icon: ':heavy_check_mark:'
     path: math/gcd.hpp
     title: math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/miller.hpp
     title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/factorize
@@ -73,165 +73,170 @@ data:
     \ * minv) * mod) >> lg;\n\n            if (res >= mod)res -= mod;\n          \
     \  return res;\n        }\n\n        T generate(LargeT x) {\n            return\
     \ reduce(x * r2);\n        }\n\n        T mult(T x, T y) {\n            return\
-    \ reduce(static_cast<LargeT>(x) * y);\n        }\n    };\n};\n#line 6 \"math/dynamic_modint.hpp\"\
-    \ntemplate <int id = -1>\nclass barrett_modint {\n    using u32 = uint32_t;\n\
-    \    using u64 = uint64_t;\n\n    using i32 = int32_t;\n    using i64 = int64_t;\n\
-    \    using br = internal::barrett;\n\n    static br brt;\n    static u32 mod;\n\
-    \    u32 v;  // value\n  public:\n    static void set_mod(u32 mod_) {\n      \
-    \  brt = br(mod_);\n        mod = mod_;\n    }\n\n  public:\n    explicit constexpr\
-    \ barrett_modint() : v(0) {\n        assert(mod);\n    }  // mod\u304C\u6C7A\u5B9A\
-    \u6E08\u307F\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\n    explicit constexpr\
-    \ barrett_modint(i64 v_) : v(brt.reduce(v_)) {\n        assert(mod);\n    }\n\n\
-    \    u32 val() const { return v; }\n    static u32 get_mod() { return mod; }\n\
-    \    using mint = barrett_modint<id>;\n    \n    // operators\n    constexpr mint&\
-    \ operator=(i64 r) {\n        v = brt.reduce(r);\n        return (*this);\n  \
-    \  }\n    constexpr mint& operator+=(const mint& r) {\n        v += r.v;\n   \
-    \     if (v >= mod) {\n            v -= mod;\n        }\n        return (*this);\n\
-    \    }\n    constexpr mint& operator-=(const mint& r) {\n        v += mod - r.v;\n\
-    \        if (v >= mod) {\n            v -= mod;\n        }\n\n        return (*this);\n\
-    \    }\n    constexpr mint& operator*=(const mint& r) {\n        v = brt.mul(v,\
-    \ r.v);\n        return (*this);\n    }\n    constexpr mint operator+(const mint&\
-    \ r) const { return mint(*this) += r; }\n    constexpr mint operator-(const mint&\
-    \ r) const { return mint(*this) -= r; }\n    constexpr mint operator*(const mint&\
-    \ r) const { return mint(*this) *= r; }\n\n    constexpr mint& operator+=(i64\
-    \ r) { return (*this) += mint(r); }\n    constexpr mint& operator-=(i64 r) { return\
-    \ (*this) -= mint(r); }\n    constexpr mint& operator*=(i64 r) { return (*this)\
-    \ *= mint(r); }\n\n    friend mint operator+(i64 l, const mint& r) { return mint(l)\
-    \ += r; }\n    friend mint operator+(const mint& l, i64 r) { return mint(l) +=\
-    \ r; }\n    friend mint operator-(i64 l, const mint& r) { return mint(l) -= r;\
-    \ }\n    friend mint operator-(const mint& l, i64 r) { return mint(l) -= r; }\n\
-    \    friend mint operator*(i64 l, const mint& r) { return mint(l) *= r; }\n  \
-    \  friend mint operator*(const mint& l, i64 r) { return mint(l) += r; }\n    friend\
-    \ std::ostream& operator<<(std::ostream& os, const mint& mt) {\n        os <<\
-    \ mt.val();\n        return os;\n    }\n    friend std::istream& operator>>(std::istream&\
-    \ is, mint& mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n    \
-    \    return is;\n    }\n    template <typename P> \n    constexpr mint pow(P e)\
-    \ const {\n        assert(e >= 0);\n        mint res(1), base(*this);\n\n    \
-    \    while (e) {\n            if (e & 1) {\n                res *= base;\n   \
-    \         }\n            e >>= 1;\n            base *= base;\n        }\n    \
-    \    return res;\n    }\n    constexpr mint inv() const { return pow(mod - 2);\
-    \ }\n\n    mint& operator/=(const mint& r) { return (*this) *= r.inv(); }\n  \
-    \  mint operator/(const mint& r) const { return mint(*this) *= r.inv(); }\n  \
-    \  mint& operator/=(i64 r) { return (*this) /= mint(r); }\n    friend mint operator/(const\
-    \ mint& l, i64 r) { return mint(l) /= r; }\n    friend mint operator/(i64 l, const\
-    \ mint& r) { return mint(l) /= r; }\n};\ntemplate <int id> typename barrett_modint<id>::u32\
-    \ barrett_modint<id>::mod;\ntemplate<int id>typename barrett_modint<id>::br barrett_modint<id>::brt;\n\
-    \n\n/// @brief dynamic_modint\ntemplate <typename T = uint32_t, typename LargeT\
-    \ = uint64_t, int id = -1>\nclass dynamic_modint {\n    static T mod;\n    static\
-    \ internal::MontgomeryReduction64<T, LargeT> mr;\n\n  public:\n    static void\
-    \ set_mod(T mod_) {\n        mr.set_mod(mod_);\n        mod = mod_;\n    }\n \
-    \   static T get_mod() { return mod; }\n\n  private:\n    T v;\n\n  public:\n\
-    \    dynamic_modint(T v_ = 0) {\n        assert(mod);\n        v = mr.generate(v_);\n\
-    \    }\n    T val() const { return mr.reduce(v); }\n    using mint = dynamic_modint<T,\
-    \ LargeT, id>;\n    mint& operator+=(const mint& r) {\n        v += r.v;\n   \
-    \     if (v >= mr.get_mod()) {\n            v -= mr.get_mod();\n        }\n\n\
-    \        return (*this);\n    }\n    mint& operator-=(const mint& r) {\n     \
-    \   v += mr.get_mod() - r.v;\n        if (v >= mr.get_mod) {\n            v -=\
-    \ mr.get_mod();\n        }\n\n        return (*this);\n    }\n    mint& operator*=(const\
-    \ mint& r) {\n        v = mr.mult(v, r.v);\n        return (*this);\n    }\n \
-    \   mint operator+(const mint& r) { return mint(*this) += r; }\n    mint operator-(const\
-    \ mint& r) { return mint(*this) -= r; }\n    mint operator*(const mint& r) { return\
-    \ mint(*this) *= r; }\n    mint& operator=(const T& v_) {\n        (*this) = mint(v_);\n\
-    \        return (*this);\n    }\n    friend ostream& operator<<(ostream& os, const\
-    \ mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    friend\
-    \ istream& operator>>(istream& is, mint& mt) {\n        T v_;\n        is >> v_;\n\
-    \        mt = v_;\n        return is;\n    }\n    template <typename P> \n   \
-    \ constexpr mint pow(P e) const {\n        assert(e >= 0);\n        mint res(1),\
-    \ base(*this);\n\n        while (e) {\n            if (e & 1) {\n            \
-    \    res *= base;\n            }\n            e >>= 1;\n            base *= base;\n\
-    \        }\n        return res;\n    }\n    mint inv() const { return pow(mod\
-    \ - 2); }\n\n    mint& operator/=(const mint& r) { return (*this) *= r.inv();\
-    \ }\n    mint operator/(const mint& r) const { return mint(*this) *= r.inv();\
-    \ }\n    mint& operator/=(T r) { return (*this) /= mint(r); }\n    friend mint\
-    \ operator/(const mint& l, T r) { return mint(l) /= r; };\n    friend mint operator/(T\
-    \ l, const mint& r) { return mint(l) /= r; }\n};\ntemplate<typename T, typename\
+    \ reduce(static_cast<LargeT>(x) * y);\n        }\n    };\n};\n#line 4 \"math/dynamic_modint.hpp\"\
+    \ntemplate<int id = -1>\nclass barrett_modint {\n\tusing u32 = uint32_t;\n\tusing\
+    \ u64 = uint64_t;\n\n\tusing i32 = int32_t;\n\tusing i64 = int64_t;\n\tusing br\
+    \ = internal::barrett;\n\n\tstatic br brt;\n\tstatic u32 mod;\n\tu32 v;\t//value\n\
+    public:\n\tstatic void set_mod(u32 mod_) {\n\t\tbrt = br(mod_);\n\t\tmod = mod_;\n\
+    \t}\npublic:\n\texplicit constexpr barrett_modint() :v(0) { assert(mod); }\t//mod\u304C\
+    \u6C7A\u5B9A\u6E08\u307F\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\u308B\n\texplicit\
+    \ constexpr barrett_modint(i64 v_) :v(brt.reduce(v_)) { assert(mod); }\t\n\n\t\
+    u32 val() const { return v; }\n    static u32 get_mod() { return mod; }\n    using\
+    \ mint = barrett_modint;\n\n\t//operators\n\tconstexpr mint& operator=(i64 r)\
+    \ {\n\t\tv = brt.reduce(r); \n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator+=(const\
+    \ mint& r) {\n\t\tv += r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\t\
+    return (*this);\n\t}\n\tconstexpr mint& operator-=(const mint&r) {\n\t\tv += mod\
+    \ - r.v;\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\n\t\treturn (*this);\n\
+    \t}\n\tconstexpr mint& operator*=(const mint& r) {\n\t\tv = brt.mul(v, r.v);\n\
+    \t\treturn (*this);\n\t}\n\n\tconstexpr mint operator+(const mint& r) const {\
+    \ return mint(*this) += r; }\n\tconstexpr mint operator-(const mint& r) const\
+    \ { return mint(*this) -= r; }\n\tconstexpr mint operator*(const mint& r) const\
+    \ { return mint(*this) *= r; }\n\n\n\n\tconstexpr mint& operator+= (i64 r) { return\
+    \ (*this) += mint(r); }\n\tconstexpr mint& operator-= (i64 r) { return (*this)\
+    \ -= mint(r); }\n\tconstexpr mint& operator*= (i64 r) { return (*this) *= mint(r);\
+    \ }\n\n\tfriend mint operator+(i64 l, const mint& r) { return mint(l) += r; }\n\
+    \tfriend mint operator+(const mint& l, i64 r) { return mint(l) += r; }\n\tfriend\
+    \ mint operator-(i64 l, const mint& r) { return mint(l) -= r; }\n\tfriend mint\
+    \ operator-(const mint& l, i64 r) { return mint(l) -= r; }\n\tfriend mint operator*(i64\
+    \ l, const mint& r) { return mint(l) *= r; }\n\tfriend mint operator*(const mint&\
+    \ l, i64 r) { return mint(l) += r; }\n\n\n\tfriend ostream& operator<<(ostream&\
+    \ os, const mint& mt) {\n\t\tos << mt.val();\n\t\treturn os;\n\t}\n\tfriend istream&\
+    \ operator>>(istream& is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\
+    \t\treturn is;\n\t}\n\tconstexpr mint pow(u64 e) const {\n\t\tmint res(1), base(*this);\n\
+    \n\t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tres *= base;\n\t\t\t}\n\t\t\te\
+    \ >>= 1;\n\t\t\tbase *= base;\n\t\t}\n\t\treturn res;\n\t}\n\tconstexpr mint inv()\
+    \ const {\n\t\treturn pow(mod - 2);\n\t}\n\n\tmint& operator/=(const mint& r)\
+    \ { return (*this) *= r.inv(); }\n\tmint operator/(const mint& r) const { return\
+    \ mint(*this) *= r.inv(); }\n\tmint& operator/=(i64 r) { return (*this) /= mint(r);\
+    \ }\n\tfriend mint operator/(const mint& l, i64 r) { return mint(l) /= r; }\n\t\
+    friend mint operator/(i64 l, const mint& r) { return mint(l) /= r; }\n};\ntemplate<int\
+    \ id>typename barrett_modint<id>::u32 barrett_modint<id>::mod;\ntemplate<int id>typename\
+    \ barrett_modint<id>::br barrett_modint<id>::brt;\n\n\n/// @brief dynamic_modint(64bit)\n\
+    /// @tparam T \u578B(64bit,32bit\u306A\u3069)\n/// @tparam LargeT \u7A4D\u304C\
+    \u53CE\u307E\u3063\u3066\u304F\u308C\u308B\u578B\n/// @note T,LargeT\u306E\u3044\
+    \u305A\u308C\u3082unsigned\u3067\u6E21\u3059\ntemplate <typename T = uint32_t,\
+    \ typename LargeT = uint64_t, int id = -1>\nclass dynamic_modint {\n        static\
+    \ T mod;\n        static internal::MontgomeryReduction64<T, LargeT> mr;\n\n  \
+    \    public:\n        static void set_mod(T mod_) {\n                mr.set_mod(mod_);\n\
+    \                mod = mod_;\n        }\n\n        static T get_mod() { return\
+    \ mod; }\n\n      private:\n        T v;\n      public:\n        dynamic_modint(T\
+    \ v_ = 0) {\n                assert(mod);\n                v = mr.generate(v_);\n\
+    \        }\n        T val() const { return mr.reduce(v); }\n\n        using mint\
+    \ = dynamic_modint<T, LargeT>;\n        mint& operator+=(const mint& r) {\n  \
+    \              v += r.v;\n                if (v >= mr.get_mod()) {\n         \
+    \               v -= mr.get_mod();\n                }\n\n                return\
+    \ (*this);\n        }\n\n        mint& operator-=(const mint& r) {\n         \
+    \       v += mr.get_mod() - r.v;\n                if (v >= mr.get_mod) {\n   \
+    \                     v -= mr.get_mod();\n                }\n\n              \
+    \  return (*this);\n        }\n\n        mint& operator*=(const mint& r) {\n \
+    \               v = mr.mult(v, r.v);\n                return (*this);\n      \
+    \  }\n\n        mint operator+(const mint& r) { return mint(*this) += r; }\n \
+    \       mint operator-(const mint& r) { return mint(*this) -= r; }\n        mint\
+    \ operator*(const mint& r) { return mint(*this) *= r; }\n\n        mint& operator=(const\
+    \ T& v_) {\n                (*this) = mint(v_);\n                return (*this);\n\
+    \        }\n\n        friend ostream& operator<<(ostream& os, const mint& mt)\
+    \ {\n                os << mt.val();\n                return os;\n        }\n\
+    \        friend istream& operator>>(istream& is, mint& mt) {\n               \
+    \ T v_;\n                is >> v_;\n                mt = v_;\n               \
+    \ return is;\n        }\n        template <typename P> mint pow(P e) const {\n\
+    \                assert(e >= 0);\n                mint res(1), base(*this);\n\n\
+    \                while (e) {\n                        if (e & 1) {\n         \
+    \                       res *= base;\n                        }\n            \
+    \            e >>= 1;\n                        base *= base;\n               \
+    \ }\n                return res;\n        }\n        mint inv() const { return\
+    \ pow(mod - 2); }\n\n        mint& operator/=(const mint& r) { return (*this)\
+    \ *= r.inv(); }\n        mint operator/(const mint& r) const { return mint(*this)\
+    \ *= r.inv(); }\n        mint& operator/=(T r) { return (*this) /= mint(r); }\n\
+    \        friend mint operator/(const mint& l, T r) {\n                return mint(l)\
+    \ /= r;\n        }\n        friend mint operator/(T l, const mint& r) {\n    \
+    \            return mint(l) /= r;\n        }\n};\ntemplate<typename T, typename\
     \ LargeT,int id>T dynamic_modint<T, LargeT,id>::mod;\ntemplate<typename T,typename\
     \ LargeT,int id>internal::MontgomeryReduction64<T,LargeT> dynamic_modint<T,LargeT,id>::mr;\n\
-    \n\n///@docs docs/math/dynamic_modint.md\n#line 3 \"math/miller.hpp\"\nnamespace\
-    \ prime {\n    namespace miller {\n        using i128 = __int128_t;\n        using\
-    \ u128 = __uint128_t;\n        using u64 = uint64_t;\n        using u32 = uint32_t;\n\
-    \n        template<typename mint>\n        bool inline miller_rabin(u64 n, const\
-    \ u64 bases[], int length) {\n            u64 d = n - 1;\n\n            while\
-    \ (~d & 1) {\n                d >>= 1;\n            }\n\n            u64 rev =\
-    \ n - 1;\n            if (mint::get_mod() != n) {\n                mint::set_mod(n);\n\
-    \            }\n            for (int i = 0; i < length; i++) {\n             \
-    \   u64 a = bases[i];\n\n                if (n <= a) {\n                    return\
-    \ true;\n                }\n                u64 t = d;\n                mint y\
-    \ = mint(a).pow(t);\n                while (t != n - 1 && y.val() != 1 && y.val()\
-    \ != rev) {\n                    y *= y;\n                    t <<= 1;\n     \
-    \           }\n\n                if (y.val() != rev && (~t & 1))return false;\n\
-    \            }\n            return true;\n        }\n\n\n        constexpr u64\
-    \ bases_int[3] = { 2, 7, 61 };  // int\u3060\u3068\u30012,7,61\u3067\u5341\u5206\
-    \n        constexpr u64 bases_ll[7] = { 2, 325, 9375, 28178, 450775, 9780504,\
-    \ 1795265022 };\n        constexpr bool is_prime(u64 n) {\n            if (n <\
-    \ 2) {\n                return false;\n            }\n            else if (n ==\
-    \ 2) {\n                return true;\n            }\n            else if (~n &\
-    \ 1) {\n                return false;\n            }\n            if (n < (1ul\
-    \ << 31)) {\n                return miller_rabin<barrett_modint<10>>(n, bases_int,\
-    \ 3);\n            }\n            else {\n                return miller_rabin<dynamic_modint<u64,u128,10>>(n,\
+    \n\n///@brief dynamic modint(\u52D5\u7684modint)\n///@docs docs/math/dynamic_modint.md\n\
+    #line 3 \"math/miller.hpp\"\nnamespace library {\n    namespace miller {\n   \
+    \     using i128 = __int128_t;\n        using u128 = __uint128_t;\n        using\
+    \ u64 = uint64_t;\n        using u32 = uint32_t;\n\n        template<typename\
+    \ mint>\n        bool inline miller_rabin(u64 n, const u64 bases[], int length)\
+    \ {\n            u64 d = n - 1;\n\n            while (~d & 1) {\n            \
+    \    d >>= 1;\n            }\n\n            u64 rev = n - 1;\n            if (mint::get_mod()\
+    \ != n) {\n                mint::set_mod(n);\n            }\n            for (int\
+    \ i = 0; i < length; i++) {\n                u64 a = bases[i];\n\n           \
+    \     if (n <= a) {\n                    return true;\n                }\n   \
+    \             u64 t = d;\n                mint y = mint(a).pow(t);\n         \
+    \       while (t != n - 1 && y.val() != 1 && y.val() != rev) {\n             \
+    \       y *= y;\n                    t <<= 1;\n                }\n\n         \
+    \       if (y.val() != rev && (~t & 1))return false;\n            }\n        \
+    \    return true;\n        }\n\n\n        constexpr u64 bases_int[3] = { 2, 7,\
+    \ 61 };  // int\u3060\u3068\u30012,7,61\u3067\u5341\u5206\n        constexpr u64\
+    \ bases_ll[7] = { 2, 325, 9375, 28178, 450775, 9780504, 1795265022 };\n      \
+    \  constexpr bool is_prime(u64 n) {\n            if (n < 2) {\n              \
+    \  return false;\n            }\n            else if (n == 2) {\n            \
+    \    return true;\n            }\n            else if (~n & 1) {\n           \
+    \     return false;\n            }\n            if (n < (1ul << 31)) {\n     \
+    \           return miller_rabin<barrett_modint<-1>>(n, bases_int, 3);\n      \
+    \      }\n            else {\n                return miller_rabin<dynamic_modint<u64,u128,-1>>(n,\
     \ bases_ll, 7);\n            }\n        }\n    };\n};\n///@brief MillerRabin\u306E\
-    \u7D20\u6570\u5224\u5B9A\n#line 3 \"math/gcd.hpp\"\ntemplate <typename T> constexpr\
-    \ T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0)\
-    \ return a + b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \u7D20\u6570\u5224\u5B9A\n#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr\
+    \ inline T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
+    \ b == 0) return a + b;\n    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
     \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
     \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
     \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
     \        }else{\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
-    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
-    \    while(b) {\n        T q = a / b;\n        std::tie(a, b) = std::make_pair(b,\
-    \ a % b);\n        std::tie(x, nx) = std::make_pair(nx, x - nx*q);\n        std::tie(y,\
-    \ ny) = std::make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n#line 4 \"math/rho.hpp\"\
-    \n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\nnamespace\
-    \ prime {\n    namespace rho {\n        using i128 = __int128_t;\n        using\
-    \ u128 = __uint128_t;\n        using u64 = uint64_t;\n        using u32 = uint32_t;\n\
-    \n        template<typename mint>\n        u64 find_factor(u64 n) {\n        \
-    \    static u64 v = 20001;\n\n            if (~n & 1uL) {\n                return\
-    \ 2;\n            }\n            if (prime::miller::is_prime(n)) {\n         \
-    \       return n;\n            }\n\n            if (mint::get_mod() != n) {\n\
-    \                mint::set_mod(n);\n            }\n            while (1) {\n \
-    \               v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n                u64\
-    \ c = v;\n                auto f = [&](mint x) -> mint {\n                   \
-    \ return x.pow(2) + c;\n                };\n                v ^= v << 13, v ^=\
-    \ v >> 7, v ^= v << 17;\n                mint x = v;\n                mint y =\
-    \ f(x);\n                u64 d = 1;\n                while (d == 1) {\n      \
-    \              d = _gcd<long long>(std::abs((long long)x.val() - (long long)y.val()),\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate<typename T>\nconstexpr inline\
+    \ T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
+    \    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n\
+    \        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny,\
+    \ y - ny*q);\n    }\n    return a;\n}\n#line 4 \"math/rho.hpp\"\nnamespace library\
+    \ {\n    \n    ///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5\
+    )\n    namespace rho {\n        using i128 = __int128_t;\n        using u128 =\
+    \ __uint128_t;\n        using u64 = uint64_t;\n        using u32 = uint32_t;\n\
+    \n        template<typename mint>\n        inline u64 find_factor(u64 n) {\n \
+    \           static u64 v = 20001;\n\n            if (~n & 1uL) {\n           \
+    \     return 2;\n            }\n            if (library::miller::is_prime(n))\
+    \ {\n                return n;\n            }\n\n            if (mint::get_mod()\
+    \ != n) {\n                mint::set_mod(n);\n            }\n            while\
+    \ (1) {\n                v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n          \
+    \      u64 c = v;\n                auto f = [&](mint x) -> mint {\n          \
+    \          return x.pow(2) + c;\n                };\n                v ^= v <<\
+    \ 13, v ^= v >> 7, v ^= v << 17;\n                mint x = v;\n              \
+    \  mint y = f(x);\n                u64 d = 1;\n                while (d == 1)\
+    \ {\n                    d = _gcd<long long>(abs((long long)x.val() - (long long)y.val()),\
     \ n);\n                    x = f(x);\n                    y = f(f(y));\n     \
     \           }\n                if (1 < d && d < n) {\n                    return\
     \ d;\n                }\n            }\n            exit(0);\n        }\n    \
-    \    template<typename mint>\n        std::vector<u64> rho_fact(u64 n) {\n   \
-    \         if (n < 2) {\n                return {};\n            }\n          \
-    \  if (prime::miller::is_prime(n)) {\n                return { n };\n        \
-    \    }\n            std::vector<u64> v;\n            std::vector<u64> st{ n };\n\
-    \            while (st.size()) {\n                u64& m = st.back();\n      \
-    \          if (prime::miller::is_prime(m)) {\n                    v.emplace_back(m);\n\
+    \    template<typename mint>\n        inline vector<u64> rho_fact(u64 n) {\n \
+    \           if (n < 2) {\n                return {};\n            }\n        \
+    \    if (library::miller::is_prime(n)) {\n                return { n };\n    \
+    \        }\n            vector<u64> v;\n            vector<u64> st{ n };\n   \
+    \         while (st.size()) {\n                u64& m = st.back();\n         \
+    \       if (library::miller::is_prime(m)) {\n                    v.emplace_back(m);\n\
     \                    st.pop_back();\n                }\n                else {\n\
     \                    u64 d = find_factor<mint>(m);\n                    m /= d;\n\
     \                    st.emplace_back(d);\n                }\n            }\n \
-    \           return v;\n        }\n        inline std::vector<u64> factorize(u64\
-    \ n) {\n            if (n < 2) {\n                return {};\n            }\n\
-    \            auto v =\n                (n < (1uL << 31) ? rho_fact<dynamic_modint<u32,\
-    \ u64, 10>>(n)\n                                 : rho_fact<dynamic_modint<u64,\
-    \ u128, 10>>(n));\n            sort(v.begin(), v.end());\n            return v;\n\
-    \        }\n\n        inline std::vector<std::pair<u64, int>> exp_factorize(u64\
+    \           return v;\n        }\n        inline vector<u64> factorize(u64 n)\
+    \ {\n            if (n < 2) {\n                return {};\n            }\n   \
+    \         auto v = (n < (1uL << 31) ? rho_fact<dynamic_modint<u32, u64>>(n) :\
+    \ rho_fact<dynamic_modint<u64, u128>>(n));\n            sort(v.begin(), v.end());\n\
+    \            return v;\n        }\n\n        inline vector<pair<u64, int>> exp_factorize(u64\
     \ n) {\n            vector<u64> pf = factorize(n);\n            if (pf.empty())\
-    \ {\n                return {};\n            }\n            std::vector<std::pair<u64,\
-    \ int>> res;\n            res.emplace_back(pf.front(), 1);\n            for (int\
-    \ i = 1; i < pf.size(); i++) {\n                if (res.back().first == pf[i])\
-    \ {\n                    res.back().second++;\n                }\n           \
-    \     else {\n                    res.emplace_back(pf[i], 1);\n              \
-    \  }\n            }\n\n            return res;\n        }\n    };  // namespace\
-    \ pollard\n};  // namespace prime\n#line 5 \"test/yosupo_judge/math/Factorize.test.cpp\"\
+    \ {\n                return {};\n            }\n            vector<pair<u64, int>>\
+    \ res;\n            res.emplace_back(pf.front(), 1);\n            for (int i =\
+    \ 1; i < pf.size(); i++) {\n                if (res.back().first == pf[i]) {\n\
+    \                    res.back().second++;\n                }\n               \
+    \ else {\n                    res.emplace_back(pf[i], 1);\n                }\n\
+    \            }\n\n            return res;\n        }\n    };  // namespace pollard\n\
+    };  // namespace library\n#line 5 \"test/yosupo_judge/math/Factorize.test.cpp\"\
     \nint main(){\n    int q;\n    scanf(\"%d\", &q);\n    while (q--) {\n       \
-    \ uint64_t x;\n        scanf(\"%lld\", &x);\n        const auto pf = prime::rho::factorize(x);\n\
+    \ uint64_t x;\n        scanf(\"%lld\", &x);\n        const auto pf = library::rho::factorize(x);\n\
     \        printf(\"%d \", (int)pf.size());\n        for (auto &p : pf){\n     \
     \       printf(\"%lld \", p);\n        }\n        puts(\"\");\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n\n#include\"\
     template.hpp\"\n#include\"math/rho.hpp\"\nint main(){\n    int q;\n    scanf(\"\
     %d\", &q);\n    while (q--) {\n        uint64_t x;\n        scanf(\"%lld\", &x);\n\
-    \        const auto pf = prime::rho::factorize(x);\n        printf(\"%d \", (int)pf.size());\n\
-    \        for (auto &p : pf){\n            printf(\"%lld \", p);\n        }\n \
-    \       puts(\"\");\n    }\n}"
+    \        const auto pf = library::rho::factorize(x);\n        printf(\"%d \",\
+    \ (int)pf.size());\n        for (auto &p : pf){\n            printf(\"%lld \"\
+    , p);\n        }\n        puts(\"\");\n    }\n}"
   dependsOn:
   - template.hpp
   - math/rho.hpp
@@ -243,8 +248,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 15:13:47+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-07 17:15:47+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Factorize.test.cpp
 layout: document

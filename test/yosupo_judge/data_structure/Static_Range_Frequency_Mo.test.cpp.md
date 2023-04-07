@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: misc/mo.hpp
     title: mo's algorithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_frequency
@@ -28,22 +28,22 @@ data:
     constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
     \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 4 \"misc/mo.hpp\"\nclass Mo {\n    int n;\n    std::vector<std::pair<int,\
-    \ int>> lr;\n    const int logn;\n    const long long maxn;\n    std::vector<int>\
-    \ ord;\npublic:\n    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) {\
-    \ lr.reserve(n); }\n    void add(int l, int r) { lr.emplace_back(l, r); }\n  \
-    \  long long hilbertorder(int x, int y){\n        long long d = 0;\n        for\
-    \ (int s = 1 << (logn - 1); s; s >>= 1) {\n            bool rx = x & s, ry = y\
-    \ & s;\n            d = d << 2 | rx * 3 ^ (int)ry;\n            if (!ry){\n  \
-    \              if (rx)\n                {\n                    x = maxn - x;\n\
-    \                    y = maxn - y;\n                }\n                swap(x,\
-    \ y);\n            }\n        }\n        return d;\n    }\n\nprivate:\n    void\
-    \ line_up() {\n        int q = lr.size();\n        ord.resize(q);\n        std::iota(ord.begin(),\
-    \ ord.end(), 0);\n        std::vector<long long> tmp(q);\n        for (int i =\
-    \ 0; i < q; i++) {\n            tmp[i] = hilbertorder(lr[i].first, lr[i].second);\n\
-    \        }\n        std::sort(ord.begin(), ord.end(), [&](int a, int b) {\n  \
-    \          return tmp[a] < tmp[b];\n        });\n    }\npublic:\n    template<\
-    \ typename AL, typename AR, typename EL, typename ER, typename O >\n    void build(const\
+    #line 1 \"misc/mo.hpp\"\nclass Mo {\n    int n;\n    vector<pair<int, int>> lr;\n\
+    \    const int logn;\n    const long long maxn;\n    vector<int> ord;\npublic:\n\
+    \    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }\n\
+    \    void add(int l, int r) { lr.emplace_back(l, r); }\n    long long hilbertorder(int\
+    \ x, int y){\n        long long d = 0;\n        for (int s = 1 << (logn - 1);\
+    \ s; s >>= 1) {\n            bool rx = x & s, ry = y & s;\n            d = d <<\
+    \ 2 | rx * 3 ^ static_cast<int>(ry);\n            if (!ry){\n                if\
+    \ (rx)\n                {\n                    x = maxn - x;\n               \
+    \     y = maxn - y;\n                }\n                swap(x, y);\n        \
+    \    }\n        }\n        return d;\n    }\n\nprivate:\n    inline void line_up()\
+    \ {\n        int q = lr.size();\n        ord.resize(q);\n        iota(begin(ord),\
+    \ end(ord), 0);\n        vector<long long> tmp(q);\n        for (int i = 0; i\
+    \ < q; i++) {\n            tmp[i] = hilbertorder(lr[i].first, lr[i].second);\n\
+    \        }\n        sort(begin(ord), end(ord), [&](int a, int b) {\n         \
+    \   return tmp[a] < tmp[b];\n        });\n    }\npublic:\n    template< typename\
+    \ AL, typename AR, typename EL, typename ER, typename O >\n    void build(const\
     \ AL& add_left, const AR& add_right, const EL& erase_left, const ER& erase_right,\
     \ const O& out) {\n        line_up();\n        int l = 0, r = 0;\n        for\
     \ (const auto& idx : ord) {\n            while (l > lr[idx].first) add_left(--l);\n\
@@ -90,8 +90,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 15:13:47+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-29 20:32:47+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
 layout: document

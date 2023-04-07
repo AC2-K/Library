@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/longest_increasing_subsequence
@@ -28,31 +28,30 @@ data:
     constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
     \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 3 \"data-structure/segtree.hpp\"\n/// @brief Segment Tree(\u30BB\u30B0\u30E1\
-    \u30F3\u30C8\u6728)\ntemplate <class S, S (*op)(S, S), S (*e)()> class segtree\
-    \ {\n    int lg, sz, n;\n    std::vector<S> dat;\n\n  public:\n    segtree() :\
-    \ segtree(0){}\n    segtree(int n) : segtree(std::vector<S>(n, e())){}\n    segtree(const\
-    \ std::vector<S>& vec) : n((int)vec.size()) {\n        sz = 1, lg = 0;\n     \
-    \   while (sz <= n) {\n            sz <<= 1;\n            lg++;\n        }\n \
-    \       dat = std::vector<S>(sz << 1, e());\n        \n        for (int i = 0;\
-    \ i < n; i++) {\n            set(i, vec[i]);\n        }\n        build();\n  \
-    \  }\n    inline void set(int p, const S& v) { dat[sz + p] = v; }\n    inline\
-    \ void build() {\n        for (int i = sz - 1; i > 0; i--) {\n            dat[i]\
-    \ = op(dat[i << 1 | 0], dat[i << 1 | 1]);\n        }\n    }\n    S operator[](int\
-    \ p) const { return dat[sz + p]; }\n    inline void update(int p, const S& v)\
-    \ {\n        p += sz;\n        dat[p] = v;\n        while (p >>= 1) {\n      \
-    \      dat[p] = op(dat[p << 1 | 0], dat[p << 1 | 1]);\n        }\n    }\n    S\
-    \ prod(int l, int r) const {\n        if (l == 0 && r == n) {\n            return\
-    \ dat[1];\n        }\n        l += sz, r += sz;\n        S sml = e(), smr = e();\n\
-    \        while (l != r) {\n            if (l & 1) sml = op(sml, dat[l++]);\n \
-    \           if (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n\
-    \        }\n        return op(sml, smr);\n    }\n    inline void apply(int p,\
-    \ const S& v) { update(p, op(dat[sz + p], v)); }\n};\n\n/// @docs docs/data-structure/segtree.md\n\
-    #line 4 \"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp\"\nusing\
-    \ S = P;\nS op(S x, S y) { return max(x,y); }\nS e() { return P(0,0); }\nint main()\
-    \ {\n    int n;\n    scanf(\"%d\", &n);\n    vector<int> a(n);\n    for (auto&\
-    \ aa : a) {\n        scanf(\"%d\", &aa);\n    }\n    {\n        vector<int> tmp\
-    \ = a;\n        sort(all(tmp));\n        tmp.erase(unique(all(tmp)), tmp.end());\n\
+    #line 1 \"data-structure/segtree.hpp\"\n/// @brief Segment Tree(\u30BB\u30B0\u30E1\
+    \u30F3\u30C8\u6728)\n/// @tparam S \u8981\u7D20\u306E\u578B\n/// @tparam op \u4E8C\
+    \u9805\u6F14\u7B97\n/// @tparam e \u5358\u4F4D\u5143\n/// @docs /home/ac2000/main/library/docs/data-structure/segtree.md\n\
+    template<class S, S(*op)(S, S), S(*e)()>\nclass segtree {\n\tint lg, sz, n;\n\t\
+    vector<S> dat;\npublic:\n\tsegtree() :segtree(0) {}\n\tsegtree(int n) : segtree(vector<S>(n,\
+    \ e())) {}\n\tsegtree(const vector<S>& vec) : n((int)vec.size()) {\n\t\tsz = 1,\
+    \ lg = 0;\n\t\twhile (sz <= n) {\n\t\t\tsz <<= 1;\n\t\t\tlg++;\n\t\t}\n\n\t\t\
+    dat = vector<S>(sz << 1, e());\n\n\t\tfor (int i = 0; i < n; i++) {\n\t\t\tset(i,\
+    \ vec[i]);\n\t\t}\n\t\tbuild();\n\t}\n\n\tinline void set(const int p, const S&\
+    \ v) {\n\t\tdat[sz + p] = v;\n\t}\n\tinline void build() {\n\t\tfor (int i = sz\
+    \ - 1; i > 0; i--) {\n\t\t\tdat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);\n\t\t\
+    }\n\t}\n\tS operator[](const int p) const { return dat[sz + p]; }\n\n\tinline\
+    \ void update(int p, const S& v) {\n\t\tp += sz;\n\t\tdat[p] = v;\n\t\twhile (p\
+    \ >>= 1) {\n\t\t\tdat[p] = op(dat[(p << 1)], dat[(p << 1) ^ 1]);\n\t\t}\n\t}\n\
+    \n\tinline S prod(int l, int r) const {\n\t\tif (l == 0 && r == n) {\n\t\t\treturn\
+    \ dat[1];\n\t\t}\n\t\tl += sz, r += sz;\n\t\tS sml = e(), smr = e();\n\t\twhile\
+    \ (l != r) {\n\t\t\tif (l & 1)sml = op(sml, dat[l++]);\n\t\t\tif (r & 1)smr =\
+    \ op(dat[--r], smr);\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t\treturn op(sml, smr);\n\
+    \t}\n\tinline void apply(int p, const S& v) {\n\t\tupdate(p, op(dat[sz + p], v));\n\
+    \t}\n};\n#line 4 \"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp\"\
+    \nusing S = P;\nS op(S x, S y) { return max(x,y); }\nS e() { return P(0,0); }\n\
+    int main() {\n    int n;\n    scanf(\"%d\", &n);\n    vector<int> a(n);\n    for\
+    \ (auto& aa : a) {\n        scanf(\"%d\", &aa);\n    }\n    {\n        vector<int>\
+    \ tmp = a;\n        sort(all(tmp));\n        tmp.erase(unique(all(tmp)), tmp.end());\n\
     \        for (auto& aa : a) {\n            aa = lower_bound(all(tmp), aa) - tmp.begin();\n\
     \        }\n    }\n    vector<int> prv(n, -1);\n    iota(all(prv), 0);\n    segtree<S,\
     \ op, e> dp(n + 1);\n    rep(i, n) {\n        auto [mx, p] = dp.prod(0, a[i]);\n\
@@ -83,8 +82,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 13:04:10+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-03 15:29:22+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
 layout: document
