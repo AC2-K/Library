@@ -8,7 +8,7 @@ int main(){
     while (q--) {
         uint64_t x;
         scanf("%lld", &x);
-        const auto pf = prime::rho::factorize(x);
+        const auto pf = library::rho::factorize(x);
         printf("%d ", (int)pf.size());
         for (auto &p : pf){
             printf("%lld ", p);

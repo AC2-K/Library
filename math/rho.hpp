@@ -1,9 +1,9 @@
 #pragma once
 #include"math/miller.hpp"
 #include"math/gcd.hpp"
-#include"math/montgomery.hpp"
-///@brief 高速素因数分解(Pollard Rho法)
-namespace prime {
+namespace library {
+    
+    ///@brief 高速素因数分解(Pollard Rho法)
     namespace rho {
         using i128 = __int128_t;
         using u128 = __uint128_t;
@@ -17,7 +17,7 @@ namespace prime {
             if (~n & 1uL) {
                 return 2;
             }
-            if (prime::miller::is_prime(n)) {
+            if (library::miller::is_prime(n)) {
                 return n;
             }
 
@@ -50,14 +50,14 @@ namespace prime {
             if (n < 2) {
                 return {};
             }
-            if (prime::miller::is_prime(n)) {
+            if (library::miller::is_prime(n)) {
                 return { n };
             }
             vector<u64> v;
             vector<u64> st{ n };
             while (st.size()) {
                 u64& m = st.back();
-                if (prime::miller::is_prime(m)) {
+                if (library::miller::is_prime(m)) {
                     v.emplace_back(m);
                     st.pop_back();
                 }
@@ -97,4 +97,4 @@ namespace prime {
             return res;
         }
     };  // namespace pollard
-};  // namespace prime
+};  // namespace library

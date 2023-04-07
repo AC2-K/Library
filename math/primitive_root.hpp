@@ -3,7 +3,7 @@
 #include"math/rho.hpp"
 inline uint64_t primitive_root(uint64_t p) {
     if (p == 2) return 1;
-    auto pf = prime::rho::factorize(p - 1);
+    auto pf = library::rho::factorize(p - 1);
     pf.erase(unique(all(pf)), pf.end());
     for (auto& q : pf) {
         q = (p - 1) / q;

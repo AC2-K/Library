@@ -1,10 +1,11 @@
 #pragma once
+#include<algorithm>
 #include"math/rho.hpp"
-ll phi_func(ll n){
-    ll res = n;
-    auto pf = prime::rho::factorize(n);
-    pf.erase(unique(all(pf)), pf.end());
-    for (auto& d : pf) {
+inline long long phi_func(long long n){
+    long long res = n;
+    auto pf = library::rho::factorize(n);
+    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());
+    for (const auto &d : pf){
         res = res / d * (d - 1);
     }
     return res;

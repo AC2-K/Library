@@ -1,4 +1,4 @@
-namespace prime {
+namespace library {
 	/// @brief Osak法
 	namespace Osak {
 		using u32 = uint32_t;
@@ -70,4 +70,4 @@ namespace prime {
 			return res;
 		}
 	};  // namespace Osak
-};  // namespace prime
+};  // namespace library

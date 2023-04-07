@@ -1,7 +1,7 @@
 #pragma once
-#include"math/barrett.hpp"
-#include"math/montgomery.hpp"
-template<int id=-1>
+#include"internal/barrett.hpp"
+#include"internal/montgomery.hpp"
+template<int id = -1>
 class barrett_modint {
 	using u32 = uint32_t;
 	using u64 = uint64_t;

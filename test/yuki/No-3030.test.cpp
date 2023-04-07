@@ -8,7 +8,7 @@ int main(){
         uint64_t xi;
         scanf("%lld", &xi);
         printf("%lld ", xi);
-        if (prime::miller::is_prime(xi)) {
+        if (library::miller::is_prime(xi)) {
             puts("1");
         } else {
             puts("0");
