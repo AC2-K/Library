@@ -14,11 +14,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
+    PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
     links:
-    - https://judge.yosupo.jp/problem/point_add_range_sum
-  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n#line\
+    - https://judge.yosupo.jp/problem/static_range_sum
+  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#line\
     \ 2 \"template.hpp\"\n#include<bits/stdc++.h>\nusing namespace std;\n#define rep(i,\
     \ N)  for(int i=0;i<(N);i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
     \ __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\nusing\
@@ -47,36 +47,34 @@ data:
     \ (l != r) {\n\t\t\tif (l & 1)sml = op(sml, dat[l++]);\n\t\t\tif (r & 1)smr =\
     \ op(dat[--r], smr);\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t\treturn op(sml, smr);\n\
     \t}\n\tinline void apply(int p, const S& v) {\n\t\tupdate(p, op(dat[sz + p], v));\n\
-    \t}\n};\n#line 4 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp\"\
-    \nll op(ll x, ll y) { return x + y; }\nll e() { return 0; }\nint main() {\n  \
-    \  int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n    for (auto& aa : a)\
-    \ {\n        cin >> aa;\n    }\n\n    segtree<ll, op, e> seg(a);\n    while (q--)\
-    \ {\n        int t;\n        cin >> t;\n        if (t == 0) {\n            int\
-    \ p, x;\n            cin >> p >> x;\n            seg.apply(p, x);\n        }\n\
-    \        else {\n            int l, r;\n            cin >> l >> r;\n         \
-    \   cout << seg.prod(l, r) << '\\n';\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
-    #include\"template.hpp\"\n#include\"data-structure/segtree.hpp\"\nll op(ll x,\
-    \ ll y) { return x + y; }\nll e() { return 0; }\nint main() {\n    int n, q;\n\
-    \    cin >> n >> q;\n    vector<ll> a(n);\n    for (auto& aa : a) {\n        cin\
-    \ >> aa;\n    }\n\n    segtree<ll, op, e> seg(a);\n    while (q--) {\n       \
-    \ int t;\n        cin >> t;\n        if (t == 0) {\n            int p, x;\n  \
-    \          cin >> p >> x;\n            seg.apply(p, x);\n        }\n        else\
-    \ {\n            int l, r;\n            cin >> l >> r;\n            cout << seg.prod(l,\
-    \ r) << '\\n';\n        }\n    }\n}"
+    \t}\n};\n#line 4 \"test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp\"\
+    \nnamespace for_segtree{\n    using S=ll;\n    S op(S x,S y){return x+y;}\n  \
+    \  S e(){return 0;}\n};\nint main(){\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n\
+    \    int n,q;\n    cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n   \
+    \     cin>>aa;\n    }\n\n    segtree<for_segtree::S,for_segtree::op,for_segtree::e>\
+    \ seg(a);\n    while(q--){\n        int l,r;\n        cin>>l>>r;\n        cout<<seg.prod(l,r)<<'\\\
+    n';\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\"\
+    template.hpp\"\n#include\"data-structure/segtree.hpp\"\nnamespace for_segtree{\n\
+    \    using S=ll;\n    S op(S x,S y){return x+y;}\n    S e(){return 0;}\n};\nint\
+    \ main(){\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n    int n,q;\n \
+    \   cin>>n>>q;\n    vector<ll> a(n);\n    for(auto&aa:a){\n        cin>>aa;\n\
+    \    }\n\n    segtree<for_segtree::S,for_segtree::op,for_segtree::e> seg(a);\n\
+    \    while(q--){\n        int l,r;\n        cin>>l>>r;\n        cout<<seg.prod(l,r)<<'\\\
+    n';\n    }\n}"
   dependsOn:
   - template.hpp
   - data-structure/segtree.hpp
   isVerificationFile: true
-  path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+  path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
   requiredBy: []
   timestamp: '2023-03-28 10:54:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+documentation_of: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-- /verify/test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp.html
-title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+- /verify/test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+- /verify/test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp.html
+title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
 ---

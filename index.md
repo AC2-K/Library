@@ -19,7 +19,7 @@ data:
       path: data-structure/dynamic_segtree.hpp
       title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/hash_map.hpp
       title: HashMap
     - icon: ':heavy_check_mark:'
@@ -31,7 +31,7 @@ data:
       title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
       path: data-structure/sparse_table.hpp
-      title: Sparse Table(Range Min)
+      title: Sparse Table
   - name: .
     pages:
     - icon: ':warning:'
@@ -39,11 +39,11 @@ data:
       title: debug.hpp
     - icon: ':warning:'
       path: main.cpp
-      title: "static modint(\u9759\u7684modint)"
+      title: main.cpp
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -59,51 +59,49 @@ data:
       title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
     - icon: ':warning:'
       path: graph/namori.hpp
-      title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
-  - name: internal
-    pages:
-    - icon: ':question:'
-      path: internal/barrett.hpp
-      title: barrett reduction
-    - icon: ':question:'
-      path: internal/montgomery.hpp
-      title: MontgomeryReduction
+      title: graph/namori.hpp
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
+      path: math/barrett.hpp
+      title: barrett reduction
+    - icon: ':heavy_check_mark:'
       path: math/dynamic_modint.hpp
-      title: "dynamic modint(\u52D5\u7684modint)"
-    - icon: ':question:'
+      title: dynamic_modint(64bit)
+    - icon: ':heavy_check_mark:'
+      path: math/eratosthenes.hpp
+      title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
+    - icon: ':heavy_check_mark:'
       path: math/gcd.hpp
       title: math/gcd.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "maxtirx(\u884C\u5217)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/miller.hpp
       title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
       path: math/mod_log.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
+    - icon: ':heavy_check_mark:'
+      path: math/montgomery.hpp
+      title: MontgomeryReduction
     - icon: ':warning:'
       path: math/osak.hpp
       title: "Osak\u6CD5"
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
-      title: "$\\phi$ \u95A2\u6570"
-    - icon: ':x:'
+      title: "phi function(\\phi \u95A2\u6570)"
+    - icon: ':heavy_check_mark:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/rho.hpp
       title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-    - icon: ':warning:'
-      path: math/sieve.hpp
-      title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
   - name: misc
@@ -118,16 +116,21 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: persistent/queue.hpp
-      title: "\u6C38\u7D9Aqueue"
+      title: persistent/queue.hpp
     - icon: ':warning:'
       path: persistent/stack.hpp
-      title: "\u6C38\u7D9Astack"
+      title: persistent/stack.hpp
   - name: string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   verificationCategories:
+  - name: test/AOJ/ALDS
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/AOJ/ALDS/1_C.test.cpp
+      title: test/AOJ/ALDS/1_C.test.cpp
   - name: test/AOJ/DSL
     pages:
     - icon: ':heavy_check_mark:'
@@ -209,8 +212,8 @@ data:
       path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
       title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Static_Range_Sum_segtree.test.cpp
-      title: test/yosupo_judge/data_structure/Static_Range_Sum_segtree.test.cpp
+      path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
+      title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/UnionFind.test.cpp
       title: test/yosupo_judge/data_structure/UnionFind.test.cpp
@@ -220,23 +223,28 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - name: test/yosupo_judge/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/graph/Shortest_Path.test.cpp
+      title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - name: test/yosupo_judge/math
     pages:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Factorize.test.cpp
-      title: barrett reduction
+      title: test/yosupo_judge/math/Factorize.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Primitive_Root.test.cpp
       title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - name: test/yosupo_judge/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/tree
@@ -244,6 +252,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+      title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
     pages:
     - icon: ':heavy_check_mark:'
@@ -252,7 +263,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/No-3030.test.cpp
       title: test/yuki/No-3030.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No-430.test.cpp
       title: test/yuki/No-430.test.cpp
     - icon: ':heavy_check_mark:'
@@ -261,7 +272,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/No-789_dynamic.test.cpp
       title: test/yuki/No-789_dynamic.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No.891.test.cpp
       title: test/yuki/No.891.test.cpp
 layout: toppage
