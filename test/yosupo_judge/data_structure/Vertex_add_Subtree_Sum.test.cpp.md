@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/BIT.hpp
     title: Binary Index Tree
   - icon: ':heavy_check_mark:'
@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: graph/euler_tour.hpp
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -34,21 +34,19 @@ data:
     constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
     \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 1 \"data-structure/BIT.hpp\"\n/// @brief Binary Index Tree\n/// @tparam\
-    \ T \u8981\u7D20\u306E\u578B\n/// @tparam SumT \"\u548C\u304C\" \u53CE\u307E\u308B\
-    \u3088\u3046\u306A\u578B\n/// @docs docs/data-structure/BIT.md\ntemplate<typename\
-    \ T,typename SumT = T>\nclass BIT {\n\tvector<SumT> bit;\n\tint n;\npublic:\n\
-    \    BIT(int n) :n(n), bit(n + 1, T()) {}\n\tvoid add(int p, const T& w) {\n\t\
-    \tp++;\n\t\tfor (int x = p; x <= n; x += x & -x) {\n\t\t\tbit[x] += w;\n\t\t}\n\
-    \t}\n\n\tSumT sum(int p)const {\n\t\tT s = 0;\n\n\t\tfor (int x = p; x > 0; x\
-    \ -= x & -x) {\n\t\t\ts += bit[x];\n\t\t}\n\t\treturn s;\n\t}\n\n\tSumT sum(int\
-    \ l, int r)const {\n\t\treturn sum(r) - sum(l);\n\t}\n\n    \n    int lower_bound(SumT\
-    \ w)const {\n        if (w <= 0)return 0;\n\n        int x = 0;\n        int k\
-    \ = 1;\n        while (k < n)k <<= 1;\n        for (; k > 0; k >>= 1) {\n    \
-    \        if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x + k];\n\
-    \                x += k;\n            }\n        }\n\n        return x + 1;\n\
-    \    }\n}; \n#line 1 \"data-structure/sparse_table.hpp\"\n/// @brief Sparse Table\n\
-    /// @tparam T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
+    #line 3 \"data-structure/BIT.hpp\"\n/// @brief Binary Index Tree\n/// @docs docs/data-structure/BIT.md\n\
+    template<typename T,typename SumT = T>\nclass BIT {\n\tstd::vector<SumT> bit;\n\
+    \tint n;\npublic:\n    BIT(int n) :n(n), bit(n + 1, T()) {}\n\tvoid add(int p,\
+    \ const T& w) {\n\t\tp++;\n\t\tfor (int x = p; x <= n; x += x & -x) {\n\t\t\t\
+    bit[x] += w;\n\t\t}\n\t}\n\n\tSumT sum(int p)const {\n\t\tT s = 0;\n\n\t\tfor\
+    \ (int x = p; x > 0; x -= x & -x) {\n\t\t\ts += bit[x];\n\t\t}\n\t\treturn s;\n\
+    \t}\n\n\tSumT sum(int l, int r)const {\n\t\treturn sum(r) - sum(l);\n\t}\n\n \
+    \   \n    int lower_bound(SumT w)const {\n        if (w <= 0)return 0;\n\n   \
+    \     int x = 0;\n        int k = 1;\n        while (k < n)k <<= 1;\n        for\
+    \ (; k > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] < w) {\n    \
+    \            w -= bit[x + k];\n                x += k;\n            }\n      \
+    \  }\n\n        return x + 1;\n    }\n}; \n#line 1 \"data-structure/sparse_table.hpp\"\
+    \n/// @brief Sparse Table\n/// @tparam T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
     template<class T>\nclass sparse_table {\n    vector<T> vec;\n    vector<vector<T>>\
     \ table;\n    vector<int> look_up;\npublic:\n    sparse_table(int n) : vec(n)\
     \ {}\n    sparse_table(const vector<T>& vec) : vec(vec) { build(); }\n    void\
@@ -114,7 +112,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-02 14:35:20+09:00'
+  timestamp: '2023-04-07 17:33:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp

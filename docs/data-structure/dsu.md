@@ -22,6 +22,7 @@ bool same(int x,int y)
 ```
 頂点$x,y$が連結かを判定します。
 - 計算量:$O(\alpha(n))$
+
 ```cpp
 int merge(int x,int y)
 ```
@@ -33,9 +34,3 @@ int size(int x)
 ```
 頂点$x$の属する連結成分の頂点数を求めます。
 - 計算量:$O(\alpha(n))$
-
-```cpp
-int group_size()
-```
-連結成分の個数を求めます。
-- 計算量:$O(n)$

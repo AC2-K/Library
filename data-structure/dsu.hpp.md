@@ -22,38 +22,32 @@ data:
     _deprecated_at_docs: docs/data-structure/dsu.md
     document_title: Disjoint Set(Union find)
     links: []
-  bundledCode: "#line 1 \"data-structure/dsu.hpp\"\n/// @brief Disjoint Set(Union\
-    \ find)\n/// @docs docs/data-structure/dsu.md\nclass DSU {\nprivate:\n    vector<int>\
-    \ find, rank;\npublic:\n    DSU(int n) : find(n, -1), rank(n, 1) {}\n\n    int\
-    \ root(int x) {\n        if (find[x] < 0) {\n            return x;\n        }\n\
-    \        else {\n            return find[x] = root(find[x]);\n        }\n    }\n\
-    \    bool same(int x, int y) {\n        return root(x) == root(y);\n    }\n\n\
-    \    int merge(int x, int y) {\n        x = root(x), y = root(y);\n        if\
-    \ (x == y) return x;\n        if (rank[x] < rank[y]) swap(x, y);\n        if (rank[x]\
-    \ == rank[y]) rank[x]++; \n        find[x] += find[y];\n        find[y] = x;\n\
-    \        return x;\n    }\n\n    int size(int x) {\n        return -find[root(x)];\n\
-    \    }\n\n    inline int group_size() {\n        int c = 0;\n        for (int\
-    \ v = 0; v < find.size(); v++) {\n            if (find[v] < 0) {\n           \
-    \     c++;\n            }\n        }\n        return c;\n    }\n};\n"
-  code: "/// @brief Disjoint Set(Union find)\n/// @docs docs/data-structure/dsu.md\n\
-    class DSU {\nprivate:\n    vector<int> find, rank;\npublic:\n    DSU(int n) :\
-    \ find(n, -1), rank(n, 1) {}\n\n    int root(int x) {\n        if (find[x] < 0)\
-    \ {\n            return x;\n        }\n        else {\n            return find[x]\
-    \ = root(find[x]);\n        }\n    }\n    bool same(int x, int y) {\n        return\
-    \ root(x) == root(y);\n    }\n\n    int merge(int x, int y) {\n        x = root(x),\
-    \ y = root(y);\n        if (x == y) return x;\n        if (rank[x] < rank[y])\
-    \ swap(x, y);\n        if (rank[x] == rank[y]) rank[x]++; \n        find[x] +=\
-    \ find[y];\n        find[y] = x;\n        return x;\n    }\n\n    int size(int\
-    \ x) {\n        return -find[root(x)];\n    }\n\n    inline int group_size() {\n\
-    \        int c = 0;\n        for (int v = 0; v < find.size(); v++) {\n       \
-    \     if (find[v] < 0) {\n                c++;\n            }\n        }\n   \
-    \     return c;\n    }\n};"
+  bundledCode: "#line 2 \"data-structure/dsu.hpp\"\n#include <vector>\n\n/// @brief\
+    \ Disjoint Set(Union find)\nclass DSU {\n  private:\n    std::vector<int> find,\
+    \ rank;\n\n  public:\n    DSU(int n) : find(n, -1), rank(n, 1) {}\n\n    int root(int\
+    \ x) {\n        if (find[x] < 0) {\n            return x;\n        } else {\n\
+    \            return find[x] = root(find[x]);\n        }\n    }\n    bool same(int\
+    \ x, int y) { return root(x) == root(y); }\n    int merge(int x, int y) {\n  \
+    \      x = root(x), y = root(y);\n        if (x == y) return x;\n        if (rank[x]\
+    \ < rank[y]) swap(x, y);\n        if (rank[x] == rank[y]) rank[x]++; \n      \
+    \  find[x] += find[y];\n        find[y] = x;\n        return x;\n    }\n    int\
+    \ size(int x) { return -find[root(x)]; }\n};\n\n/// @docs docs/data-structure/dsu.md\n"
+  code: "#pragma once\n#include <vector>\n\n/// @brief Disjoint Set(Union find)\n\
+    class DSU {\n  private:\n    std::vector<int> find, rank;\n\n  public:\n    DSU(int\
+    \ n) : find(n, -1), rank(n, 1) {}\n\n    int root(int x) {\n        if (find[x]\
+    \ < 0) {\n            return x;\n        } else {\n            return find[x]\
+    \ = root(find[x]);\n        }\n    }\n    bool same(int x, int y) { return root(x)\
+    \ == root(y); }\n    int merge(int x, int y) {\n        x = root(x), y = root(y);\n\
+    \        if (x == y) return x;\n        if (rank[x] < rank[y]) swap(x, y);\n \
+    \       if (rank[x] == rank[y]) rank[x]++; \n        find[x] += find[y];\n   \
+    \     find[y] = x;\n        return x;\n    }\n    int size(int x) { return -find[root(x)];\
+    \ }\n};\n\n/// @docs docs/data-structure/dsu.md"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/dsu.hpp
   requiredBy:
   - graph/mst.hpp
-  timestamp: '2023-03-30 16:15:39+09:00'
+  timestamp: '2023-04-07 17:33:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/2_A.test.cpp
@@ -90,6 +84,7 @@ bool same(int x,int y)
 ```
 頂点$x,y$が連結かを判定します。
 - 計算量:$O(\alpha(n))$
+
 ```cpp
 int merge(int x,int y)
 ```
@@ -101,9 +96,3 @@ int size(int x)
 ```
 頂点$x$の属する連結成分の頂点数を求めます。
 - 計算量:$O(\alpha(n))$
-
-```cpp
-int group_size()
-```
-連結成分の個数を求めます。
-- 計算量:$O(n)$

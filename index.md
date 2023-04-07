@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data-structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/BIT.hpp
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
@@ -12,7 +12,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/dsu.hpp
       title: Disjoint Set(Union find)
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/dual_segtree.hpp
       title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
@@ -43,7 +43,7 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -62,24 +62,24 @@ data:
       title: graph/namori.hpp
   - name: internal
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: internal/barrett.hpp
       title: barrett reduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: internal/montgomery.hpp
       title: MontgomeryReduction
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/dynamic_modint.hpp
       title: dynamic_modint(64bit)
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/gcd.hpp
       title: math/gcd.hpp
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "maxtirx(\u884C\u5217)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/miller.hpp
       title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
@@ -103,7 +103,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/sieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
   - name: misc
@@ -141,13 +141,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2_B.test.cpp
       title: test/AOJ/DSL/2_B.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/AOJ/DSL/2_D_dual.test.cpp
       title: test/AOJ/DSL/2_D_dual.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2_D_lazy.test.cpp
       title: test/AOJ/DSL/2_D_lazy.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/AOJ/DSL/2_E_dual.test.cpp
       title: test/AOJ/DSL/2_E_dual.test.cpp
     - icon: ':heavy_check_mark:'
@@ -198,7 +198,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     - icon: ':heavy_check_mark:'
@@ -262,13 +262,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/No-1471.test.cpp
       title: test/yuki/No-1471.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/No-3030.test.cpp
       title: test/yuki/No-3030.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yuki/No-430.test.cpp
       title: test/yuki/No-430.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/No-789_BIT.test.cpp
       title: test/yuki/No-789_BIT.test.cpp
     - icon: ':heavy_check_mark:'
