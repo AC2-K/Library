@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/hash_map.hpp
     title: HashMap
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: internal/barrett.hpp
     title: barrett reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
   - icon: ':question:'

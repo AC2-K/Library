@@ -34,70 +34,70 @@ data:
     constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
     \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 3 \"data-structure/dual_segtree.hpp\"\n/// @brief Dual Segmenttree(\u53CC\
+    #line 4 \"data-structure/dual_segtree.hpp\"\n/// @brief Dual Segmenttree(\u53CC\
     \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\ntemplate <class F, F (*comp)(F, F),\
     \ F (*id)(), bool is_commutative = true>\nclass dual_segtree {\n    std::vector<F>\
-    \ dat;\n    int _n, sz, lg;\n\n  public:\n    explicit dual_segtree() : dual_segtree(0){}\n\
-    \    explicit dual_segtree(int _n) : _n(_n) {\n        sz = 1, lg = 0;\n     \
-    \   while (sz < _n) {\n            lg++;\n            sz <<= 1;\n        }\n \
-    \       dat.assign(sz << 1, id());\n    }\n\n  private:\n    void all_apply(int\
-    \ p, const F& v) { dat[p] = comp(dat[p], v); }\n    void push(int p) {\n     \
-    \   if (dat[p] == id()) {\n            return;\n        }\n        all_apply(p\
-    \ << 1 | 0, dat[p]);\n        all_apply(p << 1 | 1, dat[p]);\n        dat[p] =\
-    \ id();\n    }\n\n  public:\n    F operator[](int p) const {\n        assert(0\
-    \ <= p && p < _n);\n\n        F res = id();\n\n        p += sz;\n        for (int\
-    \ i = lg; i > 0; i--) {\n            push(p >> i);\n        }\n        return\
-    \ dat[p];\n    }\n\n    void apply(int l, int r, const F& v) {\n        assert(0\
-    \ <= l && l <= r && r <= _n);\n        if (l == r) return;\n        l += sz, r\
-    \ += sz;\n        if (is_commutative) {\n            for (int i = lg; i > 0; i--)\
-    \ {\n                if (((l >> i) << i) != l) {\n                    push(l >>\
-    \ i);\n                }\n                if (((r >> i) << i) != r) {\n      \
-    \              push((r - 1) >> i);\n                }\n            }\n       \
-    \ }\n        while (l < r) {\n            if (l & 1) {\n                all_apply(l++,\
-    \ v);\n            }\n            if (r & 1) {\n                all_apply(--r,\
-    \ v);\n            }\n            l >>= 1, r >>= 1;\n        }\n    }\n};\n\n\
-    /// @docs docs/data-structure/dual_segtree.md\n#line 2 \"math/gcd.hpp\"\ntemplate<typename\
-    \ T>\nconstexpr inline T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n   \
-    \ if (a == 0 || b == 0) return a + b;\n    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
-    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
-    \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
-    \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        }else{\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate<typename T>\nconstexpr inline\
-    \ T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
-    \    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n\
-    \        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny,\
-    \ y - ny*q);\n    }\n    return a;\n}\n#line 3 \"math/static_modint.hpp\"\ntemplate<__uint64_t\
-    \ mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\t\
-    using i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
-    \tusing i128 = __int128_t;\n\n\tu64 v;\n\tu64 normalize(i64 v_) const {\n\t\t\
-    v_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\n\
-    public:\n\tconstexpr static_modint() :v(0) {}\n\tconstexpr static_modint(const\
-    \ i64& v_) :v(normalize(v_)) { }\n\n\t//operator\n\tconstexpr u64 val() const\
-    \ {\n\t\treturn v;\n\t}\n\tconstexpr mint& operator+=(const mint& rhs) {\n\t\t\
-    v += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\
-    \t}\n\tconstexpr mint& operator-=(const mint& rhs) {\n\t\tv += mod - rhs.val();\n\
-    \t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr\
-    \ mint& operator*=(const mint& rhs) {\n\t\tv = (u128)v * rhs.val() % mod;\n\t\t\
-    return (*this);\n\t}\n\n\n\tconstexpr mint operator+(const mint& r) const {\n\t\
-    \treturn mint(*this) += r;\n\t}\n\tconstexpr mint operator-(const mint& r) const\
-    \ {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint operator*(const mint&\
-    \ r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\tconstexpr mint& operator+=(const\
-    \ i64& rhs) {\n\t\t(*this) += mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr\
-    \ mint& operator-=(const i64& rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\
-    \t}\n\tconstexpr mint& operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\
-    \t\treturn (*this);\n\t}\n\tconstexpr friend mint operator+(const i64& l, const\
-    \ mint& r) {\n\t\treturn mint(l) += r;\n\t}\n\tconstexpr friend mint operator-(const\
-    \ i64& l, const mint& r) {\n\t\treturn mint(l) -= r;\n\t}\n\tconstexpr friend\
-    \ mint operator*(const i64& l, const mint& r) {\n\t\treturn mint(l) *= r;\n\t\
-    }\n\n\tconstexpr mint operator+(const i64& r) {\n\t\treturn mint(*this) += r;\n\
-    \t}\n\tconstexpr mint operator-(const i64& r) {\n\t\treturn mint(*this) -= r;\n\
-    \t}\n\tconstexpr mint operator*(const i64& r) {\n\t\treturn mint(*this) *= r;\n\
-    \t}\n\n\n\tconstexpr mint& operator=(const i64& r) {\n\t\treturn (*this) = mint(r);\n\
-    \t}\n\n\tconstexpr bool operator==(const mint& r) const {\n\t\treturn (*this).val()\
-    \ == r.val();\n\t}\n\tconstexpr mint pow(u128 e) const {\n\t\tmint ans(1), base(*this);\n\
-    \t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans *= base;\n\t\t\t}\n\t\t\tbase\
-    \ *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tconstexpr mint inv()\
+    \ dat;\n    int _n, sz, lg;\n\n  public:\n    dual_segtree() : dual_segtree(0){}\n\
+    \    dual_segtree(int _n) : _n(_n) {\n        sz = 1, lg = 0;\n        while (sz\
+    \ < _n) {\n            lg++;\n            sz <<= 1;\n        }\n        dat.assign(sz\
+    \ << 1, id());\n    }\n\n  private:\n    void all_apply(int p, const F& v) { dat[p]\
+    \ = comp(dat[p], v); }\n    void push(int p) {\n        if (dat[p] == id()) {\n\
+    \            return;\n        }\n        all_apply(p << 1 | 0, dat[p]);\n    \
+    \    all_apply(p << 1 | 1, dat[p]);\n        dat[p] = id();\n    }\n\n  public:\n\
+    \    F operator[](int p) const {\n        assert(0 <= p && p < _n);\n\n      \
+    \  F res = id();\n\n        p += sz;\n        for (int i = lg; i > 0; i--) {\n\
+    \            push(p >> i);\n        }\n        return dat[p];\n    }\n\n    void\
+    \ apply(int l, int r, const F& v) {\n        assert(0 <= l && l <= r && r <= _n);\n\
+    \        if (l == r) return;\n        l += sz, r += sz;\n        if (is_commutative)\
+    \ {\n            for (int i = lg; i > 0; i--) {\n                if (((l >> i)\
+    \ << i) != l) {\n                    push(l >> i);\n                }\n      \
+    \          if (((r >> i) << i) != r) {\n                    push((r - 1) >> i);\n\
+    \                }\n            }\n        }\n        while (l < r) {\n      \
+    \      if (l & 1) {\n                all_apply(l++, v);\n            }\n     \
+    \       if (r & 1) {\n                all_apply(--r, v);\n            }\n    \
+    \        l >>= 1, r >>= 1;\n        }\n    }\n};\n\n/// @docs docs/data-structure/dual_segtree.md\n\
+    #line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T _gcd(T a, T\
+    \ b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n\
+    \    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
+    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (a == 0 || b ==\
+    \ 0) {\n            return a + b;\n        }\n        if (a > b) {\n         \
+    \   a -= b;\n            a >>= __builtin_ctzll(a);\n        }else{\n         \
+    \   b -= a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return\
+    \ a << d;\n}\ntemplate<typename T>\nconstexpr inline T ext_gcd(T a, T b, T &x,\
+    \ T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T\
+    \ q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx,\
+    \ x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return\
+    \ a;\n}\n#line 3 \"math/static_modint.hpp\"\ntemplate<__uint64_t mod>\nclass static_modint\
+    \ {\nprivate:\n\tusing mint = static_modint<mod>;\n\tusing i64 = long long;\n\t\
+    using u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\tusing i128 = __int128_t;\n\
+    \n\tu64 v;\n\tu64 normalize(i64 v_) const {\n\t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\
+    \t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\tconstexpr static_modint()\
+    \ :v(0) {}\n\tconstexpr static_modint(const i64& v_) :v(normalize(v_)) { }\n\n\
+    \t//operator\n\tconstexpr u64 val() const {\n\t\treturn v;\n\t}\n\tconstexpr mint&\
+    \ operator+=(const mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\
+    \tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const\
+    \ mint& rhs) {\n\t\tv += mod - rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\
+    \t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator*=(const mint& rhs)\
+    \ {\n\t\tv = (u128)v * rhs.val() % mod;\n\t\treturn (*this);\n\t}\n\n\n\tconstexpr\
+    \ mint operator+(const mint& r) const {\n\t\treturn mint(*this) += r;\n\t}\n\t\
+    constexpr mint operator-(const mint& r) const {\n\t\treturn mint(*this) -= r;\n\
+    \t}\n\tconstexpr mint operator*(const mint& r) const {\n\t\treturn mint(*this)\
+    \ *= r;\n\t}\n\n\tconstexpr mint& operator+=(const i64& rhs) {\n\t\t(*this) +=\
+    \ mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const i64&\
+    \ rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr mint&\
+    \ operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\t\treturn (*this);\n\
+    \t}\n\tconstexpr friend mint operator+(const i64& l, const mint& r) {\n\t\treturn\
+    \ mint(l) += r;\n\t}\n\tconstexpr friend mint operator-(const i64& l, const mint&\
+    \ r) {\n\t\treturn mint(l) -= r;\n\t}\n\tconstexpr friend mint operator*(const\
+    \ i64& l, const mint& r) {\n\t\treturn mint(l) *= r;\n\t}\n\n\tconstexpr mint\
+    \ operator+(const i64& r) {\n\t\treturn mint(*this) += r;\n\t}\n\tconstexpr mint\
+    \ operator-(const i64& r) {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint\
+    \ operator*(const i64& r) {\n\t\treturn mint(*this) *= r;\n\t}\n\n\n\tconstexpr\
+    \ mint& operator=(const i64& r) {\n\t\treturn (*this) = mint(r);\n\t}\n\n\tconstexpr\
+    \ bool operator==(const mint& r) const {\n\t\treturn (*this).val() == r.val();\n\
+    \t}\n\tconstexpr mint pow(u128 e) const {\n\t\tmint ans(1), base(*this);\n\t\t\
+    while (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans *= base;\n\t\t\t}\n\t\t\tbase *=\
+    \ base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tconstexpr mint inv()\
     \ const {\n\t\tll x, y;\n        auto d = ext_gcd((ll)mod, (ll)v, x, y);\n   \
     \     assert(d == 1);\n        return mint(y);\n\t}\n\n\tconstexpr mint& operator/=(const\
     \ mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n\tconstexpr mint inv(const\
@@ -181,7 +181,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 17:33:54+09:00'
+  timestamp: '2023-04-07 17:48:09+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp

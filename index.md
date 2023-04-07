@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data-structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/BIT.hpp
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
@@ -62,15 +62,15 @@ data:
       title: graph/namori.hpp
   - name: internal
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: internal/barrett.hpp
       title: barrett reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: internal/montgomery.hpp
       title: MontgomeryReduction
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/dynamic_modint.hpp
       title: dynamic_modint(64bit)
     - icon: ':question:'
@@ -79,7 +79,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "maxtirx(\u884C\u5217)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/miller.hpp
       title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
@@ -262,13 +262,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/No-1471.test.cpp
       title: test/yuki/No-1471.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No-3030.test.cpp
       title: test/yuki/No-3030.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yuki/No-430.test.cpp
       title: test/yuki/No-430.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No-789_BIT.test.cpp
       title: test/yuki/No-789_BIT.test.cpp
     - icon: ':heavy_check_mark:'
