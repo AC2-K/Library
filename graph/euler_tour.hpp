@@ -4,17 +4,17 @@
 class EulerTour {
 	int n;
 	graph g;
-	vector<int> tour;
-	vector<int> in, out, depth;
-    sparse_table<pair<int, int>> rmq;
+	std::vector<int> tour;
+	std::vector<int> in, out, depth;
+    sparse_table<std::pair<int, int>> rmq;
 public:
     EulerTour(int n) :n(n), g(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) { tour.reserve(2 * n - 1); }
 	void add_edge(int u, int v) {
 		g[u].emplace_back(v);
 		g[v].emplace_back(u);
 	}
-    graph get_graph(){return g;}
-    vector<int> get_tour(){return tour;}
+    std::vector<std::vector<int>> get_graph(){return g;}
+    std::vector<int> get_tour(){return tour;}
 private:
     void dfs(int v, int p = -1) {
         in[v] = tour.size();
@@ -29,15 +29,15 @@ private:
 public:
     void build(int r = 0) {
         dfs(r);
-        for (int i = 0; i < tour.size(); i++) {
+        for (int i = 0; i < (int)tour.size(); i++) {
             rmq.set(i, { depth[tour[i]],tour[i] });
         }
         rmq.build();
     }
 
-    pair<int, int> idx(int v) { return {in[v], out[v]}; }
+    std::pair<int, int> idx(int v) { return {in[v], out[v]}; }
     int lca(int v, int u) {
-        if (in[v] > in[u] + 1) { swap(u, v); }
+        if (in[v] > in[u] + 1) { std::swap(u, v); }
         return rmq.prod(in[v], in[u] + 1).second;
     }
 

@@ -1,18 +1,18 @@
 #pragma once
-
+#include <queue>
+#include <vector>
 
 struct edge {
 	int to;
-	ll cost;
-	edge(int to, ll cost) : to(to), cost(cost) {}
+	long long cost;
+	edge(int to, long long cost) : to(to), cost(cost) {}
 };
 /// @brief Dijkstra (ダイクストラ法)
-/// @note edge構造体をさらに宣言しないこと!!!
-pair<vector<uint64_t>, vector<int>> dijkstra(int s,
-	const vector<vector<edge>>& g) {
-	vector<uint64_t> dist(g.size(), infl);
-	vector<int> pre(g.size(), -1);
-	priority_queue<pair<ll, int>, vector<pair<ll, int>>, greater<pair<ll, int>>> que;
+std::pair<std::vector<long long>, std::vector<int>> dijkstra(int s,
+	const std::vector<std::vector<edge>>& g) {
+	std::vector<long long> dist(g.size(), infl);
+	std::vector<int> pre(g.size(), -1);
+	std::priority_queue<std::pair<long long, int>,std::vector<std::pair<long long, int>>, std::greater<std::pair<long long, int>>> que;
 	que.emplace(0, s);
 	dist[s] = 0;
 	pre[s] = s;

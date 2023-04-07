@@ -3,12 +3,12 @@
 /// @docs docs/data-structure/sparse_table.md
 template<class T>
 class sparse_table {
-    vector<T> vec;
-    vector<vector<T>> table;
-    vector<int> look_up;
+    std::vector<T> vec;
+    std::vector<std::vector<T>> table;
+    std::vector<int> look_up;
 public:
     sparse_table(int n) : vec(n) {}
-    sparse_table(const vector<T>& vec) : vec(vec) { build(); }
+    sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }
     void set(int p, const T& v) { vec[p] = v; }
     void build() {
         int sz = vec.size();
@@ -16,7 +16,7 @@ public:
         while ((1 << log) <= sz) {
             log++;
         }
-        table.assign(log, vector<T>(1 << log));
+        table.assign(log, std::vector<T>(1 << log));
         for (int i = 0; i < sz; i++) {
             table[0][i] = vec[i];
         }
@@ -27,7 +27,7 @@ public:
             }
         }
         look_up.resize(sz + 1);
-        for (int i = 2; i < look_up.size(); i++) {
+        for (int i = 2; i < (int)look_up.size(); i++) {
             look_up[i] = look_up[i >> 1] + 1;
         }
     }

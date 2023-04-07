@@ -9,7 +9,7 @@ class RollingHash {
 	static constexpr ull msk30 = (1ul << 30) - 1;
 	static constexpr ull msk61 = (1ul << 31) - 1;
 	const string str;
-	vector<ull> hash, pow;
+	std::vector<ull> hash, pow;
 
     static constexpr ull mod = (1uL << 61) - 1;
     static constexpr ull primitive_root = 37;
@@ -63,7 +63,7 @@ public:
 		hash.resize(str.size() + 1);
 		pow.resize(str.size() + 1, 1);
 
-		for (int i = 0; i < str.size(); i++) {
+		for (int i = 0; i < (int)str.size(); i++) {
 			hash[i + 1] = mul(hash[i], base) + mapping(str[i]);
 			pow[i + 1] = mul(pow[i], base);
 			if (hash[i + 1] >= mod) {
@@ -84,7 +84,7 @@ public:
 
     static int lcp(const RollingHash &a, const RollingHash &b, const int &start_a, const int &start_b) {
         int ok = 0;
-        int ng = min(a.size() - start_a, b.size() - start_b) + 1;
+        int ng = std::min(a.size() - start_a, b.size() - start_b) + 1;
 		while (abs(ok - ng) > 1){
 			int md = (ok + ng) >> 1;
             if (a.range(start_a, start_a + md) == b.range(start_b, start_b + md)){

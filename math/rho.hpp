@@ -11,7 +11,7 @@ namespace library {
         using u32 = uint32_t;
 
         template<typename mint>
-        inline u64 find_factor(u64 n) {
+        u64 find_factor(u64 n) {
             static u64 v = 20001;
 
             if (~n & 1uL) {
@@ -46,15 +46,15 @@ namespace library {
             exit(0);
         }
         template<typename mint>
-        inline vector<u64> rho_fact(u64 n) {
+        std::vector<u64> rho_fact(u64 n) {
             if (n < 2) {
                 return {};
             }
             if (library::miller::is_prime(n)) {
                 return { n };
             }
-            vector<u64> v;
-            vector<u64> st{ n };
+            std::vector<u64> v;
+            std::vector<u64> st{ n };
             while (st.size()) {
                 u64& m = st.back();
                 if (library::miller::is_prime(m)) {
@@ -69,7 +69,7 @@ namespace library {
             }
             return v;
         }
-        inline vector<u64> factorize(u64 n) {
+        inline std::vector<u64> factorize(u64 n) {
             if (n < 2) {
                 return {};
             }
@@ -78,8 +78,8 @@ namespace library {
             return v;
         }
 
-        inline vector<pair<u64, int>> exp_factorize(u64 n) {
-            vector<u64> pf = factorize(n);
+        std::vector<pair<u64, int>> exp_factorize(u64 n) {
+            std::vector<u64> pf = factorize(n);
             if (pf.empty()) {
                 return {};
             }

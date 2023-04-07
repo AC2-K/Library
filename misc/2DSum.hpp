@@ -1,15 +1,16 @@
-
+#pragma once
+#include<vector>
 /// @brief 2次元累積和
 /// @tparam T 重みの型
 template<typename T>
 class Sum2D {
-	vector<vector<T>> dat;
-	vector<vector<T>> s;
+	std::vector<std::vector<T>> dat;
+	std::vector<std::vector<T>> s;
 public:
 	const int h;
 	const int w;
 	
-	Sum2D(int h, int w) :h(h), w(w), dat(h, vector<T>(w, T())), s(h + 1, vector<T>(w + 1, T())) {}
+	Sum2D(int h, int w) :h(h), w(w), dat(h, std::vector<T>(w, T())), s(h + 1, std::vector<T>(w + 1, T())) {}
 	inline void build() {
 		for (int i = 0; i < h; ++i) {
 			for (int j = 0; j < w; ++j) {

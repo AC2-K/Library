@@ -1,18 +1,20 @@
+
+/// @brief matirx(行列)
 template<typename T>
 class Matrix {
-    vector<vector<T>> dat;
+    std::vector<std::vector<T>> dat;
     int h = 0, w = 0;
 
   public:
-    Matrix(const vector<vector<T>>& dat)
+    Matrix(const std::vector<std::vector<T>>& dat)
         : dat(dat), h(dat.size()), w(dat.front().size()) {}
 
     Matrix(int h_, int w_, const T& v = T())
-        : dat(h_, vector<T>(w_, v)){}
+        : dat(h_, std::vector<T>(w_, v)){}
         
     using mat = Matrix<T>;
     //access
-    vector<T>& operator[](int i) { return dat[i]; }
+    std::vector<T>& operator[](int i) { return dat[i]; }
 
     //operator
     mat& operator+=(const mat& r) {
@@ -41,7 +43,7 @@ class Matrix {
         int hb = r.dat.size(), wb = r.dat.front().size();
         assert(wa == hb);
 
-        vector<vector<T>> res(ha, vector<T>(wb));
+        std::vector<std::vector<T>> res(ha, std::vector<T>(wb));
         for (int i = 0; i < ha; i++) {
             for (int k = 0; k < wa; k++){
                 for (int j = 0; j < wb; j++) {
@@ -50,7 +52,7 @@ class Matrix {
             }
         }
 
-        swap(res, dat);
+        std::swap(res, dat);
         return (*this);
     }
 
@@ -58,7 +60,8 @@ class Matrix {
     mat operator-(const mat& r) { return mat(*this) -= r; }
     mat operator*(const mat& r) { return mat(*this) *= r; }
 
-    mat pow(__int64_t e) const {
+    template<typename T>
+    mat pow(T e) const {
         assert(e >= 0);
         int n = dat.size();
         mat res(n, n, 0);
@@ -75,5 +78,4 @@ class Matrix {
         return res;
     }
 };
-/// @brief maxtirx(行列)
 /// @docs docs/math/matrix.md

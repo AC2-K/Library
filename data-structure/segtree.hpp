@@ -2,14 +2,14 @@
 /// @tparam S 要素の型
 /// @tparam op 二項演算
 /// @tparam e 単位元
-/// @docs /home/ac2000/main/library/docs/data-structure/segtree.md
+/// @docs docs/data-structure/segtree.md
 template<class S, S(*op)(S, S), S(*e)()>
 class segtree {
 	int lg, sz, n;
-	vector<S> dat;
+	std::vector<S> dat;
 public:
 	segtree() :segtree(0) {}
-	segtree(int n) : segtree(vector<S>(n, e())) {}
+	segtree(int n) : segtree(std::vector<S>(n, e())) {}
 	segtree(const vector<S>& vec) : n((int)vec.size()) {
 		sz = 1, lg = 0;
 		while (sz <= n) {
@@ -17,7 +17,7 @@ public:
 			lg++;
 		}
 
-		dat = vector<S>(sz << 1, e());
+		dat = std::vector<S>(sz << 1, e());
 
 		for (int i = 0; i < n; i++) {
 			set(i, vec[i]);

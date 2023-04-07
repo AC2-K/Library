@@ -19,7 +19,7 @@ namespace internal {
             if (a >= m) a -= m;
             return a;
         }
-		u64 mul(u64 a, u64 b) {
+		u64 mul(u64 a, u64 b) const {
 			if (a == 0 || b == 0) {
 				return 0;
 			}

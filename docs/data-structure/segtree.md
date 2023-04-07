@@ -13,7 +13,7 @@ segtree<S,op,e> seg(int n)
 ```
 $a$を$e$で埋めて生成します。
 ```cpp
-segtree<S,op,e> seg(vector<S> a)
+segtree<S,op,e> seg(std::vector<S> a)
 ```
 そのまま$a$を渡すこともできます。
 \

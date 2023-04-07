@@ -10,8 +10,8 @@ class MST {
         int id;
         Edge(int v1, int v2, int cost, int id) :v1(v1), v2(v2), cost(cost), id(id) {  }
     };
-    vector<Edge> E;
-    vector<int> V1, V2;
+    std::vector<Edge> E;
+    std::vector<int> V1, V2;
 public:
     MST(int V) :dsu(V) {}
     void add_edge(int a, int b, ll cost) {

@@ -1,10 +1,6 @@
 #pragma once
 #include <cassert>
 /// @brief Dynamic Segment Tree(動的セグメント木)
-/// @tparam S 要素の型
-/// @tparam op 二項演算
-/// @tparam e 単位元
-/// @docs docs/data-structure/dynamic_segtree.md
 template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
   public:
     dynamic_segtree(const size_t& n) : n(n), root(nullptr) {}
@@ -125,3 +121,5 @@ template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
                   internal_prod(p->right, mid, r, L, R));
     }
 };
+
+/// @docs docs/data-structure/dynamic_segtree.md

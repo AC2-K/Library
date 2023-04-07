@@ -1,10 +1,13 @@
+#pragma once
+#include<vector>
+#include<queue>
 class namori{
     int n;
-    graph g;
-    vector<int> root_idx;
-    vector<int> deg;
-    vector<bool> is_cycle;
-    vector<int> cycle;
+    std::vector<std::vector<int>> g;
+    std::vector<int> root_idx;
+    std::vector<int> deg;
+    std::vector<bool> is_cycle;
+    std::vector<int> cycle;
 public:
     namori(int n) : n(n), g(n), deg(n), is_cycle(n, true), root_idx(n, -1){cycle.reserve(n);}
  
@@ -16,7 +19,7 @@ public:
     void build(){
         //deg=1の頂点を突っ込んでBFS
         {
-            queue<int> q;
+            std::queue<int> q;
             for (int v = 0; v < n; v++){
                 if (deg[v] == 1) {
                     q.emplace(v);
@@ -43,7 +46,7 @@ public:
                 
                 root_idx[i] = i;
                 
-                vector<P> st;
+                std::vector<std::pair<int,int>> st;
                 st.reserve(n);
                 for (const auto& ch : g[i]) {
                     if (is_cycle[ch]) continue;
@@ -69,5 +72,5 @@ public:
  
     inline int root(int v) const { return root_idx[v]; }
     inline bool is_in_cycle(int v) const { return is_cycle[v]; }
-    inline vector<int> get_cycle() const { return cycle; }
+    inline std::vector<int> get_cycle() const { return cycle; }
 };
