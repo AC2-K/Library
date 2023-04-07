@@ -9,7 +9,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/CHT.hpp
       title: Convex Hull Trick
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/dsu.hpp
       title: Disjoint Set(Union find)
     - icon: ':heavy_check_mark:'
@@ -93,7 +93,7 @@ data:
       title: "Osak\u6CD5"
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
-      title: "phi function(\\phi \u95A2\u6570)"
+      title: "phi function(Euler\u306E $\\phi$ \u95A2\u6570)"
     - icon: ':x:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
@@ -111,7 +111,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/2DSum.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: misc/mo.hpp
       title: mo's algorithm
   - name: persistent
@@ -124,7 +124,7 @@ data:
       title: persistent/stack.hpp
   - name: string
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   verificationCategories:
@@ -210,16 +210,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
       title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
       title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/data_structure/UnionFind.test.cpp
       title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     - icon: ':x:'
@@ -256,13 +256,13 @@ data:
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   - name: test/yuki
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/No-1471.test.cpp
       title: test/yuki/No-1471.test.cpp
     - icon: ':x:'
       path: test/yuki/No-3030.test.cpp
       title: test/yuki/No-3030.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/No-430.test.cpp
       title: test/yuki/No-430.test.cpp
     - icon: ':x:'

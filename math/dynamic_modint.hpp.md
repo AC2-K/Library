@@ -16,7 +16,7 @@ data:
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
-    title: "phi function(\\phi \u95A2\u6570)"
+    title: "phi function(Euler\u306E $\\phi$ \u95A2\u6570)"
   - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"

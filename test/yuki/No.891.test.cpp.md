@@ -33,20 +33,20 @@ data:
     \ + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0\
     \ };\nconstexpr int dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline\
     \ void chmax(T&x,T y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void\
-    \ chmin(T&x,T y){if(x>y)x=y;}\n#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\n\
-    constexpr inline T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a\
-    \ == 0 || b == 0) return a + b;\n    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \ chmin(T&x,T y){if(x>y)x=y;}\n#line 3 \"math/gcd.hpp\"\ntemplate <typename T>\
+    \ constexpr T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0\
+    \ || b == 0) return a + b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
     \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
     \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
     \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
     \        }else{\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate<typename T>\nconstexpr inline\
-    \ T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
-    \    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n\
-    \        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny,\
-    \ y - ny*q);\n    }\n    return a;\n}\n#line 5 \"math/static_modint.hpp\"\ntemplate<__uint64_t\
-    \ mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\t\
-    using i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
+    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
+    \    while(b) {\n        T q = a / b;\n        std::tie(a, b) = std::make_pair(b,\
+    \ a % b);\n        std::tie(x, nx) = std::make_pair(nx, x - nx*q);\n        std::tie(y,\
+    \ ny) = std::make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n#line 4 \"math/static_modint.hpp\"\
+    \ntemplate<__uint64_t mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\
+    \tusing i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
     \tusing i128 = __int128_t;\n\n\tu64 v;\n\tinline u64 normalize(i64 v_) const {\n\
     \t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t\
     }\npublic:\n\tconstexpr static_modint() :v(0) {}\n\tconstexpr static_modint(const\
@@ -126,35 +126,36 @@ data:
     \t\treturn os;\n\t}\n\tconstexpr friend std::istream& operator>>(std::istream&\
     \ is, mint& mt) {\n\t\ti64 v_;\n\t\tis >> v_;\n\t\tmt = v_;\n\t\treturn is;\n\t\
     }\n\n};\n///@brief static modint(\u9759\u7684modint)\n///@docs docs/math/static_modint.md\n\
-    #line 1 \"math/matrix.hpp\"\ntemplate<typename T>\nclass Matrix {\n    vector<vector<T>>\
-    \ dat;\n    int h = 0, w = 0;\n\n  public:\n    Matrix(const vector<vector<T>>&\
-    \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
-    \ h_, int w_, const T& v = T())\n        : dat(h_, vector<T>(w_, v)){}\n     \
-    \   \n    using mat = Matrix<T>;\n    //access\n    vector<T>& operator[](int\
-    \ i) { return dat[i]; }\n\n    //operator\n    mat& operator+=(const mat& r) {\n\
-    \        assert(r.h == this->h);\n        assert(r.w == this->w);\n        for\
-    \ (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n     \
-    \           dat[i][j] += r.dat[i][j];\n            }\n        }\n        return\
-    \ (*this);\n    }\n    mat& operator-=(const mat&r){\n        assert(r.h == this->h);\n\
-    \        assert(r.w == this->w);\n        for (int i = 0; i < h; i++) {\n    \
-    \        for (int j = 0; j < w; j++) {\n                dat[i][j] -= r.dat[i][j];\n\
-    \            }\n        }\n        return (*this);\n    }\n    \n    mat& operator*=(const\
+    #line 3 \"math/matrix.hpp\"\n\n/// @brief maxtirx(\u884C\u5217)\ntemplate <typename\
+    \ T> class Matrix {\n    std::vector<std::vector<T>> dat;\n    int h = 0, w =\
+    \ 0;\n\n  public:\n    explicit Matrix(const std::vector<std::vector<T>>& dat)\n\
+    \        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    explicit Matrix(int\
+    \ h_, int w_, const T& v = T()) : dat(h_, std::vector<T>(w_, v)){}\n    using\
+    \ mat = Matrix<T>;\n    //access\n    std::vector<T>& operator[](int i) { return\
+    \ dat[i]; }\n    // operator\n    mat& operator+=(const mat& r) {\n        assert(r.h\
+    \ == this->h);\n        assert(r.w == this->w);\n        for (int i = 0; i < h;\
+    \ i++) {\n            for (int j = 0; j < w; j++) {\n                dat[i][j]\
+    \ += r.dat[i][j];\n            }\n        }\n        return (*this);\n    }\n\
+    \    mat& operator-=(const mat& r) {\n        assert(r.h == this->h);\n      \
+    \  assert(r.w == this->w);\n        for (int i = 0; i < h; i++) {\n          \
+    \  for (int j = 0; j < w; j++) {\n                dat[i][j] -= r.dat[i][j];\n\
+    \            }\n        }\n        return (*this);\n    }\n    mat& operator*=(const\
     \ mat& r) {\n        int ha = dat.size(), wa = dat.front().size();\n        int\
     \ hb = r.dat.size(), wb = r.dat.front().size();\n        assert(wa == hb);\n\n\
-    \        vector<vector<T>> res(ha, vector<T>(wb));\n        for (int i = 0; i\
-    \ < ha; i++) {\n            for (int k = 0; k < wa; k++){\n                for\
-    \ (int j = 0; j < wb; j++) {\n                    res[i][j] += dat[i][k] * r.dat[k][j];\n\
-    \                }\n            }\n        }\n\n        swap(res, dat);\n    \
-    \    return (*this);\n    }\n\n    mat operator+(const mat& r) { return mat(*this)\
-    \ += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r; }\n    mat\
-    \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    mat pow(__int64_t\
-    \ e) const {\n        assert(e >= 0);\n        int n = dat.size();\n        mat\
-    \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
-    \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
-    \ pr *= pr;\n            \n            e >>= 1;\n        }\n        \n       \
-    \ return res;\n    }\n};\n/// @brief maxtirx(\u884C\u5217)\n/// @docs docs/math/matrix.md\n\
-    #line 6 \"test/yuki/No.891.test.cpp\"\nusing mint = static_modint32<MOD>;\nint\
-    \ main() {\n    int a, b, n;\n    cin >> a >> b >> n;\n    Matrix<mint> A({{a,\
+    \        std::vector<std::vector<T>> res(ha, std::vector<T>(wb));\n        for\
+    \ (int i = 0; i < ha; i++) {\n            for (int k = 0; k < wa; k++){\n    \
+    \            for (int j = 0; j < wb; j++) {\n                    res[i][j] +=\
+    \ dat[i][k] * r.dat[k][j];\n                }\n            }\n        }\n    \
+    \    std::swap(res, dat);\n        return (*this);\n    }\n    mat operator+(const\
+    \ mat& r) { return mat(*this) += r; }\n    mat operator-(const mat& r) { return\
+    \ mat(*this) -= r; }\n    mat operator*(const mat& r) { return mat(*this) *= r;\
+    \ }\n    template <typename T> mat pow(T e) const {\n        assert(e >= 0);\n\
+    \        int n = dat.size();\n        mat res(n, n, 0);\n        mat pr(*this);\n\
+    \        for (int i = 0; i < n; i++) res[i][i] = 1;\n\n        while (e) {\n \
+    \           if (e & 1) res *= pr;\n            pr *= pr;\n            \n     \
+    \       e >>= 1;\n        }\n        \n        return res;\n    }\n};\n\n/// @docs\
+    \ docs/math/matrix.md\n#line 6 \"test/yuki/No.891.test.cpp\"\nusing mint = static_modint32<MOD>;\n\
+    int main() {\n    int a, b, n;\n    cin >> a >> b >> n;\n    Matrix<mint> A({{a,\
     \ b}, {1, 0}});\n    A = A.pow(n);\n    cout << A[1][0] << '\\n';\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/891\"\n\n#include\"template.hpp\"\
     \n#include\"math/static_modint.hpp\"\n#include\"math/matrix.hpp\"\nusing mint\
@@ -169,7 +170,7 @@ data:
   isVerificationFile: true
   path: test/yuki/No.891.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 14:21:53+09:00'
+  timestamp: '2023-04-07 15:13:47+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yuki/No.891.test.cpp

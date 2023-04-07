@@ -7,7 +7,7 @@ data:
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
-    title: "phi function(\\phi \u95A2\u6570)"
+    title: "phi function(Euler\u306E $\\phi$ \u95A2\u6570)"
   - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
@@ -17,7 +17,7 @@ data:
   - icon: ':question:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: string/rolling_hash.hpp
     title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   _extendedVerifiedWith:
@@ -48,7 +48,7 @@ data:
   - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No-430.test.cpp
     title: test/yuki/No-430.test.cpp
   - icon: ':x:'
@@ -59,30 +59,30 @@ data:
   _verificationStatusIcon: ':question:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T\
-    \ _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return\
-    \ a + b;\n    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>=\
+  bundledCode: "#line 2 \"math/gcd.hpp\"\n#include <tuple>\ntemplate <typename T>\
+    \ constexpr T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0\
+    \ || b == 0) return a + b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
+    \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        }else{\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
+    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
+    \    while(b) {\n        T q = a / b;\n        std::tie(a, b) = std::make_pair(b,\
+    \ a % b);\n        std::tie(x, nx) = std::make_pair(nx, x - nx*q);\n        std::tie(y,\
+    \ ny) = std::make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n"
+  code: "#pragma once\n#include <tuple>\ntemplate <typename T> constexpr T _gcd(T\
+    \ a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a\
+    \ + b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>=\
     \ __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n      \
     \  if (a == 0 || b == 0) {\n            return a + b;\n        }\n        if (a\
     \ > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n       \
     \ }else{\n            b -= a;\n            b >>= __builtin_ctzll(b);\n       \
-    \ }\n    }\n\n    return a << d;\n}\ntemplate<typename T>\nconstexpr inline T\
-    \ ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
-    \    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n\
-    \        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny,\
-    \ y - ny*q);\n    }\n    return a;\n}\n"
-  code: "#pragma once\ntemplate<typename T>\nconstexpr inline T _gcd(T a, T b) {\n\
-    \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
-    \ d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
-    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (a == 0 || b ==\
-    \ 0) {\n            return a + b;\n        }\n        if (a > b) {\n         \
-    \   a -= b;\n            a >>= __builtin_ctzll(a);\n        }else{\n         \
-    \   b -= a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return\
-    \ a << d;\n}\ntemplate<typename T>\nconstexpr inline T ext_gcd(T a, T b, T &x,\
-    \ T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T\
-    \ q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx,\
-    \ x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return\
-    \ a;\n}"
+    \ }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T ext_gcd(T\
+    \ a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b)\
+    \ {\n        T q = a / b;\n        std::tie(a, b) = std::make_pair(b, a % b);\n\
+    \        std::tie(x, nx) = std::make_pair(nx, x - nx*q);\n        std::tie(y,\
+    \ ny) = std::make_pair(ny, y - ny*q);\n    }\n    return a;\n}"
   dependsOn: []
   isVerificationFile: false
   path: math/gcd.hpp
@@ -93,7 +93,7 @@ data:
   - math/phi_function.hpp
   - math/primitive_root.hpp
   - math/static_modint.hpp
-  timestamp: '2023-04-02 12:04:52+09:00'
+  timestamp: '2023-04-07 15:13:47+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

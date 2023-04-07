@@ -54,51 +54,51 @@ data:
     \           if (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n\
     \        }\n        return op(sml, smr);\n    }\n    inline void apply(int p,\
     \ const S& v) { update(p, op(dat[sz + p], v)); }\n};\n\n/// @docs docs/data-structure/segtree.md\n\
-    #line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T _gcd(T a, T\
-    \ b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n\
-    \    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
+    #line 3 \"math/gcd.hpp\"\ntemplate <typename T> constexpr T _gcd(T a, T b) {\n\
+    \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
+    \ d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
     \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (a == 0 || b ==\
     \ 0) {\n            return a + b;\n        }\n        if (a > b) {\n         \
     \   a -= b;\n            a >>= __builtin_ctzll(a);\n        }else{\n         \
     \   b -= a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return\
-    \ a << d;\n}\ntemplate<typename T>\nconstexpr inline T ext_gcd(T a, T b, T &x,\
-    \ T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T\
-    \ q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx,\
-    \ x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return\
-    \ a;\n}\n#line 5 \"math/static_modint.hpp\"\ntemplate<__uint64_t mod>\nclass static_modint\
-    \ {\nprivate:\n\tusing mint = static_modint<mod>;\n\tusing i64 = long long;\n\t\
-    using u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\tusing i128 = __int128_t;\n\
-    \n\tu64 v;\n\tinline u64 normalize(i64 v_) const {\n\t\tv_ %= mod;\n\t\tif (v_\
-    \ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\tconstexpr static_modint()\
-    \ :v(0) {}\n\tconstexpr static_modint(const i64& v_) :v(normalize(v_)) { }\n\n\
-    \t//operator\n\tconstexpr inline u64 val() const {\n\t\treturn v;\n\t}\n\tconstexpr\
-    \ mint& operator+=(const mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod)\
-    \ {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const\
-    \ mint& rhs) {\n\t\tv += mod - rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\
-    \t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator*=(const mint& rhs)\
-    \ {\n\t\tv = (u128)v * rhs.val() % mod;\n\t\treturn (*this);\n\t}\n\n\n\tconstexpr\
-    \ mint operator+(const mint& r) const {\n\t\treturn mint(*this) += r;\n\t}\n\t\
-    constexpr mint operator-(const mint& r) const {\n\t\treturn mint(*this) -= r;\n\
-    \t}\n\tconstexpr mint operator*(const mint& r) const {\n\t\treturn mint(*this)\
-    \ *= r;\n\t}\n\n\tconstexpr mint& operator+=(const i64& rhs) {\n\t\t(*this) +=\
-    \ mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr mint& operator-=(const i64&\
-    \ rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr mint&\
-    \ operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\t\treturn (*this);\n\
-    \t}\n\tconstexpr friend mint operator+(const i64& l, const mint& r) {\n\t\treturn\
-    \ mint(l) += r;\n\t}\n\tconstexpr friend mint operator-(const i64& l, const mint&\
-    \ r) {\n\t\treturn mint(l) -= r;\n\t}\n\tconstexpr friend mint operator*(const\
-    \ i64& l, const mint& r) {\n\t\treturn mint(l) *= r;\n\t}\n\n\tconstexpr mint\
-    \ operator+(const i64& r) {\n\t\treturn mint(*this) += r;\n\t}\n\tconstexpr mint\
-    \ operator-(const i64& r) {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint\
-    \ operator*(const i64& r) {\n\t\treturn mint(*this) *= r;\n\t}\n\n\n\tconstexpr\
-    \ mint& operator=(const i64& r) {\n\t\treturn (*this) = mint(r);\n\t}\n\n\tconstexpr\
-    \ bool operator==(const mint& r) const {\n\t\treturn (*this).val() == r.val();\n\
-    \t}\n\ttemplate<typename E>\n\tconstexpr mint pow(E e) const {\n\t\tmint ans(1),\
-    \ base(*this);\n\t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans *= base;\n\t\t\
-    \t}\n\t\t\tbase *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\t}\n\n\tconstexpr\
-    \ mint inv() const {\n\t\tll x, y;\n        auto d = ext_gcd((ll)mod, (ll)v, x,\
-    \ y);\n        assert(d == 1);\n        return mint(y);\n\t}\n\n\tconstexpr mint&\
-    \ operator/=(const mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n\tconstexpr\
+    \ a << d;\n}\ntemplate <typename T> constexpr T ext_gcd(T a, T b, T& x, T& y)\
+    \ {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T q = a\
+    \ / b;\n        std::tie(a, b) = std::make_pair(b, a % b);\n        std::tie(x,\
+    \ nx) = std::make_pair(nx, x - nx*q);\n        std::tie(y, ny) = std::make_pair(ny,\
+    \ y - ny*q);\n    }\n    return a;\n}\n#line 4 \"math/static_modint.hpp\"\ntemplate<__uint64_t\
+    \ mod>\nclass static_modint {\nprivate:\n\tusing mint = static_modint<mod>;\n\t\
+    using i64 = long long;\n\tusing u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\
+    \tusing i128 = __int128_t;\n\n\tu64 v;\n\tinline u64 normalize(i64 v_) const {\n\
+    \t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t\
+    }\npublic:\n\tconstexpr static_modint() :v(0) {}\n\tconstexpr static_modint(const\
+    \ i64& v_) :v(normalize(v_)) { }\n\n\t//operator\n\tconstexpr inline u64 val()\
+    \ const {\n\t\treturn v;\n\t}\n\tconstexpr mint& operator+=(const mint& rhs) {\n\
+    \t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\
+    \t}\n\tconstexpr mint& operator-=(const mint& rhs) {\n\t\tv += mod - rhs.val();\n\
+    \t\tif (v >= mod) {\n\t\t\tv -= mod;\n\t\t}\n\t\treturn (*this);\n\t}\n\tconstexpr\
+    \ mint& operator*=(const mint& rhs) {\n\t\tv = (u128)v * rhs.val() % mod;\n\t\t\
+    return (*this);\n\t}\n\n\n\tconstexpr mint operator+(const mint& r) const {\n\t\
+    \treturn mint(*this) += r;\n\t}\n\tconstexpr mint operator-(const mint& r) const\
+    \ {\n\t\treturn mint(*this) -= r;\n\t}\n\tconstexpr mint operator*(const mint&\
+    \ r) const {\n\t\treturn mint(*this) *= r;\n\t}\n\n\tconstexpr mint& operator+=(const\
+    \ i64& rhs) {\n\t\t(*this) += mint(rhs);\n\t\treturn (*this);\n\t}\n\tconstexpr\
+    \ mint& operator-=(const i64& rhs) {\n\t\t(*this) -= mint(rhs);\n\t\treturn (*this);\n\
+    \t}\n\tconstexpr mint& operator*=(const i64& rhs) {\n\t\t(*this) *= mint(rhs);\n\
+    \t\treturn (*this);\n\t}\n\tconstexpr friend mint operator+(const i64& l, const\
+    \ mint& r) {\n\t\treturn mint(l) += r;\n\t}\n\tconstexpr friend mint operator-(const\
+    \ i64& l, const mint& r) {\n\t\treturn mint(l) -= r;\n\t}\n\tconstexpr friend\
+    \ mint operator*(const i64& l, const mint& r) {\n\t\treturn mint(l) *= r;\n\t\
+    }\n\n\tconstexpr mint operator+(const i64& r) {\n\t\treturn mint(*this) += r;\n\
+    \t}\n\tconstexpr mint operator-(const i64& r) {\n\t\treturn mint(*this) -= r;\n\
+    \t}\n\tconstexpr mint operator*(const i64& r) {\n\t\treturn mint(*this) *= r;\n\
+    \t}\n\n\n\tconstexpr mint& operator=(const i64& r) {\n\t\treturn (*this) = mint(r);\n\
+    \t}\n\n\tconstexpr bool operator==(const mint& r) const {\n\t\treturn (*this).val()\
+    \ == r.val();\n\t}\n\ttemplate<typename E>\n\tconstexpr mint pow(E e) const {\n\
+    \t\tmint ans(1), base(*this);\n\t\twhile (e) {\n\t\t\tif (e & 1) {\n\t\t\t\tans\
+    \ *= base;\n\t\t\t}\n\t\t\tbase *= base;\n\t\t\te >>= 1;\n\t\t}\n\t\treturn ans;\n\
+    \t}\n\n\tconstexpr mint inv() const {\n\t\tll x, y;\n        auto d = ext_gcd((ll)mod,\
+    \ (ll)v, x, y);\n        assert(d == 1);\n        return mint(y);\n\t}\n\n\tconstexpr\
+    \ mint& operator/=(const mint& r) {\n\t\treturn (*this) *= r.inv();\n\t}\n\tconstexpr\
     \ mint inv(const mint&r)const{\n\t\treturn mint(*this) *= r.inv();\n\t}\n\tconstexpr\
     \ friend mint operator/(const mint& l, const i64& r) {\n\t\treturn mint(l) /=\
     \ mint(r);\n\t}\n\tconstexpr friend mint operator/(const i64& l, const mint& r)\
@@ -183,7 +183,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 14:21:53+09:00'
+  timestamp: '2023-04-07 15:13:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp

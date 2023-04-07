@@ -46,32 +46,32 @@ data:
     \ uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int\
     \ dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 2 \"math/mod_pow.hpp\"\ntemplate <class T, class U = T>\nconstexpr T mod_pow(T\
+    #line 1 \"math/mod_pow.hpp\"\ntemplate <class T, class U = T>\nconstexpr T mod_pow(T\
     \ base, T exp, T mod){\n    U ans = 1;\n    base %= mod;\n    while (exp) {\n\
     \        if (exp & 1) {\n            ans *= base;\n            ans %= mod;\n \
     \       }\n        base *= base;\n        base %= mod;\n        exp >>= 1;\n \
     \   }\n    return ans;\n}\n///@brief mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\
-    \u6CD5)\n#line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T _gcd(T\
-    \ a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a\
-    \ + b;\n    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
-    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (a == 0 || b ==\
-    \ 0) {\n            return a + b;\n        }\n        if (a > b) {\n         \
-    \   a -= b;\n            a >>= __builtin_ctzll(a);\n        }else{\n         \
-    \   b -= a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return\
-    \ a << d;\n}\ntemplate<typename T>\nconstexpr inline T ext_gcd(T a, T b, T &x,\
-    \ T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T\
-    \ q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx,\
-    \ x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return\
-    \ a;\n}\n#line 3 \"data-structure/hash_map.hpp\"\n/// @brief HashMap\ntemplate\
-    \ <typename Key,\n          typename Val,\n          uint32_t n = 1 << 20,\n \
-    \         Val default_val = Val()\n          >\nclass hash_map {\n    using u32\
-    \ = uint32_t;\n    using u64 = uint64_t;\n\n    u64* flag = new u64[n];\n    Key*\
-    \ keys = new Key[n];\n    Val* vals = new Val[n];\n\n    static constexpr u32\
-    \ shift = 64 - __lg(n);\n\n    u64 r;\n    inline u32 get_hash(const Key& k) const\
-    \ {\n        return ((u64)k * r) >> shift;\n    }\n\n    static constexpr uint8_t\
-    \ mod_msk = (1 << 6) - 1;\n\n  public:   \n    explicit constexpr hash_map(){\n\
-    \        r = std::chrono::steady_clock::now().time_since_epoch().count();\n  \
-    \      r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const\
+    \u6CD5)\n#line 3 \"math/gcd.hpp\"\ntemplate <typename T> constexpr T _gcd(T a,\
+    \ T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a +\
+    \ b;\n    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>=\
+    \ __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n      \
+    \  if (a == 0 || b == 0) {\n            return a + b;\n        }\n        if (a\
+    \ > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n       \
+    \ }else{\n            b -= a;\n            b >>= __builtin_ctzll(b);\n       \
+    \ }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T ext_gcd(T\
+    \ a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b)\
+    \ {\n        T q = a / b;\n        std::tie(a, b) = std::make_pair(b, a % b);\n\
+    \        std::tie(x, nx) = std::make_pair(nx, x - nx*q);\n        std::tie(y,\
+    \ ny) = std::make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n#line 3 \"data-structure/hash_map.hpp\"\
+    \n/// @brief HashMap\ntemplate <typename Key,\n          typename Val,\n     \
+    \     uint32_t n = 1 << 20,\n          Val default_val = Val()\n          >\n\
+    class hash_map {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n   \
+    \ u64* flag = new u64[n];\n    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\
+    \n    static constexpr u32 shift = 64 - __lg(n);\n\n    u64 r;\n    inline u32\
+    \ get_hash(const Key& k) const {\n        return ((u64)k * r) >> shift;\n    }\n\
+    \n    static constexpr uint8_t mod_msk = (1 << 6) - 1;\n\n  public:   \n    explicit\
+    \ constexpr hash_map(){\n        r = std::chrono::steady_clock::now().time_since_epoch().count();\n\
+    \        r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const\
     \ Key& k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n        \
     \    if (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash\
     \ & mod_msk)))) {\n                keys[hash] = k;\n                flag[hash\
@@ -216,14 +216,14 @@ data:
     \        pr = k;\n        for (int i = 1; i <= m; i++) {\n            pr *= xm;\n\
     \            auto ptr = mp.find(pr.val());\n            if (ptr) {\n         \
     \       int j = *ptr;\n                return m * i - j + add;\n            }\n\
-    \        }\n        return -1;\n    }\n};\n\n\ntemplate<typename T>\ninline ll\
-    \ mod_log(T a,T b,T c){\n    if (c < 1 << 30) {\n        return internal::__mod_log32(a,\
-    \ b, c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n\
-    }\n///@brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n///@docs docs/math/DLP.md\n\
-    #line 4 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\nint main() {\n\
-    \    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y, p;\n\
-    \        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\n\", mod_log<long\
-    \ long>(x, y, p));\n    }\n}\n"
+    \        }\n        return -1;\n    }\n};\n\n\n/// @brief Discrete Logarithm(\u96E2\
+    \u6563\u5BFE\u6570)\ntemplate<typename T>\ninline ll mod_log(T a,T b,T c){\n \
+    \   if (c < 1 << 30) {\n        return internal::__mod_log32(a, b, c);\n    }\
+    \ else {\n        return internal::__mod_log(a, b, c);\n    }\n}\n\n\n\n///@docs\
+    \ docs/math/DLP.md\n#line 4 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
+    \nint main() {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n      \
+    \  int x, y, p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\\
+    n\", mod_log<long long>(x, y, p));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\
     \n#include\"template.hpp\"\n#include\"math/mod_log.hpp\"\nint main() {\n    int\
     \ t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y, p;\n      \
@@ -241,7 +241,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 14:21:53+09:00'
+  timestamp: '2023-04-07 15:13:47+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp

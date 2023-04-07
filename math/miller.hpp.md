@@ -13,7 +13,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
-    title: "phi function(\\phi \u95A2\u6570)"
+    title: "phi function(Euler\u306E $\\phi$ \u95A2\u6570)"
   - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
@@ -164,8 +164,8 @@ data:
     \ 2) {\n                return false;\n            }\n            else if (n ==\
     \ 2) {\n                return true;\n            }\n            else if (~n &\
     \ 1) {\n                return false;\n            }\n            if (n < (1ul\
-    \ << 31)) {\n                return miller_rabin<barrett_modint<-1>>(n, bases_int,\
-    \ 3);\n            }\n            else {\n                return miller_rabin<dynamic_modint<u64,u128,-1>>(n,\
+    \ << 31)) {\n                return miller_rabin<barrett_modint<10>>(n, bases_int,\
+    \ 3);\n            }\n            else {\n                return miller_rabin<dynamic_modint<u64,u128,10>>(n,\
     \ bases_ll, 7);\n            }\n        }\n    };\n};\n///@brief MillerRabin\u306E\
     \u7D20\u6570\u5224\u5B9A\n"
   code: "#pragma once\n#include\"math/dynamic_modint.hpp\"\nnamespace prime {\n  \
@@ -188,8 +188,8 @@ data:
     \ 2) {\n                return false;\n            }\n            else if (n ==\
     \ 2) {\n                return true;\n            }\n            else if (~n &\
     \ 1) {\n                return false;\n            }\n            if (n < (1ul\
-    \ << 31)) {\n                return miller_rabin<barrett_modint<-1>>(n, bases_int,\
-    \ 3);\n            }\n            else {\n                return miller_rabin<dynamic_modint<u64,u128,-1>>(n,\
+    \ << 31)) {\n                return miller_rabin<barrett_modint<10>>(n, bases_int,\
+    \ 3);\n            }\n            else {\n                return miller_rabin<dynamic_modint<u64,u128,10>>(n,\
     \ bases_ll, 7);\n            }\n        }\n    };\n};\n///@brief MillerRabin\u306E\
     \u7D20\u6570\u5224\u5B9A"
   dependsOn:
@@ -202,7 +202,7 @@ data:
   - math/rho.hpp
   - math/phi_function.hpp
   - math/primitive_root.hpp
-  timestamp: '2023-04-07 14:21:53+09:00'
+  timestamp: '2023-04-07 15:13:47+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

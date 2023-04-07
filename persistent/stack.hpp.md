@@ -11,7 +11,7 @@ data:
   bundledCode: "#line 1 \"persistent/stack.hpp\"\ntemplate<class T>\nclass persistent_stack\
     \ {\n\tclass Node {\n\tpublic:\n\t\tT val;\n\t\tNode* prev;\n\t};\n\n\n\tNode*\
     \ head;\n\tint sz;\n\n\tpersistent_stack(Node* head, int sz) :head(head), sz(sz)\
-    \ {}\npublic:\n\tpersistent_stack() :head(nullptr) {}\n\n\n\tT top() const { assert(head);\
+    \ {}\npublic:\n\tpersistent_stack() :head(nullptr) {}\n\n\tT top() const { assert(head);\
     \ return head->val; }\n\tpersistent_stack pop() const { assert(head); return persistent_stack(head->prev,\
     \ sz - 1); }\n\tpersistent_stack push(const T& v) const { return persistent_stack(new\
     \ Node{ v,head }, sz + 1); }\n\tint size()const { return sz; }\n    bool empty()\
@@ -19,7 +19,7 @@ data:
   code: "template<class T>\nclass persistent_stack {\n\tclass Node {\n\tpublic:\n\t\
     \tT val;\n\t\tNode* prev;\n\t};\n\n\n\tNode* head;\n\tint sz;\n\n\tpersistent_stack(Node*\
     \ head, int sz) :head(head), sz(sz) {}\npublic:\n\tpersistent_stack() :head(nullptr)\
-    \ {}\n\n\n\tT top() const { assert(head); return head->val; }\n\tpersistent_stack\
+    \ {}\n\n\tT top() const { assert(head); return head->val; }\n\tpersistent_stack\
     \ pop() const { assert(head); return persistent_stack(head->prev, sz - 1); }\n\
     \tpersistent_stack push(const T& v) const { return persistent_stack(new Node{\
     \ v,head }, sz + 1); }\n\tint size()const { return sz; }\n    bool empty() const\
@@ -28,7 +28,7 @@ data:
   isVerificationFile: false
   path: persistent/stack.hpp
   requiredBy: []
-  timestamp: '2023-03-30 16:15:39+09:00'
+  timestamp: '2023-04-07 15:13:47+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: persistent/stack.hpp
