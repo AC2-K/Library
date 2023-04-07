@@ -28,9 +28,7 @@ data:
     \ uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int\
     \ dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 2 \"data-structure/BIT.hpp\"\n/// @brief Binary Index Tree\n/// @tparam\
-    \ T \u8981\u7D20\u306E\u578B\n/// @tparam SumT \"\u548C\u304C\" \u53CE\u307E\u308B\
-    \u3088\u3046\u306A\u578B\n/// @docs docs/data-structure/BIT.md\ntemplate<typename\
+    #line 3 \"data-structure/BIT.hpp\"\n/// @brief Binary Index Tree\ntemplate<typename\
     \ T,typename SumT = T>\nclass BIT {\n\tstd::vector<SumT> bit;\n\tint n;\npublic:\n\
     \    BIT(int n) :n(n), bit(n + 1, T()) {}\n\tvoid add(int p, const T& w) {\n\t\
     \tp++;\n\t\tfor (int x = p; x <= n; x += x & -x) {\n\t\t\tbit[x] += w;\n\t\t}\n\
@@ -41,7 +39,7 @@ data:
     \ = 1;\n        while (k < n)k <<= 1;\n        for (; k > 0; k >>= 1) {\n    \
     \        if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x + k];\n\
     \                x += k;\n            }\n        }\n\n        return x + 1;\n\
-    \    }\n}; \n#line 4 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
+    \    }\n}; \n\n\n\n/// @docs docs/data-structure/BIT.md\n#line 4 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
     \nint main() {\n    int n, q;\n    cin >> n >> q;\n    BIT<ll, ll> seg(n);\n \
     \   rep(i,n){\n        int a;\n        scanf(\"%d\", &a);\n        seg.add(i,\
     \ a);\n    }\n\n    while (q--) {\n        int t;\n        scanf(\"%d\", &t);\n\
@@ -64,7 +62,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 13:04:10+09:00'
+  timestamp: '2023-04-07 16:45:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
