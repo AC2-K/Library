@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: math/gcd.hpp
     title: math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/matrix.hpp
     title: "matirx(\u884C\u5217)"
   - icon: ':question:'

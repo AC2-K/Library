@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: math/gcd.hpp
     title: math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: math/matrix.hpp
     title: "matirx(\u884C\u5217)"
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -191,7 +191,7 @@ data:
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
   timestamp: '2023-04-07 14:59:40+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
 layout: document
