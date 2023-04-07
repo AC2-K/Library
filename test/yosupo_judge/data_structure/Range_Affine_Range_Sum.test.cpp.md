@@ -11,7 +11,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
@@ -35,57 +35,57 @@ data:
     constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
     \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>static constexpr inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 1 \"data-structure/lazy_segtree.hpp\"\n/// @brief Segment Tree with Lazy\
+    #line 3 \"data-structure/lazy_segtree.hpp\"\n/// @brief Segment Tree with Lazy\
     \ Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n\
-    /// @docs docs/data-structure/lazy_segtree.md\ntemplate<\n    class S, class F,\n\
-    \    S(*op)(S, S), S(*e)(),\n    F(*comp)(F, F), F(*id)(),\n    S(*mapping)(S,\
-    \ F)\n>\nclass lazy_segtree {\n    int sz;\n    vector<S> dat;\n    vector<F>\
-    \ lz;\npublic:\n    lazy_segtree(int n) :lazy_segtree(vector<S>(n, e())) {   \
-    \ }\n    lazy_segtree(const vector<S>& a) :dat(4 * a.size(), e()), lz(4 * a.size(),\
-    \ id()) {\n        int x = 1;\n        while (a.size() > x) {\n            x <<=\
-    \ 1;\n        }\n        sz = x;\n        for (int i = 0; i < a.size(); i++) {\n\
-    \            set(i, a[i]);\n        }\n        build();\n    }\npublic:\n    void\
-    \ set(int pos, S x) {\n        assert(0 <= pos && pos < sz);\n        dat[pos\
-    \ + sz - 1] = x;\n    }\n    void build() {\n        for (int i = sz - 2; i >=\
-    \ 0; i--) {\n            dat[i] = op(dat[2 * i + 1], dat[2 * i + 2]);\n      \
-    \  }\n    }\n\nprivate:\n    void eval(int pos) {\n        if (lz[pos] == id())\
-    \ return;\n        if (pos < sz - 1) {\n            lz[2 * pos + 1] = comp(lz[2\
-    \ * pos + 1], lz[pos]);\n            lz[2 * pos + 2] = comp(lz[2 * pos + 2], lz[pos]);\n\
-    \        }\n        dat[pos] = mapping(dat[pos], lz[pos]);\n        lz[pos] =\
-    \ id();\n    }\n\nprivate:\n    void internal_apply(int L, int R, int l, int r,\
-    \ const F& x, int k) {\n        eval(k);\n        if (L <= l && r <= R) {\n  \
-    \          lz[k] = comp(lz[k], x);\n            eval(k);\n        }\n        else\
-    \ if (L < r && l < R) {\n            int mid = (l + r) >> 1;\n            internal_apply(L,\
-    \ R, l, mid, x, 2 * k + 1);\n            internal_apply(L, R, mid, r, x, 2 * k\
-    \ + 2);\n            dat[k] = op(dat[2 * k + 1], dat[2 * k + 2]);\n        }\n\
-    \    }\npublic:\n    void apply(int l, int r, const F& x) {\n        assert(0\
+    template <class S,\n          class F,\n          S (*op)(S, S),\n          S\
+    \ (*e)(),\n          F (*comp)(F, F),\n          F (*id)(),\n          S (*mapping)(S,\
+    \ F)>\nclass lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n    std::vector<F>\
+    \ lz;\n\n  public:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e())){}\n\
+    \    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(), e()),\
+    \ lz(4 * a.size(), id()) {\n        int x = 1;\n        while ((int)a.size() >\
+    \ x) {\n            x <<= 1;\n        }\n        sz = x;\n        for (int i =\
+    \ 0; i < (int)a.size(); i++) {\n            set(i, a[i]);\n        }\n       \
+    \ build();\n    }\n\n  public:\n    void set(int pos, S x) {\n        assert(0\
+    \ <= pos && pos < sz);\n        dat[pos + sz - 1] = x;\n    }\n    void build()\
+    \ {\n        for (int i = sz - 2; i >= 0; i--) {\n            dat[i] = op(dat[2\
+    \ * i + 1], dat[2 * i + 2]);\n        }\n    }\n\n  private:\n    inline void\
+    \ eval(int pos) {\n        if (lz[pos] == id()) return;\n        if (pos < sz\
+    \ - 1) {\n            lz[2 * pos + 1] = comp(lz[2 * pos + 1], lz[pos]);\n    \
+    \        lz[2 * pos + 2] = comp(lz[2 * pos + 2], lz[pos]);\n        }\n      \
+    \  dat[pos] = mapping(dat[pos], lz[pos]);\n        lz[pos] = id();\n    }\n\n\
+    \  private:\n    void internal_apply(int L, int R, int l, int r, const F& x, int\
+    \ k) {\n        eval(k);\n        if (L <= l && r <= R) {\n            lz[k] =\
+    \ comp(lz[k], x);\n            eval(k);\n        } else if (L < r && l < R) {\n\
+    \            int mid = (l + r) >> 1;\n            internal_apply(L, R, l, mid,\
+    \ x, 2 * k + 1);\n            internal_apply(L, R, mid, r, x, 2 * k + 2);\n  \
+    \          dat[k] = op(dat[2 * k + 1], dat[2 * k + 2]);\n        }\n    }\n\n\
+    \  public:\n    inline void apply(int l, int r, const F& x) {\n        assert(0\
     \ <= l && l <= r && r <= sz);\n        internal_apply(l, r, 0, sz, x, 0);\n  \
-    \  }\n\nprivate:\n    S internal_prod(int L, int R, int l, int r, int k) {\n \
-    \       eval(k);\n        if (r <= L || R <= l) {\n            return e();\n \
-    \       }\n        else if (L <= l && r <= R) {\n            return dat[k];\n\
+    \  }\n\n  private:\n    S internal_prod(int L, int R, int l, int r, int k) {\n\
+    \        eval(k);\n        if (r <= L || R <= l) {\n            return e();\n\
+    \        }\n        else if (L <= l && r <= R) {\n            return dat[k];\n\
     \        }\n        else {\n            int mid = (l + r) >> 1;\n            S\
     \ vl = internal_prod(L, R, l, mid, 2 * k + 1);\n            S vr = internal_prod(L,\
     \ R, mid, r, 2 * k + 2);\n            return op(vl, vr);\n        }\n    }\n\n\
-    public:\n    S prod(int l, int r) {\n        assert(0 <= l && l <= r && r <= sz);\n\
-    \        return internal_prod(l, r, 0, sz, 0);\n    }\n\n    S operator[](int\
-    \ pos) {\n        return prod(pos, pos + 1);\n    }\n};\n//@brief lazy segtree(\u9045\
-    \u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n#line 2 \"math/gcd.hpp\"\
-    \ntemplate<typename T>\nconstexpr inline T _gcd(T a, T b) {\n    assert(a >= 0\
-    \ && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = min(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (a == 0 || b == 0) {\n            return a +\
-    \ b;\n        }\n        if (a > b) {\n            a -= b;\n            a >>=\
-    \ __builtin_ctzll(a);\n        }else{\n            b -= a;\n            b >>=\
-    \ __builtin_ctzll(b);\n        }\n    }\n\n    return a << d;\n}\ntemplate<typename\
-    \ T>\nconstexpr inline T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n\
-    \    T nx = 0, ny = 1;\n    while(b) {\n        T q = a / b;\n        tie(a, b)\
-    \ = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx, x - nx*q);\n    \
-    \    tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return a;\n}\n#line 3 \"\
-    math/static_modint.hpp\"\ntemplate<__uint64_t mod>\nclass static_modint {\nprivate:\n\
-    \tusing mint = static_modint<mod>;\n\tusing i64 = long long;\n\tusing u64 = unsigned\
-    \ long long;\n\tusing u128 = __uint128_t;\n\tusing i128 = __int128_t;\n\n\tu64\
-    \ v;\n\tu64 normalize(i64 v_) const {\n\t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\t\t\
-    \tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\tconstexpr static_modint()\
+    \  public:\n    inline S prod(int l, int r) {\n        assert(0 <= l && l <= r\
+    \ && r <= sz);\n        return internal_prod(l, r, 0, sz, 0);\n    }\n    inline\
+    \ S operator[](int pos) { return prod(pos, pos + 1); }\n};\n/// @docs docs/data-structure/lazy_segtree.md\n\
+    #line 2 \"math/gcd.hpp\"\ntemplate<typename T>\nconstexpr inline T _gcd(T a, T\
+    \ b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n\
+    \    int d = min(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
+    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (a == 0 || b ==\
+    \ 0) {\n            return a + b;\n        }\n        if (a > b) {\n         \
+    \   a -= b;\n            a >>= __builtin_ctzll(a);\n        }else{\n         \
+    \   b -= a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return\
+    \ a << d;\n}\ntemplate<typename T>\nconstexpr inline T ext_gcd(T a, T b, T &x,\
+    \ T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while(b) {\n        T\
+    \ q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n        tie(x, nx) = make_pair(nx,\
+    \ x - nx*q);\n        tie(y, ny) = make_pair(ny, y - ny*q);\n    }\n    return\
+    \ a;\n}\n#line 3 \"math/static_modint.hpp\"\ntemplate<__uint64_t mod>\nclass static_modint\
+    \ {\nprivate:\n\tusing mint = static_modint<mod>;\n\tusing i64 = long long;\n\t\
+    using u64 = unsigned long long;\n\tusing u128 = __uint128_t;\n\tusing i128 = __int128_t;\n\
+    \n\tu64 v;\n\tu64 normalize(i64 v_) const {\n\t\tv_ %= mod;\n\t\tif (v_ < 0) {\n\
+    \t\t\tv_ += mod;\n\t\t}\n\t\treturn v_;\n\t}\npublic:\n\tconstexpr static_modint()\
     \ :v(0) {}\n\tconstexpr static_modint(const i64& v_) :v(normalize(v_)) { }\n\n\
     \t//operator\n\tconstexpr u64 val() const {\n\t\treturn v;\n\t}\n\tconstexpr mint&\
     \ operator+=(const mint& rhs) {\n\t\tv += rhs.val();\n\t\tif (v >= mod) {\n\t\t\
@@ -205,7 +205,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-02 21:50:54+09:00'
+  timestamp: '2023-04-07 13:04:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp

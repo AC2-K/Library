@@ -47,52 +47,51 @@ data:
     \ T ext_gcd(T a, T b, T &x, T &y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
     \    while(b) {\n        T q = a / b;\n        tie(a, b) = make_pair(b, a % b);\n\
     \        tie(x, nx) = make_pair(nx, x - nx*q);\n        tie(y, ny) = make_pair(ny,\
-    \ y - ny*q);\n    }\n    return a;\n}\n#line 1 \"data-structure/hash_map.hpp\"\
-    \n/// @brief HashMap\n/// @tparam Key Key\u306E\u578B\n/// @tparam Val Value\u306E\
-    \u578B\ntemplate <typename Key,\n          typename Val,\n          uint32_t n\
-    \ = 1 << 20,\n          Val default_val = Val()\n          >\nclass hash_map {\n\
-    \    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64* flag = new u64[n];\n\
-    \    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\n    static constexpr\
-    \ u32 shift = 64 - __lg(n);\n\n    u64 r;\n    inline u32 get_hash(const Key&\
-    \ k) const {\n        return ((u64)k * r) >> shift;\n    }\n\n    static constexpr\
-    \ uint8_t mod_msk = (1 << 6) - 1;\n\n  public:   \n    explicit constexpr hash_map(){\n\
-    \        r = chrono::steady_clock::now().time_since_epoch().count();\n       \
-    \ r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const Key&\
-    \ k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n            if\
-    \ (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash & mod_msk))))\
-    \ {\n                keys[hash] = k;\n                flag[hash >> 6] |= static_cast<u64>(1)\n\
-    \                                   << (hash & mod_msk);\n                return\
-    \ vals[hash] = default_val;\n            }\n\n            if (keys[hash] == k)return\
-    \ vals[hash];\n            hash = (hash + 1) & (n - 1);\n        }\n    }\n\n\
-    \    const Val* find(const Key&k)const{\n        u32 hash = get_hash(k);\n   \
-    \     while (1) {\n            if (!(flag[hash >> 6] &\n                  (static_cast<u64>(1)\
-    \ << (hash & mod_msk))))\n                return nullptr;\n            if (keys[hash]\
-    \ == k) return &(vals[hash]);\n            hash = (hash + 1) & (n - 1);\n    \
-    \    }\n    }\n};\n#line 2 \"internal/barrett.hpp\"\nnamespace internal {\n\t\
-    ///@brief barrett reduction\n\tclass barrett {\n\t\tusing u32 = uint32_t;\n\t\t\
-    using u64 = uint64_t;\n\n\t\tu64 m;\n\t\tu64 im;\n\tpublic:\n\t\texplicit barrett()\
-    \ = default;\n\t\texplicit barrett(u64 m_) :m(m_), im((u64)(long double)static_cast<u64>(-1)\
-    \ / m_ + 1) {}\n\n\t\tu64 get_mod() const { return m; }\n\t\tu64 reduce(int64_t\
-    \ a)const{\n        \tif (a < 0) return m - reduce(-a);\n            u64 q = ((__uint128_t)a\
-    \ * im) >> 64;\n            a -= m * q;\n            if (a >= m) a -= m;\n   \
-    \         return a;\n        }\n\t\tu64 mul(u64 a, u64 b) {\n\t\t\tif (a == 0\
-    \ || b == 0) {\n\t\t\t\treturn 0;\n\t\t\t}\n\t\t\tu64 z = a;\n\t\t\tz *= b;\n\t\
-    \t\tu64 x = (u64)(((__uint128_t)(z)*im) >> 64);\n\n\t\t\tu32 v = (u32)(z - x *\
-    \ m);\n\n\t\t\tif (v >= m)v += m;\n\t\t\treturn v;\n\t\t}\n\t};\n}\n#line 2 \"\
-    internal/montgomery.hpp\"\nnamespace internal {\n    using u32 = uint32_t;\n \
-    \   using u64 = uint64_t;\n    using i32 = int32_t;\n    using i64 = int64_t;\n\
-    \    using u128 = __uint128_t;\n    using i128 = __int128_t;\n    /// @brief MontgomeryReduction\n\
-    \    template<typename T,typename LargeT>\n    class MontgomeryReduction64 {\n\
-    \        static constexpr int lg = numeric_limits<T>::digits;\n        T mod,\
-    \ r, r2, minv;\n        T calc_inv() {\n            T t = 0, res = 0;\n      \
-    \      for (int i = 0; i < lg; i++) {\n                if (~t & 1) {\n       \
-    \             t += mod;\n                    res += static_cast<T>(1) << i;\n\
-    \                }\n                t >>= 1;\n            }\n            return\
-    \ res;\n        }\n\n\n    public:\n        MontgomeryReduction64() = default;\n\
-    \        constexpr T get_mod() { return mod; }\n        constexpr int get_lg()\
-    \ { return lg; }\n\n\n        void set_mod(const T& m) {\n            assert(m\
-    \ > 0);\n            assert(m & 1);\n\n            mod = m;\n\n            r =\
-    \ (-static_cast<T>(mod)) % mod;\n            r2 = (-static_cast<LargeT>(mod))\
+    \ y - ny*q);\n    }\n    return a;\n}\n#line 2 \"data-structure/hash_map.hpp\"\
+    \n#include<chrono>\n/// @brief HashMap\ntemplate <typename Key,\n          typename\
+    \ Val,\n          uint32_t n = 1 << 20,\n          Val default_val = Val()\n \
+    \         >\nclass hash_map {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\
+    \n    u64* flag = new u64[n];\n    Key* keys = new Key[n];\n    Val* vals = new\
+    \ Val[n];\n\n    static constexpr u32 shift = 64 - __lg(n);\n\n    u64 r;\n  \
+    \  inline u32 get_hash(const Key& k) const {\n        return ((u64)k * r) >> shift;\n\
+    \    }\n\n    static constexpr uint8_t mod_msk = (1 << 6) - 1;\n\n  public:  \
+    \ \n    explicit constexpr hash_map(){\n        r = std::chrono::steady_clock::now().time_since_epoch().count();\n\
+    \        r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const\
+    \ Key& k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n        \
+    \    if (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash\
+    \ & mod_msk)))) {\n                keys[hash] = k;\n                flag[hash\
+    \ >> 6] |= static_cast<u64>(1)\n                                   << (hash &\
+    \ mod_msk);\n                return vals[hash] = default_val;\n            }\n\
+    \n            if (keys[hash] == k)return vals[hash];\n            hash = (hash\
+    \ + 1) & (n - 1);\n        }\n    }\n\n    const Val* find(const Key&k)const{\n\
+    \        u32 hash = get_hash(k);\n        while (1) {\n            if (!(flag[hash\
+    \ >> 6] &\n                  (static_cast<u64>(1) << (hash & mod_msk))))\n   \
+    \             return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
+    \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n#line 2 \"internal/barrett.hpp\"\
+    \nnamespace internal {\n\t///@brief barrett reduction\n\tclass barrett {\n\t\t\
+    using u32 = uint32_t;\n\t\tusing u64 = uint64_t;\n\n\t\tu64 m;\n\t\tu64 im;\n\t\
+    public:\n\t\texplicit barrett() = default;\n\t\texplicit barrett(u64 m_) :m(m_),\
+    \ im((u64)(long double)static_cast<u64>(-1) / m_ + 1) {}\n\n\t\tu64 get_mod()\
+    \ const { return m; }\n\t\tu64 reduce(int64_t a)const{\n        \tif (a < 0) return\
+    \ m - reduce(-a);\n            u64 q = ((__uint128_t)a * im) >> 64;\n        \
+    \    a -= m * q;\n            if (a >= m) a -= m;\n            return a;\n   \
+    \     }\n\t\tu64 mul(u64 a, u64 b) {\n\t\t\tif (a == 0 || b == 0) {\n\t\t\t\t\
+    return 0;\n\t\t\t}\n\t\t\tu64 z = a;\n\t\t\tz *= b;\n\t\t\tu64 x = (u64)(((__uint128_t)(z)*im)\
+    \ >> 64);\n\n\t\t\tu32 v = (u32)(z - x * m);\n\n\t\t\tif (v >= m)v += m;\n\t\t\
+    \treturn v;\n\t\t}\n\t};\n}\n#line 2 \"internal/montgomery.hpp\"\nnamespace internal\
+    \ {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n    using i32 = int32_t;\n\
+    \    using i64 = int64_t;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\
+    \    /// @brief MontgomeryReduction\n    template<typename T,typename LargeT>\n\
+    \    class MontgomeryReduction64 {\n        static constexpr int lg = numeric_limits<T>::digits;\n\
+    \        T mod, r, r2, minv;\n        T calc_inv() {\n            T t = 0, res\
+    \ = 0;\n            for (int i = 0; i < lg; i++) {\n                if (~t & 1)\
+    \ {\n                    t += mod;\n                    res += static_cast<T>(1)\
+    \ << i;\n                }\n                t >>= 1;\n            }\n        \
+    \    return res;\n        }\n\n\n    public:\n        MontgomeryReduction64()\
+    \ = default;\n        constexpr T get_mod() { return mod; }\n        constexpr\
+    \ int get_lg() { return lg; }\n\n\n        void set_mod(const T& m) {\n      \
+    \      assert(m > 0);\n            assert(m & 1);\n\n            mod = m;\n\n\
+    \            r = (-static_cast<T>(mod)) % mod;\n            r2 = (-static_cast<LargeT>(mod))\
     \ % mod;\n            minv = calc_inv();\n        }\n\n\n        T reduce(LargeT\
     \ x) const {\n            u64 res = (x + static_cast<LargeT>(static_cast<T>(x)\
     \ * minv) * mod) >> lg;\n\n            if (res >= mod)res -= mod;\n          \
@@ -258,7 +257,7 @@ data:
   isVerificationFile: false
   path: math/mod_log.hpp
   requiredBy: []
-  timestamp: '2023-04-07 10:30:22+09:00'
+  timestamp: '2023-04-07 13:04:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp

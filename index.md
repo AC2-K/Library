@@ -3,19 +3,19 @@ data:
   libraryCategories:
   - name: data-structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/BIT.hpp
       title: Binary Index Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/CHT.hpp
       title: Convex Hull Trick
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/dsu.hpp
       title: Disjoint Set(Union find)
     - icon: ':heavy_check_mark:'
       path: data-structure/dual_segtree.hpp
       title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: data-structure/dynamic_segtree.hpp
       title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
@@ -26,10 +26,10 @@ data:
       path: data-structure/lazy_segtree.hpp
       title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
         \u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/segtree.hpp
       title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/sparse_table.hpp
       title: Sparse Table
   - name: .
@@ -43,7 +43,7 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -51,10 +51,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: graph/dijkstra.hpp
       title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/euler_tour.hpp
       title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: graph/mst.hpp
       title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
     - icon: ':warning:'
@@ -161,7 +161,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/1_A.test.cpp
       title: test/AOJ/GRL/1_A.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/AOJ/GRL/2_A.test.cpp
       title: test/AOJ/GRL/2_A.test.cpp
     - icon: ':heavy_check_mark:'
@@ -183,7 +183,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
       title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
       title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
     - icon: ':heavy_check_mark:'
@@ -238,7 +238,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
     - icon: ':heavy_check_mark:'
@@ -251,7 +251,7 @@ data:
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
     - icon: ':heavy_check_mark:'
@@ -268,10 +268,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/No-430.test.cpp
       title: test/yuki/No-430.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/No-789_BIT.test.cpp
       title: test/yuki/No-789_BIT.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/No-789_dynamic.test.cpp
       title: test/yuki/No-789_dynamic.test.cpp
     - icon: ':heavy_check_mark:'

@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/sparse_table.hpp
     title: Sparse Table
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: graph/euler_tour.hpp
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: template.hpp
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -31,23 +31,23 @@ data:
     \ 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr int dy[] = { 0,1,0,-1\
     \ };\ntemplate<class T>static constexpr inline void chmax(T&x,T y){if(x<y)x=y;}\n\
     template<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n#line\
-    \ 1 \"data-structure/sparse_table.hpp\"\n/// @brief Sparse Table\n/// @tparam\
-    \ T \u8981\u7D20\u306E\u578B\n/// @docs docs/data-structure/sparse_table.md\n\
-    template<class T>\nclass sparse_table {\n    vector<T> vec;\n    vector<vector<T>>\
-    \ table;\n    vector<int> look_up;\npublic:\n    sparse_table(int n) : vec(n)\
-    \ {}\n    sparse_table(const vector<T>& vec) : vec(vec) { build(); }\n    void\
-    \ set(int p, const T& v) { vec[p] = v; }\n    void build() {\n        int sz =\
-    \ vec.size();\n        int log = 0;\n        while ((1 << log) <= sz) {\n    \
-    \        log++;\n        }\n        table.assign(log, vector<T>(1 << log));\n\
-    \        for (int i = 0; i < sz; i++) {\n            table[0][i] = vec[i];\n \
-    \       }\n        for (int i = 1; i < log; i++) {\n            for (int j = 0;\
-    \ j + (1 << i) <= (1 << log); j++) {\n                table[i][j] =\n        \
-    \            min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);\n       \
-    \     }\n        }\n        look_up.resize(sz + 1);\n        for (int i = 2; i\
-    \ < look_up.size(); i++) {\n            look_up[i] = look_up[i >> 1] + 1;\n  \
-    \      }\n    }\n\n    T prod(int l, int r) {\n        int b = look_up[r - l];\n\
-    \        return min(table[b][l], table[b][r - (1 << b)]);\n    }\n};\n#line 2\
-    \ \"graph/euler_tour.hpp\"\n\n///@brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\
+    \ 3 \"data-structure/sparse_table.hpp\"\n/// @brief Sparse Table\ntemplate<class\
+    \ T>\nclass sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>>\
+    \ table;\n    std::vector<int> look_up;\n\n  public:\n    sparse_table(int n)\
+    \ : vec(n){}\n    sparse_table(const std::vector<T>& vec) : vec(vec) { build();\
+    \ }\n    inline void set(int p, const T& v) { vec[p] = v; }\n    void build()\
+    \ {\n        int sz = vec.size();\n        int log = 0;\n        while ((1 <<\
+    \ log) <= sz) {\n            log++;\n        }\n        table.assign(log, std::vector<T>(1\
+    \ << log));\n        for (int i = 0; i < sz; i++) {\n            table[0][i] =\
+    \ vec[i];\n        }\n        for (int i = 1; i < log; i++) {\n            for\
+    \ (int j = 0; j + (1 << i) <= (1 << log); j++) {\n                table[i][j]\
+    \ =\n                    min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);\n\
+    \            }\n        }\n        look_up.resize(sz + 1);\n        for (int i\
+    \ = 2; i < (int)look_up.size(); i++) {\n            look_up[i] = look_up[i >>\
+    \ 1] + 1;\n        }\n    }\n    inline T prod(int l, int r) const {\n       \
+    \ int b = look_up[r - l];\n        return std::min(table[b][l], table[b][r - (1\
+    \ << b)]);\n    }\n};\n\n\n/// @docs docs/data-structure/sparse_table.md\n#line\
+    \ 2 \"graph/euler_tour.hpp\"\n\n///@brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\
     \u30A2\u30FC)\nclass EulerTour {\n\tint n;\n\tgraph g;\n\tvector<int> tour;\n\t\
     vector<int> in, out, depth;\n    sparse_table<pair<int, int>> rmq;\npublic:\n\
     \    EulerTour(int n) :n(n), g(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2\
@@ -83,8 +83,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-04-02 14:35:20+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-04-07 13:04:10+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
 layout: document
