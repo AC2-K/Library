@@ -9,7 +9,7 @@ data:
     - icon: ':x:'
       path: data-structure/CHT.hpp
       title: Convex Hull Trick
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/dsu.hpp
       title: Disjoint Set(Union find)
     - icon: ':heavy_check_mark:'
@@ -19,7 +19,7 @@ data:
       path: data-structure/dynamic_segtree.hpp
       title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: data-structure/hash_map.hpp
       title: HashMap
     - icon: ':heavy_check_mark:'
@@ -54,7 +54,7 @@ data:
     - icon: ':question:'
       path: graph/euler_tour.hpp
       title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: graph/mst.hpp
       title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
     - icon: ':warning:'
@@ -62,21 +62,21 @@ data:
       title: graph/namori.hpp
   - name: internal
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: internal/barrett.hpp
       title: barrett reduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: internal/montgomery.hpp
       title: MontgomeryReduction
   - name: math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/dynamic_modint.hpp
       title: dynamic_modint(64bit)
     - icon: ':heavy_check_mark:'
       path: math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/gcd.hpp
       title: math/gcd.hpp
     - icon: ':heavy_check_mark:'
@@ -85,10 +85,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/miller.hpp
       title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/mod_log.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
     - icon: ':warning:'
@@ -161,7 +161,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/1_A.test.cpp
       title: test/AOJ/GRL/1_A.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/2_A.test.cpp
       title: test/AOJ/GRL/2_A.test.cpp
     - icon: ':heavy_check_mark:'
@@ -222,7 +222,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - name: test/yosupo_judge/graph
@@ -232,7 +232,7 @@ data:
       title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - name: test/yosupo_judge/math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     - icon: ':heavy_check_mark:'

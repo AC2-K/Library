@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
   - icon: ':heavy_check_mark:'
     path: math/miller.hpp
     title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':heavy_check_mark:'
@@ -24,7 +24,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,9 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-3030.test.cpp
     title: test/yuki/No-3030.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: MontgomeryReduction
     links: []
@@ -93,7 +93,7 @@ data:
   - math/phi_function.hpp
   - math/primitive_root.hpp
   timestamp: '2023-04-07 10:30:22+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp

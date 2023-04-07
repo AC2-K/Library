@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/dsu.hpp
     title: Disjoint Set(Union find)
   - icon: ':question:'

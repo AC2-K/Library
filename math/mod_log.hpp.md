@@ -1,32 +1,32 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/hash_map.hpp
     title: HashMap
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: internal/barrett.hpp
     title: barrett reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/gcd.hpp
     title: math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/math/DLP.md
     document_title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
@@ -258,7 +258,7 @@ data:
   path: math/mod_log.hpp
   requiredBy: []
   timestamp: '2023-04-07 13:04:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 documentation_of: math/mod_log.hpp

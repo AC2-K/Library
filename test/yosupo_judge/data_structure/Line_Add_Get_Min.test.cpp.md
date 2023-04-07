@@ -63,28 +63,30 @@ data:
     \        }\n    }\n    T operator()(T x) const {\n        const auto& it = ls.lower_bound(line(x,\
     \ 0, true));\n\n        if (query_type) {\n            return -it->a * x - it->b;\n\
     \        } else {\n            return it->a * x + it->b;\n        }\n    }\n};\n\
-    #line 5 \"test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp\"\n\nint\
-    \ main(){\n    int n,q;\n    cin>>n>>q;\n\n    CHT cht;    \n    for(int i=0;i<n;i++){\n\
-    \        ll a,b;\n        cin>>a>>b;\n        cht.add(a,b);\n    }\n    while(q--){\n\
-    \        int t;\n        cin>>t;\n        if(t==0){\n            ll a,b;\n   \
-    \         cin>>a>>b;\n            cht.add(a,b);\n        }else{\n            ll\
-    \ x;\n            cin>>x;\n            cout<<cht(x)<<'\\n';\n        }\n    }\n\
-    }\n"
+    #line 5 \"test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp\"\n\n\nint\
+    \ main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    CHT<ll> cht;\n\
+    \    for (int i = 0; i < n; i++) {\n        ll a,b;\n        scanf(\"%d%d\", &a,\
+    \ &b);\n        cht.add(a, b);\n    }\n    while (q--) {\n        int t;\n   \
+    \     scanf(\"%d\", &t);\n        if (!t) {\n            ll a,b;\n           \
+    \ scanf(\"%d%d\", &a, &b);\n            cht.add(a, b);\n        } else {\n   \
+    \         ll x;\n            scanf(\"%d\", &x);\n            printf(\"%lld\\n\"\
+    , cht(x));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n\
-    #include\"template.hpp\"\n#include\"data-structure/CHT.hpp\"\n\nint main(){\n\
-    \    int n,q;\n    cin>>n>>q;\n\n    CHT cht;    \n    for(int i=0;i<n;i++){\n\
-    \        ll a,b;\n        cin>>a>>b;\n        cht.add(a,b);\n    }\n    while(q--){\n\
-    \        int t;\n        cin>>t;\n        if(t==0){\n            ll a,b;\n   \
-    \         cin>>a>>b;\n            cht.add(a,b);\n        }else{\n            ll\
-    \ x;\n            cin>>x;\n            cout<<cht(x)<<'\\n';\n        }\n    }\n\
-    }"
+    #include \"template.hpp\"\n#include \"data-structure/CHT.hpp\"\n\n\nint main()\
+    \ {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    CHT<ll> cht;\n    for\
+    \ (int i = 0; i < n; i++) {\n        ll a,b;\n        scanf(\"%d%d\", &a, &b);\n\
+    \        cht.add(a, b);\n    }\n    while (q--) {\n        int t;\n        scanf(\"\
+    %d\", &t);\n        if (!t) {\n            ll a,b;\n            scanf(\"%d%d\"\
+    , &a, &b);\n            cht.add(a, b);\n        } else {\n            ll x;\n\
+    \            scanf(\"%d\", &x);\n            printf(\"%lld\\n\", cht(x));\n  \
+    \      }\n    }\n}"
   dependsOn:
   - template.hpp
   - data-structure/CHT.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 13:04:10+09:00'
+  timestamp: '2023-04-07 13:28:57+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp

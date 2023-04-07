@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/hash_map.hpp
     title: HashMap
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: internal/barrett.hpp
     title: barrett reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/dynamic_modint.hpp
     title: dynamic_modint(64bit)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/gcd.hpp
     title: math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
@@ -248,7 +248,7 @@ data:
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
   timestamp: '2023-04-07 13:04:10+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 layout: document
