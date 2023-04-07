@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 /// @brief Dual Segmenttree(双対セグメント木)
 template <class F, F (*comp)(F, F), F (*id)(), bool is_commutative = true>
 class dual_segtree {
@@ -7,8 +8,8 @@ class dual_segtree {
     int _n, sz, lg;
 
   public:
-    explicit dual_segtree() : dual_segtree(0){}
-    explicit dual_segtree(int _n) : _n(_n) {
+    dual_segtree() : dual_segtree(0){}
+    dual_segtree(int _n) : _n(_n) {
         sz = 1, lg = 0;
         while (sz < _n) {
             lg++;
