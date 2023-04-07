@@ -4,7 +4,7 @@ data:
   - icon: ':question:'
     path: data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':x:'
+  - icon: ':question:'
     path: misc/mo.hpp
     title: mo's algorithm
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
@@ -105,7 +105,7 @@ data:
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
   timestamp: '2023-04-07 14:59:40+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
 layout: document

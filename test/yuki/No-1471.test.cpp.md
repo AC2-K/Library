@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: misc/mo.hpp
     title: mo's algorithm
   - icon: ':question:'

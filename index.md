@@ -111,7 +111,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/2DSum.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
-    - icon: ':x:'
+    - icon: ':question:'
       path: misc/mo.hpp
       title: mo's algorithm
   - name: persistent
@@ -204,7 +204,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
       title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     - icon: ':x:'
