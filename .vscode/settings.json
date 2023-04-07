@@ -35,6 +35,9 @@
         "chrono": "cpp",
         "bitset": "cpp",
         "system_error": "cpp",
-        "typeindex": "cpp"
+        "typeindex": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "utility": "cpp"
     }
 }

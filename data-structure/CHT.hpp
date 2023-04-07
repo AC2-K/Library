@@ -4,10 +4,8 @@
 /// @brief Convex Hull Trick
 /// @tparam T 係数の型
 /// @tparam query_type クエリのタイプ.trueにすると最大値を求めるように変更する
-template<class T = ll, bool query_type = false>
-class CHT {
+template <class T = ll, bool query_type = false> class CHT {
     class line {
-
       public:
         T a, b;
         bool is_query;
@@ -16,7 +14,7 @@ class CHT {
         T get(T x) const { return a * x + b; }
         T get_nxt(T x) const { return nxt_a * x + nxt_b; }
         line(T a, T b, bool q = false)
-            : a(a), b(b), is_query(q), has_nxt(false){}
+            : a(a), b(b), is_query(q), has_nxt(false) {}
         friend bool operator<(const line& l, const line& r) {
             if (l.is_query) {
                 if (!r.has_nxt) return true;
@@ -42,7 +40,7 @@ class CHT {
             return true;
         }
         return 1. * (it->b - prev(it)->b) * (next(it)->a - it->a) <
-            1. * (it->b - next(it)->b) * (prev(it)->a - it->a);
+               1. * (it->b - next(it)->b) * (prev(it)->a - it->a);
     }
 
   public:
@@ -78,7 +76,7 @@ class CHT {
     }
     T operator()(T x) const {
         const auto& it = ls.lower_bound(line(x, 0, true));
-        
+
         if (query_type) {
             return -it->a * x - it->b;
         } else {

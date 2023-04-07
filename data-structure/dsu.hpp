@@ -20,8 +20,8 @@ class DSU {
     int merge(int x, int y) {
         x = root(x), y = root(y);
         if (x == y) return x;
-        if (rank[x] < rank[y]) swap(x, y);
-        if (rank[x] == rank[y]) rank[x]++; 
+        if (rank[x] < rank[y]) std::swap(x, y);
+        if (rank[x] == rank[y]) rank[x]++;
         find[x] += find[y];
         find[y] = x;
         return x;
