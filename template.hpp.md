@@ -15,13 +15,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_B.test.cpp
     title: test/AOJ/DSL/2_B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_D_dual.test.cpp
     title: test/AOJ/DSL/2_D_dual.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_D_lazy.test.cpp
     title: test/AOJ/DSL/2_D_lazy.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_E_dual.test.cpp
     title: test/AOJ/DSL/2_E_dual.test.cpp
   - icon: ':heavy_check_mark:'
@@ -66,73 +66,73 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
     title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No-1471.test.cpp
     title: test/yuki/No-1471.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No-3030.test.cpp
     title: test/yuki/No-3030.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No-430.test.cpp
     title: test/yuki/No-430.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No-789_BIT.test.cpp
     title: test/yuki/No-789_BIT.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No-789_dynamic.test.cpp
     title: test/yuki/No-789_dynamic.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No.891.test.cpp
     title: test/yuki/No.891.test.cpp
   _isVerificationFailed: true
@@ -144,9 +144,7 @@ data:
 
     #include<bits/stdc++.h>
 
-    using namespace std;
-
-    #define rep(i, N)  for(int i=0;i<(N);i++)
+    #define rep(i, N) for (int i = 0; i < (N); i++)
 
     #define all(x) (x).begin(),(x).end()
 
@@ -158,9 +156,9 @@ data:
 
     using ld = long double;
 
-    using graph = vector<vector<int>>;
+    using graph = std::vector<std::vector<int>>;
 
-    using P = pair<int, int>;
+    using P = std::pair<int, int>;
 
     constexpr int inf = 1e9;
 
@@ -178,18 +176,16 @@ data:
 
     constexpr int dy[] = { 0,1,0,-1 };
 
-    template<class T>static constexpr inline void chmax(T&x,T y){if(x<y)x=y;}
+    template<class T>constexpr inline void chmax(T&x,T y){if(x<y)x=y;}
 
-    template<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}
+    template<class T>constexpr inline void chmin(T&x,T y){if(x>y)x=y;}
 
     '
   code: '#pragma once
 
     #include<bits/stdc++.h>
 
-    using namespace std;
-
-    #define rep(i, N)  for(int i=0;i<(N);i++)
+    #define rep(i, N) for (int i = 0; i < (N); i++)
 
     #define all(x) (x).begin(),(x).end()
 
@@ -201,9 +197,9 @@ data:
 
     using ld = long double;
 
-    using graph = vector<vector<int>>;
+    using graph = std::vector<std::vector<int>>;
 
-    using P = pair<int, int>;
+    using P = std::pair<int, int>;
 
     constexpr int inf = 1e9;
 
@@ -221,15 +217,15 @@ data:
 
     constexpr int dy[] = { 0,1,0,-1 };
 
-    template<class T>static constexpr inline void chmax(T&x,T y){if(x<y)x=y;}
+    template<class T>constexpr inline void chmax(T&x,T y){if(x<y)x=y;}
 
-    template<class T>static constexpr inline void chmin(T&x,T y){if(x>y)x=y;}'
+    template<class T>constexpr inline void chmin(T&x,T y){if(x>y)x=y;}'
   dependsOn: []
   isVerificationFile: false
   path: template.hpp
   requiredBy:
   - math/static_modint.hpp
-  timestamp: '2023-03-28 10:54:47+09:00'
+  timestamp: '2023-04-07 14:59:40+00:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/ALDS/1_C.test.cpp

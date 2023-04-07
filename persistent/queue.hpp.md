@@ -11,46 +11,55 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"persistent/queue.hpp\"\ntemplate<typename T, int lg = 20>\n\
-    class persistent_queue {\n\tstruct Node {\n\t\tNode() = default;\n\t\tuint32_t\
-    \ index;\n\t\tT val;\n\t\tNode* prev[20];\n\t};\n\n\tNode* front_ptr = nullptr,\
-    \ * back_ptr = nullptr;\n\tint siz;\n\npublic:\n\tpersistent_queue(Node* front_ptr\
-    \ = nullptr, Node* back_ptr = nullptr, int siz = 0) :front_ptr(front_ptr), back_ptr(back_ptr),\
-    \ siz(siz) {}\n\tbool empty() { return siz; }\n\tpersistent_queue push(const T&\
-    \ x) {\n\t\tNode* ptr = new Node();\n\t\tptr->val = x;\n\t\tptr->prev[0] = back_ptr;\n\
-    \t\tfor (int i = 1; i < lg; i++) {\n\t\t\tNode* c = ptr->prev[i - 1];\n\t\t\t\
-    if (c)ptr->prev[i] = c->prev[i-1];\n\t\t\telse break;\n\t\t}\n\n\t\t//\u7A7A\u3060\
-    \u3063\u305F\u6642\u306B\u6CE8\u610F\u3059\u308B\n\t\tif (siz) {\n\t\t\treturn\
-    \ persistent_queue(front_ptr, ptr, siz + 1);\n\t\t}\n\t\telse {\n\t\t\treturn\
-    \ persistent_queue(ptr, ptr, siz + 1);\n\t\t}\n\t}\n\tpersistent_queue pop() {\n\
-    \t\tif (!front_ptr || !back_ptr || siz == 1) {\n\t\t\treturn persistent_queue();\n\
-    \t\t}\n\t\tint d = siz - 2;\n\t\tNode* cur = back_ptr;\n\t\twhile (d) {\n\t\t\t\
-    int jump = 31 - __builtin_clz(d);\n\t\t\td -= (1 << jump);\n\t\t\tcur = cur->prev[jump];\n\
-    \t\t}\n\n\t\treturn persistent_queue(cur, back_ptr, siz - 1);\n\t}\n\n\tT front()\
-    \ { assert(siz); return front_ptr->val; }\n\tT back() { assert(siz); return back_ptr->val;\
-    \ }\n};\n"
-  code: "template<typename T, int lg = 20>\nclass persistent_queue {\n\tstruct Node\
-    \ {\n\t\tNode() = default;\n\t\tuint32_t index;\n\t\tT val;\n\t\tNode* prev[20];\n\
-    \t};\n\n\tNode* front_ptr = nullptr, * back_ptr = nullptr;\n\tint siz;\n\npublic:\n\
-    \tpersistent_queue(Node* front_ptr = nullptr, Node* back_ptr = nullptr, int siz\
-    \ = 0) :front_ptr(front_ptr), back_ptr(back_ptr), siz(siz) {}\n\tbool empty()\
-    \ { return siz; }\n\tpersistent_queue push(const T& x) {\n\t\tNode* ptr = new\
-    \ Node();\n\t\tptr->val = x;\n\t\tptr->prev[0] = back_ptr;\n\t\tfor (int i = 1;\
-    \ i < lg; i++) {\n\t\t\tNode* c = ptr->prev[i - 1];\n\t\t\tif (c)ptr->prev[i]\
-    \ = c->prev[i-1];\n\t\t\telse break;\n\t\t}\n\n\t\t//\u7A7A\u3060\u3063\u305F\u6642\
-    \u306B\u6CE8\u610F\u3059\u308B\n\t\tif (siz) {\n\t\t\treturn persistent_queue(front_ptr,\
-    \ ptr, siz + 1);\n\t\t}\n\t\telse {\n\t\t\treturn persistent_queue(ptr, ptr, siz\
-    \ + 1);\n\t\t}\n\t}\n\tpersistent_queue pop() {\n\t\tif (!front_ptr || !back_ptr\
-    \ || siz == 1) {\n\t\t\treturn persistent_queue();\n\t\t}\n\t\tint d = siz - 2;\n\
-    \t\tNode* cur = back_ptr;\n\t\twhile (d) {\n\t\t\tint jump = 31 - __builtin_clz(d);\n\
-    \t\t\td -= (1 << jump);\n\t\t\tcur = cur->prev[jump];\n\t\t}\n\n\t\treturn persistent_queue(cur,\
-    \ back_ptr, siz - 1);\n\t}\n\n\tT front() { assert(siz); return front_ptr->val;\
-    \ }\n\tT back() { assert(siz); return back_ptr->val; }\n};"
+  bundledCode: "#line 2 \"persistent/queue.hpp\"\n#include <cassert>\ntemplate <typename\
+    \ T, int lg = 20> class persistent_queue {\n    struct Node {\n        Node()\
+    \ = default;\n        uint32_t index;\n        T val;\n        Node* prev[20];\n\
+    \    };\n\n    Node *front_ptr = nullptr, *back_ptr = nullptr;\n    int siz;\n\
+    \n  public:\n    persistent_queue(Node* front_ptr = nullptr,\n               \
+    \      Node* back_ptr = nullptr,\n                     int siz = 0)\n        :\
+    \ front_ptr(front_ptr), back_ptr(back_ptr), siz(siz) {}\n    bool empty() { return\
+    \ siz; }\n    persistent_queue push(const T& x) {\n        Node* ptr = new Node();\n\
+    \        ptr->val = x;\n        ptr->prev[0] = back_ptr;\n        for (int i =\
+    \ 1; i < lg; i++) {\n            Node* c = ptr->prev[i - 1];\n            if (c)\n\
+    \                ptr->prev[i] = c->prev[i - 1];\n            else\n          \
+    \      break;\n        }\n\n        // \u7A7A\u3060\u3063\u305F\u6642\u306B\u6CE8\
+    \u610F\u3059\u308B\n        if (siz) {\n            return persistent_queue(front_ptr,\
+    \ ptr, siz + 1);\n        } else {\n            return persistent_queue(ptr, ptr,\
+    \ siz + 1);\n        }\n    }\n    persistent_queue pop() {\n        if (!front_ptr\
+    \ || !back_ptr || siz == 1) {\n            return persistent_queue();\n      \
+    \  }\n        int d = siz - 2;\n        Node* cur = back_ptr;\n        while (d)\
+    \ {\n            int jump = 31 - __builtin_clz(d);\n            d -= (1 << jump);\n\
+    \            cur = cur->prev[jump];\n        }\n\n        return persistent_queue(cur,\
+    \ back_ptr, siz - 1);\n    }\n\n    T front() {\n        assert(siz);\n      \
+    \  return front_ptr->val;\n    }\n    T back() {\n        assert(siz);\n     \
+    \   return back_ptr->val;\n    }\n};\n"
+  code: "#pragma once\n#include <cassert>\ntemplate <typename T, int lg = 20> class\
+    \ persistent_queue {\n    struct Node {\n        Node() = default;\n        uint32_t\
+    \ index;\n        T val;\n        Node* prev[20];\n    };\n\n    Node *front_ptr\
+    \ = nullptr, *back_ptr = nullptr;\n    int siz;\n\n  public:\n    persistent_queue(Node*\
+    \ front_ptr = nullptr,\n                     Node* back_ptr = nullptr,\n     \
+    \                int siz = 0)\n        : front_ptr(front_ptr), back_ptr(back_ptr),\
+    \ siz(siz) {}\n    bool empty() { return siz; }\n    persistent_queue push(const\
+    \ T& x) {\n        Node* ptr = new Node();\n        ptr->val = x;\n        ptr->prev[0]\
+    \ = back_ptr;\n        for (int i = 1; i < lg; i++) {\n            Node* c = ptr->prev[i\
+    \ - 1];\n            if (c)\n                ptr->prev[i] = c->prev[i - 1];\n\
+    \            else\n                break;\n        }\n\n        // \u7A7A\u3060\
+    \u3063\u305F\u6642\u306B\u6CE8\u610F\u3059\u308B\n        if (siz) {\n       \
+    \     return persistent_queue(front_ptr, ptr, siz + 1);\n        } else {\n  \
+    \          return persistent_queue(ptr, ptr, siz + 1);\n        }\n    }\n   \
+    \ persistent_queue pop() {\n        if (!front_ptr || !back_ptr || siz == 1) {\n\
+    \            return persistent_queue();\n        }\n        int d = siz - 2;\n\
+    \        Node* cur = back_ptr;\n        while (d) {\n            int jump = 31\
+    \ - __builtin_clz(d);\n            d -= (1 << jump);\n            cur = cur->prev[jump];\n\
+    \        }\n\n        return persistent_queue(cur, back_ptr, siz - 1);\n    }\n\
+    \n    T front() {\n        assert(siz);\n        return front_ptr->val;\n    }\n\
+    \    T back() {\n        assert(siz);\n        return back_ptr->val;\n    }\n\
+    };"
   dependsOn: []
   isVerificationFile: false
   path: persistent/queue.hpp
   requiredBy: []
-  timestamp: '2023-03-29 01:52:41+09:00'
+  timestamp: '2023-04-07 18:51:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp

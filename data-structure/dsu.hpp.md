@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/2_A.test.cpp
     title: test/AOJ/GRL/2_A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/dsu.md
     document_title: Disjoint Set(Union find)
@@ -29,17 +29,17 @@ data:
     \            return find[x] = root(find[x]);\n        }\n    }\n    bool same(int\
     \ x, int y) { return root(x) == root(y); }\n    int merge(int x, int y) {\n  \
     \      x = root(x), y = root(y);\n        if (x == y) return x;\n        if (rank[x]\
-    \ < rank[y]) swap(x, y);\n        if (rank[x] == rank[y]) rank[x]++; \n      \
-    \  find[x] += find[y];\n        find[y] = x;\n        return x;\n    }\n    int\
-    \ size(int x) { return -find[root(x)]; }\n};\n\n/// @docs docs/data-structure/dsu.md\n"
+    \ < rank[y]) std::swap(x, y);\n        if (rank[x] == rank[y]) rank[x]++;\n  \
+    \      find[x] += find[y];\n        find[y] = x;\n        return x;\n    }\n \
+    \   int size(int x) { return -find[root(x)]; }\n};\n\n/// @docs docs/data-structure/dsu.md\n"
   code: "#pragma once\n#include <vector>\n\n/// @brief Disjoint Set(Union find)\n\
     class DSU {\n  private:\n    std::vector<int> find, rank;\n\n  public:\n    DSU(int\
     \ n) : find(n, -1), rank(n, 1) {}\n\n    int root(int x) {\n        if (find[x]\
     \ < 0) {\n            return x;\n        } else {\n            return find[x]\
     \ = root(find[x]);\n        }\n    }\n    bool same(int x, int y) { return root(x)\
     \ == root(y); }\n    int merge(int x, int y) {\n        x = root(x), y = root(y);\n\
-    \        if (x == y) return x;\n        if (rank[x] < rank[y]) swap(x, y);\n \
-    \       if (rank[x] == rank[y]) rank[x]++; \n        find[x] += find[y];\n   \
+    \        if (x == y) return x;\n        if (rank[x] < rank[y]) std::swap(x, y);\n\
+    \        if (rank[x] == rank[y]) rank[x]++;\n        find[x] += find[y];\n   \
     \     find[y] = x;\n        return x;\n    }\n    int size(int x) { return -find[root(x)];\
     \ }\n};\n\n/// @docs docs/data-structure/dsu.md"
   dependsOn: []
@@ -47,8 +47,8 @@ data:
   path: data-structure/dsu.hpp
   requiredBy:
   - graph/mst.hpp
-  timestamp: '2023-04-07 17:33:54+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-04-07 18:05:56+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/GRL/2_A.test.cpp
   - test/AOJ/DSL/1_A.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/dsu.hpp
     title: Disjoint Set(Union find)
   _extendedRequiredBy: []
@@ -22,15 +22,15 @@ data:
     \            return find[x] = root(find[x]);\n        }\n    }\n    bool same(int\
     \ x, int y) { return root(x) == root(y); }\n    int merge(int x, int y) {\n  \
     \      x = root(x), y = root(y);\n        if (x == y) return x;\n        if (rank[x]\
-    \ < rank[y]) swap(x, y);\n        if (rank[x] == rank[y]) rank[x]++; \n      \
-    \  find[x] += find[y];\n        find[y] = x;\n        return x;\n    }\n    int\
-    \ size(int x) { return -find[root(x)]; }\n};\n\n/// @docs docs/data-structure/dsu.md\n\
+    \ < rank[y]) std::swap(x, y);\n        if (rank[x] == rank[y]) rank[x]++;\n  \
+    \      find[x] += find[y];\n        find[y] = x;\n        return x;\n    }\n \
+    \   int size(int x) { return -find[root(x)]; }\n};\n\n/// @docs docs/data-structure/dsu.md\n\
     #line 2 \"graph/mst.hpp\"\n\n\n///@brief Minimum Spannning Tree(\u6700\u5C0F\u5168\
     \u57DF\u6728)\nclass MST {\n    DSU dsu;\n    struct Edge {\n        int v1, v2;\n\
     \        int cost;\n        int id;\n        Edge(int v1, int v2, int cost, int\
-    \ id) :v1(v1), v2(v2), cost(cost), id(id) {  }\n    };\n    vector<Edge> E;\n\
-    \    vector<int> V1, V2;\npublic:\n    MST(int V) :dsu(V) {}\n    void add_edge(int\
-    \ a, int b, ll cost) {\n        int sz = E.size();\n        E.emplace_back(a,\
+    \ id) :v1(v1), v2(v2), cost(cost), id(id) {  }\n    };\n    std::vector<Edge>\
+    \ E;\n    std::vector<int> V1, V2;\npublic:\n    MST(int V) :dsu(V) {}\n    void\
+    \ add_edge(int a, int b, ll cost) {\n        int sz = E.size();\n        E.emplace_back(a,\
     \ b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n    }\n    ll\
     \ result() {\n        sort(E.begin(), E.end(), [&](Edge e1, Edge e2) {\n     \
     \       return e1.cost < e2.cost;\n            });\n        ll ans = 0;\n    \
@@ -42,9 +42,9 @@ data:
     \u5C0F\u5168\u57DF\u6728)\nclass MST {\n    DSU dsu;\n    struct Edge {\n    \
     \    int v1, v2;\n        int cost;\n        int id;\n        Edge(int v1, int\
     \ v2, int cost, int id) :v1(v1), v2(v2), cost(cost), id(id) {  }\n    };\n   \
-    \ vector<Edge> E;\n    vector<int> V1, V2;\npublic:\n    MST(int V) :dsu(V) {}\n\
-    \    void add_edge(int a, int b, ll cost) {\n        int sz = E.size();\n    \
-    \    E.emplace_back(a, b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n\
+    \ std::vector<Edge> E;\n    std::vector<int> V1, V2;\npublic:\n    MST(int V)\
+    \ :dsu(V) {}\n    void add_edge(int a, int b, ll cost) {\n        int sz = E.size();\n\
+    \        E.emplace_back(a, b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n\
     \    }\n    ll result() {\n        sort(E.begin(), E.end(), [&](Edge e1, Edge\
     \ e2) {\n            return e1.cost < e2.cost;\n            });\n        ll ans\
     \ = 0;\n        rep(i, E.size()) {\n            int len = E[i].cost;\n       \
@@ -56,7 +56,7 @@ data:
   isVerificationFile: false
   path: graph/mst.hpp
   requiredBy: []
-  timestamp: '2023-04-07 17:33:54+09:00'
+  timestamp: '2023-04-07 18:51:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/2_A.test.cpp
