@@ -48,7 +48,7 @@ data:
       title: template.hpp
   - name: graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: graph/dijkstra.hpp
       title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     - icon: ':question:'
@@ -219,7 +219,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/UnionFind.test.cpp
       title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     - icon: ':x:'
@@ -227,7 +227,7 @@ data:
       title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - name: test/yosupo_judge/graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/graph/Shortest_Path.test.cpp
       title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - name: test/yosupo_judge/math
@@ -254,9 +254,6 @@ data:
     - icon: ':x:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-      title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
     pages:
     - icon: ':heavy_check_mark:'

@@ -68,25 +68,25 @@ data:
     \    for (int i = 0; i < n; i++) {\n        ll a,b;\n        scanf(\"%d%d\", &a,\
     \ &b);\n        cht.add(a, b);\n    }\n    while (q--) {\n        int t;\n   \
     \     scanf(\"%d\", &t);\n        if (!t) {\n            ll a,b;\n           \
-    \ scanf(\"%d%d\", &a, &b);\n            cht.add(a, b);\n        } else {\n   \
-    \         ll x;\n            scanf(\"%d\", &x);\n            printf(\"%lld\\n\"\
-    , cht(x));\n        }\n    }\n}\n"
+    \ scanf(\"%lld%lld\", &a, &b);\n            cht.add(a, b);\n        } else {\n\
+    \            ll x;\n            scanf(\"%lld\", &x);\n            printf(\"%lld\\\
+    n\", cht(x));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n\
     #include \"template.hpp\"\n#include \"data-structure/CHT.hpp\"\n\n\nint main()\
     \ {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    CHT<ll> cht;\n    for\
     \ (int i = 0; i < n; i++) {\n        ll a,b;\n        scanf(\"%d%d\", &a, &b);\n\
     \        cht.add(a, b);\n    }\n    while (q--) {\n        int t;\n        scanf(\"\
-    %d\", &t);\n        if (!t) {\n            ll a,b;\n            scanf(\"%d%d\"\
+    %d\", &t);\n        if (!t) {\n            ll a,b;\n            scanf(\"%lld%lld\"\
     , &a, &b);\n            cht.add(a, b);\n        } else {\n            ll x;\n\
-    \            scanf(\"%d\", &x);\n            printf(\"%lld\\n\", cht(x));\n  \
-    \      }\n    }\n}"
+    \            scanf(\"%lld\", &x);\n            printf(\"%lld\\n\", cht(x));\n\
+    \        }\n    }\n}"
   dependsOn:
   - template.hpp
   - data-structure/CHT.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 13:28:57+09:00'
+  timestamp: '2023-04-07 13:34:28+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp

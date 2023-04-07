@@ -87,13 +87,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - icon: ':x:'
@@ -114,9 +114,6 @@ data:
   - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-    title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-1471.test.cpp
     title: test/yuki/No-1471.test.cpp
@@ -262,7 +259,6 @@ data:
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
-  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
   - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
