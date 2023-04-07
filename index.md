@@ -6,7 +6,7 @@ data:
     - icon: ':question:'
       path: data-structure/BIT.hpp
       title: Binary Index Tree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/CHT.hpp
       title: Convex Hull Trick
     - icon: ':heavy_check_mark:'
@@ -72,17 +72,14 @@ data:
     pages:
     - icon: ':question:'
       path: math/dynamic_modint.hpp
-      title: dynamic_modint(64bit)
-    - icon: ':heavy_check_mark:'
-      path: math/eratosthenes.hpp
-      title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
+      title: dynamic_modint
     - icon: ':question:'
       path: math/gcd.hpp
       title: math/gcd.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/matrix.hpp
       title: "maxtirx(\u884C\u5217)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/miller.hpp
       title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
     - icon: ':x:'
@@ -97,13 +94,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/phi_function.hpp
       title: "phi function(\\phi \u95A2\u6570)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: math/rho.hpp
       title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
     - icon: ':heavy_check_mark:'
+      path: math/sieve.hpp
+      title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
+    - icon: ':question:'
       path: math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
   - name: misc
@@ -183,7 +183,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
       title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
       title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
     - icon: ':heavy_check_mark:'
@@ -219,7 +219,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/UnionFind.test.cpp
       title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     - icon: ':x:'
@@ -235,18 +235,18 @@ data:
     - icon: ':x:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
     - icon: ':x:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Primitive_Root.test.cpp
       title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - name: test/yosupo_judge/matrix
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/tree
@@ -259,7 +259,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/No-1471.test.cpp
       title: test/yuki/No-1471.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/No-3030.test.cpp
       title: test/yuki/No-3030.test.cpp
     - icon: ':heavy_check_mark:'
@@ -271,7 +271,7 @@ data:
     - icon: ':x:'
       path: test/yuki/No-789_dynamic.test.cpp
       title: test/yuki/No-789_dynamic.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/No.891.test.cpp
       title: test/yuki/No.891.test.cpp
 layout: toppage

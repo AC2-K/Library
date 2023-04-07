@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: data-structure/CHT.hpp
     title: Convex Hull Trick
   - icon: ':question:'
@@ -9,9 +9,9 @@ data:
     title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/line_add_get_min
@@ -65,29 +65,29 @@ data:
     \        } else {\n            return it->a * x + it->b;\n        }\n    }\n};\n\
     #line 5 \"test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp\"\n\n\nint\
     \ main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    CHT<ll> cht;\n\
-    \    for (int i = 0; i < n; i++) {\n        ll a,b;\n        scanf(\"%d%d\", &a,\
-    \ &b);\n        cht.add(a, b);\n    }\n    while (q--) {\n        int t;\n   \
-    \     scanf(\"%d\", &t);\n        if (!t) {\n            ll a,b;\n           \
-    \ scanf(\"%lld%lld\", &a, &b);\n            cht.add(a, b);\n        } else {\n\
-    \            ll x;\n            scanf(\"%lld\", &x);\n            printf(\"%lld\\\
-    n\", cht(x));\n        }\n    }\n}\n"
+    \    for (int i = 0; i < n; i++) {\n        ll a, b;\n        scanf(\"%lld%lld\"\
+    , &a, &b);\n        cht.add(a, b);\n    }\n    while (q--) {\n        int t;\n\
+    \        scanf(\"%lld\", &t);\n        if (!t) {\n            ll a,b;\n      \
+    \      scanf(\"%lld%lld\", &a, &b);\n            cht.add(a, b);\n        } else\
+    \ {\n            ll x;\n            scanf(\"%lld\", &x);\n            printf(\"\
+    %lld\\n\", cht(x));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n\
     #include \"template.hpp\"\n#include \"data-structure/CHT.hpp\"\n\n\nint main()\
     \ {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    CHT<ll> cht;\n    for\
-    \ (int i = 0; i < n; i++) {\n        ll a,b;\n        scanf(\"%d%d\", &a, &b);\n\
-    \        cht.add(a, b);\n    }\n    while (q--) {\n        int t;\n        scanf(\"\
-    %d\", &t);\n        if (!t) {\n            ll a,b;\n            scanf(\"%lld%lld\"\
-    , &a, &b);\n            cht.add(a, b);\n        } else {\n            ll x;\n\
-    \            scanf(\"%lld\", &x);\n            printf(\"%lld\\n\", cht(x));\n\
-    \        }\n    }\n}"
+    \ (int i = 0; i < n; i++) {\n        ll a, b;\n        scanf(\"%lld%lld\", &a,\
+    \ &b);\n        cht.add(a, b);\n    }\n    while (q--) {\n        int t;\n   \
+    \     scanf(\"%lld\", &t);\n        if (!t) {\n            ll a,b;\n         \
+    \   scanf(\"%lld%lld\", &a, &b);\n            cht.add(a, b);\n        } else {\n\
+    \            ll x;\n            scanf(\"%lld\", &x);\n            printf(\"%lld\\\
+    n\", cht(x));\n        }\n    }\n}"
   dependsOn:
   - template.hpp
   - data-structure/CHT.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 13:34:28+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-07 14:21:53+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
 layout: document

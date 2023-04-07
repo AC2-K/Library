@@ -12,7 +12,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - icon: ':x:'

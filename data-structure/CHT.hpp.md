@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
     title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/CHT.md
     document_title: Convex Hull Trick
@@ -88,7 +88,7 @@ data:
   path: data-structure/CHT.hpp
   requiredBy: []
   timestamp: '2023-04-07 13:04:10+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
 documentation_of: data-structure/CHT.hpp

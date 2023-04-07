@@ -8,13 +8,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/phi_function.hpp
     title: "phi function(\\phi \u95A2\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   - icon: ':heavy_check_mark:'
@@ -39,19 +39,19 @@ data:
   - icon: ':x:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No-430.test.cpp
     title: test/yuki/No-430.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No.891.test.cpp
     title: test/yuki/No.891.test.cpp
   _isVerificationFailed: true

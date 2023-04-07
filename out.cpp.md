@@ -10,19 +10,14 @@ data:
     links: []
   bundledCode: '#line 1 "out.cpp"
 
-    #line 1 "main.cpp"
-
 
     '
-  code: '#line 1 "main.cpp"
-
-
-    '
+  code: ''
   dependsOn: []
   isVerificationFile: false
   path: out.cpp
   requiredBy: []
-  timestamp: '2023-04-07 13:04:10+09:00'
+  timestamp: '2023-04-07 14:21:53+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: out.cpp
