@@ -2,6 +2,7 @@
 
 #include"template.hpp"
 #include"graph/euler_tour.hpp"
+using namespace std;
 int main(){
     int n;
     cin>>n;

@@ -4,6 +4,8 @@
 using S = P;
 S op(S x, S y) { return max(x,y); }
 S e() { return P(0,0); }
+
+using namespace std;
 int main() {
     int n;
     scanf("%d", &n);

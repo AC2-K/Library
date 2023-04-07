@@ -1,6 +1,6 @@
+#pragma once
+#include<chrono>
 /// @brief HashMap
-/// @tparam Key Keyの型
-/// @tparam Val Valueの型
 template <typename Key,
           typename Val,
           uint32_t n = 1 << 20,
@@ -14,7 +14,7 @@ class hash_map {
     Key* keys = new Key[n];
     Val* vals = new Val[n];
 
-    static constexpr u32 shift = 64 - __lg(n);
+    static constexpr u32 shift = 64 - std::__lg(n);
 
     u64 r;
     inline u32 get_hash(const Key& k) const {
@@ -25,7 +25,7 @@ class hash_map {
 
   public:   
     explicit constexpr hash_map(){
-        r = chrono::steady_clock::now().time_since_epoch().count();
+        r = std::chrono::steady_clock::now().time_since_epoch().count();
         r ^= r >> 16;
         r ^= r << 32;
     }

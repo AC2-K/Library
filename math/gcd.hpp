@@ -27,9 +27,9 @@ constexpr T ext_gcd(T a, T b, T &x, T &y) {
     T nx = 0, ny = 1;
     while(b) {
         T q = a / b;
-        std::tie(a, b) = std::pair{b, a % b};
-        std::tie(x, nx) = std::pair{nx, x - nx * q};
-        std::tie(y, ny) = std::pair{ny, y - ny * q};
+        std::tie(a, b) = std::pair<T,T>{b, a % b};
+        std::tie(x, nx) = std::pair<T,T>{nx, x - nx * q};
+        std::tie(y, ny) = std::pair<T,T>{ny, y - ny * q};
     }
     return a;
 }

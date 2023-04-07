@@ -1,6 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/discrete_logarithm_mod"
 #include"template.hpp"
 #include"math/mod_log.hpp"
+
+using namespace std;
 int main() {
     int t;
     scanf("%d", &t);

@@ -1,6 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include"template.hpp"
 #include"data-structure/segtree.hpp"
+
+using namespace std;
 ll op(ll x, ll y) { return x + y; }
 ll e() { return 0; }
 int main() {

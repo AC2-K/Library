@@ -4,7 +4,7 @@
 #include <iostream>
 #include <numeric>
 #include <vector>
-namespace library {
+namespace prime {
 /// @brief Osak法
 namespace Osak {
 using u32 = uint32_t;

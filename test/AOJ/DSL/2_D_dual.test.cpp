@@ -2,7 +2,7 @@
 
 #include"template.hpp"
 #include"data-structure/dual_segtree.hpp"
-
+using namespace std;
 using ull = unsigned long long;
 ull op(ull x, ull y) {
 	return y;	

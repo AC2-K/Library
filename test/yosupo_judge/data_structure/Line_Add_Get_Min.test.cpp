@@ -2,12 +2,12 @@
 
 #include"template.hpp"
 #include"data-structure/CHT.hpp"
-
+using namespace std;
 int main(){
     int n,q;
     cin>>n>>q;
 
-    CHT cht;    
+    CHT<long long> cht;    
     for(int i=0;i<n;i++){
         ll a,b;
         cin>>a>>b;

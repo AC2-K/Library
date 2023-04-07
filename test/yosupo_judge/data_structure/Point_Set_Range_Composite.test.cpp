@@ -2,7 +2,7 @@
 #include"template.hpp"
 #include"data-structure/segtree.hpp"
 #include"math/static_modint.hpp"
-
+using namespace std;
 #pragma GCC target("avx2")
 #pragma GCC optimize("Ofast")
 #pragma GCC optimize("unroll-loops")

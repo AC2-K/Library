@@ -2,6 +2,7 @@
 #include"template.hpp"
 #include"data-structure/lazy_segtree.hpp"
 #include"math/static_modint.hpp"
+using namespace std;
 using mint = static_modint32<MOD2>;
 struct S {
     mint s;

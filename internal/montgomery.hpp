@@ -1,4 +1,6 @@
 #pragma once
+#include<limits>
+#include<numeric>
 namespace internal {
     using u32 = uint32_t;
     using u64 = uint64_t;
@@ -9,7 +11,7 @@ namespace internal {
     /// @brief MontgomeryReduction
     template<typename T,typename LargeT>
     class MontgomeryReduction64 {
-        static constexpr int lg = numeric_limits<T>::digits;
+        static constexpr int lg = std::numeric_limits<T>::digits;
         T mod, r, r2, minv;
         T calc_inv() {
             T t = 0, res = 0;

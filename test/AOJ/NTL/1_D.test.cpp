@@ -2,6 +2,8 @@
 
 #include"template.hpp"
 #include"math/phi_function.hpp"
+
+using namespace std;
 int main(){
     int n;
     cin>>n;

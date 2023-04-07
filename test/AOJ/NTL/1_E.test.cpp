@@ -3,6 +3,7 @@
 #include"template.hpp"
 #include"math/gcd.hpp"
 
+using namespace std;
 int main(){
     ll a, b;
     cin >> a >> b;

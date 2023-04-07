@@ -3,7 +3,7 @@
 
 #include"template.hpp"
 #include"math/sieve.hpp"
-
+using namespace std;
 int main(){
     constexpr int INPUT_MAX = 100000000;
     const auto res = sieve(INPUT_MAX);

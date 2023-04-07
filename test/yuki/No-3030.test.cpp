@@ -1,6 +1,8 @@
 #define PROBLEM "https://yukicoder.me/problems/no/3030"
 #include"template.hpp"
 #include"math/miller.hpp"
+
+using namespace std;
 int main(){
     int n;
     scanf("%d", &n);

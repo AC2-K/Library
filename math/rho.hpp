@@ -5,6 +5,7 @@ namespace library {
     
     ///@brief 高速素因数分解(Pollard Rho法)
     namespace rho {
+        using namespace std;
         using i128 = __int128_t;
         using u128 = __uint128_t;
         using u64 = uint64_t;

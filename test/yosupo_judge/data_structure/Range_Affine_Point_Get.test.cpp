@@ -3,6 +3,8 @@
 #include"template.hpp"
 #include"data-structure/dual_segtree.hpp"
 #include"math/static_modint.hpp"
+
+using namespace std;
 using mint = static_modint32<MOD2>;
 using Affine = pair<mint, mint>;
 Affine op(Affine g, Affine f) {

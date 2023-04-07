@@ -229,7 +229,7 @@ template <__uint32_t mod> class static_modint32 {
     }
 
     // iostream
-    constexpr friend ostream& operator<<(std::ostream& os, const mint& mt) {
+    constexpr friend std::ostream& operator<<(std::ostream& os, const mint& mt) {
         os << mt.val();
         return os;
     }

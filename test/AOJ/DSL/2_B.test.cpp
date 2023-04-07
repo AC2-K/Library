@@ -4,6 +4,8 @@
 using S=ll;
 S op(S x,S y){return x+y;}
 S e(){return 0;}
+
+using namespace std;
 int main() {
     int n,q;
     cin>>n>>q;

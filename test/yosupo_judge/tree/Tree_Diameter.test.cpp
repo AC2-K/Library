@@ -1,6 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/tree_diameter"
 #include"template.hpp"
 #include"graph/dijkstra.hpp"
+
+using namespace std;
 int main() {
     int n;
     cin>>n;

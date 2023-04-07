@@ -1,3 +1,5 @@
+#pragma once
+#include<numeric>
 /// @brief Sparse Table
 /// @tparam T 要素の型
 /// @docs docs/data-structure/sparse_table.md
@@ -23,7 +25,7 @@ public:
         for (int i = 1; i < log; i++) {
             for (int j = 0; j + (1 << i) <= (1 << log); j++) {
                 table[i][j] =
-                    min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);
+                    std::min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);
             }
         }
         look_up.resize(sz + 1);
@@ -34,6 +36,6 @@ public:
 
     T prod(int l, int r) {
         int b = look_up[r - l];
-        return min(table[b][l], table[b][r - (1 << b)]);
+        return std::min(table[b][l], table[b][r - (1 << b)]);
     }
 };

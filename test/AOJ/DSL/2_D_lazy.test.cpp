@@ -2,7 +2,7 @@
 
 #include"template.hpp"
 #include"data-structure/lazy_segtree.hpp"
-
+using namespace std;
 int op(int x,int y){return min(x,y);}
 int comp(int x,int y){return y;}
 int mapping(int x,int y){return y;}

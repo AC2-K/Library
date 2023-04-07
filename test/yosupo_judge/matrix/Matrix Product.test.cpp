@@ -5,20 +5,28 @@
 #pragma GCC target("avx2")
 #pragma GCC optimize("Ofast")
 #pragma GCC optimize("unroll-loops")
+
+using namespace std;
 using mint = static_modint32<MOD2>;
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
     int n, m, k;
-    cin >> n >> m >> k;
+    scanf("%d%d%d",&n,&m,&k);
     using mat = Matrix<mint>;
     mat a(n, m), b(m, k);
-    rep(i, n) rep(j, m) { cin >> a[i][j]; }
-    rep(i, m) rep(j, k) { cin >> b[i][j]; }
+    rep(i, n) rep(j, m) { 
+        int v;
+        scanf("%d",&v);
+        a[i][j]=mint(v);
+    }
+    rep(i, m) rep(j, k) { 
+        int v;
+        scanf("%d",&v);
+        b[i][j]=mint(v);
+    }
     auto res = a * b;
     rep(i, n) {
-        rep(j, k) { cout << res[i][j] << ' '; }
-        cout << '\n';
+        rep(j, k) { printf("%d ",res[i][j].val()); }
+        puts("");
     }
 }
 

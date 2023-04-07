@@ -10,7 +10,7 @@ class segtree {
 public:
 	segtree() :segtree(0) {}
 	segtree(int n) : segtree(std::vector<S>(n, e())) {}
-	segtree(const vector<S>& vec) : n((int)vec.size()) {
+	segtree(const std::vector<S>& vec) : n((int)vec.size()) {
 		sz = 1, lg = 0;
 		while (sz <= n) {
 			sz <<= 1;

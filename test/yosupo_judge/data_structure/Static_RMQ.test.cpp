@@ -1,6 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 #include"template.hpp"
 #include"data-structure/sparse_table.hpp"
+
+using namespace std;
 int main() {
 	int n, q;
 	scanf("%d%d", &n, &q);

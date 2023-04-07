@@ -60,8 +60,8 @@ class Matrix {
     mat operator-(const mat& r) { return mat(*this) -= r; }
     mat operator*(const mat& r) { return mat(*this) *= r; }
 
-    template<typename T>
-    mat pow(T e) const {
+    template<typename P>
+    mat pow(P e) const {
         assert(e >= 0);
         int n = dat.size();
         mat res(n, n, 0);

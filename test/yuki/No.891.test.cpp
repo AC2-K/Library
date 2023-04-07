@@ -3,6 +3,7 @@
 #include"template.hpp"
 #include"math/static_modint.hpp"
 #include"math/matrix.hpp"
+using namespace std;
 using mint = static_modint32<MOD>;
 int main() {
     int a, b, n;

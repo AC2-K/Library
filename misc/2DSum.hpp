@@ -22,7 +22,7 @@ public:
 		return s[i2][j2] - s[i1][j2] - s[i2][j1] + s[i1][j1];
 	}
 
-	inline vector<T>& operator[](int i) { return dat[i]; }
+	inline std::vector<T>& operator[](int i) { return dat[i]; }
 };
 
 /// @brief 二次元imos法

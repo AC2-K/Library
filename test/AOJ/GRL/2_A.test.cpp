@@ -2,7 +2,7 @@
 
 #include"template.hpp"
 #include"graph/mst.hpp"
-
+using namespace std;
 int main(){
     int n,m;
     cin>>n>>m;

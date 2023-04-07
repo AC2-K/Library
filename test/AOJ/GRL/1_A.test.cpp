@@ -2,7 +2,7 @@
 
 #include"template.hpp"
 #include"graph/dijkstra.hpp"
-
+using namespace std;
 int main(){
     int n,m,r;
     cin>>n>>m>>r;

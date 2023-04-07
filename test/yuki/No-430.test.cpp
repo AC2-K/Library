@@ -2,6 +2,7 @@
 #include"template.hpp"
 #include"string/rolling_hash.hpp"
 
+using namespace std;
 #pragma GCC target("avx2")
 #pragma GCC optimize("Ofast")
 #pragma GCC optimize("unroll-loops")

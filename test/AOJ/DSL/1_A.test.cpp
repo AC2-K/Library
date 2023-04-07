@@ -2,6 +2,8 @@
 
 #include"template.hpp"
 #include"data-structure/dsu.hpp"
+
+using namespace std;
 int main(){
     int n,q;
     cin>>n>>q;

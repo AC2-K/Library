@@ -2,6 +2,8 @@
 
 #include"template.hpp"
 #include"data-structure/dynamic_segtree.hpp"
+
+using namespace std;
 int op(int x, int y) { return x + y; }
 int e() { return 0; }
 int main() {
