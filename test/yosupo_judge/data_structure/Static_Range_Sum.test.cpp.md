@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: data-structure/segtree.hpp
+    path: src/data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -16,13 +16,13 @@ data:
     - https://judge.yosupo.jp/problem/static_range_sum
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\
-    \ <iostream>\n#line 2 \"data-structure/segtree.hpp\"\n#include <vector>\nnamespace\
-    \ kyopro {\n/// @brief Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n\n\
-    template <class S, S (*op)(S, S), S (*e)()> class segtree {\n    int lg, sz, n;\n\
-    \    std::vector<S> dat;\n\n  public:\n    segtree() : segtree(0) {}\n    segtree(int\
-    \ n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const std::vector<S>& vec)\
-    \ : n((int)vec.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n) {\n\
-    \            sz <<= 1;\n            lg++;\n        }\n\n        dat = std::vector<S>(sz\
+    \ <iostream>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <vector>\n\
+    namespace kyopro {\n/// @brief Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
+    )\n\ntemplate <class S, S (*op)(S, S), S (*e)()> class segtree {\n    int lg,\
+    \ sz, n;\n    std::vector<S> dat;\n\n  public:\n    segtree() : segtree(0) {}\n\
+    \    segtree(int n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const std::vector<S>&\
+    \ vec) : n((int)vec.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n)\
+    \ {\n            sz <<= 1;\n            lg++;\n        }\n\n        dat = std::vector<S>(sz\
     \ << 1, e());\n\n        for (int i = 0; i < n; i++) {\n            set(i, vec[i]);\n\
     \        }\n        build();\n    }\n\n    inline void set(const int p, const\
     \ S& v) { dat[sz + p] = v; }\n    inline void build() {\n        for (int i =\
@@ -46,19 +46,20 @@ data:
     \        scanf(\"%d%d\",&l,&r);\n        printf(\"%lld\\n\",seg.prod(l,r));\n\
     \    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\
-    \ <iostream>\n#include \"../../../data-structure/segtree.hpp\"\n\nnamespace for_segtree{\n\
-    \    using S = long long;\n    S op(S x,S y){return x+y;}\n    S e(){return 0;}\n\
-    };\nint main(){\n    int n,q;\n    scanf(\"%d%d\",&n,&q);\n\n    kyopro::segtree<for_segtree::S,for_segtree::op,for_segtree::e>\
-    \ seg(n);\n    for(int i=0;i<n;i++){\n        int a;\n        scanf(\"%d\",&a);\n\
-    \        seg.set(i,a);\n    }\n    seg.build();\n    while(q--){\n        int\
-    \ l,r;\n        scanf(\"%d%d\",&l,&r);\n        printf(\"%lld\\n\",seg.prod(l,r));\n\
+    \ <iostream>\n#include \"../../../src/data-structure/segtree.hpp\"\n\nnamespace\
+    \ for_segtree{\n    using S = long long;\n    S op(S x,S y){return x+y;}\n   \
+    \ S e(){return 0;}\n};\nint main(){\n    int n,q;\n    scanf(\"%d%d\",&n,&q);\n\
+    \n    kyopro::segtree<for_segtree::S,for_segtree::op,for_segtree::e> seg(n);\n\
+    \    for(int i=0;i<n;i++){\n        int a;\n        scanf(\"%d\",&a);\n      \
+    \  seg.set(i,a);\n    }\n    seg.build();\n    while(q--){\n        int l,r;\n\
+    \        scanf(\"%d%d\",&l,&r);\n        printf(\"%lld\\n\",seg.prod(l,r));\n\
     \    }\n}"
   dependsOn:
-  - data-structure/segtree.hpp
+  - src/data-structure/segtree.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp

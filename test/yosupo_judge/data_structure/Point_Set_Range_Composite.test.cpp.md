@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: data-structure/segtree.hpp
+    path: src/data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   - icon: ':question:'
-    path: math/gcd.hpp
-    title: math/gcd.hpp
+    path: src/math/gcd.hpp
+    title: src/math/gcd.hpp
   - icon: ':question:'
-    path: math/static_modint.hpp
+    path: src/math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -22,7 +22,7 @@ data:
     - https://judge.yosupo.jp/problem/point_set_range_composite
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n#include<iostream>\n#line 2 \"data-structure/segtree.hpp\"\n#include <vector>\n\
+    \n#include<iostream>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <vector>\n\
     namespace kyopro {\n/// @brief Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
     )\n\ntemplate <class S, S (*op)(S, S), S (*e)()> class segtree {\n    int lg,\
     \ sz, n;\n    std::vector<S> dat;\n\n  public:\n    segtree() : segtree(0) {}\n\
@@ -43,7 +43,7 @@ data:
     \ = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n        }\n        return\
     \ op(sml, smr);\n    }\n    inline void apply(int p, const S& v) { update(p, op(dat[sz\
     \ + p], v)); }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/segtree.md\n\
-    #line 2 \"math/static_modint.hpp\"\n#include <cassert>\n#line 3 \"math/gcd.hpp\"\
+    #line 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#line 3 \"src/math/gcd.hpp\"\
     \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr T _gcd(T\
     \ a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a\
     \ + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n   \
@@ -56,7 +56,7 @@ data:
     \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n#line 5 \"math/static_modint.hpp\"\nnamespace\
+    \ a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace\
     \ kyopro {\ntemplate <__uint64_t mod> class static_modint {\n  private:\n    using\
     \ mint = static_modint<mod>;\n    using i64 = long long;\n    using u64 = unsigned\
     \ long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\n\
@@ -162,8 +162,8 @@ data:
     \          F res = seg.prod(l, r);\n            mint ans = res.a * x + res.b;\n\
     \            std::cout << ans << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n#include<iostream>\n#include\"../../../data-structure/segtree.hpp\"\n#include\"\
-    ../../../math/static_modint.hpp\"\n\nusing mint = kyopro::static_modint32<998244353>;\n\
+    \n#include<iostream>\n#include\"../../../src/data-structure/segtree.hpp\"\n#include\"\
+    ../../../src/math/static_modint.hpp\"\n\nusing mint = kyopro::static_modint32<998244353>;\n\
     \nstruct F{\n    mint a,b;\n};\n\nF op(F l,F r){\n    mint na = l.a * r.a;\n \
     \   mint nb = (l.b * r.a + r.b);\n    return F{na, nb};\n}\nF e(){\n    return\
     \ F{1,0};\n}\nint main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
@@ -177,13 +177,13 @@ data:
     \            mint ans = res.a * x + res.b;\n            std::cout << ans << '\\\
     n';\n        }\n    }\n}"
   dependsOn:
-  - data-structure/segtree.hpp
-  - math/static_modint.hpp
-  - math/gcd.hpp
+  - src/data-structure/segtree.hpp
+  - src/math/static_modint.hpp
+  - src/math/gcd.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp

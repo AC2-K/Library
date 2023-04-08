@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-    title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -96,9 +93,8 @@ data:
   path: template.hpp
   requiredBy: []
   timestamp: '2023-04-07 14:59:40+00:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: template.hpp
 layout: document
 redirect_from:

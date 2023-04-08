@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data-structure/CHT.hpp
+    path: src/data-structure/CHT.hpp
     title: Convex Hull Trick
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -16,10 +16,10 @@ data:
     - https://judge.yosupo.jp/problem/line_add_get_min
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n#include<iostream>\n\
-    #line 2 \"data-structure/CHT.hpp\"\n#include <set>\nnamespace kyopro {\n\n///\
-    \ @brief Convex Hull Trick\ntemplate <class T = long long, bool query_type = false>\
-    \ class CHT {\n    class line {\n      public:\n        T a, b;\n        bool\
-    \ is_query;\n        mutable T nxt_a, nxt_b;\n        mutable bool has_nxt;\n\
+    #line 2 \"src/data-structure/CHT.hpp\"\n#include <set>\nnamespace kyopro {\n\n\
+    /// @brief Convex Hull Trick\ntemplate <class T = long long, bool query_type =\
+    \ false> class CHT {\n    class line {\n      public:\n        T a, b;\n     \
+    \   bool is_query;\n        mutable T nxt_a, nxt_b;\n        mutable bool has_nxt;\n\
     \        T get(T x) const { return a * x + b; }\n        T get_nxt(T x) const\
     \ { return nxt_a * x + nxt_b; }\n        line(T a, T b, bool q = false)\n    \
     \        : a(a), b(b), is_query(q), has_nxt(false) {}\n        friend bool operator<(const\
@@ -59,20 +59,20 @@ data:
     \  }else{\n            long long x;\n            scanf(\"%lld\",&x);\n       \
     \     printf(\"%lld\\n\",cht(x));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n#include<iostream>\n\
-    #include\"data-structure/CHT.hpp\"\nusing namespace std;\nint main(){\n    int\
-    \ n,q;\n    scanf(\"%d%d\",&n,&q);\n\n    kyopro::CHT<long long> cht;    \n  \
-    \  for(int i=0;i<n;i++){\n        long long a,b;\n        scanf(\"%lld%lld\",&a,&b);\n\
-    \        cht.insert(a,b);\n    }\n    while(q--){\n        int t;\n        scanf(\"\
-    %d\",&t);\n        if(!t){\n            long long a,b;\n            scanf(\"%lld%lld\"\
-    ,&a,&b);\n            cht.insert(a,b);\n        }else{\n            long long\
-    \ x;\n            scanf(\"%lld\",&x);\n            printf(\"%lld\\n\",cht(x));\n\
-    \        }\n    }\n}"
+    #include\"../../../src/data-structure/CHT.hpp\"\nusing namespace std;\nint main(){\n\
+    \    int n,q;\n    scanf(\"%d%d\",&n,&q);\n\n    kyopro::CHT<long long> cht; \
+    \   \n    for(int i=0;i<n;i++){\n        long long a,b;\n        scanf(\"%lld%lld\"\
+    ,&a,&b);\n        cht.insert(a,b);\n    }\n    while(q--){\n        int t;\n \
+    \       scanf(\"%d\",&t);\n        if(!t){\n            long long a,b;\n     \
+    \       scanf(\"%lld%lld\",&a,&b);\n            cht.insert(a,b);\n        }else{\n\
+    \            long long x;\n            scanf(\"%lld\",&x);\n            printf(\"\
+    %lld\\n\",cht(x));\n        }\n    }\n}"
   dependsOn:
-  - data-structure/CHT.hpp
+  - src/data-structure/CHT.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp

@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data-structure/lazy_segtree.hpp
+    path: src/data-structure/lazy_segtree.hpp
     title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
       \u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
@@ -16,14 +16,14 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E
   bundledCode: "#line 1 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
-    \n#include<iostream>\n#line 2 \"data-structure/lazy_segtree.hpp\"\n#include <vector>\n\
-    #include <cassert>\nnamespace kyopro {\n/// @brief Segment Tree with Lazy Propagation(\u9045\
-    \u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\ntemplate <class S,\n\
-    \          class F,\n          S (*op)(S, S),\n          S (*e)(),\n         \
-    \ F (*comp)(F, F),\n          F (*id)(),\n          S (*mapping)(S, F)>\nclass\
-    \ lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n    std::vector<F> lz;\n\
-    \n  public:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e())) {}\n\
-    \    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(), e()),\
+    \n#include<iostream>\n#line 2 \"src/data-structure/lazy_segtree.hpp\"\n#include\
+    \ <vector>\n#include <cassert>\nnamespace kyopro {\n/// @brief Segment Tree with\
+    \ Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
+    )\ntemplate <class S,\n          class F,\n          S (*op)(S, S),\n        \
+    \  S (*e)(),\n          F (*comp)(F, F),\n          F (*id)(),\n          S (*mapping)(S,\
+    \ F)>\nclass lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n    std::vector<F>\
+    \ lz;\n\n  public:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e()))\
+    \ {}\n    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(), e()),\
     \ lz(4 * a.size(), id()) {\n        int x = 1;\n        while (a.size() > x) {\n\
     \            x <<= 1;\n        }\n        sz = x;\n        for (int i = 0; i <\
     \ a.size(); i++) {\n            set(i, a[i]);\n        }\n        build();\n \
@@ -63,22 +63,22 @@ data:
     \     scanf(\"%d\", &i);\n            i--;\n            printf(\"%d\\n\", seg[i]);\n\
     \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
-    \n#include<iostream>\n#include \"../../../data-structure/lazy_segtree.hpp\"\n\n\
-    int op(int x, int y) { return x + y; }\nint comp(int x, int y) { return x + y;\
-    \ }\nint mapping(int x, int y) { return x + y; }\nint e() { return 0; }\nint id()\
-    \ { return 0; }\n\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\
-    \    kyopro::lazy_segtree<int, int, op, e, comp, id, mapping> seg(n);\n    while\
-    \ (q--) {\n        int t;\n        scanf(\"%d\", &t);\n        if (!t) {\n   \
-    \         int l, r, val;\n            scanf(\"%d%d%d\", &l, &r, &val);\n     \
-    \       l--, r--;\n            seg.apply(l, r + 1, val);\n        } else {\n \
-    \           int i;\n            scanf(\"%d\", &i);\n            i--;\n       \
-    \     printf(\"%d\\n\", seg[i]);\n        }\n    }\n}"
+    \n#include<iostream>\n#include \"../../../src/data-structure/lazy_segtree.hpp\"\
+    \n\nint op(int x, int y) { return x + y; }\nint comp(int x, int y) { return x\
+    \ + y; }\nint mapping(int x, int y) { return x + y; }\nint e() { return 0; }\n\
+    int id() { return 0; }\n\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n,\
+    \ &q);\n    kyopro::lazy_segtree<int, int, op, e, comp, id, mapping> seg(n);\n\
+    \    while (q--) {\n        int t;\n        scanf(\"%d\", &t);\n        if (!t)\
+    \ {\n            int l, r, val;\n            scanf(\"%d%d%d\", &l, &r, &val);\n\
+    \            l--, r--;\n            seg.apply(l, r + 1, val);\n        } else\
+    \ {\n            int i;\n            scanf(\"%d\", &i);\n            i--;\n  \
+    \          printf(\"%d\\n\", seg[i]);\n        }\n    }\n}"
   dependsOn:
-  - data-structure/lazy_segtree.hpp
+  - src/data-structure/lazy_segtree.hpp
   isVerificationFile: true
   path: test/AOJ/DSL/2_E_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_E_lazy.test.cpp

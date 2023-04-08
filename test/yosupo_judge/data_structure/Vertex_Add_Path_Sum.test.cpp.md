@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: data-structure/BIT.hpp
+    path: src/data-structure/BIT.hpp
     title: Binary Index Tree
   - icon: ':question:'
-    path: data-structure/sparse_table.hpp
+    path: src/data-structure/sparse_table.hpp
     title: Sparse Table
   - icon: ':question:'
-    path: graph/euler_tour.hpp
+    path: src/graph/euler_tour.hpp
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -22,8 +22,8 @@ data:
     - https://judge.yosupo.jp/problem/vertex_add_path_sum
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n#include<iostream>\n\
-    #line 2 \"data-structure/BIT.hpp\"\n#include <vector>\nnamespace kyopro {\n///\
-    \ @brief Binary Index Tree\ntemplate <typename T, typename SumT = T> class BIT\
+    #line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\nnamespace kyopro {\n\
+    /// @brief Binary Index Tree\ntemplate <typename T, typename SumT = T> class BIT\
     \ {\n    std::vector<SumT> bit;\n    int n;\n\n  public:\n    explicit BIT(int\
     \ n) : n(n), bit(n + 1, T()) {}\n    void add(int p, const T& w) {\n        p++;\n\
     \        for (int x = p; x <= n; x += x & -x) {\n            bit[x] += w;\n  \
@@ -35,24 +35,24 @@ data:
     \        for (; k > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] <\
     \ w) {\n                w -= bit[x + k];\n                x += k;\n          \
     \  }\n        }\n\n        return x + 1;\n    }\n};\n};  // namespace kyopro\n\
-    \n/// @docs docs/data-structure/BIT.md\n#line 2 \"data-structure/sparse_table.hpp\"\
-    \n#include <numeric>\n#line 4 \"data-structure/sparse_table.hpp\"\nnamespace kyopro\
-    \ {\n/// @brief Sparse Table\ntemplate <class T> class sparse_table {\n    std::vector<T>\
-    \ vec;\n    std::vector<std::vector<T>> table;\n    std::vector<int> look_up;\n\
-    \n  public:\n    sparse_table(int n) : vec(n) {}\n    sparse_table(const std::vector<T>&\
-    \ vec) : vec(vec) { build(); }\n    inline void set(int p, const T& v) { vec[p]\
-    \ = v; }\n    void build() {\n        int sz = vec.size();\n        int log =\
-    \ 0;\n        while ((1 << log) <= sz) {\n            log++;\n        }\n    \
-    \    table.assign(log, std::vector<T>(1 << log));\n        for (int i = 0; i <\
-    \ sz; i++) {\n            table[0][i] = vec[i];\n        }\n        for (int i\
-    \ = 1; i < log; i++) {\n            for (int j = 0; j + (1 << i) <= (1 << log);\
-    \ j++) {\n                table[i][j] =\n                    std::min(table[i\
-    \ - 1][j], table[i - 1][j + (1 << (i - 1))]);\n            }\n        }\n    \
-    \    look_up.resize(sz + 1);\n        for (int i = 2; i < (int)look_up.size();\
+    \n/// @docs docs/data-structure/BIT.md\n#line 2 \"src/data-structure/sparse_table.hpp\"\
+    \n#include <numeric>\n#line 4 \"src/data-structure/sparse_table.hpp\"\nnamespace\
+    \ kyopro {\n/// @brief Sparse Table\ntemplate <class T> class sparse_table {\n\
+    \    std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n    std::vector<int>\
+    \ look_up;\n\n  public:\n    sparse_table(int n) : vec(n) {}\n    sparse_table(const\
+    \ std::vector<T>& vec) : vec(vec) { build(); }\n    inline void set(int p, const\
+    \ T& v) { vec[p] = v; }\n    void build() {\n        int sz = vec.size();\n  \
+    \      int log = 0;\n        while ((1 << log) <= sz) {\n            log++;\n\
+    \        }\n        table.assign(log, std::vector<T>(1 << log));\n        for\
+    \ (int i = 0; i < sz; i++) {\n            table[0][i] = vec[i];\n        }\n \
+    \       for (int i = 1; i < log; i++) {\n            for (int j = 0; j + (1 <<\
+    \ i) <= (1 << log); j++) {\n                table[i][j] =\n                  \
+    \  std::min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);\n            }\n\
+    \        }\n        look_up.resize(sz + 1);\n        for (int i = 2; i < (int)look_up.size();\
     \ i++) {\n            look_up[i] = look_up[i >> 1] + 1;\n        }\n    }\n\n\
     \    inline T prod(int l, int r) {\n        int b = look_up[r - l];\n        return\
     \ std::min(table[b][l], table[b][r - (1 << b)]);\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/// @docs docs/data-structure/sparse_table.md\n#line 3 \"graph/euler_tour.hpp\"\
+    \ kyopro\n\n/// @docs docs/data-structure/sparse_table.md\n#line 3 \"src/graph/euler_tour.hpp\"\
     \nnamespace kyopro {\n///@brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\
     \u30FC)\nclass EulerTour {\n    int n;\n    std::vector<std::vector<int>> g;\n\
     \    std::vector<int> tour;\n    std::vector<int> in, out, depth;\n    sparse_table<std::pair<int,\
@@ -93,31 +93,31 @@ data:
     \ + 1);\n            }\n\n            printf(\"%lld\\n\", ans);\n        }\n \
     \   }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
-    #include<iostream>\n#include\"../../../data-structure/BIT.hpp\"\n#include\"../../../graph/euler_tour.hpp\"\
-    \n\nint main() {\n    int n, q;\n    scanf(\"%d%d\",&n,&q);\n    std::vector<long\
-    \ long> a(n);\n    for (auto& aa : a) {\n        scanf(\"%lld\", &aa);\n    }\n\
-    \n    kyopro::EulerTour g(n);\n    for (int i = 0; i < n - 1; i++) {\n       \
-    \ int v, u;\n        scanf(\"%d%d\", &v, &u);\n        g.add_edge(v, u);\n   \
-    \ }\n    g.build();\n\n    kyopro::BIT<long long> seg(2 * n);\n    for (int v\
-    \ = 0; v < n; v++) {\n        auto [in, out] = g.idx(v);\n        seg.add(in,\
-    \ a[v]);\n        seg.add(out + 1, -a[v]);\n    }\n    while (q--) {\n       \
-    \ int t;\n        scanf(\"%d\", &t);\n        if (t == 0) {\n            int v,\
-    \ x;\n            scanf(\"%d%d\", &v, &x);\n            auto [in, out] = g.idx(v);\n\
-    \            seg.add(in, x);\n            seg.add(out + 1, -x);\n        } else\
-    \ {\n            int v, u;\n            scanf(\"%d%d\", &v, &u);\n           \
-    \ long long ans = 0;\n            int p_in = g.idx(g.lca(v, u)).first;\n     \
-    \       {\n                ans += seg.sum(p_in, g.idx(v).first + 1);\n       \
-    \     }\n            {\n                ans += seg.sum(p_in + 1, g.idx(u).first\
-    \ + 1);\n            }\n\n            printf(\"%lld\\n\", ans);\n        }\n \
-    \   }\n}"
+    #include<iostream>\n#include\"../../../src/data-structure/BIT.hpp\"\n#include\"\
+    ../../../src/graph/euler_tour.hpp\"\n\nint main() {\n    int n, q;\n    scanf(\"\
+    %d%d\",&n,&q);\n    std::vector<long long> a(n);\n    for (auto& aa : a) {\n \
+    \       scanf(\"%lld\", &aa);\n    }\n\n    kyopro::EulerTour g(n);\n    for (int\
+    \ i = 0; i < n - 1; i++) {\n        int v, u;\n        scanf(\"%d%d\", &v, &u);\n\
+    \        g.add_edge(v, u);\n    }\n    g.build();\n\n    kyopro::BIT<long long>\
+    \ seg(2 * n);\n    for (int v = 0; v < n; v++) {\n        auto [in, out] = g.idx(v);\n\
+    \        seg.add(in, a[v]);\n        seg.add(out + 1, -a[v]);\n    }\n    while\
+    \ (q--) {\n        int t;\n        scanf(\"%d\", &t);\n        if (t == 0) {\n\
+    \            int v, x;\n            scanf(\"%d%d\", &v, &x);\n            auto\
+    \ [in, out] = g.idx(v);\n            seg.add(in, x);\n            seg.add(out\
+    \ + 1, -x);\n        } else {\n            int v, u;\n            scanf(\"%d%d\"\
+    , &v, &u);\n            long long ans = 0;\n            int p_in = g.idx(g.lca(v,\
+    \ u)).first;\n            {\n                ans += seg.sum(p_in, g.idx(v).first\
+    \ + 1);\n            }\n            {\n                ans += seg.sum(p_in + 1,\
+    \ g.idx(u).first + 1);\n            }\n\n            printf(\"%lld\\n\", ans);\n\
+    \        }\n    }\n}"
   dependsOn:
-  - data-structure/BIT.hpp
-  - graph/euler_tour.hpp
-  - data-structure/sparse_table.hpp
+  - src/data-structure/BIT.hpp
+  - src/graph/euler_tour.hpp
+  - src/data-structure/sparse_table.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp

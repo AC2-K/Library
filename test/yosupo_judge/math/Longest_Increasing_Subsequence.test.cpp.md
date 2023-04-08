@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: data-structure/segtree.hpp
+    path: src/data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -16,7 +16,7 @@ data:
     - https://judge.yosupo.jp/problem/longest_increasing_subsequence
   bundledCode: "#line 1 \"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
-    \n#include<iostream>\n#include<algorithm>\n#include<numeric>\n#line 2 \"data-structure/segtree.hpp\"\
+    \n#include<iostream>\n#include<algorithm>\n#include<numeric>\n#line 2 \"src/data-structure/segtree.hpp\"\
     \n#include <vector>\nnamespace kyopro {\n/// @brief Segment Tree(\u30BB\u30B0\u30E1\
     \u30F3\u30C8\u6728)\n\ntemplate <class S, S (*op)(S, S), S (*e)()> class segtree\
     \ {\n    int lg, sz, n;\n    std::vector<S> dat;\n\n  public:\n    segtree() :\
@@ -55,7 +55,7 @@ data:
     \ std::reverse(idx.begin(),idx.end());\n    for (auto& i : idx) {\n        printf(\"\
     %d \", i);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
-    \n#include<iostream>\n#include<algorithm>\n#include<numeric>\n#include\"../../../data-structure/segtree.hpp\"\
+    \n#include<iostream>\n#include<algorithm>\n#include<numeric>\n#include\"../../../src/data-structure/segtree.hpp\"\
     \nusing S = std::pair<int,int>;\nS op(S x, S y) { return max(x,y); }\nS e() {\
     \ return S{0,0}; }\n\nusing namespace std;\nint main() {\n    int n;\n    scanf(\"\
     %d\", &n);\n    vector<int> a(n);\n    for (auto& aa : a) {\n        scanf(\"\
@@ -72,11 +72,11 @@ data:
     \ std::reverse(idx.begin(),idx.end());\n    for (auto& i : idx) {\n        printf(\"\
     %d \", i);\n    }\n}"
   dependsOn:
-  - data-structure/segtree.hpp
+  - src/data-structure/segtree.hpp
   isVerificationFile: true
   path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp

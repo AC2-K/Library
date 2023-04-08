@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: data-structure/BIT.hpp
+    path: src/data-structure/BIT.hpp
     title: Binary Index Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -16,8 +16,8 @@ data:
     - https://judge.yosupo.jp/problem/point_add_range_sum
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n#include<iostream>\n\
-    #line 2 \"data-structure/BIT.hpp\"\n#include <vector>\nnamespace kyopro {\n///\
-    \ @brief Binary Index Tree\ntemplate <typename T, typename SumT = T> class BIT\
+    #line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\nnamespace kyopro {\n\
+    /// @brief Binary Index Tree\ntemplate <typename T, typename SumT = T> class BIT\
     \ {\n    std::vector<SumT> bit;\n    int n;\n\n  public:\n    explicit BIT(int\
     \ n) : n(n), bit(n + 1, T()) {}\n    void add(int p, const T& w) {\n        p++;\n\
     \        for (int x = p; x <= n; x += x & -x) {\n            bit[x] += w;\n  \
@@ -38,20 +38,20 @@ data:
     \        } else {\n            int l, r;\n            scanf(\"%d%d\", &l, &r);\n\
     \            printf(\"%lld\\n\", seg.sum(l, r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
-    #include<iostream>\n#include\"../../../data-structure/BIT.hpp\"\nint main() {\n\
-    \    int n, q;\n    scanf(\"%d%d\",&n,&q);\n    kyopro::BIT<long long, long long>\
-    \ seg(n);\n    for(int i=0;i<n;i++){\n        int a;\n        scanf(\"%d\", &a);\n\
-    \        seg.add(i, a);\n    }\n\n    while (q--) {\n        int t;\n        scanf(\"\
-    %d\", &t);\n        if (t == 0) {\n            int p, x;\n            scanf(\"\
-    %d%d\", &p, &x);\n            seg.add(p, x);\n        } else {\n            int\
-    \ l, r;\n            scanf(\"%d%d\", &l, &r);\n            printf(\"%lld\\n\"\
-    , seg.sum(l, r));\n        }\n    }\n}"
+    #include<iostream>\n#include\"../../../src/data-structure/BIT.hpp\"\nint main()\
+    \ {\n    int n, q;\n    scanf(\"%d%d\",&n,&q);\n    kyopro::BIT<long long, long\
+    \ long> seg(n);\n    for(int i=0;i<n;i++){\n        int a;\n        scanf(\"%d\"\
+    , &a);\n        seg.add(i, a);\n    }\n\n    while (q--) {\n        int t;\n \
+    \       scanf(\"%d\", &t);\n        if (t == 0) {\n            int p, x;\n   \
+    \         scanf(\"%d%d\", &p, &x);\n            seg.add(p, x);\n        } else\
+    \ {\n            int l, r;\n            scanf(\"%d%d\", &l, &r);\n           \
+    \ printf(\"%lld\\n\", seg.sum(l, r));\n        }\n    }\n}"
   dependsOn:
-  - data-structure/BIT.hpp
+  - src/data-structure/BIT.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp

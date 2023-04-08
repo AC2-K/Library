@@ -1,37 +1,6 @@
 ---
 data:
   libraryCategories:
-  - name: data-structure
-    pages:
-    - icon: ':question:'
-      path: data-structure/BIT.hpp
-      title: Binary Index Tree
-    - icon: ':heavy_check_mark:'
-      path: data-structure/CHT.hpp
-      title: Convex Hull Trick
-    - icon: ':heavy_check_mark:'
-      path: data-structure/dsu.hpp
-      title: Disjoint Set(Union find)
-    - icon: ':heavy_check_mark:'
-      path: data-structure/dual_segtree.hpp
-      title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':warning:'
-      path: data-structure/dynamic_segtree.hpp
-      title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
-        )"
-    - icon: ':question:'
-      path: data-structure/hash_map.hpp
-      title: HashMap
-    - icon: ':heavy_check_mark:'
-      path: data-structure/lazy_segtree.hpp
-      title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
-        \u30E1\u30F3\u30C8\u6728)"
-    - icon: ':question:'
-      path: data-structure/segtree.hpp
-      title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':question:'
-      path: data-structure/sparse_table.hpp
-      title: Sparse Table
   - name: .
     pages:
     - icon: ':warning:'
@@ -43,89 +12,128 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: template.hpp
       title: template.hpp
-  - name: graph
+  - name: src/data-structure
     pages:
     - icon: ':question:'
-      path: graph/dijkstra.hpp
+      path: src/data-structure/BIT.hpp
+      title: Binary Index Tree
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure/CHT.hpp
+      title: Convex Hull Trick
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure/dsu.hpp
+      title: Disjoint Set(Union find)
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure/dual_segtree.hpp
+      title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    - icon: ':warning:'
+      path: src/data-structure/dynamic_segtree.hpp
+      title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
+        )"
+    - icon: ':question:'
+      path: src/data-structure/hash_map.hpp
+      title: HashMap
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure/lazy_segtree.hpp
+      title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
+        \u30E1\u30F3\u30C8\u6728)"
+    - icon: ':question:'
+      path: src/data-structure/segtree.hpp
+      title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+    - icon: ':question:'
+      path: src/data-structure/sparse_table.hpp
+      title: Sparse Table
+  - name: src
+    pages:
+    - icon: ':warning:'
+      path: src/debug.hpp
+      title: src/debug.hpp
+    - icon: ':warning:'
+      path: src/template.hpp
+      title: src/template.hpp
+  - name: src/graph
+    pages:
+    - icon: ':question:'
+      path: src/graph/dijkstra.hpp
       title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
     - icon: ':question:'
-      path: graph/euler_tour.hpp
+      path: src/graph/euler_tour.hpp
       title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
     - icon: ':heavy_check_mark:'
-      path: graph/mst.hpp
+      path: src/graph/mst.hpp
       title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
     - icon: ':warning:'
-      path: graph/namori.hpp
-      title: graph/namori.hpp
-  - name: internal
+      path: src/graph/namori.hpp
+      title: src/graph/namori.hpp
+  - name: src/internal
     pages:
     - icon: ':question:'
-      path: internal/barrett.hpp
+      path: src/internal/barrett.hpp
       title: barrett reduction
     - icon: ':question:'
-      path: internal/montgomery.hpp
+      path: src/internal/montgomery.hpp
       title: MontgomeryReduction
-  - name: math
+  - name: src/math
     pages:
     - icon: ':question:'
-      path: math/dynamic_modint.hpp
+      path: src/math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
     - icon: ':question:'
-      path: math/gcd.hpp
-      title: math/gcd.hpp
+      path: src/math/gcd.hpp
+      title: src/math/gcd.hpp
     - icon: ':x:'
-      path: math/matrix.hpp
+      path: src/math/matrix.hpp
       title: "matirx(\u884C\u5217)"
     - icon: ':question:'
-      path: math/miller.hpp
+      path: src/math/miller.hpp
       title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
     - icon: ':x:'
-      path: math/mod_log.hpp
+      path: src/math/mod_log.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
     - icon: ':question:'
-      path: math/mod_pow.hpp
+      path: src/math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
     - icon: ':warning:'
-      path: math/osak.hpp
+      path: src/math/osak.hpp
       title: "Osak\u6CD5"
     - icon: ':heavy_check_mark:'
-      path: math/phi_function.hpp
+      path: src/math/phi_function.hpp
       title: "phi function($\\phi$ \u95A2\u6570)"
     - icon: ':x:'
-      path: math/primitive_root.hpp
+      path: src/math/primitive_root.hpp
       title: "primitive root(\u539F\u59CB\u6839)"
     - icon: ':question:'
-      path: math/rho.hpp
+      path: src/math/rho.hpp
       title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
     - icon: ':heavy_check_mark:'
-      path: math/sieve.hpp
+      path: src/math/sieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     - icon: ':question:'
-      path: math/static_modint.hpp
+      path: src/math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
-  - name: misc
+  - name: src/misc
     pages:
     - icon: ':heavy_check_mark:'
-      path: misc/2DSum.hpp
+      path: src/misc/2DSum.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
-      path: misc/mo.hpp
+      path: src/misc/mo.hpp
       title: mo's algorithm
-  - name: persistent
+  - name: src/persistent
     pages:
     - icon: ':heavy_check_mark:'
-      path: persistent/queue.hpp
-      title: persistent/queue.hpp
+      path: src/persistent/queue.hpp
+      title: src/persistent/queue.hpp
     - icon: ':warning:'
-      path: persistent/stack.hpp
-      title: persistent/stack.hpp
-  - name: string
+      path: src/persistent/stack.hpp
+      title: src/persistent/stack.hpp
+  - name: src/string
     pages:
     - icon: ':warning:'
-      path: string/rolling_hash.hpp
+      path: src/string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   verificationCategories:
   - name: test/AOJ/ALDS

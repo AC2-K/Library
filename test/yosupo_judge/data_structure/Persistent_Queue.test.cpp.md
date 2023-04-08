@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: persistent/queue.hpp
-    title: persistent/queue.hpp
+    path: src/persistent/queue.hpp
+    title: src/persistent/queue.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -16,7 +16,7 @@ data:
     - https://judge.yosupo.jp/problem/persistent_queue
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Persistent_Queue.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#include<iostream>\n\
-    #include<vector>\n#line 2 \"persistent/queue.hpp\"\n#include <cassert>\nnamespace\
+    #include<vector>\n#line 2 \"src/persistent/queue.hpp\"\n#include <cassert>\nnamespace\
     \ kyopro {\ntemplate <typename T, int lg = 20> class persistent_queue {\n    struct\
     \ Node {\n        Node() = default;\n        uint32_t index;\n        T val;\n\
     \        Node* prev[20];\n    };\n\n    Node *front_ptr = nullptr, *back_ptr =\
@@ -45,18 +45,18 @@ data:
     \t\t\tv[i] = v[idx].push(s);\n\t\t}\n\t\telse {\n\t\t\tprintf(\"%d\\n\", v[idx].front());\n\
     \t\t\tv[i] = v[idx].pop();\n\t\t}\n\t}\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#include<iostream>\n\
-    #include<vector>\n#include\"persistent/queue.hpp\"\n\nint main() {\n\tint q;\n\
-    \tscanf(\"%d\", &q);\n\tstd::vector<kyopro::persistent_queue<int>> v(q + 1);\n\
-    \tfor (int i = 1; i <= q; i++) {\n\t\tint t, idx;\n\t\tscanf(\"%d%d\", &t, &idx);\n\
-    \t\tidx++;\n\n\t\tif (!t) {\n\t\t\tint s;\n\t\t\tscanf(\"%d\", &s);\n\t\t\tv[i]\
-    \ = v[idx].push(s);\n\t\t}\n\t\telse {\n\t\t\tprintf(\"%d\\n\", v[idx].front());\n\
+    #include<vector>\n#include\"../../../src/persistent/queue.hpp\"\n\nint main()\
+    \ {\n\tint q;\n\tscanf(\"%d\", &q);\n\tstd::vector<kyopro::persistent_queue<int>>\
+    \ v(q + 1);\n\tfor (int i = 1; i <= q; i++) {\n\t\tint t, idx;\n\t\tscanf(\"%d%d\"\
+    , &t, &idx);\n\t\tidx++;\n\n\t\tif (!t) {\n\t\t\tint s;\n\t\t\tscanf(\"%d\", &s);\n\
+    \t\t\tv[i] = v[idx].push(s);\n\t\t}\n\t\telse {\n\t\t\tprintf(\"%d\\n\", v[idx].front());\n\
     \t\t\tv[i] = v[idx].pop();\n\t\t}\n\t}\n}"
   dependsOn:
-  - persistent/queue.hpp
+  - src/persistent/queue.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp

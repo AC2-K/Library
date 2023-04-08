@@ -2,25 +2,25 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: internal/barrett.hpp
+    path: src/internal/barrett.hpp
     title: barrett reduction
   - icon: ':question:'
-    path: internal/montgomery.hpp
+    path: src/internal/montgomery.hpp
     title: MontgomeryReduction
   - icon: ':question:'
-    path: math/dynamic_modint.hpp
+    path: src/math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
   - icon: ':question:'
-    path: math/gcd.hpp
-    title: math/gcd.hpp
+    path: src/math/gcd.hpp
+    title: src/math/gcd.hpp
   - icon: ':question:'
-    path: math/miller.hpp
+    path: src/math/miller.hpp
     title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
   - icon: ':x:'
-    path: math/primitive_root.hpp
+    path: src/math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
   - icon: ':question:'
-    path: math/rho.hpp
+    path: src/math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -34,7 +34,7 @@ data:
     - https://judge.yosupo.jp/problem/primitive_root
   bundledCode: "#line 1 \"test/yosupo_judge/math/Primitive_Root.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#include<iostream>\n\
-    #line 2 \"math/dynamic_modint.hpp\"\n#include <cassert>\n#line 2 \"internal/barrett.hpp\"\
+    #line 2 \"src/math/dynamic_modint.hpp\"\n#include <cassert>\n#line 2 \"src/internal/barrett.hpp\"\
     \nnamespace kyopro {\nnamespace internal {\n///@brief barrett reduction\nclass\
     \ barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64 m;\n\
     \    u64 im;\n\n  public:\n    explicit barrett() = default;\n    explicit barrett(u64\
@@ -46,7 +46,7 @@ data:
     \ b == 0) {\n            return 0;\n        }\n        u64 z = a;\n        z *=\
     \ b;\n        u64 x = (u64)(((__uint128_t)z * im) >> 64);\n\n        u32 v = (u32)(z\
     \ - x * m);\n\n        if (v >= m) v += m;\n        return v;\n    }\n};\n}; \
-    \ // namespace internal\n};  // namespace kyopro\n#line 3 \"internal/montgomery.hpp\"\
+    \ // namespace internal\n};  // namespace kyopro\n#line 3 \"src/internal/montgomery.hpp\"\
     \n#include <limits>\n#include <numeric>\nnamespace kyopro {\nnamespace internal\
     \ {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing\
     \ i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n/// @brief\
@@ -65,7 +65,7 @@ data:
     \ mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return res;\n  \
     \  }\n\n    inline T generate(LargeT x) { return reduce(x * r2); }\n\n    inline\
     \ T mult(T x, T y) { return reduce((LargeT)x * y); }\n};\n};  // namespace internal\n\
-    };  // namespace kyopro\n#line 6 \"math/dynamic_modint.hpp\"\nnamespace kyopro\
+    };  // namespace kyopro\n#line 6 \"src/math/dynamic_modint.hpp\"\nnamespace kyopro\
     \ {\ntemplate <int id = -1> class barrett_modint {\n    using u32 = uint32_t;\n\
     \    using u64 = uint64_t;\n\n    using i32 = int32_t;\n    using i64 = int64_t;\n\
     \    using br = internal::barrett;\n\n    static br brt;\n    static u32 mod;\n\
@@ -142,7 +142,7 @@ data:
     template <typename T, typename LargeT, int id>\nkyopro::internal::Montgomery<T,\
     \ LargeT>\n    kyopro::dynamic_modint<T, LargeT, id>::mr;\n\n/// @brief dynamic\
     \ modint(\u52D5\u7684modint)\n/// @docs docs/math/dynamic_modint.md\n#line 2 \"\
-    math/rho.hpp\"\n#include<vector>\n#include<algorithm>\n#line 3 \"math/miller.hpp\"\
+    src/math/rho.hpp\"\n#include<vector>\n#include<algorithm>\n#line 3 \"src/math/miller.hpp\"\
     \nnamespace kyopro {\n    namespace miller {\n        using i128 = __int128_t;\n\
     \        using u128 = __uint128_t;\n        using u64 = uint64_t;\n        using\
     \ u32 = uint32_t;\n\n        template<typename mint>\n        bool inline miller_rabin(u64\
@@ -165,7 +165,7 @@ data:
     \ << 31)) {\n                return miller_rabin<barrett_modint<-1>>(n, bases_int,\
     \ 3);\n            }\n            else {\n                return miller_rabin<dynamic_modint<u64,u128,-1>>(n,\
     \ bases_ll, 7);\n            }\n        }\n    };\n};\n///@brief MillerRabin\u306E\
-    \u7D20\u6570\u5224\u5B9A\n#line 3 \"math/gcd.hpp\"\n#include <tuple>\nnamespace\
+    \u7D20\u6570\u5224\u5B9A\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace\
     \ kyopro {\ntemplate <typename T> constexpr T _gcd(T a, T b) {\n    assert(a >=\
     \ 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
@@ -177,30 +177,30 @@ data:
     \ = 0, ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b)\
     \ = std::pair<T, T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx,\
     \ x - nx * q};\n        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n \
-    \   }\n    return a;\n}\n};  // namespace kyopro\n#line 6 \"math/rho.hpp\"\nnamespace\
-    \ kyopro {\n    \n    ///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard\
-    \ Rho\u6CD5)\n    namespace rho {\n        using namespace std;\n        using\
-    \ i128 = __int128_t;\n        using u128 = __uint128_t;\n        using u64 = uint64_t;\n\
-    \        using u32 = uint32_t;\n\n        template<typename mint>\n        u64\
-    \ find_factor(u64 n) {\n            static u64 v = 20001;\n\n            if (~n\
-    \ & 1uL) {\n                return 2;\n            }\n            if (kyopro::miller::is_prime(n))\
-    \ {\n                return n;\n            }\n\n            if (mint::get_mod()\
-    \ != n) {\n                mint::set_mod(n);\n            }\n            while\
-    \ (1) {\n                v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n          \
-    \      u64 c = v;\n                auto f = [&](mint x) -> mint {\n          \
-    \          return x.pow(2) + c;\n                };\n                v ^= v <<\
-    \ 13, v ^= v >> 7, v ^= v << 17;\n                mint x = v;\n              \
-    \  mint y = f(x);\n                u64 d = 1;\n                while (d == 1)\
-    \ {\n                    d = _gcd<long long>(abs((long long)x.val() - (long long)y.val()),\
-    \ n);\n                    x = f(x);\n                    y = f(f(y));\n     \
-    \           }\n                if (1 < d && d < n) {\n                    return\
-    \ d;\n                }\n            }\n            exit(0);\n        }\n    \
-    \    template<typename mint>\n        std::vector<u64> rho_fact(u64 n) {\n   \
-    \         if (n < 2) {\n                return {};\n            }\n          \
-    \  if (kyopro::miller::is_prime(n)) {\n                return { n };\n       \
-    \     }\n            std::vector<u64> v;\n            std::vector<u64> st{ n };\n\
-    \            while (st.size()) {\n                u64& m = st.back();\n      \
-    \          if (kyopro::miller::is_prime(m)) {\n                    v.emplace_back(m);\n\
+    \   }\n    return a;\n}\n};  // namespace kyopro\n#line 6 \"src/math/rho.hpp\"\
+    \nnamespace kyopro {\n    \n    ///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\
+    \u89E3(Pollard Rho\u6CD5)\n    namespace rho {\n        using namespace std;\n\
+    \        using i128 = __int128_t;\n        using u128 = __uint128_t;\n       \
+    \ using u64 = uint64_t;\n        using u32 = uint32_t;\n\n        template<typename\
+    \ mint>\n        u64 find_factor(u64 n) {\n            static u64 v = 20001;\n\
+    \n            if (~n & 1uL) {\n                return 2;\n            }\n    \
+    \        if (kyopro::miller::is_prime(n)) {\n                return n;\n     \
+    \       }\n\n            if (mint::get_mod() != n) {\n                mint::set_mod(n);\n\
+    \            }\n            while (1) {\n                v ^= v << 13, v ^= v\
+    \ >> 7, v ^= v << 17;\n                u64 c = v;\n                auto f = [&](mint\
+    \ x) -> mint {\n                    return x.pow(2) + c;\n                };\n\
+    \                v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n                mint\
+    \ x = v;\n                mint y = f(x);\n                u64 d = 1;\n       \
+    \         while (d == 1) {\n                    d = _gcd<long long>(abs((long\
+    \ long)x.val() - (long long)y.val()), n);\n                    x = f(x);\n   \
+    \                 y = f(f(y));\n                }\n                if (1 < d &&\
+    \ d < n) {\n                    return d;\n                }\n            }\n\
+    \            exit(0);\n        }\n        template<typename mint>\n        std::vector<u64>\
+    \ rho_fact(u64 n) {\n            if (n < 2) {\n                return {};\n  \
+    \          }\n            if (kyopro::miller::is_prime(n)) {\n               \
+    \ return { n };\n            }\n            std::vector<u64> v;\n            std::vector<u64>\
+    \ st{ n };\n            while (st.size()) {\n                u64& m = st.back();\n\
+    \                if (kyopro::miller::is_prime(m)) {\n                    v.emplace_back(m);\n\
     \                    st.pop_back();\n                }\n                else {\n\
     \                    u64 d = find_factor<mint>(m);\n                    m /= d;\n\
     \                    st.emplace_back(d);\n                }\n            }\n \
@@ -216,7 +216,7 @@ data:
     \  if (res.back().first == pf[i]) {\n                    res.back().second++;\n\
     \                }\n                else {\n                    res.emplace_back(pf[i],\
     \ 1);\n                }\n            }\n\n            return res;\n        }\n\
-    \    };  // namespace pollard\n};  // namespace kyopro\n#line 4 \"math/primitive_root.hpp\"\
+    \    };  // namespace pollard\n};  // namespace kyopro\n#line 4 \"src/math/primitive_root.hpp\"\
     \nnamespace kyopro {\ninline uint64_t primitive_root(uint64_t p) {\n    if (p\
     \ == 2) return 1;\n    auto pf = kyopro::rho::factorize(p - 1);\n    pf.erase(std::unique(pf.begin(),\
     \ pf.end()), pf.end());\n    for (auto& q : pf) {\n        q = (p - 1) / q;\n\
@@ -234,22 +234,22 @@ data:
     \ long long p;\n        scanf(\"%lld\", &p);\n        long long ans = kyopro::primitive_root(p);\n\
     \        printf(\"%lld\\n\", ans);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#include<iostream>\n\
-    #include\"../../../math/primitive_root.hpp\"\nint main(){\n    int q;\n    scanf(\"\
-    %d\", &q);\n    while (q--) {\n        long long p;\n        scanf(\"%lld\", &p);\n\
-    \        long long ans = kyopro::primitive_root(p);\n        printf(\"%lld\\n\"\
-    , ans);\n    }\n}\n"
+    #include\"../../../src/math/primitive_root.hpp\"\nint main(){\n    int q;\n  \
+    \  scanf(\"%d\", &q);\n    while (q--) {\n        long long p;\n        scanf(\"\
+    %lld\", &p);\n        long long ans = kyopro::primitive_root(p);\n        printf(\"\
+    %lld\\n\", ans);\n    }\n}\n"
   dependsOn:
-  - math/primitive_root.hpp
-  - math/dynamic_modint.hpp
-  - internal/barrett.hpp
-  - internal/montgomery.hpp
-  - math/rho.hpp
-  - math/miller.hpp
-  - math/gcd.hpp
+  - src/math/primitive_root.hpp
+  - src/math/dynamic_modint.hpp
+  - src/internal/barrett.hpp
+  - src/internal/montgomery.hpp
+  - src/math/rho.hpp
+  - src/math/miller.hpp
+  - src/math/gcd.hpp
   isVerificationFile: true
   path: test/yosupo_judge/math/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Primitive_Root.test.cpp

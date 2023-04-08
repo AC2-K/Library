@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data-structure/dual_segtree.hpp
+    path: src/data-structure/dual_segtree.hpp
     title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -15,13 +15,13 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_D
   bundledCode: "#line 1 \"test/AOJ/DSL/2_D_dual.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_D\"\
-    \n#include <iostream>\n#line 2 \"data-structure/dual_segtree.hpp\"\n#include <cassert>\n\
-    #include <vector>\nnamespace kyopro {\n\n/// @brief Dual Segmenttree(\u53CC\u5BFE\
-    \u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\ntemplate <class F, F (*comp)(F, F), F (*id)(),\
-    \ bool is_commutative = true>\nclass dual_segtree {\n    std::vector<F> dat;\n\
-    \    int _n, sz, lg;\n\n  public:\n    dual_segtree() : dual_segtree(0) {}\n \
-    \   dual_segtree(int _n) : _n(_n) {\n        sz = 1, lg = 0;\n        while (sz\
-    \ < _n) {\n            lg++;\n            sz <<= 1;\n        }\n        dat.assign(sz\
+    \n#include <iostream>\n#line 2 \"src/data-structure/dual_segtree.hpp\"\n#include\
+    \ <cassert>\n#include <vector>\nnamespace kyopro {\n\n/// @brief Dual Segmenttree(\u53CC\
+    \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\ntemplate <class F, F (*comp)(F, F),\
+    \ F (*id)(), bool is_commutative = true>\nclass dual_segtree {\n    std::vector<F>\
+    \ dat;\n    int _n, sz, lg;\n\n  public:\n    dual_segtree() : dual_segtree(0)\
+    \ {}\n    dual_segtree(int _n) : _n(_n) {\n        sz = 1, lg = 0;\n        while\
+    \ (sz < _n) {\n            lg++;\n            sz <<= 1;\n        }\n        dat.assign(sz\
     \ << 1, id());\n    }\n\n  private:\n    void all_apply(int p, const F& v) { dat[p]\
     \ = comp(dat[p], v); }\n    void push(int p) {\n        if (dat[p] == id()) {\n\
     \            return;\n        }\n        all_apply(p << 1 | 0, dat[p]);\n    \
@@ -48,8 +48,8 @@ data:
     \           scanf(\"%d\", &i);\n            printf(\"%lld\\n\", seg[i]);\n   \
     \     }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_D\"\n#include\
-    \ <iostream>\n#include \"../../../data-structure/dual_segtree.hpp\"\nusing ull\
-    \ = unsigned long long;\null op(ull x, ull y) { return y; }\null e() { return\
+    \ <iostream>\n#include \"../../../src/data-structure/dual_segtree.hpp\"\nusing\
+    \ ull = unsigned long long;\null op(ull x, ull y) { return y; }\null e() { return\
     \ (1ll << 31) - 1; }\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\
     \    kyopro::dual_segtree<ull, op, e> seg(n);\n    while (q--) {\n        int\
     \ ty;\n        scanf(\"%d\", &ty);\n        if (!ty) {\n            int l, r;\n\
@@ -58,11 +58,11 @@ data:
     \ scanf(\"%d\", &i);\n            printf(\"%lld\\n\", seg[i]);\n        }\n  \
     \  }\n}\n"
   dependsOn:
-  - data-structure/dual_segtree.hpp
+  - src/data-structure/dual_segtree.hpp
   isVerificationFile: true
   path: test/AOJ/DSL/2_D_dual.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_D_dual.test.cpp

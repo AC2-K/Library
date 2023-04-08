@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: misc/mo.hpp
+    path: src/misc/mo.hpp
     title: mo's algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -16,12 +16,12 @@ data:
     - https://judge.yosupo.jp/problem/static_range_frequency
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\n\
-    #include<iostream>\n#line 2 \"misc/mo.hpp\"\n#include <algorithm>\n#include <numeric>\n\
-    #include <vector>\nnamespace kyopro {\n/// @brief mo's algorithm\nclass Mo {\n\
-    \    int n;\n    std::vector<std::pair<int, int>> lr;\n    const int logn;\n \
-    \   const long long maxn;\n    std::vector<int> ord;\n\n  public:\n    explicit\
-    \ Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }\n    inline\
-    \ void add(int l, int r) { lr.emplace_back(l, r); }\n    long long hilbertorder(int\
+    #include<iostream>\n#line 2 \"src/misc/mo.hpp\"\n#include <algorithm>\n#include\
+    \ <numeric>\n#include <vector>\nnamespace kyopro {\n/// @brief mo's algorithm\n\
+    class Mo {\n    int n;\n    std::vector<std::pair<int, int>> lr;\n    const int\
+    \ logn;\n    const long long maxn;\n    std::vector<int> ord;\n\n  public:\n \
+    \   explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }\n\
+    \    inline void add(int l, int r) { lr.emplace_back(l, r); }\n    long long hilbertorder(int\
     \ x, int y) {\n        long long d = 0;\n        for (int s = 1 << (logn - 1);\
     \ s; s >>= 1) {\n            bool rx = x & s, ry = y & s;\n            d = d <<\
     \ 2 | rx * 3 ^ static_cast<int>(ry);\n            if (!ry) {\n               \
@@ -60,7 +60,7 @@ data:
     \     ans[v] = cnt[xi];\n        }\n    };\n    mo.build(add, del, out);\n   \
     \ for (auto& aa : ans) {\n        printf(\"%d\\n\", aa);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
-    \n#include<iostream>\n#include\"../../../misc/mo.hpp\"\nusing namespace std;\n\
+    \n#include<iostream>\n#include\"../../../src/misc/mo.hpp\"\nusing namespace std;\n\
     int main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    std::vector<int>\
     \ a(n);\n    for (auto& aa : a) {\n        scanf(\"%d\", &aa);\n    }\n    auto\
     \ pressed = a;\n    std::sort(pressed.begin(), pressed.end());\n    pressed.erase(unique(pressed.begin(),\
@@ -77,11 +77,11 @@ data:
     \ cnt[xi];\n        }\n    };\n    mo.build(add, del, out);\n    for (auto& aa\
     \ : ans) {\n        printf(\"%d\\n\", aa);\n    }\n}"
   dependsOn:
-  - misc/mo.hpp
+  - src/misc/mo.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp

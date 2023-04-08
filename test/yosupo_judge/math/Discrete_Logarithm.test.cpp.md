@@ -2,25 +2,25 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: data-structure/hash_map.hpp
+    path: src/data-structure/hash_map.hpp
     title: HashMap
   - icon: ':question:'
-    path: internal/barrett.hpp
+    path: src/internal/barrett.hpp
     title: barrett reduction
   - icon: ':question:'
-    path: internal/montgomery.hpp
+    path: src/internal/montgomery.hpp
     title: MontgomeryReduction
   - icon: ':question:'
-    path: math/dynamic_modint.hpp
+    path: src/math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
   - icon: ':question:'
-    path: math/gcd.hpp
-    title: math/gcd.hpp
+    path: src/math/gcd.hpp
+    title: src/math/gcd.hpp
   - icon: ':x:'
-    path: math/mod_log.hpp
+    path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':question:'
-    path: math/mod_pow.hpp
+    path: src/math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -34,7 +34,7 @@ data:
     - https://judge.yosupo.jp/problem/discrete_logarithm_mod
   bundledCode: "#line 1 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\n#include<iostream>\n\
-    #line 2 \"math/mod_log.hpp\"\n#include <cmath>\n#line 2 \"data-structure/hash_map.hpp\"\
+    #line 2 \"src/math/mod_log.hpp\"\n#include <cmath>\n#line 2 \"src/data-structure/hash_map.hpp\"\
     \n#include <chrono>\nnamespace kyopro {\n/// @brief HashMap\ntemplate <typename\
     \ Key,\n          typename Val,\n          uint32_t n = 1 << 20,\n          Val\
     \ default_val = Val()>\nclass hash_map {\n    using u32 = uint32_t;\n    using\
@@ -54,11 +54,11 @@ data:
     \ {\n            if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))\n\
     \                return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
     \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace\
-    \ kyopro\n#line 2 \"math/dynamic_modint.hpp\"\n#include <cassert>\n#line 2 \"\
-    internal/barrett.hpp\"\nnamespace kyopro {\nnamespace internal {\n///@brief barrett\
-    \ reduction\nclass barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\
-    \n    u64 m;\n    u64 im;\n\n  public:\n    explicit barrett() = default;\n  \
-    \  explicit barrett(u64 m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1)\
+    \ kyopro\n#line 2 \"src/math/dynamic_modint.hpp\"\n#include <cassert>\n#line 2\
+    \ \"src/internal/barrett.hpp\"\nnamespace kyopro {\nnamespace internal {\n///@brief\
+    \ barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n    using u64\
+    \ = uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n    explicit barrett()\
+    \ = default;\n    explicit barrett(u64 m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1)\
     \ / m_ + 1) {}\n\n    inline u64 get_mod() const { return m; }\n    constexpr\
     \ u64 reduce(int64_t a) const {\n        if (a < 0) return m - reduce(-a);\n \
     \       u64 q = ((__uint128_t)a * im) >> 64;\n        a -= m * q;\n        if\
@@ -67,25 +67,25 @@ data:
     \ }\n        u64 z = a;\n        z *= b;\n        u64 x = (u64)(((__uint128_t)z\
     \ * im) >> 64);\n\n        u32 v = (u32)(z - x * m);\n\n        if (v >= m) v\
     \ += m;\n        return v;\n    }\n};\n};  // namespace internal\n};  // namespace\
-    \ kyopro\n#line 3 \"internal/montgomery.hpp\"\n#include <limits>\n#include <numeric>\n\
-    namespace kyopro {\nnamespace internal {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\n\
-    using i32 = int32_t;\nusing i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128\
-    \ = __int128_t;\n/// @brief MontgomeryReduction\ntemplate <typename T, typename\
-    \ LargeT> class Montgomery {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
-    \    T mod, r, r2, minv;\n    T calc_inv() {\n        T t = 0, res = 0;\n    \
-    \    for (int i = 0; i < lg; i++) {\n            if (~t & 1) {\n             \
-    \   t += mod;\n                res += static_cast<T>(1) << i;\n            }\n\
-    \            t >>= 1;\n        }\n        return res;\n    }\n\n  public:\n  \
-    \  Montgomery() = default;\n    constexpr inline T get_mod() { return mod; }\n\
-    \    constexpr inline int get_lg() { return lg; }\n\n    void set_mod(const T&\
-    \ m) {\n        assert(m > 0);\n        assert(m & 1);\n\n        mod = m;\n\n\
-    \        r = (-static_cast<T>(mod)) % mod;\n        r2 = (-static_cast<LargeT>(mod))\
+    \ kyopro\n#line 3 \"src/internal/montgomery.hpp\"\n#include <limits>\n#include\
+    \ <numeric>\nnamespace kyopro {\nnamespace internal {\nusing u32 = uint32_t;\n\
+    using u64 = uint64_t;\nusing i32 = int32_t;\nusing i64 = int64_t;\nusing u128\
+    \ = __uint128_t;\nusing i128 = __int128_t;\n/// @brief MontgomeryReduction\ntemplate\
+    \ <typename T, typename LargeT> class Montgomery {\n    static constexpr int lg\
+    \ = std::numeric_limits<T>::digits;\n    T mod, r, r2, minv;\n    T calc_inv()\
+    \ {\n        T t = 0, res = 0;\n        for (int i = 0; i < lg; i++) {\n     \
+    \       if (~t & 1) {\n                t += mod;\n                res += static_cast<T>(1)\
+    \ << i;\n            }\n            t >>= 1;\n        }\n        return res;\n\
+    \    }\n\n  public:\n    Montgomery() = default;\n    constexpr inline T get_mod()\
+    \ { return mod; }\n    constexpr inline int get_lg() { return lg; }\n\n    void\
+    \ set_mod(const T& m) {\n        assert(m > 0);\n        assert(m & 1);\n\n  \
+    \      mod = m;\n\n        r = (-static_cast<T>(mod)) % mod;\n        r2 = (-static_cast<LargeT>(mod))\
     \ % mod;\n        minv = calc_inv();\n    }\n\n    T reduce(LargeT x) const {\n\
     \        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x) * minv)\
     \ * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return res;\n\
     \    }\n\n    inline T generate(LargeT x) { return reduce(x * r2); }\n\n    inline\
     \ T mult(T x, T y) { return reduce((LargeT)x * y); }\n};\n};  // namespace internal\n\
-    };  // namespace kyopro\n#line 6 \"math/dynamic_modint.hpp\"\nnamespace kyopro\
+    };  // namespace kyopro\n#line 6 \"src/math/dynamic_modint.hpp\"\nnamespace kyopro\
     \ {\ntemplate <int id = -1> class barrett_modint {\n    using u32 = uint32_t;\n\
     \    using u64 = uint64_t;\n\n    using i32 = int32_t;\n    using i64 = int64_t;\n\
     \    using br = internal::barrett;\n\n    static br brt;\n    static u32 mod;\n\
@@ -162,9 +162,9 @@ data:
     template <typename T, typename LargeT, int id>\nkyopro::internal::Montgomery<T,\
     \ LargeT>\n    kyopro::dynamic_modint<T, LargeT, id>::mr;\n\n/// @brief dynamic\
     \ modint(\u52D5\u7684modint)\n/// @docs docs/math/dynamic_modint.md\n#line 3 \"\
-    math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr\
-    \ T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0)\
-    \ return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename T>\
+    \ constexpr T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0\
+    \ || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
     \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
     \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
     \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
@@ -174,17 +174,17 @@ data:
     \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n#line 2 \"math/mod_pow.hpp\"\nnamespace kyopro\
-    \ {\n\n///@brief mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)\ntemplate\
-    \ <class T, class U = T> constexpr T mod_pow(T base, T exp, T mod) {\n    U ans\
-    \ = 1;\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n        \
-    \    ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
-    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
-    \ kyopro\n#line 7 \"math/mod_log.hpp\"\nnamespace kyopro {\nnamespace internal\
-    \ {\nlong long __mod_log(uint64_t x, uint64_t y, uint64_t p) {\n    if (y == 1\
-    \ || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n        if (y ==\
-    \ 0) {\n            return 1;\n        } else {\n            return -1;\n    \
-    \    }\n    }\n    uint32_t m = (uint32_t)sqrt(p) + 1;\n    hash_map<uint64_t,\
+    \ a;\n}\n};  // namespace kyopro\n#line 2 \"src/math/mod_pow.hpp\"\nnamespace\
+    \ kyopro {\n\n///@brief mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)\n\
+    template <class T, class U = T> constexpr T mod_pow(T base, T exp, T mod) {\n\
+    \    U ans = 1;\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n\
+    \            ans *= base;\n            ans %= mod;\n        }\n        base *=\
+    \ base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n\
+    };  // namespace kyopro\n#line 7 \"src/math/mod_log.hpp\"\nnamespace kyopro {\n\
+    namespace internal {\nlong long __mod_log(uint64_t x, uint64_t y, uint64_t p)\
+    \ {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n\
+    \        if (y == 0) {\n            return 1;\n        } else {\n            return\
+    \ -1;\n        }\n    }\n    uint32_t m = (uint32_t)sqrt(p) + 1;\n    hash_map<uint64_t,\
     \ int> mp;\n    uint64_t xm = mod_pow<uint64_t>(x, m, p);\n    uint64_t add =\
     \ 0, g, k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n        if\
     \ (y == k) return add;\n        if (y % g) return -1;\n        y /= g, p /= g,\
@@ -215,22 +215,22 @@ data:
     \    int x, y, p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\\
     n\", kyopro::mod_log<long long>(x, y, p));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\
-    \n#include<iostream>\n#include\"../../../math/mod_log.hpp\"\n\nint main() {\n\
-    \    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y, p;\n\
-    \        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\n\", kyopro::mod_log<long\
+    \n#include<iostream>\n#include\"../../../src/math/mod_log.hpp\"\n\nint main()\
+    \ {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y,\
+    \ p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\n\", kyopro::mod_log<long\
     \ long>(x, y, p));\n    }\n}"
   dependsOn:
-  - math/mod_log.hpp
-  - data-structure/hash_map.hpp
-  - math/dynamic_modint.hpp
-  - internal/barrett.hpp
-  - internal/montgomery.hpp
-  - math/gcd.hpp
-  - math/mod_pow.hpp
+  - src/math/mod_log.hpp
+  - src/data-structure/hash_map.hpp
+  - src/math/dynamic_modint.hpp
+  - src/internal/barrett.hpp
+  - src/internal/montgomery.hpp
+  - src/math/gcd.hpp
+  - src/math/mod_pow.hpp
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp

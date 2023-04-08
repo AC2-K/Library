@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: data-structure/lazy_segtree.hpp
+    path: src/data-structure/lazy_segtree.hpp
     title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
       \u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
@@ -16,7 +16,7 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D
   bundledCode: "#line 1 \"test/AOJ/DSL/2_D_lazy.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\"\
-    \n\n#include <iostream>\n#line 2 \"data-structure/lazy_segtree.hpp\"\n#include\
+    \n\n#include <iostream>\n#line 2 \"src/data-structure/lazy_segtree.hpp\"\n#include\
     \ <vector>\n#include <cassert>\nnamespace kyopro {\n/// @brief Segment Tree with\
     \ Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
     )\ntemplate <class S,\n          class F,\n          S (*op)(S, S),\n        \
@@ -63,7 +63,7 @@ data:
     \        scanf(\"%d\", &i);\n            printf(\"%lld\\n\", seg[i]);\n      \
     \  }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\"\
-    \n\n#include <iostream>\n#include \"../../../data-structure/lazy_segtree.hpp\"\
+    \n\n#include <iostream>\n#include \"../../../src/data-structure/lazy_segtree.hpp\"\
     \nusing namespace std;\nint op(int x, int y) { return min(x, y); }\nint comp(int\
     \ x, int y) { return y; }\nint mapping(int x, int y) { return y; }\nint e() {\
     \ return (1ll << 31) - 1; }\nint id() { return (1ll << 31) - 1; }\n\nint main()\
@@ -74,11 +74,11 @@ data:
     \ add);\n        } else {\n            int i;\n            scanf(\"%d\", &i);\n\
     \            printf(\"%lld\\n\", seg[i]);\n        }\n    }\n}"
   dependsOn:
-  - data-structure/lazy_segtree.hpp
+  - src/data-structure/lazy_segtree.hpp
   isVerificationFile: true
   path: test/AOJ/DSL/2_D_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_D_lazy.test.cpp

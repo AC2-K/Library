@@ -2,10 +2,10 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: data-structure/BIT.hpp
+    path: src/data-structure/BIT.hpp
     title: Binary Index Tree
   - icon: ':heavy_check_mark:'
-    path: misc/mo.hpp
+    path: src/misc/mo.hpp
     title: mo's algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -19,8 +19,8 @@ data:
     - https://judge.yosupo.jp/problem/range_kth_smallest
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n#include<iostream>\n\
-    #line 2 \"data-structure/BIT.hpp\"\n#include <vector>\nnamespace kyopro {\n///\
-    \ @brief Binary Index Tree\ntemplate <typename T, typename SumT = T> class BIT\
+    #line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\nnamespace kyopro {\n\
+    /// @brief Binary Index Tree\ntemplate <typename T, typename SumT = T> class BIT\
     \ {\n    std::vector<SumT> bit;\n    int n;\n\n  public:\n    explicit BIT(int\
     \ n) : n(n), bit(n + 1, T()) {}\n    void add(int p, const T& w) {\n        p++;\n\
     \        for (int x = p; x <= n; x += x & -x) {\n            bit[x] += w;\n  \
@@ -32,21 +32,21 @@ data:
     \        for (; k > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] <\
     \ w) {\n                w -= bit[x + k];\n                x += k;\n          \
     \  }\n        }\n\n        return x + 1;\n    }\n};\n};  // namespace kyopro\n\
-    \n/// @docs docs/data-structure/BIT.md\n#line 2 \"misc/mo.hpp\"\n#include <algorithm>\n\
-    #include <numeric>\n#line 5 \"misc/mo.hpp\"\nnamespace kyopro {\n/// @brief mo's\
-    \ algorithm\nclass Mo {\n    int n;\n    std::vector<std::pair<int, int>> lr;\n\
-    \    const int logn;\n    const long long maxn;\n    std::vector<int> ord;\n\n\
-    \  public:\n    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n);\
-    \ }\n    inline void add(int l, int r) { lr.emplace_back(l, r); }\n    long long\
-    \ hilbertorder(int x, int y) {\n        long long d = 0;\n        for (int s =\
-    \ 1 << (logn - 1); s; s >>= 1) {\n            bool rx = x & s, ry = y & s;\n \
-    \           d = d << 2 | rx * 3 ^ static_cast<int>(ry);\n            if (!ry)\
-    \ {\n                if (rx) {\n                    x = maxn - x;\n          \
-    \          y = maxn - y;\n                }\n                std::swap(x, y);\n\
-    \            }\n        }\n        return d;\n    }\n\n  private:\n    inline\
-    \ void line_up() {\n        int q = lr.size();\n        ord.resize(q);\n     \
-    \   std::iota(std::begin(ord), std::end(ord), 0);\n        std::vector<long long>\
-    \ tmp(q);\n        for (int i = 0; i < q; i++) {\n            tmp[i] = hilbertorder(lr[i].first,\
+    \n/// @docs docs/data-structure/BIT.md\n#line 2 \"src/misc/mo.hpp\"\n#include\
+    \ <algorithm>\n#include <numeric>\n#line 5 \"src/misc/mo.hpp\"\nnamespace kyopro\
+    \ {\n/// @brief mo's algorithm\nclass Mo {\n    int n;\n    std::vector<std::pair<int,\
+    \ int>> lr;\n    const int logn;\n    const long long maxn;\n    std::vector<int>\
+    \ ord;\n\n  public:\n    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn)\
+    \ { lr.reserve(n); }\n    inline void add(int l, int r) { lr.emplace_back(l, r);\
+    \ }\n    long long hilbertorder(int x, int y) {\n        long long d = 0;\n  \
+    \      for (int s = 1 << (logn - 1); s; s >>= 1) {\n            bool rx = x &\
+    \ s, ry = y & s;\n            d = d << 2 | rx * 3 ^ static_cast<int>(ry);\n  \
+    \          if (!ry) {\n                if (rx) {\n                    x = maxn\
+    \ - x;\n                    y = maxn - y;\n                }\n               \
+    \ std::swap(x, y);\n            }\n        }\n        return d;\n    }\n\n  private:\n\
+    \    inline void line_up() {\n        int q = lr.size();\n        ord.resize(q);\n\
+    \        std::iota(std::begin(ord), std::end(ord), 0);\n        std::vector<long\
+    \ long> tmp(q);\n        for (int i = 0; i < q; i++) {\n            tmp[i] = hilbertorder(lr[i].first,\
     \ lr[i].second);\n        }\n        std::sort(std::begin(ord), std::end(ord),\n\
     \                  [&](int a, int b) { return tmp[a] < tmp[b]; });\n    }\n\n\
     \  public:\n    template <typename AL, typename AR, typename EL, typename ER,\
@@ -74,14 +74,15 @@ data:
     \        ans[x] = tmp[ok - 1];\n    };\n\n    mo.build(add, del, out);\n    for\
     \ (auto& as : ans) {\n        printf(\"%d\\n\", as);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n\
-    #include<iostream>\n#include\"../../../data-structure/BIT.hpp\"\n#include\"../../../misc/mo.hpp\"\
-    \nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n    kyopro::Mo mo(q);\n\
-    \    std::vector<int> a(n);\n    for (auto& aa : a) {\n        scanf(\"%d\", &aa);\n\
-    \    }\n    std::vector<int> k(q);\n    for(int i=0;i<q;i++) {\n        int l,\
-    \ r;\n        scanf(\"%d%d%d\", &l, &r, &k[i]);\n        k[i]++;\n        mo.add(l,\
-    \ r);\n    }\n    std::vector<int> pressed = a;\n    auto tmp = a;\n    {\n  \
-    \      std::sort(tmp.begin(), tmp.end());\n        tmp.erase(std::unique(tmp.begin(),tmp.end()),\
-    \ tmp.end());\n        for (auto& ai : pressed) {\n            ai = lower_bound(tmp.begin(),tmp.end(),\
+    #include<iostream>\n#include\"../../../src/data-structure/BIT.hpp\"\n#include\"\
+    ../../../src/misc/mo.hpp\"\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n,\
+    \ &q);\n    kyopro::Mo mo(q);\n    std::vector<int> a(n);\n    for (auto& aa :\
+    \ a) {\n        scanf(\"%d\", &aa);\n    }\n    std::vector<int> k(q);\n    for(int\
+    \ i=0;i<q;i++) {\n        int l, r;\n        scanf(\"%d%d%d\", &l, &r, &k[i]);\n\
+    \        k[i]++;\n        mo.add(l, r);\n    }\n    std::vector<int> pressed =\
+    \ a;\n    auto tmp = a;\n    {\n        std::sort(tmp.begin(), tmp.end());\n \
+    \       tmp.erase(std::unique(tmp.begin(),tmp.end()), tmp.end());\n        for\
+    \ (auto& ai : pressed) {\n            ai = lower_bound(tmp.begin(),tmp.end(),\
     \ ai) - tmp.begin();\n        }\n    }\n\n    int sz = tmp.size();\n    kyopro::BIT<int>\
     \ st(sz);\n    auto add = [&](int x) -> void { st.add(pressed[x], 1); };\n   \
     \ auto del = [&](int x) -> void { st.add(pressed[x], -1); };\n    std::vector<int>\
@@ -89,12 +90,12 @@ data:
     \        ans[x] = tmp[ok - 1];\n    };\n\n    mo.build(add, del, out);\n    for\
     \ (auto& as : ans) {\n        printf(\"%d\\n\", as);\n    }\n}\n"
   dependsOn:
-  - data-structure/BIT.hpp
-  - misc/mo.hpp
+  - src/data-structure/BIT.hpp
+  - src/misc/mo.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp

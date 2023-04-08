@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn:
   - icon: ':question:'
-    path: math/gcd.hpp
-    title: math/gcd.hpp
+    path: src/math/gcd.hpp
+    title: src/math/gcd.hpp
   - icon: ':x:'
-    path: math/matrix.hpp
+    path: src/math/matrix.hpp
     title: "matirx(\u884C\u5217)"
   - icon: ':question:'
-    path: math/static_modint.hpp
+    path: src/math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -22,7 +22,7 @@ data:
     - https://judge.yosupo.jp/problem/matrix_product
   bundledCode: "#line 1 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include<iostream>\n\
-    #line 2 \"math/static_modint.hpp\"\n#include <cassert>\n#line 3 \"math/gcd.hpp\"\
+    #line 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#line 3 \"src/math/gcd.hpp\"\
     \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr T _gcd(T\
     \ a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a\
     \ + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n   \
@@ -35,7 +35,7 @@ data:
     \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n#line 5 \"math/static_modint.hpp\"\nnamespace\
+    \ a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace\
     \ kyopro {\ntemplate <__uint64_t mod> class static_modint {\n  private:\n    using\
     \ mint = static_modint<mod>;\n    using i64 = long long;\n    using u64 = unsigned\
     \ long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\n\
@@ -127,7 +127,7 @@ data:
     \ mt.val();\n        return os;\n    }\n    constexpr friend std::istream& operator>>(std::istream&\
     \ is, mint& mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n    \
     \    return is;\n    }\n};\n};  // namespace kyopro\n\n/// @brief static modint(\u9759\
-    \u7684modint)\n/// @docs docs/math/static_modint.md\n#line 2 \"math/matrix.hpp\"\
+    \u7684modint)\n/// @docs docs/math/static_modint.md\n#line 2 \"src/math/matrix.hpp\"\
     \n#include <vector>\nnamespace kyopro {\n/// @brief matirx(\u884C\u5217)\ntemplate\
     \ <typename T> class Matrix {\n    std::vector<std::vector<T>> dat;\n    int h\
     \ = 0, w = 0;\n\n  public:\n    Matrix(const std::vector<std::vector<T>>& dat)\n\
@@ -166,7 +166,7 @@ data:
     \    for(int i=0;i<n;i++){\n        for(int j=0;j<k;j++) { printf(\"%d \",res[i][j].val());\
     \ }\n        puts(\"\");\n    }\n}\n\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include<iostream>\n\
-    #include\"../../../math/static_modint.hpp\"\n#include\"../../../math/matrix.hpp\"\
+    #include\"../../../src/math/static_modint.hpp\"\n#include\"../../../src/math/matrix.hpp\"\
     \n#pragma GCC optimize(\"unroll-loops\")\n\nusing mint = kyopro::static_modint32<998244353>;\n\
     int main() {\n    int n, m, k;\n    scanf(\"%d%d%d\",&n,&m,&k);\n    using mat\
     \ = kyopro::Matrix<mint>;\n    mat a(n, m), b(m, k);\n    for(int i=0;i<n;i++)for(int\
@@ -176,13 +176,13 @@ data:
     \    for(int i=0;i<n;i++){\n        for(int j=0;j<k;j++) { printf(\"%d \",res[i][j].val());\
     \ }\n        puts(\"\");\n    }\n}\n\n"
   dependsOn:
-  - math/static_modint.hpp
-  - math/gcd.hpp
-  - math/matrix.hpp
+  - src/math/static_modint.hpp
+  - src/math/gcd.hpp
+  - src/math/matrix.hpp
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 03:34:55+00:00'
+  timestamp: '2023-04-08 13:07:55+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
