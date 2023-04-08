@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_subtree_sum"
 #include<iostream>
-#include"../../../data-structure/BIT.hpp"
-#include"../../../graph/euler_tour.hpp"
+#include"../../../src/data-structure/BIT.hpp"
+#include"../../../src/graph/euler_tour.hpp"
 
 int main() {
     int n, q;

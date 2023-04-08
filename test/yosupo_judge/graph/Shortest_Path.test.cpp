@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/shortest_path"
 #include<iostream>
 #include<algorithm>
-#include"../../../graph/dijkstra.hpp"
+#include"../../../src/graph/dijkstra.hpp"
 using namespace std;
 int main() {
     int n,m,s,t;

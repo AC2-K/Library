@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_E"
 
 #include<iostream>
-#include"../../../math/gcd.hpp"
+#include"../../../src/math/gcd.hpp"
 
 using namespace std;
 int main(){

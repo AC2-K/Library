@@ -1,6 +1,6 @@
 #pragma once
-#include "math/dynamic_modint.hpp"
-#include "math/rho.hpp"
+#include "../math/dynamic_modint.hpp"
+#include "../math/rho.hpp"
 namespace kyopro {
 inline uint64_t primitive_root(uint64_t p) {
     if (p == 2) return 1;

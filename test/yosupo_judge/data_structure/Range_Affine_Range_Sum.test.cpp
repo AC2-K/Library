@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum"
 #include<iostream>
-#include"../../../data-structure/lazy_segtree.hpp"
-#include"../../../math/static_modint.hpp"
+#include"../../../src/data-structure/lazy_segtree.hpp"
+#include"../../../src/math/static_modint.hpp"
 using mint = kyopro::static_modint32<998244353>;
 struct S {
     mint s;

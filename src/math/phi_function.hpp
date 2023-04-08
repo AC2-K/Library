@@ -1,6 +1,6 @@
 #pragma once
 #include <algorithm>
-#include "math/rho.hpp"
+#include "../math/rho.hpp"
 namespace kyopro {
 
 ///@brief phi function($\phi$ 関数)

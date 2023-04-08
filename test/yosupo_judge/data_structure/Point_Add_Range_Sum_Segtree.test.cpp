@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
-#include"template.hpp"
-#include"../../../data-structure/segtree.hpp"
+#include<iostream>
+#include"../../../src/data-structure/segtree.hpp"
 
 long long op(long long x, long long y) { return x + y; }
 long long e() { return 0; }

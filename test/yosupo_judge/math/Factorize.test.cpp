@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/factorize"
 #include<iostream>
-#include"../../../math/rho.hpp"
+#include"../../../src/math/rho.hpp"
 int main(){
     int q;
     scanf("%d", &q);

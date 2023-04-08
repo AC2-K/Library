@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include<iostream>
-#include"../../../data-structure/BIT.hpp"
+#include"../../../src/data-structure/BIT.hpp"
 int main() {
     int n, q;
     scanf("%d%d",&n,&q);

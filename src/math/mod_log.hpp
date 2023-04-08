@@ -1,9 +1,9 @@
 #pragma once
 #include <cmath>
-#include "data-structure/hash_map.hpp"
-#include "math/dynamic_modint.hpp"
-#include "math/gcd.hpp"
-#include "math/mod_pow.hpp"
+#include "../data-structure/hash_map.hpp"
+#include "../math/dynamic_modint.hpp"
+#include "../math/gcd.hpp"
+#include "../math/mod_pow.hpp"
 namespace kyopro {
 namespace internal {
 long long __mod_log(uint64_t x, uint64_t y, uint64_t p) {

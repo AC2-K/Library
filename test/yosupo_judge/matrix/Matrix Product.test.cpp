@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/matrix_product"
 #include<iostream>
-#include"../../../math/static_modint.hpp"
-#include"../../../math/matrix.hpp"
+#include"../../../src/math/static_modint.hpp"
+#include"../../../src/math/matrix.hpp"
 #pragma GCC optimize("unroll-loops")
 
 using mint = kyopro::static_modint32<998244353>;

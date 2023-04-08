@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/line_add_get_min"
 #include<iostream>
-#include"data-structure/CHT.hpp"
+#include"../../../src/data-structure/CHT.hpp"
 using namespace std;
 int main(){
     int n,q;

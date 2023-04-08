@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/NTL_1_B"
 
 #include <iostream>
-#include "../../../math/mod_pow.hpp"
+#include "../../../src/math/mod_pow.hpp"
 int main() {
     int n, m;
     scanf("%d%d", &n, &m);

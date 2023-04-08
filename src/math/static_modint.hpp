@@ -1,7 +1,7 @@
 #pragma once
 #include <cassert>
 #include <iostream>
-#include "math/gcd.hpp"
+#include "../math/gcd.hpp"
 namespace kyopro {
 template <__uint64_t mod> class static_modint {
   private:

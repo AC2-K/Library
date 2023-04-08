@@ -2,7 +2,7 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
-#include"../../../graph/dijkstra.hpp"
+#include"../../../src/graph/dijkstra.hpp"
 
 int main() {
     int n;

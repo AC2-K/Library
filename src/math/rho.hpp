@@ -1,8 +1,8 @@
 #pragma once
 #include<vector>
 #include<algorithm>
-#include"math/miller.hpp"
-#include"math/gcd.hpp"
+#include"../math/miller.hpp"
+#include"../math/gcd.hpp"
 namespace kyopro {
     
     ///@brief 高速素因数分解(Pollard Rho法)

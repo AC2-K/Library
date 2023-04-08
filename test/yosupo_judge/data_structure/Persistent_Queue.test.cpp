@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/persistent_queue"
 #include<iostream>
 #include<vector>
-#include"persistent/queue.hpp"
+#include"../../../src/persistent/queue.hpp"
 
 int main() {
 	int q;

@@ -1,6 +1,6 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/5/DSL_5_B"
 #include<iostream>
-#include"../../../misc/2DSum.hpp"
+#include"../../../src/misc/2DSum.hpp"
 int main(){
     constexpr int h = 1000;
     constexpr int w = 1000;

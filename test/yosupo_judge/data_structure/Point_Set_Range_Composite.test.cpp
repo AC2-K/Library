@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
 #include<iostream>
-#include"../../../data-structure/segtree.hpp"
-#include"../../../math/static_modint.hpp"
+#include"../../../src/data-structure/segtree.hpp"
+#include"../../../src/math/static_modint.hpp"
 
 using mint = kyopro::static_modint32<998244353>;
 

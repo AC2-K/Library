@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_point_get"
 #include <iostream>
-#include "../../../data-structure/dual_segtree.hpp"
-#include "../../../math/static_modint.hpp"
+#include "../../../src/data-structure/dual_segtree.hpp"
+#include "../../../src/math/static_modint.hpp"
 
 using mint = kyopro::static_modint32<998244353>;
 using Affine = std::pair<mint, mint>;

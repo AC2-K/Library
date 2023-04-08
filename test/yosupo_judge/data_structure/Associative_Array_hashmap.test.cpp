@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/associative_array"
 #include<iostream>
-#include"../../../data-structure/hash_map.hpp"
+#include"../../../src/data-structure/hash_map.hpp"
 int main() {
     uint32_t q;
     scanf("%d", &q);

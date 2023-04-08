@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 #include<iostream>
-#include"../../../data-structure/sparse_table.hpp"
+#include"../../../src/data-structure/sparse_table.hpp"
 
 int main() {
 	int n, q;

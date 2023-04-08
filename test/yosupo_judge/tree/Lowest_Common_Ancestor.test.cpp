@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/lca"
 
 #include<iostream>
-#include"../../../graph/euler_tour.hpp"
+#include"../../../src/graph/euler_tour.hpp"
 using namespace std;
 int main(){
     int n, q;

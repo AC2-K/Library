@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_kth_smallest"
 
 #include<iostream>
-#include"../../../data-structure/BIT.hpp"
-#include"../../../misc/mo.hpp"
+#include"../../../src/data-structure/BIT.hpp"
+#include"../../../src/misc/mo.hpp"
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);

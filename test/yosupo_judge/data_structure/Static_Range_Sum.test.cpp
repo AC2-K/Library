@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
 #include <iostream>
-#include "../../../data-structure/segtree.hpp"
+#include "../../../src/data-structure/segtree.hpp"
 
 namespace for_segtree{
     using S = long long;

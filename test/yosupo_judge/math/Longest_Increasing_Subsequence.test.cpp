@@ -2,7 +2,7 @@
 #include<iostream>
 #include<algorithm>
 #include<numeric>
-#include"../../../data-structure/segtree.hpp"
+#include"../../../src/data-structure/segtree.hpp"
 using S = std::pair<int,int>;
 S op(S x, S y) { return max(x,y); }
 S e() { return S{0,0}; }

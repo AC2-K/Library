@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D"
 
 #include <iostream>
-#include "../../../data-structure/lazy_segtree.hpp"
+#include "../../../src/data-structure/lazy_segtree.hpp"
 using namespace std;
 int op(int x, int y) { return min(x, y); }
 int comp(int x, int y) { return y; }

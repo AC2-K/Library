@@ -1,5 +1,5 @@
 #pragma once
-#include"math/dynamic_modint.hpp"
+#include"../math/dynamic_modint.hpp"
 namespace kyopro {
     namespace miller {
         using i128 = __int128_t;

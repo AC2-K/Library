@@ -3,8 +3,8 @@
 #include <random>
 #include <string>
 #include <vector>
-#include "math/gcd.hpp"
-#include "math/mod_pow.hpp"
+#include "../math/gcd.hpp"
+#include "../math/mod_pow.hpp"
 namespace kyopro {
 class RollingHash {
     using ull = uint_fast64_t;

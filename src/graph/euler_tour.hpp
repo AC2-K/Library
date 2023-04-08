@@ -1,5 +1,5 @@
 #pragma once
-#include "data-structure/sparse_table.hpp"
+#include "../data-structure/sparse_table.hpp"
 namespace kyopro {
 ///@brief EulerTour(オイラーツアー)
 class EulerTour {

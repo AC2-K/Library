@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_1_A"
 
 #include <iostream>
-#include "../../../graph/dijkstra.hpp"
+#include "../../../src/graph/dijkstra.hpp"
 int main() {
     int n, m, r;
     scanf("%d%d%d", &n, &m, &r);

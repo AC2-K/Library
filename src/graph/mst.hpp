@@ -1,6 +1,6 @@
 #pragma once
 #include <algorithm>
-#include "data-structure/dsu.hpp"
+#include "../data-structure/dsu.hpp"
 
 namespace kyopro {
 ///@brief Minimum Spannning Tree(最小全域木)

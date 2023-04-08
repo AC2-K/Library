@@ -1,8 +1,8 @@
 #pragma once
 #include <cassert>
 #include <iostream>
-#include "internal/barrett.hpp"
-#include "internal/montgomery.hpp"
+#include "../internal/barrett.hpp"
+#include "../internal/montgomery.hpp"
 namespace kyopro {
 template <int id = -1> class barrett_modint {
     using u32 = uint32_t;

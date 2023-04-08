@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/unionfind"
 
 #include<iostream>
-#include "../../../data-structure/dsu.hpp"
+#include "../../../src/data-structure/dsu.hpp"
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);

@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/1/DSL_1_A"
 
 #include <iostream>
-#include "../../../data-structure/dsu.hpp"
+#include "../../../src/data-structure/dsu.hpp"
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);
