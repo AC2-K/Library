@@ -1,12 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
-#include"template.hpp"
-#include"data-structure/BIT.hpp"
-using namespace std;
+#include<iostream>
+#include"../../../data-structure/BIT.hpp"
 int main() {
     int n, q;
-    cin >> n >> q;
-    BIT<ll, ll> seg(n);
-    rep(i,n){
+    scanf("%d%d",&n,&q);
+    kyopro::BIT<long long, long long> seg(n);
+    for(int i=0;i<n;i++){
         int a;
         scanf("%d", &a);
         seg.add(i, a);

@@ -1,33 +1,34 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/shortest_path"
-#include"template.hpp"
-#include"graph/dijkstra.hpp"
+#include<iostream>
+#include<algorithm>
+#include"../../../graph/dijkstra.hpp"
 using namespace std;
 int main() {
     int n,m,s,t;
-    cin>>n>>m>>s>>t;
-    vector<vector<edge>> g(n);
-    rep(i,m){
+    scanf("%d%d%d%d",&n,&m,&s,&t);
+    std::vector<std::vector<kyopro::edge>> g(n);
+    for(int i=0;i<m;i++){
         int a,b,c;
-        cin>>a>>b>>c;
+        scanf("%d%d%d",&a,&b,&c);
         g[a].emplace_back(b,c);
     }
     auto [dist,trace]=dijkstra(s,g);
-    if(dist[t]>=infl){
-        cout<<-1<<'\n';
+    if(dist[t]>=(long long)1e18){
+        puts("-1");
         return 0;
     }
 
-    int cur=t;
-    vector<int> path;
+    int cur = t;
+    std::vector<int> path;
     while(cur!=trace[cur]){
         path.emplace_back(cur);
         cur=trace[cur];
     }
 
     path.emplace_back(cur);
-    cout<<dist[t]<<' '<<path.size()-1<<'\n';
-    reverse(all(path));
-    for(int i=1;i<path.size();i++){
-        cout<<path[i-1]<<' '<<path[i]<<'\n';
+    printf("%lld %lld\n",dist[t],path.size()-1);
+    std::reverse(path.begin(),path.end());
+    for(int i=1;i<(int)path.size();i++){
+        printf("%d %d\n",path[i-1],path[i]);
     }
 }

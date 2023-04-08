@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
+#include <cassert>
+namespace kyopro {
 /// @brief Segment Tree with Lazy Propagation(遅延評価セグメント木)
-/// @docs docs/data-structure/lazy_segtree.md
 template <class S,
           class F,
           S (*op)(S, S),
@@ -87,11 +88,13 @@ class lazy_segtree {
     }
 
   public:
-    S prod(int l, int r) {
+    inline S prod(int l, int r) {
         assert(0 <= l && l <= r && r <= sz);
         return internal_prod(l, r, 0, sz, 0);
     }
 
     inline S operator[](int pos) { return prod(pos, pos + 1); }
 };
-//@brief lazy segtree(遅延評価セグメント木)
+};  // namespace kyopro
+
+/// @docs docs/data-structure/lazy_segtree.md

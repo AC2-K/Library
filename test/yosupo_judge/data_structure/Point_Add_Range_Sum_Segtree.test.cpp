@@ -1,31 +1,30 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include"template.hpp"
-#include"data-structure/segtree.hpp"
+#include"../../../data-structure/segtree.hpp"
 
-using namespace std;
-ll op(ll x, ll y) { return x + y; }
-ll e() { return 0; }
+long long op(long long x, long long y) { return x + y; }
+long long e() { return 0; }
 int main() {
     int n, q;
-    cin >> n >> q;
-    vector<ll> a(n);
+    scanf("%d%d",&n,&q);
+    std::vector<long long> a(n);
     for (auto& aa : a) {
-        cin >> aa;
+        scanf("%lld",&aa);
     }
 
-    segtree<ll, op, e> seg(a);
+    kyopro::segtree<long long, op, e> seg(a);
     while (q--) {
         int t;
-        cin >> t;
-        if (t == 0) {
+        scanf("%d",&t);
+        if (!t) {
             int p, x;
-            cin >> p >> x;
+            scanf("%d%d",&p,&x);
             seg.apply(p, x);
         }
         else {
             int l, r;
-            cin >> l >> r;
-            cout << seg.prod(l, r) << '\n';
+            scanf("%d%d",&l,&r);
+            printf("%lld\n",seg.prod(l, r));
         }
     }
 }

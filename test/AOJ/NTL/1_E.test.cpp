@@ -1,13 +1,13 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/6/NTL/1/NTL_1_E"
 
-#include"template.hpp"
-#include"math/gcd.hpp"
+#include<iostream>
+#include"../../../math/gcd.hpp"
 
 using namespace std;
 int main(){
-    ll a, b;
+    long long a, b;
     cin >> a >> b;
-    ll x, y;
-    ext_gcd(a, b, x, y);
-    cout << x << ' ' << y << '\n';
+    long long x, y;
+    kyopro::ext_gcd(a, b, x, y);
+    std::cout << x << ' ' << y << '\n';
 }

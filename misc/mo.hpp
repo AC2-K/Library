@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <numeric>
 #include <vector>
-
+namespace kyopro {
 /// @brief mo's algorithm
 class Mo {
     int n;
@@ -13,7 +13,7 @@ class Mo {
 
   public:
     explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }
-    void add(int l, int r) { lr.emplace_back(l, r); }
+    inline void add(int l, int r) { lr.emplace_back(l, r); }
     long long hilbertorder(int x, int y) {
         long long d = 0;
         for (int s = 1 << (logn - 1); s; s >>= 1) {
@@ -66,4 +66,6 @@ class Mo {
         build(add, add, erase, erase, out);
     }
 };
+};  // namespace kyopro
+
 /// @docs docs/other/mo.md

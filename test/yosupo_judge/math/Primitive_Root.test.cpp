@@ -1,14 +1,13 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/primitive_root"
-#include"template.hpp"
-#include"math/primitive_root.hpp"
-using namespace std;
+#include<iostream>
+#include"../../../math/primitive_root.hpp"
 int main(){
     int q;
     scanf("%d", &q);
     while (q--) {
-        ll p;
+        long long p;
         scanf("%lld", &p);
-        ll ans = primitive_root(p);
+        long long ans = kyopro::primitive_root(p);
         printf("%lld\n", ans);
     }
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <cassert>
+namespace kyopro {
 /// @brief Dynamic Segment Tree(動的セグメント木)
 template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
   public:
@@ -121,5 +122,6 @@ template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
                   internal_prod(p->right, mid, r, L, R));
     }
 };
+};  // namespace kyopro
 
 /// @docs docs/data-structure/dynamic_segtree.md

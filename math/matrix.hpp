@@ -1,7 +1,8 @@
-
+#pragma once
+#include <vector>
+namespace kyopro {
 /// @brief matirx(行列)
-template<typename T>
-class Matrix {
+template <typename T> class Matrix {
     std::vector<std::vector<T>> dat;
     int h = 0, w = 0;
 
@@ -9,14 +10,13 @@ class Matrix {
     Matrix(const std::vector<std::vector<T>>& dat)
         : dat(dat), h(dat.size()), w(dat.front().size()) {}
 
-    Matrix(int h_, int w_, const T& v = T())
-        : dat(h_, std::vector<T>(w_, v)){}
-        
+    Matrix(int h_, int w_, const T& v = T()) : dat(h_, std::vector<T>(w_, v)) {}
+
     using mat = Matrix<T>;
-    //access
+    // access
     std::vector<T>& operator[](int i) { return dat[i]; }
 
-    //operator
+    // operator
     mat& operator+=(const mat& r) {
         assert(r.h == this->h);
         assert(r.w == this->w);
@@ -27,7 +27,7 @@ class Matrix {
         }
         return (*this);
     }
-    mat& operator-=(const mat&r){
+    mat& operator-=(const mat& r) {
         assert(r.h == this->h);
         assert(r.w == this->w);
         for (int i = 0; i < h; i++) {
@@ -37,7 +37,7 @@ class Matrix {
         }
         return (*this);
     }
-    
+
     mat& operator*=(const mat& r) {
         int ha = dat.size(), wa = dat.front().size();
         int hb = r.dat.size(), wb = r.dat.front().size();
@@ -45,7 +45,7 @@ class Matrix {
 
         std::vector<std::vector<T>> res(ha, std::vector<T>(wb));
         for (int i = 0; i < ha; i++) {
-            for (int k = 0; k < wa; k++){
+            for (int k = 0; k < wa; k++) {
                 for (int j = 0; j < wb; j++) {
                     res[i][j] += dat[i][k] * r.dat[k][j];
                 }
@@ -60,8 +60,7 @@ class Matrix {
     mat operator-(const mat& r) { return mat(*this) -= r; }
     mat operator*(const mat& r) { return mat(*this) *= r; }
 
-    template<typename P>
-    mat pow(P e) const {
+    template <typename P> mat pow(P e) const {
         assert(e >= 0);
         int n = dat.size();
         mat res(n, n, 0);
@@ -71,11 +70,13 @@ class Matrix {
         while (e) {
             if (e & 1) res *= pr;
             pr *= pr;
-            
+
             e >>= 1;
         }
-        
+
         return res;
     }
 };
+};  // namespace kyopro
+
 /// @docs docs/math/matrix.md

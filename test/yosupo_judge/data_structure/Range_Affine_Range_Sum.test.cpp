@@ -1,16 +1,15 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum"
-#include"template.hpp"
-#include"data-structure/lazy_segtree.hpp"
-#include"math/static_modint.hpp"
-using namespace std;
-using mint = static_modint32<MOD2>;
+#include<iostream>
+#include"../../../data-structure/lazy_segtree.hpp"
+#include"../../../math/static_modint.hpp"
+using mint = kyopro::static_modint32<998244353>;
 struct S {
     mint s;
     int len;
 };
 S op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }
 S e() { return S{0, 0}; }
-using Affine = pair<mint, mint>;
+using Affine = std::pair<mint, mint>;
 Affine composition(Affine g, Affine f) {
 	//f(g)
 	//a(cx+d)+b
@@ -26,30 +25,30 @@ S mapping(S d, Affine f) {
 };
 
 int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
     int n, q;
-    cin >> n >> q;
-    lazy_segtree<S, Affine, op, e, composition, id, mapping> sg(n);
-    rep(i,n){
+    std::cin >> n >> q;
+    kyopro::lazy_segtree<S, Affine, op, e, composition, id, mapping> sg(n);
+    for(int i=0;i<n;i++){
         mint a;
-        cin >> a;
+        std::cin >> a;
         sg.set(i, {a, 1});
     }
     sg.build();
     while(q--){
         int t;
-        cin >> t;
+        std::cin >> t;
         if (t == 0) {
             int l, r;
             mint b, c;
-            cin >> l >> r >> b >> c;
+            std::cin >> l >> r >> b >> c;
             sg.apply(l, r, Affine(b, c));
         } else {
             int l, r;
-            cin >> l >> r;
+            std::cin >> l >> r;
             auto res = sg.prod(l, r);
-            cout << res.s << '\n';
+            std::cout << res.s << '\n';
         }
     }
 }

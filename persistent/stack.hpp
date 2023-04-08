@@ -1,5 +1,6 @@
 #pragma once
 #include <cassert>
+namespace kyopro {
 template <class T> class persistent_stack {
     class Node {
       public:
@@ -29,3 +30,4 @@ template <class T> class persistent_stack {
     int size() const { return sz; }
     bool empty() const { return (head == nullptr); }
 };
+};  // namespace kyopro

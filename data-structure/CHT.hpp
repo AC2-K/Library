@@ -1,10 +1,9 @@
 #pragma once
 #include <set>
+namespace kyopro {
 
 /// @brief Convex Hull Trick
-/// @tparam T 係数の型
-/// @tparam query_type クエリのタイプ.trueにすると最大値を求めるように変更する
-template <class T = ll, bool query_type = false> class CHT {
+template <class T = long long, bool query_type = false> class CHT {
     class line {
       public:
         T a, b;
@@ -84,5 +83,7 @@ template <class T = ll, bool query_type = false> class CHT {
         }
     }
 };
+
+};  // namespace kyopro
 
 /// @docs docs/data-structure/CHT.md

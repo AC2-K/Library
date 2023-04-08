@@ -1,6 +1,6 @@
 #pragma once
 #include"math/dynamic_modint.hpp"
-namespace library {
+namespace kyopro {
     namespace miller {
         using i128 = __int128_t;
         using u128 = __uint128_t;

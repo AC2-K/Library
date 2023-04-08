@@ -1,7 +1,9 @@
 #pragma once
+#include<vector>
+#include<algorithm>
 #include"math/miller.hpp"
 #include"math/gcd.hpp"
-namespace library {
+namespace kyopro {
     
     ///@brief 高速素因数分解(Pollard Rho法)
     namespace rho {
@@ -18,7 +20,7 @@ namespace library {
             if (~n & 1uL) {
                 return 2;
             }
-            if (library::miller::is_prime(n)) {
+            if (kyopro::miller::is_prime(n)) {
                 return n;
             }
 
@@ -51,14 +53,14 @@ namespace library {
             if (n < 2) {
                 return {};
             }
-            if (library::miller::is_prime(n)) {
+            if (kyopro::miller::is_prime(n)) {
                 return { n };
             }
             std::vector<u64> v;
             std::vector<u64> st{ n };
             while (st.size()) {
                 u64& m = st.back();
-                if (library::miller::is_prime(m)) {
+                if (kyopro::miller::is_prime(m)) {
                     v.emplace_back(m);
                     st.pop_back();
                 }
@@ -75,7 +77,7 @@ namespace library {
                 return {};
             }
             auto v = (n < (1uL << 31) ? rho_fact<dynamic_modint<u32, u64>>(n) : rho_fact<dynamic_modint<u64, u128>>(n));
-            sort(v.begin(), v.end());
+            std::sort(v.begin(), v.end());
             return v;
         }
 
@@ -86,7 +88,7 @@ namespace library {
             }
             vector<pair<u64, int>> res;
             res.emplace_back(pf.front(), 1);
-            for (int i = 1; i < pf.size(); i++) {
+            for (int i = 1; i < (int)pf.size(); i++) {
                 if (res.back().first == pf[i]) {
                     res.back().second++;
                 }
@@ -98,4 +100,4 @@ namespace library {
             return res;
         }
     };  // namespace pollard
-};  // namespace library
+};  // namespace kyopro

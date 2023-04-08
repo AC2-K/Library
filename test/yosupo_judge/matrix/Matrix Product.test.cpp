@@ -1,31 +1,28 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/matrix_product"
-#include"template.hpp"
-#include"math/static_modint.hpp"
-#include"math/matrix.hpp"
-#pragma GCC target("avx2")
-#pragma GCC optimize("Ofast")
+#include<iostream>
+#include"../../../math/static_modint.hpp"
+#include"../../../math/matrix.hpp"
 #pragma GCC optimize("unroll-loops")
 
-using namespace std;
-using mint = static_modint32<MOD2>;
+using mint = kyopro::static_modint32<998244353>;
 int main() {
     int n, m, k;
     scanf("%d%d%d",&n,&m,&k);
-    using mat = Matrix<mint>;
+    using mat = kyopro::Matrix<mint>;
     mat a(n, m), b(m, k);
-    rep(i, n) rep(j, m) { 
+    for(int i=0;i<n;i++)for(int j=0;j<m;j++) { 
         int v;
         scanf("%d",&v);
         a[i][j]=mint(v);
     }
-    rep(i, m) rep(j, k) { 
+    for(int i=0;i<m;i++)for(int j=0;j<k;j++) { 
         int v;
         scanf("%d",&v);
         b[i][j]=mint(v);
     }
     auto res = a * b;
-    rep(i, n) {
-        rep(j, k) { printf("%d ",res[i][j].val()); }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<k;j++) { printf("%d ",res[i][j].val()); }
         puts("");
     }
 }

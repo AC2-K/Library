@@ -1,13 +1,12 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
-#include"template.hpp"
-#include"data-structure/sparse_table.hpp"
+#include<iostream>
+#include"../../../data-structure/sparse_table.hpp"
 
-using namespace std;
 int main() {
 	int n, q;
 	scanf("%d%d", &n, &q);
-	sparse_table<int> rmq(n);
-	rep(i, n) {
+	kyopro::sparse_table<int> rmq(n);
+	for(int i=0;i<n;i++) {
 		int ai;
 		scanf("%d", &ai);
 		rmq.set(i, ai);

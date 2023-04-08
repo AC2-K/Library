@@ -4,32 +4,32 @@
 #include <iostream>
 #include <numeric>
 #include <vector>
-namespace prime {
+namespace kyopro {
 /// @brief Osak法
 namespace Osak {
 using u32 = uint32_t;
 u32 limit;
-std::vector<u32> lpf;
-void init(const u32& lim) {
+std::vector<u32> factor;
+void init(u32 lim) {
     limit = lim;
-    lpf.resize(lim + 1);
-    std::iota(lpf.begin(), lpf.end(), 0);
+    factor.resize(lim + 1);
+    std::iota(factor.begin(), factor.end(), 0);
     for (u32 i = 2; i * i <= limit; i++) {
-        if (lpf[i] != i) {
+        if (factor[i] != i) {
             continue;
         }
         for (int j = i; j <= limit; j += i) {
-            lpf[j] = i;
+            factor[j] = i;
         }
     }
 }
-u32 find_factor(const u32& n) {
+u32 find_factor(u32 n) {
     assert(1 <= n && n <= limit);
-    return lpf[n];
+    return factor[n];
 }
-u32 is_prime(const u32& n) {
+u32 is_prime(u32 n) {
     assert(1 <= n && n <= limit);
-    return lpf[n] == n;
+    return factor[n] == n;
 }
 std::vector<u32> factorize(u32 n) {
     assert(1 <= n && n <= limit);
@@ -73,4 +73,4 @@ std::vector<std::pair<u32, u32>> exp_factorize(u32 n) {
     return res;
 }
 };  // namespace Osak
-};  // namespace library
+};  // namespace kyopro

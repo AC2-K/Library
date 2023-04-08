@@ -2,7 +2,7 @@
 #include <cassert>
 #include <iostream>
 #include "math/gcd.hpp"
-#include "template.hpp"
+namespace kyopro {
 template <__uint64_t mod> class static_modint {
   private:
     using mint = static_modint<mod>;
@@ -12,7 +12,7 @@ template <__uint64_t mod> class static_modint {
     using i128 = __int128_t;
 
     u64 v;
-    inline u64 normalize(i64 v_) const {
+    constexpr inline u64 normalize(i64 v_) const {
         v_ %= mod;
         if (v_ < 0) {
             v_ += mod;
@@ -93,8 +93,8 @@ template <__uint64_t mod> class static_modint {
         return ans;
     }
     constexpr inline mint inv() const {
-        ll x, y;
-        auto d = ext_gcd((ll)mod, (ll)v, x, y);
+        long long x, y;
+        auto d = ext_gcd((long long)mod, (long long)v, x, y);
         assert(d == 1);
         return mint(y);
     }
@@ -130,7 +130,7 @@ template <__uint32_t mod> class static_modint32 {
     using u64 = __uint64_t;
 
     u32 v;
-    inline u32 normalize(i64 v_) const {
+    constexpr inline u32 normalize(i64 v_) const {
         v_ %= mod;
         if (v_ < 0) {
             v_ += mod;
@@ -211,8 +211,8 @@ template <__uint32_t mod> class static_modint32 {
     }
 
     constexpr inline mint inv() const {
-        ll x, y;
-        auto d = ext_gcd((ll)mod, (ll)v, x, y);
+        long long x, y;
+        auto d = ext_gcd((long long)mod, (long long)v, x, y);
         assert(d == 1);
         return mint(y);
     }
@@ -229,7 +229,8 @@ template <__uint32_t mod> class static_modint32 {
     }
 
     // iostream
-    constexpr friend std::ostream& operator<<(std::ostream& os, const mint& mt) {
+    constexpr friend std::ostream& operator<<(std::ostream& os,
+                                              const mint& mt) {
         os << mt.val();
         return os;
     }
@@ -240,5 +241,7 @@ template <__uint32_t mod> class static_modint32 {
         return is;
     }
 };
-///@brief static modint(静的modint)
-///@docs docs/math/static_modint.md
+};  // namespace kyopro
+
+/// @brief static modint(静的modint)
+/// @docs docs/math/static_modint.md

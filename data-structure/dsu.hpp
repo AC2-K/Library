@@ -1,13 +1,14 @@
 #pragma once
 #include <vector>
 
+namespace kyopro {
 /// @brief Disjoint Set(Union find)
-class DSU {
+class dsu {
   private:
     std::vector<int> find, rank;
 
   public:
-    DSU(int n) : find(n, -1), rank(n, 1) {}
+    dsu(int n) : find(n, -1), rank(n, 1) {}
 
     int root(int x) {
         if (find[x] < 0) {
@@ -28,5 +29,7 @@ class DSU {
     }
     int size(int x) { return -find[root(x)]; }
 };
+
+};  // namespace kyopro
 
 /// @docs docs/data-structure/dsu.md

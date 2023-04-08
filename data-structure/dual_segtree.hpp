@@ -1,6 +1,8 @@
 #pragma once
 #include <cassert>
 #include <vector>
+namespace kyopro {
+
 /// @brief Dual Segmenttree(双対セグメント木)
 template <class F, F (*comp)(F, F), F (*id)(), bool is_commutative = true>
 class dual_segtree {
@@ -67,5 +69,7 @@ class dual_segtree {
         }
     }
 };
+
+};  // namespace kyopro
 
 /// @docs docs/data-structure/dual_segtree.md

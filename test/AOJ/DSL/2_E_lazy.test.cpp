@@ -1,35 +1,30 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E"
+#include<iostream>
+#include "../../../data-structure/lazy_segtree.hpp"
 
-#include"template.hpp"
-#include"data-structure/lazy_segtree.hpp"
-
-
-using namespace std;
-int op(int x,int y){return x+y;}
-int comp(int x,int y){return x+y;}
-int mapping(int x,int y){return x+y;}
-int e(){return 0;}
-int id(){return 0;}
+int op(int x, int y) { return x + y; }
+int comp(int x, int y) { return x + y; }
+int mapping(int x, int y) { return x + y; }
+int e() { return 0; }
+int id() { return 0; }
 
 int main() {
-    int n,q;
-    cin>>n>>q;
-    lazy_segtree<int,int,op,e,comp,id,mapping> seg(n);
-    while(q--){
+    int n, q;
+    scanf("%d%d", &n, &q);
+    kyopro::lazy_segtree<int, int, op, e, comp, id, mapping> seg(n);
+    while (q--) {
         int t;
-        cin>>t;
-        if(t==0){
-            int l,r;
-            cin>>l>>r;
-            int new_val;
-            cin>>new_val;
-            l--,r--;
-            seg.apply(l,r+1,new_val);
-        }else{
+        scanf("%d", &t);
+        if (!t) {
+            int l, r, val;
+            scanf("%d%d%d", &l, &r, &val);
+            l--, r--;
+            seg.apply(l, r + 1, val);
+        } else {
             int i;
-            cin>>i;
+            scanf("%d", &i);
             i--;
-            cout<<seg[i]<<'\n';
+            printf("%d\n", seg[i]);
         }
     }
 }

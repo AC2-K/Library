@@ -1,28 +1,26 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_C"
-
-#include"template.hpp"
-#include"graph/euler_tour.hpp"
-using namespace std;
-int main(){
+#include <iostream>
+#include "../../../graph/euler_tour.hpp"
+int main() {
     int n;
-    cin>>n;
-    EulerTour g(n);
-    rep(v, n) {
+    scanf("%d", &n);
+    kyopro::EulerTour g(n);
+    for (int v = 0; v < n; v++) {
         int k;
-        cin>>k;
-        rep(i,k){
+        scanf("%d", &k);
+        for (int i = 0; i < k; i++) {
             int c;
-            cin>>c;
+            scanf("%d", &c);
             g.add_edge(v, c);
         }
     }
 
     g.build();
     int q;
-    cin >> q;
-    while(q--){
+    scanf("%d", &q);
+    while (q--) {
         int u, v;
-        cin >> u >> v;
-        cout << g.lca(u, v) << '\n';
+        scanf("%d%d", &u, &v);
+        printf("%d\n", g.lca(u, v));
     }
 }

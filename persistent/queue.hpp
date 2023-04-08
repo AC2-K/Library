@@ -1,5 +1,6 @@
 #pragma once
 #include <cassert>
+namespace kyopro {
 template <typename T, int lg = 20> class persistent_queue {
     struct Node {
         Node() = default;
@@ -60,3 +61,4 @@ template <typename T, int lg = 20> class persistent_queue {
         return back_ptr->val;
     }
 };
+};  // namespace kyopro

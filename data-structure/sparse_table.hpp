@@ -1,17 +1,17 @@
 #pragma once
-#include<numeric>
+#include <numeric>
+#include <vector>
+namespace kyopro {
 /// @brief Sparse Table
-/// @tparam T 要素の型
-/// @docs docs/data-structure/sparse_table.md
-template<class T>
-class sparse_table {
+template <class T> class sparse_table {
     std::vector<T> vec;
     std::vector<std::vector<T>> table;
     std::vector<int> look_up;
-public:
+
+  public:
     sparse_table(int n) : vec(n) {}
     sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }
-    void set(int p, const T& v) { vec[p] = v; }
+    inline void set(int p, const T& v) { vec[p] = v; }
     void build() {
         int sz = vec.size();
         int log = 0;
@@ -34,8 +34,11 @@ public:
         }
     }
 
-    T prod(int l, int r) {
+    inline T prod(int l, int r) {
         int b = look_up[r - l];
         return std::min(table[b][l], table[b][r - (1 << b)]);
     }
 };
+};  // namespace kyopro
+
+/// @docs docs/data-structure/sparse_table.md

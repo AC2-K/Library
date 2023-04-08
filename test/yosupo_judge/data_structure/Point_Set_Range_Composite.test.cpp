@@ -1,15 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_set_range_composite"
-#include"template.hpp"
-#include"data-structure/segtree.hpp"
-#include"math/static_modint.hpp"
-using namespace std;
-#pragma GCC target("avx2")
-#pragma GCC optimize("Ofast")
-#pragma GCC optimize("unroll-loops")
-using mint = static_modint32<MOD2>;
+#include<iostream>
+#include"../../../data-structure/segtree.hpp"
+#include"../../../math/static_modint.hpp"
 
-struct F
-{
+using mint = kyopro::static_modint32<998244353>;
+
+struct F{
     mint a,b;
 };
 
@@ -22,31 +18,33 @@ F e(){
     return F{1,0};
 }
 int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
     int n, q;
-    cin >> n >> q;
-    segtree<F, op, e> seg(n);
-    rep(i, n){
+    std::cin >> n >> q;
+    kyopro::segtree<F, op, e> seg(n);
+    for(int i = 0; i < n;i++){
         mint a, b;
-        cin >> a >> b;
+        std::cin >> a >> b;
         seg.set(i, F{a, b});
     }
     seg.build();
     while (q--){
         int t;
-        cin >> t;
-        if (t == 0){
+        std::cin >> t;
+        if (!t){
             int p;
             mint c, d;
-            cin >> p >> c >> d;
+            std::cin >> p >> c >> d;
             seg.update(p, F{c, d});
         }
         else{
             int l, r;
             mint x;
-            cin >> l >> r >> x;
+            std::cin >> l >> r >> x;
             F res = seg.prod(l, r);
             mint ans = res.a * x + res.b;
-            cout << ans << '\n';
+            std::cout << ans << '\n';
         }
     }
 }

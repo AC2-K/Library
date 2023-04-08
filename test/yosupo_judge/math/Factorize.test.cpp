@@ -1,14 +1,13 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/factorize"
-
-#include"template.hpp"
-#include"math/rho.hpp"
+#include<iostream>
+#include"../../../math/rho.hpp"
 int main(){
     int q;
     scanf("%d", &q);
     while (q--) {
         uint64_t x;
         scanf("%lld", &x);
-        const auto pf = library::rho::factorize(x);
+        const auto pf = kyopro::rho::factorize(x);
         printf("%d ", (int)pf.size());
         for (auto &p : pf){
             printf("%lld ", p);

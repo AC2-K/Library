@@ -1,27 +1,26 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
-#include"template.hpp"
-#include"data-structure/segtree.hpp"
+#include <iostream>
+#include "../../../data-structure/segtree.hpp"
 
-using namespace std;
 namespace for_segtree{
-    using S=ll;
+    using S = long long;
     S op(S x,S y){return x+y;}
     S e(){return 0;}
 };
 int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(0);
     int n,q;
-    cin>>n>>q;
-    vector<ll> a(n);
-    for(auto&aa:a){
-        cin>>aa;
-    }
+    scanf("%d%d",&n,&q);
 
-    segtree<for_segtree::S,for_segtree::op,for_segtree::e> seg(a);
+    kyopro::segtree<for_segtree::S,for_segtree::op,for_segtree::e> seg(n);
+    for(int i=0;i<n;i++){
+        int a;
+        scanf("%d",&a);
+        seg.set(i,a);
+    }
+    seg.build();
     while(q--){
         int l,r;
-        cin>>l>>r;
-        cout<<seg.prod(l,r)<<'\n';
+        scanf("%d%d",&l,&r);
+        printf("%lld\n",seg.prod(l,r));
     }
 }

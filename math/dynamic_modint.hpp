@@ -1,8 +1,9 @@
 #pragma once
-#include <iostream>
 #include <cassert>
+#include <iostream>
 #include "internal/barrett.hpp"
 #include "internal/montgomery.hpp"
+namespace kyopro {
 template <int id = -1> class barrett_modint {
     using u32 = uint32_t;
     using u64 = uint64_t;
@@ -15,7 +16,7 @@ template <int id = -1> class barrett_modint {
     static u32 mod;
     u32 v;  // value
   public:
-    static void set_mod(u32 mod_) {
+    static inline void set_mod(u32 mod_) {
         brt = br(mod_);
         mod = mod_;
     }
@@ -102,21 +103,25 @@ template <int id = -1> class barrett_modint {
     friend mint operator/(const mint& l, i64 r) { return mint(l) /= r; }
     friend mint operator/(i64 l, const mint& r) { return mint(l) /= r; }
 };
-template <int id> typename barrett_modint<id>::u32 barrett_modint<id>::mod;
-template <int id> typename barrett_modint<id>::br barrett_modint<id>::brt;
+};  // namespace kyopro
+template <int id>
+typename kyopro::barrett_modint<id>::u32 kyopro::barrett_modint<id>::mod;
+template <int id>
+typename kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;
 
+namespace kyopro {
 template <typename T = uint32_t, typename LargeT = uint64_t, int id = -1>
 class dynamic_modint {
     static T mod;
-    static internal::MontgomeryReduction64<T, LargeT> mr;
+    static internal::Montgomery<T, LargeT> mr;
 
   public:
-    static void set_mod(T mod_) {
+    static void inline set_mod(T mod_) {
         mr.set_mod(mod_);
         mod = mod_;
     }
 
-    static T get_mod() { return mod; }
+    static inline T get_mod() { return mod; }
 
   private:
     T v;
@@ -126,7 +131,7 @@ class dynamic_modint {
         assert(mod);
         v = mr.generate(v_);
     }
-    T val() const { return mr.reduce(v); }
+    inline T val() const { return mr.reduce(v); }
 
     using mint = dynamic_modint<T, LargeT, id>;
     mint& operator+=(const mint& r) {
@@ -192,10 +197,12 @@ class dynamic_modint {
     friend mint operator/(const mint& l, T r) { return mint(l) /= r; }
     friend mint operator/(T l, const mint& r) { return mint(l) /= r; }
 };
+};  // namespace kyopro
 template <typename T, typename LargeT, int id>
-T dynamic_modint<T, LargeT, id>::mod;
+T kyopro::dynamic_modint<T, LargeT, id>::mod;
 template <typename T, typename LargeT, int id>
-internal::MontgomeryReduction64<T, LargeT> dynamic_modint<T, LargeT, id>::mr;
+kyopro::internal::Montgomery<T, LargeT>
+    kyopro::dynamic_modint<T, LargeT, id>::mr;
 
 /// @brief dynamic modint(動的modint)
 /// @docs docs/math/dynamic_modint.md

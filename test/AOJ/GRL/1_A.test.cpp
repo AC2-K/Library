@@ -1,22 +1,23 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_1_A"
 
-#include"template.hpp"
-#include"graph/dijkstra.hpp"
-using namespace std;
-int main(){
-    int n,m,r;
-    cin>>n>>m>>r;
-    vector<vector<edge>> g(n);
-    rep(i,m){
-        int s,t,w;
-        cin>>s>>t>>w;
-        g[s].emplace_back(t,w);
+#include <iostream>
+#include "../../../graph/dijkstra.hpp"
+int main() {
+    int n, m, r;
+    scanf("%d%d%d", &n, &m, &r);
+    std::vector<std::vector<kyopro::edge>> g(n);
+    for (int i = 0; i < m; i++) {
+        int s, t, w;
+        scanf("%d%d%d", &s, &t, &w);
+        g[s].emplace_back(t, w);
     }
 
-    auto res=dijkstra(r,g).first;
+    auto res = kyopro::dijkstra(r, g).first;
 
-    rep(v,n){
-        if(res[v]>=infl)cout<<"INF\n";
-        else cout<<res[v]<<'\n';
+    for (int v = 0; v < n; v++) {
+        if (res[v] >= (long long)1e18)
+            puts("INF");
+        else
+            printf("%lld\n", res[v]);
     }
 }

@@ -1,29 +1,29 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/tree_diameter"
-#include"template.hpp"
-#include"graph/dijkstra.hpp"
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include"../../../graph/dijkstra.hpp"
 
-using namespace std;
 int main() {
     int n;
-    cin>>n;
-    vector<vector<edge>> g(n);
-    rep(i,n-1){
+    scanf("%d",&n);
+    std::vector<std::vector<kyopro::edge>> g(n);
+    for(int i=0;i<n-1;i++){
         int a,b,c;
-        cin>>a>>b>>c;
+        scanf("%d%d%d",&a,&b,&c);
         g[a].emplace_back(b,c);
         g[b].emplace_back(a,c);
     }
 
-    auto dist=dijkstra(0,g).first;
-    ll dist_max=*max_element(all(dist));
-    int v=find(all(dist),dist_max)-dist.begin();
-    dist=dijkstra(v,g).first;
-    dist_max=*max_element(all(dist));
-    int u=find(all(dist),dist_max)-dist.begin();
-    cout<<dist_max<<' ';
+    auto dist=kyopro::dijkstra(0,g).first;
+    int v=std::max_element(dist.begin(),dist.end())-dist.begin();
+    dist=kyopro::dijkstra(v,g).first;
+    auto it=std::max_element(dist.begin(),dist.end());
+    int u=it-dist.begin();
+    printf("%lld\n",*it);
 
     int cur=u;
-    vector<int> ans;
+    std::vector<int> ans;
     while(cur!=v){
         ans.emplace_back(cur);
         for(auto&[p,c]:g[cur]){
@@ -34,7 +34,6 @@ int main() {
         }
     }
     ans.emplace_back(v);
-    cout<<ans.size()<<'\n';
-    for(auto&k:ans)cout<<k<<' ';
-    cout<<'\n';
+    printf("%d\n",(int)ans.size());
+    for(auto&k:ans)printf("%d ",k);
 }

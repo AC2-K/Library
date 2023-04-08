@@ -1,47 +1,43 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_subtree_sum"
-#include"template.hpp"
-#include"data-structure/BIT.hpp"
-#include"graph/euler_tour.hpp"
+#include<iostream>
+#include"../../../data-structure/BIT.hpp"
+#include"../../../graph/euler_tour.hpp"
 
-using namespace std;
 int main() {
     int n, q;
-    cin >> n >> q;
-    vector<ll> a(n);
+    scanf("%d%d",&n,&q);
+    std::vector<long long> a(n);
     for (auto& aa : a) {
-        cin >> aa;
+        scanf("%lld",&aa);
     }
 
-    EulerTour g(n);
+    kyopro::EulerTour g(n);
     for (int i = 1; i < n; i++) {
         int p;
-        cin >> p;
+        scanf("%d",&p);
         g.add_edge(i, p);
     }
     g.build();
 
-    BIT<ll> seg(2 * n);
+    kyopro::BIT<long long> seg(2 * n);
     for (int v = 0; v < n; v++) {
         int in = g.idx(v).first;
         seg.add(in, a[v]);
     }
     while (q--) {
         int t;
-        cin >> t;
-        if (t == 0) {
-            int v;
-            cin >> v;
-            int x;
-            cin >> x;
+        scanf("%d",&t);
+        if (!t) {
+            int v,x;
+            scanf("%d%d",&v,&x);
             int in = g.idx(v).first;
             seg.add(in, x);
         }
         else {
             int v;
-            cin >> v;
-            int in, out;
-            tie(in, out) = g.idx(v);
-            cout << seg.sum(in,out + 1) << '\n';
+            scanf("%d",&v);
+            auto [in, out] = g.idx(v);
+            printf("%lld\n",seg.sum(in,out + 1));
         }
     }
 }

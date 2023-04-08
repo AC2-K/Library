@@ -1,15 +1,14 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/5/DSL_5_B"
-#include"template.hpp"
-#include"misc/2DSum.hpp"
-using namespace std;
+#include<iostream>
+#include"../../../misc/2DSum.hpp"
 int main(){
     constexpr int h = 1000;
     constexpr int w = 1000;
 
     int n;
     scanf("%d", &n);
-    Imos2D<int> c(h, w);
-    rep(i, n) {
+    kyopro::Imos2D<int> c(h, w);
+    for(int i=0;i<n;i++) {
         int x1, x2, y1, y2;
         scanf("%d%d%d%d", &x1, &y1, &x2, &y2);
 
@@ -17,6 +16,6 @@ int main(){
     }
     c.build();
     int ans = 0;
-    rep(i, h) rep(j, w) { chmax(ans, c.at(i, j)); }
+    for(int i=0;i<h;i++) for(int j=0;j<w;j++) { ans = std::max(ans,c.at(i, j)); }
     printf("%d\n", ans);
 }
