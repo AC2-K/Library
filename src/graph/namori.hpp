@@ -2,6 +2,8 @@
 #include <queue>
 #include <vector>
 namespace kyopro {
+
+/// @brief なもりグラフの分解
 class namori {
     int n;
     std::vector<std::vector<int>> g;

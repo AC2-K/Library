@@ -20,8 +20,8 @@ class EulerTour {
     }
     inline std::vector<std::vector<int>> get_graph() { return g; }
     inline std::vector<int> get_tour() { return tour; }
+    inline int get_depth(int v) const { return depth[v]; }
 
-  private:
   public:
     void build(int r = 0) {
         auto dfs = [&](auto self, int v, int p) -> void {
@@ -42,7 +42,7 @@ class EulerTour {
         rmq.build();
     }
 
-    std::pair<int, int> idx(int v) { return {in[v], out[v]}; }
+    inline std::pair<int, int> idx(int v) { return {in[v], out[v]}; }
     int lca(int v, int u) {
         if (in[v] > in[u] + 1) {
             std::swap(u, v);
@@ -50,12 +50,12 @@ class EulerTour {
         return rmq.prod(in[v], in[u] + 1).second;
     }
 
-    int dist(int v, int u) {
+    inline int dist(int v, int u) {
         int p = lca(v, u);
         return depth[v] + depth[u] - 2 * depth[p];
     }
 
-    bool is_in_subtree(int par, int v) {
+    inline bool is_in_subtree(int par, int v) {
         return (in[par] <= in[v] && out[v] <= out[par]);
     }
 };
