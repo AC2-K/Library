@@ -101,4 +101,4 @@ template <typename T> inline long long mod_log(T a, T b, T c) {
 }
 };  // namespace kyopro
 
-///@docs docs/math/DLP.md
+///@docs docs/math/mod_log.md

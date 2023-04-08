@@ -1,7 +1,7 @@
 #pragma once
 namespace kyopro {
 namespace internal {
-///@brief barrett reduction
+/// @brief barrett reduction
 class barrett {
     using u32 = uint32_t;
     using u64 = uint64_t;

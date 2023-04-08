@@ -1,6 +1,7 @@
 #pragma once
 #include <cassert>
 namespace kyopro {
+/// @brief 永続queue
 template <typename T, int lg = 20> class persistent_queue {
     struct Node {
         Node() = default;
@@ -30,7 +31,6 @@ template <typename T, int lg = 20> class persistent_queue {
                 break;
         }
 
-        // 空だった時に注意する
         if (siz) {
             return persistent_queue(front_ptr, ptr, siz + 1);
         } else {
