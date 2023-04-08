@@ -40,6 +40,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/sparse_table.hpp
       title: Sparse Table
+  - name: src/data-structure-2d
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure-2d/cumulative-sum.hpp
+      title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
   - name: src
     pages:
     - icon: ':warning:'
@@ -111,9 +116,6 @@ data:
   - name: src/misc
     pages:
     - icon: ':heavy_check_mark:'
-      path: src/misc/2DSum.hpp
-      title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
-    - icon: ':heavy_check_mark:'
       path: src/misc/mo.hpp
       title: mo's algorithm
   - name: src/persistent
@@ -126,6 +128,9 @@ data:
       title: "\u6C38\u7D9Astack"
   - name: src/string
     pages:
+    - icon: ':heavy_check_mark:'
+      path: src/string/manacher.hpp
+      title: manacher's algorithm
     - icon: ':warning:'
       path: src/string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
@@ -251,6 +256,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - name: test/yosupo_judge/string
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
+      title: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   - name: test/yosupo_judge/tree
     pages:
     - icon: ':heavy_check_mark:'
