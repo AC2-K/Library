@@ -3,7 +3,7 @@
 namespace kyopro {
 /// @brief 2次元累積和
 /// @tparam T 重みの型
-template <typename T> class Sum2D {
+template <typename T> class cumulative_sum_2d {
     std::vector<std::vector<T>> dat;
     std::vector<std::vector<T>> s;
 
@@ -11,7 +11,7 @@ template <typename T> class Sum2D {
     const int h;
     const int w;
 
-    Sum2D(int h, int w)
+    cumulative_sum_2d(int h, int w)
         : h(h),
           w(w),
           dat(h, std::vector<T>(w, T())),
@@ -33,14 +33,14 @@ template <typename T> class Sum2D {
 
 /// @brief 二次元imos法
 /// @tparam T 重みの型
-template <typename T> class Imos2D {
-    Sum2D<T> d;
+template <typename T> class imos_2d {
+    cumulative_sum_2d<T> d;
 
   public:
     const int h;
     const int w;
 
-    Imos2D(int h, int w) : h(h), w(w), d(h + 1, w + 1) {}
+    imos_2d(int h, int w) : h(h), w(w), d(h + 1, w + 1) {}
     inline void add(int i1, int j1, int i2, int j2, const T& v) {
         d[i1][j1] += v, d[i2][j2] += v;
         d[i1][j2] -= v, d[i2][j1] -= v;

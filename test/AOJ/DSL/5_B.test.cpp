@@ -1,13 +1,13 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/5/DSL_5_B"
 #include<iostream>
-#include"../../../src/misc/2DSum.hpp"
+#include"../../../src/data-structure-2d/cumulative-sum.hpp"
 int main(){
     constexpr int h = 1000;
     constexpr int w = 1000;
 
     int n;
     scanf("%d", &n);
-    kyopro::Imos2D<int> c(h, w);
+    kyopro::imos_2d<int> c(h, w);
     for(int i=0;i<n;i++) {
         int x1, x2, y1, y2;
         scanf("%d%d%d%d", &x1, &y1, &x2, &y2);
