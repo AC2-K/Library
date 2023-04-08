@@ -4,17 +4,11 @@ data:
   - name: .
     pages:
     - icon: ':warning:'
-      path: debug.hpp
-      title: debug.hpp
-    - icon: ':warning:'
       path: main.cpp
       title: main.cpp
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':warning:'
-      path: template.hpp
-      title: template.hpp
   - name: src/data-structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -67,7 +61,7 @@ data:
       title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
     - icon: ':warning:'
       path: src/graph/namori.hpp
-      title: src/graph/namori.hpp
+      title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
   - name: src/internal
     pages:
     - icon: ':heavy_check_mark:'

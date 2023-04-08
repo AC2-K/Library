@@ -7,10 +7,12 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
+    document_title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
     links: []
   bundledCode: "#line 2 \"src/graph/namori.hpp\"\n#include <queue>\n#include <vector>\n\
-    namespace kyopro {\nclass namori {\n    int n;\n    std::vector<std::vector<int>>\
-    \ g;\n    std::vector<int> root_idx;\n    std::vector<int> deg;\n    std::vector<bool>\
+    namespace kyopro {\n\n/// @brief \u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\
+    \u89E3\nclass namori {\n    int n;\n    std::vector<std::vector<int>> g;\n   \
+    \ std::vector<int> root_idx;\n    std::vector<int> deg;\n    std::vector<bool>\
     \ is_cycle;\n    std::vector<int> cycle;\n\n  public:\n    namori(int n) : n(n),\
     \ g(n), deg(n), is_cycle(n, true), root_idx(n, -1) {\n        cycle.reserve(n);\n\
     \    }\n\n    inline void add_edge(int s, int t) {\n        g[s].emplace_back(t),\
@@ -37,9 +39,10 @@ data:
     \ int root(int v) const { return root_idx[v]; }\n    inline bool is_in_cycle(int\
     \ v) const { return is_cycle[v]; }\n    inline std::vector<int> get_cycle() const\
     \ { return cycle; }\n};\n};  // namespace kyopro\n"
-  code: "#pragma once\n#include <queue>\n#include <vector>\nnamespace kyopro {\nclass\
-    \ namori {\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ root_idx;\n    std::vector<int> deg;\n    std::vector<bool> is_cycle;\n    std::vector<int>\
+  code: "#pragma once\n#include <queue>\n#include <vector>\nnamespace kyopro {\n\n\
+    /// @brief \u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3\nclass namori\
+    \ {\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> root_idx;\n\
+    \    std::vector<int> deg;\n    std::vector<bool> is_cycle;\n    std::vector<int>\
     \ cycle;\n\n  public:\n    namori(int n) : n(n), g(n), deg(n), is_cycle(n, true),\
     \ root_idx(n, -1) {\n        cycle.reserve(n);\n    }\n\n    inline void add_edge(int\
     \ s, int t) {\n        g[s].emplace_back(t), g[t].emplace_back(s);\n        deg[s]++,\
@@ -70,7 +73,7 @@ data:
   isVerificationFile: false
   path: src/graph/namori.hpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-08 11:01:36+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/namori.hpp
@@ -78,5 +81,5 @@ layout: document
 redirect_from:
 - /library/src/graph/namori.hpp
 - /library/src/graph/namori.hpp.html
-title: src/graph/namori.hpp
+title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
 ---
