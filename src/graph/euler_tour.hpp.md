@@ -41,7 +41,7 @@ data:
     \ >> 1] + 1;\n        }\n    }\n\n    inline T prod(int l, int r) {\n        int\
     \ b = look_up[r - l];\n        return std::min(table[b][l], table[b][r - (1 <<\
     \ b)]);\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/sparse_table.md\n\
-    #line 3 \"src/graph/euler_tour.hpp\"\nnamespace kyopro {\n///@brief EulerTour(\u30AA\
+    #line 3 \"src/graph/euler_tour.hpp\"\nnamespace kyopro {\n/// @brief EulerTour(\u30AA\
     \u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)\nclass EulerTour {\n    int n;\n    std::vector<std::vector<int>>\
     \ g;\n    std::vector<int> tour;\n    std::vector<int> in, out, depth;\n    sparse_table<std::pair<int,\
     \ int>> rmq;\n\n  public:\n    EulerTour(int n)\n        : n(n), g(n), in(n, -1),\
@@ -65,7 +65,7 @@ data:
     \ {\n        return (in[par] <= in[v] && out[v] <= out[par]);\n    }\n};\n}; \
     \ // namespace kyopro\n"
   code: "#pragma once\n#include \"../data-structure/sparse_table.hpp\"\nnamespace\
-    \ kyopro {\n///@brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)\n\
+    \ kyopro {\n/// @brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)\n\
     class EulerTour {\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
     \ tour;\n    std::vector<int> in, out, depth;\n    sparse_table<std::pair<int,\
     \ int>> rmq;\n\n  public:\n    EulerTour(int n)\n        : n(n), g(n), in(n, -1),\
@@ -93,7 +93,7 @@ data:
   isVerificationFile: false
   path: src/graph/euler_tour.hpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-08 13:48:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp

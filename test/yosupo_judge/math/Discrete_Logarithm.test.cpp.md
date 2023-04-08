@@ -55,9 +55,9 @@ data:
     \                return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
     \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace\
     \ kyopro\n#line 2 \"src/math/dynamic_modint.hpp\"\n#include <cassert>\n#line 2\
-    \ \"src/internal/barrett.hpp\"\nnamespace kyopro {\nnamespace internal {\n///@brief\
-    \ barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n    using u64\
-    \ = uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n    explicit barrett()\
+    \ \"src/internal/barrett.hpp\"\nnamespace kyopro {\nnamespace internal {\n///\
+    \ @brief barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n    using\
+    \ u64 = uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n    explicit barrett()\
     \ = default;\n    explicit barrett(u64 m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1)\
     \ / m_ + 1) {}\n\n    inline u64 get_mod() const { return m; }\n    constexpr\
     \ u64 reduce(int64_t a) const {\n        if (a < 0) return m - reduce(-a);\n \
@@ -210,7 +210,7 @@ data:
     \u6563\u5BFE\u6570)\ntemplate <typename T> inline long long mod_log(T a, T b,\
     \ T c) {\n    if (c < 1 << 30) {\n        return internal::__mod_log32(a, b, c);\n\
     \    } else {\n        return internal::__mod_log(a, b, c);\n    }\n}\n};  //\
-    \ namespace kyopro\n\n///@docs docs/math/DLP.md\n#line 4 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
+    \ namespace kyopro\n\n///@docs docs/math/mod_log.md\n#line 4 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
     \n\nint main() {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n    \
     \    int x, y, p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\\
     n\", kyopro::mod_log<long long>(x, y, p));\n    }\n}\n"
@@ -230,7 +230,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-08 13:48:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp

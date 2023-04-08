@@ -26,11 +26,11 @@ data:
     \        if (rank[x] == rank[y]) rank[x]++;\n        find[x] += find[y];\n   \
     \     find[y] = x;\n        return x;\n    }\n    int size(int x) { return -find[root(x)];\
     \ }\n};\n\n};  // namespace kyopro\n\n/// @docs docs/data-structure/dsu.md\n#line\
-    \ 4 \"src/graph/mst.hpp\"\n\nnamespace kyopro {\n///@brief Minimum Spannning Tree(\u6700\
-    \u5C0F\u5168\u57DF\u6728)\nclass MST {\n    dsu uf;\n    struct Edge {\n     \
-    \   int v1, v2;\n        int cost;\n        int id;\n        Edge(int v1, int\
-    \ v2, int cost, int id)\n            : v1(v1), v2(v2), cost(cost), id(id) {}\n\
-    \    };\n    std::vector<Edge> E;\n    std::vector<int> V1, V2;\n\n  public:\n\
+    \ 4 \"src/graph/mst.hpp\"\n\nnamespace kyopro {\n/// @brief Minimum Spannning\
+    \ Tree(\u6700\u5C0F\u5168\u57DF\u6728)\nclass MST {\n    dsu uf;\n    struct Edge\
+    \ {\n        int v1, v2;\n        int cost;\n        int id;\n        Edge(int\
+    \ v1, int v2, int cost, int id)\n            : v1(v1), v2(v2), cost(cost), id(id)\
+    \ {}\n    };\n    std::vector<Edge> E;\n    std::vector<int> V1, V2;\n\n  public:\n\
     \    MST(int V) : uf(V) {}\n    inline void add_edge(int a, int b, long long cost)\
     \ {\n        int sz = E.size();\n        E.emplace_back(a, b, cost, sz);\n   \
     \     V1.emplace_back(a), V2.emplace_back(b);\n    }\n    long long result() {\n\
@@ -41,7 +41,7 @@ data:
     \            uf.merge(a, b);\n            ans += E[i].cost;\n        }\n     \
     \   return ans;\n    }\n};\n}  // namespace kyopro\n"
   code: "#pragma once\n#include <algorithm>\n#include \"../data-structure/dsu.hpp\"\
-    \n\nnamespace kyopro {\n///@brief Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\
+    \n\nnamespace kyopro {\n/// @brief Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\
     \u6728)\nclass MST {\n    dsu uf;\n    struct Edge {\n        int v1, v2;\n  \
     \      int cost;\n        int id;\n        Edge(int v1, int v2, int cost, int\
     \ id)\n            : v1(v1), v2(v2), cost(cost), id(id) {}\n    };\n    std::vector<Edge>\
@@ -60,7 +60,7 @@ data:
   isVerificationFile: false
   path: src/graph/mst.hpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-08 13:48:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/2_A.test.cpp

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/persistent/queue.hpp
-    title: src/persistent/queue.hpp
+    title: "\u6C38\u7D9Aqueue"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -17,24 +17,23 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Persistent_Queue.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#include<iostream>\n\
     #include<vector>\n#line 2 \"src/persistent/queue.hpp\"\n#include <cassert>\nnamespace\
-    \ kyopro {\ntemplate <typename T, int lg = 20> class persistent_queue {\n    struct\
-    \ Node {\n        Node() = default;\n        uint32_t index;\n        T val;\n\
-    \        Node* prev[20];\n    };\n\n    Node *front_ptr = nullptr, *back_ptr =\
-    \ nullptr;\n    int siz;\n\n  public:\n    persistent_queue(Node* front_ptr =\
-    \ nullptr,\n                     Node* back_ptr = nullptr,\n                 \
-    \    int siz = 0)\n        : front_ptr(front_ptr), back_ptr(back_ptr), siz(siz)\
-    \ {}\n    bool empty() { return siz; }\n    persistent_queue push(const T& x)\
-    \ {\n        Node* ptr = new Node();\n        ptr->val = x;\n        ptr->prev[0]\
+    \ kyopro {\n/// @brief \u6C38\u7D9Aqueue\ntemplate <typename T, int lg = 20> class\
+    \ persistent_queue {\n    struct Node {\n        Node() = default;\n        uint32_t\
+    \ index;\n        T val;\n        Node* prev[20];\n    };\n\n    Node *front_ptr\
+    \ = nullptr, *back_ptr = nullptr;\n    int siz;\n\n  public:\n    persistent_queue(Node*\
+    \ front_ptr = nullptr,\n                     Node* back_ptr = nullptr,\n     \
+    \                int siz = 0)\n        : front_ptr(front_ptr), back_ptr(back_ptr),\
+    \ siz(siz) {}\n    bool empty() { return siz; }\n    persistent_queue push(const\
+    \ T& x) {\n        Node* ptr = new Node();\n        ptr->val = x;\n        ptr->prev[0]\
     \ = back_ptr;\n        for (int i = 1; i < lg; i++) {\n            Node* c = ptr->prev[i\
     \ - 1];\n            if (c)\n                ptr->prev[i] = c->prev[i - 1];\n\
-    \            else\n                break;\n        }\n\n        // \u7A7A\u3060\
-    \u3063\u305F\u6642\u306B\u6CE8\u610F\u3059\u308B\n        if (siz) {\n       \
-    \     return persistent_queue(front_ptr, ptr, siz + 1);\n        } else {\n  \
-    \          return persistent_queue(ptr, ptr, siz + 1);\n        }\n    }\n   \
-    \ persistent_queue pop() {\n        if (!front_ptr || !back_ptr || siz == 1) {\n\
-    \            return persistent_queue();\n        }\n        int d = siz - 2;\n\
-    \        Node* cur = back_ptr;\n        while (d) {\n            int jump = 31\
-    \ - __builtin_clz(d);\n            d -= (1 << jump);\n            cur = cur->prev[jump];\n\
+    \            else\n                break;\n        }\n\n        if (siz) {\n \
+    \           return persistent_queue(front_ptr, ptr, siz + 1);\n        } else\
+    \ {\n            return persistent_queue(ptr, ptr, siz + 1);\n        }\n    }\n\
+    \    persistent_queue pop() {\n        if (!front_ptr || !back_ptr || siz == 1)\
+    \ {\n            return persistent_queue();\n        }\n        int d = siz -\
+    \ 2;\n        Node* cur = back_ptr;\n        while (d) {\n            int jump\
+    \ = 31 - __builtin_clz(d);\n            d -= (1 << jump);\n            cur = cur->prev[jump];\n\
     \        }\n\n        return persistent_queue(cur, back_ptr, siz - 1);\n    }\n\
     \n    T front() {\n        assert(siz);\n        return front_ptr->val;\n    }\n\
     \    T back() {\n        assert(siz);\n        return back_ptr->val;\n    }\n\
@@ -56,7 +55,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-08 13:48:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp

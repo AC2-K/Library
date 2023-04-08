@@ -28,7 +28,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/math/DLP.md
+    _deprecated_at_docs: docs/math/mod_log.md
     document_title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
     links: []
   bundledCode: "#line 2 \"src/math/mod_log.hpp\"\n#include <cmath>\n#line 2 \"src/data-structure/hash_map.hpp\"\
@@ -53,7 +53,7 @@ data:
     \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace\
     \ kyopro\n#line 2 \"src/math/dynamic_modint.hpp\"\n#include <cassert>\n#include\
     \ <iostream>\n#line 2 \"src/internal/barrett.hpp\"\nnamespace kyopro {\nnamespace\
-    \ internal {\n///@brief barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n\
+    \ internal {\n/// @brief barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n\
     \    using u64 = uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n    explicit\
     \ barrett() = default;\n    explicit barrett(u64 m_)\n        : m(m_), im((u64)(long\
     \ double)static_cast<u64>(-1) / m_ + 1) {}\n\n    inline u64 get_mod() const {\
@@ -207,7 +207,7 @@ data:
     \u6563\u5BFE\u6570)\ntemplate <typename T> inline long long mod_log(T a, T b,\
     \ T c) {\n    if (c < 1 << 30) {\n        return internal::__mod_log32(a, b, c);\n\
     \    } else {\n        return internal::__mod_log(a, b, c);\n    }\n}\n};  //\
-    \ namespace kyopro\n\n///@docs docs/math/DLP.md\n"
+    \ namespace kyopro\n\n///@docs docs/math/mod_log.md\n"
   code: "#pragma once\n#include <cmath>\n#include \"../data-structure/hash_map.hpp\"\
     \n#include \"../math/dynamic_modint.hpp\"\n#include \"../math/gcd.hpp\"\n#include\
     \ \"../math/mod_pow.hpp\"\nnamespace kyopro {\nnamespace internal {\nlong long\
@@ -240,7 +240,7 @@ data:
     \u6563\u5BFE\u6570)\ntemplate <typename T> inline long long mod_log(T a, T b,\
     \ T c) {\n    if (c < 1 << 30) {\n        return internal::__mod_log32(a, b, c);\n\
     \    } else {\n        return internal::__mod_log(a, b, c);\n    }\n}\n};  //\
-    \ namespace kyopro\n\n///@docs docs/math/DLP.md"
+    \ namespace kyopro\n\n///@docs docs/math/mod_log.md"
   dependsOn:
   - src/data-structure/hash_map.hpp
   - src/math/dynamic_modint.hpp
@@ -251,7 +251,7 @@ data:
   isVerificationFile: false
   path: src/math/mod_log.hpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-08 13:48:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp

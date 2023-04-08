@@ -40,7 +40,7 @@ data:
     document_title: barrett reduction
     links: []
   bundledCode: "#line 2 \"src/internal/barrett.hpp\"\nnamespace kyopro {\nnamespace\
-    \ internal {\n///@brief barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n\
+    \ internal {\n/// @brief barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n\
     \    using u64 = uint64_t;\n\n    u64 m;\n    u64 im;\n\n  public:\n    explicit\
     \ barrett() = default;\n    explicit barrett(u64 m_)\n        : m(m_), im((u64)(long\
     \ double)static_cast<u64>(-1) / m_ + 1) {}\n\n    inline u64 get_mod() const {\
@@ -52,7 +52,7 @@ data:
     \ * im) >> 64);\n\n        u32 v = (u32)(z - x * m);\n\n        if (v >= m) v\
     \ += m;\n        return v;\n    }\n};\n};  // namespace internal\n};  // namespace\
     \ kyopro\n"
-  code: "#pragma once\nnamespace kyopro {\nnamespace internal {\n///@brief barrett\
+  code: "#pragma once\nnamespace kyopro {\nnamespace internal {\n/// @brief barrett\
     \ reduction\nclass barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\
     \n    u64 m;\n    u64 im;\n\n  public:\n    explicit barrett() = default;\n  \
     \  explicit barrett(u64 m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1)\
@@ -75,7 +75,7 @@ data:
   - src/math/mod_log.hpp
   - src/math/primitive_root.hpp
   - src/math/rho.hpp
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-08 13:48:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp

@@ -126,10 +126,10 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/persistent/queue.hpp
-      title: src/persistent/queue.hpp
+      title: "\u6C38\u7D9Aqueue"
     - icon: ':warning:'
       path: src/persistent/stack.hpp
-      title: src/persistent/stack.hpp
+      title: "\u6C38\u7D9Astack"
   - name: src/string
     pages:
     - icon: ':warning:'
