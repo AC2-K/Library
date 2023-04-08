@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   - icon: ':heavy_check_mark:'
@@ -28,49 +28,53 @@ data:
     constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
     \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>constexpr inline void chmax(T&x,T\
     \ y){if(x<y)x=y;}\ntemplate<class T>constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 1 \"data-structure/segtree.hpp\"\n/// @brief Segment Tree(\u30BB\u30B0\u30E1\
-    \u30F3\u30C8\u6728)\n/// @tparam S \u8981\u7D20\u306E\u578B\n/// @tparam op \u4E8C\
-    \u9805\u6F14\u7B97\n/// @tparam e \u5358\u4F4D\u5143\n/// @docs docs/data-structure/segtree.md\n\
-    template<class S, S(*op)(S, S), S(*e)()>\nclass segtree {\n\tint lg, sz, n;\n\t\
-    std::vector<S> dat;\npublic:\n\tsegtree() :segtree(0) {}\n\tsegtree(int n) : segtree(std::vector<S>(n,\
-    \ e())) {}\n\tsegtree(const std::vector<S>& vec) : n((int)vec.size()) {\n\t\t\
-    sz = 1, lg = 0;\n\t\twhile (sz <= n) {\n\t\t\tsz <<= 1;\n\t\t\tlg++;\n\t\t}\n\n\
-    \t\tdat = std::vector<S>(sz << 1, e());\n\n\t\tfor (int i = 0; i < n; i++) {\n\
-    \t\t\tset(i, vec[i]);\n\t\t}\n\t\tbuild();\n\t}\n\n\tinline void set(const int\
-    \ p, const S& v) {\n\t\tdat[sz + p] = v;\n\t}\n\tinline void build() {\n\t\tfor\
-    \ (int i = sz - 1; i > 0; i--) {\n\t\t\tdat[i] = op(dat[i << 1], dat[(i << 1)\
-    \ ^ 1]);\n\t\t}\n\t}\n\tS operator[](const int p) const { return dat[sz + p];\
-    \ }\n\n\tinline void update(int p, const S& v) {\n\t\tp += sz;\n\t\tdat[p] = v;\n\
-    \t\twhile (p >>= 1) {\n\t\t\tdat[p] = op(dat[(p << 1)], dat[(p << 1) ^ 1]);\n\t\
-    \t}\n\t}\n\n\tinline S prod(int l, int r) const {\n\t\tif (l == 0 && r == n) {\n\
-    \t\t\treturn dat[1];\n\t\t}\n\t\tl += sz, r += sz;\n\t\tS sml = e(), smr = e();\n\
-    \t\twhile (l != r) {\n\t\t\tif (l & 1)sml = op(sml, dat[l++]);\n\t\t\tif (r &\
-    \ 1)smr = op(dat[--r], smr);\n\t\t\tl >>= 1, r >>= 1;\n\t\t}\n\t\treturn op(sml,\
-    \ smr);\n\t}\n\tinline void apply(int p, const S& v) {\n\t\tupdate(p, op(dat[sz\
-    \ + p], v));\n\t}\n};\n#line 4 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp\"\
-    \n\nusing namespace std;\nll op(ll x, ll y) { return x + y; }\nll e() { return\
-    \ 0; }\nint main() {\n    int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n\
-    \    for (auto& aa : a) {\n        cin >> aa;\n    }\n\n    segtree<ll, op, e>\
-    \ seg(a);\n    while (q--) {\n        int t;\n        cin >> t;\n        if (t\
-    \ == 0) {\n            int p, x;\n            cin >> p >> x;\n            seg.apply(p,\
-    \ x);\n        }\n        else {\n            int l, r;\n            cin >> l\
-    \ >> r;\n            cout << seg.prod(l, r) << '\\n';\n        }\n    }\n}\n"
+    #line 3 \"data-structure/segtree.hpp\"\nnamespace kyopro {\n/// @brief Segment\
+    \ Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n\ntemplate <class S, S (*op)(S,\
+    \ S), S (*e)()> class segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n\
+    \n  public:\n    segtree() : segtree(0) {}\n    segtree(int n) : segtree(std::vector<S>(n,\
+    \ e())) {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n  \
+    \      sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n   \
+    \         lg++;\n        }\n\n        dat = std::vector<S>(sz << 1, e());\n\n\
+    \        for (int i = 0; i < n; i++) {\n            set(i, vec[i]);\n        }\n\
+    \        build();\n    }\n\n    inline void set(const int p, const S& v) { dat[sz\
+    \ + p] = v; }\n    inline void build() {\n        for (int i = sz - 1; i > 0;\
+    \ i--) {\n            dat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);\n        }\n\
+    \    }\n    S operator[](const int p) const { return dat[sz + p]; }\n\n    inline\
+    \ void update(int p, const S& v) {\n        p += sz;\n        dat[p] = v;\n  \
+    \      while (p >>= 1) {\n            dat[p] = op(dat[(p << 1)], dat[(p << 1)\
+    \ ^ 1]);\n        }\n    }\n\n    inline S prod(int l, int r) const {\n      \
+    \  if (l == 0 && r == n) {\n            return dat[1];\n        }\n        l +=\
+    \ sz, r += sz;\n        S sml = e(), smr = e();\n        while (l != r) {\n  \
+    \          if (l & 1) sml = op(sml, dat[l++]);\n            if (r & 1) smr = op(dat[--r],\
+    \ smr);\n            l >>= 1, r >>= 1;\n        }\n        return op(sml, smr);\n\
+    \    }\n    inline void apply(int p, const S& v) { update(p, op(dat[sz + p], v));\
+    \ }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/segtree.md\n\
+    #line 4 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp\"\
+    \n\nlong long op(long long x, long long y) { return x + y; }\nlong long e() {\
+    \ return 0; }\nint main() {\n    int n, q;\n    scanf(\"%d%d\",&n,&q);\n    std::vector<long\
+    \ long> a(n);\n    for (auto& aa : a) {\n        scanf(\"%lld\",&aa);\n    }\n\
+    \n    kyopro::segtree<long long, op, e> seg(a);\n    while (q--) {\n        int\
+    \ t;\n        scanf(\"%d\",&t);\n        if (!t) {\n            int p, x;\n  \
+    \          scanf(\"%d%d\",&p,&x);\n            seg.apply(p, x);\n        }\n \
+    \       else {\n            int l, r;\n            scanf(\"%d%d\",&l,&r);\n  \
+    \          printf(\"%lld\\n\",seg.prod(l, r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
-    #include\"template.hpp\"\n#include\"data-structure/segtree.hpp\"\n\nusing namespace\
-    \ std;\nll op(ll x, ll y) { return x + y; }\nll e() { return 0; }\nint main()\
-    \ {\n    int n, q;\n    cin >> n >> q;\n    vector<ll> a(n);\n    for (auto& aa\
-    \ : a) {\n        cin >> aa;\n    }\n\n    segtree<ll, op, e> seg(a);\n    while\
-    \ (q--) {\n        int t;\n        cin >> t;\n        if (t == 0) {\n        \
-    \    int p, x;\n            cin >> p >> x;\n            seg.apply(p, x);\n   \
-    \     }\n        else {\n            int l, r;\n            cin >> l >> r;\n \
-    \           cout << seg.prod(l, r) << '\\n';\n        }\n    }\n}"
+    #include\"template.hpp\"\n#include\"../../../data-structure/segtree.hpp\"\n\n\
+    long long op(long long x, long long y) { return x + y; }\nlong long e() { return\
+    \ 0; }\nint main() {\n    int n, q;\n    scanf(\"%d%d\",&n,&q);\n    std::vector<long\
+    \ long> a(n);\n    for (auto& aa : a) {\n        scanf(\"%lld\",&aa);\n    }\n\
+    \n    kyopro::segtree<long long, op, e> seg(a);\n    while (q--) {\n        int\
+    \ t;\n        scanf(\"%d\",&t);\n        if (!t) {\n            int p, x;\n  \
+    \          scanf(\"%d%d\",&p,&x);\n            seg.apply(p, x);\n        }\n \
+    \       else {\n            int l, r;\n            scanf(\"%d%d\",&l,&r);\n  \
+    \          printf(\"%lld\\n\",seg.prod(l, r));\n        }\n    }\n}"
   dependsOn:
   - template.hpp
   - data-structure/segtree.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 14:59:40+00:00'
+  timestamp: '2023-04-08 03:34:55+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp

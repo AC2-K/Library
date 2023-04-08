@@ -12,23 +12,24 @@ data:
   attributes:
     document_title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     links: []
-  bundledCode: "#line 2 \"math/sieve.hpp\"\n#include<vector>\n\n/// @brief \u30A8\u30E9\
-    \u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9\nstd::vector<bool> sieve(int N){\n\
+  bundledCode: "#line 2 \"math/sieve.hpp\"\n#include <vector>\nnamespace kyopro {\n\
+    /// @brief \u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9\nstd::vector<bool>\
+    \ sieve(int N) {\n    std::vector<bool> primes(N + 1, true);\n\n    primes[0]\
+    \ = false;\n    primes[1] = false;\n\n    for (int p = 2; p <= N; ++p) {\n   \
+    \     if (!primes[p]) continue;\n        for (int i = p * 2; i <= N; i += p) {\n\
+    \            primes[i] = false;\n        }\n    }\n\n    return primes;\n}\n};\
+    \  // namespace kyopro\n"
+  code: "#pragma once\n#include <vector>\nnamespace kyopro {\n/// @brief \u30A8\u30E9\
+    \u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9\nstd::vector<bool> sieve(int N) {\n\
     \    std::vector<bool> primes(N + 1, true);\n\n    primes[0] = false;\n    primes[1]\
     \ = false;\n\n    for (int p = 2; p <= N; ++p) {\n        if (!primes[p]) continue;\n\
-    \        for (int i = 2; p * i <= N; i++) {\n            primes[p * i] = false;\n\
-    \        }\n    }\n\n    return primes;\n}\n"
-  code: "#pragma once\n#include<vector>\n\n/// @brief \u30A8\u30E9\u30C8\u30B9\u30C6\
-    \u30CD\u30B9\u306E\u7BE9\nstd::vector<bool> sieve(int N){\n    std::vector<bool>\
-    \ primes(N + 1, true);\n\n    primes[0] = false;\n    primes[1] = false;\n\n \
-    \   for (int p = 2; p <= N; ++p) {\n        if (!primes[p]) continue;\n      \
-    \  for (int i = 2; p * i <= N; i++) {\n            primes[p * i] = false;\n  \
-    \      }\n    }\n\n    return primes;\n}"
+    \        for (int i = p * 2; i <= N; i += p) {\n            primes[i] = false;\n\
+    \        }\n    }\n\n    return primes;\n}\n};  // namespace kyopro"
   dependsOn: []
   isVerificationFile: false
   path: math/sieve.hpp
   requiredBy: []
-  timestamp: '2023-04-07 17:08:53+09:00'
+  timestamp: '2023-04-08 03:34:55+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/ALDS/1_C.test.cpp

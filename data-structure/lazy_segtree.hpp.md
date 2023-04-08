@@ -20,14 +20,14 @@ data:
     document_title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\
       \u30B0\u30E1\u30F3\u30C8\u6728)"
     links: []
-  bundledCode: "#line 2 \"data-structure/lazy_segtree.hpp\"\n#include <vector>\n///\
-    \ @brief Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
-    \u30E1\u30F3\u30C8\u6728)\n/// @docs docs/data-structure/lazy_segtree.md\ntemplate\
-    \ <class S,\n          class F,\n          S (*op)(S, S),\n          S (*e)(),\n\
-    \          F (*comp)(F, F),\n          F (*id)(),\n          S (*mapping)(S, F)>\n\
-    class lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n    std::vector<F>\
-    \ lz;\n\n  public:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e()))\
-    \ {}\n    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(), e()),\
+  bundledCode: "#line 2 \"data-structure/lazy_segtree.hpp\"\n#include <vector>\n#include\
+    \ <cassert>\nnamespace kyopro {\n/// @brief Segment Tree with Lazy Propagation(\u9045\
+    \u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\ntemplate <class S,\n\
+    \          class F,\n          S (*op)(S, S),\n          S (*e)(),\n         \
+    \ F (*comp)(F, F),\n          F (*id)(),\n          S (*mapping)(S, F)>\nclass\
+    \ lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n    std::vector<F> lz;\n\
+    \n  public:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e())) {}\n\
+    \    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(), e()),\
     \ lz(4 * a.size(), id()) {\n        int x = 1;\n        while (a.size() > x) {\n\
     \            x <<= 1;\n        }\n        sz = x;\n        for (int i = 0; i <\
     \ a.size(); i++) {\n            set(i, a[i]);\n        }\n        build();\n \
@@ -52,23 +52,22 @@ data:
     \ <= l && r <= R) {\n            return dat[k];\n        } else {\n          \
     \  int mid = (l + r) >> 1;\n            S vl = internal_prod(L, R, l, mid, 2 *\
     \ k + 1);\n            S vr = internal_prod(L, R, mid, r, 2 * k + 2);\n      \
-    \      return op(vl, vr);\n        }\n    }\n\n  public:\n    S prod(int l, int\
-    \ r) {\n        assert(0 <= l && l <= r && r <= sz);\n        return internal_prod(l,\
+    \      return op(vl, vr);\n        }\n    }\n\n  public:\n    inline S prod(int\
+    \ l, int r) {\n        assert(0 <= l && l <= r && r <= sz);\n        return internal_prod(l,\
     \ r, 0, sz, 0);\n    }\n\n    inline S operator[](int pos) { return prod(pos,\
-    \ pos + 1); }\n};\n//@brief lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\
-    \u30F3\u30C8\u6728)\n"
-  code: "#pragma once\n#include <vector>\n/// @brief Segment Tree with Lazy Propagation(\u9045\
-    \u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\n/// @docs docs/data-structure/lazy_segtree.md\n\
-    template <class S,\n          class F,\n          S (*op)(S, S),\n          S\
-    \ (*e)(),\n          F (*comp)(F, F),\n          F (*id)(),\n          S (*mapping)(S,\
-    \ F)>\nclass lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n    std::vector<F>\
-    \ lz;\n\n  public:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e()))\
-    \ {}\n    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(), e()),\
-    \ lz(4 * a.size(), id()) {\n        int x = 1;\n        while (a.size() > x) {\n\
-    \            x <<= 1;\n        }\n        sz = x;\n        for (int i = 0; i <\
-    \ a.size(); i++) {\n            set(i, a[i]);\n        }\n        build();\n \
-    \   }\n\n  public:\n    inline void set(int pos, S x) {\n        assert(0 <= pos\
-    \ && pos < sz);\n        dat[pos + sz - 1] = x;\n    }\n    inline void build()\
+    \ pos + 1); }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/lazy_segtree.md\n"
+  code: "#pragma once\n#include <vector>\n#include <cassert>\nnamespace kyopro {\n\
+    /// @brief Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
+    \u30E1\u30F3\u30C8\u6728)\ntemplate <class S,\n          class F,\n          S\
+    \ (*op)(S, S),\n          S (*e)(),\n          F (*comp)(F, F),\n          F (*id)(),\n\
+    \          S (*mapping)(S, F)>\nclass lazy_segtree {\n    int sz;\n    std::vector<S>\
+    \ dat;\n    std::vector<F> lz;\n\n  public:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
+    \ e())) {}\n    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(),\
+    \ e()), lz(4 * a.size(), id()) {\n        int x = 1;\n        while (a.size()\
+    \ > x) {\n            x <<= 1;\n        }\n        sz = x;\n        for (int i\
+    \ = 0; i < a.size(); i++) {\n            set(i, a[i]);\n        }\n        build();\n\
+    \    }\n\n  public:\n    inline void set(int pos, S x) {\n        assert(0 <=\
+    \ pos && pos < sz);\n        dat[pos + sz - 1] = x;\n    }\n    inline void build()\
     \ {\n        for (int i = sz - 2; i >= 0; i--) {\n            dat[i] = op(dat[2\
     \ * i + 1], dat[2 * i + 2]);\n        }\n    }\n\n  private:\n    void eval(int\
     \ pos) {\n        if (lz[pos] == id()) return;\n        if (pos < sz - 1) {\n\
@@ -88,16 +87,15 @@ data:
     \ <= l && r <= R) {\n            return dat[k];\n        } else {\n          \
     \  int mid = (l + r) >> 1;\n            S vl = internal_prod(L, R, l, mid, 2 *\
     \ k + 1);\n            S vr = internal_prod(L, R, mid, r, 2 * k + 2);\n      \
-    \      return op(vl, vr);\n        }\n    }\n\n  public:\n    S prod(int l, int\
-    \ r) {\n        assert(0 <= l && l <= r && r <= sz);\n        return internal_prod(l,\
+    \      return op(vl, vr);\n        }\n    }\n\n  public:\n    inline S prod(int\
+    \ l, int r) {\n        assert(0 <= l && l <= r && r <= sz);\n        return internal_prod(l,\
     \ r, 0, sz, 0);\n    }\n\n    inline S operator[](int pos) { return prod(pos,\
-    \ pos + 1); }\n};\n//@brief lazy segtree(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\
-    \u30F3\u30C8\u6728)"
+    \ pos + 1); }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/lazy_segtree.md"
   dependsOn: []
   isVerificationFile: false
   path: data-structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2023-04-07 18:05:56+09:00'
+  timestamp: '2023-04-08 03:34:55+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/2_D_lazy.test.cpp

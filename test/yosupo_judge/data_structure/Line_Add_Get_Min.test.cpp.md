@@ -4,9 +4,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/CHT.hpp
     title: Convex Hull Trick
-  - icon: ':heavy_check_mark:'
-    path: template.hpp
-    title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -18,22 +15,11 @@ data:
     links:
     - https://judge.yosupo.jp/problem/line_add_get_min
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n#line\
-    \ 2 \"template.hpp\"\n#include<bits/stdc++.h>\n#define rep(i, N) for (int i =\
-    \ 0; i < (N); i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
-    \ __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\nusing\
-    \ ld = long double;\nusing graph = std::vector<std::vector<int>>;\nusing P = std::pair<int,\
-    \ int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps\
-    \ = 1e-6;\nconst long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
-    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
-    \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>constexpr inline void chmax(T&x,T\
-    \ y){if(x<y)x=y;}\ntemplate<class T>constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 3 \"data-structure/CHT.hpp\"\n\n/// @brief Convex Hull Trick\n/// @tparam\
-    \ T \u4FC2\u6570\u306E\u578B\n/// @tparam query_type \u30AF\u30A8\u30EA\u306E\u30BF\
-    \u30A4\u30D7.true\u306B\u3059\u308B\u3068\u6700\u5927\u5024\u3092\u6C42\u3081\u308B\
-    \u3088\u3046\u306B\u5909\u66F4\u3059\u308B\ntemplate <class T = ll, bool query_type\
-    \ = false> class CHT {\n    class line {\n      public:\n        T a, b;\n   \
-    \     bool is_query;\n        mutable T nxt_a, nxt_b;\n        mutable bool has_nxt;\n\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n#include<iostream>\n\
+    #line 2 \"data-structure/CHT.hpp\"\n#include <set>\nnamespace kyopro {\n\n///\
+    \ @brief Convex Hull Trick\ntemplate <class T = long long, bool query_type = false>\
+    \ class CHT {\n    class line {\n      public:\n        T a, b;\n        bool\
+    \ is_query;\n        mutable T nxt_a, nxt_b;\n        mutable bool has_nxt;\n\
     \        T get(T x) const { return a * x + b; }\n        T get_nxt(T x) const\
     \ { return nxt_a * x + nxt_b; }\n        line(T a, T b, bool q = false)\n    \
     \        : a(a), b(b), is_query(q), has_nxt(false) {}\n        friend bool operator<(const\
@@ -63,28 +49,30 @@ data:
     \      }\n    }\n    T operator()(T x) const {\n        const auto& it = ls.lower_bound(line(x,\
     \ 0, true));\n\n        if (query_type) {\n            return -it->a * x - it->b;\n\
     \        } else {\n            return it->a * x + it->b;\n        }\n    }\n};\n\
-    \n/// @docs docs/data-structure/CHT.md\n#line 5 \"test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp\"\
-    \nusing namespace std;\nint main(){\n    int n,q;\n    cin>>n>>q;\n\n    CHT<long\
-    \ long> cht;    \n    for(int i=0;i<n;i++){\n        ll a,b;\n        cin>>a>>b;\n\
-    \        cht.insert(a,b);\n    }\n    while(q--){\n        int t;\n        cin>>t;\n\
-    \        if(t==0){\n            ll a,b;\n            cin>>a>>b;\n            cht.insert(a,b);\n\
-    \        }else{\n            ll x;\n            cin>>x;\n            cout<<cht(x)<<'\\\
-    n';\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n\n\
-    #include\"template.hpp\"\n#include\"data-structure/CHT.hpp\"\nusing namespace\
-    \ std;\nint main(){\n    int n,q;\n    cin>>n>>q;\n\n    CHT<long long> cht; \
-    \   \n    for(int i=0;i<n;i++){\n        ll a,b;\n        cin>>a>>b;\n       \
-    \ cht.insert(a,b);\n    }\n    while(q--){\n        int t;\n        cin>>t;\n\
-    \        if(t==0){\n            ll a,b;\n            cin>>a>>b;\n            cht.insert(a,b);\n\
-    \        }else{\n            ll x;\n            cin>>x;\n            cout<<cht(x)<<'\\\
-    n';\n        }\n    }\n}"
+    \n};  // namespace kyopro\n\n/// @docs docs/data-structure/CHT.md\n#line 4 \"\
+    test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp\"\nusing namespace\
+    \ std;\nint main(){\n    int n,q;\n    scanf(\"%d%d\",&n,&q);\n\n    kyopro::CHT<long\
+    \ long> cht;    \n    for(int i=0;i<n;i++){\n        long long a,b;\n        scanf(\"\
+    %lld%lld\",&a,&b);\n        cht.insert(a,b);\n    }\n    while(q--){\n       \
+    \ int t;\n        scanf(\"%d\",&t);\n        if(!t){\n            long long a,b;\n\
+    \            scanf(\"%lld%lld\",&a,&b);\n            cht.insert(a,b);\n      \
+    \  }else{\n            long long x;\n            scanf(\"%lld\",&x);\n       \
+    \     printf(\"%lld\\n\",cht(x));\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/line_add_get_min\"\n#include<iostream>\n\
+    #include\"data-structure/CHT.hpp\"\nusing namespace std;\nint main(){\n    int\
+    \ n,q;\n    scanf(\"%d%d\",&n,&q);\n\n    kyopro::CHT<long long> cht;    \n  \
+    \  for(int i=0;i<n;i++){\n        long long a,b;\n        scanf(\"%lld%lld\",&a,&b);\n\
+    \        cht.insert(a,b);\n    }\n    while(q--){\n        int t;\n        scanf(\"\
+    %d\",&t);\n        if(!t){\n            long long a,b;\n            scanf(\"%lld%lld\"\
+    ,&a,&b);\n            cht.insert(a,b);\n        }else{\n            long long\
+    \ x;\n            scanf(\"%lld\",&x);\n            printf(\"%lld\\n\",cht(x));\n\
+    \        }\n    }\n}"
   dependsOn:
-  - template.hpp
   - data-structure/CHT.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 14:59:40+00:00'
+  timestamp: '2023-04-08 03:34:55+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp

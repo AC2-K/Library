@@ -4,9 +4,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: data-structure/dual_segtree.hpp
     title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':heavy_check_mark:'
-    path: template.hpp
-    title: template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -18,16 +15,8 @@ data:
     links:
     - https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_E
   bundledCode: "#line 1 \"test/AOJ/DSL/2_E_dual.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_E\"\
-    \n\n#line 2 \"template.hpp\"\n#include<bits/stdc++.h>\n#define rep(i, N) for (int\
-    \ i = 0; i < (N); i++)\n#define all(x) (x).begin(),(x).end()\n#define popcount(x)\
-    \ __builtin_popcount(x)\nusing i128=__int128_t;\nusing ll = long long;\nusing\
-    \ ld = long double;\nusing graph = std::vector<std::vector<int>>;\nusing P = std::pair<int,\
-    \ int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps\
-    \ = 1e-6;\nconst long double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
-    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = { 1,0,-1,0 };\nconstexpr\
-    \ int dy[] = { 0,1,0,-1 };\ntemplate<class T>constexpr inline void chmax(T&x,T\
-    \ y){if(x<y)x=y;}\ntemplate<class T>constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n\
-    #line 4 \"data-structure/dual_segtree.hpp\"\n/// @brief Dual Segmenttree(\u53CC\
+    \n\n#include <iostream>\n#line 2 \"data-structure/dual_segtree.hpp\"\n#include\
+    \ <cassert>\n#include <vector>\nnamespace kyopro {\n\n/// @brief Dual Segmenttree(\u53CC\
     \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\ntemplate <class F, F (*comp)(F, F),\
     \ F (*id)(), bool is_commutative = true>\nclass dual_segtree {\n    std::vector<F>\
     \ dat;\n    int _n, sz, lg;\n\n  public:\n    dual_segtree() : dual_segtree(0)\
@@ -48,30 +37,32 @@ data:
     \                }\n            }\n        }\n        while (l < r) {\n      \
     \      if (l & 1) {\n                all_apply(l++, v);\n            }\n     \
     \       if (r & 1) {\n                all_apply(--r, v);\n            }\n    \
-    \        l >>= 1, r >>= 1;\n        }\n    }\n};\n\n/// @docs docs/data-structure/dual_segtree.md\n\
-    #line 5 \"test/AOJ/DSL/2_E_dual.test.cpp\"\n\nusing namespace std;\nusing ull\
-    \ = unsigned long long;\null op(ull x, ull y) {\n\treturn x + y;\n}\null e() {\n\
-    \treturn 0;\n}\nint main() {\n\tint n, q;\n\tcin >> n >> q;\n\tdual_segtree<ull,op,\
-    \ e> seg(n);\n\twhile (q--) {\n\t\tint ty;\n\t\tcin >> ty;\n\t\tif (ty == 0) {\n\
-    \t\t\tint l, r;\n\t\t\tull x;\n\t\t\tcin >> l >> r >> x;\n\t\t\tl--, r--;\n\t\t\
-    \tseg.apply(l, r + 1, x);\n\t\t}\n\t\telse {\n\t\t\tint i;\n\t\t\tcin >> i;\n\t\
-    \t\ti--;\n\t\t\tcout << seg[i] << '\\n';\n\t\t}\n\t\t//seg.print();\n\t}\n}\n"
+    \        l >>= 1, r >>= 1;\n        }\n    }\n};\n\n};  // namespace kyopro\n\n\
+    /// @docs docs/data-structure/dual_segtree.md\n#line 5 \"test/AOJ/DSL/2_E_dual.test.cpp\"\
+    \n\nusing ull = unsigned long long;\null op(ull x, ull y) { return x + y; }\n\
+    ull e() { return 0; }\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\
+    \    kyopro::dual_segtree<ull, op, e> seg(n);\n    while (q--) {\n        int\
+    \ ty;\n        scanf(\"%d\", &ty);\n        if (ty == 0) {\n            int l,\
+    \ r;\n            ull x;\n            scanf(\"%d%d%d\", &l, &r, &x);\n       \
+    \     l--, r--;\n            seg.apply(l, r + 1, x);\n        } else {\n     \
+    \       int i;\n            scanf(\"%d\", &i);\n            i--;\n           \
+    \ printf(\"%lld\\n\", seg[i]);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_E\"\n\n\
-    #include\"template.hpp\"\n#include\"data-structure/dual_segtree.hpp\"\n\nusing\
-    \ namespace std;\nusing ull = unsigned long long;\null op(ull x, ull y) {\n\t\
-    return x + y;\n}\null e() {\n\treturn 0;\n}\nint main() {\n\tint n, q;\n\tcin\
-    \ >> n >> q;\n\tdual_segtree<ull,op, e> seg(n);\n\twhile (q--) {\n\t\tint ty;\n\
-    \t\tcin >> ty;\n\t\tif (ty == 0) {\n\t\t\tint l, r;\n\t\t\tull x;\n\t\t\tcin >>\
-    \ l >> r >> x;\n\t\t\tl--, r--;\n\t\t\tseg.apply(l, r + 1, x);\n\t\t}\n\t\telse\
-    \ {\n\t\t\tint i;\n\t\t\tcin >> i;\n\t\t\ti--;\n\t\t\tcout << seg[i] << '\\n';\n\
-    \t\t}\n\t\t//seg.print();\n\t}\n}\n"
+    #include <iostream>\n#include \"../../../data-structure/dual_segtree.hpp\"\n\n\
+    using ull = unsigned long long;\null op(ull x, ull y) { return x + y; }\null e()\
+    \ { return 0; }\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n \
+    \   kyopro::dual_segtree<ull, op, e> seg(n);\n    while (q--) {\n        int ty;\n\
+    \        scanf(\"%d\", &ty);\n        if (ty == 0) {\n            int l, r;\n\
+    \            ull x;\n            scanf(\"%d%d%d\", &l, &r, &x);\n            l--,\
+    \ r--;\n            seg.apply(l, r + 1, x);\n        } else {\n            int\
+    \ i;\n            scanf(\"%d\", &i);\n            i--;\n            printf(\"\
+    %lld\\n\", seg[i]);\n        }\n    }\n}\n"
   dependsOn:
-  - template.hpp
   - data-structure/dual_segtree.hpp
   isVerificationFile: true
   path: test/AOJ/DSL/2_E_dual.test.cpp
   requiredBy: []
-  timestamp: '2023-04-07 14:59:40+00:00'
+  timestamp: '2023-04-08 03:34:55+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_E_dual.test.cpp
