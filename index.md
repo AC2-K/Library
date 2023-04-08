@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: data-structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: data-structure/BIT.hpp
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
@@ -15,7 +15,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: data-structure/dual_segtree.hpp
       title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':x:'
+    - icon: ':warning:'
       path: data-structure/dynamic_segtree.hpp
       title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
@@ -43,7 +43,7 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: template.hpp
       title: template.hpp
   - name: graph
@@ -62,30 +62,30 @@ data:
       title: graph/namori.hpp
   - name: internal
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: internal/barrett.hpp
       title: barrett reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: internal/montgomery.hpp
       title: MontgomeryReduction
   - name: math
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/gcd.hpp
       title: math/gcd.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/matrix.hpp
       title: "matirx(\u884C\u5217)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/miller.hpp
       title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
     - icon: ':heavy_check_mark:'
       path: math/mod_log.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
     - icon: ':warning:'
@@ -103,7 +103,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/sieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
   - name: misc
@@ -111,7 +111,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: misc/2DSum.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: misc/mo.hpp
       title: mo's algorithm
   - name: persistent
@@ -124,7 +124,7 @@ data:
       title: persistent/stack.hpp
   - name: string
     pages:
-    - icon: ':x:'
+    - icon: ':warning:'
       path: string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   verificationCategories:
@@ -257,26 +257,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - name: test/yuki
-    pages:
-    - icon: ':x:'
-      path: test/yuki/No-1471.test.cpp
-      title: test/yuki/No-1471.test.cpp
-    - icon: ':x:'
-      path: test/yuki/No-3030.test.cpp
-      title: test/yuki/No-3030.test.cpp
-    - icon: ':x:'
-      path: test/yuki/No-430.test.cpp
-      title: test/yuki/No-430.test.cpp
-    - icon: ':x:'
-      path: test/yuki/No-789_BIT.test.cpp
-      title: test/yuki/No-789_BIT.test.cpp
-    - icon: ':x:'
-      path: test/yuki/No-789_dynamic.test.cpp
-      title: test/yuki/No-789_dynamic.test.cpp
-    - icon: ':x:'
-      path: test/yuki/No.891.test.cpp
-      title: test/yuki/No.891.test.cpp
 layout: toppage
 ---
 [![AC2K](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2FAC2K)](https://atcoder.jp/users/AC2K)

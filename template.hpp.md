@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedVerifiedWith:
@@ -117,27 +117,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - icon: ':x:'
-    path: test/yuki/No-1471.test.cpp
-    title: test/yuki/No-1471.test.cpp
-  - icon: ':x:'
-    path: test/yuki/No-3030.test.cpp
-    title: test/yuki/No-3030.test.cpp
-  - icon: ':x:'
-    path: test/yuki/No-430.test.cpp
-    title: test/yuki/No-430.test.cpp
-  - icon: ':x:'
-    path: test/yuki/No-789_BIT.test.cpp
-    title: test/yuki/No-789_BIT.test.cpp
-  - icon: ':x:'
-    path: test/yuki/No-789_dynamic.test.cpp
-    title: test/yuki/No-789_dynamic.test.cpp
-  - icon: ':x:'
-    path: test/yuki/No.891.test.cpp
-    title: test/yuki/No.891.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "template.hpp"
@@ -226,7 +208,7 @@ data:
   requiredBy:
   - math/static_modint.hpp
   timestamp: '2023-04-07 14:59:40+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/ALDS/1_C.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
@@ -265,12 +247,6 @@ data:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yuki/No-789_BIT.test.cpp
-  - test/yuki/No-1471.test.cpp
-  - test/yuki/No-789_dynamic.test.cpp
-  - test/yuki/No-3030.test.cpp
-  - test/yuki/No-430.test.cpp
-  - test/yuki/No.891.test.cpp
 documentation_of: template.hpp
 layout: document
 redirect_from:

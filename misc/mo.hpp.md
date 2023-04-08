@@ -9,12 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-  - icon: ':x:'
-    path: test/yuki/No-1471.test.cpp
-    title: test/yuki/No-1471.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/other/mo.md
     document_title: mo's algorithm
@@ -78,11 +75,10 @@ data:
   path: misc/mo.hpp
   requiredBy: []
   timestamp: '2023-04-07 18:51:14+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-  - test/yuki/No-1471.test.cpp
 documentation_of: misc/mo.hpp
 layout: document
 redirect_from:

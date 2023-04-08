@@ -6,12 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':x:'
-    path: test/yuki/No.891.test.cpp
-    title: test/yuki/No.891.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/matrix.md
     document_title: "matirx(\u884C\u5217)"
@@ -78,10 +75,9 @@ data:
   path: math/matrix.hpp
   requiredBy: []
   timestamp: '2023-04-07 14:59:40+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - test/yuki/No.891.test.cpp
 documentation_of: math/matrix.hpp
 layout: document
 redirect_from:

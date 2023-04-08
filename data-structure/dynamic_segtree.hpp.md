@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/yuki/No-789_dynamic.test.cpp
-    title: test/yuki/No-789_dynamic.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     _deprecated_at_docs: docs/data-structure/dynamic_segtree.md
     document_title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\
@@ -111,9 +108,8 @@ data:
   path: data-structure/dynamic_segtree.hpp
   requiredBy: []
   timestamp: '2023-04-07 18:51:14+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/yuki/No-789_dynamic.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: data-structure/dynamic_segtree.hpp
 layout: document
 redirect_from:

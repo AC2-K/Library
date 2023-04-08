@@ -14,10 +14,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
-  - icon: ':x:'
+  - icon: ':warning:'
     path: string/rolling_hash.hpp
     title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   _extendedVerifiedWith:
@@ -48,15 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':x:'
-    path: test/yuki/No-430.test.cpp
-    title: test/yuki/No-430.test.cpp
-  - icon: ':x:'
-    path: test/yuki/No.891.test.cpp
-    title: test/yuki/No.891.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"math/gcd.hpp\"\n#include<tuple>\n#include <cassert>\ntemplate\
@@ -95,7 +89,7 @@ data:
   - math/primitive_root.hpp
   - math/static_modint.hpp
   timestamp: '2023-04-07 14:59:40+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
   - test/AOJ/NTL/1_E.test.cpp
@@ -106,8 +100,6 @@ data:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yuki/No-430.test.cpp
-  - test/yuki/No.891.test.cpp
 documentation_of: math/gcd.hpp
 layout: document
 redirect_from:
