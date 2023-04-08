@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "phi function($\\phi$ \u95A2\u6570)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   - icon: ':warning:'
@@ -36,21 +36,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/gcd.hpp\"\n#include <cassert>\n#include <tuple>\n\
@@ -84,23 +84,23 @@ data:
   path: src/math/gcd.hpp
   requiredBy:
   - src/string/rolling_hash.hpp
-  - src/math/mod_log.hpp
-  - src/math/rho.hpp
   - src/math/phi_function.hpp
-  - src/math/primitive_root.hpp
+  - src/math/mod_log.hpp
   - src/math/static_modint.hpp
+  - src/math/primitive_root.hpp
+  - src/math/rho.hpp
   timestamp: '2023-04-08 13:07:55+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/NTL/1_D.test.cpp
-  - test/AOJ/NTL/1_E.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/AOJ/NTL/1_E.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/math/gcd.hpp
 layout: document
 redirect_from:
