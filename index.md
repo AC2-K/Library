@@ -9,6 +9,11 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
+  - name: src/algorithm
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/algorithm/mo.hpp
+      title: mo's algorithm
   - name: src/data-structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -75,6 +80,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: MontgomeryReduction
+    - icon: ':heavy_check_mark:'
+      path: src/internal/type_traits.hpp
+      title: src/internal/type_traits.hpp
   - name: src/math
     pages:
     - icon: ':heavy_check_mark:'
@@ -113,11 +121,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
-  - name: src/misc
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: src/misc/mo.hpp
-      title: mo's algorithm
   - name: src/persistent
     pages:
     - icon: ':heavy_check_mark:'

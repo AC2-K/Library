@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: src/algorithm/mo.hpp
+    title: mo's algorithm
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
-    path: src/misc/mo.hpp
-    title: mo's algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -32,9 +32,9 @@ data:
     \        for (; k > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] <\
     \ w) {\n                w -= bit[x + k];\n                x += k;\n          \
     \  }\n        }\n\n        return x + 1;\n    }\n};\n};  // namespace kyopro\n\
-    \n/// @docs docs/data-structure/BIT.md\n#line 2 \"src/misc/mo.hpp\"\n#include\
-    \ <algorithm>\n#include <numeric>\n#line 5 \"src/misc/mo.hpp\"\nnamespace kyopro\
-    \ {\n/// @brief mo's algorithm\nclass Mo {\n    int n;\n    std::vector<std::pair<int,\
+    \n/// @docs docs/data-structure/BIT.md\n#line 2 \"src/algorithm/mo.hpp\"\n#include\
+    \ <algorithm>\n#include <numeric>\n#line 5 \"src/algorithm/mo.hpp\"\nnamespace\
+    \ kyopro {\n/// @brief mo's algorithm\nclass Mo {\n    int n;\n    std::vector<std::pair<int,\
     \ int>> lr;\n    const int logn;\n    const long long maxn;\n    std::vector<int>\
     \ ord;\n\n  public:\n    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn)\
     \ { lr.reserve(n); }\n    inline void add(int l, int r) { lr.emplace_back(l, r);\
@@ -75,13 +75,13 @@ data:
     \ (auto& as : ans) {\n        printf(\"%d\\n\", as);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n\
     #include<iostream>\n#include\"../../../src/data-structure/BIT.hpp\"\n#include\"\
-    ../../../src/misc/mo.hpp\"\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n,\
-    \ &q);\n    kyopro::Mo mo(q);\n    std::vector<int> a(n);\n    for (auto& aa :\
-    \ a) {\n        scanf(\"%d\", &aa);\n    }\n    std::vector<int> k(q);\n    for(int\
-    \ i=0;i<q;i++) {\n        int l, r;\n        scanf(\"%d%d%d\", &l, &r, &k[i]);\n\
-    \        k[i]++;\n        mo.add(l, r);\n    }\n    std::vector<int> pressed =\
-    \ a;\n    auto tmp = a;\n    {\n        std::sort(tmp.begin(), tmp.end());\n \
-    \       tmp.erase(std::unique(tmp.begin(),tmp.end()), tmp.end());\n        for\
+    ../../../src/algorithm/mo.hpp\"\nint main() {\n    int n, q;\n    scanf(\"%d%d\"\
+    , &n, &q);\n    kyopro::Mo mo(q);\n    std::vector<int> a(n);\n    for (auto&\
+    \ aa : a) {\n        scanf(\"%d\", &aa);\n    }\n    std::vector<int> k(q);\n\
+    \    for(int i=0;i<q;i++) {\n        int l, r;\n        scanf(\"%d%d%d\", &l,\
+    \ &r, &k[i]);\n        k[i]++;\n        mo.add(l, r);\n    }\n    std::vector<int>\
+    \ pressed = a;\n    auto tmp = a;\n    {\n        std::sort(tmp.begin(), tmp.end());\n\
+    \        tmp.erase(std::unique(tmp.begin(),tmp.end()), tmp.end());\n        for\
     \ (auto& ai : pressed) {\n            ai = lower_bound(tmp.begin(),tmp.end(),\
     \ ai) - tmp.begin();\n        }\n    }\n\n    int sz = tmp.size();\n    kyopro::BIT<int>\
     \ st(sz);\n    auto add = [&](int x) -> void { st.add(pressed[x], 1); };\n   \
@@ -91,11 +91,11 @@ data:
     \ (auto& as : ans) {\n        printf(\"%d\\n\", as);\n    }\n}\n"
   dependsOn:
   - src/data-structure/BIT.hpp
-  - src/misc/mo.hpp
+  - src/algorithm/mo.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-09 06:36:58+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp

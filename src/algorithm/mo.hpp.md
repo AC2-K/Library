@@ -16,7 +16,7 @@ data:
     _deprecated_at_docs: docs/other/mo.md
     document_title: mo's algorithm
     links: []
-  bundledCode: "#line 2 \"src/misc/mo.hpp\"\n#include <algorithm>\n#include <numeric>\n\
+  bundledCode: "#line 2 \"src/algorithm/mo.hpp\"\n#include <algorithm>\n#include <numeric>\n\
     #include <vector>\nnamespace kyopro {\n/// @brief mo's algorithm\nclass Mo {\n\
     \    int n;\n    std::vector<std::pair<int, int>> lr;\n    const int logn;\n \
     \   const long long maxn;\n    std::vector<int> ord;\n\n  public:\n    explicit\
@@ -73,17 +73,17 @@ data:
     \ kyopro\n\n/// @docs docs/other/mo.md"
   dependsOn: []
   isVerificationFile: false
-  path: src/misc/mo.hpp
+  path: src/algorithm/mo.hpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-09 06:36:58+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-documentation_of: src/misc/mo.hpp
+documentation_of: src/algorithm/mo.hpp
 layout: document
 redirect_from:
-- /library/src/misc/mo.hpp
-- /library/src/misc/mo.hpp.html
+- /library/src/algorithm/mo.hpp
+- /library/src/algorithm/mo.hpp.html
 title: mo's algorithm
 ---
