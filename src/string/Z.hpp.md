@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: test/yosupo_judge/string/Z_algorithm.hpp
+    title: test/yosupo_judge/string/Z_algorithm.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -33,7 +36,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/string/Z.hpp
-  requiredBy: []
+  requiredBy:
+  - test/yosupo_judge/string/Z_algorithm.hpp
   timestamp: '2023-04-09 12:27:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
