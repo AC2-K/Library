@@ -128,7 +128,7 @@ data:
       title: "\u6C38\u7D9Astack"
   - name: src/string
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/string/Z.hpp
       title: Z algorithm
     - icon: ':heavy_check_mark:'
@@ -137,11 +137,6 @@ data:
     - icon: ':warning:'
       path: src/string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
-  - name: test/yosupo_judge/string
-    pages:
-    - icon: ':warning:'
-      path: test/yosupo_judge/string/Z_algorithm.hpp
-      title: test/yosupo_judge/string/Z_algorithm.hpp
   verificationCategories:
   - name: test/AOJ/ALDS
     pages:
@@ -269,6 +264,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
       title: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/string/Z_algorithm.test.cpp
+      title: test/yosupo_judge/string/Z_algorithm.test.cpp
   - name: test/yosupo_judge/tree
     pages:
     - icon: ':heavy_check_mark:'

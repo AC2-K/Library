@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: test/yosupo_judge/string/Z_algorithm.hpp
-    title: test/yosupo_judge/string/Z_algorithm.hpp
-  _extendedVerifiedWith: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/string/Z_algorithm.test.cpp
+    title: test/yosupo_judge/string/Z_algorithm.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: Z algorithm
     links: []
@@ -36,11 +36,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/string/Z.hpp
-  requiredBy:
-  - test/yosupo_judge/string/Z_algorithm.hpp
+  requiredBy: []
   timestamp: '2023-04-09 12:27:28+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo_judge/string/Z_algorithm.test.cpp
 documentation_of: src/string/Z.hpp
 layout: document
 redirect_from:
