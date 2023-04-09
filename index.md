@@ -5,7 +5,7 @@ data:
     pages:
     - icon: ':warning:'
       path: main.cpp
-      title: main.cpp
+      title: Z algorithm
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
@@ -128,6 +128,9 @@ data:
       title: "\u6C38\u7D9Astack"
   - name: src/string
     pages:
+    - icon: ':warning:'
+      path: src/string/Z.hpp
+      title: Z algorithm
     - icon: ':heavy_check_mark:'
       path: src/string/manacher.hpp
       title: manacher's algorithm

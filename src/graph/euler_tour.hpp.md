@@ -58,9 +58,9 @@ data:
     \    out[v] = tour.size() - 1;\n        };\n        dfs(dfs, r, -1);\n       \
     \ for (int i = 0; i < (int)tour.size(); i++) {\n            rmq.set(i, {depth[tour[i]],\
     \ tour[i]});\n        }\n        rmq.build();\n    }\n\n    inline std::pair<int,\
-    \ int> idx(int v) { return {in[v], out[v]}; }\n    int lca(int v, int u) {\n \
-    \       if (in[v] > in[u] + 1) {\n            std::swap(u, v);\n        }\n  \
-    \      return rmq.prod(in[v], in[u] + 1).second;\n    }\n\n    inline int dist(int\
+    \ int> idx(int v) { return {in[v], out[v]}; }\n    inline int lca(int v, int u)\
+    \ {\n        if (in[v] > in[u] + 1) {\n            std::swap(u, v);\n        }\n\
+    \        return rmq.prod(in[v], in[u] + 1).second;\n    }\n\n    inline int dist(int\
     \ v, int u) {\n        int p = lca(v, u);\n        return depth[v] + depth[u]\
     \ - 2 * depth[p];\n    }\n\n    inline bool is_in_subtree(int par, int v) {\n\
     \        return (in[par] <= in[v] && out[v] <= out[par]);\n    }\n};\n};  // namespace\
@@ -83,9 +83,9 @@ data:
     \    out[v] = tour.size() - 1;\n        };\n        dfs(dfs, r, -1);\n       \
     \ for (int i = 0; i < (int)tour.size(); i++) {\n            rmq.set(i, {depth[tour[i]],\
     \ tour[i]});\n        }\n        rmq.build();\n    }\n\n    inline std::pair<int,\
-    \ int> idx(int v) { return {in[v], out[v]}; }\n    int lca(int v, int u) {\n \
-    \       if (in[v] > in[u] + 1) {\n            std::swap(u, v);\n        }\n  \
-    \      return rmq.prod(in[v], in[u] + 1).second;\n    }\n\n    inline int dist(int\
+    \ int> idx(int v) { return {in[v], out[v]}; }\n    inline int lca(int v, int u)\
+    \ {\n        if (in[v] > in[u] + 1) {\n            std::swap(u, v);\n        }\n\
+    \        return rmq.prod(in[v], in[u] + 1).second;\n    }\n\n    inline int dist(int\
     \ v, int u) {\n        int p = lca(v, u);\n        return depth[v] + depth[u]\
     \ - 2 * depth[p];\n    }\n\n    inline bool is_in_subtree(int par, int v) {\n\
     \        return (in[par] <= in[v] && out[v] <= out[par]);\n    }\n};\n};  // namespace\
@@ -95,7 +95,7 @@ data:
   isVerificationFile: false
   path: src/graph/euler_tour.hpp
   requiredBy: []
-  timestamp: '2023-04-08 11:01:36+00:00'
+  timestamp: '2023-04-09 12:27:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
