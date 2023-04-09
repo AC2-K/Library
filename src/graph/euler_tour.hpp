@@ -43,7 +43,7 @@ class EulerTour {
     }
 
     inline std::pair<int, int> idx(int v) { return {in[v], out[v]}; }
-    int lca(int v, int u) {
+    inline int lca(int v, int u) {
         if (in[v] > in[u] + 1) {
             std::swap(u, v);
         }
