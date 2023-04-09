@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_frequency"
 #include<iostream>
-#include"../../../src/misc/mo.hpp"
+#include"../../../src/algorithm/mo.hpp"
 using namespace std;
 int main() {
     int n, q;

@@ -2,6 +2,7 @@
 #include <cassert>
 #include <limits>
 #include <numeric>
+#include"../internal/type_traits.hpp"
 namespace kyopro {
 namespace internal {
 using u32 = uint32_t;
@@ -11,8 +12,9 @@ using i64 = int64_t;
 using u128 = __uint128_t;
 using i128 = __int128_t;
 /// @brief MontgomeryReduction
-template <typename T, typename LargeT> class Montgomery {
+template <typename T> class Montgomery {
     static constexpr int lg = std::numeric_limits<T>::digits;
+    using LargeT = internal::double_size_uint_t<T>;
     T mod, r, r2, minv;
     T calc_inv() {
         T t = 0, res = 0;

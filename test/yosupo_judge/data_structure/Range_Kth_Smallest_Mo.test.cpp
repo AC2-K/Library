@@ -2,7 +2,7 @@
 
 #include<iostream>
 #include"../../../src/data-structure/BIT.hpp"
-#include"../../../src/misc/mo.hpp"
+#include"../../../src/algorithm/mo.hpp"
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);

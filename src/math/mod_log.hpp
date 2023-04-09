@@ -17,7 +17,7 @@ long long __mod_log(uint64_t x, uint64_t y, uint64_t p) {
             return -1;
         }
     }
-    uint32_t m = (uint32_t)sqrt(p) + 1;
+    int m = (uint32_t)sqrt(p) + 1;
     hash_map<uint64_t, int> mp;
     uint64_t xm = mod_pow<uint64_t>(x, m, p);
     uint64_t add = 0, g, k = (p == 1 ? 0 : 1);

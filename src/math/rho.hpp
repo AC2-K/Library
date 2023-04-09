@@ -72,8 +72,8 @@ inline std::vector<u64> factorize(u64 n) {
     if (n < 2) {
         return {};
     }
-    auto v = (n < (1uL << 31) ? rho_fact<dynamic_modint<u32, u64>>(n)
-                              : rho_fact<dynamic_modint<u64, u128>>(n));
+    auto v = (n < (1uL << 31) ? rho_fact<dynamic_modint<u32>>(n)
+                              : rho_fact<dynamic_modint<u64>>(n));
     std::sort(v.begin(), v.end());
     return v;
 }

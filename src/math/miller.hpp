@@ -52,7 +52,7 @@ constexpr bool is_prime(u64 n) {
     if (n < (1ul << 31)) {
         return miller_rabin<barrett_modint<-1>>(n, bases_int, 3);
     } else {
-        return miller_rabin<dynamic_modint<u64, u128, -1>>(n, bases_ll, 7);
+        return miller_rabin<dynamic_modint<u64, -1>>(n, bases_ll, 7);
     }
 }
 };  // namespace miller

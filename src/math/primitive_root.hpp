@@ -11,20 +11,20 @@ inline uint64_t primitive_root(uint64_t p) {
         q = (p - 1) / q;
     }
     using ull = unsigned long long;
-    if (dynamic_modint<uint64_t, __uint128_t>::get_mod() != p) {
-        dynamic_modint<uint64_t, __uint128_t>::set_mod(p);
+    if (dynamic_modint<uint64_t>::get_mod() != p) {
+        dynamic_modint<uint64_t>::set_mod(p);
     }
     static ull rng = 2020;
     while (1) {
         rng ^= rng << 13;
         rng ^= rng >> 7;
         rng ^= rng << 17;
-        dynamic_modint<uint64_t, __uint128_t> g(rng);
+        dynamic_modint<uint64_t> g(rng);
         if (g.val() == 0) continue;
         bool is_ok = true;
 
         for (const auto& q : pf) {
-            if (dynamic_modint<uint64_t, __uint128_t>(g).pow(q).val() == 1) {
+            if (dynamic_modint<uint64_t>(g).pow(q).val() == 1) {
                 is_ok = false;
                 break;
             }
