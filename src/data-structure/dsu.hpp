@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-
+#include <utility>
 namespace kyopro {
 /// @brief Disjoint Set(Union find)
 class dsu {

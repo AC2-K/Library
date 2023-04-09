@@ -1,6 +1,7 @@
 #pragma once
 #include <cassert>
 #include <string>
+#include <utility>
 #include <vector>
 namespace kyopro {
 /// @brief manacher's algorithm

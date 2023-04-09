@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <numeric>
 #include <vector>
+#include <utility>
 namespace kyopro {
 /// @brief mo's algorithm
 class Mo {
@@ -41,6 +42,7 @@ class Mo {
         }
         std::sort(std::begin(ord), std::end(ord),
                   [&](int a, int b) { return tmp[a] < tmp[b]; });
+
     }
 
   public:
