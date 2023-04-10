@@ -128,10 +128,10 @@ data:
     \ is, mint& mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n    \
     \    return is;\n    }\n};\n};  // namespace kyopro\n\n/// @brief static modint(\u9759\
     \u7684modint)\n/// @docs docs/math/static_modint.md\n#line 2 \"src/math/matrix.hpp\"\
-    \n#include <vector>\nnamespace kyopro {\n/// @brief matirx(\u884C\u5217)\ntemplate\
-    \ <typename T> class Matrix {\n    std::vector<std::vector<T>> dat;\n    int h\
-    \ = 0, w = 0;\n\n  public:\n    Matrix(const std::vector<std::vector<T>>& dat)\n\
-    \        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
+    \n#include <utility>\n#include <vector>\nnamespace kyopro {\n/// @brief matirx(\u884C\
+    \u5217)\ntemplate <typename T> class Matrix {\n    std::vector<std::vector<T>>\
+    \ dat;\n    int h = 0, w = 0;\n\n  public:\n    Matrix(const std::vector<std::vector<T>>&\
+    \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
     \ h_, int w_, const T& v = T()) : dat(h_, std::vector<T>(w_, v)) {}\n\n    using\
     \ mat = Matrix<T>;\n    // access\n    std::vector<T>& operator[](int i) { return\
     \ dat[i]; }\n\n    // operator\n    mat& operator+=(const mat& r) {\n        assert(r.h\
@@ -182,7 +182,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-09 21:30:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp

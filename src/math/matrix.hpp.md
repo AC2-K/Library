@@ -13,10 +13,10 @@ data:
     _deprecated_at_docs: docs/math/matrix.md
     document_title: "matirx(\u884C\u5217)"
     links: []
-  bundledCode: "#line 2 \"src/math/matrix.hpp\"\n#include <vector>\nnamespace kyopro\
-    \ {\n/// @brief matirx(\u884C\u5217)\ntemplate <typename T> class Matrix {\n \
-    \   std::vector<std::vector<T>> dat;\n    int h = 0, w = 0;\n\n  public:\n   \
-    \ Matrix(const std::vector<std::vector<T>>& dat)\n        : dat(dat), h(dat.size()),\
+  bundledCode: "#line 2 \"src/math/matrix.hpp\"\n#include <utility>\n#include <vector>\n\
+    namespace kyopro {\n/// @brief matirx(\u884C\u5217)\ntemplate <typename T> class\
+    \ Matrix {\n    std::vector<std::vector<T>> dat;\n    int h = 0, w = 0;\n\n  public:\n\
+    \    Matrix(const std::vector<std::vector<T>>& dat)\n        : dat(dat), h(dat.size()),\
     \ w(dat.front().size()) {}\n\n    Matrix(int h_, int w_, const T& v = T()) : dat(h_,\
     \ std::vector<T>(w_, v)) {}\n\n    using mat = Matrix<T>;\n    // access\n   \
     \ std::vector<T>& operator[](int i) { return dat[i]; }\n\n    // operator\n  \
@@ -42,8 +42,8 @@ data:
     \ < n; i++) res[i][i] = 1;\n\n        while (e) {\n            if (e & 1) res\
     \ *= pr;\n            pr *= pr;\n\n            e >>= 1;\n        }\n\n       \
     \ return res;\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/math/matrix.md\n"
-  code: "#pragma once\n#include <vector>\nnamespace kyopro {\n/// @brief matirx(\u884C\
-    \u5217)\ntemplate <typename T> class Matrix {\n    std::vector<std::vector<T>>\
+  code: "#pragma once\n#include <utility>\n#include <vector>\nnamespace kyopro {\n\
+    /// @brief matirx(\u884C\u5217)\ntemplate <typename T> class Matrix {\n    std::vector<std::vector<T>>\
     \ dat;\n    int h = 0, w = 0;\n\n  public:\n    Matrix(const std::vector<std::vector<T>>&\
     \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
     \ h_, int w_, const T& v = T()) : dat(h_, std::vector<T>(w_, v)) {}\n\n    using\
@@ -75,7 +75,7 @@ data:
   isVerificationFile: false
   path: src/math/matrix.hpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-09 21:30:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/matrix/Matrix Product.test.cpp

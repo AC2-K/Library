@@ -22,34 +22,34 @@ data:
     _deprecated_at_docs: docs/data-structure/dsu.md
     document_title: Disjoint Set(Union find)
     links: []
-  bundledCode: "#line 2 \"src/data-structure/dsu.hpp\"\n#include <vector>\n\nnamespace\
-    \ kyopro {\n/// @brief Disjoint Set(Union find)\nclass dsu {\n  private:\n   \
-    \ std::vector<int> find, rank;\n\n  public:\n    dsu(int n) : find(n, -1), rank(n,\
-    \ 1) {}\n\n    int root(int x) {\n        if (find[x] < 0) {\n            return\
-    \ x;\n        } else {\n            return find[x] = root(find[x]);\n        }\n\
-    \    }\n    bool same(int x, int y) { return root(x) == root(y); }\n    int merge(int\
+  bundledCode: "#line 2 \"src/data-structure/dsu.hpp\"\n#include <vector>\n#include\
+    \ <utility>\nnamespace kyopro {\n/// @brief Disjoint Set(Union find)\nclass dsu\
+    \ {\n  private:\n    std::vector<int> find, rank;\n\n  public:\n    dsu(int n)\
+    \ : find(n, -1), rank(n, 1) {}\n\n    int root(int x) {\n        if (find[x] <\
+    \ 0) {\n            return x;\n        } else {\n            return find[x] =\
+    \ root(find[x]);\n        }\n    }\n    bool same(int x, int y) { return root(x)\
+    \ == root(y); }\n    int merge(int x, int y) {\n        x = root(x), y = root(y);\n\
+    \        if (x == y) return x;\n        if (rank[x] < rank[y]) std::swap(x, y);\n\
+    \        if (rank[x] == rank[y]) rank[x]++;\n        find[x] += find[y];\n   \
+    \     find[y] = x;\n        return x;\n    }\n    int size(int x) { return -find[root(x)];\
+    \ }\n};\n\n};  // namespace kyopro\n\n/// @docs docs/data-structure/dsu.md\n"
+  code: "#pragma once\n#include <vector>\n#include <utility>\nnamespace kyopro {\n\
+    /// @brief Disjoint Set(Union find)\nclass dsu {\n  private:\n    std::vector<int>\
+    \ find, rank;\n\n  public:\n    dsu(int n) : find(n, -1), rank(n, 1) {}\n\n  \
+    \  int root(int x) {\n        if (find[x] < 0) {\n            return x;\n    \
+    \    } else {\n            return find[x] = root(find[x]);\n        }\n    }\n\
+    \    bool same(int x, int y) { return root(x) == root(y); }\n    int merge(int\
     \ x, int y) {\n        x = root(x), y = root(y);\n        if (x == y) return x;\n\
     \        if (rank[x] < rank[y]) std::swap(x, y);\n        if (rank[x] == rank[y])\
     \ rank[x]++;\n        find[x] += find[y];\n        find[y] = x;\n        return\
     \ x;\n    }\n    int size(int x) { return -find[root(x)]; }\n};\n\n};  // namespace\
-    \ kyopro\n\n/// @docs docs/data-structure/dsu.md\n"
-  code: "#pragma once\n#include <vector>\n\nnamespace kyopro {\n/// @brief Disjoint\
-    \ Set(Union find)\nclass dsu {\n  private:\n    std::vector<int> find, rank;\n\
-    \n  public:\n    dsu(int n) : find(n, -1), rank(n, 1) {}\n\n    int root(int x)\
-    \ {\n        if (find[x] < 0) {\n            return x;\n        } else {\n   \
-    \         return find[x] = root(find[x]);\n        }\n    }\n    bool same(int\
-    \ x, int y) { return root(x) == root(y); }\n    int merge(int x, int y) {\n  \
-    \      x = root(x), y = root(y);\n        if (x == y) return x;\n        if (rank[x]\
-    \ < rank[y]) std::swap(x, y);\n        if (rank[x] == rank[y]) rank[x]++;\n  \
-    \      find[x] += find[y];\n        find[y] = x;\n        return x;\n    }\n \
-    \   int size(int x) { return -find[root(x)]; }\n};\n\n};  // namespace kyopro\n\
-    \n/// @docs docs/data-structure/dsu.md"
+    \ kyopro\n\n/// @docs docs/data-structure/dsu.md"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/dsu.hpp
   requiredBy:
   - src/graph/mst.hpp
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-09 21:30:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/UnionFind.test.cpp
