@@ -72,6 +72,9 @@ data:
     - icon: ':warning:'
       path: src/graph/namori.hpp
       title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
+    - icon: ':warning:'
+      path: src/graph/topological_sort.hpp
+      title: src/graph/topological_sort.hpp
   - name: src/internal
     pages:
     - icon: ':heavy_check_mark:'
