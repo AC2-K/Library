@@ -1,13 +1,12 @@
-# SegmentTree(セグメント木)
-## 概要
+# 概要
 $(S,\text{op},e)$がモノイドをなすとする。\
 このとき、$S$の列$a=(a_0,a_1,\dots,a_{n-1})$に対して以下の処理を$O(\log n)$で行う。
 
 1. $a_p\leftarrow v$
-1. 区間 $[l,r)$ の積を取得
+1. 区間積を取得
 
-## 使い方
-### コンストラクタ
+# 使い方
+## コンストラクタ
 ```cpp
 segtree<S,op,e> seg(int n)
 ```
@@ -18,31 +17,30 @@ segtree<S,op,e> seg(std::vector<S> a)
 そのまま$a$を渡すこともできます。
 \
 \
-template引数には、$S$に加えて$\text{op},e$を以下の形式で渡す必要があります。
+テンプレート引数には、 $S$ と, $\text{op},e$nを以下の形式で渡す必要があります。
 ```cpp
 S op(S x,S y)
 S e()
 ```
 \
 \
-例として、RangeMinQueryには、以下のようにすればよいです。
+例として、RmQは、以下のように定義できます。
 ```cpp
-const int inf;  //大きい値
 
 int op(int x,int y){
     return min(x,y);
 }
 int e(){
-    return inf;
+    return (十分大きい値);
 }
-segtree<int,op,e> seg(n);    //サイズnのsegtree
+segtree<int,op,e> seg(n);
 ```
 
-### メソッド
+## メソッド
 ```cpp
-void seg.update(int p,S val)
+void seg.update(int p,S v)
 ```
-$a_p\leftarrow \text{val}$とする。
+$a_p\leftarrow v$とする。
 - 制約:$0\leq p<n$
 - 計算量:$O(\log n)$
 

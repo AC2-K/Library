@@ -296,7 +296,7 @@ $x,y,p$に対して、$x^n\equiv y \bmod p$なる最小の**非負整数**$n$を
 
 ## 使い方
 ```cpp
-long long dlp(long long x,long long y,long long p)
+long long mod_log(long long x,long long y,long long p)
 ```
 上のやつを解きます
 
