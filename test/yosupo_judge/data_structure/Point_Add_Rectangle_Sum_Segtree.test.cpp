@@ -4,7 +4,6 @@
 inline long long op(long long a, long long b) { return a + b; };
 inline long long e() { return 0; }
 int main() {
-    using namespace std;
     kyopro::RangeTree<int, long long, op, e> rtree;
 
     int N, Q;
@@ -12,7 +11,7 @@ int main() {
     int X[N], Y[N], W[N];
     int c[Q];
     int s[Q], t[Q], u[Q], v[Q];
-    for (int i = 0; i < Q; ++i) {
+    for (int i = 0; i < N; ++i) {
         scanf("%d %d %d\n", &X[i], &Y[i], &W[i]);
         rtree.add_point(X[i], Y[i]);
     }
@@ -29,7 +28,7 @@ int main() {
     rtree.build();
 
     for (int i = 0; i < N; ++i) rtree.add(X[i], Y[i], W[i]);
-    
+
     for (int i = 0; i < Q; ++i) {
         if (c[i]) {
             printf("%lld\n", rtree.sum(s[i], t[i], u[i], v[i]));
