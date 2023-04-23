@@ -44,27 +44,27 @@ data:
     \ E, typename O>\n    void build(const A& add, const E& erase, const O& out) {\n\
     \        build(add, add, erase, erase, out);\n    }\n};\n};  // namespace kyopro\n\
     \n/// @docs docs/other/mo.md\n#line 4 \"test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp\"\
-    \nusing namespace std;\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\
-    \n    std::vector<int> a(n);\n    for (auto& aa : a) {\n        scanf(\"%d\",\
-    \ &aa);\n    }\n    auto pressed = a;\n    std::sort(pressed.begin(), pressed.end());\n\
-    \    pressed.erase(unique(pressed.begin(), pressed.end()), pressed.end());\n \
-    \   for (auto& ai : a) {\n        ai = lower_bound(pressed.begin(), pressed.end(),\
-    \ ai) - pressed.begin();\n    }\n    kyopro::Mo mo(q);\n    std::vector<int> x(q);\n\
-    \    for (int i = 0; i < q; i++) {\n        int l, r;\n        scanf(\"%d%d%d\\\
-    n\", &l, &r, &x[i]);\n        mo.add(l, r);\n    }\n\n    std::vector<int> cnt(pressed.size()\
-    \ + 1);\n    std::vector<int> ans(q);\n    auto add = [&](int v) -> void {\n \
-    \       cnt[a[v]]++;\n    };\n    auto del = [&](int v) -> void {\n        cnt[a[v]]--;\n\
-    \    };\n    auto out = [&](int v) -> void {\n        auto it = std::lower_bound(pressed.begin(),pressed.end(),\
-    \ x[v]);\n        if (it == pressed.end() || (*it) != x[v]) {\n            ans[v]\
-    \ = 0;\n        } else {\n            int xi = it - pressed.begin();\n       \
-    \     ans[v] = cnt[xi];\n        }\n    };\n    mo.build(add, del, out);\n   \
-    \ for (auto& aa : ans) {\n        printf(\"%d\\n\", aa);\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
-    \n#include<iostream>\n#include\"../../../src/algorithm/mo.hpp\"\nusing namespace\
-    \ std;\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    std::vector<int>\
+    \nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    std::vector<int>\
     \ a(n);\n    for (auto& aa : a) {\n        scanf(\"%d\", &aa);\n    }\n    auto\
     \ pressed = a;\n    std::sort(pressed.begin(), pressed.end());\n    pressed.erase(unique(pressed.begin(),\
-    \ pressed.end()), pressed.end());\n    for (auto& ai : a) {\n        ai = lower_bound(pressed.begin(),\
+    \ pressed.end()), pressed.end());\n    for (auto& ai : a) {\n        ai = std::lower_bound(pressed.begin(),\
+    \ pressed.end(), ai) - pressed.begin();\n    }\n    kyopro::Mo mo(q);\n    std::vector<int>\
+    \ x(q);\n    for (int i = 0; i < q; i++) {\n        int l, r;\n        scanf(\"\
+    %d%d%d\\n\", &l, &r, &x[i]);\n        mo.add(l, r);\n    }\n\n    std::vector<int>\
+    \ cnt(pressed.size() + 1);\n    std::vector<int> ans(q);\n    auto add = [&](int\
+    \ v) -> void {\n        cnt[a[v]]++;\n    };\n    auto del = [&](int v) -> void\
+    \ {\n        cnt[a[v]]--;\n    };\n    auto out = [&](int v) -> void {\n     \
+    \   auto it = std::lower_bound(pressed.begin(),pressed.end(), x[v]);\n       \
+    \ if (it == pressed.end() || (*it) != x[v]) {\n            ans[v] = 0;\n     \
+    \   } else {\n            int xi = it - pressed.begin();\n            ans[v] =\
+    \ cnt[xi];\n        }\n    };\n    mo.build(add, del, out);\n    for (auto& aa\
+    \ : ans) {\n        printf(\"%d\\n\", aa);\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
+    \n#include<iostream>\n#include\"../../../src/algorithm/mo.hpp\"\nint main() {\n\
+    \    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    std::vector<int> a(n);\n \
+    \   for (auto& aa : a) {\n        scanf(\"%d\", &aa);\n    }\n    auto pressed\
+    \ = a;\n    std::sort(pressed.begin(), pressed.end());\n    pressed.erase(unique(pressed.begin(),\
+    \ pressed.end()), pressed.end());\n    for (auto& ai : a) {\n        ai = std::lower_bound(pressed.begin(),\
     \ pressed.end(), ai) - pressed.begin();\n    }\n    kyopro::Mo mo(q);\n    std::vector<int>\
     \ x(q);\n    for (int i = 0; i < q; i++) {\n        int l, r;\n        scanf(\"\
     %d%d%d\\n\", &l, &r, &x[i]);\n        mo.add(l, r);\n    }\n\n    std::vector<int>\
@@ -81,7 +81,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
+  timestamp: '2023-04-23 13:40:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp

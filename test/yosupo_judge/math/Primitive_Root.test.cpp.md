@@ -7,13 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
   - icon: ':heavy_check_mark:'
@@ -36,8 +36,8 @@ data:
     links:
     - https://judge.yosupo.jp/problem/primitive_root
   bundledCode: "#line 1 \"test/yosupo_judge/math/Primitive_Root.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#include<iostream>\n\
-    #line 2 \"src/math/dynamic_modint.hpp\"\n#include <cassert>\n#line 2 \"src/internal/barrett.hpp\"\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#line 2 \"src/math/dynamic_modint.hpp\"\
+    \n#include <cassert>\n#include <iostream>\n#line 2 \"src/internal/barrett.hpp\"\
     \nnamespace kyopro {\nnamespace internal {\n/// @brief barrett reduction\nclass\
     \ barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64 m;\n\
     \    u64 im;\n\npublic:\n    explicit barrett() = default;\n    explicit barrett(u64\
@@ -244,14 +244,14 @@ data:
     \ == 1) {\n                is_ok = false;\n                break;\n          \
     \  }\n        }\n        if (is_ok) {\n            return g.val();\n        }\n\
     \    }\n}\n};  // namespace kyopro\n#line 4 \"test/yosupo_judge/math/Primitive_Root.test.cpp\"\
-    \nint main(){\n    int q;\n    scanf(\"%d\", &q);\n    while (q--) {\n       \
-    \ long long p;\n        scanf(\"%lld\", &p);\n        long long ans = kyopro::primitive_root(p);\n\
+    \nint main() {\n    int q;\n    scanf(\"%d\", &q);\n    while (q--) {\n      \
+    \  long long p;\n        scanf(\"%lld\", &p);\n        long long ans = kyopro::primitive_root(p);\n\
     \        printf(\"%lld\\n\", ans);\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#include<iostream>\n\
-    #include\"../../../src/math/primitive_root.hpp\"\nint main(){\n    int q;\n  \
-    \  scanf(\"%d\", &q);\n    while (q--) {\n        long long p;\n        scanf(\"\
-    %lld\", &p);\n        long long ans = kyopro::primitive_root(p);\n        printf(\"\
-    %lld\\n\", ans);\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#include\
+    \ \"../../../src/math/primitive_root.hpp\"\n#include <iostream>\nint main() {\n\
+    \    int q;\n    scanf(\"%d\", &q);\n    while (q--) {\n        long long p;\n\
+    \        scanf(\"%lld\", &p);\n        long long ans = kyopro::primitive_root(p);\n\
+    \        printf(\"%lld\\n\", ans);\n    }\n}\n"
   dependsOn:
   - src/math/primitive_root.hpp
   - src/math/dynamic_modint.hpp
@@ -264,7 +264,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
+  timestamp: '2023-04-23 13:40:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Primitive_Root.test.cpp

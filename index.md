@@ -89,7 +89,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: MontgomeryReduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
@@ -97,10 +97,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/math/matrix.hpp
       title: "matirx(\u884C\u5217)"
     - icon: ':heavy_check_mark:'
@@ -109,7 +109,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/mod_log.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
     - icon: ':warning:'
@@ -127,7 +127,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/sieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
   - name: src/persistent
@@ -191,7 +191,7 @@ data:
       title: test/AOJ/GRL/5_C.test.cpp
   - name: test/AOJ/NTL
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/AOJ/NTL/1_B.test.cpp
       title: test/AOJ/NTL/1_B.test.cpp
     - icon: ':heavy_check_mark:'
@@ -274,7 +274,7 @@ data:
       title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - name: test/yosupo_judge/matrix
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/string

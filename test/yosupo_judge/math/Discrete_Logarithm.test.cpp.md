@@ -10,19 +10,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
   _extendedRequiredBy: []
@@ -241,12 +241,12 @@ data:
     }\n};  // namespace kyopro\n\n///@docs docs/math/mod_log.md\n#line 4 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
     \n\nint main() {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n    \
     \    int x, y, p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\\
-    n\", kyopro::mod_log<long long>(x, y, p));\n    }\n}\n"
+    n\", kyopro::mod_log(x, y, p));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\
     \n#include<iostream>\n#include\"../../../src/math/mod_log.hpp\"\n\nint main()\
     \ {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y,\
-    \ p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\n\", kyopro::mod_log<long\
-    \ long>(x, y, p));\n    }\n}"
+    \ p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\n\", kyopro::mod_log(x,\
+    \ y, p));\n    }\n}"
   dependsOn:
   - src/math/mod_log.hpp
   - src/data-structure/hash_map.hpp
@@ -259,7 +259,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
+  timestamp: '2023-04-23 13:40:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp

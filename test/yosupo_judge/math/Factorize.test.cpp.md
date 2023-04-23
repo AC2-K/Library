@@ -7,13 +7,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
   - icon: ':heavy_check_mark:'
@@ -230,14 +230,14 @@ data:
     test/yosupo_judge/math/Factorize.test.cpp\"\nint main(){\n    int q;\n    scanf(\"\
     %d\", &q);\n    while (q--) {\n        uint64_t x;\n        scanf(\"%lld\", &x);\n\
     \        const auto pf = kyopro::rho::factorize(x);\n        printf(\"%d \", (int)pf.size());\n\
-    \        for (auto &p : pf){\n            printf(\"%lld \", p);\n        }\n \
-    \       puts(\"\");\n    }\n}\n"
+    \        for (const auto &p : pf){\n            printf(\"%lld \", p);\n      \
+    \  }\n        printf(\"\\n\");\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/factorize\"\n#include<iostream>\n\
     #include\"../../../src/math/rho.hpp\"\nint main(){\n    int q;\n    scanf(\"%d\"\
     , &q);\n    while (q--) {\n        uint64_t x;\n        scanf(\"%lld\", &x);\n\
     \        const auto pf = kyopro::rho::factorize(x);\n        printf(\"%d \", (int)pf.size());\n\
-    \        for (auto &p : pf){\n            printf(\"%lld \", p);\n        }\n \
-    \       puts(\"\");\n    }\n}"
+    \        for (const auto &p : pf){\n            printf(\"%lld \", p);\n      \
+    \  }\n        printf(\"\\n\");\n    }\n}"
   dependsOn:
   - src/math/rho.hpp
   - src/math/gcd.hpp
@@ -249,7 +249,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
+  timestamp: '2023-04-23 13:40:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Factorize.test.cpp

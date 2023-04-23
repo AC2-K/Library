@@ -52,33 +52,33 @@ data:
     \ l, int r) {\n        assert(0 <= l && l <= r && r <= sz);\n        return internal_prod(l,\
     \ r, 0, sz, 0);\n    }\n\n    inline S operator[](int pos) { return prod(pos,\
     \ pos + 1); }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/lazy_segtree.md\n\
-    #line 4 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\n\nint op(int x, int y) { return x\
-    \ + y; }\nint comp(int x, int y) { return x + y; }\nint mapping(int x, int y)\
-    \ { return x + y; }\nint e() { return 0; }\nint id() { return 0; }\n\nint main()\
-    \ {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n    kyopro::lazy_segtree<int,\
-    \ int, op, e, comp, id, mapping> seg(n);\n    while (q--) {\n        int t;\n\
-    \        scanf(\"%d\", &t);\n        if (!t) {\n            int l, r, val;\n \
-    \           scanf(\"%d%d%d\", &l, &r, &val);\n            l--, r--;\n        \
-    \    seg.apply(l, r + 1, val);\n        } else {\n            int i;\n       \
-    \     scanf(\"%d\", &i);\n            i--;\n            printf(\"%d\\n\", seg[i]);\n\
-    \        }\n    }\n}\n"
+    #line 4 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\n\ninline int op(int x, int y) { return\
+    \ x + y; }\ninline int comp(int x, int y) { return x + y; }\ninline int mapping(int\
+    \ x, int y) { return x + y; }\ninline int e() { return 0; }\ninline int id() {\
+    \ return 0; }\n\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n \
+    \   kyopro::lazy_segtree<int, int, op, e, comp, id, mapping> seg(n);\n    while\
+    \ (q--) {\n        int t;\n        scanf(\"%d\", &t);\n        if (!t) {\n   \
+    \         int l, r, val;\n            scanf(\"%d%d%d\", &l, &r, &val);\n     \
+    \       l--, r--;\n            seg.apply(l, r + 1, val);\n        } else {\n \
+    \           int i;\n            scanf(\"%d\", &i);\n            i--;\n       \
+    \     printf(\"%d\\n\", seg[i]);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
     \n#include<iostream>\n#include \"../../../src/data-structure/lazy_segtree.hpp\"\
-    \n\nint op(int x, int y) { return x + y; }\nint comp(int x, int y) { return x\
-    \ + y; }\nint mapping(int x, int y) { return x + y; }\nint e() { return 0; }\n\
-    int id() { return 0; }\n\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n,\
-    \ &q);\n    kyopro::lazy_segtree<int, int, op, e, comp, id, mapping> seg(n);\n\
-    \    while (q--) {\n        int t;\n        scanf(\"%d\", &t);\n        if (!t)\
-    \ {\n            int l, r, val;\n            scanf(\"%d%d%d\", &l, &r, &val);\n\
-    \            l--, r--;\n            seg.apply(l, r + 1, val);\n        } else\
-    \ {\n            int i;\n            scanf(\"%d\", &i);\n            i--;\n  \
-    \          printf(\"%d\\n\", seg[i]);\n        }\n    }\n}"
+    \n\ninline int op(int x, int y) { return x + y; }\ninline int comp(int x, int\
+    \ y) { return x + y; }\ninline int mapping(int x, int y) { return x + y; }\ninline\
+    \ int e() { return 0; }\ninline int id() { return 0; }\n\nint main() {\n    int\
+    \ n, q;\n    scanf(\"%d%d\", &n, &q);\n    kyopro::lazy_segtree<int, int, op,\
+    \ e, comp, id, mapping> seg(n);\n    while (q--) {\n        int t;\n        scanf(\"\
+    %d\", &t);\n        if (!t) {\n            int l, r, val;\n            scanf(\"\
+    %d%d%d\", &l, &r, &val);\n            l--, r--;\n            seg.apply(l, r +\
+    \ 1, val);\n        } else {\n            int i;\n            scanf(\"%d\", &i);\n\
+    \            i--;\n            printf(\"%d\\n\", seg[i]);\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/lazy_segtree.hpp
   isVerificationFile: true
   path: test/AOJ/DSL/2_E_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
+  timestamp: '2023-04-23 13:40:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_E_lazy.test.cpp

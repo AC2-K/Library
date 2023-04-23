@@ -63,22 +63,23 @@ data:
     \ kyopro\n#line 5 \"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp\"\n\
     using namespace std;\nint main(){\n    int n, q;\n    scanf(\"%d%d\",&n,&q);\n\
     \    kyopro::EulerTour g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n\
-    \        cin >> p;\n        g.add_edge(p, i);\n    }\n    g.build();\n    while\
-    \ (q--) {\n        int u, v;\n        scanf(\"%d%d\",&u,&v);\n        printf(\"\
-    %d\\n\",g.lca(u, v));\n    }\n}\n"
+    \        scanf(\"%d\", &p);\n        g.add_edge(p, i);\n    }\n    g.build();\n\
+    \    while (q--) {\n        int u, v;\n        scanf(\"%d%d\",&u,&v);\n      \
+    \  printf(\"%d\\n\",g.lca(u, v));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include<iostream>\n\
     #include\"../../../src/graph/euler_tour.hpp\"\nusing namespace std;\nint main(){\n\
     \    int n, q;\n    scanf(\"%d%d\",&n,&q);\n    kyopro::EulerTour g(n);\n    for\
-    \ (int i = 1; i < n; i++) {\n        int p;\n        cin >> p;\n        g.add_edge(p,\
-    \ i);\n    }\n    g.build();\n    while (q--) {\n        int u, v;\n        scanf(\"\
-    %d%d\",&u,&v);\n        printf(\"%d\\n\",g.lca(u, v));\n    }\n}"
+    \ (int i = 1; i < n; i++) {\n        int p;\n        scanf(\"%d\", &p);\n    \
+    \    g.add_edge(p, i);\n    }\n    g.build();\n    while (q--) {\n        int\
+    \ u, v;\n        scanf(\"%d%d\",&u,&v);\n        printf(\"%d\\n\",g.lca(u, v));\n\
+    \    }\n}"
   dependsOn:
   - src/graph/euler_tour.hpp
   - src/data-structure/sparse_table.hpp
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
+  timestamp: '2023-04-23 13:40:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
