@@ -35,6 +35,7 @@
 "test/yosupo_judge/math/Factorize.test.cpp": "2023-04-23 13:40:02 +0900",
 "test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp": "2023-04-23 13:40:02 +0900",
 "test/yosupo_judge/math/Primitive_Root.test.cpp": "2023-04-23 13:40:02 +0900",
+"test/yosupo_judge/matrix/Matrix Product.test.cpp": "2023-04-23 14:03:16 +0900",
 "test/yosupo_judge/string/Enumerate_Palindromes.test.cpp": "2023-04-09 21:30:24 +0900",
 "test/yosupo_judge/string/Z_algorithm.test.cpp": "2023-04-09 12:39:31 +0900",
 "test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp": "2023-04-23 13:40:02 +0900",
