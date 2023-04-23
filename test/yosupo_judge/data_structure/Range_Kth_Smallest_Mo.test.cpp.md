@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/algorithm/mo.hpp
     title: mo's algorithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
   _extendedRequiredBy: []

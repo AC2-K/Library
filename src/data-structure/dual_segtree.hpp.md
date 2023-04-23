@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_D_dual.test.cpp
     title: test/AOJ/DSL/2_D_dual.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_E_dual.test.cpp
     title: test/AOJ/DSL/2_E_dual.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/dual_segtree.md
     document_title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
@@ -24,9 +24,9 @@ data:
     #include <vector>\nnamespace kyopro {\n\n/// @brief Dual Segmenttree(\u53CC\u5BFE\
     \u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\ntemplate <class F, F (*comp)(F, F), F (*id)(),\
     \ bool is_commutative = true>\nclass dual_segtree {\n    std::vector<F> dat;\n\
-    \    int _n, sz, lg;\n\npublic:\n    dual_segtree() : {}\n    dual_segtree(int\
-    \ _n) : _n(_n) {\n        sz = 1, lg = 0;\n        while (sz < _n) {\n       \
-    \     lg++;\n            sz <<= 1;\n        }\n        dat.assign(sz << 1, id());\n\
+    \    int _n, sz, lg;\n\npublic:\n    dual_segtree() {}\n    dual_segtree(int _n)\
+    \ : _n(_n) {\n        sz = 1, lg = 0;\n        while (sz < _n) {\n           \
+    \ lg++;\n            sz <<= 1;\n        }\n        dat.assign(sz << 1, id());\n\
     \    }\n\nprivate:\n    void all_apply(int p, const F& v) { dat[p] = comp(dat[p],\
     \ v); }\n    void push(int p) {\n        if (dat[p] == id()) {\n            return;\n\
     \        }\n        all_apply(p << 1 | 0, dat[p]);\n        all_apply(p << 1 |\
@@ -47,8 +47,8 @@ data:
     \n/// @brief Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
     )\ntemplate <class F, F (*comp)(F, F), F (*id)(), bool is_commutative = true>\n\
     class dual_segtree {\n    std::vector<F> dat;\n    int _n, sz, lg;\n\npublic:\n\
-    \    dual_segtree() : {}\n    dual_segtree(int _n) : _n(_n) {\n        sz = 1,\
-    \ lg = 0;\n        while (sz < _n) {\n            lg++;\n            sz <<= 1;\n\
+    \    dual_segtree() {}\n    dual_segtree(int _n) : _n(_n) {\n        sz = 1, lg\
+    \ = 0;\n        while (sz < _n) {\n            lg++;\n            sz <<= 1;\n\
     \        }\n        dat.assign(sz << 1, id());\n    }\n\nprivate:\n    void all_apply(int\
     \ p, const F& v) { dat[p] = comp(dat[p], v); }\n    void push(int p) {\n     \
     \   if (dat[p] == id()) {\n            return;\n        }\n        all_apply(p\
@@ -70,8 +70,8 @@ data:
   isVerificationFile: false
   path: src/data-structure/dual_segtree.hpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-04-23 12:50:49+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - test/AOJ/DSL/2_E_dual.test.cpp

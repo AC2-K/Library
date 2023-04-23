@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure-2d/PointAddRectangleSum.hpp
     title: src/data-structure-2d/PointAddRectangleSum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -19,7 +19,8 @@ data:
     - https://judge.yosupo.jp/problem/point_add_rectangle_sum
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\n\
-    #include <iostream>\n#line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\n\
+    #include <iostream>\n#line 2 \"src/data-structure-2d/PointAddRectangleSum.hpp\"\
+    \n#include <algorithm>\n#line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\n\
     namespace kyopro {\n/// @brief Binary Index Tree\ntemplate <typename T, typename\
     \ SumT = T>\nclass BIT {\n    std::vector<SumT> bit;\n    int n;\n\npublic:\n\
     \    explicit BIT() {}\n    explicit BIT(int n) : n(n), bit(n + 1, T()) {}\n \
@@ -33,7 +34,7 @@ data:
     \           if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x +\
     \ k];\n                x += k;\n            }\n        }\n\n        return x +\
     \ 1;\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/BIT.md\n\
-    #line 2 \"src/data-structure-2d/PointAddRectangleSum.hpp\"\nnamespace kyopro {\n\
+    #line 4 \"src/data-structure-2d/PointAddRectangleSum.hpp\"\nnamespace kyopro {\n\
     template <typename T, typename S>\nclass PointAddRectangleSum {\n    std::vector<BIT<S>>\
     \ dat;\n    std::vector<std::vector<T>> ys;\n\n    T n;\n    std::vector<std::pair<T,\
     \ T>> ps;\n\npublic:\n    void add_point(T x, T y) { ps.emplace_back(x, y); }\n\
@@ -97,8 +98,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-23 12:50:49+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
 layout: document

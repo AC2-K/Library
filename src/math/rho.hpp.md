@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: barrett reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
     title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "phi function($\\phi$ \u95A2\u6570)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "primitive root(\u539F\u59CB\u6839)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
     links: []
@@ -280,7 +280,7 @@ data:
   - src/math/phi_function.hpp
   - src/math/primitive_root.hpp
   timestamp: '2023-04-23 12:26:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp

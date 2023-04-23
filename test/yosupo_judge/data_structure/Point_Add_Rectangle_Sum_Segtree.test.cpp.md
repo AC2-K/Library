@@ -19,7 +19,8 @@ data:
     - https://judge.yosupo.jp/problem/point_add_rectangle_sum
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\n\
-    #include <iostream>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <vector>\n\
+    #include <iostream>\n#line 2 \"src/data-structure-2d/RangeTree.hpp\"\n#include\
+    \ <algorithm>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <vector>\n\
     namespace kyopro {\n/// @brief Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
     )\n\ntemplate <class S, S (*op)(S, S), S (*e)()>\nclass segtree {\n    int lg,\
     \ sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int\
@@ -40,7 +41,7 @@ data:
     \ = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n        }\n        return\
     \ op(sml, smr);\n    }\n    inline void apply(int p, const S& v) { update(p, op(dat[sz\
     \ + p], v)); }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/segtree.md\n\
-    #line 3 \"src/data-structure-2d/RangeTree.hpp\"\nnamespace kyopro {\ntemplate\
+    #line 4 \"src/data-structure-2d/RangeTree.hpp\"\nnamespace kyopro {\ntemplate\
     \ <typename T, typename S, S (*op)(S, S), S (*e)()>\nclass RangeTree {\n    std::vector<segtree<S,\
     \ op, e>> dat;\n    std::vector<std::vector<T>> ys;\n\n    T n;\n    std::vector<std::pair<T,\
     \ T>> ps;\n\npublic:\n    void add_point(T x, T y) { ps.emplace_back(x, y); }\n\
@@ -107,7 +108,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
+  timestamp: '2023-04-23 12:50:49+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
