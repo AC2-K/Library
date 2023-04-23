@@ -97,10 +97,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/matrix.hpp
       title: "matirx(\u884C\u5217)"
     - icon: ':heavy_check_mark:'
@@ -127,7 +127,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/sieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/static_modint.hpp
       title: "static modint(\u9759\u7684modint)"
   - name: src/persistent
@@ -274,7 +274,7 @@ data:
       title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - name: test/yosupo_judge/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/string

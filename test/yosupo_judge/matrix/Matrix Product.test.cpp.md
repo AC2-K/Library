@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/matrix.hpp
     title: "matirx(\u884C\u5217)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -22,53 +22,52 @@ data:
     - https://judge.yosupo.jp/problem/matrix_product
   bundledCode: "#line 1 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include <iostream>\n\
-    #line 2 \"src/math/matrix.hpp\"\n#include <utility>\n#include <vector>\nnamespace\
-    \ kyopro {\n/// @brief matirx(\u884C\u5217)\ntemplate <typename T> class Matrix\
-    \ {\n    std::vector<std::vector<T>> dat;\n    int h = 0, w = 0;\n\npublic:\n\
-    \    Matrix(const std::vector<std::vector<T>>& dat)\n        : dat(dat), h(dat.size()),\
-    \ w(dat.front().size()) {}\n\n    Matrix(int h_, int w_, const T& v = T()) : dat(h_,\
-    \ std::vector<T>(w_, v)) {}\n\n    using mat = Matrix<T>;\n    // access\n   \
-    \ std::vector<T>& operator[](int i) { return dat[i]; }\n\n    // operator\n  \
-    \  mat& operator+=(const mat& r) {\n        assert(r.h == this->h);\n        assert(r.w\
-    \ == this->w);\n        for (int i = 0; i < h; i++) {\n            for (int j\
-    \ = 0; j < w; j++) {\n                dat[i][j] += r.dat[i][j];\n            }\n\
-    \        }\n        return (*this);\n    }\n    mat& operator-=(const mat& r)\
-    \ {\n        assert(r.h == this->h);\n        assert(r.w == this->w);\n      \
-    \  for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n\
-    \                dat[i][j] -= r.dat[i][j];\n            }\n        }\n       \
-    \ return (*this);\n    }\n\n    mat& operator*=(const mat& r) {\n        int ha\
-    \ = dat.size(), wa = dat.front().size();\n        int hb = r.dat.size(), wb =\
-    \ r.dat.front().size();\n        assert(wa == hb);\n\n        std::vector<std::vector<T>>\
-    \ res(ha, std::vector<T>(wb));\n        for (int i = 0; i < ha; i++) {\n     \
-    \       for (int k = 0; k < wa; k++) {\n                for (int j = 0; j < wb;\
-    \ j++) {\n                    res[i][j] += dat[i][k] * r.dat[k][j];\n        \
-    \        }\n            }\n        }\n\n        std::swap(res, dat);\n       \
-    \ return (*this);\n    }\n\n    mat operator+(const mat& r) { return mat(*this)\
-    \ += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r; }\n    mat\
-    \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    template <typename\
-    \ P> mat pow(P e) const {\n        assert(e >= 0);\n        int n = dat.size();\n\
-    \        mat res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i\
-    \ < n; i++) res[i][i] = 1;\n\n        while (e) {\n            if (e & 1) res\
-    \ *= pr;\n            pr *= pr;\n\n            e >>= 1;\n        }\n\n       \
-    \ return res;\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/math/matrix.md\n\
-    #line 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#line 3 \"src/math/gcd.hpp\"\
-    \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr T _gcd(T\
-    \ a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a\
-    \ + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n   \
-    \ a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
-    \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
-    \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
-    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
-    \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
-    \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
-    \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace\
-    \ kyopro {\ntemplate <__uint64_t mod> class static_modint {\nprivate:\n    using\
-    \ mint = static_modint<mod>;\n    using i64 = long long;\n    using u64 = unsigned\
-    \ long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\n\
-    \    u64 v;\n    constexpr inline u64 normalize(i64 v_) const {\n        v_ %=\
+    #line 2 \"src/math/matrix.hpp\"\n#include <utility>\n#include <vector>\n#include\
+    \ <cassert>\nnamespace kyopro {\n/// @brief matirx(\u884C\u5217)\ntemplate <typename\
+    \ T>\nclass Matrix {\n    std::vector<std::vector<T>> dat;\n    int h = 0, w =\
+    \ 0;\n\npublic:\n    Matrix(const std::vector<std::vector<T>>& dat)\n        :\
+    \ dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int h_, int\
+    \ w_, const T& v = T()) : dat(h_, std::vector<T>(w_, v)) {}\n\n    using mat =\
+    \ Matrix<T>;\n    // access\n    std::vector<T>& operator[](int i) { return dat[i];\
+    \ }\n\n    // operator\n    mat& operator+=(const mat& r) {\n        assert(r.h\
+    \ == this->h);\n        assert(r.w == this->w);\n        for (int i = 0; i < h;\
+    \ i++) {\n            for (int j = 0; j < w; j++) {\n                dat[i][j]\
+    \ += r.dat[i][j];\n            }\n        }\n        return (*this);\n    }\n\
+    \    mat& operator-=(const mat& r) {\n        assert(r.h == this->h);\n      \
+    \  assert(r.w == this->w);\n        for (int i = 0; i < h; i++) {\n          \
+    \  for (int j = 0; j < w; j++) {\n                dat[i][j] -= r.dat[i][j];\n\
+    \            }\n        }\n        return (*this);\n    }\n\n    mat& operator*=(const\
+    \ mat& r) {\n        int ha = dat.size(), wa = dat.front().size();\n        int\
+    \ hb = r.dat.size(), wb = r.dat.front().size();\n        assert(wa == hb);\n\n\
+    \        std::vector<std::vector<T>> res(ha, std::vector<T>(wb));\n        for\
+    \ (int i = 0; i < ha; i++) {\n            for (int k = 0; k < wa; k++) {\n   \
+    \             for (int j = 0; j < wb; j++) {\n                    res[i][j] +=\
+    \ dat[i][k] * r.dat[k][j];\n                }\n            }\n        }\n\n  \
+    \      std::swap(res, dat);\n        return (*this);\n    }\n\n    mat operator+(const\
+    \ mat& r) { return mat(*this) += r; }\n    mat operator-(const mat& r) { return\
+    \ mat(*this) -= r; }\n    mat operator*(const mat& r) { return mat(*this) *= r;\
+    \ }\n\n    template <typename P>\n    mat pow(P e) const {\n        assert(e >=\
+    \ 0);\n        int n = dat.size();\n        mat res(n, n, 0);\n        mat pr(*this);\n\
+    \        for (int i = 0; i < n; i++) res[i][i] = 1;\n\n        while (e) {\n \
+    \           if (e & 1) res *= pr;\n            pr *= pr;\n\n            e >>=\
+    \ 1;\n        }\n\n        return res;\n    }\n};\n};  // namespace kyopro\n\n\
+    /// @docs docs/math/matrix.md\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\n\
+    namespace kyopro {\ntemplate <typename T> constexpr T _gcd(T a, T b) {\n    assert(a\
+    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (a == 0 || b == 0) {\n            return a +\
+    \ b;\n        }\n        if (a > b) {\n            a -= b;\n            a >>=\
+    \ __builtin_ctzll(a);\n        } else {\n            b -= a;\n            b >>=\
+    \ __builtin_ctzll(b);\n        }\n    }\n\n    return a << d;\n}\ntemplate <typename\
+    \ T> constexpr T ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx\
+    \ = 0, ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b)\
+    \ = std::pair<T, T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx,\
+    \ x - nx * q};\n        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n \
+    \   }\n    return a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\
+    \nnamespace kyopro {\ntemplate <__uint64_t mod> class static_modint {\nprivate:\n\
+    \    using mint = static_modint<mod>;\n    using i64 = long long;\n    using u64\
+    \ = unsigned long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\
+    \n    u64 v;\n    constexpr inline u64 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
     \ v_;\n    }\n\npublic:\n    constexpr static_modint() : v(0) {}\n    constexpr\
     \ static_modint(const i64& v_) : v(normalize(v_)) {}\n\n    // operator\n    constexpr\
@@ -186,8 +185,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 13:40:02+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-23 14:03:16+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
 layout: document
