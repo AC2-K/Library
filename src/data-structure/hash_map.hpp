@@ -43,7 +43,7 @@ public:
         }
     }
 
-    const Val* find(const Key& k) const {
+    Val* find(const Key& k) const {
         u32 hash = get_hash(k);
         while (1) {
             if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))
