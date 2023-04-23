@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/matrix.hpp
     title: "matirx(\u884C\u5217)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -36,12 +36,12 @@ data:
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
     \ a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace\
-    \ kyopro {\ntemplate <__uint64_t mod> class static_modint {\n  private:\n    using\
+    \ kyopro {\ntemplate <__uint64_t mod> class static_modint {\nprivate:\n    using\
     \ mint = static_modint<mod>;\n    using i64 = long long;\n    using u64 = unsigned\
     \ long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\n\
     \    u64 v;\n    constexpr inline u64 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
-    \ v_;\n    }\n\n  public:\n    constexpr static_modint() : v(0) {}\n    constexpr\
+    \ v_;\n    }\n\npublic:\n    constexpr static_modint() : v(0) {}\n    constexpr\
     \ static_modint(const i64& v_) : v(normalize(v_)) {}\n\n    // operator\n    constexpr\
     \ u64 val() const { return v; }\n    constexpr mint& operator+=(const mint& rhs)\
     \ {\n        v += rhs.val();\n        if (v >= mod) {\n            v -= mod;\n\
@@ -81,12 +81,12 @@ data:
     \               const mint& mt) {\n        os << mt.val();\n        return os;\n\
     \    }\n    constexpr friend std::istream& operator>>(std::istream& is, mint&\
     \ mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n        return\
-    \ is;\n    }\n};\ntemplate <__uint32_t mod> class static_modint32 {\n  private:\n\
+    \ is;\n    }\n};\ntemplate <__uint32_t mod> class static_modint32 {\nprivate:\n\
     \    using mint = static_modint32<mod>;\n    using i32 = __int32_t;\n    using\
     \ u32 = __uint32_t;\n    using i64 = __int64_t;\n    using u64 = __uint64_t;\n\
     \n    u32 v;\n    constexpr inline u32 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
-    \ v_;\n    }\n\n  public:\n    constexpr static_modint32() : v(0) {}\n    constexpr\
+    \ v_;\n    }\n\npublic:\n    constexpr static_modint32() : v(0) {}\n    constexpr\
     \ static_modint32(const i64& v_) : v(normalize(v_)) {}\n\n    // operator\n  \
     \  constexpr u64 val() const { return (u64)v; }\n    constexpr mint& operator+=(const\
     \ mint& rhs) {\n        v += rhs.val();\n        if (v >= mod) {\n           \
@@ -130,7 +130,7 @@ data:
     \u7684modint)\n/// @docs docs/math/static_modint.md\n#line 2 \"src/math/matrix.hpp\"\
     \n#include <utility>\n#include <vector>\nnamespace kyopro {\n/// @brief matirx(\u884C\
     \u5217)\ntemplate <typename T> class Matrix {\n    std::vector<std::vector<T>>\
-    \ dat;\n    int h = 0, w = 0;\n\n  public:\n    Matrix(const std::vector<std::vector<T>>&\
+    \ dat;\n    int h = 0, w = 0;\n\npublic:\n    Matrix(const std::vector<std::vector<T>>&\
     \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
     \ h_, int w_, const T& v = T()) : dat(h_, std::vector<T>(w_, v)) {}\n\n    using\
     \ mat = Matrix<T>;\n    // access\n    std::vector<T>& operator[](int i) { return\
@@ -182,8 +182,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-04-09 21:30:24+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-04-23 12:26:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
 layout: document

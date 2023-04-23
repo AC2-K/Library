@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/sparse_table.hpp
-    title: Sparse Table
-  - icon: ':heavy_check_mark:'
+    title: Sparse Table(RangeMin)
+  - icon: ':question:'
     path: src/graph/euler_tour.hpp
     title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
   _extendedRequiredBy: []
@@ -24,23 +24,23 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\
     #include<iostream>\n#line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\n\
     namespace kyopro {\n/// @brief Binary Index Tree\ntemplate <typename T, typename\
-    \ SumT = T> class BIT {\n    std::vector<SumT> bit;\n    int n;\n\n  public:\n\
-    \    explicit BIT(int n) : n(n), bit(n + 1, T()) {}\n    void add(int p, const\
-    \ T& w) {\n        p++;\n        for (int x = p; x <= n; x += x & -x) {\n    \
-    \        bit[x] += w;\n        }\n    }\n\n    SumT sum(int p) const {\n     \
-    \   T s = 0;\n\n        for (int x = p; x > 0; x -= x & -x) {\n            s +=\
-    \ bit[x];\n        }\n        return s;\n    }\n\n    inline SumT sum(int l, int\
-    \ r) const { return sum(r) - sum(l); }\n\n    int lower_bound(SumT w) const {\n\
-    \        if (w <= 0) return 0;\n\n        int x = 0;\n        int k = 1;\n   \
-    \     while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n            if\
-    \ (x + k <= n && bit[x + k] < w) {\n                w -= bit[x + k];\n       \
-    \         x += k;\n            }\n        }\n\n        return x + 1;\n    }\n\
-    };\n};  // namespace kyopro\n\n/// @docs docs/data-structure/BIT.md\n#line 2 \"\
-    src/graph/euler_tour.hpp\"\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
+    \ SumT = T>\nclass BIT {\n    std::vector<SumT> bit;\n    int n;\n\npublic:\n\
+    \    explicit BIT() {}\n    explicit BIT(int n) : n(n), bit(n + 1, T()) {}\n \
+    \   void add(int p, const T& w) {\n        p++;\n        for (int x = p; x <=\
+    \ n; x += x & -x) {\n            bit[x] += w;\n        }\n    }\n\n    SumT sum(int\
+    \ p) const {\n        T s = 0;\n\n        for (int x = p; x > 0; x -= x & -x)\
+    \ {\n            s += bit[x];\n        }\n        return s;\n    }\n\n    inline\
+    \ SumT sum(int l, int r) const { return sum(r) - sum(l); }\n\n    int lower_bound(SumT\
+    \ w) const {\n        if (w <= 0) return 0;\n\n        int x = 0;\n        int\
+    \ k = 1;\n        while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n \
+    \           if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x +\
+    \ k];\n                x += k;\n            }\n        }\n\n        return x +\
+    \ 1;\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/BIT.md\n\
+    #line 2 \"src/graph/euler_tour.hpp\"\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
     \n#include <numeric>\n#line 4 \"src/data-structure/sparse_table.hpp\"\nnamespace\
-    \ kyopro {\n/// @brief Sparse Table\ntemplate <class T> class sparse_table {\n\
-    \    std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n    std::vector<int>\
-    \ look_up;\n\n  public:\n    sparse_table(int n) : vec(n) {}\n    sparse_table(const\
+    \ kyopro {\n/// @brief Sparse Table(RangeMin)\ntemplate <class T>\nclass sparse_table\
+    \ {\n    std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n    std::vector<int>\
+    \ look_up;\n\npublic:\n    sparse_table(int n) : vec(n) {}\n    sparse_table(const\
     \ std::vector<T>& vec) : vec(vec) { build(); }\n    inline void set(int p, const\
     \ T& v) { vec[p] = v; }\n    void build() {\n        int sz = vec.size();\n  \
     \      int log = 0;\n        while ((1 << log) <= sz) {\n            log++;\n\
@@ -57,14 +57,14 @@ data:
     \nnamespace kyopro {\n/// @brief EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\
     \u30FC)\nclass EulerTour {\n    int n;\n    std::vector<std::vector<int>> g;\n\
     \    std::vector<int> tour;\n    std::vector<int> in, out, depth;\n    sparse_table<std::pair<int,\
-    \ int>> rmq;\n\n  public:\n    EulerTour(int n)\n        : n(n), g(n), in(n, -1),\
+    \ int>> rmq;\n\npublic:\n    EulerTour(int n)\n        : n(n), g(n), in(n, -1),\
     \ out(n, -1), depth(n, -1), rmq(2 * n - 1) {\n        tour.reserve(2 * n - 1);\n\
     \    }\n    inline void add_edge(int u, int v) {\n        g[u].emplace_back(v);\n\
     \        g[v].emplace_back(u);\n    }\n    inline std::vector<std::vector<int>>\
     \ get_graph() { return g; }\n    inline std::vector<int> get_tour() { return tour;\
-    \ }\n    inline int get_depth(int v) const { return depth[v]; }\n\n  public:\n\
-    \    void build(int r = 0) {\n        auto dfs = [&](auto self, int v, int p)\
-    \ -> void {\n            in[v] = tour.size();\n            tour.emplace_back(v);\n\
+    \ }\n    inline int get_depth(int v) const { return depth[v]; }\n\npublic:\n \
+    \   void build(int r = 0) {\n        auto dfs = [&](auto self, int v, int p) ->\
+    \ void {\n            in[v] = tour.size();\n            tour.emplace_back(v);\n\
     \            for (const auto& nv : g[v])\n                if (nv != p) {\n   \
     \                 depth[nv] = depth[v] + 1;\n                    self(self, nv,\
     \ v);\n                    tour.emplace_back(v);\n                }\n        \
@@ -110,7 +110,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-09 21:30:24+09:00'
+  timestamp: '2023-04-23 12:26:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp

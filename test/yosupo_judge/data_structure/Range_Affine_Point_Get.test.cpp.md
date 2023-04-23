@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data-structure/dual_segtree.hpp
     title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
@@ -26,30 +26,29 @@ data:
     \ <cassert>\n#include <vector>\nnamespace kyopro {\n\n/// @brief Dual Segmenttree(\u53CC\
     \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\ntemplate <class F, F (*comp)(F, F),\
     \ F (*id)(), bool is_commutative = true>\nclass dual_segtree {\n    std::vector<F>\
-    \ dat;\n    int _n, sz, lg;\n\n  public:\n    dual_segtree() : dual_segtree(0)\
-    \ {}\n    dual_segtree(int _n) : _n(_n) {\n        sz = 1, lg = 0;\n        while\
-    \ (sz < _n) {\n            lg++;\n            sz <<= 1;\n        }\n        dat.assign(sz\
-    \ << 1, id());\n    }\n\n  private:\n    void all_apply(int p, const F& v) { dat[p]\
-    \ = comp(dat[p], v); }\n    void push(int p) {\n        if (dat[p] == id()) {\n\
-    \            return;\n        }\n        all_apply(p << 1 | 0, dat[p]);\n    \
-    \    all_apply(p << 1 | 1, dat[p]);\n        dat[p] = id();\n    }\n\n  public:\n\
-    \    F operator[](int p) {\n        assert(0 <= p && p < _n);\n\n        F res\
-    \ = id();\n\n        p += sz;\n        for (int i = lg; i > 0; i--) {\n      \
-    \      push(p >> i);\n        }\n        return dat[p];\n    }\n\n    void apply(int\
-    \ l, int r, const F& v) {\n        assert(0 <= l && l <= r && r <= _n);\n    \
-    \    if (l == r) return;\n        l += sz, r += sz;\n        if (is_commutative)\
-    \ {\n            for (int i = lg; i > 0; i--) {\n                if (((l >> i)\
-    \ << i) != l) {\n                    push(l >> i);\n                }\n      \
-    \          if (((r >> i) << i) != r) {\n                    push((r - 1) >> i);\n\
-    \                }\n            }\n        }\n        while (l < r) {\n      \
-    \      if (l & 1) {\n                all_apply(l++, v);\n            }\n     \
-    \       if (r & 1) {\n                all_apply(--r, v);\n            }\n    \
-    \        l >>= 1, r >>= 1;\n        }\n    }\n};\n\n};  // namespace kyopro\n\n\
-    /// @docs docs/data-structure/dual_segtree.md\n#line 3 \"src/math/gcd.hpp\"\n\
-    #include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr T _gcd(T\
-    \ a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a\
-    \ + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n   \
-    \ a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \ dat;\n    int _n, sz, lg;\n\npublic:\n    dual_segtree() : {}\n    dual_segtree(int\
+    \ _n) : _n(_n) {\n        sz = 1, lg = 0;\n        while (sz < _n) {\n       \
+    \     lg++;\n            sz <<= 1;\n        }\n        dat.assign(sz << 1, id());\n\
+    \    }\n\nprivate:\n    void all_apply(int p, const F& v) { dat[p] = comp(dat[p],\
+    \ v); }\n    void push(int p) {\n        if (dat[p] == id()) {\n            return;\n\
+    \        }\n        all_apply(p << 1 | 0, dat[p]);\n        all_apply(p << 1 |\
+    \ 1, dat[p]);\n        dat[p] = id();\n    }\n\npublic:\n    F operator[](int\
+    \ p) {\n        assert(0 <= p && p < _n);\n\n        F res = id();\n\n       \
+    \ p += sz;\n        for (int i = lg; i > 0; i--) {\n            push(p >> i);\n\
+    \        }\n        return dat[p];\n    }\n\n    void apply(int l, int r, const\
+    \ F& v) {\n        assert(0 <= l && l <= r && r <= _n);\n        if (l == r) return;\n\
+    \        l += sz, r += sz;\n        if (is_commutative) {\n            for (int\
+    \ i = lg; i > 0; i--) {\n                if (((l >> i) << i) != l) {\n       \
+    \             push(l >> i);\n                }\n                if (((r >> i)\
+    \ << i) != r) {\n                    push((r - 1) >> i);\n                }\n\
+    \            }\n        }\n        while (l < r) {\n            if (l & 1) {\n\
+    \                all_apply(l++, v);\n            }\n            if (r & 1) {\n\
+    \                all_apply(--r, v);\n            }\n            l >>= 1, r >>=\
+    \ 1;\n        }\n    }\n};\n\n};  // namespace kyopro\n\n/// @docs docs/data-structure/dual_segtree.md\n\
+    #line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
+    \ T> constexpr T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a ==\
+    \ 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
     \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
     \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
     \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
@@ -59,12 +58,12 @@ data:
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
     \ a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace\
-    \ kyopro {\ntemplate <__uint64_t mod> class static_modint {\n  private:\n    using\
+    \ kyopro {\ntemplate <__uint64_t mod> class static_modint {\nprivate:\n    using\
     \ mint = static_modint<mod>;\n    using i64 = long long;\n    using u64 = unsigned\
     \ long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\n\
     \    u64 v;\n    constexpr inline u64 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
-    \ v_;\n    }\n\n  public:\n    constexpr static_modint() : v(0) {}\n    constexpr\
+    \ v_;\n    }\n\npublic:\n    constexpr static_modint() : v(0) {}\n    constexpr\
     \ static_modint(const i64& v_) : v(normalize(v_)) {}\n\n    // operator\n    constexpr\
     \ u64 val() const { return v; }\n    constexpr mint& operator+=(const mint& rhs)\
     \ {\n        v += rhs.val();\n        if (v >= mod) {\n            v -= mod;\n\
@@ -104,12 +103,12 @@ data:
     \               const mint& mt) {\n        os << mt.val();\n        return os;\n\
     \    }\n    constexpr friend std::istream& operator>>(std::istream& is, mint&\
     \ mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n        return\
-    \ is;\n    }\n};\ntemplate <__uint32_t mod> class static_modint32 {\n  private:\n\
+    \ is;\n    }\n};\ntemplate <__uint32_t mod> class static_modint32 {\nprivate:\n\
     \    using mint = static_modint32<mod>;\n    using i32 = __int32_t;\n    using\
     \ u32 = __uint32_t;\n    using i64 = __int64_t;\n    using u64 = __uint64_t;\n\
     \n    u32 v;\n    constexpr inline u32 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
-    \ v_;\n    }\n\n  public:\n    constexpr static_modint32() : v(0) {}\n    constexpr\
+    \ v_;\n    }\n\npublic:\n    constexpr static_modint32() : v(0) {}\n    constexpr\
     \ static_modint32(const i64& v_) : v(normalize(v_)) {}\n\n    // operator\n  \
     \  constexpr u64 val() const { return (u64)v; }\n    constexpr mint& operator+=(const\
     \ mint& rhs) {\n        v += rhs.val();\n        if (v >= mod) {\n           \
@@ -185,8 +184,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-04-23 12:26:27+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
 layout: document

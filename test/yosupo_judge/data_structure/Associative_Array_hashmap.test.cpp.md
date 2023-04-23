@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/hash_map.hpp
     title: HashMap
   _extendedRequiredBy: []
@@ -23,17 +23,17 @@ data:
     \ u64[n];\n    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\n    static\
     \ constexpr u32 shift = 64 - std::__lg(n);\n\n    u64 r;\n    inline u32 get_hash(const\
     \ Key& k) const { return ((u64)k * r) >> shift; }\n\n    static constexpr uint8_t\
-    \ mod_msk = (1 << 6) - 1;\n\n  public:\n    explicit constexpr hash_map() {\n\
-    \        r = std::chrono::steady_clock::now().time_since_epoch().count();\n  \
-    \      r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const\
-    \ Key& k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n        \
-    \    if (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash\
-    \ & mod_msk)))) {\n                keys[hash] = k;\n                flag[hash\
-    \ >> 6] |= static_cast<u64>(1) << (hash & mod_msk);\n                return vals[hash]\
-    \ = default_val;\n            }\n\n            if (keys[hash] == k) return vals[hash];\n\
-    \            hash = (hash + 1) & (n - 1);\n        }\n    }\n\n    const Val*\
-    \ find(const Key& k) const {\n        u32 hash = get_hash(k);\n        while (1)\
-    \ {\n            if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))\n\
+    \ mod_msk = (1 << 6) - 1;\n\npublic:\n    explicit constexpr hash_map() {\n  \
+    \      r = std::chrono::steady_clock::now().time_since_epoch().count();\n    \
+    \    r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const Key&\
+    \ k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n            if\
+    \ (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash & mod_msk))))\
+    \ {\n                keys[hash] = k;\n                flag[hash >> 6] |= static_cast<u64>(1)\
+    \ << (hash & mod_msk);\n                return vals[hash] = default_val;\n   \
+    \         }\n\n            if (keys[hash] == k) return vals[hash];\n         \
+    \   hash = (hash + 1) & (n - 1);\n        }\n    }\n\n    const Val* find(const\
+    \ Key& k) const {\n        u32 hash = get_hash(k);\n        while (1) {\n    \
+    \        if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))\n\
     \                return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
     \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace\
     \ kyopro\n#line 4 \"test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp\"\
@@ -55,7 +55,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-23 12:26:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp

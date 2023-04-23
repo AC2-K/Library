@@ -1,9 +1,9 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/sparse_table.hpp
-    title: Sparse Table
+    title: Sparse Table(RangeMin)
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -17,13 +17,13 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Static_RMQ.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n#include<iostream>\n\
     #line 2 \"src/data-structure/sparse_table.hpp\"\n#include <numeric>\n#include\
-    \ <vector>\nnamespace kyopro {\n/// @brief Sparse Table\ntemplate <class T> class\
-    \ sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n\
-    \    std::vector<int> look_up;\n\n  public:\n    sparse_table(int n) : vec(n)\
-    \ {}\n    sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }\n  \
-    \  inline void set(int p, const T& v) { vec[p] = v; }\n    void build() {\n  \
-    \      int sz = vec.size();\n        int log = 0;\n        while ((1 << log) <=\
-    \ sz) {\n            log++;\n        }\n        table.assign(log, std::vector<T>(1\
+    \ <vector>\nnamespace kyopro {\n/// @brief Sparse Table(RangeMin)\ntemplate <class\
+    \ T>\nclass sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>>\
+    \ table;\n    std::vector<int> look_up;\n\npublic:\n    sparse_table(int n) :\
+    \ vec(n) {}\n    sparse_table(const std::vector<T>& vec) : vec(vec) { build();\
+    \ }\n    inline void set(int p, const T& v) { vec[p] = v; }\n    void build()\
+    \ {\n        int sz = vec.size();\n        int log = 0;\n        while ((1 <<\
+    \ log) <= sz) {\n            log++;\n        }\n        table.assign(log, std::vector<T>(1\
     \ << log));\n        for (int i = 0; i < sz; i++) {\n            table[0][i] =\
     \ vec[i];\n        }\n        for (int i = 1; i < log; i++) {\n            for\
     \ (int j = 0; j + (1 << i) <= (1 << log); j++) {\n                table[i][j]\
@@ -49,7 +49,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-23 12:26:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_RMQ.test.cpp

@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
   _extendedRequiredBy: []
@@ -70,11 +70,11 @@ data:
     \ ull msk30 = (1ul << 30) - 1;\n    static constexpr ull msk61 = (1ul << 31) -\
     \ 1;\n    const std::string str;\n    std::vector<ull> hash, pow;\n\n    static\
     \ constexpr ull mod = (1uL << 61) - 1;\n    static constexpr ull primitive_root\
-    \ = 37;\n\n  public:\n    static const uint mapping_max = (uint)'Z' + 2;\n   \
-    \ static ull base;\n\n  private:\n    constexpr ull mul(const u128& a, const u128&\
-    \ b) const {\n        u128 t = a * b;\n\n        t = (t >> 61) + (t & mod);\n\n\
-    \        if (t >= mod) {\n            t -= mod;\n        }\n\n        return t;\n\
-    \    }\n\n    constexpr ull mapping(const char& c) const {\n        return (ull)c;\
+    \ = 37;\n\npublic:\n    static const uint mapping_max = (uint)'Z' + 2;\n    static\
+    \ ull base;\n\nprivate:\n    constexpr ull mul(const u128& a, const u128& b) const\
+    \ {\n        u128 t = a * b;\n\n        t = (t >> 61) + (t & mod);\n\n       \
+    \ if (t >= mod) {\n            t -= mod;\n        }\n\n        return t;\n   \
+    \ }\n\n    constexpr ull mapping(const char& c) const {\n        return (ull)c;\
     \  // \u5909\u66F4\u3059\u308B?\n    }\n\n    static inline ull generate() {\n\
     \        std::mt19937_64 engine(\n            std::chrono::steady_clock::now().time_since_epoch().count());\n\
     \        std::uniform_int_distribution<ull> rand(1uL, mod - 1);\n        return\
@@ -82,7 +82,7 @@ data:
     \ != 0) {\n            return;\n        }\n        ull r = mod - 1;\n\n      \
     \  while (_gcd(r, mod - 1) != 1 || r <= mapping_max) {\n            r = generate();\n\
     \        }\n        base = mod_pow<__uint128_t>(primitive_root, r, mod);\n   \
-    \ }\n\n  public:\n    RollingHash() : str() {}\n\n    RollingHash(const std::string&\
+    \ }\n\npublic:\n    RollingHash() : str() {}\n\n    RollingHash(const std::string&\
     \ str) : str(str) {\n        generate_base();\n        build();\n    }\n\n   \
     \ void build() {\n        hash.resize(str.size() + 1);\n        pow.resize(str.size()\
     \ + 1, 1);\n\n        for (int i = 0; i < (int)str.size(); i++) {\n          \
@@ -109,11 +109,11 @@ data:
     \ ull msk30 = (1ul << 30) - 1;\n    static constexpr ull msk61 = (1ul << 31) -\
     \ 1;\n    const std::string str;\n    std::vector<ull> hash, pow;\n\n    static\
     \ constexpr ull mod = (1uL << 61) - 1;\n    static constexpr ull primitive_root\
-    \ = 37;\n\n  public:\n    static const uint mapping_max = (uint)'Z' + 2;\n   \
-    \ static ull base;\n\n  private:\n    constexpr ull mul(const u128& a, const u128&\
-    \ b) const {\n        u128 t = a * b;\n\n        t = (t >> 61) + (t & mod);\n\n\
-    \        if (t >= mod) {\n            t -= mod;\n        }\n\n        return t;\n\
-    \    }\n\n    constexpr ull mapping(const char& c) const {\n        return (ull)c;\
+    \ = 37;\n\npublic:\n    static const uint mapping_max = (uint)'Z' + 2;\n    static\
+    \ ull base;\n\nprivate:\n    constexpr ull mul(const u128& a, const u128& b) const\
+    \ {\n        u128 t = a * b;\n\n        t = (t >> 61) + (t & mod);\n\n       \
+    \ if (t >= mod) {\n            t -= mod;\n        }\n\n        return t;\n   \
+    \ }\n\n    constexpr ull mapping(const char& c) const {\n        return (ull)c;\
     \  // \u5909\u66F4\u3059\u308B?\n    }\n\n    static inline ull generate() {\n\
     \        std::mt19937_64 engine(\n            std::chrono::steady_clock::now().time_since_epoch().count());\n\
     \        std::uniform_int_distribution<ull> rand(1uL, mod - 1);\n        return\
@@ -121,7 +121,7 @@ data:
     \ != 0) {\n            return;\n        }\n        ull r = mod - 1;\n\n      \
     \  while (_gcd(r, mod - 1) != 1 || r <= mapping_max) {\n            r = generate();\n\
     \        }\n        base = mod_pow<__uint128_t>(primitive_root, r, mod);\n   \
-    \ }\n\n  public:\n    RollingHash() : str() {}\n\n    RollingHash(const std::string&\
+    \ }\n\npublic:\n    RollingHash() : str() {}\n\n    RollingHash(const std::string&\
     \ str) : str(str) {\n        generate_base();\n        build();\n    }\n\n   \
     \ void build() {\n        hash.resize(str.size() + 1);\n        pow.resize(str.size()\
     \ + 1, 1);\n\n        for (int i = 0; i < (int)str.size(); i++) {\n          \
@@ -148,7 +148,7 @@ data:
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-04-09 06:36:58+00:00'
+  timestamp: '2023-04-23 12:26:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/rolling_hash.hpp

@@ -13,7 +13,7 @@ data:
     namespace kyopro {\n\n/// @brief \u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\
     \u89E3\nclass namori {\n    int n;\n    std::vector<std::vector<int>> g;\n   \
     \ std::vector<int> root_idx;\n    std::vector<int> deg;\n    std::vector<bool>\
-    \ is_cycle;\n    std::vector<int> cycle;\n\n  public:\n    namori(int n) : n(n),\
+    \ is_cycle;\n    std::vector<int> cycle;\n\npublic:\n    namori(int n) : n(n),\
     \ g(n), deg(n), is_cycle(n, true), root_idx(n, -1) {\n        cycle.reserve(n);\n\
     \    }\n\n    inline void add_edge(int s, int t) {\n        g[s].emplace_back(t),\
     \ g[t].emplace_back(s);\n        deg[s]++, deg[t]++;\n    }\n\n    void build()\
@@ -43,7 +43,7 @@ data:
     /// @brief \u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3\nclass namori\
     \ {\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> root_idx;\n\
     \    std::vector<int> deg;\n    std::vector<bool> is_cycle;\n    std::vector<int>\
-    \ cycle;\n\n  public:\n    namori(int n) : n(n), g(n), deg(n), is_cycle(n, true),\
+    \ cycle;\n\npublic:\n    namori(int n) : n(n), g(n), deg(n), is_cycle(n, true),\
     \ root_idx(n, -1) {\n        cycle.reserve(n);\n    }\n\n    inline void add_edge(int\
     \ s, int t) {\n        g[s].emplace_back(t), g[t].emplace_back(s);\n        deg[s]++,\
     \ deg[t]++;\n    }\n\n    void build() {\n        // deg=1\u306E\u9802\u70B9\u3092\
@@ -73,7 +73,7 @@ data:
   isVerificationFile: false
   path: src/graph/namori.hpp
   requiredBy: []
-  timestamp: '2023-04-08 11:01:36+00:00'
+  timestamp: '2023-04-23 12:26:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/namori.hpp

@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedRequiredBy: []
@@ -24,18 +24,18 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n#include<iostream>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <vector>\n\
     namespace kyopro {\n/// @brief Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
-    )\n\ntemplate <class S, S (*op)(S, S), S (*e)()> class segtree {\n    int lg,\
-    \ sz, n;\n    std::vector<S> dat;\n\n  public:\n    segtree() : segtree(0) {}\n\
-    \    segtree(int n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const std::vector<S>&\
-    \ vec) : n((int)vec.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n)\
-    \ {\n            sz <<= 1;\n            lg++;\n        }\n\n        dat = std::vector<S>(sz\
+    )\n\ntemplate <class S, S (*op)(S, S), S (*e)()>\nclass segtree {\n    int lg,\
+    \ sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int\
+    \ n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const std::vector<S>& vec)\
+    \ : n((int)vec.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n) {\n\
+    \            sz <<= 1;\n            lg++;\n        }\n\n        dat = std::vector<S>(sz\
     \ << 1, e());\n\n        for (int i = 0; i < n; i++) {\n            set(i, vec[i]);\n\
-    \        }\n        build();\n    }\n\n    inline void set(const int p, const\
-    \ S& v) { dat[sz + p] = v; }\n    inline void build() {\n        for (int i =\
-    \ sz - 1; i > 0; i--) {\n            dat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);\n\
-    \        }\n    }\n    S operator[](const int p) const { return dat[sz + p]; }\n\
-    \n    inline void update(int p, const S& v) {\n        p += sz;\n        dat[p]\
-    \ = v;\n        while (p >>= 1) {\n            dat[p] = op(dat[(p << 1)], dat[(p\
+    \        }\n        build();\n    }\n\n    inline void set(int p, const S& v)\
+    \ { dat[sz + p] = v; }\n    inline void build() {\n        for (int i = sz - 1;\
+    \ i > 0; i--) {\n            dat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);\n  \
+    \      }\n    }\n    S operator[](int p) const { return dat[sz + p]; }\n\n   \
+    \ inline void update(int p, const S& v) {\n        p += sz;\n        dat[p] =\
+    \ v;\n        while (p >>= 1) {\n            dat[p] = op(dat[(p << 1)], dat[(p\
     \ << 1) ^ 1]);\n        }\n    }\n\n    inline S prod(int l, int r) const {\n\
     \        if (l == 0 && r == n) {\n            return dat[1];\n        }\n    \
     \    l += sz, r += sz;\n        S sml = e(), smr = e();\n        while (l != r)\
@@ -57,12 +57,12 @@ data:
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
     \ a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace\
-    \ kyopro {\ntemplate <__uint64_t mod> class static_modint {\n  private:\n    using\
+    \ kyopro {\ntemplate <__uint64_t mod> class static_modint {\nprivate:\n    using\
     \ mint = static_modint<mod>;\n    using i64 = long long;\n    using u64 = unsigned\
     \ long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\n\
     \    u64 v;\n    constexpr inline u64 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
-    \ v_;\n    }\n\n  public:\n    constexpr static_modint() : v(0) {}\n    constexpr\
+    \ v_;\n    }\n\npublic:\n    constexpr static_modint() : v(0) {}\n    constexpr\
     \ static_modint(const i64& v_) : v(normalize(v_)) {}\n\n    // operator\n    constexpr\
     \ u64 val() const { return v; }\n    constexpr mint& operator+=(const mint& rhs)\
     \ {\n        v += rhs.val();\n        if (v >= mod) {\n            v -= mod;\n\
@@ -102,12 +102,12 @@ data:
     \               const mint& mt) {\n        os << mt.val();\n        return os;\n\
     \    }\n    constexpr friend std::istream& operator>>(std::istream& is, mint&\
     \ mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n        return\
-    \ is;\n    }\n};\ntemplate <__uint32_t mod> class static_modint32 {\n  private:\n\
+    \ is;\n    }\n};\ntemplate <__uint32_t mod> class static_modint32 {\nprivate:\n\
     \    using mint = static_modint32<mod>;\n    using i32 = __int32_t;\n    using\
     \ u32 = __uint32_t;\n    using i64 = __int64_t;\n    using u64 = __uint64_t;\n\
     \n    u32 v;\n    constexpr inline u32 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
-    \ v_;\n    }\n\n  public:\n    constexpr static_modint32() : v(0) {}\n    constexpr\
+    \ v_;\n    }\n\npublic:\n    constexpr static_modint32() : v(0) {}\n    constexpr\
     \ static_modint32(const i64& v_) : v(normalize(v_)) {}\n\n    // operator\n  \
     \  constexpr u64 val() const { return (u64)v; }\n    constexpr mint& operator+=(const\
     \ mint& rhs) {\n        v += rhs.val();\n        if (v >= mod) {\n           \
@@ -183,7 +183,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-04-23 12:26:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
