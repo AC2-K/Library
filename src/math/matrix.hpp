@@ -1,9 +1,11 @@
 #pragma once
 #include <utility>
 #include <vector>
+#include <cassert>
 namespace kyopro {
 /// @brief matirx(行列)
-template <typename T> class Matrix {
+template <typename T>
+class Matrix {
     std::vector<std::vector<T>> dat;
     int h = 0, w = 0;
 
@@ -61,7 +63,8 @@ public:
     mat operator-(const mat& r) { return mat(*this) -= r; }
     mat operator*(const mat& r) { return mat(*this) *= r; }
 
-    template <typename P> mat pow(P e) const {
+    template <typename P>
+    mat pow(P e) const {
         assert(e >= 0);
         int n = dat.size();
         mat res(n, n, 0);
