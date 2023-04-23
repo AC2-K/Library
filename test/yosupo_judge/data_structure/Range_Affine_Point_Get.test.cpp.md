@@ -151,9 +151,9 @@ data:
     \    return is;\n    }\n};\n};  // namespace kyopro\n\n/// @brief static modint(\u9759\
     \u7684modint)\n/// @docs docs/math/static_modint.md\n#line 5 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\
     \n\nusing mint = kyopro::static_modint32<998244353>;\nusing Affine = std::pair<mint,\
-    \ mint>;\nAffine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
+    \ mint>;\ninline Affine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
     \    auto c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\n\
-    Affine e() { return Affine(1, 0); }\nint main() {\n    std::ios::sync_with_stdio(false);\n\
+    inline Affine e() { return Affine(1, 0); }\nint main() {\n    std::ios::sync_with_stdio(false);\n\
     \    std::cin.tie(nullptr);\n    int n, q;\n    std::cin >> n >> q;\n    kyopro::dual_segtree<Affine,\
     \ op, e> sg(n);\n    std::vector<mint> a(n);\n    for (auto& aa : a) {\n     \
     \   std::cin >> aa;\n    }\n    while (q--) {\n        int t;\n        std::cin\
@@ -165,18 +165,18 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
     \n#include <iostream>\n#include \"../../../src/data-structure/dual_segtree.hpp\"\
     \n#include \"../../../src/math/static_modint.hpp\"\n\nusing mint = kyopro::static_modint32<998244353>;\n\
-    using Affine = std::pair<mint, mint>;\nAffine op(Affine g, Affine f) {\n    auto\
-    \ a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n    return\
-    \ Affine(a * c, a * d + b);\n}\nAffine e() { return Affine(1, 0); }\nint main()\
-    \ {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n    int\
-    \ n, q;\n    std::cin >> n >> q;\n    kyopro::dual_segtree<Affine, op, e> sg(n);\n\
-    \    std::vector<mint> a(n);\n    for (auto& aa : a) {\n        std::cin >> aa;\n\
-    \    }\n    while (q--) {\n        int t;\n        std::cin >> t;\n        if\
-    \ (t == 0) {\n            int l, r;\n            mint b, c;\n            std::cin\
-    \ >> l >> r >> b >> c;\n            sg.apply(l, r, Affine(b, c));\n        } else\
-    \ {\n            int i;\n            std::cin >> i;\n            auto f = sg[i];\n\
-    \            mint ans = f.first * a[i] + f.second;\n            std::cout << ans\
-    \ << '\\n';\n        }\n    }\n}\n"
+    using Affine = std::pair<mint, mint>;\ninline Affine op(Affine g, Affine f) {\n\
+    \    auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n  \
+    \  return Affine(a * c, a * d + b);\n}\ninline Affine e() { return Affine(1, 0);\
+    \ }\nint main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
+    \    int n, q;\n    std::cin >> n >> q;\n    kyopro::dual_segtree<Affine, op,\
+    \ e> sg(n);\n    std::vector<mint> a(n);\n    for (auto& aa : a) {\n        std::cin\
+    \ >> aa;\n    }\n    while (q--) {\n        int t;\n        std::cin >> t;\n \
+    \       if (t == 0) {\n            int l, r;\n            mint b, c;\n       \
+    \     std::cin >> l >> r >> b >> c;\n            sg.apply(l, r, Affine(b, c));\n\
+    \        } else {\n            int i;\n            std::cin >> i;\n          \
+    \  auto f = sg[i];\n            mint ans = f.first * a[i] + f.second;\n      \
+    \      std::cout << ans << '\\n';\n        }\n    }\n}\n"
   dependsOn:
   - src/data-structure/dual_segtree.hpp
   - src/math/static_modint.hpp
@@ -184,7 +184,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:50:49+09:00'
+  timestamp: '2023-04-23 13:24:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp

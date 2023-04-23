@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   - icon: ':heavy_check_mark:'
@@ -150,23 +150,9 @@ data:
     \    return is;\n    }\n};\n};  // namespace kyopro\n\n/// @brief static modint(\u9759\
     \u7684modint)\n/// @docs docs/math/static_modint.md\n#line 5 \"test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp\"\
     \n\nusing mint = kyopro::static_modint32<998244353>;\n\nstruct F{\n    mint a,b;\n\
-    };\n\nF op(F l,F r){\n    mint na = l.a * r.a;\n    mint nb = (l.b * r.a + r.b);\n\
-    \    return F{na, nb};\n}\nF e(){\n    return F{1,0};\n}\nint main() {\n    std::ios::sync_with_stdio(false);\n\
-    \    std::cin.tie(nullptr);\n    int n, q;\n    std::cin >> n >> q;\n    kyopro::segtree<F,\
-    \ op, e> seg(n);\n    for(int i = 0; i < n;i++){\n        mint a, b;\n       \
-    \ std::cin >> a >> b;\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n\
-    \    while (q--){\n        int t;\n        std::cin >> t;\n        if (!t){\n\
-    \            int p;\n            mint c, d;\n            std::cin >> p >> c >>\
-    \ d;\n            seg.update(p, F{c, d});\n        }\n        else{\n        \
-    \    int l, r;\n            mint x;\n            std::cin >> l >> r >> x;\n  \
-    \          F res = seg.prod(l, r);\n            mint ans = res.a * x + res.b;\n\
-    \            std::cout << ans << '\\n';\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n#include<iostream>\n#include\"../../../src/data-structure/segtree.hpp\"\n#include\"\
-    ../../../src/math/static_modint.hpp\"\n\nusing mint = kyopro::static_modint32<998244353>;\n\
-    \nstruct F{\n    mint a,b;\n};\n\nF op(F l,F r){\n    mint na = l.a * r.a;\n \
-    \   mint nb = (l.b * r.a + r.b);\n    return F{na, nb};\n}\nF e(){\n    return\
-    \ F{1,0};\n}\nint main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
+    };\n\ninline F op(F l,F r){\n    mint na = l.a * r.a;\n    mint nb = (l.b * r.a\
+    \ + r.b);\n    return F{na, nb};\n}\ninline F e(){\n    return F{1,0};\n}\nint\
+    \ main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
     \    int n, q;\n    std::cin >> n >> q;\n    kyopro::segtree<F, op, e> seg(n);\n\
     \    for(int i = 0; i < n;i++){\n        mint a, b;\n        std::cin >> a >>\
     \ b;\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n    while (q--){\n\
@@ -175,7 +161,22 @@ data:
     \ F{c, d});\n        }\n        else{\n            int l, r;\n            mint\
     \ x;\n            std::cin >> l >> r >> x;\n            F res = seg.prod(l, r);\n\
     \            mint ans = res.a * x + res.b;\n            std::cout << ans << '\\\
-    n';\n        }\n    }\n}"
+    n';\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
+    \n#include<iostream>\n#include\"../../../src/data-structure/segtree.hpp\"\n#include\"\
+    ../../../src/math/static_modint.hpp\"\n\nusing mint = kyopro::static_modint32<998244353>;\n\
+    \nstruct F{\n    mint a,b;\n};\n\ninline F op(F l,F r){\n    mint na = l.a * r.a;\n\
+    \    mint nb = (l.b * r.a + r.b);\n    return F{na, nb};\n}\ninline F e(){\n \
+    \   return F{1,0};\n}\nint main() {\n    std::ios::sync_with_stdio(false);\n \
+    \   std::cin.tie(nullptr);\n    int n, q;\n    std::cin >> n >> q;\n    kyopro::segtree<F,\
+    \ op, e> seg(n);\n    for(int i = 0; i < n;i++){\n        mint a, b;\n       \
+    \ std::cin >> a >> b;\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n\
+    \    while (q--){\n        int t;\n        std::cin >> t;\n        if (!t){\n\
+    \            int p;\n            mint c, d;\n            std::cin >> p >> c >>\
+    \ d;\n            seg.update(p, F{c, d});\n        }\n        else{\n        \
+    \    int l, r;\n            mint x;\n            std::cin >> l >> r >> x;\n  \
+    \          F res = seg.prod(l, r);\n            mint ans = res.a * x + res.b;\n\
+    \            std::cout << ans << '\\n';\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/segtree.hpp
   - src/math/static_modint.hpp
@@ -183,7 +184,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
+  timestamp: '2023-04-23 13:24:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp

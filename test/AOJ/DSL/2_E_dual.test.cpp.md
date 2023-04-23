@@ -39,9 +39,9 @@ data:
     \                all_apply(--r, v);\n            }\n            l >>= 1, r >>=\
     \ 1;\n        }\n    }\n};\n\n};  // namespace kyopro\n\n/// @docs docs/data-structure/dual_segtree.md\n\
     #line 5 \"test/AOJ/DSL/2_E_dual.test.cpp\"\n\nusing ull = unsigned long long;\n\
-    ull op(ull x, ull y) { return x + y; }\null e() { return 0; }\nint main() {\n\
-    \    int n, q;\n    scanf(\"%d%d\", &n, &q);\n    kyopro::dual_segtree<ull, op,\
-    \ e> seg(n);\n    while (q--) {\n        int ty;\n        scanf(\"%d\", &ty);\n\
+    inline ull op(ull x, ull y) { return x + y; }\ninline ull e() { return 0; }\n\
+    int main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n    kyopro::dual_segtree<ull,\
+    \ op, e> seg(n);\n    while (q--) {\n        int ty;\n        scanf(\"%d\", &ty);\n\
     \        if (ty == 0) {\n            int l, r;\n            ull x;\n         \
     \   scanf(\"%d%d%d\", &l, &r, &x);\n            l--, r--;\n            seg.apply(l,\
     \ r + 1, x);\n        } else {\n            int i;\n            scanf(\"%d\",\
@@ -49,20 +49,20 @@ data:
     \    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_E\"\n\n\
     #include <iostream>\n#include \"../../../src/data-structure/dual_segtree.hpp\"\
-    \n\nusing ull = unsigned long long;\null op(ull x, ull y) { return x + y; }\n\
-    ull e() { return 0; }\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\
-    \    kyopro::dual_segtree<ull, op, e> seg(n);\n    while (q--) {\n        int\
-    \ ty;\n        scanf(\"%d\", &ty);\n        if (ty == 0) {\n            int l,\
-    \ r;\n            ull x;\n            scanf(\"%d%d%d\", &l, &r, &x);\n       \
-    \     l--, r--;\n            seg.apply(l, r + 1, x);\n        } else {\n     \
-    \       int i;\n            scanf(\"%d\", &i);\n            i--;\n           \
-    \ printf(\"%lld\\n\", seg[i]);\n        }\n    }\n}\n"
+    \n\nusing ull = unsigned long long;\ninline ull op(ull x, ull y) { return x +\
+    \ y; }\ninline ull e() { return 0; }\nint main() {\n    int n, q;\n    scanf(\"\
+    %d%d\", &n, &q);\n    kyopro::dual_segtree<ull, op, e> seg(n);\n    while (q--)\
+    \ {\n        int ty;\n        scanf(\"%d\", &ty);\n        if (ty == 0) {\n  \
+    \          int l, r;\n            ull x;\n            scanf(\"%d%d%d\", &l, &r,\
+    \ &x);\n            l--, r--;\n            seg.apply(l, r + 1, x);\n        }\
+    \ else {\n            int i;\n            scanf(\"%d\", &i);\n            i--;\n\
+    \            printf(\"%lld\\n\", seg[i]);\n        }\n    }\n}\n"
   dependsOn:
   - src/data-structure/dual_segtree.hpp
   isVerificationFile: true
   path: test/AOJ/DSL/2_E_dual.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:50:49+09:00'
+  timestamp: '2023-04-23 13:24:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_E_dual.test.cpp
