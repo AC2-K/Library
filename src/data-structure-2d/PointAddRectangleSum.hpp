@@ -1,3 +1,5 @@
+#pragma once
+#include <algorithm>
 #include "../data-structure/BIT.hpp"
 namespace kyopro {
 template <typename T, typename S>

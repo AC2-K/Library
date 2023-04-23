@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include "../data-structure/segtree.hpp"
 namespace kyopro {
 template <typename T, typename S, S (*op)(S, S), S (*e)()>

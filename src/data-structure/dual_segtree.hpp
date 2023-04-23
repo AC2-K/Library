@@ -10,7 +10,7 @@ class dual_segtree {
     int _n, sz, lg;
 
 public:
-    dual_segtree() : {}
+    dual_segtree() {}
     dual_segtree(int _n) : _n(_n) {
         sz = 1, lg = 0;
         while (sz < _n) {
