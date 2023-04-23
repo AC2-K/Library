@@ -37,8 +37,8 @@ data:
     #line 4 \"src/data-structure-2d/PointAddRectangleSum.hpp\"\nnamespace kyopro {\n\
     template <typename T, typename S>\nclass PointAddRectangleSum {\n    std::vector<BIT<S>>\
     \ dat;\n    std::vector<std::vector<T>> ys;\n\n    T n;\n    std::vector<std::pair<T,\
-    \ T>> ps;\n\npublic:\n    void add_point(T x, T y) { ps.emplace_back(x, y); }\n\
-    \n    void build() {\n        std::sort(ps.begin(), ps.end());\n        ps.erase(std::unique(ps.begin(),\
+    \ T>> ps;\npublic:\n    inline void add_point(T x, T y) { ps.emplace_back(x, y);\
+    \ }\n\n    void build() {\n        std::sort(ps.begin(), ps.end());\n        ps.erase(std::unique(ps.begin(),\
     \ ps.end()), ps.end());\n\n        n = ps.size();\n        dat.resize(2 * n);\n\
     \n        ys.resize(2 * n);\n        for (int i = 0; i < n; ++i) {\n         \
     \   ys[i + n].emplace_back(ps[i].second);\n            dat[i + n] = BIT<S>(1);\n\
@@ -47,22 +47,22 @@ data:
     \ | 0].begin(), ys[i << 1 | 0].end(),\n                       ys[i << 1 | 1].begin(),\
     \ ys[i << 1 | 1].end(),\n                       ys[i].begin());\n\n          \
     \  ys[i].erase(std::unique(ys[i].begin(), ys[i].end()), ys[i].end());\n      \
-    \      dat[i] = BIT<S>(ys[i].size());\n        }\n    }\n\n    inline int id(T\
-    \ x) const {\n        return std::lower_bound(\n                   ps.begin(),\
+    \      dat[i] = BIT<S>(ys[i].size());\n        }\n    }\n\nprivate:\n    inline\
+    \ int id(T x) const {\n        return std::lower_bound(\n                   ps.begin(),\
     \ ps.end(), std::make_pair(x, T()),\n                   [](const std::pair<T,\
     \ T>& a, const std::pair<T, T>& b) {\n                       return a.first <\
     \ b.first;\n                   }) -\n               ps.begin();\n    }\n\n   \
     \ inline int id(int i, T y) const {\n        return std::lower_bound(ys[i].begin(),\
-    \ ys[i].end(), y) - ys[i].begin();\n    }\n\n    void add(T x, T y, S w) {\n \
-    \       int i = std::lower_bound(ps.begin(), ps.end(), std::make_pair(x, y)) -\n\
-    \                ps.begin();\n\n        for (i += n; i; i >>= 1) {\n         \
-    \   dat[i].add(id(i, y), w);\n        }\n    }\n\n    S sum(T xl, T yl, T xr,\
-    \ T yr) {\n        S sum = 0;\n\n        int a = id(xl), b = id(xr);\n       \
-    \ a += n, b += n;\n        while (a < b) {\n            if (a & 1) {\n       \
-    \         sum += dat[a].sum(id(a, yl), id(a, yr));\n                ++a;\n   \
-    \         }\n            if (b & 1) {\n                --b;\n                sum\
-    \ += dat[b].sum(id(b, yl), id(b, yr));\n            }\n\n            a >>= 1,\
-    \ b >>= 1;\n        }\n\n        return sum;\n    }\n};\n};  // namespace kyopro\n\
+    \ ys[i].end(), y) - ys[i].begin();\n    }\n\npublic:\n    void add(T x, T y, S\
+    \ w) {\n        int i = std::lower_bound(ps.begin(), ps.end(), std::make_pair(x,\
+    \ y)) -\n                ps.begin();\n\n        for (i += n; i; i >>= 1) {\n \
+    \           dat[i].add(id(i, y), w);\n        }\n    }\n\n    S sum(T xl, T yl,\
+    \ T xr, T yr) {\n        S sum = 0;\n\n        int a = id(xl), b = id(xr);\n \
+    \       a += n, b += n;\n        while (a < b) {\n            if (a & 1) {\n \
+    \               sum += dat[a].sum(id(a, yl), id(a, yr));\n                ++a;\n\
+    \            }\n            if (b & 1) {\n                --b;\n             \
+    \   sum += dat[b].sum(id(b, yl), id(b, yr));\n            }\n\n            a >>=\
+    \ 1, b >>= 1;\n        }\n\n        return sum;\n    }\n};\n};  // namespace kyopro\n\
     #line 4 \"test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp\"\
     \nint main() {\n    using namespace std;\n    kyopro::PointAddRectangleSum<int,\
     \ long long> rtree;\n\n    int N, Q;\n    scanf(\"%d %d\\n\", &N, &Q);\n    int\
@@ -98,7 +98,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:50:49+09:00'
+  timestamp: '2023-04-23 15:13:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
