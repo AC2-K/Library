@@ -4,7 +4,7 @@
 #include "../math/gcd.hpp"
 namespace kyopro {
 template <__uint64_t mod> class static_modint {
-  private:
+private:
     using mint = static_modint<mod>;
     using i64 = long long;
     using u64 = unsigned long long;
@@ -20,7 +20,7 @@ template <__uint64_t mod> class static_modint {
         return v_;
     }
 
-  public:
+public:
     constexpr static_modint() : v(0) {}
     constexpr static_modint(const i64& v_) : v(normalize(v_)) {}
 
@@ -122,7 +122,7 @@ template <__uint64_t mod> class static_modint {
     }
 };
 template <__uint32_t mod> class static_modint32 {
-  private:
+private:
     using mint = static_modint32<mod>;
     using i32 = __int32_t;
     using u32 = __uint32_t;
@@ -138,7 +138,7 @@ template <__uint32_t mod> class static_modint32 {
         return v_;
     }
 
-  public:
+public:
     constexpr static_modint32() : v(0) {}
     constexpr static_modint32(const i64& v_) : v(normalize(v_)) {}
 

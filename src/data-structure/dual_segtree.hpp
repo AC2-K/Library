@@ -9,8 +9,8 @@ class dual_segtree {
     std::vector<F> dat;
     int _n, sz, lg;
 
-  public:
-    dual_segtree() : dual_segtree(0) {}
+public:
+    dual_segtree() : {}
     dual_segtree(int _n) : _n(_n) {
         sz = 1, lg = 0;
         while (sz < _n) {
@@ -20,7 +20,7 @@ class dual_segtree {
         dat.assign(sz << 1, id());
     }
 
-  private:
+private:
     void all_apply(int p, const F& v) { dat[p] = comp(dat[p], v); }
     void push(int p) {
         if (dat[p] == id()) {
@@ -31,7 +31,7 @@ class dual_segtree {
         dat[p] = id();
     }
 
-  public:
+public:
     F operator[](int p) {
         assert(0 <= p && p < _n);
 

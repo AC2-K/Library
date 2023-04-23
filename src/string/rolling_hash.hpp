@@ -19,11 +19,11 @@ class RollingHash {
     static constexpr ull mod = (1uL << 61) - 1;
     static constexpr ull primitive_root = 37;
 
-  public:
+public:
     static const uint mapping_max = (uint)'Z' + 2;
     static ull base;
 
-  private:
+private:
     constexpr ull mul(const u128& a, const u128& b) const {
         u128 t = a * b;
 
@@ -58,7 +58,7 @@ class RollingHash {
         base = mod_pow<__uint128_t>(primitive_root, r, mod);
     }
 
-  public:
+public:
     RollingHash() : str() {}
 
     RollingHash(const std::string& str) : str(str) {

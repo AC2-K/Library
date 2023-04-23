@@ -10,7 +10,7 @@ class EulerTour {
     std::vector<int> in, out, depth;
     sparse_table<std::pair<int, int>> rmq;
 
-  public:
+public:
     EulerTour(int n)
         : n(n), g(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) {
         tour.reserve(2 * n - 1);
@@ -23,7 +23,7 @@ class EulerTour {
     inline std::vector<int> get_tour() { return tour; }
     inline int get_depth(int v) const { return depth[v]; }
 
-  public:
+public:
     void build(int r = 0) {
         auto dfs = [&](auto self, int v, int p) -> void {
             in[v] = tour.size();

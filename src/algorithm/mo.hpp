@@ -1,8 +1,8 @@
 #pragma once
 #include <algorithm>
 #include <numeric>
-#include <vector>
 #include <utility>
+#include <vector>
 namespace kyopro {
 /// @brief mo's algorithm
 class Mo {
@@ -12,7 +12,7 @@ class Mo {
     const long long maxn;
     std::vector<int> ord;
 
-  public:
+public:
     explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }
     inline void add(int l, int r) { lr.emplace_back(l, r); }
     long long hilbertorder(int x, int y) {
@@ -31,7 +31,7 @@ class Mo {
         return d;
     }
 
-  private:
+private:
     inline void line_up() {
         int q = lr.size();
         ord.resize(q);
@@ -42,10 +42,9 @@ class Mo {
         }
         std::sort(std::begin(ord), std::end(ord),
                   [&](int a, int b) { return tmp[a] < tmp[b]; });
-
     }
 
-  public:
+public:
     template <typename AL, typename AR, typename EL, typename ER, typename O>
     void build(const AL& add_left,
                const AR& add_right,

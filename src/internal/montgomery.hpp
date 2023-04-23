@@ -2,7 +2,7 @@
 #include <cassert>
 #include <limits>
 #include <numeric>
-#include"../internal/type_traits.hpp"
+#include "../internal/type_traits.hpp"
 namespace kyopro {
 namespace internal {
 using u32 = uint32_t;
@@ -28,7 +28,7 @@ template <typename T> class Montgomery {
         return res;
     }
 
-  public:
+public:
     Montgomery() = default;
     constexpr inline T get_mod() { return mod; }
     constexpr inline int get_lg() { return lg; }

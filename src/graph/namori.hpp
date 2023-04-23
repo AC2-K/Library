@@ -12,7 +12,7 @@ class namori {
     std::vector<bool> is_cycle;
     std::vector<int> cycle;
 
-  public:
+public:
     namori(int n) : n(n), g(n), deg(n), is_cycle(n, true), root_idx(n, -1) {
         cycle.reserve(n);
     }

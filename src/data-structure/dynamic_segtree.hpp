@@ -2,11 +2,12 @@
 #include <cassert>
 namespace kyopro {
 /// @brief Dynamic Segment Tree(動的セグメント木)
-template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
-  public:
-    dynamic_segtree(const size_t& n) : n(n), root(nullptr) {}
+template <class S, S (*op)(S, S), S (*e)()>
+class dynamic_segtree {
+public:
+    dynamic_segtree(size_t n = 0) : n(n), root(nullptr) {}
 
-  private:
+private:
     struct node {
         S val;
         node* left;
@@ -17,7 +18,7 @@ template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
     node* root;
     size_t n;
 
-  public:
+public:
     void update(const size_t& p, const S& x) {
         assert(0 <= p && p < n);
         internal_update(root, 0, n, p, x);
@@ -39,11 +40,11 @@ template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
         return internal_prod(root, 0, n, l, r);
     }
 
-  private:
+private:
     void internal_update(node*& p,
-                         const size_t& l,
-                         const size_t& r,
-                         const size_t& idx,
+                         size_t l,
+                         size_t r,
+                         size_t idx,
                          const S& new_val) {
         if (p == nullptr) {
             p = new node(e());
@@ -64,9 +65,9 @@ template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
         if (p->right != nullptr) p->val = op(p->val, p->right->val);
     }
     void internal_add(node*& p,
-                      const size_t& l,
-                      const size_t& r,
-                      const size_t& idx,
+                      size_t l,
+                      size_t r,
+                      size_t idx,
                       const S& new_val) {
         if (p == nullptr) {
             p = new node(e());
@@ -87,10 +88,7 @@ template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
         if (p->right != nullptr) p->val = op(p->val, p->right->val);
     }
 
-    S internal_access(node*& p,
-                      const size_t& l,
-                      const size_t& r,
-                      const size_t& idx) {
+    S internal_access(node*& p, size_t l, size_t r, size_t idx) {
         if (p == nullptr) {
             return e();
         }
@@ -105,11 +103,7 @@ template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
             return internal_access(p->right, mid, r, idx);
     }
 
-    S internal_prod(node*& p,
-                    const size_t& l,
-                    const size_t& r,
-                    const size_t& L,
-                    const size_t& R) {
+    S internal_prod(node*& p, size_t l, size_t r, size_t L, size_t R) {
         if (p == nullptr || r <= L || R <= l) {
             return e();
         }

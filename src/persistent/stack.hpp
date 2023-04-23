@@ -4,7 +4,7 @@ namespace kyopro {
 /// @brief 永続stack
 template <class T> class persistent_stack {
     class Node {
-      public:
+    public:
         T val;
         Node* prev;
     };
@@ -14,7 +14,7 @@ template <class T> class persistent_stack {
 
     persistent_stack(Node* head, int sz) : head(head), sz(sz) {}
 
-  public:
+public:
     persistent_stack() : head(nullptr) {}
 
     T top() const {

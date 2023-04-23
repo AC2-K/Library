@@ -5,8 +5,7 @@
 #include "../internal/montgomery.hpp"
 namespace kyopro {
 /// @note mod は32bitじゃないとバグる
-template <int id = -1> 
-class barrett_modint {
+template <int id = -1> class barrett_modint {
     using u32 = uint32_t;
     using u64 = uint64_t;
 
@@ -17,13 +16,13 @@ class barrett_modint {
     static br brt;
     static u32 mod;
     u32 v;  // value
-  public:
+public:
     static inline void set_mod(u32 mod_) {
         brt = br(mod_);
         mod = mod_;
     }
 
-  public:
+public:
     explicit constexpr barrett_modint() : v(0) {
         assert(mod);
     }  // modが決定済みである必要がある
@@ -112,13 +111,12 @@ template <int id>
 typename kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;
 
 namespace kyopro {
-template <typename T, int id = -1>
-class dynamic_modint {
+template <typename T, int id = -1> class dynamic_modint {
     using LargeT = internal::double_size_uint_t<T>;
     static T mod;
     static internal::Montgomery<T> mr;
 
-  public:
+public:
     static void inline set_mod(T mod_) {
         mr.set_mod(mod_);
         mod = mod_;
@@ -126,10 +124,10 @@ class dynamic_modint {
 
     static inline T get_mod() { return mod; }
 
-  private:
+private:
     T v;
 
-  public:
+public:
     dynamic_modint(T v_ = 0) {
         assert(mod);
         v = mr.generate(v_);
@@ -201,11 +199,9 @@ class dynamic_modint {
     friend mint operator/(T l, const mint& r) { return mint(l) /= r; }
 };
 };  // namespace kyopro
+template <typename T, int id> T kyopro::dynamic_modint<T, id>::mod;
 template <typename T, int id>
-T kyopro::dynamic_modint<T, id>::mod;
-template <typename T, int id>
-kyopro::internal::Montgomery<T>
-    kyopro::dynamic_modint<T, id>::mr;
+kyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;
 
 /// @brief dynamic modint(動的modint)
 /// @docs docs/math/dynamic_modint.md

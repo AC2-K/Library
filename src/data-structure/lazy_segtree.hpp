@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
 #include <cassert>
+#include <vector>
 namespace kyopro {
 /// @brief Segment Tree with Lazy Propagation(遅延評価セグメント木)
 template <class S,
@@ -15,7 +15,7 @@ class lazy_segtree {
     std::vector<S> dat;
     std::vector<F> lz;
 
-  public:
+public:
     lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e())) {}
     lazy_segtree(const std::vector<S>& a)
         : dat(4 * a.size(), e()), lz(4 * a.size(), id()) {
@@ -30,7 +30,7 @@ class lazy_segtree {
         build();
     }
 
-  public:
+public:
     inline void set(int pos, S x) {
         assert(0 <= pos && pos < sz);
         dat[pos + sz - 1] = x;
@@ -41,7 +41,7 @@ class lazy_segtree {
         }
     }
 
-  private:
+private:
     void eval(int pos) {
         if (lz[pos] == id()) return;
         if (pos < sz - 1) {
@@ -52,7 +52,7 @@ class lazy_segtree {
         lz[pos] = id();
     }
 
-  private:
+private:
     void internal_apply(int L, int R, int l, int r, const F& x, int k) {
         eval(k);
         if (L <= l && r <= R) {
@@ -66,13 +66,13 @@ class lazy_segtree {
         }
     }
 
-  public:
+public:
     inline void apply(int l, int r, const F& x) {
         assert(0 <= l && l <= r && r <= sz);
         internal_apply(l, r, 0, sz, x, 0);
     }
 
-  private:
+private:
     S internal_prod(int L, int R, int l, int r, int k) {
         eval(k);
         if (r <= L || R <= l) {
@@ -87,7 +87,7 @@ class lazy_segtree {
         }
     }
 
-  public:
+public:
     inline S prod(int l, int r) {
         assert(0 <= l && l <= r && r <= sz);
         return internal_prod(l, r, 0, sz, 0);

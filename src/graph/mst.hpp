@@ -16,7 +16,7 @@ class MST {
     std::vector<Edge> E;
     std::vector<int> V1, V2;
 
-  public:
+public:
     MST(int V) : uf(V) {}
     inline void add_edge(int a, int b, long long cost) {
         int sz = E.size();

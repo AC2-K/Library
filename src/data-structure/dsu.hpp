@@ -1,13 +1,13 @@
 #pragma once
-#include <vector>
 #include <utility>
+#include <vector>
 namespace kyopro {
 /// @brief Disjoint Set(Union find)
 class dsu {
-  private:
+private:
     std::vector<int> find, rank;
 
-  public:
+public:
     dsu(int n) : find(n, -1), rank(n, 1) {}
 
     int root(int x) {

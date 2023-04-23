@@ -7,7 +7,7 @@ template <typename T> class Matrix {
     std::vector<std::vector<T>> dat;
     int h = 0, w = 0;
 
-  public:
+public:
     Matrix(const std::vector<std::vector<T>>& dat)
         : dat(dat), h(dat.size()), w(dat.front().size()) {}
 

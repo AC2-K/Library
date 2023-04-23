@@ -13,7 +13,7 @@ template <typename T, int lg = 20> class persistent_queue {
     Node *front_ptr = nullptr, *back_ptr = nullptr;
     int siz;
 
-  public:
+public:
     persistent_queue(Node* front_ptr = nullptr,
                      Node* back_ptr = nullptr,
                      int siz = 0)

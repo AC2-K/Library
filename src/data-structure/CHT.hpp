@@ -3,9 +3,10 @@
 namespace kyopro {
 
 /// @brief Convex Hull Trick
-template <class T = long long, bool query_type = false> class CHT {
+template <class T = long long, bool query_type = false>
+class CHT {
     class line {
-      public:
+    public:
         T a, b;
         bool is_query;
         mutable T nxt_a, nxt_b;
@@ -42,7 +43,7 @@ template <class T = long long, bool query_type = false> class CHT {
                1. * (it->b - next(it)->b) * (prev(it)->a - it->a);
     }
 
-  public:
+public:
     void insert(T a, T b) {
         if (query_type) {
             ls.emplace(-a, -b);

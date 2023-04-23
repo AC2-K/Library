@@ -2,11 +2,13 @@
 #include <vector>
 namespace kyopro {
 /// @brief Binary Index Tree
-template <typename T, typename SumT = T> class BIT {
+template <typename T, typename SumT = T>
+class BIT {
     std::vector<SumT> bit;
     int n;
 
-  public:
+public:
+    explicit BIT() {}
     explicit BIT(int n) : n(n), bit(n + 1, T()) {}
     void add(int p, const T& w) {
         p++;

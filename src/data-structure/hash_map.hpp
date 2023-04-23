@@ -21,7 +21,7 @@ class hash_map {
 
     static constexpr uint8_t mod_msk = (1 << 6) - 1;
 
-  public:
+public:
     explicit constexpr hash_map() {
         r = std::chrono::steady_clock::now().time_since_epoch().count();
         r ^= r >> 16;

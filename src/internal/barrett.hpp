@@ -9,7 +9,7 @@ class barrett {
     u64 m;
     u64 im;
 
-  public:
+public:
     explicit barrett() = default;
     explicit barrett(u64 m_)
         : m(m_), im((u64)(long double)static_cast<u64>(-1) / m_ + 1) {}

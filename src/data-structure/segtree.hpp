@@ -3,12 +3,13 @@
 namespace kyopro {
 /// @brief Segment Tree(セグメント木)
 
-template <class S, S (*op)(S, S), S (*e)()> class segtree {
+template <class S, S (*op)(S, S), S (*e)()>
+class segtree {
     int lg, sz, n;
     std::vector<S> dat;
 
-  public:
-    segtree() : segtree(0) {}
+public:
+    segtree() {}
     segtree(int n) : segtree(std::vector<S>(n, e())) {}
     segtree(const std::vector<S>& vec) : n((int)vec.size()) {
         sz = 1, lg = 0;
@@ -25,13 +26,13 @@ template <class S, S (*op)(S, S), S (*e)()> class segtree {
         build();
     }
 
-    inline void set(const int p, const S& v) { dat[sz + p] = v; }
+    inline void set(int p, const S& v) { dat[sz + p] = v; }
     inline void build() {
         for (int i = sz - 1; i > 0; i--) {
             dat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);
         }
     }
-    S operator[](const int p) const { return dat[sz + p]; }
+    S operator[](int p) const { return dat[sz + p]; }
 
     inline void update(int p, const S& v) {
         p += sz;

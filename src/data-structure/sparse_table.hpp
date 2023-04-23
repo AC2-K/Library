@@ -2,13 +2,14 @@
 #include <numeric>
 #include <vector>
 namespace kyopro {
-/// @brief Sparse Table
-template <class T> class sparse_table {
+/// @brief Sparse Table(RangeMin)
+template <class T>
+class sparse_table {
     std::vector<T> vec;
     std::vector<std::vector<T>> table;
     std::vector<int> look_up;
 
-  public:
+public:
     sparse_table(int n) : vec(n) {}
     sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }
     inline void set(int p, const T& v) { vec[p] = v; }

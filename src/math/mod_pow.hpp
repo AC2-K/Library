@@ -1,5 +1,5 @@
 #pragma once
-#include"../internal/type_traits.hpp"
+#include "../internal/type_traits.hpp"
 namespace kyopro {
 
 ///@brief mod pow(繰り返しニ乗法)
