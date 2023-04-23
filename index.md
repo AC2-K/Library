@@ -39,7 +39,7 @@ data:
       path: src/data-structure/lazy_segtree.hpp
       title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
         \u30E1\u30F3\u30C8\u6728)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/segtree.hpp
       title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
     - icon: ':heavy_check_mark:'
@@ -50,7 +50,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure-2d/PointAddRectangleSum.hpp
       title: src/data-structure-2d/PointAddRectangleSum.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure-2d/RangeTree.hpp
       title: src/data-structure-2d/RangeTree.hpp
     - icon: ':heavy_check_mark:'
@@ -220,7 +220,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
       title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
       title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
     - icon: ':heavy_check_mark:'

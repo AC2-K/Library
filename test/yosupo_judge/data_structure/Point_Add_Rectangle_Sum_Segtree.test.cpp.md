@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure-2d/RangeTree.hpp
     title: src/data-structure-2d/RangeTree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -73,43 +73,41 @@ data:
     \n        return op(suml, sumr);\n    }\n};\n};  // namespace kyopro\n#line 4\
     \ \"test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp\"\
     \ninline long long op(long long a, long long b) { return a + b; };\ninline long\
-    \ long e() { return 0; }\nint main() {\n    using namespace std;\n    kyopro::RangeTree<int,\
-    \ long long, op, e> rtree;\n\n    int N, Q;\n    scanf(\"%d %d\\n\", &N, &Q);\n\
-    \    int X[N], Y[N], W[N];\n    int c[Q];\n    int s[Q], t[Q], u[Q], v[Q];\n \
-    \   for (int i = 0; i < Q; ++i) {\n        scanf(\"%d %d %d\\n\", &X[i], &Y[i],\
-    \ &W[i]);\n        rtree.add_point(X[i], Y[i]);\n    }\n    for (int i = 0; i\
-    \ < Q; ++i) {\n        scanf(\"%d \", &c[i]);\n        if (c[i]) {\n         \
-    \   scanf(\"%d %d %d %d\\n\", &s[i], &t[i], &u[i], &v[i]);\n        } else {\n\
-    \            scanf(\"%d %d %d\\n\", &s[i], &t[i], &u[i]);\n            rtree.add_point(s[i],\
-    \ t[i]);\n        }\n    }\n\n    rtree.build();\n\n    for (int i = 0; i < N;\
-    \ ++i) rtree.add(X[i], Y[i], W[i]);\n    \n    for (int i = 0; i < Q; ++i) {\n\
-    \        if (c[i]) {\n            printf(\"%lld\\n\", rtree.sum(s[i], t[i], u[i],\
-    \ v[i]));\n        } else {\n            rtree.add(s[i], t[i], u[i]);\n      \
-    \  }\n    }\n}\n"
+    \ long e() { return 0; }\nint main() {\n    kyopro::RangeTree<int, long long,\
+    \ op, e> rtree;\n\n    int N, Q;\n    scanf(\"%d %d\\n\", &N, &Q);\n    int X[N],\
+    \ Y[N], W[N];\n    int c[Q];\n    int s[Q], t[Q], u[Q], v[Q];\n    for (int i\
+    \ = 0; i < N; ++i) {\n        scanf(\"%d %d %d\\n\", &X[i], &Y[i], &W[i]);\n \
+    \       rtree.add_point(X[i], Y[i]);\n    }\n    for (int i = 0; i < Q; ++i) {\n\
+    \        scanf(\"%d \", &c[i]);\n        if (c[i]) {\n            scanf(\"%d %d\
+    \ %d %d\\n\", &s[i], &t[i], &u[i], &v[i]);\n        } else {\n            scanf(\"\
+    %d %d %d\\n\", &s[i], &t[i], &u[i]);\n            rtree.add_point(s[i], t[i]);\n\
+    \        }\n    }\n\n    rtree.build();\n\n    for (int i = 0; i < N; ++i) rtree.add(X[i],\
+    \ Y[i], W[i]);\n\n    for (int i = 0; i < Q; ++i) {\n        if (c[i]) {\n   \
+    \         printf(\"%lld\\n\", rtree.sum(s[i], t[i], u[i], v[i]));\n        } else\
+    \ {\n            rtree.add(s[i], t[i], u[i]);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\
     \n#include <iostream>\n#include \"../../../src/data-structure-2d/RangeTree.hpp\"\
     \ninline long long op(long long a, long long b) { return a + b; };\ninline long\
-    \ long e() { return 0; }\nint main() {\n    using namespace std;\n    kyopro::RangeTree<int,\
-    \ long long, op, e> rtree;\n\n    int N, Q;\n    scanf(\"%d %d\\n\", &N, &Q);\n\
-    \    int X[N], Y[N], W[N];\n    int c[Q];\n    int s[Q], t[Q], u[Q], v[Q];\n \
-    \   for (int i = 0; i < Q; ++i) {\n        scanf(\"%d %d %d\\n\", &X[i], &Y[i],\
-    \ &W[i]);\n        rtree.add_point(X[i], Y[i]);\n    }\n    for (int i = 0; i\
-    \ < Q; ++i) {\n        scanf(\"%d \", &c[i]);\n        if (c[i]) {\n         \
-    \   scanf(\"%d %d %d %d\\n\", &s[i], &t[i], &u[i], &v[i]);\n        } else {\n\
-    \            scanf(\"%d %d %d\\n\", &s[i], &t[i], &u[i]);\n            rtree.add_point(s[i],\
-    \ t[i]);\n        }\n    }\n\n    rtree.build();\n\n    for (int i = 0; i < N;\
-    \ ++i) rtree.add(X[i], Y[i], W[i]);\n    \n    for (int i = 0; i < Q; ++i) {\n\
-    \        if (c[i]) {\n            printf(\"%lld\\n\", rtree.sum(s[i], t[i], u[i],\
-    \ v[i]));\n        } else {\n            rtree.add(s[i], t[i], u[i]);\n      \
-    \  }\n    }\n}"
+    \ long e() { return 0; }\nint main() {\n    kyopro::RangeTree<int, long long,\
+    \ op, e> rtree;\n\n    int N, Q;\n    scanf(\"%d %d\\n\", &N, &Q);\n    int X[N],\
+    \ Y[N], W[N];\n    int c[Q];\n    int s[Q], t[Q], u[Q], v[Q];\n    for (int i\
+    \ = 0; i < N; ++i) {\n        scanf(\"%d %d %d\\n\", &X[i], &Y[i], &W[i]);\n \
+    \       rtree.add_point(X[i], Y[i]);\n    }\n    for (int i = 0; i < Q; ++i) {\n\
+    \        scanf(\"%d \", &c[i]);\n        if (c[i]) {\n            scanf(\"%d %d\
+    \ %d %d\\n\", &s[i], &t[i], &u[i], &v[i]);\n        } else {\n            scanf(\"\
+    %d %d %d\\n\", &s[i], &t[i], &u[i]);\n            rtree.add_point(s[i], t[i]);\n\
+    \        }\n    }\n\n    rtree.build();\n\n    for (int i = 0; i < N; ++i) rtree.add(X[i],\
+    \ Y[i], W[i]);\n\n    for (int i = 0; i < Q; ++i) {\n        if (c[i]) {\n   \
+    \         printf(\"%lld\\n\", rtree.sum(s[i], t[i], u[i], v[i]));\n        } else\
+    \ {\n            rtree.add(s[i], t[i], u[i]);\n        }\n    }\n}"
   dependsOn:
   - src/data-structure-2d/RangeTree.hpp
   - src/data-structure/segtree.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 12:50:49+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-23 13:17:06+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
 layout: document
