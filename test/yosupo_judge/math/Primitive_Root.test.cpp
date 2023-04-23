@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/primitive_root"
-#include<iostream>
-#include"../../../src/math/primitive_root.hpp"
-int main(){
+#include "../../../src/math/primitive_root.hpp"
+#include <iostream>
+int main() {
     int q;
     scanf("%d", &q);
     while (q--) {

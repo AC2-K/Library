@@ -8,6 +8,6 @@ int main() {
     while (t--) {
         int x, y, p;
         scanf("%d%d%d", &x, &y, &p);
-        printf("%lld\n", kyopro::mod_log<long long>(x, y, p));
+        printf("%lld\n", kyopro::mod_log(x, y, p));
     }
 }

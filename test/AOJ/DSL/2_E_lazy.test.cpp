@@ -2,11 +2,11 @@
 #include<iostream>
 #include "../../../src/data-structure/lazy_segtree.hpp"
 
-int op(int x, int y) { return x + y; }
-int comp(int x, int y) { return x + y; }
-int mapping(int x, int y) { return x + y; }
-int e() { return 0; }
-int id() { return 0; }
+inline int op(int x, int y) { return x + y; }
+inline int comp(int x, int y) { return x + y; }
+inline int mapping(int x, int y) { return x + y; }
+inline int e() { return 0; }
+inline int id() { return 0; }
 
 int main() {
     int n, q;

@@ -9,7 +9,7 @@ int main(){
     kyopro::EulerTour g(n);
     for (int i = 1; i < n; i++) {
         int p;
-        cin >> p;
+        scanf("%d", &p);
         g.add_edge(p, i);
     }
     g.build();

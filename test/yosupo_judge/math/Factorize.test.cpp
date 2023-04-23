@@ -9,9 +9,9 @@ int main(){
         scanf("%lld", &x);
         const auto pf = kyopro::rho::factorize(x);
         printf("%d ", (int)pf.size());
-        for (auto &p : pf){
+        for (const auto &p : pf){
             printf("%lld ", p);
         }
-        puts("");
+        printf("\n");
     }
 }

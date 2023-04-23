@@ -1,7 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_frequency"
 #include<iostream>
 #include"../../../src/algorithm/mo.hpp"
-using namespace std;
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);
@@ -14,7 +13,7 @@ int main() {
     std::sort(pressed.begin(), pressed.end());
     pressed.erase(unique(pressed.begin(), pressed.end()), pressed.end());
     for (auto& ai : a) {
-        ai = lower_bound(pressed.begin(), pressed.end(), ai) - pressed.begin();
+        ai = std::lower_bound(pressed.begin(), pressed.end(), ai) - pressed.begin();
     }
     kyopro::Mo mo(q);
     std::vector<int> x(q);

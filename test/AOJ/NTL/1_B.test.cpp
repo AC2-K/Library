@@ -5,5 +5,5 @@
 int main() {
     int n, m;
     scanf("%d%d", &n, &m);
-    printf("%d\n", kyopro::mod_pow<long long>(n, m, (int)1e9+7));
+    printf("%d\n", kyopro::mod_pow<int>(n, m, (int)1e9+7));
 }
