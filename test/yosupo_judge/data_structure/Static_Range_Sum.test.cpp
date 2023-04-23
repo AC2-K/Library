@@ -8,7 +8,7 @@ int main() {
     int n, q;
     scanf("%d%d", &n, &q);
 
-    kyopro::segtree<long long, op, e> set(n);
+    kyopro::segtree<long long, op, e> seg(n);
     for (int i = 0; i < n; i++) {
         int a;
         scanf("%d", &a);
