@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/segtree.hpp
     title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
@@ -40,7 +40,7 @@ data:
     #line 4 \"test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp\"\n\ninline\
     \ long long op(long long x, long long y) { return x + y; }\ninline long long e()\
     \ { return 0; }\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n\
-    \    kyopro::segtree<long long, op, e> set(n);\n    for (int i = 0; i < n; i++)\
+    \    kyopro::segtree<long long, op, e> seg(n);\n    for (int i = 0; i < n; i++)\
     \ {\n        int a;\n        scanf(\"%d\", &a);\n        seg.set(i, a);\n    }\n\
     \    seg.build();\n    while (q--) {\n        int l, r;\n        scanf(\"%d%d\"\
     , &l, &r);\n        printf(\"%lld\\n\", seg.prod(l, r));\n    }\n}\n"
@@ -48,7 +48,7 @@ data:
     \ <iostream>\n#include \"../../../src/data-structure/segtree.hpp\"\n\ninline long\
     \ long op(long long x, long long y) { return x + y; }\ninline long long e() {\
     \ return 0; }\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n \
-    \   kyopro::segtree<long long, op, e> set(n);\n    for (int i = 0; i < n; i++)\
+    \   kyopro::segtree<long long, op, e> seg(n);\n    for (int i = 0; i < n; i++)\
     \ {\n        int a;\n        scanf(\"%d\", &a);\n        seg.set(i, a);\n    }\n\
     \    seg.build();\n    while (q--) {\n        int l, r;\n        scanf(\"%d%d\"\
     , &l, &r);\n        printf(\"%lld\\n\", seg.prod(l, r));\n    }\n}"
@@ -57,8 +57,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 13:24:08+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-04-23 13:28:35+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
 layout: document
