@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   _extendedRequiredBy:
@@ -12,15 +12,15 @@ data:
     path: src/string/rolling_hash.hpp
     title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_B.test.cpp
     title: test/AOJ/NTL/1_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
     links: []
@@ -51,18 +51,19 @@ data:
     \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     };  // namespace internal\n};  // namespace kyopro\n#line 3 \"src/math/mod_pow.hpp\"\
     \nnamespace kyopro {\n\n///@brief mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\
-    \u6CD5)\ntemplate <class T> constexpr T mod_pow(T base, T exp, T mod) {\n    internal::double_size_uint_t<T>\
-    \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
-    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
-    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n};  // namespace kyopro\n"
+    \u6CD5)\ntemplate <typename T> \nconstexpr T mod_pow(internal::double_size_uint_t<T>\
+    \ base, T exp, T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ?\
+    \ 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n     \
+    \       ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
+    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
+    \ kyopro\n"
   code: "#pragma once\n#include \"../internal/type_traits.hpp\"\nnamespace kyopro\
     \ {\n\n///@brief mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)\ntemplate\
-    \ <class T> constexpr T mod_pow(T base, T exp, T mod) {\n    internal::double_size_uint_t<T>\
-    \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
-    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
-    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n};  // namespace kyopro"
+    \ <typename T> \nconstexpr T mod_pow(internal::double_size_uint_t<T> base, T exp,\
+    \ T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ? 0 : 1);\n  \
+    \  base %= mod;\n    while (exp) {\n        if (exp & 1) {\n            ans *=\
+    \ base;\n            ans %= mod;\n        }\n        base *= base;\n        base\
+    \ %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace kyopro"
   dependsOn:
   - src/internal/type_traits.hpp
   isVerificationFile: false
@@ -70,8 +71,8 @@ data:
   requiredBy:
   - src/string/rolling_hash.hpp
   - src/math/mod_log.hpp
-  timestamp: '2023-04-23 12:26:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-04-23 13:59:16+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/AOJ/NTL/1_B.test.cpp

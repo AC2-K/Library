@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
   _extendedRequiredBy: []
@@ -60,24 +60,25 @@ data:
     \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     };  // namespace internal\n};  // namespace kyopro\n#line 3 \"src/math/mod_pow.hpp\"\
     \nnamespace kyopro {\n\n///@brief mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\
-    \u6CD5)\ntemplate <class T> constexpr T mod_pow(T base, T exp, T mod) {\n    internal::double_size_uint_t<T>\
-    \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
-    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
-    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n};  // namespace kyopro\n#line 8 \"src/string/rolling_hash.hpp\"\n\
-    namespace kyopro {\nclass RollingHash {\n    using ull = uint_fast64_t;\n    using\
-    \ i128 = __int128_t;\n    using u128 = __uint128_t;\n    // mod\n    static constexpr\
-    \ ull msk30 = (1ul << 30) - 1;\n    static constexpr ull msk61 = (1ul << 31) -\
-    \ 1;\n    const std::string str;\n    std::vector<ull> hash, pow;\n\n    static\
-    \ constexpr ull mod = (1uL << 61) - 1;\n    static constexpr ull primitive_root\
-    \ = 37;\n\npublic:\n    static const uint mapping_max = (uint)'Z' + 2;\n    static\
-    \ ull base;\n\nprivate:\n    constexpr ull mul(const u128& a, const u128& b) const\
-    \ {\n        u128 t = a * b;\n\n        t = (t >> 61) + (t & mod);\n\n       \
-    \ if (t >= mod) {\n            t -= mod;\n        }\n\n        return t;\n   \
-    \ }\n\n    constexpr ull mapping(const char& c) const {\n        return (ull)c;\
-    \  // \u5909\u66F4\u3059\u308B?\n    }\n\n    static inline ull generate() {\n\
-    \        std::mt19937_64 engine(\n            std::chrono::steady_clock::now().time_since_epoch().count());\n\
-    \        std::uniform_int_distribution<ull> rand(1uL, mod - 1);\n        return\
+    \u6CD5)\ntemplate <typename T> \nconstexpr T mod_pow(internal::double_size_uint_t<T>\
+    \ base, T exp, T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ?\
+    \ 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n     \
+    \       ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
+    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
+    \ kyopro\n#line 8 \"src/string/rolling_hash.hpp\"\nnamespace kyopro {\nclass RollingHash\
+    \ {\n    using ull = uint_fast64_t;\n    using i128 = __int128_t;\n    using u128\
+    \ = __uint128_t;\n    // mod\n    static constexpr ull msk30 = (1ul << 30) - 1;\n\
+    \    static constexpr ull msk61 = (1ul << 31) - 1;\n    const std::string str;\n\
+    \    std::vector<ull> hash, pow;\n\n    static constexpr ull mod = (1uL << 61)\
+    \ - 1;\n    static constexpr ull primitive_root = 37;\n\npublic:\n    static const\
+    \ uint mapping_max = (uint)'Z' + 2;\n    static ull base;\n\nprivate:\n    constexpr\
+    \ ull mul(const u128& a, const u128& b) const {\n        u128 t = a * b;\n\n \
+    \       t = (t >> 61) + (t & mod);\n\n        if (t >= mod) {\n            t -=\
+    \ mod;\n        }\n\n        return t;\n    }\n\n    constexpr ull mapping(const\
+    \ char& c) const {\n        return (ull)c;  // \u5909\u66F4\u3059\u308B?\n   \
+    \ }\n\n    static inline ull generate() {\n        std::mt19937_64 engine(\n \
+    \           std::chrono::steady_clock::now().time_since_epoch().count());\n  \
+    \      std::uniform_int_distribution<ull> rand(1uL, mod - 1);\n        return\
     \ rand(engine);\n    }\n    static inline void generate_base() {\n        if (base\
     \ != 0) {\n            return;\n        }\n        ull r = mod - 1;\n\n      \
     \  while (_gcd(r, mod - 1) != 1 || r <= mapping_max) {\n            r = generate();\n\
@@ -148,7 +149,7 @@ data:
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
+  timestamp: '2023-04-23 13:59:16+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/rolling_hash.hpp

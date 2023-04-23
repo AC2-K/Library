@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
@@ -22,7 +22,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
   _extendedRequiredBy: []
@@ -204,41 +204,42 @@ data:
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
     \ a;\n}\n};  // namespace kyopro\n#line 3 \"src/math/mod_pow.hpp\"\nnamespace\
     \ kyopro {\n\n///@brief mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)\n\
-    template <class T> constexpr T mod_pow(T base, T exp, T mod) {\n    internal::double_size_uint_t<T>\
-    \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
-    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
-    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n};  // namespace kyopro\n#line 7 \"src/math/mod_log.hpp\"\nnamespace\
-    \ kyopro {\nnamespace internal {\nlong long __mod_log(uint64_t x, uint64_t y,\
-    \ uint64_t p) {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if\
-    \ (x == 0) {\n        if (y == 0) {\n            return 1;\n        } else {\n\
-    \            return -1;\n        }\n    }\n    int m = (uint32_t)sqrt(p) + 1;\n\
-    \    hash_map<uint64_t, int> mp;\n    uint64_t xm = mod_pow<uint64_t>(x, m, p);\n\
-    \    uint64_t add = 0, g, k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) >\
-    \ 1) {\n        if (y == k) return add;\n        if (y % g) return -1;\n     \
-    \   y /= g, p /= g, add++;\n        k = (k * (x / g)) % p;\n    }\n\n    long\
-    \ long pr = y;\n    for (int j = 0; j <= m; j++) {\n        mp[pr] = j;\n    \
-    \    (pr *= x) %= p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; i++) {\n\
-    \        (pr *= xm) %= p;\n        auto ptr = mp.find(pr);\n        if (ptr) {\n\
-    \            int j = *ptr;\n            return m * i - j + add;\n        }\n \
-    \   }\n    return -1;\n}\n\nlong long __mod_log32(uint32_t x, uint32_t y, uint32_t\
-    \ p) {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x == 0)\
-    \ {\n        if (y == 0) {\n            return 1;\n        } else {\n        \
-    \    return -1;\n        }\n    }\n    uint32_t m = (uint32_t)std::ceil(std::sqrt(p));\n\
-    \    using mint = barrett_modint<10>;\n    if (mint::get_mod() != p) {\n     \
-    \   mint::set_mod(p);\n    }\n    uint64_t add = 0, g = 0;\n    mint k(1);\n \
-    \   while ((g = _gcd(x, p)) != 1) {\n        if (y == k.val()) return add;\n \
-    \       if (y % g) return -1;\n        y /= g, p /= g, add++;\n        k = (k.val()\
-    \ * (x / g));\n    }\n\n    hash_map<uint32_t, uint32_t, 1 << 16> mp;\n\n    mint\
-    \ xm = mint(x).pow(m);\n    mint pr = mint(y);\n    for (int j = 0; j <= m; j++)\
-    \ {\n        mp[pr.val()] = j;\n        pr *= x;\n    }\n    pr = k;\n    for\
-    \ (int i = 1; i <= m; i++) {\n        pr *= xm;\n        auto ptr = mp.find(pr.val());\n\
-    \        if (ptr) {\n            int j = *ptr;\n            return m * i - j +\
-    \ add;\n        }\n    }\n    return -1;\n}\n};  // namespace internal\n\n///\
-    \ @brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\ntemplate <typename T> inline\
-    \ long long mod_log(T a, T b, T c) {\n    if (c < 1 << 30) {\n        return internal::__mod_log32(a,\
-    \ b, c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n\
-    }\n};  // namespace kyopro\n\n///@docs docs/math/mod_log.md\n#line 4 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
+    template <typename T> \nconstexpr T mod_pow(internal::double_size_uint_t<T> base,\
+    \ T exp, T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ? 0 : 1);\n\
+    \    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n            ans\
+    \ *= base;\n            ans %= mod;\n        }\n        base *= base;\n      \
+    \  base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
+    \ kyopro\n#line 7 \"src/math/mod_log.hpp\"\nnamespace kyopro {\nnamespace internal\
+    \ {\nlong long __mod_log(uint64_t x, uint64_t y, uint64_t p) {\n    if (y == 1\
+    \ || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n        if (y ==\
+    \ 0) {\n            return 1;\n        } else {\n            return -1;\n    \
+    \    }\n    }\n    int m = (uint32_t)sqrt(p) + 1;\n    hash_map<uint64_t, int>\
+    \ mp;\n    uint64_t xm = mod_pow<uint64_t>(x, m, p);\n    uint64_t add = 0, g,\
+    \ k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n        if (y ==\
+    \ k) return add;\n        if (y % g) return -1;\n        y /= g, p /= g, add++;\n\
+    \        k = (k * (x / g)) % p;\n    }\n\n    long long pr = y;\n    for (int\
+    \ j = 0; j <= m; j++) {\n        mp[pr] = j;\n        (pr *= x) %= p;\n    }\n\
+    \    pr = k;\n    for (int i = 1; i <= m; i++) {\n        (pr *= xm) %= p;\n \
+    \       auto ptr = mp.find(pr);\n        if (ptr) {\n            int j = *ptr;\n\
+    \            return m * i - j + add;\n        }\n    }\n    return -1;\n}\n\n\
+    long long __mod_log32(uint32_t x, uint32_t y, uint32_t p) {\n    if (y == 1 ||\
+    \ p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n        if (y == 0)\
+    \ {\n            return 1;\n        } else {\n            return -1;\n       \
+    \ }\n    }\n    uint32_t m = (uint32_t)std::ceil(std::sqrt(p));\n    using mint\
+    \ = barrett_modint<10>;\n    if (mint::get_mod() != p) {\n        mint::set_mod(p);\n\
+    \    }\n    uint64_t add = 0, g = 0;\n    mint k(1);\n    while ((g = _gcd(x,\
+    \ p)) != 1) {\n        if (y == k.val()) return add;\n        if (y % g) return\
+    \ -1;\n        y /= g, p /= g, add++;\n        k = (k.val() * (x / g));\n    }\n\
+    \n    hash_map<uint32_t, uint32_t, 1 << 16> mp;\n\n    mint xm = mint(x).pow(m);\n\
+    \    mint pr = mint(y);\n    for (int j = 0; j <= m; j++) {\n        mp[pr.val()]\
+    \ = j;\n        pr *= x;\n    }\n    pr = k;\n    for (int i = 1; i <= m; i++)\
+    \ {\n        pr *= xm;\n        auto ptr = mp.find(pr.val());\n        if (ptr)\
+    \ {\n            int j = *ptr;\n            return m * i - j + add;\n        }\n\
+    \    }\n    return -1;\n}\n};  // namespace internal\n\n/// @brief Discrete Logarithm(\u96E2\
+    \u6563\u5BFE\u6570)\ntemplate <typename T> inline long long mod_log(T a, T b,\
+    \ T c) {\n    if (c < 1 << 30) {\n        return internal::__mod_log32(a, b, c);\n\
+    \    } else {\n        return internal::__mod_log(a, b, c);\n    }\n}\n};  //\
+    \ namespace kyopro\n\n///@docs docs/math/mod_log.md\n#line 4 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
     \n\nint main() {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n    \
     \    int x, y, p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%lld\\\
     n\", kyopro::mod_log(x, y, p));\n    }\n}\n"
@@ -259,7 +260,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 13:40:02+09:00'
+  timestamp: '2023-04-23 13:59:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp

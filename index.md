@@ -89,7 +89,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: MontgomeryReduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
@@ -109,7 +109,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/mod_log.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
     - icon: ':warning:'
@@ -191,7 +191,7 @@ data:
       title: test/AOJ/GRL/5_C.test.cpp
   - name: test/AOJ/NTL
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_B.test.cpp
       title: test/AOJ/NTL/1_B.test.cpp
     - icon: ':heavy_check_mark:'
