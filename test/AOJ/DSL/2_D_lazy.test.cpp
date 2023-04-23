@@ -2,12 +2,12 @@
 
 #include <iostream>
 #include "../../../src/data-structure/lazy_segtree.hpp"
-using namespace std;
-int op(int x, int y) { return min(x, y); }
-int comp(int x, int y) { return y; }
-int mapping(int x, int y) { return y; }
-int e() { return (1ll << 31) - 1; }
-int id() { return (1ll << 31) - 1; }
+
+inline int op(int x, int y) { return std::min(x, y); }
+inline int comp(int x, int y) { return y; }
+inline int mapping(int x, int y) { return y; }
+inline int e() { return (1ll << 31) - 1; }
+inline int id() { return (1ll << 31) - 1; }
 
 int main() {
     int n, q;

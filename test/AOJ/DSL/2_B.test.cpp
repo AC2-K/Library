@@ -2,8 +2,8 @@
 #include <iostream>
 #include "../../../src/data-structure/segtree.hpp"
 using S = long long;
-S op(S x, S y) { return x + y; }
-S e() { return 0; }
+inline S op(S x, S y) { return x + y; }
+inline S e() { return 0; }
 
 int main() {
     int n, q;

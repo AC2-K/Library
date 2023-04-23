@@ -9,12 +9,12 @@ struct F{
     mint a,b;
 };
 
-F op(F l,F r){
+inline F op(F l,F r){
     mint na = l.a * r.a;
     mint nb = (l.b * r.a + r.b);
     return F{na, nb};
 }
-F e(){
+inline F e(){
     return F{1,0};
 }
 int main() {

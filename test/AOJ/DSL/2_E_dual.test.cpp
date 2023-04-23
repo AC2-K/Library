@@ -4,8 +4,8 @@
 #include "../../../src/data-structure/dual_segtree.hpp"
 
 using ull = unsigned long long;
-ull op(ull x, ull y) { return x + y; }
-ull e() { return 0; }
+inline ull op(ull x, ull y) { return x + y; }
+inline ull e() { return 0; }
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);

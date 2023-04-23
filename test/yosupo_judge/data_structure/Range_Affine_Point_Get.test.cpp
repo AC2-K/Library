@@ -5,12 +5,12 @@
 
 using mint = kyopro::static_modint32<998244353>;
 using Affine = std::pair<mint, mint>;
-Affine op(Affine g, Affine f) {
+inline Affine op(Affine g, Affine f) {
     auto a = f.first, b = f.second;
     auto c = g.first, d = g.second;
     return Affine(a * c, a * d + b);
 }
-Affine e() { return Affine(1, 0); }
+inline Affine e() { return Affine(1, 0); }
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);

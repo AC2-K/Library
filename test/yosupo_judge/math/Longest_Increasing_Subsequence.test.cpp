@@ -4,8 +4,8 @@
 #include<numeric>
 #include"../../../src/data-structure/segtree.hpp"
 using S = std::pair<int,int>;
-S op(S x, S y) { return max(x,y); }
-S e() { return S{0,0}; }
+inline S op(S x, S y) { return max(x,y); }
+inline S e() { return S{0,0}; }
 
 using namespace std;
 int main() {

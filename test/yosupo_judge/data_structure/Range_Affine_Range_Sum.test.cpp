@@ -7,18 +7,18 @@ struct S {
     mint s;
     int len;
 };
-S op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }
-S e() { return S{0, 0}; }
+inline S op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }
+inline S e() { return S{0, 0}; }
 using Affine = std::pair<mint, mint>;
-Affine composition(Affine g, Affine f) {
+inline Affine composition(Affine g, Affine f) {
 	//f(g)
 	//a(cx+d)+b
 	auto a = f.first, b = f.second;
 	auto c = g.first, d = g.second;
 	return Affine(a * c, a * d + b);
 }
-Affine id() { return Affine(1, 0); }
-S mapping(S d, Affine f) {
+inline Affine id() { return Affine(1, 0); }
+inline S mapping(S d, Affine f) {
     mint a = f.first, b = f.second;
     d.s *= a, d.s += b * d.len;
     return d;
