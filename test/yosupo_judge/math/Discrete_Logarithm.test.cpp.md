@@ -41,7 +41,7 @@ data:
     \n#include <bits/stl_algobase.h>\n#include <chrono>\nnamespace kyopro {\n/// @brief\
     \ HashMap\ntemplate <typename Key,\n          typename Val,\n          uint32_t\
     \ n = 1 << 20,\n          Val default_val = Val()>\nclass hash_map {\n    using\
-    \ u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64* flag = new u64[n];\n\
+    \ u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64* flag = new u64[n >> 6];\n\
     \    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\n    static constexpr\
     \ u32 shift = 64 - std::__lg(n);\n\n    u64 r;\n    inline u32 get_hash(const\
     \ Key& k) const { return ((u64)k * r) >> shift; }\n\n    static constexpr uint8_t\
@@ -49,15 +49,15 @@ data:
     \      r = std::chrono::steady_clock::now().time_since_epoch().count();\n    \
     \    r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const Key&\
     \ k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n            if\
-    \ (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash & mod_msk))))\
-    \ {\n                keys[hash] = k;\n                flag[hash >> 6] |= static_cast<u64>(1)\
+    \ (~flag[hash >> 6] & static_cast<u64>(1) << (hash & mod_msk)) {\n           \
+    \     keys[hash] = k;\n                flag[hash >> 6] |= static_cast<u64>(1)\
     \ << (hash & mod_msk);\n                return vals[hash] = default_val;\n   \
     \         }\n\n            if (keys[hash] == k) return vals[hash];\n         \
-    \   hash = (hash + 1) & (n - 1);\n        }\n    }\n\n    Val* find(const Key&\
-    \ k) const {\n        u32 hash = get_hash(k);\n        while (1) {\n         \
-    \   if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))\n    \
-    \            return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
-    \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace\
+    \   if (++hash == n) hash = 0;\n        }\n    }\n\n    Val* find(const Key& k)\
+    \ const {\n        u32 hash = get_hash(k);\n        while (1) {\n            if\
+    \ (~flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk)))\n           \
+    \     return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
+    \            if (++hash == n) hash = 0;\n        }\n    }\n};\n};  // namespace\
     \ kyopro\n#line 2 \"src/math/dynamic_modint.hpp\"\n#include <cassert>\n#line 2\
     \ \"src/internal/barrett.hpp\"\nnamespace kyopro {\nnamespace internal {\n///\
     \ @brief barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n    using\
@@ -261,7 +261,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-05-01 16:04:44+09:00'
+  timestamp: '2023-05-01 07:57:25+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
