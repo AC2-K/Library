@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/math/matrix.md
     document_title: "matirx(\u884C\u5217)"
@@ -18,8 +18,8 @@ data:
     \ <typename T>\nclass Matrix {\n    std::vector<std::vector<T>> dat;\n    int\
     \ h = 0, w = 0;\n\npublic:\n    Matrix(const std::vector<std::vector<T>>& dat)\n\
     \        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int\
-    \ h_, int w_, const T& v = T()) : dat(h_, std::vector<T>(w_, v)) {}\n\n    using\
-    \ mat = Matrix<T>;\n    // access\n    std::vector<T>& operator[](int i) { return\
+    \ h_, int w_, T v = T()) : dat(h_, std::vector<T>(w_, v)) {}\n\n    using mat\
+    \ = Matrix<T>;\n    // access\n    std::vector<T>& operator[](int i) { return\
     \ dat[i]; }\n\n    // operator\n    mat& operator+=(const mat& r) {\n        assert(r.h\
     \ == this->h);\n        assert(r.w == this->w);\n        for (int i = 0; i < h;\
     \ i++) {\n            for (int j = 0; j < w; j++) {\n                dat[i][j]\
@@ -47,7 +47,7 @@ data:
     namespace kyopro {\n/// @brief matirx(\u884C\u5217)\ntemplate <typename T>\nclass\
     \ Matrix {\n    std::vector<std::vector<T>> dat;\n    int h = 0, w = 0;\n\npublic:\n\
     \    Matrix(const std::vector<std::vector<T>>& dat)\n        : dat(dat), h(dat.size()),\
-    \ w(dat.front().size()) {}\n\n    Matrix(int h_, int w_, const T& v = T()) : dat(h_,\
+    \ w(dat.front().size()) {}\n\n    Matrix(int h_, int w_, T v = T()) : dat(h_,\
     \ std::vector<T>(w_, v)) {}\n\n    using mat = Matrix<T>;\n    // access\n   \
     \ std::vector<T>& operator[](int i) { return dat[i]; }\n\n    // operator\n  \
     \  mat& operator+=(const mat& r) {\n        assert(r.h == this->h);\n        assert(r.w\
@@ -76,8 +76,8 @@ data:
   isVerificationFile: false
   path: src/math/matrix.hpp
   requiredBy: []
-  timestamp: '2023-04-23 14:03:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-01 12:49:55+00:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
 documentation_of: src/math/matrix.hpp

@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/lazy_segtree.hpp
     title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
       \u30E1\u30F3\u30C8\u6728)"
   - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -34,39 +34,38 @@ data:
     \ lz(4 * a.size(), id()) {\n        int x = 1;\n        while (a.size() > x) {\n\
     \            x <<= 1;\n        }\n        sz = x;\n        for (int i = 0; i <\
     \ a.size(); i++) {\n            set(i, a[i]);\n        }\n        build();\n \
-    \   }\n\npublic:\n    inline void set(int pos, S x) {\n        assert(0 <= pos\
-    \ && pos < sz);\n        dat[pos + sz - 1] = x;\n    }\n    inline void build()\
-    \ {\n        for (int i = sz - 2; i >= 0; i--) {\n            dat[i] = op(dat[2\
-    \ * i + 1], dat[2 * i + 2]);\n        }\n    }\n\nprivate:\n    void eval(int\
-    \ pos) {\n        if (lz[pos] == id()) return;\n        if (pos < sz - 1) {\n\
-    \            lz[2 * pos + 1] = comp(lz[2 * pos + 1], lz[pos]);\n            lz[2\
-    \ * pos + 2] = comp(lz[2 * pos + 2], lz[pos]);\n        }\n        dat[pos] =\
-    \ mapping(dat[pos], lz[pos]);\n        lz[pos] = id();\n    }\n\nprivate:\n  \
-    \  void internal_apply(int L, int R, int l, int r, const F& x, int k) {\n    \
-    \    eval(k);\n        if (L <= l && r <= R) {\n            lz[k] = comp(lz[k],\
-    \ x);\n            eval(k);\n        } else if (L < r && l < R) {\n          \
-    \  int mid = (l + r) >> 1;\n            internal_apply(L, R, l, mid, x, 2 * k\
-    \ + 1);\n            internal_apply(L, R, mid, r, x, 2 * k + 2);\n           \
-    \ dat[k] = op(dat[2 * k + 1], dat[2 * k + 2]);\n        }\n    }\n\npublic:\n\
-    \    inline void apply(int l, int r, const F& x) {\n        assert(0 <= l && l\
-    \ <= r && r <= sz);\n        internal_apply(l, r, 0, sz, x, 0);\n    }\n\nprivate:\n\
-    \    S internal_prod(int L, int R, int l, int r, int k) {\n        eval(k);\n\
-    \        if (r <= L || R <= l) {\n            return e();\n        } else if (L\
-    \ <= l && r <= R) {\n            return dat[k];\n        } else {\n          \
-    \  int mid = (l + r) >> 1;\n            S vl = internal_prod(L, R, l, mid, 2 *\
-    \ k + 1);\n            S vr = internal_prod(L, R, mid, r, 2 * k + 2);\n      \
-    \      return op(vl, vr);\n        }\n    }\n\npublic:\n    inline S prod(int\
+    \   }\n\npublic:\n    void set(int pos, S x) {\n        assert(0 <= pos && pos\
+    \ < sz);\n        dat[pos + sz - 1] = x;\n    }\n    void build() {\n        for\
+    \ (int i = sz - 2; i >= 0; i--) {\n            dat[i] = op(dat[2 * i + 1], dat[2\
+    \ * i + 2]);\n        }\n    }\n\nprivate:\n    void eval(int pos) {\n       \
+    \ if (lz[pos] == id()) return;\n        if (pos < sz - 1) {\n            lz[2\
+    \ * pos + 1] = comp(lz[2 * pos + 1], lz[pos]);\n            lz[2 * pos + 2] =\
+    \ comp(lz[2 * pos + 2], lz[pos]);\n        }\n        dat[pos] = mapping(dat[pos],\
+    \ lz[pos]);\n        lz[pos] = id();\n    }\n\nprivate:\n    void internal_apply(int\
+    \ L, int R, int l, int r, const F& x, int k) {\n        eval(k);\n        if (L\
+    \ <= l && r <= R) {\n            lz[k] = comp(lz[k], x);\n            eval(k);\n\
+    \        } else if (L < r && l < R) {\n            int mid = (l + r) >> 1;\n \
+    \           internal_apply(L, R, l, mid, x, 2 * k + 1);\n            internal_apply(L,\
+    \ R, mid, r, x, 2 * k + 2);\n            dat[k] = op(dat[2 * k + 1], dat[2 * k\
+    \ + 2]);\n        }\n    }\n\npublic:\n    void apply(int l, int r, const F& x)\
+    \ {\n        assert(0 <= l && l <= r && r <= sz);\n        internal_apply(l, r,\
+    \ 0, sz, x, 0);\n    }\n\nprivate:\n    S internal_prod(int L, int R, int l, int\
+    \ r, int k) {\n        eval(k);\n        if (r <= L || R <= l) {\n           \
+    \ return e();\n        } else if (L <= l && r <= R) {\n            return dat[k];\n\
+    \        } else {\n            int mid = (l + r) >> 1;\n            S vl = internal_prod(L,\
+    \ R, l, mid, 2 * k + 1);\n            S vr = internal_prod(L, R, mid, r, 2 * k\
+    \ + 2);\n            return op(vl, vr);\n        }\n    }\n\npublic:\n    S prod(int\
     \ l, int r) {\n        assert(0 <= l && l <= r && r <= sz);\n        return internal_prod(l,\
-    \ r, 0, sz, 0);\n    }\n\n    inline S operator[](int pos) { return prod(pos,\
-    \ pos + 1); }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/lazy_segtree.md\n\
+    \ r, 0, sz, 0);\n    }\n\n    S operator[](int pos) { return prod(pos, pos + 1);\
+    \ }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/lazy_segtree.md\n\
     #line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
-    \ T> constexpr T _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a ==\
-    \ 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
-    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
-    \        if (a == 0 || b == 0) {\n            return a + b;\n        }\n     \
-    \   if (a > b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \ T>\nconstexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n   \
+    \ if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (!a||!b) {\n            return a + b;\n    \
+    \    }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
     \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T>\nconstexpr T\
     \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
     \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
@@ -78,7 +77,7 @@ data:
     \    u64 v;\n    constexpr inline u64 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
     \ v_;\n    }\n\npublic:\n    constexpr static_modint() : v(0) {}\n    constexpr\
-    \ static_modint(const i64& v_) : v(normalize(v_)) {}\n\n    // operator\n    constexpr\
+    \ static_modint(i64 v_) : v(normalize(v_)) {}\n\n    // operator\n    constexpr\
     \ u64 val() const { return v; }\n    constexpr mint& operator+=(const mint& rhs)\
     \ {\n        v += rhs.val();\n        if (v >= mod) {\n            v -= mod;\n\
     \        }\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
@@ -96,30 +95,29 @@ data:
     \ i64& l, const mint& r) {\n        return mint(l) += r;\n    }\n    constexpr\
     \ friend mint operator-(const i64& l, const mint& r) {\n        return mint(l)\
     \ -= r;\n    }\n    constexpr friend mint operator*(const i64& l, const mint&\
-    \ r) {\n        return mint(l) *= r;\n    }\n\n    constexpr mint operator+(const\
-    \ i64& r) { return mint(*this) += r; }\n    constexpr mint operator-(const i64&\
-    \ r) { return mint(*this) -= r; }\n    constexpr mint operator*(const i64& r)\
-    \ { return mint(*this) *= r; }\n\n    constexpr mint& operator=(const i64& r)\
-    \ { return (*this) = mint(r); }\n\n    constexpr bool operator==(const mint& r)\
-    \ const {\n        return (*this).val() == r.val();\n    }\n\n    template <typename\
-    \ T> constexpr mint pow(T e) const {\n        mint ans(1), base(*this);\n    \
-    \    while (e) {\n            if (e & 1) {\n                ans *= base;\n   \
-    \         }\n            base *= base;\n            e >>= 1;\n        }\n    \
-    \    return ans;\n    }\n    constexpr inline mint inv() const {\n        long\
-    \ long x, y;\n        auto d = ext_gcd((long long)mod, (long long)v, x, y);\n\
-    \        assert(d == 1);\n        return mint(y);\n    }\n\n    constexpr mint&\
-    \ operator/=(const mint& r) { return (*this) *= r.inv(); }\n    constexpr mint\
-    \ inv(const mint& r) const { return mint(*this) *= r.inv(); }\n    constexpr friend\
-    \ mint operator/(const mint& l, const i64& r) {\n        return mint(l) /= mint(r);\n\
-    \    }\n    constexpr friend mint operator/(const i64& l, const mint& r) {\n \
-    \       return mint(l) /= mint(r);\n    }\n\n    // iostream\n    constexpr friend\
-    \ std::ostream& operator<<(std::ostream& os,\n                               \
-    \               const mint& mt) {\n        os << mt.val();\n        return os;\n\
-    \    }\n    constexpr friend std::istream& operator>>(std::istream& is, mint&\
-    \ mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n        return\
-    \ is;\n    }\n};\ntemplate <__uint32_t mod> class static_modint32 {\nprivate:\n\
-    \    using mint = static_modint32<mod>;\n    using i32 = __int32_t;\n    using\
-    \ u32 = __uint32_t;\n    using i64 = __int64_t;\n    using u64 = __uint64_t;\n\
+    \ r) {\n        return mint(l) *= r;\n    }\n\n    constexpr mint operator+(i64\
+    \ r) { return mint(*this) += r; }\n    constexpr mint operator-(i64 r) { return\
+    \ mint(*this) -= r; }\n    constexpr mint operator*(i64 r) { return mint(*this)\
+    \ *= r; }\n\n    constexpr mint& operator=(i64 r) { return (*this) = mint(r);\
+    \ }\n\n    constexpr bool operator==(const mint& r) const {\n        return (*this).val()\
+    \ == r.val();\n    }\n\n    template <typename T> constexpr mint pow(T e) const\
+    \ {\n        mint ans(1), base(*this);\n        while (e) {\n            if (e\
+    \ & 1) {\n                ans *= base;\n            }\n            base *= base;\n\
+    \            e >>= 1;\n        }\n        return ans;\n    }\n    constexpr inline\
+    \ mint inv() const {\n        long long x, y;\n        auto d = ext_gcd((long\
+    \ long)mod, (long long)v, x, y);\n        assert(d == 1);\n        return mint(y);\n\
+    \    }\n\n    constexpr mint& operator/=(const mint& r) { return (*this) *= r.inv();\
+    \ }\n    constexpr mint inv(const mint& r) const { return mint(*this) *= r.inv();\
+    \ }\n    constexpr friend mint operator/(const mint& l, i64 r) {\n        return\
+    \ mint(l) /= mint(r);\n    }\n    constexpr friend mint operator/(i64 l, const\
+    \ mint& r) {\n        return mint(l) /= mint(r);\n    }\n\n    // iostream\n \
+    \   constexpr friend std::ostream& operator<<(std::ostream& os,\n            \
+    \                                  const mint& mt) {\n        os << mt.val();\n\
+    \        return os;\n    }\n    constexpr friend std::istream& operator>>(std::istream&\
+    \ is, mint& mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n    \
+    \    return is;\n    }\n};\ntemplate <__uint32_t mod> class static_modint32 {\n\
+    private:\n    using mint = static_modint32<mod>;\n    using i32 = __int32_t;\n\
+    \    using u32 = __uint32_t;\n    using i64 = __int64_t;\n    using u64 = __uint64_t;\n\
     \n    u32 v;\n    constexpr inline u32 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
     \ v_;\n    }\n\npublic:\n    constexpr static_modint32() : v(0) {}\n    constexpr\
@@ -139,28 +137,27 @@ data:
     \ (*this);\n    }\n    constexpr mint& operator*=(const i64& rhs) {\n        (*this)\
     \ *= mint(rhs);\n        return (*this);\n    }\n    constexpr friend mint operator+(const\
     \ i64& l, const mint& r) {\n        return mint(l) += r;\n    }\n    constexpr\
-    \ friend mint operator-(const i64& l, const mint& r) {\n        return mint(l)\
-    \ -= r;\n    }\n    constexpr friend mint operator*(const i64& l, const mint&\
-    \ r) {\n        return mint(l) *= r;\n    }\n\n    constexpr mint operator+(const\
-    \ i64& r) { return mint(*this) += r; }\n    constexpr mint operator-(const i64&\
-    \ r) { return mint(*this) -= r; }\n    constexpr mint operator*(const i64& r)\
-    \ { return mint(*this) *= r; }\n\n    constexpr mint& operator=(const i64& r)\
-    \ { return (*this) = mint(r); }\n\n    constexpr bool operator==(const mint& r)\
-    \ const {\n        return (*this).val() == r.val();\n    }\n    template <typename\
-    \ T> constexpr mint pow(T e) const {\n        mint ans(1), base(*this);\n    \
-    \    while (e) {\n            if (e & 1) {\n                ans *= base;\n   \
-    \         }\n            base *= base;\n            e >>= 1;\n        }\n    \
-    \    return ans;\n    }\n\n    constexpr inline mint inv() const {\n        long\
-    \ long x, y;\n        auto d = ext_gcd((long long)mod, (long long)v, x, y);\n\
-    \        assert(d == 1);\n        return mint(y);\n    }\n\n    constexpr mint&\
-    \ operator/=(const mint& r) { return (*this) *= r.inv(); }\n    constexpr mint\
-    \ operator/(const mint& r) const {\n        return mint(*this) *= r.inv();\n \
-    \   }\n    constexpr friend mint operator/(const mint& l, const i64& r) {\n  \
-    \      return mint(l) /= mint(r);\n    }\n    constexpr friend mint operator/(const\
-    \ i64& l, const mint& r) {\n        return mint(l) /= mint(r);\n    }\n\n    //\
-    \ iostream\n    constexpr friend std::ostream& operator<<(std::ostream& os,\n\
-    \                                              const mint& mt) {\n        os <<\
-    \ mt.val();\n        return os;\n    }\n    constexpr friend std::istream& operator>>(std::istream&\
+    \ friend mint operator-(i64 l, const mint& r) {\n        return mint(l) -= r;\n\
+    \    }\n    constexpr friend mint operator*(i64 l, const mint& r) {\n        return\
+    \ mint(l) *= r;\n    }\n\n    constexpr mint operator+(i64 r) { return mint(*this)\
+    \ += r; }\n    constexpr mint operator-(i64 r) { return mint(*this) -= r; }\n\
+    \    constexpr mint operator*(i64 r) { return mint(*this) *= r; }\n\n    constexpr\
+    \ mint& operator=(i64 r) { return (*this) = mint(r); }\n\n    constexpr bool operator==(\
+    \ mint& r) const {\n        return (*this).val() == r.val();\n    }\n    template\
+    \ <typename T> constexpr mint pow(T e) const {\n        mint ans(1), base(*this);\n\
+    \        while (e) {\n            if (e & 1) {\n                ans *= base;\n\
+    \            }\n            base *= base;\n            e >>= 1;\n        }\n \
+    \       return ans;\n    }\n\n    constexpr inline mint inv() const {\n      \
+    \  long long x, y;\n        auto d = ext_gcd((long long)mod, (long long)v, x,\
+    \ y);\n        assert(d == 1);\n        return mint(y);\n    }\n\n    constexpr\
+    \ mint& operator/=(const mint& r) { return (*this) *= r.inv(); }\n    constexpr\
+    \ mint operator/(const mint& r) const {\n        return mint(*this) *= r.inv();\n\
+    \    }\n    constexpr friend mint operator/(const mint& l, i64 r) {\n        return\
+    \ mint(l) /= mint(r);\n    }\n    constexpr friend mint operator/(i64 l, const\
+    \ mint& r) {\n        return mint(l) /= mint(r);\n    }\n\n    // iostream\n \
+    \   constexpr friend std::ostream& operator<<(std::ostream& os,\n            \
+    \                                  const mint& mt) {\n        os << mt.val();\n\
+    \        return os;\n    }\n    constexpr friend std::istream& operator>>(std::istream&\
     \ is, mint& mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n    \
     \    return is;\n    }\n};\n};  // namespace kyopro\n\n/// @brief static modint(\u9759\
     \u7684modint)\n/// @docs docs/math/static_modint.md\n#line 5 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\
@@ -207,8 +204,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 13:24:08+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-01 12:49:55+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
 layout: document

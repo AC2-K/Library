@@ -32,7 +32,7 @@ data:
     \ cost;\n        int id;\n        Edge(int v1, int v2, int cost, int id)\n   \
     \         : v1(v1), v2(v2), cost(cost), id(id) {}\n    };\n    std::vector<Edge>\
     \ E;\n    std::vector<int> V1, V2;\n\npublic:\n    MST(int V) : uf(V) {}\n   \
-    \ inline void add_edge(int a, int b, long long cost) {\n        int sz = E.size();\n\
+    \  void add_edge(int a, int b, long long cost) {\n        int sz = E.size();\n\
     \        E.emplace_back(a, b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n\
     \    }\n    long long result() {\n        std::sort(E.begin(), E.end(), [&](const\
     \ Edge& e1, const Edge& e2) {\n            return e1.cost < e2.cost;\n       \
@@ -47,7 +47,7 @@ data:
     \      int cost;\n        int id;\n        Edge(int v1, int v2, int cost, int\
     \ id)\n            : v1(v1), v2(v2), cost(cost), id(id) {}\n    };\n    std::vector<Edge>\
     \ E;\n    std::vector<int> V1, V2;\n\npublic:\n    MST(int V) : uf(V) {}\n   \
-    \ inline void add_edge(int a, int b, long long cost) {\n        int sz = E.size();\n\
+    \  void add_edge(int a, int b, long long cost) {\n        int sz = E.size();\n\
     \        E.emplace_back(a, b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n\
     \    }\n    long long result() {\n        std::sort(E.begin(), E.end(), [&](const\
     \ Edge& e1, const Edge& e2) {\n            return e1.cost < e2.cost;\n       \
@@ -61,7 +61,7 @@ data:
   isVerificationFile: false
   path: src/graph/mst.hpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
+  timestamp: '2023-05-01 12:49:55+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/2_A.test.cpp
