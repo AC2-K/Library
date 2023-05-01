@@ -7,36 +7,17 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    links:
-    - https://yukicoder.me/submissions/865256
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
-    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
-    \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
-    \ File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: data-structure/hash_map.hpp:\
-    \ line -1: no such header\n"
-  code: "#define PROBLEM \"https://yukicoder.me/submissions/865256\"\n#include \"\
-    data-structure/hash_map.hpp\"\n#include \"string/rolling_hash.hpp\"\n#include\
-    \ <iostream>\n\nint main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
-    \n    std::string s;\n    int m;\n    std::cin >> s >> m;\n    kyopro::RollingHash\
-    \ S(s);\n    kyopro::hash_map<uint64_t, int> hash_count;\n    for (int i = 0;\
-    \ i < (int)s.size(); ++i) {\n        for (int length = 1; length <= 10 && i +\
-    \ length <= (int)s.size();\n             ++length) {\n            int j = i +\
-    \ length;\n            ++hash_count[S.range(i, j)];\n        }\n    }\n    long\
-    \ long ans = 0;\n\n    for (int i = 0; i < m; ++i) {\n        std::string c;\n\
-    \        std::cin >> c;\n        ans += hash_count[kyopro::RollingHash(c).get_all()];\n\
-    \    }\n    std::cout << ans << '\\n';\n}\n"
+    links: []
+  bundledCode: '#line 1 "main.cpp"
+
+
+    '
+  code: ''
   dependsOn: []
   isVerificationFile: false
   path: main.cpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
+  timestamp: '2023-05-01 07:19:47+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: main.cpp
