@@ -1,4 +1,5 @@
 #pragma once
+#include <bits/stl_algobase.h>
 #include <chrono>
 namespace kyopro {
 /// @brief HashMap

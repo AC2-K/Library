@@ -55,7 +55,7 @@ private:
         while (_gcd(r, mod - 1) != 1 || r <= mapping_max) {
             r = generate();
         }
-        base = mod_pow<__uint128_t>(primitive_root, r, mod);
+        base = mod_pow(primitive_root, r, mod);
     }
 
 public:
