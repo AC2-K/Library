@@ -11,14 +11,19 @@ class hash_map {
     using u32 = uint32_t;
     using u64 = uint64_t;
 
-    u64* flag = new u64[n];
-    Key* keys = new Key[n];
-    Val* vals = new Val[n];
+public:
+    struct data {
+        Key key;
+        Val val;
+    };
+private:
+    u64 flag[n >> 6];
+    data dat[n];
 
     static constexpr u32 shift = 64 - std::__lg(n);
 
     u64 r;
-    inline u32 get_hash(const Key& k) const { return ((u64)k * r) >> shift; }
+    u32 get_hash(const Key& k) const { return ((u64)k * r) >> shift; }
 
     static constexpr uint8_t mod_msk = (1 << 6) - 1;
 
@@ -34,23 +39,25 @@ public:
         while (1) {
             if (!(flag[hash >> 6] &
                   (static_cast<u64>(1) << (hash & mod_msk)))) {
-                keys[hash] = k;
-                flag[hash >> 6] |= static_cast<u64>(1) << (hash & mod_msk);
-                return vals[hash] = default_val;
+                dat[hash].key = k;
+                flag[hash >> 6] |= (static_cast<u64>(1) << (hash & mod_msk));
+
+                return dat[hash].val = default_val;
             }
 
-            if (keys[hash] == k) return vals[hash];
-            hash = (hash + 1) & (n - 1);
+            if (dat[hash].key == k) return dat[hash].val;
+            if (++hash == n) hash = 0;
         }
     }
-
-    Val* find(const Key& k) const {
+    Val* find(const Key& k) {
         u32 hash = get_hash(k);
         while (1) {
-            if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))
+            if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk)))){
                 return nullptr;
-            if (keys[hash] == k) return &(vals[hash]);
-            hash = (hash + 1) & (n - 1);
+            }
+            if (dat[hash].key == k) return &(dat[hash].val);
+            if (++hash == n) hash = 0;
+
         }
     }
 };
