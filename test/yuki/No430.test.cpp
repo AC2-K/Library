@@ -1,4 +1,4 @@
-#define PROBLEM "https://yukicoder.me/submissions/865256"
+#define PROBLEM "https://yukicoder.me/problems/no/430"
 #include "../../src/data-structure/hash_map.hpp"
 #include "../../src/string/rolling_hash.hpp"
 #include <iostream>
