@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/hash_map.hpp
     title: HashMap
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: barrett reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: MontgomeryReduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: "dynamic modint(\u52D5\u7684modint)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/math/mod_log.md
     document_title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
@@ -38,34 +38,35 @@ data:
     \n#include <bits/stl_algobase.h>\n#include <chrono>\nnamespace kyopro {\n/// @brief\
     \ HashMap\ntemplate <typename Key,\n          typename Val,\n          uint32_t\
     \ n = 1 << 20,\n          Val default_val = Val()>\nclass hash_map {\n    using\
-    \ u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64* flag = new u64[n];\n\
-    \    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\n    static constexpr\
-    \ u32 shift = 64 - std::__lg(n);\n\n    u64 r;\n    inline u32 get_hash(const\
-    \ Key& k) const { return ((u64)k * r) >> shift; }\n\n    static constexpr uint8_t\
-    \ mod_msk = (1 << 6) - 1;\n\npublic:\n    explicit constexpr hash_map() {\n  \
-    \      r = std::chrono::steady_clock::now().time_since_epoch().count();\n    \
-    \    r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const Key&\
-    \ k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n            if\
-    \ (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash & mod_msk))))\
-    \ {\n                keys[hash] = k;\n                flag[hash >> 6] |= static_cast<u64>(1)\
-    \ << (hash & mod_msk);\n                return vals[hash] = default_val;\n   \
-    \         }\n\n            if (keys[hash] == k) return vals[hash];\n         \
-    \   hash = (hash + 1) & (n - 1);\n        }\n    }\n\n    Val* find(const Key&\
-    \ k) const {\n        u32 hash = get_hash(k);\n        while (1) {\n         \
-    \   if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))\n    \
-    \            return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
-    \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace\
-    \ kyopro\n#line 2 \"src/math/dynamic_modint.hpp\"\n#include <cassert>\n#include\
-    \ <iostream>\n#line 2 \"src/internal/barrett.hpp\"\nnamespace kyopro {\nnamespace\
-    \ internal {\n/// @brief barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n\
-    \    using u64 = uint64_t;\n\n    u64 m;\n    u64 im;\n\npublic:\n    explicit\
-    \ barrett() = default;\n    explicit barrett(u64 m_)\n        : m(m_), im((u64)(long\
-    \ double)static_cast<u64>(-1) / m_ + 1) {}\n\n    inline u64 get_mod() const {\
-    \ return m; }\n    constexpr u64 reduce(int64_t a) const {\n        if (a < 0)\
-    \ return m - reduce(-a);\n        u64 q = ((__uint128_t)a * im) >> 64;\n     \
-    \   a -= m * q;\n        if (a >= m) a -= m;\n        return a;\n    }\n    constexpr\
-    \ u64 mul(u64 a, u64 b) const {\n        if (a == 0 || b == 0) {\n           \
-    \ return 0;\n        }\n        u64 z = a;\n        z *= b;\n        u64 x = (u64)(((__uint128_t)z\
+    \ u32 = uint32_t;\n    using u64 = uint64_t;\n\npublic:\n    struct data {\n \
+    \       Key key;\n        Val val;\n    };\nprivate:\n    u64 flag[n >> 6];\n\
+    \    data dat[n];\n\n    static constexpr u32 shift = 64 - std::__lg(n);\n\n \
+    \   u64 r;\n    u32 get_hash(const Key& k) const { return ((u64)k * r) >> shift;\
+    \ }\n\n    static constexpr uint8_t mod_msk = (1 << 6) - 1;\n\npublic:\n    explicit\
+    \ constexpr hash_map() {\n        r = std::chrono::steady_clock::now().time_since_epoch().count();\n\
+    \        r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const\
+    \ Key& k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n        \
+    \    if (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash\
+    \ & mod_msk)))) {\n                dat[hash].key = k;\n                flag[hash\
+    \ >> 6] |= (static_cast<u64>(1) << (hash & mod_msk));\n\n                return\
+    \ dat[hash].val = default_val;\n            }\n\n            if (dat[hash].key\
+    \ == k) return dat[hash].val;\n            if (++hash == n) hash = 0;\n      \
+    \  }\n    }\n    Val* find(const Key& k) {\n        u32 hash = get_hash(k);\n\
+    \        while (1) {\n            if (!(flag[hash >> 6] & (static_cast<u64>(1)\
+    \ << (hash & mod_msk)))){\n                return nullptr;\n            }\n  \
+    \          if (dat[hash].key == k) return &(dat[hash].val);\n            if (++hash\
+    \ == n) hash = 0;\n\n        }\n    }\n};\n};  // namespace kyopro\n#line 2 \"\
+    src/math/dynamic_modint.hpp\"\n#include <cassert>\n#include <iostream>\n#line\
+    \ 2 \"src/internal/barrett.hpp\"\nnamespace kyopro {\nnamespace internal {\n///\
+    \ @brief barrett reduction\nclass barrett {\n    using u32 = uint32_t;\n    using\
+    \ u64 = uint64_t;\n\n    u64 m;\n    u64 im;\n\npublic:\n    explicit barrett()\
+    \ = default;\n    explicit barrett(u64 m_)\n        : m(m_), im((u64)(long double)static_cast<u64>(-1)\
+    \ / m_ + 1) {}\n\n    inline u64 get_mod() const { return m; }\n    constexpr\
+    \ u64 reduce(int64_t a) const {\n        if (a < 0) return m - reduce(-a);\n \
+    \       u64 q = ((__uint128_t)a * im) >> 64;\n        a -= m * q;\n        if\
+    \ (a >= m) a -= m;\n        return a;\n    }\n    constexpr u64 mul(u64 a, u64\
+    \ b) const {\n        if (a == 0 || b == 0) {\n            return 0;\n       \
+    \ }\n        u64 z = a;\n        z *= b;\n        u64 x = (u64)(((__uint128_t)z\
     \ * im) >> 64);\n\n        u32 v = (u32)(z - x * m);\n\n        if (v >= m) v\
     \ += m;\n        return v;\n    }\n};\n};  // namespace internal\n};  // namespace\
     \ kyopro\n#line 3 \"src/internal/montgomery.hpp\"\n#include <limits>\n#include\
@@ -281,8 +282,8 @@ data:
   isVerificationFile: false
   path: src/math/mod_log.hpp
   requiredBy: []
-  timestamp: '2023-05-01 16:04:44+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-01 11:13:35+00:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 documentation_of: src/math/mod_log.hpp

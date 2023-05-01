@@ -32,7 +32,7 @@ data:
       path: src/data-structure/dynamic_segtree.hpp
       title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
         )"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/data-structure/hash_map.hpp
       title: HashMap
     - icon: ':heavy_check_mark:'
@@ -83,21 +83,21 @@ data:
       title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
   - name: src/internal
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/barrett.hpp
       title: barrett reduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/montgomery.hpp
       title: MontgomeryReduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/dynamic_modint.hpp
       title: "dynamic modint(\u52D5\u7684modint)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
     - icon: ':heavy_check_mark:'
@@ -106,10 +106,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/miller.hpp
       title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/math/mod_log.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
     - icon: ':warning:'
@@ -260,7 +260,7 @@ data:
       title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - name: test/yosupo_judge/math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     - icon: ':heavy_check_mark:'
