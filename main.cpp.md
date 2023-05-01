@@ -17,7 +17,7 @@ data:
   isVerificationFile: false
   path: main.cpp
   requiredBy: []
-  timestamp: '2023-05-01 10:32:03+00:00'
+  timestamp: '2023-05-01 07:19:47+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: main.cpp
