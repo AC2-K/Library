@@ -39,5 +39,6 @@
 "test/yosupo_judge/string/Enumerate_Palindromes.test.cpp": "2023-04-09 21:30:24 +0900",
 "test/yosupo_judge/string/Z_algorithm.test.cpp": "2023-04-09 12:39:31 +0900",
 "test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp": "2023-04-23 13:40:02 +0900",
-"test/yosupo_judge/tree/Tree_Diameter.test.cpp": "2023-04-23 13:40:02 +0900"
+"test/yosupo_judge/tree/Tree_Diameter.test.cpp": "2023-04-23 13:40:02 +0900",
+"test/yuki/No430.test.cpp": "2023-05-01 07:19:47 +0000"
 }
