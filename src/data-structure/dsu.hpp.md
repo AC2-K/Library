@@ -52,9 +52,9 @@ data:
   timestamp: '2023-04-23 12:26:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/data_structure/UnionFind.test.cpp
-  - test/AOJ/GRL/2_A.test.cpp
   - test/AOJ/DSL/1_A.test.cpp
+  - test/AOJ/GRL/2_A.test.cpp
+  - test/yosupo_judge/data_structure/UnionFind.test.cpp
 documentation_of: src/data-structure/dsu.hpp
 layout: document
 redirect_from:

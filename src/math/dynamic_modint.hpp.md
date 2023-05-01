@@ -263,18 +263,18 @@ data:
   isVerificationFile: false
   path: src/math/dynamic_modint.hpp
   requiredBy:
-  - src/math/miller.hpp
-  - src/math/phi_function.hpp
-  - src/math/mod_log.hpp
   - src/math/primitive_root.hpp
+  - src/math/miller.hpp
   - src/math/rho.hpp
+  - src/math/mod_log.hpp
+  - src/math/phi_function.hpp
   timestamp: '2023-04-23 12:26:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/AOJ/NTL/1_D.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/math/dynamic_modint.hpp
 layout: document
 redirect_from:

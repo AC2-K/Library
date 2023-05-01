@@ -74,8 +74,8 @@ data:
   timestamp: '2023-04-23 13:59:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/AOJ/NTL/1_B.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 documentation_of: src/math/mod_pow.hpp
 layout: document
 redirect_from:

@@ -107,22 +107,22 @@ data:
   path: src/internal/type_traits.hpp
   requiredBy:
   - src/string/rolling_hash.hpp
-  - src/math/dynamic_modint.hpp
-  - src/math/miller.hpp
-  - src/math/phi_function.hpp
-  - src/math/mod_log.hpp
-  - src/math/mod_pow.hpp
   - src/math/primitive_root.hpp
+  - src/math/mod_pow.hpp
+  - src/math/miller.hpp
   - src/math/rho.hpp
+  - src/math/mod_log.hpp
+  - src/math/dynamic_modint.hpp
+  - src/math/phi_function.hpp
   - src/internal/montgomery.hpp
   timestamp: '2023-04-09 06:36:58+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/AOJ/NTL/1_D.test.cpp
+  - test/AOJ/NTL/1_B.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/AOJ/NTL/1_B.test.cpp
-  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/internal/type_traits.hpp
 layout: document
 redirect_from:
