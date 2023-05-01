@@ -8,7 +8,7 @@ inline long long phi_func(long long n) {
     long long res = n;
     auto pf = kyopro::rho::factorize(n);
     pf.erase(std::unique(pf.begin(), pf.end()), pf.end());
-    for (const auto& d : pf) {
+    for (auto d : pf) {
         res = res / d * (d - 1);
     }
     return res;

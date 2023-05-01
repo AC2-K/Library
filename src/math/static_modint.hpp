@@ -22,7 +22,7 @@ private:
 
 public:
     constexpr static_modint() : v(0) {}
-    constexpr static_modint(const i64& v_) : v(normalize(v_)) {}
+    constexpr static_modint(i64 v_) : v(normalize(v_)) {}
 
     // operator
     constexpr u64 val() const { return v; }
@@ -71,11 +71,11 @@ public:
         return mint(l) *= r;
     }
 
-    constexpr mint operator+(const i64& r) { return mint(*this) += r; }
-    constexpr mint operator-(const i64& r) { return mint(*this) -= r; }
-    constexpr mint operator*(const i64& r) { return mint(*this) *= r; }
+    constexpr mint operator+(i64 r) { return mint(*this) += r; }
+    constexpr mint operator-(i64 r) { return mint(*this) -= r; }
+    constexpr mint operator*(i64 r) { return mint(*this) *= r; }
 
-    constexpr mint& operator=(const i64& r) { return (*this) = mint(r); }
+    constexpr mint& operator=(i64 r) { return (*this) = mint(r); }
 
     constexpr bool operator==(const mint& r) const {
         return (*this).val() == r.val();
@@ -101,10 +101,10 @@ public:
 
     constexpr mint& operator/=(const mint& r) { return (*this) *= r.inv(); }
     constexpr mint inv(const mint& r) const { return mint(*this) *= r.inv(); }
-    constexpr friend mint operator/(const mint& l, const i64& r) {
+    constexpr friend mint operator/(const mint& l, i64 r) {
         return mint(l) /= mint(r);
     }
-    constexpr friend mint operator/(const i64& l, const mint& r) {
+    constexpr friend mint operator/(i64 l, const mint& r) {
         return mint(l) /= mint(r);
     }
 
@@ -182,20 +182,20 @@ public:
     constexpr friend mint operator+(const i64& l, const mint& r) {
         return mint(l) += r;
     }
-    constexpr friend mint operator-(const i64& l, const mint& r) {
+    constexpr friend mint operator-(i64 l, const mint& r) {
         return mint(l) -= r;
     }
-    constexpr friend mint operator*(const i64& l, const mint& r) {
+    constexpr friend mint operator*(i64 l, const mint& r) {
         return mint(l) *= r;
     }
 
-    constexpr mint operator+(const i64& r) { return mint(*this) += r; }
-    constexpr mint operator-(const i64& r) { return mint(*this) -= r; }
-    constexpr mint operator*(const i64& r) { return mint(*this) *= r; }
+    constexpr mint operator+(i64 r) { return mint(*this) += r; }
+    constexpr mint operator-(i64 r) { return mint(*this) -= r; }
+    constexpr mint operator*(i64 r) { return mint(*this) *= r; }
 
-    constexpr mint& operator=(const i64& r) { return (*this) = mint(r); }
+    constexpr mint& operator=(i64 r) { return (*this) = mint(r); }
 
-    constexpr bool operator==(const mint& r) const {
+    constexpr bool operator==( mint& r) const {
         return (*this).val() == r.val();
     }
     template <typename T> constexpr mint pow(T e) const {
@@ -221,10 +221,10 @@ public:
     constexpr mint operator/(const mint& r) const {
         return mint(*this) *= r.inv();
     }
-    constexpr friend mint operator/(const mint& l, const i64& r) {
+    constexpr friend mint operator/(const mint& l, i64 r) {
         return mint(l) /= mint(r);
     }
-    constexpr friend mint operator/(const i64& l, const mint& r) {
+    constexpr friend mint operator/(i64 l, const mint& r) {
         return mint(l) /= mint(r);
     }
 

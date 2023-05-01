@@ -18,7 +18,7 @@ class MST {
 
 public:
     MST(int V) : uf(V) {}
-    inline void add_edge(int a, int b, long long cost) {
+     void add_edge(int a, int b, long long cost) {
         int sz = E.size();
         E.emplace_back(a, b, cost, sz);
         V1.emplace_back(a), V2.emplace_back(b);

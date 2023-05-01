@@ -20,7 +20,7 @@ class RollingHash {
     static constexpr ull primitive_root = 37;
 
 public:
-    static const uint mapping_max = (uint)'Z' + 2;
+    static constexpr uint mapping_max = (uint)'Z' + 2;
     static ull base;
 
 private:
@@ -36,7 +36,7 @@ private:
         return t;
     }
 
-    constexpr ull mapping(const char& c) const {
+    constexpr ull mapping(char c) const {
         return (ull)c;  // 変更する?
     }
 
@@ -89,11 +89,11 @@ public:
 
     static int lcp(const RollingHash& a,
                    const RollingHash& b,
-                   const int& start_a,
-                   const int& start_b) {
+                   int start_a,
+                   int start_b) {
         int ok = 0;
         int ng = std::min(a.size() - start_a, b.size() - start_b) + 1;
-        while (abs(ok - ng) > 1) {
+        while (ng-ok>1) {
             int md = (ok + ng) >> 1;
             if (a.range(start_a, start_a + md) ==
                 b.range(start_b, start_b + md)) {

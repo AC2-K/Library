@@ -13,8 +13,9 @@ using u128 = __uint128_t;
 using u64 = uint64_t;
 using u32 = uint32_t;
 
-template <typename mint> u64 find_factor(u64 n) {
-    static u64 v = 20001;
+template <typename mint> 
+u64 find_factor(u64 n) {
+    u64 v = 20001;
 
     if (~n & 1uL) {
         return 2;
@@ -46,7 +47,8 @@ template <typename mint> u64 find_factor(u64 n) {
     }
     exit(0);
 }
-template <typename mint> std::vector<u64> rho_fact(u64 n) {
+template <typename mint> 
+constexpr std::vector<u64> rho_fact(u64 n) {
     if (n < 2) {
         return {};
     }
@@ -78,7 +80,7 @@ inline std::vector<u64> factorize(u64 n) {
     return v;
 }
 
-std::vector<pair<u64, int>> exp_factorize(u64 n) {
+inline std::vector<pair<u64, int>> exp_factorize(u64 n) {
     std::vector<u64> pf = factorize(n);
     if (pf.empty()) {
         return {};

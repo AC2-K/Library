@@ -12,7 +12,7 @@ class sparse_table {
 public:
     sparse_table(int n) : vec(n) {}
     sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }
-    inline void set(int p, const T& v) { vec[p] = v; }
+    void set(int p, const T& v) { vec[p] = v; }
     void build() {
         int sz = vec.size();
         int log = 0;
@@ -35,7 +35,7 @@ public:
         }
     }
 
-    inline T prod(int l, int r) {
+    T prod(int l, int r) {
         int b = look_up[r - l];
         return std::min(table[b][l], table[b][r - (1 << b)]);
     }

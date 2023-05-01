@@ -19,7 +19,7 @@ private:
     size_t n;
 
 public:
-    void update(const size_t& p, const S& x) {
+    void update(size_t p, const S& x) {
         assert(0 <= p && p < n);
         internal_update(root, 0, n, p, x);
     }
@@ -27,11 +27,11 @@ public:
         assert(0 <= p && p < n);
         internal_add(root, 0, n, p, x);
     }
-    S operator[](const size_t& p) {
+    S operator[](size_t p) {
         assert(0 <= p && p < n);
         return internal_access(root, 0, n, p);
     }
-    S prod(const size_t& l, const size_t& r) {
+    S prod(size_t l, size_t r) {
         assert(0 <= l && l <= r && r <= n);
         if (l == r) {
             return e();

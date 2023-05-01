@@ -14,7 +14,7 @@ class Mo {
 
 public:
     explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }
-    inline void add(int l, int r) { lr.emplace_back(l, r); }
+    void add(int l, int r) { lr.emplace_back(l, r); }
     long long hilbertorder(int x, int y) {
         long long d = 0;
         for (int s = 1 << (logn - 1); s; s >>= 1) {
@@ -32,7 +32,7 @@ public:
     }
 
 private:
-    inline void line_up() {
+    void line_up() {
         int q = lr.size();
         ord.resize(q);
         std::iota(std::begin(ord), std::end(ord), 0);
@@ -53,7 +53,7 @@ public:
                const O& out) {
         line_up();
         int l = 0, r = 0;
-        for (const auto& idx : ord) {
+        for (auto idx : ord) {
             while (l > lr[idx].first) add_left(--l);
             while (r < lr[idx].second) add_right(r++);
             while (l < lr[idx].first) erase_left(l++);

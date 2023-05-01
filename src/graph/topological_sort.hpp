@@ -16,7 +16,7 @@ void topological_sort(const std::vector<std::vector<int>>& g,
 
     auto dfs = [&](auto f, int v) -> bool {
         vis[v] = true;
-        for (const auto& nex : g[v]) {
+        for (auto nex : g[v]) {
             if (vis[nex]) {
                 if (!finished[nex]) {
                     return false;

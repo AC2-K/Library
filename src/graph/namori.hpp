@@ -17,7 +17,7 @@ public:
         cycle.reserve(n);
     }
 
-    inline void add_edge(int s, int t) {
+     void add_edge(int s, int t) {
         g[s].emplace_back(t), g[t].emplace_back(s);
         deg[s]++, deg[t]++;
     }
@@ -36,7 +36,7 @@ public:
                 q.pop();
                 is_cycle[v] = false;
 
-                for (const auto& nv : g[v]) {
+                for (auto nv : g[v]) {
                     if (deg[nv] < 2) continue;
                     deg[nv]--;
                     if (deg[nv] == 1) q.emplace(nv);
@@ -53,7 +53,7 @@ public:
 
                 std::vector<std::pair<int, int>> st;
                 st.reserve(n);
-                for (const auto& ch : g[i]) {
+                for (auto ch : g[i]) {
                     if (is_cycle[ch]) continue;
                     st.emplace_back(ch, i);
                 }
@@ -74,8 +74,8 @@ public:
         }
     }
 
-    inline int root(int v) const { return root_idx[v]; }
-    inline bool is_in_cycle(int v) const { return is_cycle[v]; }
-    inline std::vector<int> get_cycle() const { return cycle; }
+     int root(int v) const { return root_idx[v]; }
+     bool is_in_cycle(int v) const { return is_cycle[v]; }
+     std::vector<int> get_cycle() const { return cycle; }
 };
 };  // namespace kyopro

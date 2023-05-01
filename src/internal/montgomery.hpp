@@ -12,7 +12,8 @@ using i64 = int64_t;
 using u128 = __uint128_t;
 using i128 = __int128_t;
 /// @brief MontgomeryReduction
-template <typename T> class Montgomery {
+template <typename T>
+class Montgomery {
     static constexpr int lg = std::numeric_limits<T>::digits;
     using LargeT = internal::double_size_uint_t<T>;
     T mod, r, r2, minv;
@@ -30,10 +31,10 @@ template <typename T> class Montgomery {
 
 public:
     Montgomery() = default;
-    constexpr inline T get_mod() { return mod; }
-    constexpr inline int get_lg() { return lg; }
+    constexpr T get_mod() { return mod; }
+    constexpr int get_lg() { return lg; }
 
-    void set_mod(const T& m) {
+    void set_mod(T m) {
         assert(m > 0);
         assert(m & 1);
 
@@ -52,9 +53,9 @@ public:
         return res;
     }
 
-    inline T generate(LargeT x) { return reduce(x * r2); }
+    T generate(LargeT x) { return reduce(x * r2); }
 
-    inline T mult(T x, T y) { return reduce((LargeT)x * y); }
+    T mult(T x, T y) { return reduce((LargeT)x * y); }
 };
 };  // namespace internal
 };  // namespace kyopro

@@ -37,7 +37,7 @@ public:
         }
     }
 
-    inline int id(T x) const {
+     int id(T x) const {
         return std::lower_bound(
                    ps.begin(), ps.end(), std::make_pair(x, T()),
                    [](const std::pair<T, T>& a, const std::pair<T, T>& b) {
@@ -46,7 +46,7 @@ public:
                ps.begin();
     }
 
-    inline int id(int i, T y) const {
+     int id(int i, T y) const {
         return std::lower_bound(ys[i].begin(), ys[i].end(), y) - ys[i].begin();
     }
 

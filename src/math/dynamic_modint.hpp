@@ -5,7 +5,8 @@
 #include "../internal/montgomery.hpp"
 namespace kyopro {
 /// @note mod は32bitじゃないとバグる
-template <int id = -1> class barrett_modint {
+template <int id = -1>
+class barrett_modint {
     using u32 = uint32_t;
     using u64 = uint64_t;
 
@@ -17,7 +18,7 @@ template <int id = -1> class barrett_modint {
     static u32 mod;
     u32 v;  // value
 public:
-    static inline void set_mod(u32 mod_) {
+    static void set_mod(u32 mod_) {
         brt = br(mod_);
         mod = mod_;
     }
@@ -84,7 +85,8 @@ public:
         mt = v_;
         return is;
     }
-    template <typename T> mint pow(T e) const {
+    template <typename T>
+    mint pow(T e) const {
         mint res(1), base(*this);
 
         while (e) {
@@ -96,7 +98,7 @@ public:
         }
         return res;
     }
-    inline mint inv() const { return pow(mod - 2); }
+    mint inv() const { return pow(mod - 2); }
 
     mint& operator/=(const mint& r) { return (*this) *= r.inv(); }
     mint operator/(const mint& r) const { return mint(*this) *= r.inv(); }
@@ -111,18 +113,19 @@ template <int id>
 typename kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;
 
 namespace kyopro {
-template <typename T, int id = -1> class dynamic_modint {
+template <typename T, int id = -1>
+class dynamic_modint {
     using LargeT = internal::double_size_uint_t<T>;
     static T mod;
     static internal::Montgomery<T> mr;
 
 public:
-    static void inline set_mod(T mod_) {
+    static void set_mod(T mod_) {
         mr.set_mod(mod_);
         mod = mod_;
     }
 
-    static inline T get_mod() { return mod; }
+    static T get_mod() { return mod; }
 
 private:
     T v;
@@ -132,7 +135,7 @@ public:
         assert(mod);
         v = mr.generate(v_);
     }
-    inline T val() const { return mr.reduce(v); }
+    T val() const { return mr.reduce(v); }
 
     using mint = dynamic_modint<T, id>;
     mint& operator+=(const mint& r) {
@@ -177,7 +180,8 @@ public:
         mt = v_;
         return is;
     }
-    template <typename P> mint pow(P e) const {
+    template <typename P>
+    mint pow(P e) const {
         assert(e >= 0);
         mint res(1), base(*this);
 
@@ -199,7 +203,8 @@ public:
     friend mint operator/(T l, const mint& r) { return mint(l) /= r; }
 };
 };  // namespace kyopro
-template <typename T, int id> T kyopro::dynamic_modint<T, id>::mod;
+template <typename T, int id>
+T kyopro::dynamic_modint<T, id>::mod;
 template <typename T, int id>
 kyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;
 

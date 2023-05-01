@@ -31,11 +31,11 @@ public:
     }
 
 public:
-    inline void set(int pos, S x) {
+    void set(int pos, S x) {
         assert(0 <= pos && pos < sz);
         dat[pos + sz - 1] = x;
     }
-    inline void build() {
+    void build() {
         for (int i = sz - 2; i >= 0; i--) {
             dat[i] = op(dat[2 * i + 1], dat[2 * i + 2]);
         }
@@ -67,7 +67,7 @@ private:
     }
 
 public:
-    inline void apply(int l, int r, const F& x) {
+    void apply(int l, int r, const F& x) {
         assert(0 <= l && l <= r && r <= sz);
         internal_apply(l, r, 0, sz, x, 0);
     }
@@ -88,12 +88,12 @@ private:
     }
 
 public:
-    inline S prod(int l, int r) {
+    S prod(int l, int r) {
         assert(0 <= l && l <= r && r <= sz);
         return internal_prod(l, r, 0, sz, 0);
     }
 
-    inline S operator[](int pos) { return prod(pos, pos + 1); }
+    S operator[](int pos) { return prod(pos, pos + 1); }
 };
 };  // namespace kyopro
 

@@ -10,7 +10,7 @@ class PointAddRectangleSum {
     T n;
     std::vector<std::pair<T, T>> ps;
 public:
-    inline void add_point(T x, T y) { ps.emplace_back(x, y); }
+     void add_point(T x, T y) { ps.emplace_back(x, y); }
 
     void build() {
         std::sort(ps.begin(), ps.end());
@@ -37,7 +37,7 @@ public:
     }
 
 private:
-    inline int id(T x) const {
+     int id(T x) const {
         return std::lower_bound(
                    ps.begin(), ps.end(), std::make_pair(x, T()),
                    [](const std::pair<T, T>& a, const std::pair<T, T>& b) {
@@ -46,7 +46,7 @@ private:
                ps.begin();
     }
 
-    inline int id(int i, T y) const {
+     int id(int i, T y) const {
         return std::lower_bound(ys[i].begin(), ys[i].end(), y) - ys[i].begin();
     }
 

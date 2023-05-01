@@ -6,7 +6,9 @@
 #include "../math/mod_pow.hpp"
 namespace kyopro {
 namespace internal {
-long long __mod_log(uint64_t x, uint64_t y, uint64_t p) {
+
+template <typename T>
+constexpr T __mod_log(T x, T y, T p) {
     if (y == 1 || p == 1) {
         return 0;
     }
@@ -17,10 +19,10 @@ long long __mod_log(uint64_t x, uint64_t y, uint64_t p) {
             return -1;
         }
     }
-    int m = (uint32_t)sqrt(p) + 1;
-    hash_map<uint64_t, int> mp;
-    uint64_t xm = mod_pow<uint64_t>(x, m, p);
-    uint64_t add = 0, g, k = (p == 1 ? 0 : 1);
+    int m = (int)sqrt(p) + 1;
+    hash_map<T, T> mp;
+    T xm = mod_pow<T>(x, m, p);
+    internal::double_size_uint_t<T> add = 0, g, k = (p == 1 ? 0 : 1);
     while ((g = _gcd(x, p)) > 1) {
         if (y == k) return add;
         if (y % g) return -1;
@@ -28,14 +30,15 @@ long long __mod_log(uint64_t x, uint64_t y, uint64_t p) {
         k = (k * (x / g)) % p;
     }
 
-    long long pr = y;
-    for (int j = 0; j <= m; j++) {
+    T pr = y;
+    for (int j = 0; j <= m; ++j) {
         mp[pr] = j;
-        (pr *= x) %= p;
+        pr = (internal::double_size_uint_t<T>)pr * x % p;
+        //(pr *= x) %= p;
     }
     pr = k;
-    for (int i = 1; i <= m; i++) {
-        (pr *= xm) %= p;
+    for (int i = 1; i <= m; ++i) {
+        pr = (internal::double_size_uint_t<T>)pr * xm % p;
         auto ptr = mp.find(pr);
         if (ptr) {
             int j = *ptr;
@@ -44,8 +47,8 @@ long long __mod_log(uint64_t x, uint64_t y, uint64_t p) {
     }
     return -1;
 }
-
-long long __mod_log32(uint32_t x, uint32_t y, uint32_t p) {
+template <typename T>
+constexpr T __mod_log32(T x, T y, T p) {
     if (y == 1 || p == 1) {
         return 0;
     }
@@ -56,12 +59,13 @@ long long __mod_log32(uint32_t x, uint32_t y, uint32_t p) {
             return -1;
         }
     }
-    uint32_t m = (uint32_t)std::ceil(std::sqrt(p));
-    using mint = barrett_modint<10>;
+    int m = (int)std::sqrt(p) + 1;
+    using mint = dynamic_modint<internal::double_size_uint_t<T>,10>;
     if (mint::get_mod() != p) {
         mint::set_mod(p);
     }
-    uint64_t add = 0, g = 0;
+
+    T add = 0, g = 0;
     mint k(1);
     while ((g = _gcd(x, p)) != 1) {
         if (y == k.val()) return add;
@@ -70,16 +74,16 @@ long long __mod_log32(uint32_t x, uint32_t y, uint32_t p) {
         k = (k.val() * (x / g));
     }
 
-    hash_map<uint32_t, uint32_t, 1 << 16> mp;
+    hash_map<T, T> mp;
 
     mint xm = mint(x).pow(m);
     mint pr = mint(y);
-    for (int j = 0; j <= m; j++) {
+    for (int j = 0; j <= m; ++j) {
         mp[pr.val()] = j;
         pr *= x;
     }
     pr = k;
-    for (int i = 1; i <= m; i++) {
+    for (int i = 1; i <= m; ++i) {
         pr *= xm;
         auto ptr = mp.find(pr.val());
         if (ptr) {
@@ -89,16 +93,17 @@ long long __mod_log32(uint32_t x, uint32_t y, uint32_t p) {
     }
     return -1;
 }
+
 };  // namespace internal
 
 /// @brief Discrete Logarithm(離散対数)
-template <typename T> inline long long mod_log(T a, T b, T c) {
-    if (c < 1 << 30) {
+template <typename T>
+constexpr inline T mod_log(T a, T b, T c) {
+    if (c&1/*std::numeric_limits<T>::digits < 32 || c < 1L << 30*/) {
         return internal::__mod_log32(a, b, c);
     } else {
         return internal::__mod_log(a, b, c);
     }
 }
-};  // namespace kyopro
 
-///@docs docs/math/mod_log.md
+};  // namespace kyopro

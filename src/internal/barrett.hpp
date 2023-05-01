@@ -14,7 +14,7 @@ public:
     explicit barrett(u64 m_)
         : m(m_), im((u64)(long double)static_cast<u64>(-1) / m_ + 1) {}
 
-    inline u64 get_mod() const { return m; }
+    u64 get_mod() const { return m; }
     constexpr u64 reduce(int64_t a) const {
         if (a < 0) return m - reduce(-a);
         u64 q = ((__uint128_t)a * im) >> 64;

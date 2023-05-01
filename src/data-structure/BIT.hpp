@@ -10,7 +10,7 @@ class BIT {
 public:
     explicit BIT() {}
     explicit BIT(int n) : n(n), bit(n + 1, T()) {}
-    void add(int p, const T& w) {
+    void add(int p,T w) {
         p++;
         for (int x = p; x <= n; x += x & -x) {
             bit[x] += w;
@@ -26,7 +26,7 @@ public:
         return s;
     }
 
-    inline SumT sum(int l, int r) const { return sum(r) - sum(l); }
+    SumT sum(int l, int r) const { return sum(r) - sum(l); }
 
     int lower_bound(SumT w) const {
         if (w <= 0) return 0;

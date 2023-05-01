@@ -13,7 +13,7 @@ public:
     Matrix(const std::vector<std::vector<T>>& dat)
         : dat(dat), h(dat.size()), w(dat.front().size()) {}
 
-    Matrix(int h_, int w_, const T& v = T()) : dat(h_, std::vector<T>(w_, v)) {}
+    Matrix(int h_, int w_, T v = T()) : dat(h_, std::vector<T>(w_, v)) {}
 
     using mat = Matrix<T>;
     // access
