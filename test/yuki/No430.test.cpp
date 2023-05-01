@@ -1,6 +1,6 @@
 #define PROBLEM "https://yukicoder.me/submissions/865256"
-#include "data-structure/hash_map.hpp"
-#include "string/rolling_hash.hpp"
+#include "../../src/data-structure/hash_map.hpp"
+#include "../../src/string/rolling_hash.hpp"
 #include <iostream>
 
 int main() {
