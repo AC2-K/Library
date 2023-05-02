@@ -21,12 +21,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
     title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/segtree.md
     document_title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
@@ -78,7 +78,7 @@ data:
   requiredBy:
   - src/data-structure-2d/RangeTree.hpp
   timestamp: '2023-05-01 12:49:55+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/2_B.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp

@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/lazy_segtree.hpp
     title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
       \u30E1\u30F3\u30C8\u6728)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -142,7 +142,7 @@ data:
     \ mint(l) *= r;\n    }\n\n    constexpr mint operator+(i64 r) { return mint(*this)\
     \ += r; }\n    constexpr mint operator-(i64 r) { return mint(*this) -= r; }\n\
     \    constexpr mint operator*(i64 r) { return mint(*this) *= r; }\n\n    constexpr\
-    \ mint& operator=(i64 r) { return (*this) = mint(r); }\n\n    constexpr bool operator==(\
+    \ mint& operator=(i64 r) { return (*this) = mint(r); }\n\n    constexpr bool operator==(const\
     \ mint& r) const {\n        return (*this).val() == r.val();\n    }\n    template\
     \ <typename T> constexpr mint pow(T e) const {\n        mint ans(1), base(*this);\n\
     \        while (e) {\n            if (e & 1) {\n                ans *= base;\n\
@@ -204,8 +204,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-01 12:49:55+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-02 00:07:28+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
 layout: document

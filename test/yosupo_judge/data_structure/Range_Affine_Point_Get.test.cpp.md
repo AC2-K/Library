@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/dual_segtree.hpp
     title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "static modint(\u9759\u7684modint)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
@@ -129,7 +129,7 @@ data:
     \ mint(l) *= r;\n    }\n\n    constexpr mint operator+(i64 r) { return mint(*this)\
     \ += r; }\n    constexpr mint operator-(i64 r) { return mint(*this) -= r; }\n\
     \    constexpr mint operator*(i64 r) { return mint(*this) *= r; }\n\n    constexpr\
-    \ mint& operator=(i64 r) { return (*this) = mint(r); }\n\n    constexpr bool operator==(\
+    \ mint& operator=(i64 r) { return (*this) = mint(r); }\n\n    constexpr bool operator==(const\
     \ mint& r) const {\n        return (*this).val() == r.val();\n    }\n    template\
     \ <typename T> constexpr mint pow(T e) const {\n        mint ans(1), base(*this);\n\
     \        while (e) {\n            if (e & 1) {\n                ans *= base;\n\
@@ -155,11 +155,12 @@ data:
     \    std::cin.tie(nullptr);\n    int n, q;\n    std::cin >> n >> q;\n    kyopro::dual_segtree<Affine,\
     \ op, e> sg(n);\n    std::vector<mint> a(n);\n    for (auto& aa : a) {\n     \
     \   std::cin >> aa;\n    }\n    while (q--) {\n        int t;\n        std::cin\
-    \ >> t;\n        if (t == 0) {\n            int l, r;\n            mint b, c;\n\
-    \            std::cin >> l >> r >> b >> c;\n            sg.apply(l, r, Affine(b,\
-    \ c));\n        } else {\n            int i;\n            std::cin >> i;\n   \
-    \         auto f = sg[i];\n            mint ans = f.first * a[i] + f.second;\n\
-    \            std::cout << ans << '\\n';\n        }\n    }\n}\n"
+    \ >> t;\n        \n        if (t == 0) {\n            int l, r;\n            mint\
+    \ b, c;\n            std::cin >> l >> r >> b >> c;\n            sg.apply(l, r,\
+    \ std::pair<mint,mint>(b, c));\n        }\n        else {\n            int i;\n\
+    \            std::cin >> i;\n            auto f = sg[i];\n            mint ans\
+    \ = f.first * a[i] + f.second;\n            std::cout << ans << '\\n';\n     \
+    \   }\n        \n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
     \n#include <iostream>\n#include \"../../../src/data-structure/dual_segtree.hpp\"\
     \n#include \"../../../src/math/static_modint.hpp\"\n\nusing mint = kyopro::static_modint32<998244353>;\n\
@@ -170,11 +171,11 @@ data:
     \    int n, q;\n    std::cin >> n >> q;\n    kyopro::dual_segtree<Affine, op,\
     \ e> sg(n);\n    std::vector<mint> a(n);\n    for (auto& aa : a) {\n        std::cin\
     \ >> aa;\n    }\n    while (q--) {\n        int t;\n        std::cin >> t;\n \
-    \       if (t == 0) {\n            int l, r;\n            mint b, c;\n       \
-    \     std::cin >> l >> r >> b >> c;\n            sg.apply(l, r, Affine(b, c));\n\
-    \        } else {\n            int i;\n            std::cin >> i;\n          \
-    \  auto f = sg[i];\n            mint ans = f.first * a[i] + f.second;\n      \
-    \      std::cout << ans << '\\n';\n        }\n    }\n}\n"
+    \       \n        if (t == 0) {\n            int l, r;\n            mint b, c;\n\
+    \            std::cin >> l >> r >> b >> c;\n            sg.apply(l, r, std::pair<mint,mint>(b,\
+    \ c));\n        }\n        else {\n            int i;\n            std::cin >>\
+    \ i;\n            auto f = sg[i];\n            mint ans = f.first * a[i] + f.second;\n\
+    \            std::cout << ans << '\\n';\n        }\n        \n    }\n}\n"
   dependsOn:
   - src/data-structure/dual_segtree.hpp
   - src/math/static_modint.hpp
@@ -182,8 +183,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-05-01 12:49:55+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-02 00:07:28+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
 layout: document
