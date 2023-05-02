@@ -3,6 +3,10 @@
 #include <cassert>
 namespace kyopro {
 /// @brief Treap
+
+
+
+/// @brief 多重集合
 /// @tparam T 型
 template <class T>
 class multiset_treap {
@@ -97,6 +101,9 @@ public:
         return cur->key;
     }
 };
+
+/// @brief 集合
+/// @tparam T 型
 template <class T>
 class set_treap {
     using u32 = uint32_t;
