@@ -48,7 +48,7 @@ u64 find_factor(u64 n) {
     exit(0);
 }
 template <typename mint> 
-constexpr std::vector<u64> rho_fact(u64 n) {
+std::vector<u64> rho_fact(u64 n) {
     if (n < 2) {
         return {};
     }

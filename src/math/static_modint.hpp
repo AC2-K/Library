@@ -195,7 +195,7 @@ public:
 
     constexpr mint& operator=(i64 r) { return (*this) = mint(r); }
 
-    constexpr bool operator==( mint& r) const {
+    constexpr bool operator==(const mint& r) const {
         return (*this).val() == r.val();
     }
     template <typename T> constexpr mint pow(T e) const {
