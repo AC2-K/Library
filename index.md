@@ -9,6 +9,11 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
+  - name: src/BST
+    pages:
+    - icon: ':warning:'
+      path: src/BST/Treap.hpp
+      title: Treap
   - name: src/algorithm
     pages:
     - icon: ':heavy_check_mark:'
