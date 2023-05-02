@@ -9,10 +9,19 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
+    - icon: ':warning:'
+      path: sub.cpp
+      title: sub.cpp
   - name: src/BST
     pages:
     - icon: ':warning:'
-      path: src/BST/Treap.hpp
+      path: src/BST/Reversible.hpp
+      title: "\u53CD\u8EE2\u53EF\u80FD\u62BD\u8C61\u5316\u5E73\u8861\u4E8C\u5206\u63A2\
+        \u7D22\u6728"
+  - name: src/BST/Treap
+    pages:
+    - icon: ':warning:'
+      path: src/BST/Treap/multiset.hpp
       title: Treap
   - name: src/algorithm
     pages:
@@ -143,6 +152,11 @@ data:
     - icon: ':warning:'
       path: src/persistent/stack.hpp
       title: "\u6C38\u7D9Astack"
+  - name: src/random
+    pages:
+    - icon: ':warning:'
+      path: src/random/xor_shift.hpp
+      title: src/random/xor_shift.hpp
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'
@@ -154,6 +168,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
+  - name: test/yosupo_judge/new
+    pages:
+    - icon: ':warning:'
+      path: test/yosupo_judge/new/Range_Reverse_Range_Sum.hpp
+      title: test/yosupo_judge/new/Range_Reverse_Range_Sum.hpp
   verificationCategories:
   - name: test/AOJ/ALDS
     pages:
