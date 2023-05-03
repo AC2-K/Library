@@ -1,13 +1,13 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_reverse_range_sum"
 #include <iostream>
-#include "../../../src/BST/Reversible.hpp"
+#include"../../../src/BST/Reversible.hpp"
 using ll = long long;
 inline ll op(ll x, ll y) { return x + y; }
 inline ll e() { return 0; }
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);
-    kyopro::ReversibleBST<ll, op, e> bst;
+    kyopro::reversible_rbst<ll,op,e> bst;
     for (int i = 0; i < n; i++) {
         int a;
         scanf("%d", &a);

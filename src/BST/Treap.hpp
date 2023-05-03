@@ -1,6 +1,5 @@
 #pragma once
 #include <cassert>
-#include <cstdint>
 #include <memory>
 #include "../random/xor_shift.hpp"
 
@@ -19,7 +18,7 @@ class Treap {
     };
     using sptr = std::shared_ptr<Node>;
     sptr root = nullptr;
-    void split(sptr t, const T& key, sptr& l, sptr& r) {
+    void split(const sptr t,const T& key, sptr& l, sptr& r) {
         if (!t) {
             l = r = nullptr;
         } else if (key < t->key) {
@@ -51,7 +50,7 @@ class Treap {
         }
     }
 
-    void erase(sptr t, const T& key) {
+    void erase(sptr& t,const T& key) {
         if (!t) return;
         if (t->key == key) {
             merge(t, t->l, t->r);
@@ -60,7 +59,7 @@ class Treap {
         }
     }
 
-    const sptr find(const sptr& t, const T& key) const {
+    const sptr find(const sptr& t,const T& key) const {
         if (!t) {
             return nullptr;
         } else if (t->key == key) {
@@ -71,9 +70,7 @@ class Treap {
     }
 
 public:
-    void insert(const T& key) {
-        insert(root, std::make_shared<Node>(key, rng()));
-    }
+    void insert(const T& key) { insert(root, std::make_shared<Node>(key, rng())); }
 
     void erase(const T& key) { erase(root, key); }
 
@@ -87,11 +84,11 @@ public:
         T ans = cur->key;
         return ans;
     }
-    T max_element() const {
+    T max_element(){
         assert(root);
         sptr cur = root;
         while (cur->r) {
-            cur = cur->r;
+            cur = cur->r; 
         }
         T ans = cur->key;
         return ans;
@@ -110,7 +107,7 @@ public:
         assert(root);
         sptr cur = root;
         while (cur->r) {
-            cur = cur->r;
+            cur = cur->r; 
         }
         T ans = cur->key;
         merge(cur, cur->l, cur->r);
