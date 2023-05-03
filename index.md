@@ -20,7 +20,11 @@ data:
         \u7D22\u6728"
     - icon: ':heavy_check_mark:'
       path: src/BST/Treap.hpp
-      title: Treap
+      title: src/BST/Treap.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/BST/lazy_reversible_rbst.hpp
+      title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
+        \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
   - name: src/algorithm
     pages:
     - icon: ':heavy_check_mark:'
@@ -225,6 +229,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
       title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+      title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
       title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp

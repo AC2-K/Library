@@ -17,12 +17,12 @@ data:
   bundledCode: "#line 1 \"test/AOJ/DSL/2_E_dual.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_E\"\
     \n\n#include <iostream>\n#line 2 \"src/data-structure/dual_segtree.hpp\"\n#include\
     \ <cassert>\n#include <vector>\nnamespace kyopro {\n\n/// @brief Dual Segmenttree(\u53CC\
-    \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\ntemplate <class F, F (*comp)(F, F),\
-    \ F (*id)(), bool is_commutative = true>\nclass dual_segtree {\n    std::vector<F>\
+    \u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\ntemplate <class F, F (*composition)(F,\
+    \ F), F (*id)(), bool is_commutative = true>\nclass dual_segtree {\n    std::vector<F>\
     \ dat;\n    int _n, sz, lg;\n\npublic:\n    dual_segtree() {}\n    dual_segtree(int\
     \ _n) : _n(_n) {\n        sz = 1, lg = 0;\n        while (sz < _n) {\n       \
     \     lg++;\n            sz <<= 1;\n        }\n        dat.assign(sz << 1, id());\n\
-    \    }\n\nprivate:\n    void all_apply(int p, const F& v) { dat[p] = comp(dat[p],\
+    \    }\n\nprivate:\n    void all_apply(int p, const F& v) { dat[p] = composition(dat[p],\
     \ v); }\n    void push(int p) {\n        if (dat[p] == id()) {\n            return;\n\
     \        }\n        all_apply(p << 1 | 0, dat[p]);\n        all_apply(p << 1 |\
     \ 1, dat[p]);\n        dat[p] = id();\n    }\n\npublic:\n    F operator[](int\
@@ -62,7 +62,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_E_dual.test.cpp
   requiredBy: []
-  timestamp: '2023-04-23 13:24:08+09:00'
+  timestamp: '2023-05-03 17:08:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_E_dual.test.cpp

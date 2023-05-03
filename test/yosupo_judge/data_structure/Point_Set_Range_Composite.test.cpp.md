@@ -105,47 +105,49 @@ data:
     \    using u32 = __uint32_t;\n    using i64 = __int64_t;\n    using u64 = __uint64_t;\n\
     \n    u32 v;\n    constexpr inline u32 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
-    \ v_;\n    }\n\npublic:\n    constexpr static_modint32() : v(0) {}\n    constexpr\
+    \ v_;\n    }\n    \npublic:\n    constexpr static_modint32() : v(0) {}\n    constexpr\
     \ static_modint32(const i64& v_) : v(normalize(v_)) {}\n\n    // operator\n  \
-    \  constexpr u64 val() const { return (u64)v; }\n    constexpr mint& operator+=(const\
-    \ mint& rhs) {\n        v += rhs.val();\n        if (v >= mod) {\n           \
-    \ v -= mod;\n        }\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
-    \ mint& rhs) {\n        v += mod - rhs.val();\n        if (v >= mod) {\n     \
-    \       v -= mod;\n        }\n        return (*this);\n    }\n    constexpr mint&\
-    \ operator*=(const mint& rhs) {\n        v = (u64)v * rhs.val() % mod;\n     \
-    \   return (*this);\n    }\n\n    constexpr mint operator+(const mint& r) const\
-    \ { return mint(*this) += r; }\n    constexpr mint operator-(const mint& r) const\
-    \ { return mint(*this) -= r; }\n    constexpr mint operator*(const mint& r) const\
-    \ { return mint(*this) *= r; }\n\n    constexpr mint& operator+=(const i64& rhs)\
-    \ {\n        (*this) += mint(rhs);\n        return (*this);\n    }\n    constexpr\
-    \ mint& operator-=(const i64& rhs) {\n        (*this) -= mint(rhs);\n        return\
-    \ (*this);\n    }\n    constexpr mint& operator*=(const i64& rhs) {\n        (*this)\
-    \ *= mint(rhs);\n        return (*this);\n    }\n    constexpr friend mint operator+(const\
-    \ i64& l, const mint& r) {\n        return mint(l) += r;\n    }\n    constexpr\
-    \ friend mint operator-(i64 l, const mint& r) {\n        return mint(l) -= r;\n\
-    \    }\n    constexpr friend mint operator*(i64 l, const mint& r) {\n        return\
-    \ mint(l) *= r;\n    }\n\n    constexpr mint operator+(i64 r) { return mint(*this)\
-    \ += r; }\n    constexpr mint operator-(i64 r) { return mint(*this) -= r; }\n\
-    \    constexpr mint operator*(i64 r) { return mint(*this) *= r; }\n\n    constexpr\
-    \ mint& operator=(i64 r) { return (*this) = mint(r); }\n\n    constexpr bool operator==(const\
-    \ mint& r) const {\n        return (*this).val() == r.val();\n    }\n    template\
-    \ <typename T> constexpr mint pow(T e) const {\n        mint ans(1), base(*this);\n\
-    \        while (e) {\n            if (e & 1) {\n                ans *= base;\n\
-    \            }\n            base *= base;\n            e >>= 1;\n        }\n \
-    \       return ans;\n    }\n\n    constexpr inline mint inv() const {\n      \
-    \  long long x, y;\n        auto d = ext_gcd((long long)mod, (long long)v, x,\
-    \ y);\n        assert(d == 1);\n        return mint(y);\n    }\n\n    constexpr\
-    \ mint& operator/=(const mint& r) { return (*this) *= r.inv(); }\n    constexpr\
-    \ mint operator/(const mint& r) const {\n        return mint(*this) *= r.inv();\n\
-    \    }\n    constexpr friend mint operator/(const mint& l, i64 r) {\n        return\
-    \ mint(l) /= mint(r);\n    }\n    constexpr friend mint operator/(i64 l, const\
-    \ mint& r) {\n        return mint(l) /= mint(r);\n    }\n\n    // iostream\n \
-    \   constexpr friend std::ostream& operator<<(std::ostream& os,\n            \
-    \                                  const mint& mt) {\n        os << mt.val();\n\
-    \        return os;\n    }\n    constexpr friend std::istream& operator>>(std::istream&\
-    \ is, mint& mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n    \
-    \    return is;\n    }\n};\n};  // namespace kyopro\n\n/// @brief static modint(\u9759\
-    \u7684modint)\n/// @docs docs/math/static_modint.md\n#line 5 \"test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp\"\
+    \  static mint raw(u32 a){\n        mint m;\n        m.v = a;\n        return\
+    \ m;\n    }\n    constexpr u32 val() const { return v; }\n    constexpr mint&\
+    \ operator+=(const mint& rhs) {\n        v += rhs.val();\n        if (v >= mod)\
+    \ {\n            v -= mod;\n        }\n        return (*this);\n    }\n    constexpr\
+    \ mint& operator-=(const mint& rhs) {\n        v += mod - rhs.val();\n       \
+    \ if (v >= mod) {\n            v -= mod;\n        }\n        return (*this);\n\
+    \    }\n    constexpr mint& operator*=(const mint& rhs) {\n        v = (u64)v\
+    \ * rhs.val() % mod;\n        return (*this);\n    }\n\n    constexpr mint operator+(const\
+    \ mint& r) const { return mint(*this) += r; }\n    constexpr mint operator-(const\
+    \ mint& r) const { return mint(*this) -= r; }\n    constexpr mint operator*(const\
+    \ mint& r) const { return mint(*this) *= r; }\n\n    constexpr mint& operator+=(const\
+    \ i64& rhs) {\n        (*this) += mint(rhs);\n        return (*this);\n    }\n\
+    \    constexpr mint& operator-=(const i64& rhs) {\n        (*this) -= mint(rhs);\n\
+    \        return (*this);\n    }\n    constexpr mint& operator*=(const i64& rhs)\
+    \ {\n        (*this) *= mint(rhs);\n        return (*this);\n    }\n    constexpr\
+    \ friend mint operator+(const i64& l, const mint& r) {\n        return mint(l)\
+    \ += r;\n    }\n    constexpr friend mint operator-(i64 l, const mint& r) {\n\
+    \        return mint(l) -= r;\n    }\n    constexpr friend mint operator*(i64\
+    \ l, const mint& r) {\n        return mint(l) *= r;\n    }\n\n    constexpr mint\
+    \ operator+(i64 r) { return mint(*this) += r; }\n    constexpr mint operator-(i64\
+    \ r) { return mint(*this) -= r; }\n    constexpr mint operator*(i64 r) { return\
+    \ mint(*this) *= r; }\n\n    constexpr mint& operator=(i64 r) { return (*this)\
+    \ = mint(r); }\n\n    constexpr bool operator==(const mint& r) const {\n     \
+    \   return (*this).val() == r.val();\n    }\n    template <typename T> constexpr\
+    \ mint pow(T e) const {\n        mint ans(1), base(*this);\n        while (e)\
+    \ {\n            if (e & 1) {\n                ans *= base;\n            }\n \
+    \           base *= base;\n            e >>= 1;\n        }\n        return ans;\n\
+    \    }\n\n    constexpr inline mint inv() const {\n        long long x, y;\n \
+    \       auto d = ext_gcd((long long)mod, (long long)v, x, y);\n        assert(d\
+    \ == 1);\n        return mint(y);\n    }\n\n    constexpr mint& operator/=(const\
+    \ mint& r) { return (*this) *= r.inv(); }\n    constexpr mint operator/(const\
+    \ mint& r) const {\n        return mint(*this) *= r.inv();\n    }\n    constexpr\
+    \ friend mint operator/(const mint& l, i64 r) {\n        return mint(l) /= mint(r);\n\
+    \    }\n    constexpr friend mint operator/(i64 l, const mint& r) {\n        return\
+    \ mint(l) /= mint(r);\n    }\n\n    // iostream\n    constexpr friend std::ostream&\
+    \ operator<<(std::ostream& os,\n                                             \
+    \ const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    constexpr\
+    \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
+    \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
+    \ kyopro\n\n/// @brief static modint(\u9759\u7684modint)\n/// @docs docs/math/static_modint.md\n\
+    #line 5 \"test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp\"\
     \n\nusing mint = kyopro::static_modint32<998244353>;\n\nstruct F{\n    mint a,b;\n\
     };\n\ninline F op(F l,F r){\n    mint na = l.a * r.a;\n    mint nb = (l.b * r.a\
     \ + r.b);\n    return F{na, nb};\n}\ninline F e(){\n    return F{1,0};\n}\nint\
@@ -181,7 +183,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-05-02 00:07:28+00:00'
+  timestamp: '2023-05-03 17:08:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
