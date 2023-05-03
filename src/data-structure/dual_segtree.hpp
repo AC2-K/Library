@@ -4,7 +4,7 @@
 namespace kyopro {
 
 /// @brief Dual Segmenttree(双対セグメント木)
-template <class F, F (*comp)(F, F), F (*id)(), bool is_commutative = true>
+template <class F, F (*composition)(F, F), F (*id)(), bool is_commutative = true>
 class dual_segtree {
     std::vector<F> dat;
     int _n, sz, lg;
@@ -21,7 +21,7 @@ public:
     }
 
 private:
-    void all_apply(int p, const F& v) { dat[p] = comp(dat[p], v); }
+    void all_apply(int p, const F& v) { dat[p] = composition(dat[p], v); }
     void push(int p) {
         if (dat[p] == id()) {
             return;

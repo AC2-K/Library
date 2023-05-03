@@ -7,7 +7,7 @@ template <class S,
           class F,
           S (*op)(S, S),
           S (*e)(),
-          F (*comp)(F, F),
+          F (*composition)(F, F),
           F (*id)(),
           S (*mapping)(S, F)>
 class lazy_segtree {
@@ -45,8 +45,8 @@ private:
     void eval(int pos) {
         if (lz[pos] == id()) return;
         if (pos < sz - 1) {
-            lz[2 * pos + 1] = comp(lz[2 * pos + 1], lz[pos]);
-            lz[2 * pos + 2] = comp(lz[2 * pos + 2], lz[pos]);
+            lz[2 * pos + 1] = composition(lz[2 * pos + 1], lz[pos]);
+            lz[2 * pos + 2] = composition(lz[2 * pos + 2], lz[pos]);
         }
         dat[pos] = mapping(dat[pos], lz[pos]);
         lz[pos] = id();
@@ -56,7 +56,7 @@ private:
     void internal_apply(int L, int R, int l, int r, const F& x, int k) {
         eval(k);
         if (L <= l && r <= R) {
-            lz[k] = comp(lz[k], x);
+            lz[k] = composition(lz[k], x);
             eval(k);
         } else if (L < r && l < R) {
             int mid = (l + r) >> 1;

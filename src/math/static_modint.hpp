@@ -137,13 +137,18 @@ private:
         }
         return v_;
     }
-
+    
 public:
     constexpr static_modint32() : v(0) {}
     constexpr static_modint32(const i64& v_) : v(normalize(v_)) {}
 
     // operator
-    constexpr u64 val() const { return (u64)v; }
+    static mint raw(u32 a){
+        mint m;
+        m.v = a;
+        return m;
+    }
+    constexpr u32 val() const { return v; }
     constexpr mint& operator+=(const mint& rhs) {
         v += rhs.val();
         if (v >= mod) {
