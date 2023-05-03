@@ -3,12 +3,10 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
-  _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
-  attributes:
-    links:
-    - https://judge.yosupo.jp/problem/range_reverse_range_sum
+  _isVerificationFailed: true
+  _pathExtension: cpp
+  _verificationStatusIcon: ':x:'
+  attributes: {}
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
@@ -22,7 +20,7 @@ data:
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: ../../src/BST/Reversible.hpp:\
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_reverse_range_sum\"\
-    \n#include \"../../src/BST/Reversible.hpp\"\n#include <iostream>\nusing ll = long\
+    \n#include <iostream>\n#include \"../../src/BST/Reversible.hpp\"\nusing ll = long\
     \ long;\ninline ll op(ll x, ll y) { return x + y; }\ninline ll e() { return 0;\
     \ }\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n    kyopro::ReversibleBST<ll,\
     \ op, e> bst;\n    for (int i = 0; i < n; i++) {\n        int a;\n        scanf(\"\
@@ -31,16 +29,16 @@ data:
     \      bst.reverse(l, r);\n        } else {\n            printf(\"%lld\\n\", bst.fold(l,\
     \ r));\n        }\n    }\n}"
   dependsOn: []
-  isVerificationFile: false
-  path: test/yosupo_judge/new/Range_Reverse_Range_Sum.hpp
+  isVerificationFile: true
+  path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   requiredBy: []
   timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/yosupo_judge/new/Range_Reverse_Range_Sum.hpp
+documentation_of: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
 layout: document
 redirect_from:
-- /library/test/yosupo_judge/new/Range_Reverse_Range_Sum.hpp
-- /library/test/yosupo_judge/new/Range_Reverse_Range_Sum.hpp.html
-title: test/yosupo_judge/new/Range_Reverse_Range_Sum.hpp
+- /verify/test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+- /verify/test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp.html
+title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
 ---

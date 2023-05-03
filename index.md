@@ -18,11 +18,9 @@ data:
       path: src/BST/Reversible.hpp
       title: "\u53CD\u8EE2\u53EF\u80FD\u62BD\u8C61\u5316\u5E73\u8861\u4E8C\u5206\u63A2\
         \u7D22\u6728"
-  - name: src/BST/Treap
-    pages:
     - icon: ':warning:'
-      path: src/BST/Treap/multiset.hpp
-      title: Treap
+      path: src/BST/Treap.hpp
+      title: src/BST/Treap.hpp
   - name: src/algorithm
     pages:
     - icon: ':heavy_check_mark:'
@@ -168,11 +166,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
-  - name: test/yosupo_judge/new
-    pages:
-    - icon: ':warning:'
-      path: test/yosupo_judge/new/Range_Reverse_Range_Sum.hpp
-      title: test/yosupo_judge/new/Range_Reverse_Range_Sum.hpp
   verificationCategories:
   - name: test/AOJ/ALDS
     pages:
@@ -229,6 +222,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
       title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+    - icon: ':x:'
+      path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+      title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
       title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
@@ -301,6 +297,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - name: test/yosupo_judge/new
+    pages:
+    - icon: ':x:'
+      path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+      title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   - name: test/yosupo_judge/string
     pages:
     - icon: ':heavy_check_mark:'

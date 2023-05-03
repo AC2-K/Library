@@ -19,12 +19,12 @@ data:
     \ kyopro {\nstruct xor_shift32 {\n    uint32_t rng;\n    xor_shift32() : rng(std::rand())\
     \ {}\n    uint32_t operator()() {\n        rng ^= rng << 13;\n        rng ^= rng\
     \ >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n};\n};  // namespace\
-    \ kyopro\n#line 4 \"src/BST/Reversible.hpp\"\n\n/// @ref https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp\n\
+    \ kyopro\n#line 4 \"src/BST/Reversible.hpp\"\n\n/// @ref\n/// https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp\n\
     \nnamespace kyopro {\n/// @brief \u53CD\u8EE2\u53EF\u80FD\u62BD\u8C61\u5316\u5E73\
     \u8861\u4E8C\u5206\u63A2\u7D22\u6728\n/// @tparam S \u30E2\u30CE\u30A4\u30C9\n\
     /// @tparam op \u6F14\u7B97\n/// @tparam e \u5358\u4F4D\u5143\ntemplate <typename\
     \ S, S (*op)(S, S), S (*e)()>\nclass ReversibleBST {\n    using u32 = uint32_t;\n\
-    \    xor_shift32 xo;\n    struct Node {\n        std::unique_ptr<Node> l, r;\n\
+    \    xor_shift32 rng;\n    struct Node {\n        std::unique_ptr<Node> l, r;\n\
     \        u32 priority;\n        S value, prod;\n        int size;\n        bool\
     \ reversed;\n\n        Node(S v, u32 prio)\n            : l(),\n             \
     \ r(),\n              priority(prio),\n              value(v),\n             \
@@ -51,9 +51,9 @@ data:
     \            update(l);\n\n            return l;\n        }\n    }\n\n    ptr\
     \ root = nullptr;\n\npublic:\n    void insert(int i, S a) {\n        auto [l,\
     \ r] = split(std::move(root), i);\n        ptr item = std::make_unique<Node>(a,\
-    \ xo());\n        root = merge(std::move(l), std::move(item));\n        root =\
-    \ merge(std::move(root), std::move(r));\n    }\n    S fold(int l, int r) {\n \
-    \       auto [xy, z] = split(std::move(root), r);\n        auto [x, y] = split(std::move(xy),\
+    \ rng());\n        root = merge(std::move(l), std::move(item));\n        root\
+    \ = merge(std::move(root), std::move(r));\n    }\n    S fold(int l, int r) {\n\
+    \        auto [xy, z] = split(std::move(root), r);\n        auto [x, y] = split(std::move(xy),\
     \ l);\n        auto res = fold(y);\n        xy = merge(std::move(x), std::move(y));\n\
     \        root = merge(std::move(xy), std::move(z));\n        return res;\n   \
     \ }\n    void reverse(int l, int r) {\n        auto [xy, z] = split(std::move(root),\
@@ -61,12 +61,12 @@ data:
     \       xy = merge(std::move(x), std::move(y));\n        root = merge(std::move(xy),\
     \ std::move(z));\n    }\n};\n};  // namespace kyopro\n"
   code: "#pragma once\n#include <memory>\n#include \"../random/xor_shift.hpp\"\n\n\
-    /// @ref https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp\n\
+    /// @ref\n/// https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp\n\
     \nnamespace kyopro {\n/// @brief \u53CD\u8EE2\u53EF\u80FD\u62BD\u8C61\u5316\u5E73\
     \u8861\u4E8C\u5206\u63A2\u7D22\u6728\n/// @tparam S \u30E2\u30CE\u30A4\u30C9\n\
     /// @tparam op \u6F14\u7B97\n/// @tparam e \u5358\u4F4D\u5143\ntemplate <typename\
     \ S, S (*op)(S, S), S (*e)()>\nclass ReversibleBST {\n    using u32 = uint32_t;\n\
-    \    xor_shift32 xo;\n    struct Node {\n        std::unique_ptr<Node> l, r;\n\
+    \    xor_shift32 rng;\n    struct Node {\n        std::unique_ptr<Node> l, r;\n\
     \        u32 priority;\n        S value, prod;\n        int size;\n        bool\
     \ reversed;\n\n        Node(S v, u32 prio)\n            : l(),\n             \
     \ r(),\n              priority(prio),\n              value(v),\n             \
@@ -93,9 +93,9 @@ data:
     \            update(l);\n\n            return l;\n        }\n    }\n\n    ptr\
     \ root = nullptr;\n\npublic:\n    void insert(int i, S a) {\n        auto [l,\
     \ r] = split(std::move(root), i);\n        ptr item = std::make_unique<Node>(a,\
-    \ xo());\n        root = merge(std::move(l), std::move(item));\n        root =\
-    \ merge(std::move(root), std::move(r));\n    }\n    S fold(int l, int r) {\n \
-    \       auto [xy, z] = split(std::move(root), r);\n        auto [x, y] = split(std::move(xy),\
+    \ rng());\n        root = merge(std::move(l), std::move(item));\n        root\
+    \ = merge(std::move(root), std::move(r));\n    }\n    S fold(int l, int r) {\n\
+    \        auto [xy, z] = split(std::move(root), r);\n        auto [x, y] = split(std::move(xy),\
     \ l);\n        auto res = fold(y);\n        xy = merge(std::move(x), std::move(y));\n\
     \        root = merge(std::move(xy), std::move(z));\n        return res;\n   \
     \ }\n    void reverse(int l, int r) {\n        auto [xy, z] = split(std::move(root),\
@@ -107,7 +107,7 @@ data:
   isVerificationFile: false
   path: src/BST/Reversible.hpp
   requiredBy: []
-  timestamp: '2023-05-03 00:12:07+09:00'
+  timestamp: '2023-05-03 10:43:59+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/BST/Reversible.hpp
