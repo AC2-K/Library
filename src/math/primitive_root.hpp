@@ -1,6 +1,7 @@
 #pragma once
 #include "../math/dynamic_modint.hpp"
 #include "../math/rho.hpp"
+#include "../random/xor_shift.hpp"
 namespace kyopro {
 /// @brief primitive root(原始根)
 inline uint64_t primitive_root(uint64_t p) {
@@ -14,12 +15,9 @@ inline uint64_t primitive_root(uint64_t p) {
     if (dynamic_modint<uint64_t>::get_mod() != p) {
         dynamic_modint<uint64_t>::set_mod(p);
     }
-    static ull rng = 2020;
+    xor_shift rng(2023);
     while (1) {
-        rng ^= rng << 13;
-        rng ^= rng >> 7;
-        rng ^= rng << 17;
-        dynamic_modint<uint64_t> g(rng);
+        dynamic_modint<uint64_t> g(rng());
         if (g.val() == 0) continue;
         bool is_ok = true;
 

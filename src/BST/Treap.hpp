@@ -70,6 +70,7 @@ class Treap {
     }
 
 public:
+    constexpr explicit Treap():rng(2023){}
     void insert(const T& key) { insert(root, std::make_shared<Node>(key, rng())); }
 
     void erase(const T& key) { erase(root, key); }

@@ -3,6 +3,7 @@
 #include <vector>
 #include "../math/gcd.hpp"
 #include "../math/miller.hpp"
+#include "../random/xor_shift.hpp"
 namespace kyopro {
 
 ///@brief 高速素因数分解(Pollard Rho法)
@@ -15,7 +16,7 @@ using u32 = uint32_t;
 
 template <typename mint> 
 u64 find_factor(u64 n) {
-    u64 v = 20001;
+    xor_shift32 rng(2023);
 
     if (~n & 1uL) {
         return 2;
@@ -28,11 +29,9 @@ u64 find_factor(u64 n) {
         mint::set_mod(n);
     }
     while (1) {
-        v ^= v << 13, v ^= v >> 7, v ^= v << 17;
-        u64 c = v;
+        u64 c = rng();
         auto f = [&](mint x) -> mint { return x.pow(2) + c; };
-        v ^= v << 13, v ^= v >> 7, v ^= v << 17;
-        mint x = v;
+        mint x = rng();
         mint y = f(x);
         u64 d = 1;
         while (d == 1) {

@@ -125,6 +125,7 @@ class lazy_reversible_rbst {
     ptr root = nullptr;
 
 public:
+    constexpr explicit lazy_reversible_rbst():rng(2023){}
     void insert(int i, S a) {
         auto [l, r] = split(std::move(root), i);
         ptr item = std::make_unique<Node>(a, rng());
