@@ -1,14 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: src/random/xor_shift.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+    title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "\u53CD\u8EE2\u53EF\u80FD\u62BD\u8C61\u5316\u5E73\u8861\u4E8C\u5206\
       \u63A2\u7D22\u6728"
@@ -108,8 +111,9 @@ data:
   path: src/BST/Reversible.hpp
   requiredBy: []
   timestamp: '2023-05-03 10:43:59+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
 documentation_of: src/BST/Reversible.hpp
 layout: document
 redirect_from:

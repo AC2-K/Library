@@ -14,13 +14,13 @@ data:
       title: sub.cpp
   - name: src/BST
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/BST/Reversible.hpp
       title: "\u53CD\u8EE2\u53EF\u80FD\u62BD\u8C61\u5316\u5E73\u8861\u4E8C\u5206\u63A2\
         \u7D22\u6728"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/BST/Treap.hpp
-      title: src/BST/Treap.hpp
+      title: Treap
   - name: src/algorithm
     pages:
     - icon: ':heavy_check_mark:'
@@ -152,7 +152,7 @@ data:
       title: "\u6C38\u7D9Astack"
   - name: src/random
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/random/xor_shift.hpp
       title: src/random/xor_shift.hpp
   - name: src/string
@@ -222,7 +222,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
       title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
       title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
     - icon: ':heavy_check_mark:'
@@ -299,7 +299,7 @@ data:
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/new
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
       title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   - name: test/yosupo_judge/string

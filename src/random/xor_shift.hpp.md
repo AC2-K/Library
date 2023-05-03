@@ -2,17 +2,23 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/BST/Reversible.hpp
     title: "\u53CD\u8EE2\u53EF\u80FD\u62BD\u8C61\u5316\u5E73\u8861\u4E8C\u5206\u63A2\
       \u7D22\u6728"
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: src/BST/Treap.hpp
-    title: src/BST/Treap.hpp
-  _extendedVerifiedWith: []
+    title: Treap
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+    title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+    title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/random/xor_shift.hpp\"\n#include <cstdint>\n#include\
@@ -32,8 +38,10 @@ data:
   - src/BST/Reversible.hpp
   - src/BST/Treap.hpp
   timestamp: '2023-05-03 00:12:07+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+  - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
 documentation_of: src/random/xor_shift.hpp
 layout: document
 redirect_from:
