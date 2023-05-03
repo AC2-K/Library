@@ -30,7 +30,7 @@ u64 find_factor(u64 n) {
     }
     while (1) {
         u64 c = rng();
-        auto f = [&](mint x) -> mint { return x.pow(2) + c; };
+        auto f = [&](mint x) -> mint { return x * x + c; };
         mint x = rng();
         mint y = f(x);
         u64 d = 1;
