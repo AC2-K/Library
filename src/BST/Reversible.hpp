@@ -2,7 +2,8 @@
 #include <memory>
 #include "../random/xor_shift.hpp"
 
-/// @ref https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp
+/// @ref
+/// https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp
 
 namespace kyopro {
 /// @brief 反転可能抽象化平衡二分探索木
@@ -12,7 +13,7 @@ namespace kyopro {
 template <typename S, S (*op)(S, S), S (*e)()>
 class ReversibleBST {
     using u32 = uint32_t;
-    xor_shift32 xo;
+    xor_shift32 rng;
     struct Node {
         std::unique_ptr<Node> l, r;
         u32 priority;
@@ -97,7 +98,7 @@ class ReversibleBST {
 public:
     void insert(int i, S a) {
         auto [l, r] = split(std::move(root), i);
-        ptr item = std::make_unique<Node>(a, xo());
+        ptr item = std::make_unique<Node>(a, rng());
         root = merge(std::move(l), std::move(item));
         root = merge(std::move(root), std::move(r));
     }

@@ -1,48 +1,13 @@
-#line 2 "src/template.hpp"
-#include <bits/stdc++.h>
-#define rep(i, N) for (int i = 0; i < (N); i++)
-#define all(x) (x).begin(), (x).end()
-#define popcount(x) __builtin_popcount(x)
-using i128 = __int128_t;
-using ll = long long;
-using ld = long double;
-using graph = std::vector<std::vector<int>>;
-using P = std::pair<int, int>;
-constexpr int inf = 1e9;
-constexpr ll infl = 1e18;
-constexpr ld eps = 1e-6;
-const long double pi = acos(-1);
-constexpr uint64_t MOD = 1e9 + 7;
-constexpr uint64_t MOD2 = 998244353;
-constexpr int dx[] = {1, 0, -1, 0};
-constexpr int dy[] = {0, 1, 0, -1};
-template <class T>
-constexpr inline void chmax(T& x, T y) {
-    if (x < y) x = y;
-}
-template <class T>
-constexpr inline void chmin(T& x, T y) {
-    if (x > y) x = y;
-}
-#line 4 "src/random/xor_shift.hpp"
+#pragma once
+#include <cassert>
+#include <cstdint>
+#include <memory>
+#include "../random/xor_shift.hpp"
 
-namespace kyopro {
-struct xor_shift32 {
-    uint32_t rng;
-    xor_shift32() : rng(std::rand()) {}
-    uint32_t operator()() {
-        rng ^= rng << 13;
-        rng ^= rng >> 17;
-        rng ^= rng << 5;
-        return rng;
-    }
-};
-};  // namespace kyopro
-#line 6 "src/BST/Treap.hpp"
 namespace kyopro {
 
 template <class T>
-class ReversibleBST {
+class Treap {
     using u32 = uint32_t;
     xor_shift32 rng;
     struct Node {
@@ -54,7 +19,7 @@ class ReversibleBST {
     };
     using sptr = std::shared_ptr<Node>;
     sptr root = nullptr;
-    void split(const sptr t, const T& key, sptr& l, sptr& r) {
+    void split(sptr t, const T& key, sptr& l, sptr& r) {
         if (!t) {
             l = r = nullptr;
         } else if (key < t->key) {
@@ -86,7 +51,7 @@ class ReversibleBST {
         }
     }
 
-    void erase(sptr& t, const T& key) {
+    void erase(sptr t, const T& key) {
         if (!t) return;
         if (t->key == key) {
             merge(t, t->l, t->r);
@@ -153,33 +118,3 @@ public:
     }
 };
 };  // namespace kyopro
-#line 3 "main.cpp"
-
-int main() {
-    kyopro::ReversibleBST<int> st;
-    int n, q;
-    scanf("%d%d", &n, &q);
-    rep(i, n) {
-        int a;
-        scanf("%d", &a);
-        st.insert(a);
-    }
-    while (q--) {
-        int t;
-        scanf("%d", &t);
-        if (!t) {
-            int x;
-            scanf("%d", &x);
-            st.insert(x);
-        } else if (t == 1) {
-            int mn = st.pop_front();
-            printf("%d\n", mn);
-            st.erase(mn);
-
-        } else {
-            int mx = st.pop_back();
-            printf("%d\n", mx);
-            st.erase(mx);
-        }
-    }
-}
