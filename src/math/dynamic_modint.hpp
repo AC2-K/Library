@@ -26,7 +26,7 @@ public:
 public:
     explicit constexpr barrett_modint() : v(0) {
         assert(mod);
-    }  // modが決定済みである必要がある
+    }
     explicit constexpr barrett_modint(i64 v_) : v(brt.reduce(v_)) {
         assert(mod);
     }
@@ -35,7 +35,6 @@ public:
     static u32 get_mod() { return mod; }
     using mint = barrett_modint<id>;
 
-    // operators
     constexpr mint& operator=(i64 r) {
         v = brt.reduce(r);
         return (*this);
@@ -208,5 +207,5 @@ T kyopro::dynamic_modint<T, id>::mod;
 template <typename T, int id>
 kyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;
 
-/// @brief dynamic modint(動的modint)
+/// @brief dynamic modint
 /// @docs docs/math/dynamic_modint.md

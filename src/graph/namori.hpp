@@ -3,7 +3,7 @@
 #include <vector>
 namespace kyopro {
 
-/// @brief なもりグラフの分解
+/// @brief なもりグラフ
 class namori {
     int n;
     std::vector<std::vector<int>> g;
@@ -19,14 +19,14 @@ public:
 
      void add_edge(int s, int t) {
         g[s].emplace_back(t), g[t].emplace_back(s);
-        deg[s]++, deg[t]++;
+        ++deg[s], ++deg[t];
     }
 
     void build() {
         // deg=1の頂点を突っ込んでBFS
         {
             std::queue<int> q;
-            for (int v = 0; v < n; v++) {
+            for (int v = 0; v < n; ++v) {
                 if (deg[v] == 1) {
                     q.emplace(v);
                 }
@@ -46,7 +46,7 @@ public:
 
         // DFSしてIDを振り分ける
         {
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; ++i) {
                 if (!is_cycle[i]) continue;
 
                 root_idx[i] = i;
@@ -64,7 +64,7 @@ public:
 
                     root_idx[v] = root_idx[p];
 
-                    for (const auto& to : g[v]) {
+                    for (auto to : g[v]) {
                         if (to != p) {
                             st.emplace_back(to, v);
                         }

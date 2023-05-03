@@ -3,7 +3,7 @@
 #include "../math/rho.hpp"
 #include "../random/xor_shift.hpp"
 namespace kyopro {
-/// @brief primitive root(原始根)
+/// @brief 原始根
 inline uint64_t primitive_root(uint64_t p) {
     if (p == 2) return 1;
     auto pf = kyopro::rho::factorize(p - 1);

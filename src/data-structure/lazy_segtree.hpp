@@ -2,7 +2,7 @@
 #include <cassert>
 #include <vector>
 namespace kyopro {
-/// @brief Segment Tree with Lazy Propagation(遅延評価セグメント木)
+/// @brief LazySegmentTree
 template <class S,
           class F,
           S (*op)(S, S),

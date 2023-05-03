@@ -3,7 +3,7 @@
 #include <vector>
 #include <cassert>
 namespace kyopro {
-/// @brief matirx(行列)
+/// @brief 行列
 template <typename T>
 class Matrix {
     std::vector<std::vector<T>> dat;

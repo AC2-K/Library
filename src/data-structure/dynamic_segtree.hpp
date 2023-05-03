@@ -1,7 +1,7 @@
 #pragma once
 #include <cassert>
 namespace kyopro {
-/// @brief Dynamic Segment Tree(動的セグメント木)
+/// @brief 動的セグメント木
 template <class S, S (*op)(S, S), S (*e)()>
 class dynamic_segtree {
 public:

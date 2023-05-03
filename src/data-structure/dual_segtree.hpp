@@ -3,8 +3,8 @@
 #include <vector>
 namespace kyopro {
 
-/// @brief Dual Segmenttree(双対セグメント木)
-template <class F, F (*composition)(F, F), F (*id)(), bool is_commutative = true>
+/// @brief 双対セグメント木
+template <class F, F (*composition)(F, F), F (*id)(), bool commutative = true>
 class dual_segtree {
     std::vector<F> dat;
     int _n, sz, lg;
@@ -14,20 +14,20 @@ public:
     dual_segtree(int _n) : _n(_n) {
         sz = 1, lg = 0;
         while (sz < _n) {
-            lg++;
+            ++lg;
             sz <<= 1;
         }
         dat.assign(sz << 1, id());
     }
 
 private:
-    void all_apply(int p, const F& v) { dat[p] = composition(dat[p], v); }
+    void update(int p, const F& v) { dat[p] = composition(dat[p], v); }
     void push(int p) {
         if (dat[p] == id()) {
             return;
         }
-        all_apply(p << 1 | 0, dat[p]);
-        all_apply(p << 1 | 1, dat[p]);
+        update(p << 1 | 0, dat[p]);
+        update(p << 1 | 1, dat[p]);
         dat[p] = id();
     }
 
@@ -48,7 +48,7 @@ public:
         assert(0 <= l && l <= r && r <= _n);
         if (l == r) return;
         l += sz, r += sz;
-        if (is_commutative) {
+        if (commutative) {
             for (int i = lg; i > 0; i--) {
                 if (((l >> i) << i) != l) {
                     push(l >> i);
@@ -60,10 +60,10 @@ public:
         }
         while (l < r) {
             if (l & 1) {
-                all_apply(l++, v);
+                update(l++, v);
             }
             if (r & 1) {
-                all_apply(--r, v);
+                update(--r, v);
             }
             l >>= 1, r >>= 1;
         }

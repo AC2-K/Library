@@ -12,14 +12,15 @@ using i64 = int64_t;
 using u128 = __uint128_t;
 using i128 = __int128_t;
 /// @brief MontgomeryReduction
+/// @ref 
 template <typename T>
 class Montgomery {
     static constexpr int lg = std::numeric_limits<T>::digits;
     using LargeT = internal::double_size_uint_t<T>;
     T mod, r, r2, minv;
-    T calc_inv() {
+    T inv() {
         T t = 0, res = 0;
-        for (int i = 0; i < lg; i++) {
+        for (int i = 0; i < lg; ++i) {
             if (~t & 1) {
                 t += mod;
                 res += static_cast<T>(1) << i;
@@ -42,7 +43,7 @@ public:
 
         r = (-static_cast<T>(mod)) % mod;
         r2 = (-static_cast<LargeT>(mod)) % mod;
-        minv = calc_inv();
+        minv = inv();
     }
 
     T reduce(LargeT x) const {

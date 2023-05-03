@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 namespace kyopro {
-/// @brief Segment Tree(セグメント木)
+/// @brief Segment Tree
 
 template <class S, S (*op)(S, S), S (*e)()>
 class segtree {

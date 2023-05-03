@@ -70,7 +70,7 @@ constexpr T __mod_log32(T x, T y, T p) {
     while ((g = _gcd(x, p)) != 1) {
         if (y == k.val()) return add;
         if (y % g) return -1;
-        y /= g, p /= g, add++;
+        y /= g, p /= g, ++add;
         k = (k.val() * (x / g));
     }
 
@@ -96,7 +96,7 @@ constexpr T __mod_log32(T x, T y, T p) {
 
 };  // namespace internal
 
-/// @brief Discrete Logarithm(離散対数)
+/// @brief 離散対数
 template <typename T>
 constexpr inline T mod_log(T a, T b, T c) {
     if (c&1/*std::numeric_limits<T>::digits < 32 || c < 1L << 30*/) {

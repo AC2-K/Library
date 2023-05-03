@@ -7,7 +7,7 @@ struct edge {
     long long cost;
     edge(int to, long long cost) : to(to), cost(cost) {}
 };
-/// @brief Dijkstra (ダイクストラ法)
+/// @brief ダイクストラ法
 std::pair<std::vector<long long>, std::vector<int>> dijkstra(
     int s,
     const std::vector<std::vector<edge>>& g) {

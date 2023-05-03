@@ -2,7 +2,7 @@
 #include <utility>
 #include "../data-structure/sparse_table.hpp"
 namespace kyopro {
-/// @brief EulerTour(オイラーツアー)
+/// @brief EulerTour
 class EulerTour {
     int n;
     std::vector<std::vector<int>> g;

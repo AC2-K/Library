@@ -2,7 +2,8 @@
 #include <numeric>
 #include <vector>
 namespace kyopro {
-/// @brief Sparse Table(RangeMin)
+/// @brief Sparse Table
+/// @note 区間最小しか対応してない...
 template <class T>
 class sparse_table {
     std::vector<T> vec;

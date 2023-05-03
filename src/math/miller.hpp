@@ -40,9 +40,9 @@ constexpr bool miller_rabin(u64 n, const u64 bases[], int length) {
 constexpr u64 bases_int[3] = {2, 7, 61};  // intだと、2,7,61で十分
 constexpr u64 bases_ll[7] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
 
-/// @brief MillerRabinの素数判定
+/// @brief MillerRabinの素数判定法
 template<typename T>
-constexpr bool is_prime(T n) {
+constexpr inline bool is_prime(T n) {
     if (n < 2) {
         return false;
     } else if (n == 2) {

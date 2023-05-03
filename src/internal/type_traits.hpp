@@ -23,7 +23,7 @@ template <typename... Args>
 using first_enabled_t = typename first_enabled<Args...>::type;
 
 template <int dgt> struct int_least {
-    static_assert(dgt <= 128, "digit have to be less or equals to 128");
+    static_assert(dgt <= 128);
     using type = first_enabled_t<std::enable_if<dgt <= 8, __int8_t>,
                                  std::enable_if<dgt <= 16, __int16_t>,
                                  std::enable_if<dgt <= 32, __int32_t>,
@@ -31,7 +31,7 @@ template <int dgt> struct int_least {
                                  std::enable_if<dgt <= 128, __int128_t> >;
 };
 template <int dgt> struct uint_least {
-    static_assert(dgt <= 128, "digit have to be less or equals to 128");
+    static_assert(dgt <= 128);
     using type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,
                                  std::enable_if<dgt <= 16, __uint16_t>,
                                  std::enable_if<dgt <= 32, __uint32_t>,

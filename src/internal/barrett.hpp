@@ -2,6 +2,7 @@
 namespace kyopro {
 namespace internal {
 /// @brief barrett reduction
+/// @ref https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp
 class barrett {
     using u32 = uint32_t;
     using u64 = uint64_t;

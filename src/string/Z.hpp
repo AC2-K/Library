@@ -14,18 +14,18 @@ std::vector<int> Z(const std::string& str) {
 
     while (i < (int)str.size()) {
         while (i + j < (int)str.size() && str[j] == str[i + j]) {
-            j++;
+            ++j;
         }
 
         res[i] = j;
         if (j == 0) {
-            i++;
+            ++i;
             continue;
         }
         int k = 1;
         while (i + k < (int)str.size() && k + res[k] < j) {
             res[i + k] = res[k];
-            k++;
+            ++k;
         }
         i += k, j -= k;
     }

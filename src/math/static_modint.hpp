@@ -248,5 +248,5 @@ public:
 };
 };  // namespace kyopro
 
-/// @brief static modint(静的modint)
+/// @brief modint
 /// @docs docs/math/static_modint.md
