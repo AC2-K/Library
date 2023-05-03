@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
   _extendedRequiredBy: []
@@ -18,15 +18,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/math/static_modint.md
-    document_title: "static modint(\u9759\u7684modint)"
+    document_title: modint
     links: []
   bundledCode: "#line 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#include\
     \ <iostream>\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro\
@@ -132,7 +132,7 @@ data:
     \ const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    constexpr\
     \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/// @brief static modint(\u9759\u7684modint)\n/// @docs docs/math/static_modint.md\n"
+    \ kyopro\n\n/// @brief modint\n/// @docs docs/math/static_modint.md\n"
   code: "#pragma once\n#include <cassert>\n#include <iostream>\n#include \"../math/gcd.hpp\"\
     \nnamespace kyopro {\ntemplate <__uint64_t mod> class static_modint {\nprivate:\n\
     \    using mint = static_modint<mod>;\n    using i64 = long long;\n    using u64\
@@ -224,14 +224,14 @@ data:
     \ const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    constexpr\
     \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/// @brief static modint(\u9759\u7684modint)\n/// @docs docs/math/static_modint.md"
+    \ kyopro\n\n/// @brief modint\n/// @docs docs/math/static_modint.md"
   dependsOn:
   - src/math/gcd.hpp
   isVerificationFile: false
   path: src/math/static_modint.hpp
   requiredBy: []
-  timestamp: '2023-05-03 17:08:50+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-03 22:08:07+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
@@ -243,7 +243,7 @@ layout: document
 redirect_from:
 - /library/src/math/static_modint.hpp
 - /library/src/math/static_modint.hpp.html
-title: "static modint(\u9759\u7684modint)"
+title: modint
 ---
 # static modint
 ## 概要

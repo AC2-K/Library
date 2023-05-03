@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/sparse_table.hpp
-    title: Sparse Table(RangeMin)
-  - icon: ':heavy_check_mark:'
+    title: Sparse Table
+  - icon: ':question:'
     path: src/graph/euler_tour.hpp
-    title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
+    title: EulerTour
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -21,7 +21,8 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include<iostream>\n\
     #line 2 \"src/graph/euler_tour.hpp\"\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
     \n#include <numeric>\n#include <vector>\nnamespace kyopro {\n/// @brief Sparse\
-    \ Table(RangeMin)\ntemplate <class T>\nclass sparse_table {\n    std::vector<T>\
+    \ Table\n/// @note \u533A\u9593\u6700\u5C0F\u3057\u304B\u5BFE\u5FDC\u3057\u3066\
+    \u306A\u3044...\ntemplate <class T>\nclass sparse_table {\n    std::vector<T>\
     \ vec;\n    std::vector<std::vector<T>> table;\n    std::vector<int> look_up;\n\
     \npublic:\n    sparse_table(int n) : vec(n) {}\n    sparse_table(const std::vector<T>&\
     \ vec) : vec(vec) { build(); }\n    void set(int p, const T& v) { vec[p] = v;\
@@ -36,9 +37,9 @@ data:
     \ look_up[i] = look_up[i >> 1] + 1;\n        }\n    }\n\n    T prod(int l, int\
     \ r) {\n        int b = look_up[r - l];\n        return std::min(table[b][l],\
     \ table[b][r - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/sparse_table.md\n\
-    #line 4 \"src/graph/euler_tour.hpp\"\nnamespace kyopro {\n/// @brief EulerTour(\u30AA\
-    \u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)\nclass EulerTour {\n    int n;\n    std::vector<std::vector<int>>\
-    \ g;\n    std::vector<int> tour;\n    std::vector<int> in, out, depth;\n    sparse_table<std::pair<int,\
+    #line 4 \"src/graph/euler_tour.hpp\"\nnamespace kyopro {\n/// @brief EulerTour\n\
+    class EulerTour {\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
+    \ tour;\n    std::vector<int> in, out, depth;\n    sparse_table<std::pair<int,\
     \ int>> rmq;\n\npublic:\n    EulerTour(int n)\n        : n(n), g(n), in(n, -1),\
     \ out(n, -1), depth(n, -1), rmq(2 * n - 1) {\n        tour.reserve(2 * n - 1);\n\
     \    }\n     void add_edge(int u, int v) {\n        g[u].emplace_back(v);\n  \
@@ -77,8 +78,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-05-01 12:49:55+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-03 22:08:07+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
 layout: document

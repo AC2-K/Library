@@ -17,15 +17,13 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/lazy_segtree.md
-    document_title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\
-      \u30B0\u30E1\u30F3\u30C8\u6728)"
+    document_title: LazySegmentTree
     links: []
   bundledCode: "#line 2 \"src/data-structure/lazy_segtree.hpp\"\n#include <cassert>\n\
-    #include <vector>\nnamespace kyopro {\n/// @brief Segment Tree with Lazy Propagation(\u9045\
-    \u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)\ntemplate <class S,\n\
-    \          class F,\n          S (*op)(S, S),\n          S (*e)(),\n         \
-    \ F (*composition)(F, F),\n          F (*id)(),\n          S (*mapping)(S, F)>\n\
-    class lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n    std::vector<F>\
+    #include <vector>\nnamespace kyopro {\n/// @brief LazySegmentTree\ntemplate <class\
+    \ S,\n          class F,\n          S (*op)(S, S),\n          S (*e)(),\n    \
+    \      F (*composition)(F, F),\n          F (*id)(),\n          S (*mapping)(S,\
+    \ F)>\nclass lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n    std::vector<F>\
     \ lz;\n\npublic:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e()))\
     \ {}\n    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(), e()),\
     \ lz(4 * a.size(), id()) {\n        int x = 1;\n        while (a.size() > x) {\n\
@@ -57,10 +55,9 @@ data:
     \ r, 0, sz, 0);\n    }\n\n    S operator[](int pos) { return prod(pos, pos + 1);\
     \ }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/lazy_segtree.md\n"
   code: "#pragma once\n#include <cassert>\n#include <vector>\nnamespace kyopro {\n\
-    /// @brief Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
-    \u30E1\u30F3\u30C8\u6728)\ntemplate <class S,\n          class F,\n          S\
-    \ (*op)(S, S),\n          S (*e)(),\n          F (*composition)(F, F),\n     \
-    \     F (*id)(),\n          S (*mapping)(S, F)>\nclass lazy_segtree {\n    int\
+    /// @brief LazySegmentTree\ntemplate <class S,\n          class F,\n         \
+    \ S (*op)(S, S),\n          S (*e)(),\n          F (*composition)(F, F),\n   \
+    \       F (*id)(),\n          S (*mapping)(S, F)>\nclass lazy_segtree {\n    int\
     \ sz;\n    std::vector<S> dat;\n    std::vector<F> lz;\n\npublic:\n    lazy_segtree(int\
     \ n) : lazy_segtree(std::vector<S>(n, e())) {}\n    lazy_segtree(const std::vector<S>&\
     \ a)\n        : dat(4 * a.size(), e()), lz(4 * a.size(), id()) {\n        int\
@@ -95,7 +92,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2023-05-03 17:08:50+09:00'
+  timestamp: '2023-05-03 22:08:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/2_D_lazy.test.cpp
@@ -106,6 +103,5 @@ layout: document
 redirect_from:
 - /library/src/data-structure/lazy_segtree.hpp
 - /library/src/data-structure/lazy_segtree.hpp.html
-title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\
-  \u30F3\u30C8\u6728)"
+title: LazySegmentTree
 ---

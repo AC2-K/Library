@@ -13,7 +13,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
+    document_title: "\u6700\u5C0F\u5168\u57DF\u6728"
     links: []
   bundledCode: "#line 2 \"src/graph/mst.hpp\"\n#include <algorithm>\n#line 2 \"src/data-structure/dsu.hpp\"\
     \n#include <utility>\n#include <vector>\nnamespace kyopro {\n/// @brief Disjoint\
@@ -27,41 +27,39 @@ data:
     \      find[x] += find[y];\n        find[y] = x;\n        return x;\n    }\n \
     \   int size(int x) { return -find[root(x)]; }\n};\n\n};  // namespace kyopro\n\
     \n/// @docs docs/data-structure/dsu.md\n#line 4 \"src/graph/mst.hpp\"\n\nnamespace\
-    \ kyopro {\n/// @brief Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)\n\
-    class MST {\n    dsu uf;\n    struct Edge {\n        int v1, v2;\n        int\
-    \ cost;\n        int id;\n        Edge(int v1, int v2, int cost, int id)\n   \
-    \         : v1(v1), v2(v2), cost(cost), id(id) {}\n    };\n    std::vector<Edge>\
-    \ E;\n    std::vector<int> V1, V2;\n\npublic:\n    MST(int V) : uf(V) {}\n   \
-    \  void add_edge(int a, int b, long long cost) {\n        int sz = E.size();\n\
-    \        E.emplace_back(a, b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n\
-    \    }\n    long long result() {\n        std::sort(E.begin(), E.end(), [&](const\
-    \ Edge& e1, const Edge& e2) {\n            return e1.cost < e2.cost;\n       \
-    \ });\n        long long ans = 0;\n        for (int i = 0; i < (int)E.size();\
-    \ i++) {\n            int id = E[i].id;\n            int a = V1[id], b = V2[id];\n\
-    \            if (uf.same(a, b)) continue;\n            uf.merge(a, b);\n     \
-    \       ans += E[i].cost;\n        }\n        return ans;\n    }\n};\n}  // namespace\
-    \ kyopro\n"
+    \ kyopro {\n/// @brief \u6700\u5C0F\u5168\u57DF\u6728\nclass MST {\n    dsu uf;\n\
+    \    struct Edge {\n        int v1, v2;\n        int cost;\n        int id;\n\
+    \        Edge(int v1, int v2, int cost, int id)\n            : v1(v1), v2(v2),\
+    \ cost(cost), id(id) {}\n    };\n    std::vector<Edge> E;\n    std::vector<int>\
+    \ V1, V2;\n\npublic:\n    MST(int V) : uf(V) {}\n     void add_edge(int a, int\
+    \ b, long long cost) {\n        int sz = E.size();\n        E.emplace_back(a,\
+    \ b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n    }\n    long\
+    \ long result() {\n        std::sort(E.begin(), E.end(), [&](const Edge& e1, const\
+    \ Edge& e2) {\n            return e1.cost < e2.cost;\n        });\n        long\
+    \ long ans = 0;\n        for (int i = 0; i < (int)E.size(); i++) {\n         \
+    \   int id = E[i].id;\n            int a = V1[id], b = V2[id];\n            if\
+    \ (uf.same(a, b)) continue;\n            uf.merge(a, b);\n            ans += E[i].cost;\n\
+    \        }\n        return ans;\n    }\n};\n}  // namespace kyopro\n"
   code: "#pragma once\n#include <algorithm>\n#include \"../data-structure/dsu.hpp\"\
-    \n\nnamespace kyopro {\n/// @brief Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\
-    \u6728)\nclass MST {\n    dsu uf;\n    struct Edge {\n        int v1, v2;\n  \
-    \      int cost;\n        int id;\n        Edge(int v1, int v2, int cost, int\
-    \ id)\n            : v1(v1), v2(v2), cost(cost), id(id) {}\n    };\n    std::vector<Edge>\
-    \ E;\n    std::vector<int> V1, V2;\n\npublic:\n    MST(int V) : uf(V) {}\n   \
-    \  void add_edge(int a, int b, long long cost) {\n        int sz = E.size();\n\
-    \        E.emplace_back(a, b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n\
-    \    }\n    long long result() {\n        std::sort(E.begin(), E.end(), [&](const\
-    \ Edge& e1, const Edge& e2) {\n            return e1.cost < e2.cost;\n       \
-    \ });\n        long long ans = 0;\n        for (int i = 0; i < (int)E.size();\
-    \ i++) {\n            int id = E[i].id;\n            int a = V1[id], b = V2[id];\n\
-    \            if (uf.same(a, b)) continue;\n            uf.merge(a, b);\n     \
-    \       ans += E[i].cost;\n        }\n        return ans;\n    }\n};\n}  // namespace\
-    \ kyopro"
+    \n\nnamespace kyopro {\n/// @brief \u6700\u5C0F\u5168\u57DF\u6728\nclass MST {\n\
+    \    dsu uf;\n    struct Edge {\n        int v1, v2;\n        int cost;\n    \
+    \    int id;\n        Edge(int v1, int v2, int cost, int id)\n            : v1(v1),\
+    \ v2(v2), cost(cost), id(id) {}\n    };\n    std::vector<Edge> E;\n    std::vector<int>\
+    \ V1, V2;\n\npublic:\n    MST(int V) : uf(V) {}\n     void add_edge(int a, int\
+    \ b, long long cost) {\n        int sz = E.size();\n        E.emplace_back(a,\
+    \ b, cost, sz);\n        V1.emplace_back(a), V2.emplace_back(b);\n    }\n    long\
+    \ long result() {\n        std::sort(E.begin(), E.end(), [&](const Edge& e1, const\
+    \ Edge& e2) {\n            return e1.cost < e2.cost;\n        });\n        long\
+    \ long ans = 0;\n        for (int i = 0; i < (int)E.size(); i++) {\n         \
+    \   int id = E[i].id;\n            int a = V1[id], b = V2[id];\n            if\
+    \ (uf.same(a, b)) continue;\n            uf.merge(a, b);\n            ans += E[i].cost;\n\
+    \        }\n        return ans;\n    }\n};\n}  // namespace kyopro"
   dependsOn:
   - src/data-structure/dsu.hpp
   isVerificationFile: false
   path: src/graph/mst.hpp
   requiredBy: []
-  timestamp: '2023-05-01 12:49:55+00:00'
+  timestamp: '2023-05-03 22:08:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/2_A.test.cpp
@@ -70,5 +68,5 @@ layout: document
 redirect_from:
 - /library/src/graph/mst.hpp
 - /library/src/graph/mst.hpp.html
-title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
+title: "\u6700\u5C0F\u5168\u57DF\u6728"
 ---

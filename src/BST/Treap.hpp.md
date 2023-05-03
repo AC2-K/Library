@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: src/random/xor_shift.hpp
   _extendedRequiredBy: []
@@ -13,6 +13,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    document_title: Treap
     links: []
   bundledCode: "#line 2 \"src/BST/Treap.hpp\"\n#include <cassert>\n#include <memory>\n\
     #line 2 \"src/random/xor_shift.hpp\"\n#include <cstdint>\n#include <random>\n\
@@ -26,7 +27,8 @@ data:
     \    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n        rng\
     \ ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n};\n\n\
     };  // namespace kyopro\n#line 5 \"src/BST/Treap.hpp\"\n\nnamespace kyopro {\n\
-    \ntemplate <class T>\nclass Treap {\n    using u32 = uint32_t;\n    xor_shift32\
+    \n/// @brief Treap\n/// @tparam T \u4E57\u305B\u308B\u30C7\u30FC\u30BF\u578B\n\
+    template <class T>\nclass Treap {\n    using u32 = uint32_t;\n    xor_shift32\
     \ rng;\n    struct Node {\n        const T key;\n        const u32 priority;\n\
     \        std::shared_ptr<Node> l, r;\n        Node(const T& key, u32 priority)\n\
     \            : key(key), priority(priority), l(nullptr), r(nullptr) {}\n    };\n\
@@ -64,7 +66,8 @@ data:
     \ \n        }\n        T ans = cur->key;\n        merge(cur, cur->l, cur->r);\n\
     \        return ans;\n    }\n};\n};  // namespace kyopro\n"
   code: "#pragma once\n#include <cassert>\n#include <memory>\n#include \"../random/xor_shift.hpp\"\
-    \n\nnamespace kyopro {\n\ntemplate <class T>\nclass Treap {\n    using u32 = uint32_t;\n\
+    \n\nnamespace kyopro {\n\n/// @brief Treap\n/// @tparam T \u4E57\u305B\u308B\u30C7\
+    \u30FC\u30BF\u578B\ntemplate <class T>\nclass Treap {\n    using u32 = uint32_t;\n\
     \    xor_shift32 rng;\n    struct Node {\n        const T key;\n        const\
     \ u32 priority;\n        std::shared_ptr<Node> l, r;\n        Node(const T& key,\
     \ u32 priority)\n            : key(key), priority(priority), l(nullptr), r(nullptr)\
@@ -106,7 +109,7 @@ data:
   isVerificationFile: false
   path: src/BST/Treap.hpp
   requiredBy: []
-  timestamp: '2023-05-03 12:18:30+00:00'
+  timestamp: '2023-05-04 01:12:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
@@ -115,5 +118,5 @@ layout: document
 redirect_from:
 - /library/src/BST/Treap.hpp
 - /library/src/BST/Treap.hpp.html
-title: src/BST/Treap.hpp
+title: Treap
 ---

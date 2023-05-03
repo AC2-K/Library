@@ -3,8 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/lazy_segtree.hpp
-    title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
-      \u30E1\u30F3\u30C8\u6728)"
+    title: LazySegmentTree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -17,12 +16,11 @@ data:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E
   bundledCode: "#line 1 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
     \n#include<iostream>\n#line 2 \"src/data-structure/lazy_segtree.hpp\"\n#include\
-    \ <cassert>\n#include <vector>\nnamespace kyopro {\n/// @brief Segment Tree with\
-    \ Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
-    )\ntemplate <class S,\n          class F,\n          S (*op)(S, S),\n        \
-    \  S (*e)(),\n          F (*composition)(F, F),\n          F (*id)(),\n      \
-    \    S (*mapping)(S, F)>\nclass lazy_segtree {\n    int sz;\n    std::vector<S>\
-    \ dat;\n    std::vector<F> lz;\n\npublic:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
+    \ <cassert>\n#include <vector>\nnamespace kyopro {\n/// @brief LazySegmentTree\n\
+    template <class S,\n          class F,\n          S (*op)(S, S),\n          S\
+    \ (*e)(),\n          F (*composition)(F, F),\n          F (*id)(),\n         \
+    \ S (*mapping)(S, F)>\nclass lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n\
+    \    std::vector<F> lz;\n\npublic:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
     \ e())) {}\n    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(),\
     \ e()), lz(4 * a.size(), id()) {\n        int x = 1;\n        while (a.size()\
     \ > x) {\n            x <<= 1;\n        }\n        sz = x;\n        for (int i\
@@ -78,7 +76,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_E_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-05-03 17:08:50+09:00'
+  timestamp: '2023-05-03 22:08:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_E_lazy.test.cpp

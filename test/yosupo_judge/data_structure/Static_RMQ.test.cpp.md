@@ -1,9 +1,9 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/sparse_table.hpp
-    title: Sparse Table(RangeMin)
+    title: Sparse Table
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -17,7 +17,8 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Static_RMQ.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n#include<iostream>\n\
     #line 2 \"src/data-structure/sparse_table.hpp\"\n#include <numeric>\n#include\
-    \ <vector>\nnamespace kyopro {\n/// @brief Sparse Table(RangeMin)\ntemplate <class\
+    \ <vector>\nnamespace kyopro {\n/// @brief Sparse Table\n/// @note \u533A\u9593\
+    \u6700\u5C0F\u3057\u304B\u5BFE\u5FDC\u3057\u3066\u306A\u3044...\ntemplate <class\
     \ T>\nclass sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>>\
     \ table;\n    std::vector<int> look_up;\n\npublic:\n    sparse_table(int n) :\
     \ vec(n) {}\n    sparse_table(const std::vector<T>& vec) : vec(vec) { build();\
@@ -49,7 +50,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-05-01 12:49:55+00:00'
+  timestamp: '2023-05-03 22:08:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_RMQ.test.cpp

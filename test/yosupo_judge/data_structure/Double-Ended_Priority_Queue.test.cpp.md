@@ -3,8 +3,8 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/BST/Treap.hpp
-    title: src/BST/Treap.hpp
-  - icon: ':heavy_check_mark:'
+    title: Treap
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: src/random/xor_shift.hpp
   _extendedRequiredBy: []
@@ -31,7 +31,8 @@ data:
     \    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n        rng\
     \ ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n};\n\n\
     };  // namespace kyopro\n#line 5 \"src/BST/Treap.hpp\"\n\nnamespace kyopro {\n\
-    \ntemplate <class T>\nclass Treap {\n    using u32 = uint32_t;\n    xor_shift32\
+    \n/// @brief Treap\n/// @tparam T \u4E57\u305B\u308B\u30C7\u30FC\u30BF\u578B\n\
+    template <class T>\nclass Treap {\n    using u32 = uint32_t;\n    xor_shift32\
     \ rng;\n    struct Node {\n        const T key;\n        const u32 priority;\n\
     \        std::shared_ptr<Node> l, r;\n        Node(const T& key, u32 priority)\n\
     \            : key(key), priority(priority), l(nullptr), r(nullptr) {}\n    };\n\
@@ -94,7 +95,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-05-03 12:18:30+00:00'
+  timestamp: '2023-05-04 01:12:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

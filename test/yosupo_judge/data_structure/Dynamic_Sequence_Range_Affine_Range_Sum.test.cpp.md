@@ -5,13 +5,13 @@ data:
     path: src/BST/lazy_reversible_rbst.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
       \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
-    title: "static modint(\u9759\u7684modint)"
-  - icon: ':heavy_check_mark:'
+    title: modint
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: src/random/xor_shift.hpp
   _extendedRequiredBy: []
@@ -201,8 +201,8 @@ data:
     \ const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    constexpr\
     \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/// @brief static modint(\u9759\u7684modint)\n/// @docs docs/math/static_modint.md\n\
-    #line 5 \"test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp\"\
+    \ kyopro\n\n/// @brief modint\n/// @docs docs/math/static_modint.md\n#line 5 \"\
+    test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp\"\
     \nusing mint = kyopro::static_modint32<998244353>;\nusing S = mint;\ninline S\
     \ op(S a, S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine\
     \ = std::pair<mint, mint>;\ninline Affine composition(Affine g, Affine f) {\n\
@@ -255,7 +255,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-03 12:18:30+00:00'
+  timestamp: '2023-05-03 22:08:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

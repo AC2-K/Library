@@ -20,7 +20,7 @@ data:
         \u7D22\u6728"
     - icon: ':heavy_check_mark:'
       path: src/BST/Treap.hpp
-      title: src/BST/Treap.hpp
+      title: Treap
     - icon: ':heavy_check_mark:'
       path: src/BST/lazy_reversible_rbst.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
@@ -43,24 +43,22 @@ data:
       title: Disjoint Set(Union find)
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dual_segtree.hpp
-      title: "Dual Segmenttree(\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
+      title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
     - icon: ':warning:'
       path: src/data-structure/dynamic_segtree.hpp
-      title: "Dynamic Segment Tree(\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
-        )"
-    - icon: ':heavy_check_mark:'
+      title: "\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
+    - icon: ':question:'
       path: src/data-structure/hash_map.hpp
       title: HashMap
     - icon: ':heavy_check_mark:'
       path: src/data-structure/lazy_segtree.hpp
-      title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
-        \u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
+      title: LazySegmentTree
+    - icon: ':question:'
       path: src/data-structure/segtree.hpp
-      title: "Segment Tree(\u30BB\u30B0\u30E1\u30F3\u30C8\u6728)"
-    - icon: ':heavy_check_mark:'
+      title: Segment Tree
+    - icon: ':question:'
       path: src/data-structure/sparse_table.hpp
-      title: Sparse Table(RangeMin)
+      title: Sparse Table
   - name: src/data-structure-2d
     pages:
     - icon: ':heavy_check_mark:'
@@ -82,50 +80,50 @@ data:
       title: src/template.hpp
   - name: src/graph
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/graph/dijkstra.hpp
-      title: "Dijkstra (\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
-    - icon: ':heavy_check_mark:'
+      title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
+    - icon: ':question:'
       path: src/graph/euler_tour.hpp
-      title: "EulerTour(\u30AA\u30A4\u30E9\u30FC\u30C4\u30A2\u30FC)"
+      title: EulerTour
     - icon: ':heavy_check_mark:'
       path: src/graph/mst.hpp
-      title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
+      title: "\u6700\u5C0F\u5168\u57DF\u6728"
     - icon: ':warning:'
       path: src/graph/namori.hpp
-      title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5\u306E\u5206\u89E3"
+      title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
     - icon: ':warning:'
       path: src/graph/topological_sort.hpp
       title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
   - name: src/internal
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/barrett.hpp
       title: barrett reduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/montgomery.hpp
       title: MontgomeryReduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/dynamic_modint.hpp
-      title: "dynamic modint(\u52D5\u7684modint)"
-    - icon: ':heavy_check_mark:'
+      title: dynamic modint
+    - icon: ':question:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/math/matrix.hpp
-      title: "matirx(\u884C\u5217)"
-    - icon: ':heavy_check_mark:'
+      title: "\u884C\u5217"
+    - icon: ':question:'
       path: src/math/miller.hpp
-      title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
+      title: src/math/miller.hpp
     - icon: ':heavy_check_mark:'
       path: src/math/mod_log.hpp
-      title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':heavy_check_mark:'
+      title: "\u96E2\u6563\u5BFE\u6570"
+    - icon: ':question:'
       path: src/math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
     - icon: ':warning:'
@@ -134,18 +132,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/phi_function.hpp
       title: "phi function($\\phi$ \u95A2\u6570)"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/math/primitive_root.hpp
-      title: "primitive root(\u539F\u59CB\u6839)"
-    - icon: ':heavy_check_mark:'
+      title: "\u539F\u59CB\u6839"
+    - icon: ':question:'
       path: src/math/rho.hpp
       title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
     - icon: ':heavy_check_mark:'
       path: src/math/sieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/static_modint.hpp
-      title: "static modint(\u9759\u7684modint)"
+      title: modint
   - name: src/persistent
     pages:
     - icon: ':heavy_check_mark:'
@@ -156,18 +154,18 @@ data:
       title: "\u6C38\u7D9Astack"
   - name: src/random
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/random/xor_shift.hpp
       title: src/random/xor_shift.hpp
   - name: src/string
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/string/Z.hpp
       title: Z algorithm
     - icon: ':heavy_check_mark:'
       path: src/string/manacher.hpp
       title: manacher's algorithm
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
   verificationCategories:
@@ -290,18 +288,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Primitive_Root.test.cpp
       title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - name: test/yosupo_judge/matrix
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/new
@@ -314,20 +312,23 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
       title: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/string/Z_algorithm.test.cpp
       title: test/yosupo_judge/string/Z_algorithm.test.cpp
   - name: test/yosupo_judge/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
+      path: test/yuki/No3030.test.cpp
+      title: test/yuki/No3030.test.cpp
+    - icon: ':x:'
       path: test/yuki/No430.test.cpp
       title: test/yuki/No430.test.cpp
 layout: toppage

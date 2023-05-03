@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/string/Z_algorithm.test.cpp
     title: test/yosupo_judge/string/Z_algorithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: Z algorithm
     links: []
@@ -17,10 +17,10 @@ data:
     \ (i=0,1,...,|str|-1)\nstd::vector<int> Z(const std::string& str) {\n    assert(str.size());\n\
     \    std::vector<int> res(str.size());\n    res.front() = (int)str.size();\n\n\
     \    int i = 1, j = 0;\n\n    while (i < (int)str.size()) {\n        while (i\
-    \ + j < (int)str.size() && str[j] == str[i + j]) {\n            j++;\n       \
-    \ }\n\n        res[i] = j;\n        if (j == 0) {\n            i++;\n        \
+    \ + j < (int)str.size() && str[j] == str[i + j]) {\n            ++j;\n       \
+    \ }\n\n        res[i] = j;\n        if (j == 0) {\n            ++i;\n        \
     \    continue;\n        }\n        int k = 1;\n        while (i + k < (int)str.size()\
-    \ && k + res[k] < j) {\n            res[i + k] = res[k];\n            k++;\n \
+    \ && k + res[k] < j) {\n            res[i + k] = res[k];\n            ++k;\n \
     \       }\n        i += k, j -= k;\n    }\n    return res;\n}\n};  // namespace\
     \ kyopro\n"
   code: "#pragma once\n#include <cassert>\n#include <string>\n#include <vector>\n\
@@ -28,17 +28,17 @@ data:
     std::vector<int> Z(const std::string& str) {\n    assert(str.size());\n    std::vector<int>\
     \ res(str.size());\n    res.front() = (int)str.size();\n\n    int i = 1, j = 0;\n\
     \n    while (i < (int)str.size()) {\n        while (i + j < (int)str.size() &&\
-    \ str[j] == str[i + j]) {\n            j++;\n        }\n\n        res[i] = j;\n\
-    \        if (j == 0) {\n            i++;\n            continue;\n        }\n \
+    \ str[j] == str[i + j]) {\n            ++j;\n        }\n\n        res[i] = j;\n\
+    \        if (j == 0) {\n            ++i;\n            continue;\n        }\n \
     \       int k = 1;\n        while (i + k < (int)str.size() && k + res[k] < j)\
-    \ {\n            res[i + k] = res[k];\n            k++;\n        }\n        i\
+    \ {\n            res[i + k] = res[k];\n            ++k;\n        }\n        i\
     \ += k, j -= k;\n    }\n    return res;\n}\n};  // namespace kyopro"
   dependsOn: []
   isVerificationFile: false
   path: src/string/Z.hpp
   requiredBy: []
-  timestamp: '2023-04-09 12:27:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-03 22:08:07+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/string/Z_algorithm.test.cpp
 documentation_of: src/string/Z.hpp

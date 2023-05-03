@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/graph/mst.hpp
-    title: "Minimum Spannning Tree(\u6700\u5C0F\u5168\u57DF\u6728)"
+    title: "\u6700\u5C0F\u5168\u57DF\u6728"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/1_A.test.cpp

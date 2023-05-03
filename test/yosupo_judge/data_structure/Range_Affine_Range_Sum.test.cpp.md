@@ -3,14 +3,13 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/lazy_segtree.hpp
-    title: "Segment Tree with Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\
-      \u30E1\u30F3\u30C8\u6728)"
-  - icon: ':heavy_check_mark:'
+    title: LazySegmentTree
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
-    title: "static modint(\u9759\u7684modint)"
+    title: modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -24,12 +23,11 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\n\
     #include<iostream>\n#line 2 \"src/data-structure/lazy_segtree.hpp\"\n#include\
-    \ <cassert>\n#include <vector>\nnamespace kyopro {\n/// @brief Segment Tree with\
-    \ Lazy Propagation(\u9045\u5EF6\u8A55\u4FA1\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
-    )\ntemplate <class S,\n          class F,\n          S (*op)(S, S),\n        \
-    \  S (*e)(),\n          F (*composition)(F, F),\n          F (*id)(),\n      \
-    \    S (*mapping)(S, F)>\nclass lazy_segtree {\n    int sz;\n    std::vector<S>\
-    \ dat;\n    std::vector<F> lz;\n\npublic:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
+    \ <cassert>\n#include <vector>\nnamespace kyopro {\n/// @brief LazySegmentTree\n\
+    template <class S,\n          class F,\n          S (*op)(S, S),\n          S\
+    \ (*e)(),\n          F (*composition)(F, F),\n          F (*id)(),\n         \
+    \ S (*mapping)(S, F)>\nclass lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n\
+    \    std::vector<F> lz;\n\npublic:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
     \ e())) {}\n    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(),\
     \ e()), lz(4 * a.size(), id()) {\n        int x = 1;\n        while (a.size()\
     \ > x) {\n            x <<= 1;\n        }\n        sz = x;\n        for (int i\
@@ -162,25 +160,25 @@ data:
     \ const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    constexpr\
     \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/// @brief static modint(\u9759\u7684modint)\n/// @docs docs/math/static_modint.md\n\
-    #line 5 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\n\
-    using mint = kyopro::static_modint32<998244353>;\nstruct S {\n    mint s;\n  \
-    \  int len;\n};\ninline S op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }\n\
-    inline S e() { return S{0, 0}; }\nusing Affine = std::pair<mint, mint>;\ninline\
-    \ Affine composition(Affine g, Affine f) {\n\t//f(g)\n\t//a(cx+d)+b\n\tauto a\
-    \ = f.first, b = f.second;\n\tauto c = g.first, d = g.second;\n\treturn Affine(a\
-    \ * c, a * d + b);\n}\ninline Affine id() { return Affine(1, 0); }\ninline S mapping(S\
-    \ d, Affine f) {\n    mint a = f.first, b = f.second;\n    d.s *= a, d.s += b\
-    \ * d.len;\n    return d;\n};\n\nint main(){\n    std::ios::sync_with_stdio(false);\n\
-    \    std::cin.tie(nullptr);\n    int n, q;\n    std::cin >> n >> q;\n    kyopro::lazy_segtree<S,\
-    \ Affine, op, e, composition, id, mapping> sg(n);\n    for(int i=0;i<n;i++){\n\
-    \        mint a;\n        std::cin >> a;\n        sg.set(i, {a, 1});\n    }\n\
-    \    sg.build();\n    while(q--){\n        int t;\n        std::cin >> t;\n  \
-    \      if (t == 0) {\n            int l, r;\n            mint b, c;\n        \
-    \    std::cin >> l >> r >> b >> c;\n            sg.apply(l, r, Affine(b, c));\n\
-    \        } else {\n            int l, r;\n            std::cin >> l >> r;\n  \
-    \          auto res = sg.prod(l, r);\n            std::cout << res.s << '\\n';\n\
-    \        }\n    }\n}\n"
+    \ kyopro\n\n/// @brief modint\n/// @docs docs/math/static_modint.md\n#line 5 \"\
+    test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\nusing mint\
+    \ = kyopro::static_modint32<998244353>;\nstruct S {\n    mint s;\n    int len;\n\
+    };\ninline S op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }\ninline S e()\
+    \ { return S{0, 0}; }\nusing Affine = std::pair<mint, mint>;\ninline Affine composition(Affine\
+    \ g, Affine f) {\n\t//f(g)\n\t//a(cx+d)+b\n\tauto a = f.first, b = f.second;\n\
+    \tauto c = g.first, d = g.second;\n\treturn Affine(a * c, a * d + b);\n}\ninline\
+    \ Affine id() { return Affine(1, 0); }\ninline S mapping(S d, Affine f) {\n  \
+    \  mint a = f.first, b = f.second;\n    d.s *= a, d.s += b * d.len;\n    return\
+    \ d;\n};\n\nint main(){\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
+    \    int n, q;\n    std::cin >> n >> q;\n    kyopro::lazy_segtree<S, Affine, op,\
+    \ e, composition, id, mapping> sg(n);\n    for(int i=0;i<n;i++){\n        mint\
+    \ a;\n        std::cin >> a;\n        sg.set(i, {a, 1});\n    }\n    sg.build();\n\
+    \    while(q--){\n        int t;\n        std::cin >> t;\n        if (t == 0)\
+    \ {\n            int l, r;\n            mint b, c;\n            std::cin >> l\
+    \ >> r >> b >> c;\n            sg.apply(l, r, Affine(b, c));\n        } else {\n\
+    \            int l, r;\n            std::cin >> l >> r;\n            auto res\
+    \ = sg.prod(l, r);\n            std::cout << res.s << '\\n';\n        }\n    }\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
     \n#include<iostream>\n#include\"../../../src/data-structure/lazy_segtree.hpp\"\
     \n#include\"../../../src/math/static_modint.hpp\"\nusing mint = kyopro::static_modint32<998244353>;\n\
@@ -207,7 +205,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-03 17:08:50+09:00'
+  timestamp: '2023-05-03 22:08:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp

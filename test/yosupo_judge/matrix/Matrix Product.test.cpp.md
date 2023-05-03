@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/matrix.hpp
-    title: "matirx(\u884C\u5217)"
-  - icon: ':heavy_check_mark:'
+    title: "\u884C\u5217"
+  - icon: ':question:'
     path: src/math/static_modint.hpp
-    title: "static modint(\u9759\u7684modint)"
+    title: modint
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -23,13 +23,13 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include <iostream>\n\
     #line 2 \"src/math/matrix.hpp\"\n#include <utility>\n#include <vector>\n#include\
-    \ <cassert>\nnamespace kyopro {\n/// @brief matirx(\u884C\u5217)\ntemplate <typename\
-    \ T>\nclass Matrix {\n    std::vector<std::vector<T>> dat;\n    int h = 0, w =\
-    \ 0;\n\npublic:\n    Matrix(const std::vector<std::vector<T>>& dat)\n        :\
-    \ dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int h_, int\
-    \ w_, T v = T()) : dat(h_, std::vector<T>(w_, v)) {}\n\n    using mat = Matrix<T>;\n\
-    \    // access\n    std::vector<T>& operator[](int i) { return dat[i]; }\n\n \
-    \   // operator\n    mat& operator+=(const mat& r) {\n        assert(r.h == this->h);\n\
+    \ <cassert>\nnamespace kyopro {\n/// @brief \u884C\u5217\ntemplate <typename T>\n\
+    class Matrix {\n    std::vector<std::vector<T>> dat;\n    int h = 0, w = 0;\n\n\
+    public:\n    Matrix(const std::vector<std::vector<T>>& dat)\n        : dat(dat),\
+    \ h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int h_, int w_, T v =\
+    \ T()) : dat(h_, std::vector<T>(w_, v)) {}\n\n    using mat = Matrix<T>;\n   \
+    \ // access\n    std::vector<T>& operator[](int i) { return dat[i]; }\n\n    //\
+    \ operator\n    mat& operator+=(const mat& r) {\n        assert(r.h == this->h);\n\
     \        assert(r.w == this->w);\n        for (int i = 0; i < h; i++) {\n    \
     \        for (int j = 0; j < w; j++) {\n                dat[i][j] += r.dat[i][j];\n\
     \            }\n        }\n        return (*this);\n    }\n    mat& operator-=(const\
@@ -154,10 +154,10 @@ data:
     \ const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    constexpr\
     \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/// @brief static modint(\u9759\u7684modint)\n/// @docs docs/math/static_modint.md\n\
-    #line 5 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#pragma GCC optimize(\"\
-    unroll-loops\")\n\nusing mint = kyopro::static_modint32<998244353>;\nint main()\
-    \ {\n    int n, m, k;\n    scanf(\"%d%d%d\", &n, &m, &k);\n    using mat = kyopro::Matrix<mint>;\n\
+    \ kyopro\n\n/// @brief modint\n/// @docs docs/math/static_modint.md\n#line 5 \"\
+    test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#pragma GCC optimize(\"unroll-loops\"\
+    )\n\nusing mint = kyopro::static_modint32<998244353>;\nint main() {\n    int n,\
+    \ m, k;\n    scanf(\"%d%d%d\", &n, &m, &k);\n    using mat = kyopro::Matrix<mint>;\n\
     \    mat a(n, m), b(m, k);\n    for (int i = 0; i < n; i++)\n        for (int\
     \ j = 0; j < m; j++) {\n            int v;\n            scanf(\"%d\", &v);\n \
     \           a[i][j] = mint(v);\n        }\n    for (int i = 0; i < m; i++)\n \
@@ -185,8 +185,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-05-03 17:08:50+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-03 22:08:07+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
 layout: document
