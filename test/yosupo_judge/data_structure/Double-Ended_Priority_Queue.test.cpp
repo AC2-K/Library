@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/double_ended_priority_queue"
 
 #include <iostream>
-#include "BST/Treap.hpp"
+#include "../../../src/BST/Treap.hpp"
 using namespace std;
 int main() {
     kyopro::Treap<int> st;
