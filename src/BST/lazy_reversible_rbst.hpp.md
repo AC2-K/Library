@@ -19,17 +19,22 @@ data:
     - https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
   bundledCode: "#line 2 \"src/BST/lazy_reversible_rbst.hpp\"\n#include <memory>\n\
     #include <utility>\n#include <cassert>\n#line 2 \"src/random/xor_shift.hpp\"\n\
-    #include <cstdint>\n#include <random>\n\nnamespace kyopro {\nstruct xor_shift32\
-    \ {\n    uint32_t rng;\n    xor_shift32() : rng(std::rand()) {}\n    uint32_t\
-    \ operator()() {\n        rng ^= rng << 13;\n        rng ^= rng >> 17;\n     \
-    \   rng ^= rng << 5;\n        return rng;\n    }\n};\n};  // namespace kyopro\n\
-    #line 6 \"src/BST/lazy_reversible_rbst.hpp\"\n\nnamespace kyopro {\n/// @brief\
-    \ \u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\u8861\
-    \u4E8C\u5206\u63A2\u7D22\u6728\n/// @tparam S \u30E2\u30CE\u30A4\u30C9\n/// @tparam\
-    \ F \u4F5C\u7528\u7D20\u30E2\u30CE\u30A4\u30C9\n/// @tparam op S\u4E0A\u306E\u4E8C\
-    \u9805\u6F14\u7B97\n/// @tparam e S\u306E\u5358\u4F4D\u5143\n/// @tparam composition\
-    \ F\u4E0A\u306E\u4E8C\u9805\u6F14\u7B97\n/// @tparam id F\u306E\u5358\u4F4D\u5143\
-    \n/// @tparam mapping \n/// @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
+    #include <cstdint>\n#include <random>\n#include <chrono>\n\nnamespace kyopro {\n\
+    struct xor_shift32 {\n    uint32_t rng;\n    constexpr explicit xor_shift32(uint32_t\
+    \ seed) : rng(seed) {}\n    explicit xor_shift32():rng(std::chrono::steady_clock::now().time_since_epoch().count()){}\n\
+    \    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n        rng\
+    \ ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n};\n\n\
+    struct xor_shift{\n    uint64_t rng;\n    constexpr xor_shift(uint64_t seed):rng(seed){}\n\
+    \    explicit xor_shift():rng(std::chrono::steady_clock::now().time_since_epoch().count()){}\n\
+    \    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n        rng\
+    \ ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n};\n\n\
+    };  // namespace kyopro\n#line 6 \"src/BST/lazy_reversible_rbst.hpp\"\n\nnamespace\
+    \ kyopro {\n/// @brief \u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\
+    \u80FD \u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728\n/// @tparam S \u30E2\u30CE\u30A4\
+    \u30C9\n/// @tparam F \u4F5C\u7528\u7D20\u30E2\u30CE\u30A4\u30C9\n/// @tparam\
+    \ op S\u4E0A\u306E\u4E8C\u9805\u6F14\u7B97\n/// @tparam e S\u306E\u5358\u4F4D\u5143\
+    \n/// @tparam composition F\u4E0A\u306E\u4E8C\u9805\u6F14\u7B97\n/// @tparam id\
+    \ F\u306E\u5358\u4F4D\u5143\n/// @tparam mapping \n/// @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n\
     template <typename S,\n          class F,\n          S (*op)(S, S),\n        \
     \  S (*e)(),\n          F (*composition)(F, F),\n          F (*id)(),\n      \
     \    S (*mapping)(S, F, int)>\nclass lazy_reversible_rbst {\n    using u32 = uint32_t;\n\
@@ -65,8 +70,9 @@ data:
     \ l->r = merge(std::move(l->r), std::move(r));\n            update(l);\n     \
     \       return l;\n        }\n    }\n    \n    void reverse(const ptr& p) {\n\
     \        if (p) {\n            p->rev ^= 1;\n        }\n    }\n    ptr root =\
-    \ nullptr;\n\npublic:\n    void insert(int i, S a) {\n        auto [l, r] = split(std::move(root),\
-    \ i);\n        ptr item = std::make_unique<Node>(a, rng());\n        root = merge(std::move(l),\
+    \ nullptr;\n\npublic:\n    constexpr explicit lazy_reversible_rbst():rng(2023){}\n\
+    \    void insert(int i, S a) {\n        auto [l, r] = split(std::move(root), i);\n\
+    \        ptr item = std::make_unique<Node>(a, rng());\n        root = merge(std::move(l),\
     \ std::move(item));\n        root = merge(std::move(root), std::move(r));\n  \
     \  }\n\n    void erase(int i) {\n        auto [xy, z] = split(std::move(root),\
     \ i + 1);\n        auto [x, y] = split(std::move(xy), i);\n        root = merge(std::move(x),\
@@ -126,8 +132,9 @@ data:
     \ l->r = merge(std::move(l->r), std::move(r));\n            update(l);\n     \
     \       return l;\n        }\n    }\n    \n    void reverse(const ptr& p) {\n\
     \        if (p) {\n            p->rev ^= 1;\n        }\n    }\n    ptr root =\
-    \ nullptr;\n\npublic:\n    void insert(int i, S a) {\n        auto [l, r] = split(std::move(root),\
-    \ i);\n        ptr item = std::make_unique<Node>(a, rng());\n        root = merge(std::move(l),\
+    \ nullptr;\n\npublic:\n    constexpr explicit lazy_reversible_rbst():rng(2023){}\n\
+    \    void insert(int i, S a) {\n        auto [l, r] = split(std::move(root), i);\n\
+    \        ptr item = std::make_unique<Node>(a, rng());\n        root = merge(std::move(l),\
     \ std::move(item));\n        root = merge(std::move(root), std::move(r));\n  \
     \  }\n\n    void erase(int i) {\n        auto [xy, z] = split(std::move(root),\
     \ i + 1);\n        auto [x, y] = split(std::move(xy), i);\n        root = merge(std::move(x),\
@@ -149,7 +156,7 @@ data:
   isVerificationFile: false
   path: src/BST/lazy_reversible_rbst.hpp
   requiredBy: []
-  timestamp: '2023-05-03 09:49:54+00:00'
+  timestamp: '2023-05-03 12:18:30+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

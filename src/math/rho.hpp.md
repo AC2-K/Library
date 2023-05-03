@@ -19,6 +19,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
     title: "MillerRabin\u306E\u7D20\u6570\u5224\u5B9A"
+  - icon: ':heavy_check_mark:'
+    path: src/random/xor_shift.hpp
+    title: src/random/xor_shift.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
@@ -206,23 +209,33 @@ data:
     \ < 32 || n <= 1 << 30) {\n        return miller_rabin<barrett_modint<10>>(n,\
     \ bases_int, 3);\n    } else {\n        return miller_rabin<dynamic_modint<T,\
     \ 10>>(n, bases_ll, 7);\n    }\n}\n};  // namespace miller\n};  // namespace kyopro\n\
-    #line 6 \"src/math/rho.hpp\"\nnamespace kyopro {\n\n///@brief \u9AD8\u901F\u7D20\
-    \u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\nnamespace rho {\nusing namespace\
-    \ std;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing u64 = uint64_t;\n\
-    using u32 = uint32_t;\n\ntemplate <typename mint> \nu64 find_factor(u64 n) {\n\
-    \    u64 v = 20001;\n\n    if (~n & 1uL) {\n        return 2;\n    }\n    if (kyopro::miller::is_prime(n))\
-    \ {\n        return n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
-    \    }\n    while (1) {\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n  \
-    \      u64 c = v;\n        auto f = [&](mint x) -> mint { return x.pow(2) + c;\
-    \ };\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n        mint x = v;\n\
-    \        mint y = f(x);\n        u64 d = 1;\n        while (d == 1) {\n      \
-    \      d = _gcd<long long>(abs((long long)x.val() - (long long)y.val()),\n   \
-    \                             n);\n            x = f(x);\n            y = f(f(y));\n\
-    \        }\n        if (1 < d && d < n) {\n            return d;\n        }\n\
-    \    }\n    exit(0);\n}\ntemplate <typename mint> \nstd::vector<u64> rho_fact(u64\
-    \ n) {\n    if (n < 2) {\n        return {};\n    }\n    if (kyopro::miller::is_prime(n))\
-    \ {\n        return {n};\n    }\n    std::vector<u64> v;\n    std::vector<u64>\
-    \ st{n};\n    while (st.size()) {\n        u64& m = st.back();\n        if (kyopro::miller::is_prime(m))\
+    #line 2 \"src/random/xor_shift.hpp\"\n#include <cstdint>\n#include <random>\n\
+    #include <chrono>\n\nnamespace kyopro {\nstruct xor_shift32 {\n    uint32_t rng;\n\
+    \    constexpr explicit xor_shift32(uint32_t seed) : rng(seed) {}\n    explicit\
+    \ xor_shift32():rng(std::chrono::steady_clock::now().time_since_epoch().count()){}\n\
+    \    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n        rng\
+    \ ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n};\n\n\
+    struct xor_shift{\n    uint64_t rng;\n    constexpr xor_shift(uint64_t seed):rng(seed){}\n\
+    \    explicit xor_shift():rng(std::chrono::steady_clock::now().time_since_epoch().count()){}\n\
+    \    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n        rng\
+    \ ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n};\n\n\
+    };  // namespace kyopro\n#line 7 \"src/math/rho.hpp\"\nnamespace kyopro {\n\n\
+    ///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\nnamespace\
+    \ rho {\nusing namespace std;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
+    using u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate <typename mint> \nu64\
+    \ find_factor(u64 n) {\n    xor_shift32 rng(2023);\n\n    if (~n & 1uL) {\n  \
+    \      return 2;\n    }\n    if (kyopro::miller::is_prime(n)) {\n        return\
+    \ n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n  \
+    \  }\n    while (1) {\n        u64 c = rng();\n        auto f = [&](mint x) ->\
+    \ mint { return x.pow(2) + c; };\n        mint x = rng();\n        mint y = f(x);\n\
+    \        u64 d = 1;\n        while (d == 1) {\n            d = _gcd<long long>(abs((long\
+    \ long)x.val() - (long long)y.val()),\n                                n);\n \
+    \           x = f(x);\n            y = f(f(y));\n        }\n        if (1 < d\
+    \ && d < n) {\n            return d;\n        }\n    }\n    exit(0);\n}\ntemplate\
+    \ <typename mint> \nstd::vector<u64> rho_fact(u64 n) {\n    if (n < 2) {\n   \
+    \     return {};\n    }\n    if (kyopro::miller::is_prime(n)) {\n        return\
+    \ {n};\n    }\n    std::vector<u64> v;\n    std::vector<u64> st{n};\n    while\
+    \ (st.size()) {\n        u64& m = st.back();\n        if (kyopro::miller::is_prime(m))\
     \ {\n            v.emplace_back(m);\n            st.pop_back();\n        } else\
     \ {\n            u64 d = find_factor<mint>(m);\n            m /= d;\n        \
     \    st.emplace_back(d);\n        }\n    }\n    return v;\n}\ninline std::vector<u64>\
@@ -237,23 +250,23 @@ data:
     \  res.emplace_back(pf[i], 1);\n        }\n    }\n\n    return res;\n}\n};  //\
     \ namespace rho\n};  // namespace kyopro\n"
   code: "#pragma once\n#include <algorithm>\n#include <vector>\n#include \"../math/gcd.hpp\"\
-    \n#include \"../math/miller.hpp\"\nnamespace kyopro {\n\n///@brief \u9AD8\u901F\
-    \u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\nnamespace rho {\nusing namespace\
-    \ std;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing u64 = uint64_t;\n\
-    using u32 = uint32_t;\n\ntemplate <typename mint> \nu64 find_factor(u64 n) {\n\
-    \    u64 v = 20001;\n\n    if (~n & 1uL) {\n        return 2;\n    }\n    if (kyopro::miller::is_prime(n))\
-    \ {\n        return n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
-    \    }\n    while (1) {\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n  \
-    \      u64 c = v;\n        auto f = [&](mint x) -> mint { return x.pow(2) + c;\
-    \ };\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n        mint x = v;\n\
-    \        mint y = f(x);\n        u64 d = 1;\n        while (d == 1) {\n      \
-    \      d = _gcd<long long>(abs((long long)x.val() - (long long)y.val()),\n   \
-    \                             n);\n            x = f(x);\n            y = f(f(y));\n\
-    \        }\n        if (1 < d && d < n) {\n            return d;\n        }\n\
-    \    }\n    exit(0);\n}\ntemplate <typename mint> \nstd::vector<u64> rho_fact(u64\
-    \ n) {\n    if (n < 2) {\n        return {};\n    }\n    if (kyopro::miller::is_prime(n))\
-    \ {\n        return {n};\n    }\n    std::vector<u64> v;\n    std::vector<u64>\
-    \ st{n};\n    while (st.size()) {\n        u64& m = st.back();\n        if (kyopro::miller::is_prime(m))\
+    \n#include \"../math/miller.hpp\"\n#include \"../random/xor_shift.hpp\"\nnamespace\
+    \ kyopro {\n\n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5\
+    )\nnamespace rho {\nusing namespace std;\nusing i128 = __int128_t;\nusing u128\
+    \ = __uint128_t;\nusing u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate <typename\
+    \ mint> \nu64 find_factor(u64 n) {\n    xor_shift32 rng(2023);\n\n    if (~n &\
+    \ 1uL) {\n        return 2;\n    }\n    if (kyopro::miller::is_prime(n)) {\n \
+    \       return n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
+    \    }\n    while (1) {\n        u64 c = rng();\n        auto f = [&](mint x)\
+    \ -> mint { return x.pow(2) + c; };\n        mint x = rng();\n        mint y =\
+    \ f(x);\n        u64 d = 1;\n        while (d == 1) {\n            d = _gcd<long\
+    \ long>(abs((long long)x.val() - (long long)y.val()),\n                      \
+    \          n);\n            x = f(x);\n            y = f(f(y));\n        }\n \
+    \       if (1 < d && d < n) {\n            return d;\n        }\n    }\n    exit(0);\n\
+    }\ntemplate <typename mint> \nstd::vector<u64> rho_fact(u64 n) {\n    if (n <\
+    \ 2) {\n        return {};\n    }\n    if (kyopro::miller::is_prime(n)) {\n  \
+    \      return {n};\n    }\n    std::vector<u64> v;\n    std::vector<u64> st{n};\n\
+    \    while (st.size()) {\n        u64& m = st.back();\n        if (kyopro::miller::is_prime(m))\
     \ {\n            v.emplace_back(m);\n            st.pop_back();\n        } else\
     \ {\n            u64 d = find_factor<mint>(m);\n            m /= d;\n        \
     \    st.emplace_back(d);\n        }\n    }\n    return v;\n}\ninline std::vector<u64>\
@@ -274,12 +287,13 @@ data:
   - src/internal/barrett.hpp
   - src/internal/montgomery.hpp
   - src/internal/type_traits.hpp
+  - src/random/xor_shift.hpp
   isVerificationFile: false
   path: src/math/rho.hpp
   requiredBy:
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-05-02 00:07:28+00:00'
+  timestamp: '2023-05-03 12:18:30+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

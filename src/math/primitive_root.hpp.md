@@ -22,6 +22,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
+  - icon: ':heavy_check_mark:'
+    path: src/random/xor_shift.hpp
+    title: src/random/xor_shift.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -197,24 +200,33 @@ data:
     \    }\n    if (std::numeric_limits<T>::digits < 32 || n <= 1 << 30) {\n     \
     \   return miller_rabin<barrett_modint<10>>(n, bases_int, 3);\n    } else {\n\
     \        return miller_rabin<dynamic_modint<T, 10>>(n, bases_ll, 7);\n    }\n\
-    }\n};  // namespace miller\n};  // namespace kyopro\n#line 6 \"src/math/rho.hpp\"\
-    \nnamespace kyopro {\n\n///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard\
-    \ Rho\u6CD5)\nnamespace rho {\nusing namespace std;\nusing i128 = __int128_t;\n\
-    using u128 = __uint128_t;\nusing u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate\
-    \ <typename mint> \nu64 find_factor(u64 n) {\n    u64 v = 20001;\n\n    if (~n\
-    \ & 1uL) {\n        return 2;\n    }\n    if (kyopro::miller::is_prime(n)) {\n\
-    \        return n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
-    \    }\n    while (1) {\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n  \
-    \      u64 c = v;\n        auto f = [&](mint x) -> mint { return x.pow(2) + c;\
-    \ };\n        v ^= v << 13, v ^= v >> 7, v ^= v << 17;\n        mint x = v;\n\
-    \        mint y = f(x);\n        u64 d = 1;\n        while (d == 1) {\n      \
-    \      d = _gcd<long long>(abs((long long)x.val() - (long long)y.val()),\n   \
-    \                             n);\n            x = f(x);\n            y = f(f(y));\n\
-    \        }\n        if (1 < d && d < n) {\n            return d;\n        }\n\
-    \    }\n    exit(0);\n}\ntemplate <typename mint> \nstd::vector<u64> rho_fact(u64\
-    \ n) {\n    if (n < 2) {\n        return {};\n    }\n    if (kyopro::miller::is_prime(n))\
-    \ {\n        return {n};\n    }\n    std::vector<u64> v;\n    std::vector<u64>\
-    \ st{n};\n    while (st.size()) {\n        u64& m = st.back();\n        if (kyopro::miller::is_prime(m))\
+    }\n};  // namespace miller\n};  // namespace kyopro\n#line 2 \"src/random/xor_shift.hpp\"\
+    \n#include <cstdint>\n#include <random>\n#include <chrono>\n\nnamespace kyopro\
+    \ {\nstruct xor_shift32 {\n    uint32_t rng;\n    constexpr explicit xor_shift32(uint32_t\
+    \ seed) : rng(seed) {}\n    explicit xor_shift32():rng(std::chrono::steady_clock::now().time_since_epoch().count()){}\n\
+    \    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n        rng\
+    \ ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n};\n\n\
+    struct xor_shift{\n    uint64_t rng;\n    constexpr xor_shift(uint64_t seed):rng(seed){}\n\
+    \    explicit xor_shift():rng(std::chrono::steady_clock::now().time_since_epoch().count()){}\n\
+    \    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n        rng\
+    \ ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n};\n\n\
+    };  // namespace kyopro\n#line 7 \"src/math/rho.hpp\"\nnamespace kyopro {\n\n\
+    ///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\nnamespace\
+    \ rho {\nusing namespace std;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
+    using u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate <typename mint> \nu64\
+    \ find_factor(u64 n) {\n    xor_shift32 rng(2023);\n\n    if (~n & 1uL) {\n  \
+    \      return 2;\n    }\n    if (kyopro::miller::is_prime(n)) {\n        return\
+    \ n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n  \
+    \  }\n    while (1) {\n        u64 c = rng();\n        auto f = [&](mint x) ->\
+    \ mint { return x.pow(2) + c; };\n        mint x = rng();\n        mint y = f(x);\n\
+    \        u64 d = 1;\n        while (d == 1) {\n            d = _gcd<long long>(abs((long\
+    \ long)x.val() - (long long)y.val()),\n                                n);\n \
+    \           x = f(x);\n            y = f(f(y));\n        }\n        if (1 < d\
+    \ && d < n) {\n            return d;\n        }\n    }\n    exit(0);\n}\ntemplate\
+    \ <typename mint> \nstd::vector<u64> rho_fact(u64 n) {\n    if (n < 2) {\n   \
+    \     return {};\n    }\n    if (kyopro::miller::is_prime(n)) {\n        return\
+    \ {n};\n    }\n    std::vector<u64> v;\n    std::vector<u64> st{n};\n    while\
+    \ (st.size()) {\n        u64& m = st.back();\n        if (kyopro::miller::is_prime(m))\
     \ {\n            v.emplace_back(m);\n            st.pop_back();\n        } else\
     \ {\n            u64 d = find_factor<mint>(m);\n            m /= d;\n        \
     \    st.emplace_back(d);\n        }\n    }\n    return v;\n}\ninline std::vector<u64>\
@@ -227,29 +239,28 @@ data:
     \ 1);\n    for (int i = 1; i < (int)pf.size(); i++) {\n        if (res.back().first\
     \ == pf[i]) {\n            res.back().second++;\n        } else {\n          \
     \  res.emplace_back(pf[i], 1);\n        }\n    }\n\n    return res;\n}\n};  //\
-    \ namespace rho\n};  // namespace kyopro\n#line 4 \"src/math/primitive_root.hpp\"\
+    \ namespace rho\n};  // namespace kyopro\n#line 5 \"src/math/primitive_root.hpp\"\
     \nnamespace kyopro {\n/// @brief primitive root(\u539F\u59CB\u6839)\ninline uint64_t\
     \ primitive_root(uint64_t p) {\n    if (p == 2) return 1;\n    auto pf = kyopro::rho::factorize(p\
     \ - 1);\n    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto&\
     \ q : pf) {\n        q = (p - 1) / q;\n    }\n    using ull = unsigned long long;\n\
     \    if (dynamic_modint<uint64_t>::get_mod() != p) {\n        dynamic_modint<uint64_t>::set_mod(p);\n\
-    \    }\n    static ull rng = 2020;\n    while (1) {\n        rng ^= rng << 13;\n\
-    \        rng ^= rng >> 7;\n        rng ^= rng << 17;\n        dynamic_modint<uint64_t>\
-    \ g(rng);\n        if (g.val() == 0) continue;\n        bool is_ok = true;\n\n\
-    \        for (const auto& q : pf) {\n            if (dynamic_modint<uint64_t>(g).pow(q).val()\
+    \    }\n    xor_shift rng(2023);\n    while (1) {\n        dynamic_modint<uint64_t>\
+    \ g(rng());\n        if (g.val() == 0) continue;\n        bool is_ok = true;\n\
+    \n        for (const auto& q : pf) {\n            if (dynamic_modint<uint64_t>(g).pow(q).val()\
     \ == 1) {\n                is_ok = false;\n                break;\n          \
     \  }\n        }\n        if (is_ok) {\n            return g.val();\n        }\n\
     \    }\n}\n};  // namespace kyopro\n"
   code: "#pragma once\n#include \"../math/dynamic_modint.hpp\"\n#include \"../math/rho.hpp\"\
-    \nnamespace kyopro {\n/// @brief primitive root(\u539F\u59CB\u6839)\ninline uint64_t\
-    \ primitive_root(uint64_t p) {\n    if (p == 2) return 1;\n    auto pf = kyopro::rho::factorize(p\
-    \ - 1);\n    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto&\
-    \ q : pf) {\n        q = (p - 1) / q;\n    }\n    using ull = unsigned long long;\n\
-    \    if (dynamic_modint<uint64_t>::get_mod() != p) {\n        dynamic_modint<uint64_t>::set_mod(p);\n\
-    \    }\n    static ull rng = 2020;\n    while (1) {\n        rng ^= rng << 13;\n\
-    \        rng ^= rng >> 7;\n        rng ^= rng << 17;\n        dynamic_modint<uint64_t>\
-    \ g(rng);\n        if (g.val() == 0) continue;\n        bool is_ok = true;\n\n\
-    \        for (const auto& q : pf) {\n            if (dynamic_modint<uint64_t>(g).pow(q).val()\
+    \n#include \"../random/xor_shift.hpp\"\nnamespace kyopro {\n/// @brief primitive\
+    \ root(\u539F\u59CB\u6839)\ninline uint64_t primitive_root(uint64_t p) {\n   \
+    \ if (p == 2) return 1;\n    auto pf = kyopro::rho::factorize(p - 1);\n    pf.erase(std::unique(pf.begin(),\
+    \ pf.end()), pf.end());\n    for (auto& q : pf) {\n        q = (p - 1) / q;\n\
+    \    }\n    using ull = unsigned long long;\n    if (dynamic_modint<uint64_t>::get_mod()\
+    \ != p) {\n        dynamic_modint<uint64_t>::set_mod(p);\n    }\n    xor_shift\
+    \ rng(2023);\n    while (1) {\n        dynamic_modint<uint64_t> g(rng());\n  \
+    \      if (g.val() == 0) continue;\n        bool is_ok = true;\n\n        for\
+    \ (const auto& q : pf) {\n            if (dynamic_modint<uint64_t>(g).pow(q).val()\
     \ == 1) {\n                is_ok = false;\n                break;\n          \
     \  }\n        }\n        if (is_ok) {\n            return g.val();\n        }\n\
     \    }\n}\n};  // namespace kyopro\n"
@@ -261,10 +272,11 @@ data:
   - src/math/rho.hpp
   - src/math/gcd.hpp
   - src/math/miller.hpp
+  - src/random/xor_shift.hpp
   isVerificationFile: false
   path: src/math/primitive_root.hpp
   requiredBy: []
-  timestamp: '2023-05-02 00:07:28+00:00'
+  timestamp: '2023-05-03 12:18:30+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Primitive_Root.test.cpp
