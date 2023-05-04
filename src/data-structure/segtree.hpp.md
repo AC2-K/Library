@@ -40,16 +40,16 @@ data:
     \        dat = std::vector<S>(sz << 1, e());\n\n        for (int i = 0; i < n;\
     \ i++) {\n            set(i, vec[i]);\n        }\n        build();\n    }\n\n\
     \    void set(int p, const S& v) { dat[sz + p] = v; }\n    void build() {\n  \
-    \      for (int i = sz - 1; i > 0; i--) {\n            dat[i] = op(dat[i << 1],\
-    \ dat[(i << 1) ^ 1]);\n        }\n    }\n    S operator[](int p) const { return\
-    \ dat[sz + p]; }\n\n    void update(int p, const S& v) {\n        p += sz;\n \
-    \       dat[p] = v;\n        while (p >>= 1) {\n            dat[p] = op(dat[(p\
-    \ << 1)], dat[(p << 1) ^ 1]);\n        }\n    }\n\n    S prod(int l, int r) const\
-    \ {\n        if (l == 0 && r == n) {\n            return dat[1];\n        }\n\
-    \        l += sz, r += sz;\n        S sml = e(), smr = e();\n        while (l\
-    \ != r) {\n            if (l & 1) sml = op(sml, dat[l++]);\n            if (r\
-    \ & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n        }\n  \
-    \      return op(sml, smr);\n    }\n    void apply(int p, const S& v) { update(p,\
+    \      for (int i = sz - 1; i > 0; i--) {\n            dat[i] = op(dat[(i << 1)\
+    \ | 0], dat[(i << 1) | 1]);\n        }\n    }\n    S operator[](int p) const {\
+    \ return dat[sz + p]; }\n\n    void update(int p, const S& v) {\n        p +=\
+    \ sz;\n        dat[p] = v;\n        while (p >>= 1) {\n            dat[p] = op(dat[(p\
+    \ << 1) | 0], dat[(p << 1) | 1]);\n        }\n    }\n\n    S prod(int l, int r)\
+    \ const {\n        if (l == 0 && r == n) {\n            return dat[1];\n     \
+    \   }\n        l += sz, r += sz;\n        S sml = e(), smr = e();\n        while\
+    \ (l != r) {\n            if (l & 1) sml = op(sml, dat[l++]);\n            if\
+    \ (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n        }\n\
+    \        return op(sml, smr);\n    }\n    void apply(int p, const S& v) { update(p,\
     \ op(dat[sz + p], v)); }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/segtree.md\n"
   code: "#pragma once\n#include <vector>\nnamespace kyopro {\n/// @brief Segment Tree\n\
     \ntemplate <class S, S (*op)(S, S), S (*e)()>\nclass segtree {\n    int lg, sz,\
@@ -60,23 +60,23 @@ data:
     \ << 1, e());\n\n        for (int i = 0; i < n; i++) {\n            set(i, vec[i]);\n\
     \        }\n        build();\n    }\n\n    void set(int p, const S& v) { dat[sz\
     \ + p] = v; }\n    void build() {\n        for (int i = sz - 1; i > 0; i--) {\n\
-    \            dat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);\n        }\n    }\n\
-    \    S operator[](int p) const { return dat[sz + p]; }\n\n    void update(int\
+    \            dat[i] = op(dat[(i << 1) | 0], dat[(i << 1) | 1]);\n        }\n \
+    \   }\n    S operator[](int p) const { return dat[sz + p]; }\n\n    void update(int\
     \ p, const S& v) {\n        p += sz;\n        dat[p] = v;\n        while (p >>=\
-    \ 1) {\n            dat[p] = op(dat[(p << 1)], dat[(p << 1) ^ 1]);\n        }\n\
-    \    }\n\n    S prod(int l, int r) const {\n        if (l == 0 && r == n) {\n\
-    \            return dat[1];\n        }\n        l += sz, r += sz;\n        S sml\
-    \ = e(), smr = e();\n        while (l != r) {\n            if (l & 1) sml = op(sml,\
-    \ dat[l++]);\n            if (r & 1) smr = op(dat[--r], smr);\n            l >>=\
-    \ 1, r >>= 1;\n        }\n        return op(sml, smr);\n    }\n    void apply(int\
-    \ p, const S& v) { update(p, op(dat[sz + p], v)); }\n};\n};  // namespace kyopro\n\
-    \n/// @docs docs/data-structure/segtree.md"
+    \ 1) {\n            dat[p] = op(dat[(p << 1) | 0], dat[(p << 1) | 1]);\n     \
+    \   }\n    }\n\n    S prod(int l, int r) const {\n        if (l == 0 && r == n)\
+    \ {\n            return dat[1];\n        }\n        l += sz, r += sz;\n      \
+    \  S sml = e(), smr = e();\n        while (l != r) {\n            if (l & 1) sml\
+    \ = op(sml, dat[l++]);\n            if (r & 1) smr = op(dat[--r], smr);\n    \
+    \        l >>= 1, r >>= 1;\n        }\n        return op(sml, smr);\n    }\n \
+    \   void apply(int p, const S& v) { update(p, op(dat[sz + p], v)); }\n};\n}; \
+    \ // namespace kyopro\n\n/// @docs docs/data-structure/segtree.md"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/segtree.hpp
   requiredBy:
   - src/data-structure-2d/RangeTree.hpp
-  timestamp: '2023-05-03 22:08:07+09:00'
+  timestamp: '2023-05-04 13:33:55+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/DSL/2_B.test.cpp

@@ -44,7 +44,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dual_segtree.hpp
       title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/data-structure/dynamic_segtree.hpp
       title: "\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
     - icon: ':question:'
@@ -120,7 +120,7 @@ data:
     - icon: ':question:'
       path: src/math/miller.hpp
       title: src/math/miller.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/math/mod_log.hpp
       title: "\u96E2\u6563\u5BFE\u6570"
     - icon: ':question:'
@@ -285,7 +285,7 @@ data:
       title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - name: test/yosupo_judge/math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     - icon: ':x:'
@@ -331,6 +331,9 @@ data:
     - icon: ':x:'
       path: test/yuki/No430.test.cpp
       title: test/yuki/No430.test.cpp
+    - icon: ':x:'
+      path: test/yuki/No789.test.cpp
+      title: test/yuki/No789.test.cpp
 layout: toppage
 ---
 [![AC2K](https://img.shields.io/endpoint?url=https%3A%2F%2Fatcoder-badges.now.sh%2Fapi%2Fatcoder%2Fjson%2FAC2K)](https://atcoder.jp/users/AC2K)

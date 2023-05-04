@@ -19,7 +19,7 @@ data:
   - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/mod_log.hpp
     title: "\u96E2\u6563\u5BFE\u6570"
   - icon: ':question:'
@@ -27,9 +27,9 @@ data:
     title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
@@ -44,7 +44,7 @@ data:
     \ u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64* flag = new u64[n];\n\
     \    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\n    static constexpr\
     \ u32 shift = 64 - std::__lg(n);\n\n    u64 r;\n    u32 get_hash(const Key& k)\
-    \ const { return ((u64)k * r) >> shift; }\n\n    static constexpr uint8_t mod_msk\
+    \ const { return ((u64)k * r) >> shift; }\n\n    static constexpr int mod_msk\
     \ = (1 << 6) - 1;\n\npublic:\n    explicit constexpr hash_map() {\n        r =\
     \ std::chrono::steady_clock::now().time_since_epoch().count();\n        r ^= r\
     \ >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const Key& k) {\n\
@@ -258,8 +258,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-05-03 22:08:07+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-04 13:33:55+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 layout: document

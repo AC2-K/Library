@@ -23,7 +23,7 @@ data:
     \ u64 = uint64_t;\n\n    u64* flag = new u64[n];\n    Key* keys = new Key[n];\n\
     \    Val* vals = new Val[n];\n\n    static constexpr u32 shift = 64 - std::__lg(n);\n\
     \n    u64 r;\n    u32 get_hash(const Key& k) const { return ((u64)k * r) >> shift;\
-    \ }\n\n    static constexpr uint8_t mod_msk = (1 << 6) - 1;\n\npublic:\n    explicit\
+    \ }\n\n    static constexpr int mod_msk = (1 << 6) - 1;\n\npublic:\n    explicit\
     \ constexpr hash_map() {\n        r = std::chrono::steady_clock::now().time_since_epoch().count();\n\
     \        r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const\
     \ Key& k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n        \
@@ -55,7 +55,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
   requiredBy: []
-  timestamp: '2023-05-01 12:49:55+00:00'
+  timestamp: '2023-05-04 13:33:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
