@@ -168,3 +168,6 @@ public:
     }
 };
 };  // namespace kyopro
+
+
+/// @docs docs/BST/lazy_reversible_rbst.md
