@@ -1,119 +1,106 @@
 #pragma once
 #include <cassert>
+#include <cstddef>
+#include <cstdint>
 namespace kyopro {
 /// @brief 動的セグメント木
 template <class S, S (*op)(S, S), S (*e)()>
 class dynamic_segtree {
 public:
-    dynamic_segtree(size_t n = 0) : n(n), root(nullptr) {}
+    constexpr explicit dynamic_segtree(std::size_t n = 0)
+        : n(n), root(nullptr) {
+        root = new Node();
+    }
+    ~dynamic_segtree() { delete root; }
 
 private:
-    struct node {
+    struct Node {
         S val;
-        node* left;
-        node* right;
+        Node *l, *r, *parent;
 
-        node(const S& v) : val(v), left(nullptr), right(nullptr) {}
+        constexpr explicit Node(const S& v = e(), Node* pt = nullptr)
+            : val(v), l(nullptr), r(nullptr), parent(pt) {}
+        ~Node() { delete l, delete r; }
     };
-    node* root;
-    size_t n;
+    using ptr = Node*;
+
+    Node* root;
+    const std::size_t n;
+
+private:
+    Node* find(const std::size_t i) {
+        assert(0 <= i && i < n);
+
+        std::size_t l = 0, r = n;
+
+        Node* p = root;
+
+        while (r - l > 1) {
+            std::size_t md = (r + l) >> 1;
+            if (i < md) {
+                if (!p->l) {
+                    p->l = new Node(e(), p);
+                }
+                p = p->l;
+                r = md;
+            } else {
+                if (!p->r) {
+                    p->r = new Node(e(), p);
+                }
+                p = p->r;
+                l = md;
+            }
+        }
+        return p;
+    }
+    void push(Node* p) {
+        while (p = p->parent) {
+            p->val = op((p->l ? p->l->val : e()), (p->r ? p->r->val : e()));
+        }
+    }
 
 public:
-    void update(size_t p, const S& x) {
-        assert(0 <= p && p < n);
-        internal_update(root, 0, n, p, x);
+    void apply(std::size_t i, const S& x) {
+        assert(0 <= i && i < n);
+        auto p = find(i);
+        p->val = op(p->val, x);
+        push(p);
     }
-    void add(const size_t& p, const S& x) {
-        assert(0 <= p && p < n);
-        internal_add(root, 0, n, p, x);
+    void update(std::size_t i, const S& x) {
+        assert(0 <= i && i < n);
+        auto p = find(i);
+        p->val = x;
+        push(p);
     }
-    S operator[](size_t p) {
-        assert(0 <= p && p < n);
-        return internal_access(root, 0, n, p);
+    S at(std::size_t i) {
+        assert(0 <= i && i < n);
+        return find(i)->val;
     }
-    S prod(size_t l, size_t r) {
+    S prod(std::size_t l, std::size_t r) const {
         assert(0 <= l && l <= r && r <= n);
         if (l == r) {
             return e();
         }
-
         return internal_prod(root, 0, n, l, r);
     }
 
 private:
-    void internal_update(node*& p,
-                         size_t l,
-                         size_t r,
-                         size_t idx,
-                         const S& new_val) {
-        if (p == nullptr) {
-            p = new node(e());
-        }
-
-        if (r - l == 1) {
-            p->val = new_val;
-            return;
-        }
-
-        size_t mid = (l + r) >> 1;
-        if (idx < mid)
-            internal_update(p->left, l, mid, idx, new_val);
-        else
-            internal_update(p->right, mid, r, idx, new_val);
-        p->val = e();
-        if (p->left != nullptr) p->val = op(p->left->val, p->val);
-        if (p->right != nullptr) p->val = op(p->val, p->right->val);
-    }
-    void internal_add(node*& p,
-                      size_t l,
-                      size_t r,
-                      size_t idx,
-                      const S& new_val) {
-        if (p == nullptr) {
-            p = new node(e());
-        }
-
-        if (r - l == 1) {
-            p->val = op(p->val, new_val);
-            return;
-        }
-
-        size_t mid = (l + r) >> 1;
-        if (idx < mid)
-            internal_add(p->left, l, mid, idx, new_val);
-        else
-            internal_add(p->right, mid, r, idx, new_val);
-        p->val = e();
-        if (p->left != nullptr) p->val = op(p->left->val, p->val);
-        if (p->right != nullptr) p->val = op(p->val, p->right->val);
-    }
-
-    S internal_access(node*& p, size_t l, size_t r, size_t idx) {
-        if (p == nullptr) {
-            return e();
-        }
-        if (r - l == 1) {
-            return p->val;
-        }
-
-        size_t mid = (l + r) >> 1;
-        if (idx < mid)
-            return internal_access(p->left, l, mid, idx);
-        else
-            return internal_access(p->right, mid, r, idx);
-    }
-
-    S internal_prod(node*& p, size_t l, size_t r, size_t L, size_t R) {
-        if (p == nullptr || r <= L || R <= l) {
+    /// TODO:非再帰にする
+    S internal_prod(const Node* p,
+                    std::size_t l,
+                    std::size_t r,
+                    std::size_t L,
+                    std::size_t R) const {
+        if (!p || r <= L || R <= l) {
             return e();
         }
         if (L <= l && r <= R) {
             return p->val;
         }
 
-        size_t mid = (l + r) >> 1;
-        return op(internal_prod(p->left, l, mid, L, R),
-                  internal_prod(p->right, mid, r, L, R));
+        std::size_t mid = (l + r) >> 1;
+        return op(internal_prod(p->l, l, mid, L, R),
+                  internal_prod(p->r, mid, r, L, R));
     }
 };
 };  // namespace kyopro

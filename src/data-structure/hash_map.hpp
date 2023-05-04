@@ -20,7 +20,7 @@ class hash_map {
     u64 r;
     u32 get_hash(const Key& k) const { return ((u64)k * r) >> shift; }
 
-    static constexpr uint8_t mod_msk = (1 << 6) - 1;
+    static constexpr int mod_msk = (1 << 6) - 1;
 
 public:
     explicit constexpr hash_map() {

@@ -29,7 +29,7 @@ public:
     void set(int p, const S& v) { dat[sz + p] = v; }
     void build() {
         for (int i = sz - 1; i > 0; i--) {
-            dat[i] = op(dat[i << 1], dat[(i << 1) ^ 1]);
+            dat[i] = op(dat[(i << 1) | 0], dat[(i << 1) | 1]);
         }
     }
     S operator[](int p) const { return dat[sz + p]; }
@@ -38,7 +38,7 @@ public:
         p += sz;
         dat[p] = v;
         while (p >>= 1) {
-            dat[p] = op(dat[(p << 1)], dat[(p << 1) ^ 1]);
+            dat[p] = op(dat[(p << 1) | 0], dat[(p << 1) | 1]);
         }
     }
 
