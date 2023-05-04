@@ -15,7 +15,7 @@
 "test/AOJ/NTL/1_E.test.cpp": "2023-05-01 12:49:55 +0000",
 "test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp": "2023-05-04 13:33:55 +0900",
 "test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp": "2023-05-04 01:12:43 +0900",
-"test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp": "2023-05-03 22:08:07 +0900",
+"test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp": "2023-05-04 04:52:18 +0000",
 "test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp": "2023-04-23 12:26:27 +0900",
 "test/yosupo_judge/data_structure/Persistent_Queue.test.cpp": "2023-04-23 12:26:27 +0900",
 "test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp": "2023-05-01 12:49:55 +0000",
@@ -33,6 +33,17 @@
 "test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp": "2023-05-03 22:08:07 +0900",
 "test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp": "2023-05-03 22:08:07 +0900",
 "test/yosupo_judge/graph/Shortest_Path.test.cpp": "2023-05-03 22:08:07 +0900",
+"test/yosupo_judge/math/Discrete_Logarithm.test.cpp": "2023-05-04 13:33:55 +0900",
+"test/yosupo_judge/math/Factorize.test.cpp": "2023-05-04 00:05:54 +0900",
+"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp": "2023-05-04 13:33:55 +0900",
+"test/yosupo_judge/math/Primitive_Root.test.cpp": "2023-05-04 00:05:54 +0900",
+"test/yosupo_judge/matrix/Matrix Product.test.cpp": "2023-05-03 22:08:07 +0900",
 "test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp": "2023-05-03 12:18:30 +0000",
-"test/yosupo_judge/string/Enumerate_Palindromes.test.cpp": "2023-04-09 21:30:24 +0900"
+"test/yosupo_judge/string/Enumerate_Palindromes.test.cpp": "2023-04-09 21:30:24 +0900",
+"test/yosupo_judge/string/Z_algorithm.test.cpp": "2023-05-03 22:08:07 +0900",
+"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp": "2023-05-03 22:08:07 +0900",
+"test/yosupo_judge/tree/Tree_Diameter.test.cpp": "2023-05-03 22:08:07 +0900",
+"test/yuki/No3030.test.cpp": "2023-05-04 00:09:34 +0900",
+"test/yuki/No430.test.cpp": "2023-05-04 13:33:55 +0900",
+"test/yuki/No789.test.cpp": "2023-05-04 13:33:55 +0900"
 }
