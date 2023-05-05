@@ -73,42 +73,40 @@ data:
     };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/internal/montgomery.hpp\"\
     \nnamespace kyopro {\nnamespace internal {\nusing u32 = uint32_t;\nusing u64 =\
     \ uint64_t;\nusing i32 = int32_t;\nusing i64 = int64_t;\nusing u128 = __uint128_t;\n\
-    using i128 = __int128_t;\n/// @brief MontgomeryReduction\n/// @ref \ntemplate\
-    \ <typename T>\nclass Montgomery {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
+    using i128 = __int128_t;\n/// @brief MontgomeryReduction\n/// @ref\ntemplate <typename\
+    \ T>\nclass Montgomery {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
     \    using LargeT = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n\
     \    T inv() {\n        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i)\
     \ {\n            if (~t & 1) {\n                t += mod;\n                res\
     \ += static_cast<T>(1) << i;\n            }\n            t >>= 1;\n        }\n\
     \        return res;\n    }\n\npublic:\n    Montgomery() = default;\n    constexpr\
-    \ T get_mod() { return mod; }\n    constexpr int get_lg() { return lg; }\n\n \
-    \   void set_mod(T m) {\n        assert(m > 0);\n        assert(m & 1);\n\n  \
-    \      mod = m;\n\n        r = (-static_cast<T>(mod)) % mod;\n        r2 = (-static_cast<LargeT>(mod))\
-    \ % mod;\n        minv = inv();\n    }\n\n    T reduce(LargeT x) const {\n   \
-    \     u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x) * minv)\
-    \ * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return res;\n\
-    \    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T mult(T\
-    \ x, T y) { return reduce((LargeT)x * y); }\n};\n};  // namespace internal\n};\
-    \  // namespace kyopro\n"
+    \ T get_mod() { return mod; }\n\n    void set_mod(T m) {\n        assert(m);\n\
+    \        assert(m & 1);\n\n        mod = m;\n\n        r = (-static_cast<T>(mod))\
+    \ % mod;\n        r2 = (-static_cast<LargeT>(mod)) % mod;\n        minv = inv();\n\
+    \    }\n\n    T reduce(LargeT x) const {\n        u64 res =\n            (x +\
+    \ static_cast<LargeT>(static_cast<T>(x) * minv) * mod) >> lg;\n\n        if (res\
+    \ >= mod) res -= mod;\n        return res;\n    }\n\n    T generate(LargeT x)\
+    \ { return reduce(x * r2); }\n\n    T mul(T x, T y) { return reduce((LargeT)x\
+    \ * y); }\n};\n};  // namespace internal\n};  // namespace kyopro\n"
   code: "#pragma once\n#include <cassert>\n#include <limits>\n#include <numeric>\n\
     #include \"../internal/type_traits.hpp\"\nnamespace kyopro {\nnamespace internal\
     \ {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing\
     \ i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n/// @brief\
-    \ MontgomeryReduction\n/// @ref \ntemplate <typename T>\nclass Montgomery {\n\
-    \    static constexpr int lg = std::numeric_limits<T>::digits;\n    using LargeT\
+    \ MontgomeryReduction\n/// @ref\ntemplate <typename T>\nclass Montgomery {\n \
+    \   static constexpr int lg = std::numeric_limits<T>::digits;\n    using LargeT\
     \ = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n    T inv() {\n\
     \        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i) {\n         \
     \   if (~t & 1) {\n                t += mod;\n                res += static_cast<T>(1)\
     \ << i;\n            }\n            t >>= 1;\n        }\n        return res;\n\
     \    }\n\npublic:\n    Montgomery() = default;\n    constexpr T get_mod() { return\
-    \ mod; }\n    constexpr int get_lg() { return lg; }\n\n    void set_mod(T m) {\n\
-    \        assert(m > 0);\n        assert(m & 1);\n\n        mod = m;\n\n      \
-    \  r = (-static_cast<T>(mod)) % mod;\n        r2 = (-static_cast<LargeT>(mod))\
-    \ % mod;\n        minv = inv();\n    }\n\n    T reduce(LargeT x) const {\n   \
-    \     u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x) * minv)\
-    \ * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return res;\n\
-    \    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T mult(T\
-    \ x, T y) { return reduce((LargeT)x * y); }\n};\n};  // namespace internal\n};\
-    \  // namespace kyopro"
+    \ mod; }\n\n    void set_mod(T m) {\n        assert(m);\n        assert(m & 1);\n\
+    \n        mod = m;\n\n        r = (-static_cast<T>(mod)) % mod;\n        r2 =\
+    \ (-static_cast<LargeT>(mod)) % mod;\n        minv = inv();\n    }\n\n    T reduce(LargeT\
+    \ x) const {\n        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x)\
+    \ * minv) * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return\
+    \ res;\n    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T\
+    \ mul(T x, T y) { return reduce((LargeT)x * y); }\n};\n};  // namespace internal\n\
+    };  // namespace kyopro"
   dependsOn:
   - src/internal/type_traits.hpp
   isVerificationFile: false
@@ -120,7 +118,7 @@ data:
   - src/math/mod_log.hpp
   - src/math/dynamic_modint.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-05-03 22:08:07+09:00'
+  timestamp: '2023-05-05 21:39:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
