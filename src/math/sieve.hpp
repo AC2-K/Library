@@ -1,20 +1,31 @@
-#pragma once
+#include <bitset>
 #include <vector>
 namespace kyopro {
 /// @brief エラトステネスの篩
-std::vector<bool> sieve(int N) {
-    std::vector<bool> primes(N + 1, true);
+/// @tparam ALLOC 確保しておくサイズ
+template <int ALLOC>
+class sieve {
+    std::bitset<ALLOC + 1> isp;
+    std::vector<int> prime_v;
 
-    primes[0] = false;
-    primes[1] = false;
-
-    for (int p = 2; p <= N; ++p) {
-        if (!primes[p]) continue;
-        for (int i = p * 2; i <= N; i += p) {
-            primes[i] = false;
+public:
+    constexpr sieve() : sieve(ALLOC) {}
+    constexpr sieve(int n) {
+        isp.flip();
+        isp[0] = isp[1] = 0;
+        for (int i = 2; i <= n; ++i) {
+            if (!isp[i]) continue;
+            prime_v.emplace_back(i);
+            if ((long long)i * i > n) continue;
+            for (int j = i * 2; j <= n; j += i) {
+                isp[j] = 0;
+            }
         }
     }
+    const std::vector<int>& primes() const { return prime_v; }
+    constexpr int num_of_primes() const { return prime_v.size(); }
+    constexpr int kth_prime(int i) const { return prime_v[i]; }
+    constexpr bool is_prime(int p) { return isp[p]; }
+};
 
-    return primes;
-}
 };  // namespace kyopro

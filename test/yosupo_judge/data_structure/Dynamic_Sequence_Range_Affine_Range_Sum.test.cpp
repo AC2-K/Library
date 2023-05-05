@@ -1,7 +1,8 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum"
-#include "../../../src/BST/lazy_reversible_rbst.hpp"
-#include "../../../src/math/static_modint.hpp"
+#define PROBLEM \
+    "https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum"
 #include <iostream>
+#include "../../../src/BST/lazy_reversible_bst.hpp"
+#include "../../../src/math/static_modint.hpp"
 using mint = kyopro::static_modint32<998244353>;
 using S = mint;
 inline S op(S a, S b) { return a + b; }
@@ -20,7 +21,8 @@ inline S mapping(S d, Affine f, int length) {
     return a * d + b * length;
 };
 int main() {
-    kyopro::lazy_reversible_rbst<S, Affine, op, e, composition, id, mapping>stree;
+    kyopro::lazy_reversible_bst<S, Affine, op, e, composition, id, mapping>
+        stree;
     int n, q;
     scanf("%d%d", &n, &q);
     for (int i = 0; i < n; ++i) {

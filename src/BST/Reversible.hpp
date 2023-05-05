@@ -13,7 +13,7 @@ namespace kyopro {
 /// @tparam op 演算
 /// @tparam e 単位元
 template <typename S, S (*op)(S, S), S (*e)()>
-class reversible_rbst {
+class reversible_bst {
     using u32 = uint32_t;
     xor_shift32 rng;
     struct Node {
@@ -98,7 +98,7 @@ class reversible_rbst {
     ptr root = nullptr;
 
 public:
-    constexpr explicit reversible_rbst():rng(2023){}
+    constexpr explicit reversible_bst() : rng(2023) {}
     void insert(int i, S a) {
         auto [l, r] = split(std::move(root), i);
         ptr item = std::make_unique<Node>(a, rng());

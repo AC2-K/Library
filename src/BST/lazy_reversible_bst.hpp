@@ -1,7 +1,7 @@
 #pragma once
+#include <cassert>
 #include <memory>
 #include <utility>
-#include <cassert>
 #include "../random/xor_shift.hpp"
 
 namespace kyopro {
@@ -12,7 +12,7 @@ namespace kyopro {
 /// @tparam e Sの単位元
 /// @tparam composition F上の二項演算
 /// @tparam id Fの単位元
-/// @tparam mapping 
+/// @tparam mapping
 /// @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
 template <typename S,
           class F,
@@ -21,7 +21,7 @@ template <typename S,
           F (*composition)(F, F),
           F (*id)(),
           S (*mapping)(S, F, int)>
-class lazy_reversible_rbst {
+class lazy_reversible_bst {
     using u32 = uint32_t;
     xor_shift32 rng;
     struct Node {
@@ -48,14 +48,13 @@ class lazy_reversible_rbst {
     int size(const ptr& p) const { return p ? p->size : 0; }
     S fold(const ptr& p) { return p ? p->prod : e(); }
 
-
     void update(const ptr& p) {
-        if(!p)return;
+        if (!p) return;
         p->size = size(p->l) + size(p->r) + 1;
         p->prod = op(p->value, op(fold(p->l), fold(p->r)));
     }
     void push(const ptr& p) {
-        if(!p)return;
+        if (!p) return;
         if (p->rev) {
             p->rev = false;
             std::swap(p->l, p->r);
@@ -72,9 +71,8 @@ class lazy_reversible_rbst {
                 p->r->prod = mapping(p->r->prod, p->lazy, size(p->r));
             }
 
-
-            p->value=mapping(p->value,p->lazy,1);
-            p->lazy=id();
+            p->value = mapping(p->value, p->lazy, 1);
+            p->lazy = id();
         }
 
         update(p);
@@ -99,13 +97,12 @@ class lazy_reversible_rbst {
 
             return {std::move(p), std::move(r)};
         }
-        
     }
 
     ptr merge(ptr l, ptr r) {
         if (!l) return r;
         if (!r) return l;
-        push(l),push(r);
+        push(l), push(r);
         if (l->priority < r->priority) {
             r->l = merge(std::move(l), std::move(r->l));
             update(r);
@@ -116,7 +113,7 @@ class lazy_reversible_rbst {
             return l;
         }
     }
-    
+
     void reverse(const ptr& p) {
         if (p) {
             p->rev ^= 1;
@@ -125,7 +122,7 @@ class lazy_reversible_rbst {
     ptr root = nullptr;
 
 public:
-    constexpr explicit lazy_reversible_rbst():rng(2023){}
+    constexpr explicit lazy_reversible_bst() : rng(2023) {}
     void insert(int i, S a) {
         auto [l, r] = split(std::move(root), i);
         ptr item = std::make_unique<Node>(a, rng());
@@ -138,7 +135,7 @@ public:
         auto [x, y] = split(std::move(xy), i);
         root = merge(std::move(x), std::move(z));
     }
-    
+
     S fold(int l, int r) {
         auto [xy, z] = split(std::move(root), r);
         auto [x, y] = split(std::move(xy), l);
@@ -147,7 +144,7 @@ public:
         root = merge(std::move(xy), std::move(z));
         return res;
     }
-    
+
     void apply(int l, int r, const F& f) {
         auto [xy, z] = split(std::move(root), r);
         auto [x, y] = split(std::move(xy), l);
@@ -158,7 +155,7 @@ public:
         xy = merge(std::move(x), std::move(y));
         root = merge(std::move(xy), std::move(z));
     }
-    
+
     void reverse(int l, int r) {
         auto [xy, z] = split(std::move(root), r);
         auto [x, y] = split(std::move(xy), l);
@@ -169,5 +166,4 @@ public:
 };
 };  // namespace kyopro
 
-
-/// @docs docs/BST/lazy_reversible_rbst.md
+/// @docs docs/BST/lazy_reversible_bst.md

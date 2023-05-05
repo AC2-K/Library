@@ -3,7 +3,7 @@
 #include"../../../src/math/sieve.hpp"
 int main(){
     constexpr int INPUT_MAX = 100000000;
-    const auto res = kyopro::sieve(INPUT_MAX);
+    kyopro::sieve<INPUT_MAX> solver;
 
     int n;
     scanf("%d",&n);
@@ -11,7 +11,7 @@ int main(){
     while(n--){
         int p;
         scanf("%d",&p);
-        if(res[p]){
+        if(solver.is_prime(p)){
             ans++;
         }
     }
