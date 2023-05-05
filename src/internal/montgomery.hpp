@@ -12,7 +12,7 @@ using i64 = int64_t;
 using u128 = __uint128_t;
 using i128 = __int128_t;
 /// @brief MontgomeryReduction
-/// @ref 
+/// @ref
 template <typename T>
 class Montgomery {
     static constexpr int lg = std::numeric_limits<T>::digits;
@@ -33,10 +33,9 @@ class Montgomery {
 public:
     Montgomery() = default;
     constexpr T get_mod() { return mod; }
-    constexpr int get_lg() { return lg; }
 
     void set_mod(T m) {
-        assert(m > 0);
+        assert(m);
         assert(m & 1);
 
         mod = m;
@@ -56,7 +55,7 @@ public:
 
     T generate(LargeT x) { return reduce(x * r2); }
 
-    T mult(T x, T y) { return reduce((LargeT)x * y); }
+    T mul(T x, T y) { return reduce((LargeT)x * y); }
 };
 };  // namespace internal
 };  // namespace kyopro

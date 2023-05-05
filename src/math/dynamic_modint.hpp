@@ -4,7 +4,6 @@
 #include "../internal/barrett.hpp"
 #include "../internal/montgomery.hpp"
 namespace kyopro {
-/// @note mod は32bitじゃないとバグる
 template <int id = -1>
 class barrett_modint {
     using u32 = uint32_t;
@@ -16,7 +15,8 @@ class barrett_modint {
 
     static br brt;
     static u32 mod;
-    u32 v;  // value
+    u32 v;
+
 public:
     static void set_mod(u32 mod_) {
         brt = br(mod_);
@@ -24,9 +24,7 @@ public:
     }
 
 public:
-    explicit constexpr barrett_modint() : v(0) {
-        assert(mod);
-    }
+    explicit constexpr barrett_modint() : v(0) { assert(mod); }
     explicit constexpr barrett_modint(i64 v_) : v(brt.reduce(v_)) {
         assert(mod);
     }
@@ -156,7 +154,7 @@ public:
     }
 
     mint& operator*=(const mint& r) {
-        v = mr.mult(v, r.v);
+        v = mr.mul(v, r.v);
         return (*this);
     }
 

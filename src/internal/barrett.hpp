@@ -11,9 +11,8 @@ class barrett {
     u64 im;
 
 public:
-    explicit barrett() = default;
-    explicit barrett(u64 m_)
-        : m(m_), im((u64)(long double)static_cast<u64>(-1) / m_ + 1) {}
+    barrett() = default;
+    explicit barrett(u64 m_) : m(m_), im(static_cast<u64>(-1) / m_ + 1) {}
 
     u64 get_mod() const { return m; }
     constexpr u64 reduce(int64_t a) const {
