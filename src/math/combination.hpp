@@ -1,12 +1,12 @@
 #pragma once
-#include"internal/barrett.hpp"
-#include<cassert>
+#include <cassert>
+#include "../internal/barrett.hpp"
 namespace kyopro {
 template <int MAX>
 class dynamic_combination {
     int fac[MAX], ifac[MAX];
     int m;
-    constexpr int fact_pow(int a, int p) {
+    constexpr int fast_pow(int a, int p) {
         int ans = 1;
         while (p) {
             if (p & 1) ans = bar.mul(ans, a);
@@ -15,24 +15,21 @@ class dynamic_combination {
         }
         return ans;
     }
-    void build() {
+
+    internal::barrett bar;
+
+public:
+    constexpr dynamic_combination(int modulo) : m(modulo), bar(modulo) {
         fac[0] = ifac[0] = fac[1] = ifac[1] = 1;
         int N = std::min(m, MAX);
         for (int i = 2; i < N; ++i) {
             fac[i] = bar.mul(fac[i - 1], i);
         }
 
-        ifac[N - 1] = fact_pow(fac[N - 1], m - 2);
+        ifac[N - 1] = fast_pow(fac[N - 1], m - 2);
         for (int i = N - 2; i > 1; --i) {
             ifac[i] = bar.mul(ifac[i + 1], i + 1);
         }
-    }
-
-    internal::barrett bar;
-
-public:
-    constexpr dynamic_combination(int modulo) : m(modulo), bar(modulo) {
-        build();
     }
 
     constexpr int binom(int n, int r) const {
