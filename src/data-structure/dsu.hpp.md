@@ -1,17 +1,11 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: src/graph/mst.hpp
-    title: "\u6700\u5C0F\u5168\u57DF\u6728"
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/1_A.test.cpp
     title: test/AOJ/DSL/1_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/AOJ/GRL/2_A.test.cpp
-    title: test/AOJ/GRL/2_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
@@ -47,13 +41,11 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/dsu.hpp
-  requiredBy:
-  - src/graph/mst.hpp
+  requiredBy: []
   timestamp: '2023-04-23 12:26:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/1_A.test.cpp
-  - test/AOJ/GRL/2_A.test.cpp
   - test/yosupo_judge/data_structure/UnionFind.test.cpp
 documentation_of: src/data-structure/dsu.hpp
 layout: document

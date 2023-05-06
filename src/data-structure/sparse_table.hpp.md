@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: src/graph/euler_tour.hpp
+    path: src/tree/EulerTour.hpp
     title: EulerTour
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -67,7 +67,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/sparse_table.hpp
   requiredBy:
-  - src/graph/euler_tour.hpp
+  - src/tree/EulerTour.hpp
   timestamp: '2023-05-03 22:08:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

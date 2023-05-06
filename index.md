@@ -80,21 +80,15 @@ data:
       title: src/template.hpp
   - name: src/graph
     pages:
+    - icon: ':warning:'
+      path: src/graph/Namori.hpp
+      title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
+    - icon: ':warning:'
+      path: src/graph/TopologialSort.hpp
+      title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
     - icon: ':heavy_check_mark:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
-    - icon: ':heavy_check_mark:'
-      path: src/graph/euler_tour.hpp
-      title: EulerTour
-    - icon: ':heavy_check_mark:'
-      path: src/graph/mst.hpp
-      title: "\u6700\u5C0F\u5168\u57DF\u6728"
-    - icon: ':warning:'
-      path: src/graph/namori.hpp
-      title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
-    - icon: ':warning:'
-      path: src/graph/topological_sort.hpp
-      title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
   - name: src/internal
     pages:
     - icon: ':heavy_check_mark:'
@@ -108,7 +102,7 @@ data:
       title: src/internal/type_traits.hpp
   - name: src/math
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/math/combination.hpp
       title: "\u4E8C\u9805\u4FC2\u6570"
     - icon: ':heavy_check_mark:'
@@ -171,6 +165,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
+  - name: src/tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/tree/EulerTour.hpp
+      title: EulerTour
   verificationCategories:
   - name: test/AOJ/ALDS
     pages:
@@ -205,9 +204,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/1_A.test.cpp
       title: test/AOJ/GRL/1_A.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/AOJ/GRL/2_A.test.cpp
-      title: test/AOJ/GRL/2_A.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/5_C.test.cpp
       title: test/AOJ/GRL/5_C.test.cpp
@@ -307,6 +303,9 @@ data:
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/new
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+      title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
       title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp

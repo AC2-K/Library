@@ -5,7 +5,7 @@ data:
     path: src/data-structure/sparse_table.hpp
     title: Sparse Table
   - icon: ':heavy_check_mark:'
-    path: src/graph/euler_tour.hpp
+    path: src/tree/EulerTour.hpp
     title: EulerTour
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -19,7 +19,7 @@ data:
     - https://judge.yosupo.jp/problem/lca
   bundledCode: "#line 1 \"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include<iostream>\n\
-    #line 2 \"src/graph/euler_tour.hpp\"\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
+    #line 2 \"src/tree/EulerTour.hpp\"\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
     \n#include <numeric>\n#include <vector>\nnamespace kyopro {\n/// @brief Sparse\
     \ Table\n/// @note \u533A\u9593\u6700\u5C0F\u3057\u304B\u5BFE\u5FDC\u3057\u3066\
     \u306A\u3044...\ntemplate <class T>\nclass sparse_table {\n    std::vector<T>\
@@ -37,7 +37,7 @@ data:
     \ look_up[i] = look_up[i >> 1] + 1;\n        }\n    }\n\n    T prod(int l, int\
     \ r) {\n        int b = look_up[r - l];\n        return std::min(table[b][l],\
     \ table[b][r - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/sparse_table.md\n\
-    #line 4 \"src/graph/euler_tour.hpp\"\nnamespace kyopro {\n/// @brief EulerTour\n\
+    #line 4 \"src/tree/EulerTour.hpp\"\nnamespace kyopro {\n/// @brief EulerTour\n\
     class EulerTour {\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
     \ tour;\n    std::vector<int> in, out, depth;\n    sparse_table<std::pair<int,\
     \ int>> rmq;\n\npublic:\n    EulerTour(int n)\n        : n(n), g(n), in(n, -1),\
@@ -66,19 +66,19 @@ data:
     \    while (q--) {\n        int u, v;\n        scanf(\"%d%d\",&u,&v);\n      \
     \  printf(\"%d\\n\",g.lca(u, v));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include<iostream>\n\
-    #include\"../../../src/graph/euler_tour.hpp\"\nusing namespace std;\nint main(){\n\
+    #include\"../../../src/tree/EulerTour.hpp\"\nusing namespace std;\nint main(){\n\
     \    int n, q;\n    scanf(\"%d%d\",&n,&q);\n    kyopro::EulerTour g(n);\n    for\
     \ (int i = 1; i < n; i++) {\n        int p;\n        scanf(\"%d\", &p);\n    \
     \    g.add_edge(p, i);\n    }\n    g.build();\n    while (q--) {\n        int\
     \ u, v;\n        scanf(\"%d%d\",&u,&v);\n        printf(\"%d\\n\",g.lca(u, v));\n\
     \    }\n}"
   dependsOn:
-  - src/graph/euler_tour.hpp
+  - src/tree/EulerTour.hpp
   - src/data-structure/sparse_table.hpp
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-05-03 22:08:07+09:00'
+  timestamp: '2023-05-06 02:06:48+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp

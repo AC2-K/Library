@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/math/combination.hpp
+    title: "\u4E8C\u9805\u4FC2\u6570"
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: dynamic modint
   - icon: ':heavy_check_mark:'
@@ -33,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+    title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
@@ -77,6 +83,7 @@ data:
   - src/math/miller.hpp
   - src/math/rho.hpp
   - src/math/mod_log.hpp
+  - src/math/combination.hpp
   - src/math/dynamic_modint.hpp
   - src/math/phi_function.hpp
   timestamp: '2023-05-05 21:39:44+09:00'
@@ -87,6 +94,7 @@ data:
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
 documentation_of: src/internal/barrett.hpp
 layout: document
 redirect_from:

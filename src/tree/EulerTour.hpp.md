@@ -24,8 +24,8 @@ data:
   attributes:
     document_title: EulerTour
     links: []
-  bundledCode: "#line 2 \"src/graph/euler_tour.hpp\"\n#include <utility>\n#line 2\
-    \ \"src/data-structure/sparse_table.hpp\"\n#include <numeric>\n#include <vector>\n\
+  bundledCode: "#line 2 \"src/tree/EulerTour.hpp\"\n#include <utility>\n#line 2 \"\
+    src/data-structure/sparse_table.hpp\"\n#include <numeric>\n#include <vector>\n\
     namespace kyopro {\n/// @brief Sparse Table\n/// @note \u533A\u9593\u6700\u5C0F\
     \u3057\u304B\u5BFE\u5FDC\u3057\u3066\u306A\u3044...\ntemplate <class T>\nclass\
     \ sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n\
@@ -43,7 +43,7 @@ data:
     \ + 1;\n        }\n    }\n\n    T prod(int l, int r) {\n        int b = look_up[r\
     \ - l];\n        return std::min(table[b][l], table[b][r - (1 << b)]);\n    }\n\
     };\n};  // namespace kyopro\n\n/// @docs docs/data-structure/sparse_table.md\n\
-    #line 4 \"src/graph/euler_tour.hpp\"\nnamespace kyopro {\n/// @brief EulerTour\n\
+    #line 4 \"src/tree/EulerTour.hpp\"\nnamespace kyopro {\n/// @brief EulerTour\n\
     class EulerTour {\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
     \ tour;\n    std::vector<int> in, out, depth;\n    sparse_table<std::pair<int,\
     \ int>> rmq;\n\npublic:\n    EulerTour(int n)\n        : n(n), g(n), in(n, -1),\
@@ -93,19 +93,19 @@ data:
   dependsOn:
   - src/data-structure/sparse_table.hpp
   isVerificationFile: false
-  path: src/graph/euler_tour.hpp
+  path: src/tree/EulerTour.hpp
   requiredBy: []
-  timestamp: '2023-05-03 22:08:07+09:00'
+  timestamp: '2023-05-06 02:06:48+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/5_C.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-documentation_of: src/graph/euler_tour.hpp
+documentation_of: src/tree/EulerTour.hpp
 layout: document
 redirect_from:
-- /library/src/graph/euler_tour.hpp
-- /library/src/graph/euler_tour.hpp.html
+- /library/src/tree/EulerTour.hpp
+- /library/src/tree/EulerTour.hpp.html
 title: EulerTour
 ---
