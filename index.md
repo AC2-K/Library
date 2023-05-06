@@ -22,7 +22,7 @@ data:
       path: src/BST/Treap.hpp
       title: Treap
     - icon: ':heavy_check_mark:'
-      path: src/BST/lazy_reversible_rbst.hpp
+      path: src/BST/lazy_reversible_bst.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
         \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
   - name: src/algorithm

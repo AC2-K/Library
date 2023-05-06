@@ -32,7 +32,7 @@ data:
     \nnamespace kyopro {\n/// @brief \u53CD\u8EE2\u53EF\u80FD\u62BD\u8C61\u5316\u5E73\
     \u8861\u4E8C\u5206\u63A2\u7D22\u6728\n/// @tparam S \u30E2\u30CE\u30A4\u30C9\n\
     /// @tparam op \u6F14\u7B97\n/// @tparam e \u5358\u4F4D\u5143\ntemplate <typename\
-    \ S, S (*op)(S, S), S (*e)()>\nclass reversible_rbst {\n    using u32 = uint32_t;\n\
+    \ S, S (*op)(S, S), S (*e)()>\nclass reversible_bst {\n    using u32 = uint32_t;\n\
     \    xor_shift32 rng;\n    struct Node {\n        std::unique_ptr<Node> l, r;\n\
     \        u32 priority;\n        S value, prod;\n        int size;\n        bool\
     \ rev;\n\n        Node(S v, u32 prio)\n            : l(),\n              r(),\n\
@@ -58,8 +58,8 @@ data:
     \       return r;\n        } else {\n            push(l);\n            l->r =\
     \ merge(std::move(l->r), std::move(r));\n            update(l);\n\n          \
     \  return l;\n        }\n    }\n\n    ptr root = nullptr;\n\npublic:\n    constexpr\
-    \ explicit reversible_rbst():rng(2023){}\n    void insert(int i, S a) {\n    \
-    \    auto [l, r] = split(std::move(root), i);\n        ptr item = std::make_unique<Node>(a,\
+    \ explicit reversible_bst() : rng(2023) {}\n    void insert(int i, S a) {\n  \
+    \      auto [l, r] = split(std::move(root), i);\n        ptr item = std::make_unique<Node>(a,\
     \ rng());\n        root = merge(std::move(l), std::move(item));\n        root\
     \ = merge(std::move(root), std::move(r));\n    }\n    S fold(int l, int r) {\n\
     \        assert(0 <= l && l <= r && r <= size(root));\n        auto [xy, z] =\
@@ -76,7 +76,7 @@ data:
     \nnamespace kyopro {\n/// @brief \u53CD\u8EE2\u53EF\u80FD\u62BD\u8C61\u5316\u5E73\
     \u8861\u4E8C\u5206\u63A2\u7D22\u6728\n/// @tparam S \u30E2\u30CE\u30A4\u30C9\n\
     /// @tparam op \u6F14\u7B97\n/// @tparam e \u5358\u4F4D\u5143\ntemplate <typename\
-    \ S, S (*op)(S, S), S (*e)()>\nclass reversible_rbst {\n    using u32 = uint32_t;\n\
+    \ S, S (*op)(S, S), S (*e)()>\nclass reversible_bst {\n    using u32 = uint32_t;\n\
     \    xor_shift32 rng;\n    struct Node {\n        std::unique_ptr<Node> l, r;\n\
     \        u32 priority;\n        S value, prod;\n        int size;\n        bool\
     \ rev;\n\n        Node(S v, u32 prio)\n            : l(),\n              r(),\n\
@@ -102,8 +102,8 @@ data:
     \       return r;\n        } else {\n            push(l);\n            l->r =\
     \ merge(std::move(l->r), std::move(r));\n            update(l);\n\n          \
     \  return l;\n        }\n    }\n\n    ptr root = nullptr;\n\npublic:\n    constexpr\
-    \ explicit reversible_rbst():rng(2023){}\n    void insert(int i, S a) {\n    \
-    \    auto [l, r] = split(std::move(root), i);\n        ptr item = std::make_unique<Node>(a,\
+    \ explicit reversible_bst() : rng(2023) {}\n    void insert(int i, S a) {\n  \
+    \      auto [l, r] = split(std::move(root), i);\n        ptr item = std::make_unique<Node>(a,\
     \ rng());\n        root = merge(std::move(l), std::move(item));\n        root\
     \ = merge(std::move(root), std::move(r));\n    }\n    S fold(int l, int r) {\n\
     \        assert(0 <= l && l <= r && r <= size(root));\n        auto [xy, z] =\
@@ -120,7 +120,7 @@ data:
   isVerificationFile: false
   path: src/BST/Reversible.hpp
   requiredBy: []
-  timestamp: '2023-05-03 12:18:30+00:00'
+  timestamp: '2023-05-06 08:11:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp

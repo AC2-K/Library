@@ -12,24 +12,37 @@ data:
   attributes:
     document_title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     links: []
-  bundledCode: "#line 2 \"src/math/sieve.hpp\"\n#include <vector>\nnamespace kyopro\
-    \ {\n/// @brief \u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9\nstd::vector<bool>\
-    \ sieve(int N) {\n    std::vector<bool> primes(N + 1, true);\n\n    primes[0]\
-    \ = false;\n    primes[1] = false;\n\n    for (int p = 2; p <= N; ++p) {\n   \
-    \     if (!primes[p]) continue;\n        for (int i = p * 2; i <= N; i += p) {\n\
-    \            primes[i] = false;\n        }\n    }\n\n    return primes;\n}\n};\
-    \  // namespace kyopro\n"
-  code: "#pragma once\n#include <vector>\nnamespace kyopro {\n/// @brief \u30A8\u30E9\
-    \u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9\nstd::vector<bool> sieve(int N) {\n\
-    \    std::vector<bool> primes(N + 1, true);\n\n    primes[0] = false;\n    primes[1]\
-    \ = false;\n\n    for (int p = 2; p <= N; ++p) {\n        if (!primes[p]) continue;\n\
-    \        for (int i = p * 2; i <= N; i += p) {\n            primes[i] = false;\n\
-    \        }\n    }\n\n    return primes;\n}\n};  // namespace kyopro"
+  bundledCode: "#line 1 \"src/math/sieve.hpp\"\n#include <bitset>\n#include <vector>\n\
+    namespace kyopro {\n/// @brief \u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\
+    \u7BE9\n/// @tparam ALLOC \u78BA\u4FDD\u3057\u3066\u304A\u304F\u30B5\u30A4\u30BA\
+    \ntemplate <int ALLOC>\nclass sieve {\n    std::bitset<ALLOC + 1> isp;\n    std::vector<int>\
+    \ prime_v;\n\npublic:\n    constexpr sieve() : sieve(ALLOC) {}\n    constexpr\
+    \ sieve(int n) {\n        isp.flip();\n        isp[0] = isp[1] = 0;\n        for\
+    \ (int i = 2; i <= n; ++i) {\n            if (!isp[i]) continue;\n           \
+    \ prime_v.emplace_back(i);\n            if ((long long)i * i > n) continue;\n\
+    \            for (int j = i * 2; j <= n; j += i) {\n                isp[j] = 0;\n\
+    \            }\n        }\n    }\n    const std::vector<int>& primes() const {\
+    \ return prime_v; }\n    constexpr int num_of_primes() const { return prime_v.size();\
+    \ }\n    constexpr int kth_prime(int i) const { return prime_v[i]; }\n    constexpr\
+    \ bool is_prime(int p) { return isp[p]; }\n};\n\n};  // namespace kyopro\n"
+  code: "#include <bitset>\n#include <vector>\nnamespace kyopro {\n/// @brief \u30A8\
+    \u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9\n/// @tparam ALLOC \u78BA\u4FDD\
+    \u3057\u3066\u304A\u304F\u30B5\u30A4\u30BA\ntemplate <int ALLOC>\nclass sieve\
+    \ {\n    std::bitset<ALLOC + 1> isp;\n    std::vector<int> prime_v;\n\npublic:\n\
+    \    constexpr sieve() : sieve(ALLOC) {}\n    constexpr sieve(int n) {\n     \
+    \   isp.flip();\n        isp[0] = isp[1] = 0;\n        for (int i = 2; i <= n;\
+    \ ++i) {\n            if (!isp[i]) continue;\n            prime_v.emplace_back(i);\n\
+    \            if ((long long)i * i > n) continue;\n            for (int j = i *\
+    \ 2; j <= n; j += i) {\n                isp[j] = 0;\n            }\n        }\n\
+    \    }\n    const std::vector<int>& primes() const { return prime_v; }\n    constexpr\
+    \ int num_of_primes() const { return prime_v.size(); }\n    constexpr int kth_prime(int\
+    \ i) const { return prime_v[i]; }\n    constexpr bool is_prime(int p) { return\
+    \ isp[p]; }\n};\n\n};  // namespace kyopro"
   dependsOn: []
   isVerificationFile: false
   path: src/math/sieve.hpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-05-06 08:11:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/ALDS/1_C.test.cpp
