@@ -59,18 +59,17 @@ data:
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
     \ a;\n}\n};  // namespace kyopro\n#line 3 \"src/math/dynamic_modint.hpp\"\n#include\
-    \ <iostream>\n#line 2 \"src/internal/barrett.hpp\"\nnamespace kyopro {\nnamespace\
-    \ internal {\n/// @brief barrett reduction\n/// @ref https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
-    class barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64\
-    \ m;\n    u64 im;\n\npublic:\n    barrett() = default;\n    explicit barrett(u64\
-    \ m_) : m(m_), im(static_cast<u64>(-1) / m_ + 1) {}\n\n    u64 get_mod() const\
-    \ { return m; }\n    constexpr u64 reduce(int64_t a) const {\n        if (a <\
-    \ 0) return m - reduce(-a);\n        u64 q = ((__uint128_t)a * im) >> 64;\n  \
-    \      a -= m * q;\n        if (a >= m) a -= m;\n        return a;\n    }\n  \
-    \  constexpr u64 mul(u64 a, u64 b) const {\n        if (a == 0 || b == 0) {\n\
-    \            return 0;\n        }\n        u64 z = a;\n        z *= b;\n     \
-    \   u64 x = (u64)(((__uint128_t)z * im) >> 64);\n\n        u32 v = (u32)(z - x\
-    \ * m);\n\n        if (v >= m) v += m;\n        return v;\n    }\n};\n};  // namespace\
+    \ <iostream>\n#line 2 \"src/internal/barrett.hpp\"\n#include <cstdint>\nnamespace\
+    \ kyopro {\nnamespace internal {\n/// @brief barrett reduction\n/// @ref\n///\
+    \ https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    class barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u32\
+    \ m;\n    u64 im;\n\npublic:\n    constexpr barrett() : m(0), im(0) {}\n    constexpr\
+    \ barrett(u32 m_)\n        : m(m_), im((u64) static_cast<u64>(-1) / m_ + 1) {}\n\
+    \n    constexpr u32 get_mod() const { return m; }\n    constexpr u32 reduce(int64_t\
+    \ a) const { return mul(a, 1); }\n    constexpr u32 mul(u32 a, u32 b) const {\n\
+    \        if (!a || !b) {\n            return 0;\n        }\n        u64 z = (u64)a\
+    \ * b;\n        u64 x = (u64)(((__uint128_t)z * im) >> 64);\n\n        u64 y =\
+    \ x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace\
     \ internal\n};  // namespace kyopro\n#line 3 \"src/internal/montgomery.hpp\"\n\
     #include <limits>\n#include <numeric>\n#line 5 \"src/internal/type_traits.hpp\"\
     \n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/// @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
@@ -206,10 +205,10 @@ data:
     \ <= 1 << 30) {\n        return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\
     \ bases_int, 3>(n);\n    } else {\n        return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\
     \ bases_ll, 7>(n);\n    }\n    return false;\n}\n};  // namespace miller\n}; \
-    \ // namespace kyopro\n#line 2 \"src/random/xor_shift.hpp\"\n#include <cstdint>\n\
-    #include <random>\n#include <chrono>\n\nnamespace kyopro {\nstruct xor_shift32\
-    \ {\n    uint32_t rng;\n    constexpr explicit xor_shift32(uint32_t seed) : rng(seed)\
-    \ {}\n    explicit xor_shift32():rng(std::chrono::steady_clock::now().time_since_epoch().count()){}\n\
+    \ // namespace kyopro\n#line 3 \"src/random/xor_shift.hpp\"\n#include <random>\n\
+    #include <chrono>\n\nnamespace kyopro {\nstruct xor_shift32 {\n    uint32_t rng;\n\
+    \    constexpr explicit xor_shift32(uint32_t seed) : rng(seed) {}\n    explicit\
+    \ xor_shift32():rng(std::chrono::steady_clock::now().time_since_epoch().count()){}\n\
     \    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n        rng\
     \ ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n};\n\n\
     struct xor_shift{\n    uint64_t rng;\n    constexpr xor_shift(uint64_t seed):rng(seed){}\n\
@@ -290,7 +289,7 @@ data:
   requiredBy:
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-05-05 21:39:44+09:00'
+  timestamp: '2023-05-06 03:56:17+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

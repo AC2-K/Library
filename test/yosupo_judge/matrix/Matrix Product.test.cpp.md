@@ -25,33 +25,34 @@ data:
     #line 2 \"src/math/matrix.hpp\"\n#include <utility>\n#include <vector>\n#include\
     \ <cassert>\nnamespace kyopro {\n/// @brief \u884C\u5217\ntemplate <typename T>\n\
     class Matrix {\n    std::vector<std::vector<T>> dat;\n    int h = 0, w = 0;\n\n\
-    public:\n    Matrix(const std::vector<std::vector<T>>& dat)\n        : dat(dat),\
-    \ h(dat.size()), w(dat.front().size()) {}\n\n    Matrix(int h_, int w_, T v =\
-    \ T()) : dat(h_, std::vector<T>(w_, v)) {}\n\n    using mat = Matrix<T>;\n   \
-    \ // access\n    std::vector<T>& operator[](int i) { return dat[i]; }\n\n    //\
-    \ operator\n    mat& operator+=(const mat& r) {\n        assert(r.h == this->h);\n\
-    \        assert(r.w == this->w);\n        for (int i = 0; i < h; i++) {\n    \
-    \        for (int j = 0; j < w; j++) {\n                dat[i][j] += r.dat[i][j];\n\
-    \            }\n        }\n        return (*this);\n    }\n    mat& operator-=(const\
-    \ mat& r) {\n        assert(r.h == this->h);\n        assert(r.w == this->w);\n\
-    \        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++)\
-    \ {\n                dat[i][j] -= r.dat[i][j];\n            }\n        }\n   \
-    \     return (*this);\n    }\n\n    mat& operator*=(const mat& r) {\n        int\
-    \ ha = dat.size(), wa = dat.front().size();\n        int hb = r.dat.size(), wb\
-    \ = r.dat.front().size();\n        assert(wa == hb);\n\n        std::vector<std::vector<T>>\
-    \ res(ha, std::vector<T>(wb));\n        for (int i = 0; i < ha; i++) {\n     \
-    \       for (int k = 0; k < wa; k++) {\n                for (int j = 0; j < wb;\
-    \ j++) {\n                    res[i][j] += dat[i][k] * r.dat[k][j];\n        \
-    \        }\n            }\n        }\n\n        std::swap(res, dat);\n       \
-    \ return (*this);\n    }\n\n    mat operator+(const mat& r) { return mat(*this)\
-    \ += r; }\n    mat operator-(const mat& r) { return mat(*this) -= r; }\n    mat\
-    \ operator*(const mat& r) { return mat(*this) *= r; }\n\n    template <typename\
-    \ P>\n    mat pow(P e) const {\n        assert(e >= 0);\n        int n = dat.size();\n\
-    \        mat res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i\
-    \ < n; i++) res[i][i] = 1;\n\n        while (e) {\n            if (e & 1) res\
-    \ *= pr;\n            pr *= pr;\n\n            e >>= 1;\n        }\n\n       \
-    \ return res;\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/math/matrix.md\n\
-    #line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
+    public:\n    constexpr Matrix(const std::vector<std::vector<T>>& dat)\n      \
+    \  : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    constexpr Matrix(int\
+    \ h_, int w_, T v = T()) : dat(h_, std::vector<T>(w_, v)) {}\n\n    using mat\
+    \ = Matrix<T>;\n    // access\n    constexpr std::vector<T>& operator[](int i)\
+    \ { return dat[i]; }\n\n    // operator\n    constexpr mat& operator+=(const mat&\
+    \ r) {\n        assert(r.h == this->h);\n        assert(r.w == this->w);\n   \
+    \     for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n\
+    \                dat[i][j] += r.dat[i][j];\n            }\n        }\n       \
+    \ return (*this);\n    }\n    constexpr mat& operator-=(const mat& r) {\n    \
+    \    assert(r.h == this->h);\n        assert(r.w == this->w);\n        for (int\
+    \ i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n          \
+    \      dat[i][j] -= r.dat[i][j];\n            }\n        }\n        return (*this);\n\
+    \    }\n\n    constexpr mat& operator*=(const mat& r) {\n        int ha = dat.size(),\
+    \ wa = dat.front().size();\n        int hb = r.dat.size(), wb = r.dat.front().size();\n\
+    \        assert(wa == hb);\n\n        std::vector<std::vector<T>> res(ha, std::vector<T>(wb));\n\
+    \        for (int i = 0; i < ha; i++) {\n            for (int k = 0; k < wa; k++)\
+    \ {\n                for (int j = 0; j < wb; j++) {\n                    res[i][j]\
+    \ += dat[i][k] * r.dat[k][j];\n                }\n            }\n        }\n\n\
+    \        std::swap(res, dat);\n        return (*this);\n    }\n\n    constexpr\
+    \ mat operator+(const mat& r) { return mat(*this) += r; }\n    constexpr mat operator-(const\
+    \ mat& r) { return mat(*this) -= r; }\n    constexpr mat operator*(const mat&\
+    \ r) { return mat(*this) *= r; }\n\n    template <typename P>\n    constexpr mat\
+    \ pow(P e) const {\n        assert(e >= 0);\n        int n = dat.size();\n   \
+    \     mat res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n;\
+    \ i++) res[i][i] = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n\
+    \            pr *= pr;\n\n            e >>= 1;\n        }\n\n        return res;\n\
+    \    }\n};\n};  // namespace kyopro\n\n/// @docs docs/math/matrix.md\n#line 3\
+    \ \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
     \ T>\nconstexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n   \
     \ if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
@@ -185,7 +186,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-05-03 22:08:07+09:00'
+  timestamp: '2023-05-06 03:56:17+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp

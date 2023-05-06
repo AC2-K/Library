@@ -104,7 +104,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/math/combination.hpp
-      title: "\u4E8C\u9805\u4FC2\u6570"
+      title: "\u4E8C\u9805\u4FC2\u6570\u306A\u3069"
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: dynamic modint
@@ -123,9 +123,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/mod_pow.hpp
       title: "mod pow(\u7E70\u308A\u8FD4\u3057\u30CB\u4E57\u6CD5)"
-    - icon: ':warning:'
-      path: src/math/osak.hpp
-      title: "Osak\u6CD5"
     - icon: ':heavy_check_mark:'
       path: src/math/phi_function.hpp
       title: "phi function($\\phi$ \u95A2\u6570)"

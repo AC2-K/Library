@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/math/combination.hpp
-    title: "\u4E8C\u9805\u4FC2\u6570"
+    title: "\u4E8C\u9805\u4FC2\u6570\u306A\u3069"
   - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: dynamic modint
@@ -49,31 +49,28 @@ data:
     document_title: barrett reduction
     links:
     - https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp
-  bundledCode: "#line 2 \"src/internal/barrett.hpp\"\nnamespace kyopro {\nnamespace\
-    \ internal {\n/// @brief barrett reduction\n/// @ref https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
-    class barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64\
-    \ m;\n    u64 im;\n\npublic:\n    barrett() = default;\n    explicit barrett(u64\
-    \ m_) : m(m_), im(static_cast<u64>(-1) / m_ + 1) {}\n\n    u64 get_mod() const\
-    \ { return m; }\n    constexpr u64 reduce(int64_t a) const {\n        if (a <\
-    \ 0) return m - reduce(-a);\n        u64 q = ((__uint128_t)a * im) >> 64;\n  \
-    \      a -= m * q;\n        if (a >= m) a -= m;\n        return a;\n    }\n  \
-    \  constexpr u64 mul(u64 a, u64 b) const {\n        if (a == 0 || b == 0) {\n\
-    \            return 0;\n        }\n        u64 z = a;\n        z *= b;\n     \
-    \   u64 x = (u64)(((__uint128_t)z * im) >> 64);\n\n        u32 v = (u32)(z - x\
-    \ * m);\n\n        if (v >= m) v += m;\n        return v;\n    }\n};\n};  // namespace\
+  bundledCode: "#line 2 \"src/internal/barrett.hpp\"\n#include <cstdint>\nnamespace\
+    \ kyopro {\nnamespace internal {\n/// @brief barrett reduction\n/// @ref\n///\
+    \ https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    class barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u32\
+    \ m;\n    u64 im;\n\npublic:\n    constexpr barrett() : m(0), im(0) {}\n    constexpr\
+    \ barrett(u32 m_)\n        : m(m_), im((u64) static_cast<u64>(-1) / m_ + 1) {}\n\
+    \n    constexpr u32 get_mod() const { return m; }\n    constexpr u32 reduce(int64_t\
+    \ a) const { return mul(a, 1); }\n    constexpr u32 mul(u32 a, u32 b) const {\n\
+    \        if (!a || !b) {\n            return 0;\n        }\n        u64 z = (u64)a\
+    \ * b;\n        u64 x = (u64)(((__uint128_t)z * im) >> 64);\n\n        u64 y =\
+    \ x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace\
     \ internal\n};  // namespace kyopro\n"
-  code: "#pragma once\nnamespace kyopro {\nnamespace internal {\n/// @brief barrett\
-    \ reduction\n/// @ref https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
-    class barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64\
-    \ m;\n    u64 im;\n\npublic:\n    barrett() = default;\n    explicit barrett(u64\
-    \ m_) : m(m_), im(static_cast<u64>(-1) / m_ + 1) {}\n\n    u64 get_mod() const\
-    \ { return m; }\n    constexpr u64 reduce(int64_t a) const {\n        if (a <\
-    \ 0) return m - reduce(-a);\n        u64 q = ((__uint128_t)a * im) >> 64;\n  \
-    \      a -= m * q;\n        if (a >= m) a -= m;\n        return a;\n    }\n  \
-    \  constexpr u64 mul(u64 a, u64 b) const {\n        if (a == 0 || b == 0) {\n\
-    \            return 0;\n        }\n        u64 z = a;\n        z *= b;\n     \
-    \   u64 x = (u64)(((__uint128_t)z * im) >> 64);\n\n        u32 v = (u32)(z - x\
-    \ * m);\n\n        if (v >= m) v += m;\n        return v;\n    }\n};\n};  // namespace\
+  code: "#pragma once\n#include <cstdint>\nnamespace kyopro {\nnamespace internal\
+    \ {\n/// @brief barrett reduction\n/// @ref\n/// https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    class barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u32\
+    \ m;\n    u64 im;\n\npublic:\n    constexpr barrett() : m(0), im(0) {}\n    constexpr\
+    \ barrett(u32 m_)\n        : m(m_), im((u64) static_cast<u64>(-1) / m_ + 1) {}\n\
+    \n    constexpr u32 get_mod() const { return m; }\n    constexpr u32 reduce(int64_t\
+    \ a) const { return mul(a, 1); }\n    constexpr u32 mul(u32 a, u32 b) const {\n\
+    \        if (!a || !b) {\n            return 0;\n        }\n        u64 z = (u64)a\
+    \ * b;\n        u64 x = (u64)(((__uint128_t)z * im) >> 64);\n\n        u64 y =\
+    \ x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace\
     \ internal\n};  // namespace kyopro"
   dependsOn: []
   isVerificationFile: false
@@ -86,7 +83,7 @@ data:
   - src/math/combination.hpp
   - src/math/dynamic_modint.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-05-05 21:39:44+09:00'
+  timestamp: '2023-05-06 03:56:17+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
