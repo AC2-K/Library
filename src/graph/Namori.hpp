@@ -4,7 +4,7 @@
 namespace kyopro {
 
 /// @brief なもりグラフ
-class namori {
+class Namori {
     int n;
     std::vector<std::vector<int>> g;
     std::vector<int> root_idx;
@@ -13,7 +13,7 @@ class namori {
     std::vector<int> cycle;
 
 public:
-    namori(int n) : n(n), g(n), deg(n), is_cycle(n, true), root_idx(n, -1) {
+    Namori(int n) : n(n), g(n), deg(n), is_cycle(n, true), root_idx(n, -1) {
         cycle.reserve(n);
     }
 

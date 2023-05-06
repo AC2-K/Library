@@ -1,6 +1,6 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_C"
 #include <iostream>
-#include "../../../src/graph/euler_tour.hpp"
+#include "../../../src/tree/EulerTour.hpp"
 int main() {
     int n;
     scanf("%d", &n);
