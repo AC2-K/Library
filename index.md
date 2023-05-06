@@ -76,6 +76,9 @@ data:
       path: src/debug.hpp
       title: src/debug.hpp
     - icon: ':warning:'
+      path: src/stream.hpp
+      title: "\u5165\u51FA\u529B"
+    - icon: ':warning:'
       path: src/template.hpp
       title: src/template.hpp
   - name: src/graph
