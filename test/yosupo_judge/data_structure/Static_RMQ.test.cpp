@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 #include <iostream>
 #include "../../../src/data-structure/sparse_table.hpp"
-inline int op(int x, int y) { return x + y; }
+inline int op(int x, int y) { return std::min(x, y); }
 inline int e() { return (int)1 << 30; }
 int main() {
     int n, q;
