@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure-2d/PointAddRectangleSum.hpp
     title: src/data-structure-2d/PointAddRectangleSum.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
   _extendedRequiredBy: []
@@ -21,21 +21,21 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\n\
     #include <iostream>\n#line 2 \"src/data-structure-2d/PointAddRectangleSum.hpp\"\
     \n#include <algorithm>\n#line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\n\
-    namespace kyopro {\n/// @brief Binary Index Tree\ntemplate <typename T, typename\
-    \ SumT = T>\nclass BIT {\n    std::vector<SumT> bit;\n    int n;\n\npublic:\n\
-    \    explicit BIT() {}\n    explicit BIT(int n) : n(n), bit(n + 1, T()) {}\n \
-    \   void add(int p,T w) {\n        p++;\n        for (int x = p; x <= n; x +=\
-    \ x & -x) {\n            bit[x] += w;\n        }\n    }\n\n    SumT sum(int p)\
-    \ const {\n        T s = 0;\n\n        for (int x = p; x > 0; x -= x & -x) {\n\
-    \            s += bit[x];\n        }\n        return s;\n    }\n\n    SumT sum(int\
-    \ l, int r) const { return sum(r) - sum(l); }\n\n    int lower_bound(SumT w) const\
-    \ {\n        if (w <= 0) return 0;\n\n        int x = 0;\n        int k = 1;\n\
-    \        while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n          \
-    \  if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x + k];\n   \
-    \             x += k;\n            }\n        }\n\n        return x + 1;\n   \
-    \ }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/BIT.md\n#line\
-    \ 4 \"src/data-structure-2d/PointAddRectangleSum.hpp\"\nnamespace kyopro {\ntemplate\
-    \ <typename T, typename S>\nclass PointAddRectangleSum {\n    std::vector<BIT<S>>\
+    namespace kyopro {\n/**\n * @brief Binary Index Tree\n */\ntemplate <typename\
+    \ T, typename SumT = T>\nclass BIT {\n    std::vector<SumT> bit;\n    int n;\n\
+    \npublic:\n    explicit BIT() {}\n    explicit BIT(int n) : n(n), bit(n + 1, T())\
+    \ {}\n    void add(int p, T w) {\n        p++;\n        for (int x = p; x <= n;\
+    \ x += x & -x) {\n            bit[x] += w;\n        }\n    }\n\n    SumT sum(int\
+    \ p) const {\n        T s = 0;\n\n        for (int x = p; x > 0; x -= x & -x)\
+    \ {\n            s += bit[x];\n        }\n        return s;\n    }\n\n    SumT\
+    \ sum(int l, int r) const { return sum(r) - sum(l); }\n\n    int lower_bound(SumT\
+    \ w) const {\n        if (w <= 0) return 0;\n\n        int x = 0;\n        int\
+    \ k = 1;\n        while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n \
+    \           if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x +\
+    \ k];\n                x += k;\n            }\n        }\n\n        return x +\
+    \ 1;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
+    \ */\n#line 4 \"src/data-structure-2d/PointAddRectangleSum.hpp\"\nnamespace kyopro\
+    \ {\ntemplate <typename T, typename S>\nclass PointAddRectangleSum {\n    std::vector<BIT<S>>\
     \ dat;\n    std::vector<std::vector<T>> ys;\n\n    T n;\n    std::vector<std::pair<T,\
     \ T>> ps;\npublic:\n     void add_point(T x, T y) { ps.emplace_back(x, y); }\n\
     \n    void build() {\n        std::sort(ps.begin(), ps.end());\n        ps.erase(std::unique(ps.begin(),\
@@ -98,7 +98,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-05-01 12:49:55+00:00'
+  timestamp: '2023-05-07 23:12:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp

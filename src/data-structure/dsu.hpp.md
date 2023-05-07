@@ -6,29 +6,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/1_A.test.cpp
     title: test/AOJ/DSL/1_A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/dsu.md
-    document_title: Disjoint Set(Union find)
+    document_title: Disjoint Set(Union Find)
     links: []
   bundledCode: "#line 2 \"src/data-structure/dsu.hpp\"\n#include <utility>\n#include\
-    \ <vector>\nnamespace kyopro {\n/// @brief Disjoint Set(Union find)\nclass dsu\
-    \ {\nprivate:\n    std::vector<int> find, rank;\n\npublic:\n    dsu(int n) : find(n,\
-    \ -1), rank(n, 1) {}\n\n    int root(int x) {\n        if (find[x] < 0) {\n  \
-    \          return x;\n        } else {\n            return find[x] = root(find[x]);\n\
-    \        }\n    }\n    bool same(int x, int y) { return root(x) == root(y); }\n\
-    \    int merge(int x, int y) {\n        x = root(x), y = root(y);\n        if\
-    \ (x == y) return x;\n        if (rank[x] < rank[y]) std::swap(x, y);\n      \
-    \  if (rank[x] == rank[y]) rank[x]++;\n        find[x] += find[y];\n        find[y]\
-    \ = x;\n        return x;\n    }\n    int size(int x) { return -find[root(x)];\
-    \ }\n};\n\n};  // namespace kyopro\n\n/// @docs docs/data-structure/dsu.md\n"
+    \ <vector>\nnamespace kyopro {\n\n/**\n * @brief Disjoint Set(Union Find)\n */\n\
+    class dsu {\nprivate:\n    std::vector<int> find, rank;\n\npublic:\n    dsu(int\
+    \ n) : find(n, -1), rank(n, 1) {}\n\n    int root(int x) {\n        if (find[x]\
+    \ < 0) {\n            return x;\n        } else {\n            return find[x]\
+    \ = root(find[x]);\n        }\n    }\n    bool same(int x, int y) { return root(x)\
+    \ == root(y); }\n    int merge(int x, int y) {\n        x = root(x), y = root(y);\n\
+    \        if (x == y) return x;\n        if (rank[x] < rank[y]) std::swap(x, y);\n\
+    \        if (rank[x] == rank[y]) rank[x]++;\n        find[x] += find[y];\n   \
+    \     find[y] = x;\n        return x;\n    }\n    int size(int x) { return -find[root(x)];\
+    \ }\n};\n\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/dsu.md\n\
+    \ */\n"
   code: "#pragma once\n#include <utility>\n#include <vector>\nnamespace kyopro {\n\
-    /// @brief Disjoint Set(Union find)\nclass dsu {\nprivate:\n    std::vector<int>\
+    \n/**\n * @brief Disjoint Set(Union Find)\n */\nclass dsu {\nprivate:\n    std::vector<int>\
     \ find, rank;\n\npublic:\n    dsu(int n) : find(n, -1), rank(n, 1) {}\n\n    int\
     \ root(int x) {\n        if (find[x] < 0) {\n            return x;\n        }\
     \ else {\n            return find[x] = root(find[x]);\n        }\n    }\n    bool\
@@ -37,13 +38,13 @@ data:
     \     if (rank[x] < rank[y]) std::swap(x, y);\n        if (rank[x] == rank[y])\
     \ rank[x]++;\n        find[x] += find[y];\n        find[y] = x;\n        return\
     \ x;\n    }\n    int size(int x) { return -find[root(x)]; }\n};\n\n};  // namespace\
-    \ kyopro\n\n/// @docs docs/data-structure/dsu.md"
+    \ kyopro\n\n/**\n * @docs docs/data-structure/dsu.md\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/dsu.hpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-07 23:12:04+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/DSL/1_A.test.cpp
   - test/yosupo_judge/data_structure/UnionFind.test.cpp
@@ -52,7 +53,7 @@ layout: document
 redirect_from:
 - /library/src/data-structure/dsu.hpp
 - /library/src/data-structure/dsu.hpp.html
-title: Disjoint Set(Union find)
+title: Disjoint Set(Union Find)
 ---
 ## 概要
 $n$頂点の無向グラフに対して、以下のクエリを$O(\alpha(n))$で処理します。

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/sparse_table.hpp
-    title: Sparse Table
-  - icon: ':heavy_check_mark:'
+    title: SparseTable
+  - icon: ':question:'
     path: src/tree/EulerTour.hpp
-    title: EulerTour
+    title: Euler Tour
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -20,8 +20,8 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include<iostream>\n\
     #line 2 \"src/tree/EulerTour.hpp\"\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
-    \n#include <numeric>\n#include <vector>\nnamespace kyopro {\n/// @brief Sparse\
-    \ Table\ntemplate <class T, auto op>\nclass sparse_table {\n    std::vector<T>\
+    \n#include <numeric>\n#include <vector>\nnamespace kyopro {\n\n/**\n * @brief\
+    \ SparseTable\n*/\ntemplate <class T, auto op>\nclass sparse_table {\n    std::vector<T>\
     \ vec;\n    std::vector<std::vector<T>> table;\n    std::vector<int> look_up;\n\
     \npublic:\n    constexpr explicit sparse_table(int n) : vec(n) {}\n    constexpr\
     \ explicit sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }\n \
@@ -36,13 +36,13 @@ data:
     \ i < (int)look_up.size(); i++) {\n            look_up[i] = look_up[i >> 1] +\
     \ 1;\n        }\n    }\n\n    T prod(int l, int r) const {\n        int b = look_up[r\
     \ - l];\n        return op(table[b][l], table[b][r - (1 << b)]);\n    }\n};\n\
-    };  // namespace kyopro\n\n/// @docs docs/data-structure/sparse_table.md\n#line\
-    \ 4 \"src/tree/EulerTour.hpp\"\nnamespace kyopro {\n/// @brief EulerTour\nclass\
-    \ EulerTour {\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
-    \ tour;\n    std::vector<int> in, out, depth;\n\n    struct get_min_pair {\n \
-    \       using value_t = std::pair<int, int>;\n        static value_t op(value_t\
-    \ x, value_t y) {\n            return std::min(x, y);\n        }\n    };\n   \
-    \ \n    sparse_table<get_min_pair::value_t, get_min_pair::op> rmq;\n\npublic:\n\
+    };  // namespace kyopro\n\n/**\n * @docs docs/data-structure/sparse_table.md\n\
+    */\n#line 4 \"src/tree/EulerTour.hpp\"\nnamespace kyopro {\n\n/**\n * @brief Euler\
+    \ Tour\n */\nclass EulerTour {\n    int n;\n    std::vector<std::vector<int>>\
+    \ g;\n    std::vector<int> tour;\n    std::vector<int> in, out, depth;\n\n   \
+    \ struct get_min_pair {\n        using value_t = std::pair<int, int>;\n      \
+    \  static value_t op(value_t x, value_t y) { return std::min(x, y); }\n    };\n\
+    \n    sparse_table<get_min_pair::value_t, get_min_pair::op> rmq;\n\npublic:\n\
     \    explicit EulerTour(int n)\n        : n(n), g(n), in(n, -1), out(n, -1), depth(n,\
     \ -1), rmq(2 * n - 1) {\n        tour.reserve(2 * n - 1);\n    }\n    void add_edge(int\
     \ u, int v) {\n        g[u].emplace_back(v);\n        g[v].emplace_back(u);\n\
@@ -81,8 +81,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 19:48:09+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-07 23:12:04+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
 layout: document

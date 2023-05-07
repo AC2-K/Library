@@ -18,23 +18,23 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
     title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/segtree.md
-    document_title: Segment Tree
+    document_title: SegmentTree
     links: []
   bundledCode: "#line 2 \"src/data-structure/segtree.hpp\"\n#include <vector>\n#include\
-    \ <cassert>\nnamespace kyopro {\n/// @brief Segment Tree\n\ntemplate <class S,\
-    \ S (*op)(S, S), S (*e)()>\nclass segtree {\n    int lg, sz, n;\n    std::vector<S>\
-    \ dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
+    \ <cassert>\nnamespace kyopro {\n    \n/**\n * @brief SegmentTree\n*/\ntemplate\
+    \ <class S, S (*op)(S, S), S (*e)()>\nclass segtree {\n    int lg, sz, n;\n  \
+    \  std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
     \ e())) {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n  \
     \      sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n   \
     \         lg++;\n        }\n\n        dat = std::vector<S>(sz << 1, e());\n\n\
@@ -53,10 +53,11 @@ data:
     \ (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n        }\n\
     \        return op(sml, smr);\n    }\n    void apply(int p, const S& v) { \n \
     \       \n        assert(0 <= p && p < sz);\n        update(p, op(dat[sz + p],\
-    \ v));\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/segtree.md\n"
+    \ v));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/segtree.md\n\
+    */\n"
   code: "#pragma once\n#include <vector>\n#include <cassert>\nnamespace kyopro {\n\
-    /// @brief Segment Tree\n\ntemplate <class S, S (*op)(S, S), S (*e)()>\nclass\
-    \ segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree()\
+    \    \n/**\n * @brief SegmentTree\n*/\ntemplate <class S, S (*op)(S, S), S (*e)()>\n\
+    class segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree()\
     \ {}\n    segtree(int n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const\
     \ std::vector<S>& vec) : n((int)vec.size()) {\n        sz = 1, lg = 0;\n     \
     \   while (sz <= n) {\n            sz <<= 1;\n            lg++;\n        }\n\n\
@@ -76,14 +77,14 @@ data:
     \ smr);\n            l >>= 1, r >>= 1;\n        }\n        return op(sml, smr);\n\
     \    }\n    void apply(int p, const S& v) { \n        \n        assert(0 <= p\
     \ && p < sz);\n        update(p, op(dat[sz + p], v));\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/// @docs docs/data-structure/segtree.md"
+    \ kyopro\n\n/**\n * @docs docs/data-structure/segtree.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/segtree.hpp
   requiredBy:
   - src/data-structure-2d/RangeTree.hpp
-  timestamp: '2023-05-07 01:56:23+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-07 23:12:04+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/DSL/2_B.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
@@ -96,7 +97,7 @@ layout: document
 redirect_from:
 - /library/src/data-structure/segtree.hpp
 - /library/src/data-structure/segtree.hpp.html
-title: Segment Tree
+title: SegmentTree
 ---
 # 概要
 $(S,\text{op},e)$がモノイドをなすとする。\

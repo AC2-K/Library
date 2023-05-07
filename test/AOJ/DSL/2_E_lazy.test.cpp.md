@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/lazy_segtree.hpp
     title: LazySegmentTree
   _extendedRequiredBy: []
@@ -16,11 +16,10 @@ data:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E
   bundledCode: "#line 1 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
     \n#include<iostream>\n#line 2 \"src/data-structure/lazy_segtree.hpp\"\n#include\
-    \ <cassert>\n#include <vector>\nnamespace kyopro {\n/// @brief LazySegmentTree\n\
-    /// @ref\n/// https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
-    template <class S,\n          class F,\n          auto op,\n          auto e,\n\
-    \          auto composition,\n          auto id,\n          auto mapping>\nclass\
-    \ lazy_segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n    std::vector<F>\
+    \ <cassert>\n#include <vector>\nnamespace kyopro {\n/**\n * @brief LazySegmentTree\n\
+    */\ntemplate <class S,\n          class F,\n          auto op,\n          auto\
+    \ e,\n          auto composition,\n          auto id,\n          auto mapping>\n\
+    class lazy_segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n    std::vector<F>\
     \ lazy;\n\npublic:\n    lazy_segtree() {}\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
     \ e())) {}\n    lazy_segtree(const std::vector<S>& a) : n((int)a.size()) {\n \
     \       sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n  \
@@ -56,17 +55,18 @@ data:
     \                r >>= 1;\n            }\n            l = l2;\n            r =\
     \ r2;\n        }\n\n        for (int i = 1; i <= lg; ++i) {\n            if (((l\
     \ >> i) << i) != l) push_up(l >> i);\n            if (((r >> i) << i) != r) push_up((r\
-    \ - 1) >> i);\n        }\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/lazy_segtree.md\n\
-    #line 4 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\n\ninline int op(int x, int y) { return\
-    \ x + y; }\ninline int comp(int x, int y) { return x + y; }\ninline int mapping(int\
-    \ x, int y) { return x + y; }\ninline int e() { return 0; }\ninline int id() {\
-    \ return 0; }\n\nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n \
-    \   kyopro::lazy_segtree<int, int, op, e, comp, id, mapping> seg(n);\n    while\
-    \ (q--) {\n        int t;\n        scanf(\"%d\", &t);\n        if (!t) {\n   \
-    \         int l, r, val;\n            scanf(\"%d%d%d\", &l, &r, &val);\n     \
-    \       l--, r--;\n            seg.apply(l, r + 1, val);\n        } else {\n \
-    \           int i;\n            scanf(\"%d\", &i);\n            i--;\n       \
-    \     printf(\"%d\\n\", seg[i]);\n        }\n    }\n}\n"
+    \ - 1) >> i);\n        }\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
+    \ docs/data-structure/lazy_segtree.md\n*/\n#line 4 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\
+    \n\ninline int op(int x, int y) { return x + y; }\ninline int comp(int x, int\
+    \ y) { return x + y; }\ninline int mapping(int x, int y) { return x + y; }\ninline\
+    \ int e() { return 0; }\ninline int id() { return 0; }\n\nint main() {\n    int\
+    \ n, q;\n    scanf(\"%d%d\", &n, &q);\n    kyopro::lazy_segtree<int, int, op,\
+    \ e, comp, id, mapping> seg(n);\n    while (q--) {\n        int t;\n        scanf(\"\
+    %d\", &t);\n        if (!t) {\n            int l, r, val;\n            scanf(\"\
+    %d%d%d\", &l, &r, &val);\n            l--, r--;\n            seg.apply(l, r +\
+    \ 1, val);\n        } else {\n            int i;\n            scanf(\"%d\", &i);\n\
+    \            i--;\n            printf(\"%d\\n\", seg[i]);\n        }\n    }\n\
+    }\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
     \n#include<iostream>\n#include \"../../../src/data-structure/lazy_segtree.hpp\"\
     \n\ninline int op(int x, int y) { return x + y; }\ninline int comp(int x, int\
@@ -83,7 +83,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_E_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 10:38:07+09:00'
+  timestamp: '2023-05-07 23:12:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_E_lazy.test.cpp

@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/segtree.hpp
-    title: Segment Tree
+    title: SegmentTree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/longest_increasing_subsequence
@@ -17,12 +17,12 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
     \n#include <algorithm>\n#include <iostream>\n#include <numeric>\n#line 2 \"src/data-structure/segtree.hpp\"\
-    \n#include <vector>\n#include <cassert>\nnamespace kyopro {\n/// @brief Segment\
-    \ Tree\n\ntemplate <class S, S (*op)(S, S), S (*e)()>\nclass segtree {\n    int\
-    \ lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int\
-    \ n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const std::vector<S>& vec)\
-    \ : n((int)vec.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n) {\n\
-    \            sz <<= 1;\n            lg++;\n        }\n\n        dat = std::vector<S>(sz\
+    \n#include <vector>\n#include <cassert>\nnamespace kyopro {\n    \n/**\n * @brief\
+    \ SegmentTree\n*/\ntemplate <class S, S (*op)(S, S), S (*e)()>\nclass segtree\
+    \ {\n    int lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree() {}\n\
+    \    segtree(int n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const std::vector<S>&\
+    \ vec) : n((int)vec.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n)\
+    \ {\n            sz <<= 1;\n            lg++;\n        }\n\n        dat = std::vector<S>(sz\
     \ << 1, e());\n\n        for (int i = 0; i < n; i++) {\n            set(i, vec[i]);\n\
     \        }\n        build();\n    }\n\n    void set(int p, const S& v) {\n   \
     \     assert(0 <= p && p < sz);\n        dat[sz + p] = v;\n    }\n    void build()\
@@ -38,12 +38,12 @@ data:
     \ (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n        }\n\
     \        return op(sml, smr);\n    }\n    void apply(int p, const S& v) { \n \
     \       \n        assert(0 <= p && p < sz);\n        update(p, op(dat[sz + p],\
-    \ v));\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/segtree.md\n\
-    #line 6 \"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp\"\nusing\
-    \ S = std::pair<int, int>;\ninline S op(S x, S y) { return max(x, y); }\ninline\
-    \ S e() { return S{0, 0}; }\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n\
-    \    std::vector<int> a(n);\n    for (auto& aa : a) {\n        scanf(\"%d\", &aa);\n\
-    \    }\n    {\n        std::vector<int> tmp = a;\n        std::sort(tmp.begin(),\
+    \ v));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/segtree.md\n\
+    */\n#line 6 \"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp\"\
+    \nusing S = std::pair<int, int>;\ninline S op(S x, S y) { return max(x, y); }\n\
+    inline S e() { return S{0, 0}; }\n\nint main() {\n    int n;\n    scanf(\"%d\"\
+    , &n);\n    std::vector<int> a(n);\n    for (auto& aa : a) {\n        scanf(\"\
+    %d\", &aa);\n    }\n    {\n        std::vector<int> tmp = a;\n        std::sort(tmp.begin(),\
     \ tmp.end());\n        tmp.erase(std::unique(tmp.begin(), tmp.end()), tmp.end());\n\
     \        for (auto& aa : a) {\n            aa = lower_bound(tmp.begin(), tmp.end(),\
     \ aa) - tmp.begin();\n        }\n    }\n    std::vector<int> prv(n, -1);\n   \
@@ -79,8 +79,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 01:56:23+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-07 23:12:04+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
 layout: document

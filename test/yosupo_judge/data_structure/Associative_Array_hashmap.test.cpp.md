@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/hash_map.hpp
     title: HashMap
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/associative_array\"\n#include<iostream>\n\
     #line 2 \"src/data-structure/hash_map.hpp\"\n#include <bits/stl_algobase.h>\n\
-    #include <chrono>\nnamespace kyopro {\n/// @brief HashMap\ntemplate <typename\
+    #include <chrono>\nnamespace kyopro {\n/**\n * @brief HashMap\n*/\ntemplate <typename\
     \ Key,\n          typename Val,\n          uint32_t n = 1 << 20,\n          Val\
     \ default_val = Val()>\nclass hash_map {\n    using u32 = uint32_t;\n    using\
     \ u64 = uint64_t;\n\n    u64* flag = new u64[n];\n    Key* keys = new Key[n];\n\
@@ -36,7 +36,7 @@ data:
     \        if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))\n\
     \                return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
     \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace\
-    \ kyopro\n#line 4 \"test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp\"\
+    \ kyopro\n\n\n/**\n * @docs docs/data-structure/hash_map.md\n*/\n#line 4 \"test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp\"\
     \nint main() {\n    uint32_t q;\n    scanf(\"%d\", &q);\n    kyopro::hash_map<__uint64_t,\
     \ __uint64_t> mp;\n    while (q--) {\n        int t;\n        scanf(\"%d\",&t);\n\
     \        if(!t){\n            __uint64_t k, v;\n            scanf(\"%lld%lld\"\
@@ -55,7 +55,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
   requiredBy: []
-  timestamp: '2023-05-04 13:33:55+09:00'
+  timestamp: '2023-05-07 23:12:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp

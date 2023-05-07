@@ -1,95 +1,96 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
-    title: barrett reduction
-  - icon: ':heavy_check_mark:'
+    title: Barrett Reduction
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
-    title: MontgomeryReduction
-  - icon: ':heavy_check_mark:'
+    title: Montgomery Reduction
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/miller.hpp
-    title: src/math/miller.hpp
-  - icon: ':heavy_check_mark:'
+    title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
+  - icon: ':x:'
     path: src/math/mod_log.hpp
-    title: "\u96E2\u6563\u5BFE\u6570"
+    title: src/math/mod_log.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
-    title: "phi function($\\phi$ \u95A2\u6570)"
-  - icon: ':heavy_check_mark:'
+    title: "Euler\u306E $\\phi$ \u95A2\u6570"
+  - icon: ':x:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/rho.hpp
-    title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
+    title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/math/dynamic_modint.md
-    document_title: dynamic modint
+    document_title: "\u52D5\u7684modint"
     links: []
   bundledCode: "#line 2 \"src/math/dynamic_modint.hpp\"\n#include <cassert>\n#include\
     \ <iostream>\n#line 2 \"src/internal/barrett.hpp\"\n#include <cstdint>\nnamespace\
-    \ kyopro {\nnamespace internal {\n/// @brief barrett reduction\n/// @ref\n///\
-    \ https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
-    class barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u32\
-    \ m;\n    u64 im;\n\npublic:\n    constexpr barrett() : m(0), im(0) {}\n    constexpr\
+    \ kyopro {\nnamespace internal {\n\n/**\n * @brief Barrett Reduction\n */\nclass\
+    \ barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u32 m;\n\
+    \    u64 im;\n\npublic:\n    constexpr barrett() : m(0), im(0) {}\n    constexpr\
     \ barrett(u32 m_)\n        : m(m_), im((u64) static_cast<u64>(-1) / m_ + 1) {}\n\
     \n    constexpr u32 get_mod() const { return m; }\n    constexpr u32 reduce(int64_t\
     \ a) const { return mul(a, 1); }\n    constexpr u32 mul(u32 a, u32 b) const {\n\
     \        if (!a || !b) {\n            return 0;\n        }\n        u64 z = (u64)a\
     \ * b;\n        u64 x = (u64)(((__uint128_t)z * im) >> 64);\n\n        u64 y =\
     \ x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace\
-    \ internal\n};  // namespace kyopro\n#line 3 \"src/internal/montgomery.hpp\"\n\
-    #include <limits>\n#include <numeric>\n#line 5 \"src/internal/type_traits.hpp\"\
-    \n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/// @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    template <typename... Args> struct first_enabled {};\n\ntemplate <typename T,\
-    \ typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...> {\n\
-    \    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
-    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
-    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
-    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
-    \ntemplate <int dgt> struct int_least {\n    static_assert(dgt <= 128);\n    using\
-    \ type = first_enabled_t<std::enable_if<dgt <= 8, __int8_t>,\n               \
-    \                  std::enable_if<dgt <= 16, __int16_t>,\n                   \
-    \              std::enable_if<dgt <= 32, __int32_t>,\n                       \
-    \          std::enable_if<dgt <= 64, __int64_t>,\n                           \
-    \      std::enable_if<dgt <= 128, __int128_t> >;\n};\ntemplate <int dgt> struct\
-    \ uint_least {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, __uint8_t>,\n                                 std::enable_if<dgt <= 16,\
-    \ __uint16_t>,\n                                 std::enable_if<dgt <= 32, __uint32_t>,\n\
-    \                                 std::enable_if<dgt <= 64, __uint64_t>,\n   \
-    \                              std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\
-    \ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\ntemplate\
-    \ <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename\
-    \ T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
-    \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \ internal\n};  // namespace kyopro\n\n/**\n * @ref\n * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    \ */\n#line 3 \"src/internal/montgomery.hpp\"\n#include <limits>\n#include <numeric>\n\
+    #line 5 \"src/internal/type_traits.hpp\"\n#include <typeinfo>\nnamespace kyopro\
+    \ {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args>\nstruct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {};\ntemplate <typename T, typename... Args>\nstruct first_enabled<T, Args...>\
+    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt>\nstruct int_least\
+    \ {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, __int8_t>,\n                                 std::enable_if<dgt <= 16,\
+    \ __int16_t>,\n                                 std::enable_if<dgt <= 32, __int32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, __int64_t>,\n    \
+    \                             std::enable_if<dgt <= 128, __int128_t> >;\n};\n\
+    template <int dgt>\nstruct uint_least {\n    static_assert(dgt <= 128);\n    using\
+    \ type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,\n              \
+    \                   std::enable_if<dgt <= 16, __uint16_t>,\n                 \
+    \                std::enable_if<dgt <= 32, __uint32_t>,\n                    \
+    \             std::enable_if<dgt <= 64, __uint64_t>,\n                       \
+    \          std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\ntemplate <int dgt>\n\
+    using int_least_t = typename int_least<dgt>::type;\ntemplate <int dgt>\nusing\
+    \ uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename T>\nusing\
+    \ double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\ntemplate\
+    \ <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/internal/montgomery.hpp\"\
     \nnamespace kyopro {\nnamespace internal {\nusing u32 = uint32_t;\nusing u64 =\
     \ uint64_t;\nusing i32 = int32_t;\nusing i64 = int64_t;\nusing u128 = __uint128_t;\n\
-    using i128 = __int128_t;\n/// @brief MontgomeryReduction\n/// @ref\ntemplate <typename\
-    \ T>\nclass Montgomery {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
+    using i128 = __int128_t;\n\n/**\n * @brief Montgomery Reduction\n */\ntemplate\
+    \ <typename T>\nclass Montgomery {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
     \    using LargeT = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n\
     \    T inv() {\n        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i)\
     \ {\n            if (~t & 1) {\n                t += mod;\n                res\
@@ -175,7 +176,7 @@ data:
     \ l, const mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate\
     \ <typename T, int id>\nT kyopro::dynamic_modint<T, id>::mod;\ntemplate <typename\
     \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;\n\
-    \n/// @brief dynamic modint\n/// @docs docs/math/dynamic_modint.md\n"
+    \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */\n"
   code: "#pragma once\n#include <cassert>\n#include <iostream>\n#include \"../internal/barrett.hpp\"\
     \n#include \"../internal/montgomery.hpp\"\nnamespace kyopro {\ntemplate <int id\
     \ = -1>\nclass barrett_modint {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\
@@ -249,7 +250,7 @@ data:
     \ l, const mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate\
     \ <typename T, int id>\nT kyopro::dynamic_modint<T, id>::mod;\ntemplate <typename\
     \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;\n\
-    \n/// @brief dynamic modint\n/// @docs docs/math/dynamic_modint.md"
+    \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */"
   dependsOn:
   - src/internal/barrett.hpp
   - src/internal/montgomery.hpp
@@ -262,8 +263,8 @@ data:
   - src/math/rho.hpp
   - src/math/mod_log.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-05-06 03:56:17+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-07 23:12:04+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
   - test/yuki/No3030.test.cpp
@@ -275,5 +276,5 @@ layout: document
 redirect_from:
 - /library/src/math/dynamic_modint.hpp
 - /library/src/math/dynamic_modint.hpp.html
-title: dynamic modint
+title: "\u52D5\u7684modint"
 ---

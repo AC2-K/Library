@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/manacher.hpp
-    title: manacher's algorithm
+    title: Manacher's algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_palindromes
@@ -18,8 +18,8 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\n\
     #include <iostream>\n#line 2 \"src/string/manacher.hpp\"\n#include <cassert>\n\
     #include <string>\n#include <utility>\n#include <vector>\nnamespace kyopro {\n\
-    /// @brief manacher's algorithm\nstd::vector<int> manacher(std::string s, bool\
-    \ even = true) {\n    assert(s.size());\n    if (even) {\n        std::string\
+    \n/**\n * @brief Manacher's algorithm\n*/\nstd::vector<int> manacher(std::string\
+    \ s, bool even = true) {\n    assert(s.size());\n    if (even) {\n        std::string\
     \ t;\n        t.resize(2 * (int)s.size() - 1);\n        for (int i = 0; i < (int)s.size();\
     \ i++) {\n            t[2 * i] = s[i];\n        }\n        for (int i = 0; i <\
     \ (int)s.size(); i++) {\n            t[2 * i + 1] = '$';\n        }\n        std::swap(t,\
@@ -48,8 +48,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   requiredBy: []
-  timestamp: '2023-04-09 21:30:24+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-07 23:12:04+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
 layout: document

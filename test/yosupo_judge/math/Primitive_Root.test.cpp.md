@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
-    title: barrett reduction
-  - icon: ':heavy_check_mark:'
+    title: Barrett Reduction
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
-    title: MontgomeryReduction
-  - icon: ':heavy_check_mark:'
+    title: Montgomery Reduction
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
-    title: dynamic modint
-  - icon: ':heavy_check_mark:'
+    title: "\u52D5\u7684modint"
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/miller.hpp
-    title: src/math/miller.hpp
-  - icon: ':heavy_check_mark:'
+    title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
+  - icon: ':x:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/rho.hpp
-    title: "\u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)"
-  - icon: ':heavy_check_mark:'
+    title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
-    title: src/random/xor_shift.hpp
+    title: xor shift
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/primitive_root
@@ -41,45 +41,47 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/math/Primitive_Root.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#line 2 \"src/math/dynamic_modint.hpp\"\
     \n#include <cassert>\n#include <iostream>\n#line 2 \"src/internal/barrett.hpp\"\
-    \n#include <cstdint>\nnamespace kyopro {\nnamespace internal {\n/// @brief barrett\
-    \ reduction\n/// @ref\n/// https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
-    class barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u32\
-    \ m;\n    u64 im;\n\npublic:\n    constexpr barrett() : m(0), im(0) {}\n    constexpr\
-    \ barrett(u32 m_)\n        : m(m_), im((u64) static_cast<u64>(-1) / m_ + 1) {}\n\
-    \n    constexpr u32 get_mod() const { return m; }\n    constexpr u32 reduce(int64_t\
-    \ a) const { return mul(a, 1); }\n    constexpr u32 mul(u32 a, u32 b) const {\n\
-    \        if (!a || !b) {\n            return 0;\n        }\n        u64 z = (u64)a\
-    \ * b;\n        u64 x = (u64)(((__uint128_t)z * im) >> 64);\n\n        u64 y =\
-    \ x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace\
-    \ internal\n};  // namespace kyopro\n#line 3 \"src/internal/montgomery.hpp\"\n\
-    #include <limits>\n#include <numeric>\n#line 5 \"src/internal/type_traits.hpp\"\
-    \n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/// @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    template <typename... Args> struct first_enabled {};\n\ntemplate <typename T,\
-    \ typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...> {\n\
-    \    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
-    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
-    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
-    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
-    \ntemplate <int dgt> struct int_least {\n    static_assert(dgt <= 128);\n    using\
-    \ type = first_enabled_t<std::enable_if<dgt <= 8, __int8_t>,\n               \
-    \                  std::enable_if<dgt <= 16, __int16_t>,\n                   \
-    \              std::enable_if<dgt <= 32, __int32_t>,\n                       \
-    \          std::enable_if<dgt <= 64, __int64_t>,\n                           \
-    \      std::enable_if<dgt <= 128, __int128_t> >;\n};\ntemplate <int dgt> struct\
-    \ uint_least {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, __uint8_t>,\n                                 std::enable_if<dgt <= 16,\
-    \ __uint16_t>,\n                                 std::enable_if<dgt <= 32, __uint32_t>,\n\
-    \                                 std::enable_if<dgt <= 64, __uint64_t>,\n   \
-    \                              std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\
-    \ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\ntemplate\
-    \ <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename\
-    \ T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
-    \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \n#include <cstdint>\nnamespace kyopro {\nnamespace internal {\n\n/**\n * @brief\
+    \ Barrett Reduction\n */\nclass barrett {\n    using u32 = uint32_t;\n    using\
+    \ u64 = uint64_t;\n\n    u32 m;\n    u64 im;\n\npublic:\n    constexpr barrett()\
+    \ : m(0), im(0) {}\n    constexpr barrett(u32 m_)\n        : m(m_), im((u64) static_cast<u64>(-1)\
+    \ / m_ + 1) {}\n\n    constexpr u32 get_mod() const { return m; }\n    constexpr\
+    \ u32 reduce(int64_t a) const { return mul(a, 1); }\n    constexpr u32 mul(u32\
+    \ a, u32 b) const {\n        if (!a || !b) {\n            return 0;\n        }\n\
+    \        u64 z = (u64)a * b;\n        u64 x = (u64)(((__uint128_t)z * im) >> 64);\n\
+    \n        u64 y = x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n   \
+    \ }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @ref\n\
+    \ * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    \ */\n#line 3 \"src/internal/montgomery.hpp\"\n#include <limits>\n#include <numeric>\n\
+    #line 5 \"src/internal/type_traits.hpp\"\n#include <typeinfo>\nnamespace kyopro\
+    \ {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args>\nstruct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {};\ntemplate <typename T, typename... Args>\nstruct first_enabled<T, Args...>\
+    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt>\nstruct int_least\
+    \ {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, __int8_t>,\n                                 std::enable_if<dgt <= 16,\
+    \ __int16_t>,\n                                 std::enable_if<dgt <= 32, __int32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, __int64_t>,\n    \
+    \                             std::enable_if<dgt <= 128, __int128_t> >;\n};\n\
+    template <int dgt>\nstruct uint_least {\n    static_assert(dgt <= 128);\n    using\
+    \ type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,\n              \
+    \                   std::enable_if<dgt <= 16, __uint16_t>,\n                 \
+    \                std::enable_if<dgt <= 32, __uint32_t>,\n                    \
+    \             std::enable_if<dgt <= 64, __uint64_t>,\n                       \
+    \          std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\ntemplate <int dgt>\n\
+    using int_least_t = typename int_least<dgt>::type;\ntemplate <int dgt>\nusing\
+    \ uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename T>\nusing\
+    \ double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\ntemplate\
+    \ <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/internal/montgomery.hpp\"\
     \nnamespace kyopro {\nnamespace internal {\nusing u32 = uint32_t;\nusing u64 =\
     \ uint64_t;\nusing i32 = int32_t;\nusing i64 = int64_t;\nusing u128 = __uint128_t;\n\
-    using i128 = __int128_t;\n/// @brief MontgomeryReduction\n/// @ref\ntemplate <typename\
-    \ T>\nclass Montgomery {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
+    using i128 = __int128_t;\n\n/**\n * @brief Montgomery Reduction\n */\ntemplate\
+    \ <typename T>\nclass Montgomery {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
     \    using LargeT = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n\
     \    T inv() {\n        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i)\
     \ {\n            if (~t & 1) {\n                t += mod;\n                res\
@@ -165,59 +167,59 @@ data:
     \ l, const mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate\
     \ <typename T, int id>\nT kyopro::dynamic_modint<T, id>::mod;\ntemplate <typename\
     \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;\n\
-    \n/// @brief dynamic modint\n/// @docs docs/math/dynamic_modint.md\n#line 2 \"\
-    src/math/rho.hpp\"\n#include <algorithm>\n#include <vector>\n#line 3 \"src/math/gcd.hpp\"\
-    \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T>\nconstexpr T inline\
-    \ _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return\
-    \ a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n \
-    \   a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
-    \        if (!a||!b) {\n            return a + b;\n        }\n        if (a >=\
-    \ b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n        }\
-    \ else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n       \
-    \ }\n    }\n\n    return a << d;\n}\ntemplate <typename T>\nconstexpr T ext_gcd(T\
-    \ a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b)\
-    \ {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n\
-    \        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
-    \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
-    \ kyopro\n#line 3 \"src/math/miller.hpp\"\nnamespace kyopro {\nnamespace miller\
-    \ {\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing u64 = uint64_t;\n\
-    using u32 = uint32_t;\n\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate <typename T, typename\
-    \ mint, const int bases[], int length>\nconstexpr bool miller_rabin(T n) {\n \
-    \   T d = n - 1;\n\n    while (~d & 1) {\n        d >>= 1;\n    }\n\n    const\
-    \ T rev = n - 1;\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
+    \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */\n\
+    #line 2 \"src/math/rho.hpp\"\n#include <algorithm>\n#include <vector>\n#line 3\
+    \ \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
+    \ T>\nconstexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n   \
+    \ if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (!a||!b) {\n            return a + b;\n    \
+    \    }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T>\nconstexpr T\
+    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
+    \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
+    \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
+    \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
+    \ a;\n}\n};  // namespace kyopro\n#line 3 \"src/math/miller.hpp\"\nnamespace kyopro\
+    \ {\nnamespace miller {\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
+    using u64 = uint64_t;\nusing u32 = uint32_t;\n\nusing i128 = __int128_t;\nusing\
+    \ u128 = __uint128_t;\nusing u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate\
+    \ <typename T, typename mint, const int bases[], int length>\nconstexpr bool miller_rabin(T\
+    \ n) {\n    T d = n - 1;\n\n    while (~d & 1) {\n        d >>= 1;\n    }\n\n\
+    \    const T rev = n - 1;\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
     \    }\n    for (int i = 0; i < length; ++i) {\n        if (n <= bases[i]) {\n\
     \            return true;\n        }\n        T t = d;\n        mint y = mint(bases[i]).pow(t);\n\
     \        \n        while (t != n - 1 && y.val() != 1 && y.val() != rev) {\n  \
     \          y *= y;\n            t <<= 1;\n        }\n\n        if (y.val() !=\
-    \ rev && (~t & 1)) return false;\n    }\n    return true;\n}\nconstexpr int bases_int[3]\
-    \ = {2, 7, 61};  // int\u3060\u3068\u30012,7,61\u3067\u5341\u5206\nconstexpr int\
-    \ bases_ll[7] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};\ntemplate\
-    \ <typename T>\nconstexpr bool inline is_prime(T n) {\n    if (n < 2) {\n    \
-    \    return false;\n    } else if (n == 2) {\n        return true;\n    } else\
-    \ if (~n & 1) {\n        return false;\n    };\n    if (std::numeric_limits<T>::digits\
+    \ rev && (~t & 1)) return false;\n    }\n    return true;\n}\n// \u5E95\nconstexpr\
+    \ int bases_int[3] = {2, 7, 61};\nconstexpr int bases_ll[7] = {2, 325, 9375, 28178,\
+    \ 450775, 9780504, 1795265022};\n\n/**\n * @brief MillerRabin\u7D20\u6570\u5224\
+    \u5B9A\u6CD5\n*/\ntemplate <typename T>\nconstexpr bool inline is_prime(T n) {\n\
+    \    if (n < 2) {\n        return false;\n    } else if (n == 2) {\n        return\
+    \ true;\n    } else if (~n & 1) {\n        return false;\n    };\n    if (std::numeric_limits<T>::digits\
     \ < 32 || n <= 1 << 30) {\n        return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\
     \ bases_int, 3>(n);\n    } else {\n        return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\
     \ bases_ll, 7>(n);\n    }\n    return false;\n}\n};  // namespace miller\n}; \
-    \ // namespace kyopro\n#line 3 \"src/random/xor_shift.hpp\"\n#include <random>\n\
-    #include <chrono>\n\nnamespace kyopro {\nstruct xor_shift32 {\n    uint32_t rng;\n\
-    \    constexpr explicit xor_shift32(uint32_t seed) : rng(seed) {}\n    explicit\
-    \ xor_shift32():rng(std::chrono::steady_clock::now().time_since_epoch().count()){}\n\
-    \    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n        rng\
-    \ ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n};\n\n\
-    struct xor_shift{\n    uint64_t rng;\n    constexpr xor_shift(uint64_t seed):rng(seed){}\n\
-    \    explicit xor_shift():rng(std::chrono::steady_clock::now().time_since_epoch().count()){}\n\
-    \    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n        rng\
-    \ ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n};\n\n\
-    };  // namespace kyopro\n#line 7 \"src/math/rho.hpp\"\nnamespace kyopro {\n\n\
-    ///@brief \u9AD8\u901F\u7D20\u56E0\u6570\u5206\u89E3(Pollard Rho\u6CD5)\nnamespace\
-    \ rho {\nusing namespace std;\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\n\
-    using u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate <typename mint> \nu64\
-    \ find_factor(u64 n) {\n    xor_shift32 rng(2023);\n\n    if (~n & 1uL) {\n  \
-    \      return 2;\n    }\n    if (kyopro::miller::is_prime(n)) {\n        return\
-    \ n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n  \
-    \  }\n    while (1) {\n        u64 c = rng();\n        auto f = [&](mint x) ->\
-    \ mint { return x * x + c; };\n        mint x = rng();\n        mint y = f(x);\n\
+    \ // namespace kyopro\n\n#line 2 \"src/random/xor_shift.hpp\"\n#include <chrono>\n\
+    #line 4 \"src/random/xor_shift.hpp\"\n#include <random>\n\nnamespace kyopro {\n\
+    struct xor_shift32 {\n    uint32_t rng;\n    constexpr explicit xor_shift32(uint32_t\
+    \ seed) : rng(seed) {}\n    explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
+    \ {}\n    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n     \
+    \   rng ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n\
+    };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr xor_shift(uint64_t\
+    \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
+    \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
+    \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n*/\n#line 7 \"src/math/rho.hpp\"\
+    \nnamespace kyopro {\n\n/**\n * @brief Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\
+    \u6CD5\n*/\nnamespace rho {\nusing namespace std;\nusing i128 = __int128_t;\n\
+    using u128 = __uint128_t;\nusing u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate\
+    \ <typename mint> \nu64 find_factor(u64 n) {\n    xor_shift32 rng(2023);\n\n \
+    \   if (~n & 1uL) {\n        return 2;\n    }\n    if (kyopro::miller::is_prime(n))\
+    \ {\n        return n;\n    }\n\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
+    \    }\n    while (1) {\n        u64 c = rng();\n        auto f = [&](mint x)\
+    \ -> mint { return x * x + c; };\n        mint x = rng();\n        mint y = f(x);\n\
     \        u64 d = 1;\n        while (d == 1) {\n            d = _gcd<long long>(abs((long\
     \ long)x.val() - (long long)y.val()),\n                                n);\n \
     \           x = f(x);\n            y = f(f(y));\n        }\n        if (1 < d\
@@ -239,10 +241,10 @@ data:
     \ == pf[i]) {\n            res.back().second++;\n        } else {\n          \
     \  res.emplace_back(pf[i], 1);\n        }\n    }\n\n    return res;\n}\n};  //\
     \ namespace rho\n};  // namespace kyopro\n#line 5 \"src/math/primitive_root.hpp\"\
-    \nnamespace kyopro {\n/// @brief \u539F\u59CB\u6839\ninline uint64_t primitive_root(uint64_t\
-    \ p) {\n    if (p == 2) return 1;\n    auto pf = kyopro::rho::factorize(p - 1);\n\
-    \    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto& q\
-    \ : pf) {\n        q = (p - 1) / q;\n    }\n    using ull = unsigned long long;\n\
+    \nnamespace kyopro {\n\n/**\n * @brief \u539F\u59CB\u6839\n */\ninline uint64_t\
+    \ primitive_root(uint64_t p) {\n    if (p == 2) return 1;\n    auto pf = kyopro::rho::factorize(p\
+    \ - 1);\n    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto&\
+    \ q : pf) {\n        q = (p - 1) / q;\n    }\n    using ull = unsigned long long;\n\
     \    if (dynamic_modint<uint64_t>::get_mod() != p) {\n        dynamic_modint<uint64_t>::set_mod(p);\n\
     \    }\n    xor_shift rng(2023);\n    while (1) {\n        dynamic_modint<uint64_t>\
     \ g(rng());\n        if (g.val() == 0) continue;\n        bool is_ok = true;\n\
@@ -271,8 +273,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2023-05-06 03:56:17+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-07 23:12:04+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Primitive_Root.test.cpp
 layout: document

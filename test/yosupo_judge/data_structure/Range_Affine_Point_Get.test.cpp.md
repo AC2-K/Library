@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/dual_segtree.hpp
     title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
-    title: modint
+    title: "\u9759\u7684modint"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
@@ -23,31 +23,31 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\n\
     #include <iostream>\n#line 2 \"src/data-structure/dual_segtree.hpp\"\n#include\
-    \ <cassert>\n#include <vector>\nnamespace kyopro {\n\n/// @brief \u53CC\u5BFE\u30BB\
-    \u30B0\u30E1\u30F3\u30C8\u6728\ntemplate <class F, F (*composition)(F, F), F (*id)(),\
-    \ bool commutative = true>\nclass dual_segtree {\n    std::vector<F> dat;\n  \
-    \  int _n, sz, lg;\n\npublic:\n    dual_segtree() {}\n    dual_segtree(int _n)\
-    \ : _n(_n) {\n        sz = 1, lg = 0;\n        while (sz < _n) {\n           \
-    \ ++lg;\n            sz <<= 1;\n        }\n        dat.assign(sz << 1, id());\n\
-    \    }\n\nprivate:\n    void update(int p, const F& v) { dat[p] = composition(dat[p],\
-    \ v); }\n    void push(int p) {\n        if (dat[p] == id()) {\n            return;\n\
-    \        }\n        update(p << 1 | 0, dat[p]);\n        update(p << 1 | 1, dat[p]);\n\
+    \ <cassert>\n#include <vector>\nnamespace kyopro {\n/**\n * @brief \u53CC\u5BFE\
+    \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\n * @tparam F \u4F5C\u7528\u7D20\n * @tparam\
+    \ id F \u306E\u5358\u4F4D\u5143\n */\ntemplate <class F, F (*composition)(F, F),\
+    \ F (*id)()>\nclass dual_segtree {\n    std::vector<F> dat;\n    int _n, sz, lg;\n\
+    \npublic:\n    dual_segtree() {}\n    dual_segtree(int _n) : _n(_n) {\n      \
+    \  sz = 1, lg = 0;\n        while (sz < _n) {\n            ++lg;\n           \
+    \ sz <<= 1;\n        }\n        dat.assign(sz << 1, id());\n    }\n\nprivate:\n\
+    \    void update(int p, const F& v) { dat[p] = composition(dat[p], v); }\n   \
+    \ void push(int p) {\n        if (dat[p] == id()) {\n            return;\n   \
+    \     }\n        update(p << 1 | 0, dat[p]);\n        update(p << 1 | 1, dat[p]);\n\
     \        dat[p] = id();\n    }\n\npublic:\n    F operator[](int p) {\n       \
     \ assert(0 <= p && p < _n);\n\n        F res = id();\n\n        p += sz;\n   \
     \     for (int i = lg; i > 0; i--) {\n            push(p >> i);\n        }\n \
     \       return dat[p];\n    }\n\n    void apply(int l, int r, const F& v) {\n\
     \        assert(0 <= l && l <= r && r <= _n);\n        if (l == r) return;\n \
-    \       l += sz, r += sz;\n        if (commutative) {\n            for (int i\
-    \ = lg; i > 0; i--) {\n                if (((l >> i) << i) != l) {\n         \
-    \           push(l >> i);\n                }\n                if (((r >> i) <<\
-    \ i) != r) {\n                    push((r - 1) >> i);\n                }\n   \
-    \         }\n        }\n        while (l < r) {\n            if (l & 1) {\n  \
-    \              update(l++, v);\n            }\n            if (r & 1) {\n    \
-    \            update(--r, v);\n            }\n            l >>= 1, r >>= 1;\n \
-    \       }\n    }\n};\n\n};  // namespace kyopro\n\n/// @docs docs/data-structure/dual_segtree.md\n\
-    #line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
-    \ T>\nconstexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n   \
-    \ if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \       l += sz, r += sz;\n        for (int i = lg; i > 0; i--) {\n          \
+    \  if (((l >> i) << i) != l) {\n                push(l >> i);\n            }\n\
+    \            if (((r >> i) << i) != r) {\n                push((r - 1) >> i);\n\
+    \            }\n        }\n        while (l < r) {\n            if (l & 1) {\n\
+    \                update(l++, v);\n            }\n            if (r & 1) {\n  \
+    \              update(--r, v);\n            }\n            l >>= 1, r >>= 1;\n\
+    \        }\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/dual_segtree.md\n\
+    \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate\
+    \ <typename T>\nconstexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >=\
+    \ 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
     \    while (a != b) {\n        if (!a||!b) {\n            return a + b;\n    \
     \    }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
@@ -58,7 +58,7 @@ data:
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
     \ a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace\
-    \ kyopro {\ntemplate <__uint64_t mod> class static_modint {\nprivate:\n    using\
+    \ kyopro {\ntemplate <__uint64_t mod>\nclass static_modint {\nprivate:\n    using\
     \ mint = static_modint<mod>;\n    using i64 = long long;\n    using u64 = unsigned\
     \ long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\n\
     \    u64 v;\n    constexpr inline u64 normalize(i64 v_) const {\n        v_ %=\
@@ -87,29 +87,29 @@ data:
     \ mint(*this) -= r; }\n    constexpr mint operator*(i64 r) { return mint(*this)\
     \ *= r; }\n\n    constexpr mint& operator=(i64 r) { return (*this) = mint(r);\
     \ }\n\n    constexpr bool operator==(const mint& r) const {\n        return (*this).val()\
-    \ == r.val();\n    }\n\n    template <typename T> constexpr mint pow(T e) const\
-    \ {\n        mint ans(1), base(*this);\n        while (e) {\n            if (e\
-    \ & 1) {\n                ans *= base;\n            }\n            base *= base;\n\
-    \            e >>= 1;\n        }\n        return ans;\n    }\n    constexpr inline\
-    \ mint inv() const {\n        long long x, y;\n        auto d = ext_gcd((long\
+    \ == r.val();\n    }\n\n    template <typename T>\n    constexpr mint pow(T e)\
+    \ const {\n        mint ans(1), base(*this);\n        while (e) {\n          \
+    \  if (e & 1) {\n                ans *= base;\n            }\n            base\
+    \ *= base;\n            e >>= 1;\n        }\n        return ans;\n    }\n    constexpr\
+    \ inline mint inv() const {\n        long long x, y;\n        auto d = ext_gcd((long\
     \ long)mod, (long long)v, x, y);\n        assert(d == 1);\n        return mint(y);\n\
     \    }\n\n    constexpr mint& operator/=(const mint& r) { return (*this) *= r.inv();\
     \ }\n    constexpr mint inv(const mint& r) const { return mint(*this) *= r.inv();\
     \ }\n    constexpr friend mint operator/(const mint& l, i64 r) {\n        return\
     \ mint(l) /= mint(r);\n    }\n    constexpr friend mint operator/(i64 l, const\
-    \ mint& r) {\n        return mint(l) /= mint(r);\n    }\n\n    // iostream\n \
-    \   constexpr friend std::ostream& operator<<(std::ostream& os,\n            \
-    \                                  const mint& mt) {\n        os << mt.val();\n\
+    \ mint& r) {\n        return mint(l) /= mint(r);\n    }\n\n    // stream\n   \
+    \ constexpr friend std::ostream& operator<<(std::ostream& os,\n              \
+    \                                const mint& mt) {\n        os << mt.val();\n\
     \        return os;\n    }\n    constexpr friend std::istream& operator>>(std::istream&\
     \ is, mint& mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n    \
-    \    return is;\n    }\n};\ntemplate <__uint32_t mod> class static_modint32 {\n\
+    \    return is;\n    }\n};\ntemplate <__uint32_t mod>\nclass static_modint32 {\n\
     private:\n    using mint = static_modint32<mod>;\n    using i32 = __int32_t;\n\
     \    using u32 = __uint32_t;\n    using i64 = __int64_t;\n    using u64 = __uint64_t;\n\
     \n    u32 v;\n    constexpr inline u32 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
-    \ v_;\n    }\n    \npublic:\n    constexpr static_modint32() : v(0) {}\n    constexpr\
+    \ v_;\n    }\n\npublic:\n    constexpr static_modint32() : v(0) {}\n    constexpr\
     \ static_modint32(const i64& v_) : v(normalize(v_)) {}\n\n    // operator\n  \
-    \  static mint raw(u32 a){\n        mint m;\n        m.v = a;\n        return\
+    \  static mint raw(u32 a) {\n        mint m;\n        m.v = a;\n        return\
     \ m;\n    }\n    constexpr u32 val() const { return v; }\n    constexpr mint&\
     \ operator+=(const mint& rhs) {\n        v += rhs.val();\n        if (v >= mod)\
     \ {\n            v -= mod;\n        }\n        return (*this);\n    }\n    constexpr\
@@ -132,7 +132,7 @@ data:
     \ r) { return mint(*this) -= r; }\n    constexpr mint operator*(i64 r) { return\
     \ mint(*this) *= r; }\n\n    constexpr mint& operator=(i64 r) { return (*this)\
     \ = mint(r); }\n\n    constexpr bool operator==(const mint& r) const {\n     \
-    \   return (*this).val() == r.val();\n    }\n    template <typename T> constexpr\
+    \   return (*this).val() == r.val();\n    }\n    template <typename T>\n    constexpr\
     \ mint pow(T e) const {\n        mint ans(1), base(*this);\n        while (e)\
     \ {\n            if (e & 1) {\n                ans *= base;\n            }\n \
     \           base *= base;\n            e >>= 1;\n        }\n        return ans;\n\
@@ -143,15 +143,15 @@ data:
     \ mint& r) const {\n        return mint(*this) *= r.inv();\n    }\n    constexpr\
     \ friend mint operator/(const mint& l, i64 r) {\n        return mint(l) /= mint(r);\n\
     \    }\n    constexpr friend mint operator/(i64 l, const mint& r) {\n        return\
-    \ mint(l) /= mint(r);\n    }\n\n    // iostream\n    constexpr friend std::ostream&\
+    \ mint(l) /= mint(r);\n    }\n\n    // stream\n    constexpr friend std::ostream&\
     \ operator<<(std::ostream& os,\n                                             \
     \ const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    constexpr\
     \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/// @brief modint\n/// @docs docs/math/static_modint.md\n#line 5 \"\
-    test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\n\nusing mint\
-    \ = kyopro::static_modint32<998244353>;\nusing Affine = std::pair<mint, mint>;\n\
-    inline Affine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
+    \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
+    \ */\n#line 5 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\
+    \n\nusing mint = kyopro::static_modint32<998244353>;\nusing Affine = std::pair<mint,\
+    \ mint>;\ninline Affine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
     \    auto c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\n\
     inline Affine e() { return Affine(1, 0); }\nint main() {\n    std::ios::sync_with_stdio(false);\n\
     \    std::cin.tie(nullptr);\n    int n, q;\n    std::cin >> n >> q;\n    kyopro::dual_segtree<Affine,\
@@ -185,8 +185,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-05-03 22:08:07+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-07 23:12:04+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
 layout: document

@@ -10,31 +10,32 @@ data:
     document_title: "\u6C38\u7D9Astack"
     links: []
   bundledCode: "#line 2 \"src/persistent/stack.hpp\"\n#include <cassert>\nnamespace\
-    \ kyopro {\n/// @brief \u6C38\u7D9Astack\ntemplate <class T> class persistent_stack\
-    \ {\n    class Node {\n    public:\n        T val;\n        Node* prev;\n    };\n\
-    \n    Node* head;\n    int sz;\n\n    persistent_stack(Node* head, int sz) : head(head),\
+    \ kyopro {\n    \n/**\n * @brief \u6C38\u7D9Astack\n*/\ntemplate <class T>\nclass\
+    \ persistent_stack {\n    class Node {\n    public:\n        T val;\n        Node*\
+    \ prev;\n    };\n\n    Node* head;\n    int sz;\n\n    persistent_stack(Node*\
+    \ head, int sz) : head(head), sz(sz) {}\n\npublic:\n    persistent_stack() : head(nullptr)\
+    \ {}\n\n    T top() const {\n        assert(head);\n        return head->val;\n\
+    \    }\n    persistent_stack pop() const {\n        assert(head);\n        return\
+    \ persistent_stack(head->prev, sz - 1);\n    }\n    persistent_stack push(const\
+    \ T& v) const {\n        return persistent_stack(new Node{v, head}, sz + 1);\n\
+    \    }\n    int size() const { return sz; }\n    bool empty() const { return (head\
+    \ == nullptr); }\n};\n};  // namespace kyopro\n"
+  code: "#pragma once\n#include <cassert>\nnamespace kyopro {\n    \n/**\n * @brief\
+    \ \u6C38\u7D9Astack\n*/\ntemplate <class T>\nclass persistent_stack {\n    class\
+    \ Node {\n    public:\n        T val;\n        Node* prev;\n    };\n\n    Node*\
+    \ head;\n    int sz;\n\n    persistent_stack(Node* head, int sz) : head(head),\
     \ sz(sz) {}\n\npublic:\n    persistent_stack() : head(nullptr) {}\n\n    T top()\
     \ const {\n        assert(head);\n        return head->val;\n    }\n    persistent_stack\
     \ pop() const {\n        assert(head);\n        return persistent_stack(head->prev,\
     \ sz - 1);\n    }\n    persistent_stack push(const T& v) const {\n        return\
     \ persistent_stack(new Node{v, head}, sz + 1);\n    }\n    int size() const {\
     \ return sz; }\n    bool empty() const { return (head == nullptr); }\n};\n}; \
-    \ // namespace kyopro\n"
-  code: "#pragma once\n#include <cassert>\nnamespace kyopro {\n/// @brief \u6C38\u7D9A\
-    stack\ntemplate <class T> class persistent_stack {\n    class Node {\n    public:\n\
-    \        T val;\n        Node* prev;\n    };\n\n    Node* head;\n    int sz;\n\
-    \n    persistent_stack(Node* head, int sz) : head(head), sz(sz) {}\n\npublic:\n\
-    \    persistent_stack() : head(nullptr) {}\n\n    T top() const {\n        assert(head);\n\
-    \        return head->val;\n    }\n    persistent_stack pop() const {\n      \
-    \  assert(head);\n        return persistent_stack(head->prev, sz - 1);\n    }\n\
-    \    persistent_stack push(const T& v) const {\n        return persistent_stack(new\
-    \ Node{v, head}, sz + 1);\n    }\n    int size() const { return sz; }\n    bool\
-    \ empty() const { return (head == nullptr); }\n};\n};  // namespace kyopro"
+    \ // namespace kyopro"
   dependsOn: []
   isVerificationFile: false
   path: src/persistent/stack.hpp
   requiredBy: []
-  timestamp: '2023-04-23 12:26:27+09:00'
+  timestamp: '2023-05-07 23:12:04+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/persistent/stack.hpp
