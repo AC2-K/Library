@@ -50,10 +50,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/hash_map.hpp
       title: HashMap
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/lazy_segtree.hpp
       title: LazySegmentTree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/segtree.hpp
       title: Segment Tree
     - icon: ':heavy_check_mark:'
@@ -64,7 +64,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure-2d/PointAddRectangleSum.hpp
       title: src/data-structure-2d/PointAddRectangleSum.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure-2d/RangeTree.hpp
       title: src/data-structure-2d/RangeTree.hpp
     - icon: ':heavy_check_mark:'
@@ -78,7 +78,7 @@ data:
     - icon: ':warning:'
       path: src/main.cpp
       title: src/main.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: "\u5165\u51FA\u529B"
     - icon: ':warning:'
@@ -114,7 +114,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: dynamic modint
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
     - icon: ':heavy_check_mark:'
@@ -141,7 +141,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/sieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/static_modint.hpp
       title: modint
   - name: src/persistent
@@ -184,13 +184,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/1_A.test.cpp
       title: test/AOJ/DSL/1_A.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2_B.test.cpp
       title: test/AOJ/DSL/2_B.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2_D_dual.test.cpp
       title: test/AOJ/DSL/2_D_dual.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2_D_lazy.test.cpp
       title: test/AOJ/DSL/2_D_lazy.test.cpp
     - icon: ':heavy_check_mark:'
@@ -241,16 +241,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
       title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
       title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
       title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
       title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     - icon: ':heavy_check_mark:'
@@ -268,7 +268,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
       title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -293,7 +293,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
     - icon: ':heavy_check_mark:'
