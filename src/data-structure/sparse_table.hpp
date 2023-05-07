@@ -3,16 +3,15 @@
 #include <vector>
 namespace kyopro {
 /// @brief Sparse Table
-/// @note 区間最小しか対応してない...
-template <class T>
+template <class T, auto op, auto e>
 class sparse_table {
     std::vector<T> vec;
     std::vector<std::vector<T>> table;
     std::vector<int> look_up;
 
 public:
-    sparse_table(int n) : vec(n) {}
-    sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }
+    constexpr explicit sparse_table(int n) : vec(n) {}
+    constexpr explicit sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }
     void set(int p, const T& v) { vec[p] = v; }
     void build() {
         int sz = vec.size();
@@ -27,7 +26,7 @@ public:
         for (int i = 1; i < log; i++) {
             for (int j = 0; j + (1 << i) <= (1 << log); j++) {
                 table[i][j] =
-                    std::min(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);
+                    op(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);
             }
         }
         look_up.resize(sz + 1);
@@ -36,9 +35,9 @@ public:
         }
     }
 
-    T prod(int l, int r) {
+    T prod(int l, int r) const {
         int b = look_up[r - l];
-        return std::min(table[b][l], table[b][r - (1 << b)]);
+        return op(table[b][l], table[b][r - (1 << b)]);
     }
 };
 };  // namespace kyopro
