@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
@@ -62,8 +62,8 @@ data:
     \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
     \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
     \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
-    constexpr inline void putint(Head& head, Tail&... tail) {\n    putint(head);\n\
-    \    putint(tail...);\n}\n\n};  // namespace kyopro\n#line 7 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\
+    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
+    \   putint(tail...);\n}\n\n};  // namespace kyopro\n#line 7 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\
     \nint main() {\n    int n;\n    kyopro::readint(n);\n    kyopro::dijkstra g(n);\n\
     \    for (int i = 0; i < n - 1; i++) {\n        int a, b, c;\n        kyopro::readint(a,\
     \ b, c);\n        g.add_edge(a, b, c);\n        g.add_edge(b, a, c);\n    }\n\
@@ -89,7 +89,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 21:17:15+09:00'
+  timestamp: '2023-05-07 12:47:55+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Diameter.test.cpp

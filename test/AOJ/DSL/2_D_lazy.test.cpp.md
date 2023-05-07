@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/lazy_segtree.hpp
     title: LazySegmentTree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
@@ -73,8 +73,8 @@ data:
     \    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now] = (char)'0'\
     \ + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
     \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
-    constexpr inline void putint(Head& head, Tail&... tail) {\n    putint(head);\n\
-    \    putint(tail...);\n}\n\n};  // namespace kyopro\n#line 5 \"test/AOJ/DSL/2_D_lazy.test.cpp\"\
+    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
+    \   putint(tail...);\n}\n\n};  // namespace kyopro\n#line 5 \"test/AOJ/DSL/2_D_lazy.test.cpp\"\
     \ninline int op(int x, int y) { return std::min(x, y); }\ninline int comp(int\
     \ x, int y) { return y; }\ninline int mapping(int x, int y) { return y; }\ninline\
     \ int e() { return (1ll << 31) - 1; }\ninline int id() { return (1ll << 31) -\
@@ -101,7 +101,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_D_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 01:56:23+00:00'
+  timestamp: '2023-05-07 12:47:55+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_D_lazy.test.cpp

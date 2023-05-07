@@ -78,7 +78,7 @@ data:
     - icon: ':warning:'
       path: src/main.cpp
       title: src/main.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: "\u5165\u51FA\u529B"
     - icon: ':warning:'
@@ -92,7 +92,7 @@ data:
     - icon: ':warning:'
       path: src/graph/TopologialSort.hpp
       title: "\u30C8\u30DD\u30ED\u30B8\u30AB\u30EB\u30BD\u30FC\u30C8"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
   - name: src/internal
@@ -204,7 +204,7 @@ data:
       title: test/AOJ/DSL/5_B.test.cpp
   - name: test/AOJ/GRL
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/1_A.test.cpp
       title: test/AOJ/GRL/1_A.test.cpp
     - icon: ':heavy_check_mark:'
@@ -282,7 +282,7 @@ data:
       title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - name: test/yosupo_judge/graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/graph/Shortest_Path.test.cpp
       title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - name: test/yosupo_judge/math
