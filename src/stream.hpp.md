@@ -9,9 +9,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yosupo_judge/graph/Shortest_Path.test.cpp
+    title: test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+    title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "\u5165\u51FA\u529B"
     links: []
@@ -52,9 +58,11 @@ data:
   path: src/stream.hpp
   requiredBy: []
   timestamp: '2023-05-07 01:56:23+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/DSL/2_D_lazy.test.cpp
+  - test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
 documentation_of: src/stream.hpp
 layout: document
