@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/lazy_segtree.hpp
     title: LazySegmentTree
   _extendedRequiredBy: []
@@ -17,39 +17,46 @@ data:
   bundledCode: "#line 1 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
     \n#include<iostream>\n#line 2 \"src/data-structure/lazy_segtree.hpp\"\n#include\
     \ <cassert>\n#include <vector>\nnamespace kyopro {\n/// @brief LazySegmentTree\n\
-    template <class S,\n          class F,\n          S (*op)(S, S),\n          S\
-    \ (*e)(),\n          F (*composition)(F, F),\n          F (*id)(),\n         \
-    \ S (*mapping)(S, F)>\nclass lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n\
-    \    std::vector<F> lz;\n\npublic:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
-    \ e())) {}\n    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(),\
-    \ e()), lz(4 * a.size(), id()) {\n        int x = 1;\n        while (a.size()\
-    \ > x) {\n            x <<= 1;\n        }\n        sz = x;\n        for (int i\
-    \ = 0; i < a.size(); i++) {\n            set(i, a[i]);\n        }\n        build();\n\
-    \    }\n\npublic:\n    void set(int pos, S x) {\n        assert(0 <= pos && pos\
-    \ < sz);\n        dat[pos + sz - 1] = x;\n    }\n    void build() {\n        for\
-    \ (int i = sz - 2; i >= 0; i--) {\n            dat[i] = op(dat[2 * i + 1], dat[2\
-    \ * i + 2]);\n        }\n    }\n\nprivate:\n    void eval(int pos) {\n       \
-    \ if (lz[pos] == id()) return;\n        if (pos < sz - 1) {\n            lz[2\
-    \ * pos + 1] = composition(lz[2 * pos + 1], lz[pos]);\n            lz[2 * pos\
-    \ + 2] = composition(lz[2 * pos + 2], lz[pos]);\n        }\n        dat[pos] =\
-    \ mapping(dat[pos], lz[pos]);\n        lz[pos] = id();\n    }\n\nprivate:\n  \
-    \  void internal_apply(int L, int R, int l, int r, const F& x, int k) {\n    \
-    \    eval(k);\n        if (L <= l && r <= R) {\n            lz[k] = composition(lz[k],\
-    \ x);\n            eval(k);\n        } else if (L < r && l < R) {\n          \
-    \  int mid = (l + r) >> 1;\n            internal_apply(L, R, l, mid, x, 2 * k\
-    \ + 1);\n            internal_apply(L, R, mid, r, x, 2 * k + 2);\n           \
-    \ dat[k] = op(dat[2 * k + 1], dat[2 * k + 2]);\n        }\n    }\n\npublic:\n\
-    \    void apply(int l, int r, const F& x) {\n        assert(0 <= l && l <= r &&\
-    \ r <= sz);\n        internal_apply(l, r, 0, sz, x, 0);\n    }\n\nprivate:\n \
-    \   S internal_prod(int L, int R, int l, int r, int k) {\n        eval(k);\n \
-    \       if (r <= L || R <= l) {\n            return e();\n        } else if (L\
-    \ <= l && r <= R) {\n            return dat[k];\n        } else {\n          \
-    \  int mid = (l + r) >> 1;\n            S vl = internal_prod(L, R, l, mid, 2 *\
-    \ k + 1);\n            S vr = internal_prod(L, R, mid, r, 2 * k + 2);\n      \
-    \      return op(vl, vr);\n        }\n    }\n\npublic:\n    S prod(int l, int\
-    \ r) {\n        assert(0 <= l && l <= r && r <= sz);\n        return internal_prod(l,\
-    \ r, 0, sz, 0);\n    }\n\n    S operator[](int pos) { return prod(pos, pos + 1);\
-    \ }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/lazy_segtree.md\n\
+    /// @ref\n/// https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
+    template <class S,\n          class F,\n          auto op,\n          auto e,\n\
+    \          auto composition,\n          auto id,\n          auto mapping>\nclass\
+    \ lazy_segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n    std::vector<F>\
+    \ lazy;\n\npublic:\n    lazy_segtree() {}\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
+    \ e())) {}\n    lazy_segtree(const std::vector<S>& a) : n((int)a.size()) {\n \
+    \       sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n  \
+    \          lg++;\n        }\n\n        dat = std::vector<S>(sz << 1, e());\n \
+    \       lazy = std::vector<F>(sz, id());\n        for (int i = 0; i < n; ++i)\
+    \ {\n            set(i, a[i]);\n        }\n        build();\n    }\n\npublic:\n\
+    \    void set(int i, const S& v) {\n        assert(0 <= i && i < sz);\n      \
+    \  dat[i + sz] = v;\n    }\n    void build() {\n        for (int i = sz - 1; i\
+    \ > 0; --i) {\n            push_up(i);\n        }\n    }\n\nprivate:\n    void\
+    \ all_apply(int p, const F& f) {\n        dat[p] = mapping(dat[p], f);\n     \
+    \   if (p < sz) lazy[p] = composition(lazy[p], f);\n    }\n    void push_up(int\
+    \ k) { dat[k] = op(dat[k << 1 | 0], dat[k << 1 | 1]); }\n    void push_down(int\
+    \ p) {\n        if (lazy[p] == id()) {\n            return;\n        }\n     \
+    \   all_apply(p << 1 | 0, lazy[p]);\n        all_apply(p << 1 | 1, lazy[p]);\n\
+    \        lazy[p] = id();\n    }\n\npublic:\n    S operator[](int p) {\n      \
+    \  assert(0 <= p && p < n);\n        p += sz;\n        for (int i = lg; i > 0;\
+    \ --i) push_down(p >> i);\n        return dat[p];\n    }\n    S prod(int l, int\
+    \ r) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r) return\
+    \ e();\n\n        l += sz, r += sz;\n        for (int i = lg; i > 0; --i) {\n\
+    \            if (((l >> i) << i) != l) {\n                push_down(l >> i);\n\
+    \            }\n            if (((r >> i) << i) != r) {\n                push_down((r\
+    \ - 1) >> i);\n            }\n        }\n\n        S sml = e(), smr = e();\n \
+    \       while (l < r) {\n            if (l & 1) sml = op(sml, dat[l++]);\n   \
+    \         if (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n\
+    \        }\n\n        return op(sml, smr);\n    }\n    void apply(int l, int r,\
+    \ const F& v) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l ==\
+    \ r) return;\n        l += sz, r += sz;\n        for (int i = lg; i > 0; --i)\
+    \ {\n            if (((l >> i) << i) != l) {\n                push_down(l >> i);\n\
+    \            }\n            if (((r >> i) << i) != r) {\n                push_down((r\
+    \ - 1) >> i);\n            }\n        }\n        {\n            int l2 = l, r2\
+    \ = r;\n            while (l < r) {\n                if (l & 1) all_apply(l++,\
+    \ v);\n                if (r & 1) all_apply(--r, v);\n                l >>= 1;\n\
+    \                r >>= 1;\n            }\n            l = l2;\n            r =\
+    \ r2;\n        }\n\n        for (int i = 1; i <= lg; ++i) {\n            if (((l\
+    \ >> i) << i) != l) push_up(l >> i);\n            if (((r >> i) << i) != r) push_up((r\
+    \ - 1) >> i);\n        }\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/lazy_segtree.md\n\
     #line 4 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\n\ninline int op(int x, int y) { return\
     \ x + y; }\ninline int comp(int x, int y) { return x + y; }\ninline int mapping(int\
     \ x, int y) { return x + y; }\ninline int e() { return 0; }\ninline int id() {\
@@ -76,7 +83,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_E_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-05-03 22:08:07+09:00'
+  timestamp: '2023-05-07 10:38:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_E_lazy.test.cpp

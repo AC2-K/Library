@@ -1,15 +1,18 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/lazy_segtree.hpp
     title: LazySegmentTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: modint
+  - icon: ':question:'
+    path: src/stream.hpp
+    title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -24,39 +27,46 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\n\
     #include<iostream>\n#line 2 \"src/data-structure/lazy_segtree.hpp\"\n#include\
     \ <cassert>\n#include <vector>\nnamespace kyopro {\n/// @brief LazySegmentTree\n\
-    template <class S,\n          class F,\n          S (*op)(S, S),\n          S\
-    \ (*e)(),\n          F (*composition)(F, F),\n          F (*id)(),\n         \
-    \ S (*mapping)(S, F)>\nclass lazy_segtree {\n    int sz;\n    std::vector<S> dat;\n\
-    \    std::vector<F> lz;\n\npublic:\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
-    \ e())) {}\n    lazy_segtree(const std::vector<S>& a)\n        : dat(4 * a.size(),\
-    \ e()), lz(4 * a.size(), id()) {\n        int x = 1;\n        while (a.size()\
-    \ > x) {\n            x <<= 1;\n        }\n        sz = x;\n        for (int i\
-    \ = 0; i < a.size(); i++) {\n            set(i, a[i]);\n        }\n        build();\n\
-    \    }\n\npublic:\n    void set(int pos, S x) {\n        assert(0 <= pos && pos\
-    \ < sz);\n        dat[pos + sz - 1] = x;\n    }\n    void build() {\n        for\
-    \ (int i = sz - 2; i >= 0; i--) {\n            dat[i] = op(dat[2 * i + 1], dat[2\
-    \ * i + 2]);\n        }\n    }\n\nprivate:\n    void eval(int pos) {\n       \
-    \ if (lz[pos] == id()) return;\n        if (pos < sz - 1) {\n            lz[2\
-    \ * pos + 1] = composition(lz[2 * pos + 1], lz[pos]);\n            lz[2 * pos\
-    \ + 2] = composition(lz[2 * pos + 2], lz[pos]);\n        }\n        dat[pos] =\
-    \ mapping(dat[pos], lz[pos]);\n        lz[pos] = id();\n    }\n\nprivate:\n  \
-    \  void internal_apply(int L, int R, int l, int r, const F& x, int k) {\n    \
-    \    eval(k);\n        if (L <= l && r <= R) {\n            lz[k] = composition(lz[k],\
-    \ x);\n            eval(k);\n        } else if (L < r && l < R) {\n          \
-    \  int mid = (l + r) >> 1;\n            internal_apply(L, R, l, mid, x, 2 * k\
-    \ + 1);\n            internal_apply(L, R, mid, r, x, 2 * k + 2);\n           \
-    \ dat[k] = op(dat[2 * k + 1], dat[2 * k + 2]);\n        }\n    }\n\npublic:\n\
-    \    void apply(int l, int r, const F& x) {\n        assert(0 <= l && l <= r &&\
-    \ r <= sz);\n        internal_apply(l, r, 0, sz, x, 0);\n    }\n\nprivate:\n \
-    \   S internal_prod(int L, int R, int l, int r, int k) {\n        eval(k);\n \
-    \       if (r <= L || R <= l) {\n            return e();\n        } else if (L\
-    \ <= l && r <= R) {\n            return dat[k];\n        } else {\n          \
-    \  int mid = (l + r) >> 1;\n            S vl = internal_prod(L, R, l, mid, 2 *\
-    \ k + 1);\n            S vr = internal_prod(L, R, mid, r, 2 * k + 2);\n      \
-    \      return op(vl, vr);\n        }\n    }\n\npublic:\n    S prod(int l, int\
-    \ r) {\n        assert(0 <= l && l <= r && r <= sz);\n        return internal_prod(l,\
-    \ r, 0, sz, 0);\n    }\n\n    S operator[](int pos) { return prod(pos, pos + 1);\
-    \ }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/lazy_segtree.md\n\
+    /// @ref\n/// https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp\n\
+    template <class S,\n          class F,\n          auto op,\n          auto e,\n\
+    \          auto composition,\n          auto id,\n          auto mapping>\nclass\
+    \ lazy_segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n    std::vector<F>\
+    \ lazy;\n\npublic:\n    lazy_segtree() {}\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
+    \ e())) {}\n    lazy_segtree(const std::vector<S>& a) : n((int)a.size()) {\n \
+    \       sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n  \
+    \          lg++;\n        }\n\n        dat = std::vector<S>(sz << 1, e());\n \
+    \       lazy = std::vector<F>(sz, id());\n        for (int i = 0; i < n; ++i)\
+    \ {\n            set(i, a[i]);\n        }\n        build();\n    }\n\npublic:\n\
+    \    void set(int i, const S& v) {\n        assert(0 <= i && i < sz);\n      \
+    \  dat[i + sz] = v;\n    }\n    void build() {\n        for (int i = sz - 1; i\
+    \ > 0; --i) {\n            push_up(i);\n        }\n    }\n\nprivate:\n    void\
+    \ all_apply(int p, const F& f) {\n        dat[p] = mapping(dat[p], f);\n     \
+    \   if (p < sz) lazy[p] = composition(lazy[p], f);\n    }\n    void push_up(int\
+    \ k) { dat[k] = op(dat[k << 1 | 0], dat[k << 1 | 1]); }\n    void push_down(int\
+    \ p) {\n        if (lazy[p] == id()) {\n            return;\n        }\n     \
+    \   all_apply(p << 1 | 0, lazy[p]);\n        all_apply(p << 1 | 1, lazy[p]);\n\
+    \        lazy[p] = id();\n    }\n\npublic:\n    S operator[](int p) {\n      \
+    \  assert(0 <= p && p < n);\n        p += sz;\n        for (int i = lg; i > 0;\
+    \ --i) push_down(p >> i);\n        return dat[p];\n    }\n    S prod(int l, int\
+    \ r) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r) return\
+    \ e();\n\n        l += sz, r += sz;\n        for (int i = lg; i > 0; --i) {\n\
+    \            if (((l >> i) << i) != l) {\n                push_down(l >> i);\n\
+    \            }\n            if (((r >> i) << i) != r) {\n                push_down((r\
+    \ - 1) >> i);\n            }\n        }\n\n        S sml = e(), smr = e();\n \
+    \       while (l < r) {\n            if (l & 1) sml = op(sml, dat[l++]);\n   \
+    \         if (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n\
+    \        }\n\n        return op(sml, smr);\n    }\n    void apply(int l, int r,\
+    \ const F& v) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l ==\
+    \ r) return;\n        l += sz, r += sz;\n        for (int i = lg; i > 0; --i)\
+    \ {\n            if (((l >> i) << i) != l) {\n                push_down(l >> i);\n\
+    \            }\n            if (((r >> i) << i) != r) {\n                push_down((r\
+    \ - 1) >> i);\n            }\n        }\n        {\n            int l2 = l, r2\
+    \ = r;\n            while (l < r) {\n                if (l & 1) all_apply(l++,\
+    \ v);\n                if (r & 1) all_apply(--r, v);\n                l >>= 1;\n\
+    \                r >>= 1;\n            }\n            l = l2;\n            r =\
+    \ r2;\n        }\n\n        for (int i = 1; i <= lg; ++i) {\n            if (((l\
+    \ >> i) << i) != l) push_up(l >> i);\n            if (((r >> i) << i) != r) push_up((r\
+    \ - 1) >> i);\n        }\n    }\n};\n};  // namespace kyopro\n\n/// @docs docs/data-structure/lazy_segtree.md\n\
     #line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
     \ T>\nconstexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n   \
     \ if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
@@ -160,52 +170,67 @@ data:
     \ const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    constexpr\
     \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/// @brief modint\n/// @docs docs/math/static_modint.md\n#line 5 \"\
-    test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\nusing mint\
-    \ = kyopro::static_modint32<998244353>;\nstruct S {\n    mint s;\n    int len;\n\
-    };\ninline S op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }\ninline S e()\
-    \ { return S{0, 0}; }\nusing Affine = std::pair<mint, mint>;\ninline Affine composition(Affine\
-    \ g, Affine f) {\n\t//f(g)\n\t//a(cx+d)+b\n\tauto a = f.first, b = f.second;\n\
-    \tauto c = g.first, d = g.second;\n\treturn Affine(a * c, a * d + b);\n}\ninline\
-    \ Affine id() { return Affine(1, 0); }\ninline S mapping(S d, Affine f) {\n  \
-    \  mint a = f.first, b = f.second;\n    d.s *= a, d.s += b * d.len;\n    return\
-    \ d;\n};\n\nint main(){\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
-    \    int n, q;\n    std::cin >> n >> q;\n    kyopro::lazy_segtree<S, Affine, op,\
-    \ e, composition, id, mapping> sg(n);\n    for(int i=0;i<n;i++){\n        mint\
-    \ a;\n        std::cin >> a;\n        sg.set(i, {a, 1});\n    }\n    sg.build();\n\
-    \    while(q--){\n        int t;\n        std::cin >> t;\n        if (t == 0)\
-    \ {\n            int l, r;\n            mint b, c;\n            std::cin >> l\
-    \ >> r >> b >> c;\n            sg.apply(l, r, Affine(b, c));\n        } else {\n\
-    \            int l, r;\n            std::cin >> l >> r;\n            auto res\
-    \ = sg.prod(l, r);\n            std::cout << res.s << '\\n';\n        }\n    }\n\
-    }\n"
+    \ kyopro\n\n/// @brief modint\n/// @docs docs/math/static_modint.md\n#line 2 \"\
+    src/stream.hpp\"\n#include <stdio.h>\nnamespace kyopro {\n/// @brief \u5165\u51FA\
+    \u529B\n\ntemplate <typename T>\nconstexpr inline void readint(T& a) {\n    a\
+    \ = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n    while\
+    \ (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c == '-') is_negative\
+    \ = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 *\
+    \ a + (c - '0');\n        c = getchar_unlocked();\n    }\n    if (is_negative)\
+    \ a *= -1;\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void\
+    \ readint(Head& head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n\
+    }\ntemplate <typename T>\nconstexpr inline void putint(T a) {\n    if (!a) {\n\
+    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
+    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
+    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
+    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
+    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head&\
+    \ head, Tail&... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n};  //\
+    \ namespace kyopro\n#line 6 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\
+    \nusing mint = kyopro::static_modint32<998244353>;\nstruct S {\n    mint s;\n\
+    \    int len;\n};\ninline S op(S a, S b) { return S{a.s + b.s, a.len + b.len};\
+    \ }\ninline S e() { return S{0, 0}; }\nusing Affine = std::pair<mint, mint>;\n\
+    inline Affine composition(Affine g, Affine f) {\n\t//f(g)\n\t//a(cx+d)+b\n\tauto\
+    \ a = f.first, b = f.second;\n\tauto c = g.first, d = g.second;\n\treturn Affine(a\
+    \ * c, a * d + b);\n}\ninline Affine id() { return Affine(1, 0); }\ninline S mapping(S\
+    \ d, Affine f) {\n    mint a = f.first, b = f.second;\n    d.s *= a, d.s += b\
+    \ * d.len;\n    return d;\n};\n\nint main(){\n    int n, q;\n    kyopro::readint(n,\
+    \ q);\n    kyopro::lazy_segtree<S, Affine, op, e, composition, id, mapping> sg(n);\n\
+    \    for(int i=0;i<n;i++){\n        mint a;\n        kyopro::readint(a);\n   \
+    \     sg.set(i, {a, 1});\n    }\n    sg.build();\n    while(q--){\n        int\
+    \ t;\n        kyopro::readint(t);\n        if (t == 0) {\n            int l, r;\n\
+    \            mint b, c;\n            kyopro::readint(l, r, b, c);\n          \
+    \  sg.apply(l, r, Affine(b, c));\n        } else {\n            int l, r;\n  \
+    \          kyopro::readint(l, r);\n            auto res = sg.prod(l, r);\n   \
+    \         kyopro::putint(res.s.val());\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
     \n#include<iostream>\n#include\"../../../src/data-structure/lazy_segtree.hpp\"\
-    \n#include\"../../../src/math/static_modint.hpp\"\nusing mint = kyopro::static_modint32<998244353>;\n\
-    struct S {\n    mint s;\n    int len;\n};\ninline S op(S a, S b) { return S{a.s\
-    \ + b.s, a.len + b.len}; }\ninline S e() { return S{0, 0}; }\nusing Affine = std::pair<mint,\
-    \ mint>;\ninline Affine composition(Affine g, Affine f) {\n\t//f(g)\n\t//a(cx+d)+b\n\
-    \tauto a = f.first, b = f.second;\n\tauto c = g.first, d = g.second;\n\treturn\
-    \ Affine(a * c, a * d + b);\n}\ninline Affine id() { return Affine(1, 0); }\n\
-    inline S mapping(S d, Affine f) {\n    mint a = f.first, b = f.second;\n    d.s\
-    \ *= a, d.s += b * d.len;\n    return d;\n};\n\nint main(){\n    std::ios::sync_with_stdio(false);\n\
-    \    std::cin.tie(nullptr);\n    int n, q;\n    std::cin >> n >> q;\n    kyopro::lazy_segtree<S,\
-    \ Affine, op, e, composition, id, mapping> sg(n);\n    for(int i=0;i<n;i++){\n\
-    \        mint a;\n        std::cin >> a;\n        sg.set(i, {a, 1});\n    }\n\
-    \    sg.build();\n    while(q--){\n        int t;\n        std::cin >> t;\n  \
-    \      if (t == 0) {\n            int l, r;\n            mint b, c;\n        \
-    \    std::cin >> l >> r >> b >> c;\n            sg.apply(l, r, Affine(b, c));\n\
-    \        } else {\n            int l, r;\n            std::cin >> l >> r;\n  \
-    \          auto res = sg.prod(l, r);\n            std::cout << res.s << '\\n';\n\
-    \        }\n    }\n}"
+    \n#include\"../../../src/math/static_modint.hpp\"\n#include\"../../../src/stream.hpp\"\
+    \nusing mint = kyopro::static_modint32<998244353>;\nstruct S {\n    mint s;\n\
+    \    int len;\n};\ninline S op(S a, S b) { return S{a.s + b.s, a.len + b.len};\
+    \ }\ninline S e() { return S{0, 0}; }\nusing Affine = std::pair<mint, mint>;\n\
+    inline Affine composition(Affine g, Affine f) {\n\t//f(g)\n\t//a(cx+d)+b\n\tauto\
+    \ a = f.first, b = f.second;\n\tauto c = g.first, d = g.second;\n\treturn Affine(a\
+    \ * c, a * d + b);\n}\ninline Affine id() { return Affine(1, 0); }\ninline S mapping(S\
+    \ d, Affine f) {\n    mint a = f.first, b = f.second;\n    d.s *= a, d.s += b\
+    \ * d.len;\n    return d;\n};\n\nint main(){\n    int n, q;\n    kyopro::readint(n,\
+    \ q);\n    kyopro::lazy_segtree<S, Affine, op, e, composition, id, mapping> sg(n);\n\
+    \    for(int i=0;i<n;i++){\n        mint a;\n        kyopro::readint(a);\n   \
+    \     sg.set(i, {a, 1});\n    }\n    sg.build();\n    while(q--){\n        int\
+    \ t;\n        kyopro::readint(t);\n        if (t == 0) {\n            int l, r;\n\
+    \            mint b, c;\n            kyopro::readint(l, r, b, c);\n          \
+    \  sg.apply(l, r, Affine(b, c));\n        } else {\n            int l, r;\n  \
+    \          kyopro::readint(l, r);\n            auto res = sg.prod(l, r);\n   \
+    \         kyopro::putint(res.s.val());\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/lazy_segtree.hpp
   - src/math/static_modint.hpp
   - src/math/gcd.hpp
+  - src/stream.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-03 22:08:07+09:00'
+  timestamp: '2023-05-07 10:38:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
