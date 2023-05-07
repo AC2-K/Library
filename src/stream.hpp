@@ -1,5 +1,6 @@
 #pragma once
 #include <stdio.h>
+#include <ctype.h>
 namespace kyopro {
 /// @brief 入出力
 

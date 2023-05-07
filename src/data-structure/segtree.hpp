@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <cassert>
 namespace kyopro {
 /// @brief Segment Tree
 
@@ -27,17 +28,19 @@ public:
     }
 
     void set(int p, const S& v) {
-        assert(0 <= pos && pos < sz);
+        assert(0 <= p && p < sz);
         dat[sz + p] = v;
     }
     void build() {
         for (int i = sz - 1; i > 0; i--) {
-            dat[i] = op(dat[(i << 1) | 0], dat[(i << 1) | 1]);
+            dat[i] = op(dat[i << 1 | 0], dat[i << 1 | 1]);
         }
     }
+
     S operator[](int p) const { return dat[sz + p]; }
 
     void update(int p, const S& v) {
+        assert(0 <= p && p < sz);
         p += sz;
         dat[p] = v;
         while (p >>= 1) {
@@ -46,6 +49,8 @@ public:
     }
 
     S prod(int l, int r) const {
+
+        assert(0 <= l &&l<=r&& r <= sz);
         if (l == 0 && r == n) {
             return dat[1];
         }
@@ -58,7 +63,11 @@ public:
         }
         return op(sml, smr);
     }
-    void apply(int p, const S& v) { update(p, op(dat[sz + p], v)); }
+    void apply(int p, const S& v) { 
+        
+        assert(0 <= p && p < sz);
+        update(p, op(dat[sz + p], v));
+    }
 };
 };  // namespace kyopro
 
