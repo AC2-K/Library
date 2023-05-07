@@ -26,7 +26,10 @@ public:
         build();
     }
 
-    void set(int p, const S& v) { dat[sz + p] = v; }
+    void set(int p, const S& v) {
+        assert(0 <= pos && pos < sz);
+        dat[sz + p] = v;
+    }
     void build() {
         for (int i = sz - 1; i > 0; i--) {
             dat[i] = op(dat[(i << 1) | 0], dat[(i << 1) | 1]);

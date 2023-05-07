@@ -4,12 +4,12 @@ namespace kyopro {
 /// @brief 入出力
 
 template <typename T>
-inline void readint(T& a) {
+constexpr inline void readint(T& a) {
     a = 0;
     bool is_negative = false;
     char c = getchar_unlocked();
     while (isspace(c)) {
-        c = getchar_un - locked();
+        c = getchar_unlocked();
     }
     if (c == '-') is_negative = true, c = getchar_unlocked();
     while (isdigit(c)) {
@@ -19,29 +19,29 @@ inline void readint(T& a) {
     if (is_negative) a *= -1;
 }
 template <typename Head, typename... Tail>
-inline void readint(Head& head, Tail&... tail) {
+constexpr inline void readint(Head& head, Tail&... tail) {
     readint(head);
     readint(tail...);
 }
 template <typename T>
-inline void putint(T a) {
+constexpr inline void putint(T a) {
     if (!a) {
         putchar_unlocked('0');
-        putchar_unlocked(' ');
+        putchar_unlocked('\n');
         return;
     }
     if (a < 0) putchar_unlocked('-'), a *= -1;
-    static char s[37];
+    char s[37];
     int now = 37;
     while (a) {
         s[--now] = (char)'0' + a % 10;
         a /= 10;
     }
     while (now < 37) putchar_unlocked(s[now++]);
-    putchar_unlocked(' ');
+    putchar_unlocked('\n');
 }
 template <typename Head, typename... Tail>
-inline void putint(Head& head, Tail&... tail) {
+constexpr inline void putint(Head& head, Tail&... tail) {
     putint(head);
     putint(tail...);
 }
