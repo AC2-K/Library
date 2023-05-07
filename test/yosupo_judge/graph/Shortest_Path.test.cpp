@@ -2,32 +2,26 @@
 #include <algorithm>
 #include <iostream>
 #include "../../../src/graph/dijkstra.hpp"
+#include "../../../src/stream.hpp"
 int main() {
     int n, m, s, t;
-    scanf("%d%d%d%d", &n, &m, &s, &t);
-    std::vector<std::vector<kyopro::edge>> g(n);
+    kyopro::readint(n, m, s, t);
+
+    kyopro::dijkstra g(n);
     for (int i = 0; i < m; i++) {
         int a, b, c;
-        scanf("%d%d%d", &a, &b, &c);
-        g[a].emplace_back(b, c);
+        kyopro::readint(a, b, c);
+        g.add_edge(a, b, c);
     }
-    auto [dist, trace] = dijkstra(s, g);
-    if (dist[t] >= (long long)1e18) {
+
+    g.build(s);
+    auto [dist, path] = g.shortest_path(t);
+    if (path.empty()) {
         puts("-1");
-        return 0;
+        exit(0);
     }
-
-    int cur = t;
-    std::vector<int> path;
-    while (cur != trace[cur]) {
-        path.emplace_back(cur);
-        cur = trace[cur];
-    }
-
-    path.emplace_back(cur);
-    printf("%lld %lld\n", dist[t], path.size() - 1);
-    std::reverse(path.begin(), path.end());
+    kyopro::putint(dist, path.size() - 1);
     for (int i = 1; i < (int)path.size(); i++) {
-        printf("%d %d\n", path[i - 1], path[i]);
+        kyopro::putint(path[i - 1], path[i]);
     }
 }
