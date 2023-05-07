@@ -1,8 +1,11 @@
 #pragma once
 #include <cassert>
 namespace kyopro {
-/// @brief 永続queue
-template <typename T, int lg = 20> class persistent_queue {
+/**
+ * @brief 永続queue
+*/
+template <typename T, int lg = 20>
+class persistent_queue {
     struct Node {
         Node() = default;
         uint32_t index;

@@ -6,6 +6,10 @@
 #include "../math/gcd.hpp"
 #include "../math/mod_pow.hpp"
 namespace kyopro {
+
+/**
+ * @brief Rollinghash(ローリングハッシュ)
+*/
 class RollingHash {
     using ull = uint_fast64_t;
     using i128 = __int128_t;
@@ -93,7 +97,7 @@ public:
                    int start_b) {
         int ok = 0;
         int ng = std::min(a.size() - start_a, b.size() - start_b) + 1;
-        while (ng-ok>1) {
+        while (ng - ok > 1) {
             int md = (ok + ng) >> 1;
             if (a.range(start_a, start_a + md) ==
                 b.range(start_b, start_b + md)) {
@@ -108,5 +112,3 @@ public:
 };
 }  // namespace kyopro
 typename kyopro::RollingHash::ull kyopro::RollingHash::base;
-
-///@brief Rollinghash(ローリングハッシュ)

@@ -40,8 +40,13 @@ constexpr bool miller_rabin(T n) {
     }
     return true;
 }
-constexpr int bases_int[3] = {2, 7, 61};  // intだと、2,7,61で十分
+// 底
+constexpr int bases_int[3] = {2, 7, 61};
 constexpr int bases_ll[7] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022};
+
+/**
+ * @brief MillerRabin素数判定法
+*/
 template <typename T>
 constexpr bool inline is_prime(T n) {
     if (n < 2) {
@@ -60,3 +65,4 @@ constexpr bool inline is_prime(T n) {
 }
 };  // namespace miller
 };  // namespace kyopro
+

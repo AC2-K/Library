@@ -11,8 +11,10 @@ using i32 = int32_t;
 using i64 = int64_t;
 using u128 = __uint128_t;
 using i128 = __int128_t;
-/// @brief MontgomeryReduction
-/// @ref
+
+/**
+ * @brief Montgomery Reduction
+ */
 template <typename T>
 class Montgomery {
     static constexpr int lg = std::numeric_limits<T>::digits;

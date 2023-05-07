@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_reverse_range_sum"
 #include <iostream>
-#include "../../../src/BST/Reversible.hpp"
+#include "../../../src/BST/reversible_bst.hpp"
 using ll = long long;
 inline ll op(ll x, ll y) { return x + y; }
 inline ll e() { return 0; }

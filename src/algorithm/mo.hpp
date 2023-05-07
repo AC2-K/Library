@@ -4,7 +4,9 @@
 #include <utility>
 #include <vector>
 namespace kyopro {
-/// @brief mo's algorithm
+/**
+ * @brief Mo's algorithm
+ */
 class Mo {
     int n;
     std::vector<std::pair<int, int>> lr;
@@ -15,6 +17,8 @@ class Mo {
 public:
     explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }
     void add(int l, int r) { lr.emplace_back(l, r); }
+
+private:
     long long hilbertorder(int x, int y) {
         long long d = 0;
         for (int s = 1 << (logn - 1); s; s >>= 1) {
@@ -30,8 +34,6 @@ public:
         }
         return d;
     }
-
-private:
     void line_up() {
         int q = lr.size();
         ord.resize(q);
@@ -69,4 +71,7 @@ public:
 };
 };  // namespace kyopro
 
-/// @docs docs/other/mo.md
+/**
+ * @docs docs/other/mo.md
+ * @ref https://ei1333.hateblo.jp/entry/2017/09/11/211011
+ */

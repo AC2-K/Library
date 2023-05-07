@@ -3,10 +3,11 @@
 #include <vector>
 
 namespace kyopro {
-/// @brief トポロジカルソート
-/// @param g ソートしたいグラフ(隣接リスト形式)
-/// @param res 結果を格納するvector
-/// @param has_cycle サイクルを含んでいたら、trueにして終了する
+
+/**
+ * @brief Topologial Sort
+ * @note 有向サイクルを含む場合は、has_cycleをtrueにしてから終了する。
+ */
 void topological_sort(const std::vector<std::vector<int>>& g,
                       std::vector<int>& res,
                       bool& has_cycle) {
@@ -44,3 +45,7 @@ void topological_sort(const std::vector<std::vector<int>>& g,
 }
 
 };  // namespace kyopro
+
+/**
+ * @docs docs/graph/TopologialSort.md
+*/

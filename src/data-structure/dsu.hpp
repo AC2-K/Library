@@ -2,7 +2,10 @@
 #include <utility>
 #include <vector>
 namespace kyopro {
-/// @brief Disjoint Set(Union find)
+
+/**
+ * @brief Disjoint Set(Union Find)
+ */
 class dsu {
 private:
     std::vector<int> find, rank;
@@ -32,4 +35,6 @@ public:
 
 };  // namespace kyopro
 
-/// @docs docs/data-structure/dsu.md
+/**
+ * @docs docs/data-structure/dsu.md
+ */

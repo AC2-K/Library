@@ -1,8 +1,10 @@
 #pragma once
 #include <vector>
 namespace kyopro {
-/// @brief 2次元累積和
-/// @tparam T 重みの型
+    
+/**
+ * @brief 二次元累積和
+*/
 template <typename T>
 class cumulative_sum_2d {
     std::vector<std::vector<T>> dat;
@@ -32,8 +34,9 @@ public:
     std::vector<T>& operator[](int i) { return dat[i]; }
 };
 
-/// @brief 二次元imos法
-/// @tparam T 重みの型
+/**
+ * @brief 二次元imos法
+*/
 template <typename T>
 class imos_2d {
     cumulative_sum_2d<T> d;

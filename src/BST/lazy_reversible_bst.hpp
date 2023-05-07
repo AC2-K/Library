@@ -5,15 +5,16 @@
 #include "../random/xor_shift.hpp"
 
 namespace kyopro {
-/// @brief 遅延評価つき・反転可能 平衡二分探索木
-/// @tparam S モノイド
-/// @tparam F 作用素モノイド
-/// @tparam op S上の二項演算
-/// @tparam e Sの単位元
-/// @tparam composition F上の二項演算
-/// @tparam id Fの単位元
-/// @tparam mapping
-/// @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
+/**
+ * @brief 遅延評価つき・反転可能 平衡二分探索木
+ * @tparam S モノイド
+ * @tparam F 作用素
+ * @tparam op Sの二項演算
+ * @tparam e Sの単位元
+ * @tparam composition Fの二項演算
+ * @tparam id Fの単位元
+ * @tparam mapping 作用
+ */
 template <typename S,
           class F,
           S (*op)(S, S),
@@ -166,4 +167,7 @@ public:
 };
 };  // namespace kyopro
 
-/// @docs docs/BST/lazy_reversible_bst.md
+/**
+ * @docs docs/BST/lazy_reversible_bst.md
+ * @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
+ */

@@ -2,9 +2,12 @@
 #include <cassert>
 #include <vector>
 namespace kyopro {
-
-/// @brief 双対セグメント木
-template <class F, F (*composition)(F, F), F (*id)(), bool commutative = true>
+/**
+ * @brief 双対セグメント木
+ * @tparam F 作用素
+ * @tparam id F の単位元
+ */
+template <class F, F (*composition)(F, F), F (*id)()>
 class dual_segtree {
     std::vector<F> dat;
     int _n, sz, lg;
@@ -48,14 +51,12 @@ public:
         assert(0 <= l && l <= r && r <= _n);
         if (l == r) return;
         l += sz, r += sz;
-        if (commutative) {
-            for (int i = lg; i > 0; i--) {
-                if (((l >> i) << i) != l) {
-                    push(l >> i);
-                }
-                if (((r >> i) << i) != r) {
-                    push((r - 1) >> i);
-                }
+        for (int i = lg; i > 0; i--) {
+            if (((l >> i) << i) != l) {
+                push(l >> i);
+            }
+            if (((r >> i) << i) != r) {
+                push((r - 1) >> i);
             }
         }
         while (l < r) {
@@ -72,4 +73,6 @@ public:
 
 };  // namespace kyopro
 
-/// @docs docs/data-structure/dual_segtree.md
+/**
+ * @docs docs/data-structure/dual_segtree.md
+ */

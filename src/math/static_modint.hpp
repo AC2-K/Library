@@ -3,7 +3,8 @@
 #include <iostream>
 #include "../math/gcd.hpp"
 namespace kyopro {
-template <__uint64_t mod> class static_modint {
+template <__uint64_t mod>
+class static_modint {
 private:
     using mint = static_modint<mod>;
     using i64 = long long;
@@ -81,7 +82,8 @@ public:
         return (*this).val() == r.val();
     }
 
-    template <typename T> constexpr mint pow(T e) const {
+    template <typename T>
+    constexpr mint pow(T e) const {
         mint ans(1), base(*this);
         while (e) {
             if (e & 1) {
@@ -108,7 +110,7 @@ public:
         return mint(l) /= mint(r);
     }
 
-    // iostream
+    // stream
     constexpr friend std::ostream& operator<<(std::ostream& os,
                                               const mint& mt) {
         os << mt.val();
@@ -121,7 +123,8 @@ public:
         return is;
     }
 };
-template <__uint32_t mod> class static_modint32 {
+template <__uint32_t mod>
+class static_modint32 {
 private:
     using mint = static_modint32<mod>;
     using i32 = __int32_t;
@@ -137,13 +140,13 @@ private:
         }
         return v_;
     }
-    
+
 public:
     constexpr static_modint32() : v(0) {}
     constexpr static_modint32(const i64& v_) : v(normalize(v_)) {}
 
     // operator
-    static mint raw(u32 a){
+    static mint raw(u32 a) {
         mint m;
         m.v = a;
         return m;
@@ -203,7 +206,8 @@ public:
     constexpr bool operator==(const mint& r) const {
         return (*this).val() == r.val();
     }
-    template <typename T> constexpr mint pow(T e) const {
+    template <typename T>
+    constexpr mint pow(T e) const {
         mint ans(1), base(*this);
         while (e) {
             if (e & 1) {
@@ -233,7 +237,7 @@ public:
         return mint(l) /= mint(r);
     }
 
-    // iostream
+    // stream
     constexpr friend std::ostream& operator<<(std::ostream& os,
                                               const mint& mt) {
         os << mt.val();
@@ -248,5 +252,7 @@ public:
 };
 };  // namespace kyopro
 
-/// @brief modint
-/// @docs docs/math/static_modint.md
+/**
+ * @brief 静的modint
+ * @docs docs/math/static_modint.md
+ */

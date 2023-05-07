@@ -3,7 +3,9 @@
 #include <cstddef>
 #include <cstdint>
 namespace kyopro {
-/// @brief 動的セグメント木
+/**
+ * @brief 動的セグメント木
+ */
 template <class S, S (*op)(S, S), S (*e)()>
 class dynamic_segtree {
 public:
@@ -85,7 +87,6 @@ public:
     }
 
 private:
-    /// TODO:非再帰にする
     S internal_prod(const Node* p,
                     std::size_t l,
                     std::size_t r,
@@ -105,4 +106,8 @@ private:
 };
 };  // namespace kyopro
 
-/// @docs docs/data-structure/dynamic_segtree.md
+
+/**
+ * @docs docs/data-structure/dynamic_segtree.md
+ * @ref https://lorent-kyopro.hatenablog.com/entry/2021/03/12/025644
+*/

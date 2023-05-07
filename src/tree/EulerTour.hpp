@@ -2,7 +2,10 @@
 #include <utility>
 #include "../data-structure/sparse_table.hpp"
 namespace kyopro {
-/// @brief EulerTour
+
+/**
+ * @brief Euler Tour
+ */
 class EulerTour {
     int n;
     std::vector<std::vector<int>> g;
@@ -11,11 +14,9 @@ class EulerTour {
 
     struct get_min_pair {
         using value_t = std::pair<int, int>;
-        static value_t op(value_t x, value_t y) {
-            return std::min(x, y);
-        }
+        static value_t op(value_t x, value_t y) { return std::min(x, y); }
     };
-    
+
     sparse_table<get_min_pair::value_t, get_min_pair::op> rmq;
 
 public:

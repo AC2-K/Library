@@ -3,7 +3,9 @@
 #include <vector>
 namespace kyopro {
 
-/// @brief なもりグラフ
+/**
+ * @brief なもりグラフ
+*/
 class Namori {
     int n;
     std::vector<std::vector<int>> g;
@@ -79,3 +81,8 @@ public:
      std::vector<int> get_cycle() const { return cycle; }
 };
 };  // namespace kyopro
+
+/**
+ * @docs docs/graph/Namori.md
+*/
+

@@ -6,7 +6,9 @@
 #include <vector>
 namespace kyopro {
 
-/// @brief ダイクストラ法
+/**
+ * @brief ダイクストラ法
+*/
 class dijkstra {
     std::vector<long long> dist;
     std::vector<int> trace;
@@ -79,3 +81,7 @@ public:
     }
 };
 };  // namespace kyopro
+
+/**
+ * @docs docs/graph/dijkstra.md
+*/

@@ -2,8 +2,10 @@
 #include <vector>
 #include <cassert>
 namespace kyopro {
-/// @brief Segment Tree
-
+    
+/**
+ * @brief SegmentTree
+*/
 template <class S, S (*op)(S, S), S (*e)()>
 class segtree {
     int lg, sz, n;
@@ -71,4 +73,6 @@ public:
 };
 };  // namespace kyopro
 
-/// @docs docs/data-structure/segtree.md
+/**
+ * @docs docs/data-structure/segtree.md
+*/

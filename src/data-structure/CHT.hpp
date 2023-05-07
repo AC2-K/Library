@@ -2,7 +2,10 @@
 #include <set>
 namespace kyopro {
 
-/// @brief Convex Hull Trick
+/**
+ * @brief Convex Hull Trick
+ * @tparam query_type trueにするとクエリで最大値を求めるように変更する
+ */
 template <class T = long long, bool query_type = false>
 class CHT {
     class line {
@@ -87,4 +90,6 @@ public:
 
 };  // namespace kyopro
 
-/// @docs docs/data-structure/CHT.md
+/**
+ * @docs docs/data-structure/CHT.md
+ */

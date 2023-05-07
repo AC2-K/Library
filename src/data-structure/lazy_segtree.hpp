@@ -2,9 +2,9 @@
 #include <cassert>
 #include <vector>
 namespace kyopro {
-/// @brief LazySegmentTree
-/// @ref
-/// https://github.com/atcoder/ac-library/blob/master/atcoder/lazysegtree.hpp
+/**
+ * @brief LazySegmentTree
+*/
 template <class S,
           class F,
           auto op,
@@ -123,4 +123,6 @@ public:
 };
 };  // namespace kyopro
 
-/// @docs docs/data-structure/lazy_segtree.md
+/**
+ * @docs docs/data-structure/lazy_segtree.md
+*/

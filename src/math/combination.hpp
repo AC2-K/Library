@@ -1,7 +1,6 @@
 #pragma once
 #include <cassert>
 #include "../internal/barrett.hpp"
-
 namespace kyopro {
 template <int MAX>
 class dynamic_combination {
@@ -13,7 +12,7 @@ class dynamic_combination {
         while (p) {
             if (p & 1) ans = bar.mul(ans, a);
             p >>= 1;
-            a = bar.mul(a,a);
+            a = bar.mul(a, a);
         }
         return ans;
     }
@@ -45,7 +44,6 @@ public:
     }
     constexpr int fact(int n) const { return fac[n]; }
 };
-
 
 template <int modulo, int MAX>
 class combination {
@@ -89,4 +87,6 @@ public:
 
 };  // namespace kyopro
 
-/// @brief 二項係数など
+/**
+ * @brief 二項係数など
+ */

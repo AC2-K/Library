@@ -3,8 +3,10 @@
 #include <string>
 #include <vector>
 namespace kyopro {
-/// @brief Z algorithm
-/// @return LCP(S,S[i:]) (i=0,1,...,|str|-1)
+/**
+ * @brief Z algorithm
+ * @return LCP(S,S[i:]) (i=0,1,...,|str|-1)
+*/
 std::vector<int> Z(const std::string& str) {
     assert(str.size());
     std::vector<int> res(str.size());

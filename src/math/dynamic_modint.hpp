@@ -205,5 +205,7 @@ T kyopro::dynamic_modint<T, id>::mod;
 template <typename T, int id>
 kyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;
 
-/// @brief dynamic modint
-/// @docs docs/math/dynamic_modint.md
+/**
+ * @brief 動的modint
+ * @docs docs/math/dynamic_modint.md
+ */

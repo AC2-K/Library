@@ -34,7 +34,6 @@ constexpr T __mod_log(T x, T y, T p) {
     for (int j = 0; j <= m; ++j) {
         mp[pr] = j;
         pr = (internal::double_size_uint_t<T>)pr * x % p;
-        //(pr *= x) %= p;
     }
     pr = k;
     for (int i = 1; i <= m; ++i) {
@@ -48,7 +47,7 @@ constexpr T __mod_log(T x, T y, T p) {
     return -1;
 }
 template <typename T>
-constexpr T __mod_log32(T x, T y, T p) {
+constexpr T __mod_log_odd(T x, T y, T p) {
     if (y == 1 || p == 1) {
         return 0;
     }
@@ -60,7 +59,7 @@ constexpr T __mod_log32(T x, T y, T p) {
         }
     }
     int m = (int)std::sqrt(p) + 1;
-    using mint = dynamic_modint<internal::double_size_uint_t<T>,10>;
+    using mint = dynamic_modint<internal::double_size_uint_t<T>, 10>;
     if (mint::get_mod() != p) {
         mint::set_mod(p);
     }
@@ -96,11 +95,13 @@ constexpr T __mod_log32(T x, T y, T p) {
 
 };  // namespace internal
 
-/// @brief 離散対数
+/**
+ * 離散対数
+ */
 template <typename T>
 constexpr inline T mod_log(T a, T b, T c) {
-    if (c&1/*std::numeric_limits<T>::digits < 32 || c < 1L << 30*/) {
-        return internal::__mod_log32(a, b, c);
+    if (c & 1) {
+        return internal::__mod_log_odd(a, b, c);
     } else {
         return internal::__mod_log(a, b, c);
     }

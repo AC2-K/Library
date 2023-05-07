@@ -2,7 +2,10 @@
 #include <numeric>
 #include <vector>
 namespace kyopro {
-/// @brief Sparse Table
+
+/**
+ * @brief SparseTable
+*/
 template <class T, auto op>
 class sparse_table {
     std::vector<T> vec;
@@ -42,4 +45,6 @@ public:
 };
 };  // namespace kyopro
 
-/// @docs docs/data-structure/sparse_table.md
+/**
+ * @docs docs/data-structure/sparse_table.md
+*/

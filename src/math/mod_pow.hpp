@@ -2,7 +2,9 @@
 #include "../internal/type_traits.hpp"
 namespace kyopro {
 
-///@brief mod pow(繰り返しニ乗法)
+/**
+ * @brief バイナリ法
+*/
 template <typename T> 
 constexpr T mod_pow(internal::double_size_uint_t<T> base, T exp, T mod) {
     internal::double_size_uint_t<T> ans = (mod == 1 ? 0 : 1);

@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <ctype.h>
 namespace kyopro {
-/// @brief 入出力
-
 template <typename T>
 constexpr inline void readint(T& a) {
     a = 0;
@@ -48,3 +46,8 @@ constexpr inline void putint(Head head, Tail... tail) {
 }
 
 };  // namespace kyopro
+
+
+/**
+ * @brief 入出力
+*/

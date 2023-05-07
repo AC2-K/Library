@@ -5,8 +5,10 @@
 
 namespace kyopro {
 
-/// @brief Treap
-/// @tparam T 乗せるデータ型
+/**
+ * @brief Treap
+ * @tparam T 乗せるデータ型
+ */
 template <class T>
 class Treap {
     using u32 = uint32_t;
@@ -20,7 +22,7 @@ class Treap {
     };
     using sptr = std::shared_ptr<Node>;
     sptr root = nullptr;
-    void split(const sptr t,const T& key, sptr& l, sptr& r) {
+    void split(const sptr t, const T& key, sptr& l, sptr& r) {
         if (!t) {
             l = r = nullptr;
         } else if (key < t->key) {
@@ -52,7 +54,7 @@ class Treap {
         }
     }
 
-    void erase(sptr& t,const T& key) {
+    void erase(sptr& t, const T& key) {
         if (!t) return;
         if (t->key == key) {
             merge(t, t->l, t->r);
@@ -61,7 +63,7 @@ class Treap {
         }
     }
 
-    const sptr find(const sptr& t,const T& key) const {
+    const sptr find(const sptr& t, const T& key) const {
         if (!t) {
             return nullptr;
         } else if (t->key == key) {
@@ -72,8 +74,10 @@ class Treap {
     }
 
 public:
-    constexpr explicit Treap():rng(2023){}
-    void insert(const T& key) { insert(root, std::make_shared<Node>(key, rng())); }
+    constexpr explicit Treap() : rng(2023) {}
+    void insert(const T& key) {
+        insert(root, std::make_shared<Node>(key, rng()));
+    }
 
     void erase(const T& key) { erase(root, key); }
 
@@ -87,11 +91,11 @@ public:
         T ans = cur->key;
         return ans;
     }
-    T max_element(){
+    T max_element() {
         assert(root);
         sptr cur = root;
         while (cur->r) {
-            cur = cur->r; 
+            cur = cur->r;
         }
         T ans = cur->key;
         return ans;
@@ -110,7 +114,7 @@ public:
         assert(root);
         sptr cur = root;
         while (cur->r) {
-            cur = cur->r; 
+            cur = cur->r;
         }
         T ans = cur->key;
         merge(cur, cur->l, cur->r);
@@ -118,3 +122,7 @@ public:
     }
 };
 };  // namespace kyopro
+
+/**
+ * @docs docs/BST/Treap.md
+ */

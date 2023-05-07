@@ -1,9 +1,12 @@
 #pragma once
+#include <cassert>
 #include <utility>
 #include <vector>
-#include <cassert>
 namespace kyopro {
-/// @brief 行列
+
+/**
+ * @brief Matrix
+ */
 template <typename T>
 class Matrix {
     std::vector<std::vector<T>> dat;
@@ -13,7 +16,8 @@ public:
     constexpr Matrix(const std::vector<std::vector<T>>& dat)
         : dat(dat), h(dat.size()), w(dat.front().size()) {}
 
-    constexpr Matrix(int h_, int w_, T v = T()) : dat(h_, std::vector<T>(w_, v)) {}
+    constexpr Matrix(int h_, int w_, T v = T())
+        : dat(h_, std::vector<T>(w_, v)) {}
 
     using mat = Matrix<T>;
     // access
@@ -83,4 +87,6 @@ public:
 };
 };  // namespace kyopro
 
-/// @docs docs/math/matrix.md
+/**
+ *  @docs docs/math/matrix.md
+ */

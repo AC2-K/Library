@@ -4,14 +4,13 @@
 #include <utility>
 #include "../random/xor_shift.hpp"
 
-/// @ref
-/// https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp
-
 namespace kyopro {
-/// @brief 反転可能抽象化平衡二分探索木
-/// @tparam S モノイド
-/// @tparam op 演算
-/// @tparam e 単位元
+/**
+ * @brief 反転可能平衡二分探索木
+ * @tparam S モノイド
+ * @tparam op Sの二項演算
+ * @tparam e Sの単位元
+ */
 template <typename S, S (*op)(S, S), S (*e)()>
 class reversible_bst {
     using u32 = uint32_t;
@@ -124,3 +123,9 @@ public:
     }
 };
 };  // namespace kyopro
+
+/**
+ * @docs docs/BST/reversible_bst.md
+ * @ref
+ * https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp
+ */

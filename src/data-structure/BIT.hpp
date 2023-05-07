@@ -1,7 +1,9 @@
 #pragma once
 #include <vector>
 namespace kyopro {
-/// @brief Binary Index Tree
+/**
+ * @brief Binary Index Tree
+ */
 template <typename T, typename SumT = T>
 class BIT {
     std::vector<SumT> bit;
@@ -10,7 +12,7 @@ class BIT {
 public:
     explicit BIT() {}
     explicit BIT(int n) : n(n), bit(n + 1, T()) {}
-    void add(int p,T w) {
+    void add(int p, T w) {
         p++;
         for (int x = p; x <= n; x += x & -x) {
             bit[x] += w;
@@ -46,4 +48,6 @@ public:
 };
 };  // namespace kyopro
 
-/// @docs docs/data-structure/BIT.md
+/**
+ * @docs docs/data-structure/BIT.md
+ */

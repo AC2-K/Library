@@ -6,7 +6,9 @@
 #include "../random/xor_shift.hpp"
 namespace kyopro {
 
-///@brief 高速素因数分解(Pollard Rho法)
+/**
+ * @brief Pollard Rho 素因数分解法
+*/
 namespace rho {
 using namespace std;
 using i128 = __int128_t;

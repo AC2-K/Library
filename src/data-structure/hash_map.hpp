@@ -2,7 +2,9 @@
 #include <bits/stl_algobase.h>
 #include <chrono>
 namespace kyopro {
-/// @brief HashMap
+/**
+ * @brief HashMap
+*/
 template <typename Key,
           typename Val,
           uint32_t n = 1 << 20,
@@ -55,3 +57,8 @@ public:
     }
 };
 };  // namespace kyopro
+
+
+/**
+ * @docs docs/data-structure/hash_map.md
+*/
