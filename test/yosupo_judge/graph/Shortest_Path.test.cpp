@@ -17,7 +17,7 @@ int main() {
     g.build(s);
     auto [dist, path] = g.shortest_path(t);
     if (path.empty()) {
-        puts("-1");
+        kyopro::putint(-1);
         exit(0);
     }
     kyopro::putint(dist, path.size() - 1);

@@ -42,7 +42,7 @@ constexpr inline void putint(T a) {
     putchar_unlocked('\n');
 }
 template <typename Head, typename... Tail>
-constexpr inline void putint(Head& head, Tail&... tail) {
+constexpr inline void putint(Head head, Tail... tail) {
     putint(head);
     putint(tail...);
 }
