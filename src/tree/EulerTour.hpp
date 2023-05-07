@@ -14,11 +14,9 @@ class EulerTour {
         static value_t op(value_t x, value_t y) {
             return std::min(x, y);
         }
-        static value_t e() { return value_t(1 << 30, 1 << 30); }
     };
-
-    sparse_table<get_min_pair::value_t, get_min_pair::op, get_min_pair::e>
-        rmq;
+    
+    sparse_table<get_min_pair::value_t, get_min_pair::op> rmq;
 
 public:
     explicit EulerTour(int n)

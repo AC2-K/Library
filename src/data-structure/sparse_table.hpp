@@ -3,7 +3,7 @@
 #include <vector>
 namespace kyopro {
 /// @brief Sparse Table
-template <class T, auto op, auto e>
+template <class T, auto op>
 class sparse_table {
     std::vector<T> vec;
     std::vector<std::vector<T>> table;
