@@ -4,11 +4,10 @@
 #include "../../src/stream.hpp"
 int main() {
     int n;
-    kyopro::readint(n);
+    scanf("%d", &n);
     for (int i = 0; i < n; ++i) {
         long long x;
-        kyopro::readint(x);
-        if (kyopro::miller::is_prime(x)) puts("1") ;
-        else puts("0");
+        scanf("%lld", &x);
+        printf("%c\n", kyopro::miller::is_prime(x) ? '1' : '0');
     }
 }
