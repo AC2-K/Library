@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
@@ -41,8 +41,8 @@ data:
     \   for (auto [nv, c] : g[v]) {\n                if (dist[v] + c < dist[nv]) {\n\
     \                    dist[nv] = dist[v] + c;\n                    trace[nv] =\
     \ v;\n                    que.emplace(dist[nv], nv);\n                }\n    \
-    \        }\n        }\n    }\n    \n    std::vector<long long> get_dist() { return\
-    \ dist; }\n    \n    std::pair<long long, std::vector<int>> shortest_path(int\
+    \        }\n        }\n    }\n    \n    const std::vector<long long>& get_dist()\
+    \ const { return dist; }\n    \n    std::pair<long long, std::vector<int>> shortest_path(int\
     \ to) {\n        assert(0 <= to && to < n);\n        if (dist[to] >= (long long)1e18)\
     \ return {};\n        int cur = to;\n        std::vector<int> path;\n        while\
     \ (cur != trace[cur]) {\n            path.emplace_back(cur);\n            cur\
@@ -88,7 +88,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-08 03:51:35+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/graph/Shortest_Path.test.cpp

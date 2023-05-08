@@ -1,12 +1,15 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
   - icon: ':heavy_check_mark:'
     path: src/math/combination.hpp
     title: "\u4E8C\u9805\u4FC2\u6570\u306A\u3069"
+  - icon: ':question:'
+    path: src/stream.hpp
+    title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -62,24 +65,41 @@ data:
     \ n, int r) const {\n        assert(n >= r);\n        return fac[n] * ifac[n -\
     \ r] % modulo;\n    }\n    constexpr int fact(int n) const { return fac[n]; }\n\
     };\n\n};  // namespace kyopro\n\n/**\n * @brief \u4E8C\u9805\u4FC2\u6570\u306A\
-    \u3069\n */\n#line 5 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\
-    \nint main() {\n    int t, m;\n    scanf(\"%d%d\", &t, &m);\n\n    kyopro::dynamic_combination<(int)1e7>\
-    \ solver(m);\n    while (t--) {\n        int n, r;\n        scanf(\"%d%d\", &n,\
-    \ &r);\n        if (n < r) {\n            puts(\"0\");\n        } else {\n   \
-    \         printf(\"%d\\n\", solver.binom(n, r));\n        }\n    }\n}\n"
+    \u3069\n */\n#line 2 \"src/stream.hpp\"\n#include <stdio.h>\n#include <ctype.h>\n\
+    namespace kyopro {\ntemplate <typename T>\nconstexpr inline void readint(T& a)\
+    \ {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
+    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
+    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
+    \ if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
+    \ inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n\
+    }\ntemplate <typename T>\nconstexpr inline void putint(T a) {\n    if (!a) {\n\
+    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
+    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
+    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
+    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
+    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
+    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n};  //\
+    \ namespace kyopro\n\n\n/**\n * @brief \u5165\u51FA\u529B\n*/\n#line 6 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\
+    \nint main() {\n    int t, m;\n    kyopro::readint(t, m);\n    kyopro::dynamic_combination<(int)1e7>\
+    \ solver(m);\n    while (t--) {\n        int n, r;\n        kyopro::readint(n,\
+    \ r);\n        if (n < r) {\n            kyopro::putint(0);\n        } else {\n\
+    \            kyopro::putint(solver.binom(n, r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
-    \n\n#include <iostream>\n#include \"../../../src/math/combination.hpp\"\nint main()\
-    \ {\n    int t, m;\n    scanf(\"%d%d\", &t, &m);\n\n    kyopro::dynamic_combination<(int)1e7>\
-    \ solver(m);\n    while (t--) {\n        int n, r;\n        scanf(\"%d%d\", &n,\
-    \ &r);\n        if (n < r) {\n            puts(\"0\");\n        } else {\n   \
-    \         printf(\"%d\\n\", solver.binom(n, r));\n        }\n    }\n}"
+    \n\n#include <iostream>\n#include \"../../../src/math/combination.hpp\"\n#include\
+    \ \"../../../src/stream.hpp\"\nint main() {\n    int t, m;\n    kyopro::readint(t,\
+    \ m);\n    kyopro::dynamic_combination<(int)1e7> solver(m);\n    while (t--) {\n\
+    \        int n, r;\n        kyopro::readint(n, r);\n        if (n < r) {\n   \
+    \         kyopro::putint(0);\n        } else {\n            kyopro::putint(solver.binom(n,\
+    \ r));\n        }\n    }\n}"
   dependsOn:
   - src/math/combination.hpp
   - src/internal/barrett.hpp
+  - src/stream.hpp
   isVerificationFile: true
   path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-08 03:51:35+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp

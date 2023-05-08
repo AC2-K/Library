@@ -10,6 +10,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
+  - icon: ':question:'
+    path: src/stream.hpp
+    title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -156,37 +159,51 @@ data:
     \        return os;\n    }\n    constexpr friend std::istream& operator>>(std::istream&\
     \ is, mint& mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n    \
     \    return is;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief \u9759\u7684\
-    modint\n * @docs docs/math/static_modint.md\n */\n#line 5 \"test/yosupo_judge/matrix/Matrix\
-    \ Product.test.cpp\"\n#pragma GCC optimize(\"unroll-loops\")\n\nusing mint = kyopro::static_modint32<998244353>;\n\
-    int main() {\n    int n, m, k;\n    scanf(\"%d%d%d\", &n, &m, &k);\n    using\
-    \ mat = kyopro::Matrix<mint>;\n    mat a(n, m), b(m, k);\n    for (int i = 0;\
-    \ i < n; i++)\n        for (int j = 0; j < m; j++) {\n            int v;\n   \
-    \         scanf(\"%d\", &v);\n            a[i][j] = mint(v);\n        }\n    for\
-    \ (int i = 0; i < m; i++)\n        for (int j = 0; j < k; j++) {\n           \
-    \ int v;\n            scanf(\"%d\", &v);\n            b[i][j] = mint(v);\n   \
-    \     }\n    auto res = a * b;\n    for (int i = 0; i < n; i++) {\n        for\
-    \ (int j = 0; j < k; j++) {\n            printf(\"%d \", res[i][j].val());\n \
-    \       }\n        puts(\"\");\n    }\n}\n"
+    modint\n * @docs docs/math/static_modint.md\n */\n#line 2 \"src/stream.hpp\"\n\
+    #include <stdio.h>\n#include <ctype.h>\nnamespace kyopro {\ntemplate <typename\
+    \ T>\nconstexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative\
+    \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
+    \   c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c =\
+    \ getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
+    \        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n}\ntemplate\
+    \ <typename Head, typename... Tail>\nconstexpr inline void readint(Head& head,\
+    \ Tail&... tail) {\n    readint(head);\n    readint(tail...);\n}\ntemplate <typename\
+    \ T>\nconstexpr inline void putint(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
+    \        putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
+    \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
+    \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
+    \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
+    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
+    \   putint(tail...);\n}\n\n};  // namespace kyopro\n\n\n/**\n * @brief \u5165\u51FA\
+    \u529B\n*/\n#line 6 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#pragma\
+    \ GCC optimize(\"unroll-loops\")\n\nusing mint = kyopro::static_modint32<998244353>;\n\
+    int main() {\n    int n, m, k;\n    kyopro::readint(n, m, k);\n    kyopro::Matrix<mint>\
+    \ a(n, m), b(m, k);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0;\
+    \ j < m; j++) {\n            kyopro::readint(a[i][j]);\n        }\n    }\n   \
+    \ for (int i = 0; i < m; i++) {\n        for (int j = 0; j < k; j++) {\n     \
+    \       kyopro::readint(b[i][j]);\n        }\n    }\n    auto res = a * b;\n \
+    \   for (int i = 0; i < n; i++) {\n        for (int j = 0; j < k; j++) {\n   \
+    \         kyopro::putint(res[i][j].val());\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include\
     \ <iostream>\n#include \"../../../src/math/matrix.hpp\"\n#include \"../../../src/math/static_modint.hpp\"\
-    \n#pragma GCC optimize(\"unroll-loops\")\n\nusing mint = kyopro::static_modint32<998244353>;\n\
-    int main() {\n    int n, m, k;\n    scanf(\"%d%d%d\", &n, &m, &k);\n    using\
-    \ mat = kyopro::Matrix<mint>;\n    mat a(n, m), b(m, k);\n    for (int i = 0;\
-    \ i < n; i++)\n        for (int j = 0; j < m; j++) {\n            int v;\n   \
-    \         scanf(\"%d\", &v);\n            a[i][j] = mint(v);\n        }\n    for\
-    \ (int i = 0; i < m; i++)\n        for (int j = 0; j < k; j++) {\n           \
-    \ int v;\n            scanf(\"%d\", &v);\n            b[i][j] = mint(v);\n   \
-    \     }\n    auto res = a * b;\n    for (int i = 0; i < n; i++) {\n        for\
-    \ (int j = 0; j < k; j++) {\n            printf(\"%d \", res[i][j].val());\n \
-    \       }\n        puts(\"\");\n    }\n}\n"
+    \n#include \"../../../src/stream.hpp\"\n#pragma GCC optimize(\"unroll-loops\"\
+    )\n\nusing mint = kyopro::static_modint32<998244353>;\nint main() {\n    int n,\
+    \ m, k;\n    kyopro::readint(n, m, k);\n    kyopro::Matrix<mint> a(n, m), b(m,\
+    \ k);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < m; j++)\
+    \ {\n            kyopro::readint(a[i][j]);\n        }\n    }\n    for (int i =\
+    \ 0; i < m; i++) {\n        for (int j = 0; j < k; j++) {\n            kyopro::readint(b[i][j]);\n\
+    \        }\n    }\n    auto res = a * b;\n    for (int i = 0; i < n; i++) {\n\
+    \        for (int j = 0; j < k; j++) {\n            kyopro::putint(res[i][j].val());\n\
+    \        }\n    }\n}\n"
   dependsOn:
   - src/math/matrix.hpp
   - src/math/static_modint.hpp
   - src/math/gcd.hpp
+  - src/stream.hpp
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 02:55:40+00:00'
+  timestamp: '2023-05-08 03:51:35+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp

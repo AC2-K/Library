@@ -41,8 +41,8 @@ data:
     \          }\n\n            for (auto [nv, c] : g[v]) {\n                if (dist[v]\
     \ + c < dist[nv]) {\n                    dist[nv] = dist[v] + c;\n           \
     \         trace[nv] = v;\n                    que.emplace(dist[nv], nv);\n   \
-    \             }\n            }\n        }\n    }\n    \n    std::vector<long long>\
-    \ get_dist() { return dist; }\n    \n    std::pair<long long, std::vector<int>>\
+    \             }\n            }\n        }\n    }\n    \n    const std::vector<long\
+    \ long>& get_dist() const { return dist; }\n    \n    std::pair<long long, std::vector<int>>\
     \ shortest_path(int to) {\n        assert(0 <= to && to < n);\n        if (dist[to]\
     \ >= (long long)1e18) return {};\n        int cur = to;\n        std::vector<int>\
     \ path;\n        while (cur != trace[cur]) {\n            path.emplace_back(cur);\n\
@@ -71,8 +71,8 @@ data:
     \                continue;\n            }\n\n            for (auto [nv, c] : g[v])\
     \ {\n                if (dist[v] + c < dist[nv]) {\n                    dist[nv]\
     \ = dist[v] + c;\n                    trace[nv] = v;\n                    que.emplace(dist[nv],\
-    \ nv);\n                }\n            }\n        }\n    }\n    \n    std::vector<long\
-    \ long> get_dist() { return dist; }\n    \n    std::pair<long long, std::vector<int>>\
+    \ nv);\n                }\n            }\n        }\n    }\n    \n    const std::vector<long\
+    \ long>& get_dist() const { return dist; }\n    \n    std::pair<long long, std::vector<int>>\
     \ shortest_path(int to) {\n        assert(0 <= to && to < n);\n        if (dist[to]\
     \ >= (long long)1e18) return {};\n        int cur = to;\n        std::vector<int>\
     \ path;\n        while (cur != trace[cur]) {\n            path.emplace_back(cur);\n\
@@ -84,7 +84,7 @@ data:
   isVerificationFile: false
   path: src/graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-08 03:51:35+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/1_A.test.cpp
