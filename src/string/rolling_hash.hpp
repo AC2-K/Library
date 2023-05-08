@@ -8,7 +8,7 @@
 namespace kyopro {
 
 /**
- * @brief Rollinghash(ローリングハッシュ)
+ * @brief Rolling Hash
 */
 class RollingHash {
     using ull = uint_fast64_t;

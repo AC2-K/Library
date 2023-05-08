@@ -2,7 +2,7 @@
 #include <cassert>
 namespace kyopro {
 /**
- * @brief 永続queue
+ * @brief persistent queue
 */
 template <typename T, int lg = 20>
 class persistent_queue {

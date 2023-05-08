@@ -28,11 +28,10 @@ public:
         g[u].emplace_back(v);
         g[v].emplace_back(u);
     }
-    std::vector<std::vector<int>> get_graph() { return g; }
-    std::vector<int> get_tour() { return tour; }
+    const std::vector<std::vector<int>>& get_graph() const { return g; }
+    const std::vector<int>& get_tour() const { return tour; }
     int get_depth(int v) const { return depth[v]; }
 
-public:
     void build(int r = 0) {
         auto dfs = [&](const auto& self, int v, int p) -> void {
             in[v] = tour.size();
@@ -53,21 +52,25 @@ public:
         rmq.build();
     }
 
-    std::pair<int, int> idx(int v) { return {in[v], out[v]}; }
-    int lca(int v, int u) {
+    std::pair<int, int> idx(int v) const { return {in[v], out[v]}; }
+    int lca(int v, int u) const {
         if (in[v] > in[u] + 1) {
             std::swap(u, v);
         }
         return rmq.prod(in[v], in[u] + 1).second;
     }
 
-    int dist(int v, int u) {
+    int dist(int v, int u) const {
         int p = lca(v, u);
         return depth[v] + depth[u] - 2 * depth[p];
     }
 
-    bool is_in_subtree(int par, int v) {
+    bool is_in_subtree(int par, int v) const {
         return (in[par] <= in[v] && out[v] <= out[par]);
     }
 };
 };  // namespace kyopro
+
+/**
+ * @docs docs/tree/EulerTour.md
+*/

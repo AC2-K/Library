@@ -3,7 +3,7 @@
 namespace kyopro {
     
 /**
- * @brief 永続stack
+ * @brief persistent stack
 */
 template <class T>
 class persistent_stack {

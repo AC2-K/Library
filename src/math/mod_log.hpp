@@ -96,7 +96,7 @@ constexpr T __mod_log_odd(T x, T y, T p) {
 };  // namespace internal
 
 /**
- * 離散対数
+ * @brief 離散対数
  */
 template <typename T>
 constexpr inline T mod_log(T a, T b, T c) {
