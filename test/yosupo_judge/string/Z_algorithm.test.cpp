@@ -1,18 +1,18 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/zalgorithm"
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 
-#include"../../../src/string/Z.hpp"
+#include "../../../src/stream.hpp"
+#include "../../../src/string/Z.hpp"
 
 int main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-
     std::string s;
-    std::cin >> s;
-    auto res = kyopro::Z(s);
-    for(const auto&r:res){
-        std::cout << r << ' ';
+    {
+        char c;
+        while (!isspace(c = getchar_unlocked())) s += c;
     }
-    std::cout << '\n';
+    auto res = kyopro::Z(s);
+    for (auto r : res) {
+        kyopro::putint(r);
+    }
 }

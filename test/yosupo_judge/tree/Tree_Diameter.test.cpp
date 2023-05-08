@@ -8,14 +8,14 @@ int main() {
     int n;
     kyopro::readint(n);
     kyopro::dijkstra g(n);
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < n - 1; ++i) {
         int a, b, c;
         kyopro::readint(a, b, c);
         g.add_edge(a, b, c);
         g.add_edge(b, a, c);
     }
     g.build(0);
-    auto dist = g.get_dist();
+    std::vector<long long> dist = g.get_dist();
     int v = std::max_element(dist.begin(), dist.end()) - dist.begin();
     g.build(v);
     dist = g.get_dist();

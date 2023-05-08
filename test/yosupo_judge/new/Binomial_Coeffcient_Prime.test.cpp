@@ -2,18 +2,18 @@
 
 #include <iostream>
 #include "../../../src/math/combination.hpp"
+#include "../../../src/stream.hpp"
 int main() {
     int t, m;
-    scanf("%d%d", &t, &m);
-
+    kyopro::readint(t, m);
     kyopro::dynamic_combination<(int)1e7> solver(m);
     while (t--) {
         int n, r;
-        scanf("%d%d", &n, &r);
+        kyopro::readint(n, r);
         if (n < r) {
-            puts("0");
+            kyopro::putint(0);
         } else {
-            printf("%d\n", solver.binom(n, r));
+            kyopro::putint(solver.binom(n, r));
         }
     }
 }

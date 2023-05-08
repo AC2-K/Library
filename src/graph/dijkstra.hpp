@@ -64,7 +64,7 @@ public:
         }
     }
     
-    std::vector<long long> get_dist() { return dist; }
+    const std::vector<long long>& get_dist() const { return dist; }
     
     std::pair<long long, std::vector<int>> shortest_path(int to) {
         assert(0 <= to && to < n);
