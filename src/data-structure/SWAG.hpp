@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <algorithm>
 namespace kyopro {
 /**
  * @brief Slide Window Aggrigation

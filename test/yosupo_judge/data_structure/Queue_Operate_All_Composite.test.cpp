@@ -6,32 +6,31 @@
 #include "../../../src/template.hpp"
 using mint = kyopro::static_modint32<MOD2>;
 using Affine = std::pair<mint, mint>;
-inline Affine op(Affine g, Affine f) {
+constexpr inline Affine op(const Affine& g, const Affine& f) {
     auto a = f.first, b = f.second;
     auto c = g.first, d = g.second;
     return Affine(a * c, a * d + b);
 }
-inline Affine e() { return Affine(1, 0); }
-using namespace kyopro;
+constexpr inline Affine e() { return Affine(1, 0); }
 int main() {
     kyopro::SWAG<Affine, op, e> que;
     int q;
-    readint(q);
+    kyopro::readint(q);
     while (q--) {
         int t;
-        readint(t);
+        kyopro::readint(t);
 
         if (t == 0) {
             mint a, b;
-            readint(a, b);
+            kyopro::readint(a, b);
             que.push(Affine(a, b));
         } else if (t == 1) {
-            que.pop_back();
+            que.pop_front();
         } else {
             mint x;
-            readint(x);
+            kyopro::readint(x);
             Affine res = que.fold();
-            putint((res.first * x + res.second).val());
+            kyopro::putint((res.first * x + res.second).val());
         }
     }
 }
