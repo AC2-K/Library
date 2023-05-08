@@ -10,14 +10,15 @@ data:
     links: []
   bundledCode: '#line 1 "main.cpp"
 
+    THIS IS TEST
 
     '
-  code: ''
+  code: THIS IS TEST
   dependsOn: []
   isVerificationFile: false
   path: main.cpp
   requiredBy: []
-  timestamp: '2023-05-07 21:17:15+09:00'
+  timestamp: '2023-05-08 03:32:45+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: main.cpp
