@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: '#line 2 "src/template.hpp"
@@ -93,8 +96,9 @@ data:
   path: src/template.hpp
   requiredBy: []
   timestamp: '2023-04-08 13:07:55+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
 documentation_of: src/template.hpp
 layout: document
 redirect_from:

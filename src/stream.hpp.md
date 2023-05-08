@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/1_A.test.cpp
     title: test/AOJ/GRL/1_A.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
@@ -51,9 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No789.test.cpp
     title: test/yuki/No789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "\u5165\u51FA\u529B"
     links: []
@@ -94,7 +97,7 @@ data:
   path: src/stream.hpp
   requiredBy: []
   timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/DSL/2_D_lazy.test.cpp
   - test/AOJ/GRL/1_A.test.cpp
@@ -106,6 +109,7 @@ data:
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp

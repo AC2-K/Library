@@ -37,6 +37,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/CHT.hpp
       title: Convex Hull Trick
+    - icon: ':x:'
+      path: src/data-structure/SWAG.hpp
+      title: Slide Window Aggrigation
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dsu.hpp
       title: Disjoint Set(Union Find)
@@ -74,10 +77,10 @@ data:
     - icon: ':warning:'
       path: src/debug.hpp
       title: src/debug.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/stream.hpp
       title: "\u5165\u51FA\u529B"
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/template.hpp
       title: src/template.hpp
   - name: src/graph
@@ -110,7 +113,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: "\u52D5\u7684modint"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
     - icon: ':heavy_check_mark:'
@@ -137,7 +140,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/sieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/static_modint.hpp
       title: "\u9759\u7684modint"
   - name: src/persistent
@@ -249,6 +252,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+    - icon: ':x:'
+      path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+      title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
