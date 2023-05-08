@@ -14,9 +14,9 @@ data:
   - icon: ':question:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
-    title: src/math/mod_log.hpp
+    title: "\u96E2\u6563\u5BFE\u6570"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\phi$ \u95A2\u6570"
@@ -30,7 +30,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':x:'

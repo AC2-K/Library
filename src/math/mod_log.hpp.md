@@ -24,13 +24,14 @@ data:
     title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    document_title: "\u96E2\u6563\u5BFE\u6570"
     links: []
   bundledCode: "#line 2 \"src/math/mod_log.hpp\"\n#include <cmath>\n#line 2 \"src/data-structure/hash_map.hpp\"\
     \n#include <bits/stl_algobase.h>\n#include <chrono>\nnamespace kyopro {\n/**\n\
@@ -228,8 +229,8 @@ data:
     \ i = 1; i <= m; ++i) {\n        pr *= xm;\n        auto ptr = mp.find(pr.val());\n\
     \        if (ptr) {\n            int j = *ptr;\n            return m * i - j +\
     \ add;\n        }\n    }\n    return -1;\n}\n\n};  // namespace internal\n\n/**\n\
-    \ * \u96E2\u6563\u5BFE\u6570\n */\ntemplate <typename T>\nconstexpr inline T mod_log(T\
-    \ a, T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a,\
+    \ * @brief \u96E2\u6563\u5BFE\u6570\n */\ntemplate <typename T>\nconstexpr inline\
+    \ T mod_log(T a, T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a,\
     \ b, c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n\
     }\n\n};  // namespace kyopro\n"
   code: "#pragma once\n#include <cmath>\n#include \"../data-structure/hash_map.hpp\"\
@@ -261,8 +262,8 @@ data:
     \ i = 1; i <= m; ++i) {\n        pr *= xm;\n        auto ptr = mp.find(pr.val());\n\
     \        if (ptr) {\n            int j = *ptr;\n            return m * i - j +\
     \ add;\n        }\n    }\n    return -1;\n}\n\n};  // namespace internal\n\n/**\n\
-    \ * \u96E2\u6563\u5BFE\u6570\n */\ntemplate <typename T>\nconstexpr inline T mod_log(T\
-    \ a, T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a,\
+    \ * @brief \u96E2\u6563\u5BFE\u6570\n */\ntemplate <typename T>\nconstexpr inline\
+    \ T mod_log(T a, T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a,\
     \ b, c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n\
     }\n\n};  // namespace kyopro"
   dependsOn:
@@ -276,8 +277,8 @@ data:
   isVerificationFile: false
   path: src/math/mod_log.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-05-08 02:55:40+00:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 documentation_of: src/math/mod_log.hpp
@@ -285,5 +286,5 @@ layout: document
 redirect_from:
 - /library/src/math/mod_log.hpp
 - /library/src/math/mod_log.hpp.html
-title: src/math/mod_log.hpp
+title: "\u96E2\u6563\u5BFE\u6570"
 ---

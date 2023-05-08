@@ -10,10 +10,10 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: "\u6C38\u7D9Aqueue"
+    document_title: persistent queue
     links: []
   bundledCode: "#line 2 \"src/persistent/queue.hpp\"\n#include <cassert>\nnamespace\
-    \ kyopro {\n/**\n * @brief \u6C38\u7D9Aqueue\n*/\ntemplate <typename T, int lg\
+    \ kyopro {\n/**\n * @brief persistent queue\n*/\ntemplate <typename T, int lg\
     \ = 20>\nclass persistent_queue {\n    struct Node {\n        Node() = default;\n\
     \        uint32_t index;\n        T val;\n        Node* prev[20];\n    };\n\n\
     \    Node *front_ptr = nullptr, *back_ptr = nullptr;\n    int siz;\n\npublic:\n\
@@ -34,13 +34,13 @@ data:
     \ back_ptr, siz - 1);\n    }\n\n    T front() {\n        assert(siz);\n      \
     \  return front_ptr->val;\n    }\n    T back() {\n        assert(siz);\n     \
     \   return back_ptr->val;\n    }\n};\n};  // namespace kyopro\n"
-  code: "#pragma once\n#include <cassert>\nnamespace kyopro {\n/**\n * @brief \u6C38\
-    \u7D9Aqueue\n*/\ntemplate <typename T, int lg = 20>\nclass persistent_queue {\n\
-    \    struct Node {\n        Node() = default;\n        uint32_t index;\n     \
-    \   T val;\n        Node* prev[20];\n    };\n\n    Node *front_ptr = nullptr,\
-    \ *back_ptr = nullptr;\n    int siz;\n\npublic:\n    persistent_queue(Node* front_ptr\
-    \ = nullptr,\n                     Node* back_ptr = nullptr,\n               \
-    \      int siz = 0)\n        : front_ptr(front_ptr), back_ptr(back_ptr), siz(siz)\
+  code: "#pragma once\n#include <cassert>\nnamespace kyopro {\n/**\n * @brief persistent\
+    \ queue\n*/\ntemplate <typename T, int lg = 20>\nclass persistent_queue {\n  \
+    \  struct Node {\n        Node() = default;\n        uint32_t index;\n       \
+    \ T val;\n        Node* prev[20];\n    };\n\n    Node *front_ptr = nullptr, *back_ptr\
+    \ = nullptr;\n    int siz;\n\npublic:\n    persistent_queue(Node* front_ptr =\
+    \ nullptr,\n                     Node* back_ptr = nullptr,\n                 \
+    \    int siz = 0)\n        : front_ptr(front_ptr), back_ptr(back_ptr), siz(siz)\
     \ {}\n    bool empty() { return siz; }\n    persistent_queue push(const T& x)\
     \ {\n        Node* ptr = new Node();\n        ptr->val = x;\n        ptr->prev[0]\
     \ = back_ptr;\n        for (int i = 1; i < lg; i++) {\n            Node* c = ptr->prev[i\
@@ -60,7 +60,7 @@ data:
   isVerificationFile: false
   path: src/persistent/queue.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-08 02:55:40+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
@@ -69,5 +69,5 @@ layout: document
 redirect_from:
 - /library/src/persistent/queue.hpp
 - /library/src/persistent/queue.hpp.html
-title: "\u6C38\u7D9Aqueue"
+title: persistent queue
 ---

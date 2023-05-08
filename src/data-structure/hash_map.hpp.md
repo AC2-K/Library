@@ -2,14 +2,14 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
-    title: src/math/mod_log.hpp
+    title: "\u96E2\u6563\u5BFE\u6570"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
     title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':x:'

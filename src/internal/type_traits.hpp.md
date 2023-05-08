@@ -11,9 +11,9 @@ data:
   - icon: ':question:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
-    title: src/math/mod_log.hpp
+    title: "\u96E2\u6563\u5BFE\u6570"
   - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
@@ -28,7 +28,7 @@ data:
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   - icon: ':x:'
     path: src/string/rolling_hash.hpp
-    title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
+    title: Rolling Hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_B.test.cpp
@@ -36,7 +36,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':x:'

@@ -7,10 +7,10 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: "\u6C38\u7D9Astack"
+    document_title: persistent stack
     links: []
   bundledCode: "#line 2 \"src/persistent/stack.hpp\"\n#include <cassert>\nnamespace\
-    \ kyopro {\n    \n/**\n * @brief \u6C38\u7D9Astack\n*/\ntemplate <class T>\nclass\
+    \ kyopro {\n    \n/**\n * @brief persistent stack\n*/\ntemplate <class T>\nclass\
     \ persistent_stack {\n    class Node {\n    public:\n        T val;\n        Node*\
     \ prev;\n    };\n\n    Node* head;\n    int sz;\n\n    persistent_stack(Node*\
     \ head, int sz) : head(head), sz(sz) {}\n\npublic:\n    persistent_stack() : head(nullptr)\
@@ -21,7 +21,7 @@ data:
     \    }\n    int size() const { return sz; }\n    bool empty() const { return (head\
     \ == nullptr); }\n};\n};  // namespace kyopro\n"
   code: "#pragma once\n#include <cassert>\nnamespace kyopro {\n    \n/**\n * @brief\
-    \ \u6C38\u7D9Astack\n*/\ntemplate <class T>\nclass persistent_stack {\n    class\
+    \ persistent stack\n*/\ntemplate <class T>\nclass persistent_stack {\n    class\
     \ Node {\n    public:\n        T val;\n        Node* prev;\n    };\n\n    Node*\
     \ head;\n    int sz;\n\n    persistent_stack(Node* head, int sz) : head(head),\
     \ sz(sz) {}\n\npublic:\n    persistent_stack() : head(nullptr) {}\n\n    T top()\
@@ -35,7 +35,7 @@ data:
   isVerificationFile: false
   path: src/persistent/stack.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-08 02:55:40+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/persistent/stack.hpp
@@ -43,5 +43,5 @@ layout: document
 redirect_from:
 - /library/src/persistent/stack.hpp
 - /library/src/persistent/stack.hpp.html
-title: "\u6C38\u7D9Astack"
+title: persistent stack
 ---

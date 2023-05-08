@@ -18,7 +18,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
   - icon: ':x:'

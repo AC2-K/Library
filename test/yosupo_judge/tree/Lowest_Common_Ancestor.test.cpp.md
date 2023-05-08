@@ -46,23 +46,24 @@ data:
     \    explicit EulerTour(int n)\n        : n(n), g(n), in(n, -1), out(n, -1), depth(n,\
     \ -1), rmq(2 * n - 1) {\n        tour.reserve(2 * n - 1);\n    }\n    void add_edge(int\
     \ u, int v) {\n        g[u].emplace_back(v);\n        g[v].emplace_back(u);\n\
-    \    }\n    std::vector<std::vector<int>> get_graph() { return g; }\n    std::vector<int>\
-    \ get_tour() { return tour; }\n    int get_depth(int v) const { return depth[v];\
-    \ }\n\npublic:\n    void build(int r = 0) {\n        auto dfs = [&](const auto&\
-    \ self, int v, int p) -> void {\n            in[v] = tour.size();\n          \
-    \  tour.emplace_back(v);\n            for (auto nv : g[v]) {\n               \
-    \ if (nv != p) {\n                    depth[nv] = depth[v] + 1;\n            \
-    \        self(self, nv, v);\n                    tour.emplace_back(v);\n     \
-    \           }\n            }\n            out[v] = tour.size() - 1;\n        };\n\
-    \        dfs(dfs, r, -1);\n        for (int i = 0; i < (int)tour.size(); i++)\
-    \ {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n        }\n        rmq.build();\n\
-    \    }\n\n    std::pair<int, int> idx(int v) { return {in[v], out[v]}; }\n   \
-    \ int lca(int v, int u) {\n        if (in[v] > in[u] + 1) {\n            std::swap(u,\
-    \ v);\n        }\n        return rmq.prod(in[v], in[u] + 1).second;\n    }\n\n\
-    \    int dist(int v, int u) {\n        int p = lca(v, u);\n        return depth[v]\
-    \ + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par, int v)\
-    \ {\n        return (in[par] <= in[v] && out[v] <= out[par]);\n    }\n};\n}; \
-    \ // namespace kyopro\n#line 5 \"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp\"\
+    \    }\n    const std::vector<std::vector<int>>& get_graph() const { return g;\
+    \ }\n    const std::vector<int>& get_tour() const { return tour; }\n    int get_depth(int\
+    \ v) const { return depth[v]; }\n\n    void build(int r = 0) {\n        auto dfs\
+    \ = [&](const auto& self, int v, int p) -> void {\n            in[v] = tour.size();\n\
+    \            tour.emplace_back(v);\n            for (auto nv : g[v]) {\n     \
+    \           if (nv != p) {\n                    depth[nv] = depth[v] + 1;\n  \
+    \                  self(self, nv, v);\n                    tour.emplace_back(v);\n\
+    \                }\n            }\n            out[v] = tour.size() - 1;\n   \
+    \     };\n        dfs(dfs, r, -1);\n        for (int i = 0; i < (int)tour.size();\
+    \ i++) {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n        }\n    \
+    \    rmq.build();\n    }\n\n    std::pair<int, int> idx(int v) const { return\
+    \ {in[v], out[v]}; }\n    int lca(int v, int u) const {\n        if (in[v] > in[u]\
+    \ + 1) {\n            std::swap(u, v);\n        }\n        return rmq.prod(in[v],\
+    \ in[u] + 1).second;\n    }\n\n    int dist(int v, int u) const {\n        int\
+    \ p = lca(v, u);\n        return depth[v] + depth[u] - 2 * depth[p];\n    }\n\n\
+    \    bool is_in_subtree(int par, int v) const {\n        return (in[par] <= in[v]\
+    \ && out[v] <= out[par]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
+    \ docs/tree/EulerTour.md\n*/\n#line 5 \"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp\"\
     \nusing namespace std;\nint main(){\n    int n, q;\n    scanf(\"%d%d\",&n,&q);\n\
     \    kyopro::EulerTour g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n\
     \        scanf(\"%d\", &p);\n        g.add_edge(p, i);\n    }\n    g.build();\n\
@@ -81,7 +82,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-08 02:55:40+00:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp

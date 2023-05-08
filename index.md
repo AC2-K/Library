@@ -26,21 +26,21 @@ data:
       title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
   - name: src/algorithm
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/mo.hpp
       title: Mo's algorithm
   - name: src/data-structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/BIT.hpp
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
       path: src/data-structure/CHT.hpp
       title: Convex Hull Trick
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/dsu.hpp
       title: Disjoint Set(Union Find)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/dual_segtree.hpp
       title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
     - icon: ':x:'
@@ -49,7 +49,7 @@ data:
     - icon: ':question:'
       path: src/data-structure/hash_map.hpp
       title: HashMap
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/lazy_segtree.hpp
       title: LazySegmentTree
     - icon: ':question:'
@@ -119,9 +119,9 @@ data:
     - icon: ':question:'
       path: src/math/miller.hpp
       title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/mod_log.hpp
-      title: src/math/mod_log.hpp
+      title: "\u96E2\u6563\u5BFE\u6570"
     - icon: ':question:'
       path: src/math/mod_pow.hpp
       title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
@@ -144,10 +144,10 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/persistent/queue.hpp
-      title: "\u6C38\u7D9Aqueue"
+      title: persistent queue
     - icon: ':warning:'
       path: src/persistent/stack.hpp
-      title: "\u6C38\u7D9Astack"
+      title: persistent stack
   - name: src/random
     pages:
     - icon: ':question:'
@@ -163,7 +163,7 @@ data:
       title: Manacher's algorithm
     - icon: ':x:'
       path: src/string/rolling_hash.hpp
-      title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
+      title: Rolling Hash
   - name: src/tree
     pages:
     - icon: ':question:'
@@ -249,41 +249,41 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
       title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
       title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
       title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/UnionFind.test.cpp
       title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - name: test/yosupo_judge/graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/graph/Shortest_Path.test.cpp
       title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - name: test/yosupo_judge/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     - icon: ':x:'

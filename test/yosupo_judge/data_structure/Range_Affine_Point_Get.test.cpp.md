@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/dual_segtree.hpp
     title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: "\u9759\u7684modint"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
@@ -185,8 +185,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-08 02:55:40+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
 layout: document

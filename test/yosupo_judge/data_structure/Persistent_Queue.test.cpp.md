@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/persistent/queue.hpp
-    title: "\u6C38\u7D9Aqueue"
+    title: persistent queue
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -17,7 +17,7 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Persistent_Queue.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#include\
     \ <iostream>\n#include <vector>\n#line 2 \"src/persistent/queue.hpp\"\n#include\
-    \ <cassert>\nnamespace kyopro {\n/**\n * @brief \u6C38\u7D9Aqueue\n*/\ntemplate\
+    \ <cassert>\nnamespace kyopro {\n/**\n * @brief persistent queue\n*/\ntemplate\
     \ <typename T, int lg = 20>\nclass persistent_queue {\n    struct Node {\n   \
     \     Node() = default;\n        uint32_t index;\n        T val;\n        Node*\
     \ prev[20];\n    };\n\n    Node *front_ptr = nullptr, *back_ptr = nullptr;\n \
@@ -58,7 +58,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-08 02:55:40+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp

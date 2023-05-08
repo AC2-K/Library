@@ -5,17 +5,17 @@ data:
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
-    title: src/math/mod_log.hpp
+    title: "\u96E2\u6563\u5BFE\u6570"
   - icon: ':x:'
     path: src/string/rolling_hash.hpp
-    title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
+    title: Rolling Hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_B.test.cpp
     title: test/AOJ/NTL/1_B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':x:'

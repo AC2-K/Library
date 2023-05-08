@@ -2,9 +2,9 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
-    title: src/math/mod_log.hpp
+    title: "\u96E2\u6563\u5BFE\u6570"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\phi$ \u95A2\u6570"
@@ -19,7 +19,7 @@ data:
     title: "\u9759\u7684modint"
   - icon: ':x:'
     path: src/string/rolling_hash.hpp
-    title: "Rollinghash(\u30ED\u30FC\u30EA\u30F3\u30B0\u30CF\u30C3\u30B7\u30E5)"
+    title: Rolling Hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
@@ -33,13 +33,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':x:'
@@ -84,7 +84,7 @@ data:
     \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n"
+    \ a;\n}\n};  // namespace kyopro"
   dependsOn: []
   isVerificationFile: false
   path: src/math/gcd.hpp
@@ -95,7 +95,7 @@ data:
   - src/math/mod_log.hpp
   - src/math/static_modint.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-08 02:55:40+00:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

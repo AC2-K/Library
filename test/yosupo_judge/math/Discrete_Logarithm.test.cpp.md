@@ -19,17 +19,17 @@ data:
   - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
-    title: src/math/mod_log.hpp
+    title: "\u96E2\u6563\u5BFE\u6570"
   - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
@@ -233,8 +233,8 @@ data:
     \ i = 1; i <= m; ++i) {\n        pr *= xm;\n        auto ptr = mp.find(pr.val());\n\
     \        if (ptr) {\n            int j = *ptr;\n            return m * i - j +\
     \ add;\n        }\n    }\n    return -1;\n}\n\n};  // namespace internal\n\n/**\n\
-    \ * \u96E2\u6563\u5BFE\u6570\n */\ntemplate <typename T>\nconstexpr inline T mod_log(T\
-    \ a, T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a,\
+    \ * @brief \u96E2\u6563\u5BFE\u6570\n */\ntemplate <typename T>\nconstexpr inline\
+    \ T mod_log(T a, T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a,\
     \ b, c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n\
     }\n\n};  // namespace kyopro\n#line 4 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
     \n\nint main() {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n    \
@@ -257,8 +257,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-08 02:55:40+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 layout: document
