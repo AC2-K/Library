@@ -8,6 +8,6 @@ int main(){
     for (int i = 0; i < n; ++i){
         long long x;
         kyopro::readint(x);
-        kyopro::putint(kyopro::miller::is_prime(x) ? 1 : 0);
+        puts(kyopro::miller::is_prime(x) ? "1" : "0");
     }
 }
