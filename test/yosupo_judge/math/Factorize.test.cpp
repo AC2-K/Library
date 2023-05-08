@@ -1,17 +1,17 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/factorize"
 #include<iostream>
+#include "../../../src/stream.hpp"
 #include"../../../src/math/rho.hpp"
 int main(){
     int q;
-    scanf("%d", &q);
+    kyopro::readint(q);
     while (q--) {
         uint64_t x;
-        scanf("%lld", &x);
+        kyopro::readint(x);
         const auto pf = kyopro::rho::factorize(x);
-        printf("%d ", (int)pf.size());
-        for (const auto &p : pf){
-            printf("%lld ", p);
+        kyopro::putint(pf.size());
+        for (auto p : pf){
+            kyopro::putint(p);
         }
-        printf("\n");
     }
 }

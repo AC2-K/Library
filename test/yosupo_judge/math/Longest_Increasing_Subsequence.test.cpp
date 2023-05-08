@@ -3,16 +3,17 @@
 #include <iostream>
 #include <numeric>
 #include "../../../src/data-structure/segtree.hpp"
+#include "../../../src/stream.hpp"
 using S = std::pair<int, int>;
 inline S op(S x, S y) { return max(x, y); }
 inline S e() { return S{0, 0}; }
 
 int main() {
     int n;
-    scanf("%d", &n);
+    kyopro::readint(n);
     std::vector<int> a(n);
     for (auto& aa : a) {
-        scanf("%d", &aa);
+        kyopro::readint(aa);
     }
     {
         std::vector<int> tmp = a;
@@ -39,9 +40,9 @@ int main() {
         idx.emplace_back(cur);
         cur = prv[cur];
     }
-    printf("%d\n", (int)idx.size());
+    kyopro::putint(idx.size());
     std::reverse(idx.begin(), idx.end());
-    for (auto& i : idx) {
-        printf("%d ", i);
+    for (auto i : idx) {
+        kyopro::putint(i);
     }
 }
