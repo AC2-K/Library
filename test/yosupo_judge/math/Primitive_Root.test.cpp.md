@@ -19,20 +19,23 @@ data:
   - icon: ':question:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
+  - icon: ':question:'
+    path: src/stream.hpp
+    title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/primitive_root
@@ -251,15 +254,31 @@ data:
     \n        for (const auto& q : pf) {\n            if (dynamic_modint<uint64_t>(g).pow(q).val()\
     \ == 1) {\n                is_ok = false;\n                break;\n          \
     \  }\n        }\n        if (is_ok) {\n            return g.val();\n        }\n\
-    \    }\n}\n};  // namespace kyopro\n#line 4 \"test/yosupo_judge/math/Primitive_Root.test.cpp\"\
-    \nint main() {\n    int q;\n    scanf(\"%d\", &q);\n    while (q--) {\n      \
-    \  long long p;\n        scanf(\"%lld\", &p);\n        long long ans = kyopro::primitive_root(p);\n\
-    \        printf(\"%lld\\n\", ans);\n    }\n}\n"
+    \    }\n}\n};  // namespace kyopro\n#line 2 \"src/stream.hpp\"\n#include <stdio.h>\n\
+    #include <ctype.h>\nnamespace kyopro {\ntemplate <typename T>\nconstexpr inline\
+    \ void readint(T& a) {\n    a = 0;\n    bool is_negative = false;\n    char c\
+    \ = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
+    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
+    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
+    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename...\
+    \ Tail>\nconstexpr inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n\
+    \    readint(tail...);\n}\ntemplate <typename T>\nconstexpr inline void putint(T\
+    \ a) {\n    if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\\
+    n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n\
+    \    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now] = (char)'0'\
+    \ + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
+    \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
+    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
+    \   putint(tail...);\n}\n\n};  // namespace kyopro\n\n\n/**\n * @brief \u5165\u51FA\
+    \u529B\n*/\n#line 5 \"test/yosupo_judge/math/Primitive_Root.test.cpp\"\nint main()\
+    \ {\n    int q;\n    kyopro::readint(q);\n    while (q--) {\n        long long\
+    \ p;\n        kyopro::readint(p);\n        kyopro::putint(kyopro::primitive_root(p));\n\
+    \    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/primitive_root\"\n#include\
-    \ \"../../../src/math/primitive_root.hpp\"\n#include <iostream>\nint main() {\n\
-    \    int q;\n    scanf(\"%d\", &q);\n    while (q--) {\n        long long p;\n\
-    \        scanf(\"%lld\", &p);\n        long long ans = kyopro::primitive_root(p);\n\
-    \        printf(\"%lld\\n\", ans);\n    }\n}\n"
+    \ \"../../../src/math/primitive_root.hpp\"\n#include \"../../../src/stream.hpp\"\
+    \n#include <iostream>\nint main() {\n    int q;\n    kyopro::readint(q);\n   \
+    \ while (q--) {\n        long long p;\n        kyopro::readint(p);\n        kyopro::putint(kyopro::primitive_root(p));\n\
+    \    }\n}\n"
   dependsOn:
   - src/math/primitive_root.hpp
   - src/math/dynamic_modint.hpp
@@ -270,11 +289,12 @@ data:
   - src/math/gcd.hpp
   - src/math/miller.hpp
   - src/random/xor_shift.hpp
+  - src/stream.hpp
   isVerificationFile: true
   path: test/yosupo_judge/math/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 02:55:40+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-08 03:16:57+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Primitive_Root.test.cpp
 layout: document

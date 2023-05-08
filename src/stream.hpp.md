@@ -15,6 +15,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Factorize.test.cpp
+    title: test/yosupo_judge/math/Factorize.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
+    title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Primitive_Root.test.cpp
+    title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - icon: ':x:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
@@ -68,6 +77,9 @@ data:
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
 documentation_of: src/stream.hpp
 layout: document
 redirect_from:
