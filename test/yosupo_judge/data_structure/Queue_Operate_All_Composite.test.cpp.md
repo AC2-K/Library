@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/SWAG.hpp
     title: Slide Window Aggrigation
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "\u5165\u51FA\u529B"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
@@ -28,13 +28,13 @@ data:
     - https://judge.yosupo.jp/problem/queue_operate_all_composite
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
-    \n\n#line 2 \"src/data-structure/SWAG.hpp\"\n#include <vector>\nnamespace kyopro\
-    \ {\n/**\n * @brief Slide Window Aggrigation\n */\ntemplate <class S, auto op,\
-    \ auto e>\nclass SWAG {\n    std::vector<S> front_stack, back_stack;\n    std::vector<S>\
-    \ front_prod, back_prod;\n\npublic:\n    constexpr explicit SWAG() {\n       \
-    \ front_prod.emplace_back(e()), back_prod.emplace_back(e());\n    }\n    void\
-    \ reserve(size_t sz) {\n        back_stack.reserve(sz), back_prod.reserve(sz +\
-    \ 1);\n    }\n    void push(const S& x) {\n        back_stack.emplace_back(x);\n\
+    \n\n#line 2 \"src/data-structure/SWAG.hpp\"\n#include <vector>\n#include <algorithm>\n\
+    namespace kyopro {\n/**\n * @brief Slide Window Aggrigation\n */\ntemplate <class\
+    \ S, auto op, auto e>\nclass SWAG {\n    std::vector<S> front_stack, back_stack;\n\
+    \    std::vector<S> front_prod, back_prod;\n\npublic:\n    constexpr explicit\
+    \ SWAG() {\n        front_prod.emplace_back(e()), back_prod.emplace_back(e());\n\
+    \    }\n    void reserve(size_t sz) {\n        back_stack.reserve(sz), back_prod.reserve(sz\
+    \ + 1);\n    }\n    void push(const S& x) {\n        back_stack.emplace_back(x);\n\
     \        back_prod.emplace_back(op(back_prod.back(), x));\n    }\n    void pop_back()\
     \ { back_stack.pop_back(), back_prod.pop_back(); }\n    void pop_front() {\n \
     \       if (front_stack.empty()) {\n            std::reverse(back_stack.begin(),\
@@ -177,28 +177,30 @@ data:
     template<class T>constexpr inline void chmin(T&x,T y){if(x>y)x=y;}\n#line 7 \"\
     test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\nusing\
     \ mint = kyopro::static_modint32<MOD2>;\nusing Affine = std::pair<mint, mint>;\n\
-    inline Affine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
-    \    auto c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\n\
-    inline Affine e() { return Affine(1, 0); }\nusing namespace kyopro;\nint main()\
-    \ {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    readint(q);\n    while\
-    \ (q--) {\n        int t;\n        readint(t);\n\n        if (t == 0) {\n    \
-    \        mint a, b;\n            readint(a, b);\n            que.push(Affine(a,\
-    \ b));\n        } else if (t == 1) {\n            que.pop_back();\n        } else\
-    \ {\n            mint x;\n            readint(x);\n            Affine res = que.fold();\n\
-    \            putint((res.first * x + res.second).val());\n        }\n    }\n}\n"
+    constexpr inline Affine op(const Affine& g, const Affine& f) {\n    auto a = f.first,\
+    \ b = f.second;\n    auto c = g.first, d = g.second;\n    return Affine(a * c,\
+    \ a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1, 0); }\nint main()\
+    \ {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    kyopro::readint(q);\n\
+    \    while (q--) {\n        int t;\n        kyopro::readint(t);\n\n        if\
+    \ (t == 0) {\n            mint a, b;\n            kyopro::readint(a, b);\n   \
+    \         que.push(Affine(a, b));\n        } else if (t == 1) {\n            que.pop_front();\n\
+    \        } else {\n            mint x;\n            kyopro::readint(x);\n    \
+    \        Affine res = que.fold();\n            kyopro::putint((res.first * x +\
+    \ res.second).val());\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \n\n#include \"../../../src/data-structure/SWAG.hpp\"\n#include \"../../../src/math/static_modint.hpp\"\
     \n#include \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\
     \nusing mint = kyopro::static_modint32<MOD2>;\nusing Affine = std::pair<mint,\
-    \ mint>;\ninline Affine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
-    \    auto c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\n\
-    inline Affine e() { return Affine(1, 0); }\nusing namespace kyopro;\nint main()\
-    \ {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    readint(q);\n    while\
-    \ (q--) {\n        int t;\n        readint(t);\n\n        if (t == 0) {\n    \
-    \        mint a, b;\n            readint(a, b);\n            que.push(Affine(a,\
-    \ b));\n        } else if (t == 1) {\n            que.pop_back();\n        } else\
-    \ {\n            mint x;\n            readint(x);\n            Affine res = que.fold();\n\
-    \            putint((res.first * x + res.second).val());\n        }\n    }\n}"
+    \ mint>;\nconstexpr inline Affine op(const Affine& g, const Affine& f) {\n   \
+    \ auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n    return\
+    \ Affine(a * c, a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1,\
+    \ 0); }\nint main() {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    kyopro::readint(q);\n\
+    \    while (q--) {\n        int t;\n        kyopro::readint(t);\n\n        if\
+    \ (t == 0) {\n            mint a, b;\n            kyopro::readint(a, b);\n   \
+    \         que.push(Affine(a, b));\n        } else if (t == 1) {\n            que.pop_front();\n\
+    \        } else {\n            mint x;\n            kyopro::readint(x);\n    \
+    \        Affine res = que.fold();\n            kyopro::putint((res.first * x +\
+    \ res.second).val());\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/SWAG.hpp
   - src/math/static_modint.hpp
@@ -208,8 +210,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 14:44:22+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-08 05:54:18+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
 layout: document
