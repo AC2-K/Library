@@ -7,8 +7,10 @@ long long mod_log(long long x,long long y,long long p)
 ```
 上のやつを解きます
 
-- 計算量:$O(\sqrt p)$
-- 制約:
+### 計算量
+- $O(\sqrt p)$
+
+### 制約:
     - $0\leq x,y <p$
     - $x,y\in\mathbb{Z}$
     - $p\in\mathbb{N}$

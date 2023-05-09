@@ -112,5 +112,6 @@ int size(int x)
 
 ### 制約
 - $0\leq x<n$
+
 ### 計算量
 - ならし $O(\alpha(n))$
