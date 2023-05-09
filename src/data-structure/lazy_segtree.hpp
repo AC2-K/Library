@@ -4,7 +4,7 @@
 namespace kyopro {
 /**
  * @brief LazySegmentTree
-*/
+ */
 template <class S,
           class F,
           auto op,
@@ -68,7 +68,7 @@ public:
         for (int i = lg; i > 0; --i) push_down(p >> i);
         return dat[p];
     }
-    S prod(int l, int r) {
+    S fold(int l, int r) {
         assert(0 <= l && l <= r && r <= n);
         if (l == r) return e();
 
@@ -125,4 +125,4 @@ public:
 
 /**
  * @docs docs/data-structure/lazy_segtree.md
-*/
+ */

@@ -15,6 +15,6 @@ int main() {
     while (q--) {
         int l, r;
         scanf("%d%d", &l, &r);
-        printf("%d\n", rmq.prod(l, r));
+        printf("%d\n", rmq.fold(l, r));
     }
 }

@@ -27,13 +27,13 @@ int main() {
     std::iota(prv.begin(), prv.end(), 0);
     kyopro::segtree<S, op, e> dp(n + 1);
     for (int i = 0; i < n; i++) {
-        auto [mx, p] = dp.prod(0, a[i]);
+        auto [mx, p] = dp.fold(0, a[i]);
         if (mx + 1 >= dp[a[i]].first) {
             prv[i] = p;
             dp.update(a[i], S{mx + 1, i});
         }
     }
-    auto [res, cur] = dp.prod(0, n + 1);
+    auto [res, cur] = dp.fold(0, n + 1);
     std::vector<int> idx;
     idx.reserve((size_t)res);
     for (int i = 0; i < res; i++) {

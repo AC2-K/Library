@@ -5,7 +5,7 @@ namespace kyopro {
 
 /**
  * @brief SparseTable
-*/
+ */
 template <class T, auto op>
 class sparse_table {
     std::vector<T> vec;
@@ -14,7 +14,9 @@ class sparse_table {
 
 public:
     constexpr explicit sparse_table(int n) : vec(n) {}
-    constexpr explicit sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }
+    constexpr explicit sparse_table(const std::vector<T>& vec) : vec(vec) {
+        build();
+    }
     void set(int p, const T& v) { vec[p] = v; }
     void build() {
         int sz = vec.size();
@@ -38,7 +40,7 @@ public:
         }
     }
 
-    T prod(int l, int r) const {
+    T fold(int l, int r) const {
         int b = look_up[r - l];
         return op(table[b][l], table[b][r - (1 << b)]);
     }
@@ -47,4 +49,4 @@ public:
 
 /**
  * @docs docs/data-structure/sparse_table.md
-*/
+ */

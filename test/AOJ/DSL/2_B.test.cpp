@@ -21,8 +21,7 @@ int main() {
             int l, r;
             scanf("%d%d", &l, &r);
             l--, r--;
-            printf("%lld\n", seg.prod(l, r + 1));
+            printf("%lld\n", seg.fold(l, r + 1));
         }
-
     }
 }

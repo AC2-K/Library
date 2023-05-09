@@ -22,7 +22,7 @@ int main() {
         } else {
             size_t l, r;
             kyopro::readint(l, r);
-            ans += seg.prod(l, r + 1);
+            ans += seg.fold(l, r + 1);
         }
     }
     std::cout << ans << '\n';

@@ -23,7 +23,7 @@ int main() {
         } else {
             int l, r;
             scanf("%d%d", &l, &r);
-            printf("%lld\n", seg.prod(l, r));
+            printf("%lld\n", seg.fold(l, r));
         }
     }
 }

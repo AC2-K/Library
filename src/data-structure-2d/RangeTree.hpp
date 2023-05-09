@@ -37,7 +37,7 @@ public:
         }
     }
 
-     int id(T x) const {
+    int id(T x) const {
         return std::lower_bound(
                    ps.begin(), ps.end(), std::make_pair(x, T()),
                    [](const std::pair<T, T>& a, const std::pair<T, T>& b) {
@@ -46,7 +46,7 @@ public:
                ps.begin();
     }
 
-     int id(int i, T y) const {
+    int id(int i, T y) const {
         return std::lower_bound(ys[i].begin(), ys[i].end(), y) - ys[i].begin();
     }
 
@@ -66,12 +66,12 @@ public:
         a += n, b += n;
         while (a < b) {
             if (a & 1) {
-                suml = op(suml, dat[a].prod(id(a, yl), id(a, yr)));
+                suml = op(suml, dat[a].fold(id(a, yl), id(a, yr)));
                 ++a;
             }
             if (b & 1) {
                 --b;
-                sumr = op(sumr, dat[b].prod(id(b, yl), id(b, yr)));
+                sumr = op(sumr, dat[b].fold(id(b, yl), id(b, yr)));
             }
 
             a >>= 1, b >>= 1;
