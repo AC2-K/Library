@@ -23,7 +23,7 @@ segtree<S,op,e> seg(std::vector<S> a)
 そのまま$a$を渡すこともできます。
 
 ### 計算量
-- $O(|a|)$
+- $n$ を $a$ の長さとして $O(n)$
 
 
 ## update
