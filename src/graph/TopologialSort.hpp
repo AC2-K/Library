@@ -6,7 +6,7 @@ namespace kyopro {
 
 /**
  * @brief Topologial Sort
- * @note 有向サイクルを含む場合は、has_cycleをtrueにしてから終了する。
+ * @param has_cycle 有向サイクルを含む場合は、has_cycleをtrueにしてから終了する。
  */
 void topological_sort(const std::vector<std::vector<int>>& g,
                       std::vector<int>& res,
