@@ -48,9 +48,9 @@ $a_p\leftarrow v$ を行う
 ### 計算量
 - $O(\log n)$
 
-## prod
+## fold
 ```cpp
-S prod(int l,int r)
+S fold(int l,int r)
 ```
 
 区間$[l,r)$の総積を求める。ただし、$l=r$の時は$e$を返す。

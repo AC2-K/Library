@@ -22,30 +22,30 @@ data:
     - https://judge.yosupo.jp/problem/point_set_range_composite
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n#include<iostream>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <vector>\n\
-    #include <cassert>\nnamespace kyopro {\n    \n/**\n * @brief SegmentTree\n*/\n\
-    template <class S, S (*op)(S, S), S (*e)()>\nclass segtree {\n    int lg, sz,\
-    \ n;\n    std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int n)\
-    \ : segtree(std::vector<S>(n, e())) {}\n    segtree(const std::vector<S>& vec)\
-    \ : n((int)vec.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n) {\n\
-    \            sz <<= 1;\n            lg++;\n        }\n\n        dat = std::vector<S>(sz\
-    \ << 1, e());\n\n        for (int i = 0; i < n; i++) {\n            set(i, vec[i]);\n\
-    \        }\n        build();\n    }\n\n    void set(int p, const S& v) {\n   \
-    \     assert(0 <= p && p < sz);\n        dat[sz + p] = v;\n    }\n    void build()\
-    \ {\n        for (int i = sz - 1; i > 0; i--) {\n            dat[i] = op(dat[i\
-    \ << 1 | 0], dat[i << 1 | 1]);\n        }\n    }\n\n    S operator[](int p) const\
-    \ { return dat[sz + p]; }\n\n    void update(int p, const S& v) {\n        assert(0\
-    \ <= p && p < sz);\n        p += sz;\n        dat[p] = v;\n        while (p >>=\
-    \ 1) {\n            dat[p] = op(dat[(p << 1) | 0], dat[(p << 1) | 1]);\n     \
-    \   }\n    }\n\n    S prod(int l, int r) const {\n\n        assert(0 <= l &&l<=r&&\
+    \n#include <iostream>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <cassert>\n\
+    #include <vector>\nnamespace kyopro {\n\n/**\n * @brief SegmentTree\n */\ntemplate\
+    \ <class S, S (*op)(S, S), S (*e)()>\nclass segtree {\n    int lg, sz, n;\n  \
+    \  std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
+    \ e())) {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n  \
+    \      sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n   \
+    \         lg++;\n        }\n\n        dat = std::vector<S>(sz << 1, e());\n\n\
+    \        for (int i = 0; i < n; i++) {\n            set(i, vec[i]);\n        }\n\
+    \        build();\n    }\n\n    void set(int p, const S& v) {\n        assert(0\
+    \ <= p && p < sz);\n        dat[sz + p] = v;\n    }\n    void build() {\n    \
+    \    for (int i = sz - 1; i > 0; i--) {\n            dat[i] = op(dat[i << 1 |\
+    \ 0], dat[i << 1 | 1]);\n        }\n    }\n\n    S operator[](int p) const { return\
+    \ dat[sz + p]; }\n\n    void update(int p, const S& v) {\n        assert(0 <=\
+    \ p && p < sz);\n        p += sz;\n        dat[p] = v;\n        while (p >>= 1)\
+    \ {\n            dat[p] = op(dat[(p << 1) | 0], dat[(p << 1) | 1]);\n        }\n\
+    \    }\n\n    S fold(int l, int r) const {\n        assert(0 <= l && l <= r &&\
     \ r <= sz);\n        if (l == 0 && r == n) {\n            return dat[1];\n   \
     \     }\n        l += sz, r += sz;\n        S sml = e(), smr = e();\n        while\
     \ (l != r) {\n            if (l & 1) sml = op(sml, dat[l++]);\n            if\
     \ (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n        }\n\
-    \        return op(sml, smr);\n    }\n    void apply(int p, const S& v) { \n \
-    \       \n        assert(0 <= p && p < sz);\n        update(p, op(dat[sz + p],\
-    \ v));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/segtree.md\n\
-    */\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate\
+    \        return op(sml, smr);\n    }\n    void apply(int p, const S& v) {\n  \
+    \      assert(0 <= p && p < sz);\n        update(p, op(dat[sz + p], v));\n   \
+    \ }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/segtree.md\n\
+    \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate\
     \ <typename T>\nconstexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >=\
     \ 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
@@ -150,34 +150,34 @@ data:
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
     \ */\n#line 5 \"test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp\"\
-    \n\nusing mint = kyopro::static_modint32<998244353>;\n\nstruct F{\n    mint a,b;\n\
-    };\n\ninline F op(F l,F r){\n    mint na = l.a * r.a;\n    mint nb = (l.b * r.a\
-    \ + r.b);\n    return F{na, nb};\n}\ninline F e(){\n    return F{1,0};\n}\nint\
-    \ main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
+    \n\nusing mint = kyopro::static_modint32<998244353>;\n\nstruct F {\n    mint a,\
+    \ b;\n};\n\ninline F op(F l, F r) {\n    mint na = l.a * r.a;\n    mint nb = (l.b\
+    \ * r.a + r.b);\n    return F{na, nb};\n}\ninline F e() { return F{1, 0}; }\n\
+    int main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
     \    int n, q;\n    std::cin >> n >> q;\n    kyopro::segtree<F, op, e> seg(n);\n\
-    \    for(int i = 0; i < n;i++){\n        mint a, b;\n        std::cin >> a >>\
-    \ b;\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n    while (q--){\n\
-    \        int t;\n        std::cin >> t;\n        if (!t){\n            int p;\n\
-    \            mint c, d;\n            std::cin >> p >> c >> d;\n            seg.update(p,\
-    \ F{c, d});\n        }\n        else{\n            int l, r;\n            mint\
-    \ x;\n            std::cin >> l >> r >> x;\n            F res = seg.prod(l, r);\n\
-    \            mint ans = res.a * x + res.b;\n            std::cout << ans << '\\\
-    n';\n        }\n    }\n}\n"
+    \    for (int i = 0; i < n; i++) {\n        mint a, b;\n        std::cin >> a\
+    \ >> b;\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n    while (q--)\
+    \ {\n        int t;\n        std::cin >> t;\n        if (!t) {\n            int\
+    \ p;\n            mint c, d;\n            std::cin >> p >> c >> d;\n         \
+    \   seg.update(p, F{c, d});\n        } else {\n            int l, r;\n       \
+    \     mint x;\n            std::cin >> l >> r >> x;\n            F res = seg.fold(l,\
+    \ r);\n            mint ans = res.a * x + res.b;\n            std::cout << ans\
+    \ << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n#include<iostream>\n#include\"../../../src/data-structure/segtree.hpp\"\n#include\"\
-    ../../../src/math/static_modint.hpp\"\n\nusing mint = kyopro::static_modint32<998244353>;\n\
-    \nstruct F{\n    mint a,b;\n};\n\ninline F op(F l,F r){\n    mint na = l.a * r.a;\n\
-    \    mint nb = (l.b * r.a + r.b);\n    return F{na, nb};\n}\ninline F e(){\n \
-    \   return F{1,0};\n}\nint main() {\n    std::ios::sync_with_stdio(false);\n \
-    \   std::cin.tie(nullptr);\n    int n, q;\n    std::cin >> n >> q;\n    kyopro::segtree<F,\
-    \ op, e> seg(n);\n    for(int i = 0; i < n;i++){\n        mint a, b;\n       \
-    \ std::cin >> a >> b;\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n\
-    \    while (q--){\n        int t;\n        std::cin >> t;\n        if (!t){\n\
+    \n#include <iostream>\n#include \"../../../src/data-structure/segtree.hpp\"\n\
+    #include \"../../../src/math/static_modint.hpp\"\n\nusing mint = kyopro::static_modint32<998244353>;\n\
+    \nstruct F {\n    mint a, b;\n};\n\ninline F op(F l, F r) {\n    mint na = l.a\
+    \ * r.a;\n    mint nb = (l.b * r.a + r.b);\n    return F{na, nb};\n}\ninline F\
+    \ e() { return F{1, 0}; }\nint main() {\n    std::ios::sync_with_stdio(false);\n\
+    \    std::cin.tie(nullptr);\n    int n, q;\n    std::cin >> n >> q;\n    kyopro::segtree<F,\
+    \ op, e> seg(n);\n    for (int i = 0; i < n; i++) {\n        mint a, b;\n    \
+    \    std::cin >> a >> b;\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n\
+    \    while (q--) {\n        int t;\n        std::cin >> t;\n        if (!t) {\n\
     \            int p;\n            mint c, d;\n            std::cin >> p >> c >>\
-    \ d;\n            seg.update(p, F{c, d});\n        }\n        else{\n        \
-    \    int l, r;\n            mint x;\n            std::cin >> l >> r >> x;\n  \
-    \          F res = seg.prod(l, r);\n            mint ans = res.a * x + res.b;\n\
-    \            std::cout << ans << '\\n';\n        }\n    }\n}"
+    \ d;\n            seg.update(p, F{c, d});\n        } else {\n            int l,\
+    \ r;\n            mint x;\n            std::cin >> l >> r >> x;\n            F\
+    \ res = seg.fold(l, r);\n            mint ans = res.a * x + res.b;\n         \
+    \   std::cout << ans << '\\n';\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/segtree.hpp
   - src/math/static_modint.hpp
@@ -185,7 +185,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 02:55:40+00:00'
+  timestamp: '2023-05-09 23:52:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp

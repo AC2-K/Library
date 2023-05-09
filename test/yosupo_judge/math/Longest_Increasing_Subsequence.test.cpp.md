@@ -20,8 +20,8 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/longest_increasing_subsequence\"\
     \n#include <algorithm>\n#include <iostream>\n#include <numeric>\n#line 2 \"src/data-structure/segtree.hpp\"\
-    \n#include <vector>\n#include <cassert>\nnamespace kyopro {\n    \n/**\n * @brief\
-    \ SegmentTree\n*/\ntemplate <class S, S (*op)(S, S), S (*e)()>\nclass segtree\
+    \n#include <cassert>\n#include <vector>\nnamespace kyopro {\n\n/**\n * @brief\
+    \ SegmentTree\n */\ntemplate <class S, S (*op)(S, S), S (*e)()>\nclass segtree\
     \ {\n    int lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree() {}\n\
     \    segtree(int n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const std::vector<S>&\
     \ vec) : n((int)vec.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n)\
@@ -34,15 +34,15 @@ data:
     \ { return dat[sz + p]; }\n\n    void update(int p, const S& v) {\n        assert(0\
     \ <= p && p < sz);\n        p += sz;\n        dat[p] = v;\n        while (p >>=\
     \ 1) {\n            dat[p] = op(dat[(p << 1) | 0], dat[(p << 1) | 1]);\n     \
-    \   }\n    }\n\n    S prod(int l, int r) const {\n\n        assert(0 <= l &&l<=r&&\
-    \ r <= sz);\n        if (l == 0 && r == n) {\n            return dat[1];\n   \
-    \     }\n        l += sz, r += sz;\n        S sml = e(), smr = e();\n        while\
-    \ (l != r) {\n            if (l & 1) sml = op(sml, dat[l++]);\n            if\
-    \ (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n        }\n\
-    \        return op(sml, smr);\n    }\n    void apply(int p, const S& v) { \n \
-    \       \n        assert(0 <= p && p < sz);\n        update(p, op(dat[sz + p],\
-    \ v));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/segtree.md\n\
-    */\n#line 2 \"src/stream.hpp\"\n#include <stdio.h>\n#include <ctype.h>\nnamespace\
+    \   }\n    }\n\n    S fold(int l, int r) const {\n        assert(0 <= l && l <=\
+    \ r && r <= sz);\n        if (l == 0 && r == n) {\n            return dat[1];\n\
+    \        }\n        l += sz, r += sz;\n        S sml = e(), smr = e();\n     \
+    \   while (l != r) {\n            if (l & 1) sml = op(sml, dat[l++]);\n      \
+    \      if (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n  \
+    \      }\n        return op(sml, smr);\n    }\n    void apply(int p, const S&\
+    \ v) {\n        assert(0 <= p && p < sz);\n        update(p, op(dat[sz + p], v));\n\
+    \    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/segtree.md\n\
+    \ */\n#line 2 \"src/stream.hpp\"\n#include <stdio.h>\n#include <ctype.h>\nnamespace\
     \ kyopro {\ntemplate <typename T>\nconstexpr inline void readint(T& a) {\n   \
     \ a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n  \
     \  while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
@@ -66,9 +66,9 @@ data:
     \        for (auto& aa : a) {\n            aa = lower_bound(tmp.begin(), tmp.end(),\
     \ aa) - tmp.begin();\n        }\n    }\n    std::vector<int> prv(n, -1);\n   \
     \ std::iota(prv.begin(), prv.end(), 0);\n    kyopro::segtree<S, op, e> dp(n +\
-    \ 1);\n    for (int i = 0; i < n; i++) {\n        auto [mx, p] = dp.prod(0, a[i]);\n\
+    \ 1);\n    for (int i = 0; i < n; i++) {\n        auto [mx, p] = dp.fold(0, a[i]);\n\
     \        if (mx + 1 >= dp[a[i]].first) {\n            prv[i] = p;\n          \
-    \  dp.update(a[i], S{mx + 1, i});\n        }\n    }\n    auto [res, cur] = dp.prod(0,\
+    \  dp.update(a[i], S{mx + 1, i});\n        }\n    }\n    auto [res, cur] = dp.fold(0,\
     \ n + 1);\n    std::vector<int> idx;\n    idx.reserve((size_t)res);\n    for (int\
     \ i = 0; i < res; i++) {\n        idx.emplace_back(cur);\n        cur = prv[cur];\n\
     \    }\n    kyopro::putint(idx.size());\n    std::reverse(idx.begin(), idx.end());\n\
@@ -84,9 +84,9 @@ data:
     \ (auto& aa : a) {\n            aa = lower_bound(tmp.begin(), tmp.end(), aa) -\
     \ tmp.begin();\n        }\n    }\n    std::vector<int> prv(n, -1);\n    std::iota(prv.begin(),\
     \ prv.end(), 0);\n    kyopro::segtree<S, op, e> dp(n + 1);\n    for (int i = 0;\
-    \ i < n; i++) {\n        auto [mx, p] = dp.prod(0, a[i]);\n        if (mx + 1\
+    \ i < n; i++) {\n        auto [mx, p] = dp.fold(0, a[i]);\n        if (mx + 1\
     \ >= dp[a[i]].first) {\n            prv[i] = p;\n            dp.update(a[i], S{mx\
-    \ + 1, i});\n        }\n    }\n    auto [res, cur] = dp.prod(0, n + 1);\n    std::vector<int>\
+    \ + 1, i});\n        }\n    }\n    auto [res, cur] = dp.fold(0, n + 1);\n    std::vector<int>\
     \ idx;\n    idx.reserve((size_t)res);\n    for (int i = 0; i < res; i++) {\n \
     \       idx.emplace_back(cur);\n        cur = prv[cur];\n    }\n    kyopro::putint(idx.size());\n\
     \    std::reverse(idx.begin(), idx.end());\n    for (auto i : idx) {\n       \
@@ -97,7 +97,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 03:16:57+00:00'
+  timestamp: '2023-05-09 23:52:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp

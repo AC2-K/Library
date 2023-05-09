@@ -38,18 +38,18 @@ data:
     \        p->val = op(p->val, x);\n        push(p);\n    }\n    void update(std::size_t\
     \ i, const S& x) {\n        assert(0 <= i && i < n);\n        auto p = find(i);\n\
     \        p->val = x;\n        push(p);\n    }\n    S at(std::size_t i) {\n   \
-    \     assert(0 <= i && i < n);\n        return find(i)->val;\n    }\n    S prod(std::size_t\
+    \     assert(0 <= i && i < n);\n        return find(i)->val;\n    }\n    S fold(std::size_t\
     \ l, std::size_t r) const {\n        assert(0 <= l && l <= r && r <= n);\n   \
-    \     if (l == r) {\n            return e();\n        }\n        return internal_prod(root,\
-    \ 0, n, l, r);\n    }\n\nprivate:\n    S internal_prod(const Node* p,\n      \
+    \     if (l == r) {\n            return e();\n        }\n        return internal_fold(root,\
+    \ 0, n, l, r);\n    }\n\nprivate:\n    S internal_fold(const Node* p,\n      \
     \              std::size_t l,\n                    std::size_t r,\n          \
     \          std::size_t L,\n                    std::size_t R) const {\n      \
     \  if (!p || r <= L || R <= l) {\n            return e();\n        }\n       \
     \ if (L <= l && r <= R) {\n            return p->val;\n        }\n\n        std::size_t\
-    \ mid = (l + r) >> 1;\n        return op(internal_prod(p->l, l, mid, L, R),\n\
-    \                  internal_prod(p->r, mid, r, L, R));\n    }\n};\n};  // namespace\
-    \ kyopro\n\n\n/**\n * @docs docs/data-structure/dynamic_segtree.md\n * @ref https://lorent-kyopro.hatenablog.com/entry/2021/03/12/025644\n\
-    */\n"
+    \ mid = (l + r) >> 1;\n        return op(internal_fold(p->l, l, mid, L, R),\n\
+    \                  internal_fold(p->r, mid, r, L, R));\n    }\n};\n};  // namespace\
+    \ kyopro\n\n/**\n * @docs docs/data-structure/dynamic_segtree.md\n * @ref https://lorent-kyopro.hatenablog.com/entry/2021/03/12/025644\n\
+    \ */\n"
   code: "#pragma once\n#include <cassert>\n#include <cstddef>\n#include <cstdint>\n\
     namespace kyopro {\n/**\n * @brief \u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\
     \n */\ntemplate <class S, S (*op)(S, S), S (*e)()>\nclass dynamic_segtree {\n\
@@ -74,23 +74,23 @@ data:
     \ = op(p->val, x);\n        push(p);\n    }\n    void update(std::size_t i, const\
     \ S& x) {\n        assert(0 <= i && i < n);\n        auto p = find(i);\n     \
     \   p->val = x;\n        push(p);\n    }\n    S at(std::size_t i) {\n        assert(0\
-    \ <= i && i < n);\n        return find(i)->val;\n    }\n    S prod(std::size_t\
+    \ <= i && i < n);\n        return find(i)->val;\n    }\n    S fold(std::size_t\
     \ l, std::size_t r) const {\n        assert(0 <= l && l <= r && r <= n);\n   \
-    \     if (l == r) {\n            return e();\n        }\n        return internal_prod(root,\
-    \ 0, n, l, r);\n    }\n\nprivate:\n    S internal_prod(const Node* p,\n      \
+    \     if (l == r) {\n            return e();\n        }\n        return internal_fold(root,\
+    \ 0, n, l, r);\n    }\n\nprivate:\n    S internal_fold(const Node* p,\n      \
     \              std::size_t l,\n                    std::size_t r,\n          \
     \          std::size_t L,\n                    std::size_t R) const {\n      \
     \  if (!p || r <= L || R <= l) {\n            return e();\n        }\n       \
     \ if (L <= l && r <= R) {\n            return p->val;\n        }\n\n        std::size_t\
-    \ mid = (l + r) >> 1;\n        return op(internal_prod(p->l, l, mid, L, R),\n\
-    \                  internal_prod(p->r, mid, r, L, R));\n    }\n};\n};  // namespace\
-    \ kyopro\n\n\n/**\n * @docs docs/data-structure/dynamic_segtree.md\n * @ref https://lorent-kyopro.hatenablog.com/entry/2021/03/12/025644\n\
-    */"
+    \ mid = (l + r) >> 1;\n        return op(internal_fold(p->l, l, mid, L, R),\n\
+    \                  internal_fold(p->r, mid, r, L, R));\n    }\n};\n};  // namespace\
+    \ kyopro\n\n/**\n * @docs docs/data-structure/dynamic_segtree.md\n * @ref https://lorent-kyopro.hatenablog.com/entry/2021/03/12/025644\n\
+    \ */"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/dynamic_segtree.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-09 23:52:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No789.test.cpp

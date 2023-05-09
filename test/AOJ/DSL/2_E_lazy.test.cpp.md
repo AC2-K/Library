@@ -17,7 +17,7 @@ data:
   bundledCode: "#line 1 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
     \n#include<iostream>\n#line 2 \"src/data-structure/lazy_segtree.hpp\"\n#include\
     \ <cassert>\n#include <vector>\nnamespace kyopro {\n/**\n * @brief LazySegmentTree\n\
-    */\ntemplate <class S,\n          class F,\n          auto op,\n          auto\
+    \ */\ntemplate <class S,\n          class F,\n          auto op,\n          auto\
     \ e,\n          auto composition,\n          auto id,\n          auto mapping>\n\
     class lazy_segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n    std::vector<F>\
     \ lazy;\n\npublic:\n    lazy_segtree() {}\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n,\
@@ -36,7 +36,7 @@ data:
     \   all_apply(p << 1 | 0, lazy[p]);\n        all_apply(p << 1 | 1, lazy[p]);\n\
     \        lazy[p] = id();\n    }\n\npublic:\n    S operator[](int p) {\n      \
     \  assert(0 <= p && p < n);\n        p += sz;\n        for (int i = lg; i > 0;\
-    \ --i) push_down(p >> i);\n        return dat[p];\n    }\n    S prod(int l, int\
+    \ --i) push_down(p >> i);\n        return dat[p];\n    }\n    S fold(int l, int\
     \ r) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r) return\
     \ e();\n\n        l += sz, r += sz;\n        for (int i = lg; i > 0; --i) {\n\
     \            if (((l >> i) << i) != l) {\n                push_down(l >> i);\n\
@@ -56,7 +56,7 @@ data:
     \ r2;\n        }\n\n        for (int i = 1; i <= lg; ++i) {\n            if (((l\
     \ >> i) << i) != l) push_up(l >> i);\n            if (((r >> i) << i) != r) push_up((r\
     \ - 1) >> i);\n        }\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
-    \ docs/data-structure/lazy_segtree.md\n*/\n#line 4 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\
+    \ docs/data-structure/lazy_segtree.md\n */\n#line 4 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\
     \n\ninline int op(int x, int y) { return x + y; }\ninline int comp(int x, int\
     \ y) { return x + y; }\ninline int mapping(int x, int y) { return x + y; }\ninline\
     \ int e() { return 0; }\ninline int id() { return 0; }\n\nint main() {\n    int\
@@ -83,7 +83,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_E_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-09 23:52:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_E_lazy.test.cpp

@@ -20,7 +20,7 @@ data:
     document_title: LazySegmentTree
     links: []
   bundledCode: "#line 2 \"src/data-structure/lazy_segtree.hpp\"\n#include <cassert>\n\
-    #include <vector>\nnamespace kyopro {\n/**\n * @brief LazySegmentTree\n*/\ntemplate\
+    #include <vector>\nnamespace kyopro {\n/**\n * @brief LazySegmentTree\n */\ntemplate\
     \ <class S,\n          class F,\n          auto op,\n          auto e,\n     \
     \     auto composition,\n          auto id,\n          auto mapping>\nclass lazy_segtree\
     \ {\n    int lg, sz, n;\n    std::vector<S> dat;\n    std::vector<F> lazy;\n\n\
@@ -40,7 +40,7 @@ data:
     \   all_apply(p << 1 | 0, lazy[p]);\n        all_apply(p << 1 | 1, lazy[p]);\n\
     \        lazy[p] = id();\n    }\n\npublic:\n    S operator[](int p) {\n      \
     \  assert(0 <= p && p < n);\n        p += sz;\n        for (int i = lg; i > 0;\
-    \ --i) push_down(p >> i);\n        return dat[p];\n    }\n    S prod(int l, int\
+    \ --i) push_down(p >> i);\n        return dat[p];\n    }\n    S fold(int l, int\
     \ r) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r) return\
     \ e();\n\n        l += sz, r += sz;\n        for (int i = lg; i > 0; --i) {\n\
     \            if (((l >> i) << i) != l) {\n                push_down(l >> i);\n\
@@ -60,11 +60,11 @@ data:
     \ r2;\n        }\n\n        for (int i = 1; i <= lg; ++i) {\n            if (((l\
     \ >> i) << i) != l) push_up(l >> i);\n            if (((r >> i) << i) != r) push_up((r\
     \ - 1) >> i);\n        }\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
-    \ docs/data-structure/lazy_segtree.md\n*/\n"
+    \ docs/data-structure/lazy_segtree.md\n */\n"
   code: "#pragma once\n#include <cassert>\n#include <vector>\nnamespace kyopro {\n\
-    /**\n * @brief LazySegmentTree\n*/\ntemplate <class S,\n          class F,\n \
-    \         auto op,\n          auto e,\n          auto composition,\n         \
-    \ auto id,\n          auto mapping>\nclass lazy_segtree {\n    int lg, sz, n;\n\
+    /**\n * @brief LazySegmentTree\n */\ntemplate <class S,\n          class F,\n\
+    \          auto op,\n          auto e,\n          auto composition,\n        \
+    \  auto id,\n          auto mapping>\nclass lazy_segtree {\n    int lg, sz, n;\n\
     \    std::vector<S> dat;\n    std::vector<F> lazy;\n\npublic:\n    lazy_segtree()\
     \ {}\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e())) {}\n    lazy_segtree(const\
     \ std::vector<S>& a) : n((int)a.size()) {\n        sz = 1, lg = 0;\n        while\
@@ -81,7 +81,7 @@ data:
     \ return;\n        }\n        all_apply(p << 1 | 0, lazy[p]);\n        all_apply(p\
     \ << 1 | 1, lazy[p]);\n        lazy[p] = id();\n    }\n\npublic:\n    S operator[](int\
     \ p) {\n        assert(0 <= p && p < n);\n        p += sz;\n        for (int i\
-    \ = lg; i > 0; --i) push_down(p >> i);\n        return dat[p];\n    }\n    S prod(int\
+    \ = lg; i > 0; --i) push_down(p >> i);\n        return dat[p];\n    }\n    S fold(int\
     \ l, int r) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r)\
     \ return e();\n\n        l += sz, r += sz;\n        for (int i = lg; i > 0; --i)\
     \ {\n            if (((l >> i) << i) != l) {\n                push_down(l >> i);\n\
@@ -101,12 +101,12 @@ data:
     \ r2;\n        }\n\n        for (int i = 1; i <= lg; ++i) {\n            if (((l\
     \ >> i) << i) != l) push_up(l >> i);\n            if (((r >> i) << i) != r) push_up((r\
     \ - 1) >> i);\n        }\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
-    \ docs/data-structure/lazy_segtree.md\n*/"
+    \ docs/data-structure/lazy_segtree.md\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/lazy_segtree.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-09 23:52:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/2_D_lazy.test.cpp
