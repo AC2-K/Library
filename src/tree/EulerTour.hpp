@@ -57,7 +57,7 @@ public:
         if (in[v] > in[u] + 1) {
             std::swap(u, v);
         }
-        return rmq.prod(in[v], in[u] + 1).second;
+        return rmq.fold(in[v], in[u] + 1).second;
     }
 
     int dist(int v, int u) const {
@@ -73,4 +73,4 @@ public:
 
 /**
  * @docs docs/tree/EulerTour.md
-*/
+ */

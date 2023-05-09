@@ -1,11 +1,11 @@
 #pragma once
-#include <vector>
 #include <cassert>
+#include <vector>
 namespace kyopro {
-    
+
 /**
  * @brief SegmentTree
-*/
+ */
 template <class S, S (*op)(S, S), S (*e)()>
 class segtree {
     int lg, sz, n;
@@ -50,9 +50,8 @@ public:
         }
     }
 
-    S prod(int l, int r) const {
-
-        assert(0 <= l &&l<=r&& r <= sz);
+    S fold(int l, int r) const {
+        assert(0 <= l && l <= r && r <= sz);
         if (l == 0 && r == n) {
             return dat[1];
         }
@@ -65,8 +64,7 @@ public:
         }
         return op(sml, smr);
     }
-    void apply(int p, const S& v) { 
-        
+    void apply(int p, const S& v) {
         assert(0 <= p && p < sz);
         update(p, op(dat[sz + p], v));
     }
@@ -75,4 +73,4 @@ public:
 
 /**
  * @docs docs/data-structure/segtree.md
-*/
+ */

@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_affine_range_sum"
-#include<iostream>
-#include"../../../src/data-structure/lazy_segtree.hpp"
-#include"../../../src/math/static_modint.hpp"
-#include"../../../src/stream.hpp"
+#include <iostream>
+#include "../../../src/data-structure/lazy_segtree.hpp"
+#include "../../../src/math/static_modint.hpp"
+#include "../../../src/stream.hpp"
 using mint = kyopro::static_modint32<998244353>;
 struct S {
     mint s;
@@ -12,11 +12,11 @@ inline S op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }
 inline S e() { return S{0, 0}; }
 using Affine = std::pair<mint, mint>;
 inline Affine composition(Affine g, Affine f) {
-	//f(g)
-	//a(cx+d)+b
-	auto a = f.first, b = f.second;
-	auto c = g.first, d = g.second;
-	return Affine(a * c, a * d + b);
+    // f(g)
+    // a(cx+d)+b
+    auto a = f.first, b = f.second;
+    auto c = g.first, d = g.second;
+    return Affine(a * c, a * d + b);
 }
 inline Affine id() { return Affine(1, 0); }
 inline S mapping(S d, Affine f) {
@@ -25,17 +25,17 @@ inline S mapping(S d, Affine f) {
     return d;
 };
 
-int main(){
+int main() {
     int n, q;
     kyopro::readint(n, q);
     kyopro::lazy_segtree<S, Affine, op, e, composition, id, mapping> sg(n);
-    for(int i=0;i<n;i++){
+    for (int i = 0; i < n; i++) {
         mint a;
         kyopro::readint(a);
         sg.set(i, {a, 1});
     }
     sg.build();
-    while(q--){
+    while (q--) {
         int t;
         kyopro::readint(t);
         if (t == 0) {
@@ -46,7 +46,7 @@ int main(){
         } else {
             int l, r;
             kyopro::readint(l, r);
-            auto res = sg.prod(l, r);
+            auto res = sg.fold(l, r);
             kyopro::putint(res.s.val());
         }
     }

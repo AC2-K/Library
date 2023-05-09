@@ -78,16 +78,16 @@ public:
         assert(0 <= i && i < n);
         return find(i)->val;
     }
-    S prod(std::size_t l, std::size_t r) const {
+    S fold(std::size_t l, std::size_t r) const {
         assert(0 <= l && l <= r && r <= n);
         if (l == r) {
             return e();
         }
-        return internal_prod(root, 0, n, l, r);
+        return internal_fold(root, 0, n, l, r);
     }
 
 private:
-    S internal_prod(const Node* p,
+    S internal_fold(const Node* p,
                     std::size_t l,
                     std::size_t r,
                     std::size_t L,
@@ -100,14 +100,13 @@ private:
         }
 
         std::size_t mid = (l + r) >> 1;
-        return op(internal_prod(p->l, l, mid, L, R),
-                  internal_prod(p->r, mid, r, L, R));
+        return op(internal_fold(p->l, l, mid, L, R),
+                  internal_fold(p->r, mid, r, L, R));
     }
 };
 };  // namespace kyopro
 
-
 /**
  * @docs docs/data-structure/dynamic_segtree.md
  * @ref https://lorent-kyopro.hatenablog.com/entry/2021/03/12/025644
-*/
+ */

@@ -54,9 +54,9 @@ void build()
 - `set`・・・$O(1)$
 - `build`・・・$O(n\log n)$
 
-### prod
+### fold
 ```cpp
-S prod(int l,int r)
+S fold(int l,int r)
 ```
 区間積 $a_l\cdot a_{l+1} \dots a_{r-1}$を求めます。
 
