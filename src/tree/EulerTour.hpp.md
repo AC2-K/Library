@@ -105,10 +105,10 @@ data:
   timestamp: '2023-05-08 02:55:40+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/GRL/5_C.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/AOJ/GRL/5_C.test.cpp
 documentation_of: src/tree/EulerTour.hpp
 layout: document
 redirect_from:
@@ -157,6 +157,7 @@ void build(int r)
 ### 制約
 - $0\leq r<n$
 - **これが呼び出される時点で $T$ は木** 
+
 ### 計算量
 - $O(n\log n)$
 
@@ -184,7 +185,6 @@ int dist(int a,int b)
 ### 計算量
 - $O(1)$
 
-### 
 ## idx
 ```cpp
 std::pair<int,int> idx(int v)
@@ -197,6 +197,7 @@ EulerTour順に辿ったときの
 
 ### 制約
 - $0\leq v<n$
+
 ### 計算量
 - $O(1)$
 

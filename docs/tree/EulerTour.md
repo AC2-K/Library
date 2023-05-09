@@ -39,6 +39,7 @@ void build(int r)
 ### 制約
 - $0\leq r<n$
 - **これが呼び出される時点で $T$ は木** 
+
 ### 計算量
 - $O(n\log n)$
 
@@ -66,7 +67,6 @@ int dist(int a,int b)
 ### 計算量
 - $O(1)$
 
-### 
 ## idx
 ```cpp
 std::pair<int,int> idx(int v)
@@ -79,6 +79,7 @@ EulerTour順に辿ったときの
 
 ### 制約
 - $0\leq v<n$
+
 ### 計算量
 - $O(1)$
 
