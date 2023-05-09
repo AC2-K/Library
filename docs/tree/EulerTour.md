@@ -8,7 +8,7 @@ EulerTourを使うことで、木に関する様々なクエリを $O(\log n),O(
 はクエリごと $O(1)$ で処理できます。これらはメソッドに用意しています。\
 また、BITやSegmentTreeと併用することで以下の問題がクエリごと $O(\log n)$ で処理できます。
 - [Vertex Add Path Sum](https://judge.yosupo.jp/problem/vertex_add_path_sum)
-- [Vertex Add Subtree Sum](https://ac2-k.github.io/library/test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp)
+- [Vertex Add Subtree Sum](https://judge.yosupo.jp/problem/vertex_add_subtree_sum)
 
 ## コンストラクタ
 ```cpp

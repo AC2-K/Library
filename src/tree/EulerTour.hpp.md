@@ -105,10 +105,10 @@ data:
   timestamp: '2023-05-08 02:55:40+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/AOJ/GRL/5_C.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - test/AOJ/GRL/5_C.test.cpp
 documentation_of: src/tree/EulerTour.hpp
 layout: document
 redirect_from:
@@ -126,7 +126,7 @@ EulerTourを使うことで、木に関する様々なクエリを $O(\log n),O(
 はクエリごと $O(1)$ で処理できます。これらはメソッドに用意しています。\
 また、BITやSegmentTreeと併用することで以下の問題がクエリごと $O(\log n)$ で処理できます。
 - [Vertex Add Path Sum](https://judge.yosupo.jp/problem/vertex_add_path_sum)
-- [Vertex Add Subtree Sum](https://ac2-k.github.io/library/test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp)
+- [Vertex Add Subtree Sum](https://judge.yosupo.jp/problem/vertex_add_subtree_sum)
 
 ## コンストラクタ
 ```cpp
