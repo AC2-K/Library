@@ -8,17 +8,27 @@ $(S,\text{op},e)$がモノイドをなすとする。\
 
 ## コンストラクタ1
 ```cpp
-segtree<S,op,e> seg(int n)
+kyopro::segtree<S,op,e> seg(int n)
 ```
 $a$を$e$で埋めて生成します。
+なお、`op`,`e`は
 
+```cpp
+S op(S x,S y) {
+    //x op y を返す
+}
+S e() {
+    //eの値を渡す
+}
+```
 
+のような形式で渡してください。
 ### 計算量
 - $O(n)$
 
 ## コンストラクタ2
 ```cpp
-segtree<S,op,e> seg(std::vector<S> a)
+kyopro::segtree<S,op,e> seg(std::vector<S> a)
 ```
 そのまま$a$を渡すこともできます。
 
@@ -28,7 +38,7 @@ segtree<S,op,e> seg(std::vector<S> a)
 
 ## update
 ```cpp
-void seg.update(int p,S v)
+void update(int p,S v)
 ```
 $a_p\leftarrow v$ を行う
 
@@ -40,10 +50,10 @@ $a_p\leftarrow v$ を行う
 
 ## prod
 ```cpp
-S seg.prod(int l,int r)
+S prod(int l,int r)
 ```
 
-区間積を求める。ただし、$l=r$の時は$e$を返す。
+区間$[l,r)$の総積を求める。ただし、$l=r$の時は$e$を返す。
 
 ### 制約
 - $0\leq l\leq r <n$
@@ -54,9 +64,9 @@ S seg.prod(int l,int r)
 
 ## apply
 ```cpp
-void seg.apply(int pos,S x)
+void apply(int pos,S x)
 ```
-$a_{\text{pos}}\leftarrow \text{op}(a_{\text{pos}},x)$とする
+$a_{\text{pos}}\leftarrow \text{op}(a_{\text{pos}},x)$を行う
 ### 制約
 - $0\leq \text{pos}<n$
 
@@ -80,6 +90,5 @@ $a_{p}$を返す。
 最初から $a$ が与えられている状況において $O(n)$ で初期化しようと思うと、コンストラクタ2を使うことになります。しかし、このためだけにいちいちvectorを作るのはやや面倒...
 \
 \
-\
 ということで、初期化専用のメソッド`set`,`build`が定義されています。\
-使い方は[こちら](https://ac2-k.github.io/library/test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp)を参照
+使い方は[こちら](https://ac2-k.github.io/library/test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp)を参照してください
