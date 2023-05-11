@@ -4,7 +4,7 @@
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);
-    kyopro::BIT<long long, long long> seg(n);
+    kyopro::BIT<long long> seg(n);
     for (int i = 0; i < n; i++) {
         int a;
         scanf("%d", &a);

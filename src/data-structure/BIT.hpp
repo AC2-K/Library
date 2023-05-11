@@ -4,9 +4,9 @@ namespace kyopro {
 /**
  * @brief Binary Index Tree
  */
-template <typename T, typename SumT = T>
+template <typename T>
 class BIT {
-    std::vector<SumT> bit;
+    std::vector<T> bit;
     int n;
 
 public:
@@ -19,7 +19,7 @@ public:
         }
     }
 
-    SumT sum(int p) const {
+    T sum(int p) const {
         T s = 0;
 
         for (int x = p; x > 0; x -= x & -x) {
@@ -28,9 +28,9 @@ public:
         return s;
     }
 
-    SumT sum(int l, int r) const { return sum(r) - sum(l); }
+    T sum(int l, int r) const { return sum(r) - sum(l); }
 
-    int lower_bound(SumT w) const {
+    int lower_bound(T w) const {
         if (w <= 0) return 0;
 
         int x = 0;
