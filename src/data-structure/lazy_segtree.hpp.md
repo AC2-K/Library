@@ -126,8 +126,8 @@ title: LazySegmentTree
 に対して、以下の条件が満たされるとします。
 
 - 任意の $x\in S$ に対して $x * \mathtt{id}=x$
-- 任意の $x,y\in S,f\in F$に対して $(x \cdot y)*f=(x*f)\cdot(y*f)$
-- 任意の $x\in S$ と $f_1,f_2\in F$ について$(x*f_1)*f_2=x*(f1\circ f2)$
+- 任意の $x,y\in S,f\in F$に対して $(x \cdot y)\ast f=(x\ast f)\cdot(y\ast f)$
+- 任意の $x\in S$ と $f_1,f_2\in F$ について$(x\ast f_1)*f_2=x\ast (f1\circ f2)$
  
 この時、$S$ の列 $a=(a_0,a_1,\dots,a_{n-1})$ に対して以下をクエリごと $O(\log n)$ で行います。
  
