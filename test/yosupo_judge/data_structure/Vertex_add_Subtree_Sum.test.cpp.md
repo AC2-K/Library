@@ -24,19 +24,19 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\
     #include<iostream>\n#line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\n\
     namespace kyopro {\n/**\n * @brief Binary Index Tree\n */\ntemplate <typename\
-    \ T, typename SumT = T>\nclass BIT {\n    std::vector<SumT> bit;\n    int n;\n\
-    \npublic:\n    explicit BIT() {}\n    explicit BIT(int n) : n(n), bit(n + 1, T())\
-    \ {}\n    void add(int p, T w) {\n        p++;\n        for (int x = p; x <= n;\
-    \ x += x & -x) {\n            bit[x] += w;\n        }\n    }\n\n    SumT sum(int\
-    \ p) const {\n        T s = 0;\n\n        for (int x = p; x > 0; x -= x & -x)\
-    \ {\n            s += bit[x];\n        }\n        return s;\n    }\n\n    SumT\
-    \ sum(int l, int r) const { return sum(r) - sum(l); }\n\n    int lower_bound(SumT\
-    \ w) const {\n        if (w <= 0) return 0;\n\n        int x = 0;\n        int\
-    \ k = 1;\n        while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n \
-    \           if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x +\
-    \ k];\n                x += k;\n            }\n        }\n\n        return x +\
-    \ 1;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
-    \ */\n#line 2 \"src/tree/EulerTour.hpp\"\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
+    \ T>\nclass BIT {\n    std::vector<T> bit;\n    int n;\n\npublic:\n    explicit\
+    \ BIT() {}\n    explicit BIT(int n) : n(n), bit(n + 1, T()) {}\n    void add(int\
+    \ p, T w) {\n        p++;\n        for (int x = p; x <= n; x += x & -x) {\n  \
+    \          bit[x] += w;\n        }\n    }\n\n    T sum(int p) const {\n      \
+    \  T s = 0;\n\n        for (int x = p; x > 0; x -= x & -x) {\n            s +=\
+    \ bit[x];\n        }\n        return s;\n    }\n\n    T sum(int l, int r) const\
+    \ { return sum(r) - sum(l); }\n\n    int lower_bound(T w) const {\n        if\
+    \ (w <= 0) return 0;\n\n        int x = 0;\n        int k = 1;\n        while\
+    \ (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n            if (x + k <=\
+    \ n && bit[x + k] < w) {\n                w -= bit[x + k];\n                x\
+    \ += k;\n            }\n        }\n\n        return x + 1;\n    }\n};\n};  //\
+    \ namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n */\n#line 2 \"\
+    src/tree/EulerTour.hpp\"\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
     \n#include <numeric>\n#line 4 \"src/data-structure/sparse_table.hpp\"\nnamespace\
     \ kyopro {\n\n/**\n * @brief SparseTable\n */\ntemplate <class T, auto op>\nclass\
     \ sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n\
@@ -114,7 +114,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-09 23:52:17+09:00'
+  timestamp: '2023-05-11 20:24:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
