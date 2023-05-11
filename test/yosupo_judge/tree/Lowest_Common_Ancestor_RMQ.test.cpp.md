@@ -20,7 +20,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
     - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <iostream>\n\
     #line 2 \"src/stream.hpp\"\n#include <stdio.h>\n#include <ctype.h>\nnamespace\
     \ kyopro {\ntemplate <typename T>\nconstexpr inline void readint(T& a) {\n   \
@@ -82,7 +82,7 @@ data:
     \ p = lca(v, u);\n        return depth[v] + depth[u] - 2 * depth[p];\n    }\n\n\
     \    bool is_in_subtree(int par, int v) const {\n        return (in[par] <= in[v]\
     \ && out[v] <= out[par]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
-    \ docs/tree/EulerTour.md\n */\n#line 6 \"test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp\"\
+    \ docs/tree/EulerTour.md\n */\n#line 6 \"test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp\"\
     \nint main() {\n    int n, q;\n    kyopro::readint(n, q);\n    kyopro::EulerTour\
     \ g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n        kyopro::readint(p);\n\
     \        g.add_edge(p, i);\n    }\n    g.build();\n    while (q--) {\n       \
@@ -100,15 +100,15 @@ data:
   - src/tree/EulerTour.hpp
   - src/data-structure/sparse_table.hpp
   isVerificationFile: true
-  path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+  path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-05-09 23:52:17+09:00'
+  timestamp: '2023-05-11 22:49:02+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
-- /verify/test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp.html
-title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+- /verify/test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+- /verify/test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp.html
+title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
 ---

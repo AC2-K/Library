@@ -43,8 +43,11 @@ data:
     path: test/yosupo_judge/string/Z_algorithm.test.cpp
     title: test/yosupo_judge/string/Z_algorithm.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
-    title: test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+    path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+    title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+    title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
@@ -101,8 +104,9 @@ data:
   verifiedWith:
   - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-  - test/yosupo_judge/tree/Lowest_Common_Ancestor.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
