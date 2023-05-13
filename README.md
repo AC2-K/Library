@@ -12,9 +12,6 @@
 まず、使いたいライブラリに対応したページに飛んでください。\
 使いたいライブラリが他のファイルををincludeしていない場合、普通にコピペして使うことができます。\
 他のファイルをincludeしている場合は、コード右上の **Bundle** ボタンを押すことでincludeファイルを全て展開することができます。それを使って展開してから、コピペしてください。
-## ダウンロード
-クローンするなり、Zipでダウンロードするなりしてください。ローカルでのファイルの扱いは、[verification helperの説明書](https://github.com/online-judge-tools/verification-helper/blob/master/README.ja.md)を参照してください。
-
 
 ## 諸注意
 - すべてのライブラリは```namespace kyopro```に入っています。`using namespace kyopro;`するか、ちゃんと`kyopro::`を付けるようにしてください。
