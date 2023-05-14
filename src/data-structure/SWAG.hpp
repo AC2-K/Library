@@ -38,5 +38,6 @@ public:
     }
 
     S fold() const { return op(front_prod.back(), back_prod.back()); }
+    int size() { return front_stack.size() + back_stack.size(); }
 };
 };  // namespace kyopro
