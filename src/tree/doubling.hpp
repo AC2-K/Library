@@ -3,10 +3,10 @@
 #include <vector>
 
 /**
- * @brief 木(詰め合わせパック)
-*/
+ * @brief doubling on tree
+ */
 namespace kyopro {
-class Tree {
+class doubling_on_tree {
     struct edge {
         const int to;
         const int cost;
@@ -21,7 +21,7 @@ class Tree {
     std::vector<int> _depth;
 
 public:
-    explicit Tree(int n) : n(n), g(n), _dist(n, -1), _depth(n) {
+    explicit doubling_on_tree(int n) : n(n), g(n), _dist(n, -1), _depth(n) {
         std::fill(parent, parent + lg, std::vector<int>(n));
     }
     void add_edge(int a, int b, int c = 1) {
@@ -55,21 +55,25 @@ public:
         }
     }
 
-    int level_ancestor(const int v, const int k) const {
-        assert(_depth[v] >= k);
-        int cur = v;
+    int level_ancestor(int v, const int k) const {
+        if (_depth[v] < k) return -1;
 
         for (int i = 0; i < lg; ++i) {
             if (k >> i & 1) {
-                cur = parent[i][cur];
+                v = parent[i][v];
             }
         }
-        return cur;
+        return v;
     }
 
     int dist(int v) const { return _dist[v]; }
+    int dist(int u, int v) const {
+        return _dist[u] + _dist[v] - 2 * _dist[lca(u, v)];
+    }
     int depth(int v) const { return _depth[v]; }
-
+    int diff_depth(int u, int v) {
+        return _depth[u] + _depth[v] - 2 * _depth[lca(u, v)];
+    }
     int lca(int a, int b) const {
         if (_depth[a] > _depth[b]) {
             std::swap(a, b);
@@ -86,11 +90,25 @@ public:
         }
         return parent[0][a];
     }
+
+    int jump(const int from, const int to, const int k) const {
+        int p = lca(from, to);
+        int d1 = _depth[from] - _depth[p];
+        int d2 = _depth[to] - _depth[p];
+
+        if (d1 + d2 < k) {
+            return -1;
+        }
+
+        if (d1 >= k) {
+            return level_ancestor(from, k);
+        } else {
+            return level_ancestor(to, d1 + d2 - k);
+        }
+    }
 };
 };  // namespace kyopro
 
-
-
 /**
- * @docs docs/tree/tree.md
-*/
+ * @docs docs/tree/doubling.md
+ */
