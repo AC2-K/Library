@@ -1,37 +1,99 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: src/stream.hpp
+    title: "\u5165\u51FA\u529B"
+  - icon: ':heavy_check_mark:'
+    path: src/tree/doubling.hpp
+    title: doubling on tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
-  attributes: {}
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
-    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
-    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
-    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
-    \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
-    \ File \"/opt/hostedtoolcache/Python/3.11.3/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: stream.hpp: line\
-    \ -1: no such header\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n#include\
-    \ \"stream.hpp\"\n#include \"tree/doubling.hpp\"\nint main() {\n    int n, q;\n\
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/jump_on_tree
+    links:
+    - https://judge.yosupo.jp/problem/jump_on_tree
+  bundledCode: "#line 1 \"test/yosupo_judge/tree/Jump_on_Tree.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n#line 2 \"src/stream.hpp\"\
+    \n#include <stdio.h>\n#include <ctype.h>\nnamespace kyopro {\ntemplate <typename\
+    \ T>\nconstexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative\
+    \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
+    \   c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c =\
+    \ getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
+    \        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n}\ntemplate\
+    \ <typename Head, typename... Tail>\nconstexpr inline void readint(Head& head,\
+    \ Tail&... tail) {\n    readint(head);\n    readint(tail...);\n}\ntemplate <typename\
+    \ T>\nconstexpr inline void putint(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
+    \        putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
+    \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
+    \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
+    \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
+    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
+    \   putint(tail...);\n}\n\n};  // namespace kyopro\n\n\n/**\n * @brief \u5165\u51FA\
+    \u529B\n*/\n#line 2 \"src/tree/doubling.hpp\"\n#include <cassert>\n#include <vector>\n\
+    \n/**\n * @brief doubling on tree\n */\nnamespace kyopro {\nclass doubling_on_tree\
+    \ {\n    struct edge {\n        const int to;\n        const int cost;\n     \
+    \   edge() = default;\n        constexpr explicit edge(int to, int cost) : to(to),\
+    \ cost(cost) {}\n    };\n    const int n;\n    static constexpr int lg = 21;\n\
+    \    std::vector<std::vector<edge>> g;\n    std::vector<int> parent[lg];\n   \
+    \ std::vector<long long> _dist;\n    std::vector<int> _depth;\n\npublic:\n   \
+    \ explicit doubling_on_tree(int n) : n(n), g(n), _dist(n, -1), _depth(n) {\n \
+    \       std::fill(parent, parent + lg, std::vector<int>(n));\n    }\n    void\
+    \ add_edge(int a, int b, int c = 1) {\n        g[a].emplace_back(b, 1);\n    \
+    \    g[b].emplace_back(a, 1);\n    }\n    void build(int root = 0) {\n       \
+    \ std::vector<int> st;\n        st.reserve(n);\n\n        st.emplace_back(root);\n\
+    \        _dist[root] = 0, _depth[root] = 0, parent[0][root] = root;\n        while\
+    \ (!st.empty()) {\n            int v = st.back();\n            st.pop_back();\n\
+    \n            for (auto [nv, c] : g[v]) {\n                if (_dist[nv] != -1)\
+    \ continue;\n                _dist[nv] = _dist[v] + c;\n                _depth[nv]\
+    \ = _depth[v] + 1;\n                parent[0][nv] = v;\n\n                st.emplace_back(nv);\n\
+    \            }\n        }\n\n        for (int i = 0; i < lg; ++i) {\n        \
+    \    for (int v = 0; v < n; ++v) {\n                parent[i + 1][v] = parent[i][parent[i][v]];\n\
+    \            }\n        }\n    }\n\n    int level_ancestor(int v, const int k)\
+    \ const {\n        if (_depth[v] < k) return -1;\n\n        for (int i = 0; i\
+    \ < lg; ++i) {\n            if (k >> i & 1) {\n                v = parent[i][v];\n\
+    \            }\n        }\n        return v;\n    }\n\n    int dist(int v) const\
+    \ { return _dist[v]; }\n    int dist(int u, int v) const {\n        return _dist[u]\
+    \ + _dist[v] - 2 * _dist[lca(u, v)];\n    }\n    int depth(int v) const { return\
+    \ _depth[v]; }\n    int diff_depth(int u, int v) {\n        return _depth[u] +\
+    \ _depth[v] - 2 * _depth[lca(u, v)];\n    }\n    int lca(int a, int b) const {\n\
+    \        if (_depth[a] > _depth[b]) {\n            std::swap(a, b);\n        }\n\
+    \        if (_depth[a] != _depth[b]) {\n            b = level_ancestor(b, _depth[b]\
+    \ - _depth[a]);\n        }\n        if (a == b) return a;\n        for (int k\
+    \ = lg - 1; k >= 0; --k) {\n            if (parent[k][a] != parent[k][b]) {\n\
+    \                a = parent[k][a];\n                b = parent[k][b];\n      \
+    \      }\n        }\n        return parent[0][a];\n    }\n\n    int jump(const\
+    \ int from, const int to, const int k) const {\n        int p = lca(from, to);\n\
+    \        int d1 = _depth[from] - _depth[p];\n        int d2 = _depth[to] - _depth[p];\n\
+    \n        if (d1 + d2 < k) {\n            return -1;\n        }\n\n        if\
+    \ (d1 >= k) {\n            return level_ancestor(from, k);\n        } else {\n\
+    \            return level_ancestor(to, d1 + d2 - k);\n        }\n    }\n};\n};\
+    \  // namespace kyopro\n\n/**\n * @docs docs/tree/doubling.md\n */\n#line 4 \"\
+    test/yosupo_judge/tree/Jump_on_Tree.test.cpp\"\nint main() {\n    int n, q;\n\
     \    kyopro::readint(n, q);\n    kyopro::doubling_on_tree g(n);\n    for (int\
     \ i = 0; i < n - 1; ++i) {\n        int a, b;\n        kyopro::readint(a, b);\n\
     \        g.add_edge(a, b);\n    }\n    g.build();\n\n    while (q--) {\n     \
     \   int s, t, i;\n        kyopro::readint(s, t, i);\n        kyopro::putint(g.jump(s,\
+    \ t, i));\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n#include\
+    \ \"../../../src/stream.hpp\"\n#include \"../../../src/tree/doubling.hpp\"\nint\
+    \ main() {\n    int n, q;\n    kyopro::readint(n, q);\n    kyopro::doubling_on_tree\
+    \ g(n);\n    for (int i = 0; i < n - 1; ++i) {\n        int a, b;\n        kyopro::readint(a,\
+    \ b);\n        g.add_edge(a, b);\n    }\n    g.build();\n\n    while (q--) {\n\
+    \        int s, t, i;\n        kyopro::readint(s, t, i);\n        kyopro::putint(g.jump(s,\
     \ t, i));\n    }\n}"
-  dependsOn: []
+  dependsOn:
+  - src/stream.hpp
+  - src/tree/doubling.hpp
   isVerificationFile: true
   path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   requiredBy: []
-  timestamp: '1970-01-01 00:00:00+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-05-14 04:42:53+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
 layout: document

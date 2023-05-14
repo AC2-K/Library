@@ -327,7 +327,7 @@ data:
       title: test/yosupo_judge/string/Z_algorithm.test.cpp
   - name: test/yosupo_judge/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
       title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
     - icon: ':heavy_check_mark:'

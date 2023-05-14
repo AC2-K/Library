@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
+    title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   _isVerificationFailed: false
@@ -99,6 +102,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
 documentation_of: src/tree/doubling.hpp
 layout: document
 redirect_from:

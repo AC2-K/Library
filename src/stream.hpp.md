@@ -4,17 +4,62 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/AOJ/ALDS/1_C.test.cpp
+    title: test/AOJ/ALDS/1_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/1_A.test.cpp
+    title: test/AOJ/DSL/1_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2_B.test.cpp
+    title: test/AOJ/DSL/2_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2_D_dual.test.cpp
+    title: test/AOJ/DSL/2_D_dual.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_D_lazy.test.cpp
     title: test/AOJ/DSL/2_D_lazy.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2_E_dual.test.cpp
+    title: test/AOJ/DSL/2_E_dual.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/2_E_lazy.test.cpp
+    title: test/AOJ/DSL/2_E_lazy.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/5_B.test.cpp
+    title: test/AOJ/DSL/5_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/1_A.test.cpp
     title: test/AOJ/GRL/1_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/GRL/5_C.test.cpp
+    title: test/AOJ/GRL/5_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/NTL/1_B.test.cpp
+    title: test/AOJ/NTL/1_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/NTL/1_D.test.cpp
+    title: test/AOJ/NTL/1_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+    title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+    title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
+    title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/UnionFind.test.cpp
+    title: test/yosupo_judge/data_structure/UnionFind.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
@@ -42,6 +87,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/string/Z_algorithm.test.cpp
     title: test/yosupo_judge/string/Z_algorithm.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
+    title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
@@ -105,10 +153,16 @@ data:
   - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+  - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/UnionFind.test.cpp
+  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
@@ -116,8 +170,18 @@ data:
   - test/yosupo_judge/string/Z_algorithm.test.cpp
   - test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
+  - test/AOJ/NTL/1_B.test.cpp
   - test/AOJ/DSL/2_D_lazy.test.cpp
+  - test/AOJ/DSL/2_E_lazy.test.cpp
+  - test/AOJ/DSL/2_B.test.cpp
+  - test/AOJ/DSL/5_B.test.cpp
+  - test/AOJ/DSL/2_D_dual.test.cpp
+  - test/AOJ/DSL/2_E_dual.test.cpp
+  - test/AOJ/DSL/1_A.test.cpp
+  - test/AOJ/GRL/5_C.test.cpp
   - test/AOJ/GRL/1_A.test.cpp
+  - test/AOJ/ALDS/1_C.test.cpp
   - test/yuki/No789.test.cpp
   - test/yuki/No3030.test.cpp
 documentation_of: src/stream.hpp
