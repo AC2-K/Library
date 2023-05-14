@@ -101,7 +101,7 @@ void add(int i,S w)
 $a_i\leftarrow a_i+w$ を行います。
 
 ### 制約
-- $0\leq i<n$
+- $0 \leq i \lt n$
 
 ### 計算量
 - $O(\log n)$
@@ -110,16 +110,19 @@ $a_i\leftarrow a_i+w$ を行います。
 ```cpp
 S sum(int p)
 ```
-$\sum_{0\leq i<p}{a_i}$ を計算します
+
+$\sum_{0 \leq i \lt p}{a_i}$ を計算します
+
 ```cpp
 S sum(int l,int r)
 ```
-$\sum_{l\leq i<r}{a_i}$ を計算します
+
+$\sum_{l \leq i \lt r}{a_i}$ を計算します
 
 
 ### 制約
-- $0\leq p<n$
-- $0\leq l\leq r<n$
+- $0 \leq p \lt n$
+- $0 \leq l \leq r \lt n$
 
 ### 計算量
 - いずれも $O(\log n)$
@@ -128,7 +131,7 @@ $\sum_{l\leq i<r}{a_i}$ を計算します
 ```cpp
 int lower_bound(S w)
 ```
-$\sum_{0\leq i<k}{a_i}\geq w$ となるような最小の非負整数 $k$ を求めます
+$\sum_{0 \leq i \lt k}{a_i} \geq w$ となるような最小の $k$ を求めます
 ### 制約
 - 呼び出されるとき、$a$ の各項は非負である
 
