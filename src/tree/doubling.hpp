@@ -66,12 +66,12 @@ public:
         return v;
     }
 
-    int dist(int v) const { return _dist[v]; }
-    int dist(int u, int v) const {
+    long long dist(int v) const { return _dist[v]; }
+    long long dist(int u, int v) const {
         return _dist[u] + _dist[v] - 2 * _dist[lca(u, v)];
     }
     int depth(int v) const { return _depth[v]; }
-    int diff_depth(int u, int v) {
+    int unweighted_dist(int u, int v) const {
         return _depth[u] + _depth[v] - 2 * _depth[lca(u, v)];
     }
     int lca(int a, int b) const {
