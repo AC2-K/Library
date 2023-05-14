@@ -5,7 +5,7 @@ using namespace std;
 int main() {
     int n, q;
     kyopro::readint(n, q);
-    kyopro::doubling_on_tree g(n);
+    kyopro::doubling g(n);
     for (int i = 1; i < n; ++i) {
         int p;
         kyopro::readint(p);

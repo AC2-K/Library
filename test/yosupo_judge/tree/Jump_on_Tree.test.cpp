@@ -4,7 +4,7 @@
 int main() {
     int n, q;
     kyopro::readint(n, q);
-    kyopro::doubling_on_tree g(n);
+    kyopro::doubling g(n);
     for (int i = 0; i < n - 1; ++i) {
         int a, b;
         kyopro::readint(a, b);

@@ -3,10 +3,10 @@
 #include <vector>
 
 /**
- * @brief doubling on tree
+ * @brief 木のダブリング
  */
 namespace kyopro {
-class doubling_on_tree {
+class doubling {
     struct edge {
         const int to;
         const int cost;
@@ -21,7 +21,7 @@ class doubling_on_tree {
     std::vector<int> _depth;
 
 public:
-    explicit doubling_on_tree(int n) : n(n), g(n), _dist(n, -1), _depth(n) {
+    explicit doubling(int n) : n(n), g(n), _dist(n, -1), _depth(n) {
         std::fill(parent, parent + lg, std::vector<int>(n));
     }
     void add_edge(int a, int b, int c = 1) {
