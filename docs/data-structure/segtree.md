@@ -33,7 +33,7 @@ kyopro::segtree<S,op,e> seg(std::vector<S> a)
 そのまま$a$を渡すこともできます。
 
 ### 計算量
-- $n$ を $a$ の長さとして $O(n)$
+- $O(\vert a\vert)$
 
 
 ## update
