@@ -97,5 +97,9 @@ public:
 
         return res;
     }
-};  // namespace rho
+};
 };  // namespace kyopro
+
+/**
+ * @docs docs/math/rho.md
+ */

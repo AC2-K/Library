@@ -45,8 +45,7 @@ class miller {
                                         450775, 9780504, 1795265022};
 
 public:
-    template <typename T>
-    static constexpr bool is_prime(T n) {
+    template <typename T> static constexpr bool is_prime(T n) {
         if (n < 2) {
             return false;
         } else if (n == 2) {
@@ -63,5 +62,9 @@ public:
         }
         return false;
     }
-};  // namespace miller
+};
 };  // namespace kyopro
+
+/**
+ * @docs docs/math/miller.md
+ */
