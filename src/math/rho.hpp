@@ -15,8 +15,7 @@ class rho {
     using u64 = uint64_t;
     using u32 = uint32_t;
 
-    template <typename mint>
-    static u64 find_factor(u64 n) {
+    template <typename mint> static u64 find_factor(u64 n) {
         xor_shift32 rng(2023);
 
         if (~n & 1uL) {
@@ -47,8 +46,7 @@ class rho {
         }
         exit(0);
     }
-    template <typename mint>
-    static std::vector<u64> rho_fact(u64 n) {
+    template <typename mint> static std::vector<u64> rho_fact(u64 n) {
         if (n < 2) {
             return {};
         }
@@ -72,7 +70,7 @@ class rho {
     }
 
 public:
-    static inline std::vector<u64> factorize(u64 n) {
+    static std::vector<u64> factorize(u64 n) {
         if (n < 2) {
             return {};
         }
@@ -82,7 +80,7 @@ public:
         return v;
     }
 
-    static inline std::vector<std::pair<u64, int>> exp_factorize(u64 n) {
+    static std::vector<std::pair<u64, int>> exp_factorize(u64 n) {
         std::vector<u64> pf = factorize(n);
         if (pf.empty()) {
             return {};

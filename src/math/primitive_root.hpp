@@ -24,7 +24,7 @@ inline uint64_t primitive_root(uint64_t p) {
         if (g.val() == 0) continue;
         bool is_ok = true;
 
-        for (const auto& q : pf) {
+        for (auto q : pf) {
             if (dynamic_modint<uint64_t>(g).pow(q).val() == 1) {
                 is_ok = false;
                 break;

@@ -8,7 +8,7 @@ namespace kyopro {
 
 /**
  * @brief ダイクストラ法
-*/
+ */
 class dijkstra {
     std::vector<long long> dist;
     std::vector<int> trace;
@@ -63,9 +63,9 @@ public:
             }
         }
     }
-    
+
     const std::vector<long long>& get_dist() const { return dist; }
-    
+
     std::pair<long long, std::vector<int>> shortest_path(int to) {
         assert(0 <= to && to < n);
         if (dist[to] >= (long long)1e18) return {};
@@ -84,4 +84,4 @@ public:
 
 /**
  * @docs docs/graph/dijkstra.md
-*/
+ */
