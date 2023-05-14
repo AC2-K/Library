@@ -174,7 +174,7 @@ data:
       title: Euler Tour
     - icon: ':heavy_check_mark:'
       path: src/tree/doubling.hpp
-      title: doubling on tree
+      title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   verificationCategories:
   - name: test/AOJ/ALDS
     pages:
