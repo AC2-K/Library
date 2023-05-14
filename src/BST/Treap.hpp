@@ -100,26 +100,6 @@ public:
         T ans = cur->key;
         return ans;
     }
-    T pop_front() {
-        assert(root);
-        sptr cur = root;
-        while (cur->l) {
-            cur = cur->l;
-        }
-        T ans = cur->key;
-        merge(cur, cur->l, cur->r);
-        return ans;
-    }
-    T pop_back() {
-        assert(root);
-        sptr cur = root;
-        while (cur->r) {
-            cur = cur->r;
-        }
-        T ans = cur->key;
-        merge(cur, cur->l, cur->r);
-        return ans;
-    }
 };
 };  // namespace kyopro
 

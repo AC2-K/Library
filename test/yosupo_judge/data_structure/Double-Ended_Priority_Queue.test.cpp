@@ -1,32 +1,31 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/double_ended_priority_queue"
 
-#include <iostream>
 #include "../../../src/BST/Treap.hpp"
+#include "../../../src/stream.hpp"
 using namespace std;
 int main() {
     kyopro::Treap<int> st;
     int n, q;
-    scanf("%d%d", &n, &q);
+    kyopro::readint(n, q);
     for (int i = 0; i < n; ++i) {
         int a;
-        scanf("%d", &a);
+        kyopro::readint(a);
         st.insert(a);
     }
     while (q--) {
         int t;
-        scanf("%d", &t);
+        kyopro::readint(t);
         if (!t) {
             int x;
-            scanf("%d", &x);
+            kyopro::readint(x);
             st.insert(x);
         } else if (t == 1) {
-            int mn = st.pop_front();
-            printf("%d\n", mn);
+            int mn = st.min_element();
+            kyopro::putint(mn);
             st.erase(mn);
-
         } else {
-            int mx = st.pop_back();
-            printf("%d\n", mx);
+            int mx = st.max_element();
+            kyopro::putint(mx);
             st.erase(mx);
         }
     }

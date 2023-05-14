@@ -1,21 +1,21 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/associative_array"
-#include<iostream>
-#include"../../../src/data-structure/hash_map.hpp"
+#include "../../../src/data-structure/hash_map.hpp"
+#include "../../../src/stream.hpp"
 int main() {
     uint32_t q;
-    scanf("%d", &q);
+    kyopro::readint(q);
     kyopro::hash_map<__uint64_t, __uint64_t> mp;
     while (q--) {
         int t;
-        scanf("%d",&t);
-        if(!t){
+        kyopro::readint(t);
+        if (!t) {
             __uint64_t k, v;
-            scanf("%lld%lld", &k, &v);
+            kyopro::readint(k, v);
             mp[k] = v;
-        }else{
+        } else {
             __uint64_t k;
-            scanf("%lld", &k);
-            printf("%lld\n", mp[k]);
+            kyopro::readint(k);
+            kyopro::putint(mp[k]);
         }
     }
 }

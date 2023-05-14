@@ -1,8 +1,8 @@
 #define PROBLEM \
     "https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum"
-#include <iostream>
 #include "../../../src/BST/lazy_reversible_bst.hpp"
 #include "../../../src/math/static_modint.hpp"
+#include "../../../src/stream.hpp"
 using mint = kyopro::static_modint32<998244353>;
 using S = mint;
 inline S op(S a, S b) { return a + b; }
@@ -24,36 +24,35 @@ int main() {
     kyopro::lazy_reversible_bst<S, Affine, op, e, composition, id, mapping>
         stree;
     int n, q;
-    scanf("%d%d", &n, &q);
+    kyopro::readint(n, q);
     for (int i = 0; i < n; ++i) {
-        int tmp;
-        scanf("%d", &tmp);
-        mint ai = mint::raw(tmp);
+        mint ai;
+        kyopro::readint(ai);
         stree.insert(i, ai);
     }
     while (q--) {
         int t;
-        scanf("%d", &t);
+        kyopro::readint(t);
         if (t == 0) {
             int i, x;
-            scanf("%d%d", &i, &x);
+            kyopro::readint(i, x);
             stree.insert(i, mint::raw(x));
         } else if (t == 1) {
             int i;
-            scanf("%d", &i);
+            kyopro::readint(i);
             stree.erase(i);
         } else if (t == 2) {
             int l, r;
-            scanf("%d%d", &l, &r);
+            kyopro::readint(l, r);
             stree.reverse(l, r);
         } else if (t == 3) {
             int l, r, a, b;
-            scanf("%d%d%d%d", &l, &r, &a, &b);
+            kyopro::readint(l, r, a, b);
             stree.apply(l, r, Affine(mint::raw(a), mint::raw(b)));
         } else {
             int l, r;
-            scanf("%d%d", &l, &r);
-            printf("%d\n", stree.fold(l, r).val());
+            kyopro::readint(l, r);
+            kyopro::putint(stree.fold(l, r).val());
         }
     }
 }

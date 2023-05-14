@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/jump_on_tree"
-#include "stream.hpp"
-#include "tree/doubling.hpp"
+#include "../../../src/stream.hpp"
+#include "../../../src/tree/doubling.hpp"
 int main() {
     int n, q;
     kyopro::readint(n, q);

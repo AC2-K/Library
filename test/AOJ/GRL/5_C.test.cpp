@@ -1,26 +1,27 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_C"
-#include <iostream>
+#define PROBLEM \
+    "https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_5_C"
+#include "../../../src/stream.hpp"
 #include "../../../src/tree/EulerTour.hpp"
 int main() {
     int n;
-    scanf("%d", &n);
+    kyopro::readint(n);
     kyopro::EulerTour g(n);
     for (int v = 0; v < n; v++) {
         int k;
-        scanf("%d", &k);
+        kyopro::readint(k);
         for (int i = 0; i < k; i++) {
             int c;
-            scanf("%d", &c);
+            kyopro::readint(c);
             g.add_edge(v, c);
         }
     }
 
     g.build();
     int q;
-    scanf("%d", &q);
+    kyopro::readint(q);
     while (q--) {
         int u, v;
-        scanf("%d%d", &u, &v);
-        printf("%d\n", g.lca(u, v));
+        kyopro::readint(u, v);
+        kyopro::putint(g.lca(u, v));
     }
 }

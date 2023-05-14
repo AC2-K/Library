@@ -1,29 +1,29 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_E"
 
-#include <iostream>
 #include "../../../src/data-structure/dual_segtree.hpp"
+#include "../../../src/stream.hpp"
 
 using ull = unsigned long long;
 inline ull op(ull x, ull y) { return x + y; }
 inline ull e() { return 0; }
 int main() {
     int n, q;
-    scanf("%d%d", &n, &q);
+    kyopro::readint(n, q);
     kyopro::dual_segtree<ull, op, e> seg(n);
     while (q--) {
         int ty;
-        scanf("%d", &ty);
-        if (ty == 0) {
+        kyopro::readint(ty);
+        if (!ty) {
             int l, r;
             ull x;
-            scanf("%d%d%d", &l, &r, &x);
+            kyopro::readint(l, r, x);
             l--, r--;
             seg.apply(l, r + 1, x);
         } else {
             int i;
-            scanf("%d", &i);
+            kyopro::readint(i);
             i--;
-            printf("%lld\n", seg[i]);
+            kyopro::putint(seg[i]);
         }
     }
 }
