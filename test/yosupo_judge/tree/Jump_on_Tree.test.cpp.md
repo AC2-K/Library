@@ -56,29 +56,29 @@ data:
     \            }\n        }\n    }\n\n    int level_ancestor(int v, const int k)\
     \ const {\n        if (_depth[v] < k) return -1;\n\n        for (int i = 0; i\
     \ < lg; ++i) {\n            if (k >> i & 1) {\n                v = parent[i][v];\n\
-    \            }\n        }\n        return v;\n    }\n\n    int dist(int v) const\
-    \ { return _dist[v]; }\n    int dist(int u, int v) const {\n        return _dist[u]\
-    \ + _dist[v] - 2 * _dist[lca(u, v)];\n    }\n    int depth(int v) const { return\
-    \ _depth[v]; }\n    int diff_depth(int u, int v) {\n        return _depth[u] +\
-    \ _depth[v] - 2 * _depth[lca(u, v)];\n    }\n    int lca(int a, int b) const {\n\
-    \        if (_depth[a] > _depth[b]) {\n            std::swap(a, b);\n        }\n\
-    \        if (_depth[a] != _depth[b]) {\n            b = level_ancestor(b, _depth[b]\
-    \ - _depth[a]);\n        }\n        if (a == b) return a;\n        for (int k\
-    \ = lg - 1; k >= 0; --k) {\n            if (parent[k][a] != parent[k][b]) {\n\
-    \                a = parent[k][a];\n                b = parent[k][b];\n      \
-    \      }\n        }\n        return parent[0][a];\n    }\n\n    int jump(const\
-    \ int from, const int to, const int k) const {\n        int p = lca(from, to);\n\
-    \        int d1 = _depth[from] - _depth[p];\n        int d2 = _depth[to] - _depth[p];\n\
-    \n        if (d1 + d2 < k) {\n            return -1;\n        }\n\n        if\
-    \ (d1 >= k) {\n            return level_ancestor(from, k);\n        } else {\n\
-    \            return level_ancestor(to, d1 + d2 - k);\n        }\n    }\n};\n};\
-    \  // namespace kyopro\n\n/**\n * @docs docs/tree/doubling.md\n */\n#line 4 \"\
-    test/yosupo_judge/tree/Jump_on_Tree.test.cpp\"\nint main() {\n    int n, q;\n\
-    \    kyopro::readint(n, q);\n    kyopro::doubling g(n);\n    for (int i = 0; i\
-    \ < n - 1; ++i) {\n        int a, b;\n        kyopro::readint(a, b);\n       \
-    \ g.add_edge(a, b);\n    }\n    g.build();\n\n    while (q--) {\n        int s,\
-    \ t, i;\n        kyopro::readint(s, t, i);\n        kyopro::putint(g.jump(s, t,\
-    \ i));\n    }\n}\n"
+    \            }\n        }\n        return v;\n    }\n\n    long long dist(int\
+    \ v) const { return _dist[v]; }\n    long long dist(int u, int v) const {\n  \
+    \      return _dist[u] + _dist[v] - 2 * _dist[lca(u, v)];\n    }\n    int depth(int\
+    \ v) const { return _depth[v]; }\n    int unweighted_dist(int u, int v) const\
+    \ {\n        return _depth[u] + _depth[v] - 2 * _depth[lca(u, v)];\n    }\n  \
+    \  int lca(int a, int b) const {\n        if (_depth[a] > _depth[b]) {\n     \
+    \       std::swap(a, b);\n        }\n        if (_depth[a] != _depth[b]) {\n \
+    \           b = level_ancestor(b, _depth[b] - _depth[a]);\n        }\n       \
+    \ if (a == b) return a;\n        for (int k = lg - 1; k >= 0; --k) {\n       \
+    \     if (parent[k][a] != parent[k][b]) {\n                a = parent[k][a];\n\
+    \                b = parent[k][b];\n            }\n        }\n        return parent[0][a];\n\
+    \    }\n\n    int jump(const int from, const int to, const int k) const {\n  \
+    \      int p = lca(from, to);\n        int d1 = _depth[from] - _depth[p];\n  \
+    \      int d2 = _depth[to] - _depth[p];\n\n        if (d1 + d2 < k) {\n      \
+    \      return -1;\n        }\n\n        if (d1 >= k) {\n            return level_ancestor(from,\
+    \ k);\n        } else {\n            return level_ancestor(to, d1 + d2 - k);\n\
+    \        }\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/tree/doubling.md\n\
+    \ */\n#line 4 \"test/yosupo_judge/tree/Jump_on_Tree.test.cpp\"\nint main() {\n\
+    \    int n, q;\n    kyopro::readint(n, q);\n    kyopro::doubling g(n);\n    for\
+    \ (int i = 0; i < n - 1; ++i) {\n        int a, b;\n        kyopro::readint(a,\
+    \ b);\n        g.add_edge(a, b);\n    }\n    g.build();\n\n    while (q--) {\n\
+    \        int s, t, i;\n        kyopro::readint(s, t, i);\n        kyopro::putint(g.jump(s,\
+    \ t, i));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n#include\
     \ \"../../../src/stream.hpp\"\n#include \"../../../src/tree/doubling.hpp\"\nint\
     \ main() {\n    int n, q;\n    kyopro::readint(n, q);\n    kyopro::doubling g(n);\n\
@@ -92,7 +92,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-14 13:58:18+09:00'
+  timestamp: '2023-05-14 15:21:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
