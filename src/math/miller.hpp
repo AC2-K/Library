@@ -46,7 +46,7 @@ class miller {
 
 public:
     template <typename T>
-    static constexpr bool inline is_prime(T n) {
+    static constexpr bool is_prime(T n) {
         if (n < 2) {
             return false;
         } else if (n == 2) {

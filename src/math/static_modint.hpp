@@ -13,7 +13,7 @@ private:
     using i128 = __int128_t;
 
     u64 v;
-    constexpr inline u64 normalize(i64 v_) const {
+    constexpr u64 normalize(i64 v_) const {
         v_ %= mod;
         if (v_ < 0) {
             v_ += mod;
@@ -94,7 +94,7 @@ public:
         }
         return ans;
     }
-    constexpr inline mint inv() const {
+    constexpr mint inv() const {
         long long x, y;
         auto d = ext_gcd((long long)mod, (long long)v, x, y);
         assert(d == 1);
@@ -133,7 +133,7 @@ private:
     using u64 = __uint64_t;
 
     u32 v;
-    constexpr inline u32 normalize(i64 v_) const {
+    constexpr u32 normalize(i64 v_) const {
         v_ %= mod;
         if (v_ < 0) {
             v_ += mod;
@@ -219,7 +219,7 @@ public:
         return ans;
     }
 
-    constexpr inline mint inv() const {
+    constexpr mint inv() const {
         long long x, y;
         auto d = ext_gcd((long long)mod, (long long)v, x, y);
         assert(d == 1);

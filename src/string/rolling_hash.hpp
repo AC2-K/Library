@@ -9,7 +9,7 @@ namespace kyopro {
 
 /**
  * @brief Rolling Hash
-*/
+ */
 class RollingHash {
     using ull = uint_fast64_t;
     using i128 = __int128_t;
@@ -44,13 +44,13 @@ private:
         return (ull)c;  // 変更する?
     }
 
-    static inline ull generate() {
+    static ull generate() {
         std::mt19937_64 engine(
             std::chrono::steady_clock::now().time_since_epoch().count());
         std::uniform_int_distribution<ull> rand(1uL, mod - 1);
         return rand(engine);
     }
-    static inline void generate_base() {
+    static void generate_base() {
         if (base != 0) {
             return;
         }
