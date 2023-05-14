@@ -1,17 +1,17 @@
 ## 概要
-- 全ての $a\in S$ に対して $a \cdot a=a$
-- 全ての$a,b,c\in S$ に対して $(a\cdot b)\cdot c=a\cdot(b\cdot c)$
+- 全ての $a\in S$ に対して $a \bullet a=a$
+- 全ての$a,b,c\in S$ に対して $(a\bullet b)\bullet c=a\bullet(b\bullet c)$
 
-となるような集合 $S$ と $S$ の二項演算 $\cdot$ があるとします。\
+となるような集合 $S$ と $S$ の二項演算 $\bullet$ があるとします。\
 例えば
-- $(S,\cdot)=(\mathbb{Z},\max)$
-- $(S,\cdot)=(\mathbb{Z},\min)$
-- $(S,\cdot)=(\mathbb{Z},\text{gcd})$
-- $(S,\cdot)=(\mathbb{Z},\text{lcm})$
+- $(S,\bullet)=(\mathbb{Z},\max)$
+- $(S,\bullet)=(\mathbb{Z},\min)$
+- $(S,\bullet)=(\mathbb{Z},\text{gcd})$
+- $(S,\bullet)=(\mathbb{Z},\text{lcm})$
 
 は条件を満たします。\
 この時、$S$ の列 $a=(a_0,a_1,\dots,a_{n-1})$に対して
-- $l,r$ が与えられたとき、区間積 $a_l\cdot a_{l+1} \dots a_{r-1}$を求める。
+- $l,r$ が与えられたとき、区間積 $a_l\bullet a_{l+1} \dots a_{r-1}$を求める。
 
 というクエリを 
 - 前処理・・・$O(n\log n)$
@@ -28,7 +28,7 @@ kyopro::sparse_table<S,op> st(std::vector<S> a)
 長さを渡す場合、後述する`set`メソッドで値を入れてから`build`で構築するようにしてください。\
 単に`std::vector`を渡す場合はそのまま構築されます
 
-テンプレート引数の`op`は上での$\cdot$のことで、
+テンプレート引数の`op`は上での$\bullet$のことで、
 ```cpp
 S op(S x,S y){
     //x・yを返す
@@ -58,7 +58,7 @@ void build()
 ```cpp
 S fold(int l,int r)
 ```
-区間積 $a_l\cdot a_{l+1} \dots a_{r-1}$を求めます。
+区間積 $a_l\bullet a_{l+1} \dots a_{r-1}$を求めます。
 
 
 
