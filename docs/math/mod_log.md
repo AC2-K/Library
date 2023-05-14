@@ -15,7 +15,7 @@ long long mod_log(long long x,long long y,long long p)
 - $O(\sqrt p)$
 
 ### 制約
-- $0\leq x,y < p$
+- $0\leq x,y \lt p$
 - $x,y\in\mathbb{Z}$
 - $p\in\mathbb{N}$
 - $0^0=1$ と定めている
