@@ -168,9 +168,9 @@ int level_ancestor(int v,int k)
 頂点 $v$ から根の方向に $k$ 辿った頂点を返します.\
 すなわち,頂点 $v$ から根へのパスを
 
-$$p=(p_0=v,p_1,p_2,\dots,p_{|p|-1}=\mathtt{root})$$
+$$p = (p_0=v , p_1 , p_2 \dots p_{|p|-1} = \mathtt{root})$$
 
-とするとき, $p_k$  を返します.ただし, $k\geq |p|$ の時は $-1$ を返します.
+とするとき, $p_k$  を返します.ただし, $k\geq \left|p\right|$ の時は $-1$ を返します.
 
 ### 制約
 - $0\leq v < n$
@@ -235,7 +235,7 @@ $\mathtt{from}$ から $\mathtt{to}$ に $k$ 進んだ頂点を返します.\
 
 $$p=(p_0=\mathtt{from},p_1,p_2,\dots,p_{|p|-1}=\mathtt{to})$$
 
-としたとき, $p_k$ を返します.ただし, $k\geq|p|$ ならば $-1$ を返します.
+としたとき, $p_k$ を返します.ただし, $k\geq\left|p\right|$ ならば $-1$ を返します.
 
 ### 制約
 - $0\leq\mathtt{from},\mathtt{to} < n$
