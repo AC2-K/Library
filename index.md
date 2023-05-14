@@ -173,8 +173,8 @@ data:
       path: src/tree/EulerTour.hpp
       title: Euler Tour
     - icon: ':heavy_check_mark:'
-      path: src/tree/tree.hpp
-      title: "\u6728(\u8A70\u3081\u5408\u308F\u305B\u30D1\u30C3\u30AF)"
+      path: src/tree/doubling.hpp
+      title: doubling on tree
   verificationCategories:
   - name: test/AOJ/ALDS
     pages:
@@ -327,6 +327,9 @@ data:
       title: test/yosupo_judge/string/Z_algorithm.test.cpp
   - name: test/yosupo_judge/tree
     pages:
+    - icon: ':x:'
+      path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
+      title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp

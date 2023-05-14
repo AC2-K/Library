@@ -45,24 +45,25 @@ data:
     \              front_prod[i + 1] = op(front_stack[i], front_prod[i]);\n      \
     \      }\n        }\n        front_prod.pop_back(), front_stack.pop_back();\n\
     \    }\n\n    S fold() const { return op(front_prod.back(), back_prod.back());\
-    \ }\n};\n};  // namespace kyopro\n#line 2 \"src/math/static_modint.hpp\"\n#include\
-    \ <cassert>\n#include <iostream>\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\n\
-    namespace kyopro {\ntemplate <typename T>\nconstexpr T inline _gcd(T a, T b) {\n\
-    \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
-    \ d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
-    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (!a||!b) {\n   \
-    \         return a + b;\n        }\n        if (a >= b) {\n            a -= b;\n\
-    \            a >>= __builtin_ctzll(a);\n        } else {\n            b -= a;\n\
-    \            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return a << d;\n\
-    }\ntemplate <typename T>\nconstexpr T ext_gcd(T a, T b, T& x, T& y) {\n    x =\
-    \ 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b) {\n        T q = a / b;\n  \
-    \      std::tie(a, b) = std::pair<T, T>{b, a % b};\n        std::tie(x, nx) =\
-    \ std::pair<T, T>{nx, x - nx * q};\n        std::tie(y, ny) = std::pair<T, T>{ny,\
-    \ y - ny * q};\n    }\n    return a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\
-    \nnamespace kyopro {\ntemplate <__uint64_t mod>\nclass static_modint {\nprivate:\n\
-    \    using mint = static_modint<mod>;\n    using i64 = long long;\n    using u64\
-    \ = unsigned long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\
-    \n    u64 v;\n    constexpr inline u64 normalize(i64 v_) const {\n        v_ %=\
+    \ }\n    int size() { return front_stack.size() + back_stack.size(); }\n};\n};\
+    \  // namespace kyopro\n#line 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n\
+    #include <iostream>\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace\
+    \ kyopro {\ntemplate <typename T>\nconstexpr T inline _gcd(T a, T b) {\n    assert(a\
+    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (!a||!b) {\n            return a + b;\n    \
+    \    }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T>\nconstexpr T\
+    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
+    \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
+    \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
+    \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
+    \ a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace\
+    \ kyopro {\ntemplate <__uint64_t mod>\nclass static_modint {\nprivate:\n    using\
+    \ mint = static_modint<mod>;\n    using i64 = long long;\n    using u64 = unsigned\
+    \ long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\n\
+    \    u64 v;\n    constexpr inline u64 normalize(i64 v_) const {\n        v_ %=\
     \ mod;\n        if (v_ < 0) {\n            v_ += mod;\n        }\n        return\
     \ v_;\n    }\n\npublic:\n    constexpr static_modint() : v(0) {}\n    constexpr\
     \ static_modint(i64 v_) : v(normalize(v_)) {}\n\n    // operator\n    constexpr\
@@ -210,7 +211,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 05:54:18+00:00'
+  timestamp: '2023-05-14 13:11:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp

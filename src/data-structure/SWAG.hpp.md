@@ -29,7 +29,8 @@ data:
     \              front_prod[i + 1] = op(front_stack[i], front_prod[i]);\n      \
     \      }\n        }\n        front_prod.pop_back(), front_stack.pop_back();\n\
     \    }\n\n    S fold() const { return op(front_prod.back(), back_prod.back());\
-    \ }\n};\n};  // namespace kyopro\n"
+    \ }\n    int size() { return front_stack.size() + back_stack.size(); }\n};\n};\
+    \  // namespace kyopro\n"
   code: "#pragma once\n#include <vector>\n#include <algorithm>\nnamespace kyopro {\n\
     /**\n * @brief Slide Window Aggrigation\n */\ntemplate <class S, auto op, auto\
     \ e>\nclass SWAG {\n    std::vector<S> front_stack, back_stack;\n    std::vector<S>\
@@ -47,12 +48,13 @@ data:
     \              front_prod[i + 1] = op(front_stack[i], front_prod[i]);\n      \
     \      }\n        }\n        front_prod.pop_back(), front_stack.pop_back();\n\
     \    }\n\n    S fold() const { return op(front_prod.back(), back_prod.back());\
-    \ }\n};\n};  // namespace kyopro"
+    \ }\n    int size() { return front_stack.size() + back_stack.size(); }\n};\n};\
+    \  // namespace kyopro"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/SWAG.hpp
   requiredBy: []
-  timestamp: '2023-05-08 05:54:18+00:00'
+  timestamp: '2023-05-14 13:11:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
