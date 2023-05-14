@@ -28,7 +28,7 @@ kyopro::lazy_segtree<S,F,op,e,composition,id,mapping> seg(std::vector<S> a);
 $a$ をそのまま渡すこともできます。
 
 ## 計算量
-- $n$ を $a$ の長さとして $O(n)$
+- $O(\vert a\vert)$
 
 ## fold
 ```cpp
