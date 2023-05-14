@@ -83,6 +83,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/template.hpp
       title: src/template.hpp
+  - name: src/flow
+    pages:
+    - icon: ':warning:'
+      path: src/flow/BipartiteMatching.hpp
+      title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   - name: src/graph
     pages:
     - icon: ':warning:'
