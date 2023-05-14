@@ -1,9 +1,8 @@
 #pragma once
-#include <stdio.h>
 #include <ctype.h>
+#include <stdio.h>
 namespace kyopro {
-template <typename T>
-constexpr inline void readint(T& a) {
+template <typename T> constexpr inline void readint(T& a) {
     a = 0;
     bool is_negative = false;
     char c = getchar_unlocked();
@@ -22,8 +21,7 @@ constexpr inline void readint(Head& head, Tail&... tail) {
     readint(head);
     readint(tail...);
 }
-template <typename T>
-constexpr inline void putint(T a) {
+template <typename T> constexpr inline void putint(T a) {
     if (!a) {
         putchar_unlocked('0');
         putchar_unlocked('\n');
@@ -47,7 +45,6 @@ constexpr inline void putint(Head head, Tail... tail) {
 
 };  // namespace kyopro
 
-
 /**
  * @brief 入出力
-*/
+ */

@@ -5,7 +5,7 @@ namespace kyopro {
 
 /**
  * @brief なもりグラフ
-*/
+ */
 class Namori {
     int n;
     std::vector<std::vector<int>> g;
@@ -19,7 +19,7 @@ public:
         cycle.reserve(n);
     }
 
-     void add_edge(int s, int t) {
+    void add_edge(int s, int t) {
         g[s].emplace_back(t), g[t].emplace_back(s);
         ++deg[s], ++deg[t];
     }
@@ -76,13 +76,12 @@ public:
         }
     }
 
-     int root(int v) const { return root_idx[v]; }
-     bool is_in_cycle(int v) const { return is_cycle[v]; }
-     std::vector<int> get_cycle() const { return cycle; }
+    int root(int v) const { return root_idx[v]; }
+    bool is_in_cycle(int v) const { return is_cycle[v]; }
+    std::vector<int> get_cycle() const { return cycle; }
 };
 };  // namespace kyopro
 
 /**
  * @docs docs/graph/Namori.md
-*/
-
+ */

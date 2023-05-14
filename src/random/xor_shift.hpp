@@ -34,4 +34,4 @@ struct xor_shift {
 
 /**
  * @brief xor shift
-*/
+ */

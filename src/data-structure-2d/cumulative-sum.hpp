@@ -1,12 +1,11 @@
 #pragma once
 #include <vector>
 namespace kyopro {
-    
+
 /**
  * @brief 二次元累積和
-*/
-template <typename T>
-class cumulative_sum_2d {
+ */
+template <typename T> class cumulative_sum_2d {
     std::vector<std::vector<T>> dat;
     std::vector<std::vector<T>> s;
 
@@ -36,9 +35,8 @@ public:
 
 /**
  * @brief 二次元imos法
-*/
-template <typename T>
-class imos_2d {
+ */
+template <typename T> class imos_2d {
     cumulative_sum_2d<T> d;
 
 public:

@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/enumerate_palindromes"
 #include <iostream>
-#include "../../../src/string/manacher.hpp"
 #include "../../../src/stream.hpp"
+#include "../../../src/string/manacher.hpp"
 int main() {
     std::string s;
     {

@@ -9,8 +9,7 @@ namespace kyopro {
  * @brief Treap
  * @tparam T 乗せるデータ型
  */
-template <class T>
-class Treap {
+template <class T> class Treap {
     using u32 = uint32_t;
     xor_shift32 rng;
     struct Node {

@@ -15,8 +15,7 @@ using i128 = __int128_t;
 /**
  * @brief Montgomery Reduction
  */
-template <typename T>
-class Montgomery {
+template <typename T> class Montgomery {
     static constexpr int lg = std::numeric_limits<T>::digits;
     using LargeT = internal::double_size_uint_t<T>;
     T mod, r, r2, minv;

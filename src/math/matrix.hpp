@@ -7,8 +7,7 @@ namespace kyopro {
 /**
  * @brief Matrix
  */
-template <typename T>
-class Matrix {
+template <typename T> class Matrix {
     std::vector<std::vector<T>> dat;
     int h = 0, w = 0;
 
@@ -67,8 +66,7 @@ public:
     constexpr mat operator-(const mat& r) { return mat(*this) -= r; }
     constexpr mat operator*(const mat& r) { return mat(*this) *= r; }
 
-    template <typename P>
-    constexpr mat pow(P e) const {
+    template <typename P> constexpr mat pow(P e) const {
         assert(e >= 0);
         int n = dat.size();
         mat res(n, n, 0);

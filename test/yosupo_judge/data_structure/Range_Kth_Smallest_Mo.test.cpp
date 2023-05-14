@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_kth_smallest"
 
-#include<iostream>
-#include"../../../src/data-structure/BIT.hpp"
-#include"../../../src/algorithm/mo.hpp"
+#include <iostream>
+#include "../../../src/algorithm/mo.hpp"
+#include "../../../src/data-structure/BIT.hpp"
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);
@@ -12,7 +12,7 @@ int main() {
         scanf("%d", &aa);
     }
     std::vector<int> k(q);
-    for(int i=0;i<q;i++) {
+    for (int i = 0; i < q; i++) {
         int l, r;
         scanf("%d%d%d", &l, &r, &k[i]);
         k[i]++;
@@ -22,9 +22,9 @@ int main() {
     auto tmp = a;
     {
         std::sort(tmp.begin(), tmp.end());
-        tmp.erase(std::unique(tmp.begin(),tmp.end()), tmp.end());
+        tmp.erase(std::unique(tmp.begin(), tmp.end()), tmp.end());
         for (auto& ai : pressed) {
-            ai = lower_bound(tmp.begin(),tmp.end(), ai) - tmp.begin();
+            ai = lower_bound(tmp.begin(), tmp.end(), ai) - tmp.begin();
         }
     }
 

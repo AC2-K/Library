@@ -7,8 +7,7 @@
 namespace kyopro {
 namespace internal {
 
-template <typename T>
-constexpr T __mod_log(T x, T y, T p) {
+template <typename T> constexpr T __mod_log(T x, T y, T p) {
     if (y == 1 || p == 1) {
         return 0;
     }
@@ -46,8 +45,7 @@ constexpr T __mod_log(T x, T y, T p) {
     }
     return -1;
 }
-template <typename T>
-constexpr T __mod_log_odd(T x, T y, T p) {
+template <typename T> constexpr T __mod_log_odd(T x, T y, T p) {
     if (y == 1 || p == 1) {
         return 0;
     }
@@ -98,8 +96,7 @@ constexpr T __mod_log_odd(T x, T y, T p) {
 /**
  * @brief 離散対数
  */
-template <typename T>
-constexpr inline T mod_log(T a, T b, T c) {
+template <typename T> constexpr inline T mod_log(T a, T b, T c) {
     if (c & 1) {
         return internal::__mod_log_odd(a, b, c);
     } else {

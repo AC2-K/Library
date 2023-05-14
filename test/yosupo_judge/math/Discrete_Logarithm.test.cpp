@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/discrete_logarithm_mod"
-#include<iostream>
-#include"../../../src/math/mod_log.hpp"
+#include <iostream>
+#include "../../../src/math/mod_log.hpp"
 
 int main() {
     int t;

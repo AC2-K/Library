@@ -1,20 +1,20 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_subtree_sum"
-#include<iostream>
-#include"../../../src/data-structure/BIT.hpp"
-#include"../../../src/tree/EulerTour.hpp"
+#include <iostream>
+#include "../../../src/data-structure/BIT.hpp"
+#include "../../../src/tree/EulerTour.hpp"
 
 int main() {
     int n, q;
-    scanf("%d%d",&n,&q);
+    scanf("%d%d", &n, &q);
     std::vector<long long> a(n);
     for (auto& aa : a) {
-        scanf("%lld",&aa);
+        scanf("%lld", &aa);
     }
 
     kyopro::EulerTour g(n);
     for (int i = 1; i < n; i++) {
         int p;
-        scanf("%d",&p);
+        scanf("%d", &p);
         g.add_edge(i, p);
     }
     g.build();
@@ -26,18 +26,17 @@ int main() {
     }
     while (q--) {
         int t;
-        scanf("%d",&t);
+        scanf("%d", &t);
         if (!t) {
-            int v,x;
-            scanf("%d%d",&v,&x);
+            int v, x;
+            scanf("%d%d", &v, &x);
             int in = g.idx(v).first;
             seg.add(in, x);
-        }
-        else {
+        } else {
             int v;
-            scanf("%d",&v);
+            scanf("%d", &v);
             auto [in, out] = g.idx(v);
-            printf("%lld\n",seg.sum(in,out + 1));
+            printf("%lld\n", seg.sum(in, out + 1));
         }
     }
 }

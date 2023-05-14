@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/primitive_root"
 #include "../../../src/math/primitive_root.hpp"
-#include "../../../src/stream.hpp"
 #include <iostream>
+#include "../../../src/stream.hpp"
 int main() {
     int q;
     kyopro::readint(q);

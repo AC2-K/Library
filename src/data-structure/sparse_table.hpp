@@ -6,8 +6,7 @@ namespace kyopro {
 /**
  * @brief SparseTable
  */
-template <class T, auto op>
-class sparse_table {
+template <class T, auto op> class sparse_table {
     std::vector<T> vec;
     std::vector<std::vector<T>> table;
     std::vector<int> look_up;

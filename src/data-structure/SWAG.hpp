@@ -1,12 +1,11 @@
 #pragma once
-#include <vector>
 #include <algorithm>
+#include <vector>
 namespace kyopro {
 /**
  * @brief Slide Window Aggrigation
  */
-template <class S, auto op, auto e>
-class SWAG {
+template <class S, auto op, auto e> class SWAG {
     std::vector<S> front_stack, back_stack;
     std::vector<S> front_prod, back_prod;
 

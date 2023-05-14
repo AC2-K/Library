@@ -1,12 +1,11 @@
 #pragma once
 #include <cassert>
 namespace kyopro {
-    
+
 /**
  * @brief persistent stack
-*/
-template <class T>
-class persistent_stack {
+ */
+template <class T> class persistent_stack {
     class Node {
     public:
         T val;

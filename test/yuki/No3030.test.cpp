@@ -8,6 +8,6 @@ int main() {
     for (int i = 0; i < n; ++i) {
         long long x;
         scanf("%lld", &x);
-        printf("%lld %c\n",x, kyopro::miller::is_prime(x) ? '1' : '0');
+        printf("%lld %c\n", x, kyopro::miller::is_prime(x) ? '1' : '0');
     }
 }

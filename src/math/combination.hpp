@@ -2,8 +2,7 @@
 #include <cassert>
 #include "../internal/barrett.hpp"
 namespace kyopro {
-template <int MAX>
-class dynamic_combination {
+template <int MAX> class dynamic_combination {
     int fac[MAX], ifac[MAX];
     const int sz;
     constexpr int inverse(int a) const {
@@ -45,8 +44,7 @@ public:
     constexpr int fact(int n) const { return fac[n]; }
 };
 
-template <int modulo, int MAX>
-class combination {
+template <int modulo, int MAX> class combination {
     static constexpr int sz = std::min(modulo, MAX);
     int fac[sz + 1], ifac[sz + 1];
     constexpr int inverse(int a) const {

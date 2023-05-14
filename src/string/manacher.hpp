@@ -7,7 +7,7 @@ namespace kyopro {
 
 /**
  * @brief Manacher's algorithm
-*/
+ */
 std::vector<int> manacher(std::string s, bool even = true) {
     assert(s.size());
     if (even) {

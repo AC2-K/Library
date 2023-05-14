@@ -6,8 +6,7 @@ namespace kyopro {
 /**
  * @brief 動的セグメント木
  */
-template <class S, S (*op)(S, S), S (*e)()>
-class dynamic_segtree {
+template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
 public:
     constexpr explicit dynamic_segtree(std::size_t n = 0)
         : n(n), root(nullptr) {

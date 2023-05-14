@@ -4,8 +4,7 @@
 #include "../internal/barrett.hpp"
 #include "../internal/montgomery.hpp"
 namespace kyopro {
-template <int id = -1>
-class barrett_modint {
+template <int id = -1> class barrett_modint {
     using u32 = uint32_t;
     using u64 = uint64_t;
 
@@ -82,8 +81,7 @@ public:
         mt = v_;
         return is;
     }
-    template <typename T>
-    mint pow(T e) const {
+    template <typename T> mint pow(T e) const {
         mint res(1), base(*this);
 
         while (e) {
@@ -110,8 +108,7 @@ template <int id>
 typename kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;
 
 namespace kyopro {
-template <typename T, int id = -1>
-class dynamic_modint {
+template <typename T, int id = -1> class dynamic_modint {
     using LargeT = internal::double_size_uint_t<T>;
     static T mod;
     static internal::Montgomery<T> mr;
@@ -177,8 +174,7 @@ public:
         mt = v_;
         return is;
     }
-    template <typename P>
-    mint pow(P e) const {
+    template <typename P> mint pow(P e) const {
         assert(e >= 0);
         mint res(1), base(*this);
 
@@ -200,8 +196,7 @@ public:
     friend mint operator/(T l, const mint& r) { return mint(l) /= r; }
 };
 };  // namespace kyopro
-template <typename T, int id>
-T kyopro::dynamic_modint<T, id>::mod;
+template <typename T, int id> T kyopro::dynamic_modint<T, id>::mod;
 template <typename T, int id>
 kyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;
 

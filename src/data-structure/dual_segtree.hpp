@@ -7,8 +7,7 @@ namespace kyopro {
  * @tparam F 作用素
  * @tparam id F の単位元
  */
-template <class F, F (*composition)(F, F), F (*id)()>
-class dual_segtree {
+template <class F, F (*composition)(F, F), F (*id)()> class dual_segtree {
     std::vector<F> dat;
     int _n, sz, lg;
 

@@ -1,11 +1,11 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_path_sum"
-#include<iostream>
-#include"../../../src/data-structure/BIT.hpp"
-#include"../../../src/tree/EulerTour.hpp"
+#include <iostream>
+#include "../../../src/data-structure/BIT.hpp"
+#include "../../../src/tree/EulerTour.hpp"
 
 int main() {
     int n, q;
-    scanf("%d%d",&n,&q);
+    scanf("%d%d", &n, &q);
     std::vector<long long> a(n);
     for (auto& aa : a) {
         scanf("%lld", &aa);
@@ -39,12 +39,8 @@ int main() {
             scanf("%d%d", &v, &u);
             long long ans = 0;
             int p_in = g.idx(g.lca(v, u)).first;
-            {
-                ans += seg.sum(p_in, g.idx(v).first + 1);
-            }
-            {
-                ans += seg.sum(p_in + 1, g.idx(u).first + 1);
-            }
+            { ans += seg.sum(p_in, g.idx(v).first + 1); }
+            { ans += seg.sum(p_in + 1, g.idx(u).first + 1); }
 
             printf("%lld\n", ans);
         }

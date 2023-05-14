@@ -4,8 +4,7 @@ namespace kyopro {
 /**
  * @brief Binary Index Tree
  */
-template <typename T>
-class BIT {
+template <typename T> class BIT {
     std::vector<T> bit;
     int n;
 

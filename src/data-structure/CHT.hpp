@@ -6,8 +6,7 @@ namespace kyopro {
  * @brief Convex Hull Trick
  * @tparam query_type trueにするとクエリで最大値を求めるように変更する
  */
-template <class T = long long, bool query_type = false>
-class CHT {
+template <class T = long long, bool query_type = false> class CHT {
     class line {
     public:
         T a, b;

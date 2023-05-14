@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_frequency"
-#include<iostream>
-#include"../../../src/algorithm/mo.hpp"
+#include <iostream>
+#include "../../../src/algorithm/mo.hpp"
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);
@@ -13,7 +13,8 @@ int main() {
     std::sort(pressed.begin(), pressed.end());
     pressed.erase(unique(pressed.begin(), pressed.end()), pressed.end());
     for (auto& ai : a) {
-        ai = std::lower_bound(pressed.begin(), pressed.end(), ai) - pressed.begin();
+        ai = std::lower_bound(pressed.begin(), pressed.end(), ai) -
+             pressed.begin();
     }
     kyopro::Mo mo(q);
     std::vector<int> x(q);
@@ -25,14 +26,10 @@ int main() {
 
     std::vector<int> cnt(pressed.size() + 1);
     std::vector<int> ans(q);
-    auto add = [&](int v) -> void {
-        cnt[a[v]]++;
-    };
-    auto del = [&](int v) -> void {
-        cnt[a[v]]--;
-    };
+    auto add = [&](int v) -> void { cnt[a[v]]++; };
+    auto del = [&](int v) -> void { cnt[a[v]]--; };
     auto out = [&](int v) -> void {
-        auto it = std::lower_bound(pressed.begin(),pressed.end(), x[v]);
+        auto it = std::lower_bound(pressed.begin(), pressed.end(), x[v]);
         if (it == pressed.end() || (*it) != x[v]) {
             ans[v] = 0;
         } else {

@@ -3,9 +3,8 @@
 namespace kyopro {
 /**
  * @brief persistent queue
-*/
-template <typename T, int lg = 20>
-class persistent_queue {
+ */
+template <typename T, int lg = 20> class persistent_queue {
     struct Node {
         Node() = default;
         uint32_t index;

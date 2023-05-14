@@ -6,8 +6,7 @@ namespace kyopro {
  * @brief エラトステネスの篩
  * @tparam ALLOC 確保しておくサイズ
  */
-template <int ALLOC>
-class sieve {
+template <int ALLOC> class sieve {
     std::bitset<ALLOC + 1> isp;
     std::vector<int> prime_v;
 

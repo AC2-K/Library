@@ -8,8 +8,7 @@ namespace kyopro {
 /**
  * @brief 二部マッチング
  */
-template <typename Cap>
-class BipartiteGraph {
+template <typename Cap> class BipartiteGraph {
     const int L, R;
     const int s, t;  // 超頂点を作る
 

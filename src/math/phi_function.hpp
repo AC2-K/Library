@@ -5,7 +5,7 @@ namespace kyopro {
 
 /**
  * @brief Eulerの $\phi$ 関数
-*/
+ */
 inline long long phi_func(long long n) {
     long long res = n;
     auto pf = kyopro::rho::factorize(n);
