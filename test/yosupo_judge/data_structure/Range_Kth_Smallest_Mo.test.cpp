@@ -1,15 +1,15 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_kth_smallest"
 
-#include <iostream>
+#include "../../../src/stream.hpp"
 #include "../../../src/algorithm/mo.hpp"
 #include "../../../src/data-structure/BIT.hpp"
 int main() {
     int n, q;
-    scanf("%d%d", &n, &q);
+    kyopro::readint(n, q);
     kyopro::Mo mo(q);
     std::vector<int> a(n);
     for (auto& aa : a) {
-        scanf("%d", &aa);
+        kyopro::readint(aa);
     }
     std::vector<int> k(q);
     for (int i = 0; i < q; i++) {
@@ -39,7 +39,7 @@ int main() {
     };
 
     mo.build(add, del, out);
-    for (auto& as : ans) {
-        printf("%d\n", as);
+    for (auto r : ans) {
+        kyopro::putint(r);
     }
 }
