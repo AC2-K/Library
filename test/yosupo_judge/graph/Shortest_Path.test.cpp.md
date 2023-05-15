@@ -21,7 +21,7 @@ data:
     \ PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n#include <algorithm>\n\
     #include <iostream>\n#line 3 \"src/graph/dijkstra.hpp\"\n#include <cassert>\n\
     #include <queue>\n#include <utility>\n#include <vector>\nnamespace kyopro {\n\n\
-    /**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n*/\nclass dijkstra\
+    /**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n */\nclass dijkstra\
     \ {\n    std::vector<long long> dist;\n    std::vector<int> trace;\n    const\
     \ int n;\n    int s;\n    struct edge {\n        const int to;\n        const\
     \ long long cost;\n        constexpr edge(int to, long long cost) : to(to), cost(cost)\
@@ -41,14 +41,14 @@ data:
     \   for (auto [nv, c] : g[v]) {\n                if (dist[v] + c < dist[nv]) {\n\
     \                    dist[nv] = dist[v] + c;\n                    trace[nv] =\
     \ v;\n                    que.emplace(dist[nv], nv);\n                }\n    \
-    \        }\n        }\n    }\n    \n    const std::vector<long long>& get_dist()\
-    \ const { return dist; }\n    \n    std::pair<long long, std::vector<int>> shortest_path(int\
+    \        }\n        }\n    }\n\n    const std::vector<long long>& get_dist() const\
+    \ { return dist; }\n\n    std::pair<long long, std::vector<int>> shortest_path(int\
     \ to) {\n        assert(0 <= to && to < n);\n        if (dist[to] >= (long long)1e18)\
     \ return {};\n        int cur = to;\n        std::vector<int> path;\n        while\
     \ (cur != trace[cur]) {\n            path.emplace_back(cur);\n            cur\
     \ = trace[cur];\n        }\n        path.emplace_back(s);\n        std::reverse(path.begin(),\
     \ path.end());\n        return {dist[to], path};\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @docs docs/graph/dijkstra.md\n*/\n#line 2 \"src/stream.hpp\"\
+    \ kyopro\n\n/**\n * @docs docs/graph/dijkstra.md\n */\n#line 2 \"src/stream.hpp\"\
     \n#include <stdio.h>\n#include <ctype.h>\nnamespace kyopro {\ntemplate <typename\
     \ T>\nconstexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative\
     \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
@@ -88,7 +88,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 03:51:35+00:00'
+  timestamp: '2023-05-15 06:44:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/graph/Shortest_Path.test.cpp
