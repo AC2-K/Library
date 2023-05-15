@@ -170,48 +170,55 @@ data:
     \ <typename T, int id>\nT kyopro::dynamic_modint<T, id>::mod;\ntemplate <typename\
     \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;\n\
     \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */\n\
-    #line 3 \"src/math/miller.hpp\"\nnamespace kyopro {\nnamespace miller {\nusing\
-    \ i128 = __int128_t;\nusing u128 = __uint128_t;\nusing u64 = uint64_t;\nusing\
-    \ u32 = uint32_t;\n\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing\
-    \ u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate <typename T, typename mint,\
-    \ const int bases[], int length>\nconstexpr bool miller_rabin(T n) {\n    T d\
-    \ = n - 1;\n\n    while (~d & 1) {\n        d >>= 1;\n    }\n\n    const T rev\
-    \ = n - 1;\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n    }\n\
-    \    for (int i = 0; i < length; ++i) {\n        if (n <= bases[i]) {\n      \
-    \      return true;\n        }\n        T t = d;\n        mint y = mint(bases[i]).pow(t);\n\
-    \        \n        while (t != n - 1 && y.val() != 1 && y.val() != rev) {\n  \
-    \          y *= y;\n            t <<= 1;\n        }\n\n        if (y.val() !=\
-    \ rev && (~t & 1)) return false;\n    }\n    return true;\n}\n// \u5E95\nconstexpr\
-    \ int bases_int[3] = {2, 7, 61};\nconstexpr int bases_ll[7] = {2, 325, 9375, 28178,\
-    \ 450775, 9780504, 1795265022};\n\n/**\n * @brief MillerRabin\u7D20\u6570\u5224\
-    \u5B9A\u6CD5\n*/\ntemplate <typename T>\nconstexpr bool inline is_prime(T n) {\n\
-    \    if (n < 2) {\n        return false;\n    } else if (n == 2) {\n        return\
-    \ true;\n    } else if (~n & 1) {\n        return false;\n    };\n    if (std::numeric_limits<T>::digits\
-    \ < 32 || n <= 1 << 30) {\n        return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\
-    \ bases_int, 3>(n);\n    } else {\n        return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\
-    \ bases_ll, 7>(n);\n    }\n    return false;\n}\n};  // namespace miller\n}; \
-    \ // namespace kyopro\n\n"
+    #line 3 \"src/math/miller.hpp\"\nnamespace kyopro {\n\n/**\n * @brief MillerRabin\u7D20\
+    \u6570\u5224\u5B9A\u6CD5\n */\nclass miller {\n    using i128 = __int128_t;\n\
+    \    using u128 = __uint128_t;\n    using u64 = uint64_t;\n    using u32 = uint32_t;\n\
+    \n    template <typename T, typename mint, const int bases[], int length>\n  \
+    \  static constexpr bool miller_rabin(T n) {\n        T d = n - 1;\n\n       \
+    \ while (~d & 1) {\n            d >>= 1;\n        }\n\n        const T rev = n\
+    \ - 1;\n        if (mint::get_mod() != n) {\n            mint::set_mod(n);\n \
+    \       }\n        for (int i = 0; i < length; ++i) {\n            if (n <= bases[i])\
+    \ {\n                return true;\n            }\n            T t = d;\n     \
+    \       mint y = mint(bases[i]).pow(t);\n\n            while (t != n - 1 && y.val()\
+    \ != 1 && y.val() != rev) {\n                y *= y;\n                t <<= 1;\n\
+    \            }\n\n            if (y.val() != rev && (~t & 1)) return false;\n\
+    \        }\n        return true;\n    }\n    // \u5E95\n    static constexpr int\
+    \ bases_int[3] = {2, 7, 61};\n    static constexpr int bases_ll[7] = {2,     \
+    \ 325,     9375,      28178,\n                                        450775,\
+    \ 9780504, 1795265022};\n\npublic:\n    template <typename T>\n    static constexpr\
+    \ bool inline is_prime(T n) {\n        if (n < 2) {\n            return false;\n\
+    \        } else if (n == 2) {\n            return true;\n        } else if (~n\
+    \ & 1) {\n            return false;\n        };\n        if (std::numeric_limits<T>::digits\
+    \ < 32 || n <= 1 << 30) {\n            return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
+    \                                bases_int, 3>(n);\n        } else {\n       \
+    \     return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n      \
+    \                          bases_ll, 7>(n);\n        }\n        return false;\n\
+    \    }\n};  // namespace miller\n};  // namespace kyopro\n"
   code: "#pragma once\n#include \"../math/dynamic_modint.hpp\"\nnamespace kyopro {\n\
-    namespace miller {\nusing i128 = __int128_t;\nusing u128 = __uint128_t;\nusing\
-    \ u64 = uint64_t;\nusing u32 = uint32_t;\n\nusing i128 = __int128_t;\nusing u128\
-    \ = __uint128_t;\nusing u64 = uint64_t;\nusing u32 = uint32_t;\n\ntemplate <typename\
-    \ T, typename mint, const int bases[], int length>\nconstexpr bool miller_rabin(T\
-    \ n) {\n    T d = n - 1;\n\n    while (~d & 1) {\n        d >>= 1;\n    }\n\n\
-    \    const T rev = n - 1;\n    if (mint::get_mod() != n) {\n        mint::set_mod(n);\n\
-    \    }\n    for (int i = 0; i < length; ++i) {\n        if (n <= bases[i]) {\n\
-    \            return true;\n        }\n        T t = d;\n        mint y = mint(bases[i]).pow(t);\n\
-    \        \n        while (t != n - 1 && y.val() != 1 && y.val() != rev) {\n  \
-    \          y *= y;\n            t <<= 1;\n        }\n\n        if (y.val() !=\
-    \ rev && (~t & 1)) return false;\n    }\n    return true;\n}\n// \u5E95\nconstexpr\
-    \ int bases_int[3] = {2, 7, 61};\nconstexpr int bases_ll[7] = {2, 325, 9375, 28178,\
-    \ 450775, 9780504, 1795265022};\n\n/**\n * @brief MillerRabin\u7D20\u6570\u5224\
-    \u5B9A\u6CD5\n*/\ntemplate <typename T>\nconstexpr bool inline is_prime(T n) {\n\
-    \    if (n < 2) {\n        return false;\n    } else if (n == 2) {\n        return\
-    \ true;\n    } else if (~n & 1) {\n        return false;\n    };\n    if (std::numeric_limits<T>::digits\
-    \ < 32 || n <= 1 << 30) {\n        return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\
-    \ bases_int, 3>(n);\n    } else {\n        return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\
-    \ bases_ll, 7>(n);\n    }\n    return false;\n}\n};  // namespace miller\n}; \
-    \ // namespace kyopro\n\n"
+    \n/**\n * @brief MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5\n */\nclass miller\
+    \ {\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n    using u64\
+    \ = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename T, typename\
+    \ mint, const int bases[], int length>\n    static constexpr bool miller_rabin(T\
+    \ n) {\n        T d = n - 1;\n\n        while (~d & 1) {\n            d >>= 1;\n\
+    \        }\n\n        const T rev = n - 1;\n        if (mint::get_mod() != n)\
+    \ {\n            mint::set_mod(n);\n        }\n        for (int i = 0; i < length;\
+    \ ++i) {\n            if (n <= bases[i]) {\n                return true;\n   \
+    \         }\n            T t = d;\n            mint y = mint(bases[i]).pow(t);\n\
+    \n            while (t != n - 1 && y.val() != 1 && y.val() != rev) {\n       \
+    \         y *= y;\n                t <<= 1;\n            }\n\n            if (y.val()\
+    \ != rev && (~t & 1)) return false;\n        }\n        return true;\n    }\n\
+    \    // \u5E95\n    static constexpr int bases_int[3] = {2, 7, 61};\n    static\
+    \ constexpr int bases_ll[7] = {2,      325,     9375,      28178,\n          \
+    \                              450775, 9780504, 1795265022};\n\npublic:\n    template\
+    \ <typename T>\n    static constexpr bool inline is_prime(T n) {\n        if (n\
+    \ < 2) {\n            return false;\n        } else if (n == 2) {\n          \
+    \  return true;\n        } else if (~n & 1) {\n            return false;\n   \
+    \     };\n        if (std::numeric_limits<T>::digits < 32 || n <= 1 << 30) {\n\
+    \            return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
+    \                                bases_int, 3>(n);\n        } else {\n       \
+    \     return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n      \
+    \                          bases_ll, 7>(n);\n        }\n        return false;\n\
+    \    }\n};  // namespace miller\n};  // namespace kyopro\n"
   dependsOn:
   - src/math/dynamic_modint.hpp
   - src/internal/barrett.hpp
@@ -223,7 +230,7 @@ data:
   - src/math/rho.hpp
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-15 05:34:08+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp
