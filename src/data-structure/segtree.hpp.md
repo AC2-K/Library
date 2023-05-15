@@ -15,25 +15,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
     title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/segtree.md
     document_title: SegmentTree
     links: []
   bundledCode: "#line 2 \"src/data-structure/segtree.hpp\"\n#include <cassert>\n#include\
     \ <vector>\nnamespace kyopro {\n\n/**\n * @brief SegmentTree\n */\ntemplate <class\
-    \ S, S (*op)(S, S), S (*e)()>\nclass segtree {\n    int lg, sz, n;\n    std::vector<S>\
+    \ S, S (*op)(S, S), S (*e)()> class segtree {\n    int lg, sz, n;\n    std::vector<S>\
     \ dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
     \ e())) {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n  \
     \      sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n   \
@@ -56,19 +56,19 @@ data:
     \ }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/segtree.md\n\
     \ */\n"
   code: "#pragma once\n#include <cassert>\n#include <vector>\nnamespace kyopro {\n\
-    \n/**\n * @brief SegmentTree\n */\ntemplate <class S, S (*op)(S, S), S (*e)()>\n\
-    class segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree()\
-    \ {}\n    segtree(int n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const\
-    \ std::vector<S>& vec) : n((int)vec.size()) {\n        sz = 1, lg = 0;\n     \
-    \   while (sz <= n) {\n            sz <<= 1;\n            lg++;\n        }\n\n\
-    \        dat = std::vector<S>(sz << 1, e());\n\n        for (int i = 0; i < n;\
-    \ i++) {\n            set(i, vec[i]);\n        }\n        build();\n    }\n\n\
-    \    void set(int p, const S& v) {\n        assert(0 <= p && p < sz);\n      \
-    \  dat[sz + p] = v;\n    }\n    void build() {\n        for (int i = sz - 1; i\
-    \ > 0; i--) {\n            dat[i] = op(dat[i << 1 | 0], dat[i << 1 | 1]);\n  \
-    \      }\n    }\n\n    S operator[](int p) const { return dat[sz + p]; }\n\n \
-    \   void update(int p, const S& v) {\n        assert(0 <= p && p < sz);\n    \
-    \    p += sz;\n        dat[p] = v;\n        while (p >>= 1) {\n            dat[p]\
+    \n/**\n * @brief SegmentTree\n */\ntemplate <class S, S (*op)(S, S), S (*e)()>\
+    \ class segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n  \
+    \  segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n, e())) {}\n   \
+    \ segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n        sz = 1, lg\
+    \ = 0;\n        while (sz <= n) {\n            sz <<= 1;\n            lg++;\n\
+    \        }\n\n        dat = std::vector<S>(sz << 1, e());\n\n        for (int\
+    \ i = 0; i < n; i++) {\n            set(i, vec[i]);\n        }\n        build();\n\
+    \    }\n\n    void set(int p, const S& v) {\n        assert(0 <= p && p < sz);\n\
+    \        dat[sz + p] = v;\n    }\n    void build() {\n        for (int i = sz\
+    \ - 1; i > 0; i--) {\n            dat[i] = op(dat[i << 1 | 0], dat[i << 1 | 1]);\n\
+    \        }\n    }\n\n    S operator[](int p) const { return dat[sz + p]; }\n\n\
+    \    void update(int p, const S& v) {\n        assert(0 <= p && p < sz);\n   \
+    \     p += sz;\n        dat[p] = v;\n        while (p >>= 1) {\n            dat[p]\
     \ = op(dat[(p << 1) | 0], dat[(p << 1) | 1]);\n        }\n    }\n\n    S fold(int\
     \ l, int r) const {\n        assert(0 <= l && l <= r && r <= sz);\n        if\
     \ (l == 0 && r == n) {\n            return dat[1];\n        }\n        l += sz,\
@@ -83,8 +83,8 @@ data:
   path: src/data-structure/segtree.hpp
   requiredBy:
   - src/data-structure-2d/RangeTree.hpp
-  timestamp: '2023-05-09 23:52:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
@@ -100,17 +100,19 @@ redirect_from:
 title: SegmentTree
 ---
 ## 概要
+
 $(S,\mathtt{op},\mathtt{e})$がモノイドをなすとする.\
 このとき, $S$ の要素の列 $a=(a_0,a_1,\dots,a_{n-1})$ に対して以下の処理を $O(\log n)$ で行う.
 
 1. $a_p\leftarrow v$
 1. 区間積を取得
 
-
 ## コンストラクタ1
+
 ```cpp
 kyopro::segtree<S,op,e> seg(int n)
 ```
+
 $a$ を $\mathtt{e}$ で埋めて生成します.
 なお,`op`,`e`は
 
@@ -124,32 +126,41 @@ S e() {
 ```
 
 のような形式で渡してください.
+
 ### 計算量
+
 - $O(n)$
 
 ## コンストラクタ2
+
 ```cpp
 kyopro::segtree<S,op,e> seg(std::vector<S> a)
 ```
+
 そのまま $a$ を渡すこともできます.
 
 ### 計算量
+
 - $O(\vert a\vert)$
 
-
 ## update
+
 ```cpp
 void update(int p,S v)
 ```
+
 $a_p \leftarrow v$ を行う
 
 ### 制約
+
 - $0 \leq p \lt n$
 
 ### 計算量
+
 - $O(\log n)$
 
 ## fold
+
 ```cpp
 S fold(int l,int r)
 ```
@@ -157,37 +168,47 @@ S fold(int l,int r)
 区間 $[l,r)$ の区間積を求める.ただし, $l=r$ の時は $e$ を返す.
 
 ### 制約
+
 - $0 \leq l \leq r \lt n$
 
 ### 計算量
+
 - $O(\log n)$
 
-
 ## apply
+
 ```cpp
 void apply(int pos,S x)
 ```
+
 $a_{\mathtt{pos}}\leftarrow \mathtt{op}(a_{\mathtt{pos}},x)$ を行う
+
 ### 制約
+
 - $0 \leq \mathtt{pos} \lt n$
 
-
 ### 計算量
+
 - $O(\log n)$
 
 ## operator[]
+
 ```cpp
 S seg[int p]
 ```
+
 $a_{p}$を返す.
+
 ### 制約
+
 - $0\leq \text{pos} \lt n$
 
 ### 計算量
+
 - $O(1)$
 
-
 ## 初期化・・・set,build
+
 最初から $a$ が与えられている状況において $O(n)$ で初期化しようと思うと,コンストラクタ2を使うことになります.しかし,このためだけにいちいちvectorを作るのはやや面倒...
 \
 \

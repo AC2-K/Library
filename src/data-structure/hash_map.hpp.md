@@ -2,28 +2,28 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/mod_log.hpp
     title: "\u96E2\u6563\u5BFE\u6570"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
     title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/hash_map.md
     document_title: HashMap
     links: []
   bundledCode: "#line 2 \"src/data-structure/hash_map.hpp\"\n#include <bits/stl_algobase.h>\n\
-    #include <chrono>\nnamespace kyopro {\n/**\n * @brief HashMap\n*/\ntemplate <typename\
+    #include <chrono>\nnamespace kyopro {\n/**\n * @brief HashMap\n */\ntemplate <typename\
     \ Key,\n          typename Val,\n          uint32_t n = 1 << 20,\n          Val\
     \ default_val = Val()>\nclass hash_map {\n    using u32 = uint32_t;\n    using\
     \ u64 = uint64_t;\n\n    u64* flag = new u64[n];\n    Key* keys = new Key[n];\n\
@@ -42,9 +42,9 @@ data:
     \        if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))\n\
     \                return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
     \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace\
-    \ kyopro\n\n\n/**\n * @docs docs/data-structure/hash_map.md\n*/\n"
+    \ kyopro\n\n/**\n * @docs docs/data-structure/hash_map.md\n */\n"
   code: "#pragma once\n#include <bits/stl_algobase.h>\n#include <chrono>\nnamespace\
-    \ kyopro {\n/**\n * @brief HashMap\n*/\ntemplate <typename Key,\n          typename\
+    \ kyopro {\n/**\n * @brief HashMap\n */\ntemplate <typename Key,\n          typename\
     \ Val,\n          uint32_t n = 1 << 20,\n          Val default_val = Val()>\n\
     class hash_map {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n   \
     \ u64* flag = new u64[n];\n    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\
@@ -63,14 +63,14 @@ data:
     \   if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))\n    \
     \            return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
     \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace\
-    \ kyopro\n\n\n/**\n * @docs docs/data-structure/hash_map.md\n*/"
+    \ kyopro\n\n/**\n * @docs docs/data-structure/hash_map.md\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/hash_map.hpp
   requiredBy:
   - src/math/mod_log.hpp
-  timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp

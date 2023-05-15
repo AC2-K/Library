@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algorithm/mo.hpp
     title: Mo's algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_frequency
@@ -16,9 +16,9 @@ data:
     - https://judge.yosupo.jp/problem/static_range_frequency
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\n\
-    #include<iostream>\n#line 2 \"src/algorithm/mo.hpp\"\n#include <algorithm>\n#include\
-    \ <numeric>\n#include <utility>\n#include <vector>\nnamespace kyopro {\n/**\n\
-    \ * @brief Mo's algorithm\n */\nclass Mo {\n    int n;\n    std::vector<std::pair<int,\
+    #include <iostream>\n#line 2 \"src/algorithm/mo.hpp\"\n#include <algorithm>\n\
+    #include <numeric>\n#include <utility>\n#include <vector>\nnamespace kyopro {\n\
+    /**\n * @brief Mo's algorithm\n */\nclass Mo {\n    int n;\n    std::vector<std::pair<int,\
     \ int>> lr;\n    const int logn;\n    const long long maxn;\n    std::vector<int>\
     \ ord;\n\npublic:\n    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn)\
     \ { lr.reserve(n); }\n    void add(int l, int r) { lr.emplace_back(l, r); }\n\n\
@@ -49,41 +49,41 @@ data:
     \ a(n);\n    for (auto& aa : a) {\n        scanf(\"%d\", &aa);\n    }\n    auto\
     \ pressed = a;\n    std::sort(pressed.begin(), pressed.end());\n    pressed.erase(unique(pressed.begin(),\
     \ pressed.end()), pressed.end());\n    for (auto& ai : a) {\n        ai = std::lower_bound(pressed.begin(),\
-    \ pressed.end(), ai) - pressed.begin();\n    }\n    kyopro::Mo mo(q);\n    std::vector<int>\
-    \ x(q);\n    for (int i = 0; i < q; i++) {\n        int l, r;\n        scanf(\"\
-    %d%d%d\\n\", &l, &r, &x[i]);\n        mo.add(l, r);\n    }\n\n    std::vector<int>\
-    \ cnt(pressed.size() + 1);\n    std::vector<int> ans(q);\n    auto add = [&](int\
-    \ v) -> void {\n        cnt[a[v]]++;\n    };\n    auto del = [&](int v) -> void\
-    \ {\n        cnt[a[v]]--;\n    };\n    auto out = [&](int v) -> void {\n     \
-    \   auto it = std::lower_bound(pressed.begin(),pressed.end(), x[v]);\n       \
-    \ if (it == pressed.end() || (*it) != x[v]) {\n            ans[v] = 0;\n     \
-    \   } else {\n            int xi = it - pressed.begin();\n            ans[v] =\
-    \ cnt[xi];\n        }\n    };\n    mo.build(add, del, out);\n    for (auto& aa\
-    \ : ans) {\n        printf(\"%d\\n\", aa);\n    }\n}\n"
+    \ pressed.end(), ai) -\n             pressed.begin();\n    }\n    kyopro::Mo mo(q);\n\
+    \    std::vector<int> x(q);\n    for (int i = 0; i < q; i++) {\n        int l,\
+    \ r;\n        scanf(\"%d%d%d\\n\", &l, &r, &x[i]);\n        mo.add(l, r);\n  \
+    \  }\n\n    std::vector<int> cnt(pressed.size() + 1);\n    std::vector<int> ans(q);\n\
+    \    auto add = [&](int v) -> void { cnt[a[v]]++; };\n    auto del = [&](int v)\
+    \ -> void { cnt[a[v]]--; };\n    auto out = [&](int v) -> void {\n        auto\
+    \ it = std::lower_bound(pressed.begin(), pressed.end(), x[v]);\n        if (it\
+    \ == pressed.end() || (*it) != x[v]) {\n            ans[v] = 0;\n        } else\
+    \ {\n            int xi = it - pressed.begin();\n            ans[v] = cnt[xi];\n\
+    \        }\n    };\n    mo.build(add, del, out);\n    for (auto& aa : ans) {\n\
+    \        printf(\"%d\\n\", aa);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
-    \n#include<iostream>\n#include\"../../../src/algorithm/mo.hpp\"\nint main() {\n\
-    \    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    std::vector<int> a(n);\n \
-    \   for (auto& aa : a) {\n        scanf(\"%d\", &aa);\n    }\n    auto pressed\
+    \n#include <iostream>\n#include \"../../../src/algorithm/mo.hpp\"\nint main()\
+    \ {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n\n    std::vector<int> a(n);\n\
+    \    for (auto& aa : a) {\n        scanf(\"%d\", &aa);\n    }\n    auto pressed\
     \ = a;\n    std::sort(pressed.begin(), pressed.end());\n    pressed.erase(unique(pressed.begin(),\
     \ pressed.end()), pressed.end());\n    for (auto& ai : a) {\n        ai = std::lower_bound(pressed.begin(),\
-    \ pressed.end(), ai) - pressed.begin();\n    }\n    kyopro::Mo mo(q);\n    std::vector<int>\
-    \ x(q);\n    for (int i = 0; i < q; i++) {\n        int l, r;\n        scanf(\"\
-    %d%d%d\\n\", &l, &r, &x[i]);\n        mo.add(l, r);\n    }\n\n    std::vector<int>\
-    \ cnt(pressed.size() + 1);\n    std::vector<int> ans(q);\n    auto add = [&](int\
-    \ v) -> void {\n        cnt[a[v]]++;\n    };\n    auto del = [&](int v) -> void\
-    \ {\n        cnt[a[v]]--;\n    };\n    auto out = [&](int v) -> void {\n     \
-    \   auto it = std::lower_bound(pressed.begin(),pressed.end(), x[v]);\n       \
-    \ if (it == pressed.end() || (*it) != x[v]) {\n            ans[v] = 0;\n     \
-    \   } else {\n            int xi = it - pressed.begin();\n            ans[v] =\
-    \ cnt[xi];\n        }\n    };\n    mo.build(add, del, out);\n    for (auto& aa\
-    \ : ans) {\n        printf(\"%d\\n\", aa);\n    }\n}"
+    \ pressed.end(), ai) -\n             pressed.begin();\n    }\n    kyopro::Mo mo(q);\n\
+    \    std::vector<int> x(q);\n    for (int i = 0; i < q; i++) {\n        int l,\
+    \ r;\n        scanf(\"%d%d%d\\n\", &l, &r, &x[i]);\n        mo.add(l, r);\n  \
+    \  }\n\n    std::vector<int> cnt(pressed.size() + 1);\n    std::vector<int> ans(q);\n\
+    \    auto add = [&](int v) -> void { cnt[a[v]]++; };\n    auto del = [&](int v)\
+    \ -> void { cnt[a[v]]--; };\n    auto out = [&](int v) -> void {\n        auto\
+    \ it = std::lower_bound(pressed.begin(), pressed.end(), x[v]);\n        if (it\
+    \ == pressed.end() || (*it) != x[v]) {\n            ans[v] = 0;\n        } else\
+    \ {\n            int xi = it - pressed.begin();\n            ans[v] = cnt[xi];\n\
+    \        }\n    };\n    mo.build(add, del, out);\n    for (auto& aa : ans) {\n\
+    \        printf(\"%d\\n\", aa);\n    }\n}"
   dependsOn:
   - src/algorithm/mo.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
 layout: document

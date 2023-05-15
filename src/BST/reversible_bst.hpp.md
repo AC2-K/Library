@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
     title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/BST/reversible_bst.md
     document_title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
@@ -28,11 +28,11 @@ data:
     \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n*/\n#line 6 \"src/BST/reversible_bst.hpp\"\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 6 \"src/BST/reversible_bst.hpp\"\
     \n\nnamespace kyopro {\n/**\n * @brief \u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\
     \u5206\u63A2\u7D22\u6728\n * @tparam S \u30E2\u30CE\u30A4\u30C9\n * @tparam op\
     \ S\u306E\u4E8C\u9805\u6F14\u7B97\n * @tparam e S\u306E\u5358\u4F4D\u5143\n */\n\
-    template <typename S, S (*op)(S, S), S (*e)()>\nclass reversible_bst {\n    using\
+    template <typename S, S (*op)(S, S), S (*e)()> class reversible_bst {\n    using\
     \ u32 = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n        std::unique_ptr<Node>\
     \ l, r;\n        u32 priority;\n        S value, prod;\n        int size;\n  \
     \      bool rev;\n\n        Node(S v, u32 prio)\n            : l(),\n        \
@@ -77,11 +77,11 @@ data:
     #include \"../random/xor_shift.hpp\"\n\nnamespace kyopro {\n/**\n * @brief \u53CD\
     \u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728\n * @tparam S \u30E2\
     \u30CE\u30A4\u30C9\n * @tparam op S\u306E\u4E8C\u9805\u6F14\u7B97\n * @tparam\
-    \ e S\u306E\u5358\u4F4D\u5143\n */\ntemplate <typename S, S (*op)(S, S), S (*e)()>\n\
-    class reversible_bst {\n    using u32 = uint32_t;\n    xor_shift32 rng;\n    struct\
-    \ Node {\n        std::unique_ptr<Node> l, r;\n        u32 priority;\n       \
-    \ S value, prod;\n        int size;\n        bool rev;\n\n        Node(S v, u32\
-    \ prio)\n            : l(),\n              r(),\n              priority(prio),\n\
+    \ e S\u306E\u5358\u4F4D\u5143\n */\ntemplate <typename S, S (*op)(S, S), S (*e)()>\
+    \ class reversible_bst {\n    using u32 = uint32_t;\n    xor_shift32 rng;\n  \
+    \  struct Node {\n        std::unique_ptr<Node> l, r;\n        u32 priority;\n\
+    \        S value, prod;\n        int size;\n        bool rev;\n\n        Node(S\
+    \ v, u32 prio)\n            : l(),\n              r(),\n              priority(prio),\n\
     \              value(v),\n              prod(v),\n              size(1),\n   \
     \           rev(false) {}\n    };\n\n    using ptr = std::unique_ptr<Node>;\n\
     \    int size(const ptr& p) const { return p ? p->size : 0; }\n    S fold(const\
@@ -123,8 +123,8 @@ data:
   isVerificationFile: false
   path: src/BST/reversible_bst.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
 documentation_of: src/BST/reversible_bst.hpp

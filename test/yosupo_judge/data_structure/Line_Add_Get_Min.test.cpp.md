@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/CHT.hpp
     title: Convex Hull Trick
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
@@ -23,8 +23,8 @@ data:
     \ * @brief Convex Hull Trick\n * @tparam query_type true\u306B\u3059\u308B\u3068\
     \u30AF\u30A8\u30EA\u3067\u6700\u5927\u5024\u3092\u6C42\u3081\u308B\u3088\u3046\
     \u306B\u5909\u66F4\u3059\u308B\n */\ntemplate <class T = long long, bool query_type\
-    \ = false>\nclass CHT {\n    class line {\n    public:\n        T a, b;\n    \
-    \    bool is_query;\n        mutable T nxt_a, nxt_b;\n        mutable bool has_nxt;\n\
+    \ = false> class CHT {\n    class line {\n    public:\n        T a, b;\n     \
+    \   bool is_query;\n        mutable T nxt_a, nxt_b;\n        mutable bool has_nxt;\n\
     \        T get(T x) const { return a * x + b; }\n        T get_nxt(T x) const\
     \ { return nxt_a * x + nxt_b; }\n        line(T a, T b, bool q = false)\n    \
     \        : a(a), b(b), is_query(q), has_nxt(false) {}\n        friend bool operator<(const\
@@ -55,22 +55,22 @@ data:
     \ 0, true));\n\n        if (query_type) {\n            return -it->a * x - it->b;\n\
     \        } else {\n            return it->a * x + it->b;\n        }\n    }\n};\n\
     \n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/CHT.md\n */\n#line\
-    \ 2 \"src/stream.hpp\"\n#include <stdio.h>\n#include <ctype.h>\nnamespace kyopro\
-    \ {\ntemplate <typename T>\nconstexpr inline void readint(T& a) {\n    a = 0;\n\
+    \ 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\nnamespace kyopro\
+    \ {\ntemplate <typename T> constexpr inline void readint(T& a) {\n    a = 0;\n\
     \    bool is_negative = false;\n    char c = getchar_unlocked();\n    while (isspace(c))\
     \ {\n        c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true,\
     \ c = getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c -\
     \ '0');\n        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n\
     }\ntemplate <typename Head, typename... Tail>\nconstexpr inline void readint(Head&\
     \ head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n}\ntemplate\
-    \ <typename T>\nconstexpr inline void putint(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
+    \ <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
     \        putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
     \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
     \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
     \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
     constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
-    \   putint(tail...);\n}\n\n};  // namespace kyopro\n\n\n/**\n * @brief \u5165\u51FA\
-    \u529B\n*/\n#line 4 \"test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp\"\
+    \   putint(tail...);\n}\n\n};  // namespace kyopro\n\n/**\n * @brief \u5165\u51FA\
+    \u529B\n */\n#line 4 \"test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp\"\
     \nusing namespace std;\nint main() {\n    int n, q;\n    kyopro::readint(n, q);\n\
     \n    kyopro::CHT<long long> cht;\n    for (int i = 0; i < n; i++) {\n       \
     \ long long a, b;\n        kyopro::readint(a, b);\n        cht.insert(a, b);\n\
@@ -95,7 +95,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   requiredBy: []
-  timestamp: '2023-05-14 04:42:53+00:00'
+  timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp

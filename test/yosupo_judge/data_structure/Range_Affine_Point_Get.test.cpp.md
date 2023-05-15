@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/dual_segtree.hpp
     title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
@@ -26,7 +26,7 @@ data:
     \ <cassert>\n#include <vector>\nnamespace kyopro {\n/**\n * @brief \u53CC\u5BFE\
     \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\n * @tparam F \u4F5C\u7528\u7D20\n * @tparam\
     \ id F \u306E\u5358\u4F4D\u5143\n */\ntemplate <class F, F (*composition)(F, F),\
-    \ F (*id)()>\nclass dual_segtree {\n    std::vector<F> dat;\n    int _n, sz, lg;\n\
+    \ F (*id)()> class dual_segtree {\n    std::vector<F> dat;\n    int _n, sz, lg;\n\
     \npublic:\n    dual_segtree() {}\n    dual_segtree(int _n) : _n(_n) {\n      \
     \  sz = 1, lg = 0;\n        while (sz < _n) {\n            ++lg;\n           \
     \ sz <<= 1;\n        }\n        dat.assign(sz << 1, id());\n    }\n\nprivate:\n\
@@ -46,13 +46,13 @@ data:
     \              update(--r, v);\n            }\n            l >>= 1, r >>= 1;\n\
     \        }\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/dual_segtree.md\n\
     \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate\
-    \ <typename T>\nconstexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >=\
+    \ <typename T> constexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >=\
     \ 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (!a||!b) {\n            return a + b;\n    \
-    \    }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
+    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
     \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T>\nconstexpr T\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
     \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
     \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
@@ -156,12 +156,11 @@ data:
     \    std::cin.tie(nullptr);\n    int n, q;\n    std::cin >> n >> q;\n    kyopro::dual_segtree<Affine,\
     \ op, e> sg(n);\n    std::vector<mint> a(n);\n    for (auto& aa : a) {\n     \
     \   std::cin >> aa;\n    }\n    while (q--) {\n        int t;\n        std::cin\
-    \ >> t;\n        \n        if (t == 0) {\n            int l, r;\n            mint\
-    \ b, c;\n            std::cin >> l >> r >> b >> c;\n            sg.apply(l, r,\
-    \ std::pair<mint,mint>(b, c));\n        }\n        else {\n            int i;\n\
-    \            std::cin >> i;\n            auto f = sg[i];\n            mint ans\
-    \ = f.first * a[i] + f.second;\n            std::cout << ans << '\\n';\n     \
-    \   }\n        \n    }\n}\n"
+    \ >> t;\n\n        if (t == 0) {\n            int l, r;\n            mint b, c;\n\
+    \            std::cin >> l >> r >> b >> c;\n            sg.apply(l, r, std::pair<mint,\
+    \ mint>(b, c));\n        } else {\n            int i;\n            std::cin >>\
+    \ i;\n            auto f = sg[i];\n            mint ans = f.first * a[i] + f.second;\n\
+    \            std::cout << ans << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
     \n#include <iostream>\n#include \"../../../src/data-structure/dual_segtree.hpp\"\
     \n#include \"../../../src/math/static_modint.hpp\"\n\nusing mint = kyopro::static_modint32<998244353>;\n\
@@ -171,12 +170,12 @@ data:
     \ }\nint main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
     \    int n, q;\n    std::cin >> n >> q;\n    kyopro::dual_segtree<Affine, op,\
     \ e> sg(n);\n    std::vector<mint> a(n);\n    for (auto& aa : a) {\n        std::cin\
-    \ >> aa;\n    }\n    while (q--) {\n        int t;\n        std::cin >> t;\n \
-    \       \n        if (t == 0) {\n            int l, r;\n            mint b, c;\n\
-    \            std::cin >> l >> r >> b >> c;\n            sg.apply(l, r, std::pair<mint,mint>(b,\
-    \ c));\n        }\n        else {\n            int i;\n            std::cin >>\
+    \ >> aa;\n    }\n    while (q--) {\n        int t;\n        std::cin >> t;\n\n\
+    \        if (t == 0) {\n            int l, r;\n            mint b, c;\n      \
+    \      std::cin >> l >> r >> b >> c;\n            sg.apply(l, r, std::pair<mint,\
+    \ mint>(b, c));\n        } else {\n            int i;\n            std::cin >>\
     \ i;\n            auto f = sg[i];\n            mint ans = f.first * a[i] + f.second;\n\
-    \            std::cout << ans << '\\n';\n        }\n        \n    }\n}\n"
+    \            std::cout << ans << '\\n';\n        }\n    }\n}\n"
   dependsOn:
   - src/data-structure/dual_segtree.hpp
   - src/math/static_modint.hpp
@@ -184,8 +183,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-05-15 06:44:06+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
 layout: document

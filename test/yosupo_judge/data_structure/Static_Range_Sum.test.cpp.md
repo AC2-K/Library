@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/segtree.hpp
     title: SegmentTree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
@@ -18,8 +18,8 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\
     \ <iostream>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <cassert>\n\
     #include <vector>\nnamespace kyopro {\n\n/**\n * @brief SegmentTree\n */\ntemplate\
-    \ <class S, S (*op)(S, S), S (*e)()>\nclass segtree {\n    int lg, sz, n;\n  \
-    \  std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
+    \ <class S, S (*op)(S, S), S (*e)()> class segtree {\n    int lg, sz, n;\n   \
+    \ std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
     \ e())) {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n  \
     \      sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n   \
     \         lg++;\n        }\n\n        dat = std::vector<S>(sz << 1, e());\n\n\
@@ -60,8 +60,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-09 23:52:17+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
 layout: document

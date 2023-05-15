@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
     title: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: Manacher's algorithm
     links: []
   bundledCode: "#line 2 \"src/string/manacher.hpp\"\n#include <cassert>\n#include\
     \ <string>\n#include <utility>\n#include <vector>\nnamespace kyopro {\n\n/**\n\
-    \ * @brief Manacher's algorithm\n*/\nstd::vector<int> manacher(std::string s,\
+    \ * @brief Manacher's algorithm\n */\nstd::vector<int> manacher(std::string s,\
     \ bool even = true) {\n    assert(s.size());\n    if (even) {\n        std::string\
     \ t;\n        t.resize(2 * (int)s.size() - 1);\n        for (int i = 0; i < (int)s.size();\
     \ i++) {\n            t[2 * i] = s[i];\n        }\n        for (int i = 0; i <\
@@ -31,7 +31,7 @@ data:
     };  // namespace kyopro\n"
   code: "#pragma once\n#include <cassert>\n#include <string>\n#include <utility>\n\
     #include <vector>\nnamespace kyopro {\n\n/**\n * @brief Manacher's algorithm\n\
-    */\nstd::vector<int> manacher(std::string s, bool even = true) {\n    assert(s.size());\n\
+    \ */\nstd::vector<int> manacher(std::string s, bool even = true) {\n    assert(s.size());\n\
     \    if (even) {\n        std::string t;\n        t.resize(2 * (int)s.size() -\
     \ 1);\n        for (int i = 0; i < (int)s.size(); i++) {\n            t[2 * i]\
     \ = s[i];\n        }\n        for (int i = 0; i < (int)s.size(); i++) {\n    \
@@ -49,8 +49,8 @@ data:
   isVerificationFile: false
   path: src/string/manacher.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
 documentation_of: src/string/manacher.hpp

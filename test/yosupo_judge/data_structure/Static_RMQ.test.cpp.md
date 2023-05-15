@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/sparse_table.hpp
     title: SparseTable
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/staticrmq
@@ -18,7 +18,7 @@ data:
     #define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n#include <iostream>\n\
     #line 2 \"src/data-structure/sparse_table.hpp\"\n#include <numeric>\n#include\
     \ <vector>\nnamespace kyopro {\n\n/**\n * @brief SparseTable\n */\ntemplate <class\
-    \ T, auto op>\nclass sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>>\
+    \ T, auto op> class sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>>\
     \ table;\n    std::vector<int> look_up;\n\npublic:\n    constexpr explicit sparse_table(int\
     \ n) : vec(n) {}\n    constexpr explicit sparse_table(const std::vector<T>& vec)\
     \ : vec(vec) {\n        build();\n    }\n    void set(int p, const T& v) { vec[p]\
@@ -53,8 +53,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-05-09 23:52:17+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
 layout: document

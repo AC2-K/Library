@@ -13,8 +13,8 @@ data:
     document_title: persistent queue
     links: []
   bundledCode: "#line 2 \"src/persistent/queue.hpp\"\n#include <cassert>\nnamespace\
-    \ kyopro {\n/**\n * @brief persistent queue\n*/\ntemplate <typename T, int lg\
-    \ = 20>\nclass persistent_queue {\n    struct Node {\n        Node() = default;\n\
+    \ kyopro {\n/**\n * @brief persistent queue\n */\ntemplate <typename T, int lg\
+    \ = 20> class persistent_queue {\n    struct Node {\n        Node() = default;\n\
     \        uint32_t index;\n        T val;\n        Node* prev[20];\n    };\n\n\
     \    Node *front_ptr = nullptr, *back_ptr = nullptr;\n    int siz;\n\npublic:\n\
     \    persistent_queue(Node* front_ptr = nullptr,\n                     Node* back_ptr\
@@ -35,7 +35,7 @@ data:
     \  return front_ptr->val;\n    }\n    T back() {\n        assert(siz);\n     \
     \   return back_ptr->val;\n    }\n};\n};  // namespace kyopro\n"
   code: "#pragma once\n#include <cassert>\nnamespace kyopro {\n/**\n * @brief persistent\
-    \ queue\n*/\ntemplate <typename T, int lg = 20>\nclass persistent_queue {\n  \
+    \ queue\n */\ntemplate <typename T, int lg = 20> class persistent_queue {\n  \
     \  struct Node {\n        Node() = default;\n        uint32_t index;\n       \
     \ T val;\n        Node* prev[20];\n    };\n\n    Node *front_ptr = nullptr, *back_ptr\
     \ = nullptr;\n    int siz;\n\npublic:\n    persistent_queue(Node* front_ptr =\
@@ -60,7 +60,7 @@ data:
   isVerificationFile: false
   path: src/persistent/queue.hpp
   requiredBy: []
-  timestamp: '2023-05-08 02:55:40+00:00'
+  timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp

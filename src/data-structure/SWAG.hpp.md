@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: Slide Window Aggrigation
     links: []
-  bundledCode: "#line 2 \"src/data-structure/SWAG.hpp\"\n#include <vector>\n#include\
-    \ <algorithm>\nnamespace kyopro {\n/**\n * @brief Slide Window Aggrigation\n */\n\
-    template <class S, auto op, auto e>\nclass SWAG {\n    std::vector<S> front_stack,\
+  bundledCode: "#line 2 \"src/data-structure/SWAG.hpp\"\n#include <algorithm>\n#include\
+    \ <vector>\nnamespace kyopro {\n/**\n * @brief Slide Window Aggrigation\n */\n\
+    template <class S, auto op, auto e> class SWAG {\n    std::vector<S> front_stack,\
     \ back_stack;\n    std::vector<S> front_prod, back_prod;\n\npublic:\n    constexpr\
     \ explicit SWAG() {\n        front_prod.emplace_back(e()), back_prod.emplace_back(e());\n\
     \    }\n    void reserve(size_t sz) {\n        back_stack.reserve(sz), back_prod.reserve(sz\
@@ -31,9 +31,9 @@ data:
     \    }\n\n    S fold() const { return op(front_prod.back(), back_prod.back());\
     \ }\n    int size() { return front_stack.size() + back_stack.size(); }\n};\n};\
     \  // namespace kyopro\n"
-  code: "#pragma once\n#include <vector>\n#include <algorithm>\nnamespace kyopro {\n\
+  code: "#pragma once\n#include <algorithm>\n#include <vector>\nnamespace kyopro {\n\
     /**\n * @brief Slide Window Aggrigation\n */\ntemplate <class S, auto op, auto\
-    \ e>\nclass SWAG {\n    std::vector<S> front_stack, back_stack;\n    std::vector<S>\
+    \ e> class SWAG {\n    std::vector<S> front_stack, back_stack;\n    std::vector<S>\
     \ front_prod, back_prod;\n\npublic:\n    constexpr explicit SWAG() {\n       \
     \ front_prod.emplace_back(e()), back_prod.emplace_back(e());\n    }\n    void\
     \ reserve(size_t sz) {\n        back_stack.reserve(sz), back_prod.reserve(sz +\
@@ -54,8 +54,8 @@ data:
   isVerificationFile: false
   path: src/data-structure/SWAG.hpp
   requiredBy: []
-  timestamp: '2023-05-14 13:11:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
 documentation_of: src/data-structure/SWAG.hpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy: []
@@ -27,9 +27,9 @@ data:
     \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n*/\n#line 5 \"src/BST/Treap.hpp\"\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 5 \"src/BST/Treap.hpp\"\
     \n\nnamespace kyopro {\n\n/**\n * @brief Treap\n * @tparam T \u4E57\u305B\u308B\
-    \u30C7\u30FC\u30BF\u578B\n */\ntemplate <class T>\nclass Treap {\n    using u32\
+    \u30C7\u30FC\u30BF\u578B\n */\ntemplate <class T> class Treap {\n    using u32\
     \ = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n        const T key;\n\
     \        const u32 priority;\n        std::shared_ptr<Node> l, r;\n        Node(const\
     \ T& key, u32 priority)\n            : key(key), priority(priority), l(nullptr),\
@@ -64,7 +64,7 @@ data:
     \ */\n"
   code: "#pragma once\n#include <cassert>\n#include <memory>\n#include \"../random/xor_shift.hpp\"\
     \n\nnamespace kyopro {\n\n/**\n * @brief Treap\n * @tparam T \u4E57\u305B\u308B\
-    \u30C7\u30FC\u30BF\u578B\n */\ntemplate <class T>\nclass Treap {\n    using u32\
+    \u30C7\u30FC\u30BF\u578B\n */\ntemplate <class T> class Treap {\n    using u32\
     \ = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n        const T key;\n\
     \        const u32 priority;\n        std::shared_ptr<Node> l, r;\n        Node(const\
     \ T& key, u32 priority)\n            : key(key), priority(priority), l(nullptr),\
@@ -102,7 +102,7 @@ data:
   isVerificationFile: false
   path: src/BST/Treap.hpp
   requiredBy: []
-  timestamp: '2023-05-14 04:42:53+00:00'
+  timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

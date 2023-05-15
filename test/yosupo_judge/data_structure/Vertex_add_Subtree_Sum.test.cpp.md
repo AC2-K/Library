@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/sparse_table.hpp
     title: SparseTable
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
@@ -22,9 +22,9 @@ data:
     - https://judge.yosupo.jp/problem/vertex_add_subtree_sum
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\n\
-    #include<iostream>\n#line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\n\
+    #include <iostream>\n#line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\n\
     namespace kyopro {\n/**\n * @brief Binary Index Tree\n */\ntemplate <typename\
-    \ T>\nclass BIT {\n    std::vector<T> bit;\n    int n;\n\npublic:\n    explicit\
+    \ T> class BIT {\n    std::vector<T> bit;\n    int n;\n\npublic:\n    explicit\
     \ BIT() {}\n    explicit BIT(int n) : n(n), bit(n + 1, T()) {}\n    void add(int\
     \ p, T w) {\n        p++;\n        for (int x = p; x <= n; x += x & -x) {\n  \
     \          bit[x] += w;\n        }\n    }\n\n    T sum(int p) const {\n      \
@@ -38,7 +38,7 @@ data:
     \ namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n */\n#line 2 \"\
     src/tree/EulerTour.hpp\"\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
     \n#include <numeric>\n#line 4 \"src/data-structure/sparse_table.hpp\"\nnamespace\
-    \ kyopro {\n\n/**\n * @brief SparseTable\n */\ntemplate <class T, auto op>\nclass\
+    \ kyopro {\n\n/**\n * @brief SparseTable\n */\ntemplate <class T, auto op> class\
     \ sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n\
     \    std::vector<int> look_up;\n\npublic:\n    constexpr explicit sparse_table(int\
     \ n) : vec(n) {}\n    constexpr explicit sparse_table(const std::vector<T>& vec)\
@@ -82,31 +82,31 @@ data:
     \ const {\n        return (in[par] <= in[v] && out[v] <= out[par]);\n    }\n};\n\
     };  // namespace kyopro\n\n/**\n * @docs docs/tree/EulerTour.md\n */\n#line 5\
     \ \"test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp\"\n\nint\
-    \ main() {\n    int n, q;\n    scanf(\"%d%d\",&n,&q);\n    std::vector<long long>\
-    \ a(n);\n    for (auto& aa : a) {\n        scanf(\"%lld\",&aa);\n    }\n\n   \
-    \ kyopro::EulerTour g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n\
-    \        scanf(\"%d\",&p);\n        g.add_edge(i, p);\n    }\n    g.build();\n\
+    \ main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n    std::vector<long\
+    \ long> a(n);\n    for (auto& aa : a) {\n        scanf(\"%lld\", &aa);\n    }\n\
+    \n    kyopro::EulerTour g(n);\n    for (int i = 1; i < n; i++) {\n        int\
+    \ p;\n        scanf(\"%d\", &p);\n        g.add_edge(i, p);\n    }\n    g.build();\n\
     \n    kyopro::BIT<long long> seg(2 * n);\n    for (int v = 0; v < n; v++) {\n\
     \        int in = g.idx(v).first;\n        seg.add(in, a[v]);\n    }\n    while\
-    \ (q--) {\n        int t;\n        scanf(\"%d\",&t);\n        if (!t) {\n    \
-    \        int v,x;\n            scanf(\"%d%d\",&v,&x);\n            int in = g.idx(v).first;\n\
-    \            seg.add(in, x);\n        }\n        else {\n            int v;\n\
-    \            scanf(\"%d\",&v);\n            auto [in, out] = g.idx(v);\n     \
-    \       printf(\"%lld\\n\",seg.sum(in,out + 1));\n        }\n    }\n}\n"
+    \ (q--) {\n        int t;\n        scanf(\"%d\", &t);\n        if (!t) {\n   \
+    \         int v, x;\n            scanf(\"%d%d\", &v, &x);\n            int in\
+    \ = g.idx(v).first;\n            seg.add(in, x);\n        } else {\n         \
+    \   int v;\n            scanf(\"%d\", &v);\n            auto [in, out] = g.idx(v);\n\
+    \            printf(\"%lld\\n\", seg.sum(in, out + 1));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
-    \n#include<iostream>\n#include\"../../../src/data-structure/BIT.hpp\"\n#include\"\
-    ../../../src/tree/EulerTour.hpp\"\n\nint main() {\n    int n, q;\n    scanf(\"\
-    %d%d\",&n,&q);\n    std::vector<long long> a(n);\n    for (auto& aa : a) {\n \
-    \       scanf(\"%lld\",&aa);\n    }\n\n    kyopro::EulerTour g(n);\n    for (int\
-    \ i = 1; i < n; i++) {\n        int p;\n        scanf(\"%d\",&p);\n        g.add_edge(i,\
-    \ p);\n    }\n    g.build();\n\n    kyopro::BIT<long long> seg(2 * n);\n    for\
-    \ (int v = 0; v < n; v++) {\n        int in = g.idx(v).first;\n        seg.add(in,\
-    \ a[v]);\n    }\n    while (q--) {\n        int t;\n        scanf(\"%d\",&t);\n\
-    \        if (!t) {\n            int v,x;\n            scanf(\"%d%d\",&v,&x);\n\
-    \            int in = g.idx(v).first;\n            seg.add(in, x);\n        }\n\
-    \        else {\n            int v;\n            scanf(\"%d\",&v);\n         \
-    \   auto [in, out] = g.idx(v);\n            printf(\"%lld\\n\",seg.sum(in,out\
-    \ + 1));\n        }\n    }\n}"
+    \n#include <iostream>\n#include \"../../../src/data-structure/BIT.hpp\"\n#include\
+    \ \"../../../src/tree/EulerTour.hpp\"\n\nint main() {\n    int n, q;\n    scanf(\"\
+    %d%d\", &n, &q);\n    std::vector<long long> a(n);\n    for (auto& aa : a) {\n\
+    \        scanf(\"%lld\", &aa);\n    }\n\n    kyopro::EulerTour g(n);\n    for\
+    \ (int i = 1; i < n; i++) {\n        int p;\n        scanf(\"%d\", &p);\n    \
+    \    g.add_edge(i, p);\n    }\n    g.build();\n\n    kyopro::BIT<long long> seg(2\
+    \ * n);\n    for (int v = 0; v < n; v++) {\n        int in = g.idx(v).first;\n\
+    \        seg.add(in, a[v]);\n    }\n    while (q--) {\n        int t;\n      \
+    \  scanf(\"%d\", &t);\n        if (!t) {\n            int v, x;\n            scanf(\"\
+    %d%d\", &v, &x);\n            int in = g.idx(v).first;\n            seg.add(in,\
+    \ x);\n        } else {\n            int v;\n            scanf(\"%d\", &v);\n\
+    \            auto [in, out] = g.idx(v);\n            printf(\"%lld\\n\", seg.sum(in,\
+    \ out + 1));\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/BIT.hpp
   - src/tree/EulerTour.hpp
@@ -114,8 +114,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-11 20:24:21+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
 layout: document

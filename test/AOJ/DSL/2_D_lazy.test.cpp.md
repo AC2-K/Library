@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/lazy_segtree.hpp
     title: LazySegmentTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
@@ -60,31 +60,31 @@ data:
     \ >> i) << i) != l) push_up(l >> i);\n            if (((r >> i) << i) != r) push_up((r\
     \ - 1) >> i);\n        }\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
     \ docs/data-structure/lazy_segtree.md\n */\n#line 2 \"src/stream.hpp\"\n#include\
-    \ <stdio.h>\n#include <ctype.h>\nnamespace kyopro {\ntemplate <typename T>\nconstexpr\
+    \ <ctype.h>\n#include <stdio.h>\nnamespace kyopro {\ntemplate <typename T> constexpr\
     \ inline void readint(T& a) {\n    a = 0;\n    bool is_negative = false;\n   \
     \ char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
     \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
     \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
     \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename...\
     \ Tail>\nconstexpr inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n\
-    \    readint(tail...);\n}\ntemplate <typename T>\nconstexpr inline void putint(T\
+    \    readint(tail...);\n}\ntemplate <typename T> constexpr inline void putint(T\
     \ a) {\n    if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\\
     n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n\
     \    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now] = (char)'0'\
     \ + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
     \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
     constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
-    \   putint(tail...);\n}\n\n};  // namespace kyopro\n\n\n/**\n * @brief \u5165\u51FA\
-    \u529B\n*/\n#line 6 \"test/AOJ/DSL/2_D_lazy.test.cpp\"\ninline int op(int x, int\
-    \ y) { return std::min(x, y); }\ninline int comp(int x, int y) { return y; }\n\
-    inline int mapping(int x, int y) { return y; }\ninline int e() { return (1ll <<\
-    \ 31) - 1; }\ninline int id() { return (1ll << 31) - 1; }\n\nint main() {\n  \
-    \  int n, q;\n    kyopro::readint(n, q);\n    kyopro::lazy_segtree<int, int, op,\
-    \ e, comp, id, mapping> seg(n);\n    while (q--) {\n        int t;\n        kyopro::readint(t);\n\
-    \        if (!t) {\n            int l, r, add;\n            kyopro::readint(l,\
-    \ r, add);\n            seg.apply(l, r + 1, add);\n        } else {\n        \
-    \    int i;\n            kyopro::readint(i);\n            kyopro::putint(seg[i]);\n\
-    \        }\n    }\n}\n"
+    \   putint(tail...);\n}\n\n};  // namespace kyopro\n\n/**\n * @brief \u5165\u51FA\
+    \u529B\n */\n#line 6 \"test/AOJ/DSL/2_D_lazy.test.cpp\"\ninline int op(int x,\
+    \ int y) { return std::min(x, y); }\ninline int comp(int x, int y) { return y;\
+    \ }\ninline int mapping(int x, int y) { return y; }\ninline int e() { return (1ll\
+    \ << 31) - 1; }\ninline int id() { return (1ll << 31) - 1; }\n\nint main() {\n\
+    \    int n, q;\n    kyopro::readint(n, q);\n    kyopro::lazy_segtree<int, int,\
+    \ op, e, comp, id, mapping> seg(n);\n    while (q--) {\n        int t;\n     \
+    \   kyopro::readint(t);\n        if (!t) {\n            int l, r, add;\n     \
+    \       kyopro::readint(l, r, add);\n            seg.apply(l, r + 1, add);\n \
+    \       } else {\n            int i;\n            kyopro::readint(i);\n      \
+    \      kyopro::putint(seg[i]);\n        }\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\"\
     \n\n#include \"../../../src/data-structure/lazy_segtree.hpp\"\n#include \"../../../src/stream.hpp\"\
     \ninline int op(int x, int y) { return std::min(x, y); }\ninline int comp(int\
@@ -102,7 +102,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_D_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-05-14 04:42:53+00:00'
+  timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_D_lazy.test.cpp

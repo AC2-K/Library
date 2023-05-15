@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_E_dual.test.cpp
     title: test/AOJ/DSL/2_E_dual.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/dual_segtree.md
     document_title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
@@ -22,8 +22,8 @@ data:
   bundledCode: "#line 2 \"src/data-structure/dual_segtree.hpp\"\n#include <cassert>\n\
     #include <vector>\nnamespace kyopro {\n/**\n * @brief \u53CC\u5BFE\u30BB\u30B0\
     \u30E1\u30F3\u30C8\u6728\n * @tparam F \u4F5C\u7528\u7D20\n * @tparam id F \u306E\
-    \u5358\u4F4D\u5143\n */\ntemplate <class F, F (*composition)(F, F), F (*id)()>\n\
-    class dual_segtree {\n    std::vector<F> dat;\n    int _n, sz, lg;\n\npublic:\n\
+    \u5358\u4F4D\u5143\n */\ntemplate <class F, F (*composition)(F, F), F (*id)()>\
+    \ class dual_segtree {\n    std::vector<F> dat;\n    int _n, sz, lg;\n\npublic:\n\
     \    dual_segtree() {}\n    dual_segtree(int _n) : _n(_n) {\n        sz = 1, lg\
     \ = 0;\n        while (sz < _n) {\n            ++lg;\n            sz <<= 1;\n\
     \        }\n        dat.assign(sz << 1, id());\n    }\n\nprivate:\n    void update(int\
@@ -45,7 +45,7 @@ data:
   code: "#pragma once\n#include <cassert>\n#include <vector>\nnamespace kyopro {\n\
     /**\n * @brief \u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728\n * @tparam F\
     \ \u4F5C\u7528\u7D20\n * @tparam id F \u306E\u5358\u4F4D\u5143\n */\ntemplate\
-    \ <class F, F (*composition)(F, F), F (*id)()>\nclass dual_segtree {\n    std::vector<F>\
+    \ <class F, F (*composition)(F, F), F (*id)()> class dual_segtree {\n    std::vector<F>\
     \ dat;\n    int _n, sz, lg;\n\npublic:\n    dual_segtree() {}\n    dual_segtree(int\
     \ _n) : _n(_n) {\n        sz = 1, lg = 0;\n        while (sz < _n) {\n       \
     \     ++lg;\n            sz <<= 1;\n        }\n        dat.assign(sz << 1, id());\n\
@@ -69,8 +69,8 @@ data:
   isVerificationFile: false
   path: src/data-structure/dual_segtree.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - test/AOJ/DSL/2_D_dual.test.cpp
@@ -83,22 +83,24 @@ redirect_from:
 title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
 ---
 ## 概要
+
 双対セグメント木(DualSegmentTree)とは、以下のようなデータ構造です
 
 > モノイド $(F,\circ,\mathtt{id})$ の列 $f=(f_0,f_1\dots,f_{n-1})$ に対して、以下をいずれものクエリごと $O(\log n)$ で処理する
-> 
+>
 > - $l,r$ と $g\in F$ が与えられたとき、 全ての $i\in [l,r)$ に対して $f_i\leftarrow f_i\circ g$ と更新する
 > - $i$ が与えられたとき、 $f_i$ を求める
 
 LazySegmentTreeの作用素側のみを取り出したと考えることもできます.
 
 ## コンストラクタ
+
 ```cpp
 kyopro::dual_segtree<F,composition,id> ds(int n);
 ```
+
 $f=(\mathtt{id},\mathtt{id},...,\mathtt{id})$ で初期化します。\
 `composition,id`は以下の形式で定義して渡してください。
-
 
 ```cpp
 F composition(F x,F y){
@@ -109,30 +111,39 @@ F id(){
     //Fの単位元(id)を返す
 }
 ```
+
 ### 計算量
+
 - $O(n)$
 
 ## apply
+
 ```cpp
 void apply(int l,int r,F g)
 ```
+
 全ての $i\in [l,r)$ に対して $f_i\leftarrow f_i\circ g$ と更新します
 
 ### 制約
+
 - $0 \leq l \leq r \lt n$
 
 ### 計算量
+
 - $O(\log n)$
 
 ## operator[]
+
 ```cpp
 F ds[int i]
 ```
+
 $f_i$ を求めます
 
 ### 制約
+
 - $0 \leq i \lt n$
 
 ### 計算量
-- $O(\log n)$
 
+- $O(\log n)$

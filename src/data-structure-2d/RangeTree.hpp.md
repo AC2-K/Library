@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/segtree.hpp
     title: SegmentTree
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
   bundledCode: "#line 2 \"src/data-structure-2d/RangeTree.hpp\"\n#include <algorithm>\n\
     #line 2 \"src/data-structure/segtree.hpp\"\n#include <cassert>\n#include <vector>\n\
     namespace kyopro {\n\n/**\n * @brief SegmentTree\n */\ntemplate <class S, S (*op)(S,\
-    \ S), S (*e)()>\nclass segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n\
+    \ S), S (*e)()> class segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n\
     \npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n, e()))\
     \ {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n        sz\
     \ = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n           \
@@ -38,8 +38,8 @@ data:
     \    }\n    void apply(int p, const S& v) {\n        assert(0 <= p && p < sz);\n\
     \        update(p, op(dat[sz + p], v));\n    }\n};\n};  // namespace kyopro\n\n\
     /**\n * @docs docs/data-structure/segtree.md\n */\n#line 4 \"src/data-structure-2d/RangeTree.hpp\"\
-    \nnamespace kyopro {\ntemplate <typename T, typename S, S (*op)(S, S), S (*e)()>\n\
-    class RangeTree {\n    std::vector<segtree<S, op, e>> dat;\n    std::vector<std::vector<T>>\
+    \nnamespace kyopro {\ntemplate <typename T, typename S, S (*op)(S, S), S (*e)()>\
+    \ class RangeTree {\n    std::vector<segtree<S, op, e>> dat;\n    std::vector<std::vector<T>>\
     \ ys;\n\n    T n;\n    std::vector<std::pair<T, T>> ps;\n\npublic:\n    void add_point(T\
     \ x, T y) { ps.emplace_back(x, y); }\n\n    void build() {\n        std::sort(ps.begin(),\
     \ ps.end());\n        ps.erase(std::unique(ps.begin(), ps.end()), ps.end());\n\
@@ -69,8 +69,8 @@ data:
     \     }\n\n            a >>= 1, b >>= 1;\n        }\n\n        return op(suml,\
     \ sumr);\n    }\n};\n};  // namespace kyopro\n"
   code: "#pragma once\n#include <algorithm>\n#include \"../data-structure/segtree.hpp\"\
-    \nnamespace kyopro {\ntemplate <typename T, typename S, S (*op)(S, S), S (*e)()>\n\
-    class RangeTree {\n    std::vector<segtree<S, op, e>> dat;\n    std::vector<std::vector<T>>\
+    \nnamespace kyopro {\ntemplate <typename T, typename S, S (*op)(S, S), S (*e)()>\
+    \ class RangeTree {\n    std::vector<segtree<S, op, e>> dat;\n    std::vector<std::vector<T>>\
     \ ys;\n\n    T n;\n    std::vector<std::pair<T, T>> ps;\n\npublic:\n    void add_point(T\
     \ x, T y) { ps.emplace_back(x, y); }\n\n    void build() {\n        std::sort(ps.begin(),\
     \ ps.end());\n        ps.erase(std::unique(ps.begin(), ps.end()), ps.end());\n\
@@ -104,7 +104,7 @@ data:
   isVerificationFile: false
   path: src/data-structure-2d/RangeTree.hpp
   requiredBy: []
-  timestamp: '2023-05-09 23:52:17+09:00'
+  timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
   _extendedRequiredBy: []
@@ -17,7 +17,7 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n#include\
     \ <iostream>\n#line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\nnamespace\
-    \ kyopro {\n/**\n * @brief Binary Index Tree\n */\ntemplate <typename T>\nclass\
+    \ kyopro {\n/**\n * @brief Binary Index Tree\n */\ntemplate <typename T> class\
     \ BIT {\n    std::vector<T> bit;\n    int n;\n\npublic:\n    explicit BIT() {}\n\
     \    explicit BIT(int n) : n(n), bit(n + 1, T()) {}\n    void add(int p, T w)\
     \ {\n        p++;\n        for (int x = p; x <= n; x += x & -x) {\n          \
@@ -51,7 +51,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-05-11 20:24:21+09:00'
+  timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp

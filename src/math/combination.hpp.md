@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
     title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "\u4E8C\u9805\u4FC2\u6570\u306A\u3069"
     links: []
@@ -28,7 +28,7 @@ data:
     \      return (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace internal\n\
     };  // namespace kyopro\n\n/**\n * @ref\n * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
     \ */\n#line 4 \"src/math/combination.hpp\"\nnamespace kyopro {\ntemplate <int\
-    \ MAX>\nclass dynamic_combination {\n    int fac[MAX], ifac[MAX];\n    const int\
+    \ MAX> class dynamic_combination {\n    int fac[MAX], ifac[MAX];\n    const int\
     \ sz;\n    constexpr int inverse(int a) const {\n        int p = bar.get_mod()\
     \ - 2;\n        int ans = 1;\n        while (p) {\n            if (p & 1) ans\
     \ = bar.mul(ans, a);\n            p >>= 1;\n            a = bar.mul(a, a);\n \
@@ -42,12 +42,12 @@ data:
     \        assert(n >= r);\n        return bar.mul(fac[n], bar.mul(ifac[r], ifac[n\
     \ - r]));\n    }\n    constexpr int perm(int n, int r) const {\n        assert(n\
     \ >= r);\n        return bar.mul(fac[n], ifac[n - r]);\n    }\n    constexpr int\
-    \ fact(int n) const { return fac[n]; }\n};\n\ntemplate <int modulo, int MAX>\n\
-    class combination {\n    static constexpr int sz = std::min(modulo, MAX);\n  \
-    \  int fac[sz + 1], ifac[sz + 1];\n    constexpr int inverse(int a) const {\n\
-    \        int ans = 1;\n        int p = modulo - 2;\n        while (p) {\n    \
-    \        if (p & 1) (ans *= a) %= modulo;\n            p >>= 1;\n            (a\
-    \ *= a) %= modulo;\n        }\n        return ans;\n    }\n\npublic:\n    constexpr\
+    \ fact(int n) const { return fac[n]; }\n};\n\ntemplate <int modulo, int MAX> class\
+    \ combination {\n    static constexpr int sz = std::min(modulo, MAX);\n    int\
+    \ fac[sz + 1], ifac[sz + 1];\n    constexpr int inverse(int a) const {\n     \
+    \   int ans = 1;\n        int p = modulo - 2;\n        while (p) {\n         \
+    \   if (p & 1) (ans *= a) %= modulo;\n            p >>= 1;\n            (a *=\
+    \ a) %= modulo;\n        }\n        return ans;\n    }\n\npublic:\n    constexpr\
     \ explicit combination() {\n        fac[0] = ifac[0] = fac[1] = ifac[1] = 1;\n\
     \n        for (int i = 2; i < sz; ++i) {\n            fac[i] = fac[i - 1] * i\
     \ % modulo;\n        }\n\n        ifac[sz - 1] = inverse(fac[sz - 1]);\n     \
@@ -60,7 +60,7 @@ data:
     };\n\n};  // namespace kyopro\n\n/**\n * @brief \u4E8C\u9805\u4FC2\u6570\u306A\
     \u3069\n */\n"
   code: "#pragma once\n#include <cassert>\n#include \"../internal/barrett.hpp\"\n\
-    namespace kyopro {\ntemplate <int MAX>\nclass dynamic_combination {\n    int fac[MAX],\
+    namespace kyopro {\ntemplate <int MAX> class dynamic_combination {\n    int fac[MAX],\
     \ ifac[MAX];\n    const int sz;\n    constexpr int inverse(int a) const {\n  \
     \      int p = bar.get_mod() - 2;\n        int ans = 1;\n        while (p) {\n\
     \            if (p & 1) ans = bar.mul(ans, a);\n            p >>= 1;\n       \
@@ -74,9 +74,9 @@ data:
     \ {\n        assert(n >= r);\n        return bar.mul(fac[n], bar.mul(ifac[r],\
     \ ifac[n - r]));\n    }\n    constexpr int perm(int n, int r) const {\n      \
     \  assert(n >= r);\n        return bar.mul(fac[n], ifac[n - r]);\n    }\n    constexpr\
-    \ int fact(int n) const { return fac[n]; }\n};\n\ntemplate <int modulo, int MAX>\n\
-    class combination {\n    static constexpr int sz = std::min(modulo, MAX);\n  \
-    \  int fac[sz + 1], ifac[sz + 1];\n    constexpr int inverse(int a) const {\n\
+    \ int fact(int n) const { return fac[n]; }\n};\n\ntemplate <int modulo, int MAX>\
+    \ class combination {\n    static constexpr int sz = std::min(modulo, MAX);\n\
+    \    int fac[sz + 1], ifac[sz + 1];\n    constexpr int inverse(int a) const {\n\
     \        int ans = 1;\n        int p = modulo - 2;\n        while (p) {\n    \
     \        if (p & 1) (ans *= a) %= modulo;\n            p >>= 1;\n            (a\
     \ *= a) %= modulo;\n        }\n        return ans;\n    }\n\npublic:\n    constexpr\
@@ -96,8 +96,8 @@ data:
   isVerificationFile: false
   path: src/math/combination.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
 documentation_of: src/math/combination.hpp

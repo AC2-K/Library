@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_E_lazy.test.cpp
     title: test/AOJ/DSL/2_E_lazy.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/lazy_segtree.md
     document_title: LazySegmentTree
@@ -107,7 +107,7 @@ data:
   path: src/data-structure/lazy_segtree.hpp
   requiredBy: []
   timestamp: '2023-05-09 23:52:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/AOJ/DSL/2_D_lazy.test.cpp
@@ -120,69 +120,89 @@ redirect_from:
 title: LazySegmentTree
 ---
 ## 概要
+
 - モノイド $(S,\bullet,\mathtt{e}),(F,\circ,\mathtt{id})$
-- 演算 $\ast:S\times F\to S$ 
- 
+- 演算 $\ast:S\times F\to S$
+
 に対して、以下の条件が満たされるとします。
 
 - 任意の $x\in S$ に対して $x \ast \mathtt{id}=x$
 - 任意の $x,y\in S,f\in F$に対して $(x \bullet y)\ast f=(x\ast f)\bullet(y\ast f)$
 - 任意の $x\in S$ と $f_1,f_2\in F$ について $(x\ast f_1) \ast f_2=x\ast (f1\circ f2)$
- 
+
 この時, $S$ の要素の列 $a=(a_0,a_1,\dots,a_{n-1})$ に対して以下をクエリごと $O(\log n)$ で行います。
- 
+
 - $l,r$ が与えられたとき、 $a_l\bullet a_{l+1}\dots a_{r-1}$ を計算する
 - $l,r$ と $f\in F$が与えられたとき、全ての $i\in [l,r)$ に対して $a_i\leftarrow a_i*f$ と更新
 
 ## コンストラクタ1
+
 ```cpp
 kyopro::lazy_segtree<S,F,op,e,composition,id,mapping> seg(int n);
 ```
+
 $a$ を長さ $n$ ,初期値 $\mathtt{e}$ の状態で作成します
+
 ### 計算量
+
 - $O(n)$
 
 ## コンストラクタ2
+
 ```cpp
 kyopro::lazy_segtree<S,F,op,e,composition,id,mapping> seg(std::vector<S> a);
 ```
+
 $a$ をそのまま渡すこともできます。
 
 ## 計算量
+
 - $O(\vert a\vert)$
 
 ## fold
+
 ```cpp
 S fold(int l,int r)
 ```
+
 $a_l\bullet a_{l+1}\dots a_r$ を計算します。 $l=r$ の時は $\mathtt{e}$ を返します。
 
 ### 制約
+
 - $0 \leq l \leq r \lt n$
 
 ### 計算量
+
 - $O(\log n)$
 
 ## apply
+
 ```cpp
 void apply(int l,int r,F f)
 ```
+
 全ての $i\in[l,r)$ に対して、$a_i \leftarrow a_i \ast f$ と更新します
 
 ### 制約
+
 - $0 \leq l \leq r \lt n$
 
 ### 計算量
+
 - $O(\log n)$
 
 ## operator[]
+
 ```cpp
 S seg[int i]
 ```
+
 $a_i$ を返す
 
 ### 制約
+
 - $0 \leq i \lt n$
 
 ### 計算量
+
 - $O(\log n)$

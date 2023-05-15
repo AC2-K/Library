@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure-2d/RangeTree.hpp
     title: src/data-structure-2d/RangeTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/segtree.hpp
     title: SegmentTree
   _extendedRequiredBy: []
@@ -22,8 +22,8 @@ data:
     #include <iostream>\n#line 2 \"src/data-structure-2d/RangeTree.hpp\"\n#include\
     \ <algorithm>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <cassert>\n\
     #include <vector>\nnamespace kyopro {\n\n/**\n * @brief SegmentTree\n */\ntemplate\
-    \ <class S, S (*op)(S, S), S (*e)()>\nclass segtree {\n    int lg, sz, n;\n  \
-    \  std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
+    \ <class S, S (*op)(S, S), S (*e)()> class segtree {\n    int lg, sz, n;\n   \
+    \ std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
     \ e())) {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n  \
     \      sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n   \
     \         lg++;\n        }\n\n        dat = std::vector<S>(sz << 1, e());\n\n\
@@ -44,7 +44,7 @@ data:
     \      assert(0 <= p && p < sz);\n        update(p, op(dat[sz + p], v));\n   \
     \ }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/segtree.md\n\
     \ */\n#line 4 \"src/data-structure-2d/RangeTree.hpp\"\nnamespace kyopro {\ntemplate\
-    \ <typename T, typename S, S (*op)(S, S), S (*e)()>\nclass RangeTree {\n    std::vector<segtree<S,\
+    \ <typename T, typename S, S (*op)(S, S), S (*e)()> class RangeTree {\n    std::vector<segtree<S,\
     \ op, e>> dat;\n    std::vector<std::vector<T>> ys;\n\n    T n;\n    std::vector<std::pair<T,\
     \ T>> ps;\n\npublic:\n    void add_point(T x, T y) { ps.emplace_back(x, y); }\n\
     \n    void build() {\n        std::sort(ps.begin(), ps.end());\n        ps.erase(std::unique(ps.begin(),\
@@ -107,7 +107,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-05-09 23:52:17+09:00'
+  timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp

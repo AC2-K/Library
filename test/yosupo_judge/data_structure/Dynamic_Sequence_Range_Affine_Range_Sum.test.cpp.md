@@ -5,16 +5,16 @@ data:
     path: src/BST/lazy_reversible_bst.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
       \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
@@ -40,7 +40,7 @@ data:
     \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n*/\n#line 6 \"src/BST/lazy_reversible_bst.hpp\"\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 6 \"src/BST/lazy_reversible_bst.hpp\"\
     \n\nnamespace kyopro {\n/**\n * @brief \u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\
     \u53CD\u8EE2\u53EF\u80FD \u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728\n * @tparam\
     \ S \u30E2\u30CE\u30A4\u30C9\n * @tparam F \u4F5C\u7528\u7D20\n * @tparam op S\u306E\
@@ -101,14 +101,14 @@ data:
     \ std::move(z));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/BST/lazy_reversible_bst.md\n\
     \ * @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n */\n#line\
     \ 3 \"src/math/static_modint.hpp\"\n#include <iostream>\n#line 3 \"src/math/gcd.hpp\"\
-    \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T>\nconstexpr T inline\
+    \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr T inline\
     \ _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return\
     \ a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n \
     \   a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
-    \        if (!a||!b) {\n            return a + b;\n        }\n        if (a >=\
-    \ b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n        }\
-    \ else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n       \
-    \ }\n    }\n\n    return a << d;\n}\ntemplate <typename T>\nconstexpr T ext_gcd(T\
+    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
+    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
+    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
+    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T ext_gcd(T\
     \ a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b)\
     \ {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n\
     \        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
@@ -203,22 +203,22 @@ data:
     \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
-    \ */\n#line 2 \"src/stream.hpp\"\n#include <stdio.h>\n#include <ctype.h>\nnamespace\
-    \ kyopro {\ntemplate <typename T>\nconstexpr inline void readint(T& a) {\n   \
-    \ a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n  \
-    \  while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
-    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
-    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
-    \ inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n\
-    }\ntemplate <typename T>\nconstexpr inline void putint(T a) {\n    if (!a) {\n\
+    \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\nnamespace\
+    \ kyopro {\ntemplate <typename T> constexpr inline void readint(T& a) {\n    a\
+    \ = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n    while\
+    \ (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c == '-') is_negative\
+    \ = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 *\
+    \ a + (c - '0');\n        c = getchar_unlocked();\n    }\n    if (is_negative)\
+    \ a *= -1;\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void\
+    \ readint(Head& head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n\
+    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
     \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
     \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
     \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
     \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
     n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
     \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n};  //\
-    \ namespace kyopro\n\n\n/**\n * @brief \u5165\u51FA\u529B\n*/\n#line 6 \"test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp\"\
+    \ namespace kyopro\n\n/**\n * @brief \u5165\u51FA\u529B\n */\n#line 6 \"test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp\"\
     \nusing mint = kyopro::static_modint32<998244353>;\nusing S = mint;\ninline S\
     \ op(S a, S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine\
     \ = std::pair<mint, mint>;\ninline Affine composition(Affine g, Affine f) {\n\
@@ -270,7 +270,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-05-15 06:44:06+09:00'
+  timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

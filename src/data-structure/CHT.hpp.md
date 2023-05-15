@@ -17,7 +17,7 @@ data:
     \ kyopro {\n\n/**\n * @brief Convex Hull Trick\n * @tparam query_type true\u306B\
     \u3059\u308B\u3068\u30AF\u30A8\u30EA\u3067\u6700\u5927\u5024\u3092\u6C42\u3081\
     \u308B\u3088\u3046\u306B\u5909\u66F4\u3059\u308B\n */\ntemplate <class T = long\
-    \ long, bool query_type = false>\nclass CHT {\n    class line {\n    public:\n\
+    \ long, bool query_type = false> class CHT {\n    class line {\n    public:\n\
     \        T a, b;\n        bool is_query;\n        mutable T nxt_a, nxt_b;\n  \
     \      mutable bool has_nxt;\n        T get(T x) const { return a * x + b; }\n\
     \        T get_nxt(T x) const { return nxt_a * x + nxt_b; }\n        line(T a,\
@@ -52,7 +52,7 @@ data:
   code: "#pragma once\n#include <set>\nnamespace kyopro {\n\n/**\n * @brief Convex\
     \ Hull Trick\n * @tparam query_type true\u306B\u3059\u308B\u3068\u30AF\u30A8\u30EA\
     \u3067\u6700\u5927\u5024\u3092\u6C42\u3081\u308B\u3088\u3046\u306B\u5909\u66F4\
-    \u3059\u308B\n */\ntemplate <class T = long long, bool query_type = false>\nclass\
+    \u3059\u308B\n */\ntemplate <class T = long long, bool query_type = false> class\
     \ CHT {\n    class line {\n    public:\n        T a, b;\n        bool is_query;\n\
     \        mutable T nxt_a, nxt_b;\n        mutable bool has_nxt;\n        T get(T\
     \ x) const { return a * x + b; }\n        T get_nxt(T x) const { return nxt_a\
@@ -89,7 +89,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/CHT.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
+  timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp

@@ -3,20 +3,20 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/math/matrix.md
     document_title: Matrix
     links: []
   bundledCode: "#line 2 \"src/math/matrix.hpp\"\n#include <cassert>\n#include <utility>\n\
     #include <vector>\nnamespace kyopro {\n\n/**\n * @brief Matrix\n */\ntemplate\
-    \ <typename T>\nclass Matrix {\n    std::vector<std::vector<T>> dat;\n    int\
-    \ h = 0, w = 0;\n\npublic:\n    constexpr Matrix(const std::vector<std::vector<T>>&\
+    \ <typename T> class Matrix {\n    std::vector<std::vector<T>> dat;\n    int h\
+    \ = 0, w = 0;\n\npublic:\n    constexpr Matrix(const std::vector<std::vector<T>>&\
     \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    constexpr\
     \ Matrix(int h_, int w_, T v = T())\n        : dat(h_, std::vector<T>(w_, v))\
     \ {}\n\n    using mat = Matrix<T>;\n    // access\n    constexpr std::vector<T>&\
@@ -38,14 +38,14 @@ data:
     \ return (*this);\n    }\n\n    constexpr mat operator+(const mat& r) { return\
     \ mat(*this) += r; }\n    constexpr mat operator-(const mat& r) { return mat(*this)\
     \ -= r; }\n    constexpr mat operator*(const mat& r) { return mat(*this) *= r;\
-    \ }\n\n    template <typename P>\n    constexpr mat pow(P e) const {\n       \
-    \ assert(e >= 0);\n        int n = dat.size();\n        mat res(n, n, 0);\n  \
-    \      mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i] = 1;\n\n\
-    \        while (e) {\n            if (e & 1) res *= pr;\n            pr *= pr;\n\
-    \n            e >>= 1;\n        }\n\n        return res;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n *  @docs docs/math/matrix.md\n */\n"
+    \ }\n\n    template <typename P> constexpr mat pow(P e) const {\n        assert(e\
+    \ >= 0);\n        int n = dat.size();\n        mat res(n, n, 0);\n        mat\
+    \ pr(*this);\n        for (int i = 0; i < n; i++) res[i][i] = 1;\n\n        while\
+    \ (e) {\n            if (e & 1) res *= pr;\n            pr *= pr;\n\n        \
+    \    e >>= 1;\n        }\n\n        return res;\n    }\n};\n};  // namespace kyopro\n\
+    \n/**\n *  @docs docs/math/matrix.md\n */\n"
   code: "#pragma once\n#include <cassert>\n#include <utility>\n#include <vector>\n\
-    namespace kyopro {\n\n/**\n * @brief Matrix\n */\ntemplate <typename T>\nclass\
+    namespace kyopro {\n\n/**\n * @brief Matrix\n */\ntemplate <typename T> class\
     \ Matrix {\n    std::vector<std::vector<T>> dat;\n    int h = 0, w = 0;\n\npublic:\n\
     \    constexpr Matrix(const std::vector<std::vector<T>>& dat)\n        : dat(dat),\
     \ h(dat.size()), w(dat.front().size()) {}\n\n    constexpr Matrix(int h_, int\
@@ -68,18 +68,18 @@ data:
     \        std::swap(res, dat);\n        return (*this);\n    }\n\n    constexpr\
     \ mat operator+(const mat& r) { return mat(*this) += r; }\n    constexpr mat operator-(const\
     \ mat& r) { return mat(*this) -= r; }\n    constexpr mat operator*(const mat&\
-    \ r) { return mat(*this) *= r; }\n\n    template <typename P>\n    constexpr mat\
-    \ pow(P e) const {\n        assert(e >= 0);\n        int n = dat.size();\n   \
-    \     mat res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n;\
-    \ i++) res[i][i] = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n\
-    \            pr *= pr;\n\n            e >>= 1;\n        }\n\n        return res;\n\
-    \    }\n};\n};  // namespace kyopro\n\n/**\n *  @docs docs/math/matrix.md\n */"
+    \ r) { return mat(*this) *= r; }\n\n    template <typename P> constexpr mat pow(P\
+    \ e) const {\n        assert(e >= 0);\n        int n = dat.size();\n        mat\
+    \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
+    \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
+    \ pr *= pr;\n\n            e >>= 1;\n        }\n\n        return res;\n    }\n\
+    };\n};  // namespace kyopro\n\n/**\n *  @docs docs/math/matrix.md\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/math/matrix.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-05-15 08:00:11+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
 documentation_of: src/math/matrix.hpp
