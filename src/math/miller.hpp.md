@@ -17,20 +17,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\phi$ \u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - icon: ':x:'
@@ -245,3 +245,19 @@ redirect_from:
 - /library/src/math/miller.hpp.html
 title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
 ---
+## 概要
+Miller Rabinの素数判定法を実装したものです.
+
+
+## is_prime
+```cpp
+bool kyopro::miller::is_prime(T n)
+```
+与えられた正の整数 $n$ が素数であるか(`true`/`false`)を返します.
+
+
+### 制約
+- $1 \leq n \lt 2^{64}$
+
+### 計算量
+- $O(\log n)$

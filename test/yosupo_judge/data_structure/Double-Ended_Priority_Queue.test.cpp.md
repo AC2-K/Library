@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/BST/Treap.hpp
     title: Treap
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
   - icon: ':question:'

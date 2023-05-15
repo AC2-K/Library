@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure-2d/RangeTree.hpp
     title: src/data-structure-2d/RangeTree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/segtree.hpp
     title: SegmentTree
   _extendedRequiredBy: []
