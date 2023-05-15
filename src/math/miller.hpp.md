@@ -186,9 +186,9 @@ data:
     \ bases_int[3] = {2, 7, 61};\n    static constexpr int bases_ll[7] = {2,     \
     \ 325,     9375,      28178,\n                                        450775,\
     \ 9780504, 1795265022};\n\npublic:\n    template <typename T>\n    static constexpr\
-    \ bool inline is_prime(T n) {\n        if (n < 2) {\n            return false;\n\
-    \        } else if (n == 2) {\n            return true;\n        } else if (~n\
-    \ & 1) {\n            return false;\n        };\n        if (std::numeric_limits<T>::digits\
+    \ bool is_prime(T n) {\n        if (n < 2) {\n            return false;\n    \
+    \    } else if (n == 2) {\n            return true;\n        } else if (~n & 1)\
+    \ {\n            return false;\n        };\n        if (std::numeric_limits<T>::digits\
     \ < 32 || n <= 1 << 30) {\n            return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
     \                                bases_int, 3>(n);\n        } else {\n       \
     \     return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n      \
@@ -210,15 +210,15 @@ data:
     \    // \u5E95\n    static constexpr int bases_int[3] = {2, 7, 61};\n    static\
     \ constexpr int bases_ll[7] = {2,      325,     9375,      28178,\n          \
     \                              450775, 9780504, 1795265022};\n\npublic:\n    template\
-    \ <typename T>\n    static constexpr bool inline is_prime(T n) {\n        if (n\
-    \ < 2) {\n            return false;\n        } else if (n == 2) {\n          \
-    \  return true;\n        } else if (~n & 1) {\n            return false;\n   \
-    \     };\n        if (std::numeric_limits<T>::digits < 32 || n <= 1 << 30) {\n\
-    \            return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
-    \                                bases_int, 3>(n);\n        } else {\n       \
-    \     return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n      \
-    \                          bases_ll, 7>(n);\n        }\n        return false;\n\
-    \    }\n};  // namespace miller\n};  // namespace kyopro\n"
+    \ <typename T>\n    static constexpr bool is_prime(T n) {\n        if (n < 2)\
+    \ {\n            return false;\n        } else if (n == 2) {\n            return\
+    \ true;\n        } else if (~n & 1) {\n            return false;\n        };\n\
+    \        if (std::numeric_limits<T>::digits < 32 || n <= 1 << 30) {\n        \
+    \    return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n       \
+    \                         bases_int, 3>(n);\n        } else {\n            return\
+    \ miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n                 \
+    \               bases_ll, 7>(n);\n        }\n        return false;\n    }\n};\
+    \  // namespace miller\n};  // namespace kyopro\n"
   dependsOn:
   - src/math/dynamic_modint.hpp
   - src/internal/barrett.hpp
@@ -230,7 +230,7 @@ data:
   - src/math/rho.hpp
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-05-15 05:34:08+00:00'
+  timestamp: '2023-05-15 06:22:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp

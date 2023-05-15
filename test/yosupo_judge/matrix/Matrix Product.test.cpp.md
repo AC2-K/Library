@@ -71,9 +71,9 @@ data:
     \ kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate\
     \ <__uint64_t mod>\nclass static_modint {\nprivate:\n    using mint = static_modint<mod>;\n\
     \    using i64 = long long;\n    using u64 = unsigned long long;\n    using u128\
-    \ = __uint128_t;\n    using i128 = __int128_t;\n\n    u64 v;\n    constexpr inline\
-    \ u64 normalize(i64 v_) const {\n        v_ %= mod;\n        if (v_ < 0) {\n \
-    \           v_ += mod;\n        }\n        return v_;\n    }\n\npublic:\n    constexpr\
+    \ = __uint128_t;\n    using i128 = __int128_t;\n\n    u64 v;\n    constexpr u64\
+    \ normalize(i64 v_) const {\n        v_ %= mod;\n        if (v_ < 0) {\n     \
+    \       v_ += mod;\n        }\n        return v_;\n    }\n\npublic:\n    constexpr\
     \ static_modint() : v(0) {}\n    constexpr static_modint(i64 v_) : v(normalize(v_))\
     \ {}\n\n    // operator\n    constexpr u64 val() const { return v; }\n    constexpr\
     \ mint& operator+=(const mint& rhs) {\n        v += rhs.val();\n        if (v\
@@ -101,9 +101,9 @@ data:
     \ constexpr mint pow(T e) const {\n        mint ans(1), base(*this);\n       \
     \ while (e) {\n            if (e & 1) {\n                ans *= base;\n      \
     \      }\n            base *= base;\n            e >>= 1;\n        }\n       \
-    \ return ans;\n    }\n    constexpr inline mint inv() const {\n        long long\
-    \ x, y;\n        auto d = ext_gcd((long long)mod, (long long)v, x, y);\n     \
-    \   assert(d == 1);\n        return mint(y);\n    }\n\n    constexpr mint& operator/=(const\
+    \ return ans;\n    }\n    constexpr mint inv() const {\n        long long x, y;\n\
+    \        auto d = ext_gcd((long long)mod, (long long)v, x, y);\n        assert(d\
+    \ == 1);\n        return mint(y);\n    }\n\n    constexpr mint& operator/=(const\
     \ mint& r) { return (*this) *= r.inv(); }\n    constexpr mint inv(const mint&\
     \ r) const { return mint(*this) *= r.inv(); }\n    constexpr friend mint operator/(const\
     \ mint& l, i64 r) {\n        return mint(l) /= mint(r);\n    }\n    constexpr\
@@ -115,8 +115,8 @@ data:
     \        mt = v_;\n        return is;\n    }\n};\ntemplate <__uint32_t mod>\n\
     class static_modint32 {\nprivate:\n    using mint = static_modint32<mod>;\n  \
     \  using i32 = __int32_t;\n    using u32 = __uint32_t;\n    using i64 = __int64_t;\n\
-    \    using u64 = __uint64_t;\n\n    u32 v;\n    constexpr inline u32 normalize(i64\
-    \ v_) const {\n        v_ %= mod;\n        if (v_ < 0) {\n            v_ += mod;\n\
+    \    using u64 = __uint64_t;\n\n    u32 v;\n    constexpr u32 normalize(i64 v_)\
+    \ const {\n        v_ %= mod;\n        if (v_ < 0) {\n            v_ += mod;\n\
     \        }\n        return v_;\n    }\n\npublic:\n    constexpr static_modint32()\
     \ : v(0) {}\n    constexpr static_modint32(const i64& v_) : v(normalize(v_)) {}\n\
     \n    // operator\n    static mint raw(u32 a) {\n        mint m;\n        m.v\
@@ -146,37 +146,36 @@ data:
     \ <typename T>\n    constexpr mint pow(T e) const {\n        mint ans(1), base(*this);\n\
     \        while (e) {\n            if (e & 1) {\n                ans *= base;\n\
     \            }\n            base *= base;\n            e >>= 1;\n        }\n \
-    \       return ans;\n    }\n\n    constexpr inline mint inv() const {\n      \
-    \  long long x, y;\n        auto d = ext_gcd((long long)mod, (long long)v, x,\
-    \ y);\n        assert(d == 1);\n        return mint(y);\n    }\n\n    constexpr\
-    \ mint& operator/=(const mint& r) { return (*this) *= r.inv(); }\n    constexpr\
-    \ mint operator/(const mint& r) const {\n        return mint(*this) *= r.inv();\n\
-    \    }\n    constexpr friend mint operator/(const mint& l, i64 r) {\n        return\
-    \ mint(l) /= mint(r);\n    }\n    constexpr friend mint operator/(i64 l, const\
-    \ mint& r) {\n        return mint(l) /= mint(r);\n    }\n\n    // stream\n   \
-    \ constexpr friend std::ostream& operator<<(std::ostream& os,\n              \
-    \                                const mint& mt) {\n        os << mt.val();\n\
-    \        return os;\n    }\n    constexpr friend std::istream& operator>>(std::istream&\
-    \ is, mint& mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n    \
-    \    return is;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief \u9759\u7684\
-    modint\n * @docs docs/math/static_modint.md\n */\n#line 2 \"src/stream.hpp\"\n\
-    #include <stdio.h>\n#include <ctype.h>\nnamespace kyopro {\ntemplate <typename\
-    \ T>\nconstexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative\
-    \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
-    \   c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c =\
-    \ getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
-    \        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n}\ntemplate\
-    \ <typename Head, typename... Tail>\nconstexpr inline void readint(Head& head,\
-    \ Tail&... tail) {\n    readint(head);\n    readint(tail...);\n}\ntemplate <typename\
-    \ T>\nconstexpr inline void putint(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
-    \        putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
-    \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
-    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
-    \   putint(tail...);\n}\n\n};  // namespace kyopro\n\n\n/**\n * @brief \u5165\u51FA\
-    \u529B\n*/\n#line 6 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#pragma\
-    \ GCC optimize(\"unroll-loops\")\n\nusing mint = kyopro::static_modint32<998244353>;\n\
+    \       return ans;\n    }\n\n    constexpr mint inv() const {\n        long long\
+    \ x, y;\n        auto d = ext_gcd((long long)mod, (long long)v, x, y);\n     \
+    \   assert(d == 1);\n        return mint(y);\n    }\n\n    constexpr mint& operator/=(const\
+    \ mint& r) { return (*this) *= r.inv(); }\n    constexpr mint operator/(const\
+    \ mint& r) const {\n        return mint(*this) *= r.inv();\n    }\n    constexpr\
+    \ friend mint operator/(const mint& l, i64 r) {\n        return mint(l) /= mint(r);\n\
+    \    }\n    constexpr friend mint operator/(i64 l, const mint& r) {\n        return\
+    \ mint(l) /= mint(r);\n    }\n\n    // stream\n    constexpr friend std::ostream&\
+    \ operator<<(std::ostream& os,\n                                             \
+    \ const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    constexpr\
+    \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
+    \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
+    \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
+    \ */\n#line 2 \"src/stream.hpp\"\n#include <stdio.h>\n#include <ctype.h>\nnamespace\
+    \ kyopro {\ntemplate <typename T>\nconstexpr inline void readint(T& a) {\n   \
+    \ a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n  \
+    \  while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
+    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
+    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
+    \ if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
+    \ inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n\
+    }\ntemplate <typename T>\nconstexpr inline void putint(T a) {\n    if (!a) {\n\
+    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
+    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
+    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
+    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
+    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
+    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n};  //\
+    \ namespace kyopro\n\n\n/**\n * @brief \u5165\u51FA\u529B\n*/\n#line 6 \"test/yosupo_judge/matrix/Matrix\
+    \ Product.test.cpp\"\n#pragma GCC optimize(\"unroll-loops\")\n\nusing mint = kyopro::static_modint32<998244353>;\n\
     int main() {\n    int n, m, k;\n    kyopro::readint(n, m, k);\n    kyopro::Matrix<mint>\
     \ a(n, m), b(m, k);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0;\
     \ j < m; j++) {\n            kyopro::readint(a[i][j]);\n        }\n    }\n   \
@@ -203,7 +202,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-05-08 03:51:35+00:00'
+  timestamp: '2023-05-15 06:22:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
