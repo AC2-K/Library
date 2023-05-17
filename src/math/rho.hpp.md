@@ -225,70 +225,86 @@ data:
     \nnamespace kyopro {\n\n/**\n * @brief Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\
     \u6CD5\n */\nclass rho {\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
     \    using u64 = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename\
-    \ mint> static u64 find_factor(u64 n) {\n        xor_shift32 rng(2023);\n\n  \
-    \      if (~n & 1uL) {\n            return 2;\n        }\n        if (kyopro::miller::is_prime(n))\
-    \ {\n            return n;\n        }\n\n        if (mint::get_mod() != n) {\n\
-    \            mint::set_mod(n);\n        }\n        while (1) {\n            u64\
-    \ c = rng();\n            const auto f = [&](mint x) -> mint { return x * x +\
-    \ c; };\n            mint x = rng();\n            mint y = f(x);\n           \
-    \ u64 d = 1;\n            while (d == 1) {\n                d = _gcd<long long>(\n\
-    \                    std::abs((long long)x.val() - (long long)y.val()), n);\n\
-    \                x = f(x);\n                y = f(f(y));\n            }\n    \
-    \        if (1 < d && d < n) {\n                return d;\n            }\n   \
-    \     }\n        exit(0);\n    }\n    template <typename mint> static std::vector<u64>\
-    \ rho_fact(u64 n) {\n        if (n < 2) {\n            return {};\n        }\n\
-    \        if (kyopro::miller::is_prime(n)) {\n            return {n};\n       \
-    \ }\n        std::vector<u64> v;\n        std::vector<u64> st{n};\n        while\
-    \ (st.size()) {\n            u64& m = st.back();\n            if (kyopro::miller::is_prime(m))\
-    \ {\n                v.emplace_back(m);\n                st.pop_back();\n    \
-    \        } else {\n                u64 d = find_factor<mint>(m);\n           \
-    \     m /= d;\n                st.emplace_back(d);\n            }\n        }\n\
-    \        return v;\n    }\n\npublic:\n    static std::vector<u64> factorize(u64\
-    \ n) {\n        if (n < 2) {\n            return {};\n        }\n        auto\
-    \ v = (n < (1uL << 31) ? rho_fact<dynamic_modint<u32>>(n)\n                  \
-    \                : rho_fact<dynamic_modint<u64>>(n));\n        std::sort(v.begin(),\
-    \ v.end());\n        return v;\n    }\n\n    static std::vector<std::pair<u64,\
-    \ int>> exp_factorize(u64 n) {\n        std::vector<u64> pf = factorize(n);\n\
-    \        if (pf.empty()) {\n            return {};\n        }\n        std::vector<std::pair<u64,\
-    \ int>> res;\n        res.emplace_back(pf.front(), 1);\n        for (int i = 1;\
-    \ i < (int)pf.size(); i++) {\n            if (res.back().first == pf[i]) {\n \
-    \               res.back().second++;\n            } else {\n                res.emplace_back(pf[i],\
-    \ 1);\n            }\n        }\n\n        return res;\n    }\n};\n};  // namespace\
+    \ T, typename mint> static constexpr T find_factor(T n) {\n        xor_shift32\
+    \ rng(2023);\n        if (~n & 1uL) {\n            return 2;\n        }\n    \
+    \    if (kyopro::miller::is_prime(n)) {\n            return n;\n        }\n\n\
+    \        if (mint::get_mod() != n) {\n            mint::set_mod(n);\n        }\n\
+    \        while (1) {\n            u64 c = rng();\n            const auto f = [&](mint\
+    \ x) -> mint { return x * x + c; };\n            mint x = rng();\n           \
+    \ mint y = f(x);\n            u64 d = 1;\n            while (d == 1) {\n     \
+    \           d = _gcd<long long>(\n                    std::abs((long long)x.val()\
+    \ - (long long)y.val()), n);\n                x = f(x);\n                y = f(f(y));\n\
+    \            }\n            if (1 < d && d < n) {\n                return d;\n\
+    \            }\n        }\n        exit(0);\n    }\n    template <typename T,\
+    \ typename mint>\n    static const std::vector<T> rho_fact(T n) {\n        if\
+    \ (n < 2) {\n            return {};\n        }\n        if (kyopro::miller::is_prime(n))\
+    \ {\n            return {n};\n        }\n        std::vector<T> v;\n        std::vector<T>\
+    \ st{n};\n        while (!st.empty()) {\n            T& m = st.back();\n     \
+    \       if (kyopro::miller::is_prime(m)) {\n                v.emplace_back(m);\n\
+    \                st.pop_back();\n            } else {\n                T d = find_factor<T,\
+    \ mint>(m);\n                m /= d;\n                st.emplace_back(d);\n  \
+    \          }\n        }\n        return v;\n    }\n\npublic:\n    template <typename\
+    \ T> static const std::vector<T> factorize(T n) {\n        if (n < 2) {\n    \
+    \        return {};\n        }\n        auto v = (std::numeric_limits<T>::digits\
+    \ <= 32\n                      ? rho_fact<T, dynamic_modint<u32>>(n)\n       \
+    \               : rho_fact<T, dynamic_modint<u64>>(n));\n        std::sort(v.begin(),\
+    \ v.end());\n        return v;\n    }\n\n    template <typename T>\n    static\
+    \ const std::vector<std::pair<T, int>> exp_factorize(T n) {\n        std::vector<T>\
+    \ pf = factorize(n);\n        if (pf.empty()) {\n            return {};\n    \
+    \    }\n        std::vector<std::pair<T, int>> res;\n        res.emplace_back(pf.front(),\
+    \ 1);\n        for (int i = 1; i < (int)pf.size(); i++) {\n            if (res.back().first\
+    \ == pf[i]) {\n                res.back().second++;\n            } else {\n  \
+    \              res.emplace_back(pf[i], 1);\n            }\n        }\n\n     \
+    \   return res;\n    }\n\n    template <typename T> static std::vector<u64> enumerate_divisor(T\
+    \ n) {\n        std::vector<std::pair<T, int>> pf = rho::exp_factorize(n);\n \
+    \       std::vector<T> divisor{1};\n        for (auto [p, e] : pf) {\n       \
+    \     T pow = p;\n            int sz = divisor.size();\n            for (int i\
+    \ = 0; i < e; ++i) {\n                for (int j = 0; j < sz; ++j)\n         \
+    \           divisor.emplace_back(divisor[j] * pow);\n                pow *= p;\n\
+    \            }\n        }\n\n        return divisor;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @docs docs/math/rho.md\n */\n"
   code: "#pragma once\n#include <algorithm>\n#include <vector>\n#include \"../math/gcd.hpp\"\
     \n#include \"../math/miller.hpp\"\n#include \"../random/xor_shift.hpp\"\nnamespace\
     \ kyopro {\n\n/**\n * @brief Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5\n\
     \ */\nclass rho {\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
     \    using u64 = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename\
-    \ mint> static u64 find_factor(u64 n) {\n        xor_shift32 rng(2023);\n\n  \
-    \      if (~n & 1uL) {\n            return 2;\n        }\n        if (kyopro::miller::is_prime(n))\
-    \ {\n            return n;\n        }\n\n        if (mint::get_mod() != n) {\n\
-    \            mint::set_mod(n);\n        }\n        while (1) {\n            u64\
-    \ c = rng();\n            const auto f = [&](mint x) -> mint { return x * x +\
-    \ c; };\n            mint x = rng();\n            mint y = f(x);\n           \
-    \ u64 d = 1;\n            while (d == 1) {\n                d = _gcd<long long>(\n\
-    \                    std::abs((long long)x.val() - (long long)y.val()), n);\n\
-    \                x = f(x);\n                y = f(f(y));\n            }\n    \
-    \        if (1 < d && d < n) {\n                return d;\n            }\n   \
-    \     }\n        exit(0);\n    }\n    template <typename mint> static std::vector<u64>\
-    \ rho_fact(u64 n) {\n        if (n < 2) {\n            return {};\n        }\n\
-    \        if (kyopro::miller::is_prime(n)) {\n            return {n};\n       \
-    \ }\n        std::vector<u64> v;\n        std::vector<u64> st{n};\n        while\
-    \ (st.size()) {\n            u64& m = st.back();\n            if (kyopro::miller::is_prime(m))\
-    \ {\n                v.emplace_back(m);\n                st.pop_back();\n    \
-    \        } else {\n                u64 d = find_factor<mint>(m);\n           \
-    \     m /= d;\n                st.emplace_back(d);\n            }\n        }\n\
-    \        return v;\n    }\n\npublic:\n    static std::vector<u64> factorize(u64\
-    \ n) {\n        if (n < 2) {\n            return {};\n        }\n        auto\
-    \ v = (n < (1uL << 31) ? rho_fact<dynamic_modint<u32>>(n)\n                  \
-    \                : rho_fact<dynamic_modint<u64>>(n));\n        std::sort(v.begin(),\
-    \ v.end());\n        return v;\n    }\n\n    static std::vector<std::pair<u64,\
-    \ int>> exp_factorize(u64 n) {\n        std::vector<u64> pf = factorize(n);\n\
-    \        if (pf.empty()) {\n            return {};\n        }\n        std::vector<std::pair<u64,\
-    \ int>> res;\n        res.emplace_back(pf.front(), 1);\n        for (int i = 1;\
-    \ i < (int)pf.size(); i++) {\n            if (res.back().first == pf[i]) {\n \
-    \               res.back().second++;\n            } else {\n                res.emplace_back(pf[i],\
-    \ 1);\n            }\n        }\n\n        return res;\n    }\n};\n};  // namespace\
+    \ T, typename mint> static constexpr T find_factor(T n) {\n        xor_shift32\
+    \ rng(2023);\n        if (~n & 1uL) {\n            return 2;\n        }\n    \
+    \    if (kyopro::miller::is_prime(n)) {\n            return n;\n        }\n\n\
+    \        if (mint::get_mod() != n) {\n            mint::set_mod(n);\n        }\n\
+    \        while (1) {\n            u64 c = rng();\n            const auto f = [&](mint\
+    \ x) -> mint { return x * x + c; };\n            mint x = rng();\n           \
+    \ mint y = f(x);\n            u64 d = 1;\n            while (d == 1) {\n     \
+    \           d = _gcd<long long>(\n                    std::abs((long long)x.val()\
+    \ - (long long)y.val()), n);\n                x = f(x);\n                y = f(f(y));\n\
+    \            }\n            if (1 < d && d < n) {\n                return d;\n\
+    \            }\n        }\n        exit(0);\n    }\n    template <typename T,\
+    \ typename mint>\n    static const std::vector<T> rho_fact(T n) {\n        if\
+    \ (n < 2) {\n            return {};\n        }\n        if (kyopro::miller::is_prime(n))\
+    \ {\n            return {n};\n        }\n        std::vector<T> v;\n        std::vector<T>\
+    \ st{n};\n        while (!st.empty()) {\n            T& m = st.back();\n     \
+    \       if (kyopro::miller::is_prime(m)) {\n                v.emplace_back(m);\n\
+    \                st.pop_back();\n            } else {\n                T d = find_factor<T,\
+    \ mint>(m);\n                m /= d;\n                st.emplace_back(d);\n  \
+    \          }\n        }\n        return v;\n    }\n\npublic:\n    template <typename\
+    \ T> static const std::vector<T> factorize(T n) {\n        if (n < 2) {\n    \
+    \        return {};\n        }\n        auto v = (std::numeric_limits<T>::digits\
+    \ <= 32\n                      ? rho_fact<T, dynamic_modint<u32>>(n)\n       \
+    \               : rho_fact<T, dynamic_modint<u64>>(n));\n        std::sort(v.begin(),\
+    \ v.end());\n        return v;\n    }\n\n    template <typename T>\n    static\
+    \ const std::vector<std::pair<T, int>> exp_factorize(T n) {\n        std::vector<T>\
+    \ pf = factorize(n);\n        if (pf.empty()) {\n            return {};\n    \
+    \    }\n        std::vector<std::pair<T, int>> res;\n        res.emplace_back(pf.front(),\
+    \ 1);\n        for (int i = 1; i < (int)pf.size(); i++) {\n            if (res.back().first\
+    \ == pf[i]) {\n                res.back().second++;\n            } else {\n  \
+    \              res.emplace_back(pf[i], 1);\n            }\n        }\n\n     \
+    \   return res;\n    }\n\n    template <typename T> static std::vector<u64> enumerate_divisor(T\
+    \ n) {\n        std::vector<std::pair<T, int>> pf = rho::exp_factorize(n);\n \
+    \       std::vector<T> divisor{1};\n        for (auto [p, e] : pf) {\n       \
+    \     T pow = p;\n            int sz = divisor.size();\n            for (int i\
+    \ = 0; i < e; ++i) {\n                for (int j = 0; j < sz; ++j)\n         \
+    \           divisor.emplace_back(divisor[j] * pow);\n                pow *= p;\n\
+    \            }\n        }\n\n        return divisor;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @docs docs/math/rho.md\n */"
   dependsOn:
   - src/math/gcd.hpp
@@ -303,7 +319,7 @@ data:
   requiredBy:
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-05-17 01:24:05+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp
