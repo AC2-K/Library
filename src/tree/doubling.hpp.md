@@ -220,7 +220,7 @@ int depth(int v)
 ## unweighted_dist
 
 ```cpp
-int unweighted_dist(int u,int v)
+long long unweighted_dist(int u,int v)
 ```
 
 頂点 $u,v$ の距離を返します.ここでの「距離」は**重み無し**です.
@@ -274,4 +274,4 @@ $$p=(p_0=\mathtt{from},p_1,p_2,\dots,p_{\vert p\vert-1}=\mathtt{to})$$
 
 ### 計算量
 
-- $O(\log n)$
+- $O(\log k)$
