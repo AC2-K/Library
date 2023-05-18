@@ -1,5 +1,6 @@
 #pragma once
 #include <cassert>
+#include <algorithm>
 #include "../internal/barrett.hpp"
 namespace kyopro {
 template <int MAX> class dynamic_combination {
@@ -86,5 +87,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief 二項係数など
+ * @brief 二項係数
  */

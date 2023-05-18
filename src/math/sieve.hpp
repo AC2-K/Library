@@ -4,14 +4,14 @@ namespace kyopro {
 
 /**
  * @brief エラトステネスの篩
- * @tparam ALLOC 確保しておくサイズ
+ * @tparam MAX 確保しておくサイズ
  */
-template <int ALLOC> class sieve {
-    std::bitset<ALLOC + 1> isp;
+template <int MAX> class sieve {
+    std::bitset<MAX + 1> isp;
     std::vector<int> prime_v;
 
 public:
-    constexpr sieve() : sieve(ALLOC) {}
+    constexpr sieve() : sieve(MAX) {}
     constexpr sieve(int n) {
         isp.flip();
         isp[0] = isp[1] = 0;

@@ -97,6 +97,22 @@ public:
 
         return res;
     }
+
+    static std::vector<u64> enumerate_divisor(u64 n) {
+        std::vector<std::pair<u64, int>> pf = rho::exp_factorize(n);
+        std::vector<u64> divisor{1};
+        for (auto [p, e] : pf) {
+            u64 pow = p;
+            int sz = divisor.size();
+            for (int i = 0; i < e; ++i) {
+                for (int j = 0; j < sz; ++j)
+                    divisor.emplace_back(divisor[j] * pow);
+                pow *= p;
+            }
+        }
+
+        return divisor;
+    }
 };
 };  // namespace kyopro
 
