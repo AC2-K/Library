@@ -247,7 +247,13 @@ data:
     \ int>> res;\n        res.emplace_back(pf.front(), 1);\n        for (int i = 1;\
     \ i < (int)pf.size(); i++) {\n            if (res.back().first == pf[i]) {\n \
     \               res.back().second++;\n            } else {\n                res.emplace_back(pf[i],\
-    \ 1);\n            }\n        }\n\n        return res;\n    }\n};\n};  // namespace\
+    \ 1);\n            }\n        }\n\n        return res;\n    }\n\n    static std::vector<u64>\
+    \ enumerate_divisor(u64 n) {\n        std::vector<std::pair<u64, int>> pf = rho::exp_factorize(n);\n\
+    \        std::vector<u64> divisor{1};\n        for (auto [p, e] : pf) {\n    \
+    \        u64 pow = p;\n            int sz = divisor.size();\n            for (int\
+    \ i = 0; i < e; ++i) {\n                for (int j = 0; j < sz; ++j)\n       \
+    \             divisor.emplace_back(divisor[j] * pow);\n                pow *=\
+    \ p;\n            }\n        }\n\n        return divisor;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @docs docs/math/rho.md\n */\n#line 2 \"src/stream.hpp\"\n\
     #include <ctype.h>\n#include <stdio.h>\nnamespace kyopro {\ntemplate <typename\
     \ T> constexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative =\
@@ -288,7 +294,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-05-18 18:16:01+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Factorize.test.cpp

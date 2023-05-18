@@ -253,7 +253,13 @@ data:
     \ int>> res;\n        res.emplace_back(pf.front(), 1);\n        for (int i = 1;\
     \ i < (int)pf.size(); i++) {\n            if (res.back().first == pf[i]) {\n \
     \               res.back().second++;\n            } else {\n                res.emplace_back(pf[i],\
-    \ 1);\n            }\n        }\n\n        return res;\n    }\n};\n};  // namespace\
+    \ 1);\n            }\n        }\n\n        return res;\n    }\n\n    static std::vector<u64>\
+    \ enumerate_divisor(u64 n) {\n        std::vector<std::pair<u64, int>> pf = rho::exp_factorize(n);\n\
+    \        std::vector<u64> divisor{1};\n        for (auto [p, e] : pf) {\n    \
+    \        u64 pow = p;\n            int sz = divisor.size();\n            for (int\
+    \ i = 0; i < e; ++i) {\n                for (int j = 0; j < sz; ++j)\n       \
+    \             divisor.emplace_back(divisor[j] * pow);\n                pow *=\
+    \ p;\n            }\n        }\n\n        return divisor;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @docs docs/math/rho.md\n */\n"
   code: "#pragma once\n#include <algorithm>\n#include <vector>\n#include \"../math/gcd.hpp\"\
     \n#include \"../math/miller.hpp\"\n#include \"../random/xor_shift.hpp\"\nnamespace\
@@ -288,7 +294,13 @@ data:
     \ int>> res;\n        res.emplace_back(pf.front(), 1);\n        for (int i = 1;\
     \ i < (int)pf.size(); i++) {\n            if (res.back().first == pf[i]) {\n \
     \               res.back().second++;\n            } else {\n                res.emplace_back(pf[i],\
-    \ 1);\n            }\n        }\n\n        return res;\n    }\n};\n};  // namespace\
+    \ 1);\n            }\n        }\n\n        return res;\n    }\n\n    static std::vector<u64>\
+    \ enumerate_divisor(u64 n) {\n        std::vector<std::pair<u64, int>> pf = rho::exp_factorize(n);\n\
+    \        std::vector<u64> divisor{1};\n        for (auto [p, e] : pf) {\n    \
+    \        u64 pow = p;\n            int sz = divisor.size();\n            for (int\
+    \ i = 0; i < e; ++i) {\n                for (int j = 0; j < sz; ++j)\n       \
+    \             divisor.emplace_back(divisor[j] * pow);\n                pow *=\
+    \ p;\n            }\n        }\n\n        return divisor;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @docs docs/math/rho.md\n */"
   dependsOn:
   - src/math/gcd.hpp
@@ -303,7 +315,7 @@ data:
   requiredBy:
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-05-18 18:16:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp
