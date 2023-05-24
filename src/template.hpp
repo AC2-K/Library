@@ -16,9 +16,9 @@ constexpr uint64_t MOD = 1e9 + 7;
 constexpr uint64_t MOD2 = 998244353;
 constexpr int dx[] = {1, 0, -1, 0};
 constexpr int dy[] = {0, 1, 0, -1};
-template <class T> constexpr inline void chmax(T& x, T y) {
-    if (x < y) x = y;
+template <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {
+    return a < b && (a = b, true);
 }
-template <class T> constexpr inline void chmin(T& x, T y) {
-    if (x > y) x = y;
+template <typename T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {
+    return a > b && (a = b, true);
 }

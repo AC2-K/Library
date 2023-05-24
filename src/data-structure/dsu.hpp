@@ -8,10 +8,10 @@ namespace kyopro {
  */
 class dsu {
 private:
-    std::vector<int> find, rank;
+    std::vector<int> find;
 
 public:
-    dsu(int n) : find(n, -1), rank(n, 1) {}
+    dsu(int n) : find(n, -1) {}
 
     int root(int x) {
         if (find[x] < 0) {
@@ -24,8 +24,7 @@ public:
     int merge(int x, int y) {
         x = root(x), y = root(y);
         if (x == y) return x;
-        if (rank[x] < rank[y]) std::swap(x, y);
-        if (rank[x] == rank[y]) rank[x]++;
+        if (find[x] > find[y]) std::swap(x, y);
         find[x] += find[y];
         find[y] = x;
         return x;
