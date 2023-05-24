@@ -173,9 +173,10 @@ data:
     \ int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\nconst long\
     \ double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t\
     \ MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0};\nconstexpr int dy[] =\
-    \ {0, 1, 0, -1};\ntemplate <class T> constexpr inline void chmax(T& x, T y) {\n\
-    \    if (x < y) x = y;\n}\ntemplate <class T> constexpr inline void chmin(T& x,\
-    \ T y) {\n    if (x > y) x = y;\n}\n#line 7 \"test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\
+    \ {0, 1, 0, -1};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
+    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
+    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
+    \ true);\n}\n#line 7 \"test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\
     \nusing mint = kyopro::static_modint32<MOD2>;\nusing Affine = std::pair<mint,\
     \ mint>;\nconstexpr inline Affine op(const Affine& g, const Affine& f) {\n   \
     \ auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n    return\
@@ -210,7 +211,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-05-24 09:26:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp

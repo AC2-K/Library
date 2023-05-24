@@ -20,17 +20,16 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/UnionFind.test.cpp\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#line 2 \"src/data-structure/dsu.hpp\"\
     \n#include <utility>\n#include <vector>\nnamespace kyopro {\n\n/**\n * @brief\
-    \ Disjoint Set(Union Find)\n */\nclass dsu {\nprivate:\n    std::vector<int> find,\
-    \ rank;\n\npublic:\n    dsu(int n) : find(n, -1), rank(n, 1) {}\n\n    int root(int\
-    \ x) {\n        if (find[x] < 0) {\n            return x;\n        } else {\n\
-    \            return find[x] = root(find[x]);\n        }\n    }\n    bool same(int\
-    \ x, int y) { return root(x) == root(y); }\n    int merge(int x, int y) {\n  \
-    \      x = root(x), y = root(y);\n        if (x == y) return x;\n        if (rank[x]\
-    \ < rank[y]) std::swap(x, y);\n        if (rank[x] == rank[y]) rank[x]++;\n  \
-    \      find[x] += find[y];\n        find[y] = x;\n        return x;\n    }\n \
-    \   int size(int x) { return -find[root(x)]; }\n};\n\n};  // namespace kyopro\n\
-    \n/**\n * @docs docs/data-structure/dsu.md\n */\n#line 2 \"src/stream.hpp\"\n\
-    #include <ctype.h>\n#include <stdio.h>\nnamespace kyopro {\ntemplate <typename\
+    \ Disjoint Set(Union Find)\n */\nclass dsu {\nprivate:\n    std::vector<int> find;\n\
+    \npublic:\n    dsu(int n) : find(n, -1) {}\n\n    int root(int x) {\n        if\
+    \ (find[x] < 0) {\n            return x;\n        } else {\n            return\
+    \ find[x] = root(find[x]);\n        }\n    }\n    bool same(int x, int y) { return\
+    \ root(x) == root(y); }\n    int merge(int x, int y) {\n        x = root(x), y\
+    \ = root(y);\n        if (x == y) return x;\n        if (find[x] > find[y]) std::swap(x,\
+    \ y);\n        find[x] += find[y];\n        find[y] = x;\n        return x;\n\
+    \    }\n    int size(int x) { return -find[root(x)]; }\n};\n\n};  // namespace\
+    \ kyopro\n\n/**\n * @docs docs/data-structure/dsu.md\n */\n#line 2 \"src/stream.hpp\"\
+    \n#include <ctype.h>\n#include <stdio.h>\nnamespace kyopro {\ntemplate <typename\
     \ T> constexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative =\
     \ false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n       \
     \ c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n\
@@ -64,7 +63,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-05-24 09:26:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/UnionFind.test.cpp
