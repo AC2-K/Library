@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u5165\u51FA\u529B"
-  - icon: ':heavy_check_mark:'
+    title: fastIO
+  - icon: ':x:'
     path: src/tree/doubling.hpp
     title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -19,38 +19,48 @@ data:
     - https://judge.yosupo.jp/problem/lca
   bundledCode: "#line 1 \"test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n#line 2 \"src/stream.hpp\"\
-    \n#include <ctype.h>\n#include <stdio.h>\nnamespace kyopro {\ntemplate <typename\
+    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\nnamespace kyopro\
+    \ {\n\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate <typename\
     \ T> constexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative =\
     \ false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n       \
     \ c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n\
     \    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
     \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename...\
     \ Tail>\nconstexpr inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n\
-    \    readint(tail...);\n}\ntemplate <typename T> constexpr inline void putint(T\
-    \ a) {\n    if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\\
-    n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n\
-    \    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now] = (char)'0'\
-    \ + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
-    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
-    \   putint(tail...);\n}\n\n};  // namespace kyopro\n\n/**\n * @brief \u5165\u51FA\
-    \u529B\n */\n#line 2 \"src/tree/doubling.hpp\"\n#include <cassert>\n#include <vector>\n\
-    \n/**\n * @brief \u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0\n */\nnamespace kyopro\
-    \ {\nclass doubling {\n    struct edge {\n        const int to;\n        const\
-    \ int cost;\n        edge() = default;\n        constexpr explicit edge(int to,\
-    \ int cost) : to(to), cost(cost) {}\n    };\n    const int n;\n    static constexpr\
-    \ int lg = 21;\n    std::vector<std::vector<edge>> g;\n    std::vector<int> parent[lg];\n\
-    \    std::vector<long long> _dist;\n    std::vector<int> _depth;\n\npublic:\n\
-    \    explicit doubling(int n) : n(n), g(n), _dist(n, -1), _depth(n) {\n      \
-    \  std::fill(parent, parent + lg, std::vector<int>(n));\n    }\n    void add_edge(int\
-    \ a, int b, int c = 1) {\n        g[a].emplace_back(b, 1);\n        g[b].emplace_back(a,\
-    \ 1);\n    }\n    void build(int root = 0) {\n        std::vector<int> st;\n \
-    \       st.reserve(n);\n\n        st.emplace_back(root);\n        _dist[root]\
-    \ = 0, _depth[root] = 0, parent[0][root] = root;\n        while (!st.empty())\
-    \ {\n            int v = st.back();\n            st.pop_back();\n\n          \
-    \  for (auto [nv, c] : g[v]) {\n                if (_dist[nv] != -1) continue;\n\
-    \                _dist[nv] = _dist[v] + c;\n                _depth[nv] = _depth[v]\
-    \ + 1;\n                parent[0][nv] = v;\n\n                st.emplace_back(nv);\n\
+    \    readint(tail...);\n}\n\ntemplate <typename T> void write_int(T a) {\n   \
+    \ if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n\
+    \        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char\
+    \ s[37];\n    int now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a\
+    \ % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
+    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
+    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
+    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
+    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
+    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
+    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
+    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
+    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
+    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
+    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
+    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/tree/doubling.hpp\"\
+    \n#include <cassert>\n#include <vector>\n\n/**\n * @brief \u6728\u306E\u30C0\u30D6\
+    \u30EA\u30F3\u30B0\n */\nnamespace kyopro {\nclass doubling {\n    struct edge\
+    \ {\n        const int to;\n        const int cost;\n        edge() = default;\n\
+    \        constexpr explicit edge(int to, int cost) : to(to), cost(cost) {}\n \
+    \   };\n    const int n;\n    static constexpr int lg = 21;\n    std::vector<std::vector<edge>>\
+    \ g;\n    std::vector<int> parent[lg];\n    std::vector<long long> _dist;\n  \
+    \  std::vector<int> _depth;\n\npublic:\n    explicit doubling(int n) : n(n), g(n),\
+    \ _dist(n, -1), _depth(n) {\n        std::fill(parent, parent + lg, std::vector<int>(n));\n\
+    \    }\n    void add_edge(int a, int b, int c = 1) {\n        g[a].emplace_back(b,\
+    \ 1);\n        g[b].emplace_back(a, 1);\n    }\n    void build(int root = 0) {\n\
+    \        std::vector<int> st;\n        st.reserve(n);\n\n        st.emplace_back(root);\n\
+    \        _dist[root] = 0, _depth[root] = 0, parent[0][root] = root;\n        while\
+    \ (!st.empty()) {\n            int v = st.back();\n            st.pop_back();\n\
+    \n            for (auto [nv, c] : g[v]) {\n                if (_dist[nv] != -1)\
+    \ continue;\n                _dist[nv] = _dist[v] + c;\n                _depth[nv]\
+    \ = _depth[v] + 1;\n                parent[0][nv] = v;\n\n                st.emplace_back(nv);\n\
     \            }\n        }\n\n        for (int i = 0; i < lg; ++i) {\n        \
     \    for (int v = 0; v < n; ++v) {\n                parent[i + 1][v] = parent[i][parent[i][v]];\n\
     \            }\n        }\n    }\n\n    int level_ancestor(int v, const int k)\
@@ -92,8 +102,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-06-02 22:21:25+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
 layout: document

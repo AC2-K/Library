@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/dijkstra.hpp
     title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u5165\u51FA\u529B"
+    title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -49,23 +49,33 @@ data:
     \ = trace[cur];\n        }\n        path.emplace_back(s);\n        std::reverse(path.begin(),\
     \ path.end());\n        return {dist[to], path};\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @docs docs/graph/dijkstra.md\n */\n#line 2 \"src/stream.hpp\"\
-    \n#include <ctype.h>\n#include <stdio.h>\nnamespace kyopro {\ntemplate <typename\
+    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\nnamespace kyopro\
+    \ {\n\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate <typename\
     \ T> constexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative =\
     \ false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n       \
     \ c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n\
     \    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
     \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename...\
     \ Tail>\nconstexpr inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n\
-    \    readint(tail...);\n}\ntemplate <typename T> constexpr inline void putint(T\
-    \ a) {\n    if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\\
-    n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n\
-    \    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now] = (char)'0'\
-    \ + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
-    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
-    \   putint(tail...);\n}\n\n};  // namespace kyopro\n\n/**\n * @brief \u5165\u51FA\
-    \u529B\n */\n#line 6 \"test/yosupo_judge/graph/Shortest_Path.test.cpp\"\nint main()\
-    \ {\n    int n, m, s, t;\n    kyopro::readint(n, m, s, t);\n\n    kyopro::dijkstra\
+    \    readint(tail...);\n}\n\ntemplate <typename T> void write_int(T a) {\n   \
+    \ if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n\
+    \        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char\
+    \ s[37];\n    int now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a\
+    \ % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
+    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
+    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
+    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
+    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
+    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
+    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
+    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
+    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
+    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
+    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
+    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/graph/Shortest_Path.test.cpp\"\
+    \nint main() {\n    int n, m, s, t;\n    kyopro::readint(n, m, s, t);\n\n    kyopro::dijkstra\
     \ g(n);\n    for (int i = 0; i < m; i++) {\n        int a, b, c;\n        kyopro::readint(a,\
     \ b, c);\n        g.add_edge(a, b, c);\n    }\n\n    g.build(s);\n    auto [dist,\
     \ path] = g.shortest_path(t);\n    if (path.empty()) {\n        kyopro::putint(-1);\n\
@@ -88,7 +98,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-06-02 22:21:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/graph/Shortest_Path.test.cpp
