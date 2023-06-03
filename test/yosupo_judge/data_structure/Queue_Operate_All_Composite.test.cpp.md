@@ -177,9 +177,9 @@ data:
     \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
     \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/template.hpp\"\
     \n#include <bits/stdc++.h>\n#define rep(i, N) for (int i = 0; i < (N); i++)\n\
-    #define all(x) (x).begin(), (x).end()\n#define popcount(x) __builtin_popcount(x)\n\
-    using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
-    \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
+    #define all(x) (x).begin(), (x).end()\n#define popcount(x) __popcount(x)\nusing\
+    \ i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing graph\
+    \ = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
     \ int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\nconst long\
     \ double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t\
     \ MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0};\nconstexpr int dy[] =\
@@ -221,7 +221,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
+  timestamp: '2023-06-03 20:05:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
