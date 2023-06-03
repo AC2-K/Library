@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/graph/dijkstra.md
     document_title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
@@ -23,9 +23,9 @@ data:
     \ <cassert>\n#include <queue>\n#include <utility>\n#include <vector>\nnamespace\
     \ kyopro {\n\n/**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n */\n\
     class dijkstra {\n    std::vector<long long> dist;\n    std::vector<int> trace;\n\
-    \    const int n;\n    int s;\n    struct edge {\n        const int to;\n    \
-    \    const long long cost;\n        constexpr edge(int to, long long cost) : to(to),\
-    \ cost(cost) {}\n    };\n\npublic:\n    using graph = std::vector<std::vector<edge>>;\n\
+    \    const int n;\n    int s;\npublic:\n    struct edge {\n        const int to;\n\
+    \        const long long cost;\n        constexpr edge(int to, long long cost)\
+    \ : to(to), cost(cost) {}\n    };\n\n    using graph = std::vector<std::vector<edge>>;\n\
     \nprivate:\n    graph g;\n\npublic:\n    dijkstra(int n) : n(n), g(n) {}\n   \
     \ dijkstra(const graph& g) : n(g.size()), g(g) {}\n    void add_edge(int from,\
     \ int to, long long cost) {\n        assert(0 <= from && from < n);\n        assert(0\
@@ -53,13 +53,13 @@ data:
   code: "#pragma once\n#include <algorithm>\n#include <cassert>\n#include <queue>\n\
     #include <utility>\n#include <vector>\nnamespace kyopro {\n\n/**\n * @brief \u30C0\
     \u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n */\nclass dijkstra {\n    std::vector<long\
-    \ long> dist;\n    std::vector<int> trace;\n    const int n;\n    int s;\n   \
-    \ struct edge {\n        const int to;\n        const long long cost;\n      \
-    \  constexpr edge(int to, long long cost) : to(to), cost(cost) {}\n    };\n\n\
-    public:\n    using graph = std::vector<std::vector<edge>>;\n\nprivate:\n    graph\
-    \ g;\n\npublic:\n    dijkstra(int n) : n(n), g(n) {}\n    dijkstra(const graph&\
-    \ g) : n(g.size()), g(g) {}\n    void add_edge(int from, int to, long long cost)\
-    \ {\n        assert(0 <= from && from < n);\n        assert(0 <= to && to < n);\n\
+    \ long> dist;\n    std::vector<int> trace;\n    const int n;\n    int s;\npublic:\n\
+    \    struct edge {\n        const int to;\n        const long long cost;\n   \
+    \     constexpr edge(int to, long long cost) : to(to), cost(cost) {}\n    };\n\
+    \n    using graph = std::vector<std::vector<edge>>;\n\nprivate:\n    graph g;\n\
+    \npublic:\n    dijkstra(int n) : n(n), g(n) {}\n    dijkstra(const graph& g) :\
+    \ n(g.size()), g(g) {}\n    void add_edge(int from, int to, long long cost) {\n\
+    \        assert(0 <= from && from < n);\n        assert(0 <= to && to < n);\n\
     \        assert(cost >= 0);\n        g[from].emplace_back(to, cost);\n    }\n\
     \    void build(int _s) {\n        assert(0 <= _s && _s < n);\n        std::swap(s,\
     \ _s);\n\n        trace.assign(n, -1), dist.assign(n, (long long)1e18);\n    \
@@ -84,8 +84,8 @@ data:
   isVerificationFile: false
   path: src/graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-05-15 06:44:06+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-06-03 19:17:10+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp

@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/lazy_segtree.hpp
     title: LazySegmentTree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []

@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/combination.hpp
     title: "\u4E8C\u9805\u4FC2\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
   - icon: ':heavy_check_mark:'
@@ -17,10 +17,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\phi$ \u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   _extendedVerifiedWith:
@@ -33,18 +33,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
     title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: Barrett Reduction
     links:
@@ -85,7 +85,7 @@ data:
   - src/math/phi_function.hpp
   - src/math/miller.hpp
   timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp

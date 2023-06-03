@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/dsu.hpp
     title: Disjoint Set(Union Find)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []

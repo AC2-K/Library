@@ -21,7 +21,7 @@ data:
       path: src/BST/lazy_reversible_bst.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
         \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/BST/reversible_bst.hpp
       title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
   - name: src/algorithm
@@ -46,7 +46,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dual_segtree.hpp
       title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/dynamic_segtree.hpp
       title: "\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
     - icon: ':heavy_check_mark:'
@@ -55,10 +55,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/lazy_segtree.hpp
       title: LazySegmentTree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/segtree.hpp
       title: SegmentTree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/sparse_table.hpp
       title: SparseTable
   - name: src/data-structure-2d
@@ -77,7 +77,7 @@ data:
     - icon: ':warning:'
       path: src/debug.hpp
       title: src/debug.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: fastIO
     - icon: ':heavy_check_mark:'
@@ -96,35 +96,35 @@ data:
     - icon: ':warning:'
       path: src/graph/TopologialSort.hpp
       title: Topologial Sort
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
   - name: src/internal
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/barrett.hpp
       title: Barrett Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/combination.hpp
       title: "\u4E8C\u9805\u4FC2\u6570"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: "\u52D5\u7684modint"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/matrix.hpp
       title: Matrix
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/miller.hpp
       title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
     - icon: ':heavy_check_mark:'
@@ -136,16 +136,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/phi_function.hpp
       title: "Euler\u306E $\\phi$ \u95A2\u6570"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/primitive_root.hpp
       title: "\u539F\u59CB\u6839"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/rho.hpp
       title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
     - icon: ':heavy_check_mark:'
       path: src/math/sieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/static_modint.hpp
       title: "\u9759\u7684modint"
   - name: src/persistent
@@ -158,15 +158,15 @@ data:
       title: persistent stack
   - name: src/random
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/random/xor_shift.hpp
       title: xor shift
   - name: src/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/string/Z.hpp
       title: Z algorithm
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/string/manacher.hpp
       title: Manacher's algorithm
     - icon: ':heavy_check_mark:'
@@ -174,10 +174,10 @@ data:
       title: Rolling Hash
   - name: src/tree
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/EulerTour.hpp
       title: Euler Tour
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/doubling.hpp
       title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   verificationCategories:
@@ -303,56 +303,56 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Primitive_Root.test.cpp
       title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - name: test/yosupo_judge/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/new
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
       title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
       title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   - name: test/yosupo_judge/string
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
       title: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/string/Z_algorithm.test.cpp
       title: test/yosupo_judge/string/Z_algorithm.test.cpp
   - name: test/yosupo_judge/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
       title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No3030.test.cpp
       title: test/yuki/No3030.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yuki/No430.test.cpp
       title: test/yuki/No430.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No789.test.cpp
       title: test/yuki/No789.test.cpp
 layout: toppage

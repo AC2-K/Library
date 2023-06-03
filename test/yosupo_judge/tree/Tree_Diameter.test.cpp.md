@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
@@ -23,9 +23,9 @@ data:
     \ <cassert>\n#include <queue>\n#include <utility>\n#line 7 \"src/graph/dijkstra.hpp\"\
     \nnamespace kyopro {\n\n/**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
     \n */\nclass dijkstra {\n    std::vector<long long> dist;\n    std::vector<int>\
-    \ trace;\n    const int n;\n    int s;\n    struct edge {\n        const int to;\n\
-    \        const long long cost;\n        constexpr edge(int to, long long cost)\
-    \ : to(to), cost(cost) {}\n    };\n\npublic:\n    using graph = std::vector<std::vector<edge>>;\n\
+    \ trace;\n    const int n;\n    int s;\npublic:\n    struct edge {\n        const\
+    \ int to;\n        const long long cost;\n        constexpr edge(int to, long\
+    \ long cost) : to(to), cost(cost) {}\n    };\n\n    using graph = std::vector<std::vector<edge>>;\n\
     \nprivate:\n    graph g;\n\npublic:\n    dijkstra(int n) : n(n), g(n) {}\n   \
     \ dijkstra(const graph& g) : n(g.size()), g(g) {}\n    void add_edge(int from,\
     \ int to, long long cost) {\n        assert(0 <= from && from < n);\n        assert(0\
@@ -101,8 +101,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-06-03 19:17:10+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Diameter.test.cpp
 layout: document
