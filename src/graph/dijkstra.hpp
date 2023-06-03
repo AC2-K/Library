@@ -14,13 +14,13 @@ class dijkstra {
     std::vector<int> trace;
     const int n;
     int s;
+public:
     struct edge {
         const int to;
         const long long cost;
         constexpr edge(int to, long long cost) : to(to), cost(cost) {}
     };
 
-public:
     using graph = std::vector<std::vector<edge>>;
 
 private:
