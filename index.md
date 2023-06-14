@@ -118,6 +118,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: "\u52D5\u7684modint"
+    - icon: ':warning:'
+      path: src/math/eratosthenes.hpp
+      title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     - icon: ':heavy_check_mark:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
@@ -142,9 +145,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/rho.hpp
       title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-    - icon: ':heavy_check_mark:'
-      path: src/math/sieve.hpp
-      title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     - icon: ':heavy_check_mark:'
       path: src/math/static_modint.hpp
       title: "\u9759\u7684modint"
@@ -181,11 +181,6 @@ data:
       path: src/tree/doubling.hpp
       title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   verificationCategories:
-  - name: test/AOJ/ALDS
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/AOJ/ALDS/1_C.test.cpp
-      title: test/AOJ/ALDS/1_C.test.cpp
   - name: test/AOJ/DSL
     pages:
     - icon: ':heavy_check_mark:'

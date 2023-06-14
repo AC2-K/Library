@@ -4,9 +4,6 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/ALDS/1_C.test.cpp
-    title: test/AOJ/ALDS/1_C.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/1_A.test.cpp
     title: test/AOJ/DSL/1_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -202,7 +199,6 @@ data:
   - test/AOJ/GRL/1_A.test.cpp
   - test/AOJ/NTL/1_B.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
-  - test/AOJ/ALDS/1_C.test.cpp
   - test/AOJ/DSL/2_D_dual.test.cpp
   - test/AOJ/DSL/2_D_lazy.test.cpp
   - test/AOJ/DSL/2_E_dual.test.cpp
