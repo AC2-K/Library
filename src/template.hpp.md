@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+    title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   _isVerificationFailed: false
@@ -40,6 +43,7 @@ data:
   timestamp: '2023-06-14 22:07:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
 documentation_of: src/template.hpp
 layout: document

@@ -115,7 +115,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/combination.hpp
       title: "\u4E8C\u9805\u4FC2\u6570"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/math/divisor-multiple-transform.hpp
       title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
     - icon: ':heavy_check_mark:'
@@ -226,6 +226,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_E.test.cpp
       title: test/AOJ/NTL/1_E.test.cpp
+  - name: test/yosupo_judge/convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+      title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   - name: test/yosupo_judge/data_structure
     pages:
     - icon: ':heavy_check_mark:'

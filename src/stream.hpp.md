@@ -37,6 +37,9 @@ data:
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+    title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
     title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
   - icon: ':heavy_check_mark:'
@@ -180,6 +183,7 @@ data:
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
+  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
