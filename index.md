@@ -115,6 +115,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/combination.hpp
       title: "\u4E8C\u9805\u4FC2\u6570"
+    - icon: ':warning:'
+      path: src/math/divisor-multiple-transform.hpp
+      title: src/math/divisor-multiple-transform.hpp
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: "\u52D5\u7684modint"
