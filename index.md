@@ -117,7 +117,7 @@ data:
       title: "\u4E8C\u9805\u4FC2\u6570"
     - icon: ':warning:'
       path: src/math/divisor-multiple-transform.hpp
-      title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
+      title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: "\u52D5\u7684modint"

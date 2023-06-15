@@ -8,7 +8,8 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     _deprecated_at_docs: docs/math/divisor-multiple-transform.md
-    document_title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
+    document_title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\
+      \u63DB"
     links: []
   bundledCode: "#line 2 \"src/math/divisor-multiple-transform.hpp\"\n#include <string.h>\n\
     #include <vector>\nnamespace kyopro {\n\ntemplate <typename T> inline void fast_mobius(std::vector<T>&\
@@ -27,8 +28,8 @@ data:
     \     }\n    }\n\n    for (int p = 2; p < n; ++p) {\n        if (!is_prime[p])\
     \ continue;\n        for (int i = (n - 1) / p; i >= 1; --i) {\n            f[i]\
     \ += f[p * i];\n        }\n    }\n    return;\n}\n};  // namespace kyopro\n\n\
-    /**\n * @brief \u30E1\u30D3\u30A6\u30B9\u5909\u63DB\n * @docs docs/math/divisor-multiple-transform.md\n\
-    */\n"
+    /**\n * @brief \u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\
+    \u63DB\n * @docs docs/math/divisor-multiple-transform.md\n*/\n"
   code: "#pragma once\n#include <string.h>\n#include <vector>\nnamespace kyopro {\n\
     \ntemplate <typename T> inline void fast_mobius(std::vector<T>& f) {\n    int\
     \ n = f.size();\n    bool is_prime[n + 1];\n    {\n        memset(is_prime, 1,\
@@ -46,13 +47,13 @@ data:
     \     }\n    }\n\n    for (int p = 2; p < n; ++p) {\n        if (!is_prime[p])\
     \ continue;\n        for (int i = (n - 1) / p; i >= 1; --i) {\n            f[i]\
     \ += f[p * i];\n        }\n    }\n    return;\n}\n};  // namespace kyopro\n\n\
-    /**\n * @brief \u30E1\u30D3\u30A6\u30B9\u5909\u63DB\n * @docs docs/math/divisor-multiple-transform.md\n\
-    */"
+    /**\n * @brief \u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\
+    \u63DB\n * @docs docs/math/divisor-multiple-transform.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: src/math/divisor-multiple-transform.hpp
   requiredBy: []
-  timestamp: '2023-06-15 21:29:30+09:00'
+  timestamp: '2023-06-15 21:32:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/divisor-multiple-transform.hpp
@@ -60,7 +61,7 @@ layout: document
 redirect_from:
 - /library/src/math/divisor-multiple-transform.hpp
 - /library/src/math/divisor-multiple-transform.hpp.html
-title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB"
+title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
 ---
 ## 概要
 
