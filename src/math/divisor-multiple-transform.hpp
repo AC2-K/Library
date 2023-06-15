@@ -48,3 +48,8 @@ template <typename T> inline void fast_zeta(std::vector<T>& f) {
     return;
 }
 };  // namespace kyopro
+
+/**
+ * @brief メビウス変換
+ * @docs docs/math/divisor-multiple-transform.md
+*/
