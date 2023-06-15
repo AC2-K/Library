@@ -50,6 +50,6 @@ template <typename T> inline void fast_zeta(std::vector<T>& f) {
 };  // namespace kyopro
 
 /**
- * @brief メビウス変換
+ * @brief メビウス変換・ゼータ変換
  * @docs docs/math/divisor-multiple-transform.md
 */
