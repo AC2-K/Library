@@ -35,7 +35,7 @@ data:
     \ S \u30E2\u30CE\u30A4\u30C9\n * @tparam F \u4F5C\u7528\u7D20\n * @tparam op S\u306E\
     \u4E8C\u9805\u6F14\u7B97\n * @tparam e S\u306E\u5358\u4F4D\u5143\n * @tparam composition\
     \ F\u306E\u4E8C\u9805\u6F14\u7B97\n * @tparam id F\u306E\u5358\u4F4D\u5143\n *\
-    \ @tparam mapping \u4F5C\u7528\n */\ntemplate <typename S,\n          class F,\n\
+    \ @tparam mapping \u4F5C\u7528\n */\ntemplate <class S,\n          class F,\n\
     \          S (*op)(S, S),\n          S (*e)(),\n          F (*composition)(F,\
     \ F),\n          F (*id)(),\n          S (*mapping)(S, F, int)>\nclass lazy_reversible_bst\
     \ {\n    using u32 = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n    \
@@ -96,9 +96,9 @@ data:
     \ \u4F5C\u7528\u7D20\n * @tparam op S\u306E\u4E8C\u9805\u6F14\u7B97\n * @tparam\
     \ e S\u306E\u5358\u4F4D\u5143\n * @tparam composition F\u306E\u4E8C\u9805\u6F14\
     \u7B97\n * @tparam id F\u306E\u5358\u4F4D\u5143\n * @tparam mapping \u4F5C\u7528\
-    \n */\ntemplate <typename S,\n          class F,\n          S (*op)(S, S),\n \
-    \         S (*e)(),\n          F (*composition)(F, F),\n          F (*id)(),\n\
-    \          S (*mapping)(S, F, int)>\nclass lazy_reversible_bst {\n    using u32\
+    \n */\ntemplate <class S,\n          class F,\n          S (*op)(S, S),\n    \
+    \      S (*e)(),\n          F (*composition)(F, F),\n          F (*id)(),\n  \
+    \        S (*mapping)(S, F, int)>\nclass lazy_reversible_bst {\n    using u32\
     \ = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n        std::unique_ptr<Node>\
     \ l, r;\n        u32 priority;\n        S value, prod;\n\n        F lazy;\n  \
     \      int size;\n        bool rev;\n\n        Node(const S& v, u32 prio)\n  \
@@ -155,7 +155,7 @@ data:
   isVerificationFile: false
   path: src/BST/lazy_reversible_bst.hpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-06-18 18:02:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

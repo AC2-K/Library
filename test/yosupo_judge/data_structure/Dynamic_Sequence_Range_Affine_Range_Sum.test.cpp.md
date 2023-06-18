@@ -46,7 +46,7 @@ data:
     \ S \u30E2\u30CE\u30A4\u30C9\n * @tparam F \u4F5C\u7528\u7D20\n * @tparam op S\u306E\
     \u4E8C\u9805\u6F14\u7B97\n * @tparam e S\u306E\u5358\u4F4D\u5143\n * @tparam composition\
     \ F\u306E\u4E8C\u9805\u6F14\u7B97\n * @tparam id F\u306E\u5358\u4F4D\u5143\n *\
-    \ @tparam mapping \u4F5C\u7528\n */\ntemplate <typename S,\n          class F,\n\
+    \ @tparam mapping \u4F5C\u7528\n */\ntemplate <class S,\n          class F,\n\
     \          S (*op)(S, S),\n          S (*e)(),\n          F (*composition)(F,\
     \ F),\n          F (*id)(),\n          S (*mapping)(S, F, int)>\nclass lazy_reversible_bst\
     \ {\n    using u32 = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n    \
@@ -280,7 +280,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
+  timestamp: '2023-06-18 18:02:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

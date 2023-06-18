@@ -37,7 +37,7 @@ data:
     \n\nnamespace kyopro {\n/**\n * @brief \u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\
     \u5206\u63A2\u7D22\u6728\n * @tparam S \u30E2\u30CE\u30A4\u30C9\n * @tparam op\
     \ S\u306E\u4E8C\u9805\u6F14\u7B97\n * @tparam e S\u306E\u5358\u4F4D\u5143\n */\n\
-    template <typename S, S (*op)(S, S), S (*e)()> class reversible_bst {\n    using\
+    template <class S, S (*op)(S, S), S (*e)()> class reversible_bst {\n    using\
     \ u32 = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n        std::unique_ptr<Node>\
     \ l, r;\n        u32 priority;\n        S value, prod;\n        int size;\n  \
     \      bool rev;\n\n        Node(S v, u32 prio)\n            : l(),\n        \
@@ -127,7 +127,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
+  timestamp: '2023-06-18 18:02:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
