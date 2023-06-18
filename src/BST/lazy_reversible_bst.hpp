@@ -15,7 +15,7 @@ namespace kyopro {
  * @tparam id Fの単位元
  * @tparam mapping 作用
  */
-template <typename S,
+template <class S,
           class F,
           S (*op)(S, S),
           S (*e)(),

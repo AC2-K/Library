@@ -11,7 +11,7 @@ namespace kyopro {
  * @tparam op Sの二項演算
  * @tparam e Sの単位元
  */
-template <typename S, S (*op)(S, S), S (*e)()> class reversible_bst {
+template <class S, S (*op)(S, S), S (*e)()> class reversible_bst {
     using u32 = uint32_t;
     xor_shift32 rng;
     struct Node {
