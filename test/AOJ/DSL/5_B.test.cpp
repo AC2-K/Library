@@ -1,6 +1,6 @@
 #define PROBLEM \
     "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/5/DSL_5_B"
-#include "../../../src/data-structure-2d/cumulative-sum.hpp"
+#include "../../../src/data-structure/data-structure-2d/cumulative-sum.hpp"
 #include "../../../src/stream.hpp"
 int main() {
     constexpr int h = 1000;

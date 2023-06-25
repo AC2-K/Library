@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/double_ended_priority_queue"
 
-#include "../../../src/BST/Treap.hpp"
+#include "../../../src/data-structure/bbst/Treap.hpp"
 #include "../../../src/stream.hpp"
 using namespace std;
 int main() {

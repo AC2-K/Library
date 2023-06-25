@@ -1,7 +1,7 @@
 #pragma once
 #include <cassert>
 #include <memory>
-#include "../random/xor_shift.hpp"
+#include "../../random/xor_shift.hpp"
 
 namespace kyopro {
 
@@ -103,5 +103,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/BST/Treap.md
+ * @docs docs/bbst/Treap.md
  */

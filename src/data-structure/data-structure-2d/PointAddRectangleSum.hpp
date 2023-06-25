@@ -1,6 +1,6 @@
 #pragma once
 #include <algorithm>
-#include "../data-structure/BIT.hpp"
+#include "../BIT.hpp"
 namespace kyopro {
 template <typename T, typename S> class PointAddRectangleSum {
     std::vector<BIT<S>> dat;

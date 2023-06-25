@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_rectangle_sum"
 #include <iostream>
-#include "../../../src/data-structure-2d/RangeTree.hpp"
+#include "../../../src/data-structure/data-structure-2d/RangeTree.hpp"
 inline long long op(long long a, long long b) { return a + b; };
 inline long long e() { return 0; }
 int main() {

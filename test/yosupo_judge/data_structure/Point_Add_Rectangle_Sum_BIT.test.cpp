@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_rectangle_sum"
 #include <iostream>
-#include "../../../src/data-structure-2d/PointAddRectangleSum.hpp"
+#include "../../../src/data-structure/data-structure-2d/PointAddRectangleSum.hpp"
 int main() {
     using namespace std;
     kyopro::PointAddRectangleSum<int, long long> rtree;

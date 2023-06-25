@@ -1,6 +1,6 @@
 #pragma once
 #include <algorithm>
-#include "../data-structure/segtree.hpp"
+#include "../segtree.hpp"
 namespace kyopro {
 template <typename T, typename S, S (*op)(S, S), S (*e)()> class RangeTree {
     std::vector<segtree<S, op, e>> dat;

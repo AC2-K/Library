@@ -8,9 +8,10 @@
 namespace kyopro {
 class doubling {
     struct edge {
-        const int to;
-        const int cost;
-        edge() = default;
+        int to;
+        int cost;
+
+        constexpr explicit edge() : to(0), cost(0) {}
         constexpr explicit edge(int to, int cost) : to(to), cost(cost) {}
     };
     const int n;

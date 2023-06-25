@@ -1,6 +1,6 @@
 #define PROBLEM \
     "https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum"
-#include "../../../src/BST/lazy_reversible_bst.hpp"
+#include "../../../src/data-structure/bbst/lazy_reversible_bbst.hpp"
 #include "../../../src/math/static_modint.hpp"
 #include "../../../src/stream.hpp"
 using mint = kyopro::static_modint32<998244353>;
@@ -21,7 +21,7 @@ inline S mapping(S d, Affine f, int length) {
     return a * d + b * length;
 };
 int main() {
-    kyopro::lazy_reversible_bst<S, Affine, op, e, composition, id, mapping>
+    kyopro::lazy_reversible_bbst<S, Affine, op, e, composition, id, mapping>
         stree;
     int n, q;
     kyopro::readint(n, q);

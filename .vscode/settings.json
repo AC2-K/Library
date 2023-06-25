@@ -101,7 +101,8 @@
         "queue": "cpp",
         "stack": "cpp",
         "version": "cpp",
-        "rope": "cpp"
+        "rope": "cpp",
+        "maxflow": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
