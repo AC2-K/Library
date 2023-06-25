@@ -21,9 +21,9 @@ data:
     \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
     \ File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: ../../../ac-library/atcoder/maxflow.hpp:\
+    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: ../../../ac-library/atcoder/maxflow:\
     \ line -1: no such header\n"
-  code: "#include \"../../../ac-library//atcoder/maxflow.hpp\"\n\n#include <cassert>\n\
+  code: "#include \"../../../ac-library/atcoder/maxflow\"\n\n#include <cassert>\n\
     #include <vector>\n\nnamespace kyopro {\n\n/**\n * @brief \u4E8C\u90E8\u30DE\u30C3\
     \u30C1\u30F3\u30B0\n */\ntemplate <typename Cap> class BipartiteGraph {\n    const\
     \ int L, R;\n    const int s, t;  // \u8D85\u9802\u70B9\u3092\u4F5C\u308B\n\n\
@@ -46,15 +46,15 @@ data:
     \ */"
   dependsOn: []
   isVerificationFile: false
-  path: src/flow/BipartiteMatching.hpp
+  path: src/graph/flow/BipartiteMatching.hpp
   requiredBy: []
   timestamp: '1970-01-01 00:00:00+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/flow/BipartiteMatching.hpp
+documentation_of: src/graph/flow/BipartiteMatching.hpp
 layout: document
 redirect_from:
-- /library/src/flow/BipartiteMatching.hpp
-- /library/src/flow/BipartiteMatching.hpp.html
+- /library/src/graph/flow/BipartiteMatching.hpp
+- /library/src/graph/flow/BipartiteMatching.hpp.html
 title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
 ---

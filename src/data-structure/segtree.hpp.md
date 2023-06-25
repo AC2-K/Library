@@ -3,8 +3,8 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: src/data-structure-2d/RangeTree.hpp
-    title: src/data-structure-2d/RangeTree.hpp
+    path: src/data-structure/data-structure-2d/RangeTree.hpp
+    title: src/data-structure/data-structure-2d/RangeTree.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_B.test.cpp
@@ -82,7 +82,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/segtree.hpp
   requiredBy:
-  - src/data-structure-2d/RangeTree.hpp
+  - src/data-structure/data-structure-2d/RangeTree.hpp
   timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

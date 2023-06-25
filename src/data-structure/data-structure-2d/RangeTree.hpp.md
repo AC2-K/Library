@@ -14,32 +14,33 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"src/data-structure-2d/RangeTree.hpp\"\n#include <algorithm>\n\
-    #line 2 \"src/data-structure/segtree.hpp\"\n#include <cassert>\n#include <vector>\n\
-    namespace kyopro {\n\n/**\n * @brief SegmentTree\n */\ntemplate <class S, S (*op)(S,\
-    \ S), S (*e)()> class segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n\
-    \npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n, e()))\
-    \ {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n        sz\
-    \ = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n           \
-    \ lg++;\n        }\n\n        dat = std::vector<S>(sz << 1, e());\n\n        for\
-    \ (int i = 0; i < n; i++) {\n            set(i, vec[i]);\n        }\n        build();\n\
-    \    }\n\n    void set(int p, const S& v) {\n        assert(0 <= p && p < sz);\n\
-    \        dat[sz + p] = v;\n    }\n    void build() {\n        for (int i = sz\
-    \ - 1; i > 0; i--) {\n            dat[i] = op(dat[i << 1 | 0], dat[i << 1 | 1]);\n\
-    \        }\n    }\n\n    S operator[](int p) const { return dat[sz + p]; }\n\n\
-    \    void update(int p, const S& v) {\n        assert(0 <= p && p < sz);\n   \
-    \     p += sz;\n        dat[p] = v;\n        while (p >>= 1) {\n            dat[p]\
-    \ = op(dat[(p << 1) | 0], dat[(p << 1) | 1]);\n        }\n    }\n\n    S fold(int\
-    \ l, int r) const {\n        assert(0 <= l && l <= r && r <= sz);\n        if\
-    \ (l == 0 && r == n) {\n            return dat[1];\n        }\n        l += sz,\
-    \ r += sz;\n        S sml = e(), smr = e();\n        while (l != r) {\n      \
-    \      if (l & 1) sml = op(sml, dat[l++]);\n            if (r & 1) smr = op(dat[--r],\
-    \ smr);\n            l >>= 1, r >>= 1;\n        }\n        return op(sml, smr);\n\
-    \    }\n    void apply(int p, const S& v) {\n        assert(0 <= p && p < sz);\n\
-    \        update(p, op(dat[sz + p], v));\n    }\n};\n};  // namespace kyopro\n\n\
-    /**\n * @docs docs/data-structure/segtree.md\n */\n#line 4 \"src/data-structure-2d/RangeTree.hpp\"\
-    \nnamespace kyopro {\ntemplate <typename T, typename S, S (*op)(S, S), S (*e)()>\
-    \ class RangeTree {\n    std::vector<segtree<S, op, e>> dat;\n    std::vector<std::vector<T>>\
+  bundledCode: "#line 2 \"src/data-structure/data-structure-2d/RangeTree.hpp\"\n#include\
+    \ <algorithm>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <cassert>\n\
+    #include <vector>\nnamespace kyopro {\n\n/**\n * @brief SegmentTree\n */\ntemplate\
+    \ <class S, S (*op)(S, S), S (*e)()> class segtree {\n    int lg, sz, n;\n   \
+    \ std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
+    \ e())) {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n  \
+    \      sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n   \
+    \         lg++;\n        }\n\n        dat = std::vector<S>(sz << 1, e());\n\n\
+    \        for (int i = 0; i < n; i++) {\n            set(i, vec[i]);\n        }\n\
+    \        build();\n    }\n\n    void set(int p, const S& v) {\n        assert(0\
+    \ <= p && p < sz);\n        dat[sz + p] = v;\n    }\n    void build() {\n    \
+    \    for (int i = sz - 1; i > 0; i--) {\n            dat[i] = op(dat[i << 1 |\
+    \ 0], dat[i << 1 | 1]);\n        }\n    }\n\n    S operator[](int p) const { return\
+    \ dat[sz + p]; }\n\n    void update(int p, const S& v) {\n        assert(0 <=\
+    \ p && p < sz);\n        p += sz;\n        dat[p] = v;\n        while (p >>= 1)\
+    \ {\n            dat[p] = op(dat[(p << 1) | 0], dat[(p << 1) | 1]);\n        }\n\
+    \    }\n\n    S fold(int l, int r) const {\n        assert(0 <= l && l <= r &&\
+    \ r <= sz);\n        if (l == 0 && r == n) {\n            return dat[1];\n   \
+    \     }\n        l += sz, r += sz;\n        S sml = e(), smr = e();\n        while\
+    \ (l != r) {\n            if (l & 1) sml = op(sml, dat[l++]);\n            if\
+    \ (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n        }\n\
+    \        return op(sml, smr);\n    }\n    void apply(int p, const S& v) {\n  \
+    \      assert(0 <= p && p < sz);\n        update(p, op(dat[sz + p], v));\n   \
+    \ }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/segtree.md\n\
+    \ */\n#line 4 \"src/data-structure/data-structure-2d/RangeTree.hpp\"\nnamespace\
+    \ kyopro {\ntemplate <typename T, typename S, S (*op)(S, S), S (*e)()> class RangeTree\
+    \ {\n    std::vector<segtree<S, op, e>> dat;\n    std::vector<std::vector<T>>\
     \ ys;\n\n    T n;\n    std::vector<std::pair<T, T>> ps;\n\npublic:\n    void add_point(T\
     \ x, T y) { ps.emplace_back(x, y); }\n\n    void build() {\n        std::sort(ps.begin(),\
     \ ps.end());\n        ps.erase(std::unique(ps.begin(), ps.end()), ps.end());\n\
@@ -68,9 +69,9 @@ data:
     \                sumr = op(sumr, dat[b].fold(id(b, yl), id(b, yr)));\n       \
     \     }\n\n            a >>= 1, b >>= 1;\n        }\n\n        return op(suml,\
     \ sumr);\n    }\n};\n};  // namespace kyopro\n"
-  code: "#pragma once\n#include <algorithm>\n#include \"../data-structure/segtree.hpp\"\
-    \nnamespace kyopro {\ntemplate <typename T, typename S, S (*op)(S, S), S (*e)()>\
-    \ class RangeTree {\n    std::vector<segtree<S, op, e>> dat;\n    std::vector<std::vector<T>>\
+  code: "#pragma once\n#include <algorithm>\n#include \"../segtree.hpp\"\nnamespace\
+    \ kyopro {\ntemplate <typename T, typename S, S (*op)(S, S), S (*e)()> class RangeTree\
+    \ {\n    std::vector<segtree<S, op, e>> dat;\n    std::vector<std::vector<T>>\
     \ ys;\n\n    T n;\n    std::vector<std::pair<T, T>> ps;\n\npublic:\n    void add_point(T\
     \ x, T y) { ps.emplace_back(x, y); }\n\n    void build() {\n        std::sort(ps.begin(),\
     \ ps.end());\n        ps.erase(std::unique(ps.begin(), ps.end()), ps.end());\n\
@@ -102,16 +103,16 @@ data:
   dependsOn:
   - src/data-structure/segtree.hpp
   isVerificationFile: false
-  path: src/data-structure-2d/RangeTree.hpp
+  path: src/data-structure/data-structure-2d/RangeTree.hpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-06-25 06:07:51+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
-documentation_of: src/data-structure-2d/RangeTree.hpp
+documentation_of: src/data-structure/data-structure-2d/RangeTree.hpp
 layout: document
 redirect_from:
-- /library/src/data-structure-2d/RangeTree.hpp
-- /library/src/data-structure-2d/RangeTree.hpp.html
-title: src/data-structure-2d/RangeTree.hpp
+- /library/src/data-structure/data-structure-2d/RangeTree.hpp
+- /library/src/data-structure/data-structure-2d/RangeTree.hpp.html
+title: src/data-structure/data-structure-2d/RangeTree.hpp
 ---

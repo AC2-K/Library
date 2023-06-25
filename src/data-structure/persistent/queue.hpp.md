@@ -12,9 +12,9 @@ data:
   attributes:
     document_title: persistent queue
     links: []
-  bundledCode: "#line 2 \"src/persistent/queue.hpp\"\n#include <cassert>\nnamespace\
-    \ kyopro {\n/**\n * @brief persistent queue\n */\ntemplate <typename T, int lg\
-    \ = 20> class persistent_queue {\n    struct Node {\n        Node() = default;\n\
+  bundledCode: "#line 2 \"src/data-structure/persistent/queue.hpp\"\n#include <cassert>\n\
+    namespace kyopro {\n/**\n * @brief persistent queue\n */\ntemplate <typename T,\
+    \ int lg = 20> class persistent_queue {\n    struct Node {\n        Node() = default;\n\
     \        uint32_t index;\n        T val;\n        Node* prev[20];\n    };\n\n\
     \    Node *front_ptr = nullptr, *back_ptr = nullptr;\n    int siz;\n\npublic:\n\
     \    persistent_queue(Node* front_ptr = nullptr,\n                     Node* back_ptr\
@@ -58,16 +58,16 @@ data:
     };\n};  // namespace kyopro"
   dependsOn: []
   isVerificationFile: false
-  path: src/persistent/queue.hpp
+  path: src/data-structure/persistent/queue.hpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-06-25 06:07:51+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
-documentation_of: src/persistent/queue.hpp
+documentation_of: src/data-structure/persistent/queue.hpp
 layout: document
 redirect_from:
-- /library/src/persistent/queue.hpp
-- /library/src/persistent/queue.hpp.html
+- /library/src/data-structure/persistent/queue.hpp
+- /library/src/data-structure/persistent/queue.hpp.html
 title: persistent queue
 ---

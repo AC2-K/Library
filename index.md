@@ -12,18 +12,6 @@ data:
     - icon: ':warning:'
       path: sub.cpp
       title: sub.cpp
-  - name: src/BST
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: src/BST/Treap.hpp
-      title: Treap
-    - icon: ':heavy_check_mark:'
-      path: src/BST/lazy_reversible_bst.hpp
-      title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
-        \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
-    - icon: ':heavy_check_mark:'
-      path: src/BST/reversible_bst.hpp
-      title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
   - name: src/algorithm
     pages:
     - icon: ':heavy_check_mark:'
@@ -61,17 +49,37 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/sparse_table.hpp
       title: SparseTable
-  - name: src/data-structure-2d
+  - name: src/data-structure/bbst
     pages:
     - icon: ':heavy_check_mark:'
-      path: src/data-structure-2d/PointAddRectangleSum.hpp
-      title: src/data-structure-2d/PointAddRectangleSum.hpp
+      path: src/data-structure/bbst/Treap.hpp
+      title: Treap
     - icon: ':heavy_check_mark:'
-      path: src/data-structure-2d/RangeTree.hpp
-      title: src/data-structure-2d/RangeTree.hpp
+      path: src/data-structure/bbst/lazy_reversible_bbst.hpp
+      title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
+        \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
     - icon: ':heavy_check_mark:'
-      path: src/data-structure-2d/cumulative-sum.hpp
+      path: src/data-structure/bbst/reversible_bbst.hpp
+      title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
+  - name: src/data-structure/data-structure-2d
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
+      title: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure/data-structure-2d/RangeTree.hpp
+      title: src/data-structure/data-structure-2d/RangeTree.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure/data-structure-2d/cumulative-sum.hpp
       title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"
+  - name: src/data-structure/persistent
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure/persistent/queue.hpp
+      title: persistent queue
+    - icon: ':warning:'
+      path: src/data-structure/persistent/stack.hpp
+      title: persistent stack
   - name: src
     pages:
     - icon: ':warning:'
@@ -83,11 +91,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/template.hpp
       title: src/template.hpp
-  - name: src/flow
-    pages:
-    - icon: ':warning:'
-      path: src/flow/BipartiteMatching.hpp
-      title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   - name: src/graph
     pages:
     - icon: ':warning:'
@@ -99,6 +102,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
+  - name: src/graph/flow
+    pages:
+    - icon: ':warning:'
+      path: src/graph/flow/BipartiteMatching.hpp
+      title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   - name: src/internal
     pages:
     - icon: ':heavy_check_mark:'
@@ -151,14 +159,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/static_modint.hpp
       title: "\u9759\u7684modint"
-  - name: src/persistent
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: src/persistent/queue.hpp
-      title: persistent queue
-    - icon: ':warning:'
-      path: src/persistent/stack.hpp
-      title: persistent stack
   - name: src/random
     pages:
     - icon: ':heavy_check_mark:'

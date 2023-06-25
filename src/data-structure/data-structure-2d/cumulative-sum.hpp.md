@@ -12,9 +12,9 @@ data:
   attributes:
     document_title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"
     links: []
-  bundledCode: "#line 2 \"src/data-structure-2d/cumulative-sum.hpp\"\n#include <vector>\n\
-    namespace kyopro {\n\n/**\n * @brief \u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C\n */\n\
-    template <typename T> class cumulative_sum_2d {\n    std::vector<std::vector<T>>\
+  bundledCode: "#line 2 \"src/data-structure/data-structure-2d/cumulative-sum.hpp\"\
+    \n#include <vector>\nnamespace kyopro {\n\n/**\n * @brief \u4E8C\u6B21\u5143\u7D2F\
+    \u7A4D\u548C\n */\ntemplate <typename T> class cumulative_sum_2d {\n    std::vector<std::vector<T>>\
     \ dat;\n    std::vector<std::vector<T>> s;\n\npublic:\n    const int h;\n    const\
     \ int w;\n\n    cumulative_sum_2d(int h, int w)\n        : h(h),\n          w(w),\n\
     \          dat(h, std::vector<T>(w, T())),\n          s(h + 1, std::vector<T>(w\
@@ -50,16 +50,16 @@ data:
     \ }\n};\n};  // namespace kyopro"
   dependsOn: []
   isVerificationFile: false
-  path: src/data-structure-2d/cumulative-sum.hpp
+  path: src/data-structure/data-structure-2d/cumulative-sum.hpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-06-25 06:07:51+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/5_B.test.cpp
-documentation_of: src/data-structure-2d/cumulative-sum.hpp
+documentation_of: src/data-structure/data-structure-2d/cumulative-sum.hpp
 layout: document
 redirect_from:
-- /library/src/data-structure-2d/cumulative-sum.hpp
-- /library/src/data-structure-2d/cumulative-sum.hpp.html
+- /library/src/data-structure/data-structure-2d/cumulative-sum.hpp
+- /library/src/data-structure/data-structure-2d/cumulative-sum.hpp.html
 title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"
 ---

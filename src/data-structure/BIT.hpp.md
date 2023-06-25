@@ -3,8 +3,8 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: src/data-structure-2d/PointAddRectangleSum.hpp
-    title: src/data-structure-2d/PointAddRectangleSum.hpp
+    path: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
+    title: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
@@ -60,7 +60,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/BIT.hpp
   requiredBy:
-  - src/data-structure-2d/PointAddRectangleSum.hpp
+  - src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
   timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/persistent/queue.hpp
+    path: src/data-structure/persistent/queue.hpp
     title: persistent queue
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
@@ -16,10 +16,10 @@ data:
     - https://judge.yosupo.jp/problem/persistent_queue
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Persistent_Queue.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#include\
-    \ <iostream>\n#include <vector>\n#line 2 \"src/persistent/queue.hpp\"\n#include\
-    \ <cassert>\nnamespace kyopro {\n/**\n * @brief persistent queue\n */\ntemplate\
-    \ <typename T, int lg = 20> class persistent_queue {\n    struct Node {\n    \
-    \    Node() = default;\n        uint32_t index;\n        T val;\n        Node*\
+    \ <iostream>\n#include <vector>\n#line 2 \"src/data-structure/persistent/queue.hpp\"\
+    \n#include <cassert>\nnamespace kyopro {\n/**\n * @brief persistent queue\n */\n\
+    template <typename T, int lg = 20> class persistent_queue {\n    struct Node {\n\
+    \        Node() = default;\n        uint32_t index;\n        T val;\n        Node*\
     \ prev[20];\n    };\n\n    Node *front_ptr = nullptr, *back_ptr = nullptr;\n \
     \   int siz;\n\npublic:\n    persistent_queue(Node* front_ptr = nullptr,\n   \
     \                  Node* back_ptr = nullptr,\n                     int siz = 0)\n\
@@ -46,7 +46,7 @@ data:
     \        } else {\n            printf(\"%d\\n\", v[idx].front());\n          \
     \  v[i] = v[idx].pop();\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#include\
-    \ <iostream>\n#include <vector>\n#include \"../../../src/persistent/queue.hpp\"\
+    \ <iostream>\n#include <vector>\n#include \"../../../src/data-structure/persistent/queue.hpp\"\
     \n\nint main() {\n    int q;\n    scanf(\"%d\", &q);\n    std::vector<kyopro::persistent_queue<int>>\
     \ v(q + 1);\n    for (int i = 1; i <= q; i++) {\n        int t, idx;\n       \
     \ scanf(\"%d%d\", &t, &idx);\n        idx++;\n\n        if (!t) {\n          \
@@ -54,11 +54,11 @@ data:
     \        } else {\n            printf(\"%d\\n\", v[idx].front());\n          \
     \  v[i] = v[idx].pop();\n        }\n    }\n}"
   dependsOn:
-  - src/persistent/queue.hpp
+  - src/data-structure/persistent/queue.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-06-25 06:07:51+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp

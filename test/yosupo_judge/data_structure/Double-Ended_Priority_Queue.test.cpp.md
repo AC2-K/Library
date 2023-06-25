@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/BST/Treap.hpp
+    path: src/data-structure/bbst/Treap.hpp
     title: Treap
   - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
@@ -22,18 +22,18 @@ data:
     - https://judge.yosupo.jp/problem/double_ended_priority_queue
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
-    \n\n#line 2 \"src/BST/Treap.hpp\"\n#include <cassert>\n#include <memory>\n#line\
-    \ 2 \"src/random/xor_shift.hpp\"\n#include <chrono>\n#include <cstdint>\n#include\
-    \ <random>\n\nnamespace kyopro {\nstruct xor_shift32 {\n    uint32_t rng;\n  \
-    \  constexpr explicit xor_shift32(uint32_t seed) : rng(seed) {}\n    explicit\
-    \ xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
+    \n\n#line 2 \"src/data-structure/bbst/Treap.hpp\"\n#include <cassert>\n#include\
+    \ <memory>\n#line 2 \"src/random/xor_shift.hpp\"\n#include <chrono>\n#include\
+    \ <cstdint>\n#include <random>\n\nnamespace kyopro {\nstruct xor_shift32 {\n \
+    \   uint32_t rng;\n    constexpr explicit xor_shift32(uint32_t seed) : rng(seed)\
+    \ {}\n    explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n\
     };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr xor_shift(uint64_t\
     \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 5 \"src/BST/Treap.hpp\"\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 5 \"src/data-structure/bbst/Treap.hpp\"\
     \n\nnamespace kyopro {\n\n/**\n * @brief Treap\n * @tparam T \u4E57\u305B\u308B\
     \u30C7\u30FC\u30BF\u578B\n */\ntemplate <class T> class Treap {\n    using u32\
     \ = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n        const T key;\n\
@@ -66,7 +66,7 @@ data:
     \        T ans = cur->key;\n        return ans;\n    }\n    T max_element() {\n\
     \        assert(root);\n        sptr cur = root;\n        while (cur->r) {\n \
     \           cur = cur->r;\n        }\n        T ans = cur->key;\n        return\
-    \ ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/BST/Treap.md\n\
+    \ ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/bbst/Treap.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
     \ <string>\nnamespace kyopro {\n\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\
     \n */\ntemplate <typename T> constexpr inline void readint(T& a) {\n    a = 0;\n\
@@ -103,7 +103,7 @@ data:
     \            kyopro::putint(mx);\n            st.erase(mx);\n        }\n    }\n\
     }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
-    \n\n#include \"../../../src/BST/Treap.hpp\"\n#include \"../../../src/stream.hpp\"\
+    \n\n#include \"../../../src/data-structure/bbst/Treap.hpp\"\n#include \"../../../src/stream.hpp\"\
     \nusing namespace std;\nint main() {\n    kyopro::Treap<int> st;\n    int n, q;\n\
     \    kyopro::readint(n, q);\n    for (int i = 0; i < n; ++i) {\n        int a;\n\
     \        kyopro::readint(a);\n        st.insert(a);\n    }\n    while (q--) {\n\
@@ -114,13 +114,13 @@ data:
     \            kyopro::putint(mx);\n            st.erase(mx);\n        }\n    }\n\
     }"
   dependsOn:
-  - src/BST/Treap.hpp
+  - src/data-structure/bbst/Treap.hpp
   - src/random/xor_shift.hpp
   - src/stream.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
+  timestamp: '2023-06-25 06:07:51+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/BST/lazy_reversible_bst.hpp
+    path: src/data-structure/bbst/lazy_reversible_bbst.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
       \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
   - icon: ':heavy_check_mark:'
@@ -29,18 +29,18 @@ data:
     - https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp\"\
     \n#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\
-    \n#line 2 \"src/BST/lazy_reversible_bst.hpp\"\n#include <cassert>\n#include <memory>\n\
-    #include <utility>\n#line 2 \"src/random/xor_shift.hpp\"\n#include <chrono>\n\
-    #include <cstdint>\n#include <random>\n\nnamespace kyopro {\nstruct xor_shift32\
-    \ {\n    uint32_t rng;\n    constexpr explicit xor_shift32(uint32_t seed) : rng(seed)\
-    \ {}\n    explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
+    \n#line 2 \"src/data-structure/bbst/lazy_reversible_bbst.hpp\"\n#include <cassert>\n\
+    #include <memory>\n#include <utility>\n#line 2 \"src/random/xor_shift.hpp\"\n\
+    #include <chrono>\n#include <cstdint>\n#include <random>\n\nnamespace kyopro {\n\
+    struct xor_shift32 {\n    uint32_t rng;\n    constexpr explicit xor_shift32(uint32_t\
+    \ seed) : rng(seed) {}\n    explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n\
     };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr xor_shift(uint64_t\
     \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 6 \"src/BST/lazy_reversible_bst.hpp\"\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 6 \"src/data-structure/bbst/lazy_reversible_bbst.hpp\"\
     \n\nnamespace kyopro {\n/**\n * @brief \u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\
     \u53CD\u8EE2\u53EF\u80FD \u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728\n * @tparam\
     \ S \u30E2\u30CE\u30A4\u30C9\n * @tparam F \u4F5C\u7528\u7D20\n * @tparam op S\u306E\
@@ -48,7 +48,7 @@ data:
     \ F\u306E\u4E8C\u9805\u6F14\u7B97\n * @tparam id F\u306E\u5358\u4F4D\u5143\n *\
     \ @tparam mapping \u4F5C\u7528\n */\ntemplate <class S,\n          class F,\n\
     \          S (*op)(S, S),\n          S (*e)(),\n          F (*composition)(F,\
-    \ F),\n          F (*id)(),\n          S (*mapping)(S, F, int)>\nclass lazy_reversible_bst\
+    \ F),\n          F (*id)(),\n          S (*mapping)(S, F, int)>\nclass lazy_reversible_bbst\
     \ {\n    using u32 = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n    \
     \    std::unique_ptr<Node> l, r;\n        u32 priority;\n        S value, prod;\n\
     \n        F lazy;\n        int size;\n        bool rev;\n\n        Node(const\
@@ -81,7 +81,7 @@ data:
     \ else {\n            l->r = merge(std::move(l->r), std::move(r));\n         \
     \   update(l);\n            return l;\n        }\n    }\n\n    void reverse(const\
     \ ptr& p) {\n        if (p) {\n            p->rev ^= 1;\n        }\n    }\n  \
-    \  ptr root = nullptr;\n\npublic:\n    constexpr explicit lazy_reversible_bst()\
+    \  ptr root = nullptr;\n\npublic:\n    constexpr explicit lazy_reversible_bbst()\
     \ : rng(2023) {}\n    void insert(int i, S a) {\n        auto [l, r] = split(std::move(root),\
     \ i);\n        ptr item = std::make_unique<Node>(a, rng());\n        root = merge(std::move(l),\
     \ std::move(item));\n        root = merge(std::move(root), std::move(r));\n  \
@@ -98,7 +98,7 @@ data:
     \    void reverse(int l, int r) {\n        auto [xy, z] = split(std::move(root),\
     \ r);\n        auto [x, y] = split(std::move(xy), l);\n        reverse(y);\n \
     \       xy = merge(std::move(x), std::move(y));\n        root = merge(std::move(xy),\
-    \ std::move(z));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/BST/lazy_reversible_bst.md\n\
+    \ std::move(z));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/bbst/lazy_reversible_bbst.md\n\
     \ * @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n */\n#line\
     \ 3 \"src/math/static_modint.hpp\"\n#include <iostream>\n#line 3 \"src/math/gcd.hpp\"\
     \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr T inline\
@@ -238,7 +238,7 @@ data:
     \ c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\ninline\
     \ Affine id() { return Affine(1, 0); }\ninline S mapping(S d, Affine f, int length)\
     \ {\n    auto [a, b] = f;\n    return a * d + b * length;\n};\nint main() {\n\
-    \    kyopro::lazy_reversible_bst<S, Affine, op, e, composition, id, mapping>\n\
+    \    kyopro::lazy_reversible_bbst<S, Affine, op, e, composition, id, mapping>\n\
     \        stree;\n    int n, q;\n    kyopro::readint(n, q);\n    for (int i = 0;\
     \ i < n; ++i) {\n        mint ai;\n        kyopro::readint(ai);\n        stree.insert(i,\
     \ ai);\n    }\n    while (q--) {\n        int t;\n        kyopro::readint(t);\n\
@@ -252,15 +252,16 @@ data:
     \           int l, r;\n            kyopro::readint(l, r);\n            kyopro::putint(stree.fold(l,\
     \ r).val());\n        }\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\
-    \n#include \"../../../src/BST/lazy_reversible_bst.hpp\"\n#include \"../../../src/math/static_modint.hpp\"\
-    \n#include \"../../../src/stream.hpp\"\nusing mint = kyopro::static_modint32<998244353>;\n\
-    using S = mint;\ninline S op(S a, S b) { return a + b; }\ninline S e() { return\
-    \ mint(0); }\nusing Affine = std::pair<mint, mint>;\ninline Affine composition(Affine\
-    \ g, Affine f) {\n    // f(g)\n    // a(cx+d)+b\n    auto a = f.first, b = f.second;\n\
-    \    auto c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\n\
-    inline Affine id() { return Affine(1, 0); }\ninline S mapping(S d, Affine f, int\
-    \ length) {\n    auto [a, b] = f;\n    return a * d + b * length;\n};\nint main()\
-    \ {\n    kyopro::lazy_reversible_bst<S, Affine, op, e, composition, id, mapping>\n\
+    \n#include \"../../../src/data-structure/bbst/lazy_reversible_bbst.hpp\"\n#include\
+    \ \"../../../src/math/static_modint.hpp\"\n#include \"../../../src/stream.hpp\"\
+    \nusing mint = kyopro::static_modint32<998244353>;\nusing S = mint;\ninline S\
+    \ op(S a, S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine\
+    \ = std::pair<mint, mint>;\ninline Affine composition(Affine g, Affine f) {\n\
+    \    // f(g)\n    // a(cx+d)+b\n    auto a = f.first, b = f.second;\n    auto\
+    \ c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\ninline\
+    \ Affine id() { return Affine(1, 0); }\ninline S mapping(S d, Affine f, int length)\
+    \ {\n    auto [a, b] = f;\n    return a * d + b * length;\n};\nint main() {\n\
+    \    kyopro::lazy_reversible_bbst<S, Affine, op, e, composition, id, mapping>\n\
     \        stree;\n    int n, q;\n    kyopro::readint(n, q);\n    for (int i = 0;\
     \ i < n; ++i) {\n        mint ai;\n        kyopro::readint(ai);\n        stree.insert(i,\
     \ ai);\n    }\n    while (q--) {\n        int t;\n        kyopro::readint(t);\n\
@@ -274,7 +275,7 @@ data:
     \           int l, r;\n            kyopro::readint(l, r);\n            kyopro::putint(stree.fold(l,\
     \ r).val());\n        }\n    }\n}"
   dependsOn:
-  - src/BST/lazy_reversible_bst.hpp
+  - src/data-structure/bbst/lazy_reversible_bbst.hpp
   - src/random/xor_shift.hpp
   - src/math/static_modint.hpp
   - src/math/gcd.hpp
@@ -282,7 +283,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-25 05:37:10+00:00'
+  timestamp: '2023-06-25 06:07:51+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
