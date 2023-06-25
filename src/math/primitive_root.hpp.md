@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "\u539F\u59CB\u6839"
     links: []
@@ -191,8 +191,8 @@ data:
     \ = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename T, typename\
     \ mint, const int bases[], int length>\n    static constexpr bool miller_rabin(T\
     \ n) {\n        T d = n - 1;\n\n        while (~d & 1) {\n            d >>= 1;\n\
-    \        }\n\n        const T rev = n - 1;\n        if (mint::get_mod() != n)\
-    \ {\n            mint::set_mod(n);\n        }\n        for (int i = 0; i < length;\
+    \        }\n\n        const T rev = n - 1;\n        if (mint::mod() != n) {\n\
+    \            mint::set_mod(n);\n        }\n        for (int i = 0; i < length;\
     \ ++i) {\n            if (n <= bases[i]) {\n                return true;\n   \
     \         }\n            T t = d;\n            mint y = mint(bases[i]).pow(t);\n\
     \n            while (t != n - 1 && y.val() != 1 && y.val() != rev) {\n       \
@@ -226,11 +226,11 @@ data:
     \    using u64 = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename\
     \ mint> static u64 find_factor(u64 n) {\n        xor_shift32 rng(2023);\n\n  \
     \      if (~n & 1uL) {\n            return 2;\n        }\n        if (kyopro::miller::is_prime(n))\
-    \ {\n            return n;\n        }\n\n        if (mint::get_mod() != n) {\n\
-    \            mint::set_mod(n);\n        }\n        while (1) {\n            u64\
-    \ c = rng();\n            const auto f = [&](mint x) -> mint { return x * x +\
-    \ c; };\n            mint x = rng();\n            mint y = f(x);\n           \
-    \ u64 d = 1;\n            while (d == 1) {\n                d = _gcd<long long>(\n\
+    \ {\n            return n;\n        }\n\n        if (mint::mod() != n) {\n   \
+    \         mint::set_mod(n);\n        }\n        while (1) {\n            u64 c\
+    \ = rng();\n            const auto f = [&](mint x) -> mint { return x * x + c;\
+    \ };\n            mint x = rng();\n            mint y = f(x);\n            u64\
+    \ d = 1;\n            while (d == 1) {\n                d = _gcd<long long>(\n\
     \                    std::abs((long long)x.val() - (long long)y.val()), n);\n\
     \                x = f(x);\n                y = f(f(y));\n            }\n    \
     \        if (1 < d && d < n) {\n                return d;\n            }\n   \
@@ -296,8 +296,8 @@ data:
   isVerificationFile: false
   path: src/math/primitive_root.hpp
   requiredBy: []
-  timestamp: '2023-06-25 12:32:45+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-06-25 05:37:10+00:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Primitive_Root.test.cpp
 documentation_of: src/math/primitive_root.hpp

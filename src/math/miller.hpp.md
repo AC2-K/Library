@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\phi$ \u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/miller.md
     document_title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
@@ -185,8 +185,8 @@ data:
     \n    template <typename T, typename mint, const int bases[], int length>\n  \
     \  static constexpr bool miller_rabin(T n) {\n        T d = n - 1;\n\n       \
     \ while (~d & 1) {\n            d >>= 1;\n        }\n\n        const T rev = n\
-    \ - 1;\n        if (mint::get_mod() != n) {\n            mint::set_mod(n);\n \
-    \       }\n        for (int i = 0; i < length; ++i) {\n            if (n <= bases[i])\
+    \ - 1;\n        if (mint::mod() != n) {\n            mint::set_mod(n);\n     \
+    \   }\n        for (int i = 0; i < length; ++i) {\n            if (n <= bases[i])\
     \ {\n                return true;\n            }\n            T t = d;\n     \
     \       mint y = mint(bases[i]).pow(t);\n\n            while (t != n - 1 && y.val()\
     \ != 1 && y.val() != rev) {\n                y *= y;\n                t <<= 1;\n\
@@ -209,8 +209,8 @@ data:
     \ = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename T, typename\
     \ mint, const int bases[], int length>\n    static constexpr bool miller_rabin(T\
     \ n) {\n        T d = n - 1;\n\n        while (~d & 1) {\n            d >>= 1;\n\
-    \        }\n\n        const T rev = n - 1;\n        if (mint::get_mod() != n)\
-    \ {\n            mint::set_mod(n);\n        }\n        for (int i = 0; i < length;\
+    \        }\n\n        const T rev = n - 1;\n        if (mint::mod() != n) {\n\
+    \            mint::set_mod(n);\n        }\n        for (int i = 0; i < length;\
     \ ++i) {\n            if (n <= bases[i]) {\n                return true;\n   \
     \         }\n            T t = d;\n            mint y = mint(bases[i]).pow(t);\n\
     \n            while (t != n - 1 && y.val() != 1 && y.val() != rev) {\n       \
@@ -239,8 +239,8 @@ data:
   - src/math/rho.hpp
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-06-25 12:32:45+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-06-25 05:37:10+00:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
   - test/yuki/No3030.test.cpp

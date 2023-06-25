@@ -17,7 +17,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/BST/Treap.hpp
       title: Treap
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/BST/lazy_reversible_bst.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
         \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
@@ -37,13 +37,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/CHT.hpp
       title: Convex Hull Trick
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/SWAG.hpp
       title: Slide Window Aggrigation
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dsu.hpp
       title: Disjoint Set(Union Find)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/dual_segtree.hpp
       title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
     - icon: ':heavy_check_mark:'
@@ -52,10 +52,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/hash_map.hpp
       title: HashMap
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/lazy_segtree.hpp
       title: LazySegmentTree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/segtree.hpp
       title: SegmentTree
     - icon: ':heavy_check_mark:'
@@ -77,10 +77,10 @@ data:
     - icon: ':warning:'
       path: src/debug.hpp
       title: src/debug.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: fastIO
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/template.hpp
       title: src/template.hpp
   - name: src/flow
@@ -101,36 +101,36 @@ data:
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
   - name: src/internal
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/barrett.hpp
       title: Barrett Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/combination.hpp
       title: "\u4E8C\u9805\u4FC2\u6570"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/divisor-multiple-transform.hpp
       title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: "\u52D5\u7684modint"
     - icon: ':warning:'
       path: src/math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/matrix.hpp
       title: Matrix
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/miller.hpp
       title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
     - icon: ':heavy_check_mark:'
@@ -139,16 +139,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/mod_pow.hpp
       title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/phi_function.hpp
       title: "Euler\u306E $\\phi$ \u95A2\u6570"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/primitive_root.hpp
       title: "\u539F\u59CB\u6839"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/rho.hpp
       title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/static_modint.hpp
       title: "\u9759\u7684modint"
   - name: src/persistent
@@ -161,7 +161,7 @@ data:
       title: persistent stack
   - name: src/random
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/random/xor_shift.hpp
       title: xor shift
   - name: src/string
@@ -220,7 +220,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_B.test.cpp
       title: test/AOJ/NTL/1_B.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_D.test.cpp
       title: test/AOJ/NTL/1_D.test.cpp
     - icon: ':heavy_check_mark:'
@@ -228,7 +228,7 @@ data:
       title: test/AOJ/NTL/1_E.test.cpp
   - name: test/yosupo_judge/convolution
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
       title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   - name: test/yosupo_judge/data_structure
@@ -239,7 +239,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
       title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -260,16 +260,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
       title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -303,23 +303,23 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Primitive_Root.test.cpp
       title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - name: test/yosupo_judge/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - name: test/yosupo_judge/new
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
       title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
     - icon: ':heavy_check_mark:'
@@ -349,7 +349,7 @@ data:
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No3030.test.cpp
       title: test/yuki/No3030.test.cpp
     - icon: ':heavy_check_mark:'
