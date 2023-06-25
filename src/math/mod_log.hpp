@@ -58,7 +58,7 @@ template <typename T> constexpr T __mod_log_odd(T x, T y, T p) {
     }
     int m = (int)std::sqrt(p) + 1;
     using mint = dynamic_modint<internal::double_size_uint_t<T>, 10>;
-    if (mint::get_mod() != p) {
+    if (mint::mod() != p) {
         mint::set_mod(p);
     }
 

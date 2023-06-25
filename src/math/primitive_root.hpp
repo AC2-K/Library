@@ -15,7 +15,7 @@ inline uint64_t primitive_root(uint64_t p) {
         q = (p - 1) / q;
     }
     using ull = unsigned long long;
-    if (dynamic_modint<uint64_t>::get_mod() != p) {
+    if (dynamic_modint<uint64_t>::mod() != p) {
         dynamic_modint<uint64_t>::set_mod(p);
     }
     xor_shift rng(2023);

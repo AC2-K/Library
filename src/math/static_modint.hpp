@@ -3,7 +3,7 @@
 #include <iostream>
 #include "../math/gcd.hpp"
 namespace kyopro {
-template <__uint64_t mod> class static_modint {
+template <__uint64_t _mod> class static_modint {
 private:
     using mint = static_modint<mod>;
     using i64 = long long;
@@ -13,35 +13,40 @@ private:
 
     u64 v;
     constexpr u64 normalize(i64 v_) const {
-        v_ %= mod;
+        v_ %= _mod;
         if (v_ < 0) {
-            v_ += mod;
+            v_ += _mod;
         }
         return v_;
     }
 
 public:
+    static constexpr __uint64_t mod() { return _mod; }
     constexpr static_modint() : v(0) {}
     constexpr static_modint(i64 v_) : v(normalize(v_)) {}
 
-    // operator
+    static mint raw(u32 a) {
+        mint m;
+        m.v = a;
+        return m;
+    }
     constexpr u64 val() const { return v; }
     constexpr mint& operator+=(const mint& rhs) {
         v += rhs.val();
-        if (v >= mod) {
-            v -= mod;
+        if (v >= _mod) {
+            v -= _mod;
         }
         return (*this);
     }
     constexpr mint& operator-=(const mint& rhs) {
-        v += mod - rhs.val();
-        if (v >= mod) {
-            v -= mod;
+        v += _mod - rhs.val();
+        if (v >= _mod) {
+            v -= _mod;
         }
         return (*this);
     }
     constexpr mint& operator*=(const mint& rhs) {
-        v = (u128)v * rhs.val() % mod;
+        v = (u128)v * rhs.val() % _mod;
         return (*this);
     }
 
@@ -94,7 +99,7 @@ public:
     }
     constexpr mint inv() const {
         long long x, y;
-        auto d = ext_gcd((long long)mod, (long long)v, x, y);
+        auto d = ext_gcd((long long)_mod, (long long)v, x, y);
         assert(d == 1);
         return mint(y);
     }
@@ -121,9 +126,9 @@ public:
         return is;
     }
 };
-template <__uint32_t mod> class static_modint32 {
+template <__uint32_t _mod> class static_modint32 {
 private:
-    using mint = static_modint32<mod>;
+    using mint = static_modint32<_mod>;
     using i32 = __int32_t;
     using u32 = __uint32_t;
     using i64 = __int64_t;
@@ -131,18 +136,18 @@ private:
 
     u32 v;
     constexpr u32 normalize(i64 v_) const {
-        v_ %= mod;
+        v_ %= _mod;
         if (v_ < 0) {
-            v_ += mod;
+            v_ += _mod;
         }
         return v_;
     }
 
 public:
+    static constexpr __uint32_t mod() { return _mod; }
     constexpr static_modint32() : v(0) {}
     constexpr static_modint32(i64 v_) : v(normalize(v_)) {}
 
-    // operator
     static mint raw(u32 a) {
         mint m;
         m.v = a;
@@ -151,20 +156,20 @@ public:
     constexpr u32 val() const { return v; }
     constexpr mint& operator+=(const mint& rhs) {
         v += rhs.val();
-        if (v >= mod) {
-            v -= mod;
+        if (v >= _mod) {
+            v -= _mod;
         }
         return (*this);
     }
     constexpr mint& operator-=(const mint& rhs) {
-        v += mod - rhs.val();
-        if (v >= mod) {
-            v -= mod;
+        v += _mod - rhs.val();
+        if (v >= _mod) {
+            v -= _mod;
         }
         return (*this);
     }
     constexpr mint& operator*=(const mint& rhs) {
-        v = (u64)v * rhs.val() % mod;
+        v = (u64)v * rhs.val() % _mod;
         return (*this);
     }
 
@@ -217,7 +222,7 @@ public:
 
     constexpr mint inv() const {
         long long x, y;
-        auto d = ext_gcd((long long)mod, (long long)v, x, y);
+        auto d = ext_gcd((long long)_mod, (long long)v, x, y);
         assert(d == 1);
         return mint(y);
     }

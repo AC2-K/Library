@@ -1,7 +1,7 @@
 #pragma once
 #include <bits/stdc++.h>
 #define rep(i, N) for (int i = 0; i < (N); i++)
-#define all(x) (x).begin(), (x).end()
+#define all(x) std::begin(x), std::end(x)
 #define popcount(x) __builtin_popcountll(x)
 using i128 = __int128_t;
 using ll = long long;
