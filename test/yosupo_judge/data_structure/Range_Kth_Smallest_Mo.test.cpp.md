@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/CHT.hpp
     title: Convex Hull Trick
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []

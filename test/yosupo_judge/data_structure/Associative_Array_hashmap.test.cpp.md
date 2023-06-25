@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/hash_map.hpp
     title: HashMap
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []

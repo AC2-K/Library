@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/BST/reversible_bst.hpp
     title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []

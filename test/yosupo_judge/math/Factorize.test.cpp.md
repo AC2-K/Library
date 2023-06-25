@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/factorize
@@ -56,15 +56,14 @@ data:
     \ a;\n}\n};  // namespace kyopro\n#line 2 \"src/internal/barrett.hpp\"\n#include\
     \ <cstdint>\nnamespace kyopro {\nnamespace internal {\n\n/**\n * @brief Barrett\
     \ Reduction\n */\nclass barrett {\n    using u32 = uint32_t;\n    using u64 =\
-    \ uint64_t;\n\n    u32 m;\n    u64 im;\n\npublic:\n    constexpr barrett() : m(0),\
-    \ im(0) {}\n    constexpr barrett(u32 m_)\n        : m(m_), im((u64) static_cast<u64>(-1)\
-    \ / m_ + 1) {}\n\n    constexpr u32 get_mod() const { return m; }\n    constexpr\
-    \ u32 reduce(int64_t a) const { return mul(a, 1); }\n    constexpr u32 mul(u32\
-    \ a, u32 b) const {\n        if (!a || !b) {\n            return 0;\n        }\n\
-    \        u64 z = (u64)a * b;\n        u64 x = (u64)(((__uint128_t)z * im) >> 64);\n\
-    \n        u64 y = x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n   \
-    \ }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @ref\n\
-    \ * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    \ uint64_t;\n    using u128 = __uint128_t;\n\n    u32 m;\n    u64 im;\n\npublic:\n\
+    \    constexpr explicit barrett() : m(0), im(0) {}\n    constexpr explicit barrett(u32\
+    \ m)\n        : m(m), im(static_cast<u64>(-1) / m + 1) {}\n\n    constexpr u32\
+    \ get_mod() const { return m; }\n    constexpr u32 reduce(u32 a) const { return\
+    \ mul(1, a); }\n    constexpr u32 mul(u32 a, u32 b) const {\n        u64 z = (u64)a\
+    \ * b;\n        u64 x = (u64)(((u128)(z)*im) >> 64);\n        u64 y = x * m;\n\
+    \        return (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace internal\n\
+    };  // namespace kyopro\n\n/**\n * @ref\n * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
     \ */\n#line 3 \"src/internal/montgomery.hpp\"\n#include <limits>\n#include <numeric>\n\
     #line 5 \"src/internal/type_traits.hpp\"\n#include <typeinfo>\nnamespace kyopro\
     \ {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
@@ -109,76 +108,84 @@ data:
     \ { return reduce(x * r2); }\n\n    T mul(T x, T y) { return reduce((LargeT)x\
     \ * y); }\n};\n};  // namespace internal\n};  // namespace kyopro\n#line 6 \"\
     src/math/dynamic_modint.hpp\"\nnamespace kyopro {\ntemplate <int id = -1> class\
-    \ barrett_modint {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n \
-    \   using i32 = int32_t;\n    using i64 = int64_t;\n    using br = internal::barrett;\n\
-    \n    static br brt;\n    static u32 mod;\n    u32 v;\n\npublic:\n    static void\
-    \ set_mod(u32 mod_) {\n        brt = br(mod_);\n        mod = mod_;\n    }\n\n\
-    public:\n    explicit constexpr barrett_modint() : v(0) { assert(mod); }\n   \
-    \ explicit constexpr barrett_modint(i64 v_) : v(brt.reduce(v_)) {\n        assert(mod);\n\
-    \    }\n\n    u32 val() const { return v; }\n    static u32 get_mod() { return\
-    \ mod; }\n    using mint = barrett_modint<id>;\n\n    constexpr mint& operator=(i64\
-    \ r) {\n        v = brt.reduce(r);\n        return (*this);\n    }\n    constexpr\
-    \ mint& operator+=(const mint& r) {\n        v += r.v;\n        if (v >= mod)\
-    \ {\n            v -= mod;\n        }\n        return (*this);\n    }\n    constexpr\
-    \ mint& operator-=(const mint& r) {\n        v += mod - r.v;\n        if (v >=\
-    \ mod) {\n            v -= mod;\n        }\n\n        return (*this);\n    }\n\
-    \    constexpr mint& operator*=(const mint& r) {\n        v = brt.mul(v, r.v);\n\
-    \        return (*this);\n    }\n\n    constexpr mint operator+(const mint& r)\
-    \ const { return mint(*this) += r; }\n    constexpr mint operator-(const mint&\
-    \ r) const { return mint(*this) -= r; }\n    constexpr mint operator*(const mint&\
-    \ r) const { return mint(*this) *= r; }\n\n    constexpr mint& operator+=(i64\
-    \ r) { return (*this) += mint(r); }\n    constexpr mint& operator-=(i64 r) { return\
-    \ (*this) -= mint(r); }\n    constexpr mint& operator*=(i64 r) { return (*this)\
-    \ *= mint(r); }\n\n    friend mint operator+(i64 l, const mint& r) { return mint(l)\
-    \ += r; }\n    friend mint operator+(const mint& l, i64 r) { return mint(l) +=\
-    \ r; }\n    friend mint operator-(i64 l, const mint& r) { return mint(l) -= r;\
-    \ }\n    friend mint operator-(const mint& l, i64 r) { return mint(l) -= r; }\n\
-    \    friend mint operator*(i64 l, const mint& r) { return mint(l) *= r; }\n  \
-    \  friend mint operator*(const mint& l, i64 r) { return mint(l) += r; }\n\n  \
-    \  friend std::ostream& operator<<(std::ostream& os, const mint& mt) {\n     \
-    \   os << mt.val();\n        return os;\n    }\n    friend std::istream& operator>>(std::istream&\
-    \ is, mint& mt) {\n        i64 v_;\n        is >> v_;\n        mt = v_;\n    \
-    \    return is;\n    }\n    template <typename T> mint pow(T e) const {\n    \
-    \    mint res(1), base(*this);\n\n        while (e) {\n            if (e & 1)\
-    \ {\n                res *= base;\n            }\n            e >>= 1;\n     \
-    \       base *= base;\n        }\n        return res;\n    }\n    mint inv() const\
-    \ { return pow(mod - 2); }\n\n    mint& operator/=(const mint& r) { return (*this)\
-    \ *= r.inv(); }\n    mint operator/(const mint& r) const { return mint(*this)\
-    \ *= r.inv(); }\n    mint& operator/=(i64 r) { return (*this) /= mint(r); }\n\
-    \    friend mint operator/(const mint& l, i64 r) { return mint(l) /= r; }\n  \
-    \  friend mint operator/(i64 l, const mint& r) { return mint(l) /= r; }\n};\n\
-    };  // namespace kyopro\ntemplate <int id>\ntypename kyopro::barrett_modint<id>::u32\
-    \ kyopro::barrett_modint<id>::mod;\ntemplate <int id>\ntypename kyopro::barrett_modint<id>::br\
-    \ kyopro::barrett_modint<id>::brt;\n\nnamespace kyopro {\ntemplate <typename T,\
-    \ int id = -1> class dynamic_modint {\n    using LargeT = internal::double_size_uint_t<T>;\n\
-    \    static T mod;\n    static internal::Montgomery<T> mr;\n\npublic:\n    static\
-    \ void set_mod(T mod_) {\n        mr.set_mod(mod_);\n        mod = mod_;\n   \
-    \ }\n\n    static T get_mod() { return mod; }\n\nprivate:\n    T v;\n\npublic:\n\
-    \    dynamic_modint(T v_ = 0) {\n        assert(mod);\n        v = mr.generate(v_);\n\
-    \    }\n    T val() const { return mr.reduce(v); }\n\n    using mint = dynamic_modint<T,\
-    \ id>;\n    mint& operator+=(const mint& r) {\n        v += r.v;\n        if (v\
-    \ >= mr.get_mod()) {\n            v -= mr.get_mod();\n        }\n\n        return\
-    \ (*this);\n    }\n\n    mint& operator-=(const mint& r) {\n        v += mr.get_mod()\
-    \ - r.v;\n        if (v >= mr.get_mod) {\n            v -= mr.get_mod();\n   \
-    \     }\n\n        return (*this);\n    }\n\n    mint& operator*=(const mint&\
-    \ r) {\n        v = mr.mul(v, r.v);\n        return (*this);\n    }\n\n    mint\
-    \ operator+(const mint& r) { return mint(*this) += r; }\n    mint operator-(const\
-    \ mint& r) { return mint(*this) -= r; }\n    mint operator*(const mint& r) { return\
-    \ mint(*this) *= r; }\n\n    mint& operator=(const T& v_) {\n        (*this) =\
-    \ mint(v_);\n        return (*this);\n    }\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ barrett_modint {\n    using mint = barrett_modint<id>;\n    using u32 = uint32_t;\n\
+    \    using u64 = uint64_t;\n\n    using i32 = int32_t;\n    using i64 = int64_t;\n\
+    \    using br = internal::barrett;\n\n    static br brt;\n    u32 v;\n\npublic:\n\
+    \    static void set_mod(u32 mod_) { brt = br(mod_); }\n\npublic:\n    explicit\
+    \ constexpr barrett_modint() : v(0) { assert(mod()); }\n    explicit constexpr\
+    \ barrett_modint(i64 v_) : v() {\n        assert(mod());\n        if (v_ < 0)\
+    \ v_ = (i64)mod() - v_;\n        v = brt.reduce(v_);\n    }\n\n    u32 val() const\
+    \ { return v; }\n    static u32 mod() { return brt.get_mod(); }\n    static mint\
+    \ raw(u32 v) {\n        mint x;\n        x.v = v;\n        return x;\n    }\n\n\
+    \    constexpr mint& operator++() {\n        ++v;\n        if (v == mod()) v =\
+    \ 0;\n        return (*this);\n    }\n    constexpr mint& operator--() {\n   \
+    \     if (v == 0) v = mod();\n        --v;\n        return (*this);\n    }\n \
+    \   constexpr mint operator++(int) {\n        mint res(*this);\n        ++(*this);\n\
+    \        return res;\n    }\n    constexpr mint operator--(int) {\n        mint\
+    \ res(*this);\n        --(*this);\n        return res;\n    }\n\n    constexpr\
+    \ mint& operator+=(const mint& r) {\n        v += r.v;\n        if (v >= mod())\
+    \ v -= mod();\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
+    \ mint& r) {\n        v += mod() - r.v;\n        if (v >= mod()) {\n         \
+    \   v -= mod();\n        }\n\n        return (*this);\n    }\n    constexpr mint&\
+    \ operator*=(const mint& r) {\n        v = brt.mul(v, r.v);\n        return (*this);\n\
+    \    }\n    constexpr mint& operator/=(const mint& r) { return (*this) *= r.inv();\
+    \ }\n\n    friend mint operator+(const mint& lhs, const mint& rhs) {\n       \
+    \ return mint(lhs) += rhs;\n    }\n    friend mint operator-(const mint& lhs,\
+    \ const mint& rhs) {\n        return mint(lhs) -= rhs;\n    }\n    friend mint\
+    \ operator*(const mint& lhs, const mint& rhs) {\n        return mint(lhs) *= rhs;\n\
+    \    }\n    friend mint operator/(const mint& lhs, const mint& rhs) {\n      \
+    \  return mint(lhs) /= rhs;\n    }\n    friend bool operator==(const mint& lhs,\
+    \ const mint& rhs) {\n        return lhs._v == rhs._v;\n    }\n    friend bool\
+    \ operator!=(const mint& lhs, const mint& rhs) {\n        return lhs._v != rhs._v;\n\
+    \    }\n\n    constexpr mint& operator+=(i64 r) { return (*this) += mint(r); }\n\
+    \    constexpr mint& operator-=(i64 r) { return (*this) -= mint(r); }\n    constexpr\
+    \ mint& operator*=(i64 r) { return (*this) *= mint(r); }\n\n    friend mint operator+(i64\
+    \ l, const mint& r) { return mint(l) += r; }\n    friend mint operator+(const\
+    \ mint& l, i64 r) { return mint(l) += r; }\n    friend mint operator-(i64 l, const\
+    \ mint& r) { return mint(l) -= r; }\n    friend mint operator-(const mint& l,\
+    \ i64 r) { return mint(l) -= r; }\n    friend mint operator*(i64 l, const mint&\
+    \ r) { return mint(l) *= r; }\n    friend mint operator*(const mint& l, i64 r)\
+    \ { return mint(l) *= r; }\n\n    constexpr mint operator+() const { return *this;\
+    \ }\n    constexpr mint operator-() const { return mint() - *this; }\n    friend\
+    \ std::ostream& operator<<(std::ostream& os, const mint& mt) {\n        os <<\
+    \ mt.val();\n        return os;\n    }\n    friend std::istream& operator>>(std::istream&\
+    \ is, mint& mt) {\n        i64 v_;\n        is >> v_;\n        mt = mint(v_);\n\
+    \        return is;\n    }\n    template <typename T> mint pow(T e) const {\n\
+    \        mint res(1), base(*this);\n\n        while (e) {\n            if (e &\
+    \ 1) {\n                res *= base;\n            }\n            e >>= 1;\n  \
+    \          base *= base;\n        }\n        return res;\n    }\n    constexpr\
+    \ mint inv() const { return pow(mod() - 2); }\n};\n};  // namespace kyopro\ntemplate\
+    \ <int id>\ntypename kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;\n\
+    \nnamespace kyopro {\ntemplate <typename T, int id = -1> class dynamic_modint\
+    \ {\n    using LargeT = internal::double_size_uint_t<T>;\n    static T _mod;\n\
+    \    static internal::Montgomery<T> mr;\n\npublic:\n    static void set_mod(T\
+    \ mod_) {\n        mr.set_mod(mod_);\n        _mod = mod_;\n    }\n\n    static\
+    \ T mod() { return _mod; }\n\nprivate:\n    T v;\n\npublic:\n    dynamic_modint(T\
+    \ v_ = 0) {\n        assert(_mod);\n        v = mr.generate(v_);\n    }\n    T\
+    \ val() const { return mr.reduce(v); }\n\n    using mint = dynamic_modint<T, id>;\n\
+    \    mint& operator+=(const mint& r) {\n        v += r.v;\n        if (v >= mr.get_mod())\
+    \ {\n            v -= mr.get_mod();\n        }\n\n        return (*this);\n  \
+    \  }\n\n    mint& operator-=(const mint& r) {\n        v += mr.get_mod() - r.v;\n\
+    \        if (v >= mr.get_mod) {\n            v -= mr.get_mod();\n        }\n\n\
+    \        return (*this);\n    }\n\n    mint& operator*=(const mint& r) {\n   \
+    \     v = mr.mul(v, r.v);\n        return (*this);\n    }\n\n    mint operator+(const\
+    \ mint& r) { return mint(*this) += r; }\n    mint operator-(const mint& r) { return\
+    \ mint(*this) -= r; }\n    mint operator*(const mint& r) { return mint(*this)\
+    \ *= r; }\n\n    mint& operator=(const T& v_) {\n        (*this) = mint(v_);\n\
+    \        return (*this);\n    }\n\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n\
     \    friend std::istream& operator>>(std::istream& is, mint& mt) {\n        T\
     \ v_;\n        is >> v_;\n        mt = v_;\n        return is;\n    }\n    template\
     \ <typename P> mint pow(P e) const {\n        assert(e >= 0);\n        mint res(1),\
     \ base(*this);\n\n        while (e) {\n            if (e & 1) {\n            \
     \    res *= base;\n            }\n            e >>= 1;\n            base *= base;\n\
-    \        }\n        return res;\n    }\n    mint inv() const { return pow(mod\
+    \        }\n        return res;\n    }\n    mint inv() const { return pow(mod()\
     \ - 2); }\n\n    mint& operator/=(const mint& r) { return (*this) *= r.inv();\
     \ }\n    mint operator/(const mint& r) const { return mint(*this) *= r.inv();\
     \ }\n    mint& operator/=(T r) { return (*this) /= mint(r); }\n    friend mint\
     \ operator/(const mint& l, T r) { return mint(l) /= r; }\n    friend mint operator/(T\
     \ l, const mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate\
-    \ <typename T, int id> T kyopro::dynamic_modint<T, id>::mod;\ntemplate <typename\
+    \ <typename T, int id> T kyopro::dynamic_modint<T, id>::_mod;\ntemplate <typename\
     \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;\n\
     \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */\n\
     #line 3 \"src/math/miller.hpp\"\nnamespace kyopro {\n\n/**\n * @brief MillerRabin\u7D20\
@@ -304,8 +311,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-06-25 12:32:45+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Factorize.test.cpp
 layout: document
