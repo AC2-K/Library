@@ -10,7 +10,7 @@ int main() {
     int t, m;
     kyopro::readint(t, m);
     mint::set_mod(m);
-    kyopro::combination<mint, (int)1e6> solver;
+    kyopro::combination<mint, (int)1e7> solver;
     while (t--) {
         int n, r;
         kyopro::readint(n, r);

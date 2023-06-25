@@ -20,7 +20,7 @@ class miller {
         }
 
         const T rev = n - 1;
-        if (mint::get_mod() != n) {
+        if (mint::mod() != n) {
             mint::set_mod(n);
         }
         for (int i = 0; i < length; ++i) {

@@ -25,7 +25,7 @@ class rho {
             return n;
         }
 
-        if (mint::get_mod() != n) {
+        if (mint::mod() != n) {
             mint::set_mod(n);
         }
         while (1) {
