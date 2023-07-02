@@ -4,19 +4,16 @@ data:
   - icon: ':warning:'
     path: atcoder/internal_queue.hpp
     title: atcoder/internal_queue.hpp
+  _extendedRequiredBy:
   - icon: ':warning:'
-    path: atcoder/maxflow.hpp
-    title: atcoder/maxflow.hpp
-  _extendedRequiredBy: []
+    path: src/graph/flow/BipartiteMatching.hpp
+    title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
-    links:
-    - https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp
-    - https://qiita.com/drken/items/e805e3f514acceb87602
+    links: []
   bundledCode: "#line 1 \"atcoder/maxflow.hpp\"\n\n\n\n#include <algorithm>\n#include\
     \ <cassert>\n#include <limits>\n#include <queue>\n#include <vector>\n\n#line 1\
     \ \"atcoder/internal_queue.hpp\"\n\n\n\n#line 5 \"atcoder/internal_queue.hpp\"\
@@ -80,61 +77,76 @@ data:
     \   }\n        return visited;\n    }\n\n  private:\n    int _n;\n    struct _edge\
     \ {\n        int to, rev;\n        Cap cap;\n    };\n    std::vector<std::pair<int,\
     \ int>> pos;\n    std::vector<std::vector<_edge>> g;\n};\n\n}  // namespace atcoder\n\
-    \n\n#line 2 \"src/graph/flow/BipartiteMatching.hpp\"\n\n#line 5 \"src/graph/flow/BipartiteMatching.hpp\"\
-    \n\nnamespace kyopro {\n\n/**\n * @brief \u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0\
-    \n */\ntemplate <typename Cap> class BipartiteGraph {\n    const int L, R;\n \
-    \   const int s, t;  // \u8D85\u9802\u70B9\u3092\u4F5C\u308B\n\n    atcoder::mf_graph<Cap>\
-    \ g;\n\n    // \u3059\u3067\u306B\u6D41\u3057\u305F\u304B?\n    bool flowed_flag;\n\
-    \npublic:\n    explicit BipartiteGraph(int LV, int RV)\n        : g(LV + RV +\
-    \ 2),\n          L(LV),\n          R(RV),\n          s(LV + RV + 1),\n       \
-    \   t(LV + RV),\n          flowed_flag(false) {\n        for (int i = 0; i < LV;\
-    \ ++i) g.add_edge(s, i, 1);\n        for (int i = LV; i < LV + RV; ++i) g.add_edge(i,\
-    \ t, 1);\n    }\n    int add_edge(int from, int to, Cap cap = 1) {\n        assert(0\
-    \ <= from && from < L);\n        assert(0 <= to && to < R);\n        return g.add_edge(from,\
-    \ to + L, cap);\n    }\n\npublic:\n    // \u6D41\u91CF\n    Cap flow() {\n   \
-    \     flowed_flag = true;\n        return g.flow(s, t);\n    }\n\n    // \u5FA9\
-    \u5143\n    std::vector<std::pair<int, int>> Matching() {\n        if (!flowed_flag)\
-    \ flow();\n\n        auto E = g.edges();\n\n        std::vector<std::pair<int,\
-    \ int>> res;\n        for (const auto& e : E) {\n            if (e.flow > 0 &&\
-    \ e.from != s && e.to != t) {\n                res.emplace_back(e.from, e.to -\
-    \ L);\n            }\n        }\n        return res;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @ref\n * https://qiita.com/drken/items/e805e3f514acceb87602\n\
-    \ * https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp\n *\n\
-    \ */\n"
-  code: "#include \"../../../atcoder/maxflow\"\n\n#include <cassert>\n#include <vector>\n\
-    \nnamespace kyopro {\n\n/**\n * @brief \u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0\
-    \n */\ntemplate <typename Cap> class BipartiteGraph {\n    const int L, R;\n \
-    \   const int s, t;  // \u8D85\u9802\u70B9\u3092\u4F5C\u308B\n\n    atcoder::mf_graph<Cap>\
-    \ g;\n\n    // \u3059\u3067\u306B\u6D41\u3057\u305F\u304B?\n    bool flowed_flag;\n\
-    \npublic:\n    explicit BipartiteGraph(int LV, int RV)\n        : g(LV + RV +\
-    \ 2),\n          L(LV),\n          R(RV),\n          s(LV + RV + 1),\n       \
-    \   t(LV + RV),\n          flowed_flag(false) {\n        for (int i = 0; i < LV;\
-    \ ++i) g.add_edge(s, i, 1);\n        for (int i = LV; i < LV + RV; ++i) g.add_edge(i,\
-    \ t, 1);\n    }\n    int add_edge(int from, int to, Cap cap = 1) {\n        assert(0\
-    \ <= from && from < L);\n        assert(0 <= to && to < R);\n        return g.add_edge(from,\
-    \ to + L, cap);\n    }\n\npublic:\n    // \u6D41\u91CF\n    Cap flow() {\n   \
-    \     flowed_flag = true;\n        return g.flow(s, t);\n    }\n\n    // \u5FA9\
-    \u5143\n    std::vector<std::pair<int, int>> Matching() {\n        if (!flowed_flag)\
-    \ flow();\n\n        auto E = g.edges();\n\n        std::vector<std::pair<int,\
-    \ int>> res;\n        for (const auto& e : E) {\n            if (e.flow > 0 &&\
-    \ e.from != s && e.to != t) {\n                res.emplace_back(e.from, e.to -\
-    \ L);\n            }\n        }\n        return res;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @ref\n * https://qiita.com/drken/items/e805e3f514acceb87602\n\
-    \ * https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp\n *\n\
-    \ */"
+    \n\n"
+  code: "#ifndef ATCODER_MAXFLOW_HPP\n#define ATCODER_MAXFLOW_HPP 1\n\n#include <algorithm>\n\
+    #include <cassert>\n#include <limits>\n#include <queue>\n#include <vector>\n\n\
+    #include \"atcoder/internal_queue\"\n\nnamespace atcoder {\n\ntemplate <class\
+    \ Cap> struct mf_graph {\n  public:\n    mf_graph() : _n(0) {}\n    explicit mf_graph(int\
+    \ n) : _n(n), g(n) {}\n\n    int add_edge(int from, int to, Cap cap) {\n     \
+    \   assert(0 <= from && from < _n);\n        assert(0 <= to && to < _n);\n   \
+    \     assert(0 <= cap);\n        int m = int(pos.size());\n        pos.push_back({from,\
+    \ int(g[from].size())});\n        int from_id = int(g[from].size());\n       \
+    \ int to_id = int(g[to].size());\n        if (from == to) to_id++;\n        g[from].push_back(_edge{to,\
+    \ to_id, cap});\n        g[to].push_back(_edge{from, from_id, 0});\n        return\
+    \ m;\n    }\n\n    struct edge {\n        int from, to;\n        Cap cap, flow;\n\
+    \    };\n\n    edge get_edge(int i) {\n        int m = int(pos.size());\n    \
+    \    assert(0 <= i && i < m);\n        auto _e = g[pos[i].first][pos[i].second];\n\
+    \        auto _re = g[_e.to][_e.rev];\n        return edge{pos[i].first, _e.to,\
+    \ _e.cap + _re.cap, _re.cap};\n    }\n    std::vector<edge> edges() {\n      \
+    \  int m = int(pos.size());\n        std::vector<edge> result;\n        for (int\
+    \ i = 0; i < m; i++) {\n            result.push_back(get_edge(i));\n        }\n\
+    \        return result;\n    }\n    void change_edge(int i, Cap new_cap, Cap new_flow)\
+    \ {\n        int m = int(pos.size());\n        assert(0 <= i && i < m);\n    \
+    \    assert(0 <= new_flow && new_flow <= new_cap);\n        auto& _e = g[pos[i].first][pos[i].second];\n\
+    \        auto& _re = g[_e.to][_e.rev];\n        _e.cap = new_cap - new_flow;\n\
+    \        _re.cap = new_flow;\n    }\n\n    Cap flow(int s, int t) {\n        return\
+    \ flow(s, t, std::numeric_limits<Cap>::max());\n    }\n    Cap flow(int s, int\
+    \ t, Cap flow_limit) {\n        assert(0 <= s && s < _n);\n        assert(0 <=\
+    \ t && t < _n);\n        assert(s != t);\n\n        std::vector<int> level(_n),\
+    \ iter(_n);\n        internal::simple_queue<int> que;\n\n        auto bfs = [&]()\
+    \ {\n            std::fill(level.begin(), level.end(), -1);\n            level[s]\
+    \ = 0;\n            que.clear();\n            que.push(s);\n            while\
+    \ (!que.empty()) {\n                int v = que.front();\n                que.pop();\n\
+    \                for (auto e : g[v]) {\n                    if (e.cap == 0 ||\
+    \ level[e.to] >= 0) continue;\n                    level[e.to] = level[v] + 1;\n\
+    \                    if (e.to == t) return;\n                    que.push(e.to);\n\
+    \                }\n            }\n        };\n        auto dfs = [&](auto self,\
+    \ int v, Cap up) {\n            if (v == s) return up;\n            Cap res =\
+    \ 0;\n            int level_v = level[v];\n            for (int& i = iter[v];\
+    \ i < int(g[v].size()); i++) {\n                _edge& e = g[v][i];\n        \
+    \        if (level_v <= level[e.to] || g[e.to][e.rev].cap == 0) continue;\n  \
+    \              Cap d =\n                    self(self, e.to, std::min(up - res,\
+    \ g[e.to][e.rev].cap));\n                if (d <= 0) continue;\n             \
+    \   g[v][i].cap += d;\n                g[e.to][e.rev].cap -= d;\n            \
+    \    res += d;\n                if (res == up) return res;\n            }\n  \
+    \          level[v] = _n;\n            return res;\n        };\n\n        Cap\
+    \ flow = 0;\n        while (flow < flow_limit) {\n            bfs();\n       \
+    \     if (level[t] == -1) break;\n            std::fill(iter.begin(), iter.end(),\
+    \ 0);\n            Cap f = dfs(dfs, t, flow_limit - flow);\n            if (!f)\
+    \ break;\n            flow += f;\n        }\n        return flow;\n    }\n\n \
+    \   std::vector<bool> min_cut(int s) {\n        std::vector<bool> visited(_n);\n\
+    \        internal::simple_queue<int> que;\n        que.push(s);\n        while\
+    \ (!que.empty()) {\n            int p = que.front();\n            que.pop();\n\
+    \            visited[p] = true;\n            for (auto e : g[p]) {\n         \
+    \       if (e.cap && !visited[e.to]) {\n                    visited[e.to] = true;\n\
+    \                    que.push(e.to);\n                }\n            }\n     \
+    \   }\n        return visited;\n    }\n\n  private:\n    int _n;\n    struct _edge\
+    \ {\n        int to, rev;\n        Cap cap;\n    };\n    std::vector<std::pair<int,\
+    \ int>> pos;\n    std::vector<std::vector<_edge>> g;\n};\n\n}  // namespace atcoder\n\
+    \n#endif  // ATCODER_MAXFLOW_HPP\n"
   dependsOn:
-  - atcoder/maxflow.hpp
   - atcoder/internal_queue.hpp
   isVerificationFile: false
-  path: src/graph/flow/BipartiteMatching.hpp
-  requiredBy: []
+  path: atcoder/maxflow.hpp
+  requiredBy:
+  - src/graph/flow/BipartiteMatching.hpp
   timestamp: '2023-07-02 15:52:59+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: src/graph/flow/BipartiteMatching.hpp
+documentation_of: atcoder/maxflow.hpp
 layout: document
 redirect_from:
-- /library/src/graph/flow/BipartiteMatching.hpp
-- /library/src/graph/flow/BipartiteMatching.hpp.html
-title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
+- /library/atcoder/maxflow.hpp
+- /library/atcoder/maxflow.hpp.html
+title: atcoder/maxflow.hpp
 ---

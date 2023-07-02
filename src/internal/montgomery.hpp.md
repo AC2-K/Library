@@ -116,21 +116,21 @@ data:
   isVerificationFile: false
   path: src/internal/montgomery.hpp
   requiredBy:
-  - src/math/rho.hpp
-  - src/math/primitive_root.hpp
   - src/math/mod_log.hpp
-  - src/math/miller.hpp
+  - src/math/primitive_root.hpp
   - src/math/dynamic_modint.hpp
+  - src/math/rho.hpp
+  - src/math/miller.hpp
   - src/math/phi_function.hpp
   timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/NTL/1_D.test.cpp
-  - test/yuki/No3030.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+  - test/yuki/No3030.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/internal/montgomery.hpp
 layout: document
 redirect_from:

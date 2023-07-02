@@ -72,21 +72,21 @@ data:
   isVerificationFile: false
   path: src/random/xor_shift.hpp
   requiredBy:
+  - src/math/primitive_root.hpp
+  - src/math/rho.hpp
+  - src/math/phi_function.hpp
+  - src/data-structure/bbst/Treap.hpp
   - src/data-structure/bbst/lazy_reversible_bbst.hpp
   - src/data-structure/bbst/reversible_bbst.hpp
-  - src/data-structure/bbst/Treap.hpp
-  - src/math/rho.hpp
-  - src/math/primitive_root.hpp
-  - src/math/phi_function.hpp
   timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/NTL/1_D.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/random/xor_shift.hpp
 layout: document
 redirect_from:
