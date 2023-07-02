@@ -231,6 +231,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: Rolling Hash
+    - icon: ':warning:'
+      path: src/string/wildcard_pattern_matching.hpp
+      title: WildCard Pattern Matching
   - name: src/tree
     pages:
     - icon: ':heavy_check_mark:'
