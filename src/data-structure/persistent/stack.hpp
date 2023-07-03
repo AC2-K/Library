@@ -35,3 +35,7 @@ public:
     bool empty() const { return (head == nullptr); }
 };
 };  // namespace kyopro
+
+/**
+ * @docs docs/data-structure/stack.md
+ */

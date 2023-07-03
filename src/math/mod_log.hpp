@@ -105,3 +105,7 @@ template <typename T> constexpr inline T mod_log(T a, T b, T c) {
 }
 
 };  // namespace kyopro
+
+/**
+ * @docs docs/math/mod_log.md
+*/

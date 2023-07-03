@@ -4,6 +4,9 @@
 using namespace std;
 namespace kyopro {
 
+/**
+ * @brief 二項係数
+ */
 template <typename mint, int sz> class combination {
     const int M;
     mint fac[sz + 1], ifac[sz + 1];
@@ -45,6 +48,7 @@ public:
 
 };  // namespace kyopro
 
+
 /**
- * @brief 二項係数
- */
+ * @docs docs/math/combination.md
+*/

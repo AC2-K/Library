@@ -3,7 +3,7 @@
 #include <chrono>
 namespace kyopro {
 /**
- * @brief HashMap
+ * @brief Hash Map
  */
 template <typename Key,
           typename Val,

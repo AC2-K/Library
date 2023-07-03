@@ -124,7 +124,7 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/bbst/reversible_bbst.md
+ * @docs docs/data-structure/bbst/reversible_bbst.md
  * @ref
  * https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp
  */

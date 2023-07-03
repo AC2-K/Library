@@ -64,3 +64,7 @@ public:
     }
 };
 };  // namespace kyopro
+
+/**
+ * @docs docs/data-structure/queue.md
+ */

@@ -3,6 +3,7 @@
 #include "../../atcoder/modint"
 #include <string>
 #include <vector>
+#include<algorithm>
 #include "random/xor_shift.hpp"
 
 namespace kyopro {
@@ -11,9 +12,8 @@ std::vector<bool> wildcard_pattern_matching(const std::string& s,
                                             char wild_card) {
     assert(s.size() >= t.size());
     using mint = atcoder::modint998244353;
-    /**
-     * 各文字にハッシュを割り当てる(ワイルドカードにのみ0を割り当てる
-     */
+    
+    // 各文字にハッシュを割り当てる(ワイルドカードにのみ0を割り当てる
     
     static xor_shift32 rng;
     static int d = rng();
@@ -26,6 +26,7 @@ std::vector<bool> wildcard_pattern_matching(const std::string& s,
     for (int i = 0; i < (int)s.size(); ++i) sv[i] = to_integer(s[i]);
     for (int i = 0; i < (int)t.size(); ++i) tv[i] = to_integer(t[i]);
 
+    // 畳み込みでマッチを計算する
     std::reverse(tv.begin(), tv.end());
 
     std::vector<mint> conv1;
@@ -62,4 +63,5 @@ std::vector<bool> wildcard_pattern_matching(const std::string& s,
 
 /**
  * @brief WildCard Pattern Matching
+ * @docs docs/string/wildcard_pattern_matching.md
  */

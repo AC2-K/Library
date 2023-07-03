@@ -103,5 +103,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/bbst/Treap.md
+ * @docs docs/data-structure/bbst/Treap.md
  */

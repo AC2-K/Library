@@ -168,6 +168,6 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/bbst/lazy_reversible_bbst.md
+ * @docs docs/data-structure/bbst/lazy_reversible_bbst.md
  * @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
  */

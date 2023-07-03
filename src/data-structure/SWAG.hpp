@@ -40,3 +40,7 @@ public:
     int size() { return front_stack.size() + back_stack.size(); }
 };
 };  // namespace kyopro
+
+/**
+ * @docs docs/data-structure/SWAG.md
+*/
