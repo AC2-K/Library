@@ -10,6 +10,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    _deprecated_at_docs: docs/data-structure/SWAG.md
     document_title: Slide Window Aggrigation
     links: []
   bundledCode: "#line 2 \"src/data-structure/SWAG.hpp\"\n#include <algorithm>\n#include\
@@ -30,7 +31,7 @@ data:
     \      }\n        }\n        front_prod.pop_back(), front_stack.pop_back();\n\
     \    }\n\n    S fold() const { return op(front_prod.back(), back_prod.back());\
     \ }\n    int size() { return front_stack.size() + back_stack.size(); }\n};\n};\
-    \  // namespace kyopro\n"
+    \  // namespace kyopro\n\n/**\n * @docs docs/data-structure/SWAG.md\n*/\n"
   code: "#pragma once\n#include <algorithm>\n#include <vector>\nnamespace kyopro {\n\
     /**\n * @brief Slide Window Aggrigation\n */\ntemplate <class S, auto op, auto\
     \ e> class SWAG {\n    std::vector<S> front_stack, back_stack;\n    std::vector<S>\
@@ -49,12 +50,12 @@ data:
     \      }\n        }\n        front_prod.pop_back(), front_stack.pop_back();\n\
     \    }\n\n    S fold() const { return op(front_prod.back(), back_prod.back());\
     \ }\n    int size() { return front_stack.size() + back_stack.size(); }\n};\n};\
-    \  // namespace kyopro"
+    \  // namespace kyopro\n\n/**\n * @docs docs/data-structure/SWAG.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/SWAG.hpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp

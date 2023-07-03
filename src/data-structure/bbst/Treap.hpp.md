@@ -13,7 +13,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/bbst/Treap.md
+    _deprecated_at_docs: docs/data-structure/bbst/Treap.md
     document_title: Treap
     links: []
   bundledCode: "#line 2 \"src/data-structure/bbst/Treap.hpp\"\n#include <cassert>\n\
@@ -60,7 +60,7 @@ data:
     \        T ans = cur->key;\n        return ans;\n    }\n    T max_element() {\n\
     \        assert(root);\n        sptr cur = root;\n        while (cur->r) {\n \
     \           cur = cur->r;\n        }\n        T ans = cur->key;\n        return\
-    \ ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/bbst/Treap.md\n\
+    \ ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/Treap.md\n\
     \ */\n"
   code: "#pragma once\n#include <cassert>\n#include <memory>\n#include \"../../random/xor_shift.hpp\"\
     \n\nnamespace kyopro {\n\n/**\n * @brief Treap\n * @tparam T \u4E57\u305B\u308B\
@@ -95,14 +95,14 @@ data:
     \        T ans = cur->key;\n        return ans;\n    }\n    T max_element() {\n\
     \        assert(root);\n        sptr cur = root;\n        while (cur->r) {\n \
     \           cur = cur->r;\n        }\n        T ans = cur->key;\n        return\
-    \ ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/bbst/Treap.md\n\
+    \ ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/Treap.md\n\
     \ */"
   dependsOn:
   - src/random/xor_shift.hpp
   isVerificationFile: false
   path: src/data-structure/bbst/Treap.hpp
   requiredBy: []
-  timestamp: '2023-06-25 06:07:51+00:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

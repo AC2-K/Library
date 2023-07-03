@@ -38,7 +38,7 @@ data:
     \n        return persistent_queue(cur, back_ptr, siz - 1);\n    }\n\n    T front()\
     \ {\n        assert(siz);\n        return front_ptr->val;\n    }\n    T back()\
     \ {\n        assert(siz);\n        return back_ptr->val;\n    }\n};\n};  // namespace\
-    \ kyopro\n#line 5 \"test/yosupo_judge/data_structure/Persistent_Queue.test.cpp\"\
+    \ kyopro\n\n/**\n * @docs docs/data-structure/queue.md\n */\n#line 5 \"test/yosupo_judge/data_structure/Persistent_Queue.test.cpp\"\
     \n\nint main() {\n    int q;\n    scanf(\"%d\", &q);\n    std::vector<kyopro::persistent_queue<int>>\
     \ v(q + 1);\n    for (int i = 1; i <= q; i++) {\n        int t, idx;\n       \
     \ scanf(\"%d%d\", &t, &idx);\n        idx++;\n\n        if (!t) {\n          \
@@ -58,7 +58,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-06-25 06:07:51+00:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp

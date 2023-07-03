@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/hash_map.hpp
-    title: HashMap
+    title: Hash Map
   - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
@@ -39,8 +39,8 @@ data:
     \ PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\n#include\
     \ <iostream>\n#line 2 \"src/math/mod_log.hpp\"\n#include <cmath>\n#line 2 \"src/data-structure/hash_map.hpp\"\
     \n#include <bits/stl_algobase.h>\n#include <chrono>\nnamespace kyopro {\n/**\n\
-    \ * @brief HashMap\n */\ntemplate <typename Key,\n          typename Val,\n  \
-    \        uint32_t n = 1 << 20,\n          Val default_val = Val()>\nclass hash_map\
+    \ * @brief Hash Map\n */\ntemplate <typename Key,\n          typename Val,\n \
+    \         uint32_t n = 1 << 20,\n          Val default_val = Val()>\nclass hash_map\
     \ {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64* flag = new\
     \ u64[n];\n    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\n    static\
     \ constexpr u32 shift = 64 - std::__lg(n);\n\n    u64 r;\n    u32 get_hash(const\
@@ -243,10 +243,11 @@ data:
     \u6563\u5BFE\u6570\n */\ntemplate <typename T> constexpr inline T mod_log(T a,\
     \ T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a, b,\
     \ c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n}\n\n\
-    };  // namespace kyopro\n#line 4 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
-    \n\nint main() {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n    \
-    \    int x, y, p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%d\\\
-    n\", kyopro::mod_log(x, y, p));\n    }\n}\n"
+    };  // namespace kyopro\n\n/**\n * @docs docs/math/mod_log.md\n*/\n#line 4 \"\
+    test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\n\nint main() {\n    int\
+    \ t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y, p;\n      \
+    \  scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%d\\n\", kyopro::mod_log(x,\
+    \ y, p));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\
     \n#include <iostream>\n#include \"../../../src/math/mod_log.hpp\"\n\nint main()\
     \ {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y,\
@@ -264,7 +265,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-06-25 12:32:45+09:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp

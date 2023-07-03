@@ -7,6 +7,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
+    _deprecated_at_docs: docs/data-structure/stack.md
     document_title: persistent stack
     links: []
   bundledCode: "#line 2 \"src/data-structure/persistent/stack.hpp\"\n#include <cassert>\n\
@@ -19,7 +20,8 @@ data:
     \ persistent_stack(head->prev, sz - 1);\n    }\n    persistent_stack push(const\
     \ T& v) const {\n        return persistent_stack(new Node{v, head}, sz + 1);\n\
     \    }\n    int size() const { return sz; }\n    bool empty() const { return (head\
-    \ == nullptr); }\n};\n};  // namespace kyopro\n"
+    \ == nullptr); }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/stack.md\n\
+    \ */\n"
   code: "#pragma once\n#include <cassert>\nnamespace kyopro {\n\n/**\n * @brief persistent\
     \ stack\n */\ntemplate <class T> class persistent_stack {\n    class Node {\n\
     \    public:\n        T val;\n        Node* prev;\n    };\n\n    Node* head;\n\
@@ -30,12 +32,12 @@ data:
     \ sz - 1);\n    }\n    persistent_stack push(const T& v) const {\n        return\
     \ persistent_stack(new Node{v, head}, sz + 1);\n    }\n    int size() const {\
     \ return sz; }\n    bool empty() const { return (head == nullptr); }\n};\n}; \
-    \ // namespace kyopro"
+    \ // namespace kyopro\n\n/**\n * @docs docs/data-structure/stack.md\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/persistent/stack.hpp
   requiredBy: []
-  timestamp: '2023-06-25 06:07:51+00:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/data-structure/persistent/stack.hpp

@@ -7,6 +7,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
+    _deprecated_at_docs: docs/string/wildcard_pattern_matching.md
     document_title: WildCard Pattern Matching
     links: []
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.11.4/x64/lib/python3.11/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -22,18 +23,19 @@ data:
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: random/xor_shift.hpp:\
     \ line -1: no such header\n"
   code: "#pragma once\n#include \"../../atcoder/convolution\"\n#include \"../../atcoder/modint\"\
-    \n#include <string>\n#include <vector>\n#include \"random/xor_shift.hpp\"\n\n\
-    namespace kyopro {\nstd::vector<bool> wildcard_pattern_matching(const std::string&\
+    \n#include <string>\n#include <vector>\n#include<algorithm>\n#include \"random/xor_shift.hpp\"\
+    \n\nnamespace kyopro {\nstd::vector<bool> wildcard_pattern_matching(const std::string&\
     \ s,\n                                            const std::string& t,\n    \
     \                                        char wild_card) {\n    assert(s.size()\
-    \ >= t.size());\n    using mint = atcoder::modint998244353;\n    /**\n     * \u5404\
+    \ >= t.size());\n    using mint = atcoder::modint998244353;\n    \n    // \u5404\
     \u6587\u5B57\u306B\u30CF\u30C3\u30B7\u30E5\u3092\u5272\u308A\u5F53\u3066\u308B\
     (\u30EF\u30A4\u30EB\u30C9\u30AB\u30FC\u30C9\u306B\u306E\u307F0\u3092\u5272\u308A\
-    \u5F53\u3066\u308B\n     */\n    \n    static xor_shift32 rng;\n    static int\
-    \ d = rng();\n    \n    auto to_integer = [&](char v) -> mint {\n        return\
-    \ (v == wild_card ? mint() : mint(v + d));\n    };\n\n    std::vector<mint> sv(s.size()),\
-    \ tv(t.size());\n    for (int i = 0; i < (int)s.size(); ++i) sv[i] = to_integer(s[i]);\n\
-    \    for (int i = 0; i < (int)t.size(); ++i) tv[i] = to_integer(t[i]);\n\n   \
+    \u5F53\u3066\u308B\n    \n    static xor_shift32 rng;\n    static int d = rng();\n\
+    \    \n    auto to_integer = [&](char v) -> mint {\n        return (v == wild_card\
+    \ ? mint() : mint(v + d));\n    };\n\n    std::vector<mint> sv(s.size()), tv(t.size());\n\
+    \    for (int i = 0; i < (int)s.size(); ++i) sv[i] = to_integer(s[i]);\n    for\
+    \ (int i = 0; i < (int)t.size(); ++i) tv[i] = to_integer(t[i]);\n\n    // \u7573\
+    \u307F\u8FBC\u307F\u3067\u30DE\u30C3\u30C1\u3092\u8A08\u7B97\u3059\u308B\n   \
     \ std::reverse(tv.begin(), tv.end());\n\n    std::vector<mint> conv1;\n    {\n\
     \        std::vector<mint> s3 = sv;\n        for (auto& s3i : s3) s3i = s3i *\
     \ s3i * s3i;\n        conv1 = atcoder::convolution(s3, tv);\n    }\n    std::vector<mint>\
@@ -46,7 +48,8 @@ data:
     \ (int)ans.size(); ++i) {\n        ans[i] = (conv1[i + t.size() - 1] + conv2[i\
     \ + t.size() - 1] -\n                      2 * conv3[i + t.size() - 1] ==\n  \
     \                mint(0));\n    }\n    return ans;\n}\n\n};  // namespace kyopro\n\
-    \n/**\n * @brief WildCard Pattern Matching\n */"
+    \n/**\n * @brief WildCard Pattern Matching\n * @docs docs/string/wildcard_pattern_matching.md\n\
+    \ */\n"
   dependsOn: []
   isVerificationFile: false
   path: src/string/wildcard_pattern_matching.hpp

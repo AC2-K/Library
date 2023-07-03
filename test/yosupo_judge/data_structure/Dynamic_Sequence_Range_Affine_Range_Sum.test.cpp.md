@@ -98,7 +98,7 @@ data:
     \    void reverse(int l, int r) {\n        auto [xy, z] = split(std::move(root),\
     \ r);\n        auto [x, y] = split(std::move(xy), l);\n        reverse(y);\n \
     \       xy = merge(std::move(x), std::move(y));\n        root = merge(std::move(xy),\
-    \ std::move(z));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/bbst/lazy_reversible_bbst.md\n\
+    \ std::move(z));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/lazy_reversible_bbst.md\n\
     \ * @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n */\n#line\
     \ 3 \"src/math/static_modint.hpp\"\n#include <iostream>\n#line 3 \"src/math/gcd.hpp\"\
     \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr T inline\
@@ -283,7 +283,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-25 06:07:51+00:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

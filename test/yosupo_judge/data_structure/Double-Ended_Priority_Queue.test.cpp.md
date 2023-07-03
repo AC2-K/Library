@@ -66,7 +66,7 @@ data:
     \        T ans = cur->key;\n        return ans;\n    }\n    T max_element() {\n\
     \        assert(root);\n        sptr cur = root;\n        while (cur->r) {\n \
     \           cur = cur->r;\n        }\n        T ans = cur->key;\n        return\
-    \ ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/bbst/Treap.md\n\
+    \ ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/Treap.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
     \ <string>\nnamespace kyopro {\n\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\
     \n */\ntemplate <typename T> constexpr inline void readint(T& a) {\n    a = 0;\n\
@@ -120,7 +120,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-06-25 06:07:51+00:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

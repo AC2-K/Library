@@ -32,25 +32,25 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
     \n\n#include <iostream>\n#line 2 \"src/math/combination.hpp\"\n#include <algorithm>\n\
-    #include <cassert>\nusing namespace std;\nnamespace kyopro {\n\ntemplate <typename\
-    \ mint, int sz> class combination {\n    const int M;\n    mint fac[sz + 1], ifac[sz\
-    \ + 1];\n\npublic:\n    explicit combination() : M(std::min<int>(mint::mod(),\
-    \ sz)) {\n        assert(mint::mod());\n        fac[0] = mint(1), ifac[0] = mint(1),\
-    \ fac[1] = mint(1),\n        ifac[1] = mint(1);\n\n        for (int i = 2; i <=\
-    \ M; ++i) {\n            fac[i] = fac[i - 1] * i;\n        }\n\n        ifac[M\
-    \ - 1] = mint(1) / fac[M - 1];\n        for (int i = M - 2; i > 1; --i) {\n  \
-    \          ifac[i] = ifac[i + 1] * (i + 1);\n        }\n    }\n\n    constexpr\
-    \ mint fact(int n) const {\n        assert(0 <= n && n <= sz);\n        return\
-    \ fac[n];\n    }\n    constexpr mint ifact(int n) const {\n        assert(0 <=\
-    \ n && n <= sz);\n        return ifac[n];\n    }\n\n    constexpr mint binom(int\
-    \ n, int r) const {\n        assert(n >= r);\n        return fact(n) * ifact(r)\
-    \ * ifact(n - r);\n    }\n    constexpr mint perm(int n, int r) const {\n    \
-    \    assert(n >= r);\n        return fact(n) * ifact(n - r);\n    }\n};\n\n};\
-    \  // namespace kyopro\n\n/**\n * @brief \u4E8C\u9805\u4FC2\u6570\n */\n#line\
-    \ 2 \"src/internal/barrett.hpp\"\n#include <cstdint>\nnamespace kyopro {\nnamespace\
-    \ internal {\n\n/**\n * @brief Barrett Reduction\n */\nclass barrett {\n    using\
-    \ u32 = uint32_t;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\n\
-    \    u32 m;\n    u64 im;\n\npublic:\n    constexpr explicit barrett() : m(0),\
+    #include <cassert>\nusing namespace std;\nnamespace kyopro {\n\n/**\n * @brief\
+    \ \u4E8C\u9805\u4FC2\u6570\n */\ntemplate <typename mint, int sz> class combination\
+    \ {\n    const int M;\n    mint fac[sz + 1], ifac[sz + 1];\n\npublic:\n    explicit\
+    \ combination() : M(std::min<int>(mint::mod(), sz)) {\n        assert(mint::mod());\n\
+    \        fac[0] = mint(1), ifac[0] = mint(1), fac[1] = mint(1),\n        ifac[1]\
+    \ = mint(1);\n\n        for (int i = 2; i <= M; ++i) {\n            fac[i] = fac[i\
+    \ - 1] * i;\n        }\n\n        ifac[M - 1] = mint(1) / fac[M - 1];\n      \
+    \  for (int i = M - 2; i > 1; --i) {\n            ifac[i] = ifac[i + 1] * (i +\
+    \ 1);\n        }\n    }\n\n    constexpr mint fact(int n) const {\n        assert(0\
+    \ <= n && n <= sz);\n        return fac[n];\n    }\n    constexpr mint ifact(int\
+    \ n) const {\n        assert(0 <= n && n <= sz);\n        return ifac[n];\n  \
+    \  }\n\n    constexpr mint binom(int n, int r) const {\n        assert(n >= r);\n\
+    \        return fact(n) * ifact(r) * ifact(n - r);\n    }\n    constexpr mint\
+    \ perm(int n, int r) const {\n        assert(n >= r);\n        return fact(n)\
+    \ * ifact(n - r);\n    }\n};\n\n};  // namespace kyopro\n\n\n/**\n * @docs docs/math/combination.md\n\
+    */\n#line 2 \"src/internal/barrett.hpp\"\n#include <cstdint>\nnamespace kyopro\
+    \ {\nnamespace internal {\n\n/**\n * @brief Barrett Reduction\n */\nclass barrett\
+    \ {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\
+    \n    u32 m;\n    u64 im;\n\npublic:\n    constexpr explicit barrett() : m(0),\
     \ im(0) {}\n    constexpr explicit barrett(u32 m)\n        : m(m), im(static_cast<u64>(-1)\
     \ / m + 1) {}\n\n    constexpr u32 get_mod() const { return m; }\n    constexpr\
     \ u32 reduce(u32 a) const { return mul(1, a); }\n    constexpr u32 mul(u32 a,\
@@ -231,7 +231,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   requiredBy: []
-  timestamp: '2023-06-25 05:37:10+00:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp

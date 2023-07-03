@@ -75,8 +75,8 @@ data:
     \ size(root));\n        auto [xy, z] = split(std::move(root), r);\n        auto\
     \ [x, y] = split(std::move(xy), l);\n        reverse(y);\n        xy = merge(std::move(x),\
     \ std::move(y));\n        root = merge(std::move(xy), std::move(z));\n    }\n\
-    };\n};  // namespace kyopro\n\n/**\n * @docs docs/bbst/reversible_bbst.md\n *\
-    \ @ref\n * https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp\n\
+    };\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/reversible_bbst.md\n\
+    \ * @ref\n * https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
     \ <string>\nnamespace kyopro {\n\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\
     \n */\ntemplate <typename T> constexpr inline void readint(T& a) {\n    a = 0;\n\
@@ -127,7 +127,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-25 06:07:51+00:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp

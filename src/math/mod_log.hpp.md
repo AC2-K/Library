@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/hash_map.hpp
-    title: HashMap
+    title: Hash Map
   - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
@@ -31,12 +31,13 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    _deprecated_at_docs: docs/math/mod_log.md
     document_title: "\u96E2\u6563\u5BFE\u6570"
     links: []
   bundledCode: "#line 2 \"src/math/mod_log.hpp\"\n#include <cmath>\n#line 2 \"src/data-structure/hash_map.hpp\"\
     \n#include <bits/stl_algobase.h>\n#include <chrono>\nnamespace kyopro {\n/**\n\
-    \ * @brief HashMap\n */\ntemplate <typename Key,\n          typename Val,\n  \
-    \        uint32_t n = 1 << 20,\n          Val default_val = Val()>\nclass hash_map\
+    \ * @brief Hash Map\n */\ntemplate <typename Key,\n          typename Val,\n \
+    \         uint32_t n = 1 << 20,\n          Val default_val = Val()>\nclass hash_map\
     \ {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64* flag = new\
     \ u64[n];\n    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\n    static\
     \ constexpr u32 shift = 64 - std::__lg(n);\n\n    u64 r;\n    u32 get_hash(const\
@@ -239,7 +240,7 @@ data:
     \u6563\u5BFE\u6570\n */\ntemplate <typename T> constexpr inline T mod_log(T a,\
     \ T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a, b,\
     \ c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n}\n\n\
-    };  // namespace kyopro\n"
+    };  // namespace kyopro\n\n/**\n * @docs docs/math/mod_log.md\n*/\n"
   code: "#pragma once\n#include <cmath>\n#include \"../data-structure/hash_map.hpp\"\
     \n#include \"../math/dynamic_modint.hpp\"\n#include \"../math/gcd.hpp\"\n#include\
     \ \"../math/mod_pow.hpp\"\nnamespace kyopro {\nnamespace internal {\n\ntemplate\
@@ -272,7 +273,7 @@ data:
     \u6563\u5BFE\u6570\n */\ntemplate <typename T> constexpr inline T mod_log(T a,\
     \ T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a, b,\
     \ c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n}\n\n\
-    };  // namespace kyopro"
+    };  // namespace kyopro\n\n/**\n * @docs docs/math/mod_log.md\n*/"
   dependsOn:
   - src/data-structure/hash_map.hpp
   - src/math/dynamic_modint.hpp
@@ -284,7 +285,7 @@ data:
   isVerificationFile: false
   path: src/math/mod_log.hpp
   requiredBy: []
-  timestamp: '2023-06-25 12:32:45+09:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
@@ -295,3 +296,29 @@ redirect_from:
 - /library/src/math/mod_log.hpp.html
 title: "\u96E2\u6563\u5BFE\u6570"
 ---
+## 概要
+
+$x,y,p$ に対して,
+
+$$x^n \equiv y \mod p$$
+
+となる最小の**非負整数**$n$を求めます.
+
+## 使い方
+
+```cpp
+long long mod_log(long long x,long long y,long long p)
+```
+
+上のやつを解きます.条件を満たす $n$ が存在しない場合は $-1$ をreturnします.
+
+### 計算量
+
+- $O(\sqrt p)$
+
+### 制約
+
+- $0\leq x,y \lt p$
+- $x,y\in\mathbb{Z}$
+- $p\in\mathbb{N}$
+- $0^0=1$ と定めている

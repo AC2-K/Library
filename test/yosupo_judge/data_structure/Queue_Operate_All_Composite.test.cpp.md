@@ -46,10 +46,11 @@ data:
     \      }\n        }\n        front_prod.pop_back(), front_stack.pop_back();\n\
     \    }\n\n    S fold() const { return op(front_prod.back(), back_prod.back());\
     \ }\n    int size() { return front_stack.size() + back_stack.size(); }\n};\n};\
-    \  // namespace kyopro\n#line 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n\
-    #include <iostream>\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace\
-    \ kyopro {\ntemplate <typename T> constexpr T inline _gcd(T a, T b) {\n    assert(a\
-    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \  // namespace kyopro\n\n/**\n * @docs docs/data-structure/SWAG.md\n*/\n#line\
+    \ 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#include <iostream>\n\
+    #line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
+    \ T> constexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if\
+    \ (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
     \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
     \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
@@ -222,7 +223,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-06-25 05:37:10+00:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp

@@ -13,7 +13,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/bbst/lazy_reversible_bbst.md
+    _deprecated_at_docs: docs/data-structure/bbst/lazy_reversible_bbst.md
     document_title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD\
       \ \u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
     links:
@@ -87,7 +87,7 @@ data:
     \    void reverse(int l, int r) {\n        auto [xy, z] = split(std::move(root),\
     \ r);\n        auto [x, y] = split(std::move(xy), l);\n        reverse(y);\n \
     \       xy = merge(std::move(x), std::move(y));\n        root = merge(std::move(xy),\
-    \ std::move(z));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/bbst/lazy_reversible_bbst.md\n\
+    \ std::move(z));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/lazy_reversible_bbst.md\n\
     \ * @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n */\n"
   code: "#pragma once\n#include <cassert>\n#include <memory>\n#include <utility>\n\
     #include \"../../random/xor_shift.hpp\"\n\nnamespace kyopro {\n/**\n * @brief\
@@ -148,14 +148,14 @@ data:
     \    void reverse(int l, int r) {\n        auto [xy, z] = split(std::move(root),\
     \ r);\n        auto [x, y] = split(std::move(xy), l);\n        reverse(y);\n \
     \       xy = merge(std::move(x), std::move(y));\n        root = merge(std::move(xy),\
-    \ std::move(z));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/bbst/lazy_reversible_bbst.md\n\
+    \ std::move(z));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/lazy_reversible_bbst.md\n\
     \ * @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n */"
   dependsOn:
   - src/random/xor_shift.hpp
   isVerificationFile: false
   path: src/data-structure/bbst/lazy_reversible_bbst.hpp
   requiredBy: []
-  timestamp: '2023-06-25 06:07:51+00:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
