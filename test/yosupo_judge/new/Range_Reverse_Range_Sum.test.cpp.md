@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data-structure/bbst/reversible_bbst.hpp
     title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_reverse_range_sum
@@ -100,16 +100,19 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp\"\
-    \nusing ll = long long;\ninline ll op(ll x, ll y) { return x + y; }\ninline ll\
-    \ e() { return 0; }\nint main() {\n    int n, q;\n    kyopro::readint(n, q);\n\
-    \    kyopro::reversible_bbst<ll, op, e> bbst;\n    for (int i = 0; i < n; i++)\
-    \ {\n        int a;\n        kyopro::readint(a);\n        bbst.insert(i, a);\n\
-    \    }\n\n    while (q--) {\n        int t, l, r;\n        kyopro::readint(t,\
-    \ l, r);\n        if (!t) {\n            bbst.reverse(l, r);\n        } else {\n\
-    \            kyopro::putint(bbst.fold(l, r));\n        }\n    }\n}\n"
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 5 \"test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp\"\nusing ll =\
+    \ long long;\ninline ll op(ll x, ll y) { return x + y; }\ninline ll e() { return\
+    \ 0; }\nint main() {\n    int n, q;\n    kyopro::readint(n, q);\n    kyopro::reversible_bbst<ll,\
+    \ op, e> bbst;\n    for (int i = 0; i < n; i++) {\n        int a;\n        kyopro::readint(a);\n\
+    \        bbst.insert(i, a);\n    }\n\n    while (q--) {\n        int t, l, r;\n\
+    \        kyopro::readint(t, l, r);\n        if (!t) {\n            bbst.reverse(l,\
+    \ r);\n        } else {\n            kyopro::putint(bbst.fold(l, r));\n      \
+    \  }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_reverse_range_sum\"\
     \n#include <iostream>\n#include \"../../../src/data-structure/bbst/reversible_bbst.hpp\"\
     \n#include \"../../../src/stream.hpp\"\nusing ll = long long;\ninline ll op(ll\
@@ -127,8 +130,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-07-03 15:58:56+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-05 22:01:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
 layout: document

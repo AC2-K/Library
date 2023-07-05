@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/matrix.hpp
     title: Matrix
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -183,11 +183,14 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/matrix/Matrix\
-    \ Product.test.cpp\"\n#pragma GCC optimize(\"unroll-loops\")\n\nusing mint = kyopro::static_modint32<998244353>;\n\
-    int main() {\n    int n, m, k;\n    kyopro::readint(n, m, k);\n    kyopro::Matrix<mint>\
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 6 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#pragma GCC optimize(\"\
+    unroll-loops\")\n\nusing mint = kyopro::static_modint32<998244353>;\nint main()\
+    \ {\n    int n, m, k;\n    kyopro::readint(n, m, k);\n    kyopro::Matrix<mint>\
     \ a(n, m), b(m, k);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0;\
     \ j < m; j++) {\n            kyopro::readint(a[i][j]);\n        }\n    }\n   \
     \ for (int i = 0; i < m; i++) {\n        for (int j = 0; j < k; j++) {\n     \
@@ -213,8 +216,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-06-25 05:37:10+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-05 22:01:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
 layout: document

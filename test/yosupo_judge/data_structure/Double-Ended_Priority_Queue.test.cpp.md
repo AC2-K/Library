@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/bbst/Treap.hpp
     title: Treap
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -90,9 +90,12 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 5 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\
     \nusing namespace std;\nint main() {\n    kyopro::Treap<int> st;\n    int n, q;\n\
     \    kyopro::readint(n, q);\n    for (int i = 0; i < n; ++i) {\n        int a;\n\
     \        kyopro::readint(a);\n        st.insert(a);\n    }\n    while (q--) {\n\
@@ -120,7 +123,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-07-03 15:58:56+09:00'
+  timestamp: '2023-07-05 22:01:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/dual_segtree.hpp
     title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -64,17 +64,19 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 4 \"test/AOJ/DSL/2_D_dual.test.cpp\"\
-    \nusing ull = unsigned long long;\ninline ull op(ull x, ull y) { return y; }\n\
-    inline ull e() { return (1ll << 31) - 1; }\nint main() {\n    int n, q;\n    kyopro::readint(n,\
-    \ q);\n    kyopro::dual_segtree<ull, op, e> seg(n);\n    while (q--) {\n     \
-    \   int ty;\n        kyopro::readint(ty);\n        if (!ty) {\n            int\
-    \ l, r;\n            ull x;\n            kyopro::readint(l, r, x);\n         \
-    \   seg.apply(l, r + 1, x);\n        } else {\n            int i;\n          \
-    \  kyopro::readint(i);\n            kyopro::putint(seg[i]);\n        }\n    }\n\
-    }\n"
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 4 \"test/AOJ/DSL/2_D_dual.test.cpp\"\nusing ull = unsigned long long;\n\
+    inline ull op(ull x, ull y) { return y; }\ninline ull e() { return (1ll << 31)\
+    \ - 1; }\nint main() {\n    int n, q;\n    kyopro::readint(n, q);\n    kyopro::dual_segtree<ull,\
+    \ op, e> seg(n);\n    while (q--) {\n        int ty;\n        kyopro::readint(ty);\n\
+    \        if (!ty) {\n            int l, r;\n            ull x;\n            kyopro::readint(l,\
+    \ r, x);\n            seg.apply(l, r + 1, x);\n        } else {\n            int\
+    \ i;\n            kyopro::readint(i);\n            kyopro::putint(seg[i]);\n \
+    \       }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_D\"\n#include\
     \ \"../../../src/data-structure/dual_segtree.hpp\"\n#include \"../../../src/stream.hpp\"\
     \nusing ull = unsigned long long;\ninline ull op(ull x, ull y) { return y; }\n\
@@ -91,7 +93,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_D_dual.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
+  timestamp: '2023-07-05 22:01:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_D_dual.test.cpp

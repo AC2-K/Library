@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/dsu.hpp
     title: Disjoint Set(Union Find)
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -52,14 +52,17 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/data_structure/UnionFind.test.cpp\"\
-    \nint main() {\n    int n, q;\n    kyopro::readint(n, q);\n    kyopro::dsu uf(n);\n\
-    \    while (q--) {\n        int t, x, y;\n        kyopro::readint(t, x, y);\n\
-    \        if (!t) {\n            uf.merge(x, y);\n        } else {\n          \
-    \  if (uf.same(x, y))\n                puts(\"1\");\n            else\n      \
-    \          puts(\"0\");\n        }\n    }\n}\n"
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 5 \"test/yosupo_judge/data_structure/UnionFind.test.cpp\"\nint main() {\n\
+    \    int n, q;\n    kyopro::readint(n, q);\n    kyopro::dsu uf(n);\n    while\
+    \ (q--) {\n        int t, x, y;\n        kyopro::readint(t, x, y);\n        if\
+    \ (!t) {\n            uf.merge(x, y);\n        } else {\n            if (uf.same(x,\
+    \ y))\n                puts(\"1\");\n            else\n                puts(\"\
+    0\");\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#include\
     \ \"../../../src/data-structure/dsu.hpp\"\n#include \"../../../src/stream.hpp\"\
     \nint main() {\n    int n, q;\n    kyopro::readint(n, q);\n    kyopro::dsu uf(n);\n\
@@ -73,7 +76,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
+  timestamp: '2023-07-05 22:01:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/UnionFind.test.cpp

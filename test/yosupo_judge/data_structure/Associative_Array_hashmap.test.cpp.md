@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/hash_map.hpp
     title: Hash Map
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -63,9 +63,12 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 4 \"test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp\"\
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 4 \"test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp\"\
     \nint main() {\n    uint32_t q;\n    kyopro::readint(q);\n    kyopro::hash_map<__uint64_t,\
     \ __uint64_t> mp;\n    while (q--) {\n        int t;\n        kyopro::readint(t);\n\
     \        if (!t) {\n            __uint64_t k, v;\n            kyopro::readint(k,\
@@ -86,7 +89,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
   requiredBy: []
-  timestamp: '2023-07-03 15:58:56+09:00'
+  timestamp: '2023-07-05 22:01:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp

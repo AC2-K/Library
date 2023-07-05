@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/dijkstra.hpp
     title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
@@ -72,18 +72,20 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 7 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\
-    \nint main() {\n    int n;\n    kyopro::readint(n);\n    kyopro::dijkstra g(n);\n\
-    \    for (int i = 0; i < n - 1; ++i) {\n        int a, b, c;\n        kyopro::readint(a,\
-    \ b, c);\n        g.add_edge(a, b, c);\n        g.add_edge(b, a, c);\n    }\n\
-    \    g.build(0);\n    std::vector<long long> dist = g.get_dist();\n    int v =\
-    \ std::max_element(dist.begin(), dist.end()) - dist.begin();\n    g.build(v);\n\
-    \    dist = g.get_dist();\n\n    auto it = std::max_element(dist.begin(), dist.end());\n\
-    \    int u = it - dist.begin();\n    kyopro::putint(*it);\n    auto path = g.shortest_path(u).second;\n\
-    \    kyopro::putint(path.size());\n    for (auto v : path) kyopro::putint(v);\n\
-    }\n"
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 7 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\nint main() {\n    int\
+    \ n;\n    kyopro::readint(n);\n    kyopro::dijkstra g(n);\n    for (int i = 0;\
+    \ i < n - 1; ++i) {\n        int a, b, c;\n        kyopro::readint(a, b, c);\n\
+    \        g.add_edge(a, b, c);\n        g.add_edge(b, a, c);\n    }\n    g.build(0);\n\
+    \    std::vector<long long> dist = g.get_dist();\n    int v = std::max_element(dist.begin(),\
+    \ dist.end()) - dist.begin();\n    g.build(v);\n    dist = g.get_dist();\n\n \
+    \   auto it = std::max_element(dist.begin(), dist.end());\n    int u = it - dist.begin();\n\
+    \    kyopro::putint(*it);\n    auto path = g.shortest_path(u).second;\n    kyopro::putint(path.size());\n\
+    \    for (auto v : path) kyopro::putint(v);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n#include\
     \ <algorithm>\n#include <iostream>\n#include <vector>\n#include \"../../../src/graph/dijkstra.hpp\"\
     \n#include \"../../../src/stream.hpp\"\nint main() {\n    int n;\n    kyopro::readint(n);\n\
@@ -101,8 +103,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-06-03 19:17:10+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-05 22:01:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Diameter.test.cpp
 layout: document

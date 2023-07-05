@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/SWAG.hpp
     title: Slide Window Aggrigation
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   - icon: ':heavy_check_mark:'
@@ -175,20 +175,23 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/template.hpp\"\
-    \n#include <bits/stdc++.h>\n#define rep(i, N) for (int i = 0; i < (N); i++)\n\
-    #define all(x) std::begin(x), std::end(x)\n#define popcount(x) __builtin_popcountll(x)\n\
-    using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
-    \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
-    \ int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-6;\nconst long\
-    \ double pi = acos(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t\
-    \ MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0};\nconstexpr int dy[] =\
-    \ {0, 1, 0, -1};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
-    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
-    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
-    \ true);\n}\n#line 7 \"test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i, N) for\
+    \ (int i = 0; i < (N); i++)\n#define all(x) std::begin(x), std::end(x)\n#define\
+    \ popcount(x) __builtin_popcountll(x)\nusing i128 = __int128_t;\nusing ll = long\
+    \ long;\nusing ld = long double;\nusing graph = std::vector<std::vector<int>>;\n\
+    using P = std::pair<int, int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl =\
+    \ 1e18;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
+    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
+    \ dx[] = {-1, -1, -1, 0, 0, 1, 1, 1, 0};\nconstexpr int dy[] = {-1, 0, 1, -1,\
+    \ 1, -1, 0, 1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool\
+    \ chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
+    \ b && (a = b, true);\n}\n#line 7 \"test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\
     \nusing mint = kyopro::static_modint32<MOD2>;\nusing Affine = std::pair<mint,\
     \ mint>;\nconstexpr inline Affine op(const Affine& g, const Affine& f) {\n   \
     \ auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n    return\
@@ -223,7 +226,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-07-03 15:58:56+09:00'
+  timestamp: '2023-07-05 22:01:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp

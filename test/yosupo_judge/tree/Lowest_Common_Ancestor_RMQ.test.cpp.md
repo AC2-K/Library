@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/sparse_table.hpp
     title: SparseTable
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -45,18 +45,20 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/tree/EulerTour.hpp\"\
-    \n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\n#include\
-    \ <numeric>\n#include <vector>\nnamespace kyopro {\n\n/**\n * @brief SparseTable\n\
-    \ */\ntemplate <class T, auto op> class sparse_table {\n    std::vector<T> vec;\n\
-    \    std::vector<std::vector<T>> table;\n    std::vector<int> look_up;\n\npublic:\n\
-    \    constexpr explicit sparse_table(int n) : vec(n) {}\n    constexpr explicit\
-    \ sparse_table(const std::vector<T>& vec) : vec(vec) {\n        build();\n   \
-    \ }\n    void set(int p, const T& v) { vec[p] = v; }\n    void build() {\n   \
-    \     int sz = vec.size();\n        int log = 0;\n        while ((1 << log) <=\
-    \ sz) {\n            log++;\n        }\n        table.assign(log, std::vector<T>(1\
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 2 \"src/tree/EulerTour.hpp\"\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
+    \n#include <numeric>\n#include <vector>\nnamespace kyopro {\n\n/**\n * @brief\
+    \ SparseTable\n */\ntemplate <class T, auto op> class sparse_table {\n    std::vector<T>\
+    \ vec;\n    std::vector<std::vector<T>> table;\n    std::vector<int> look_up;\n\
+    \npublic:\n    constexpr explicit sparse_table(int n) : vec(n) {}\n    constexpr\
+    \ explicit sparse_table(const std::vector<T>& vec) : vec(vec) {\n        build();\n\
+    \    }\n    void set(int p, const T& v) { vec[p] = v; }\n    void build() {\n\
+    \        int sz = vec.size();\n        int log = 0;\n        while ((1 << log)\
+    \ <= sz) {\n            log++;\n        }\n        table.assign(log, std::vector<T>(1\
     \ << log));\n        for (int i = 0; i < sz; i++) {\n            table[0][i] =\
     \ vec[i];\n        }\n        for (int i = 1; i < log; i++) {\n            for\
     \ (int j = 0; j + (1 << i) <= (1 << log); j++) {\n                table[i][j]\
@@ -112,8 +114,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-05 22:01:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
 layout: document

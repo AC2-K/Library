@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/lazy_segtree.hpp
     title: LazySegmentTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -83,18 +83,21 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\
-    \n\ninline int op(int x, int y) { return x + y; }\ninline int comp(int x, int\
-    \ y) { return x + y; }\ninline int mapping(int x, int y) { return x + y; }\ninline\
-    \ int e() { return 0; }\ninline int id() { return 0; }\n\nint main() {\n    int\
-    \ n, q;\n    kyopro::readint(n, q);\n    kyopro::lazy_segtree<int, int, op, e,\
-    \ comp, id, mapping> seg(n);\n    while (q--) {\n        int t;\n        kyopro::readint(t);\n\
-    \        if (!t) {\n            int l, r, val;\n            kyopro::readint(l,\
-    \ r, val);\n            l--, r--;\n            seg.apply(l, r + 1, val);\n   \
-    \     } else {\n            int i;\n            kyopro::readint(i);\n        \
-    \    i--;\n            kyopro::putint(seg[i]);\n        }\n    }\n}\n"
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 6 \"test/AOJ/DSL/2_E_lazy.test.cpp\"\n\ninline int op(int x, int y) { return\
+    \ x + y; }\ninline int comp(int x, int y) { return x + y; }\ninline int mapping(int\
+    \ x, int y) { return x + y; }\ninline int e() { return 0; }\ninline int id() {\
+    \ return 0; }\n\nint main() {\n    int n, q;\n    kyopro::readint(n, q);\n   \
+    \ kyopro::lazy_segtree<int, int, op, e, comp, id, mapping> seg(n);\n    while\
+    \ (q--) {\n        int t;\n        kyopro::readint(t);\n        if (!t) {\n  \
+    \          int l, r, val;\n            kyopro::readint(l, r, val);\n         \
+    \   l--, r--;\n            seg.apply(l, r + 1, val);\n        } else {\n     \
+    \       int i;\n            kyopro::readint(i);\n            i--;\n          \
+    \  kyopro::putint(seg[i]);\n        }\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
     \n\n#include \"../../../src/data-structure/lazy_segtree.hpp\"\n#include \"../../../src/stream.hpp\"\
     \n\ninline int op(int x, int y) { return x + y; }\ninline int comp(int x, int\
@@ -112,7 +115,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_E_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
+  timestamp: '2023-07-05 22:01:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_E_lazy.test.cpp

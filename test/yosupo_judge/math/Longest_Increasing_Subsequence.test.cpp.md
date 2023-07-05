@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/segtree.hpp
     title: SegmentTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -65,11 +65,14 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 7 \"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp\"\
-    \nusing S = std::pair<int, int>;\ninline S op(S x, S y) { return max(x, y); }\n\
-    inline S e() { return S{0, 0}; }\n\nint main() {\n    int n;\n    kyopro::readint(n);\n\
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 7 \"test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp\"\nusing\
+    \ S = std::pair<int, int>;\ninline S op(S x, S y) { return max(x, y); }\ninline\
+    \ S e() { return S{0, 0}; }\n\nint main() {\n    int n;\n    kyopro::readint(n);\n\
     \    std::vector<int> a(n);\n    for (auto& aa : a) {\n        kyopro::readint(aa);\n\
     \    }\n    {\n        std::vector<int> tmp = a;\n        std::sort(tmp.begin(),\
     \ tmp.end());\n        tmp.erase(std::unique(tmp.begin(), tmp.end()), tmp.end());\n\
@@ -107,7 +110,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
+  timestamp: '2023-07-05 22:01:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp

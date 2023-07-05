@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -45,27 +45,29 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/algorithm/mo.hpp\"\
-    \n#include <algorithm>\n#include <numeric>\n#include <utility>\n#include <vector>\n\
-    namespace kyopro {\n/**\n * @brief Mo's algorithm\n */\nclass Mo {\n    int n;\n\
-    \    std::vector<std::pair<int, int>> lr;\n    const int logn;\n    const long\
-    \ long maxn;\n    std::vector<int> ord;\n\npublic:\n    explicit Mo(int n) : n(n),\
-    \ logn(20), maxn(1ll << logn) { lr.reserve(n); }\n    void add(int l, int r) {\
-    \ lr.emplace_back(l, r); }\n\nprivate:\n    long long hilbertorder(int x, int\
-    \ y) {\n        long long d = 0;\n        for (int s = 1 << (logn - 1); s; s >>=\
-    \ 1) {\n            bool rx = x & s, ry = y & s;\n            d = d << 2 | rx\
-    \ * 3 ^ static_cast<int>(ry);\n            if (!ry) {\n                if (rx)\
-    \ {\n                    x = maxn - x;\n                    y = maxn - y;\n  \
-    \              }\n                std::swap(x, y);\n            }\n        }\n\
-    \        return d;\n    }\n    void line_up() {\n        int q = lr.size();\n\
-    \        ord.resize(q);\n        std::iota(std::begin(ord), std::end(ord), 0);\n\
-    \        std::vector<long long> tmp(q);\n        for (int i = 0; i < q; i++) {\n\
-    \            tmp[i] = hilbertorder(lr[i].first, lr[i].second);\n        }\n  \
-    \      std::sort(std::begin(ord), std::end(ord),\n                  [&](int a,\
-    \ int b) { return tmp[a] < tmp[b]; });\n    }\n\npublic:\n    template <typename\
-    \ AL, typename AR, typename EL, typename ER, typename O>\n    void build(const\
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 2 \"src/algorithm/mo.hpp\"\n#include <algorithm>\n#include <numeric>\n#include\
+    \ <utility>\n#include <vector>\nnamespace kyopro {\n/**\n * @brief Mo's algorithm\n\
+    \ */\nclass Mo {\n    int n;\n    std::vector<std::pair<int, int>> lr;\n    const\
+    \ int logn;\n    const long long maxn;\n    std::vector<int> ord;\n\npublic:\n\
+    \    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }\n\
+    \    void add(int l, int r) { lr.emplace_back(l, r); }\n\nprivate:\n    long long\
+    \ hilbertorder(int x, int y) {\n        long long d = 0;\n        for (int s =\
+    \ 1 << (logn - 1); s; s >>= 1) {\n            bool rx = x & s, ry = y & s;\n \
+    \           d = d << 2 | rx * 3 ^ static_cast<int>(ry);\n            if (!ry)\
+    \ {\n                if (rx) {\n                    x = maxn - x;\n          \
+    \          y = maxn - y;\n                }\n                std::swap(x, y);\n\
+    \            }\n        }\n        return d;\n    }\n    void line_up() {\n  \
+    \      int q = lr.size();\n        ord.resize(q);\n        std::iota(std::begin(ord),\
+    \ std::end(ord), 0);\n        std::vector<long long> tmp(q);\n        for (int\
+    \ i = 0; i < q; i++) {\n            tmp[i] = hilbertorder(lr[i].first, lr[i].second);\n\
+    \        }\n        std::sort(std::begin(ord), std::end(ord),\n              \
+    \    [&](int a, int b) { return tmp[a] < tmp[b]; });\n    }\n\npublic:\n    template\
+    \ <typename AL, typename AR, typename EL, typename ER, typename O>\n    void build(const\
     \ AL& add_left,\n               const AR& add_right,\n               const EL&\
     \ erase_left,\n               const ER& erase_right,\n               const O&\
     \ out) {\n        line_up();\n        int l = 0, r = 0;\n        for (auto idx\
@@ -127,7 +129,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
+  timestamp: '2023-07-05 22:01:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp

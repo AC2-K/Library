@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/manacher.hpp
     title: Manacher's algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_palindromes
@@ -42,29 +42,31 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/string/manacher.hpp\"\
-    \n#include <cassert>\n#line 4 \"src/string/manacher.hpp\"\n#include <utility>\n\
-    #include <vector>\nnamespace kyopro {\n\n/**\n * @brief Manacher's algorithm\n\
-    \ */\nstd::vector<int> manacher(std::string s, bool even = true) {\n    assert(s.size());\n\
-    \    if (even) {\n        std::string t;\n        t.resize(2 * (int)s.size() -\
-    \ 1);\n        for (int i = 0; i < (int)s.size(); i++) {\n            t[2 * i]\
-    \ = s[i];\n        }\n        for (int i = 0; i < (int)s.size(); i++) {\n    \
-    \        t[2 * i + 1] = '$';\n        }\n        std::swap(t, s);\n    }\n   \
-    \ std::vector<int> res(s.size());\n\n    int i = 0, j = 0;\n\n    while (i < (int)s.size())\
-    \ {\n        while (i - j >= 0 && i + j < (int)s.size() && s[i - j] == s[i + j])\
-    \ {\n            j++;\n        }\n        res[i] = j;\n\n        int k = 1;\n\
-    \        while (i - k >= 0 && i + k < (int)s.size() && k + res[i - k] < j) {\n\
-    \            res[i + k] = res[i - k], k++;\n        }\n        i += k, j -= k;\n\
-    \    }\n\n    if (even) {\n        for (int i = 0; i < (int)res.size(); i++) {\n\
-    \            if (~(i ^ res[i]) & 1) {\n                res[i]--;\n           \
-    \ }\n        }\n    } else {\n        for (auto& r : res) {\n            r = 2\
-    \ * r - 1;\n        }\n    }\n    return res;\n}\n};  // namespace kyopro\n#line\
-    \ 5 \"test/yosupo_judge/string/Enumerate_Palindromes.test.cpp\"\nint main() {\n\
-    \    std::string s;\n    {\n        char c;\n        while (!isspace(c = getchar_unlocked()))\
-    \ s += c;\n    }\n    auto res = kyopro::manacher(s);\n    for (auto r : res)\
-    \ {\n        kyopro::putint(r);\n    }\n}\n"
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 2 \"src/string/manacher.hpp\"\n#include <cassert>\n#line 4 \"src/string/manacher.hpp\"\
+    \n#include <utility>\n#include <vector>\nnamespace kyopro {\n\n/**\n * @brief\
+    \ Manacher's algorithm\n */\nstd::vector<int> manacher(std::string s, bool even\
+    \ = true) {\n    assert(s.size());\n    if (even) {\n        std::string t;\n\
+    \        t.resize(2 * (int)s.size() - 1);\n        for (int i = 0; i < (int)s.size();\
+    \ i++) {\n            t[2 * i] = s[i];\n        }\n        for (int i = 0; i <\
+    \ (int)s.size(); i++) {\n            t[2 * i + 1] = '$';\n        }\n        std::swap(t,\
+    \ s);\n    }\n    std::vector<int> res(s.size());\n\n    int i = 0, j = 0;\n\n\
+    \    while (i < (int)s.size()) {\n        while (i - j >= 0 && i + j < (int)s.size()\
+    \ && s[i - j] == s[i + j]) {\n            j++;\n        }\n        res[i] = j;\n\
+    \n        int k = 1;\n        while (i - k >= 0 && i + k < (int)s.size() && k\
+    \ + res[i - k] < j) {\n            res[i + k] = res[i - k], k++;\n        }\n\
+    \        i += k, j -= k;\n    }\n\n    if (even) {\n        for (int i = 0; i\
+    \ < (int)res.size(); i++) {\n            if (~(i ^ res[i]) & 1) {\n          \
+    \      res[i]--;\n            }\n        }\n    } else {\n        for (auto& r\
+    \ : res) {\n            r = 2 * r - 1;\n        }\n    }\n    return res;\n}\n\
+    };  // namespace kyopro\n#line 5 \"test/yosupo_judge/string/Enumerate_Palindromes.test.cpp\"\
+    \nint main() {\n    std::string s;\n    {\n        char c;\n        while (!isspace(c\
+    \ = getchar_unlocked())) s += c;\n    }\n    auto res = kyopro::manacher(s);\n\
+    \    for (auto r : res) {\n        kyopro::putint(r);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\
     \n#include <iostream>\n#include \"../../../src/stream.hpp\"\n#include \"../../../src/string/manacher.hpp\"\
     \nint main() {\n    std::string s;\n    {\n        char c;\n        while (!isspace(c\
@@ -76,8 +78,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-05 22:01:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
 layout: document

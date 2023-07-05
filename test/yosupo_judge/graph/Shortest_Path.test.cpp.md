@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/dijkstra.hpp
     title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -72,11 +72,14 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/graph/Shortest_Path.test.cpp\"\
-    \nint main() {\n    int n, m, s, t;\n    kyopro::readint(n, m, s, t);\n\n    kyopro::dijkstra\
-    \ g(n);\n    for (int i = 0; i < m; i++) {\n        int a, b, c;\n        kyopro::readint(a,\
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 6 \"test/yosupo_judge/graph/Shortest_Path.test.cpp\"\nint main() {\n   \
+    \ int n, m, s, t;\n    kyopro::readint(n, m, s, t);\n\n    kyopro::dijkstra g(n);\n\
+    \    for (int i = 0; i < m; i++) {\n        int a, b, c;\n        kyopro::readint(a,\
     \ b, c);\n        g.add_edge(a, b, c);\n    }\n\n    g.build(s);\n    auto [dist,\
     \ path] = g.shortest_path(t);\n    if (path.empty()) {\n        kyopro::putint(-1);\n\
     \        exit(0);\n    }\n    kyopro::putint(dist, path.size() - 1);\n    for\
@@ -98,7 +101,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2023-06-03 19:17:10+09:00'
+  timestamp: '2023-07-05 22:01:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/graph/Shortest_Path.test.cpp

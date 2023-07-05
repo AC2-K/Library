@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/Z.hpp
     title: Z algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
@@ -42,23 +42,25 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/string/Z.hpp\"\
-    \n#include <cassert>\n#line 4 \"src/string/Z.hpp\"\n#include <vector>\nnamespace\
-    \ kyopro {\n/**\n * @brief Z algorithm\n * @return LCP(S,S[i:]) (i=0,1,...,|str|-1)\n\
-    \ */\nstd::vector<int> Z(const std::string& str) {\n    assert(str.size());\n\
-    \    std::vector<int> res(str.size());\n    res.front() = (int)str.size();\n\n\
-    \    int i = 1, j = 0;\n\n    while (i < (int)str.size()) {\n        while (i\
-    \ + j < (int)str.size() && str[j] == str[i + j]) {\n            ++j;\n       \
-    \ }\n\n        res[i] = j;\n        if (j == 0) {\n            ++i;\n        \
-    \    continue;\n        }\n        int k = 1;\n        while (i + k < (int)str.size()\
-    \ && k + res[k] < j) {\n            res[i + k] = res[k];\n            ++k;\n \
-    \       }\n        i += k, j -= k;\n    }\n    return res;\n}\n};  // namespace\
-    \ kyopro\n#line 7 \"test/yosupo_judge/string/Z_algorithm.test.cpp\"\n\nint main()\
-    \ {\n    std::string s;\n    {\n        char c;\n        while (!isspace(c = getchar_unlocked()))\
-    \ s += c;\n    }\n    auto res = kyopro::Z(s);\n    for (auto r : res) {\n   \
-    \     kyopro::putint(r);\n    }\n}\n"
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 2 \"src/string/Z.hpp\"\n#include <cassert>\n#line 4 \"src/string/Z.hpp\"\
+    \n#include <vector>\nnamespace kyopro {\n/**\n * @brief Z algorithm\n * @return\
+    \ LCP(S,S[i:]) (i=0,1,...,|str|-1)\n */\nstd::vector<int> Z(const std::string&\
+    \ str) {\n    assert(str.size());\n    std::vector<int> res(str.size());\n   \
+    \ res.front() = (int)str.size();\n\n    int i = 1, j = 0;\n\n    while (i < (int)str.size())\
+    \ {\n        while (i + j < (int)str.size() && str[j] == str[i + j]) {\n     \
+    \       ++j;\n        }\n\n        res[i] = j;\n        if (j == 0) {\n      \
+    \      ++i;\n            continue;\n        }\n        int k = 1;\n        while\
+    \ (i + k < (int)str.size() && k + res[k] < j) {\n            res[i + k] = res[k];\n\
+    \            ++k;\n        }\n        i += k, j -= k;\n    }\n    return res;\n\
+    }\n};  // namespace kyopro\n#line 7 \"test/yosupo_judge/string/Z_algorithm.test.cpp\"\
+    \n\nint main() {\n    std::string s;\n    {\n        char c;\n        while (!isspace(c\
+    \ = getchar_unlocked())) s += c;\n    }\n    auto res = kyopro::Z(s);\n    for\
+    \ (auto r : res) {\n        kyopro::putint(r);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#include\
     \ <iostream>\n#include <string>\n\n#include \"../../../src/stream.hpp\"\n#include\
     \ \"../../../src/string/Z.hpp\"\n\nint main() {\n    std::string s;\n    {\n \
@@ -71,8 +73,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/string/Z_algorithm.test.cpp
   requiredBy: []
-  timestamp: '2023-06-02 22:21:25+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-05 22:01:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/string/Z_algorithm.test.cpp
 layout: document

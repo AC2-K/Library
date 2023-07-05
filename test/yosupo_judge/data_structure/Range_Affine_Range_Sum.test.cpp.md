@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/lazy_segtree.hpp
     title: LazySegmentTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -194,18 +194,21 @@ data:
     \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
     \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\nvoid putstr(const std::string& str) {\n    for (auto c : str) {\n \
-    \       putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n}\n\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\
-    \nusing mint = kyopro::static_modint32<998244353>;\nstruct S {\n    mint s;\n\
-    \    int len;\n};\ninline S op(S a, S b) { return S{a.s + b.s, a.len + b.len};\
-    \ }\ninline S e() { return S{0, 0}; }\nusing Affine = std::pair<mint, mint>;\n\
-    inline Affine composition(Affine g, Affine f) {\n    // f(g)\n    // a(cx+d)+b\n\
-    \    auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n  \
-    \  return Affine(a * c, a * d + b);\n}\ninline Affine id() { return Affine(1,\
-    \ 0); }\ninline S mapping(S d, Affine f) {\n    mint a = f.first, b = f.second;\n\
-    \    d.s *= a, d.s += b * d.len;\n    return d;\n};\n\nint main() {\n    int n,\
-    \ q;\n    kyopro::readint(n, q);\n    kyopro::lazy_segtree<S, Affine, op, e, composition,\
+    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
+    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
+    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
+    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
+    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
+    #line 6 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\n\
+    using mint = kyopro::static_modint32<998244353>;\nstruct S {\n    mint s;\n  \
+    \  int len;\n};\ninline S op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }\n\
+    inline S e() { return S{0, 0}; }\nusing Affine = std::pair<mint, mint>;\ninline\
+    \ Affine composition(Affine g, Affine f) {\n    // f(g)\n    // a(cx+d)+b\n  \
+    \  auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n    return\
+    \ Affine(a * c, a * d + b);\n}\ninline Affine id() { return Affine(1, 0); }\n\
+    inline S mapping(S d, Affine f) {\n    mint a = f.first, b = f.second;\n    d.s\
+    \ *= a, d.s += b * d.len;\n    return d;\n};\n\nint main() {\n    int n, q;\n\
+    \    kyopro::readint(n, q);\n    kyopro::lazy_segtree<S, Affine, op, e, composition,\
     \ id, mapping> sg(n);\n    for (int i = 0; i < n; i++) {\n        mint a;\n  \
     \      kyopro::readint(a);\n        sg.set(i, {a, 1});\n    }\n    sg.build();\n\
     \    while (q--) {\n        int t;\n        kyopro::readint(t);\n        if (t\
@@ -242,7 +245,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-06-25 05:37:10+00:00'
+  timestamp: '2023-07-05 22:01:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
