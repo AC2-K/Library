@@ -76,13 +76,21 @@ void readstr(std::string& str) {
         c = getchar_unlocked();
     }
 }
+
+void readstr(std::string& str,std::string& tail...) {
+    readstr(str);
+    readstr(tail);
+}
 void putstr(const std::string& str) {
     for (auto c : str) {
         putchar_unlocked(c);
     }
     putchar_unlocked('\n');
 }
-
+void putstr(const std::string& str, const std::string& tail...) {
+    putstr(str);
+    putstr(tail);
+}
 };  // namespace kyopro
 
 /**
