@@ -93,8 +93,8 @@ data:
   isVerificationFile: false
   path: atcoder/internal_scc.hpp
   requiredBy:
-  - atcoder/scc.hpp
   - atcoder/twosat.hpp
+  - atcoder/scc.hpp
   timestamp: '2023-07-02 15:52:59+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

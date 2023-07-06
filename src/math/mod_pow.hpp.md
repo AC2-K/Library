@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   _extendedRequiredBy:
@@ -71,14 +71,14 @@ data:
   isVerificationFile: false
   path: src/math/mod_pow.hpp
   requiredBy:
-  - src/math/mod_log.hpp
   - src/string/rolling_hash.hpp
+  - src/math/mod_log.hpp
   timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yuki/No430.test.cpp
   - test/AOJ/NTL/1_B.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 documentation_of: src/math/mod_pow.hpp
 layout: document
 redirect_from:

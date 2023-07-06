@@ -11,6 +11,9 @@ data:
   - icon: ':warning:'
     path: atcoder/modint.hpp
     title: atcoder/modint.hpp
+  - icon: ':warning:'
+    path: src/string/wildcard_pattern_matching.hpp
+    title: WildCard Pattern Matching
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -109,9 +112,10 @@ data:
   isVerificationFile: false
   path: atcoder/internal_type_traits.hpp
   requiredBy:
-  - atcoder/fenwicktree.hpp
-  - atcoder/modint.hpp
   - atcoder/convolution.hpp
+  - atcoder/modint.hpp
+  - atcoder/fenwicktree.hpp
+  - src/string/wildcard_pattern_matching.hpp
   timestamp: '2023-07-02 15:52:59+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

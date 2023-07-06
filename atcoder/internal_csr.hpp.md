@@ -44,10 +44,10 @@ data:
   isVerificationFile: false
   path: atcoder/internal_csr.hpp
   requiredBy:
-  - atcoder/scc.hpp
-  - atcoder/mincostflow.hpp
-  - atcoder/internal_scc.hpp
   - atcoder/twosat.hpp
+  - atcoder/internal_scc.hpp
+  - atcoder/mincostflow.hpp
+  - atcoder/scc.hpp
   timestamp: '2023-07-02 15:52:59+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

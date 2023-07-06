@@ -11,6 +11,9 @@ data:
   - icon: ':warning:'
     path: atcoder/segtree.hpp
     title: atcoder/segtree.hpp
+  - icon: ':warning:'
+    path: src/string/wildcard_pattern_matching.hpp
+    title: WildCard Pattern Matching
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -46,9 +49,10 @@ data:
   isVerificationFile: false
   path: atcoder/internal_bit.hpp
   requiredBy:
-  - atcoder/segtree.hpp
-  - atcoder/lazysegtree.hpp
   - atcoder/convolution.hpp
+  - atcoder/lazysegtree.hpp
+  - atcoder/segtree.hpp
+  - src/string/wildcard_pattern_matching.hpp
   timestamp: '2023-07-02 15:52:59+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -13,7 +13,10 @@ data:
   - icon: ':warning:'
     path: atcoder/modint.hpp
     title: atcoder/modint.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/string/wildcard_pattern_matching.hpp
+    title: WildCard Pattern Matching
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -558,7 +561,8 @@ data:
   - atcoder/internal_type_traits.hpp
   isVerificationFile: false
   path: atcoder/convolution.hpp
-  requiredBy: []
+  requiredBy:
+  - src/string/wildcard_pattern_matching.hpp
   timestamp: '2023-07-02 15:52:59+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
