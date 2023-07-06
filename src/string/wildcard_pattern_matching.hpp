@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include<algorithm>
-#include "random/xor_shift.hpp"
+#include "../random/xor_shift.hpp"
 
 namespace kyopro {
 std::vector<bool> wildcard_pattern_matching(const std::string& s,
