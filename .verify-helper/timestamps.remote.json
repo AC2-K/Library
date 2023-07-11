@@ -18,7 +18,9 @@
 "test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp": "2023-05-15 08:00:11 +0900",
 "test/yosupo_judge/math/Discrete_Logarithm.test.cpp": "2023-07-03 15:58:56 +0900",
 "test/yosupo_judge/math/Factorize.test.cpp": "2023-07-11 13:05:57 +0000",
-"test/yosupo_judge/math/Primitive_Root.test.cpp": "2023-07-11 13:05:57 +0000",
+"test/yosupo_judge/math/Primitive_Root.test.cpp": "2023-07-11 13:46:23 +0000",
 "test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp": "2023-07-11 13:05:57 +0000",
+"test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp": "2023-07-11 13:05:57 +0000",
+"test/yuki/No3030.test.cpp": "2023-07-11 13:05:57 +0000",
 "test/yuki/No430.test.cpp": "2023-07-03 15:58:56 +0900"
 }
