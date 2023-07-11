@@ -114,7 +114,7 @@ data:
       path: src/data-structure/bbst/lazy_reversible_bbst.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
         \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/bbst/reversible_bbst.hpp
       title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
   - name: src/data-structure/data-structure-2d
@@ -165,13 +165,13 @@ data:
       title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   - name: src/internal
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/barrett.hpp
       title: Barrett Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
@@ -182,7 +182,7 @@ data:
     - icon: ':x:'
       path: src/math/divisor-multiple-transform.hpp
       title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: "\u52D5\u7684modint"
     - icon: ':warning:'
@@ -194,7 +194,7 @@ data:
     - icon: ':x:'
       path: src/math/matrix.hpp
       title: Matrix
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/miller.hpp
       title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
     - icon: ':heavy_check_mark:'
@@ -217,7 +217,7 @@ data:
       title: "\u9759\u7684modint"
   - name: src/random
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/random/xor_shift.hpp
       title: xor shift
   - name: src/string
@@ -381,7 +381,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
       title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
       title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   - name: test/yosupo_judge/string
@@ -408,7 +408,7 @@ data:
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No3030.test.cpp
       title: test/yuki/No3030.test.cpp
     - icon: ':heavy_check_mark:'

@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
   - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
   - icon: ':heavy_check_mark:'
@@ -25,7 +25,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
   - icon: ':question:'
@@ -266,21 +266,20 @@ data:
     \             divisor.emplace_back(divisor[j] * pow);\n                pow *=\
     \ p;\n            }\n        }\n\n        return divisor;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @docs docs/math/rho.md\n */\n#line 5 \"src/math/primitive_root.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief \u539F\u59CB\u6839\n */\ninline uint64_t\
-    \ primitive_root(uint64_t p) {\n    if (p == 2) return 1;\n    auto pf = kyopro::rho::factorize(p\
+    \nnamespace kyopro {\n\n/**\n * @brief \u539F\u59CB\u6839\n */\ntemplate<typename\
+    \ T>\nint primitive_root(T p) {\n    if (p == 2) return 1;\n\n    auto pf = kyopro::rho::factorize(p\
     \ - 1);\n    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto&\
-    \ q : pf) {\n        q = (p - 1) / q;\n    }\n    using ull = unsigned long long;\n\
-    \    if (dynamic_modint<uint64_t>::mod() != p) {\n        dynamic_modint<uint64_t>::set_mod(p);\n\
-    \    }\n    xor_shift rng(2023);\n    while (1) {\n        dynamic_modint<uint64_t>\
-    \ g(rng());\n        if (g.val() == 0) continue;\n        bool is_ok = true;\n\
-    \n        for (auto q : pf) {\n            if (dynamic_modint<uint64_t>(g).pow(q).val()\
-    \ == 1) {\n                is_ok = false;\n                break;\n          \
-    \  }\n        }\n        if (is_ok) {\n            return g.val();\n        }\n\
-    \    }\n}\n};  // namespace kyopro\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n\
-    #include <stdio.h>\n#include <string>\nnamespace kyopro {\n/**\n * \u6587\u5B57\
-    \u30921\u500B\u8AAD\u307F\u8FBC\u3080\n */\ninline char readchar() {\n    char\
-    \ c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n  \
-    \  return c;\n}\n\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate\
+    \ q : pf) {\n        q = (p - 1) / q;\n    }\n    \n    if (dynamic_modint<uint64_t>::mod()\
+    \ != p) {\n        dynamic_modint<uint64_t>::set_mod(p);\n    }\n\n    for (int\
+    \ g_ = 1; ; ++g_) {\n        dynamic_modint<uint64_t> g(g_);\n        if (g.val()\
+    \ == 0) continue;\n        bool is_ok = true;\n\n        for (auto q : pf) {\n\
+    \            if (g.pow(q).val() == 1) {\n                is_ok = false;\n    \
+    \            break;\n            }\n        }\n\n        if (is_ok) {\n      \
+    \      return g_;\n        }\n    }\n}\n};  // namespace kyopro\n#line 2 \"src/stream.hpp\"\
+    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\nnamespace kyopro\
+    \ {\n/**\n * \u6587\u5B57\u30921\u500B\u8AAD\u307F\u8FBC\u3080\n */\ninline char\
+    \ readchar() {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    \    return c;\n}\n\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate\
     \ <typename T> constexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative\
     \ = false;\n    char c=readchar();\n    if (c == '-') is_negative = true, c =\
     \ getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
@@ -325,7 +324,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2023-07-11 13:05:57+00:00'
+  timestamp: '2023-07-11 13:46:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Primitive_Root.test.cpp
