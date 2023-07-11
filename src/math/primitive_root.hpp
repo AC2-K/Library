@@ -21,8 +21,9 @@ T primitive_root(T p) {
         dynamic_modint<uint64_t>::set_mod(p);
     }
 
-    for (int g_ = 1; ; ++g_) {
-        dynamic_modint<uint64_t> g(g_);
+    xor_shift32 rng(619);
+    while(1) {
+        dynamic_modint<uint64_t> g(rng());
         if (g.val() == 0) continue;
         bool is_ok = true;
 
@@ -34,7 +35,7 @@ T primitive_root(T p) {
         }
 
         if (is_ok) {
-            return g_;
+            return g.val();
         }
     }
 }
