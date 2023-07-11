@@ -265,27 +265,33 @@ data:
     #include <ctype.h>\n#include <stdio.h>\n#include <string>\nnamespace kyopro {\n\
     /**\n * \u6587\u5B57\u30921\u500B\u8AAD\u307F\u8FBC\u3080\n */\ninline char readchar()\
     \ {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    \    return c;\n}\n\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate\
+    \    return c;\n}\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate\
     \ <typename T> constexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative\
-    \ = false;\n    char c = readchar();\n    if (c == '-') is_negative = true, c\
-    \ = getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
+    \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
+    \   c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c =\
+    \ getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
     \        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n}\ntemplate\
     \ <typename Head, typename... Tail>\nconstexpr inline void readint(Head& head,\
     \ Tail&... tail) {\n    readint(head);\n    readint(tail...);\n}\n\ntemplate <typename\
-    \ T> constexpr inline void putint(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
-    \        putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
+    \ T> void write_int(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n  \
+    \      putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
     \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
     \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
-    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
-    \   putchar_unlocked('\\n');\n    putint(tail...);\n}\n\n/**\n * \u6587\u5B57\u5217\
-    \u306E\u5165\u51FA\u529B\n */\ninline void readstr(std::string& str) {\n    char\
-    \ c = readchar();\n    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\ninline void readstr(std::string& str, std::string& tail...) {\n   \
-    \ readstr(str);\n    readstr(tail);\n}\ninline void putstr(const std::string&\
+    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
+    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
+    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
+    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
+    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
+    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
+    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
+    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\ninline void readstr(std::string&\
+    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\n\ninline void readstr(std::string& str,std::string& tail...) {\n  \
+    \  readstr(str);\n    readstr(tail);\n}\ninline void putstr(const std::string&\
     \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
     n');\n}\ninline void putstr(const std::string& str, const std::string& tail...)\
-    \ {\n    putstr(str);\n    putstr(tail);\n}\n\n};  // namespace kyopro\n\n/**\n\
+    \ {\n    putstr(str);\n    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n\
     \ * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/math/Factorize.test.cpp\"\n\
     int main() {\n    int q;\n    kyopro::readint(q);\n    while (q--) {\n       \
     \ uint64_t x;\n        kyopro::readint(x);\n        const auto pf = kyopro::rho::factorize(x);\n\
@@ -310,7 +316,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-07-11 14:15:58+00:00'
+  timestamp: '2023-07-11 14:41:52+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Factorize.test.cpp
