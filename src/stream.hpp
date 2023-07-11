@@ -18,7 +18,7 @@ inline char readchar() {
 template <typename T> constexpr inline void readint(T& a) {
     a = 0;
     bool is_negative = false;
-    char c=readchar();
+    char c = readchar();
     if (c == '-') is_negative = true, c = getchar_unlocked();
     while (isdigit(c)) {
         a = 10 * a + (c - '0');
@@ -39,15 +39,13 @@ template <typename T> constexpr inline void putint(T a) {
         return;
     }
     if (a < 0) putchar_unlocked('-'), a *= -1;
-    constexpr int dgt=std::numeric_limits<T>::digits10;
-    int now = dgt + 1;
-    char s[dgt + 1];
+    char s[37];
+    int now = 37;
     while (a) {
         s[--now] = (char)'0' + a % 10;
         a /= 10;
     }
-    while (now <= dgt)
-        putchar_unlocked(s[now++]);
+    while (now < 37) putchar_unlocked(s[now++]);
     putchar_unlocked('\n');
 }
 template <typename Head, typename... Tail>
