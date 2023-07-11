@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/algorithm/mo.hpp
     title: Mo's algorithm
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
@@ -27,7 +27,7 @@ data:
     \ */\ninline char readchar() {\n    char c = getchar_unlocked();\n    while (isspace(c))\
     \ c = getchar_unlocked();\n    return c;\n}\n\n/**\n *  \u6574\u6570\u306E\u5165\
     \u51FA\u529B\n */\ntemplate <typename T> constexpr inline void readint(T& a) {\n\
-    \    a = 0;\n    bool is_negative = false;\n    char c=readchar();\n    if (c\
+    \    a = 0;\n    bool is_negative = false;\n    char c = readchar();\n    if (c\
     \ == '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c))\
     \ {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n\
     \    if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\n\
@@ -35,9 +35,8 @@ data:
     \    readint(tail...);\n}\n\ntemplate <typename T> constexpr inline void putint(T\
     \ a) {\n    if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\\
     n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n\
-    \    constexpr int dgt=std::numeric_limits<T>::digits10;\n    int now = dgt +\
-    \ 1;\n    char s[dgt + 1];\n    while (a) {\n        s[--now] = (char)'0' + a\
-    \ % 10;\n        a /= 10;\n    }\n    while (now <= dgt)\n        putchar_unlocked(s[now++]);\n\
+    \    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now] = (char)'0'\
+    \ + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
     \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
     constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
     \   putchar_unlocked('\\n');\n    putint(tail...);\n}\n\n/**\n * \u6587\u5B57\u5217\
@@ -127,8 +126,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-07-11 13:05:57+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-07-11 14:15:58+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
 layout: document

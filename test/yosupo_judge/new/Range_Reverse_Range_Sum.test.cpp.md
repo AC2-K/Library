@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data-structure/bbst/reversible_bbst.hpp
     title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_reverse_range_sum
@@ -82,17 +82,16 @@ data:
     \u3080\n */\ninline char readchar() {\n    char c = getchar_unlocked();\n    while\
     \ (isspace(c)) c = getchar_unlocked();\n    return c;\n}\n\n/**\n *  \u6574\u6570\
     \u306E\u5165\u51FA\u529B\n */\ntemplate <typename T> constexpr inline void readint(T&\
-    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c=readchar();\n  \
-    \  if (c == '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c))\
+    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = readchar();\n\
+    \    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c))\
     \ {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n\
     \    if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\n\
     constexpr inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n\
     \    readint(tail...);\n}\n\ntemplate <typename T> constexpr inline void putint(T\
     \ a) {\n    if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\\
     n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n\
-    \    constexpr int dgt=std::numeric_limits<T>::digits10;\n    int now = dgt +\
-    \ 1;\n    char s[dgt + 1];\n    while (a) {\n        s[--now] = (char)'0' + a\
-    \ % 10;\n        a /= 10;\n    }\n    while (now <= dgt)\n        putchar_unlocked(s[now++]);\n\
+    \    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now] = (char)'0'\
+    \ + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
     \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
     constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
     \   putchar_unlocked('\\n');\n    putint(tail...);\n}\n\n/**\n * \u6587\u5B57\u5217\
@@ -128,8 +127,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-07-11 13:05:57+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-11 14:15:58+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
 layout: document
