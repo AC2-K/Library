@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/mo.hpp
     title: Mo's algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
@@ -23,46 +23,44 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n#line\
     \ 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
-    namespace kyopro {\n\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate\
-    \ <typename T> constexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative\
-    \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
-    \   c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c =\
-    \ getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
-    \        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n}\ntemplate\
-    \ <typename Head, typename... Tail>\nconstexpr inline void readint(Head& head,\
-    \ Tail&... tail) {\n    readint(head);\n    readint(tail...);\n}\n\ntemplate <typename\
-    \ T> void write_int(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n  \
-    \      putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
-    \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
-    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
-    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
-    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
-    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
-    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
-    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
-    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
-    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
-    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
-    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
-    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
-    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
-    #line 2 \"src/algorithm/mo.hpp\"\n#include <algorithm>\n#include <numeric>\n#include\
-    \ <utility>\n#include <vector>\nnamespace kyopro {\n/**\n * @brief Mo's algorithm\n\
-    \ */\nclass Mo {\n    int n;\n    std::vector<std::pair<int, int>> lr;\n    const\
-    \ int logn;\n    const long long maxn;\n    std::vector<int> ord;\n\npublic:\n\
-    \    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }\n\
-    \    void add(int l, int r) { lr.emplace_back(l, r); }\n\nprivate:\n    long long\
-    \ hilbertorder(int x, int y) {\n        long long d = 0;\n        for (int s =\
-    \ 1 << (logn - 1); s; s >>= 1) {\n            bool rx = x & s, ry = y & s;\n \
-    \           d = d << 2 | rx * 3 ^ static_cast<int>(ry);\n            if (!ry)\
-    \ {\n                if (rx) {\n                    x = maxn - x;\n          \
-    \          y = maxn - y;\n                }\n                std::swap(x, y);\n\
-    \            }\n        }\n        return d;\n    }\n    void line_up() {\n  \
-    \      int q = lr.size();\n        ord.resize(q);\n        std::iota(std::begin(ord),\
+    namespace kyopro {\n/**\n * \u6587\u5B57\u30921\u500B\u8AAD\u307F\u8FBC\u3080\n\
+    \ */\ninline char readchar() {\n    char c = getchar_unlocked();\n    while (isspace(c))\
+    \ c = getchar_unlocked();\n    return c;\n}\n\n/**\n *  \u6574\u6570\u306E\u5165\
+    \u51FA\u529B\n */\ntemplate <typename T> constexpr inline void readint(T& a) {\n\
+    \    a = 0;\n    bool is_negative = false;\n    char c=readchar();\n    if (c\
+    \ == '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c))\
+    \ {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n\
+    \    if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\n\
+    constexpr inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n\
+    \    readint(tail...);\n}\n\ntemplate <typename T> constexpr inline void putint(T\
+    \ a) {\n    if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\\
+    n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n\
+    \    constexpr int dgt=std::numeric_limits<T>::digits10;\n    int now = dgt +\
+    \ 1;\n    char s[dgt + 1];\n    while (a) {\n        s[--now] = (char)'0' + a\
+    \ % 10;\n        a /= 10;\n    }\n    while (now <= dgt)\n        putchar_unlocked(s[now++]);\n\
+    \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
+    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
+    \   putchar_unlocked('\\n');\n    putint(tail...);\n}\n\n/**\n * \u6587\u5B57\u5217\
+    \u306E\u5165\u51FA\u529B\n */\ninline void readstr(std::string& str) {\n    char\
+    \ c = readchar();\n    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\ninline void readstr(std::string& str, std::string& tail...) {\n   \
+    \ readstr(str);\n    readstr(tail);\n}\ninline void putstr(const std::string&\
+    \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
+    n');\n}\ninline void putstr(const std::string& str, const std::string& tail...)\
+    \ {\n    putstr(str);\n    putstr(tail);\n}\n\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief fastIO\n */\n#line 2 \"src/algorithm/mo.hpp\"\n#include <algorithm>\n\
+    #include <numeric>\n#include <utility>\n#include <vector>\nnamespace kyopro {\n\
+    /**\n * @brief Mo's algorithm\n */\nclass Mo {\n    int n;\n    std::vector<std::pair<int,\
+    \ int>> lr;\n    const int logn;\n    const long long maxn;\n    std::vector<int>\
+    \ ord;\n\npublic:\n    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn)\
+    \ { lr.reserve(n); }\n    void add(int l, int r) { lr.emplace_back(l, r); }\n\n\
+    private:\n    long long hilbertorder(int x, int y) {\n        long long d = 0;\n\
+    \        for (int s = 1 << (logn - 1); s; s >>= 1) {\n            bool rx = x\
+    \ & s, ry = y & s;\n            d = d << 2 | rx * 3 ^ static_cast<int>(ry);\n\
+    \            if (!ry) {\n                if (rx) {\n                    x = maxn\
+    \ - x;\n                    y = maxn - y;\n                }\n               \
+    \ std::swap(x, y);\n            }\n        }\n        return d;\n    }\n    void\
+    \ line_up() {\n        int q = lr.size();\n        ord.resize(q);\n        std::iota(std::begin(ord),\
     \ std::end(ord), 0);\n        std::vector<long long> tmp(q);\n        for (int\
     \ i = 0; i < q; i++) {\n            tmp[i] = hilbertorder(lr[i].first, lr[i].second);\n\
     \        }\n        std::sort(std::begin(ord), std::end(ord),\n              \
@@ -129,8 +127,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-07-05 22:01:13+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-11 13:05:57+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
 layout: document

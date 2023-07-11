@@ -2,13 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
   - icon: ':heavy_check_mark:'
@@ -48,15 +48,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
     title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8
@@ -125,7 +125,7 @@ data:
   - src/math/mod_log.hpp
   - src/internal/montgomery.hpp
   timestamp: '2023-05-15 08:00:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No430.test.cpp
   - test/yuki/No3030.test.cpp

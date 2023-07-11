@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/combination.hpp
     title: "\u4E8C\u9805\u4FC2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -183,36 +183,34 @@ data:
     \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;\n\
     \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */\n\
     #line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
-    namespace kyopro {\n\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate\
-    \ <typename T> constexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative\
-    \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
-    \   c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c =\
-    \ getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
-    \        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n}\ntemplate\
-    \ <typename Head, typename... Tail>\nconstexpr inline void readint(Head& head,\
-    \ Tail&... tail) {\n    readint(head);\n    readint(tail...);\n}\n\ntemplate <typename\
-    \ T> void write_int(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n  \
-    \      putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
-    \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
-    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
-    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
-    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
-    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
-    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
-    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
-    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
-    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
-    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
-    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
-    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
-    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
-    #line 7 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\nusing mint\
-    \ = kyopro::barrett_modint<10>;\nusing namespace std;\nint main() {\n    int t,\
-    \ m;\n    kyopro::readint(t, m);\n    mint::set_mod(m);\n    kyopro::combination<mint,\
+    namespace kyopro {\n/**\n * \u6587\u5B57\u30921\u500B\u8AAD\u307F\u8FBC\u3080\n\
+    \ */\ninline char readchar() {\n    char c = getchar_unlocked();\n    while (isspace(c))\
+    \ c = getchar_unlocked();\n    return c;\n}\n\n/**\n *  \u6574\u6570\u306E\u5165\
+    \u51FA\u529B\n */\ntemplate <typename T> constexpr inline void readint(T& a) {\n\
+    \    a = 0;\n    bool is_negative = false;\n    char c=readchar();\n    if (c\
+    \ == '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c))\
+    \ {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n\
+    \    if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\n\
+    constexpr inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n\
+    \    readint(tail...);\n}\n\ntemplate <typename T> constexpr inline void putint(T\
+    \ a) {\n    if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\\
+    n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n\
+    \    constexpr int dgt=std::numeric_limits<T>::digits10;\n    int now = dgt +\
+    \ 1;\n    char s[dgt + 1];\n    while (a) {\n        s[--now] = (char)'0' + a\
+    \ % 10;\n        a /= 10;\n    }\n    while (now <= dgt)\n        putchar_unlocked(s[now++]);\n\
+    \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
+    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
+    \   putchar_unlocked('\\n');\n    putint(tail...);\n}\n\n/**\n * \u6587\u5B57\u5217\
+    \u306E\u5165\u51FA\u529B\n */\ninline void readstr(std::string& str) {\n    char\
+    \ c = readchar();\n    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\ninline void readstr(std::string& str, std::string& tail...) {\n   \
+    \ readstr(str);\n    readstr(tail);\n}\ninline void putstr(const std::string&\
+    \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
+    n');\n}\ninline void putstr(const std::string& str, const std::string& tail...)\
+    \ {\n    putstr(str);\n    putstr(tail);\n}\n\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief fastIO\n */\n#line 7 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\
+    \nusing mint = kyopro::barrett_modint<10>;\nusing namespace std;\nint main() {\n\
+    \    int t, m;\n    kyopro::readint(t, m);\n    mint::set_mod(m);\n    kyopro::combination<mint,\
     \ (int)1e7> solver;\n    while (t--) {\n        int n, r;\n        kyopro::readint(n,\
     \ r);\n        if (n < r) {\n            kyopro::putint(0);\n        } else {\n\
     \            kyopro::putint(solver.binom(n, r).val());\n        }\n    }\n}\n"
@@ -234,7 +232,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   requiredBy: []
-  timestamp: '2023-07-05 22:01:13+09:00'
+  timestamp: '2023-07-11 13:05:57+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp

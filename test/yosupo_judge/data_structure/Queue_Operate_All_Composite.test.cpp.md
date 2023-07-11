@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data-structure/SWAG.hpp
     title: Slide Window Aggrigation
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
@@ -153,37 +153,35 @@ data:
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
-    \ <string>\nnamespace kyopro {\n\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\
-    \n */\ntemplate <typename T> constexpr inline void readint(T& a) {\n    a = 0;\n\
-    \    bool is_negative = false;\n    char c = getchar_unlocked();\n    while (isspace(c))\
-    \ {\n        c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true,\
-    \ c = getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c -\
-    \ '0');\n        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n\
-    }\ntemplate <typename Head, typename... Tail>\nconstexpr inline void readint(Head&\
-    \ head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n}\n\ntemplate\
-    \ <typename T> void write_int(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
-    \        putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
-    \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
-    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
-    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
-    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
-    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
-    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
-    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
-    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\nvoid readstr(std::string&\
-    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\n\nvoid readstr(std::string& str,std::string& tail...) {\n    readstr(str);\n\
-    \    readstr(tail);\n}\nvoid putstr(const std::string& str) {\n    for (auto c\
-    \ : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\n');\n\
-    }\nvoid putstr(const std::string& str, const std::string& tail...) {\n    putstr(str);\n\
-    \    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n\
-    #line 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i, N) for\
-    \ (int i = 0; i < (N); i++)\n#define all(x) std::begin(x), std::end(x)\n#define\
-    \ popcount(x) __builtin_popcountll(x)\nusing i128 = __int128_t;\nusing ll = long\
-    \ long;\nusing ld = long double;\nusing graph = std::vector<std::vector<int>>;\n\
+    \ <string>\nnamespace kyopro {\n/**\n * \u6587\u5B57\u30921\u500B\u8AAD\u307F\u8FBC\
+    \u3080\n */\ninline char readchar() {\n    char c = getchar_unlocked();\n    while\
+    \ (isspace(c)) c = getchar_unlocked();\n    return c;\n}\n\n/**\n *  \u6574\u6570\
+    \u306E\u5165\u51FA\u529B\n */\ntemplate <typename T> constexpr inline void readint(T&\
+    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c=readchar();\n  \
+    \  if (c == '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c))\
+    \ {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n\
+    \    if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\n\
+    constexpr inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n\
+    \    readint(tail...);\n}\n\ntemplate <typename T> constexpr inline void putint(T\
+    \ a) {\n    if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\\
+    n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n\
+    \    constexpr int dgt=std::numeric_limits<T>::digits10;\n    int now = dgt +\
+    \ 1;\n    char s[dgt + 1];\n    while (a) {\n        s[--now] = (char)'0' + a\
+    \ % 10;\n        a /= 10;\n    }\n    while (now <= dgt)\n        putchar_unlocked(s[now++]);\n\
+    \    putchar_unlocked('\\n');\n}\ntemplate <typename Head, typename... Tail>\n\
+    constexpr inline void putint(Head head, Tail... tail) {\n    putint(head);\n \
+    \   putchar_unlocked('\\n');\n    putint(tail...);\n}\n\n/**\n * \u6587\u5B57\u5217\
+    \u306E\u5165\u51FA\u529B\n */\ninline void readstr(std::string& str) {\n    char\
+    \ c = readchar();\n    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\ninline void readstr(std::string& str, std::string& tail...) {\n   \
+    \ readstr(str);\n    readstr(tail);\n}\ninline void putstr(const std::string&\
+    \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
+    n');\n}\ninline void putstr(const std::string& str, const std::string& tail...)\
+    \ {\n    putstr(str);\n    putstr(tail);\n}\n\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief fastIO\n */\n#line 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n\
+    #define rep(i, N) for (int i = 0; i < (N); i++)\n#define all(x) std::begin(x),\
+    \ std::end(x)\n#define popcount(x) __builtin_popcountll(x)\nusing i128 = __int128_t;\n\
+    using ll = long long;\nusing ld = long double;\nusing graph = std::vector<std::vector<int>>;\n\
     using P = std::pair<int, int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl =\
     \ 1e18;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
     \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
@@ -226,8 +224,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-07-05 22:01:13+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-11 13:05:57+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
 layout: document

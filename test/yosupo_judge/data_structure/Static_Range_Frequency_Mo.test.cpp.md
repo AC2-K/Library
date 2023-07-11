@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/algorithm/mo.hpp
     title: Mo's algorithm
   _extendedRequiredBy: []
