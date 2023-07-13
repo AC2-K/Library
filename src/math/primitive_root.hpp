@@ -8,7 +8,7 @@ namespace kyopro {
  * @brief 原始根
  */
 template<typename T>
-T primitive_root(T p) {
+long long primitive_root(T p) {
     if (p == 2) return 1;
 
     auto pf = kyopro::rho::factorize(p - 1);
