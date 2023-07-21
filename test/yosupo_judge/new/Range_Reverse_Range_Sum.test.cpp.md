@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/bbst/reversible_bbst.hpp
     title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_reverse_range_sum
@@ -78,47 +78,53 @@ data:
     };\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/reversible_bbst.md\n\
     \ * @ref\n * https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
-    \ <string>\n#include <concepts>\n\nnamespace kyopro {\n/**\n * \u6587\u5B57\u3092\
-    1\u500B\u8AAD\u307F\u8FBC\u3080\n */\n\ninline char readchar() {\n    char c =\
-    \ getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n    return\
-    \ c;\n}\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate <std::integral\
-    \ T> constexpr inline void read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
-    \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
-    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
-    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
-    \    }\n    if (is_negative) a *= -1;\n}\n\ntemplate <std::integral T> constexpr\
-    \ inline void put(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n    \
-    \    putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
+    \ <string>\nnamespace kyopro {\n/**\n * \u6587\u5B57\u30921\u500B\u8AAD\u307F\u8FBC\
+    \u3080\n */\ninline char readchar() {\n    char c = getchar_unlocked();\n    while\
+    \ (isspace(c)) c = getchar_unlocked();\n    return c;\n}\n/**\n *  \u6574\u6570\
+    \u306E\u5165\u51FA\u529B\n */\ntemplate <typename T> constexpr inline void readint(T&\
+    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
+    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
+    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
+    \ if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
+    \ inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n\
+    }\n\ntemplate <typename T> void write_int(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
+    \        putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
     \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
     \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    \    putchar_unlocked('\\n');\n}\n\n/**\n * \u6587\u5B57\u5217\n*/\ninline void\
-    \ read(std::string& str) {\n    char c = getchar_unlocked();\n    while (isspace(c))\
-    \ c = getchar_unlocked();\n    while (!isspace(c)) {\n        str += c;\n    \
-    \    c = getchar_unlocked();\n    }\n}\ninline void put(const std::string& str)\
-    \ {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
-    n');\n}\n\n/**\n * \u591A\u5909\u6570\n*/\ntemplate <typename Head, typename...\
-    \ Tail>\nconstexpr inline void read(Head& head, Tail&... tail) {\n    read(head);\n\
-    \    read(tail...);\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
-    \ inline void put(const Head& head,const Tail&... tail) {\n    put(head);\n  \
-    \  put(tail...);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line\
-    \ 5 \"test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp\"\nusing ll = long\
-    \ long;\ninline ll op(ll x, ll y) { return x + y; }\ninline ll e() { return 0;\
-    \ }\nint main() {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::reversible_bbst<ll,\
-    \ op, e> bbst;\n    for (int i = 0; i < n; i++) {\n        int a;\n        kyopro::read(a);\n\
-    \        bbst.insert(i, a);\n    }\n\n    while (q--) {\n        int t, l, r;\n\
-    \        kyopro::read(t, l, r);\n        if (!t) {\n            bbst.reverse(l,\
-    \ r);\n        } else {\n            kyopro::put(bbst.fold(l, r));\n        }\n\
-    \    }\n}\n"
+    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
+    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
+    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
+    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
+    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
+    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
+    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
+    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\ninline void readstr(std::string&\
+    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\n\ninline void readstr(std::string& str,std::string& tail...) {\n  \
+    \  readstr(str);\n    readstr(tail);\n}\ninline void putstr(const std::string&\
+    \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
+    n');\n}\ninline void putstr(const std::string& str, const std::string& tail...)\
+    \ {\n    putstr(str);\n    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp\"\
+    \nusing ll = long long;\ninline ll op(ll x, ll y) { return x + y; }\ninline ll\
+    \ e() { return 0; }\nint main() {\n    int n, q;\n    kyopro::readint(n, q);\n\
+    \    kyopro::reversible_bbst<ll, op, e> bbst;\n    for (int i = 0; i < n; i++)\
+    \ {\n        int a;\n        kyopro::readint(a);\n        bbst.insert(i, a);\n\
+    \    }\n\n    while (q--) {\n        int t, l, r;\n        kyopro::readint(t,\
+    \ l, r);\n        if (!t) {\n            bbst.reverse(l, r);\n        } else {\n\
+    \            kyopro::putint(bbst.fold(l, r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_reverse_range_sum\"\
     \n#include <iostream>\n#include \"../../../src/data-structure/bbst/reversible_bbst.hpp\"\
     \n#include \"../../../src/stream.hpp\"\nusing ll = long long;\ninline ll op(ll\
     \ x, ll y) { return x + y; }\ninline ll e() { return 0; }\nint main() {\n    int\
-    \ n, q;\n    kyopro::read(n, q);\n    kyopro::reversible_bbst<ll, op, e> bbst;\n\
-    \    for (int i = 0; i < n; i++) {\n        int a;\n        kyopro::read(a);\n\
+    \ n, q;\n    kyopro::readint(n, q);\n    kyopro::reversible_bbst<ll, op, e> bbst;\n\
+    \    for (int i = 0; i < n; i++) {\n        int a;\n        kyopro::readint(a);\n\
     \        bbst.insert(i, a);\n    }\n\n    while (q--) {\n        int t, l, r;\n\
-    \        kyopro::read(t, l, r);\n        if (!t) {\n            bbst.reverse(l,\
-    \ r);\n        } else {\n            kyopro::put(bbst.fold(l, r));\n        }\n\
-    \    }\n}"
+    \        kyopro::readint(t, l, r);\n        if (!t) {\n            bbst.reverse(l,\
+    \ r);\n        } else {\n            kyopro::putint(bbst.fold(l, r));\n      \
+    \  }\n    }\n}"
   dependsOn:
   - src/data-structure/bbst/reversible_bbst.hpp
   - src/random/xor_shift.hpp
@@ -126,8 +132,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-07-21 13:15:24+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-07-11 14:41:52+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
 layout: document

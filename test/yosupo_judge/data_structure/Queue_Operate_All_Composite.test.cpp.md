@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/SWAG.hpp
     title: Slide Window Aggrigation
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
@@ -153,52 +153,58 @@ data:
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
-    \ <string>\n#include <concepts>\n\nnamespace kyopro {\n/**\n * \u6587\u5B57\u3092\
-    1\u500B\u8AAD\u307F\u8FBC\u3080\n */\n\ninline char readchar() {\n    char c =\
-    \ getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n    return\
-    \ c;\n}\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate <std::integral\
-    \ T> constexpr inline void read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
-    \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
-    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
-    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
-    \    }\n    if (is_negative) a *= -1;\n}\n\ntemplate <std::integral T> constexpr\
-    \ inline void put(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n    \
-    \    putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
+    \ <string>\nnamespace kyopro {\n/**\n * \u6587\u5B57\u30921\u500B\u8AAD\u307F\u8FBC\
+    \u3080\n */\ninline char readchar() {\n    char c = getchar_unlocked();\n    while\
+    \ (isspace(c)) c = getchar_unlocked();\n    return c;\n}\n/**\n *  \u6574\u6570\
+    \u306E\u5165\u51FA\u529B\n */\ntemplate <typename T> constexpr inline void readint(T&\
+    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
+    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
+    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
+    \ if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
+    \ inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n\
+    }\n\ntemplate <typename T> void write_int(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
+    \        putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
     \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
     \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    \    putchar_unlocked('\\n');\n}\n\n/**\n * \u6587\u5B57\u5217\n*/\ninline void\
-    \ read(std::string& str) {\n    char c = getchar_unlocked();\n    while (isspace(c))\
-    \ c = getchar_unlocked();\n    while (!isspace(c)) {\n        str += c;\n    \
-    \    c = getchar_unlocked();\n    }\n}\ninline void put(const std::string& str)\
-    \ {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
-    n');\n}\n\n/**\n * \u591A\u5909\u6570\n*/\ntemplate <typename Head, typename...\
-    \ Tail>\nconstexpr inline void read(Head& head, Tail&... tail) {\n    read(head);\n\
-    \    read(tail...);\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
-    \ inline void put(const Head& head,const Tail&... tail) {\n    put(head);\n  \
-    \  put(tail...);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line\
-    \ 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i, N) for (int\
-    \ i = 0; i < (N); i++)\n#define all(x) std::begin(x), std::end(x)\n#define popcount(x)\
-    \ __builtin_popcountll(x)\nusing i128 = __int128_t;\nusing ll = long long;\nusing\
-    \ ld = long double;\nusing graph = std::vector<std::vector<int>>;\nusing P = std::pair<int,\
-    \ int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps\
-    \ = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 +\
-    \ 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = {-1, -1, -1,\
-    \ 0, 0, 1, 1, 1, 0};\nconstexpr int dy[] = {-1, 0, 1, -1, 1, -1, 0, 1, 0};\ntemplate\
-    \ <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return\
-    \ a < b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
-    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 7 \"\
-    test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\nusing\
-    \ mint = kyopro::static_modint32<MOD2>;\nusing Affine = std::pair<mint, mint>;\n\
-    constexpr inline Affine op(const Affine& g, const Affine& f) {\n    auto a = f.first,\
-    \ b = f.second;\n    auto c = g.first, d = g.second;\n    return Affine(a * c,\
-    \ a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1, 0); }\nint main()\
-    \ {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    kyopro::read(q);\n\
-    \    while (q--) {\n        int t;\n        kyopro::read(t);\n\n        if (t\
-    \ == 0) {\n            mint a, b;\n            kyopro::read(a, b);\n         \
-    \   que.push(Affine(a, b));\n        } else if (t == 1) {\n            que.pop_front();\n\
-    \        } else {\n            mint x;\n            kyopro::read(x);\n       \
-    \     Affine res = que.fold();\n            kyopro::put((res.first * x + res.second).val());\n\
-    \        }\n    }\n}\n"
+    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
+    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
+    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
+    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
+    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
+    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
+    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
+    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\ninline void readstr(std::string&\
+    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\n\ninline void readstr(std::string& str,std::string& tail...) {\n  \
+    \  readstr(str);\n    readstr(tail);\n}\ninline void putstr(const std::string&\
+    \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
+    n');\n}\ninline void putstr(const std::string& str, const std::string& tail...)\
+    \ {\n    putstr(str);\n    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief fastIO\n */\n#line 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n\
+    #define rep(i, N) for (int i = 0; i < (N); i++)\n#define all(x) std::begin(x),\
+    \ std::end(x)\n#define popcount(x) __builtin_popcountll(x)\nusing i128 = __int128_t;\n\
+    using ll = long long;\nusing ld = long double;\nusing graph = std::vector<std::vector<int>>;\n\
+    using P = std::pair<int, int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl =\
+    \ 1e18;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
+    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
+    \ dx[] = {-1, -1, -1, 0, 0, 1, 1, 1, 0};\nconstexpr int dy[] = {-1, 0, 1, -1,\
+    \ 1, -1, 0, 1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool\
+    \ chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
+    \ b && (a = b, true);\n}\n#line 7 \"test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\
+    \nusing mint = kyopro::static_modint32<MOD2>;\nusing Affine = std::pair<mint,\
+    \ mint>;\nconstexpr inline Affine op(const Affine& g, const Affine& f) {\n   \
+    \ auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n    return\
+    \ Affine(a * c, a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1,\
+    \ 0); }\nint main() {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    kyopro::readint(q);\n\
+    \    while (q--) {\n        int t;\n        kyopro::readint(t);\n\n        if\
+    \ (t == 0) {\n            mint a, b;\n            kyopro::readint(a, b);\n   \
+    \         que.push(Affine(a, b));\n        } else if (t == 1) {\n            que.pop_front();\n\
+    \        } else {\n            mint x;\n            kyopro::readint(x);\n    \
+    \        Affine res = que.fold();\n            kyopro::putint((res.first * x +\
+    \ res.second).val());\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \n\n#include \"../../../src/data-structure/SWAG.hpp\"\n#include \"../../../src/math/static_modint.hpp\"\
     \n#include \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\
@@ -206,13 +212,13 @@ data:
     \ mint>;\nconstexpr inline Affine op(const Affine& g, const Affine& f) {\n   \
     \ auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n    return\
     \ Affine(a * c, a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1,\
-    \ 0); }\nint main() {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    kyopro::read(q);\n\
-    \    while (q--) {\n        int t;\n        kyopro::read(t);\n\n        if (t\
-    \ == 0) {\n            mint a, b;\n            kyopro::read(a, b);\n         \
-    \   que.push(Affine(a, b));\n        } else if (t == 1) {\n            que.pop_front();\n\
-    \        } else {\n            mint x;\n            kyopro::read(x);\n       \
-    \     Affine res = que.fold();\n            kyopro::put((res.first * x + res.second).val());\n\
-    \        }\n    }\n}"
+    \ 0); }\nint main() {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    kyopro::readint(q);\n\
+    \    while (q--) {\n        int t;\n        kyopro::readint(t);\n\n        if\
+    \ (t == 0) {\n            mint a, b;\n            kyopro::readint(a, b);\n   \
+    \         que.push(Affine(a, b));\n        } else if (t == 1) {\n            que.pop_front();\n\
+    \        } else {\n            mint x;\n            kyopro::readint(x);\n    \
+    \        Affine res = que.fold();\n            kyopro::putint((res.first * x +\
+    \ res.second).val());\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/SWAG.hpp
   - src/math/static_modint.hpp
@@ -222,8 +228,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-07-21 13:15:24+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-07-11 14:41:52+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
 layout: document
