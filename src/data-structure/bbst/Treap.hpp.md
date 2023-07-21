@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
     title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/data-structure/bbst/Treap.md
     document_title: Treap
@@ -103,7 +103,7 @@ data:
   path: src/data-structure/bbst/Treap.hpp
   requiredBy: []
   timestamp: '2023-07-03 15:58:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
 documentation_of: src/data-structure/bbst/Treap.hpp

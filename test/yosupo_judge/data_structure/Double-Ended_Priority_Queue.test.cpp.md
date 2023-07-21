@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data-structure/bbst/Treap.hpp
     title: Treap
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/double_ended_priority_queue
@@ -68,56 +68,48 @@ data:
     \           cur = cur->r;\n        }\n        T ans = cur->key;\n        return\
     \ ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/Treap.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
-    \ <string>\nnamespace kyopro {\n/**\n * \u6587\u5B57\u30921\u500B\u8AAD\u307F\u8FBC\
-    \u3080\n */\ninline char readchar() {\n    char c = getchar_unlocked();\n    while\
-    \ (isspace(c)) c = getchar_unlocked();\n    return c;\n}\n/**\n *  \u6574\u6570\
-    \u306E\u5165\u51FA\u529B\n */\ntemplate <typename T> constexpr inline void readint(T&\
-    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
-    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
-    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
-    \ inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n\
-    }\n\ntemplate <typename T> void write_int(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
-    \        putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
+    \ <string>\n#include <concepts>\n\nnamespace kyopro {\n/**\n * \u6587\u5B57\u3092\
+    1\u500B\u8AAD\u307F\u8FBC\u3080\n */\n\ninline char readchar() {\n    char c =\
+    \ getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n    return\
+    \ c;\n}\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate <std::integral\
+    \ T> constexpr inline void read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
+    \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
+    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
+    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
+    \    }\n    if (is_negative) a *= -1;\n}\n\ntemplate <std::integral T> constexpr\
+    \ inline void put(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n    \
+    \    putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
     \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
     \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
-    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
-    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
-    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
-    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
-    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
-    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
-    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\ninline void readstr(std::string&\
-    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\n\ninline void readstr(std::string& str,std::string& tail...) {\n  \
-    \  readstr(str);\n    readstr(tail);\n}\ninline void putstr(const std::string&\
-    \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
-    n');\n}\ninline void putstr(const std::string& str, const std::string& tail...)\
-    \ {\n    putstr(str);\n    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\
-    \nusing namespace std;\nint main() {\n    kyopro::Treap<int> st;\n    int n, q;\n\
-    \    kyopro::readint(n, q);\n    for (int i = 0; i < n; ++i) {\n        int a;\n\
-    \        kyopro::readint(a);\n        st.insert(a);\n    }\n    while (q--) {\n\
-    \        int t;\n        kyopro::readint(t);\n        if (!t) {\n            int\
-    \ x;\n            kyopro::readint(x);\n            st.insert(x);\n        } else\
-    \ if (t == 1) {\n            int mn = st.min_element();\n            kyopro::putint(mn);\n\
+    \    putchar_unlocked('\\n');\n}\n\n/**\n * \u6587\u5B57\u5217\n*/\ninline void\
+    \ read(std::string& str) {\n    char c = getchar_unlocked();\n    while (isspace(c))\
+    \ c = getchar_unlocked();\n    while (!isspace(c)) {\n        str += c;\n    \
+    \    c = getchar_unlocked();\n    }\n}\ninline void put(const std::string& str)\
+    \ {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
+    n');\n}\n\n/**\n * \u591A\u5909\u6570\n*/\ntemplate <typename Head, typename...\
+    \ Tail>\nconstexpr inline void read(Head& head, Tail&... tail) {\n    read(head);\n\
+    \    read(tail...);\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
+    \ inline void put(const Head& head,const Tail&... tail) {\n    put(head);\n  \
+    \  put(tail...);\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line\
+    \ 5 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\n\
+    using namespace std;\nint main() {\n    kyopro::Treap<int> st;\n    int n, q;\n\
+    \    kyopro::read(n, q);\n    for (int i = 0; i < n; ++i) {\n        int a;\n\
+    \        kyopro::read(a);\n        st.insert(a);\n    }\n    while (q--) {\n \
+    \       int t;\n        kyopro::read(t);\n        if (!t) {\n            int x;\n\
+    \            kyopro::read(x);\n            st.insert(x);\n        } else if (t\
+    \ == 1) {\n            int mn = st.min_element();\n            kyopro::put(mn);\n\
     \            st.erase(mn);\n        } else {\n            int mx = st.max_element();\n\
-    \            kyopro::putint(mx);\n            st.erase(mx);\n        }\n    }\n\
-    }\n"
+    \            kyopro::put(mx);\n            st.erase(mx);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
     \n\n#include \"../../../src/data-structure/bbst/Treap.hpp\"\n#include \"../../../src/stream.hpp\"\
     \nusing namespace std;\nint main() {\n    kyopro::Treap<int> st;\n    int n, q;\n\
-    \    kyopro::readint(n, q);\n    for (int i = 0; i < n; ++i) {\n        int a;\n\
-    \        kyopro::readint(a);\n        st.insert(a);\n    }\n    while (q--) {\n\
-    \        int t;\n        kyopro::readint(t);\n        if (!t) {\n            int\
-    \ x;\n            kyopro::readint(x);\n            st.insert(x);\n        } else\
-    \ if (t == 1) {\n            int mn = st.min_element();\n            kyopro::putint(mn);\n\
+    \    kyopro::read(n, q);\n    for (int i = 0; i < n; ++i) {\n        int a;\n\
+    \        kyopro::read(a);\n        st.insert(a);\n    }\n    while (q--) {\n \
+    \       int t;\n        kyopro::read(t);\n        if (!t) {\n            int x;\n\
+    \            kyopro::read(x);\n            st.insert(x);\n        } else if (t\
+    \ == 1) {\n            int mn = st.min_element();\n            kyopro::put(mn);\n\
     \            st.erase(mn);\n        } else {\n            int mx = st.max_element();\n\
-    \            kyopro::putint(mx);\n            st.erase(mx);\n        }\n    }\n\
-    }"
+    \            kyopro::put(mx);\n            st.erase(mx);\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/bbst/Treap.hpp
   - src/random/xor_shift.hpp
@@ -125,8 +117,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-07-11 14:41:52+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-07-21 13:15:24+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
 layout: document
