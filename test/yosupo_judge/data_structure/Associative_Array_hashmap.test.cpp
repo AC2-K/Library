@@ -3,19 +3,19 @@
 #include "../../../src/stream.hpp"
 int main() {
     uint32_t q;
-    kyopro::readint(q);
+    kyopro::read(q);
     kyopro::hash_map<__uint64_t, __uint64_t> mp;
     while (q--) {
         int t;
-        kyopro::readint(t);
+        kyopro::read(t);
         if (!t) {
             __uint64_t k, v;
-            kyopro::readint(k, v);
+            kyopro::read(k, v);
             mp[k] = v;
         } else {
             __uint64_t k;
-            kyopro::readint(k);
-            kyopro::putint(mp[k]);
+            kyopro::read(k);
+            kyopro::put(mp[k]);
         }
     }
 }
