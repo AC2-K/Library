@@ -11,9 +11,7 @@ void single_read(char& c) {
     while (isspace(c)) c = getchar_unlocked();
 }
 template <typename T,
-          std::enable_if_t<std::is_integral<T>::value ||
-                           std::is_same<T, __int128_t>::value |
-                               std::is_same<T, __uint128_t>::value>* = nullptr,
+          internal::is_integral_t<T>* = nullptr,
           internal::is_modint_t<T>* = nullptr>
 void single_read(T& a) {
     a = 0;
@@ -46,10 +44,7 @@ void read(Head& head, Tail&... tail) {
 
 // write
 void single_write(char c) { putchar_unlocked(c); }
-template <typename T,
-          std::enable_if_t<std::is_integral<T>::value ||
-                           std::is_same<T, __int128_t>::value ||
-                           std::is_same<T, __uint128_t>::value>* = nullptr>
+template <typename T, internal::is_integral_t<T>* = nullptr>
 void single_write(T a) {
     if (!a) {
         putchar_unlocked('0');
@@ -75,6 +70,7 @@ void single_write(const std::string& str) {
         putchar_unlocked(c);
     }
 }
+
 void write() {}
 template <typename Head, typename... Tail> void write(Head head, Tail... tail) {
     single_write(head);

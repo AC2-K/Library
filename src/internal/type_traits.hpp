@@ -54,5 +54,11 @@ struct modint_base {};
 template <typename T> using is_modint = std::is_base_of<modint_base, T>;
 template <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;
 
+
+// is_integral
+template <typename T>
+using is_integral_t =
+    std::enable_if<std::is_integral_v<T> || std::is_same_v<T, __int128_t> ||
+                   std::is_same_v<T, __uint128_t>>::type;
 };  // namespace internal
 };  // namespace kyopro
