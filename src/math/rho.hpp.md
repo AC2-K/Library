@@ -1,47 +1,47 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\phi$ \u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/rho.md
     document_title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
@@ -324,7 +324,7 @@ data:
   - src/math/phi_function.hpp
   - src/math/primitive_root.hpp
   timestamp: '2023-06-25 05:37:10+00:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp

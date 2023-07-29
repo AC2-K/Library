@@ -1,38 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/hash_map.hpp
     title: Hash Map
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
     title: "\u96E2\u6563\u5BFE\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_pow.hpp
     title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
-  - icon: ':question:'
-    path: src/stream.hpp
-    title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
@@ -246,44 +243,16 @@ data:
     \u6563\u5BFE\u6570\n */\ntemplate <typename T> constexpr inline T mod_log(T a,\
     \ T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a, b,\
     \ c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n}\n\n\
-    };  // namespace kyopro\n\n/**\n * @docs docs/math/mod_log.md\n*/\n#line 2 \"\
-    src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
-    #line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    }\ntemplate <typename T,\n          std::enable_if_t<std::is_integral<T>::value\
-    \ ||\n                           std::is_same<T, __int128_t>::value ||\n     \
-    \                      std::is_same<T, __uint128_t>::value>* = nullptr>\nvoid\
-    \ single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n    char c =\
-    \ getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
-    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
-    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
-    \    }\n    if (is_negative) a *= -1;\n}\nvoid single_read(std::string& str) {\n\
-    \    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\n\nvoid read() {}\ntemplate <typename Head, typename... Tail>\nvoid\
-    \ read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n}\n\
-    \n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
-    \ T,\n          std::enable_if_t<std::is_integral<T>::value ||\n             \
-    \              std::is_same<T, __int128_t>::value ||\n                       \
-    \    std::is_same<T, __uint128_t>::value>* = nullptr>\nvoid single_write(T a)\
-    \ {\n    if (!a) {\n        putchar_unlocked('0');\n        putchar_unlocked('\\\
-    n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n\
-    \    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now] = (char)'0'\
-    \ + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    }\nvoid single_write(const std::string& str) {\n    for (auto c : str) {\n   \
-    \     putchar_unlocked(c);\n    }\n}\nvoid write() {}\ntemplate <typename Head,\
-    \ typename... Tail> void write(Head head, Tail... tail) {\n    single_write(head);\n\
-    \    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate <typename... Args>\
-    \ void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};\
-    \  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
-    \n\nint main() {\n    int t;\n    kyopro::read(t);\n    while (t--) {\n      \
-    \  int x, y, p;\n        kyopro::read(x, y, p);\n        kyopro::put(kyopro::mod_log(x,\
+    };  // namespace kyopro\n\n/**\n * @docs docs/math/mod_log.md\n*/\n#line 4 \"\
+    test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\n\nint main() {\n    int\
+    \ t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y, p;\n      \
+    \  scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%d\\n\", kyopro::mod_log(x,\
     \ y, p));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\
-    \n#include <iostream>\n#include \"../../../src/math/mod_log.hpp\"\n#include \"\
-    ../../../src/stream.hpp\"\n\nint main() {\n    int t;\n    kyopro::read(t);\n\
-    \    while (t--) {\n        int x, y, p;\n        kyopro::read(x, y, p);\n   \
-    \     kyopro::put(kyopro::mod_log(x, y, p));\n    }\n}"
+    \n#include <iostream>\n#include \"../../../src/math/mod_log.hpp\"\n\nint main()\
+    \ {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y,\
+    \ p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%d\\n\", kyopro::mod_log(x,\
+    \ y, p));\n    }\n}"
   dependsOn:
   - src/math/mod_log.hpp
   - src/data-structure/hash_map.hpp
@@ -293,12 +262,11 @@ data:
   - src/internal/type_traits.hpp
   - src/math/gcd.hpp
   - src/math/mod_pow.hpp
-  - src/stream.hpp
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-07-29 13:52:25+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-07-03 15:58:56+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 layout: document

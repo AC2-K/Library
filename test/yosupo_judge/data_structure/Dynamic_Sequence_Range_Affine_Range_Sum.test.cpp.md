@@ -1,30 +1,27 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/bbst/lazy_reversible_bbst.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
       \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
-  - icon: ':question:'
-    path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
@@ -209,58 +206,36 @@ data:
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
-    \ <string>\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n#include\
-    \ <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/*\n\
-    \ * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\ntemplate\
-    \ <typename... Args> struct first_enabled {};\n\ntemplate <typename T, typename...\
-    \ Args>\nstruct first_enabled<std::enable_if<true, T>, Args...> {\n    using type\
-    \ = T;\n};\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
-    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
-    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
-    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
-    \ntemplate <int dgt> struct int_least {\n    static_assert(dgt <= 128);\n    using\
-    \ type = first_enabled_t<std::enable_if<dgt <= 8, __int8_t>,\n               \
-    \                  std::enable_if<dgt <= 16, __int16_t>,\n                   \
-    \              std::enable_if<dgt <= 32, __int32_t>,\n                       \
-    \          std::enable_if<dgt <= 64, __int64_t>,\n                           \
-    \      std::enable_if<dgt <= 128, __int128_t> >;\n};\ntemplate <int dgt> struct\
-    \ uint_least {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, __uint8_t>,\n                                 std::enable_if<dgt <= 16,\
-    \ __uint16_t>,\n                                 std::enable_if<dgt <= 32, __uint32_t>,\n\
-    \                                 std::enable_if<dgt <= 64, __uint64_t>,\n   \
-    \                              std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\
-    \ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\ntemplate\
-    \ <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename\
-    \ T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
-    \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/stream.hpp\"\
-    \n\nnamespace kyopro {\n// read\nvoid single_read(char& c) {\n    c = getchar_unlocked();\n\
-    \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T,\n  \
-    \        std::enable_if_t<std::is_integral<T>::value ||\n                    \
-    \       std::is_same<T, __int128_t>::value ||\n                           std::is_same<T,\
-    \ __uint128_t>::value>* = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n   \
-    \ bool is_negative = false;\n    char c = getchar_unlocked();\n    while (isspace(c))\
-    \ {\n        c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true,\
-    \ c = getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c -\
-    \ '0');\n        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n\
-    }\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n  \
-    \  while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n   \
-    \     str += c;\n        c = getchar_unlocked();\n    }\n}\n\nvoid read() {}\n\
-    template <typename Head, typename... Tail>\nvoid read(Head& head, Tail&... tail)\
-    \ {\n    single_read(head), read(tail...);\n}\n\n// write\nvoid single_write(char\
-    \ c) { putchar_unlocked(c); }\ntemplate <typename T,\n          std::enable_if_t<std::is_integral<T>::value\
-    \ ||\n                           std::is_same<T, __int128_t>::value ||\n     \
-    \                      std::is_same<T, __uint128_t>::value>* = nullptr>\nvoid\
-    \ single_write(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n       \
-    \ putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
+    \ <string>\nnamespace kyopro {\n/**\n * \u6587\u5B57\u30921\u500B\u8AAD\u307F\u8FBC\
+    \u3080\n */\ninline char readchar() {\n    char c = getchar_unlocked();\n    while\
+    \ (isspace(c)) c = getchar_unlocked();\n    return c;\n}\n/**\n *  \u6574\u6570\
+    \u306E\u5165\u51FA\u529B\n */\ntemplate <typename T> constexpr inline void readint(T&\
+    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
+    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
+    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
+    \ if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
+    \ inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n\
+    }\n\ntemplate <typename T> void write_int(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
+    \        putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
     \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
     \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    }\nvoid single_write(const std::string& str) {\n    for (auto c : str) {\n   \
-    \     putchar_unlocked(c);\n    }\n}\nvoid write() {}\ntemplate <typename Head,\
-    \ typename... Tail> void write(Head head, Tail... tail) {\n    single_write(head);\n\
-    \    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate <typename... Args>\
-    \ void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};\
-    \  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp\"\
+    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
+    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
+    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
+    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
+    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
+    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
+    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
+    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\ninline void readstr(std::string&\
+    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\n\ninline void readstr(std::string& str,std::string& tail...) {\n  \
+    \  readstr(str);\n    readstr(tail);\n}\ninline void putstr(const std::string&\
+    \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
+    n');\n}\ninline void putstr(const std::string& str, const std::string& tail...)\
+    \ {\n    putstr(str);\n    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp\"\
     \nusing mint = kyopro::static_modint32<998244353>;\nusing S = mint;\ninline S\
     \ op(S a, S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine\
     \ = std::pair<mint, mint>;\ninline Affine composition(Affine g, Affine f) {\n\
@@ -269,18 +244,18 @@ data:
     \ Affine id() { return Affine(1, 0); }\ninline S mapping(S d, Affine f, int length)\
     \ {\n    auto [a, b] = f;\n    return a * d + b * length;\n};\nint main() {\n\
     \    kyopro::lazy_reversible_bbst<S, Affine, op, e, composition, id, mapping>\n\
-    \        stree;\n    int n, q;\n    kyopro::read(n, q);\n    for (int i = 0; i\
-    \ < n; ++i) {\n        mint ai;\n        kyopro::read(ai);\n        stree.insert(i,\
-    \ ai);\n    }\n    while (q--) {\n        int t;\n        kyopro::read(t);\n \
-    \       if (t == 0) {\n            int i, x;\n            kyopro::read(i, x);\n\
-    \            stree.insert(i, mint::raw(x));\n        } else if (t == 1) {\n  \
-    \          int i;\n            kyopro::read(i);\n            stree.erase(i);\n\
-    \        } else if (t == 2) {\n            int l, r;\n            kyopro::read(l,\
+    \        stree;\n    int n, q;\n    kyopro::readint(n, q);\n    for (int i = 0;\
+    \ i < n; ++i) {\n        mint ai;\n        kyopro::readint(ai);\n        stree.insert(i,\
+    \ ai);\n    }\n    while (q--) {\n        int t;\n        kyopro::readint(t);\n\
+    \        if (t == 0) {\n            int i, x;\n            kyopro::readint(i,\
+    \ x);\n            stree.insert(i, mint::raw(x));\n        } else if (t == 1)\
+    \ {\n            int i;\n            kyopro::readint(i);\n            stree.erase(i);\n\
+    \        } else if (t == 2) {\n            int l, r;\n            kyopro::readint(l,\
     \ r);\n            stree.reverse(l, r);\n        } else if (t == 3) {\n      \
-    \      int l, r, a, b;\n            kyopro::read(l, r, a, b);\n            stree.apply(l,\
-    \ r, Affine(mint::raw(a), mint::raw(b)));\n        } else {\n            int l,\
-    \ r;\n            kyopro::read(l, r);\n            kyopro::put(stree.fold(l, r).val());\n\
-    \        }\n    }\n}\n"
+    \      int l, r, a, b;\n            kyopro::readint(l, r, a, b);\n           \
+    \ stree.apply(l, r, Affine(mint::raw(a), mint::raw(b)));\n        } else {\n \
+    \           int l, r;\n            kyopro::readint(l, r);\n            kyopro::putint(stree.fold(l,\
+    \ r).val());\n        }\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\
     \n#include \"../../../src/data-structure/bbst/lazy_reversible_bbst.hpp\"\n#include\
     \ \"../../../src/math/static_modint.hpp\"\n#include \"../../../src/stream.hpp\"\
@@ -292,30 +267,29 @@ data:
     \ Affine id() { return Affine(1, 0); }\ninline S mapping(S d, Affine f, int length)\
     \ {\n    auto [a, b] = f;\n    return a * d + b * length;\n};\nint main() {\n\
     \    kyopro::lazy_reversible_bbst<S, Affine, op, e, composition, id, mapping>\n\
-    \        stree;\n    int n, q;\n    kyopro::read(n, q);\n    for (int i = 0; i\
-    \ < n; ++i) {\n        mint ai;\n        kyopro::read(ai);\n        stree.insert(i,\
-    \ ai);\n    }\n    while (q--) {\n        int t;\n        kyopro::read(t);\n \
-    \       if (t == 0) {\n            int i, x;\n            kyopro::read(i, x);\n\
-    \            stree.insert(i, mint::raw(x));\n        } else if (t == 1) {\n  \
-    \          int i;\n            kyopro::read(i);\n            stree.erase(i);\n\
-    \        } else if (t == 2) {\n            int l, r;\n            kyopro::read(l,\
+    \        stree;\n    int n, q;\n    kyopro::readint(n, q);\n    for (int i = 0;\
+    \ i < n; ++i) {\n        mint ai;\n        kyopro::readint(ai);\n        stree.insert(i,\
+    \ ai);\n    }\n    while (q--) {\n        int t;\n        kyopro::readint(t);\n\
+    \        if (t == 0) {\n            int i, x;\n            kyopro::readint(i,\
+    \ x);\n            stree.insert(i, mint::raw(x));\n        } else if (t == 1)\
+    \ {\n            int i;\n            kyopro::readint(i);\n            stree.erase(i);\n\
+    \        } else if (t == 2) {\n            int l, r;\n            kyopro::readint(l,\
     \ r);\n            stree.reverse(l, r);\n        } else if (t == 3) {\n      \
-    \      int l, r, a, b;\n            kyopro::read(l, r, a, b);\n            stree.apply(l,\
-    \ r, Affine(mint::raw(a), mint::raw(b)));\n        } else {\n            int l,\
-    \ r;\n            kyopro::read(l, r);\n            kyopro::put(stree.fold(l, r).val());\n\
-    \        }\n    }\n}"
+    \      int l, r, a, b;\n            kyopro::readint(l, r, a, b);\n           \
+    \ stree.apply(l, r, Affine(mint::raw(a), mint::raw(b)));\n        } else {\n \
+    \           int l, r;\n            kyopro::readint(l, r);\n            kyopro::putint(stree.fold(l,\
+    \ r).val());\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/bbst/lazy_reversible_bbst.hpp
   - src/random/xor_shift.hpp
   - src/math/static_modint.hpp
   - src/math/gcd.hpp
   - src/stream.hpp
-  - src/internal/type_traits.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-07-29 13:52:25+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-07-11 14:41:52+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
 layout: document

@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/1_A.test.cpp
     title: test/AOJ/DSL/1_A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/dsu.md
     document_title: Disjoint Set(Union Find)
@@ -42,7 +42,7 @@ data:
   path: src/data-structure/dsu.hpp
   requiredBy: []
   timestamp: '2023-05-24 09:26:13+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/1_A.test.cpp
   - test/yosupo_judge/data_structure/UnionFind.test.cpp
