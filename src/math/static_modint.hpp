@@ -1,9 +1,10 @@
 #pragma once
 #include <cassert>
 #include <iostream>
+#include "../internal/type_traits.hpp"
 #include "../math/gcd.hpp"
 namespace kyopro {
-template <__uint64_t _mod> class static_modint {
+template <__uint64_t _mod> class static_modint : internal::modint_base {
 private:
     using mint = static_modint<_mod>;
     using i64 = long long;
@@ -126,7 +127,7 @@ public:
         return is;
     }
 };
-template <__uint32_t _mod> class static_modint32 {
+template <__uint32_t _mod> class static_modint32 : internal::modint_base {
 private:
     using mint = static_modint32<_mod>;
     using i32 = __int32_t;

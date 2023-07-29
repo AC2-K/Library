@@ -49,5 +49,10 @@ using double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;
 
 template <typename T>
 using double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;
+
+struct modint_base {};
+template <typename T> using is_modint = std::is_base_of<modint_base, T>;
+template <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;
+
 };  // namespace internal
 };  // namespace kyopro

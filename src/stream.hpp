@@ -12,8 +12,9 @@ void single_read(char& c) {
 }
 template <typename T,
           std::enable_if_t<std::is_integral<T>::value ||
-                           std::is_same<T, __int128_t>::value ||
-                           std::is_same<T, __uint128_t>::value>* = nullptr>
+                           std::is_same<T, __int128_t>::value |
+                               std::is_same<T, __uint128_t>::value>* = nullptr,
+          internal::is_modint_t<T>* = nullptr>
 void single_read(T& a) {
     a = 0;
     bool is_negative = false;
@@ -64,6 +65,11 @@ void single_write(T a) {
     }
     while (now < 37) putchar_unlocked(s[now++]);
 }
+template <typename T, internal::is_modint_t<T>* = nullptr>
+void single_write(T a) {
+    single_write(a.val());
+}
+
 void single_write(const std::string& str) {
     for (auto c : str) {
         putchar_unlocked(c);
