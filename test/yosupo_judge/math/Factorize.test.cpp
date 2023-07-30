@@ -4,14 +4,14 @@
 #include "../../../src/stream.hpp"
 int main() {
     int q;
-    kyopro::readint(q);
+    kyopro::read(q);
     while (q--) {
         uint64_t x;
-        kyopro::readint(x);
+        kyopro::read(x);
         const auto pf = kyopro::rho::factorize(x);
-        kyopro::putint(pf.size());
+        kyopro::put(pf.size());
         for (auto p : pf) {
-            kyopro::putint(p);
+            kyopro::put(p);
         }
     }
 }

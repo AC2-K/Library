@@ -6,11 +6,11 @@
 #include "../../../src/stream.hpp"
 int main() {
     int n;
-    kyopro::readint(n);
+    kyopro::read(n);
     kyopro::dijkstra g(n);
     for (int i = 0; i < n - 1; ++i) {
         int a, b, c;
-        kyopro::readint(a, b, c);
+        kyopro::read(a, b, c);
         g.add_edge(a, b, c);
         g.add_edge(b, a, c);
     }
@@ -22,8 +22,8 @@ int main() {
 
     auto it = std::max_element(dist.begin(), dist.end());
     int u = it - dist.begin();
-    kyopro::putint(*it);
+    kyopro::put(*it);
     auto path = g.shortest_path(u).second;
-    kyopro::putint(path.size());
-    for (auto v : path) kyopro::putint(v);
+    kyopro::put(path.size());
+    for (auto v : path) kyopro::put(v);
 }

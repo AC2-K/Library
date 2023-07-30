@@ -13,27 +13,27 @@ inline Affine op(Affine g, Affine f) {
 inline Affine e() { return Affine(1, 0); }
 int main() {
     int n, q;
-    kyopro::readint(n, q);
+    kyopro::read(n, q);
     kyopro::dual_segtree<Affine, op, e> sg(n);
     std::vector<mint> a(n);
     for (auto& aa : a) {
-        kyopro::readint(aa);
+        kyopro::read(aa);
     }
     while (q--) {
         int t;
-        kyopro::readint(t);
+        kyopro::read(t);
 
         if (!t) {
             int l, r;
             mint b, c;
-            kyopro::readint(l, r, b, c);
+            kyopro::read(l, r, b, c);
             sg.apply(l, r, std::pair<mint, mint>(b, c));
         } else {
             int i;
-            kyopro::readint(i);
+            kyopro::read(i);
             auto f = sg[i];
             mint ans = f.first * a[i] + f.second;
-            kyopro::putint(ans.val());
+            kyopro::put(ans.val());
         }
     }
 }

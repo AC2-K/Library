@@ -4,6 +4,6 @@
 #include "../../../src/stream.hpp"
 int main() {
     int n, m;
-    kyopro::readint(n, m);
-    kyopro::putint(kyopro::mod_pow<int>(n, m, (int)1e9 + 7));
+    kyopro::read(n, m);
+    kyopro::put(kyopro::mod_pow<int>(n, m, (int)1e9 + 7));
 }

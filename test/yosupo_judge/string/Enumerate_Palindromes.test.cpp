@@ -10,6 +10,6 @@ int main() {
     }
     auto res = kyopro::manacher(s);
     for (auto r : res) {
-        kyopro::putint(r);
+        kyopro::put(r);
     }
 }

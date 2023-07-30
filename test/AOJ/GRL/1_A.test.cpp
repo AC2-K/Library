@@ -6,11 +6,11 @@
 #include "../../../src/stream.hpp"
 int main() {
     int n, m, r;
-    kyopro::readint(n, m, r);
+    kyopro::read(n, m, r);
     kyopro::dijkstra g(n);
     for (int i = 0; i < m; i++) {
         int s, t, w;
-        kyopro::readint(s, t, w);
+        kyopro::read(s, t, w);
         g.add_edge(s, t, w);
     }
     g.build(r);
@@ -20,6 +20,6 @@ int main() {
         if (res[v] >= (long long)1e18)
             puts("INF");
         else
-            kyopro::putint(res[v]);
+            kyopro::put(res[v]);
     }
 }

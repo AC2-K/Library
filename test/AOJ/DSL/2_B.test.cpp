@@ -7,21 +7,21 @@ inline S e() { return 0; }
 
 int main() {
     int n, q;
-    kyopro::readint(n, q);
+    kyopro::read(n, q);
     kyopro::segtree<S, op, e> seg(n);
     while (q--) {
         int t;
-        kyopro::readint(t);
+        kyopro::read(t);
         if (!t) {
             int i, x;
-            kyopro::readint(i, x);
+            kyopro::read(i, x);
             i--;
             seg.apply(i, x);
         } else {
             int l, r;
-            kyopro::readint(l, r);
+            kyopro::read(l, r);
             l--, r--;
-            kyopro::putint(seg.fold(l, r + 1));
+            kyopro::put(seg.fold(l, r + 1));
         }
     }
 }

@@ -13,6 +13,6 @@ int main() {
     }
     auto res = kyopro::Z(s);
     for (auto r : res) {
-        kyopro::putint(r);
+        kyopro::put(r);
     }
 }
