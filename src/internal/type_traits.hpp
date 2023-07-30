@@ -58,7 +58,7 @@ template <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;
 // is_integral
 template <typename T>
 using is_integral_t =
-    std::enable_if<std::is_integral_v<T> || std::is_same_v<T, __int128_t> ||
-                   std::is_same_v<T, __uint128_t>>::type;
+    std::enable_if_t<std::is_integral_v<T> || std::is_same_v<T, __int128_t> ||
+                   std::is_same_v<T, __uint128_t>>;
 };  // namespace internal
 };  // namespace kyopro

@@ -10,9 +10,7 @@ void single_read(char& c) {
     c = getchar_unlocked();
     while (isspace(c)) c = getchar_unlocked();
 }
-template <typename T,
-          internal::is_integral_t<T>* = nullptr,
-          internal::is_modint_t<T>* = nullptr>
+template <typename T, internal::is_integral_t<T>* = nullptr>
 void single_read(T& a) {
     a = 0;
     bool is_negative = false;
@@ -27,6 +25,12 @@ void single_read(T& a) {
     }
     if (is_negative) a *= -1;
 }
+template <typename T, internal::is_modint_t<T>* = nullptr>
+void single_read(T& a) {
+    long long x;
+    single_read(x);
+    a = T(x);
+}
 void single_read(std::string& str) {
     char c = getchar_unlocked();
     while (isspace(c)) c = getchar_unlocked();
@@ -35,8 +39,8 @@ void single_read(std::string& str) {
         c = getchar_unlocked();
     }
 }
-
-void read() {}
+template<typename T>
+void read(T& x) {single_read(x);}
 template <typename Head, typename... Tail>
 void read(Head& head, Tail&... tail) {
     single_read(head), read(tail...);
@@ -48,7 +52,6 @@ template <typename T, internal::is_integral_t<T>* = nullptr>
 void single_write(T a) {
     if (!a) {
         putchar_unlocked('0');
-        putchar_unlocked('\n');
         return;
     }
     if (a < 0) putchar_unlocked('-'), a *= -1;
@@ -71,7 +74,8 @@ void single_write(const std::string& str) {
     }
 }
 
-void write() {}
+template<typename T>
+void write(T x) { single_write(x); }
 template <typename Head, typename... Tail> void write(Head head, Tail... tail) {
     single_write(head);
     putchar_unlocked(' ');
