@@ -295,7 +295,7 @@ data:
   isVerificationFile: false
   path: src/math/primitive_root.hpp
   requiredBy: []
-  timestamp: '2023-07-13 09:17:44+00:00'
+  timestamp: '2023-07-30 22:34:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Primitive_Root.test.cpp

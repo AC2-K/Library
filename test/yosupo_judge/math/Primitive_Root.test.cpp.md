@@ -329,7 +329,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2023-07-13 09:17:44+00:00'
+  timestamp: '2023-07-30 22:34:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Primitive_Root.test.cpp

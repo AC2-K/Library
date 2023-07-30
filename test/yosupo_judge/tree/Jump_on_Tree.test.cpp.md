@@ -107,7 +107,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-07-11 14:41:52+00:00'
+  timestamp: '2023-07-30 22:34:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Jump_on_Tree.test.cpp

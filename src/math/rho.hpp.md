@@ -323,7 +323,7 @@ data:
   requiredBy:
   - src/math/phi_function.hpp
   - src/math/primitive_root.hpp
-  timestamp: '2023-06-25 05:37:10+00:00'
+  timestamp: '2023-07-30 22:34:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

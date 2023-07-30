@@ -282,7 +282,7 @@ data:
   - src/math/miller.hpp
   - src/math/rho.hpp
   - src/math/mod_log.hpp
-  timestamp: '2023-06-25 12:32:45+09:00'
+  timestamp: '2023-07-30 22:34:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No3030.test.cpp
