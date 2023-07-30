@@ -11,19 +11,19 @@ inline int id() { return (1ll << 31) - 1; }
 
 int main() {
     int n, q;
-    kyopro::read(n, q);
+    kyopro::readint(n, q);
     kyopro::lazy_segtree<int, int, op, e, comp, id, mapping> seg(n);
     while (q--) {
         int t;
-        kyopro::read(t);
+        kyopro::readint(t);
         if (!t) {
             int l, r, add;
-            kyopro::read(l, r, add);
+            kyopro::readint(l, r, add);
             seg.apply(l, r + 1, add);
         } else {
             int i;
-            kyopro::read(i);
-            kyopro::put(seg[i]);
+            kyopro::readint(i);
+            kyopro::putint(seg[i]);
         }
     }
 }

@@ -4,24 +4,24 @@
 #include "../../../src/tree/EulerTour.hpp"
 int main() {
     int n;
-    kyopro::read(n);
+    kyopro::readint(n);
     kyopro::EulerTour g(n);
     for (int v = 0; v < n; v++) {
         int k;
-        kyopro::read(k);
+        kyopro::readint(k);
         for (int i = 0; i < k; i++) {
             int c;
-            kyopro::read(c);
+            kyopro::readint(c);
             g.add_edge(v, c);
         }
     }
 
     g.build();
     int q;
-    kyopro::read(q);
+    kyopro::readint(q);
     while (q--) {
         int u, v;
-        kyopro::read(u, v);
-        kyopro::put(g.lca(u, v));
+        kyopro::readint(u, v);
+        kyopro::putint(g.lca(u, v));
     }
 }

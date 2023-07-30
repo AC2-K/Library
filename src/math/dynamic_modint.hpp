@@ -4,7 +4,7 @@
 #include "../internal/barrett.hpp"
 #include "../internal/montgomery.hpp"
 namespace kyopro {
-template <int id = -1> class barrett_modint : internal::modint_base {
+template <int id = -1> class barrett_modint {
     using mint = barrett_modint<id>;
     using u32 = uint32_t;
     using u64 = uint64_t;
@@ -136,8 +136,7 @@ template <int id>
 typename kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;
 
 namespace kyopro {
-template <typename T, int id = -1>
-class dynamic_modint : internal::modint_base {
+template <typename T, int id = -1> class dynamic_modint {
     using LargeT = internal::double_size_uint_t<T>;
     static T _mod;
     static internal::Montgomery<T> mr;

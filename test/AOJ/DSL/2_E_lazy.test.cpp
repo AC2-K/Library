@@ -12,21 +12,21 @@ inline int id() { return 0; }
 
 int main() {
     int n, q;
-    kyopro::read(n, q);
+    kyopro::readint(n, q);
     kyopro::lazy_segtree<int, int, op, e, comp, id, mapping> seg(n);
     while (q--) {
         int t;
-        kyopro::read(t);
+        kyopro::readint(t);
         if (!t) {
             int l, r, val;
-            kyopro::read(l, r, val);
+            kyopro::readint(l, r, val);
             l--, r--;
             seg.apply(l, r + 1, val);
         } else {
             int i;
-            kyopro::read(i);
+            kyopro::readint(i);
             i--;
-            kyopro::put(seg[i]);
+            kyopro::putint(seg[i]);
         }
     }
 }
