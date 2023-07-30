@@ -4,6 +4,6 @@
 #include "../../../src/stream.hpp"
 int main() {
     int n;
-    kyopro::read(n);
-    kyopro::put(kyopro::phi_func(n));
+    kyopro::readint(n);
+    kyopro::putint(kyopro::phi_func(n));
 }

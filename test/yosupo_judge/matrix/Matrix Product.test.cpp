@@ -8,22 +8,22 @@
 using mint = kyopro::static_modint32<998244353>;
 int main() {
     int n, m, k;
-    kyopro::read(n, m, k);
+    kyopro::readint(n, m, k);
     kyopro::Matrix<mint> a(n, m), b(m, k);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            kyopro::read(a[i][j]);
+            kyopro::readint(a[i][j]);
         }
     }
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < k; j++) {
-            kyopro::read(b[i][j]);
+            kyopro::readint(b[i][j]);
         }
     }
     auto res = a * b;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < k; j++) {
-            kyopro::put(res[i][j].val());
+            kyopro::putint(res[i][j].val());
         }
     }
 }

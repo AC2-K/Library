@@ -7,11 +7,11 @@ int main() {
     constexpr int w = 1000;
 
     int n;
-    kyopro::read(n);
+    kyopro::readint(n);
     kyopro::imos_2d<int> c(h, w);
     for (int i = 0; i < n; i++) {
         int x1, x2, y1, y2;
-        kyopro::read(x1, y1, x2, y2);
+        kyopro::readint(x1, y1, x2, y2);
 
         c.add(x1, y1, x2, y2, 1);
     }
@@ -21,5 +21,5 @@ int main() {
         for (int j = 0; j < w; j++) {
             ans = std::max(ans, c.at(i, j));
         }
-    kyopro::put(ans);
+    kyopro::putint(ans);
 }

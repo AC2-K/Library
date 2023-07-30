@@ -5,11 +5,11 @@
 #include "../../../src/data-structure/BIT.hpp"
 int main() {
     int n, q;
-    kyopro::read(n, q);
+    kyopro::readint(n, q);
     kyopro::Mo mo(q);
     std::vector<int> a(n);
     for (auto& aa : a) {
-        kyopro::read(aa);
+        kyopro::readint(aa);
     }
     std::vector<int> k(q);
     for (int i = 0; i < q; i++) {
@@ -40,6 +40,6 @@ int main() {
 
     mo.build(add, del, out);
     for (auto r : ans) {
-        kyopro::put(r);
+        kyopro::putint(r);
     }
 }

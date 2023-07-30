@@ -4,11 +4,11 @@
 #include "../../../src/stream.hpp"
 int main() {
     int n, q;
-    kyopro::read(n, q);
+    kyopro::readint(n, q);
     kyopro::dsu uf(n);
     while (q--) {
         int t, x, y;
-        kyopro::read(t, x, y);
+        kyopro::readint(t, x, y);
         if (!t) {
             uf.merge(x, y);
         } else {

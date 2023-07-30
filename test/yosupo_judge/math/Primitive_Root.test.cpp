@@ -4,10 +4,10 @@
 #include "../../../src/stream.hpp"
 int main() {
     int q;
-    kyopro::read(q);
+    kyopro::readint(q);
     while (q--) {
         long long p;
-        kyopro::read(p);
-        kyopro::put(kyopro::primitive_root(p));
+        kyopro::readint(p);
+        kyopro::putint(kyopro::primitive_root(p));
     }
 }
