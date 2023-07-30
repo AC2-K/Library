@@ -6,26 +6,26 @@ using namespace std;
 int main() {
     kyopro::Treap<int> st;
     int n, q;
-    kyopro::read(n, q);
+    kyopro::readint(n, q);
     for (int i = 0; i < n; ++i) {
         int a;
-        kyopro::read(a);
+        kyopro::readint(a);
         st.insert(a);
     }
     while (q--) {
         int t;
-        kyopro::read(t);
+        kyopro::readint(t);
         if (!t) {
             int x;
-            kyopro::read(x);
+            kyopro::readint(x);
             st.insert(x);
         } else if (t == 1) {
             int mn = st.min_element();
-            kyopro::put(mn);
+            kyopro::putint(mn);
             st.erase(mn);
         } else {
             int mx = st.max_element();
-            kyopro::put(mx);
+            kyopro::putint(mx);
             st.erase(mx);
         }
     }

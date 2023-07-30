@@ -24,35 +24,35 @@ int main() {
     kyopro::lazy_reversible_bbst<S, Affine, op, e, composition, id, mapping>
         stree;
     int n, q;
-    kyopro::read(n, q);
+    kyopro::readint(n, q);
     for (int i = 0; i < n; ++i) {
         mint ai;
-        kyopro::read(ai);
+        kyopro::readint(ai);
         stree.insert(i, ai);
     }
     while (q--) {
         int t;
-        kyopro::read(t);
+        kyopro::readint(t);
         if (t == 0) {
             int i, x;
-            kyopro::read(i, x);
+            kyopro::readint(i, x);
             stree.insert(i, mint::raw(x));
         } else if (t == 1) {
             int i;
-            kyopro::read(i);
+            kyopro::readint(i);
             stree.erase(i);
         } else if (t == 2) {
             int l, r;
-            kyopro::read(l, r);
+            kyopro::readint(l, r);
             stree.reverse(l, r);
         } else if (t == 3) {
             int l, r, a, b;
-            kyopro::read(l, r, a, b);
+            kyopro::readint(l, r, a, b);
             stree.apply(l, r, Affine(mint::raw(a), mint::raw(b)));
         } else {
             int l, r;
-            kyopro::read(l, r);
-            kyopro::put(stree.fold(l, r).val());
+            kyopro::readint(l, r);
+            kyopro::putint(stree.fold(l, r).val());
         }
     }
 }

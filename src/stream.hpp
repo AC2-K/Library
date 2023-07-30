@@ -2,16 +2,19 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string>
-#include "../src/internal/type_traits.hpp"
-
 namespace kyopro {
-// read
-void single_read(char& c) {
-    c = getchar_unlocked();
+/**
+ * 文字を1個読み込む
+ */
+inline char readchar() {
+    char c = getchar_unlocked();
     while (isspace(c)) c = getchar_unlocked();
+    return c;
 }
-template <typename T, internal::is_integral_t<T>* = nullptr>
-void single_read(T& a) {
+/**
+ *  整数の入出力
+ */
+template <typename T> constexpr inline void readint(T& a) {
     a = 0;
     bool is_negative = false;
     char c = getchar_unlocked();
@@ -25,33 +28,16 @@ void single_read(T& a) {
     }
     if (is_negative) a *= -1;
 }
-template <typename T, internal::is_modint_t<T>* = nullptr>
-void single_read(T& a) {
-    long long x;
-    single_read(x);
-    a = T(x);
-}
-void single_read(std::string& str) {
-    char c = getchar_unlocked();
-    while (isspace(c)) c = getchar_unlocked();
-    while (!isspace(c)) {
-        str += c;
-        c = getchar_unlocked();
-    }
-}
-template<typename T>
-void read(T& x) {single_read(x);}
 template <typename Head, typename... Tail>
-void read(Head& head, Tail&... tail) {
-    single_read(head), read(tail...);
+constexpr inline void readint(Head& head, Tail&... tail) {
+    readint(head);
+    readint(tail...);
 }
 
-// write
-void single_write(char c) { putchar_unlocked(c); }
-template <typename T, internal::is_integral_t<T>* = nullptr>
-void single_write(T a) {
+template <typename T> void write_int(T a) {
     if (!a) {
         putchar_unlocked('0');
+        putchar_unlocked('\n');
         return;
     }
     if (a < 0) putchar_unlocked('-'), a *= -1;
@@ -63,27 +49,54 @@ void single_write(T a) {
     }
     while (now < 37) putchar_unlocked(s[now++]);
 }
-template <typename T, internal::is_modint_t<T>* = nullptr>
-void single_write(T a) {
-    single_write(a.val());
+template <typename T> constexpr inline void putint(T a) {
+    if (!a) {
+        putchar_unlocked('0');
+        putchar_unlocked('\n');
+        return;
+    }
+    if (a < 0) putchar_unlocked('-'), a *= -1;
+    char s[37];
+    int now = 37;
+    while (a) {
+        s[--now] = (char)'0' + a % 10;
+        a /= 10;
+    }
+    while (now < 37) putchar_unlocked(s[now++]);
+    putchar_unlocked('\n');
+}
+template <typename Head, typename... Tail>
+constexpr inline void putint(Head head, Tail... tail) {
+    putint(head);
+    putint(tail...);
 }
 
-void single_write(const std::string& str) {
-    for (auto c : str) {
-        putchar_unlocked(c);
+/**
+ * 文字列の入出力
+ */
+
+inline void readstr(std::string& str) {
+    char c = getchar_unlocked();
+    while (isspace(c)) c = getchar_unlocked();
+    while (!isspace(c)) {
+        str += c;
+        c = getchar_unlocked();
     }
 }
 
-template<typename T>
-void write(T x) { single_write(x); }
-template <typename Head, typename... Tail> void write(Head head, Tail... tail) {
-    single_write(head);
-    putchar_unlocked(' ');
-    write(tail...);
+inline void readstr(std::string& str,std::string& tail...) {
+    readstr(str);
+    readstr(tail);
 }
-template <typename... Args> void put(Args... x) {
-    write(x...);
+inline void putstr(const std::string& str) {
+    for (auto c : str) {
+        putchar_unlocked(c);
+    }
     putchar_unlocked('\n');
+}
+inline void putstr(const std::string& str, const std::string& tail...) {
+    putstr(str);
+    putstr(tail);
 }
 };  // namespace kyopro
 

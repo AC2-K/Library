@@ -10,10 +10,10 @@ inline S e() { return S{0, 0}; }
 
 int main() {
     int n;
-    kyopro::read(n);
+    kyopro::readint(n);
     std::vector<int> a(n);
     for (auto& aa : a) {
-        kyopro::read(aa);
+        kyopro::readint(aa);
     }
     {
         std::vector<int> tmp = a;
@@ -40,9 +40,9 @@ int main() {
         idx.emplace_back(cur);
         cur = prv[cur];
     }
-    kyopro::put(idx.size());
+    kyopro::putint(idx.size());
     std::reverse(idx.begin(), idx.end());
     for (auto i : idx) {
-        kyopro::put(i);
+        kyopro::putint(i);
     }
 }

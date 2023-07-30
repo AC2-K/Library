@@ -15,22 +15,22 @@ constexpr inline Affine e() { return Affine(1, 0); }
 int main() {
     kyopro::SWAG<Affine, op, e> que;
     int q;
-    kyopro::read(q);
+    kyopro::readint(q);
     while (q--) {
         int t;
-        kyopro::read(t);
+        kyopro::readint(t);
 
         if (t == 0) {
             mint a, b;
-            kyopro::read(a, b);
+            kyopro::readint(a, b);
             que.push(Affine(a, b));
         } else if (t == 1) {
             que.pop_front();
         } else {
             mint x;
-            kyopro::read(x);
+            kyopro::readint(x);
             Affine res = que.fold();
-            kyopro::put((res.first * x + res.second).val());
+            kyopro::putint((res.first * x + res.second).val());
         }
     }
 }
