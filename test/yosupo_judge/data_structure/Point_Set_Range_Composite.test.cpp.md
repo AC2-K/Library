@@ -1,13 +1,16 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/segtree.hpp
     title: SegmentTree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/internal/type_traits.hpp
+    title: src/internal/type_traits.hpp
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
   _extendedRequiredBy: []
@@ -45,23 +48,52 @@ data:
     \        return op(sml, smr);\n    }\n    void apply(int p, const S& v) {\n  \
     \      assert(0 <= p && p < sz);\n        update(p, op(dat[sz + p], v));\n   \
     \ }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/segtree.md\n\
-    \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate\
-    \ <typename T> constexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >=\
-    \ 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
-    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
-    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
-    \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
-    \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
-    \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace\
-    \ kyopro {\ntemplate <__uint64_t _mod> class static_modint {\nprivate:\n    using\
-    \ mint = static_modint<_mod>;\n    using i64 = long long;\n    using u64 = unsigned\
-    \ long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\n\
-    \    u64 v;\n    constexpr u64 normalize(i64 v_) const {\n        v_ %= _mod;\n\
+    \ */\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n#include <numeric>\n\
+    #include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
+    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
+    \ {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, __int8_t>,\n                                 std::enable_if<dgt <= 16,\
+    \ __int16_t>,\n                                 std::enable_if<dgt <= 32, __int32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, __int64_t>,\n    \
+    \                             std::enable_if<dgt <= 128, __int128_t> >;\n};\n\
+    template <int dgt> struct uint_least {\n    static_assert(dgt <= 128);\n    using\
+    \ type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,\n              \
+    \                   std::enable_if<dgt <= 16, __uint16_t>,\n                 \
+    \                std::enable_if<dgt <= 32, __uint32_t>,\n                    \
+    \             std::enable_if<dgt <= 64, __uint64_t>,\n                       \
+    \          std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\ntemplate <int dgt>\
+    \ using int_least_t = typename int_least<dgt>::type;\ntemplate <int dgt> using\
+    \ uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename T>\nusing\
+    \ double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\ntemplate\
+    \ <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \nstruct modint_base {};\ntemplate <typename T> using is_modint = std::is_base_of<modint_base,\
+    \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
+    \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
+    };  // namespace internal\n};  // namespace kyopro\n#line 3 \"src/math/gcd.hpp\"\
+    \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr T inline\
+    \ _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return\
+    \ a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n \
+    \   a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
+    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
+    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
+    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T ext_gcd(T\
+    \ a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b)\
+    \ {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n\
+    \        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
+    \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
+    \ kyopro\n#line 6 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate\
+    \ <__uint64_t _mod> class static_modint : internal::modint_base {\nprivate:\n\
+    \    using mint = static_modint<_mod>;\n    using i64 = long long;\n    using\
+    \ u64 = unsigned long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\
+    \n    u64 v;\n    constexpr u64 normalize(i64 v_) const {\n        v_ %= _mod;\n\
     \        if (v_ < 0) {\n            v_ += _mod;\n        }\n        return v_;\n\
     \    }\n\npublic:\n    static constexpr u64 mod() { return _mod; }\n    constexpr\
     \ static_modint() : v(0) {}\n    constexpr static_modint(i64 v_) : v(normalize(v_))\
@@ -103,8 +135,8 @@ data:
     \   os << mt.val();\n        return os;\n    }\n    constexpr friend std::istream&\
     \ operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n        is >> v_;\n\
     \        mt = v_;\n        return is;\n    }\n};\ntemplate <__uint32_t _mod> class\
-    \ static_modint32 {\nprivate:\n    using mint = static_modint32<_mod>;\n    using\
-    \ i32 = __int32_t;\n    using u32 = __uint32_t;\n    using i64 = __int64_t;\n\
+    \ static_modint32 : internal::modint_base {\nprivate:\n    using mint = static_modint32<_mod>;\n\
+    \    using i32 = __int32_t;\n    using u32 = __uint32_t;\n    using i64 = __int64_t;\n\
     \    using u64 = __uint64_t;\n\n    u32 v;\n    constexpr u32 normalize(i64 v_)\
     \ const {\n        v_ %= _mod;\n        if (v_ < 0) {\n            v_ += _mod;\n\
     \        }\n        return v_;\n    }\n\npublic:\n    static constexpr u32 mod()\
@@ -181,11 +213,12 @@ data:
   dependsOn:
   - src/data-structure/segtree.hpp
   - src/math/static_modint.hpp
+  - src/internal/type_traits.hpp
   - src/math/gcd.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 22:34:20+09:00'
+  timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp

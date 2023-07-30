@@ -4,13 +4,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/dual_segtree.hpp
     title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
+    path: src/internal/type_traits.hpp
+    title: src/internal/type_traits.hpp
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -48,23 +51,52 @@ data:
     \          if (r & 1) {\n                update(--r, v);\n            }\n    \
     \        l >>= 1, r >>= 1;\n        }\n    }\n};\n\n};  // namespace kyopro\n\n\
     /**\n * @docs docs/data-structure/dual_segtree.md\n */\n#line 3 \"src/math/static_modint.hpp\"\
-    \n#include <iostream>\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace\
-    \ kyopro {\ntemplate <typename T> constexpr T inline _gcd(T a, T b) {\n    assert(a\
-    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
-    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
-    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
-    \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
-    \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
-    \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace\
-    \ kyopro {\ntemplate <__uint64_t _mod> class static_modint {\nprivate:\n    using\
-    \ mint = static_modint<_mod>;\n    using i64 = long long;\n    using u64 = unsigned\
-    \ long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\n\
-    \    u64 v;\n    constexpr u64 normalize(i64 v_) const {\n        v_ %= _mod;\n\
+    \n#include <iostream>\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n\
+    #include <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace internal\
+    \ {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n\
+    template <typename... Args> struct first_enabled {};\n\ntemplate <typename T,\
+    \ typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...> {\n\
+    \    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
+    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
+    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
+    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
+    \ntemplate <int dgt> struct int_least {\n    static_assert(dgt <= 128);\n    using\
+    \ type = first_enabled_t<std::enable_if<dgt <= 8, __int8_t>,\n               \
+    \                  std::enable_if<dgt <= 16, __int16_t>,\n                   \
+    \              std::enable_if<dgt <= 32, __int32_t>,\n                       \
+    \          std::enable_if<dgt <= 64, __int64_t>,\n                           \
+    \      std::enable_if<dgt <= 128, __int128_t> >;\n};\ntemplate <int dgt> struct\
+    \ uint_least {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, __uint8_t>,\n                                 std::enable_if<dgt <= 16,\
+    \ __uint16_t>,\n                                 std::enable_if<dgt <= 32, __uint32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, __uint64_t>,\n   \
+    \                              std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\
+    \ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\ntemplate\
+    \ <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename\
+    \ T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \nstruct modint_base {};\ntemplate <typename T> using is_modint = std::is_base_of<modint_base,\
+    \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
+    \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
+    };  // namespace internal\n};  // namespace kyopro\n#line 3 \"src/math/gcd.hpp\"\
+    \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr T inline\
+    \ _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return\
+    \ a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n \
+    \   a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
+    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
+    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
+    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T ext_gcd(T\
+    \ a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b)\
+    \ {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n\
+    \        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
+    \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
+    \ kyopro\n#line 6 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate\
+    \ <__uint64_t _mod> class static_modint : internal::modint_base {\nprivate:\n\
+    \    using mint = static_modint<_mod>;\n    using i64 = long long;\n    using\
+    \ u64 = unsigned long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\
+    \n    u64 v;\n    constexpr u64 normalize(i64 v_) const {\n        v_ %= _mod;\n\
     \        if (v_ < 0) {\n            v_ += _mod;\n        }\n        return v_;\n\
     \    }\n\npublic:\n    static constexpr u64 mod() { return _mod; }\n    constexpr\
     \ static_modint() : v(0) {}\n    constexpr static_modint(i64 v_) : v(normalize(v_))\
@@ -106,8 +138,8 @@ data:
     \   os << mt.val();\n        return os;\n    }\n    constexpr friend std::istream&\
     \ operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n        is >> v_;\n\
     \        mt = v_;\n        return is;\n    }\n};\ntemplate <__uint32_t _mod> class\
-    \ static_modint32 {\nprivate:\n    using mint = static_modint32<_mod>;\n    using\
-    \ i32 = __int32_t;\n    using u32 = __uint32_t;\n    using i64 = __int64_t;\n\
+    \ static_modint32 : internal::modint_base {\nprivate:\n    using mint = static_modint32<_mod>;\n\
+    \    using i32 = __int32_t;\n    using u32 = __uint32_t;\n    using i64 = __int64_t;\n\
     \    using u64 = __uint64_t;\n\n    u32 v;\n    constexpr u32 normalize(i64 v_)\
     \ const {\n        v_ %= _mod;\n        if (v_ < 0) {\n            v_ += _mod;\n\
     \        }\n        return v_;\n    }\n\npublic:\n    static constexpr u32 mod()\
@@ -153,47 +185,44 @@ data:
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
-    \ <string>\nnamespace kyopro {\n/**\n * \u6587\u5B57\u30921\u500B\u8AAD\u307F\u8FBC\
-    \u3080\n */\ninline char readchar() {\n    char c = getchar_unlocked();\n    while\
-    \ (isspace(c)) c = getchar_unlocked();\n    return c;\n}\n/**\n *  \u6574\u6570\
-    \u306E\u5165\u51FA\u529B\n */\ntemplate <typename T> constexpr inline void readint(T&\
+    \ <string>\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
+    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
     \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
     \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
-    \ inline void readint(Head& head, Tail&... tail) {\n    readint(head);\n    readint(tail...);\n\
-    }\n\ntemplate <typename T> void write_int(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
-    \        putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
-    \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
-    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
-    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
-    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
-    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
-    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
-    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
-    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\ninline void readstr(std::string&\
-    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\n\ninline void readstr(std::string& str,std::string& tail...) {\n  \
-    \  readstr(str);\n    readstr(tail);\n}\ninline void putstr(const std::string&\
-    \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
-    n');\n}\ninline void putstr(const std::string& str, const std::string& tail...)\
-    \ {\n    putstr(str);\n    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\
+    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
+    \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
+    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
+    \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
+    \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
+    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
+    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
+    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
+    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
+    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
+    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
+    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
+    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
+    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
+    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
+    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\
     \n\nusing mint = kyopro::static_modint32<998244353>;\nusing Affine = std::pair<mint,\
     \ mint>;\ninline Affine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
     \    auto c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\n\
-    inline Affine e() { return Affine(1, 0); }\nint main() {\n    int n, q;\n    kyopro::readint(n,\
+    inline Affine e() { return Affine(1, 0); }\nint main() {\n    int n, q;\n    kyopro::read(n,\
     \ q);\n    kyopro::dual_segtree<Affine, op, e> sg(n);\n    std::vector<mint> a(n);\n\
-    \    for (auto& aa : a) {\n        kyopro::readint(aa);\n    }\n    while (q--)\
-    \ {\n        int t;\n        kyopro::readint(t);\n\n        if (!t) {\n      \
-    \      int l, r;\n            mint b, c;\n            kyopro::readint(l, r, b,\
-    \ c);\n            sg.apply(l, r, std::pair<mint, mint>(b, c));\n        } else\
-    \ {\n            int i;\n            kyopro::readint(i);\n            auto f =\
-    \ sg[i];\n            mint ans = f.first * a[i] + f.second;\n            kyopro::putint(ans.val());\n\
+    \    for (auto& aa : a) {\n        kyopro::read(aa);\n    }\n    while (q--) {\n\
+    \        int t;\n        kyopro::read(t);\n\n        if (!t) {\n            int\
+    \ l, r;\n            mint b, c;\n            kyopro::read(l, r, b, c);\n     \
+    \       sg.apply(l, r, std::pair<mint, mint>(b, c));\n        } else {\n     \
+    \       int i;\n            kyopro::read(i);\n            auto f = sg[i];\n  \
+    \          mint ans = f.first * a[i] + f.second;\n            kyopro::put(ans.val());\n\
     \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
     \n#include \"../../../src/data-structure/dual_segtree.hpp\"\n#include \"../../../src/math/static_modint.hpp\"\
@@ -201,23 +230,24 @@ data:
     using Affine = std::pair<mint, mint>;\ninline Affine op(Affine g, Affine f) {\n\
     \    auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n  \
     \  return Affine(a * c, a * d + b);\n}\ninline Affine e() { return Affine(1, 0);\
-    \ }\nint main() {\n    int n, q;\n    kyopro::readint(n, q);\n    kyopro::dual_segtree<Affine,\
+    \ }\nint main() {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::dual_segtree<Affine,\
     \ op, e> sg(n);\n    std::vector<mint> a(n);\n    for (auto& aa : a) {\n     \
-    \   kyopro::readint(aa);\n    }\n    while (q--) {\n        int t;\n        kyopro::readint(t);\n\
+    \   kyopro::read(aa);\n    }\n    while (q--) {\n        int t;\n        kyopro::read(t);\n\
     \n        if (!t) {\n            int l, r;\n            mint b, c;\n         \
-    \   kyopro::readint(l, r, b, c);\n            sg.apply(l, r, std::pair<mint, mint>(b,\
-    \ c));\n        } else {\n            int i;\n            kyopro::readint(i);\n\
-    \            auto f = sg[i];\n            mint ans = f.first * a[i] + f.second;\n\
-    \            kyopro::putint(ans.val());\n        }\n    }\n}\n"
+    \   kyopro::read(l, r, b, c);\n            sg.apply(l, r, std::pair<mint, mint>(b,\
+    \ c));\n        } else {\n            int i;\n            kyopro::read(i);\n \
+    \           auto f = sg[i];\n            mint ans = f.first * a[i] + f.second;\n\
+    \            kyopro::put(ans.val());\n        }\n    }\n}\n"
   dependsOn:
   - src/data-structure/dual_segtree.hpp
   - src/math/static_modint.hpp
+  - src/internal/type_traits.hpp
   - src/math/gcd.hpp
   - src/stream.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 22:34:20+09:00'
+  timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp

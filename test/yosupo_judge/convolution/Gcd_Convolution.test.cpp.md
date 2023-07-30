@@ -1,16 +1,19 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':question:'
+    path: src/internal/type_traits.hpp
+    title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/divisor-multiple-transform.hpp
     title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   - icon: ':heavy_check_mark:'
@@ -47,75 +50,101 @@ data:
     \ += f[p * i];\n        }\n    }\n    return;\n}\n};  // namespace kyopro\n\n\
     /**\n * @brief \u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\
     \u63DB\n * @docs docs/math/divisor-multiple-transform.md\n*/\n#line 2 \"src/stream.hpp\"\
-    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\nnamespace kyopro\
-    \ {\n/**\n * \u6587\u5B57\u30921\u500B\u8AAD\u307F\u8FBC\u3080\n */\ninline char\
-    \ readchar() {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    \    return c;\n}\n/**\n *  \u6574\u6570\u306E\u5165\u51FA\u529B\n */\ntemplate\
-    \ <typename T> constexpr inline void readint(T& a) {\n    a = 0;\n    bool is_negative\
-    \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
-    \   c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c =\
-    \ getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
-    \        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n}\ntemplate\
-    \ <typename Head, typename... Tail>\nconstexpr inline void readint(Head& head,\
-    \ Tail&... tail) {\n    readint(head);\n    readint(tail...);\n}\n\ntemplate <typename\
-    \ T> void write_int(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n  \
-    \      putchar_unlocked('\\n');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
-    \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    }\ntemplate <typename T> constexpr inline void putint(T a) {\n    if (!a) {\n\
-    \        putchar_unlocked('0');\n        putchar_unlocked('\\n');\n        return;\n\
-    \    }\n    if (a < 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int\
-    \ now = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n       \
-    \ a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n    putchar_unlocked('\\\
-    n');\n}\ntemplate <typename Head, typename... Tail>\nconstexpr inline void putint(Head\
-    \ head, Tail... tail) {\n    putint(head);\n    putint(tail...);\n}\n\n/**\n *\
-    \ \u6587\u5B57\u5217\u306E\u5165\u51FA\u529B\n */\n\ninline void readstr(std::string&\
-    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\n\ninline void readstr(std::string& str,std::string& tail...) {\n  \
-    \  readstr(str);\n    readstr(tail);\n}\ninline void putstr(const std::string&\
-    \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n    putchar_unlocked('\\\
-    n');\n}\ninline void putstr(const std::string& str, const std::string& tail...)\
-    \ {\n    putstr(str);\n    putstr(tail);\n}\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief fastIO\n */\n#line 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n\
-    #define rep(i, N) for (int i = 0; i < (N); i++)\n#define all(x) std::begin(x),\
-    \ std::end(x)\n#define popcount(x) __builtin_popcountll(x)\nusing i128 = __int128_t;\n\
-    using ll = long long;\nusing ld = long double;\nusing graph = std::vector<std::vector<int>>;\n\
-    using P = std::pair<int, int>;\nconstexpr int inf = 1e9;\nconstexpr ll infl =\
-    \ 1e18;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
-    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
-    \ dx[] = {-1, -1, -1, 0, 0, 1, 1, 1, 0};\nconstexpr int dy[] = {-1, 0, 1, -1,\
-    \ 1, -1, 0, 1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool\
-    \ chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
-    \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
-    \ b && (a = b, true);\n}\n#line 4 \"src/math/gcd.hpp\"\nnamespace kyopro {\ntemplate\
-    \ <typename T> constexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >=\
-    \ 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
-    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
-    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
-    \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
-    \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
-    \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n#line 5 \"src/math/static_modint.hpp\"\nnamespace\
-    \ kyopro {\ntemplate <__uint64_t _mod> class static_modint {\nprivate:\n    using\
-    \ mint = static_modint<_mod>;\n    using i64 = long long;\n    using u64 = unsigned\
-    \ long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\n\
-    \    u64 v;\n    constexpr u64 normalize(i64 v_) const {\n        v_ %= _mod;\n\
-    \        if (v_ < 0) {\n            v_ += _mod;\n        }\n        return v_;\n\
-    \    }\n\npublic:\n    static constexpr u64 mod() { return _mod; }\n    constexpr\
-    \ static_modint() : v(0) {}\n    constexpr static_modint(i64 v_) : v(normalize(v_))\
-    \ {}\n\n    static mint raw(u64 a) {\n        mint m;\n        m.v = a;\n    \
-    \    return m;\n    }\n    constexpr u64 val() const { return v; }\n    constexpr\
-    \ mint& operator+=(const mint& rhs) {\n        v += rhs.val();\n        if (v\
+    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
+    \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
+    namespace kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
+    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
+    \ {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, __int8_t>,\n                                 std::enable_if<dgt <= 16,\
+    \ __int16_t>,\n                                 std::enable_if<dgt <= 32, __int32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, __int64_t>,\n    \
+    \                             std::enable_if<dgt <= 128, __int128_t> >;\n};\n\
+    template <int dgt> struct uint_least {\n    static_assert(dgt <= 128);\n    using\
+    \ type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,\n              \
+    \                   std::enable_if<dgt <= 16, __uint16_t>,\n                 \
+    \                std::enable_if<dgt <= 32, __uint32_t>,\n                    \
+    \             std::enable_if<dgt <= 64, __uint64_t>,\n                       \
+    \          std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\ntemplate <int dgt>\
+    \ using int_least_t = typename int_least<dgt>::type;\ntemplate <int dgt> using\
+    \ uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename T>\nusing\
+    \ double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\ntemplate\
+    \ <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \nstruct modint_base {};\ntemplate <typename T> using is_modint = std::is_base_of<modint_base,\
+    \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
+    \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
+    \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
+    };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/stream.hpp\"\
+    \n\nnamespace kyopro {\n// read\nvoid single_read(char& c) {\n    c = getchar_unlocked();\n\
+    \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
+    \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
+    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
+    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
+    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
+    \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
+    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
+    \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
+    \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
+    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
+    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
+    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
+    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
+    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
+    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
+    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
+    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
+    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
+    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
+    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/template.hpp\"\
+    \n#include <bits/stdc++.h>\n#define rep(i, N) for (int i = 0; i < (N); i++)\n\
+    #define all(x) std::begin(x), std::end(x)\n#define popcount(x) __builtin_popcountll(x)\n\
+    using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
+    \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
+    \ int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-12;\nconst\
+    \ long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t\
+    \ MOD2 = 998244353;\nconstexpr int dx[] = {-1, -1, -1, 0, 0, 1, 1, 1, 0};\nconstexpr\
+    \ int dy[] = {-1, 0, 1, -1, 1, -1, 0, 1, 0};\ntemplate <typename T1, typename\
+    \ T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a < b && (a = b,\
+    \ true);\n}\ntemplate <typename T1, typename T2> constexpr inline bool chmin(T1&\
+    \ a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 4 \"src/math/gcd.hpp\"\
+    \nnamespace kyopro {\ntemplate <typename T> constexpr T inline _gcd(T a, T b)\
+    \ {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n\
+    \    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
+    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (!a || !b) {\n \
+    \           return a + b;\n        }\n        if (a >= b) {\n            a -=\
+    \ b;\n            a >>= __builtin_ctzll(a);\n        } else {\n            b -=\
+    \ a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return a\
+    \ << d;\n}\ntemplate <typename T> constexpr T ext_gcd(T a, T b, T& x, T& y) {\n\
+    \    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b) {\n        T q = a /\
+    \ b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n        std::tie(x,\
+    \ nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y, ny) = std::pair<T,\
+    \ T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace kyopro\n#line\
+    \ 6 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate <__uint64_t _mod>\
+    \ class static_modint : internal::modint_base {\nprivate:\n    using mint = static_modint<_mod>;\n\
+    \    using i64 = long long;\n    using u64 = unsigned long long;\n    using u128\
+    \ = __uint128_t;\n    using i128 = __int128_t;\n\n    u64 v;\n    constexpr u64\
+    \ normalize(i64 v_) const {\n        v_ %= _mod;\n        if (v_ < 0) {\n    \
+    \        v_ += _mod;\n        }\n        return v_;\n    }\n\npublic:\n    static\
+    \ constexpr u64 mod() { return _mod; }\n    constexpr static_modint() : v(0) {}\n\
+    \    constexpr static_modint(i64 v_) : v(normalize(v_)) {}\n\n    static mint\
+    \ raw(u64 a) {\n        mint m;\n        m.v = a;\n        return m;\n    }\n\
+    \    constexpr u64 val() const { return v; }\n    constexpr mint& operator+=(const\
+    \ mint& rhs) {\n        v += rhs.val();\n        if (v >= _mod) {\n          \
+    \  v -= _mod;\n        }\n        return (*this);\n    }\n    constexpr mint&\
+    \ operator-=(const mint& rhs) {\n        v += _mod - rhs.val();\n        if (v\
     \ >= _mod) {\n            v -= _mod;\n        }\n        return (*this);\n   \
-    \ }\n    constexpr mint& operator-=(const mint& rhs) {\n        v += _mod - rhs.val();\n\
-    \        if (v >= _mod) {\n            v -= _mod;\n        }\n        return (*this);\n\
-    \    }\n    constexpr mint& operator*=(const mint& rhs) {\n        v = (u128)v\
-    \ * rhs.val() % _mod;\n        return (*this);\n    }\n\n    constexpr mint operator+(const\
+    \ }\n    constexpr mint& operator*=(const mint& rhs) {\n        v = (u128)v *\
+    \ rhs.val() % _mod;\n        return (*this);\n    }\n\n    constexpr mint operator+(const\
     \ mint& r) const { return mint(*this) += r; }\n    constexpr mint operator-(const\
     \ mint& r) const { return mint(*this) -= r; }\n    constexpr mint operator*(const\
     \ mint& r) const { return mint(*this) *= r; }\n\n    constexpr mint& operator+=(i64\
@@ -146,8 +175,8 @@ data:
     \   os << mt.val();\n        return os;\n    }\n    constexpr friend std::istream&\
     \ operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n        is >> v_;\n\
     \        mt = v_;\n        return is;\n    }\n};\ntemplate <__uint32_t _mod> class\
-    \ static_modint32 {\nprivate:\n    using mint = static_modint32<_mod>;\n    using\
-    \ i32 = __int32_t;\n    using u32 = __uint32_t;\n    using i64 = __int64_t;\n\
+    \ static_modint32 : internal::modint_base {\nprivate:\n    using mint = static_modint32<_mod>;\n\
+    \    using i32 = __int32_t;\n    using u32 = __uint32_t;\n    using i64 = __int64_t;\n\
     \    using u64 = __uint64_t;\n\n    u32 v;\n    constexpr u32 normalize(i64 v_)\
     \ const {\n        v_ %= _mod;\n        if (v_ < 0) {\n            v_ += _mod;\n\
     \        }\n        return v_;\n    }\n\npublic:\n    static constexpr u32 mod()\
@@ -193,29 +222,30 @@ data:
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
     \ */\n#line 7 \"test/yosupo_judge/convolution/Gcd_Convolution.test.cpp\"\nint\
-    \ main() {\n    int n;\n    kyopro::readint(n);\n\n    std::vector<kyopro::static_modint32<998244353>>\
-    \ a(n + 1), b(n + 1);\n    for (int i = 1; i <= n; ++i) kyopro::readint(a[i]);\n\
-    \    for (int i = 1; i <= n; ++i) kyopro::readint(b[i]);\n\n    kyopro::fast_zeta(a),kyopro::fast_zeta(b);\n\
+    \ main() {\n    int n;\n    kyopro::read(n);\n\n    std::vector<kyopro::static_modint32<998244353>>\
+    \ a(n + 1), b(n + 1);\n    for (int i = 1; i <= n; ++i) kyopro::read(a[i]);\n\
+    \    for (int i = 1; i <= n; ++i) kyopro::read(b[i]);\n\n    kyopro::fast_zeta(a),kyopro::fast_zeta(b);\n\
     \    for (int i = 1; i <= n; ++i) a[i] *= b[i];\n    kyopro::fast_mobius(a);\n\
-    \    for (int i = 1; i <= n; ++i) kyopro::putint(a[i].val());\n}\n"
+    \    for (int i = 1; i <= n; ++i) kyopro::put(a[i].val());\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/gcd_convolution\"\n\n#include\
     \ \"../../../src/math/divisor-multiple-transform.hpp\"\n#include \"../../../src/stream.hpp\"\
     \n#include \"../../../src/template.hpp\"\n#include\"../../../src/math/static_modint.hpp\"\
-    \nint main() {\n    int n;\n    kyopro::readint(n);\n\n    std::vector<kyopro::static_modint32<998244353>>\
-    \ a(n + 1), b(n + 1);\n    for (int i = 1; i <= n; ++i) kyopro::readint(a[i]);\n\
-    \    for (int i = 1; i <= n; ++i) kyopro::readint(b[i]);\n\n    kyopro::fast_zeta(a),kyopro::fast_zeta(b);\n\
+    \nint main() {\n    int n;\n    kyopro::read(n);\n\n    std::vector<kyopro::static_modint32<998244353>>\
+    \ a(n + 1), b(n + 1);\n    for (int i = 1; i <= n; ++i) kyopro::read(a[i]);\n\
+    \    for (int i = 1; i <= n; ++i) kyopro::read(b[i]);\n\n    kyopro::fast_zeta(a),kyopro::fast_zeta(b);\n\
     \    for (int i = 1; i <= n; ++i) a[i] *= b[i];\n    kyopro::fast_mobius(a);\n\
-    \    for (int i = 1; i <= n; ++i) kyopro::putint(a[i].val());\n}"
+    \    for (int i = 1; i <= n; ++i) kyopro::put(a[i].val());\n}"
   dependsOn:
   - src/math/divisor-multiple-transform.hpp
   - src/stream.hpp
+  - src/internal/type_traits.hpp
   - src/template.hpp
   - src/math/static_modint.hpp
   - src/math/gcd.hpp
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 22:34:20+09:00'
+  timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
