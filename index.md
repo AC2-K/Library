@@ -1,62 +1,6 @@
 ---
 data:
   libraryCategories:
-  - name: atcoder
-    pages:
-    - icon: ':warning:'
-      path: atcoder/convolution.hpp
-      title: atcoder/convolution.hpp
-    - icon: ':warning:'
-      path: atcoder/dsu.hpp
-      title: atcoder/dsu.hpp
-    - icon: ':warning:'
-      path: atcoder/fenwicktree.hpp
-      title: atcoder/fenwicktree.hpp
-    - icon: ':warning:'
-      path: atcoder/internal_bit.hpp
-      title: atcoder/internal_bit.hpp
-    - icon: ':warning:'
-      path: atcoder/internal_csr.hpp
-      title: atcoder/internal_csr.hpp
-    - icon: ':warning:'
-      path: atcoder/internal_math.hpp
-      title: atcoder/internal_math.hpp
-    - icon: ':warning:'
-      path: atcoder/internal_queue.hpp
-      title: atcoder/internal_queue.hpp
-    - icon: ':warning:'
-      path: atcoder/internal_scc.hpp
-      title: atcoder/internal_scc.hpp
-    - icon: ':warning:'
-      path: atcoder/internal_type_traits.hpp
-      title: atcoder/internal_type_traits.hpp
-    - icon: ':warning:'
-      path: atcoder/lazysegtree.hpp
-      title: atcoder/lazysegtree.hpp
-    - icon: ':warning:'
-      path: atcoder/math.hpp
-      title: atcoder/math.hpp
-    - icon: ':warning:'
-      path: atcoder/maxflow.hpp
-      title: atcoder/maxflow.hpp
-    - icon: ':warning:'
-      path: atcoder/mincostflow.hpp
-      title: atcoder/mincostflow.hpp
-    - icon: ':warning:'
-      path: atcoder/modint.hpp
-      title: atcoder/modint.hpp
-    - icon: ':warning:'
-      path: atcoder/scc.hpp
-      title: atcoder/scc.hpp
-    - icon: ':warning:'
-      path: atcoder/segtree.hpp
-      title: atcoder/segtree.hpp
-    - icon: ':warning:'
-      path: atcoder/string.hpp
-      title: atcoder/string.hpp
-    - icon: ':warning:'
-      path: atcoder/twosat.hpp
-      title: atcoder/twosat.hpp
   - name: .
     pages:
     - icon: ':warning:'
@@ -73,6 +17,62 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algorithm/mo.hpp
       title: Mo's algorithm
+  - name: src/atcoder
+    pages:
+    - icon: ':warning:'
+      path: src/atcoder/convolution.hpp
+      title: src/atcoder/convolution.hpp
+    - icon: ':warning:'
+      path: src/atcoder/dsu.hpp
+      title: src/atcoder/dsu.hpp
+    - icon: ':warning:'
+      path: src/atcoder/fenwicktree.hpp
+      title: src/atcoder/fenwicktree.hpp
+    - icon: ':warning:'
+      path: src/atcoder/internal_bit.hpp
+      title: src/atcoder/internal_bit.hpp
+    - icon: ':warning:'
+      path: src/atcoder/internal_csr.hpp
+      title: src/atcoder/internal_csr.hpp
+    - icon: ':warning:'
+      path: src/atcoder/internal_math.hpp
+      title: src/atcoder/internal_math.hpp
+    - icon: ':warning:'
+      path: src/atcoder/internal_queue.hpp
+      title: src/atcoder/internal_queue.hpp
+    - icon: ':warning:'
+      path: src/atcoder/internal_scc.hpp
+      title: src/atcoder/internal_scc.hpp
+    - icon: ':warning:'
+      path: src/atcoder/internal_type_traits.hpp
+      title: src/atcoder/internal_type_traits.hpp
+    - icon: ':warning:'
+      path: src/atcoder/lazysegtree.hpp
+      title: src/atcoder/lazysegtree.hpp
+    - icon: ':warning:'
+      path: src/atcoder/math.hpp
+      title: src/atcoder/math.hpp
+    - icon: ':warning:'
+      path: src/atcoder/maxflow.hpp
+      title: src/atcoder/maxflow.hpp
+    - icon: ':warning:'
+      path: src/atcoder/mincostflow.hpp
+      title: src/atcoder/mincostflow.hpp
+    - icon: ':warning:'
+      path: src/atcoder/modint.hpp
+      title: src/atcoder/modint.hpp
+    - icon: ':warning:'
+      path: src/atcoder/scc.hpp
+      title: src/atcoder/scc.hpp
+    - icon: ':warning:'
+      path: src/atcoder/segtree.hpp
+      title: src/atcoder/segtree.hpp
+    - icon: ':warning:'
+      path: src/atcoder/string.hpp
+      title: src/atcoder/string.hpp
+    - icon: ':warning:'
+      path: src/atcoder/twosat.hpp
+      title: src/atcoder/twosat.hpp
   - name: src/data-structure
     pages:
     - icon: ':heavy_check_mark:'

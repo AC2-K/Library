@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':warning:'
-    path: atcoder/internal_queue.hpp
-    title: atcoder/internal_queue.hpp
+    path: src/atcoder/internal_queue.hpp
+    title: src/atcoder/internal_queue.hpp
   - icon: ':warning:'
-    path: atcoder/maxflow.hpp
-    title: atcoder/maxflow.hpp
+    path: src/atcoder/maxflow.hpp
+    title: src/atcoder/maxflow.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -17,9 +17,9 @@ data:
     links:
     - https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp
     - https://qiita.com/drken/items/e805e3f514acceb87602
-  bundledCode: "#line 1 \"atcoder/maxflow.hpp\"\n\n\n\n#include <algorithm>\n#include\
-    \ <cassert>\n#include <limits>\n#include <queue>\n#include <vector>\n\n#line 1\
-    \ \"atcoder/internal_queue.hpp\"\n\n\n\n#line 5 \"atcoder/internal_queue.hpp\"\
+  bundledCode: "#line 1 \"src/atcoder/maxflow.hpp\"\n\n\n\n#include <algorithm>\n\
+    #include <cassert>\n#include <limits>\n#include <queue>\n#include <vector>\n\n\
+    #line 1 \"src/atcoder/internal_queue.hpp\"\n\n\n\n#line 5 \"src/atcoder/internal_queue.hpp\"\
     \n\nnamespace atcoder {\n\nnamespace internal {\n\ntemplate <class T> struct simple_queue\
     \ {\n    std::vector<T> payload;\n    int pos = 0;\n    void reserve(int n) {\
     \ payload.reserve(n); }\n    int size() const { return int(payload.size()) - pos;\
@@ -27,7 +27,7 @@ data:
     \ T& t) { payload.push_back(t); }\n    T& front() { return payload[pos]; }\n \
     \   void clear() {\n        payload.clear();\n        pos = 0;\n    }\n    void\
     \ pop() { pos++; }\n};\n\n}  // namespace internal\n\n}  // namespace atcoder\n\
-    \n\n#line 11 \"atcoder/maxflow.hpp\"\n\nnamespace atcoder {\n\ntemplate <class\
+    \n\n#line 11 \"src/atcoder/maxflow.hpp\"\n\nnamespace atcoder {\n\ntemplate <class\
     \ Cap> struct mf_graph {\n  public:\n    mf_graph() : _n(0) {}\n    explicit mf_graph(int\
     \ n) : _n(n), g(n) {}\n\n    int add_edge(int from, int to, Cap cap) {\n     \
     \   assert(0 <= from && from < _n);\n        assert(0 <= to && to < _n);\n   \
@@ -100,7 +100,7 @@ data:
     \ L);\n            }\n        }\n        return res;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @ref\n * https://qiita.com/drken/items/e805e3f514acceb87602\n\
     \ * https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp\n */\n"
-  code: "#include \"../../../atcoder/maxflow\"\n\n#include <cassert>\n#include <vector>\n\
+  code: "#include \"../../atcoder/maxflow\"\n\n#include <cassert>\n#include <vector>\n\
     \nnamespace kyopro {\n\n/**\n * @brief \u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0\
     \n */\ntemplate <typename Cap> class BipartiteGraph {\n    const int L, R;\n \
     \   const int s, t;  // \u8D85\u9802\u70B9\u3092\u4F5C\u308B\n\n    atcoder::mf_graph<Cap>\
@@ -121,12 +121,12 @@ data:
     \ kyopro\n\n/**\n * @ref\n * https://qiita.com/drken/items/e805e3f514acceb87602\n\
     \ * https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp\n */"
   dependsOn:
-  - atcoder/maxflow.hpp
-  - atcoder/internal_queue.hpp
+  - src/atcoder/maxflow.hpp
+  - src/atcoder/internal_queue.hpp
   isVerificationFile: false
   path: src/graph/flow/BipartiteMatching.hpp
   requiredBy: []
-  timestamp: '2023-07-03 15:58:56+09:00'
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/flow/BipartiteMatching.hpp

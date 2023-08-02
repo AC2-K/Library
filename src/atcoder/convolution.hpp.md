@@ -2,17 +2,17 @@
 data:
   _extendedDependsOn:
   - icon: ':warning:'
-    path: atcoder/internal_bit.hpp
-    title: atcoder/internal_bit.hpp
+    path: src/atcoder/internal_bit.hpp
+    title: src/atcoder/internal_bit.hpp
   - icon: ':warning:'
-    path: atcoder/internal_math.hpp
-    title: atcoder/internal_math.hpp
+    path: src/atcoder/internal_math.hpp
+    title: src/atcoder/internal_math.hpp
   - icon: ':warning:'
-    path: atcoder/internal_type_traits.hpp
-    title: atcoder/internal_type_traits.hpp
+    path: src/atcoder/internal_type_traits.hpp
+    title: src/atcoder/internal_type_traits.hpp
   - icon: ':warning:'
-    path: atcoder/modint.hpp
-    title: atcoder/modint.hpp
+    path: src/atcoder/modint.hpp
+    title: src/atcoder/modint.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
     path: src/string/wildcard_pattern_matching.hpp
@@ -23,9 +23,9 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/convolution.hpp\"\n\n\n\n#include <algorithm>\n\
+  bundledCode: "#line 1 \"src/atcoder/convolution.hpp\"\n\n\n\n#include <algorithm>\n\
     #include <array>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\
-    \n#line 1 \"atcoder/internal_bit.hpp\"\n\n\n\n#ifdef _MSC_VER\n#include <intrin.h>\n\
+    \n#line 1 \"src/atcoder/internal_bit.hpp\"\n\n\n\n#ifdef _MSC_VER\n#include <intrin.h>\n\
     #endif\n\n#if __cplusplus >= 202002L\n#include <bit>\n#endif\n\nnamespace atcoder\
     \ {\n\nnamespace internal {\n\n#if __cplusplus >= 202002L\n\nusing std::bit_ceil;\n\
     \n#else\n\n// @return same with std::bit::bit_ceil\nunsigned int bit_ceil(unsigned\
@@ -36,26 +36,26 @@ data:
     #endif\n}\n\n// @param n `1 <= n`\n// @return same with std::bit::countr_zero\n\
     constexpr int countr_zero_constexpr(unsigned int n) {\n    int x = 0;\n    while\
     \ (!(n & (1 << x))) x++;\n    return x;\n}\n\n}  // namespace internal\n\n}  //\
-    \ namespace atcoder\n\n\n#line 1 \"atcoder/modint.hpp\"\n\n\n\n#line 5 \"atcoder/modint.hpp\"\
-    \n#include <numeric>\n#line 7 \"atcoder/modint.hpp\"\n\n#ifdef _MSC_VER\n#include\
-    \ <intrin.h>\n#endif\n\n#line 1 \"atcoder/internal_math.hpp\"\n\n\n\n#include\
-    \ <utility>\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder\
-    \ {\n\nnamespace internal {\n\n// @param m `1 <= m`\n// @return x mod m\nconstexpr\
-    \ long long safe_mod(long long x, long long m) {\n    x %= m;\n    if (x < 0)\
-    \ x += m;\n    return x;\n}\n\n// Fast modular multiplication by barrett reduction\n\
-    // Reference: https://en.wikipedia.org/wiki/Barrett_reduction\n// NOTE: reconsider\
-    \ after Ice Lake\nstruct barrett {\n    unsigned int _m;\n    unsigned long long\
-    \ im;\n\n    // @param m `1 <= m`\n    explicit barrett(unsigned int m) : _m(m),\
-    \ im((unsigned long long)(-1) / m + 1) {}\n\n    // @return m\n    unsigned int\
-    \ umod() const { return _m; }\n\n    // @param a `0 <= a < m`\n    // @param b\
-    \ `0 <= b < m`\n    // @return `a * b % m`\n    unsigned int mul(unsigned int\
-    \ a, unsigned int b) const {\n        // [1] m = 1\n        // a = b = im = 0,\
-    \ so okay\n\n        // [2] m >= 2\n        // im = ceil(2^64 / m)\n        //\
-    \ -> im * m = 2^64 + r (0 <= r < m)\n        // let z = a*b = c*m + d (0 <= c,\
-    \ d < m)\n        // a*b * im = (c*m + d) * im = c*(im*m) + d*im = c*2^64 + c*r\
-    \ + d*im\n        // c*r + d*im < m * m + m * im < m * m + 2^64 + m <= 2^64 +\
-    \ m * (m + 1) < 2^64 * 2\n        // ((ab * im) >> 64) == c or c + 1\n       \
-    \ unsigned long long z = a;\n        z *= b;\n#ifdef _MSC_VER\n        unsigned\
+    \ namespace atcoder\n\n\n#line 1 \"src/atcoder/modint.hpp\"\n\n\n\n#line 5 \"\
+    src/atcoder/modint.hpp\"\n#include <numeric>\n#line 7 \"src/atcoder/modint.hpp\"\
+    \n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n#line 1 \"src/atcoder/internal_math.hpp\"\
+    \n\n\n\n#include <utility>\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n\
+    namespace atcoder {\n\nnamespace internal {\n\n// @param m `1 <= m`\n// @return\
+    \ x mod m\nconstexpr long long safe_mod(long long x, long long m) {\n    x %=\
+    \ m;\n    if (x < 0) x += m;\n    return x;\n}\n\n// Fast modular multiplication\
+    \ by barrett reduction\n// Reference: https://en.wikipedia.org/wiki/Barrett_reduction\n\
+    // NOTE: reconsider after Ice Lake\nstruct barrett {\n    unsigned int _m;\n \
+    \   unsigned long long im;\n\n    // @param m `1 <= m`\n    explicit barrett(unsigned\
+    \ int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}\n\n    // @return m\n\
+    \    unsigned int umod() const { return _m; }\n\n    // @param a `0 <= a < m`\n\
+    \    // @param b `0 <= b < m`\n    // @return `a * b % m`\n    unsigned int mul(unsigned\
+    \ int a, unsigned int b) const {\n        // [1] m = 1\n        // a = b = im\
+    \ = 0, so okay\n\n        // [2] m >= 2\n        // im = ceil(2^64 / m)\n    \
+    \    // -> im * m = 2^64 + r (0 <= r < m)\n        // let z = a*b = c*m + d (0\
+    \ <= c, d < m)\n        // a*b * im = (c*m + d) * im = c*(im*m) + d*im = c*2^64\
+    \ + c*r + d*im\n        // c*r + d*im < m * m + m * im < m * m + 2^64 + m <= 2^64\
+    \ + m * (m + 1) < 2^64 * 2\n        // ((ab * im) >> 64) == c or c + 1\n     \
+    \   unsigned long long z = a;\n        z *= b;\n#ifdef _MSC_VER\n        unsigned\
     \ long long x;\n        _umul128(z, im, &x);\n#else\n        unsigned long long\
     \ x =\n            (unsigned long long)(((unsigned __int128)(z)*im) >> 64);\n\
     #endif\n        unsigned long long y = x * _m;\n        return (unsigned int)(z\
@@ -112,9 +112,9 @@ data:
     \ < m) break;\n        // y_max < m * (n + 1)\n        // floor(y_max / m) <=\
     \ n\n        n = (unsigned long long)(y_max / m);\n        b = (unsigned long\
     \ long)(y_max % m);\n        std::swap(m, a);\n    }\n    return ans;\n}\n\n}\
-    \  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 1 \"atcoder/internal_type_traits.hpp\"\
-    \n\n\n\n#line 7 \"atcoder/internal_type_traits.hpp\"\n\nnamespace atcoder {\n\n\
-    namespace internal {\n\n#ifndef _MSC_VER\ntemplate <class T>\nusing is_signed_int128\
+    \  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 1 \"src/atcoder/internal_type_traits.hpp\"\
+    \n\n\n\n#line 7 \"src/atcoder/internal_type_traits.hpp\"\n\nnamespace atcoder\
+    \ {\n\nnamespace internal {\n\n#ifndef _MSC_VER\ntemplate <class T>\nusing is_signed_int128\
     \ =\n    typename std::conditional<std::is_same<T, __int128_t>::value ||\n   \
     \                               std::is_same<T, __int128>::value,\n          \
     \                    std::true_type,\n                              std::false_type>::type;\n\
@@ -155,7 +155,7 @@ data:
     template <class T>\nusing is_signed_int_t = std::enable_if_t<is_signed_int<T>::value>;\n\
     \ntemplate <class T>\nusing is_unsigned_int_t = std::enable_if_t<is_unsigned_int<T>::value>;\n\
     \ntemplate <class T> using to_unsigned_t = typename to_unsigned<T>::type;\n\n\
-    }  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 14 \"atcoder/modint.hpp\"\
+    }  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 14 \"src/atcoder/modint.hpp\"\
     \n\nnamespace atcoder {\n\nnamespace internal {\n\nstruct modint_base {};\nstruct\
     \ static_modint_base : modint_base {};\n\ntemplate <class T> using is_modint =\
     \ std::is_base_of<modint_base, T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
@@ -242,7 +242,7 @@ data:
     \ntemplate <class> struct is_dynamic_modint : public std::false_type {};\ntemplate\
     \ <int id>\nstruct is_dynamic_modint<dynamic_modint<id>> : public std::true_type\
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
-    \n}  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 12 \"atcoder/convolution.hpp\"\
+    \n}  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 12 \"src/atcoder/convolution.hpp\"\
     \n\nnamespace atcoder {\n\nnamespace internal {\n\ntemplate <class mint,\n   \
     \       int g = internal::primitive_root<mint::mod()>,\n          internal::is_static_modint_t<mint>*\
     \ = nullptr>\nstruct fft_info {\n    static constexpr int rank2 = countr_zero_constexpr(mint::mod()\
@@ -399,7 +399,7 @@ data:
     \    }\n\n    return c;\n}\n\n}  // namespace atcoder\n\n\n"
   code: "#ifndef ATCODER_CONVOLUTION_HPP\n#define ATCODER_CONVOLUTION_HPP 1\n\n#include\
     \ <algorithm>\n#include <array>\n#include <cassert>\n#include <type_traits>\n\
-    #include <vector>\n\n#include \"atcoder/internal_bit\"\n#include \"atcoder/modint\"\
+    #include <vector>\n\n#include \"../atcoder/internal_bit\"\n#include \"../atcoder/modint\"\
     \n\nnamespace atcoder {\n\nnamespace internal {\n\ntemplate <class mint,\n   \
     \       int g = internal::primitive_root<mint::mod()>,\n          internal::is_static_modint_t<mint>*\
     \ = nullptr>\nstruct fft_info {\n    static constexpr int rank2 = countr_zero_constexpr(mint::mod()\
@@ -555,21 +555,21 @@ data:
     \ 2 * M1M2M3, 3 * M1M2M3};\n        x -= offset[diff % 5];\n        c[i] = x;\n\
     \    }\n\n    return c;\n}\n\n}  // namespace atcoder\n\n#endif  // ATCODER_CONVOLUTION_HPP\n"
   dependsOn:
-  - atcoder/internal_bit.hpp
-  - atcoder/modint.hpp
-  - atcoder/internal_math.hpp
-  - atcoder/internal_type_traits.hpp
+  - src/atcoder/internal_bit.hpp
+  - src/atcoder/modint.hpp
+  - src/atcoder/internal_math.hpp
+  - src/atcoder/internal_type_traits.hpp
   isVerificationFile: false
-  path: atcoder/convolution.hpp
+  path: src/atcoder/convolution.hpp
   requiredBy:
   - src/string/wildcard_pattern_matching.hpp
-  timestamp: '2023-07-02 15:52:59+09:00'
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/convolution.hpp
+documentation_of: src/atcoder/convolution.hpp
 layout: document
 redirect_from:
-- /library/atcoder/convolution.hpp
-- /library/atcoder/convolution.hpp.html
-title: atcoder/convolution.hpp
+- /library/src/atcoder/convolution.hpp
+- /library/src/atcoder/convolution.hpp.html
+title: src/atcoder/convolution.hpp
 ---

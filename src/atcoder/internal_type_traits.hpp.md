@@ -3,14 +3,14 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: atcoder/convolution.hpp
-    title: atcoder/convolution.hpp
+    path: src/atcoder/convolution.hpp
+    title: src/atcoder/convolution.hpp
   - icon: ':warning:'
-    path: atcoder/fenwicktree.hpp
-    title: atcoder/fenwicktree.hpp
+    path: src/atcoder/fenwicktree.hpp
+    title: src/atcoder/fenwicktree.hpp
   - icon: ':warning:'
-    path: atcoder/modint.hpp
-    title: atcoder/modint.hpp
+    path: src/atcoder/modint.hpp
+    title: src/atcoder/modint.hpp
   - icon: ':warning:'
     path: src/string/wildcard_pattern_matching.hpp
     title: WildCard Pattern Matching
@@ -20,7 +20,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/internal_type_traits.hpp\"\n\n\n\n#include <cassert>\n\
+  bundledCode: "#line 1 \"src/atcoder/internal_type_traits.hpp\"\n\n\n\n#include <cassert>\n\
     #include <numeric>\n#include <type_traits>\n\nnamespace atcoder {\n\nnamespace\
     \ internal {\n\n#ifndef _MSC_VER\ntemplate <class T>\nusing is_signed_int128 =\n\
     \    typename std::conditional<std::is_same<T, __int128_t>::value ||\n       \
@@ -110,19 +110,19 @@ data:
     }  // namespace internal\n\n}  // namespace atcoder\n\n#endif  // ATCODER_INTERNAL_TYPE_TRAITS_HPP\n"
   dependsOn: []
   isVerificationFile: false
-  path: atcoder/internal_type_traits.hpp
+  path: src/atcoder/internal_type_traits.hpp
   requiredBy:
-  - atcoder/convolution.hpp
-  - atcoder/modint.hpp
-  - atcoder/fenwicktree.hpp
   - src/string/wildcard_pattern_matching.hpp
-  timestamp: '2023-07-02 15:52:59+09:00'
+  - src/atcoder/convolution.hpp
+  - src/atcoder/modint.hpp
+  - src/atcoder/fenwicktree.hpp
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/internal_type_traits.hpp
+documentation_of: src/atcoder/internal_type_traits.hpp
 layout: document
 redirect_from:
-- /library/atcoder/internal_type_traits.hpp
-- /library/atcoder/internal_type_traits.hpp.html
-title: atcoder/internal_type_traits.hpp
+- /library/src/atcoder/internal_type_traits.hpp
+- /library/src/atcoder/internal_type_traits.hpp.html
+title: src/atcoder/internal_type_traits.hpp
 ---

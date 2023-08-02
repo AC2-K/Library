@@ -8,7 +8,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/string.hpp\"\n\n\n\n#include <algorithm>\n#include\
+  bundledCode: "#line 1 \"src/atcoder/string.hpp\"\n\n\n\n#include <algorithm>\n#include\
     \ <cassert>\n#include <numeric>\n#include <string>\n#include <vector>\n\nnamespace\
     \ atcoder {\n\nnamespace internal {\n\nstd::vector<int> sa_naive(const std::vector<int>&\
     \ s) {\n    int n = int(s.size());\n    std::vector<int> sa(n);\n    std::iota(sa.begin(),\
@@ -206,15 +206,15 @@ data:
     }\n\n}  // namespace atcoder\n\n#endif  // ATCODER_STRING_HPP\n"
   dependsOn: []
   isVerificationFile: false
-  path: atcoder/string.hpp
+  path: src/atcoder/string.hpp
   requiredBy: []
-  timestamp: '2023-07-02 15:52:59+09:00'
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/string.hpp
+documentation_of: src/atcoder/string.hpp
 layout: document
 redirect_from:
-- /library/atcoder/string.hpp
-- /library/atcoder/string.hpp.html
-title: atcoder/string.hpp
+- /library/src/atcoder/string.hpp
+- /library/src/atcoder/string.hpp.html
+title: src/atcoder/string.hpp
 ---

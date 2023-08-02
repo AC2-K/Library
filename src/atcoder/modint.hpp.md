@@ -2,15 +2,18 @@
 data:
   _extendedDependsOn:
   - icon: ':warning:'
-    path: atcoder/internal_math.hpp
-    title: atcoder/internal_math.hpp
+    path: src/atcoder/internal_math.hpp
+    title: src/atcoder/internal_math.hpp
   - icon: ':warning:'
-    path: atcoder/internal_type_traits.hpp
-    title: atcoder/internal_type_traits.hpp
+    path: src/atcoder/internal_type_traits.hpp
+    title: src/atcoder/internal_type_traits.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: atcoder/convolution.hpp
-    title: atcoder/convolution.hpp
+    path: src/atcoder/convolution.hpp
+    title: src/atcoder/convolution.hpp
+  - icon: ':warning:'
+    path: src/string/wildcard_pattern_matching.hpp
+    title: WildCard Pattern Matching
   - icon: ':warning:'
     path: src/string/wildcard_pattern_matching.hpp
     title: WildCard Pattern Matching
@@ -20,10 +23,10 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/modint.hpp\"\n\n\n\n#include <cassert>\n#include\
+  bundledCode: "#line 1 \"src/atcoder/modint.hpp\"\n\n\n\n#include <cassert>\n#include\
     \ <numeric>\n#include <type_traits>\n\n#ifdef _MSC_VER\n#include <intrin.h>\n\
-    #endif\n\n#line 1 \"atcoder/internal_math.hpp\"\n\n\n\n#include <utility>\n\n\
-    #ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace\
+    #endif\n\n#line 1 \"src/atcoder/internal_math.hpp\"\n\n\n\n#include <utility>\n\
+    \n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace\
     \ internal {\n\n// @param m `1 <= m`\n// @return x mod m\nconstexpr long long\
     \ safe_mod(long long x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n\
     \    return x;\n}\n\n// Fast modular multiplication by barrett reduction\n// Reference:\
@@ -96,9 +99,9 @@ data:
     \ < m) break;\n        // y_max < m * (n + 1)\n        // floor(y_max / m) <=\
     \ n\n        n = (unsigned long long)(y_max / m);\n        b = (unsigned long\
     \ long)(y_max % m);\n        std::swap(m, a);\n    }\n    return ans;\n}\n\n}\
-    \  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 1 \"atcoder/internal_type_traits.hpp\"\
-    \n\n\n\n#line 7 \"atcoder/internal_type_traits.hpp\"\n\nnamespace atcoder {\n\n\
-    namespace internal {\n\n#ifndef _MSC_VER\ntemplate <class T>\nusing is_signed_int128\
+    \  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 1 \"src/atcoder/internal_type_traits.hpp\"\
+    \n\n\n\n#line 7 \"src/atcoder/internal_type_traits.hpp\"\n\nnamespace atcoder\
+    \ {\n\nnamespace internal {\n\n#ifndef _MSC_VER\ntemplate <class T>\nusing is_signed_int128\
     \ =\n    typename std::conditional<std::is_same<T, __int128_t>::value ||\n   \
     \                               std::is_same<T, __int128>::value,\n          \
     \                    std::true_type,\n                              std::false_type>::type;\n\
@@ -139,7 +142,7 @@ data:
     template <class T>\nusing is_signed_int_t = std::enable_if_t<is_signed_int<T>::value>;\n\
     \ntemplate <class T>\nusing is_unsigned_int_t = std::enable_if_t<is_unsigned_int<T>::value>;\n\
     \ntemplate <class T> using to_unsigned_t = typename to_unsigned<T>::type;\n\n\
-    }  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 14 \"atcoder/modint.hpp\"\
+    }  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 14 \"src/atcoder/modint.hpp\"\
     \n\nnamespace atcoder {\n\nnamespace internal {\n\nstruct modint_base {};\nstruct\
     \ static_modint_base : modint_base {};\n\ntemplate <class T> using is_modint =\
     \ std::is_base_of<modint_base, T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
@@ -229,7 +232,7 @@ data:
     \n}  // namespace internal\n\n}  // namespace atcoder\n\n\n"
   code: "#ifndef ATCODER_MODINT_HPP\n#define ATCODER_MODINT_HPP 1\n\n#include <cassert>\n\
     #include <numeric>\n#include <type_traits>\n\n#ifdef _MSC_VER\n#include <intrin.h>\n\
-    #endif\n\n#include \"atcoder/internal_math\"\n#include \"atcoder/internal_type_traits\"\
+    #endif\n\n#include \"../atcoder/internal_math\"\n#include \"../atcoder/internal_type_traits\"\
     \n\nnamespace atcoder {\n\nnamespace internal {\n\nstruct modint_base {};\nstruct\
     \ static_modint_base : modint_base {};\n\ntemplate <class T> using is_modint =\
     \ std::is_base_of<modint_base, T>;\ntemplate <class T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
@@ -318,20 +321,21 @@ data:
     \ {};\n\ntemplate <class T>\nusing is_dynamic_modint_t = std::enable_if_t<is_dynamic_modint<T>::value>;\n\
     \n}  // namespace internal\n\n}  // namespace atcoder\n\n#endif  // ATCODER_MODINT_HPP\n"
   dependsOn:
-  - atcoder/internal_math.hpp
-  - atcoder/internal_type_traits.hpp
+  - src/atcoder/internal_math.hpp
+  - src/atcoder/internal_type_traits.hpp
   isVerificationFile: false
-  path: atcoder/modint.hpp
+  path: src/atcoder/modint.hpp
   requiredBy:
-  - atcoder/convolution.hpp
   - src/string/wildcard_pattern_matching.hpp
-  timestamp: '2023-07-02 15:52:59+09:00'
+  - src/string/wildcard_pattern_matching.hpp
+  - src/atcoder/convolution.hpp
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/modint.hpp
+documentation_of: src/atcoder/modint.hpp
 layout: document
 redirect_from:
-- /library/atcoder/modint.hpp
-- /library/atcoder/modint.hpp.html
-title: atcoder/modint.hpp
+- /library/src/atcoder/modint.hpp
+- /library/src/atcoder/modint.hpp.html
+title: src/atcoder/modint.hpp
 ---

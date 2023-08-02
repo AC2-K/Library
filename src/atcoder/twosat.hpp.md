@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':warning:'
-    path: atcoder/internal_csr.hpp
-    title: atcoder/internal_csr.hpp
+    path: src/atcoder/internal_csr.hpp
+    title: src/atcoder/internal_csr.hpp
   - icon: ':warning:'
-    path: atcoder/internal_scc.hpp
-    title: atcoder/internal_scc.hpp
+    path: src/atcoder/internal_scc.hpp
+    title: src/atcoder/internal_scc.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -14,10 +14,10 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/twosat.hpp\"\n\n\n\n#include <cassert>\n#include\
-    \ <vector>\n\n#line 1 \"atcoder/internal_scc.hpp\"\n\n\n\n#include <algorithm>\n\
-    #include <utility>\n#line 7 \"atcoder/internal_scc.hpp\"\n\n#line 1 \"atcoder/internal_csr.hpp\"\
-    \n\n\n\n#line 7 \"atcoder/internal_csr.hpp\"\n\nnamespace atcoder {\nnamespace\
+  bundledCode: "#line 1 \"src/atcoder/twosat.hpp\"\n\n\n\n#include <cassert>\n#include\
+    \ <vector>\n\n#line 1 \"src/atcoder/internal_scc.hpp\"\n\n\n\n#include <algorithm>\n\
+    #include <utility>\n#line 7 \"src/atcoder/internal_scc.hpp\"\n\n#line 1 \"src/atcoder/internal_csr.hpp\"\
+    \n\n\n\n#line 7 \"src/atcoder/internal_csr.hpp\"\n\nnamespace atcoder {\nnamespace\
     \ internal {\n\ntemplate <class E> struct csr {\n    std::vector<int> start;\n\
     \    std::vector<E> elist;\n    explicit csr(int n, const std::vector<std::pair<int,\
     \ E>>& edges)\n        : start(n + 1), elist(edges.size()) {\n        for (auto\
@@ -25,9 +25,9 @@ data:
     \ i = 1; i <= n; i++) {\n            start[i] += start[i - 1];\n        }\n  \
     \      auto counter = start;\n        for (auto e : edges) {\n            elist[counter[e.first]++]\
     \ = e.second;\n        }\n    }\n};\n\n}  // namespace internal\n\n}  // namespace\
-    \ atcoder\n\n\n#line 9 \"atcoder/internal_scc.hpp\"\n\nnamespace atcoder {\nnamespace\
-    \ internal {\n\n// Reference:\n// R. Tarjan,\n// Depth-First Search and Linear\
-    \ Graph Algorithms\nstruct scc_graph {\n  public:\n    explicit scc_graph(int\
+    \ atcoder\n\n\n#line 9 \"src/atcoder/internal_scc.hpp\"\n\nnamespace atcoder {\n\
+    namespace internal {\n\n// Reference:\n// R. Tarjan,\n// Depth-First Search and\
+    \ Linear Graph Algorithms\nstruct scc_graph {\n  public:\n    explicit scc_graph(int\
     \ n) : _n(n) {}\n\n    int num_vertices() { return _n; }\n\n    void add_edge(int\
     \ from, int to) { edges.push_back({from, {to}}); }\n\n    // @return pair of (#\
     \ of scc, scc id)\n    std::pair<int, std::vector<int>> scc_ids() {\n        auto\
@@ -54,7 +54,7 @@ data:
     \ i++) {\n            groups[ids.second[i]].push_back(i);\n        }\n       \
     \ return groups;\n    }\n\n  private:\n    int _n;\n    struct edge {\n      \
     \  int to;\n    };\n    std::vector<std::pair<int, edge>> edges;\n};\n\n}  //\
-    \ namespace internal\n\n}  // namespace atcoder\n\n\n#line 8 \"atcoder/twosat.hpp\"\
+    \ namespace internal\n\n}  // namespace atcoder\n\n\n#line 8 \"src/atcoder/twosat.hpp\"\
     \n\nnamespace atcoder {\n\n// Reference:\n// B. Aspvall, M. Plass, and R. Tarjan,\n\
     // A Linear-Time Algorithm for Testing the Truth of Certain Quantified Boolean\n\
     // Formulas\nstruct two_sat {\n  public:\n    two_sat() : _n(0), scc(0) {}\n \
@@ -69,14 +69,14 @@ data:
     \n  private:\n    int _n;\n    std::vector<bool> _answer;\n    internal::scc_graph\
     \ scc;\n};\n\n}  // namespace atcoder\n\n\n"
   code: "#ifndef ATCODER_TWOSAT_HPP\n#define ATCODER_TWOSAT_HPP 1\n\n#include <cassert>\n\
-    #include <vector>\n\n#include \"atcoder/internal_scc\"\n\nnamespace atcoder {\n\
-    \n// Reference:\n// B. Aspvall, M. Plass, and R. Tarjan,\n// A Linear-Time Algorithm\
-    \ for Testing the Truth of Certain Quantified Boolean\n// Formulas\nstruct two_sat\
-    \ {\n  public:\n    two_sat() : _n(0), scc(0) {}\n    explicit two_sat(int n)\
-    \ : _n(n), _answer(n), scc(2 * n) {}\n\n    void add_clause(int i, bool f, int\
-    \ j, bool g) {\n        assert(0 <= i && i < _n);\n        assert(0 <= j && j\
-    \ < _n);\n        scc.add_edge(2 * i + (f ? 0 : 1), 2 * j + (g ? 1 : 0));\n  \
-    \      scc.add_edge(2 * j + (g ? 0 : 1), 2 * i + (f ? 1 : 0));\n    }\n    bool\
+    #include <vector>\n\n#include \"../atcoder/internal_scc\"\n\nnamespace atcoder\
+    \ {\n\n// Reference:\n// B. Aspvall, M. Plass, and R. Tarjan,\n// A Linear-Time\
+    \ Algorithm for Testing the Truth of Certain Quantified Boolean\n// Formulas\n\
+    struct two_sat {\n  public:\n    two_sat() : _n(0), scc(0) {}\n    explicit two_sat(int\
+    \ n) : _n(n), _answer(n), scc(2 * n) {}\n\n    void add_clause(int i, bool f,\
+    \ int j, bool g) {\n        assert(0 <= i && i < _n);\n        assert(0 <= j &&\
+    \ j < _n);\n        scc.add_edge(2 * i + (f ? 0 : 1), 2 * j + (g ? 1 : 0));\n\
+    \        scc.add_edge(2 * j + (g ? 0 : 1), 2 * i + (f ? 1 : 0));\n    }\n    bool\
     \ satisfiable() {\n        auto id = scc.scc_ids().second;\n        for (int i\
     \ = 0; i < _n; i++) {\n            if (id[2 * i] == id[2 * i + 1]) return false;\n\
     \            _answer[i] = id[2 * i] < id[2 * i + 1];\n        }\n        return\
@@ -84,18 +84,18 @@ data:
     \    int _n;\n    std::vector<bool> _answer;\n    internal::scc_graph scc;\n};\n\
     \n}  // namespace atcoder\n\n#endif  // ATCODER_TWOSAT_HPP\n"
   dependsOn:
-  - atcoder/internal_scc.hpp
-  - atcoder/internal_csr.hpp
+  - src/atcoder/internal_scc.hpp
+  - src/atcoder/internal_csr.hpp
   isVerificationFile: false
-  path: atcoder/twosat.hpp
+  path: src/atcoder/twosat.hpp
   requiredBy: []
-  timestamp: '2023-07-02 15:52:59+09:00'
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/twosat.hpp
+documentation_of: src/atcoder/twosat.hpp
 layout: document
 redirect_from:
-- /library/atcoder/twosat.hpp
-- /library/atcoder/twosat.hpp.html
-title: atcoder/twosat.hpp
+- /library/src/atcoder/twosat.hpp
+- /library/src/atcoder/twosat.hpp.html
+title: src/atcoder/twosat.hpp
 ---

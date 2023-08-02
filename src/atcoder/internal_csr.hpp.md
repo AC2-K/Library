@@ -3,24 +3,24 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: atcoder/internal_scc.hpp
-    title: atcoder/internal_scc.hpp
+    path: src/atcoder/internal_scc.hpp
+    title: src/atcoder/internal_scc.hpp
   - icon: ':warning:'
-    path: atcoder/mincostflow.hpp
-    title: atcoder/mincostflow.hpp
+    path: src/atcoder/mincostflow.hpp
+    title: src/atcoder/mincostflow.hpp
   - icon: ':warning:'
-    path: atcoder/scc.hpp
-    title: atcoder/scc.hpp
+    path: src/atcoder/scc.hpp
+    title: src/atcoder/scc.hpp
   - icon: ':warning:'
-    path: atcoder/twosat.hpp
-    title: atcoder/twosat.hpp
+    path: src/atcoder/twosat.hpp
+    title: src/atcoder/twosat.hpp
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/internal_csr.hpp\"\n\n\n\n#include <algorithm>\n\
+  bundledCode: "#line 1 \"src/atcoder/internal_csr.hpp\"\n\n\n\n#include <algorithm>\n\
     #include <utility>\n#include <vector>\n\nnamespace atcoder {\nnamespace internal\
     \ {\n\ntemplate <class E> struct csr {\n    std::vector<int> start;\n    std::vector<E>\
     \ elist;\n    explicit csr(int n, const std::vector<std::pair<int, E>>& edges)\n\
@@ -42,19 +42,19 @@ data:
     \ atcoder\n\n#endif  // ATCODER_INTERNAL_CSR_HPP\n"
   dependsOn: []
   isVerificationFile: false
-  path: atcoder/internal_csr.hpp
+  path: src/atcoder/internal_csr.hpp
   requiredBy:
-  - atcoder/twosat.hpp
-  - atcoder/internal_scc.hpp
-  - atcoder/mincostflow.hpp
-  - atcoder/scc.hpp
-  timestamp: '2023-07-02 15:52:59+09:00'
+  - src/atcoder/twosat.hpp
+  - src/atcoder/internal_scc.hpp
+  - src/atcoder/mincostflow.hpp
+  - src/atcoder/scc.hpp
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/internal_csr.hpp
+documentation_of: src/atcoder/internal_csr.hpp
 layout: document
 redirect_from:
-- /library/atcoder/internal_csr.hpp
-- /library/atcoder/internal_csr.hpp.html
-title: atcoder/internal_csr.hpp
+- /library/src/atcoder/internal_csr.hpp
+- /library/src/atcoder/internal_csr.hpp.html
+title: src/atcoder/internal_csr.hpp
 ---

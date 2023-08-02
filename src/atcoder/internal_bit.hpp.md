@@ -3,14 +3,14 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: atcoder/convolution.hpp
-    title: atcoder/convolution.hpp
+    path: src/atcoder/convolution.hpp
+    title: src/atcoder/convolution.hpp
   - icon: ':warning:'
-    path: atcoder/lazysegtree.hpp
-    title: atcoder/lazysegtree.hpp
+    path: src/atcoder/lazysegtree.hpp
+    title: src/atcoder/lazysegtree.hpp
   - icon: ':warning:'
-    path: atcoder/segtree.hpp
-    title: atcoder/segtree.hpp
+    path: src/atcoder/segtree.hpp
+    title: src/atcoder/segtree.hpp
   - icon: ':warning:'
     path: src/string/wildcard_pattern_matching.hpp
     title: WildCard Pattern Matching
@@ -20,9 +20,9 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/internal_bit.hpp\"\n\n\n\n#ifdef _MSC_VER\n#include\
-    \ <intrin.h>\n#endif\n\n#if __cplusplus >= 202002L\n#include <bit>\n#endif\n\n\
-    namespace atcoder {\n\nnamespace internal {\n\n#if __cplusplus >= 202002L\n\n\
+  bundledCode: "#line 1 \"src/atcoder/internal_bit.hpp\"\n\n\n\n#ifdef _MSC_VER\n\
+    #include <intrin.h>\n#endif\n\n#if __cplusplus >= 202002L\n#include <bit>\n#endif\n\
+    \nnamespace atcoder {\n\nnamespace internal {\n\n#if __cplusplus >= 202002L\n\n\
     using std::bit_ceil;\n\n#else\n\n// @return same with std::bit::bit_ceil\nunsigned\
     \ int bit_ceil(unsigned int n) {\n    unsigned int x = 1;\n    while (x < (unsigned\
     \ int)(n)) x *= 2;\n    return x;\n}\n\n#endif\n\n// @param n `1 <= n`\n// @return\
@@ -47,19 +47,19 @@ data:
     \ atcoder\n\n#endif  // ATCODER_INTERNAL_BITOP_HPP\n"
   dependsOn: []
   isVerificationFile: false
-  path: atcoder/internal_bit.hpp
+  path: src/atcoder/internal_bit.hpp
   requiredBy:
-  - atcoder/convolution.hpp
-  - atcoder/lazysegtree.hpp
-  - atcoder/segtree.hpp
   - src/string/wildcard_pattern_matching.hpp
-  timestamp: '2023-07-02 15:52:59+09:00'
+  - src/atcoder/convolution.hpp
+  - src/atcoder/lazysegtree.hpp
+  - src/atcoder/segtree.hpp
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/internal_bit.hpp
+documentation_of: src/atcoder/internal_bit.hpp
 layout: document
 redirect_from:
-- /library/atcoder/internal_bit.hpp
-- /library/atcoder/internal_bit.hpp.html
-title: atcoder/internal_bit.hpp
+- /library/src/atcoder/internal_bit.hpp
+- /library/src/atcoder/internal_bit.hpp.html
+title: src/atcoder/internal_bit.hpp
 ---

@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':warning:'
-    path: atcoder/internal_csr.hpp
-    title: atcoder/internal_csr.hpp
+    path: src/atcoder/internal_csr.hpp
+    title: src/atcoder/internal_csr.hpp
   - icon: ':warning:'
-    path: atcoder/internal_scc.hpp
-    title: atcoder/internal_scc.hpp
+    path: src/atcoder/internal_scc.hpp
+    title: src/atcoder/internal_scc.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -14,10 +14,10 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/scc.hpp\"\n\n\n\n#include <algorithm>\n#include\
-    \ <cassert>\n#include <vector>\n\n#line 1 \"atcoder/internal_scc.hpp\"\n\n\n\n\
-    #line 5 \"atcoder/internal_scc.hpp\"\n#include <utility>\n#line 7 \"atcoder/internal_scc.hpp\"\
-    \n\n#line 1 \"atcoder/internal_csr.hpp\"\n\n\n\n#line 7 \"atcoder/internal_csr.hpp\"\
+  bundledCode: "#line 1 \"src/atcoder/scc.hpp\"\n\n\n\n#include <algorithm>\n#include\
+    \ <cassert>\n#include <vector>\n\n#line 1 \"src/atcoder/internal_scc.hpp\"\n\n\
+    \n\n#line 5 \"src/atcoder/internal_scc.hpp\"\n#include <utility>\n#line 7 \"src/atcoder/internal_scc.hpp\"\
+    \n\n#line 1 \"src/atcoder/internal_csr.hpp\"\n\n\n\n#line 7 \"src/atcoder/internal_csr.hpp\"\
     \n\nnamespace atcoder {\nnamespace internal {\n\ntemplate <class E> struct csr\
     \ {\n    std::vector<int> start;\n    std::vector<E> elist;\n    explicit csr(int\
     \ n, const std::vector<std::pair<int, E>>& edges)\n        : start(n + 1), elist(edges.size())\
@@ -25,7 +25,7 @@ data:
     \   }\n        for (int i = 1; i <= n; i++) {\n            start[i] += start[i\
     \ - 1];\n        }\n        auto counter = start;\n        for (auto e : edges)\
     \ {\n            elist[counter[e.first]++] = e.second;\n        }\n    }\n};\n\
-    \n}  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 9 \"atcoder/internal_scc.hpp\"\
+    \n}  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 9 \"src/atcoder/internal_scc.hpp\"\
     \n\nnamespace atcoder {\nnamespace internal {\n\n// Reference:\n// R. Tarjan,\n\
     // Depth-First Search and Linear Graph Algorithms\nstruct scc_graph {\n  public:\n\
     \    explicit scc_graph(int n) : _n(n) {}\n\n    int num_vertices() { return _n;\
@@ -54,7 +54,7 @@ data:
     \        }\n        for (int i = 0; i < _n; i++) {\n            groups[ids.second[i]].push_back(i);\n\
     \        }\n        return groups;\n    }\n\n  private:\n    int _n;\n    struct\
     \ edge {\n        int to;\n    };\n    std::vector<std::pair<int, edge>> edges;\n\
-    };\n\n}  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 9 \"atcoder/scc.hpp\"\
+    };\n\n}  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 9 \"src/atcoder/scc.hpp\"\
     \n\nnamespace atcoder {\n\nstruct scc_graph {\n  public:\n    scc_graph() : internal(0)\
     \ {}\n    explicit scc_graph(int n) : internal(n) {}\n\n    void add_edge(int\
     \ from, int to) {\n        int n = internal.num_vertices();\n        assert(0\
@@ -63,8 +63,8 @@ data:
     \ }\n\n  private:\n    internal::scc_graph internal;\n};\n\n}  // namespace atcoder\n\
     \n\n"
   code: "#ifndef ATCODER_SCC_HPP\n#define ATCODER_SCC_HPP 1\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <vector>\n\n#include \"atcoder/internal_scc\"\n\n\
-    namespace atcoder {\n\nstruct scc_graph {\n  public:\n    scc_graph() : internal(0)\
+    #include <cassert>\n#include <vector>\n\n#include \"../atcoder/internal_scc\"\n\
+    \nnamespace atcoder {\n\nstruct scc_graph {\n  public:\n    scc_graph() : internal(0)\
     \ {}\n    explicit scc_graph(int n) : internal(n) {}\n\n    void add_edge(int\
     \ from, int to) {\n        int n = internal.num_vertices();\n        assert(0\
     \ <= from && from < n);\n        assert(0 <= to && to < n);\n        internal.add_edge(from,\
@@ -72,18 +72,18 @@ data:
     \ }\n\n  private:\n    internal::scc_graph internal;\n};\n\n}  // namespace atcoder\n\
     \n#endif  // ATCODER_SCC_HPP\n"
   dependsOn:
-  - atcoder/internal_scc.hpp
-  - atcoder/internal_csr.hpp
+  - src/atcoder/internal_scc.hpp
+  - src/atcoder/internal_csr.hpp
   isVerificationFile: false
-  path: atcoder/scc.hpp
+  path: src/atcoder/scc.hpp
   requiredBy: []
-  timestamp: '2023-07-02 15:52:59+09:00'
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/scc.hpp
+documentation_of: src/atcoder/scc.hpp
 layout: document
 redirect_from:
-- /library/atcoder/scc.hpp
-- /library/atcoder/scc.hpp.html
-title: atcoder/scc.hpp
+- /library/src/atcoder/scc.hpp
+- /library/src/atcoder/scc.hpp.html
+title: src/atcoder/scc.hpp
 ---

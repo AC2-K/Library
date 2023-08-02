@@ -8,7 +8,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/dsu.hpp\"\n\n\n\n#include <algorithm>\n#include\
+  bundledCode: "#line 1 \"src/atcoder/dsu.hpp\"\n\n\n\n#include <algorithm>\n#include\
     \ <cassert>\n#include <vector>\n\nnamespace atcoder {\n\n// Implement (union by\
     \ size) + (path compression)\n// Reference:\n// Zvi Galil and Giuseppe F. Italiano,\n\
     // Data structures and algorithms for disjoint set union problems\nstruct dsu\
@@ -62,15 +62,15 @@ data:
     \n#endif  // ATCODER_DSU_HPP\n"
   dependsOn: []
   isVerificationFile: false
-  path: atcoder/dsu.hpp
+  path: src/atcoder/dsu.hpp
   requiredBy: []
-  timestamp: '2023-07-02 15:52:59+09:00'
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/dsu.hpp
+documentation_of: src/atcoder/dsu.hpp
 layout: document
 redirect_from:
-- /library/atcoder/dsu.hpp
-- /library/atcoder/dsu.hpp.html
-title: atcoder/dsu.hpp
+- /library/src/atcoder/dsu.hpp
+- /library/src/atcoder/dsu.hpp.html
+title: src/atcoder/dsu.hpp
 ---

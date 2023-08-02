@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':warning:'
-    path: atcoder/internal_math.hpp
-    title: atcoder/internal_math.hpp
+    path: src/atcoder/internal_math.hpp
+    title: src/atcoder/internal_math.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -11,8 +11,8 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/math.hpp\"\n\n\n\n#include <algorithm>\n#include\
-    \ <cassert>\n#include <tuple>\n#include <vector>\n\n#line 1 \"atcoder/internal_math.hpp\"\
+  bundledCode: "#line 1 \"src/atcoder/math.hpp\"\n\n\n\n#include <algorithm>\n#include\
+    \ <cassert>\n#include <tuple>\n#include <vector>\n\n#line 1 \"src/atcoder/internal_math.hpp\"\
     \n\n\n\n#include <utility>\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n\
     namespace atcoder {\n\nnamespace internal {\n\n// @param m `1 <= m`\n// @return\
     \ x mod m\nconstexpr long long safe_mod(long long x, long long m) {\n    x %=\
@@ -86,7 +86,7 @@ data:
     \ < m) break;\n        // y_max < m * (n + 1)\n        // floor(y_max / m) <=\
     \ n\n        n = (unsigned long long)(y_max / m);\n        b = (unsigned long\
     \ long)(y_max % m);\n        std::swap(m, a);\n    }\n    return ans;\n}\n\n}\
-    \  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 10 \"atcoder/math.hpp\"\
+    \  // namespace internal\n\n}  // namespace atcoder\n\n\n#line 10 \"src/atcoder/math.hpp\"\
     \n\nnamespace atcoder {\n\nlong long pow_mod(long long x, long long n, int m)\
     \ {\n    assert(0 <= n && 1 <= m);\n    if (m == 1) return 0;\n    internal::barrett\
     \ bt((unsigned int)(m));\n    unsigned int r = 1, y = (unsigned int)(internal::safe_mod(x,\
@@ -123,7 +123,7 @@ data:
     \ return ans + internal::floor_sum_unsigned(n, m, a, b);\n}\n\n}  // namespace\
     \ atcoder\n\n\n"
   code: "#ifndef ATCODER_MATH_HPP\n#define ATCODER_MATH_HPP 1\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <tuple>\n#include <vector>\n\n#include \"atcoder/internal_math\"\
+    #include <cassert>\n#include <tuple>\n#include <vector>\n\n#include \"../atcoder/internal_math\"\
     \n\nnamespace atcoder {\n\nlong long pow_mod(long long x, long long n, int m)\
     \ {\n    assert(0 <= n && 1 <= m);\n    if (m == 1) return 0;\n    internal::barrett\
     \ bt((unsigned int)(m));\n    unsigned int r = 1, y = (unsigned int)(internal::safe_mod(x,\
@@ -160,17 +160,17 @@ data:
     \ return ans + internal::floor_sum_unsigned(n, m, a, b);\n}\n\n}  // namespace\
     \ atcoder\n\n#endif  // ATCODER_MATH_HPP\n"
   dependsOn:
-  - atcoder/internal_math.hpp
+  - src/atcoder/internal_math.hpp
   isVerificationFile: false
-  path: atcoder/math.hpp
+  path: src/atcoder/math.hpp
   requiredBy: []
-  timestamp: '2023-07-02 15:52:59+09:00'
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/math.hpp
+documentation_of: src/atcoder/math.hpp
 layout: document
 redirect_from:
-- /library/atcoder/math.hpp
-- /library/atcoder/math.hpp.html
-title: atcoder/math.hpp
+- /library/src/atcoder/math.hpp
+- /library/src/atcoder/math.hpp.html
+title: src/atcoder/math.hpp
 ---

@@ -3,11 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: atcoder/maxflow.hpp
-    title: atcoder/maxflow.hpp
+    path: src/atcoder/maxflow.hpp
+    title: src/atcoder/maxflow.hpp
   - icon: ':warning:'
-    path: atcoder/mincostflow.hpp
-    title: atcoder/mincostflow.hpp
+    path: src/atcoder/mincostflow.hpp
+    title: src/atcoder/mincostflow.hpp
   - icon: ':warning:'
     path: src/graph/flow/BipartiteMatching.hpp
     title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
@@ -17,8 +17,8 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/internal_queue.hpp\"\n\n\n\n#include <vector>\n\n\
-    namespace atcoder {\n\nnamespace internal {\n\ntemplate <class T> struct simple_queue\
+  bundledCode: "#line 1 \"src/atcoder/internal_queue.hpp\"\n\n\n\n#include <vector>\n\
+    \nnamespace atcoder {\n\nnamespace internal {\n\ntemplate <class T> struct simple_queue\
     \ {\n    std::vector<T> payload;\n    int pos = 0;\n    void reserve(int n) {\
     \ payload.reserve(n); }\n    int size() const { return int(payload.size()) - pos;\
     \ }\n    bool empty() const { return pos == int(payload.size()); }\n    void push(const\
@@ -37,18 +37,18 @@ data:
     \n}  // namespace atcoder\n\n#endif  // ATCODER_INTERNAL_QUEUE_HPP\n"
   dependsOn: []
   isVerificationFile: false
-  path: atcoder/internal_queue.hpp
+  path: src/atcoder/internal_queue.hpp
   requiredBy:
-  - atcoder/maxflow.hpp
-  - atcoder/mincostflow.hpp
+  - src/atcoder/maxflow.hpp
+  - src/atcoder/mincostflow.hpp
   - src/graph/flow/BipartiteMatching.hpp
-  timestamp: '2023-07-02 15:52:59+09:00'
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/internal_queue.hpp
+documentation_of: src/atcoder/internal_queue.hpp
 layout: document
 redirect_from:
-- /library/atcoder/internal_queue.hpp
-- /library/atcoder/internal_queue.hpp.html
-title: atcoder/internal_queue.hpp
+- /library/src/atcoder/internal_queue.hpp
+- /library/src/atcoder/internal_queue.hpp.html
+title: src/atcoder/internal_queue.hpp
 ---

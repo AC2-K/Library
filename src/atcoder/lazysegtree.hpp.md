@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':warning:'
-    path: atcoder/internal_bit.hpp
-    title: atcoder/internal_bit.hpp
+    path: src/atcoder/internal_bit.hpp
+    title: src/atcoder/internal_bit.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -11,8 +11,8 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"atcoder/lazysegtree.hpp\"\n\n\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <functional>\n#include <vector>\n\n#line 1 \"atcoder/internal_bit.hpp\"\
+  bundledCode: "#line 1 \"src/atcoder/lazysegtree.hpp\"\n\n\n\n#include <algorithm>\n\
+    #include <cassert>\n#include <functional>\n#include <vector>\n\n#line 1 \"src/atcoder/internal_bit.hpp\"\
     \n\n\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n#if __cplusplus >= 202002L\n\
     #include <bit>\n#endif\n\nnamespace atcoder {\n\nnamespace internal {\n\n#if __cplusplus\
     \ >= 202002L\n\nusing std::bit_ceil;\n\n#else\n\n// @return same with std::bit::bit_ceil\n\
@@ -24,9 +24,9 @@ data:
     \ @param n `1 <= n`\n// @return same with std::bit::countr_zero\nconstexpr int\
     \ countr_zero_constexpr(unsigned int n) {\n    int x = 0;\n    while (!(n & (1\
     \ << x))) x++;\n    return x;\n}\n\n}  // namespace internal\n\n}  // namespace\
-    \ atcoder\n\n\n#line 10 \"atcoder/lazysegtree.hpp\"\n\nnamespace atcoder {\n\n\
-    #if __cplusplus >= 201703L\n\ntemplate <class S,\n          auto op,\n       \
-    \   auto e,\n          class F,\n          auto mapping,\n          auto composition,\n\
+    \ atcoder\n\n\n#line 10 \"src/atcoder/lazysegtree.hpp\"\n\nnamespace atcoder {\n\
+    \n#if __cplusplus >= 201703L\n\ntemplate <class S,\n          auto op,\n     \
+    \     auto e,\n          class F,\n          auto mapping,\n          auto composition,\n\
     \          auto id>\nstruct lazy_segtree {\n    static_assert(std::is_convertible_v<decltype(op),\
     \ std::function<S(S, S)>>,\n                  \"op must work as S(S, S)\");\n\
     \    static_assert(std::is_convertible_v<decltype(e), std::function<S()>>,\n \
@@ -101,10 +101,10 @@ data:
     \    }\n};\n\n}  // namespace atcoder\n\n\n"
   code: "#ifndef ATCODER_LAZYSEGTREE_HPP\n#define ATCODER_LAZYSEGTREE_HPP 1\n\n#include\
     \ <algorithm>\n#include <cassert>\n#include <functional>\n#include <vector>\n\n\
-    #include \"atcoder/internal_bit\"\n\nnamespace atcoder {\n\n#if __cplusplus >=\
-    \ 201703L\n\ntemplate <class S,\n          auto op,\n          auto e,\n     \
-    \     class F,\n          auto mapping,\n          auto composition,\n       \
-    \   auto id>\nstruct lazy_segtree {\n    static_assert(std::is_convertible_v<decltype(op),\
+    #include \"../atcoder/internal_bit\"\n\nnamespace atcoder {\n\n#if __cplusplus\
+    \ >= 201703L\n\ntemplate <class S,\n          auto op,\n          auto e,\n  \
+    \        class F,\n          auto mapping,\n          auto composition,\n    \
+    \      auto id>\nstruct lazy_segtree {\n    static_assert(std::is_convertible_v<decltype(op),\
     \ std::function<S(S, S)>>,\n                  \"op must work as S(S, S)\");\n\
     \    static_assert(std::is_convertible_v<decltype(e), std::function<S()>>,\n \
     \                 \"e must work as S()\");\n    static_assert(\n        std::is_convertible_v<decltype(mapping),\
@@ -177,17 +177,17 @@ data:
     \ * k, lz[k]);\n        all_apply(2 * k + 1, lz[k]);\n        lz[k] = id();\n\
     \    }\n};\n\n}  // namespace atcoder\n\n#endif  // ATCODER_LAZYSEGTREE_HPP\n"
   dependsOn:
-  - atcoder/internal_bit.hpp
+  - src/atcoder/internal_bit.hpp
   isVerificationFile: false
-  path: atcoder/lazysegtree.hpp
+  path: src/atcoder/lazysegtree.hpp
   requiredBy: []
-  timestamp: '2023-07-02 15:52:59+09:00'
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/lazysegtree.hpp
+documentation_of: src/atcoder/lazysegtree.hpp
 layout: document
 redirect_from:
-- /library/atcoder/lazysegtree.hpp
-- /library/atcoder/lazysegtree.hpp.html
-title: atcoder/lazysegtree.hpp
+- /library/src/atcoder/lazysegtree.hpp
+- /library/src/atcoder/lazysegtree.hpp.html
+title: src/atcoder/lazysegtree.hpp
 ---

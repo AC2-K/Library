@@ -3,14 +3,14 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
-    path: atcoder/convolution.hpp
-    title: atcoder/convolution.hpp
+    path: src/atcoder/convolution.hpp
+    title: src/atcoder/convolution.hpp
   - icon: ':warning:'
-    path: atcoder/math.hpp
-    title: atcoder/math.hpp
+    path: src/atcoder/math.hpp
+    title: src/atcoder/math.hpp
   - icon: ':warning:'
-    path: atcoder/modint.hpp
-    title: atcoder/modint.hpp
+    path: src/atcoder/modint.hpp
+    title: src/atcoder/modint.hpp
   - icon: ':warning:'
     path: src/string/wildcard_pattern_matching.hpp
     title: WildCard Pattern Matching
@@ -21,8 +21,8 @@ data:
   attributes:
     links:
     - https://en.wikipedia.org/wiki/Barrett_reduction
-  bundledCode: "#line 1 \"atcoder/internal_math.hpp\"\n\n\n\n#include <utility>\n\n\
-    #ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace\
+  bundledCode: "#line 1 \"src/atcoder/internal_math.hpp\"\n\n\n\n#include <utility>\n\
+    \n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace\
     \ internal {\n\n// @param m `1 <= m`\n// @return x mod m\nconstexpr long long\
     \ safe_mod(long long x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n\
     \    return x;\n}\n\n// Fast modular multiplication by barrett reduction\n// Reference:\
@@ -173,19 +173,19 @@ data:
     \  // namespace internal\n\n}  // namespace atcoder\n\n#endif  // ATCODER_INTERNAL_MATH_HPP\n"
   dependsOn: []
   isVerificationFile: false
-  path: atcoder/internal_math.hpp
+  path: src/atcoder/internal_math.hpp
   requiredBy:
-  - atcoder/convolution.hpp
-  - atcoder/modint.hpp
-  - atcoder/math.hpp
   - src/string/wildcard_pattern_matching.hpp
-  timestamp: '2023-07-02 15:52:59+09:00'
+  - src/atcoder/convolution.hpp
+  - src/atcoder/modint.hpp
+  - src/atcoder/math.hpp
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: atcoder/internal_math.hpp
+documentation_of: src/atcoder/internal_math.hpp
 layout: document
 redirect_from:
-- /library/atcoder/internal_math.hpp
-- /library/atcoder/internal_math.hpp.html
-title: atcoder/internal_math.hpp
+- /library/src/atcoder/internal_math.hpp
+- /library/src/atcoder/internal_math.hpp.html
+title: src/atcoder/internal_math.hpp
 ---
