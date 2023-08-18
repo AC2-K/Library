@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   _extendedRequiredBy:
@@ -283,20 +283,20 @@ data:
   isVerificationFile: false
   path: src/math/dynamic_modint.hpp
   requiredBy:
-  - src/math/phi_function.hpp
-  - src/math/primitive_root.hpp
   - src/math/miller.hpp
   - src/math/rho.hpp
+  - src/math/primitive_root.hpp
+  - src/math/phi_function.hpp
   - src/math/mod_log.hpp
   timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   - test/yuki/No3030.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
 documentation_of: src/math/dynamic_modint.hpp
 layout: document
 redirect_from:

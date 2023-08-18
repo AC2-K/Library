@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -23,28 +23,28 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n#include <algorithm>\n\
     #include <iostream>\n#include <vector>\n#line 3 \"src/graph/dijkstra.hpp\"\n#include\
-    \ <cassert>\n#include <queue>\n#include <utility>\n#line 7 \"src/graph/dijkstra.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
-    \n */\nclass dijkstra {\n    std::vector<long long> dist;\n    std::vector<int>\
-    \ trace;\n    const int n;\n    int s;\npublic:\n    struct edge {\n        const\
-    \ int to;\n        const long long cost;\n        constexpr edge(int to, long\
-    \ long cost) : to(to), cost(cost) {}\n    };\n\n    using graph = std::vector<std::vector<edge>>;\n\
-    \nprivate:\n    graph g;\n\npublic:\n    dijkstra(int n) : n(n), g(n) {}\n   \
-    \ dijkstra(const graph& g) : n(g.size()), g(g) {}\n    void add_edge(int from,\
-    \ int to, long long cost) {\n        assert(0 <= from && from < n);\n        assert(0\
-    \ <= to && to < n);\n        assert(cost >= 0);\n        g[from].emplace_back(to,\
-    \ cost);\n    }\n    void build(int _s) {\n        assert(0 <= _s && _s < n);\n\
-    \        std::swap(s, _s);\n\n        trace.assign(n, -1), dist.assign(n, (long\
-    \ long)1e18);\n        std::priority_queue<std::pair<long long, int>,\n      \
-    \                      std::vector<std::pair<long long, int>>,\n             \
-    \               std::greater<std::pair<long long, int>>>\n            que;\n \
-    \       que.emplace(0, s);\n        dist[s] = 0;\n        trace[s] = s;\n    \
-    \    while (!que.empty()) {\n            auto [d, v] = que.top();\n          \
-    \  que.pop();\n            if (dist[v] != d) {\n                continue;\n  \
-    \          }\n\n            for (auto [nv, c] : g[v]) {\n                if (dist[v]\
-    \ + c < dist[nv]) {\n                    dist[nv] = dist[v] + c;\n           \
-    \         trace[nv] = v;\n                    que.emplace(dist[nv], nv);\n   \
-    \             }\n            }\n        }\n    }\n\n    const std::vector<long\
+    \ <cassert>\n#include <numeric>\n#include <queue>\n#include <utility>\n#line 8\
+    \ \"src/graph/dijkstra.hpp\"\nnamespace kyopro {\n\n/**\n * @brief \u30C0\u30A4\
+    \u30AF\u30B9\u30C8\u30E9\u6CD5\n */\nclass dijkstra {\n    std::vector<long long>\
+    \ dist;\n    std::vector<int> trace;\n    const int n;\n    int s;\n\npublic:\n\
+    \    struct edge {\n        const int to;\n        const long long cost;\n   \
+    \     constexpr edge(int to, long long cost) : to(to), cost(cost) {}\n    };\n\
+    \n    using graph = std::vector<std::vector<edge>>;\n\nprivate:\n    graph g;\n\
+    \npublic:\n    dijkstra(int n) : n(n), g(n) {}\n    dijkstra(const graph& g) :\
+    \ n(g.size()), g(g) {}\n    void add_edge(int from, int to, long long cost) {\n\
+    \        assert(0 <= from && from < n);\n        assert(0 <= to && to < n);\n\
+    \        assert(cost >= 0);\n        g[from].emplace_back(to, cost);\n    }\n\
+    \    void build(int _s) {\n        assert(0 <= _s && _s < n);\n        std::swap(s,\
+    \ _s);\n\n        trace.assign(n, -1), dist.assign(n, (long long)1e18);\n    \
+    \    std::priority_queue<std::pair<long long, int>,\n                        \
+    \    std::vector<std::pair<long long, int>>,\n                            std::greater<std::pair<long\
+    \ long, int>>>\n            que;\n        que.emplace(0, s);\n        dist[s]\
+    \ = 0;\n        trace[s] = s;\n        while (!que.empty()) {\n            auto\
+    \ [d, v] = que.top();\n            que.pop();\n            if (dist[v] != d) {\n\
+    \                continue;\n            }\n\n            for (auto [nv, c] : g[v])\
+    \ {\n                if (dist[v] + c < dist[nv]) {\n                    dist[nv]\
+    \ = dist[v] + c;\n                    trace[nv] = v;\n                    que.emplace(dist[nv],\
+    \ nv);\n                }\n            }\n        }\n    }\n\n    const std::vector<long\
     \ long>& get_dist() const { return dist; }\n\n    std::pair<long long, std::vector<int>>\
     \ shortest_path(int to) {\n        assert(0 <= to && to < n);\n        if (dist[to]\
     \ >= (long long)1e18) return {};\n        int cur = to;\n        std::vector<int>\
@@ -53,30 +53,31 @@ data:
     \     std::reverse(path.begin(), path.end());\n        return {dist[to], path};\n\
     \    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/graph/dijkstra.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
-    \ <string>\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n#include\
-    \ <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/*\n\
-    \ * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\ntemplate\
-    \ <typename... Args> struct first_enabled {};\n\ntemplate <typename T, typename...\
-    \ Args>\nstruct first_enabled<std::enable_if<true, T>, Args...> {\n    using type\
-    \ = T;\n};\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
-    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
-    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
-    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
-    \ntemplate <int dgt> struct int_least {\n    static_assert(dgt <= 128);\n    using\
-    \ type = first_enabled_t<std::enable_if<dgt <= 8, __int8_t>,\n               \
-    \                  std::enable_if<dgt <= 16, __int16_t>,\n                   \
-    \              std::enable_if<dgt <= 32, __int32_t>,\n                       \
-    \          std::enable_if<dgt <= 64, __int64_t>,\n                           \
-    \      std::enable_if<dgt <= 128, __int128_t> >;\n};\ntemplate <int dgt> struct\
-    \ uint_least {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, __uint8_t>,\n                                 std::enable_if<dgt <= 16,\
-    \ __uint16_t>,\n                                 std::enable_if<dgt <= 32, __uint32_t>,\n\
-    \                                 std::enable_if<dgt <= 64, __uint64_t>,\n   \
-    \                              std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\
-    \ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\ntemplate\
-    \ <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename\
-    \ T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
-    \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \ <string>\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n#line\
+    \ 5 \"src/internal/type_traits.hpp\"\n#include <typeinfo>\nnamespace kyopro {\n\
+    namespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
+    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
+    \ {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, __int8_t>,\n                                 std::enable_if<dgt <= 16,\
+    \ __int16_t>,\n                                 std::enable_if<dgt <= 32, __int32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, __int64_t>,\n    \
+    \                             std::enable_if<dgt <= 128, __int128_t> >;\n};\n\
+    template <int dgt> struct uint_least {\n    static_assert(dgt <= 128);\n    using\
+    \ type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,\n              \
+    \                   std::enable_if<dgt <= 16, __uint16_t>,\n                 \
+    \                std::enable_if<dgt <= 32, __uint32_t>,\n                    \
+    \             std::enable_if<dgt <= 64, __uint64_t>,\n                       \
+    \          std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\ntemplate <int dgt>\
+    \ using int_least_t = typename int_least<dgt>::type;\ntemplate <int dgt> using\
+    \ uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename T>\nusing\
+    \ double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\ntemplate\
+    \ <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     \nstruct modint_base {};\ntemplate <typename T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
@@ -134,7 +135,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-18 11:55:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Diameter.test.cpp

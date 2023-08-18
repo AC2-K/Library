@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/sparse_table.hpp
     title: SparseTable
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -106,30 +106,35 @@ data:
     \ y) { return std::min(x, y); }\n    };\n\n    sparse_table<get_min_pair::value_t,\
     \ get_min_pair::op> rmq;\n\npublic:\n    explicit EulerTour(int n)\n        :\
     \ n(n), g(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) {\n        tour.reserve(2\
-    \ * n - 1);\n    }\n    void add_edge(int u, int v) {\n        g[u].emplace_back(v);\n\
-    \        g[v].emplace_back(u);\n    }\n    const std::vector<std::vector<int>>&\
+    \ * n - 1);\n    }\n    void add_edge(int u, int v) {\n        assert(0 <= v &&\
+    \ v < n);\n        assert(0 <= u && u < n);\n        g[u].emplace_back(v);\n \
+    \       g[v].emplace_back(u);\n    }\n    const std::vector<std::vector<int>>&\
     \ get_graph() const { return g; }\n    const std::vector<int>& get_tour() const\
-    \ { return tour; }\n    int get_depth(int v) const { return depth[v]; }\n\n  \
-    \  void build(int r = 0) {\n        auto dfs = [&](const auto& self, int v, int\
-    \ p) -> void {\n            in[v] = tour.size();\n            tour.emplace_back(v);\n\
-    \            for (auto nv : g[v]) {\n                if (nv != p) {\n        \
-    \            depth[nv] = depth[v] + 1;\n                    self(self, nv, v);\n\
-    \                    tour.emplace_back(v);\n                }\n            }\n\
-    \            out[v] = tour.size() - 1;\n        };\n        dfs(dfs, r, -1);\n\
-    \        for (int i = 0; i < (int)tour.size(); i++) {\n            rmq.set(i,\
-    \ {depth[tour[i]], tour[i]});\n        }\n        rmq.build();\n    }\n\n    std::pair<int,\
-    \ int> idx(int v) const { return {in[v], out[v]}; }\n    int lca(int v, int u)\
-    \ const {\n        if (in[v] > in[u] + 1) {\n            std::swap(u, v);\n  \
-    \      }\n        return rmq.fold(in[v], in[u] + 1).second;\n    }\n\n    int\
-    \ dist(int v, int u) const {\n        int p = lca(v, u);\n        return depth[v]\
-    \ + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par, int v)\
-    \ const {\n        return (in[par] <= in[v] && out[v] <= out[par]);\n    }\n};\n\
-    };  // namespace kyopro\n\n/**\n * @docs docs/tree/EulerTour.md\n */\n#line 6\
-    \ \"test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp\"\nint main() {\n\
-    \    int n, q;\n    kyopro::read(n, q);\n    kyopro::EulerTour g(n);\n    for\
-    \ (int i = 1; i < n; i++) {\n        int p;\n        kyopro::read(p);\n      \
-    \  g.add_edge(p, i);\n    }\n    g.build();\n    while (q--) {\n        int u,\
-    \ v;\n        kyopro::read(u, v);\n        kyopro::put(g.lca(u, v));\n    }\n\
+    \ { return tour; }\n    int get_depth(int v) const { \n        assert(0 <= v &&\
+    \ v < n);\n        return depth[v]; \n    }\n\n    void build(int r = 0) {\n \
+    \       auto dfs = [&](const auto& self, int v, int p) -> void {\n           \
+    \ in[v] = tour.size();\n            tour.emplace_back(v);\n            for (auto\
+    \ nv : g[v]) {\n                if (nv != p) {\n                    depth[nv]\
+    \ = depth[v] + 1;\n                    self(self, nv, v);\n                  \
+    \  tour.emplace_back(v);\n                }\n            }\n            out[v]\
+    \ = tour.size() - 1;\n        };\n        dfs(dfs, r, -1);\n        for (int i\
+    \ = 0; i < (int)tour.size(); i++) {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n\
+    \        }\n        rmq.build();\n    }\n\n    std::pair<int, int> idx(int v)\
+    \ const { \n        assert(0 <= v && v < n);\n        return {in[v], out[v]};\
+    \ \n    }\n    int lca(int v, int u) const {\n        assert(0 <= v && v < n);\n\
+    \        assert(0 <= u && u < n);\n        if (in[v] > in[u] + 1) {\n        \
+    \    std::swap(u, v);\n        }\n        return rmq.fold(in[v], in[u] + 1).second;\n\
+    \    }\n\n    int dist(int v, int u) const {\n        assert(0 <= v && v < n);\n\
+    \        assert(0 <= u && u < n);\n        int p = lca(v, u);\n        return\
+    \ depth[v] + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par,\
+    \ int v) const {\n        assert(0 <= par && par < n);\n        assert(0 <= v\
+    \ && v < n);\n\n        return (in[par] <= in[v] && out[v] <= out[par]);\n   \
+    \ }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/tree/EulerTour.md\n */\n\
+    #line 6 \"test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp\"\nint main()\
+    \ {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::EulerTour g(n);\n   \
+    \ for (int i = 1; i < n; i++) {\n        int p;\n        kyopro::read(p);\n  \
+    \      g.add_edge(p, i);\n    }\n    g.build();\n    while (q--) {\n        int\
+    \ u, v;\n        kyopro::read(u, v);\n        kyopro::put(g.lca(u, v));\n    }\n\
     }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <iostream>\n\
     #include \"../../../src/stream.hpp\"\n#include \"../../../src/tree/EulerTour.hpp\"\
@@ -146,8 +151,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-08-18 11:55:00+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
 layout: document

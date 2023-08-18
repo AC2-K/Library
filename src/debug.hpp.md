@@ -18,7 +18,7 @@ data:
 
     #define _GLIBCXX_DEBUG
 
-    #define debug(x) cerr << __LINE__ << " : " << #x << " = " << (x) << endl
+    #define debug(x) std::cerr << __LINE__ << " : " << #x << " = " << (x) << std::endl
 
     #endif
 
@@ -31,14 +31,14 @@ data:
 
     #define _GLIBCXX_DEBUG
 
-    #define debug(x) cerr << __LINE__ << " : " << #x << " = " << (x) << endl
+    #define debug(x) std::cerr << __LINE__ << " : " << #x << " = " << (x) << std::endl
 
     #endif'
   dependsOn: []
   isVerificationFile: false
   path: src/debug.hpp
   requiredBy: []
-  timestamp: '2023-04-08 13:07:55+09:00'
+  timestamp: '2023-08-18 11:55:00+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/debug.hpp

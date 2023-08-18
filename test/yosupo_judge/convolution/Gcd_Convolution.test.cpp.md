@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   - icon: ':heavy_check_mark:'
@@ -110,64 +110,65 @@ data:
     #define all(x) std::begin(x), std::end(x)\n#define popcount(x) __builtin_popcountll(x)\n\
     using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
-    \ int inf = 1e9;\nconstexpr ll infl = 1e18;\nconstexpr ld eps = 1e-12;\nconst\
-    \ long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t\
-    \ MOD2 = 998244353;\nconstexpr int dx[] = {-1, -1, -1, 0, 0, 1, 1, 1, 0};\nconstexpr\
-    \ int dy[] = {-1, 0, 1, -1, 1, -1, 0, 1, 0};\ntemplate <typename T1, typename\
-    \ T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a < b && (a = b,\
-    \ true);\n}\ntemplate <typename T1, typename T2> constexpr inline bool chmin(T1&\
-    \ a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 4 \"src/math/gcd.hpp\"\
-    \nnamespace kyopro {\ntemplate <typename T> constexpr T inline _gcd(T a, T b)\
-    \ {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n\
-    \    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
-    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (!a || !b) {\n \
-    \           return a + b;\n        }\n        if (a >= b) {\n            a -=\
-    \ b;\n            a >>= __builtin_ctzll(a);\n        } else {\n            b -=\
-    \ a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return a\
-    \ << d;\n}\ntemplate <typename T> constexpr T ext_gcd(T a, T b, T& x, T& y) {\n\
-    \    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b) {\n        T q = a /\
-    \ b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n        std::tie(x,\
-    \ nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y, ny) = std::pair<T,\
-    \ T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace kyopro\n#line\
-    \ 6 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate <__uint64_t _mod>\
-    \ class static_modint : internal::modint_base {\nprivate:\n    using mint = static_modint<_mod>;\n\
-    \    using i64 = long long;\n    using u64 = unsigned long long;\n    using u128\
-    \ = __uint128_t;\n    using i128 = __int128_t;\n\n    u64 v;\n    constexpr u64\
-    \ normalize(i64 v_) const {\n        v_ %= _mod;\n        if (v_ < 0) {\n    \
-    \        v_ += _mod;\n        }\n        return v_;\n    }\n\npublic:\n    static\
-    \ constexpr u64 mod() { return _mod; }\n    constexpr static_modint() : v(0) {}\n\
-    \    constexpr static_modint(i64 v_) : v(normalize(v_)) {}\n\n    static mint\
-    \ raw(u64 a) {\n        mint m;\n        m.v = a;\n        return m;\n    }\n\
-    \    constexpr u64 val() const { return v; }\n    constexpr mint& operator+=(const\
-    \ mint& rhs) {\n        v += rhs.val();\n        if (v >= _mod) {\n          \
-    \  v -= _mod;\n        }\n        return (*this);\n    }\n    constexpr mint&\
-    \ operator-=(const mint& rhs) {\n        v += _mod - rhs.val();\n        if (v\
-    \ >= _mod) {\n            v -= _mod;\n        }\n        return (*this);\n   \
-    \ }\n    constexpr mint& operator*=(const mint& rhs) {\n        v = (u128)v *\
-    \ rhs.val() % _mod;\n        return (*this);\n    }\n\n    constexpr mint operator+(const\
-    \ mint& r) const { return mint(*this) += r; }\n    constexpr mint operator-(const\
-    \ mint& r) const { return mint(*this) -= r; }\n    constexpr mint operator*(const\
-    \ mint& r) const { return mint(*this) *= r; }\n\n    constexpr mint& operator+=(i64\
-    \ rhs) {\n        (*this) += mint(rhs);\n        return (*this);\n    }\n    constexpr\
-    \ mint& operator-=(i64 rhs) {\n        (*this) -= mint(rhs);\n        return (*this);\n\
-    \    }\n    constexpr mint& operator*=(i64 rhs) {\n        (*this) *= mint(rhs);\n\
-    \        return (*this);\n    }\n    constexpr friend mint operator+(i64 l, const\
-    \ mint& r) {\n        return mint(l) += r;\n    }\n    constexpr friend mint operator-(i64\
-    \ l, const mint& r) {\n        return mint(l) -= r;\n    }\n    constexpr friend\
-    \ mint operator*(const i64& l, const mint& r) {\n        return mint(l) *= r;\n\
-    \    }\n\n    constexpr mint operator+(i64 r) { return mint(*this) += r; }\n \
-    \   constexpr mint operator-(i64 r) { return mint(*this) -= r; }\n    constexpr\
-    \ mint operator*(i64 r) { return mint(*this) *= r; }\n\n    constexpr mint& operator=(i64\
-    \ r) { return (*this) = mint(r); }\n\n    constexpr bool operator==(const mint&\
-    \ r) const {\n        return (*this).val() == r.val();\n    }\n\n    template\
-    \ <typename T> constexpr mint pow(T e) const {\n        mint ans(1), base(*this);\n\
-    \        while (e) {\n            if (e & 1) {\n                ans *= base;\n\
-    \            }\n            base *= base;\n            e >>= 1;\n        }\n \
-    \       return ans;\n    }\n    constexpr mint inv() const {\n        long long\
-    \ x, y;\n        auto d = ext_gcd((long long)_mod, (long long)v, x, y);\n    \
-    \    assert(d == 1);\n        return mint(y);\n    }\n\n    constexpr mint& operator/=(const\
-    \ mint& r) { return (*this) *= r.inv(); }\n    constexpr mint inv(const mint&\
-    \ r) const { return mint(*this) *= r.inv(); }\n    constexpr friend mint operator/(const\
+    \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
+    \ / 2;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
+    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
+    \ dx[] = {1, 0, -1, 0, 1, -1, -1, 1};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1,\
+    \ -1, -1};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
+    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
+    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
+    \ true);\n}\n#line 4 \"src/math/gcd.hpp\"\nnamespace kyopro {\ntemplate <typename\
+    \ T> constexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if\
+    \ (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
+    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
+    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
+    \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
+    \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
+    \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
+    \ a;\n}\n};  // namespace kyopro\n#line 6 \"src/math/static_modint.hpp\"\nnamespace\
+    \ kyopro {\ntemplate <__uint64_t _mod> class static_modint : internal::modint_base\
+    \ {\nprivate:\n    using mint = static_modint<_mod>;\n    using i64 = long long;\n\
+    \    using u64 = unsigned long long;\n    using u128 = __uint128_t;\n    using\
+    \ i128 = __int128_t;\n\n    u64 v;\n    constexpr u64 normalize(i64 v_) const\
+    \ {\n        v_ %= _mod;\n        if (v_ < 0) {\n            v_ += _mod;\n   \
+    \     }\n        return v_;\n    }\n\npublic:\n    static constexpr u64 mod()\
+    \ { return _mod; }\n    constexpr static_modint() : v(0) {}\n    constexpr static_modint(i64\
+    \ v_) : v(normalize(v_)) {}\n\n    static mint raw(u64 a) {\n        mint m;\n\
+    \        m.v = a;\n        return m;\n    }\n    constexpr u64 val() const { return\
+    \ v; }\n    constexpr mint& operator+=(const mint& rhs) {\n        v += rhs.val();\n\
+    \        if (v >= _mod) {\n            v -= _mod;\n        }\n        return (*this);\n\
+    \    }\n    constexpr mint& operator-=(const mint& rhs) {\n        v += _mod -\
+    \ rhs.val();\n        if (v >= _mod) {\n            v -= _mod;\n        }\n  \
+    \      return (*this);\n    }\n    constexpr mint& operator*=(const mint& rhs)\
+    \ {\n        v = (u128)v * rhs.val() % _mod;\n        return (*this);\n    }\n\
+    \n    constexpr mint operator+(const mint& r) const { return mint(*this) += r;\
+    \ }\n    constexpr mint operator-(const mint& r) const { return mint(*this) -=\
+    \ r; }\n    constexpr mint operator*(const mint& r) const { return mint(*this)\
+    \ *= r; }\n\n    constexpr mint& operator+=(i64 rhs) {\n        (*this) += mint(rhs);\n\
+    \        return (*this);\n    }\n    constexpr mint& operator-=(i64 rhs) {\n \
+    \       (*this) -= mint(rhs);\n        return (*this);\n    }\n    constexpr mint&\
+    \ operator*=(i64 rhs) {\n        (*this) *= mint(rhs);\n        return (*this);\n\
+    \    }\n    constexpr friend mint operator+(i64 l, const mint& r) {\n        return\
+    \ mint(l) += r;\n    }\n    constexpr friend mint operator-(i64 l, const mint&\
+    \ r) {\n        return mint(l) -= r;\n    }\n    constexpr friend mint operator*(const\
+    \ i64& l, const mint& r) {\n        return mint(l) *= r;\n    }\n\n    constexpr\
+    \ mint operator+(i64 r) { return mint(*this) += r; }\n    constexpr mint operator-(i64\
+    \ r) { return mint(*this) -= r; }\n    constexpr mint operator*(i64 r) { return\
+    \ mint(*this) *= r; }\n\n    constexpr mint& operator=(i64 r) { return (*this)\
+    \ = mint(r); }\n\n    constexpr bool operator==(const mint& r) const {\n     \
+    \   return (*this).val() == r.val();\n    }\n\n    template <typename T> constexpr\
+    \ mint pow(T e) const {\n        mint ans(1), base(*this);\n        while (e)\
+    \ {\n            if (e & 1) {\n                ans *= base;\n            }\n \
+    \           base *= base;\n            e >>= 1;\n        }\n        return ans;\n\
+    \    }\n    constexpr mint inv() const {\n        long long x, y;\n        auto\
+    \ d = ext_gcd((long long)_mod, (long long)v, x, y);\n        assert(d == 1);\n\
+    \        return mint(y);\n    }\n\n    constexpr mint& operator/=(const mint&\
+    \ r) { return (*this) *= r.inv(); }\n    constexpr mint inv(const mint& r) const\
+    \ { return mint(*this) *= r.inv(); }\n    constexpr friend mint operator/(const\
     \ mint& l, i64 r) {\n        return mint(l) /= mint(r);\n    }\n    constexpr\
     \ friend mint operator/(i64 l, const mint& r) {\n        return mint(l) /= mint(r);\n\
     \    }\n\n    // stream\n    constexpr friend std::ostream& operator<<(std::ostream&\
@@ -245,7 +246,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-18 11:55:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
