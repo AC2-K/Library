@@ -25,12 +25,17 @@ public:
         tour.reserve(2 * n - 1);
     }
     void add_edge(int u, int v) {
+        assert(0 <= v && v < n);
+        assert(0 <= u && u < n);
         g[u].emplace_back(v);
         g[v].emplace_back(u);
     }
     const std::vector<std::vector<int>>& get_graph() const { return g; }
     const std::vector<int>& get_tour() const { return tour; }
-    int get_depth(int v) const { return depth[v]; }
+    int get_depth(int v) const { 
+        assert(0 <= v && v < n);
+        return depth[v]; 
+    }
 
     void build(int r = 0) {
         auto dfs = [&](const auto& self, int v, int p) -> void {
@@ -52,8 +57,13 @@ public:
         rmq.build();
     }
 
-    std::pair<int, int> idx(int v) const { return {in[v], out[v]}; }
+    std::pair<int, int> idx(int v) const { 
+        assert(0 <= v && v < n);
+        return {in[v], out[v]}; 
+    }
     int lca(int v, int u) const {
+        assert(0 <= v && v < n);
+        assert(0 <= u && u < n);
         if (in[v] > in[u] + 1) {
             std::swap(u, v);
         }
@@ -61,11 +71,16 @@ public:
     }
 
     int dist(int v, int u) const {
+        assert(0 <= v && v < n);
+        assert(0 <= u && u < n);
         int p = lca(v, u);
         return depth[v] + depth[u] - 2 * depth[p];
     }
 
     bool is_in_subtree(int par, int v) const {
+        assert(0 <= par && par < n);
+        assert(0 <= v && v < n);
+
         return (in[par] <= in[v] && out[v] <= out[par]);
     }
 };

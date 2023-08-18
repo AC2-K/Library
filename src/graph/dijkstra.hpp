@@ -1,6 +1,7 @@
 #pragma once
 #include <algorithm>
 #include <cassert>
+#include <numeric>
 #include <queue>
 #include <utility>
 #include <vector>
@@ -14,6 +15,7 @@ class dijkstra {
     std::vector<int> trace;
     const int n;
     int s;
+
 public:
     struct edge {
         const int to;
