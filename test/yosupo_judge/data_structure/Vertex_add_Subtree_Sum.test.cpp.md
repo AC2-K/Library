@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/sparse_table.hpp
     title: SparseTable
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
@@ -36,7 +36,7 @@ data:
     \ n && bit[x + k] < w) {\n                w -= bit[x + k];\n                x\
     \ += k;\n            }\n        }\n\n        return x + 1;\n    }\n};\n};  //\
     \ namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n */\n#line 2 \"\
-    src/tree/EulerTour.hpp\"\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
+    src/tree/EulerTour.hpp\"\n#include <cassert>\n#include <utility>\n#line 2 \"src/data-structure/sparse_table.hpp\"\
     \n#include <numeric>\n#line 4 \"src/data-structure/sparse_table.hpp\"\nnamespace\
     \ kyopro {\n\n/**\n * @brief SparseTable\n */\ntemplate <class T, auto op> class\
     \ sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n\
@@ -54,7 +54,7 @@ data:
     \ look_up[i] = look_up[i >> 1] + 1;\n        }\n    }\n\n    T fold(int l, int\
     \ r) const {\n        int b = look_up[r - l];\n        return op(table[b][l],\
     \ table[b][r - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
-    \ docs/data-structure/sparse_table.md\n */\n#line 4 \"src/tree/EulerTour.hpp\"\
+    \ docs/data-structure/sparse_table.md\n */\n#line 5 \"src/tree/EulerTour.hpp\"\
     \nnamespace kyopro {\n\n/**\n * @brief Euler Tour\n */\nclass EulerTour {\n  \
     \  int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> tour;\n\
     \    std::vector<int> in, out, depth;\n\n    struct get_min_pair {\n        using\
@@ -66,28 +66,28 @@ data:
     \ v < n);\n        assert(0 <= u && u < n);\n        g[u].emplace_back(v);\n \
     \       g[v].emplace_back(u);\n    }\n    const std::vector<std::vector<int>>&\
     \ get_graph() const { return g; }\n    const std::vector<int>& get_tour() const\
-    \ { return tour; }\n    int get_depth(int v) const { \n        assert(0 <= v &&\
-    \ v < n);\n        return depth[v]; \n    }\n\n    void build(int r = 0) {\n \
-    \       auto dfs = [&](const auto& self, int v, int p) -> void {\n           \
-    \ in[v] = tour.size();\n            tour.emplace_back(v);\n            for (auto\
-    \ nv : g[v]) {\n                if (nv != p) {\n                    depth[nv]\
-    \ = depth[v] + 1;\n                    self(self, nv, v);\n                  \
-    \  tour.emplace_back(v);\n                }\n            }\n            out[v]\
-    \ = tour.size() - 1;\n        };\n        dfs(dfs, r, -1);\n        for (int i\
-    \ = 0; i < (int)tour.size(); i++) {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n\
-    \        }\n        rmq.build();\n    }\n\n    std::pair<int, int> idx(int v)\
-    \ const { \n        assert(0 <= v && v < n);\n        return {in[v], out[v]};\
-    \ \n    }\n    int lca(int v, int u) const {\n        assert(0 <= v && v < n);\n\
-    \        assert(0 <= u && u < n);\n        if (in[v] > in[u] + 1) {\n        \
-    \    std::swap(u, v);\n        }\n        return rmq.fold(in[v], in[u] + 1).second;\n\
-    \    }\n\n    int dist(int v, int u) const {\n        assert(0 <= v && v < n);\n\
-    \        assert(0 <= u && u < n);\n        int p = lca(v, u);\n        return\
-    \ depth[v] + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par,\
-    \ int v) const {\n        assert(0 <= par && par < n);\n        assert(0 <= v\
-    \ && v < n);\n\n        return (in[par] <= in[v] && out[v] <= out[par]);\n   \
-    \ }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/tree/EulerTour.md\n */\n\
-    #line 5 \"test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp\"\n\
-    \nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n    std::vector<long\
+    \ { return tour; }\n    int get_depth(int v) const {\n        assert(0 <= v &&\
+    \ v < n);\n        return depth[v];\n    }\n\n    void build(int r = 0) {\n  \
+    \      auto dfs = [&](const auto& self, int v, int p) -> void {\n            in[v]\
+    \ = tour.size();\n            tour.emplace_back(v);\n            for (auto nv\
+    \ : g[v]) {\n                if (nv != p) {\n                    depth[nv] = depth[v]\
+    \ + 1;\n                    self(self, nv, v);\n                    tour.emplace_back(v);\n\
+    \                }\n            }\n            out[v] = tour.size() - 1;\n   \
+    \     };\n        dfs(dfs, r, -1);\n        for (int i = 0; i < (int)tour.size();\
+    \ i++) {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n        }\n    \
+    \    rmq.build();\n    }\n\n    std::pair<int, int> idx(int v) const {\n     \
+    \   assert(0 <= v && v < n);\n        return {in[v], out[v]};\n    }\n    int\
+    \ lca(int v, int u) const {\n        assert(0 <= v && v < n);\n        assert(0\
+    \ <= u && u < n);\n        if (in[v] > in[u] + 1) {\n            std::swap(u,\
+    \ v);\n        }\n        return rmq.fold(in[v], in[u] + 1).second;\n    }\n\n\
+    \    int dist(int v, int u) const {\n        assert(0 <= v && v < n);\n      \
+    \  assert(0 <= u && u < n);\n        int p = lca(v, u);\n        return depth[v]\
+    \ + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par, int v)\
+    \ const {\n        assert(0 <= par && par < n);\n        assert(0 <= v && v <\
+    \ n);\n\n        return (in[par] <= in[v] && out[v] <= out[par]);\n    }\n};\n\
+    };  // namespace kyopro\n\n/**\n * @docs docs/tree/EulerTour.md\n */\n#line 5\
+    \ \"test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp\"\n\nint\
+    \ main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n    std::vector<long\
     \ long> a(n);\n    for (auto& aa : a) {\n        scanf(\"%lld\", &aa);\n    }\n\
     \n    kyopro::EulerTour g(n);\n    for (int i = 1; i < n; i++) {\n        int\
     \ p;\n        scanf(\"%d\", &p);\n        g.add_edge(i, p);\n    }\n    g.build();\n\
@@ -119,8 +119,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-08-18 11:55:00+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-18 21:22:28+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
 layout: document

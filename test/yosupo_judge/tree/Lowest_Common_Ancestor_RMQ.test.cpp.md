@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/sparse_table.hpp
     title: SparseTable
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -81,9 +81,9 @@ data:
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/tree/EulerTour.hpp\"\
-    \n#include <utility>\n#line 3 \"src/data-structure/sparse_table.hpp\"\n#include\
-    \ <vector>\nnamespace kyopro {\n\n/**\n * @brief SparseTable\n */\ntemplate <class\
-    \ T, auto op> class sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>>\
+    \n#include <cassert>\n#include <utility>\n#line 3 \"src/data-structure/sparse_table.hpp\"\
+    \n#include <vector>\nnamespace kyopro {\n\n/**\n * @brief SparseTable\n */\ntemplate\
+    \ <class T, auto op> class sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>>\
     \ table;\n    std::vector<int> look_up;\n\npublic:\n    constexpr explicit sparse_table(int\
     \ n) : vec(n) {}\n    constexpr explicit sparse_table(const std::vector<T>& vec)\
     \ : vec(vec) {\n        build();\n    }\n    void set(int p, const T& v) { vec[p]\
@@ -98,7 +98,7 @@ data:
     \ look_up[i] = look_up[i >> 1] + 1;\n        }\n    }\n\n    T fold(int l, int\
     \ r) const {\n        int b = look_up[r - l];\n        return op(table[b][l],\
     \ table[b][r - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
-    \ docs/data-structure/sparse_table.md\n */\n#line 4 \"src/tree/EulerTour.hpp\"\
+    \ docs/data-structure/sparse_table.md\n */\n#line 5 \"src/tree/EulerTour.hpp\"\
     \nnamespace kyopro {\n\n/**\n * @brief Euler Tour\n */\nclass EulerTour {\n  \
     \  int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> tour;\n\
     \    std::vector<int> in, out, depth;\n\n    struct get_min_pair {\n        using\
@@ -110,31 +110,31 @@ data:
     \ v < n);\n        assert(0 <= u && u < n);\n        g[u].emplace_back(v);\n \
     \       g[v].emplace_back(u);\n    }\n    const std::vector<std::vector<int>>&\
     \ get_graph() const { return g; }\n    const std::vector<int>& get_tour() const\
-    \ { return tour; }\n    int get_depth(int v) const { \n        assert(0 <= v &&\
-    \ v < n);\n        return depth[v]; \n    }\n\n    void build(int r = 0) {\n \
-    \       auto dfs = [&](const auto& self, int v, int p) -> void {\n           \
-    \ in[v] = tour.size();\n            tour.emplace_back(v);\n            for (auto\
-    \ nv : g[v]) {\n                if (nv != p) {\n                    depth[nv]\
-    \ = depth[v] + 1;\n                    self(self, nv, v);\n                  \
-    \  tour.emplace_back(v);\n                }\n            }\n            out[v]\
-    \ = tour.size() - 1;\n        };\n        dfs(dfs, r, -1);\n        for (int i\
-    \ = 0; i < (int)tour.size(); i++) {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n\
-    \        }\n        rmq.build();\n    }\n\n    std::pair<int, int> idx(int v)\
-    \ const { \n        assert(0 <= v && v < n);\n        return {in[v], out[v]};\
-    \ \n    }\n    int lca(int v, int u) const {\n        assert(0 <= v && v < n);\n\
-    \        assert(0 <= u && u < n);\n        if (in[v] > in[u] + 1) {\n        \
-    \    std::swap(u, v);\n        }\n        return rmq.fold(in[v], in[u] + 1).second;\n\
-    \    }\n\n    int dist(int v, int u) const {\n        assert(0 <= v && v < n);\n\
-    \        assert(0 <= u && u < n);\n        int p = lca(v, u);\n        return\
-    \ depth[v] + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par,\
-    \ int v) const {\n        assert(0 <= par && par < n);\n        assert(0 <= v\
-    \ && v < n);\n\n        return (in[par] <= in[v] && out[v] <= out[par]);\n   \
-    \ }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/tree/EulerTour.md\n */\n\
-    #line 6 \"test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp\"\nint main()\
-    \ {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::EulerTour g(n);\n   \
-    \ for (int i = 1; i < n; i++) {\n        int p;\n        kyopro::read(p);\n  \
-    \      g.add_edge(p, i);\n    }\n    g.build();\n    while (q--) {\n        int\
-    \ u, v;\n        kyopro::read(u, v);\n        kyopro::put(g.lca(u, v));\n    }\n\
+    \ { return tour; }\n    int get_depth(int v) const {\n        assert(0 <= v &&\
+    \ v < n);\n        return depth[v];\n    }\n\n    void build(int r = 0) {\n  \
+    \      auto dfs = [&](const auto& self, int v, int p) -> void {\n            in[v]\
+    \ = tour.size();\n            tour.emplace_back(v);\n            for (auto nv\
+    \ : g[v]) {\n                if (nv != p) {\n                    depth[nv] = depth[v]\
+    \ + 1;\n                    self(self, nv, v);\n                    tour.emplace_back(v);\n\
+    \                }\n            }\n            out[v] = tour.size() - 1;\n   \
+    \     };\n        dfs(dfs, r, -1);\n        for (int i = 0; i < (int)tour.size();\
+    \ i++) {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n        }\n    \
+    \    rmq.build();\n    }\n\n    std::pair<int, int> idx(int v) const {\n     \
+    \   assert(0 <= v && v < n);\n        return {in[v], out[v]};\n    }\n    int\
+    \ lca(int v, int u) const {\n        assert(0 <= v && v < n);\n        assert(0\
+    \ <= u && u < n);\n        if (in[v] > in[u] + 1) {\n            std::swap(u,\
+    \ v);\n        }\n        return rmq.fold(in[v], in[u] + 1).second;\n    }\n\n\
+    \    int dist(int v, int u) const {\n        assert(0 <= v && v < n);\n      \
+    \  assert(0 <= u && u < n);\n        int p = lca(v, u);\n        return depth[v]\
+    \ + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par, int v)\
+    \ const {\n        assert(0 <= par && par < n);\n        assert(0 <= v && v <\
+    \ n);\n\n        return (in[par] <= in[v] && out[v] <= out[par]);\n    }\n};\n\
+    };  // namespace kyopro\n\n/**\n * @docs docs/tree/EulerTour.md\n */\n#line 6\
+    \ \"test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp\"\nint main() {\n\
+    \    int n, q;\n    kyopro::read(n, q);\n    kyopro::EulerTour g(n);\n    for\
+    \ (int i = 1; i < n; i++) {\n        int p;\n        kyopro::read(p);\n      \
+    \  g.add_edge(p, i);\n    }\n    g.build();\n    while (q--) {\n        int u,\
+    \ v;\n        kyopro::read(u, v);\n        kyopro::put(g.lca(u, v));\n    }\n\
     }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <iostream>\n\
     #include \"../../../src/stream.hpp\"\n#include \"../../../src/tree/EulerTour.hpp\"\
@@ -151,8 +151,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-08-18 11:55:00+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-18 21:22:28+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
 layout: document

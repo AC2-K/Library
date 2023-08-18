@@ -75,7 +75,7 @@ data:
       title: src/atcoder/twosat.hpp
   - name: src/data-structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/BIT.hpp
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
@@ -102,7 +102,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/segtree.hpp
       title: SegmentTree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/sparse_table.hpp
       title: SparseTable
   - name: src/data-structure/bbst
@@ -141,7 +141,7 @@ data:
     - icon: ':warning:'
       path: src/debug.hpp
       title: src/debug.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: fastIO
     - icon: ':heavy_check_mark:'
@@ -171,7 +171,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
@@ -236,7 +236,7 @@ data:
       title: WildCard Pattern Matching
   - name: src/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/EulerTour.hpp
       title: Euler Tour
     - icon: ':heavy_check_mark:'
@@ -271,7 +271,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/1_A.test.cpp
       title: test/AOJ/GRL/1_A.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/5_C.test.cpp
       title: test/AOJ/GRL/5_C.test.cpp
   - name: test/AOJ/NTL
@@ -346,10 +346,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/UnionFind.test.cpp
       title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - name: test/yosupo_judge/graph
@@ -397,7 +397,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
       title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
     - icon: ':heavy_check_mark:'
