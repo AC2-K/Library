@@ -1,4 +1,5 @@
 #pragma once
+#include <cassert>
 #include <utility>
 #include "../data-structure/sparse_table.hpp"
 namespace kyopro {
@@ -32,9 +33,9 @@ public:
     }
     const std::vector<std::vector<int>>& get_graph() const { return g; }
     const std::vector<int>& get_tour() const { return tour; }
-    int get_depth(int v) const { 
+    int get_depth(int v) const {
         assert(0 <= v && v < n);
-        return depth[v]; 
+        return depth[v];
     }
 
     void build(int r = 0) {
@@ -57,9 +58,9 @@ public:
         rmq.build();
     }
 
-    std::pair<int, int> idx(int v) const { 
+    std::pair<int, int> idx(int v) const {
         assert(0 <= v && v < n);
-        return {in[v], out[v]}; 
+        return {in[v], out[v]};
     }
     int lca(int v, int u) const {
         assert(0 <= v && v < n);
