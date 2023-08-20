@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
     title: "\u96E2\u6563\u5BFE\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_B.test.cpp
     title: test/AOJ/NTL/1_B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
     links: []
@@ -75,14 +75,14 @@ data:
   isVerificationFile: false
   path: src/math/mod_pow.hpp
   requiredBy:
-  - src/string/rolling_hash.hpp
   - src/math/mod_log.hpp
+  - src/string/rolling_hash.hpp
   timestamp: '2023-07-30 13:18:23+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/NTL/1_B.test.cpp
-  - test/yuki/No430.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yuki/No430.test.cpp
+  - test/AOJ/NTL/1_B.test.cpp
 documentation_of: src/math/mod_pow.hpp
 layout: document
 redirect_from:

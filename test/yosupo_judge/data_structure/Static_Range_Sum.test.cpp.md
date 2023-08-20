@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/segtree.hpp
     title: SegmentTree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
@@ -18,7 +18,7 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\
     \ <iostream>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <cassert>\n\
     #include <vector>\nnamespace kyopro {\n\n/**\n * @brief SegmentTree\n */\ntemplate\
-    \ <class S, auto op,auto e> class segtree {\n    int lg, sz, n;\n    std::vector<S>\
+    \ <class S, auto op, auto e> class segtree {\n    int lg, sz, n;\n    std::vector<S>\
     \ dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
     \ e())) {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n  \
     \      sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n   \
@@ -60,8 +60,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 13:57:52+00:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-20 22:13:07+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
 layout: document
