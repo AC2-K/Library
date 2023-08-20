@@ -145,50 +145,97 @@ data:
     \ {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n\
     \        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
     \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
-    \ kyopro\n#line 6 \"src/math/static_modint.hpp\"\nnamespace kyopro {\n\ntemplate\
-    \ <__uint32_t _mod> class modint : internal::modint_base {\nprivate:\n    using\
-    \ mint = modint<_mod>;\n    using i32 = __int32_t;\n    using u32 = __uint32_t;\n\
-    \    using i64 = __int64_t;\n    using u64 = __uint64_t;\n\n    u32 v;\n    constexpr\
-    \ u32 normalize(i64 v_) {\n        v_ %= _mod;\n        if (v_ < 0) {\n      \
-    \      v_ += _mod;\n        }\n        return v_;\n    }\n\npublic:\n    static\
-    \ constexpr u32 mod() { return _mod; }\n    constexpr modint() : v(0) {}\n   \
-    \ constexpr modint(i64 v_) : v(normalize(v_)) {}\n\n    static mint raw(u32 a)\
-    \ {\n        mint m;\n        m.v = a;\n        return m;\n    }\n    constexpr\
-    \ u32 val() const noexcept { return v; }\n    constexpr mint& operator+=(const\
-    \ mint& rhs) noexcept {\n        v += rhs.val();\n        if (v >= _mod) {\n \
-    \           v -= _mod;\n        }\n        return (*this);\n    }\n    constexpr\
-    \ mint& operator-=(const mint& rhs) noexcept {\n        v += _mod - rhs.val();\n\
+    \ kyopro\n#line 6 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate\
+    \ <__uint64_t _mod> class static_modint : internal::modint_base {\nprivate:\n\
+    \    using mint = static_modint<_mod>;\n    using i64 = long long;\n    using\
+    \ u64 = unsigned long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\
+    \n    u64 v;\n    constexpr u64 normalize(i64 v_) const {\n        v_ %= _mod;\n\
+    \        if (v_ < 0) {\n            v_ += _mod;\n        }\n        return v_;\n\
+    \    }\n\npublic:\n    static constexpr u64 mod() { return _mod; }\n    constexpr\
+    \ static_modint() : v(0) {}\n    constexpr static_modint(i64 v_) : v(normalize(v_))\
+    \ {}\n\n    static mint raw(u64 a) {\n        mint m;\n        m.v = a;\n    \
+    \    return m;\n    }\n    constexpr u64 val() const { return v; }\n    constexpr\
+    \ mint& operator+=(const mint& rhs) {\n        v += rhs.val();\n        if (v\
+    \ >= _mod) {\n            v -= _mod;\n        }\n        return (*this);\n   \
+    \ }\n    constexpr mint& operator-=(const mint& rhs) {\n        v += _mod - rhs.val();\n\
     \        if (v >= _mod) {\n            v -= _mod;\n        }\n        return (*this);\n\
-    \    }\n    constexpr mint& operator*=(const mint& rhs) noexcept {\n        v\
-    \ = (u64)v * rhs.val() % _mod;\n        return (*this);\n    }\n\n    constexpr\
-    \ mint operator+(const mint& r) const noexcept { return mint(*this) += r; }\n\
-    \    constexpr mint operator-(const mint& r) const noexcept { return mint(*this)\
-    \ -= r; }\n    constexpr mint operator*(const mint& r) const noexcept { return\
-    \ mint(*this) *= r; }\n\n    constexpr mint& operator+=(i64 rhs) noexcept {\n\
-    \        (*this) += mint(rhs);\n        return (*this);\n    }\n    constexpr\
-    \ mint& operator-=(i64 rhs) noexcept {\n        (*this) -= mint(rhs);\n      \
-    \  return (*this);\n    }\n    constexpr mint& operator*=(i64 rhs) noexcept {\n\
-    \        (*this) *= mint(rhs);\n        return (*this);\n    }\n    constexpr\
-    \ friend mint operator+(i64 l, const mint& r) {\n        return mint(l) += r;\n\
-    \    }\n    constexpr friend mint operator-(i64 l, const mint& r) {\n        return\
-    \ mint(l) -= r;\n    }\n    constexpr friend mint operator*(i64 l, const mint&\
-    \ r) {\n        return mint(l) *= r;\n    }\n\n    constexpr mint operator+(i64\
-    \ r) const noexcept { return mint(*this) += r; }\n    constexpr mint operator-(i64\
-    \ r) const noexcept { return mint(*this) -= r; }\n    constexpr mint operator*(i64\
-    \ r) const noexcept { return mint(*this) *= r; }\n\n    constexpr mint& operator=(i64\
+    \    }\n    constexpr mint& operator*=(const mint& rhs) {\n        v = (u128)v\
+    \ * rhs.val() % _mod;\n        return (*this);\n    }\n\n    constexpr mint operator+(const\
+    \ mint& r) const { return mint(*this) += r; }\n    constexpr mint operator-(const\
+    \ mint& r) const { return mint(*this) -= r; }\n    constexpr mint operator*(const\
+    \ mint& r) const { return mint(*this) *= r; }\n\n    constexpr mint& operator+=(i64\
+    \ rhs) {\n        (*this) += mint(rhs);\n        return (*this);\n    }\n    constexpr\
+    \ mint& operator-=(i64 rhs) {\n        (*this) -= mint(rhs);\n        return (*this);\n\
+    \    }\n    constexpr mint& operator*=(i64 rhs) {\n        (*this) *= mint(rhs);\n\
+    \        return (*this);\n    }\n    constexpr friend mint operator+(i64 l, const\
+    \ mint& r) {\n        return mint(l) += r;\n    }\n    constexpr friend mint operator-(i64\
+    \ l, const mint& r) {\n        return mint(l) -= r;\n    }\n    constexpr friend\
+    \ mint operator*(const i64& l, const mint& r) {\n        return mint(l) *= r;\n\
+    \    }\n\n    constexpr mint operator+(i64 r) { return mint(*this) += r; }\n \
+    \   constexpr mint operator-(i64 r) { return mint(*this) -= r; }\n    constexpr\
+    \ mint operator*(i64 r) { return mint(*this) *= r; }\n\n    constexpr mint& operator=(i64\
     \ r) { return (*this) = mint(r); }\n\n    constexpr bool operator==(const mint&\
-    \ r) const noexcept { \n        return (*this).val() == r.val();\n    }\n    template\
-    \ <typename T> constexpr mint pow(T e) const noexcept {\n        mint ans = mint::raw(1),\
-    \ base(*this);\n        while (e) {\n            if (e & 1) {\n              \
-    \  ans *= base;\n            }\n            base *= base;\n            e >>= 1;\n\
-    \        }\n        return ans;\n    }\n\n    constexpr mint inv() const noexcept\
-    \ {\n        long long x, y;\n        auto d = ext_gcd((long long)_mod, (long\
-    \ long)v, x, y);\n        assert(d == 1);\n        return mint(y);\n    }\n\n\
-    \    constexpr mint& operator/=(const mint& r) { return (*this) *= r.inv(); }\n\
-    \    constexpr mint operator/(const mint& r) const {\n        return mint(*this)\
-    \ *= r.inv();\n    }\n    constexpr friend mint operator/(const mint& l, i64 r)\
-    \ {\n        return mint(l) /= mint(r);\n    }\n    constexpr friend mint operator/(i64\
-    \ l, const mint& r) {\n        return mint(l) /= mint(r);\n    }\n};\n};  // namespace\
+    \ r) const {\n        return (*this).val() == r.val();\n    }\n\n    template\
+    \ <typename T> constexpr mint pow(T e) const {\n        mint ans(1), base(*this);\n\
+    \        while (e) {\n            if (e & 1) {\n                ans *= base;\n\
+    \            }\n            base *= base;\n            e >>= 1;\n        }\n \
+    \       return ans;\n    }\n    constexpr mint inv() const {\n        long long\
+    \ x, y;\n        auto d = ext_gcd((long long)_mod, (long long)v, x, y);\n    \
+    \    assert(d == 1);\n        return mint(y);\n    }\n\n    constexpr mint& operator/=(const\
+    \ mint& r) { return (*this) *= r.inv(); }\n    constexpr mint inv(const mint&\
+    \ r) const { return mint(*this) *= r.inv(); }\n    constexpr friend mint operator/(const\
+    \ mint& l, i64 r) {\n        return mint(l) /= mint(r);\n    }\n    constexpr\
+    \ friend mint operator/(i64 l, const mint& r) {\n        return mint(l) /= mint(r);\n\
+    \    }\n\n    // stream\n    constexpr friend std::ostream& operator<<(std::ostream&\
+    \ os,\n                                              const mint& mt) {\n     \
+    \   os << mt.val();\n        return os;\n    }\n    constexpr friend std::istream&\
+    \ operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n        is >> v_;\n\
+    \        mt = v_;\n        return is;\n    }\n};\ntemplate <__uint32_t _mod> class\
+    \ static_modint32 : internal::modint_base {\nprivate:\n    using mint = static_modint32<_mod>;\n\
+    \    using i32 = __int32_t;\n    using u32 = __uint32_t;\n    using i64 = __int64_t;\n\
+    \    using u64 = __uint64_t;\n\n    u32 v;\n    constexpr u32 normalize(i64 v_)\
+    \ const {\n        v_ %= _mod;\n        if (v_ < 0) {\n            v_ += _mod;\n\
+    \        }\n        return v_;\n    }\n\npublic:\n    static constexpr u32 mod()\
+    \ { return _mod; }\n    constexpr static_modint32() : v(0) {}\n    constexpr static_modint32(i64\
+    \ v_) : v(normalize(v_)) {}\n\n    static mint raw(u32 a) {\n        mint m;\n\
+    \        m.v = a;\n        return m;\n    }\n    constexpr u32 val() const { return\
+    \ v; }\n    constexpr mint& operator+=(const mint& rhs) {\n        v += rhs.val();\n\
+    \        if (v >= _mod) {\n            v -= _mod;\n        }\n        return (*this);\n\
+    \    }\n    constexpr mint& operator-=(const mint& rhs) {\n        v += _mod -\
+    \ rhs.val();\n        if (v >= _mod) {\n            v -= _mod;\n        }\n  \
+    \      return (*this);\n    }\n    constexpr mint& operator*=(const mint& rhs)\
+    \ {\n        v = (u64)v * rhs.val() % _mod;\n        return (*this);\n    }\n\n\
+    \    constexpr mint operator+(const mint& r) const { return mint(*this) += r;\
+    \ }\n    constexpr mint operator-(const mint& r) const { return mint(*this) -=\
+    \ r; }\n    constexpr mint operator*(const mint& r) const { return mint(*this)\
+    \ *= r; }\n\n    constexpr mint& operator+=(i64 rhs) {\n        (*this) += mint(rhs);\n\
+    \        return (*this);\n    }\n    constexpr mint& operator-=(i64 rhs) {\n \
+    \       (*this) -= mint(rhs);\n        return (*this);\n    }\n    constexpr mint&\
+    \ operator*=(i64 rhs) {\n        (*this) *= mint(rhs);\n        return (*this);\n\
+    \    }\n    constexpr friend mint operator+(i64 l, const mint& r) {\n        return\
+    \ mint(l) += r;\n    }\n    constexpr friend mint operator-(i64 l, const mint&\
+    \ r) {\n        return mint(l) -= r;\n    }\n    constexpr friend mint operator*(i64\
+    \ l, const mint& r) {\n        return mint(l) *= r;\n    }\n\n    constexpr mint\
+    \ operator+(i64 r) { return mint(*this) += r; }\n    constexpr mint operator-(i64\
+    \ r) { return mint(*this) -= r; }\n    constexpr mint operator*(i64 r) { return\
+    \ mint(*this) *= r; }\n\n    constexpr mint& operator=(i64 r) { return (*this)\
+    \ = mint(r); }\n\n    constexpr bool operator==(const mint& r) const {\n     \
+    \   return (*this).val() == r.val();\n    }\n    template <typename T> constexpr\
+    \ mint pow(T e) const {\n        mint ans(1), base(*this);\n        while (e)\
+    \ {\n            if (e & 1) {\n                ans *= base;\n            }\n \
+    \           base *= base;\n            e >>= 1;\n        }\n        return ans;\n\
+    \    }\n\n    constexpr mint inv() const {\n        long long x, y;\n        auto\
+    \ d = ext_gcd((long long)_mod, (long long)v, x, y);\n        assert(d == 1);\n\
+    \        return mint(y);\n    }\n\n    constexpr mint& operator/=(const mint&\
+    \ r) { return (*this) *= r.inv(); }\n    constexpr mint operator/(const mint&\
+    \ r) const {\n        return mint(*this) *= r.inv();\n    }\n    constexpr friend\
+    \ mint operator/(const mint& l, i64 r) {\n        return mint(l) /= mint(r);\n\
+    \    }\n    constexpr friend mint operator/(i64 l, const mint& r) {\n        return\
+    \ mint(l) /= mint(r);\n    }\n\n    // stream\n    constexpr friend std::ostream&\
+    \ operator<<(std::ostream& os,\n                                             \
+    \ const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    constexpr\
+    \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
+    \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
     \ <string>\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
@@ -212,9 +259,9 @@ data:
     \ internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) noexcept {\n\
     \    if (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if\
     \ constexpr (std::is_signed<T>::value) {\n        if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    }\n    constexpr int d = std::numeric_limits<T>::digits10;\n \
-    \   char s[d];\n    int now = d;\n    while (a) {\n        s[--now] = static_cast<char>('0'\
-    \ + a % 10);\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
+    \ a *= -1;\n    }\n    const int d = std::numeric_limits<T>::digits10;\n    char\
+    \ s[d];\n    int now = d;\n    while (a) {\n        s[--now] = (char)'0' + a %\
+    \ 10;\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
     }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T\
     \ a) noexcept {\n    single_write(a.val());\n}\n\nvoid single_write(const std::string&\
     \ str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n  \
@@ -225,47 +272,49 @@ data:
     \ constexpr inline void put(Args... x) noexcept {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief \u5165\u51FA\u529B\n */\n#line\
     \ 6 \"test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp\"\
-    \n\nusing mint = kyopro::modint<998244353>;\nusing S = mint;\ninline S op(S a,\
-    \ S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine = std::pair<mint,\
-    \ mint>;\ninline Affine composition(Affine g, Affine f) {\n    // f(g)\n    //\
-    \ a(cx+d)+b\n    auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n\
-    \    return Affine(a * c, a * d + b);\n}\ninline Affine id() { return Affine(1,\
-    \ 0); }\ninline S mapping(S d, Affine f, int length) {\n    auto [a, b] = f;\n\
-    \    return a * d + b * length;\n};\nint main() {\n    kyopro::lazy_reversible_bbst<S,\
-    \ Affine, op, e, composition, id, mapping>\n        stree;\n    int n, q;\n  \
-    \  kyopro::read(n, q);\n    for (int i = 0; i < n; ++i) {\n        mint ai;\n\
-    \        kyopro::read(ai);\n        stree.insert(i, ai);\n    }\n    while (q--)\
-    \ {\n        int t;\n        kyopro::read(t);\n        if (t == 0) {\n       \
-    \     int i, x;\n            kyopro::read(i, x);\n            stree.insert(i,\
-    \ mint::raw(x));\n        } else if (t == 1) {\n            int i;\n         \
-    \   kyopro::read(i);\n            stree.erase(i);\n        } else if (t == 2)\
-    \ {\n            int l, r;\n            kyopro::read(l, r);\n            stree.reverse(l,\
-    \ r);\n        } else if (t == 3) {\n            int l, r, a, b;\n           \
-    \ kyopro::read(l, r, a, b);\n            stree.apply(l, r, Affine(mint::raw(a),\
-    \ mint::raw(b)));\n        } else {\n            int l, r;\n            kyopro::read(l,\
-    \ r);\n            kyopro::put(stree.fold(l, r).val());\n        }\n    }\n}\n"
+    \n\nusing mint = kyopro::static_modint32<998244353>;\nusing S = mint;\ninline\
+    \ S op(S a, S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine\
+    \ = std::pair<mint, mint>;\ninline Affine composition(Affine g, Affine f) {\n\
+    \    // f(g)\n    // a(cx+d)+b\n    auto a = f.first, b = f.second;\n    auto\
+    \ c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\ninline\
+    \ Affine id() { return Affine(1, 0); }\ninline S mapping(S d, Affine f, int length)\
+    \ {\n    auto [a, b] = f;\n    return a * d + b * length;\n};\nint main() {\n\
+    \    kyopro::lazy_reversible_bbst<S, Affine, op, e, composition, id, mapping>\n\
+    \        stree;\n    int n, q;\n    kyopro::read(n, q);\n    for (int i = 0; i\
+    \ < n; ++i) {\n        mint ai;\n        kyopro::read(ai);\n        stree.insert(i,\
+    \ ai);\n    }\n    while (q--) {\n        int t;\n        kyopro::read(t);\n \
+    \       if (t == 0) {\n            int i, x;\n            kyopro::read(i, x);\n\
+    \            stree.insert(i, mint::raw(x));\n        } else if (t == 1) {\n  \
+    \          int i;\n            kyopro::read(i);\n            stree.erase(i);\n\
+    \        } else if (t == 2) {\n            int l, r;\n            kyopro::read(l,\
+    \ r);\n            stree.reverse(l, r);\n        } else if (t == 3) {\n      \
+    \      int l, r, a, b;\n            kyopro::read(l, r, a, b);\n            stree.apply(l,\
+    \ r, Affine(mint::raw(a), mint::raw(b)));\n        } else {\n            int l,\
+    \ r;\n            kyopro::read(l, r);\n            kyopro::put(stree.fold(l, r).val());\n\
+    \        }\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\
     \n#include \"../../../src/data-structure/bbst/lazy_reversible_bbst.hpp\"\n#include\
     \ \"../../../src/math/static_modint.hpp\"\n#include \"../../../src/stream.hpp\"\
-    \n\nusing mint = kyopro::modint<998244353>;\nusing S = mint;\ninline S op(S a,\
-    \ S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine = std::pair<mint,\
-    \ mint>;\ninline Affine composition(Affine g, Affine f) {\n    // f(g)\n    //\
-    \ a(cx+d)+b\n    auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n\
-    \    return Affine(a * c, a * d + b);\n}\ninline Affine id() { return Affine(1,\
-    \ 0); }\ninline S mapping(S d, Affine f, int length) {\n    auto [a, b] = f;\n\
-    \    return a * d + b * length;\n};\nint main() {\n    kyopro::lazy_reversible_bbst<S,\
-    \ Affine, op, e, composition, id, mapping>\n        stree;\n    int n, q;\n  \
-    \  kyopro::read(n, q);\n    for (int i = 0; i < n; ++i) {\n        mint ai;\n\
-    \        kyopro::read(ai);\n        stree.insert(i, ai);\n    }\n    while (q--)\
-    \ {\n        int t;\n        kyopro::read(t);\n        if (t == 0) {\n       \
-    \     int i, x;\n            kyopro::read(i, x);\n            stree.insert(i,\
-    \ mint::raw(x));\n        } else if (t == 1) {\n            int i;\n         \
-    \   kyopro::read(i);\n            stree.erase(i);\n        } else if (t == 2)\
-    \ {\n            int l, r;\n            kyopro::read(l, r);\n            stree.reverse(l,\
-    \ r);\n        } else if (t == 3) {\n            int l, r, a, b;\n           \
-    \ kyopro::read(l, r, a, b);\n            stree.apply(l, r, Affine(mint::raw(a),\
-    \ mint::raw(b)));\n        } else {\n            int l, r;\n            kyopro::read(l,\
-    \ r);\n            kyopro::put(stree.fold(l, r).val());\n        }\n    }\n}"
+    \n\nusing mint = kyopro::static_modint32<998244353>;\nusing S = mint;\ninline\
+    \ S op(S a, S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine\
+    \ = std::pair<mint, mint>;\ninline Affine composition(Affine g, Affine f) {\n\
+    \    // f(g)\n    // a(cx+d)+b\n    auto a = f.first, b = f.second;\n    auto\
+    \ c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\ninline\
+    \ Affine id() { return Affine(1, 0); }\ninline S mapping(S d, Affine f, int length)\
+    \ {\n    auto [a, b] = f;\n    return a * d + b * length;\n};\nint main() {\n\
+    \    kyopro::lazy_reversible_bbst<S, Affine, op, e, composition, id, mapping>\n\
+    \        stree;\n    int n, q;\n    kyopro::read(n, q);\n    for (int i = 0; i\
+    \ < n; ++i) {\n        mint ai;\n        kyopro::read(ai);\n        stree.insert(i,\
+    \ ai);\n    }\n    while (q--) {\n        int t;\n        kyopro::read(t);\n \
+    \       if (t == 0) {\n            int i, x;\n            kyopro::read(i, x);\n\
+    \            stree.insert(i, mint::raw(x));\n        } else if (t == 1) {\n  \
+    \          int i;\n            kyopro::read(i);\n            stree.erase(i);\n\
+    \        } else if (t == 2) {\n            int l, r;\n            kyopro::read(l,\
+    \ r);\n            stree.reverse(l, r);\n        } else if (t == 3) {\n      \
+    \      int l, r, a, b;\n            kyopro::read(l, r, a, b);\n            stree.apply(l,\
+    \ r, Affine(mint::raw(a), mint::raw(b)));\n        } else {\n            int l,\
+    \ r;\n            kyopro::read(l, r);\n            kyopro::put(stree.fold(l, r).val());\n\
+    \        }\n    }\n}"
   dependsOn:
   - src/data-structure/bbst/lazy_reversible_bbst.hpp
   - src/random/xor_shift.hpp
@@ -276,7 +325,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 07:26:53+00:00'
+  timestamp: '2023-08-20 06:51:47+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
