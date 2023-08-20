@@ -3,7 +3,7 @@
 #include "../../../src/data-structure/lazy_segtree.hpp"
 #include "../../../src/math/static_modint.hpp"
 #include "../../../src/stream.hpp"
-using mint = kyopro::static_modint32<998244353>;
+using mint = kyopro::modint<998244353>;
 struct S {
     mint s;
     int len;

@@ -5,7 +5,7 @@
 #include "../../../src/stream.hpp"
 #pragma GCC optimize("unroll-loops")
 
-using mint = kyopro::static_modint32<998244353>;
+using mint = kyopro::modint<998244353>;
 int main() {
     int n, m, k;
     kyopro::read(n, m, k);

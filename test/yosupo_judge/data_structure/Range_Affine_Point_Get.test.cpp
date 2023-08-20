@@ -3,7 +3,7 @@
 #include "../../../src/math/static_modint.hpp"
 #include "../../../src/stream.hpp"
 
-using mint = kyopro::static_modint32<998244353>;
+using mint = kyopro::modint<998244353>;
 using Affine = std::pair<mint, mint>;
 inline Affine op(Affine g, Affine f) {
     auto a = f.first, b = f.second;

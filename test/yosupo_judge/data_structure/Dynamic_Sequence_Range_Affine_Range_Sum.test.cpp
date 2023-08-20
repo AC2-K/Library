@@ -3,7 +3,7 @@
 #include "../../../src/data-structure/bbst/lazy_reversible_bbst.hpp"
 #include "../../../src/math/static_modint.hpp"
 #include "../../../src/stream.hpp"
-using mint = kyopro::static_modint32<998244353>;
+using mint = kyopro::modint<998244353>;
 using S = mint;
 inline S op(S a, S b) { return a + b; }
 inline S e() { return mint(0); }

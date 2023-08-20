@@ -3,7 +3,7 @@
 #include "../../../src/data-structure/segtree.hpp"
 #include "../../../src/math/static_modint.hpp"
 
-using mint = kyopro::static_modint32<998244353>;
+using mint = kyopro::modint<998244353>;
 
 struct F {
     mint a, b;

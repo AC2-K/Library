@@ -4,7 +4,7 @@
 #include "../../../src/math/static_modint.hpp"
 #include "../../../src/stream.hpp"
 #include "../../../src/template.hpp"
-using mint = kyopro::static_modint32<MOD2>;
+using mint = kyopro::modint<MOD2>;
 using Affine = std::pair<mint, mint>;
 constexpr inline Affine op(const Affine& g, const Affine& f) {
     auto a = f.first, b = f.second;

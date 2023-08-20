@@ -8,7 +8,7 @@ int main() {
     int n;
     kyopro::read(n);
 
-    std::vector<kyopro::static_modint32<998244353>> a(n + 1), b(n + 1);
+    std::vector<kyopro::modint<998244353>> a(n + 1), b(n + 1);
     for (int i = 1; i <= n; ++i) kyopro::read(a[i]);
     for (int i = 1; i <= n; ++i) kyopro::read(b[i]);
 
