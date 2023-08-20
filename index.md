@@ -143,7 +143,7 @@ data:
       title: src/debug.hpp
     - icon: ':question:'
       path: src/stream.hpp
-      title: fastIO
+      title: "\u5165\u51FA\u529B"
     - icon: ':heavy_check_mark:'
       path: src/template.hpp
       title: src/template.hpp
