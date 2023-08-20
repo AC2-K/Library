@@ -5,7 +5,7 @@ data:
     path: src/data-structure/bbst/lazy_reversible_bbst.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
       \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
@@ -17,7 +17,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -265,8 +265,8 @@ data:
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp\"\
-    \n\nusing mint = kyopro::static_modint32<998244353>;\nusing S = mint;\ninline\
-    \ S op(S a, S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine\
+    \nusing mint = kyopro::static_modint32<998244353>;\nusing S = mint;\ninline S\
+    \ op(S a, S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine\
     \ = std::pair<mint, mint>;\ninline Affine composition(Affine g, Affine f) {\n\
     \    // f(g)\n    // a(cx+d)+b\n    auto a = f.first, b = f.second;\n    auto\
     \ c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\ninline\
@@ -288,8 +288,8 @@ data:
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\
     \n#include \"../../../src/data-structure/bbst/lazy_reversible_bbst.hpp\"\n#include\
     \ \"../../../src/math/static_modint.hpp\"\n#include \"../../../src/stream.hpp\"\
-    \n\nusing mint = kyopro::static_modint32<998244353>;\nusing S = mint;\ninline\
-    \ S op(S a, S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine\
+    \nusing mint = kyopro::static_modint32<998244353>;\nusing S = mint;\ninline S\
+    \ op(S a, S b) { return a + b; }\ninline S e() { return mint(0); }\nusing Affine\
     \ = std::pair<mint, mint>;\ninline Affine composition(Affine g, Affine f) {\n\
     \    // f(g)\n    // a(cx+d)+b\n    auto a = f.first, b = f.second;\n    auto\
     \ c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\ninline\
@@ -318,7 +318,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 03:35:23+09:00'
+  timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
