@@ -1,35 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/hash_map.hpp
     title: Hash Map
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/mod_log.hpp
     title: "\u96E2\u6563\u5BFE\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
+  - icon: ':question:'
+    path: src/stream.hpp
+    title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
@@ -122,23 +125,24 @@ data:
     \    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    using i32 = int32_t;\n\
     \    using i64 = int64_t;\n    using br = internal::barrett;\n\n    static br\
     \ brt;\n    u32 v;\n\npublic:\n    static void set_mod(u32 mod_) { brt = br(mod_);\
-    \ }\n\npublic:\n    explicit constexpr barrett_modint() : v(0) { assert(mod());\
-    \ }\n    explicit constexpr barrett_modint(i64 v_) : v() {\n        assert(mod());\n\
-    \        if (v_ < 0) v_ = (i64)mod() - v_;\n        v = brt.reduce(v_);\n    }\n\
-    \n    u32 val() const { return v; }\n    static u32 mod() { return brt.get_mod();\
+    \ }\n\n    constexpr barrett_modint() : v(0) { assert(mod()); }\n    constexpr\
+    \ barrett_modint(i64 v_) : v() {\n        assert(mod());\n        if (v_ < 0)\
+    \ v_ = (i64)mod() - v_;\n        v = brt.reduce(v_);\n    }\n\n    constexpr u32\
+    \ val() const noexcept { return v; }\n\n    static u32 mod() { return brt.get_mod();\
     \ }\n    static mint raw(u32 v) {\n        mint x;\n        x.v = v;\n       \
-    \ return x;\n    }\n\n    constexpr mint& operator++() {\n        ++v;\n     \
-    \   if (v == mod()) v = 0;\n        return (*this);\n    }\n    constexpr mint&\
-    \ operator--() {\n        if (v == 0) v = mod();\n        --v;\n        return\
-    \ (*this);\n    }\n    constexpr mint operator++(int) {\n        mint res(*this);\n\
-    \        ++(*this);\n        return res;\n    }\n    constexpr mint operator--(int)\
-    \ {\n        mint res(*this);\n        --(*this);\n        return res;\n    }\n\
-    \n    constexpr mint& operator+=(const mint& r) {\n        v += r.v;\n       \
-    \ if (v >= mod()) v -= mod();\n        return (*this);\n    }\n    constexpr mint&\
-    \ operator-=(const mint& r) {\n        v += mod() - r.v;\n        if (v >= mod())\
-    \ {\n            v -= mod();\n        }\n\n        return (*this);\n    }\n  \
-    \  constexpr mint& operator*=(const mint& r) {\n        v = brt.mul(v, r.v);\n\
-    \        return (*this);\n    }\n    constexpr mint& operator/=(const mint& r)\
+    \ return x;\n    }\n\n    constexpr mint& operator++() noexcept {\n        ++v;\n\
+    \        if (v == mod()) v = 0;\n        return (*this);\n    }\n    constexpr\
+    \ mint& operator--() noexcept {\n        if (v == 0) v = mod();\n        --v;\n\
+    \        return (*this);\n    }\n    constexpr mint operator++(int) noexcept {\n\
+    \        mint res(*this);\n        ++(*this);\n        return res;\n    }\n  \
+    \  constexpr mint operator--(int) noexcept {\n        mint res(*this);\n     \
+    \   --(*this);\n        return res;\n    }\n\n    constexpr mint& operator+=(const\
+    \ mint& r) noexcept {\n        v += r.v;\n        if (v >= mod()) v -= mod();\n\
+    \        return (*this);\n    }\n    constexpr mint& operator-=(const mint& r)\
+    \ noexcept {\n        v += mod() - r.v;\n        if (v >= mod()) {\n         \
+    \   v -= mod();\n        }\n\n        return (*this);\n    }\n    constexpr mint&\
+    \ operator*=(const mint& r) noexcept {\n        v = brt.mul(v, r.v);\n       \
+    \ return (*this);\n    }\n    constexpr mint& operator/=(const mint& r) noexcept\
     \ { return (*this) *= r.inv(); }\n\n    friend mint operator+(const mint& lhs,\
     \ const mint& rhs) {\n        return mint(lhs) += rhs;\n    }\n    friend mint\
     \ operator-(const mint& lhs, const mint& rhs) {\n        return mint(lhs) -= rhs;\n\
@@ -161,46 +165,47 @@ data:
     \ os, const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n\
     \    friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64\
     \ v_;\n        is >> v_;\n        mt = mint(v_);\n        return is;\n    }\n\
-    \    template <typename T> mint pow(T e) const {\n        mint res(1), base(*this);\n\
-    \n        while (e) {\n            if (e & 1) {\n                res *= base;\n\
-    \            }\n            e >>= 1;\n            base *= base;\n        }\n \
-    \       return res;\n    }\n    constexpr mint inv() const { return pow(mod()\
-    \ - 2); }\n};\n};  // namespace kyopro\ntemplate <int id>\ntypename kyopro::barrett_modint<id>::br\
-    \ kyopro::barrett_modint<id>::brt;\n\nnamespace kyopro {\ntemplate <typename T,\
-    \ int id = -1>\nclass dynamic_modint : internal::modint_base {\n    using LargeT\
-    \ = internal::double_size_uint_t<T>;\n    static T _mod;\n    static internal::Montgomery<T>\
-    \ mr;\n\npublic:\n    static void set_mod(T mod_) {\n        mr.set_mod(mod_);\n\
-    \        _mod = mod_;\n    }\n\n    static T mod() { return _mod; }\n\nprivate:\n\
-    \    T v;\n\npublic:\n    dynamic_modint(T v_ = 0) {\n        assert(_mod);\n\
-    \        v = mr.generate(v_);\n    }\n    T val() const { return mr.reduce(v);\
-    \ }\n\n    using mint = dynamic_modint<T, id>;\n    mint& operator+=(const mint&\
-    \ r) {\n        v += r.v;\n        if (v >= mr.get_mod()) {\n            v -=\
-    \ mr.get_mod();\n        }\n\n        return (*this);\n    }\n\n    mint& operator-=(const\
-    \ mint& r) {\n        v += mr.get_mod() - r.v;\n        if (v >= mr.get_mod) {\n\
-    \            v -= mr.get_mod();\n        }\n\n        return (*this);\n    }\n\
-    \n    mint& operator*=(const mint& r) {\n        v = mr.mul(v, r.v);\n       \
-    \ return (*this);\n    }\n\n    mint operator+(const mint& r) { return mint(*this)\
-    \ += r; }\n    mint operator-(const mint& r) { return mint(*this) -= r; }\n  \
-    \  mint operator*(const mint& r) { return mint(*this) *= r; }\n\n    mint& operator=(const\
-    \ T& v_) {\n        (*this) = mint(v_);\n        return (*this);\n    }\n\n  \
-    \  friend std::ostream& operator<<(std::ostream& os, const mint& mt) {\n     \
-    \   os << mt.val();\n        return os;\n    }\n    friend std::istream& operator>>(std::istream&\
-    \ is, mint& mt) {\n        T v_;\n        is >> v_;\n        mt = v_;\n      \
-    \  return is;\n    }\n    template <typename P> mint pow(P e) const {\n      \
-    \  assert(e >= 0);\n        mint res(1), base(*this);\n\n        while (e) {\n\
-    \            if (e & 1) {\n                res *= base;\n            }\n     \
-    \       e >>= 1;\n            base *= base;\n        }\n        return res;\n\
-    \    }\n    mint inv() const { return pow(mod() - 2); }\n\n    mint& operator/=(const\
-    \ mint& r) { return (*this) *= r.inv(); }\n    mint operator/(const mint& r) const\
-    \ { return mint(*this) *= r.inv(); }\n    mint& operator/=(T r) { return (*this)\
-    \ /= mint(r); }\n    friend mint operator/(const mint& l, T r) { return mint(l)\
-    \ /= r; }\n    friend mint operator/(T l, const mint& r) { return mint(l) /= r;\
-    \ }\n};\n};  // namespace kyopro\ntemplate <typename T, int id> T kyopro::dynamic_modint<T,\
-    \ id>::_mod;\ntemplate <typename T, int id>\nkyopro::internal::Montgomery<T> kyopro::dynamic_modint<T,\
-    \ id>::mr;\n\n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n\
-    \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate\
-    \ <typename T> constexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >=\
-    \ 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \    template <typename T> mint pow(T e) const noexcept {\n        mint res(1),\
+    \ base(*this);\n\n        while (e) {\n            if (e & 1) {\n            \
+    \    res *= base;\n            }\n            e >>= 1;\n            base *= base;\n\
+    \        }\n        return res;\n    }\n    constexpr mint inv() const { return\
+    \ pow(mod() - 2); }\n};\n};  // namespace kyopro\ntemplate <int id>\ntypename\
+    \ kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;\n\nnamespace\
+    \ kyopro {\ntemplate <typename T, int id = -1>\nclass montgomery_modint : internal::modint_base\
+    \ {\n    using LargeT = internal::double_size_uint_t<T>;\n    static T _mod;\n\
+    \    static internal::Montgomery<T> mr;\n\npublic:\n    static void set_mod(T\
+    \ mod_) {\n        mr.set_mod(mod_);\n        _mod = mod_;\n    }\n\n    static\
+    \ T mod() { return _mod; }\n\nprivate:\n    T v;\n\npublic:\n    montgomery_modint(T\
+    \ v_ = 0) {\n        assert(_mod);\n        v = mr.generate(v_);\n    }\n    T\
+    \ val() { return mr.reduce(v); }\n\n    using mint = montgomery_modint<T, id>;\n\
+    \    mint& operator+=(const mint& r) {\n        v += r.v;\n        if (v >= mr.get_mod())\
+    \ {\n            v -= mr.get_mod();\n        }\n\n        return (*this);\n  \
+    \  }\n\n    mint& operator-=(const mint& r) {\n        v += mr.get_mod() - r.v;\n\
+    \        if (v >= mr.get_mod) {\n            v -= mr.get_mod();\n        }\n\n\
+    \        return (*this);\n    }\n\n    mint& operator*=(const mint& r) {\n   \
+    \     v = mr.mul(v, r.v);\n        return (*this);\n    }\n\n    mint operator+(const\
+    \ mint& r) { return mint(*this) += r; }\n    mint operator-(const mint& r) { return\
+    \ mint(*this) -= r; }\n    mint operator*(const mint& r) { return mint(*this)\
+    \ *= r; }\n\n    mint& operator=(const T& v_) {\n        (*this) = mint(v_);\n\
+    \        return (*this);\n    }\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n\
+    \    friend std::istream& operator>>(std::istream& is, mint& mt) {\n        T\
+    \ v_;\n        is >> v_;\n        mt = v_;\n        return is;\n    }\n    template\
+    \ <typename P> mint pow(P e) const {\n        assert(e >= 0);\n        mint res(1),\
+    \ base(*this);\n\n        while (e) {\n            if (e & 1) {\n            \
+    \    res *= base;\n            }\n            e >>= 1;\n            base *= base;\n\
+    \        }\n        return res;\n    }\n    mint inv() const { return pow(mod()\
+    \ - 2); }\n\n    mint& operator/=(const mint& r) { return (*this) *= r.inv();\
+    \ }\n    mint operator/(const mint& r) const { return mint(*this) *= r.inv();\
+    \ }\n    mint& operator/=(T r) { return (*this) /= mint(r); }\n    friend mint\
+    \ operator/(const mint& l, T r) { return mint(l) /= r; }\n    friend mint operator/(T\
+    \ l, const mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate\
+    \ <typename T, int id> T kyopro::montgomery_modint<T, id>::_mod;\ntemplate <typename\
+    \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;\n\
+    \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */\n\
+    #line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
+    \ T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n\
+    \    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
     \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
     \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
@@ -234,29 +239,63 @@ data:
     \   if (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n   \
     \     if (y == 0) {\n            return 1;\n        } else {\n            return\
     \ -1;\n        }\n    }\n    int m = (int)std::sqrt(p) + 1;\n    using mint =\
-    \ dynamic_modint<internal::double_size_uint_t<T>, 10>;\n    if (mint::mod() !=\
-    \ p) {\n        mint::set_mod(p);\n    }\n\n    T add = 0, g = 0;\n    mint k(1);\n\
-    \    while ((g = _gcd(x, p)) != 1) {\n        if (y == k.val()) return add;\n\
-    \        if (y % g) return -1;\n        y /= g, p /= g, ++add;\n        k = (k.val()\
-    \ * (x / g));\n    }\n\n    hash_map<T, T> mp;\n\n    mint xm = mint(x).pow(m);\n\
-    \    mint pr = mint(y);\n    for (int j = 0; j <= m; ++j) {\n        mp[pr.val()]\
-    \ = j;\n        pr *= x;\n    }\n    pr = k;\n    for (int i = 1; i <= m; ++i)\
-    \ {\n        pr *= xm;\n        auto ptr = mp.find(pr.val());\n        if (ptr)\
-    \ {\n            int j = *ptr;\n            return m * i - j + add;\n        }\n\
-    \    }\n    return -1;\n}\n\n};  // namespace internal\n\n/**\n * @brief \u96E2\
-    \u6563\u5BFE\u6570\n */\ntemplate <typename T> constexpr inline T mod_log(T a,\
-    \ T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a, b,\
-    \ c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n}\n\n\
-    };  // namespace kyopro\n\n/**\n * @docs docs/math/mod_log.md\n*/\n#line 4 \"\
-    test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\n\nint main() {\n    int\
-    \ t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y, p;\n      \
-    \  scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%d\\n\", kyopro::mod_log(x,\
+    \ montgomery_modint<internal::double_size_uint_t<T>, 10>;\n    if (mint::mod()\
+    \ != p) {\n        mint::set_mod(p);\n    }\n\n    T add = 0, g = 0;\n    mint\
+    \ k(1);\n    while ((g = _gcd(x, p)) != 1) {\n        if (y == k.val()) return\
+    \ add;\n        if (y % g) return -1;\n        y /= g, p /= g, ++add;\n      \
+    \  k = (k.val() * (x / g));\n    }\n\n    hash_map<T, T> mp;\n\n    mint xm =\
+    \ mint(x).pow(m);\n    mint pr = mint(y);\n    for (int j = 0; j <= m; ++j) {\n\
+    \        mp[pr.val()] = j;\n        pr *= x;\n    }\n    pr = k;\n    for (int\
+    \ i = 1; i <= m; ++i) {\n        pr *= xm;\n        auto ptr = mp.find(pr.val());\n\
+    \        if (ptr) {\n            int j = *ptr;\n            return m * i - j +\
+    \ add;\n        }\n    }\n    return -1;\n}\n\n};  // namespace internal\n\n/**\n\
+    \ * @brief \u96E2\u6563\u5BFE\u6570\n */\ntemplate <typename T> constexpr inline\
+    \ T mod_log(T a, T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a,\
+    \ b, c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n\
+    }\n\n};  // namespace kyopro\n\n/**\n * @docs docs/math/mod_log.md\n*/\n#line\
+    \ 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
+    #line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
+    \ c) noexcept {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nconstexpr void\
+    \ single_read(T& a) noexcept {\n    a = 0;\n    bool is_negative = false;\n  \
+    \  char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
+    \    }\n    if constexpr (std::is_signed<T>::value) {\n        if (c == '-') is_negative\
+    \ = true, c = getchar_unlocked();\n    }\n    while (isdigit(c)) {\n        a\
+    \ = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n    if constexpr\
+    \ (std::is_signed<T>::value) {\n        if (is_negative) a *= -1;\n    }\n}\n\
+    template <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_read(T&\
+    \ a) noexcept {\n    long long x;\n    single_read(x);\n    a = T(x);\n}\nvoid\
+    \ single_read(std::string& str) noexcept {\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
+    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate <typename\
+    \ T> constexpr inline void read(T& x) noexcept {\n    single_read(x);\n}\ntemplate\
+    \ <typename Head, typename... Tail>\nconstexpr inline void read(Head& head, Tail&...\
+    \ tail) noexcept {\n    single_read(head), read(tail...);\n}\n\n// write\nvoid\
+    \ single_write(char c) noexcept { putchar_unlocked(c); }\ntemplate <typename T,\
+    \ internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) noexcept {\n\
+    \    if (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if\
+    \ constexpr (std::is_signed<T>::value) {\n        if (a < 0) putchar_unlocked('-'),\
+    \ a *= -1;\n    }\n    constexpr int d = std::numeric_limits<T>::digits10;\n \
+    \   char s[d];\n    int now = d;\n    while (a) {\n        s[--now] = static_cast<char>('0'\
+    \ + a % 10);\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
+    }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T\
+    \ a) noexcept {\n    single_write(a.val());\n}\n\nvoid single_write(const std::string&\
+    \ str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n  \
+    \  }\n}\n\ntemplate <typename T> constexpr inline void write(T x) noexcept {\n\
+    \    single_write(x);\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
+    \ inline void write(Head head, Tail... tail) noexcept {\n    single_write(head);\n\
+    \    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate <typename... Args>\
+    \ constexpr inline void put(Args... x) noexcept {\n    write(x...);\n    putchar_unlocked('\\\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief \u5165\u51FA\u529B\n */\n#line\
+    \ 5 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\n\nusing namespace\
+    \ std;\nusing namespace kyopro;\n\nint main() {\n    int t;\n    read(t);\n  \
+    \  while (t--) {\n        int x, y, p;\n        read(x, y, p);\n        put(kyopro::mod_log(x,\
     \ y, p));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\
-    \n#include <iostream>\n#include \"../../../src/math/mod_log.hpp\"\n\nint main()\
-    \ {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y,\
-    \ p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%d\\n\", kyopro::mod_log(x,\
-    \ y, p));\n    }\n}"
+    \n#include <iostream>\n#include \"../../../src/math/mod_log.hpp\"\n#include \"\
+    ../../../src/stream.hpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\n\
+    int main() {\n    int t;\n    read(t);\n    while (t--) {\n        int x, y, p;\n\
+    \        read(x, y, p);\n        put(kyopro::mod_log(x, y, p));\n    }\n}"
   dependsOn:
   - src/math/mod_log.hpp
   - src/data-structure/hash_map.hpp
@@ -266,11 +305,12 @@ data:
   - src/internal/type_traits.hpp
   - src/math/gcd.hpp
   - src/math/mod_pow.hpp
+  - src/stream.hpp
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-08-20 07:26:53+00:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 layout: document
