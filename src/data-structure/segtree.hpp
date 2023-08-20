@@ -6,7 +6,7 @@ namespace kyopro {
 /**
  * @brief SegmentTree
  */
-template <class S, S (*op)(S, S), S (*e)()> class segtree {
+template <class S, auto op, auto e> class segtree {
     int lg, sz, n;
     std::vector<S> dat;
 
