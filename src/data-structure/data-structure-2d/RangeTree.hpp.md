@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/segtree.hpp
     title: SegmentTree
   _extendedRequiredBy: []
@@ -17,8 +17,8 @@ data:
   bundledCode: "#line 2 \"src/data-structure/data-structure-2d/RangeTree.hpp\"\n#include\
     \ <algorithm>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <cassert>\n\
     #include <vector>\nnamespace kyopro {\n\n/**\n * @brief SegmentTree\n */\ntemplate\
-    \ <class S, S (*op)(S, S), S (*e)()> class segtree {\n    int lg, sz, n;\n   \
-    \ std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
+    \ <class S, auto op,auto e> class segtree {\n    int lg, sz, n;\n    std::vector<S>\
+    \ dat;\n\npublic:\n    segtree() {}\n    segtree(int n) : segtree(std::vector<S>(n,\
     \ e())) {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n  \
     \      sz = 1, lg = 0;\n        while (sz <= n) {\n            sz <<= 1;\n   \
     \         lg++;\n        }\n\n        dat = std::vector<S>(sz << 1, e());\n\n\
@@ -105,7 +105,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/data-structure-2d/RangeTree.hpp
   requiredBy: []
-  timestamp: '2023-06-25 06:07:51+00:00'
+  timestamp: '2023-08-20 13:57:52+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
