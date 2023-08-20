@@ -9,7 +9,7 @@ data:
     title: src/internal/type_traits.hpp
   - icon: ':question:'
     path: src/stream.hpp
-    title: fastIO
+    title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
@@ -79,41 +79,47 @@ data:
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
     };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/stream.hpp\"\
-    \n\nnamespace kyopro {\n// read\nvoid single_read(char& c) {\n    c = getchar_unlocked();\n\
-    \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
-    \ = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
-    \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
-    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
-    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
-    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
-    \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
-    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
-    \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
-    \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
-    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
-    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
-    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
-    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
-    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
-    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
-    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
-    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
-    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
-    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n;\n\
-    \    read(n);\n    dijkstra g(n);\n    for (int i = 0; i < n - 1; ++i) {\n   \
-    \     int a, b, c;\n        read(a, b, c);\n        g.add_edge(a, b, c);\n   \
-    \     g.add_edge(b, a, c);\n    }\n    g.build(0);\n    vector<long long> dist\
-    \ = g.get_dist();\n    int v = max_element(dist.begin(), dist.end()) - dist.begin();\n\
-    \    g.build(v);\n    dist = g.get_dist();\n\n    auto it = max_element(dist.begin(),\
-    \ dist.end());\n    int u = it - dist.begin();\n    put(*it);\n    auto path =\
-    \ g.shortest_path(u).second;\n    put(path.size());\n    for (auto v : path) put(v);\n\
-    }\n"
+    \n\nnamespace kyopro {\n// read\nvoid single_read(char& c) noexcept {\n    c =\
+    \ getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate\
+    \ <typename T, internal::is_integral_t<T>* = nullptr>\nconstexpr void single_read(T&\
+    \ a) noexcept {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if constexpr\
+    \ (std::is_signed<T>::value) {\n        if (c == '-') is_negative = true, c =\
+    \ getchar_unlocked();\n    }\n    while (isdigit(c)) {\n        a = 10 * a + (c\
+    \ - '0');\n        c = getchar_unlocked();\n    }\n    if constexpr (std::is_signed<T>::value)\
+    \ {\n        if (is_negative) a *= -1;\n    }\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ = nullptr>\nvoid single_read(T& a) noexcept {\n    long long x;\n    single_read(x);\n\
+    \    a = T(x);\n}\nvoid single_read(std::string& str) noexcept {\n    char c =\
+    \ getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n    while\
+    \ (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n    }\n\
+    }\ntemplate <typename T> constexpr inline void read(T& x) noexcept {\n    single_read(x);\n\
+    }\ntemplate <typename Head, typename... Tail>\nconstexpr inline void read(Head&\
+    \ head, Tail&... tail) noexcept {\n    single_read(head), read(tail...);\n}\n\n\
+    // write\nvoid single_write(char c) noexcept { putchar_unlocked(c); }\ntemplate\
+    \ <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a)\
+    \ noexcept {\n    if (!a) {\n        putchar_unlocked('0');\n        return;\n\
+    \    }\n    if constexpr (std::is_signed<T>::value) {\n        if (a < 0) putchar_unlocked('-'),\
+    \ a *= -1;\n    }\n    const int d = std::numeric_limits<T>::digits10;\n    char\
+    \ s[d];\n    int now = d;\n    while (a) {\n        s[--now] = (char)'0' + a %\
+    \ 10;\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
+    }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T\
+    \ a) noexcept {\n    single_write(a.val());\n}\n\nvoid single_write(const std::string&\
+    \ str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n  \
+    \  }\n}\n\ntemplate <typename T> constexpr inline void write(T x) noexcept {\n\
+    \    single_write(x);\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
+    \ inline void write(Head head, Tail... tail) noexcept {\n    single_write(head);\n\
+    \    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate <typename... Args>\
+    \ constexpr inline void put(Args... x) noexcept {\n    write(x...);\n    putchar_unlocked('\\\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief \u5165\u51FA\u529B\n */\n#line\
+    \ 6 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\n\nusing namespace std;\n\
+    using namespace kyopro;\n\nint main() {\n    int n;\n    read(n);\n    dijkstra\
+    \ g(n);\n    for (int i = 0; i < n - 1; ++i) {\n        int a, b, c;\n       \
+    \ read(a, b, c);\n        g.add_edge(a, b, c);\n        g.add_edge(b, a, c);\n\
+    \    }\n    g.build(0);\n    vector<long long> dist = g.get_dist();\n    int v\
+    \ = max_element(dist.begin(), dist.end()) - dist.begin();\n    g.build(v);\n \
+    \   dist = g.get_dist();\n\n    auto it = max_element(dist.begin(), dist.end());\n\
+    \    int u = it - dist.begin();\n    put(*it);\n    auto path = g.shortest_path(u).second;\n\
+    \    put(path.size());\n    for (auto v : path) put(v);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include\
     \ <bits/stdc++.h>\n#include \"../../../src/graph/dijkstra.hpp\"\n#include \"../../../src/stream.hpp\"\
     \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n;\n\
@@ -132,7 +138,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 03:35:23+09:00'
+  timestamp: '2023-08-20 06:51:47+00:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Diameter.test.cpp

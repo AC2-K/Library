@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
     title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   - icon: ':x:'
@@ -11,7 +11,7 @@ data:
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/tree/doubling.md
     document_title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
@@ -101,7 +101,7 @@ data:
   path: src/tree/doubling.hpp
   requiredBy: []
   timestamp: '2023-06-25 06:07:51+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
