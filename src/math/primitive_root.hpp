@@ -17,13 +17,13 @@ long long primitive_root(T p) {
         q = (p - 1) / q;
     }
     
-    if (dynamic_modint<uint64_t>::mod() != p) {
-        dynamic_modint<uint64_t>::set_mod(p);
+    if (montgomery_modint<uint64_t>::mod() != p) {
+        montgomery_modint<uint64_t>::set_mod(p);
     }
 
     xor_shift32 rng(619);
     while(1) {
-        dynamic_modint<uint64_t> g(rng());
+        montgomery_modint<uint64_t> g(rng());
         if (g.val() == 0) continue;
         bool is_ok = true;
 

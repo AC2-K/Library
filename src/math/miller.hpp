@@ -54,15 +54,15 @@ public:
             return false;
         };
         if constexpr (std::numeric_limits<T>::digits < 32) {
-            return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,
+            return miller_rabin<T, montgomery_modint<std::make_unsigned_t<T>>,
                                 bases_int, 3>(n);
 
         } else {
             if (n <= 1 << 30)
-                return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,
+                return miller_rabin<T, montgomery_modint<std::make_unsigned_t<T>>,
                                     bases_int, 3>(n);
             else
-                return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,
+                return miller_rabin<T, montgomery_modint<std::make_unsigned_t<T>>,
                                     bases_ll, 7>(n);
         }
         return false;

@@ -76,11 +76,11 @@ public:
         }
 
         if constexpr (std::numeric_limits<T>::digits < 32) {
-            std::vector v = rho_fact<T, dynamic_modint<u32>>(n);
+            std::vector v = rho_fact<T, montgomery_modint<u32>>(n);
             std::sort(v.begin(), v.end());
             return v;
         } else {
-            std::vector v = rho_fact<T, dynamic_modint<u64>>(n);
+            std::vector v = rho_fact<T, montgomery_modint<u64>>(n);
             std::sort(v.begin(), v.end());
             return v;
         }

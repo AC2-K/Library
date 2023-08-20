@@ -137,7 +137,7 @@ typename kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;
 
 namespace kyopro {
 template <typename T, int id = -1>
-class dynamic_modint : internal::modint_base {
+class montgomery_modint : internal::modint_base {
     using LargeT = internal::double_size_uint_t<T>;
     static T _mod;
     static internal::Montgomery<T> mr;
@@ -154,13 +154,13 @@ private:
     T v;
 
 public:
-    dynamic_modint(T v_ = 0) {
+    montgomery_modint(T v_ = 0) {
         assert(_mod);
         v = mr.generate(v_);
     }
     T val() const { return mr.reduce(v); }
 
-    using mint = dynamic_modint<T, id>;
+    using mint = montgomery_modint<T, id>;
     mint& operator+=(const mint& r) {
         v += r.v;
         if (v >= mr.get_mod()) {
@@ -225,9 +225,9 @@ public:
     friend mint operator/(T l, const mint& r) { return mint(l) /= r; }
 };
 };  // namespace kyopro
-template <typename T, int id> T kyopro::dynamic_modint<T, id>::_mod;
+template <typename T, int id> T kyopro::montgomery_modint<T, id>::_mod;
 template <typename T, int id>
-kyopro::internal::Montgomery<T> kyopro::dynamic_modint<T, id>::mr;
+kyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;
 
 /**
  * @brief 動的modint
