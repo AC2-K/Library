@@ -113,9 +113,9 @@ data:
   path: src/atcoder/internal_type_traits.hpp
   requiredBy:
   - src/string/wildcard_pattern_matching.hpp
+  - src/atcoder/fenwicktree.hpp
   - src/atcoder/modint.hpp
   - src/atcoder/convolution.hpp
-  - src/atcoder/fenwicktree.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

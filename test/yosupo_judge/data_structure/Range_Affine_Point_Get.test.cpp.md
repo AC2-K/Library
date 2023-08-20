@@ -4,18 +4,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/dual_segtree.hpp
     title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
-    title: fastIO
+    title: "\u5165\u51FA\u529B"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -186,34 +186,41 @@ data:
     \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
     \ <string>\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
-    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
-    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
-    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
-    \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
+    \ c) noexcept {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nconstexpr void\
+    \ single_read(T& a) noexcept {\n    a = 0;\n    bool is_negative = false;\n  \
+    \  char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
+    \    }\n    if constexpr (std::is_signed<T>::value) {\n        if (c == '-') is_negative\
+    \ = true, c = getchar_unlocked();\n    }\n    while (isdigit(c)) {\n        a\
+    \ = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n    if constexpr\
+    \ (std::is_signed<T>::value) {\n        if (is_negative) a *= -1;\n    }\n}\n\
+    template <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_read(T&\
+    \ a) noexcept {\n    long long x;\n    single_read(x);\n    a = T(x);\n}\nvoid\
+    \ single_read(std::string& str) noexcept {\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
-    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
-    \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
-    \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
-    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
-    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
-    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
-    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
-    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
-    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
-    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
-    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
-    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
-    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\
-    \n\nusing mint = kyopro::static_modint32<998244353>;\nusing Affine = std::pair<mint,\
-    \ mint>;\ninline Affine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
+    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate <typename\
+    \ T> constexpr inline void read(T& x) noexcept {\n    single_read(x);\n}\ntemplate\
+    \ <typename Head, typename... Tail>\nconstexpr inline void read(Head& head, Tail&...\
+    \ tail) noexcept {\n    single_read(head), read(tail...);\n}\n\n// write\nvoid\
+    \ single_write(char c) noexcept { putchar_unlocked(c); }\ntemplate <typename T,\
+    \ internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) noexcept {\n\
+    \    if (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if\
+    \ constexpr (std::is_signed<T>::value) {\n        if (a < 0) putchar_unlocked('-'),\
+    \ a *= -1;\n    }\n    const int d = std::numeric_limits<T>::digits10 + 1;\n \
+    \   char s[d];\n    int now = d;\n    while (a) {\n        s[--now] = (char)'0'\
+    \ + a % 10;\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
+    }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T\
+    \ a) noexcept {\n    single_write(a.val());\n}\n\nvoid single_write(const std::string&\
+    \ str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n  \
+    \  }\n}\n\ntemplate <typename T> constexpr inline void write(T x) noexcept {\n\
+    \    single_write(x);\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
+    \ inline void write(Head head, Tail... tail) noexcept {\n    single_write(head);\n\
+    \    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate <typename... Args>\
+    \ constexpr inline void put(Args... x) noexcept {\n    write(x...);\n    putchar_unlocked('\\\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief \u5165\u51FA\u529B\n */\n#line\
+    \ 5 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\n\nusing\
+    \ mint = kyopro::static_modint32<998244353>;\nusing Affine = std::pair<mint, mint>;\n\
+    inline Affine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
     \    auto c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\n\
     inline Affine e() { return Affine(1, 0); }\nint main() {\n    int n, q;\n    kyopro::read(n,\
     \ q);\n    kyopro::dual_segtree<Affine, op, e> sg(n);\n    std::vector<mint> a(n);\n\
@@ -247,7 +254,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-20 22:35:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
