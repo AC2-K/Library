@@ -11,7 +11,7 @@ template <class S, auto op, auto e> class segtree {
     std::vector<S> dat;
 
 public:
-    segtree() {}
+    segtree() = default;
     segtree(int n) : segtree(std::vector<S>(n, e())) {}
     segtree(const std::vector<S>& vec) : n((int)vec.size()) {
         sz = 1, lg = 0;

@@ -53,12 +53,17 @@ public:
         } else if (~n & 1) {
             return false;
         };
-        if (std::numeric_limits<T>::digits < 32 || n <= 1 << 30) {
+        if constexpr (std::numeric_limits<T>::digits < 32) {
             return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,
                                 bases_int, 3>(n);
+
         } else {
-            return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,
-                                bases_ll, 7>(n);
+            if (n <= 1 << 30)
+                return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,
+                                    bases_int, 3>(n);
+            else
+                return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,
+                                    bases_ll, 7>(n);
         }
         return false;
     }
