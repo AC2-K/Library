@@ -2,31 +2,31 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
   - icon: ':x:'
     path: src/math/mod_log.hpp
     title: "\u96E2\u6563\u5BFE\u6570"
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/math/mod_pow.hpp
     title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\phi$ \u95A2\u6570"
   - icon: ':x:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
   - icon: ':question:'
@@ -54,58 +54,58 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_E_lazy.test.cpp
     title: test/AOJ/DSL/2_E_lazy.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/DSL/5_B.test.cpp
     title: test/AOJ/DSL/5_B.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/GRL/1_A.test.cpp
     title: test/AOJ/GRL/1_A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1_B.test.cpp
     title: test/AOJ/NTL/1_B.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
     title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
     title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
     title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
     title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
     title: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   - icon: ':x:'

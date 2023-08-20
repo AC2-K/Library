@@ -6,10 +6,10 @@ data:
     path: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
     title: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   - icon: ':x:'
@@ -20,7 +20,7 @@ data:
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/data-structure/BIT.md
     document_title: Binary Index Tree
@@ -62,7 +62,7 @@ data:
   requiredBy:
   - src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
   timestamp: '2023-08-20 03:10:32+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp

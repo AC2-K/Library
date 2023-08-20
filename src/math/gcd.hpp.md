@@ -5,44 +5,44 @@ data:
   - icon: ':x:'
     path: src/math/mod_log.hpp
     title: "\u96E2\u6563\u5BFE\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\phi$ \u95A2\u6570"
   - icon: ':x:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
   - icon: ':x:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1_E.test.cpp
     title: test/AOJ/NTL/1_E.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
     title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - icon: ':x:'
@@ -62,7 +62,7 @@ data:
     title: test/yuki/No430.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/math/gcd.hpp\"\n#include <cassert>\n#include <tuple>\n\
@@ -102,7 +102,7 @@ data:
   - src/math/mod_log.hpp
   - src/string/rolling_hash.hpp
   timestamp: '2023-08-20 06:51:47+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp

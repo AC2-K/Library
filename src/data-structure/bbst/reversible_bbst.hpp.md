@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy: []

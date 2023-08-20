@@ -24,58 +24,58 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_E_lazy.test.cpp
     title: test/AOJ/DSL/2_E_lazy.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/DSL/5_B.test.cpp
     title: test/AOJ/DSL/5_B.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/GRL/1_A.test.cpp
     title: test/AOJ/GRL/1_A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1_B.test.cpp
     title: test/AOJ/NTL/1_B.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
     title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
     title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
     title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
     title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
     title: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   - icon: ':x:'
@@ -204,9 +204,9 @@ data:
     \ <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a)\
     \ noexcept {\n    if (!a) {\n        putchar_unlocked('0');\n        return;\n\
     \    }\n    if constexpr (std::is_signed<T>::value) {\n        if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    }\n    const int d = std::numeric_limits<T>::digits10;\n    char\
-    \ s[d];\n    int now = d;\n    while (a) {\n        s[--now] = (char)'0' + a %\
-    \ 10;\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
+    \ a *= -1;\n    }\n    constexpr int d = std::numeric_limits<T>::digits10;\n \
+    \   char s[d];\n    int now = d;\n    while (a) {\n        s[--now] = static_cast<char>('0'\
+    \ + a % 10);\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
     }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T\
     \ a) noexcept {\n    single_write(a.val());\n}\n\nvoid single_write(const std::string&\
     \ str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n  \
@@ -238,9 +238,9 @@ data:
     \ internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) noexcept {\n\
     \    if (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if\
     \ constexpr (std::is_signed<T>::value) {\n        if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    }\n    const int d = std::numeric_limits<T>::digits10;\n    char\
-    \ s[d];\n    int now = d;\n    while (a) {\n        s[--now] = (char)'0' + a %\
-    \ 10;\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
+    \ a *= -1;\n    }\n    constexpr int d = std::numeric_limits<T>::digits10;\n \
+    \   char s[d];\n    int now = d;\n    while (a) {\n        s[--now] = static_cast<char>('0'\
+    \ + a % 10);\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
     }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T\
     \ a) noexcept {\n    single_write(a.val());\n}\n\nvoid single_write(const std::string&\
     \ str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n  \
@@ -255,7 +255,7 @@ data:
   isVerificationFile: false
   path: src/stream.hpp
   requiredBy: []
-  timestamp: '2023-08-20 06:51:47+00:00'
+  timestamp: '2023-08-20 07:26:53+00:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp

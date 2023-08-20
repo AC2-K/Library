@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   - icon: ':x:'
@@ -11,7 +11,7 @@ data:
     title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/other/mo.md
     document_title: Mo's algorithm
@@ -80,7 +80,7 @@ data:
   path: src/algorithm/mo.hpp
   requiredBy: []
   timestamp: '2023-08-20 06:51:47+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp

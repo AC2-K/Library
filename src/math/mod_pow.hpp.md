@@ -12,7 +12,7 @@ data:
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1_B.test.cpp
     title: test/AOJ/NTL/1_B.test.cpp
   - icon: ':x:'
@@ -23,7 +23,7 @@ data:
     title: test/yuki/No430.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
     links: []
@@ -78,7 +78,7 @@ data:
   - src/math/mod_log.hpp
   - src/string/rolling_hash.hpp
   timestamp: '2023-07-30 13:18:23+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yuki/No430.test.cpp

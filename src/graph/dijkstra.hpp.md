@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/GRL/1_A.test.cpp
     title: test/AOJ/GRL/1_A.test.cpp
   - icon: ':x:'
@@ -14,7 +14,7 @@ data:
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/graph/dijkstra.md
     document_title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
@@ -86,7 +86,7 @@ data:
   path: src/graph/dijkstra.hpp
   requiredBy: []
   timestamp: '2023-08-18 11:55:00+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp

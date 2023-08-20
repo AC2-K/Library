@@ -19,7 +19,7 @@ data:
   - icon: ':warning:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy: []

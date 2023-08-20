@@ -9,10 +9,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_B.test.cpp
     title: test/AOJ/DSL/2_B.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - icon: ':x:'

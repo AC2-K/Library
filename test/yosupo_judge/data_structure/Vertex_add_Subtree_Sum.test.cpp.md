@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/data-structure/sparse_table.hpp
     title: SparseTable
   - icon: ':question:'
@@ -13,7 +13,7 @@ data:
   - icon: ':question:'
     path: src/stream.hpp
     title: "\u5165\u51FA\u529B"
-  - icon: ':question:'
+  - icon: ':x:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
   _extendedRequiredBy: []
@@ -93,9 +93,9 @@ data:
     \ <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a)\
     \ noexcept {\n    if (!a) {\n        putchar_unlocked('0');\n        return;\n\
     \    }\n    if constexpr (std::is_signed<T>::value) {\n        if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    }\n    const int d = std::numeric_limits<T>::digits10;\n    char\
-    \ s[d];\n    int now = d;\n    while (a) {\n        s[--now] = (char)'0' + a %\
-    \ 10;\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
+    \ a *= -1;\n    }\n    constexpr int d = std::numeric_limits<T>::digits10;\n \
+    \   char s[d];\n    int now = d;\n    while (a) {\n        s[--now] = static_cast<char>('0'\
+    \ + a % 10);\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
     }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T\
     \ a) noexcept {\n    single_write(a.val());\n}\n\nvoid single_write(const std::string&\
     \ str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n  \
@@ -187,7 +187,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 06:51:47+00:00'
+  timestamp: '2023-08-20 07:26:53+00:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
