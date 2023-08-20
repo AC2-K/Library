@@ -1,47 +1,47 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\phi$ \u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/math/rho.md
     document_title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
@@ -339,7 +339,7 @@ data:
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
   timestamp: '2023-08-21 00:07:47+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp

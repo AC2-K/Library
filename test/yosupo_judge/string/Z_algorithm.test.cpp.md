@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/Z.hpp
     title: Z algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
@@ -56,42 +56,44 @@ data:
     \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
     \ = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
     \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
-    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
-    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
-    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
-    \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
-    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
-    \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
-    \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
-    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
-    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
-    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
-    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
-    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
-    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
-    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
-    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
-    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
-    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/string/Z.hpp\"\
-    \n#include <cassert>\n#line 4 \"src/string/Z.hpp\"\n#include <vector>\nnamespace\
-    \ kyopro {\n/**\n * @brief Z algorithm\n * @return LCP(S,S[i:]) (i=0,1,...,|str|-1)\n\
-    \ */\nstd::vector<int> Z(const std::string& str) {\n    assert(str.size());\n\
-    \    std::vector<int> res(str.size());\n    res.front() = (int)str.size();\n\n\
-    \    int i = 1, j = 0;\n\n    while (i < (int)str.size()) {\n        while (i\
-    \ + j < (int)str.size() && str[j] == str[i + j]) {\n            ++j;\n       \
-    \ }\n\n        res[i] = j;\n        if (j == 0) {\n            ++i;\n        \
-    \    continue;\n        }\n        int k = 1;\n        while (i + k < (int)str.size()\
-    \ && k + res[k] < j) {\n            res[i + k] = res[k];\n            ++k;\n \
-    \       }\n        i += k, j -= k;\n    }\n    return res;\n}\n};  // namespace\
-    \ kyopro\n#line 7 \"test/yosupo_judge/string/Z_algorithm.test.cpp\"\n\nint main()\
-    \ {\n    std::string s;\n    {\n        char c;\n        while (!isspace(c = getchar_unlocked()))\
-    \ s += c;\n    }\n    auto res = kyopro::Z(s);\n    for (auto r : res) {\n   \
-    \     kyopro::put(r);\n    }\n}\n"
+    \    }\n    if constexpr (std::is_signed_v<T>) {\n        if (c == '-') is_negative\
+    \ = true, c = getchar_unlocked();\n    }\n    while (isdigit(c)) {\n        a\
+    \ = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n    if constexpr\
+    \ (std::is_signed_v<T>) {\n        if (is_negative) a *= -1;\n    }\n}\ntemplate\
+    \ <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_read(T& a) {\n\
+    \    long long x;\n    single_read(x);\n    a = T(x);\n}\nvoid single_read(std::string&\
+    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\ntemplate <typename T> void read(T& x) { single_read(x); }\ntemplate\
+    \ <typename Head, typename... Tail>\nvoid read(Head& head, Tail&... tail) {\n\
+    \    single_read(head), read(tail...);\n}\n\n// write\nvoid single_write(char\
+    \ c) { putchar_unlocked(c); }\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\nvoid single_write(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
+    \        return;\n    }\n    if constexpr (std::is_signed_v<T>) {\n        if\
+    \ (a < 0) putchar_unlocked('-'), a *= -1;\n    }\n\n    char s[37];\n    int now\
+    \ = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /=\
+    \ 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename\
+    \ T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n\
+    }\n\nvoid single_write(const std::string& str) {\n    for (auto c : str) {\n \
+    \       putchar_unlocked(c);\n    }\n}\n\ntemplate <typename T> void write(T x)\
+    \ { single_write(x); }\ntemplate <typename Head, typename... Tail> void write(Head\
+    \ head, Tail... tail) {\n    single_write(head);\n    putchar_unlocked(' ');\n\
+    \    write(tail...);\n}\ntemplate <typename... Args> void put(Args... x) {\n \
+    \   write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace kyopro\n\n\
+    /**\n * @brief fastIO\n */\n#line 2 \"src/string/Z.hpp\"\n#include <cassert>\n\
+    #line 4 \"src/string/Z.hpp\"\n#include <vector>\nnamespace kyopro {\n/**\n * @brief\
+    \ Z algorithm\n * @return LCP(S,S[i:]) (i=0,1,...,|str|-1)\n */\nstd::vector<int>\
+    \ Z(const std::string& str) {\n    assert(str.size());\n    std::vector<int> res(str.size());\n\
+    \    res.front() = (int)str.size();\n\n    int i = 1, j = 0;\n\n    while (i <\
+    \ (int)str.size()) {\n        while (i + j < (int)str.size() && str[j] == str[i\
+    \ + j]) {\n            ++j;\n        }\n\n        res[i] = j;\n        if (j ==\
+    \ 0) {\n            ++i;\n            continue;\n        }\n        int k = 1;\n\
+    \        while (i + k < (int)str.size() && k + res[k] < j) {\n            res[i\
+    \ + k] = res[k];\n            ++k;\n        }\n        i += k, j -= k;\n    }\n\
+    \    return res;\n}\n};  // namespace kyopro\n#line 7 \"test/yosupo_judge/string/Z_algorithm.test.cpp\"\
+    \n\nint main() {\n    std::string s;\n    {\n        char c;\n        while (!isspace(c\
+    \ = getchar_unlocked())) s += c;\n    }\n    auto res = kyopro::Z(s);\n    for\
+    \ (auto r : res) {\n        kyopro::put(r);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#include\
     \ <iostream>\n#include <string>\n\n#include \"../../../src/stream.hpp\"\n#include\
     \ \"../../../src/string/Z.hpp\"\n\nint main() {\n    std::string s;\n    {\n \
@@ -105,8 +107,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/string/Z_algorithm.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-08-21 00:27:15+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/string/Z_algorithm.test.cpp
 layout: document

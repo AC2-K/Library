@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   _extendedRequiredBy: []
@@ -72,51 +72,51 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
     title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
     title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
     title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
     title: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/string/Z_algorithm.test.cpp
     title: test/yosupo_judge/string/Z_algorithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
     title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No789.test.cpp
     title: test/yuki/No789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: fastIO
     links: []
@@ -155,63 +155,69 @@ data:
     \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
     \ = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
     \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
-    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
-    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
-    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
-    \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
-    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
-    \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
-    \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
-    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
-    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
-    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
-    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
-    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
-    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
-    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
-    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
-    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
-    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n"
+    \    }\n    if constexpr (std::is_signed_v<T>) {\n        if (c == '-') is_negative\
+    \ = true, c = getchar_unlocked();\n    }\n    while (isdigit(c)) {\n        a\
+    \ = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n    if constexpr\
+    \ (std::is_signed_v<T>) {\n        if (is_negative) a *= -1;\n    }\n}\ntemplate\
+    \ <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_read(T& a) {\n\
+    \    long long x;\n    single_read(x);\n    a = T(x);\n}\nvoid single_read(std::string&\
+    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\ntemplate <typename T> void read(T& x) { single_read(x); }\ntemplate\
+    \ <typename Head, typename... Tail>\nvoid read(Head& head, Tail&... tail) {\n\
+    \    single_read(head), read(tail...);\n}\n\n// write\nvoid single_write(char\
+    \ c) { putchar_unlocked(c); }\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\nvoid single_write(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
+    \        return;\n    }\n    if constexpr (std::is_signed_v<T>) {\n        if\
+    \ (a < 0) putchar_unlocked('-'), a *= -1;\n    }\n\n    char s[37];\n    int now\
+    \ = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /=\
+    \ 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename\
+    \ T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n\
+    }\n\nvoid single_write(const std::string& str) {\n    for (auto c : str) {\n \
+    \       putchar_unlocked(c);\n    }\n}\n\ntemplate <typename T> void write(T x)\
+    \ { single_write(x); }\ntemplate <typename Head, typename... Tail> void write(Head\
+    \ head, Tail... tail) {\n    single_write(head);\n    putchar_unlocked(' ');\n\
+    \    write(tail...);\n}\ntemplate <typename... Args> void put(Args... x) {\n \
+    \   write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace kyopro\n\n\
+    /**\n * @brief fastIO\n */\n"
   code: "#pragma once\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
     #include \"../src/internal/type_traits.hpp\"\n\nnamespace kyopro {\n// read\n\
     void single_read(char& c) {\n    c = getchar_unlocked();\n    while (isspace(c))\
     \ c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
     \ = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
     \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
-    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
-    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
-    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
-    \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
-    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
-    \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
-    \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
-    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
-    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
-    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
-    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
-    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
-    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
-    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
-    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
-    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
-    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */"
+    \    }\n    if constexpr (std::is_signed_v<T>) {\n        if (c == '-') is_negative\
+    \ = true, c = getchar_unlocked();\n    }\n    while (isdigit(c)) {\n        a\
+    \ = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n    if constexpr\
+    \ (std::is_signed_v<T>) {\n        if (is_negative) a *= -1;\n    }\n}\ntemplate\
+    \ <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_read(T& a) {\n\
+    \    long long x;\n    single_read(x);\n    a = T(x);\n}\nvoid single_read(std::string&\
+    \ str) {\n    char c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    \    while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\ntemplate <typename T> void read(T& x) { single_read(x); }\ntemplate\
+    \ <typename Head, typename... Tail>\nvoid read(Head& head, Tail&... tail) {\n\
+    \    single_read(head), read(tail...);\n}\n\n// write\nvoid single_write(char\
+    \ c) { putchar_unlocked(c); }\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\nvoid single_write(T a) {\n    if (!a) {\n        putchar_unlocked('0');\n\
+    \        return;\n    }\n    if constexpr (std::is_signed_v<T>) {\n        if\
+    \ (a < 0) putchar_unlocked('-'), a *= -1;\n    }\n\n    char s[37];\n    int now\
+    \ = 37;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /=\
+    \ 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename\
+    \ T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n\
+    }\n\nvoid single_write(const std::string& str) {\n    for (auto c : str) {\n \
+    \       putchar_unlocked(c);\n    }\n}\n\ntemplate <typename T> void write(T x)\
+    \ { single_write(x); }\ntemplate <typename Head, typename... Tail> void write(Head\
+    \ head, Tail... tail) {\n    single_write(head);\n    putchar_unlocked(' ');\n\
+    \    write(tail...);\n}\ntemplate <typename... Args> void put(Args... x) {\n \
+    \   write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace kyopro\n\n\
+    /**\n * @brief fastIO\n */"
   dependsOn:
   - src/internal/type_traits.hpp
   isVerificationFile: false
   path: src/stream.hpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-08-21 00:27:15+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
