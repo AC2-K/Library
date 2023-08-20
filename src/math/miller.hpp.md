@@ -201,12 +201,15 @@ data:
     \ 9780504, 1795265022};\n\npublic:\n    template <typename T> static constexpr\
     \ bool is_prime(T n) {\n        if (n < 2) {\n            return false;\n    \
     \    } else if (n == 2) {\n            return true;\n        } else if (~n & 1)\
-    \ {\n            return false;\n        };\n        if (std::numeric_limits<T>::digits\
-    \ < 32 || n <= 1 << 30) {\n            return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
-    \                                bases_int, 3>(n);\n        } else {\n       \
-    \     return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n      \
-    \                          bases_ll, 7>(n);\n        }\n        return false;\n\
-    \    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/math/miller.md\n */\n"
+    \ {\n            return false;\n        };\n        if constexpr (std::numeric_limits<T>::digits\
+    \ < 32) {\n            return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
+    \                                bases_int, 3>(n);\n\n        } else {\n     \
+    \       if (n <= 1 << 30)\n                return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
+    \                                    bases_int, 3>(n);\n            else\n   \
+    \             return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
+    \                                    bases_ll, 7>(n);\n        }\n        return\
+    \ false;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/math/miller.md\n\
+    \ */\n"
   code: "#pragma once\n#include \"../math/dynamic_modint.hpp\"\nnamespace kyopro {\n\
     \n/**\n * @brief MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5\n */\nclass miller\
     \ {\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n    using u64\
@@ -226,12 +229,14 @@ data:
     \ <typename T> static constexpr bool is_prime(T n) {\n        if (n < 2) {\n \
     \           return false;\n        } else if (n == 2) {\n            return true;\n\
     \        } else if (~n & 1) {\n            return false;\n        };\n       \
-    \ if (std::numeric_limits<T>::digits < 32 || n <= 1 << 30) {\n            return\
+    \ if constexpr (std::numeric_limits<T>::digits < 32) {\n            return miller_rabin<T,\
+    \ dynamic_modint<std::make_unsigned_t<T>>,\n                                bases_int,\
+    \ 3>(n);\n\n        } else {\n            if (n <= 1 << 30)\n                return\
     \ miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n                 \
-    \               bases_int, 3>(n);\n        } else {\n            return miller_rabin<T,\
-    \ dynamic_modint<std::make_unsigned_t<T>>,\n                                bases_ll,\
-    \ 7>(n);\n        }\n        return false;\n    }\n};\n};  // namespace kyopro\n\
-    \n/**\n * @docs docs/math/miller.md\n */"
+    \                   bases_int, 3>(n);\n            else\n                return\
+    \ miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n                 \
+    \                   bases_ll, 7>(n);\n        }\n        return false;\n    }\n\
+    };\n};  // namespace kyopro\n\n/**\n * @docs docs/math/miller.md\n */"
   dependsOn:
   - src/math/dynamic_modint.hpp
   - src/internal/barrett.hpp
@@ -243,7 +248,7 @@ data:
   - src/math/rho.hpp
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-20 22:22:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp

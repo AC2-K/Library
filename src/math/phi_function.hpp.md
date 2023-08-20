@@ -208,13 +208,15 @@ data:
     \ 9780504, 1795265022};\n\npublic:\n    template <typename T> static constexpr\
     \ bool is_prime(T n) {\n        if (n < 2) {\n            return false;\n    \
     \    } else if (n == 2) {\n            return true;\n        } else if (~n & 1)\
-    \ {\n            return false;\n        };\n        if (std::numeric_limits<T>::digits\
-    \ < 32 || n <= 1 << 30) {\n            return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
-    \                                bases_int, 3>(n);\n        } else {\n       \
-    \     return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n      \
-    \                          bases_ll, 7>(n);\n        }\n        return false;\n\
-    \    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/math/miller.md\n */\n\
-    #line 2 \"src/random/xor_shift.hpp\"\n#include <chrono>\n#line 4 \"src/random/xor_shift.hpp\"\
+    \ {\n            return false;\n        };\n        if constexpr (std::numeric_limits<T>::digits\
+    \ < 32) {\n            return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
+    \                                bases_int, 3>(n);\n\n        } else {\n     \
+    \       if (n <= 1 << 30)\n                return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
+    \                                    bases_int, 3>(n);\n            else\n   \
+    \             return miller_rabin<T, dynamic_modint<std::make_unsigned_t<T>>,\n\
+    \                                    bases_ll, 7>(n);\n        }\n        return\
+    \ false;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/math/miller.md\n\
+    \ */\n#line 2 \"src/random/xor_shift.hpp\"\n#include <chrono>\n#line 4 \"src/random/xor_shift.hpp\"\
     \n#include <random>\n\nnamespace kyopro {\nstruct xor_shift32 {\n    uint32_t\
     \ rng;\n    constexpr explicit xor_shift32(uint32_t seed) : rng(seed) {}\n   \
     \ explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
@@ -287,7 +289,7 @@ data:
   isVerificationFile: false
   path: src/math/phi_function.hpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-20 22:22:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp

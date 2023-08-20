@@ -25,10 +25,10 @@ data:
     \n#include <algorithm>\n#include <iostream>\n#include <numeric>\n#line 2 \"src/data-structure/segtree.hpp\"\
     \n#include <cassert>\n#include <vector>\nnamespace kyopro {\n\n/**\n * @brief\
     \ SegmentTree\n */\ntemplate <class S, auto op, auto e> class segtree {\n    int\
-    \ lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree() {}\n    segtree(int\
-    \ n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const std::vector<S>& vec)\
-    \ : n((int)vec.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n) {\n\
-    \            sz <<= 1;\n            lg++;\n        }\n\n        dat = std::vector<S>(sz\
+    \ lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree() = default;\n \
+    \   segtree(int n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const std::vector<S>&\
+    \ vec) : n((int)vec.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n)\
+    \ {\n            sz <<= 1;\n            lg++;\n        }\n\n        dat = std::vector<S>(sz\
     \ << 1, e());\n\n        for (int i = 0; i < n; i++) {\n            set(i, vec[i]);\n\
     \        }\n        build();\n    }\n\n    void set(int p, const S& v) {\n   \
     \     assert(0 <= p && p < sz);\n        dat[sz + p] = v;\n    }\n    void build()\
@@ -141,7 +141,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 22:13:07+09:00'
+  timestamp: '2023-08-20 22:22:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
