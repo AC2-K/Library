@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/dsu.hpp
     title: Disjoint Set(Union Find)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -88,20 +88,18 @@ data:
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/data_structure/UnionFind.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n,\
-    \ q;\n    read(n, q);\n    dsu uf(n);\n    while (q--) {\n        int t, x, y;\n\
-    \        read(t, x, y);\n        if (!t) {\n            uf.merge(x, y);\n    \
-    \    } else {\n            if (uf.same(x, y)) {\n                put('1');\n \
-    \           } else {\n                put('0');\n            }\n        }\n  \
-    \  }\n}\n"
+    \nint main() {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::dsu uf(n);\n\
+    \    while (q--) {\n        int t, x, y;\n        kyopro::read(t, x, y);\n   \
+    \     if (!t) {\n            uf.merge(x, y);\n        } else {\n            if\
+    \ (uf.same(x, y))\n                puts(\"1\");\n            else\n          \
+    \      puts(\"0\");\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#include\
     \ \"../../../src/data-structure/dsu.hpp\"\n#include \"../../../src/stream.hpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n,\
-    \ q;\n    read(n, q);\n    dsu uf(n);\n    while (q--) {\n        int t, x, y;\n\
-    \        read(t, x, y);\n        if (!t) {\n            uf.merge(x, y);\n    \
-    \    } else {\n            if (uf.same(x, y)) {\n                put('1');\n \
-    \           } else {\n                put('0');\n            }\n        }\n  \
-    \  }\n}"
+    \nint main() {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::dsu uf(n);\n\
+    \    while (q--) {\n        int t, x, y;\n        kyopro::read(t, x, y);\n   \
+    \     if (!t) {\n            uf.merge(x, y);\n        } else {\n            if\
+    \ (uf.same(x, y))\n                puts(\"1\");\n            else\n          \
+    \      puts(\"0\");\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/dsu.hpp
   - src/stream.hpp
@@ -109,7 +107,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/UnionFind.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 03:10:32+09:00'
+  timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/UnionFind.test.cpp

@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
@@ -16,7 +16,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -214,19 +214,19 @@ data:
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 7 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\
-    \n\nusing mint = kyopro::barrett_modint<1>;\nusing namespace std;\nusing namespace\
-    \ kyopro;\n\nint main() {\n    int t, m;\n    read(t, m);\n    mint::set_mod(m);\n\
-    \    combination<mint, (int)1e7> solver;\n    while (t--) {\n        int n, r;\n\
-    \        read(n, r);\n        if (n < r) {\n            put(0);\n        } else\
-    \ {\n            put(solver.binom(n, r));\n        }\n    }\n}\n"
+    \nusing mint = kyopro::barrett_modint<10>;\nusing namespace std;\nint main() {\n\
+    \    int t, m;\n    kyopro::read(t, m);\n    mint::set_mod(m);\n    kyopro::combination<mint,\
+    \ (int)1e7> solver;\n    while (t--) {\n        int n, r;\n        kyopro::read(n,\
+    \ r);\n        if (n < r) {\n            kyopro::put(0);\n        } else {\n \
+    \           kyopro::put(solver.binom(n, r).val());\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
     \n\n#include <iostream>\n#include \"../../../src/math/combination.hpp\"\n#include\
     \ \"../../../src/math/dynamic_modint.hpp\"\n#include \"../../../src/stream.hpp\"\
-    \n\nusing mint = kyopro::barrett_modint<1>;\nusing namespace std;\nusing namespace\
-    \ kyopro;\n\nint main() {\n    int t, m;\n    read(t, m);\n    mint::set_mod(m);\n\
-    \    combination<mint, (int)1e7> solver;\n    while (t--) {\n        int n, r;\n\
-    \        read(n, r);\n        if (n < r) {\n            put(0);\n        } else\
-    \ {\n            put(solver.binom(n, r));\n        }\n    }\n}"
+    \nusing mint = kyopro::barrett_modint<10>;\nusing namespace std;\nint main() {\n\
+    \    int t, m;\n    kyopro::read(t, m);\n    mint::set_mod(m);\n    kyopro::combination<mint,\
+    \ (int)1e7> solver;\n    while (t--) {\n        int n, r;\n        kyopro::read(n,\
+    \ r);\n        if (n < r) {\n            kyopro::put(0);\n        } else {\n \
+    \           kyopro::put(solver.binom(n, r).val());\n        }\n    }\n}"
   dependsOn:
   - src/math/combination.hpp
   - src/math/dynamic_modint.hpp
@@ -237,7 +237,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 03:35:23+09:00'
+  timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp

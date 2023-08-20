@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/segtree.hpp
     title: SegmentTree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
@@ -13,9 +13,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':question:'
-    path: src/stream.hpp
-    title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -184,71 +181,44 @@ data:
     \ friend std::istream& operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n\
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
-    \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
-    \ <string>\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
-    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
-    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
-    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
-    \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
-    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
-    \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
-    \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
-    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
-    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
-    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
-    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
-    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
-    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
-    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
-    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
-    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
-    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = static_modint32<998244353>;\n\
-    \nstruct F {\n    mint a, b;\n};\n\ninline F op(F l, F r) {\n    mint na = l.a\
-    \ * r.a;\n    mint nb = (l.b * r.a + r.b);\n    return F{na, nb};\n}\ninline F\
-    \ e() { return F{1, 0}; }\n\nint main() {\n    int n, q;\n    read(n, q);\n  \
-    \  segtree<F, op, e> seg(n);\n    for (int i = 0; i < n; i++) {\n        mint\
-    \ a, b;\n        read(a, b);\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n\
-    \    while (q--) {\n        int t;\n        read(t);\n        if (!t) {\n    \
-    \        int p;\n            mint c, d;\n            read(p, c, d);\n        \
-    \    seg.update(p, F{c, d});\n        } else {\n            int l, r;\n      \
-    \      mint x;\n            read(l, r, x);\n            F res = seg.fold(l, r);\n\
-    \            mint ans = res.a * x + res.b;\n            put(ans);\n        }\n\
-    \    }\n}\n"
+    \ */\n#line 5 \"test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp\"\
+    \n\nusing mint = kyopro::static_modint32<998244353>;\n\nstruct F {\n    mint a,\
+    \ b;\n};\n\ninline F op(F l, F r) {\n    mint na = l.a * r.a;\n    mint nb = (l.b\
+    \ * r.a + r.b);\n    return F{na, nb};\n}\ninline F e() { return F{1, 0}; }\n\
+    int main() {\n    std::ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
+    \    int n, q;\n    std::cin >> n >> q;\n    kyopro::segtree<F, op, e> seg(n);\n\
+    \    for (int i = 0; i < n; i++) {\n        mint a, b;\n        std::cin >> a\
+    \ >> b;\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n    while (q--)\
+    \ {\n        int t;\n        std::cin >> t;\n        if (!t) {\n            int\
+    \ p;\n            mint c, d;\n            std::cin >> p >> c >> d;\n         \
+    \   seg.update(p, F{c, d});\n        } else {\n            int l, r;\n       \
+    \     mint x;\n            std::cin >> l >> r >> x;\n            F res = seg.fold(l,\
+    \ r);\n            mint ans = res.a * x + res.b;\n            std::cout << ans\
+    \ << '\\n';\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n#include <iostream>\n#include \"../../../src/data-structure/segtree.hpp\"\n\
-    #include \"../../../src/math/static_modint.hpp\"\n#include \"../../../src/stream.hpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = static_modint32<998244353>;\n\
+    #include \"../../../src/math/static_modint.hpp\"\n\nusing mint = kyopro::static_modint32<998244353>;\n\
     \nstruct F {\n    mint a, b;\n};\n\ninline F op(F l, F r) {\n    mint na = l.a\
     \ * r.a;\n    mint nb = (l.b * r.a + r.b);\n    return F{na, nb};\n}\ninline F\
-    \ e() { return F{1, 0}; }\n\nint main() {\n    int n, q;\n    read(n, q);\n  \
-    \  segtree<F, op, e> seg(n);\n    for (int i = 0; i < n; i++) {\n        mint\
-    \ a, b;\n        read(a, b);\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n\
-    \    while (q--) {\n        int t;\n        read(t);\n        if (!t) {\n    \
-    \        int p;\n            mint c, d;\n            read(p, c, d);\n        \
-    \    seg.update(p, F{c, d});\n        } else {\n            int l, r;\n      \
-    \      mint x;\n            read(l, r, x);\n            F res = seg.fold(l, r);\n\
-    \            mint ans = res.a * x + res.b;\n            put(ans);\n        }\n\
-    \    }\n}"
+    \ e() { return F{1, 0}; }\nint main() {\n    std::ios::sync_with_stdio(false);\n\
+    \    std::cin.tie(nullptr);\n    int n, q;\n    std::cin >> n >> q;\n    kyopro::segtree<F,\
+    \ op, e> seg(n);\n    for (int i = 0; i < n; i++) {\n        mint a, b;\n    \
+    \    std::cin >> a >> b;\n        seg.set(i, F{a, b});\n    }\n    seg.build();\n\
+    \    while (q--) {\n        int t;\n        std::cin >> t;\n        if (!t) {\n\
+    \            int p;\n            mint c, d;\n            std::cin >> p >> c >>\
+    \ d;\n            seg.update(p, F{c, d});\n        } else {\n            int l,\
+    \ r;\n            mint x;\n            std::cin >> l >> r >> x;\n            F\
+    \ res = seg.fold(l, r);\n            mint ans = res.a * x + res.b;\n         \
+    \   std::cout << ans << '\\n';\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/segtree.hpp
   - src/math/static_modint.hpp
   - src/internal/type_traits.hpp
   - src/math/gcd.hpp
-  - src/stream.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 03:35:23+09:00'
+  timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp

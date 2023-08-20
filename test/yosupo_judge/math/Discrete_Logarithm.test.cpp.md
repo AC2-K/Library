@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
@@ -25,9 +25,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/mod_pow.hpp
     title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
-  - icon: ':question:'
-    path: src/stream.hpp
-    title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -250,43 +247,16 @@ data:
     \u6563\u5BFE\u6570\n */\ntemplate <typename T> constexpr inline T mod_log(T a,\
     \ T b, T c) {\n    if (c & 1) {\n        return internal::__mod_log_odd(a, b,\
     \ c);\n    } else {\n        return internal::__mod_log(a, b, c);\n    }\n}\n\n\
-    };  // namespace kyopro\n\n/**\n * @docs docs/math/mod_log.md\n*/\n#line 2 \"\
-    src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
-    #line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
-    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
-    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
-    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
-    \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
-    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
-    \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
-    \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
-    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
-    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
-    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
-    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
-    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
-    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
-    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
-    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
-    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
-    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int t;\n\
-    \    read(t);\n    while (t--) {\n        int x, y, p;\n        read(x, y, p);\n\
-    \        put(kyopro::mod_log(x, y, p));\n    }\n}\n"
+    };  // namespace kyopro\n\n/**\n * @docs docs/math/mod_log.md\n*/\n#line 4 \"\
+    test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\n\nint main() {\n    int\
+    \ t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y, p;\n      \
+    \  scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%d\\n\", kyopro::mod_log(x,\
+    \ y, p));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\
-    \n#include <iostream>\n#include \"../../../src/math/mod_log.hpp\"\n#include \"\
-    ../../../src/stream.hpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\n\
-    int main() {\n    int t;\n    read(t);\n    while (t--) {\n        int x, y, p;\n\
-    \        read(x, y, p);\n        put(kyopro::mod_log(x, y, p));\n    }\n}"
+    \n#include <iostream>\n#include \"../../../src/math/mod_log.hpp\"\n\nint main()\
+    \ {\n    int t;\n    scanf(\"%d\", &t);\n    while (t--) {\n        int x, y,\
+    \ p;\n        scanf(\"%d%d%d\", &x, &y, &p);\n        printf(\"%d\\n\", kyopro::mod_log(x,\
+    \ y, p));\n    }\n}"
   dependsOn:
   - src/math/mod_log.hpp
   - src/data-structure/hash_map.hpp
@@ -296,11 +266,10 @@ data:
   - src/internal/type_traits.hpp
   - src/math/gcd.hpp
   - src/math/mod_pow.hpp
-  - src/stream.hpp
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 03:35:23+09:00'
+  timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp

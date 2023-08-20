@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   - icon: ':heavy_check_mark:'
@@ -88,14 +88,16 @@ data:
     \    continue;\n        }\n        int k = 1;\n        while (i + k < (int)str.size()\
     \ && k + res[k] < j) {\n            res[i + k] = res[k];\n            ++k;\n \
     \       }\n        i += k, j -= k;\n    }\n    return res;\n}\n};  // namespace\
-    \ kyopro\n#line 7 \"test/yosupo_judge/string/Z_algorithm.test.cpp\"\n\nusing namespace\
-    \ std;\nusing namespace kyopro;\n\nint main() {\n    std::string s;\n    read(s);\n\
-    \    vector res = kyopro::Z(s);\n    for (auto r : res) kyopro::put(r);\n}\n"
+    \ kyopro\n#line 7 \"test/yosupo_judge/string/Z_algorithm.test.cpp\"\n\nint main()\
+    \ {\n    std::string s;\n    {\n        char c;\n        while (!isspace(c = getchar_unlocked()))\
+    \ s += c;\n    }\n    auto res = kyopro::Z(s);\n    for (auto r : res) {\n   \
+    \     kyopro::put(r);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#include\
     \ <iostream>\n#include <string>\n\n#include \"../../../src/stream.hpp\"\n#include\
-    \ \"../../../src/string/Z.hpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\
-    \nint main() {\n    std::string s;\n    read(s);\n    vector res = kyopro::Z(s);\n\
-    \    for (auto r : res) kyopro::put(r);\n}"
+    \ \"../../../src/string/Z.hpp\"\n\nint main() {\n    std::string s;\n    {\n \
+    \       char c;\n        while (!isspace(c = getchar_unlocked())) s += c;\n  \
+    \  }\n    auto res = kyopro::Z(s);\n    for (auto r : res) {\n        kyopro::put(r);\n\
+    \    }\n}"
   dependsOn:
   - src/stream.hpp
   - src/internal/type_traits.hpp
@@ -103,7 +105,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/string/Z_algorithm.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 03:35:23+09:00'
+  timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/string/Z_algorithm.test.cpp
