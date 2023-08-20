@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
   - icon: ':heavy_check_mark:'
@@ -20,10 +20,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\phi$ \u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   _extendedVerifiedWith:
@@ -33,21 +33,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
     title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/dynamic_modint.md
     document_title: "\u52D5\u7684modint"
@@ -161,38 +161,38 @@ data:
     \       return res;\n    }\n    constexpr mint inv() const { return pow(mod()\
     \ - 2); }\n};\n};  // namespace kyopro\ntemplate <int id>\ntypename kyopro::barrett_modint<id>::br\
     \ kyopro::barrett_modint<id>::brt;\n\nnamespace kyopro {\ntemplate <typename T,\
-    \ int id = -1>\nclass montgomery_modint : internal::modint_base {\n    using LargeT\
+    \ int id = -1>\nclass dynamic_modint : internal::modint_base {\n    using LargeT\
     \ = internal::double_size_uint_t<T>;\n    static T _mod;\n    static internal::Montgomery<T>\
     \ mr;\n\npublic:\n    static void set_mod(T mod_) {\n        mr.set_mod(mod_);\n\
     \        _mod = mod_;\n    }\n\n    static T mod() { return _mod; }\n\nprivate:\n\
-    \    T v;\n\npublic:\n    montgomery_modint(T v_ = 0) {\n        assert(_mod);\n\
+    \    T v;\n\npublic:\n    dynamic_modint(T v_ = 0) {\n        assert(_mod);\n\
     \        v = mr.generate(v_);\n    }\n    T val() const { return mr.reduce(v);\
-    \ }\n\n    using mint = montgomery_modint<T, id>;\n    mint& operator+=(const\
-    \ mint& r) {\n        v += r.v;\n        if (v >= mr.get_mod()) {\n          \
-    \  v -= mr.get_mod();\n        }\n\n        return (*this);\n    }\n\n    mint&\
-    \ operator-=(const mint& r) {\n        v += mr.get_mod() - r.v;\n        if (v\
-    \ >= mr.get_mod) {\n            v -= mr.get_mod();\n        }\n\n        return\
-    \ (*this);\n    }\n\n    mint& operator*=(const mint& r) {\n        v = mr.mul(v,\
-    \ r.v);\n        return (*this);\n    }\n\n    mint operator+(const mint& r) {\
-    \ return mint(*this) += r; }\n    mint operator-(const mint& r) { return mint(*this)\
-    \ -= r; }\n    mint operator*(const mint& r) { return mint(*this) *= r; }\n\n\
-    \    mint& operator=(const T& v_) {\n        (*this) = mint(v_);\n        return\
-    \ (*this);\n    }\n\n    friend std::ostream& operator<<(std::ostream& os, const\
-    \ mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    friend\
-    \ std::istream& operator>>(std::istream& is, mint& mt) {\n        T v_;\n    \
-    \    is >> v_;\n        mt = v_;\n        return is;\n    }\n    template <typename\
-    \ P> mint pow(P e) const {\n        assert(e >= 0);\n        mint res(1), base(*this);\n\
-    \n        while (e) {\n            if (e & 1) {\n                res *= base;\n\
-    \            }\n            e >>= 1;\n            base *= base;\n        }\n \
-    \       return res;\n    }\n    mint inv() const { return pow(mod() - 2); }\n\n\
-    \    mint& operator/=(const mint& r) { return (*this) *= r.inv(); }\n    mint\
-    \ operator/(const mint& r) const { return mint(*this) *= r.inv(); }\n    mint&\
-    \ operator/=(T r) { return (*this) /= mint(r); }\n    friend mint operator/(const\
-    \ mint& l, T r) { return mint(l) /= r; }\n    friend mint operator/(T l, const\
-    \ mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate <typename\
-    \ T, int id> T kyopro::montgomery_modint<T, id>::_mod;\ntemplate <typename T,\
-    \ int id>\nkyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;\n\
-    \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */\n"
+    \ }\n\n    using mint = dynamic_modint<T, id>;\n    mint& operator+=(const mint&\
+    \ r) {\n        v += r.v;\n        if (v >= mr.get_mod()) {\n            v -=\
+    \ mr.get_mod();\n        }\n\n        return (*this);\n    }\n\n    mint& operator-=(const\
+    \ mint& r) {\n        v += mr.get_mod() - r.v;\n        if (v >= mr.get_mod) {\n\
+    \            v -= mr.get_mod();\n        }\n\n        return (*this);\n    }\n\
+    \n    mint& operator*=(const mint& r) {\n        v = mr.mul(v, r.v);\n       \
+    \ return (*this);\n    }\n\n    mint operator+(const mint& r) { return mint(*this)\
+    \ += r; }\n    mint operator-(const mint& r) { return mint(*this) -= r; }\n  \
+    \  mint operator*(const mint& r) { return mint(*this) *= r; }\n\n    mint& operator=(const\
+    \ T& v_) {\n        (*this) = mint(v_);\n        return (*this);\n    }\n\n  \
+    \  friend std::ostream& operator<<(std::ostream& os, const mint& mt) {\n     \
+    \   os << mt.val();\n        return os;\n    }\n    friend std::istream& operator>>(std::istream&\
+    \ is, mint& mt) {\n        T v_;\n        is >> v_;\n        mt = v_;\n      \
+    \  return is;\n    }\n    template <typename P> mint pow(P e) const {\n      \
+    \  assert(e >= 0);\n        mint res(1), base(*this);\n\n        while (e) {\n\
+    \            if (e & 1) {\n                res *= base;\n            }\n     \
+    \       e >>= 1;\n            base *= base;\n        }\n        return res;\n\
+    \    }\n    mint inv() const { return pow(mod() - 2); }\n\n    mint& operator/=(const\
+    \ mint& r) { return (*this) *= r.inv(); }\n    mint operator/(const mint& r) const\
+    \ { return mint(*this) *= r.inv(); }\n    mint& operator/=(T r) { return (*this)\
+    \ /= mint(r); }\n    friend mint operator/(const mint& l, T r) { return mint(l)\
+    \ /= r; }\n    friend mint operator/(T l, const mint& r) { return mint(l) /= r;\
+    \ }\n};\n};  // namespace kyopro\ntemplate <typename T, int id> T kyopro::dynamic_modint<T,\
+    \ id>::_mod;\ntemplate <typename T, int id>\nkyopro::internal::Montgomery<T> kyopro::dynamic_modint<T,\
+    \ id>::mr;\n\n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n\
+    \ */\n"
   code: "#pragma once\n#include <cassert>\n#include <iostream>\n#include \"../internal/barrett.hpp\"\
     \n#include \"../internal/montgomery.hpp\"\nnamespace kyopro {\ntemplate <int id\
     \ = -1> class barrett_modint : internal::modint_base {\n    using mint = barrett_modint<id>;\n\
@@ -244,38 +244,38 @@ data:
     \       return res;\n    }\n    constexpr mint inv() const { return pow(mod()\
     \ - 2); }\n};\n};  // namespace kyopro\ntemplate <int id>\ntypename kyopro::barrett_modint<id>::br\
     \ kyopro::barrett_modint<id>::brt;\n\nnamespace kyopro {\ntemplate <typename T,\
-    \ int id = -1>\nclass montgomery_modint : internal::modint_base {\n    using LargeT\
+    \ int id = -1>\nclass dynamic_modint : internal::modint_base {\n    using LargeT\
     \ = internal::double_size_uint_t<T>;\n    static T _mod;\n    static internal::Montgomery<T>\
     \ mr;\n\npublic:\n    static void set_mod(T mod_) {\n        mr.set_mod(mod_);\n\
     \        _mod = mod_;\n    }\n\n    static T mod() { return _mod; }\n\nprivate:\n\
-    \    T v;\n\npublic:\n    montgomery_modint(T v_ = 0) {\n        assert(_mod);\n\
+    \    T v;\n\npublic:\n    dynamic_modint(T v_ = 0) {\n        assert(_mod);\n\
     \        v = mr.generate(v_);\n    }\n    T val() const { return mr.reduce(v);\
-    \ }\n\n    using mint = montgomery_modint<T, id>;\n    mint& operator+=(const\
-    \ mint& r) {\n        v += r.v;\n        if (v >= mr.get_mod()) {\n          \
-    \  v -= mr.get_mod();\n        }\n\n        return (*this);\n    }\n\n    mint&\
-    \ operator-=(const mint& r) {\n        v += mr.get_mod() - r.v;\n        if (v\
-    \ >= mr.get_mod) {\n            v -= mr.get_mod();\n        }\n\n        return\
-    \ (*this);\n    }\n\n    mint& operator*=(const mint& r) {\n        v = mr.mul(v,\
-    \ r.v);\n        return (*this);\n    }\n\n    mint operator+(const mint& r) {\
-    \ return mint(*this) += r; }\n    mint operator-(const mint& r) { return mint(*this)\
-    \ -= r; }\n    mint operator*(const mint& r) { return mint(*this) *= r; }\n\n\
-    \    mint& operator=(const T& v_) {\n        (*this) = mint(v_);\n        return\
-    \ (*this);\n    }\n\n    friend std::ostream& operator<<(std::ostream& os, const\
-    \ mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    friend\
-    \ std::istream& operator>>(std::istream& is, mint& mt) {\n        T v_;\n    \
-    \    is >> v_;\n        mt = v_;\n        return is;\n    }\n    template <typename\
-    \ P> mint pow(P e) const {\n        assert(e >= 0);\n        mint res(1), base(*this);\n\
-    \n        while (e) {\n            if (e & 1) {\n                res *= base;\n\
-    \            }\n            e >>= 1;\n            base *= base;\n        }\n \
-    \       return res;\n    }\n    mint inv() const { return pow(mod() - 2); }\n\n\
-    \    mint& operator/=(const mint& r) { return (*this) *= r.inv(); }\n    mint\
-    \ operator/(const mint& r) const { return mint(*this) *= r.inv(); }\n    mint&\
-    \ operator/=(T r) { return (*this) /= mint(r); }\n    friend mint operator/(const\
-    \ mint& l, T r) { return mint(l) /= r; }\n    friend mint operator/(T l, const\
-    \ mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate <typename\
-    \ T, int id> T kyopro::montgomery_modint<T, id>::_mod;\ntemplate <typename T,\
-    \ int id>\nkyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;\n\
-    \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */"
+    \ }\n\n    using mint = dynamic_modint<T, id>;\n    mint& operator+=(const mint&\
+    \ r) {\n        v += r.v;\n        if (v >= mr.get_mod()) {\n            v -=\
+    \ mr.get_mod();\n        }\n\n        return (*this);\n    }\n\n    mint& operator-=(const\
+    \ mint& r) {\n        v += mr.get_mod() - r.v;\n        if (v >= mr.get_mod) {\n\
+    \            v -= mr.get_mod();\n        }\n\n        return (*this);\n    }\n\
+    \n    mint& operator*=(const mint& r) {\n        v = mr.mul(v, r.v);\n       \
+    \ return (*this);\n    }\n\n    mint operator+(const mint& r) { return mint(*this)\
+    \ += r; }\n    mint operator-(const mint& r) { return mint(*this) -= r; }\n  \
+    \  mint operator*(const mint& r) { return mint(*this) *= r; }\n\n    mint& operator=(const\
+    \ T& v_) {\n        (*this) = mint(v_);\n        return (*this);\n    }\n\n  \
+    \  friend std::ostream& operator<<(std::ostream& os, const mint& mt) {\n     \
+    \   os << mt.val();\n        return os;\n    }\n    friend std::istream& operator>>(std::istream&\
+    \ is, mint& mt) {\n        T v_;\n        is >> v_;\n        mt = v_;\n      \
+    \  return is;\n    }\n    template <typename P> mint pow(P e) const {\n      \
+    \  assert(e >= 0);\n        mint res(1), base(*this);\n\n        while (e) {\n\
+    \            if (e & 1) {\n                res *= base;\n            }\n     \
+    \       e >>= 1;\n            base *= base;\n        }\n        return res;\n\
+    \    }\n    mint inv() const { return pow(mod() - 2); }\n\n    mint& operator/=(const\
+    \ mint& r) { return (*this) *= r.inv(); }\n    mint operator/(const mint& r) const\
+    \ { return mint(*this) *= r.inv(); }\n    mint& operator/=(T r) { return (*this)\
+    \ /= mint(r); }\n    friend mint operator/(const mint& l, T r) { return mint(l)\
+    \ /= r; }\n    friend mint operator/(T l, const mint& r) { return mint(l) /= r;\
+    \ }\n};\n};  // namespace kyopro\ntemplate <typename T, int id> T kyopro::dynamic_modint<T,\
+    \ id>::_mod;\ntemplate <typename T, int id>\nkyopro::internal::Montgomery<T> kyopro::dynamic_modint<T,\
+    \ id>::mr;\n\n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n\
+    \ */"
   dependsOn:
   - src/internal/barrett.hpp
   - src/internal/montgomery.hpp
@@ -288,8 +288,8 @@ data:
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
   - src/math/mod_log.hpp
-  timestamp: '2023-08-20 22:50:34+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-07-30 13:18:23+00:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp

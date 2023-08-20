@@ -4,16 +4,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/dual_segtree.hpp
     title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -93,36 +93,81 @@ data:
     \        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
     \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
     \ kyopro\n#line 6 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate\
-    \ <__uint32_t _mod> class modint : internal::modint_base {\nprivate:\n    using\
-    \ mint = modint<_mod>;\n    using i32 = __int32_t;\n    using u32 = __uint32_t;\n\
-    \    using i64 = __int64_t;\n    using u64 = __uint64_t;\n\n    u32 v;\n    constexpr\
-    \ u32 normalize(i64 v_) const {\n        v_ %= _mod;\n        if (v_ < 0) {\n\
-    \            v_ += _mod;\n        }\n        return v_;\n    }\n\npublic:\n  \
-    \  static constexpr u32 mod() { return _mod; }\n    constexpr modint() : v(0)\
-    \ {}\n    constexpr modint(i64 v_) : v(normalize(v_)) {}\n\n    static mint raw(u32\
-    \ a) {\n        mint m;\n        m.v = a;\n        return m;\n    }\n    constexpr\
-    \ u32 val() const { return v; }\n    constexpr mint& operator+=(const mint& rhs)\
-    \ {\n        v += rhs.val();\n        if (v >= _mod) {\n            v -= _mod;\n\
-    \        }\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
-    \ mint& rhs) {\n        v += _mod - rhs.val();\n        if (v >= _mod) {\n   \
-    \         v -= _mod;\n        }\n        return (*this);\n    }\n    constexpr\
-    \ mint& operator*=(const mint& rhs) {\n        v = (u64)v * rhs.val() % _mod;\n\
-    \        return (*this);\n    }\n\n    constexpr mint operator+(const mint& r)\
-    \ const { return mint(*this) += r; }\n    constexpr mint operator-(const mint&\
-    \ r) const { return mint(*this) -= r; }\n    constexpr mint operator*(const mint&\
-    \ r) const { return mint(*this) *= r; }\n\n    constexpr mint& operator+=(i64\
+    \ <__uint64_t _mod> class static_modint : internal::modint_base {\nprivate:\n\
+    \    using mint = static_modint<_mod>;\n    using i64 = long long;\n    using\
+    \ u64 = unsigned long long;\n    using u128 = __uint128_t;\n    using i128 = __int128_t;\n\
+    \n    u64 v;\n    constexpr u64 normalize(i64 v_) const {\n        v_ %= _mod;\n\
+    \        if (v_ < 0) {\n            v_ += _mod;\n        }\n        return v_;\n\
+    \    }\n\npublic:\n    static constexpr u64 mod() { return _mod; }\n    constexpr\
+    \ static_modint() : v(0) {}\n    constexpr static_modint(i64 v_) : v(normalize(v_))\
+    \ {}\n\n    static mint raw(u64 a) {\n        mint m;\n        m.v = a;\n    \
+    \    return m;\n    }\n    constexpr u64 val() const { return v; }\n    constexpr\
+    \ mint& operator+=(const mint& rhs) {\n        v += rhs.val();\n        if (v\
+    \ >= _mod) {\n            v -= _mod;\n        }\n        return (*this);\n   \
+    \ }\n    constexpr mint& operator-=(const mint& rhs) {\n        v += _mod - rhs.val();\n\
+    \        if (v >= _mod) {\n            v -= _mod;\n        }\n        return (*this);\n\
+    \    }\n    constexpr mint& operator*=(const mint& rhs) {\n        v = (u128)v\
+    \ * rhs.val() % _mod;\n        return (*this);\n    }\n\n    constexpr mint operator+(const\
+    \ mint& r) const { return mint(*this) += r; }\n    constexpr mint operator-(const\
+    \ mint& r) const { return mint(*this) -= r; }\n    constexpr mint operator*(const\
+    \ mint& r) const { return mint(*this) *= r; }\n\n    constexpr mint& operator+=(i64\
     \ rhs) {\n        (*this) += mint(rhs);\n        return (*this);\n    }\n    constexpr\
     \ mint& operator-=(i64 rhs) {\n        (*this) -= mint(rhs);\n        return (*this);\n\
     \    }\n    constexpr mint& operator*=(i64 rhs) {\n        (*this) *= mint(rhs);\n\
     \        return (*this);\n    }\n    constexpr friend mint operator+(i64 l, const\
     \ mint& r) {\n        return mint(l) += r;\n    }\n    constexpr friend mint operator-(i64\
     \ l, const mint& r) {\n        return mint(l) -= r;\n    }\n    constexpr friend\
-    \ mint operator*(i64 l, const mint& r) {\n        return mint(l) *= r;\n    }\n\
-    \n    constexpr mint operator+(i64 r) { return mint(*this) += r; }\n    constexpr\
-    \ mint operator-(i64 r) { return mint(*this) -= r; }\n    constexpr mint operator*(i64\
-    \ r) { return mint(*this) *= r; }\n\n    constexpr mint& operator=(i64 r) { return\
-    \ (*this) = mint(r); }\n\n    constexpr bool operator==(const mint& r) const {\n\
-    \        return (*this).val() == r.val();\n    }\n    template <typename T> constexpr\
+    \ mint operator*(const i64& l, const mint& r) {\n        return mint(l) *= r;\n\
+    \    }\n\n    constexpr mint operator+(i64 r) { return mint(*this) += r; }\n \
+    \   constexpr mint operator-(i64 r) { return mint(*this) -= r; }\n    constexpr\
+    \ mint operator*(i64 r) { return mint(*this) *= r; }\n\n    constexpr mint& operator=(i64\
+    \ r) { return (*this) = mint(r); }\n\n    constexpr bool operator==(const mint&\
+    \ r) const {\n        return (*this).val() == r.val();\n    }\n\n    template\
+    \ <typename T> constexpr mint pow(T e) const {\n        mint ans(1), base(*this);\n\
+    \        while (e) {\n            if (e & 1) {\n                ans *= base;\n\
+    \            }\n            base *= base;\n            e >>= 1;\n        }\n \
+    \       return ans;\n    }\n    constexpr mint inv() const {\n        long long\
+    \ x, y;\n        auto d = ext_gcd((long long)_mod, (long long)v, x, y);\n    \
+    \    assert(d == 1);\n        return mint(y);\n    }\n\n    constexpr mint& operator/=(const\
+    \ mint& r) { return (*this) *= r.inv(); }\n    constexpr mint inv(const mint&\
+    \ r) const { return mint(*this) *= r.inv(); }\n    constexpr friend mint operator/(const\
+    \ mint& l, i64 r) {\n        return mint(l) /= mint(r);\n    }\n    constexpr\
+    \ friend mint operator/(i64 l, const mint& r) {\n        return mint(l) /= mint(r);\n\
+    \    }\n\n    // stream\n    constexpr friend std::ostream& operator<<(std::ostream&\
+    \ os,\n                                              const mint& mt) {\n     \
+    \   os << mt.val();\n        return os;\n    }\n    constexpr friend std::istream&\
+    \ operator>>(std::istream& is, mint& mt) {\n        i64 v_;\n        is >> v_;\n\
+    \        mt = v_;\n        return is;\n    }\n};\ntemplate <__uint32_t _mod> class\
+    \ static_modint32 : internal::modint_base {\nprivate:\n    using mint = static_modint32<_mod>;\n\
+    \    using i32 = __int32_t;\n    using u32 = __uint32_t;\n    using i64 = __int64_t;\n\
+    \    using u64 = __uint64_t;\n\n    u32 v;\n    constexpr u32 normalize(i64 v_)\
+    \ const {\n        v_ %= _mod;\n        if (v_ < 0) {\n            v_ += _mod;\n\
+    \        }\n        return v_;\n    }\n\npublic:\n    static constexpr u32 mod()\
+    \ { return _mod; }\n    constexpr static_modint32() : v(0) {}\n    constexpr static_modint32(i64\
+    \ v_) : v(normalize(v_)) {}\n\n    static mint raw(u32 a) {\n        mint m;\n\
+    \        m.v = a;\n        return m;\n    }\n    constexpr u32 val() const { return\
+    \ v; }\n    constexpr mint& operator+=(const mint& rhs) {\n        v += rhs.val();\n\
+    \        if (v >= _mod) {\n            v -= _mod;\n        }\n        return (*this);\n\
+    \    }\n    constexpr mint& operator-=(const mint& rhs) {\n        v += _mod -\
+    \ rhs.val();\n        if (v >= _mod) {\n            v -= _mod;\n        }\n  \
+    \      return (*this);\n    }\n    constexpr mint& operator*=(const mint& rhs)\
+    \ {\n        v = (u64)v * rhs.val() % _mod;\n        return (*this);\n    }\n\n\
+    \    constexpr mint operator+(const mint& r) const { return mint(*this) += r;\
+    \ }\n    constexpr mint operator-(const mint& r) const { return mint(*this) -=\
+    \ r; }\n    constexpr mint operator*(const mint& r) const { return mint(*this)\
+    \ *= r; }\n\n    constexpr mint& operator+=(i64 rhs) {\n        (*this) += mint(rhs);\n\
+    \        return (*this);\n    }\n    constexpr mint& operator-=(i64 rhs) {\n \
+    \       (*this) -= mint(rhs);\n        return (*this);\n    }\n    constexpr mint&\
+    \ operator*=(i64 rhs) {\n        (*this) *= mint(rhs);\n        return (*this);\n\
+    \    }\n    constexpr friend mint operator+(i64 l, const mint& r) {\n        return\
+    \ mint(l) += r;\n    }\n    constexpr friend mint operator-(i64 l, const mint&\
+    \ r) {\n        return mint(l) -= r;\n    }\n    constexpr friend mint operator*(i64\
+    \ l, const mint& r) {\n        return mint(l) *= r;\n    }\n\n    constexpr mint\
+    \ operator+(i64 r) { return mint(*this) += r; }\n    constexpr mint operator-(i64\
+    \ r) { return mint(*this) -= r; }\n    constexpr mint operator*(i64 r) { return\
+    \ mint(*this) *= r; }\n\n    constexpr mint& operator=(i64 r) { return (*this)\
+    \ = mint(r); }\n\n    constexpr bool operator==(const mint& r) const {\n     \
+    \   return (*this).val() == r.val();\n    }\n    template <typename T> constexpr\
     \ mint pow(T e) const {\n        mint ans(1), base(*this);\n        while (e)\
     \ {\n            if (e & 1) {\n                ans *= base;\n            }\n \
     \           base *= base;\n            e >>= 1;\n        }\n        return ans;\n\
@@ -167,8 +212,8 @@ data:
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\
-    \n\nusing mint = kyopro::modint<998244353>;\nusing Affine = std::pair<mint, mint>;\n\
-    inline Affine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
+    \n\nusing mint = kyopro::static_modint32<998244353>;\nusing Affine = std::pair<mint,\
+    \ mint>;\ninline Affine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
     \    auto c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\n\
     inline Affine e() { return Affine(1, 0); }\nint main() {\n    int n, q;\n    kyopro::read(n,\
     \ q);\n    kyopro::dual_segtree<Affine, op, e> sg(n);\n    std::vector<mint> a(n);\n\
@@ -181,7 +226,7 @@ data:
     \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
     \n#include \"../../../src/data-structure/dual_segtree.hpp\"\n#include \"../../../src/math/static_modint.hpp\"\
-    \n#include \"../../../src/stream.hpp\"\n\nusing mint = kyopro::modint<998244353>;\n\
+    \n#include \"../../../src/stream.hpp\"\n\nusing mint = kyopro::static_modint32<998244353>;\n\
     using Affine = std::pair<mint, mint>;\ninline Affine op(Affine g, Affine f) {\n\
     \    auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n  \
     \  return Affine(a * c, a * d + b);\n}\ninline Affine e() { return Affine(1, 0);\
@@ -202,7 +247,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 22:50:34+09:00'
+  timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
