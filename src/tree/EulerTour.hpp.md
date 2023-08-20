@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/sparse_table.hpp
     title: SparseTable
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/tree/EulerTour.md
     document_title: Euler Tour
@@ -65,9 +65,9 @@ data:
     \     };\n        dfs(dfs, r, -1);\n        for (int i = 0; i < (int)tour.size();\
     \ i++) {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n        }\n    \
     \    rmq.build();\n    }\n\n    std::pair<int, int> idx(int v) const {\n     \
-    \   assert(0 <= v && v < n);\n        return std::pair(in[v], out[v]);\n    }\n\
-    \    int lca(int v, int u) const {\n        assert(0 <= v && v < n);\n       \
-    \ assert(0 <= u && u < n);\n        if (in[v] > in[u] + 1) {\n            std::swap(u,\
+    \   assert(0 <= v && v < n);\n        return {in[v], out[v]};\n    }\n    int\
+    \ lca(int v, int u) const {\n        assert(0 <= v && v < n);\n        assert(0\
+    \ <= u && u < n);\n        if (in[v] > in[u] + 1) {\n            std::swap(u,\
     \ v);\n        }\n        return rmq.fold(in[v], in[u] + 1).second;\n    }\n\n\
     \    int dist(int v, int u) const {\n        assert(0 <= v && v < n);\n      \
     \  assert(0 <= u && u < n);\n        int p = lca(v, u);\n        return depth[v]\
@@ -97,9 +97,9 @@ data:
     \     };\n        dfs(dfs, r, -1);\n        for (int i = 0; i < (int)tour.size();\
     \ i++) {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n        }\n    \
     \    rmq.build();\n    }\n\n    std::pair<int, int> idx(int v) const {\n     \
-    \   assert(0 <= v && v < n);\n        return std::pair(in[v], out[v]);\n    }\n\
-    \    int lca(int v, int u) const {\n        assert(0 <= v && v < n);\n       \
-    \ assert(0 <= u && u < n);\n        if (in[v] > in[u] + 1) {\n            std::swap(u,\
+    \   assert(0 <= v && v < n);\n        return {in[v], out[v]};\n    }\n    int\
+    \ lca(int v, int u) const {\n        assert(0 <= v && v < n);\n        assert(0\
+    \ <= u && u < n);\n        if (in[v] > in[u] + 1) {\n            std::swap(u,\
     \ v);\n        }\n        return rmq.fold(in[v], in[u] + 1).second;\n    }\n\n\
     \    int dist(int v, int u) const {\n        assert(0 <= v && v < n);\n      \
     \  assert(0 <= u && u < n);\n        int p = lca(v, u);\n        return depth[v]\
@@ -112,8 +112,8 @@ data:
   isVerificationFile: false
   path: src/tree/EulerTour.hpp
   requiredBy: []
-  timestamp: '2023-08-20 06:51:47+00:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-08-18 21:22:28+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
