@@ -117,26 +117,27 @@ data:
     \ }\n    }\n\n    T sum(int p) const {\n        T s = 0;\n\n        for (int x\
     \ = p; x > 0; x -= x & -x) {\n            s += bit[x];\n        }\n        return\
     \ s;\n    }\n\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n\n \
-    \   int lower_bound(T w) const {\n        if (w <= 0) return 0;\n\n        int\
-    \ x = 0;\n        int k = 1;\n        while (k < n) k <<= 1;\n        for (; k\
-    \ > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] < w) {\n         \
-    \       w -= bit[x + k];\n                x += k;\n            }\n        }\n\n\
-    \        return x + 1;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
-    \ */\n#line 6 \"test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp\"\
-    \nint main() {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::Mo mo(q);\n\
-    \    std::vector<int> a(n);\n    for (auto& aa : a) {\n        kyopro::read(aa);\n\
-    \    }\n    std::vector<int> k(q);\n    for (int i = 0; i < q; i++) {\n      \
-    \  int l, r;\n        scanf(\"%d%d%d\", &l, &r, &k[i]);\n        k[i]++;\n   \
-    \     mo.add(l, r);\n    }\n    std::vector<int> pressed = a;\n    auto tmp =\
-    \ a;\n    {\n        std::sort(tmp.begin(), tmp.end());\n        tmp.erase(std::unique(tmp.begin(),\
-    \ tmp.end()), tmp.end());\n        for (auto& ai : pressed) {\n            ai\
-    \ = lower_bound(tmp.begin(), tmp.end(), ai) - tmp.begin();\n        }\n    }\n\
-    \n    int sz = tmp.size();\n    kyopro::BIT<int> st(sz);\n    auto add = [&](int\
-    \ x) -> void { st.add(pressed[x], 1); };\n    auto del = [&](int x) -> void {\
-    \ st.add(pressed[x], -1); };\n    std::vector<int> ans(q);\n    auto out = [&](int\
-    \ x) -> void {\n        int ok = st.lower_bound(k[x]);\n        ans[x] = tmp[ok\
-    \ - 1];\n    };\n\n    mo.build(add, del, out);\n    for (auto r : ans) {\n  \
-    \      kyopro::put(r);\n    }\n}\n"
+    \   T operator()(int p) { return sum(p + 1) - sum(p); }\n    void update(int p,\
+    \ T v) { add(p, -(*this)(p) + v); }\n    int lower_bound(T w) const {\n      \
+    \  if (w <= 0) return 0;\n\n        int x = 0;\n        int k = 1;\n        while\
+    \ (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n            if (x + k <=\
+    \ n && bit[x + k] < w) {\n                w -= bit[x + k];\n                x\
+    \ += k;\n            }\n        }\n\n        return x + 1;\n    }\n};\n};  //\
+    \ namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n */\n#line 6 \"\
+    test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp\"\nint main()\
+    \ {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::Mo mo(q);\n    std::vector<int>\
+    \ a(n);\n    for (auto& aa : a) {\n        kyopro::read(aa);\n    }\n    std::vector<int>\
+    \ k(q);\n    for (int i = 0; i < q; i++) {\n        int l, r;\n        scanf(\"\
+    %d%d%d\", &l, &r, &k[i]);\n        k[i]++;\n        mo.add(l, r);\n    }\n   \
+    \ std::vector<int> pressed = a;\n    auto tmp = a;\n    {\n        std::sort(tmp.begin(),\
+    \ tmp.end());\n        tmp.erase(std::unique(tmp.begin(), tmp.end()), tmp.end());\n\
+    \        for (auto& ai : pressed) {\n            ai = lower_bound(tmp.begin(),\
+    \ tmp.end(), ai) - tmp.begin();\n        }\n    }\n\n    int sz = tmp.size();\n\
+    \    kyopro::BIT<int> st(sz);\n    auto add = [&](int x) -> void { st.add(pressed[x],\
+    \ 1); };\n    auto del = [&](int x) -> void { st.add(pressed[x], -1); };\n   \
+    \ std::vector<int> ans(q);\n    auto out = [&](int x) -> void {\n        int ok\
+    \ = st.lower_bound(k[x]);\n        ans[x] = tmp[ok - 1];\n    };\n\n    mo.build(add,\
+    \ del, out);\n    for (auto r : ans) {\n        kyopro::put(r);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n\
     #include \"../../../src/stream.hpp\"\n#include \"../../../src/algorithm/mo.hpp\"\
     \n#include \"../../../src/data-structure/BIT.hpp\"\nint main() {\n    int n, q;\n\
@@ -161,7 +162,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-20 03:10:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp

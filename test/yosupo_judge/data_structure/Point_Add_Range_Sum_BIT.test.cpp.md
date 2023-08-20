@@ -24,12 +24,14 @@ data:
     \  bit[x] += w;\n        }\n    }\n\n    T sum(int p) const {\n        T s = 0;\n\
     \n        for (int x = p; x > 0; x -= x & -x) {\n            s += bit[x];\n  \
     \      }\n        return s;\n    }\n\n    T sum(int l, int r) const { return sum(r)\
-    \ - sum(l); }\n\n    int lower_bound(T w) const {\n        if (w <= 0) return\
-    \ 0;\n\n        int x = 0;\n        int k = 1;\n        while (k < n) k <<= 1;\n\
-    \        for (; k > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] <\
-    \ w) {\n                w -= bit[x + k];\n                x += k;\n          \
-    \  }\n        }\n\n        return x + 1;\n    }\n};\n};  // namespace kyopro\n\
-    \n/**\n * @docs docs/data-structure/BIT.md\n */\n#line 4 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
+    \ - sum(l); }\n\n    T operator()(int p) { return sum(p + 1) - sum(p); }\n   \
+    \ void update(int p, T v) { add(p, -(*this)(p) + v); }\n    int lower_bound(T\
+    \ w) const {\n        if (w <= 0) return 0;\n\n        int x = 0;\n        int\
+    \ k = 1;\n        while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n \
+    \           if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x +\
+    \ k];\n                x += k;\n            }\n        }\n\n        return x +\
+    \ 1;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
+    \ */\n#line 4 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
     \nint main() {\n    int n, q;\n    scanf(\"%d%d\", &n, &q);\n    kyopro::BIT<long\
     \ long> seg(n);\n    for (int i = 0; i < n; i++) {\n        int a;\n        scanf(\"\
     %d\", &a);\n        seg.add(i, a);\n    }\n\n    while (q--) {\n        int t;\n\
@@ -51,7 +53,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-08-20 03:10:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp

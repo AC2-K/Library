@@ -36,12 +36,14 @@ data:
     \  bit[x] += w;\n        }\n    }\n\n    T sum(int p) const {\n        T s = 0;\n\
     \n        for (int x = p; x > 0; x -= x & -x) {\n            s += bit[x];\n  \
     \      }\n        return s;\n    }\n\n    T sum(int l, int r) const { return sum(r)\
-    \ - sum(l); }\n\n    int lower_bound(T w) const {\n        if (w <= 0) return\
-    \ 0;\n\n        int x = 0;\n        int k = 1;\n        while (k < n) k <<= 1;\n\
-    \        for (; k > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] <\
-    \ w) {\n                w -= bit[x + k];\n                x += k;\n          \
-    \  }\n        }\n\n        return x + 1;\n    }\n};\n};  // namespace kyopro\n\
-    \n/**\n * @docs docs/data-structure/BIT.md\n */\n"
+    \ - sum(l); }\n\n    T operator()(int p) { return sum(p + 1) - sum(p); }\n   \
+    \ void update(int p, T v) { add(p, -(*this)(p) + v); }\n    int lower_bound(T\
+    \ w) const {\n        if (w <= 0) return 0;\n\n        int x = 0;\n        int\
+    \ k = 1;\n        while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n \
+    \           if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x +\
+    \ k];\n                x += k;\n            }\n        }\n\n        return x +\
+    \ 1;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
+    \ */\n"
   code: "#pragma once\n#include <vector>\nnamespace kyopro {\n/**\n * @brief Binary\
     \ Index Tree\n */\ntemplate <typename T> class BIT {\n    std::vector<T> bit;\n\
     \    int n;\n\npublic:\n    explicit BIT() {}\n    explicit BIT(int n) : n(n),\
@@ -49,26 +51,27 @@ data:
     \ x = p; x <= n; x += x & -x) {\n            bit[x] += w;\n        }\n    }\n\n\
     \    T sum(int p) const {\n        T s = 0;\n\n        for (int x = p; x > 0;\
     \ x -= x & -x) {\n            s += bit[x];\n        }\n        return s;\n   \
-    \ }\n\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n\n    int lower_bound(T\
-    \ w) const {\n        if (w <= 0) return 0;\n\n        int x = 0;\n        int\
-    \ k = 1;\n        while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n \
-    \           if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x +\
-    \ k];\n                x += k;\n            }\n        }\n\n        return x +\
-    \ 1;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
-    \ */"
+    \ }\n\n    T sum(int l, int r) const { return sum(r) - sum(l); }\n\n    T operator()(int\
+    \ p) { return sum(p + 1) - sum(p); }\n    void update(int p, T v) { add(p, -(*this)(p)\
+    \ + v); }\n    int lower_bound(T w) const {\n        if (w <= 0) return 0;\n\n\
+    \        int x = 0;\n        int k = 1;\n        while (k < n) k <<= 1;\n    \
+    \    for (; k > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] < w) {\n\
+    \                w -= bit[x + k];\n                x += k;\n            }\n  \
+    \      }\n\n        return x + 1;\n    }\n};\n};  // namespace kyopro\n\n/**\n\
+    \ * @docs docs/data-structure/BIT.md\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/BIT.hpp
   requiredBy:
   - src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-08-20 03:10:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
 documentation_of: src/data-structure/BIT.hpp
 layout: document
 redirect_from:
