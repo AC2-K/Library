@@ -72,7 +72,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
   - icon: ':x:'
@@ -210,7 +210,7 @@ data:
   isVerificationFile: false
   path: src/stream.hpp
   requiredBy: []
-  timestamp: '2023-08-20 23:10:24+09:00'
+  timestamp: '2023-08-20 22:50:34+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
