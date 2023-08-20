@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   - icon: ':heavy_check_mark:'
@@ -95,15 +95,14 @@ data:
     \            if (~(i ^ res[i]) & 1) {\n                res[i]--;\n           \
     \ }\n        }\n    } else {\n        for (auto& r : res) {\n            r = 2\
     \ * r - 1;\n        }\n    }\n    return res;\n}\n};  // namespace kyopro\n#line\
-    \ 5 \"test/yosupo_judge/string/Enumerate_Palindromes.test.cpp\"\nint main() {\n\
-    \    std::string s;\n    {\n        char c;\n        while (!isspace(c = getchar_unlocked()))\
-    \ s += c;\n    }\n    auto res = kyopro::manacher(s);\n    for (auto r : res)\
-    \ {\n        kyopro::put(r);\n    }\n}\n"
+    \ 5 \"test/yosupo_judge/string/Enumerate_Palindromes.test.cpp\"\n\nusing namespace\
+    \ std;\nusing namespace kyopro;\n\nint main() {\n    std::string s;\n    read(s);\n\
+    \    vector res = manacher(s);\n    for (auto r : res) put(r);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\
     \n#include <iostream>\n#include \"../../../src/stream.hpp\"\n#include \"../../../src/string/manacher.hpp\"\
-    \nint main() {\n    std::string s;\n    {\n        char c;\n        while (!isspace(c\
-    \ = getchar_unlocked())) s += c;\n    }\n    auto res = kyopro::manacher(s);\n\
-    \    for (auto r : res) {\n        kyopro::put(r);\n    }\n}"
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    std::string\
+    \ s;\n    read(s);\n    vector res = manacher(s);\n    for (auto r : res) put(r);\n\
+    }"
   dependsOn:
   - src/stream.hpp
   - src/internal/type_traits.hpp
@@ -111,7 +110,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-20 03:35:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp

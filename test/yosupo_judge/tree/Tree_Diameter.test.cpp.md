@@ -1,32 +1,30 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/graph/dijkstra.hpp
     title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
     links:
     - https://judge.yosupo.jp/problem/tree_diameter
   bundledCode: "#line 1 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n#include <algorithm>\n\
-    #include <iostream>\n#include <vector>\n#line 3 \"src/graph/dijkstra.hpp\"\n#include\
-    \ <cassert>\n#include <numeric>\n#include <queue>\n#include <utility>\n#line 8\
-    \ \"src/graph/dijkstra.hpp\"\nnamespace kyopro {\n\n/**\n * @brief \u30C0\u30A4\
-    \u30AF\u30B9\u30C8\u30E9\u6CD5\n */\nclass dijkstra {\n    std::vector<long long>\
-    \ dist;\n    std::vector<int> trace;\n    const int n;\n    int s;\n\npublic:\n\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include <bits/stdc++.h>\n\
+    #line 8 \"src/graph/dijkstra.hpp\"\nnamespace kyopro {\n\n/**\n * @brief \u30C0\
+    \u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n */\nclass dijkstra {\n    std::vector<long\
+    \ long> dist;\n    std::vector<int> trace;\n    const int n;\n    int s;\n\npublic:\n\
     \    struct edge {\n        const int to;\n        const long long cost;\n   \
     \     constexpr edge(int to, long long cost) : to(to), cost(cost) {}\n    };\n\
     \n    using graph = std::vector<std::vector<edge>>;\n\nprivate:\n    graph g;\n\
@@ -52,10 +50,8 @@ data:
     \            cur = trace[cur];\n        }\n        path.emplace_back(s);\n   \
     \     std::reverse(path.begin(), path.end());\n        return {dist[to], path};\n\
     \    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/graph/dijkstra.md\n\
-    \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
-    \ <string>\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n#line\
-    \ 5 \"src/internal/type_traits.hpp\"\n#include <typeinfo>\nnamespace kyopro {\n\
-    namespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\n#line 6 \"src/internal/type_traits.hpp\"\nnamespace kyopro {\nnamespace\
+    \ internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
     \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
     \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
     \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
@@ -108,26 +104,27 @@ data:
     \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 7 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\
-    \nint main() {\n    int n;\n    kyopro::read(n);\n    kyopro::dijkstra g(n);\n\
-    \    for (int i = 0; i < n - 1; ++i) {\n        int a, b, c;\n        kyopro::read(a,\
-    \ b, c);\n        g.add_edge(a, b, c);\n        g.add_edge(b, a, c);\n    }\n\
-    \    g.build(0);\n    std::vector<long long> dist = g.get_dist();\n    int v =\
-    \ std::max_element(dist.begin(), dist.end()) - dist.begin();\n    g.build(v);\n\
-    \    dist = g.get_dist();\n\n    auto it = std::max_element(dist.begin(), dist.end());\n\
-    \    int u = it - dist.begin();\n    kyopro::put(*it);\n    auto path = g.shortest_path(u).second;\n\
-    \    kyopro::put(path.size());\n    for (auto v : path) kyopro::put(v);\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n#include\
-    \ <algorithm>\n#include <iostream>\n#include <vector>\n#include \"../../../src/graph/dijkstra.hpp\"\
-    \n#include \"../../../src/stream.hpp\"\nint main() {\n    int n;\n    kyopro::read(n);\n\
-    \    kyopro::dijkstra g(n);\n    for (int i = 0; i < n - 1; ++i) {\n        int\
-    \ a, b, c;\n        kyopro::read(a, b, c);\n        g.add_edge(a, b, c);\n   \
-    \     g.add_edge(b, a, c);\n    }\n    g.build(0);\n    std::vector<long long>\
-    \ dist = g.get_dist();\n    int v = std::max_element(dist.begin(), dist.end())\
-    \ - dist.begin();\n    g.build(v);\n    dist = g.get_dist();\n\n    auto it =\
-    \ std::max_element(dist.begin(), dist.end());\n    int u = it - dist.begin();\n\
-    \    kyopro::put(*it);\n    auto path = g.shortest_path(u).second;\n    kyopro::put(path.size());\n\
-    \    for (auto v : path) kyopro::put(v);\n}"
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n;\n\
+    \    read(n);\n    dijkstra g(n);\n    for (int i = 0; i < n - 1; ++i) {\n   \
+    \     int a, b, c;\n        read(a, b, c);\n        g.add_edge(a, b, c);\n   \
+    \     g.add_edge(b, a, c);\n    }\n    g.build(0);\n    vector<long long> dist\
+    \ = g.get_dist();\n    int v = max_element(dist.begin(), dist.end()) - dist.begin();\n\
+    \    g.build(v);\n    dist = g.get_dist();\n\n    auto it = max_element(dist.begin(),\
+    \ dist.end());\n    int u = it - dist.begin();\n    put(*it);\n    auto path =\
+    \ g.shortest_path(u).second;\n    put(path.size());\n    for (auto v : path) put(v);\n\
+    }\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n\n#include\
+    \ <bits/stdc++.h>\n#include \"../../../src/graph/dijkstra.hpp\"\n#include \"../../../src/stream.hpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n;\n\
+    \    read(n);\n    dijkstra g(n);\n    for (int i = 0; i < n - 1; ++i) {\n   \
+    \     int a, b, c;\n        read(a, b, c);\n        g.add_edge(a, b, c);\n   \
+    \     g.add_edge(b, a, c);\n    }\n    g.build(0);\n    vector<long long> dist\
+    \ = g.get_dist();\n    int v = max_element(dist.begin(), dist.end()) - dist.begin();\n\
+    \    g.build(v);\n    dist = g.get_dist();\n\n    auto it = max_element(dist.begin(),\
+    \ dist.end());\n    int u = it - dist.begin();\n    put(*it);\n    auto path =\
+    \ g.shortest_path(u).second;\n    put(path.size());\n    for (auto v : path) put(v);\n\
+    }"
   dependsOn:
   - src/graph/dijkstra.hpp
   - src/stream.hpp
@@ -135,8 +132,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-08-18 11:55:00+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-08-20 03:35:23+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Diameter.test.cpp
 layout: document

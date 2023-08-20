@@ -119,10 +119,10 @@ data:
       title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
   - name: src/data-structure/data-structure-2d
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
       title: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data-structure/data-structure-2d/RangeTree.hpp
       title: src/data-structure/data-structure-2d/RangeTree.hpp
     - icon: ':heavy_check_mark:'
@@ -141,7 +141,7 @@ data:
     - icon: ':warning:'
       path: src/debug.hpp
       title: src/debug.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/stream.hpp
       title: fastIO
     - icon: ':heavy_check_mark:'
@@ -155,7 +155,7 @@ data:
     - icon: ':warning:'
       path: src/graph/TopologialSort.hpp
       title: Topologial Sort
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
   - name: src/graph/flow
@@ -171,7 +171,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
@@ -239,7 +239,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/EulerTour.hpp
       title: Euler Tour
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/tree/doubling.hpp
       title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   verificationCategories:
@@ -313,12 +313,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
       title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
-      title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
-      title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
@@ -400,10 +394,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki

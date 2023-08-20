@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/doubling.hpp
     title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   _extendedRequiredBy: []
@@ -117,19 +117,19 @@ data:
     \      return -1;\n        }\n\n        if (d1 >= k) {\n            return level_ancestor(from,\
     \ k);\n        } else {\n            return level_ancestor(to, d1 + d2 - k);\n\
     \        }\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/tree/doubling.md\n\
-    \ */\n#line 4 \"test/yosupo_judge/tree/Jump_on_Tree.test.cpp\"\nint main() {\n\
-    \    int n, q;\n    kyopro::read(n, q);\n    kyopro::doubling g(n);\n    for (int\
-    \ i = 0; i < n - 1; ++i) {\n        int a, b;\n        kyopro::read(a, b);\n \
-    \       g.add_edge(a, b);\n    }\n    g.build();\n\n    while (q--) {\n      \
-    \  int s, t, i;\n        kyopro::read(s, t, i);\n        kyopro::put(g.jump(s,\
+    \ */\n#line 4 \"test/yosupo_judge/tree/Jump_on_Tree.test.cpp\"\n\nusing namespace\
+    \ std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n    read(n, q);\n\
+    \    doubling g(n);\n\n    for (int i = 0; i < n - 1; ++i) {\n        int a, b;\n\
+    \        read(a, b);\n        g.add_edge(a, b);\n    }\n    g.build();\n\n   \
+    \ while (q--) {\n        int s, t, i;\n        read(s, t, i);\n        put(g.jump(s,\
     \ t, i));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/jump_on_tree\"\n#include\
-    \ \"../../../src/stream.hpp\"\n#include \"../../../src/tree/doubling.hpp\"\nint\
-    \ main() {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::doubling g(n);\n\
-    \    for (int i = 0; i < n - 1; ++i) {\n        int a, b;\n        kyopro::read(a,\
-    \ b);\n        g.add_edge(a, b);\n    }\n    g.build();\n\n    while (q--) {\n\
-    \        int s, t, i;\n        kyopro::read(s, t, i);\n        kyopro::put(g.jump(s,\
-    \ t, i));\n    }\n}"
+    \ \"../../../src/stream.hpp\"\n#include \"../../../src/tree/doubling.hpp\"\n\n\
+    using namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n\
+    \    read(n, q);\n    doubling g(n);\n\n    for (int i = 0; i < n - 1; ++i) {\n\
+    \        int a, b;\n        read(a, b);\n        g.add_edge(a, b);\n    }\n  \
+    \  g.build();\n\n    while (q--) {\n        int s, t, i;\n        read(s, t, i);\n\
+    \        put(g.jump(s, t, i));\n    }\n}"
   dependsOn:
   - src/stream.hpp
   - src/internal/type_traits.hpp
@@ -137,7 +137,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-20 03:35:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Jump_on_Tree.test.cpp

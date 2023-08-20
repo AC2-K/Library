@@ -2,16 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
     title: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
-    title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
@@ -67,11 +64,10 @@ data:
   timestamp: '2023-08-20 03:10:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-  - test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
-  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
 documentation_of: src/data-structure/BIT.hpp
 layout: document
 redirect_from:

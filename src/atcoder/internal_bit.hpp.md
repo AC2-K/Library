@@ -50,9 +50,9 @@ data:
   path: src/atcoder/internal_bit.hpp
   requiredBy:
   - src/string/wildcard_pattern_matching.hpp
-  - src/atcoder/segtree.hpp
-  - src/atcoder/lazysegtree.hpp
   - src/atcoder/convolution.hpp
+  - src/atcoder/lazysegtree.hpp
+  - src/atcoder/segtree.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

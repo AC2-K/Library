@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/dual_segtree.hpp
     title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -217,12 +217,12 @@ data:
     \    auto c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\n\
     inline Affine e() { return Affine(1, 0); }\nint main() {\n    int n, q;\n    kyopro::read(n,\
     \ q);\n    kyopro::dual_segtree<Affine, op, e> sg(n);\n    std::vector<mint> a(n);\n\
-    \    for (auto& aa : a) {\n        kyopro::read(aa);\n    }\n    while (q--) {\n\
-    \        int t;\n        kyopro::read(t);\n\n        if (!t) {\n            int\
-    \ l, r;\n            mint b, c;\n            kyopro::read(l, r, b, c);\n     \
-    \       sg.apply(l, r, std::pair<mint, mint>(b, c));\n        } else {\n     \
-    \       int i;\n            kyopro::read(i);\n            auto f = sg[i];\n  \
-    \          mint ans = f.first * a[i] + f.second;\n            kyopro::put(ans.val());\n\
+    \    for (int i = 0; i < n; ++i) kyopro::read(a[i]);\n    while (q--) {\n    \
+    \    int t;\n        kyopro::read(t);\n\n        if (!t) {\n            int l,\
+    \ r;\n            mint b, c;\n            kyopro::read(l, r, b, c);\n        \
+    \    sg.apply(l, r, std::pair<mint, mint>(b, c));\n        } else {\n        \
+    \    int i;\n            kyopro::read(i);\n            auto f = sg[i];\n     \
+    \       mint ans = f.first * a[i] + f.second;\n            kyopro::put(ans.val());\n\
     \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
     \n#include \"../../../src/data-structure/dual_segtree.hpp\"\n#include \"../../../src/math/static_modint.hpp\"\
@@ -231,8 +231,8 @@ data:
     \    auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n  \
     \  return Affine(a * c, a * d + b);\n}\ninline Affine e() { return Affine(1, 0);\
     \ }\nint main() {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::dual_segtree<Affine,\
-    \ op, e> sg(n);\n    std::vector<mint> a(n);\n    for (auto& aa : a) {\n     \
-    \   kyopro::read(aa);\n    }\n    while (q--) {\n        int t;\n        kyopro::read(t);\n\
+    \ op, e> sg(n);\n    std::vector<mint> a(n);\n    for (int i = 0; i < n; ++i)\
+    \ kyopro::read(a[i]);\n    while (q--) {\n        int t;\n        kyopro::read(t);\n\
     \n        if (!t) {\n            int l, r;\n            mint b, c;\n         \
     \   kyopro::read(l, r, b, c);\n            sg.apply(l, r, std::pair<mint, mint>(b,\
     \ c));\n        } else {\n            int i;\n            kyopro::read(i);\n \
@@ -247,7 +247,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-20 03:35:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp

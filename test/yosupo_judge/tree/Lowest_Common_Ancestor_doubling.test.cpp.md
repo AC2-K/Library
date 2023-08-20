@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/doubling.hpp
     title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -118,17 +118,17 @@ data:
     \ k);\n        } else {\n            return level_ancestor(to, d1 + d2 - k);\n\
     \        }\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/tree/doubling.md\n\
     \ */\n#line 4 \"test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp\"\
-    \nusing namespace std;\nint main() {\n    int n, q;\n    kyopro::read(n, q);\n\
-    \    kyopro::doubling g(n);\n    for (int i = 1; i < n; ++i) {\n        int p;\n\
-    \        kyopro::read(p);\n        g.add_edge(p, i);\n    }\n    g.build();\n\
-    \    while (q--) {\n        int a, b;\n        kyopro::read(a, b);\n        kyopro::put(g.lca(a,\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n,\
+    \ q;\n    read(n, q);\n    doubling g(n);\n    for (int i = 1; i < n; ++i) {\n\
+    \        int p;\n        read(p);\n        g.add_edge(p, i);\n    }\n    g.build();\n\
+    \    while (q--) {\n        int a, b;\n        read(a, b);\n        put(g.lca(a,\
     \ b));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n#include \"../../../src/stream.hpp\"\
-    \n#include \"../../../src/tree/doubling.hpp\"\nusing namespace std;\nint main()\
-    \ {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::doubling g(n);\n    for\
-    \ (int i = 1; i < n; ++i) {\n        int p;\n        kyopro::read(p);\n      \
-    \  g.add_edge(p, i);\n    }\n    g.build();\n    while (q--) {\n        int a,\
-    \ b;\n        kyopro::read(a, b);\n        kyopro::put(g.lca(a, b));\n    }\n}"
+    \n#include \"../../../src/tree/doubling.hpp\"\n\nusing namespace std;\nusing namespace\
+    \ kyopro;\n\nint main() {\n    int n, q;\n    read(n, q);\n    doubling g(n);\n\
+    \    for (int i = 1; i < n; ++i) {\n        int p;\n        read(p);\n       \
+    \ g.add_edge(p, i);\n    }\n    g.build();\n    while (q--) {\n        int a,\
+    \ b;\n        read(a, b);\n        put(g.lca(a, b));\n    }\n}"
   dependsOn:
   - src/stream.hpp
   - src/internal/type_traits.hpp
@@ -136,8 +136,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-08-20 03:35:23+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
 layout: document

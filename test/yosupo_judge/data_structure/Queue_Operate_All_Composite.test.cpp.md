@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/SWAG.hpp
     title: Slide Window Aggrigation
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   - icon: ':heavy_check_mark:'
@@ -224,7 +224,7 @@ data:
     \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
     \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
     \ true);\n}\n#line 7 \"test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\
-    \nusing mint = kyopro::static_modint32<MOD2>;\nusing Affine = std::pair<mint,\
+    \n\nusing mint = kyopro::static_modint32<MOD2>;\nusing Affine = std::pair<mint,\
     \ mint>;\nconstexpr inline Affine op(const Affine& g, const Affine& f) {\n   \
     \ auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n    return\
     \ Affine(a * c, a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1,\
@@ -238,7 +238,7 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \n\n#include \"../../../src/data-structure/SWAG.hpp\"\n#include \"../../../src/math/static_modint.hpp\"\
     \n#include \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\
-    \nusing mint = kyopro::static_modint32<MOD2>;\nusing Affine = std::pair<mint,\
+    \n\nusing mint = kyopro::static_modint32<MOD2>;\nusing Affine = std::pair<mint,\
     \ mint>;\nconstexpr inline Affine op(const Affine& g, const Affine& f) {\n   \
     \ auto a = f.first, b = f.second;\n    auto c = g.first, d = g.second;\n    return\
     \ Affine(a * c, a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1,\
@@ -259,7 +259,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-08-18 11:55:00+09:00'
+  timestamp: '2023-08-20 03:35:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp

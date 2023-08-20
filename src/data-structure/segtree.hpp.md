@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/data-structure/data-structure-2d/RangeTree.hpp
     title: src/data-structure/data-structure-2d/RangeTree.hpp
   _extendedVerifiedWith:
@@ -12,9 +12,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
     title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
-    title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
@@ -86,12 +83,11 @@ data:
   timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/DSL/2_B.test.cpp
+  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
   - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
+  - test/AOJ/DSL/2_B.test.cpp
 documentation_of: src/data-structure/segtree.hpp
 layout: document
 redirect_from:

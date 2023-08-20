@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/hash_map.hpp
     title: Hash Map
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -99,20 +99,20 @@ data:
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 4 \"test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp\"\
-    \nint main() {\n    uint32_t q;\n    kyopro::read(q);\n    kyopro::hash_map<__uint64_t,\
-    \ __uint64_t> mp;\n    while (q--) {\n        int t;\n        kyopro::read(t);\n\
-    \        if (!t) {\n            __uint64_t k, v;\n            kyopro::read(k,\
-    \ v);\n            mp[k] = v;\n        } else {\n            __uint64_t k;\n \
-    \           kyopro::read(k);\n            kyopro::put(mp[k]);\n        }\n   \
-    \ }\n}\n"
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    uint32_t\
+    \ q;\n    read(q);\n    hash_map<__uint64_t, __uint64_t> mp;\n    while (q--)\
+    \ {\n        int t;\n        read(t);\n        if (!t) {\n            __uint64_t\
+    \ k, v;\n            kyopro::read(k, v);\n            mp[k] = v;\n        } else\
+    \ {\n            __uint64_t k;\n            read(k);\n            put(mp[k]);\n\
+    \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/associative_array\"\n#include\
     \ \"../../../src/data-structure/hash_map.hpp\"\n#include \"../../../src/stream.hpp\"\
-    \nint main() {\n    uint32_t q;\n    kyopro::read(q);\n    kyopro::hash_map<__uint64_t,\
-    \ __uint64_t> mp;\n    while (q--) {\n        int t;\n        kyopro::read(t);\n\
-    \        if (!t) {\n            __uint64_t k, v;\n            kyopro::read(k,\
-    \ v);\n            mp[k] = v;\n        } else {\n            __uint64_t k;\n \
-    \           kyopro::read(k);\n            kyopro::put(mp[k]);\n        }\n   \
-    \ }\n}\n"
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    uint32_t\
+    \ q;\n    read(q);\n    hash_map<__uint64_t, __uint64_t> mp;\n    while (q--)\
+    \ {\n        int t;\n        read(t);\n        if (!t) {\n            __uint64_t\
+    \ k, v;\n            kyopro::read(k, v);\n            mp[k] = v;\n        } else\
+    \ {\n            __uint64_t k;\n            read(k);\n            put(mp[k]);\n\
+    \        }\n    }\n}\n"
   dependsOn:
   - src/data-structure/hash_map.hpp
   - src/stream.hpp
@@ -120,7 +120,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-20 03:35:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp

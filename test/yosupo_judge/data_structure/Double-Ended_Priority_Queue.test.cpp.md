@@ -4,13 +4,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/bbst/Treap.hpp
     title: Treap
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -127,24 +127,24 @@ data:
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\
-    \nusing namespace std;\nint main() {\n    kyopro::Treap<int> st;\n    int n, q;\n\
-    \    kyopro::read(n, q);\n    for (int i = 0; i < n; ++i) {\n        int a;\n\
-    \        kyopro::read(a);\n        st.insert(a);\n    }\n    while (q--) {\n \
-    \       int t;\n        kyopro::read(t);\n        if (!t) {\n            int x;\n\
-    \            kyopro::read(x);\n            st.insert(x);\n        } else if (t\
-    \ == 1) {\n            int mn = st.min_element();\n            kyopro::put(mn);\n\
-    \            st.erase(mn);\n        } else {\n            int mx = st.max_element();\n\
-    \            kyopro::put(mx);\n            st.erase(mx);\n        }\n    }\n}\n"
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    Treap<int>\
+    \ st;\n    int n, q;\n    read(n, q);\n    for (int i = 0; i < n; ++i) {\n   \
+    \     int a;\n        read(a);\n        st.insert(a);\n    }\n    while (q--)\
+    \ {\n        int t;\n        read(t);\n        if (!t) {\n            int x;\n\
+    \            read(x);\n            st.insert(x);\n        } else if (t == 1) {\n\
+    \            int mn = st.min_element();\n            put(mn);\n            st.erase(mn);\n\
+    \        } else {\n            int mx = st.max_element();\n            put(mx);\n\
+    \            st.erase(mx);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
     \n\n#include \"../../../src/data-structure/bbst/Treap.hpp\"\n#include \"../../../src/stream.hpp\"\
-    \nusing namespace std;\nint main() {\n    kyopro::Treap<int> st;\n    int n, q;\n\
-    \    kyopro::read(n, q);\n    for (int i = 0; i < n; ++i) {\n        int a;\n\
-    \        kyopro::read(a);\n        st.insert(a);\n    }\n    while (q--) {\n \
-    \       int t;\n        kyopro::read(t);\n        if (!t) {\n            int x;\n\
-    \            kyopro::read(x);\n            st.insert(x);\n        } else if (t\
-    \ == 1) {\n            int mn = st.min_element();\n            kyopro::put(mn);\n\
-    \            st.erase(mn);\n        } else {\n            int mx = st.max_element();\n\
-    \            kyopro::put(mx);\n            st.erase(mx);\n        }\n    }\n}"
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    Treap<int>\
+    \ st;\n    int n, q;\n    read(n, q);\n    for (int i = 0; i < n; ++i) {\n   \
+    \     int a;\n        read(a);\n        st.insert(a);\n    }\n    while (q--)\
+    \ {\n        int t;\n        read(t);\n        if (!t) {\n            int x;\n\
+    \            read(x);\n            st.insert(x);\n        } else if (t == 1) {\n\
+    \            int mn = st.min_element();\n            put(mn);\n            st.erase(mn);\n\
+    \        } else {\n            int mx = st.max_element();\n            put(mx);\n\
+    \            st.erase(mx);\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/bbst/Treap.hpp
   - src/random/xor_shift.hpp
@@ -153,7 +153,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-20 03:35:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

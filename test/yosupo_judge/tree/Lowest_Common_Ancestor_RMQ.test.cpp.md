@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/sparse_table.hpp
     title: SparseTable
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   - icon: ':heavy_check_mark:'
@@ -24,10 +24,10 @@ data:
     links:
     - https://judge.yosupo.jp/problem/lca
   bundledCode: "#line 1 \"test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp\"\
-    \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <iostream>\n\
-    #line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
-    #line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n#include <numeric>\n\
-    #include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#line 2 \"src/stream.hpp\"\
+    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
+    \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
+    namespace kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
     \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
     \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
     \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
@@ -129,20 +129,19 @@ data:
     \ + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par, int v)\
     \ const {\n        assert(0 <= par && par < n);\n        assert(0 <= v && v <\
     \ n);\n\n        return (in[par] <= in[v] && out[v] <= out[par]);\n    }\n};\n\
-    };  // namespace kyopro\n\n/**\n * @docs docs/tree/EulerTour.md\n */\n#line 6\
-    \ \"test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp\"\nint main() {\n\
-    \    int n, q;\n    kyopro::read(n, q);\n    kyopro::EulerTour g(n);\n    for\
-    \ (int i = 1; i < n; i++) {\n        int p;\n        kyopro::read(p);\n      \
-    \  g.add_edge(p, i);\n    }\n    g.build();\n    while (q--) {\n        int u,\
-    \ v;\n        kyopro::read(u, v);\n        kyopro::put(g.lca(u, v));\n    }\n\
+    };  // namespace kyopro\n\n/**\n * @docs docs/tree/EulerTour.md\n */\n#line 5\
+    \ \"test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp\"\n\nusing namespace\
+    \ std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n    read(n, q);\n\
+    \    EulerTour g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n    \
+    \    read(p);\n        g.add_edge(p, i);\n    }\n    g.build();\n    while (q--)\
+    \ {\n        int u, v;\n        read(u, v);\n        put(g.lca(u, v));\n    }\n\
     }\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include <iostream>\n\
-    #include \"../../../src/stream.hpp\"\n#include \"../../../src/tree/EulerTour.hpp\"\
-    \nint main() {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::EulerTour\
-    \ g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n        kyopro::read(p);\n\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include \"../../../src/stream.hpp\"\
+    \n#include \"../../../src/tree/EulerTour.hpp\"\n\nusing namespace std;\nusing\
+    \ namespace kyopro;\n\nint main() {\n    int n, q;\n    read(n, q);\n    EulerTour\
+    \ g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n        read(p);\n\
     \        g.add_edge(p, i);\n    }\n    g.build();\n    while (q--) {\n       \
-    \ int u, v;\n        kyopro::read(u, v);\n        kyopro::put(g.lca(u, v));\n\
-    \    }\n}"
+    \ int u, v;\n        read(u, v);\n        put(g.lca(u, v));\n    }\n}"
   dependsOn:
   - src/stream.hpp
   - src/internal/type_traits.hpp
@@ -151,7 +150,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-08-18 21:22:28+09:00'
+  timestamp: '2023-08-20 03:35:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
