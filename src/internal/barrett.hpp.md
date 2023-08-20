@@ -27,7 +27,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
   - icon: ':x:'
@@ -74,21 +74,21 @@ data:
   isVerificationFile: false
   path: src/internal/barrett.hpp
   requiredBy:
-  - src/math/mod_log.hpp
+  - src/math/miller.hpp
+  - src/math/rho.hpp
+  - src/math/dynamic_modint.hpp
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
-  - src/math/dynamic_modint.hpp
-  - src/math/rho.hpp
-  - src/math/miller.hpp
+  - src/math/mod_log.hpp
   timestamp: '2023-06-25 12:32:45+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/AOJ/NTL/1_D.test.cpp
-  - test/yuki/No3030.test.cpp
-  - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+  - test/yuki/No3030.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/internal/barrett.hpp
 layout: document
 redirect_from:

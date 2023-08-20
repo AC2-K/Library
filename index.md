@@ -143,7 +143,7 @@ data:
       title: src/debug.hpp
     - icon: ':question:'
       path: src/stream.hpp
-      title: "\u5165\u51FA\u529B"
+      title: fastIO
     - icon: ':heavy_check_mark:'
       path: src/template.hpp
       title: src/template.hpp
@@ -362,7 +362,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
     - icon: ':x:'

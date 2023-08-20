@@ -18,7 +18,7 @@ data:
     title: "\u52D5\u7684modint"
   - icon: ':question:'
     path: src/stream.hpp
-    title: "\u5165\u51FA\u529B"
+    title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
@@ -155,74 +155,68 @@ data:
     \       return res;\n    }\n    constexpr mint inv() const { return pow(mod()\
     \ - 2); }\n};\n};  // namespace kyopro\ntemplate <int id>\ntypename kyopro::barrett_modint<id>::br\
     \ kyopro::barrett_modint<id>::brt;\n\nnamespace kyopro {\ntemplate <typename T,\
-    \ int id = -1>\nclass dynamic_modint : internal::modint_base {\n    using LargeT\
+    \ int id = -1>\nclass montgomery_modint : internal::modint_base {\n    using LargeT\
     \ = internal::double_size_uint_t<T>;\n    static T _mod;\n    static internal::Montgomery<T>\
     \ mr;\n\npublic:\n    static void set_mod(T mod_) {\n        mr.set_mod(mod_);\n\
     \        _mod = mod_;\n    }\n\n    static T mod() { return _mod; }\n\nprivate:\n\
-    \    T v;\n\npublic:\n    dynamic_modint(T v_ = 0) {\n        assert(_mod);\n\
+    \    T v;\n\npublic:\n    montgomery_modint(T v_ = 0) {\n        assert(_mod);\n\
     \        v = mr.generate(v_);\n    }\n    T val() const { return mr.reduce(v);\
-    \ }\n\n    using mint = dynamic_modint<T, id>;\n    mint& operator+=(const mint&\
-    \ r) {\n        v += r.v;\n        if (v >= mr.get_mod()) {\n            v -=\
-    \ mr.get_mod();\n        }\n\n        return (*this);\n    }\n\n    mint& operator-=(const\
-    \ mint& r) {\n        v += mr.get_mod() - r.v;\n        if (v >= mr.get_mod) {\n\
-    \            v -= mr.get_mod();\n        }\n\n        return (*this);\n    }\n\
-    \n    mint& operator*=(const mint& r) {\n        v = mr.mul(v, r.v);\n       \
-    \ return (*this);\n    }\n\n    mint operator+(const mint& r) { return mint(*this)\
-    \ += r; }\n    mint operator-(const mint& r) { return mint(*this) -= r; }\n  \
-    \  mint operator*(const mint& r) { return mint(*this) *= r; }\n\n    mint& operator=(const\
-    \ T& v_) {\n        (*this) = mint(v_);\n        return (*this);\n    }\n\n  \
-    \  friend std::ostream& operator<<(std::ostream& os, const mint& mt) {\n     \
-    \   os << mt.val();\n        return os;\n    }\n    friend std::istream& operator>>(std::istream&\
-    \ is, mint& mt) {\n        T v_;\n        is >> v_;\n        mt = v_;\n      \
-    \  return is;\n    }\n    template <typename P> mint pow(P e) const {\n      \
-    \  assert(e >= 0);\n        mint res(1), base(*this);\n\n        while (e) {\n\
-    \            if (e & 1) {\n                res *= base;\n            }\n     \
-    \       e >>= 1;\n            base *= base;\n        }\n        return res;\n\
-    \    }\n    mint inv() const { return pow(mod() - 2); }\n\n    mint& operator/=(const\
-    \ mint& r) { return (*this) *= r.inv(); }\n    mint operator/(const mint& r) const\
-    \ { return mint(*this) *= r.inv(); }\n    mint& operator/=(T r) { return (*this)\
-    \ /= mint(r); }\n    friend mint operator/(const mint& l, T r) { return mint(l)\
-    \ /= r; }\n    friend mint operator/(T l, const mint& r) { return mint(l) /= r;\
-    \ }\n};\n};  // namespace kyopro\ntemplate <typename T, int id> T kyopro::dynamic_modint<T,\
-    \ id>::_mod;\ntemplate <typename T, int id>\nkyopro::internal::Montgomery<T> kyopro::dynamic_modint<T,\
-    \ id>::mr;\n\n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n\
-    \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
-    \ <string>\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
-    \ c) noexcept {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nconstexpr void\
-    \ single_read(T& a) noexcept {\n    a = 0;\n    bool is_negative = false;\n  \
-    \  char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
-    \    }\n    if constexpr (std::is_signed<T>::value) {\n        if (c == '-') is_negative\
-    \ = true, c = getchar_unlocked();\n    }\n    while (isdigit(c)) {\n        a\
-    \ = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n    if constexpr\
-    \ (std::is_signed<T>::value) {\n        if (is_negative) a *= -1;\n    }\n}\n\
-    template <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_read(T&\
-    \ a) noexcept {\n    long long x;\n    single_read(x);\n    a = T(x);\n}\nvoid\
-    \ single_read(std::string& str) noexcept {\n    char c = getchar_unlocked();\n\
+    \ }\n\n    using mint = montgomery_modint<T, id>;\n    mint& operator+=(const\
+    \ mint& r) {\n        v += r.v;\n        if (v >= mr.get_mod()) {\n          \
+    \  v -= mr.get_mod();\n        }\n\n        return (*this);\n    }\n\n    mint&\
+    \ operator-=(const mint& r) {\n        v += mr.get_mod() - r.v;\n        if (v\
+    \ >= mr.get_mod) {\n            v -= mr.get_mod();\n        }\n\n        return\
+    \ (*this);\n    }\n\n    mint& operator*=(const mint& r) {\n        v = mr.mul(v,\
+    \ r.v);\n        return (*this);\n    }\n\n    mint operator+(const mint& r) {\
+    \ return mint(*this) += r; }\n    mint operator-(const mint& r) { return mint(*this)\
+    \ -= r; }\n    mint operator*(const mint& r) { return mint(*this) *= r; }\n\n\
+    \    mint& operator=(const T& v_) {\n        (*this) = mint(v_);\n        return\
+    \ (*this);\n    }\n\n    friend std::ostream& operator<<(std::ostream& os, const\
+    \ mint& mt) {\n        os << mt.val();\n        return os;\n    }\n    friend\
+    \ std::istream& operator>>(std::istream& is, mint& mt) {\n        T v_;\n    \
+    \    is >> v_;\n        mt = v_;\n        return is;\n    }\n    template <typename\
+    \ P> mint pow(P e) const {\n        assert(e >= 0);\n        mint res(1), base(*this);\n\
+    \n        while (e) {\n            if (e & 1) {\n                res *= base;\n\
+    \            }\n            e >>= 1;\n            base *= base;\n        }\n \
+    \       return res;\n    }\n    mint inv() const { return pow(mod() - 2); }\n\n\
+    \    mint& operator/=(const mint& r) { return (*this) *= r.inv(); }\n    mint\
+    \ operator/(const mint& r) const { return mint(*this) *= r.inv(); }\n    mint&\
+    \ operator/=(T r) { return (*this) /= mint(r); }\n    friend mint operator/(const\
+    \ mint& l, T r) { return mint(l) /= r; }\n    friend mint operator/(T l, const\
+    \ mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate <typename\
+    \ T, int id> T kyopro::montgomery_modint<T, id>::_mod;\ntemplate <typename T,\
+    \ int id>\nkyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;\n\
+    \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */\n\
+    #line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
+    #line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
+    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
+    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
+    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
+    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
+    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
+    \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
-    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate <typename\
-    \ T> constexpr inline void read(T& x) noexcept {\n    single_read(x);\n}\ntemplate\
-    \ <typename Head, typename... Tail>\nconstexpr inline void read(Head& head, Tail&...\
-    \ tail) noexcept {\n    single_read(head), read(tail...);\n}\n\n// write\nvoid\
-    \ single_write(char c) noexcept { putchar_unlocked(c); }\ntemplate <typename T,\
-    \ internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) noexcept {\n\
-    \    if (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if\
-    \ constexpr (std::is_signed<T>::value) {\n        if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    }\n    const int d = std::numeric_limits<T>::digits10 + 1;\n \
-    \   char s[d];\n    int now = d;\n    while (a) {\n        s[--now] = (char)'0'\
-    \ + a % 10;\n        a /= 10;\n    }\n    while (now < d) putchar_unlocked(s[now++]);\n\
-    }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T\
-    \ a) noexcept {\n    single_write(a.val());\n}\n\nvoid single_write(const std::string&\
-    \ str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n  \
-    \  }\n}\n\ntemplate <typename T> constexpr inline void write(T x) noexcept {\n\
-    \    single_write(x);\n}\ntemplate <typename Head, typename... Tail>\nconstexpr\
-    \ inline void write(Head head, Tail... tail) noexcept {\n    single_write(head);\n\
-    \    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate <typename... Args>\
-    \ constexpr inline void put(Args... x) noexcept {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief \u5165\u51FA\u529B\n */\n#line\
-    \ 7 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\nusing mint =\
-    \ kyopro::barrett_modint<10>;\nusing namespace std;\nint main() {\n    int t,\
-    \ m;\n    kyopro::read(t, m);\n    mint::set_mod(m);\n    kyopro::combination<mint,\
+    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
+    \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
+    \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
+    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
+    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
+    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
+    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
+    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
+    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
+    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
+    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
+    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
+    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
+    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 7 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\
+    \nusing mint = kyopro::barrett_modint<10>;\nusing namespace std;\nint main() {\n\
+    \    int t, m;\n    kyopro::read(t, m);\n    mint::set_mod(m);\n    kyopro::combination<mint,\
     \ (int)1e7> solver;\n    while (t--) {\n        int n, r;\n        kyopro::read(n,\
     \ r);\n        if (n < r) {\n            kyopro::put(0);\n        } else {\n \
     \           kyopro::put(solver.binom(n, r).val());\n        }\n    }\n}\n"
@@ -244,7 +238,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 22:35:29+09:00'
+  timestamp: '2023-08-20 22:50:34+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
