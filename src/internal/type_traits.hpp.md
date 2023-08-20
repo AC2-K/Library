@@ -31,7 +31,7 @@ data:
     title: "\u9759\u7684modint"
   - icon: ':question:'
     path: src/stream.hpp
-    title: "\u5165\u51FA\u529B"
+    title: fastIO
   - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
@@ -108,7 +108,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
   - icon: ':x:'
