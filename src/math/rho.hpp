@@ -15,7 +15,7 @@ class rho {
     using u64 = uint64_t;
     using u32 = uint32_t;
 
-    template <typename mint> static u64 find_factor(u64 n) {
+    template <typename T,typename mint> static constexpr T find_factor(T n) {
         xor_shift32 rng(2023);
 
         if (~n & 1uL) {
@@ -29,14 +29,14 @@ class rho {
             mint::set_mod(n);
         }
         while (1) {
-            u64 c = rng();
+            T c = rng();
             const auto f = [&](mint x) -> mint { return x * x + c; };
             mint x = rng();
             mint y = f(x);
-            u64 d = 1;
+            T d = 1;
             while (d == 1) {
-                d = _gcd<long long>(
-                    std::abs((long long)x.val() - (long long)y.val()), n);
+                d = _gcd<std::make_signed_t<T>>(
+                    std::abs((std::make_signed_t<T>)x.val() - (std::make_signed_t<T>)y.val()), n);
                 x = f(x);
                 y = f(f(y));
             }
@@ -44,25 +44,25 @@ class rho {
                 return d;
             }
         }
-        exit(0);
+        exit(-1);
     }
-    template <typename mint> static std::vector<u64> rho_fact(u64 n) {
+    template <typename T,typename mint> static std::vector<T> rho_fact(T n) {
         if (n < 2) {
             return {};
         }
         if (kyopro::miller::is_prime(n)) {
             return {n};
         }
-        std::vector<u64> v;
-        std::vector<u64> st{n};
-        while (st.size()) {
-            u64& m = st.back();
+        std::vector<T> v;
+        std::vector<T> st{n};
+        while (!st.empty()) {
+            u64 m = st.back();
             if (kyopro::miller::is_prime(m)) {
                 v.emplace_back(m);
                 st.pop_back();
             } else {
-                u64 d = find_factor<mint>(m);
-                m /= d;
+                T d = find_factor<T, mint>(m);
+                st.back() /= d;
                 st.emplace_back(d);
             }
         }
@@ -70,22 +70,28 @@ class rho {
     }
 
 public:
-    static std::vector<u64> factorize(u64 n) {
+    template <typename T> static std::vector<T> factorize(T n) {
         if (n < 2) {
             return {};
         }
-        auto v = (n < (1uL << 31) ? rho_fact<dynamic_modint<u32>>(n)
-                                  : rho_fact<dynamic_modint<u64>>(n));
-        std::sort(v.begin(), v.end());
-        return v;
-    }
 
-    static std::vector<std::pair<u64, int>> exp_factorize(u64 n) {
-        std::vector<u64> pf = factorize(n);
+        if constexpr (std::numeric_limits<T>::digits < 32) {
+            std::vector v = rho_fact<T, dynamic_modint<u32>>(n);
+            std::sort(v.begin(), v.end());
+            return v;
+        } else {
+            std::vector v = rho_fact<T, dynamic_modint<u64>>(n);
+            std::sort(v.begin(), v.end());
+            return v;
+        }
+    }
+    template<typename T>
+    static std::vector<std::pair<T, int>> exp_factorize(T n) {
+        std::vector pf = factorize(n);
         if (pf.empty()) {
             return {};
         }
-        std::vector<std::pair<u64, int>> res;
+        std::vector<std::pair<T, int>> res;
         res.emplace_back(pf.front(), 1);
         for (int i = 1; i < (int)pf.size(); i++) {
             if (res.back().first == pf[i]) {
@@ -97,10 +103,10 @@ public:
 
         return res;
     }
-
-    static std::vector<u64> enumerate_divisor(u64 n) {
-        std::vector<std::pair<u64, int>> pf = rho::exp_factorize(n);
-        std::vector<u64> divisor{1};
+    template<typename T>
+    static std::vector<T> enumerate_divisor(T n) {
+        std::vector<std::pair<T, int>> pf = rho::exp_factorize(n);
+        std::vector<T> divisor{1};
         for (auto [p, e] : pf) {
             u64 pow = p;
             int sz = divisor.size();
