@@ -32,21 +32,21 @@ data:
     \ = composition(dat[p], v); }\n    void push(int p) {\n        if (dat[p] == id())\
     \ {\n            return;\n        }\n        update(p << 1 | 0, dat[p]);\n   \
     \     update(p << 1 | 1, dat[p]);\n        dat[p] = id();\n    }\n\npublic:\n\
-    \    F operator[](int p) {\n        assert(0 <= p && p < _n);\n\n        F res\
-    \ = id();\n\n        p += sz;\n        for (int i = lg; i > 0; i--) {\n      \
-    \      push(p >> i);\n        }\n        return dat[p];\n    }\n\n    void apply(int\
-    \ l, int r, const F& v) {\n        assert(0 <= l && l <= r && r <= _n);\n    \
-    \    if (l == r) return;\n        l += sz, r += sz;\n        for (int i = lg;\
-    \ i > 0; i--) {\n            if (((l >> i) << i) != l) {\n                push(l\
-    \ >> i);\n            }\n            if (((r >> i) << i) != r) {\n           \
-    \     push((r - 1) >> i);\n            }\n        }\n        while (l < r) {\n\
-    \            if (l & 1) {\n                update(l++, v);\n            }\n  \
-    \          if (r & 1) {\n                update(--r, v);\n            }\n    \
-    \        l >>= 1, r >>= 1;\n        }\n    }\n};\n\n};  // namespace kyopro\n\n\
-    /**\n * @docs docs/data-structure/dual_segtree.md\n */\n#line 2 \"src/stream.hpp\"\
-    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
-    \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
-    namespace kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \    F operator[](int p) {\n        assert(0 <= p && p < _n);\n        \n    \
+    \    p += sz;\n        for (int i = lg; i > 0; i--) {\n            push(p >> i);\n\
+    \        }\n        return dat[p];\n    }\n\n    void apply(int l, int r, const\
+    \ F& v) {\n        assert(0 <= l && l <= r && r <= _n);\n        if (l == r) return;\n\
+    \        l += sz, r += sz;\n        for (int i = lg; i > 0; i--) {\n         \
+    \   if (((l >> i) << i) != l) {\n                push(l >> i);\n            }\n\
+    \            if (((r >> i) << i) != r) {\n                push((r - 1) >> i);\n\
+    \            }\n        }\n        while (l < r) {\n            if (l & 1) {\n\
+    \                update(l++, v);\n            }\n            if (r & 1) {\n  \
+    \              update(--r, v);\n            }\n            l >>= 1, r >>= 1;\n\
+    \        }\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/dual_segtree.md\n\
+    \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
+    \ <string>\n#line 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n#include\
+    \ <limits>\n#include <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace\
+    \ internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
     \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
     \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
     \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
@@ -130,7 +130,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_D_dual.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 13:57:52+00:00'
+  timestamp: '2023-08-20 14:38:07+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_D_dual.test.cpp

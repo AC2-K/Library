@@ -39,42 +39,42 @@ data:
     \ = composition(dat[p], v); }\n    void push(int p) {\n        if (dat[p] == id())\
     \ {\n            return;\n        }\n        update(p << 1 | 0, dat[p]);\n   \
     \     update(p << 1 | 1, dat[p]);\n        dat[p] = id();\n    }\n\npublic:\n\
-    \    F operator[](int p) {\n        assert(0 <= p && p < _n);\n\n        F res\
-    \ = id();\n\n        p += sz;\n        for (int i = lg; i > 0; i--) {\n      \
-    \      push(p >> i);\n        }\n        return dat[p];\n    }\n\n    void apply(int\
-    \ l, int r, const F& v) {\n        assert(0 <= l && l <= r && r <= _n);\n    \
-    \    if (l == r) return;\n        l += sz, r += sz;\n        for (int i = lg;\
-    \ i > 0; i--) {\n            if (((l >> i) << i) != l) {\n                push(l\
-    \ >> i);\n            }\n            if (((r >> i) << i) != r) {\n           \
-    \     push((r - 1) >> i);\n            }\n        }\n        while (l < r) {\n\
-    \            if (l & 1) {\n                update(l++, v);\n            }\n  \
-    \          if (r & 1) {\n                update(--r, v);\n            }\n    \
-    \        l >>= 1, r >>= 1;\n        }\n    }\n};\n\n};  // namespace kyopro\n\n\
-    /**\n * @docs docs/data-structure/dual_segtree.md\n */\n#line 3 \"src/math/static_modint.hpp\"\
-    \n#include <iostream>\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n\
-    #include <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace internal\
-    \ {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n\
-    template <typename... Args> struct first_enabled {};\n\ntemplate <typename T,\
-    \ typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...> {\n\
-    \    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
-    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
-    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
-    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
-    \ntemplate <int dgt> struct int_least {\n    static_assert(dgt <= 128);\n    using\
-    \ type = first_enabled_t<std::enable_if<dgt <= 8, __int8_t>,\n               \
-    \                  std::enable_if<dgt <= 16, __int16_t>,\n                   \
-    \              std::enable_if<dgt <= 32, __int32_t>,\n                       \
-    \          std::enable_if<dgt <= 64, __int64_t>,\n                           \
-    \      std::enable_if<dgt <= 128, __int128_t> >;\n};\ntemplate <int dgt> struct\
-    \ uint_least {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, __uint8_t>,\n                                 std::enable_if<dgt <= 16,\
-    \ __uint16_t>,\n                                 std::enable_if<dgt <= 32, __uint32_t>,\n\
-    \                                 std::enable_if<dgt <= 64, __uint64_t>,\n   \
-    \                              std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\
-    \ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\ntemplate\
-    \ <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename\
-    \ T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
-    \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \    F operator[](int p) {\n        assert(0 <= p && p < _n);\n        \n    \
+    \    p += sz;\n        for (int i = lg; i > 0; i--) {\n            push(p >> i);\n\
+    \        }\n        return dat[p];\n    }\n\n    void apply(int l, int r, const\
+    \ F& v) {\n        assert(0 <= l && l <= r && r <= _n);\n        if (l == r) return;\n\
+    \        l += sz, r += sz;\n        for (int i = lg; i > 0; i--) {\n         \
+    \   if (((l >> i) << i) != l) {\n                push(l >> i);\n            }\n\
+    \            if (((r >> i) << i) != r) {\n                push((r - 1) >> i);\n\
+    \            }\n        }\n        while (l < r) {\n            if (l & 1) {\n\
+    \                update(l++, v);\n            }\n            if (r & 1) {\n  \
+    \              update(--r, v);\n            }\n            l >>= 1, r >>= 1;\n\
+    \        }\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/dual_segtree.md\n\
+    \ */\n#line 3 \"src/math/static_modint.hpp\"\n#include <iostream>\n#line 3 \"\
+    src/internal/type_traits.hpp\"\n#include <limits>\n#include <numeric>\n#include\
+    \ <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
+    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
+    \ {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, __int8_t>,\n                                 std::enable_if<dgt <= 16,\
+    \ __int16_t>,\n                                 std::enable_if<dgt <= 32, __int32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, __int64_t>,\n    \
+    \                             std::enable_if<dgt <= 128, __int128_t> >;\n};\n\
+    template <int dgt> struct uint_least {\n    static_assert(dgt <= 128);\n    using\
+    \ type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,\n              \
+    \                   std::enable_if<dgt <= 16, __uint16_t>,\n                 \
+    \                std::enable_if<dgt <= 32, __uint32_t>,\n                    \
+    \             std::enable_if<dgt <= 64, __uint64_t>,\n                       \
+    \          std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\ntemplate <int dgt>\
+    \ using int_least_t = typename int_least<dgt>::type;\ntemplate <int dgt> using\
+    \ uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename T>\nusing\
+    \ double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\ntemplate\
+    \ <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     \nstruct modint_base {};\ntemplate <typename T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
@@ -254,7 +254,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-08-20 13:57:52+00:00'
+  timestamp: '2023-08-20 14:38:07+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
