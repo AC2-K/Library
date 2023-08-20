@@ -44,8 +44,8 @@ data:
   timestamp: '2023-05-24 09:26:13+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo_judge/data_structure/UnionFind.test.cpp
   - test/AOJ/DSL/1_A.test.cpp
+  - test/yosupo_judge/data_structure/UnionFind.test.cpp
 documentation_of: src/data-structure/dsu.hpp
 layout: document
 redirect_from:

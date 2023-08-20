@@ -9,7 +9,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   - icon: ':x:'
@@ -72,11 +72,11 @@ data:
   timestamp: '2023-05-15 08:00:11+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/AOJ/GRL/5_C.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Static_RMQ.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-  - test/AOJ/GRL/5_C.test.cpp
 documentation_of: src/data-structure/sparse_table.hpp
 layout: document
 redirect_from:
