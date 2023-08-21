@@ -5,13 +5,10 @@ data:
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
-    title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/data-structure/data-structure-2d/PointAddRectangleSum.hpp\"\
@@ -93,9 +90,8 @@ data:
   path: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
   requiredBy: []
   timestamp: '2023-06-25 06:07:51+00:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
 layout: document
 redirect_from:

@@ -122,37 +122,36 @@ data:
     \ > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] < w) {\n         \
     \       w -= bit[x + k];\n                x += k;\n            }\n        }\n\n\
     \        return x + 1;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
-    \ */\n#line 6 \"test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp\"\
-    \nint main() {\n    int n, q;\n    kyopro::read(n, q);\n    kyopro::Mo mo(q);\n\
-    \    std::vector<int> a(n);\n    for (auto& aa : a) {\n        kyopro::read(aa);\n\
-    \    }\n    std::vector<int> k(q);\n    for (int i = 0; i < q; i++) {\n      \
-    \  int l, r;\n        scanf(\"%d%d%d\", &l, &r, &k[i]);\n        k[i]++;\n   \
-    \     mo.add(l, r);\n    }\n    std::vector<int> pressed = a;\n    auto tmp =\
-    \ a;\n    {\n        std::sort(tmp.begin(), tmp.end());\n        tmp.erase(std::unique(tmp.begin(),\
+    \ */\n#line 7 \"test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp\"\
+    \nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n\
+    \    read(n, q);\n    Mo mo(q);\n    vector<int> a(n);\n    for (auto& aa : a)\
+    \ \n        read(aa);\n    \n    vector<int> k(q);\n    for (int i = 0; i < q;\
+    \ i++) {\n        int l, r;\n        read(l, r, k[i]);\n        k[i]++;\n    \
+    \    mo.add(l, r);\n    }\n    vector<int> pressed = a;\n    auto tmp = a;\n \
+    \   {\n        std::sort(tmp.begin(), tmp.end());\n        tmp.erase(std::unique(tmp.begin(),\
     \ tmp.end()), tmp.end());\n        for (auto& ai : pressed) {\n            ai\
     \ = lower_bound(tmp.begin(), tmp.end(), ai) - tmp.begin();\n        }\n    }\n\
-    \n    int sz = tmp.size();\n    kyopro::BIT<int> st(sz);\n    auto add = [&](int\
-    \ x) -> void { st.add(pressed[x], 1); };\n    auto del = [&](int x) -> void {\
-    \ st.add(pressed[x], -1); };\n    std::vector<int> ans(q);\n    auto out = [&](int\
-    \ x) -> void {\n        int ok = st.lower_bound(k[x]);\n        ans[x] = tmp[ok\
-    \ - 1];\n    };\n\n    mo.build(add, del, out);\n    for (auto r : ans) {\n  \
-    \      kyopro::put(r);\n    }\n}\n"
+    \n    int sz = tmp.size();\n    BIT<int> st(sz);\n    auto add = [&](int x) ->\
+    \ void { st.add(pressed[x], 1); };\n    auto del = [&](int x) -> void { st.add(pressed[x],\
+    \ -1); };\n    vector<int> ans(q);\n    auto out = [&](int x) -> void {\n    \
+    \    int ok = st.lower_bound(k[x]);\n        ans[x] = tmp[ok - 1];\n    };\n\n\
+    \    mo.build(add, del, out);\n    for (auto r : ans) put(r);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n\
     #include \"../../../src/stream.hpp\"\n#include \"../../../src/algorithm/mo.hpp\"\
-    \n#include \"../../../src/data-structure/BIT.hpp\"\nint main() {\n    int n, q;\n\
-    \    kyopro::read(n, q);\n    kyopro::Mo mo(q);\n    std::vector<int> a(n);\n\
-    \    for (auto& aa : a) {\n        kyopro::read(aa);\n    }\n    std::vector<int>\
-    \ k(q);\n    for (int i = 0; i < q; i++) {\n        int l, r;\n        scanf(\"\
-    %d%d%d\", &l, &r, &k[i]);\n        k[i]++;\n        mo.add(l, r);\n    }\n   \
-    \ std::vector<int> pressed = a;\n    auto tmp = a;\n    {\n        std::sort(tmp.begin(),\
-    \ tmp.end());\n        tmp.erase(std::unique(tmp.begin(), tmp.end()), tmp.end());\n\
-    \        for (auto& ai : pressed) {\n            ai = lower_bound(tmp.begin(),\
-    \ tmp.end(), ai) - tmp.begin();\n        }\n    }\n\n    int sz = tmp.size();\n\
-    \    kyopro::BIT<int> st(sz);\n    auto add = [&](int x) -> void { st.add(pressed[x],\
-    \ 1); };\n    auto del = [&](int x) -> void { st.add(pressed[x], -1); };\n   \
-    \ std::vector<int> ans(q);\n    auto out = [&](int x) -> void {\n        int ok\
-    \ = st.lower_bound(k[x]);\n        ans[x] = tmp[ok - 1];\n    };\n\n    mo.build(add,\
-    \ del, out);\n    for (auto r : ans) {\n        kyopro::put(r);\n    }\n}\n"
+    \n#include \"../../../src/data-structure/BIT.hpp\"\n#include\"../../../src/stream.hpp\"\
+    \nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n\
+    \    read(n, q);\n    Mo mo(q);\n    vector<int> a(n);\n    for (auto& aa : a)\
+    \ \n        read(aa);\n    \n    vector<int> k(q);\n    for (int i = 0; i < q;\
+    \ i++) {\n        int l, r;\n        read(l, r, k[i]);\n        k[i]++;\n    \
+    \    mo.add(l, r);\n    }\n    vector<int> pressed = a;\n    auto tmp = a;\n \
+    \   {\n        std::sort(tmp.begin(), tmp.end());\n        tmp.erase(std::unique(tmp.begin(),\
+    \ tmp.end()), tmp.end());\n        for (auto& ai : pressed) {\n            ai\
+    \ = lower_bound(tmp.begin(), tmp.end(), ai) - tmp.begin();\n        }\n    }\n\
+    \n    int sz = tmp.size();\n    BIT<int> st(sz);\n    auto add = [&](int x) ->\
+    \ void { st.add(pressed[x], 1); };\n    auto del = [&](int x) -> void { st.add(pressed[x],\
+    \ -1); };\n    vector<int> ans(q);\n    auto out = [&](int x) -> void {\n    \
+    \    int ok = st.lower_bound(k[x]);\n        ans[x] = tmp[ok - 1];\n    };\n\n\
+    \    mo.build(add, del, out);\n    for (auto r : ans) put(r);\n}\n"
   dependsOn:
   - src/stream.hpp
   - src/internal/type_traits.hpp
@@ -161,7 +160,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-21 14:50:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp

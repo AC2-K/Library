@@ -88,16 +88,14 @@ data:
     \    continue;\n        }\n        int k = 1;\n        while (i + k < (int)str.size()\
     \ && k + res[k] < j) {\n            res[i + k] = res[k];\n            ++k;\n \
     \       }\n        i += k, j -= k;\n    }\n    return res;\n}\n};  // namespace\
-    \ kyopro\n#line 7 \"test/yosupo_judge/string/Z_algorithm.test.cpp\"\n\nint main()\
-    \ {\n    std::string s;\n    {\n        char c;\n        while (!isspace(c = getchar_unlocked()))\
-    \ s += c;\n    }\n    auto res = kyopro::Z(s);\n    for (auto r : res) {\n   \
-    \     kyopro::put(r);\n    }\n}\n"
+    \ kyopro\n#line 7 \"test/yosupo_judge/string/Z_algorithm.test.cpp\"\n\nusing namespace\
+    \ std;\nusing namespace kyopro;\nint main() {\n    string s;\n    read(s);\n \
+    \   auto res = Z(s);\n    for (auto r : res) put(r);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#include\
     \ <iostream>\n#include <string>\n\n#include \"../../../src/stream.hpp\"\n#include\
-    \ \"../../../src/string/Z.hpp\"\n\nint main() {\n    std::string s;\n    {\n \
-    \       char c;\n        while (!isspace(c = getchar_unlocked())) s += c;\n  \
-    \  }\n    auto res = kyopro::Z(s);\n    for (auto r : res) {\n        kyopro::put(r);\n\
-    \    }\n}"
+    \ \"../../../src/string/Z.hpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\
+    int main() {\n    string s;\n    read(s);\n    auto res = Z(s);\n    for (auto\
+    \ r : res) put(r);\n}"
   dependsOn:
   - src/stream.hpp
   - src/internal/type_traits.hpp
@@ -105,7 +103,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/string/Z_algorithm.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-21 14:50:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/string/Z_algorithm.test.cpp

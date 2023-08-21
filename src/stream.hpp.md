@@ -55,6 +55,18 @@ data:
     path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
     title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
+    title: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -67,11 +79,23 @@ data:
     path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+    title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
@@ -111,6 +135,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yuki/No430.test.cpp
+    title: test/yuki/No430.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No789.test.cpp
     title: test/yuki/No789.test.cpp
@@ -213,16 +240,24 @@ data:
   timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   - test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   - test/yosupo_judge/data_structure/UnionFind.test.cpp
+  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
   - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
@@ -237,6 +272,7 @@ data:
   - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
   - test/yuki/No789.test.cpp
+  - test/yuki/No430.test.cpp
   - test/yuki/No3030.test.cpp
   - test/AOJ/DSL/1_A.test.cpp
   - test/AOJ/DSL/2_D_dual.test.cpp

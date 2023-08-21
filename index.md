@@ -119,10 +119,10 @@ data:
       title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
   - name: src/data-structure/data-structure-2d
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
       title: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data-structure/data-structure-2d/RangeTree.hpp
       title: src/data-structure/data-structure-2d/RangeTree.hpp
     - icon: ':heavy_check_mark:'
@@ -313,12 +313,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
       title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
-      title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_BIT.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
-      title: test/yosupo_judge/data_structure/Point_Add_Rectangle_Sum_Segtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
