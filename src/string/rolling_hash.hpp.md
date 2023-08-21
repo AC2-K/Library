@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
   - icon: ':heavy_check_mark:'
@@ -24,15 +24,15 @@ data:
   bundledCode: "#line 2 \"src/string/rolling_hash.hpp\"\n#include <chrono>\n#include\
     \ <random>\n#include <string>\n#include <vector>\n#line 2 \"src/math/gcd.hpp\"\
     \n#include <cassert>\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
-    \ T> constexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if\
-    \ (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n\
+    \    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
     \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
     \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
     \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
-    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
-    \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+    \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
+    \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
     \ a;\n}\n};  // namespace kyopro\n#line 2 \"src/internal/type_traits.hpp\"\n#include\
@@ -153,7 +153,7 @@ data:
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-08-21 15:56:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No430.test.cpp

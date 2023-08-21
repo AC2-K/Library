@@ -1,67 +1,67 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "Euler\u306E $\\phi$ \u95A2\u6570"
     links: []
   bundledCode: "#line 2 \"src/math/phi_function.hpp\"\n#include <algorithm>\n#line\
     \ 3 \"src/math/rho.hpp\"\n#include <vector>\n#line 2 \"src/math/gcd.hpp\"\n#include\
     \ <cassert>\n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr\
-    \ T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
-    \ b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \ inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a\
+    \ == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
     \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
     \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
     \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
     \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
-    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T ext_gcd(T\
-    \ a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b)\
-    \ {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n\
-    \        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
-    \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
-    \ kyopro\n#line 3 \"src/math/dynamic_modint.hpp\"\n#include <iostream>\n#line\
-    \ 2 \"src/internal/barrett.hpp\"\n#include <cstdint>\nnamespace kyopro {\nnamespace\
-    \ internal {\n\n/**\n * @brief Barrett Reduction\n */\nclass barrett {\n    using\
-    \ u32 = uint32_t;\n    using u64 = uint64_t;\n    using u128 = __uint128_t;\n\n\
-    \    u32 m;\n    u64 im;\n\npublic:\n    constexpr explicit barrett() : m(0),\
-    \ im(0) {}\n    constexpr explicit barrett(u32 m)\n        : m(m), im(static_cast<u64>(-1)\
-    \ / m + 1) {}\n\n    constexpr u32 get_mod() const { return m; }\n    constexpr\
-    \ u32 reduce(u32 a) const { return mul(1, a); }\n    constexpr u32 mul(u32 a,\
-    \ u32 b) const {\n        u64 z = (u64)a * b;\n        u64 x = (u64)(((u128)(z)*im)\
-    \ >> 64);\n        u64 y = x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n\
-    \    }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @ref\n\
-    \ * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+    \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
+    \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
+    \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
+    \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
+    \ a;\n}\n};  // namespace kyopro\n#line 3 \"src/math/dynamic_modint.hpp\"\n#include\
+    \ <iostream>\n#line 2 \"src/internal/barrett.hpp\"\n#include <cstdint>\nnamespace\
+    \ kyopro {\nnamespace internal {\n\n/**\n * @brief Barrett Reduction\n */\nclass\
+    \ barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n    using u128\
+    \ = __uint128_t;\n\n    u32 m;\n    u64 im;\n\npublic:\n    constexpr explicit\
+    \ barrett() : m(0), im(0) {}\n    constexpr explicit barrett(u32 m)\n        :\
+    \ m(m), im(static_cast<u64>(-1) / m + 1) {}\n\n    constexpr u32 get_mod() const\
+    \ { return m; }\n    constexpr u32 reduce(u32 a) const { return mul(1, a); }\n\
+    \    constexpr u32 mul(u32 a, u32 b) const {\n        u64 z = (u64)a * b;\n  \
+    \      u64 x = (u64)(((u128)(z)*im) >> 64);\n        u64 y = x * m;\n        return\
+    \ (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace internal\n};  //\
+    \ namespace kyopro\n\n/**\n * @ref\n * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
     \ */\n#line 3 \"src/internal/montgomery.hpp\"\n#include <limits>\n#include <numeric>\n\
     #line 5 \"src/internal/type_traits.hpp\"\n#include <typeinfo>\nnamespace kyopro\
     \ {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
@@ -199,12 +199,12 @@ data:
     \ - 1;\n        if (mint::mod() != n) {\n            mint::set_mod(n);\n     \
     \   }\n        for (int i = 0; i < length; ++i) {\n            if (n <= bases[i])\
     \ {\n                return true;\n            }\n            T t = d;\n     \
-    \       mint y = mint(bases[i]).pow(t);\n\n            while (t != n - 1 && y.val()\
-    \ != 1 && y.val() != rev) {\n                y *= y;\n                t <<= 1;\n\
-    \            }\n\n            if (y.val() != rev && (~t & 1)) return false;\n\
-    \        }\n        return true;\n    }\n    // \u5E95\n    static constexpr int\
-    \ bases_int[3] = {2, 7, 61};\n    static constexpr int bases_ll[7] = {2,     \
-    \ 325,     9375,      28178,\n                                        450775,\
+    \       mint y = mint::(bases[i]).pow(t);\n\n            while (t != n - 1 &&\
+    \ y.val() != 1 && y.val() != rev) {\n                y *= y;\n               \
+    \ t <<= 1;\n            }\n\n            if (y.val() != rev && (~t & 1)) return\
+    \ false;\n        }\n        return true;\n    }\n    // \u5E95\n    static constexpr\
+    \ int bases_int[3] = {2, 7, 61};\n    static constexpr int bases_ll[7] = {2, \
+    \     325,     9375,      28178,\n                                        450775,\
     \ 9780504, 1795265022};\n\npublic:\n    template <typename T> static constexpr\
     \ bool is_prime(T n) {\n        if (n < 2) {\n            return false;\n    \
     \    } else if (n == 2) {\n            return true;\n        } else if (~n & 1)\
@@ -292,8 +292,8 @@ data:
   isVerificationFile: false
   path: src/math/phi_function.hpp
   requiredBy: []
-  timestamp: '2023-08-21 15:21:38+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-08-21 15:56:48+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/math/phi_function.hpp

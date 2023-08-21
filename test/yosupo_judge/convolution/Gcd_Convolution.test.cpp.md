@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/divisor-multiple-transform.hpp
     title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   - icon: ':heavy_check_mark:'
@@ -118,15 +118,15 @@ data:
     \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
     \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
     \ true);\n}\n#line 4 \"src/math/gcd.hpp\"\nnamespace kyopro {\ntemplate <typename\
-    \ T> constexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if\
-    \ (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n\
+    \    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
     \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
     \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
     \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
-    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
-    \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+    \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
+    \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
     \ a;\n}\n};  // namespace kyopro\n#line 6 \"src/math/static_modint.hpp\"\nnamespace\
@@ -200,7 +200,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-08-21 15:07:37+09:00'
+  timestamp: '2023-08-21 15:56:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp

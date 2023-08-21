@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/factorize
@@ -42,15 +42,15 @@ data:
     \ \"https://judge.yosupo.jp/problem/factorize\"\n#include <iostream>\n#line 2\
     \ \"src/math/rho.hpp\"\n#include <algorithm>\n#include <vector>\n#line 2 \"src/math/gcd.hpp\"\
     \n#include <cassert>\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
-    \ T> constexpr T inline _gcd(T a, T b) {\n    assert(a >= 0 && b >= 0);\n    if\
-    \ (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n\
+    \    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
     \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
     \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
     \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr T\
-    \ ext_gcd(T a, T b, T& x, T& y) {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n\
-    \    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+    \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
+    \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
     \ a;\n}\n};  // namespace kyopro\n#line 2 \"src/internal/barrett.hpp\"\n#include\
@@ -201,12 +201,12 @@ data:
     \ - 1;\n        if (mint::mod() != n) {\n            mint::set_mod(n);\n     \
     \   }\n        for (int i = 0; i < length; ++i) {\n            if (n <= bases[i])\
     \ {\n                return true;\n            }\n            T t = d;\n     \
-    \       mint y = mint(bases[i]).pow(t);\n\n            while (t != n - 1 && y.val()\
-    \ != 1 && y.val() != rev) {\n                y *= y;\n                t <<= 1;\n\
-    \            }\n\n            if (y.val() != rev && (~t & 1)) return false;\n\
-    \        }\n        return true;\n    }\n    // \u5E95\n    static constexpr int\
-    \ bases_int[3] = {2, 7, 61};\n    static constexpr int bases_ll[7] = {2,     \
-    \ 325,     9375,      28178,\n                                        450775,\
+    \       mint y = mint::(bases[i]).pow(t);\n\n            while (t != n - 1 &&\
+    \ y.val() != 1 && y.val() != rev) {\n                y *= y;\n               \
+    \ t <<= 1;\n            }\n\n            if (y.val() != rev && (~t & 1)) return\
+    \ false;\n        }\n        return true;\n    }\n    // \u5E95\n    static constexpr\
+    \ int bases_int[3] = {2, 7, 61};\n    static constexpr int bases_ll[7] = {2, \
+    \     325,     9375,      28178,\n                                        450775,\
     \ 9780504, 1795265022};\n\npublic:\n    template <typename T> static constexpr\
     \ bool is_prime(T n) {\n        if (n < 2) {\n            return false;\n    \
     \    } else if (n == 2) {\n            return true;\n        } else if (~n & 1)\
@@ -322,8 +322,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-08-21 15:21:38+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-08-21 15:56:48+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Factorize.test.cpp
 layout: document

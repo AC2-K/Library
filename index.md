@@ -138,7 +138,7 @@ data:
     - icon: ':warning:'
       path: src/debug.hpp
       title: src/debug.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/stream.hpp
       title: fastIO
     - icon: ':heavy_check_mark:'
@@ -162,13 +162,13 @@ data:
       title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   - name: src/internal
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/barrett.hpp
       title: Barrett Reduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
@@ -179,19 +179,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/divisor-multiple-transform.hpp
       title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/dynamic_modint.hpp
       title: "\u52D5\u7684modint"
     - icon: ':warning:'
       path: src/math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
     - icon: ':heavy_check_mark:'
       path: src/math/matrix.hpp
       title: Matrix
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/math/miller.hpp
       title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
     - icon: ':heavy_check_mark:'
@@ -200,13 +200,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/mod_pow.hpp
       title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/math/phi_function.hpp
       title: "Euler\u306E $\\phi$ \u95A2\u6570"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/math/primitive_root.hpp
       title: "\u539F\u59CB\u6839"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/math/rho.hpp
       title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
     - icon: ':heavy_check_mark:'
@@ -214,7 +214,7 @@ data:
       title: "\u9759\u7684modint"
   - name: src/random
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/random/xor_shift.hpp
       title: xor shift
   - name: src/string
@@ -276,7 +276,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_B.test.cpp
       title: test/AOJ/NTL/1_B.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/AOJ/NTL/1_D.test.cpp
       title: test/AOJ/NTL/1_D.test.cpp
     - icon: ':heavy_check_mark:'
@@ -353,13 +353,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/math/Primitive_Root.test.cpp
       title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - name: test/yosupo_judge/matrix
@@ -399,7 +399,7 @@ data:
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yuki/No3030.test.cpp
       title: test/yuki/No3030.test.cpp
     - icon: ':heavy_check_mark:'
