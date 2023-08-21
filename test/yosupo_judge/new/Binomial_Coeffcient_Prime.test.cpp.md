@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/combination.hpp
     title: "\u4E8C\u9805\u4FC2\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
@@ -188,8 +188,8 @@ data:
     \ int id>\nkyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;\n\
     \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */\n\
     #line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
-    #line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\nvoid single_read(char& c)\
-    \ {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    #line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
+    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
@@ -202,19 +202,19 @@ data:
     \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
     \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
     \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
-    }\n\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename T,\
-    \ internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if (!a)\
-    \ {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
-    \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T\
-    \ a) {\n    single_write(a.val());\n}\n\nvoid single_write(const std::string&\
-    \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n}\n\n\
-    template<typename T>\nvoid write(T x) { single_write(x); }\ntemplate <typename\
-    \ Head, typename... Tail> void write(Head head, Tail... tail) {\n    single_write(head);\n\
-    \    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate <typename... Args>\
-    \ void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};\
-    \  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 7 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\
+    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
+    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
+    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
+    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
+    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
+    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
+    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
+    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
+    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
+    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
+    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 7 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\
     \nusing mint = kyopro::barrett_modint<10>;\nusing namespace std;\nint main() {\n\
     \    int t, m;\n    kyopro::read(t, m);\n    mint::set_mod(m);\n    kyopro::combination<mint,\
     \ (int)1e7> solver;\n    while (t--) {\n        int n, r;\n        kyopro::read(n,\
@@ -238,8 +238,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   requiredBy: []
-  timestamp: '2023-08-21 01:02:26+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-21 00:07:47+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
 layout: document

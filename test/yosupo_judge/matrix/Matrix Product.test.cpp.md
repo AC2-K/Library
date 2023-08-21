@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/matrix.hpp
     title: Matrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -148,7 +148,7 @@ data:
     \        is >> v_;\n        mt = v_;\n        return is;\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
-    \ <string>\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\nvoid single_read(char&\
+    \ <string>\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
     \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
@@ -162,19 +162,19 @@ data:
     \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
     \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
     \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
-    }\n\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename T,\
-    \ internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if (!a)\
-    \ {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a < 0) putchar_unlocked('-'),\
-    \ a *= -1;\n    char s[37];\n    int now = 37;\n    while (a) {\n        s[--now]\
-    \ = (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now < 37) putchar_unlocked(s[now++]);\n\
-    }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\nvoid single_write(T\
-    \ a) {\n    single_write(a.val());\n}\n\nvoid single_write(const std::string&\
-    \ str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n    }\n}\n\n\
-    template<typename T>\nvoid write(T x) { single_write(x); }\ntemplate <typename\
-    \ Head, typename... Tail> void write(Head head, Tail... tail) {\n    single_write(head);\n\
-    \    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate <typename... Args>\
-    \ void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};\
-    \  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/matrix/Matrix\
+    }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
+    \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
+    \ (!a) {\n        putchar_unlocked('0');\n        return;\n    }\n    if (a <\
+    \ 0) putchar_unlocked('-'), a *= -1;\n    char s[37];\n    int now = 37;\n   \
+    \ while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /= 10;\n    }\n\
+    \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
+    \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
+    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
+    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
+    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
+    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/matrix/Matrix\
     \ Product.test.cpp\"\n#pragma GCC optimize(\"unroll-loops\")\n\nusing mint = kyopro::modint<998244353>;\n\
     int main() {\n    int n, m, k;\n    kyopro::read(n, m, k);\n    kyopro::Matrix<mint>\
     \ a(n, m), b(m, k);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0;\
@@ -203,8 +203,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-08-21 01:02:26+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-21 00:15:06+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
 layout: document
