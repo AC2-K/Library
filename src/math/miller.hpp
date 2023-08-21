@@ -28,7 +28,7 @@ class miller {
                 return true;
             }
             T t = d;
-            mint y = mint::(bases[i]).pow(t);
+            mint y = mint(bases[i]).pow(t);
 
             while (t != n - 1 && y.val() != 1 && y.val() != rev) {
                 y *= y;

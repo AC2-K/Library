@@ -1,5 +1,6 @@
 #include <bitset>
 #include <cassert>
+#include <numeric>
 #include <vector>
 namespace kyopro {
 
@@ -13,6 +14,8 @@ class eratosthenes_sieve {
 
 public:
     eratosthenes_sieve(int n) : mpf(n + 1, -1), mobius(n + 1, 1) {
+        std::iota(mpf.begin(), mpf.end(), 0);
+        mpf[0] = 0, mpf[1] = 0;
         for (int i = 2; i <= n; ++i) {
             if (!is_prime(i)) continue;
             mpf[i] = i;
@@ -42,7 +45,7 @@ public:
     }
 
     std::vector<int> enumerate_mobius() const { return mobius; }
-    
+
     std::vector<int> factorize(int a) const {
         assert(1 <= a && a < (int)mpf.size());
         if (a <= 1) return {};
@@ -74,7 +77,7 @@ public:
     }
 
     std::vector<int> enumerate_divisor(int n) {
-        std::vector<std::pair<int,int>> pf = exp_factorize(n);
+        std::vector<std::pair<int, int>> pf = exp_factorize(n);
         std::vector<int> divisor{1};
         for (auto [p, e] : pf) {
             int pow = p;
@@ -91,5 +94,3 @@ public:
 };
 
 };  // namespace kyopro
-
-

@@ -1,14 +1,12 @@
 #pragma once
 #include "../math/dynamic_modint.hpp"
 #include "../math/rho.hpp"
-#include "../random/xor_shift.hpp"
 namespace kyopro {
 
 /**
  * @brief 原始根
  */
-template<typename T>
-long long primitive_root(T p) {
+template <typename T> constexpr T primitive_root(T p) noexcept {
     if (p == 2) return 1;
 
     auto pf = kyopro::rho::factorize(p - 1);
@@ -16,14 +14,16 @@ long long primitive_root(T p) {
     for (auto& q : pf) {
         q = (p - 1) / q;
     }
-    
-    if (montgomery_modint<uint64_t>::mod() != p) {
-        montgomery_modint<uint64_t>::set_mod(p);
+
+    using mint =
+        std::conditional_t<std::numeric_limits<T>::digits <= 32,
+                           barrett_modint<-1>, montgomery_modint<uint64_t>>;
+    if (mint::mod() != p) {
+        mint::set_mod(p);
     }
 
-    xor_shift32 rng(619);
-    while(1) {
-        montgomery_modint<uint64_t> g(rng());
+    for (int _g = 1;; ++_g) {
+        mint g(_g);
         if (g.val() == 0) continue;
         bool is_ok = true;
 
@@ -38,5 +38,6 @@ long long primitive_root(T p) {
             return g.val();
         }
     }
+    return -1;
 }
 };  // namespace kyopro
