@@ -3,22 +3,26 @@
 #include "../../../src/stream.hpp"
 #include "../../../src/algorithm/mo.hpp"
 #include "../../../src/data-structure/BIT.hpp"
+#include"../../../src/stream.hpp"
+using namespace std;
+using namespace kyopro;
+
 int main() {
     int n, q;
-    kyopro::read(n, q);
-    kyopro::Mo mo(q);
-    std::vector<int> a(n);
-    for (auto& aa : a) {
-        kyopro::read(aa);
-    }
-    std::vector<int> k(q);
+    read(n, q);
+    Mo mo(q);
+    vector<int> a(n);
+    for (auto& aa : a) 
+        read(aa);
+    
+    vector<int> k(q);
     for (int i = 0; i < q; i++) {
         int l, r;
-        scanf("%d%d%d", &l, &r, &k[i]);
+        read(l, r, k[i]);
         k[i]++;
         mo.add(l, r);
     }
-    std::vector<int> pressed = a;
+    vector<int> pressed = a;
     auto tmp = a;
     {
         std::sort(tmp.begin(), tmp.end());
@@ -29,17 +33,15 @@ int main() {
     }
 
     int sz = tmp.size();
-    kyopro::BIT<int> st(sz);
+    BIT<int> st(sz);
     auto add = [&](int x) -> void { st.add(pressed[x], 1); };
     auto del = [&](int x) -> void { st.add(pressed[x], -1); };
-    std::vector<int> ans(q);
+    vector<int> ans(q);
     auto out = [&](int x) -> void {
         int ok = st.lower_bound(k[x]);
         ans[x] = tmp[ok - 1];
     };
 
     mo.build(add, del, out);
-    for (auto r : ans) {
-        kyopro::put(r);
-    }
+    for (auto r : ans) put(r);
 }

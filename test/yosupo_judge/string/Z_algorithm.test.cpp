@@ -5,14 +5,11 @@
 #include "../../../src/stream.hpp"
 #include "../../../src/string/Z.hpp"
 
+using namespace std;
+using namespace kyopro;
 int main() {
-    std::string s;
-    {
-        char c;
-        while (!isspace(c = getchar_unlocked())) s += c;
-    }
-    auto res = kyopro::Z(s);
-    for (auto r : res) {
-        kyopro::put(r);
-    }
+    string s;
+    read(s);
+    auto res = Z(s);
+    for (auto r : res) put(r);
 }

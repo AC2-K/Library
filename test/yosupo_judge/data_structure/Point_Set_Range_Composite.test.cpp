@@ -2,8 +2,12 @@
 #include <iostream>
 #include "../../../src/data-structure/segtree.hpp"
 #include "../../../src/math/static_modint.hpp"
+#include "../../../src/stream.hpp"
 
-using mint = kyopro::modint<998244353>;
+using namespace std;
+using namespace kyopro;
+
+using mint = modint<998244353>;
 
 struct F {
     mint a, b;
@@ -16,32 +20,30 @@ inline F op(F l, F r) {
 }
 inline F e() { return F{1, 0}; }
 int main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
     int n, q;
-    std::cin >> n >> q;
-    kyopro::segtree<F, op, e> seg(n);
+    read(n, q);
+    segtree<F, op, e> seg(n);
     for (int i = 0; i < n; i++) {
         mint a, b;
-        std::cin >> a >> b;
+        read(a, b);
         seg.set(i, F{a, b});
     }
     seg.build();
     while (q--) {
         int t;
-        std::cin >> t;
+        read(t);
         if (!t) {
             int p;
             mint c, d;
-            std::cin >> p >> c >> d;
+            read(p, c, d);
             seg.update(p, F{c, d});
         } else {
             int l, r;
             mint x;
-            std::cin >> l >> r >> x;
+            read(l, r, x);
             F res = seg.fold(l, r);
             mint ans = res.a * x + res.b;
-            std::cout << ans << '\n';
+            put(ans);
         }
     }
 }

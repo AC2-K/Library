@@ -2,14 +2,13 @@
 #include <iostream>
 #include "../../../src/stream.hpp"
 #include "../../../src/string/manacher.hpp"
+
+using namespace std;
+using namespace kyopro;
+
 int main() {
     std::string s;
-    {
-        char c;
-        while (!isspace(c = getchar_unlocked())) s += c;
-    }
+    read(s);
     auto res = kyopro::manacher(s);
-    for (auto r : res) {
-        kyopro::put(r);
-    }
+    for (auto r : res) put(r);
 }

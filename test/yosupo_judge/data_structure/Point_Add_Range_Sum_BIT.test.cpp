@@ -1,27 +1,32 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include <iostream>
 #include "../../../src/data-structure/BIT.hpp"
+#include "../../../src/stream.hpp"
+
+using namespace std;
+using namespace kyopro;
+
 int main() {
     int n, q;
-    scanf("%d%d", &n, &q);
-    kyopro::BIT<long long> seg(n);
+    read(n, q);
+    BIT<long long> seg(n);
     for (int i = 0; i < n; i++) {
         int a;
-        scanf("%d", &a);
+        read(a);
         seg.add(i, a);
     }
 
     while (q--) {
         int t;
-        scanf("%d", &t);
+        read(t);
         if (t == 0) {
             int p, x;
-            scanf("%d%d", &p, &x);
+            read(p, x);
             seg.add(p, x);
         } else {
             int l, r;
-            scanf("%d%d", &l, &r);
-            printf("%lld\n", seg.sum(l, r));
+            read(l, r);
+            put(seg.sum(l, r));
         }
     }
 }
