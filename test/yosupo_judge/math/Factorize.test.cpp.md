@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/factorize
@@ -201,12 +201,12 @@ data:
     \ - 1;\n        if (mint::mod() != n) {\n            mint::set_mod(n);\n     \
     \   }\n        for (int i = 0; i < length; ++i) {\n            if (n <= bases[i])\
     \ {\n                return true;\n            }\n            T t = d;\n     \
-    \       mint y = mint::(bases[i]).pow(t);\n\n            while (t != n - 1 &&\
-    \ y.val() != 1 && y.val() != rev) {\n                y *= y;\n               \
-    \ t <<= 1;\n            }\n\n            if (y.val() != rev && (~t & 1)) return\
-    \ false;\n        }\n        return true;\n    }\n    // \u5E95\n    static constexpr\
-    \ int bases_int[3] = {2, 7, 61};\n    static constexpr int bases_ll[7] = {2, \
-    \     325,     9375,      28178,\n                                        450775,\
+    \       mint y = mint(bases[i]).pow(t);\n\n            while (t != n - 1 && y.val()\
+    \ != 1 && y.val() != rev) {\n                y *= y;\n                t <<= 1;\n\
+    \            }\n\n            if (y.val() != rev && (~t & 1)) return false;\n\
+    \        }\n        return true;\n    }\n    // \u5E95\n    static constexpr int\
+    \ bases_int[3] = {2, 7, 61};\n    static constexpr int bases_ll[7] = {2,     \
+    \ 325,     9375,      28178,\n                                        450775,\
     \ 9780504, 1795265022};\n\npublic:\n    template <typename T> static constexpr\
     \ bool is_prime(T n) {\n        if (n < 2) {\n            return false;\n    \
     \    } else if (n == 2) {\n            return true;\n        } else if (~n & 1)\
@@ -322,8 +322,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Factorize.test.cpp
   requiredBy: []
-  timestamp: '2023-08-21 15:56:48+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-21 16:28:28+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Factorize.test.cpp
 layout: document

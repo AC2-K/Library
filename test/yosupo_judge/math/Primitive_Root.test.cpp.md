@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/primitive_root
@@ -204,7 +204,7 @@ data:
     \        }\n\n        const T rev = n - 1;\n        if (mint::mod() != n) {\n\
     \            mint::set_mod(n);\n        }\n        for (int i = 0; i < length;\
     \ ++i) {\n            if (n <= bases[i]) {\n                return true;\n   \
-    \         }\n            T t = d;\n            mint y = mint::(bases[i]).pow(t);\n\
+    \         }\n            T t = d;\n            mint y = mint(bases[i]).pow(t);\n\
     \n            while (t != n - 1 && y.val() != 1 && y.val() != rev) {\n       \
     \         y *= y;\n                t <<= 1;\n            }\n\n            if (y.val()\
     \ != rev && (~t & 1)) return false;\n        }\n        return true;\n    }\n\
@@ -275,26 +275,26 @@ data:
     \ for (int j = 0; j < sz; ++j)\n                    divisor.emplace_back(divisor[j]\
     \ * pow);\n                pow *= p;\n            }\n        }\n\n        return\
     \ divisor;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/math/rho.md\n\
-    \ */\n#line 5 \"src/math/primitive_root.hpp\"\nnamespace kyopro {\n\n/**\n * @brief\
-    \ \u539F\u59CB\u6839\n */\ntemplate<typename T>\nlong long primitive_root(T p)\
-    \ {\n    if (p == 2) return 1;\n\n    auto pf = kyopro::rho::factorize(p - 1);\n\
-    \    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto& q\
-    \ : pf) {\n        q = (p - 1) / q;\n    }\n    \n    if (montgomery_modint<uint64_t>::mod()\
-    \ != p) {\n        montgomery_modint<uint64_t>::set_mod(p);\n    }\n\n    xor_shift32\
-    \ rng(619);\n    while(1) {\n        montgomery_modint<uint64_t> g(rng());\n \
-    \       if (g.val() == 0) continue;\n        bool is_ok = true;\n\n        for\
-    \ (auto q : pf) {\n            if (g.pow(q).val() == 1) {\n                is_ok\
-    \ = false;\n                break;\n            }\n        }\n\n        if (is_ok)\
-    \ {\n            return g.val();\n        }\n    }\n}\n};  // namespace kyopro\n\
-    #line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
-    #line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
-    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
-    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
-    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ */\n#line 4 \"src/math/primitive_root.hpp\"\nnamespace kyopro {\n\n/**\n * @brief\
+    \ \u539F\u59CB\u6839\n */\ntemplate <typename T> constexpr T primitive_root(T\
+    \ p) noexcept {\n    if (p == 2) return 1;\n\n    auto pf = kyopro::rho::factorize(p\
+    \ - 1);\n    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto&\
+    \ q : pf) {\n        q = (p - 1) / q;\n    }\n\n    using mint =\n        std::conditional_t<std::numeric_limits<T>::digits\
+    \ <= 32,\n                           barrett_modint<-1>, montgomery_modint<uint64_t>>;\n\
+    \    if (mint::mod() != p) {\n        mint::set_mod(p);\n    }\n\n    for (int\
+    \ _g = 1;; ++_g) {\n        mint g(_g);\n        if (g.val() == 0) continue;\n\
+    \        bool is_ok = true;\n\n        for (auto q : pf) {\n            if (g.pow(q).val()\
+    \ == 1) {\n                is_ok = false;\n                break;\n          \
+    \  }\n        }\n\n        if (is_ok) {\n            return g.val();\n       \
+    \ }\n    }\n    return -1;\n}\n};  // namespace kyopro\n#line 2 \"src/stream.hpp\"\
+    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 6 \"src/stream.hpp\"\
+    \n\nnamespace kyopro {\n// read\nvoid single_read(char& c) {\n    c = getchar_unlocked();\n\
+    \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
+    \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
+    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
+    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
+    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
     \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
     \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
@@ -336,8 +336,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2023-08-21 15:56:48+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-21 16:28:28+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Primitive_Root.test.cpp
 layout: document
