@@ -6,16 +6,15 @@ namespace kyopro {
 
 /**
  * @brief Topologial Sort
- * @param has_cycle 有向サイクルを含む場合は、has_cycleをtrueにしてから終了する。
+ * @returns (ソート済みの頂点列, 元のグラフがDAGだったか?)
  */
-void topological_sort(const std::vector<std::vector<int>>& g,
-                      std::vector<int>& res,
-                      bool& has_cycle) {
-    has_cycle = false;
+std::pair<std::vector<int>, bool> topological_sort(
+    const std::vector<std::vector<int>>& g) {
     int n = g.size();
     std::vector<bool> vis(n, false), finished(n, false);
+    std::vector<int> res;
 
-    auto dfs = [&](auto f, int v) -> bool {
+    auto dfs = [&](const auto& f, int v) -> bool {
         vis[v] = true;
         for (auto nex : g[v]) {
             if (vis[nex]) {
@@ -37,11 +36,11 @@ void topological_sort(const std::vector<std::vector<int>>& g,
     for (int v = 0; v < n; v++) {
         if (vis[v]) continue;
         if (!dfs(dfs, v)) {
-            has_cycle = true;
-            return;
+            return std::pair(std::vector<int>(), false);
         }
     }
     std::reverse(res.begin(), res.end());
+    return std::pair(res, true);
 }
 
 };  // namespace kyopro
