@@ -87,7 +87,7 @@ data:
     \ std::vector<long long> _dist;\n    std::vector<int> _depth;\n\npublic:\n   \
     \ explicit doubling(int n) : n(n), g(n), _dist(n, -1), _depth(n) {\n        std::fill(parent,\
     \ parent + lg, std::vector<int>(n));\n    }\n    void add_edge(int a, int b, int\
-    \ c = 1) {\n        g[a].emplace_back(b, 1);\n        g[b].emplace_back(a, 1);\n\
+    \ c = 1) {\n        g[a].emplace_back(b, c);\n        g[b].emplace_back(a, c);\n\
     \    }\n    void build(int root = 0) {\n        std::vector<int> st;\n       \
     \ st.reserve(n);\n\n        st.emplace_back(root);\n        _dist[root] = 0, _depth[root]\
     \ = 0, parent[0][root] = root;\n        while (!st.empty()) {\n            int\
@@ -102,7 +102,7 @@ data:
     \ < lg; ++i) {\n            if (k >> i & 1) {\n                v = parent[i][v];\n\
     \            }\n        }\n        return v;\n    }\n\n    long long dist(int\
     \ v) const { return _dist[v]; }\n    long long dist(int u, int v) const {\n  \
-    \      return _dist[u] + _dist[v] - 2 * _dist[lca(u, v)];\n    }\n    int depth(int\
+    \      return dist(u) + dist(v) - 2 * dist(lca(u, v));\n    }\n    int depth(int\
     \ v) const { return _depth[v]; }\n    int unweighted_dist(int u, int v) const\
     \ {\n        return _depth[u] + _depth[v] - 2 * _depth[lca(u, v)];\n    }\n  \
     \  int lca(int a, int b) const {\n        if (_depth[a] > _depth[b]) {\n     \
@@ -137,7 +137,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-09-06 15:05:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
