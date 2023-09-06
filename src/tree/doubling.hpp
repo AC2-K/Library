@@ -26,8 +26,8 @@ public:
         std::fill(parent, parent + lg, std::vector<int>(n));
     }
     void add_edge(int a, int b, int c = 1) {
-        g[a].emplace_back(b, 1);
-        g[b].emplace_back(a, 1);
+        g[a].emplace_back(b, c);
+        g[b].emplace_back(a, c);
     }
     void build(int root = 0) {
         std::vector<int> st;
@@ -69,7 +69,7 @@ public:
 
     long long dist(int v) const { return _dist[v]; }
     long long dist(int u, int v) const {
-        return _dist[u] + _dist[v] - 2 * _dist[lca(u, v)];
+        return dist(u) + dist(v) - 2 * dist(lca(u, v));
     }
     int depth(int v) const { return _depth[v]; }
     int unweighted_dist(int u, int v) const {
