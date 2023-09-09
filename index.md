@@ -9,6 +9,11 @@ data:
     - icon: ':warning:'
       path: out.cpp
       title: out.cpp
+  - name: src/FormalPowerSeries
+    pages:
+    - icon: ':warning:'
+      path: src/FormalPowerSeries/FPS.hpp
+      title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
   - name: src/algorithm
     pages:
     - icon: ':heavy_check_mark:'
