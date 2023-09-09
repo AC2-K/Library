@@ -383,6 +383,9 @@ data:
   - name: test/yosupo_judge/polynomial
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+      title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
       title: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
   - name: test/yosupo_judge/string

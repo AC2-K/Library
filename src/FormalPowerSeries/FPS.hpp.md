@@ -19,6 +19,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
     title: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
   _isVerificationFailed: false
@@ -507,6 +510,7 @@ data:
   timestamp: '2023-09-09 17:48:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
 documentation_of: src/FormalPowerSeries/FPS.hpp
 layout: document
