@@ -11,7 +11,7 @@ data:
       title: out.cpp
   - name: src/FormalPowerSeries
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/FormalPowerSeries/FPS.hpp
       title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
   - name: src/algorithm
@@ -21,7 +21,7 @@ data:
       title: Mo's algorithm
   - name: src/atcoder
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/convolution.hpp
       title: src/atcoder/convolution.hpp
     - icon: ':warning:'
@@ -30,13 +30,13 @@ data:
     - icon: ':warning:'
       path: src/atcoder/fenwicktree.hpp
       title: src/atcoder/fenwicktree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/internal_bit.hpp
       title: src/atcoder/internal_bit.hpp
     - icon: ':warning:'
       path: src/atcoder/internal_csr.hpp
       title: src/atcoder/internal_csr.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/internal_math.hpp
       title: src/atcoder/internal_math.hpp
     - icon: ':warning:'
@@ -45,7 +45,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/internal_scc.hpp
       title: src/atcoder/internal_scc.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/internal_type_traits.hpp
       title: src/atcoder/internal_type_traits.hpp
     - icon: ':warning:'
@@ -60,7 +60,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/mincostflow.hpp
       title: src/atcoder/mincostflow.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/modint.hpp
       title: src/atcoder/modint.hpp
     - icon: ':warning:'
@@ -380,6 +380,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
       title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+  - name: test/yosupo_judge/polynomial
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
+      title: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
   - name: test/yosupo_judge/string
     pages:
     - icon: ':heavy_check_mark:'

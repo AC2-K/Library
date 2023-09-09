@@ -145,6 +145,9 @@ data:
     path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
     title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
+    title: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
     title: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   - icon: ':heavy_check_mark:'
@@ -291,6 +294,7 @@ data:
   - test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   - test/yosupo_judge/string/Z_algorithm.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
   - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
