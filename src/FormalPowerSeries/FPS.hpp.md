@@ -409,7 +409,7 @@ data:
     \ FPS = FormalPowerSeries<mint>;\n\n    void expand(size_t sz) {\n        if (this->size()\
     \ < sz) this->resize(sz);\n    }\n\n    void shrink() {\n        while (!(*this).empty()\
     \ && (*this).back() == mint()) (*this).pop_back();\n    }\n\n    FPS pref(size_t\
-    \ sz) {\n        FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));\n\
+    \ sz) const {\n        FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));\n\
     \        g.expand(sz);\n        return g;\n    }\n\n    FPS& operator+=(const\
     \ FPS& rhs) {\n        expand(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
     \ ++i) (*this)[i] += rhs[i];\n        return (*this);\n    }\n    \n    FPS& operator-=(const\
@@ -432,12 +432,22 @@ data:
     \ FPS(*this) -= rhs; }\n    FPS operator*(const mint& rhs) const { return FPS(*this)\
     \ *= rhs; }\n    FPS operator/(const mint& rhs) const { return FPS(*this) /= rhs;\
     \ }\n\n    friend FPS operator*(const mint& lhs, const FPS& rhs) {\n        return\
-    \ FPS(rhs) *= lhs;\n    }\n\n    // \u9006\u5143\n    FPS inv(size_t deg = -1)\
-    \ {\n        assert(!(*this).empty() && (*this)[0] != mint());\n        if (deg\
-    \ == -1) deg = this->size();\n\n        FPS g{mint(1) / (*this)[0]};\n       \
-    \ for (int d = 1; d < deg; d <<= 1) {\n            g = (g * 2 - g * g * (*this).pref(2\
-    \ * d)).pref(2 * d);\n        }\n\n        return g.pref(deg);\n    }\n};\n\n\
-    };  // namespace kyopro\n"
+    \ FPS(rhs) *= lhs;\n    }\n\n    // \u7A4D\u5206\n    FPS integral() const {\n\
+    \        FPS res(this->size() + 1);\n        for (int i = 0; i < (int)this->size();\
+    \ ++i) {\n            res[i + 1] = (*this)[i] * mint(i + 1).inv();\n        }\n\
+    \        return res;\n    }\n\n    // \u5FAE\u5206\n    FPS prime() const {\n\
+    \        FPS res(this->size() - 1);\n        for (int i = 1; i < (int)this->size();\
+    \ ++i) {\n            res[i - 1] = (*this)[i] * mint::raw(i);\n        }\n   \
+    \     return res;\n    }\n\n    // \u9006\u5143\n    FPS inv(size_t sz = -1) const\
+    \ {\n        assert(!(*this).empty() && (*this)[0] != mint());\n        if (sz\
+    \ == -1) sz = this->size();\n\n        FPS g{mint(1) / (*this)[0]};\n        for\
+    \ (int d = 1; d < sz; d <<= 1) {\n            g = (g * 2 - g * g * (*this).pref(2\
+    \ * d)).pref(2 * d);\n        }\n\n        return g.pref(sz);\n    }\n    FPS&\
+    \ operator/=(const FPS& rhs) { return (*this) *= rhs.inv(); }\n    FPS operator/(const\
+    \ FPS& rhs) const { return FPS(*this) *= rhs.inv(); }\n\n    FPS log(size_t sz\
+    \ = -1) const {\n        assert(!(this->empty()) && (*this)[0].val() == 1);\n\
+    \        if (sz == -1) sz = this->size();\n        return ((*this).prime() * (*this).inv(sz\
+    \ - 1)).pref(sz - 1).integral();\n    }\n};\n\n};  // namespace kyopro\n"
   code: "#pragma once\n#include <vector>\n#include \"../../src/atcoder/convolution.hpp\"\
     \nnamespace kyopro{\n\n\n/**\n * @brief \u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570\
     \n * @note mint\u306FACL\u306E\u65B9\u3067\u6E21\u3059\u3053\u3068\n*/\ntemplate\
@@ -446,7 +456,7 @@ data:
     \ FPS = FormalPowerSeries<mint>;\n\n    void expand(size_t sz) {\n        if (this->size()\
     \ < sz) this->resize(sz);\n    }\n\n    void shrink() {\n        while (!(*this).empty()\
     \ && (*this).back() == mint()) (*this).pop_back();\n    }\n\n    FPS pref(size_t\
-    \ sz) {\n        FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));\n\
+    \ sz) const {\n        FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));\n\
     \        g.expand(sz);\n        return g;\n    }\n\n    FPS& operator+=(const\
     \ FPS& rhs) {\n        expand(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
     \ ++i) (*this)[i] += rhs[i];\n        return (*this);\n    }\n    \n    FPS& operator-=(const\
@@ -469,12 +479,22 @@ data:
     \ FPS(*this) -= rhs; }\n    FPS operator*(const mint& rhs) const { return FPS(*this)\
     \ *= rhs; }\n    FPS operator/(const mint& rhs) const { return FPS(*this) /= rhs;\
     \ }\n\n    friend FPS operator*(const mint& lhs, const FPS& rhs) {\n        return\
-    \ FPS(rhs) *= lhs;\n    }\n\n    // \u9006\u5143\n    FPS inv(size_t deg = -1)\
-    \ {\n        assert(!(*this).empty() && (*this)[0] != mint());\n        if (deg\
-    \ == -1) deg = this->size();\n\n        FPS g{mint(1) / (*this)[0]};\n       \
-    \ for (int d = 1; d < deg; d <<= 1) {\n            g = (g * 2 - g * g * (*this).pref(2\
-    \ * d)).pref(2 * d);\n        }\n\n        return g.pref(deg);\n    }\n};\n\n\
-    };  // namespace kyopro"
+    \ FPS(rhs) *= lhs;\n    }\n\n    // \u7A4D\u5206\n    FPS integral() const {\n\
+    \        FPS res(this->size() + 1);\n        for (int i = 0; i < (int)this->size();\
+    \ ++i) {\n            res[i + 1] = (*this)[i] * mint(i + 1).inv();\n        }\n\
+    \        return res;\n    }\n\n    // \u5FAE\u5206\n    FPS prime() const {\n\
+    \        FPS res(this->size() - 1);\n        for (int i = 1; i < (int)this->size();\
+    \ ++i) {\n            res[i - 1] = (*this)[i] * mint::raw(i);\n        }\n   \
+    \     return res;\n    }\n\n    // \u9006\u5143\n    FPS inv(size_t sz = -1) const\
+    \ {\n        assert(!(*this).empty() && (*this)[0] != mint());\n        if (sz\
+    \ == -1) sz = this->size();\n\n        FPS g{mint(1) / (*this)[0]};\n        for\
+    \ (int d = 1; d < sz; d <<= 1) {\n            g = (g * 2 - g * g * (*this).pref(2\
+    \ * d)).pref(2 * d);\n        }\n\n        return g.pref(sz);\n    }\n    FPS&\
+    \ operator/=(const FPS& rhs) { return (*this) *= rhs.inv(); }\n    FPS operator/(const\
+    \ FPS& rhs) const { return FPS(*this) *= rhs.inv(); }\n\n    FPS log(size_t sz\
+    \ = -1) const {\n        assert(!(this->empty()) && (*this)[0].val() == 1);\n\
+    \        if (sz == -1) sz = this->size();\n        return ((*this).prime() * (*this).inv(sz\
+    \ - 1)).pref(sz - 1).integral();\n    }\n};\n\n};  // namespace kyopro"
   dependsOn:
   - src/atcoder/convolution.hpp
   - src/atcoder/internal_bit.hpp
@@ -484,7 +504,7 @@ data:
   isVerificationFile: false
   path: src/FormalPowerSeries/FPS.hpp
   requiredBy: []
-  timestamp: '2023-09-09 16:53:59+09:00'
+  timestamp: '2023-09-09 17:48:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
