@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../../atcoder/convolution.hpp"
+#include "../../src/atcoder/convolution.hpp"
 namespace kyopro{
 
 
@@ -16,11 +16,17 @@ struct FormalPowerSeries : public std::vector<mint> {
     void expand(size_t sz) {
         if (this->size() < sz) this->resize(sz);
     }
-    
+
     void shrink() {
         while (!(*this).empty() && (*this).back() == mint()) (*this).pop_back();
     }
-    
+
+    FPS pref(size_t sz) {
+        FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));
+        g.expand(sz);
+        return g;
+    }
+
     FPS& operator+=(const FPS& rhs) {
         expand(rhs.size());
         for (int i = 0; i < (int)rhs.size(); ++i) (*this)[i] += rhs[i];
@@ -53,11 +59,13 @@ struct FormalPowerSeries : public std::vector<mint> {
         for (int i = 0; i < (int)this->size(); ++i) {
             (*this)[i] *= rhs;
         }
+        return (*this);
     }
     FPS& operator/=(const mint& rhs) {
         for (int i = 0; i < (int)this->size(); ++i) {
             (*this)[i] /= rhs;
         }
+        return (*this);
     }
 
     FPS operator+(const FPS& rhs) const { return FPS(*this) += rhs; }
@@ -70,6 +78,19 @@ struct FormalPowerSeries : public std::vector<mint> {
 
     friend FPS operator*(const mint& lhs, const FPS& rhs) {
         return FPS(rhs) *= lhs;
+    }
+
+    // 逆元
+    FPS inv(size_t deg = -1) {
+        assert(!(*this).empty() && (*this)[0] != mint());
+        if (deg == -1) deg = this->size();
+
+        FPS g{mint(1) / (*this)[0]};
+        for (int d = 1; d < deg; d <<= 1) {
+            g = (g * 2 - g * g * (*this).pref(2 * d)).pref(2 * d);
+        }
+
+        return g.pref(deg);
     }
 };
 
