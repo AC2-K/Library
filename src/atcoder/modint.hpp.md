@@ -9,6 +9,9 @@ data:
     title: src/atcoder/internal_type_traits.hpp
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: src/FormalPowerSeries/FPS.hpp
+    title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
+  - icon: ':warning:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
   - icon: ':warning:'
@@ -329,6 +332,7 @@ data:
   - src/string/wildcard_pattern_matching.hpp
   - src/string/wildcard_pattern_matching.hpp
   - src/atcoder/convolution.hpp
+  - src/FormalPowerSeries/FPS.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
