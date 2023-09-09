@@ -21,7 +21,7 @@ struct FormalPowerSeries : public std::vector<mint> {
         while (!(*this).empty() && (*this).back() == mint()) (*this).pop_back();
     }
 
-    FPS pref(size_t sz) {
+    FPS pref(size_t sz) const {
         FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));
         g.expand(sz);
         return g;
@@ -80,17 +80,43 @@ struct FormalPowerSeries : public std::vector<mint> {
         return FPS(rhs) *= lhs;
     }
 
+    // 積分
+    FPS integral() const {
+        FPS res(this->size() + 1);
+        for (int i = 0; i < (int)this->size(); ++i) {
+            res[i + 1] = (*this)[i] * mint(i + 1).inv();
+        }
+        return res;
+    }
+
+    // 微分
+    FPS prime() const {
+        FPS res(this->size() - 1);
+        for (int i = 1; i < (int)this->size(); ++i) {
+            res[i - 1] = (*this)[i] * mint::raw(i);
+        }
+        return res;
+    }
+
     // 逆元
-    FPS inv(size_t deg = -1) {
+    FPS inv(size_t sz = -1) const {
         assert(!(*this).empty() && (*this)[0] != mint());
-        if (deg == -1) deg = this->size();
+        if (sz == -1) sz = this->size();
 
         FPS g{mint(1) / (*this)[0]};
-        for (int d = 1; d < deg; d <<= 1) {
+        for (int d = 1; d < sz; d <<= 1) {
             g = (g * 2 - g * g * (*this).pref(2 * d)).pref(2 * d);
         }
 
-        return g.pref(deg);
+        return g.pref(sz);
+    }
+    FPS& operator/=(const FPS& rhs) { return (*this) *= rhs.inv(); }
+    FPS operator/(const FPS& rhs) const { return FPS(*this) *= rhs.inv(); }
+
+    FPS log(size_t sz = -1) const {
+        assert(!(this->empty()) && (*this)[0].val() == 1);
+        if (sz == -1) sz = this->size();
+        return ((*this).prime() * (*this).inv(sz - 1)).pref(sz - 1).integral();
     }
 };
 
