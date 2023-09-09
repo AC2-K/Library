@@ -22,11 +22,11 @@ data:
     title: WildCard Pattern Matching
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
-    title: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -343,7 +343,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
+  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
 documentation_of: src/atcoder/modint.hpp
 layout: document
 redirect_from:

@@ -38,7 +38,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/inv_of_formal_power_series
     links:
     - https://judge.yosupo.jp/problem/inv_of_formal_power_series
-  bundledCode: "#line 1 \"test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
     \n\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
     \ <string>\n#line 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n#include\
@@ -528,7 +528,7 @@ data:
     \ = -1) const {\n        assert(!(this->empty()) && (*this)[0].val() == 1);\n\
     \        if (sz == -1) sz = this->size();\n        return ((*this).prime() * (*this).inv(sz\
     \ - 1)).pref(sz - 1).integral();\n    }\n};\n\n};  // namespace kyopro\n#line\
-    \ 6 \"test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp\"\n\nusing\
+    \ 6 \"test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp\"\n\nusing\
     \ namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
     using fps = FormalPowerSeries<mint>;\n\nint main() {\n    int n;\n    read(n);\n\
     \    fps f(n);\n    rep(i, n) {\n        int v;\n        read(v);\n        f[i]\
@@ -551,15 +551,15 @@ data:
   - src/atcoder/internal_math.hpp
   - src/atcoder/internal_type_traits.hpp
   isVerificationFile: true
-  path: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
+  path: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-09-09 17:48:15+09:00'
+  timestamp: '2023-09-09 18:11:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
+documentation_of: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
-- /verify/test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp.html
-title: test/yosupo_judge/polynomial/inv_of_formal_power_series.test.cpp
+- /verify/test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+- /verify/test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp.html
+title: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
 ---
