@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/FormalPowerSeries/taylor-shift.hpp
+    title: taylor shift
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
@@ -49,7 +52,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/math/combination.hpp
-  requiredBy: []
+  requiredBy:
+  - src/FormalPowerSeries/taylor-shift.hpp
   timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

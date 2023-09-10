@@ -5,6 +5,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/FPS.hpp
     title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
+  - icon: ':warning:'
+    path: src/FormalPowerSeries/taylor-shift.hpp
+    title: taylor shift
   - icon: ':heavy_check_mark:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
@@ -191,6 +194,7 @@ data:
   - src/atcoder/modint.hpp
   - src/atcoder/math.hpp
   - src/atcoder/convolution.hpp
+  - src/FormalPowerSeries/taylor-shift.hpp
   - src/FormalPowerSeries/FPS.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_ALL_AC
