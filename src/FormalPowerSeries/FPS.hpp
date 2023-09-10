@@ -76,10 +76,6 @@ struct FormalPowerSeries : public std::vector<mint> {
     FPS operator*(const mint& rhs) const { return FPS(*this) *= rhs; }
     FPS operator/(const mint& rhs) const { return FPS(*this) /= rhs; }
 
-    friend FPS operator*(const mint& lhs, const FPS& rhs) {
-        return FPS(rhs) *= lhs;
-    }
-
     // 積分
     FPS integral() const {
         FPS res(this->size() + 1);
@@ -110,6 +106,7 @@ struct FormalPowerSeries : public std::vector<mint> {
 
         return g.pref(sz);
     }
+
     FPS& operator/=(const FPS& rhs) { return (*this) *= rhs.inv(); }
     FPS operator/(const FPS& rhs) const { return FPS(*this) *= rhs.inv(); }
 
@@ -117,6 +114,18 @@ struct FormalPowerSeries : public std::vector<mint> {
         assert(!(this->empty()) && (*this)[0].val() == 1);
         if (sz == -1) sz = this->size();
         return ((*this).prime() * (*this).inv(sz - 1)).pref(sz - 1).integral();
+    };
+
+    FPS exp(size_t sz = -1) const {
+        assert(!(this->empty()) && (*this)[0].val() == 0);
+        if (sz == -1) sz = this->size();
+
+        FPS g{mint::raw(1)};
+        for (int d = 1; d < sz; d <<= 1) {
+            g = (g * (FPS{mint::raw(1)} - g.log(2 * d) + (*this).pref(2 * d)))
+                    .pref(2 * d);
+        }
+        return g;
     }
 };
 
