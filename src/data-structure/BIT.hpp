@@ -44,6 +44,9 @@ public:
 
         return x + 1;
     }
+
+    T operator[](int i) { return sum(i + 1) - sum(i); }
+    void update(int i, T v) { add(i, T::mod() - sum(i + 1) + sum(i) + v); }
 };
 };  // namespace kyopro
 
