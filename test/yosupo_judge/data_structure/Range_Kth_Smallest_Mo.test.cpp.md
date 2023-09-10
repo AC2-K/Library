@@ -121,7 +121,9 @@ data:
     \ x = 0;\n        int k = 1;\n        while (k < n) k <<= 1;\n        for (; k\
     \ > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] < w) {\n         \
     \       w -= bit[x + k];\n                x += k;\n            }\n        }\n\n\
-    \        return x + 1;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
+    \        return x + 1;\n    }\n\n    T operator[](int i) { return sum(i + 1) -\
+    \ sum(i); }\n    void update(int i, T v) { add(i, T::mod() - sum(i + 1) + sum(i)\
+    \ + v); }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
     \ */\n#line 7 \"test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp\"\
     \nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n\
     \    read(n, q);\n    Mo mo(q);\n    vector<int> a(n);\n    for (auto& aa : a)\
@@ -160,7 +162,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-08-21 14:50:09+09:00'
+  timestamp: '2023-09-10 10:33:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp

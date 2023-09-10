@@ -37,8 +37,10 @@ data:
     \ 0;\n\n        int x = 0;\n        int k = 1;\n        while (k < n) k <<= 1;\n\
     \        for (; k > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] <\
     \ w) {\n                w -= bit[x + k];\n                x += k;\n          \
-    \  }\n        }\n\n        return x + 1;\n    }\n};\n};  // namespace kyopro\n\
-    \n/**\n * @docs docs/data-structure/BIT.md\n */\n"
+    \  }\n        }\n\n        return x + 1;\n    }\n\n    T operator[](int i) { return\
+    \ sum(i + 1) - sum(i); }\n    void update(int i, T v) { add(i, T::mod() - sum(i\
+    \ + 1) + sum(i) + v); }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
+    \ */\n"
   code: "#pragma once\n#include <vector>\nnamespace kyopro {\n/**\n * @brief Binary\
     \ Index Tree\n */\ntemplate <typename T> class BIT {\n    std::vector<T> bit;\n\
     \    int n;\n\npublic:\n    explicit BIT() {}\n    explicit BIT(int n) : n(n),\
@@ -51,14 +53,15 @@ data:
     \ k = 1;\n        while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n \
     \           if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x +\
     \ k];\n                x += k;\n            }\n        }\n\n        return x +\
-    \ 1;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
-    \ */"
+    \ 1;\n    }\n\n    T operator[](int i) { return sum(i + 1) - sum(i); }\n    void\
+    \ update(int i, T v) { add(i, T::mod() - sum(i + 1) + sum(i) + v); }\n};\n}; \
+    \ // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/BIT.hpp
   requiredBy:
   - src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-09-10 10:33:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
