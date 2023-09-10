@@ -383,6 +383,9 @@ data:
   - name: test/yosupo_judge/polynomial
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+      title: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
       title: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
     - icon: ':heavy_check_mark:'

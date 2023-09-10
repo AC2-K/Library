@@ -511,25 +511,28 @@ data:
     \ { return FPS(*this) += rhs; }\n    FPS operator-(const mint& rhs) const { return\
     \ FPS(*this) -= rhs; }\n    FPS operator*(const mint& rhs) const { return FPS(*this)\
     \ *= rhs; }\n    FPS operator/(const mint& rhs) const { return FPS(*this) /= rhs;\
-    \ }\n\n    friend FPS operator*(const mint& lhs, const FPS& rhs) {\n        return\
-    \ FPS(rhs) *= lhs;\n    }\n\n    // \u7A4D\u5206\n    FPS integral() const {\n\
-    \        FPS res(this->size() + 1);\n        for (int i = 0; i < (int)this->size();\
-    \ ++i) {\n            res[i + 1] = (*this)[i] * mint(i + 1).inv();\n        }\n\
-    \        return res;\n    }\n\n    // \u5FAE\u5206\n    FPS prime() const {\n\
-    \        FPS res(this->size() - 1);\n        for (int i = 1; i < (int)this->size();\
-    \ ++i) {\n            res[i - 1] = (*this)[i] * mint::raw(i);\n        }\n   \
-    \     return res;\n    }\n\n    // \u9006\u5143\n    FPS inv(size_t sz = -1) const\
-    \ {\n        assert(!(*this).empty() && (*this)[0] != mint());\n        if (sz\
-    \ == -1) sz = this->size();\n\n        FPS g{mint(1) / (*this)[0]};\n        for\
-    \ (int d = 1; d < sz; d <<= 1) {\n            g = (g * 2 - g * g * (*this).pref(2\
-    \ * d)).pref(2 * d);\n        }\n\n        return g.pref(sz);\n    }\n    FPS&\
-    \ operator/=(const FPS& rhs) { return (*this) *= rhs.inv(); }\n    FPS operator/(const\
-    \ FPS& rhs) const { return FPS(*this) *= rhs.inv(); }\n\n    FPS log(size_t sz\
-    \ = -1) const {\n        assert(!(this->empty()) && (*this)[0].val() == 1);\n\
-    \        if (sz == -1) sz = this->size();\n        return ((*this).prime() * (*this).inv(sz\
-    \ - 1)).pref(sz - 1).integral();\n    }\n};\n\n};  // namespace kyopro\n#line\
-    \ 6 \"test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp\"\n\nusing\
-    \ namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
+    \ }\n\n    // \u7A4D\u5206\n    FPS integral() const {\n        FPS res(this->size()\
+    \ + 1);\n        for (int i = 0; i < (int)this->size(); ++i) {\n            res[i\
+    \ + 1] = (*this)[i] * mint(i + 1).inv();\n        }\n        return res;\n   \
+    \ }\n\n    // \u5FAE\u5206\n    FPS prime() const {\n        FPS res(this->size()\
+    \ - 1);\n        for (int i = 1; i < (int)this->size(); ++i) {\n            res[i\
+    \ - 1] = (*this)[i] * mint::raw(i);\n        }\n        return res;\n    }\n\n\
+    \    // \u9006\u5143\n    FPS inv(size_t sz = -1) const {\n        assert(!(*this).empty()\
+    \ && (*this)[0] != mint());\n        if (sz == -1) sz = this->size();\n\n    \
+    \    FPS g{mint(1) / (*this)[0]};\n        for (int d = 1; d < sz; d <<= 1) {\n\
+    \            g = (g * 2 - g * g * (*this).pref(2 * d)).pref(2 * d);\n        }\n\
+    \n        return g.pref(sz);\n    }\n\n    FPS& operator/=(const FPS& rhs) { return\
+    \ (*this) *= rhs.inv(); }\n    FPS operator/(const FPS& rhs) const { return FPS(*this)\
+    \ *= rhs.inv(); }\n\n    FPS log(size_t sz = -1) const {\n        assert(!(this->empty())\
+    \ && (*this)[0].val() == 1);\n        if (sz == -1) sz = this->size();\n     \
+    \   return ((*this).prime() * (*this).inv(sz - 1)).pref(sz - 1).integral();\n\
+    \    };\n\n    FPS exp(size_t sz = -1) const {\n        assert(!(this->empty())\
+    \ && (*this)[0].val() == 0);\n        if (sz == -1) sz = this->size();\n\n   \
+    \     FPS g{mint::raw(1)};\n        for (int d = 1; d < sz; d <<= 1) {\n     \
+    \       g = (g * (FPS{mint::raw(1)} - g.log(2 * d) + (*this).pref(2 * d)))\n \
+    \                   .pref(2 * d);\n        }\n        return g;\n    }\n};\n\n\
+    };  // namespace kyopro\n#line 6 \"test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
     using fps = FormalPowerSeries<mint>;\n\nint main() {\n    int n;\n    read(n);\n\
     \    fps f(n);\n    rep(i, n) {\n        int v;\n        read(v);\n        f[i]\
     \ = mint::raw(v);\n    }\n    f = f.log(n);\n    rep(i, n) put(f[i].val());\n\
@@ -554,7 +557,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-09-09 18:07:42+09:00'
+  timestamp: '2023-09-10 11:02:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
