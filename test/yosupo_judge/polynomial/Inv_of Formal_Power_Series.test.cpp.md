@@ -511,7 +511,11 @@ data:
     \ operator+(const mint& rhs) const { return FPS(*this) += rhs; }\n    FPS operator-(const\
     \ mint& rhs) const { return FPS(*this) -= rhs; }\n    FPS operator*(const mint&\
     \ rhs) const { return FPS(*this) *= rhs; }\n    FPS operator/(const mint& rhs)\
-    \ const { return FPS(*this) /= rhs; }\n\n    // \u7A4D\u5206\n    FPS integral()\
+    \ const { return FPS(*this) /= rhs; }\n    FPS operator>>(int sz) const {\n  \
+    \      if ((int)this->size() <= sz) return {};\n        FPS ret(*this);\n    \
+    \    ret.erase(ret.begin(), ret.begin() + sz);\n        return ret;\n    }\n \
+    \   FPS operator<<(int sz) const {\n        FPS ret(*this);\n        ret.insert(ret.begin(),\
+    \ sz, mint(0));\n        return ret;\n    }\n\n    // \u7A4D\u5206\n    FPS integral()\
     \ const {\n        FPS res(this->size() + 1);\n        for (int i = 0; i < (int)this->size();\
     \ ++i) {\n            res[i + 1] = (*this)[i] * mint(i + 1).inv();\n        }\n\
     \        return res;\n    }\n\n    // \u5FAE\u5206\n    FPS prime() const {\n\
@@ -534,18 +538,17 @@ data:
     \        return g;\n    }\n\n    FPS pow(long long e, size_t sz = -1) const {\n\
     \        if (sz == -1) sz = this->size();\n        if (e == 0) {\n           \
     \ FPS res(sz);\n            if (sz) res[0] = mint::raw(1);\n            return\
-    \ res;\n        }\n        int p = 0;\n        while (p < (int)this->size() &&\
-    \ (*this)[p].val() == 0) ++p;\n\n        if (__int128_t(p + 1) * e >= sz) return\
-    \ FPS(sz);\n\n        FPS f(this->begin() + p, this->end());\n        f *= (*this)[p].inv();\
-    \   // \u5B9A\u6570\u9805\u30921\u306B\u76F4\u3059\n        f = (f.log(sz) * e).exp(sz);\
-    \  // \u3079\u304D\u3092\u8A08\u7B97\n        f *= (*this)[p];    // \u5B9A\u6570\
-    \u500D\u3092\u5143\u306B\u623B\u3059\n        f.insert(f.begin(), p * e, mint());\
-    \ // \u30B7\u30D5\u30C8\u3059\u308B\n\n        return f.pref(sz);\n    }\n};\n\
-    \n};  // namespace kyopro\n#line 6 \"test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
-    using fps = FormalPowerSeries<mint>;\n\nint main() {\n    int n;\n    read(n);\n\
-    \    fps f(n);\n    rep(i, n) {\n        int v;\n        read(v);\n        f[i]\
-    \ = mint::raw(v);\n    }\n    f = f.inv();\n    rep(i, n) put(f[i].val());\n}\n"
+    \ res;\n        }\n\n        int p = 0;\n        while (p < (int)this->size()\
+    \ && (*this)[p].val() == 0) ++p;\n\n        if (__int128_t(p) * e >= sz) {\n \
+    \           return FPS(sz);\n        }\n\n        mint vp = (*this)[p];\n    \
+    \    FPS f = (*this >> p);\n        f /= vp;\n        f = (f.log(sz) * e).exp(sz);\n\
+    \        f *= vp.pow(e);\n        f = (f << (p * e)).pref(sz);\n        f.expand(sz);\n\
+    \        return f;\n    }\n};\n\n};  // namespace kyopro\n#line 6 \"test/yosupo_judge/polynomial/Inv_of\
+    \ Formal_Power_Series.test.cpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\
+    \nusing mint = atcoder::modint998244353;\nusing fps = FormalPowerSeries<mint>;\n\
+    \nint main() {\n    int n;\n    read(n);\n    fps f(n);\n    rep(i, n) {\n   \
+    \     int v;\n        read(v);\n        f[i] = mint::raw(v);\n    }\n    f = f.inv();\n\
+    \    rep(i, n) put(f[i].val());\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
     \n\n#include \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\
     \n#include \"../../../src/FormalPowerSeries/FPS.hpp\"\n\nusing namespace std;\n\
@@ -566,7 +569,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-09-11 11:50:36+09:00'
+  timestamp: '2023-09-11 12:11:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
