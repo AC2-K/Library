@@ -18,7 +18,7 @@ struct FormalPowerSeries : public std::vector<mint> {
     }
 
     void shrink() {
-        while (!(*this).empty() && (*this).back() == mint()) (*this).pop_back();
+        while (!(*this).empty() && (*this).back().val() == 0) (*this).pop_back();
     }
 
     FPS pref(size_t sz) const {
@@ -62,8 +62,9 @@ struct FormalPowerSeries : public std::vector<mint> {
         return (*this);
     }
     FPS& operator/=(const mint& rhs) {
+        const mint invr = rhs.inv();
         for (int i = 0; i < (int)this->size(); ++i) {
-            (*this)[i] /= rhs;
+            (*this)[i] *= invr;
         }
         return (*this);
     }
@@ -126,6 +127,27 @@ struct FormalPowerSeries : public std::vector<mint> {
                     .pref(2 * d);
         }
         return g;
+    }
+
+    FPS pow(long long e, size_t sz = -1) const {
+        if (sz == -1) sz = this->size();
+        if (e == 0) {
+            FPS res(sz);
+            if (sz) res[0] = mint::raw(1);
+            return res;
+        }
+        int p = 0;
+        while (p < (int)this->size() && (*this)[p].val() == 0) ++p;
+
+        if (__int128_t(p + 1) * e >= sz) return FPS(sz);
+
+        FPS f(this->begin() + p, this->end());
+        f *= (*this)[p].inv();   // 定数項を1に直す
+        f = (f.log(sz) * e).exp(sz);  // べきを計算
+        f *= (*this)[p];    // 定数倍を元に戻す
+        f.insert(f.begin(), p * e, mint()); // シフトする
+
+        return f.pref(sz);
     }
 };
 
