@@ -27,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -461,18 +464,15 @@ data:
     \ == -1) sz = this->size();\n\n        FPS g{mint::raw(1)};\n        for (int\
     \ d = 1; d < sz; d <<= 1) {\n            g = (g * (FPS{mint::raw(1)} - g.log(2\
     \ * d) + (*this).pref(2 * d)))\n                    .pref(2 * d);\n        }\n\
-    \        return g;\n    }\n    /*\n    FPS pow(int64_t k, int deg = -1) {\n  \
-    \      const int n = (int)this->size();\n        if (deg == -1) deg = n;\n   \
-    \     shrink();\n        if(this->empty()) return {};\n        if (k == 0) {\n\
-    \            FPS ret(deg);\n            if (deg) ret[0] = 1;\n            return\
-    \ ret;\n        }\n        \n        for (int i = 0; i < n; i++) {\n         \
-    \   if ((*this)[i] != mint(0)) {\n                mint rev = mint(1) / (*this)[i];\n\
-    \                FPS ret = (((*this * rev) >> i).log(deg) * k).exp(deg);\n   \
-    \             ret *= (*this)[i].pow(k);\n                ret = (ret << (i * k)).pref(deg);\n\
-    \                if ((int)ret.size() < deg) ret.resize(deg, mint(0));\n      \
-    \          return ret;\n            }\n            if (__int128_t(i + 1) * k >=\
-    \ deg) return FPS(deg, mint(0));\n        }\n        return FPS(deg, mint(0));\n\
-    \    }\n    */\n};\n\n};  // namespace kyopro\n"
+    \        return g;\n    }\n\n    FPS pow(long long e, size_t sz = -1) const {\n\
+    \        if (sz == -1) sz = this->size();\n        if (e == 0) {\n           \
+    \ FPS res(sz);\n            if (sz) res[0] = mint::raw(1);\n            return\
+    \ res;\n        }\n\n        int p = 0;\n        while (p < (int)this->size()\
+    \ && (*this)[p].val() == 0) ++p;\n\n        if (__int128_t(p) * e >= sz) {\n \
+    \           return FPS(sz);\n        }\n\n        mint vp = (*this)[p];\n    \
+    \    FPS f = (*this >> p);\n        f /= vp;\n        f = (f.log(sz) * e).exp(sz);\n\
+    \        f *= vp.pow(e);\n        f = (f << (p * e)).pref(sz);\n        f.expand(sz);\n\
+    \        return f;\n    }\n};\n\n};  // namespace kyopro\n"
   code: "#pragma once\n#include <vector>\n#include \"../../src/atcoder/convolution.hpp\"\
     \nnamespace kyopro{\n\n\n/**\n * @brief \u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570\
     \n * @note mint\u306FACL\u306E\u65B9\u3067\u6E21\u3059\u3053\u3068\n*/\ntemplate\
@@ -527,18 +527,15 @@ data:
     \ == -1) sz = this->size();\n\n        FPS g{mint::raw(1)};\n        for (int\
     \ d = 1; d < sz; d <<= 1) {\n            g = (g * (FPS{mint::raw(1)} - g.log(2\
     \ * d) + (*this).pref(2 * d)))\n                    .pref(2 * d);\n        }\n\
-    \        return g;\n    }\n    /*\n    FPS pow(int64_t k, int deg = -1) {\n  \
-    \      const int n = (int)this->size();\n        if (deg == -1) deg = n;\n   \
-    \     shrink();\n        if(this->empty()) return {};\n        if (k == 0) {\n\
-    \            FPS ret(deg);\n            if (deg) ret[0] = 1;\n            return\
-    \ ret;\n        }\n        \n        for (int i = 0; i < n; i++) {\n         \
-    \   if ((*this)[i] != mint(0)) {\n                mint rev = mint(1) / (*this)[i];\n\
-    \                FPS ret = (((*this * rev) >> i).log(deg) * k).exp(deg);\n   \
-    \             ret *= (*this)[i].pow(k);\n                ret = (ret << (i * k)).pref(deg);\n\
-    \                if ((int)ret.size() < deg) ret.resize(deg, mint(0));\n      \
-    \          return ret;\n            }\n            if (__int128_t(i + 1) * k >=\
-    \ deg) return FPS(deg, mint(0));\n        }\n        return FPS(deg, mint(0));\n\
-    \    }\n    */\n};\n\n};  // namespace kyopro"
+    \        return g;\n    }\n\n    FPS pow(long long e, size_t sz = -1) const {\n\
+    \        if (sz == -1) sz = this->size();\n        if (e == 0) {\n           \
+    \ FPS res(sz);\n            if (sz) res[0] = mint::raw(1);\n            return\
+    \ res;\n        }\n\n        int p = 0;\n        while (p < (int)this->size()\
+    \ && (*this)[p].val() == 0) ++p;\n\n        if (__int128_t(p) * e >= sz) {\n \
+    \           return FPS(sz);\n        }\n\n        mint vp = (*this)[p];\n    \
+    \    FPS f = (*this >> p);\n        f /= vp;\n        f = (f.log(sz) * e).exp(sz);\n\
+    \        f *= vp.pow(e);\n        f = (f << (p * e)).pref(sz);\n        f.expand(sz);\n\
+    \        return f;\n    }\n};\n\n};  // namespace kyopro"
   dependsOn:
   - src/atcoder/convolution.hpp
   - src/atcoder/internal_bit.hpp
@@ -548,9 +545,10 @@ data:
   isVerificationFile: false
   path: src/FormalPowerSeries/FPS.hpp
   requiredBy: []
-  timestamp: '2023-09-11 03:53:16+00:00'
+  timestamp: '2023-09-11 12:11:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
