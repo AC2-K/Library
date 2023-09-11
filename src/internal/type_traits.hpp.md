@@ -26,10 +26,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   - icon: ':heavy_check_mark:'
@@ -153,6 +153,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
     title: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
@@ -180,9 +183,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No789.test.cpp
     title: test/yuki/No789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8
@@ -261,7 +264,7 @@ data:
   - src/math/rho.hpp
   - src/math/miller.hpp
   timestamp: '2023-07-30 13:18:23+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_B.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
@@ -300,6 +303,7 @@ data:
   - test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   - test/yosupo_judge/string/Z_algorithm.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp

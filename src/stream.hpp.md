@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   _extendedRequiredBy: []
@@ -123,6 +123,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
     title: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
@@ -150,9 +153,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No789.test.cpp
     title: test/yuki/No789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: fastIO
     links: []
@@ -247,7 +250,7 @@ data:
   path: src/stream.hpp
   requiredBy: []
   timestamp: '2023-07-30 13:18:23+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_B.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
@@ -286,6 +289,7 @@ data:
   - test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   - test/yosupo_judge/string/Z_algorithm.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp

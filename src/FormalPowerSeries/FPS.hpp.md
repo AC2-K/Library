@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
   _extendedRequiredBy: []
@@ -27,9 +27,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
     links: []
@@ -414,7 +417,7 @@ data:
     \ : public std::vector<mint> {\n    using std::vector<mint>::vector;\n    using\
     \ FPS = FormalPowerSeries<mint>;\n\n    void expand(size_t sz) {\n        if (this->size()\
     \ < sz) this->resize(sz);\n    }\n\n    void shrink() {\n        while (!(*this).empty()\
-    \ && (*this).back() == mint()) (*this).pop_back();\n    }\n\n    FPS pref(size_t\
+    \ && (*this).back().val() == 0) (*this).pop_back();\n    }\n\n    FPS pref(size_t\
     \ sz) const {\n        FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));\n\
     \        g.expand(sz);\n        return g;\n    }\n\n    FPS& operator+=(const\
     \ FPS& rhs) {\n        expand(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
@@ -429,35 +432,45 @@ data:
     \ (*this);\n    }\n    FPS& operator*=(const mint& rhs) {\n        for (int i\
     \ = 0; i < (int)this->size(); ++i) {\n            (*this)[i] *= rhs;\n       \
     \ }\n        return (*this);\n    }\n    FPS& operator/=(const mint& rhs) {\n\
-    \        for (int i = 0; i < (int)this->size(); ++i) {\n            (*this)[i]\
-    \ /= rhs;\n        }\n        return (*this);\n    }\n\n    FPS operator+(const\
-    \ FPS& rhs) const { return FPS(*this) += rhs; }\n    FPS operator-(const FPS&\
-    \ rhs) const { return FPS(*this) -= rhs; }\n    FPS operator*(const FPS& rhs)\
-    \ const { return FPS(*this) *= rhs; }\n    FPS operator+(const mint& rhs) const\
-    \ { return FPS(*this) += rhs; }\n    FPS operator-(const mint& rhs) const { return\
-    \ FPS(*this) -= rhs; }\n    FPS operator*(const mint& rhs) const { return FPS(*this)\
-    \ *= rhs; }\n    FPS operator/(const mint& rhs) const { return FPS(*this) /= rhs;\
-    \ }\n\n    // \u7A4D\u5206\n    FPS integral() const {\n        FPS res(this->size()\
-    \ + 1);\n        for (int i = 0; i < (int)this->size(); ++i) {\n            res[i\
-    \ + 1] = (*this)[i] * mint(i + 1).inv();\n        }\n        return res;\n   \
-    \ }\n\n    // \u5FAE\u5206\n    FPS prime() const {\n        FPS res(this->size()\
-    \ - 1);\n        for (int i = 1; i < (int)this->size(); ++i) {\n            res[i\
-    \ - 1] = (*this)[i] * mint::raw(i);\n        }\n        return res;\n    }\n\n\
-    \    // \u9006\u5143\n    FPS inv(size_t sz = -1) const {\n        assert(!(*this).empty()\
-    \ && (*this)[0] != mint());\n        if (sz == -1) sz = this->size();\n\n    \
-    \    FPS g{mint(1) / (*this)[0]};\n        for (int d = 1; d < sz; d <<= 1) {\n\
-    \            g = (g * 2 - g * g * (*this).pref(2 * d)).pref(2 * d);\n        }\n\
-    \n        return g.pref(sz);\n    }\n\n    FPS& operator/=(const FPS& rhs) { return\
-    \ (*this) *= rhs.inv(); }\n    FPS operator/(const FPS& rhs) const { return FPS(*this)\
-    \ *= rhs.inv(); }\n\n    FPS log(size_t sz = -1) const {\n        assert(!(this->empty())\
-    \ && (*this)[0].val() == 1);\n        if (sz == -1) sz = this->size();\n     \
-    \   return ((*this).prime() * (*this).inv(sz - 1)).pref(sz - 1).integral();\n\
-    \    };\n\n    FPS exp(size_t sz = -1) const {\n        assert(!(this->empty())\
-    \ && (*this)[0].val() == 0);\n        if (sz == -1) sz = this->size();\n\n   \
-    \     FPS g{mint::raw(1)};\n        for (int d = 1; d < sz; d <<= 1) {\n     \
-    \       g = (g * (FPS{mint::raw(1)} - g.log(2 * d) + (*this).pref(2 * d)))\n \
-    \                   .pref(2 * d);\n        }\n        return g;\n    }\n};\n\n\
-    };  // namespace kyopro\n"
+    \        const mint invr = rhs.inv();\n        for (int i = 0; i < (int)this->size();\
+    \ ++i) {\n            (*this)[i] *= invr;\n        }\n        return (*this);\n\
+    \    }\n\n    FPS operator+(const FPS& rhs) const { return FPS(*this) += rhs;\
+    \ }\n    FPS operator-(const FPS& rhs) const { return FPS(*this) -= rhs; }\n \
+    \   FPS operator*(const FPS& rhs) const { return FPS(*this) *= rhs; }\n    FPS\
+    \ operator+(const mint& rhs) const { return FPS(*this) += rhs; }\n    FPS operator-(const\
+    \ mint& rhs) const { return FPS(*this) -= rhs; }\n    FPS operator*(const mint&\
+    \ rhs) const { return FPS(*this) *= rhs; }\n    FPS operator/(const mint& rhs)\
+    \ const { return FPS(*this) /= rhs; }\n\n    // \u7A4D\u5206\n    FPS integral()\
+    \ const {\n        FPS res(this->size() + 1);\n        for (int i = 0; i < (int)this->size();\
+    \ ++i) {\n            res[i + 1] = (*this)[i] * mint(i + 1).inv();\n        }\n\
+    \        return res;\n    }\n\n    // \u5FAE\u5206\n    FPS prime() const {\n\
+    \        FPS res(this->size() - 1);\n        for (int i = 1; i < (int)this->size();\
+    \ ++i) {\n            res[i - 1] = (*this)[i] * mint::raw(i);\n        }\n   \
+    \     return res;\n    }\n\n    // \u9006\u5143\n    FPS inv(size_t sz = -1) const\
+    \ {\n        assert(!(*this).empty() && (*this)[0] != mint());\n        if (sz\
+    \ == -1) sz = this->size();\n\n        FPS g{mint(1) / (*this)[0]};\n        for\
+    \ (int d = 1; d < sz; d <<= 1) {\n            g = (g * 2 - g * g * (*this).pref(2\
+    \ * d)).pref(2 * d);\n        }\n\n        return g.pref(sz);\n    }\n\n    FPS&\
+    \ operator/=(const FPS& rhs) { return (*this) *= rhs.inv(); }\n    FPS operator/(const\
+    \ FPS& rhs) const { return FPS(*this) *= rhs.inv(); }\n\n    FPS log(size_t sz\
+    \ = -1) const {\n        assert(!(this->empty()) && (*this)[0].val() == 1);\n\
+    \        if (sz == -1) sz = this->size();\n        return ((*this).prime() * (*this).inv(sz\
+    \ - 1)).pref(sz - 1).integral();\n    };\n\n    FPS exp(size_t sz = -1) const\
+    \ {\n        assert(!(this->empty()) && (*this)[0].val() == 0);\n        if (sz\
+    \ == -1) sz = this->size();\n\n        FPS g{mint::raw(1)};\n        for (int\
+    \ d = 1; d < sz; d <<= 1) {\n            g = (g * (FPS{mint::raw(1)} - g.log(2\
+    \ * d) + (*this).pref(2 * d)))\n                    .pref(2 * d);\n        }\n\
+    \        return g;\n    }\n\n    FPS pow(long long e, size_t sz = -1) const {\n\
+    \        if (sz == -1) sz = this->size();\n        if (e == 0) {\n           \
+    \ FPS res(sz);\n            if (sz) res[0] = mint::raw(1);\n            return\
+    \ res;\n        }\n        int p = 0;\n        while (p < (int)this->size() &&\
+    \ (*this)[p].val() == 0) ++p;\n\n        if (__int128_t(p + 1) * e >= sz) return\
+    \ FPS(sz);\n\n        FPS f(this->begin() + p, this->end());\n        f *= (*this)[p].inv();\
+    \   // \u5B9A\u6570\u9805\u30921\u306B\u76F4\u3059\n        f = (f.log(sz) * e).exp(sz);\
+    \  // \u3079\u304D\u3092\u8A08\u7B97\n        f *= (*this)[p];    // \u5B9A\u6570\
+    \u500D\u3092\u5143\u306B\u623B\u3059\n        f.insert(f.begin(), p * e, mint());\
+    \ // \u30B7\u30D5\u30C8\u3059\u308B\n\n        return f.pref(sz);\n    }\n};\n\
+    \n};  // namespace kyopro\n"
   code: "#pragma once\n#include <vector>\n#include \"../../src/atcoder/convolution.hpp\"\
     \nnamespace kyopro{\n\n\n/**\n * @brief \u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570\
     \n * @note mint\u306FACL\u306E\u65B9\u3067\u6E21\u3059\u3053\u3068\n*/\ntemplate\
@@ -465,7 +478,7 @@ data:
     \ : public std::vector<mint> {\n    using std::vector<mint>::vector;\n    using\
     \ FPS = FormalPowerSeries<mint>;\n\n    void expand(size_t sz) {\n        if (this->size()\
     \ < sz) this->resize(sz);\n    }\n\n    void shrink() {\n        while (!(*this).empty()\
-    \ && (*this).back() == mint()) (*this).pop_back();\n    }\n\n    FPS pref(size_t\
+    \ && (*this).back().val() == 0) (*this).pop_back();\n    }\n\n    FPS pref(size_t\
     \ sz) const {\n        FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));\n\
     \        g.expand(sz);\n        return g;\n    }\n\n    FPS& operator+=(const\
     \ FPS& rhs) {\n        expand(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
@@ -480,35 +493,45 @@ data:
     \ (*this);\n    }\n    FPS& operator*=(const mint& rhs) {\n        for (int i\
     \ = 0; i < (int)this->size(); ++i) {\n            (*this)[i] *= rhs;\n       \
     \ }\n        return (*this);\n    }\n    FPS& operator/=(const mint& rhs) {\n\
-    \        for (int i = 0; i < (int)this->size(); ++i) {\n            (*this)[i]\
-    \ /= rhs;\n        }\n        return (*this);\n    }\n\n    FPS operator+(const\
-    \ FPS& rhs) const { return FPS(*this) += rhs; }\n    FPS operator-(const FPS&\
-    \ rhs) const { return FPS(*this) -= rhs; }\n    FPS operator*(const FPS& rhs)\
-    \ const { return FPS(*this) *= rhs; }\n    FPS operator+(const mint& rhs) const\
-    \ { return FPS(*this) += rhs; }\n    FPS operator-(const mint& rhs) const { return\
-    \ FPS(*this) -= rhs; }\n    FPS operator*(const mint& rhs) const { return FPS(*this)\
-    \ *= rhs; }\n    FPS operator/(const mint& rhs) const { return FPS(*this) /= rhs;\
-    \ }\n\n    // \u7A4D\u5206\n    FPS integral() const {\n        FPS res(this->size()\
-    \ + 1);\n        for (int i = 0; i < (int)this->size(); ++i) {\n            res[i\
-    \ + 1] = (*this)[i] * mint(i + 1).inv();\n        }\n        return res;\n   \
-    \ }\n\n    // \u5FAE\u5206\n    FPS prime() const {\n        FPS res(this->size()\
-    \ - 1);\n        for (int i = 1; i < (int)this->size(); ++i) {\n            res[i\
-    \ - 1] = (*this)[i] * mint::raw(i);\n        }\n        return res;\n    }\n\n\
-    \    // \u9006\u5143\n    FPS inv(size_t sz = -1) const {\n        assert(!(*this).empty()\
-    \ && (*this)[0] != mint());\n        if (sz == -1) sz = this->size();\n\n    \
-    \    FPS g{mint(1) / (*this)[0]};\n        for (int d = 1; d < sz; d <<= 1) {\n\
-    \            g = (g * 2 - g * g * (*this).pref(2 * d)).pref(2 * d);\n        }\n\
-    \n        return g.pref(sz);\n    }\n\n    FPS& operator/=(const FPS& rhs) { return\
-    \ (*this) *= rhs.inv(); }\n    FPS operator/(const FPS& rhs) const { return FPS(*this)\
-    \ *= rhs.inv(); }\n\n    FPS log(size_t sz = -1) const {\n        assert(!(this->empty())\
-    \ && (*this)[0].val() == 1);\n        if (sz == -1) sz = this->size();\n     \
-    \   return ((*this).prime() * (*this).inv(sz - 1)).pref(sz - 1).integral();\n\
-    \    };\n\n    FPS exp(size_t sz = -1) const {\n        assert(!(this->empty())\
-    \ && (*this)[0].val() == 0);\n        if (sz == -1) sz = this->size();\n\n   \
-    \     FPS g{mint::raw(1)};\n        for (int d = 1; d < sz; d <<= 1) {\n     \
-    \       g = (g * (FPS{mint::raw(1)} - g.log(2 * d) + (*this).pref(2 * d)))\n \
-    \                   .pref(2 * d);\n        }\n        return g;\n    }\n};\n\n\
-    };  // namespace kyopro"
+    \        const mint invr = rhs.inv();\n        for (int i = 0; i < (int)this->size();\
+    \ ++i) {\n            (*this)[i] *= invr;\n        }\n        return (*this);\n\
+    \    }\n\n    FPS operator+(const FPS& rhs) const { return FPS(*this) += rhs;\
+    \ }\n    FPS operator-(const FPS& rhs) const { return FPS(*this) -= rhs; }\n \
+    \   FPS operator*(const FPS& rhs) const { return FPS(*this) *= rhs; }\n    FPS\
+    \ operator+(const mint& rhs) const { return FPS(*this) += rhs; }\n    FPS operator-(const\
+    \ mint& rhs) const { return FPS(*this) -= rhs; }\n    FPS operator*(const mint&\
+    \ rhs) const { return FPS(*this) *= rhs; }\n    FPS operator/(const mint& rhs)\
+    \ const { return FPS(*this) /= rhs; }\n\n    // \u7A4D\u5206\n    FPS integral()\
+    \ const {\n        FPS res(this->size() + 1);\n        for (int i = 0; i < (int)this->size();\
+    \ ++i) {\n            res[i + 1] = (*this)[i] * mint(i + 1).inv();\n        }\n\
+    \        return res;\n    }\n\n    // \u5FAE\u5206\n    FPS prime() const {\n\
+    \        FPS res(this->size() - 1);\n        for (int i = 1; i < (int)this->size();\
+    \ ++i) {\n            res[i - 1] = (*this)[i] * mint::raw(i);\n        }\n   \
+    \     return res;\n    }\n\n    // \u9006\u5143\n    FPS inv(size_t sz = -1) const\
+    \ {\n        assert(!(*this).empty() && (*this)[0] != mint());\n        if (sz\
+    \ == -1) sz = this->size();\n\n        FPS g{mint(1) / (*this)[0]};\n        for\
+    \ (int d = 1; d < sz; d <<= 1) {\n            g = (g * 2 - g * g * (*this).pref(2\
+    \ * d)).pref(2 * d);\n        }\n\n        return g.pref(sz);\n    }\n\n    FPS&\
+    \ operator/=(const FPS& rhs) { return (*this) *= rhs.inv(); }\n    FPS operator/(const\
+    \ FPS& rhs) const { return FPS(*this) *= rhs.inv(); }\n\n    FPS log(size_t sz\
+    \ = -1) const {\n        assert(!(this->empty()) && (*this)[0].val() == 1);\n\
+    \        if (sz == -1) sz = this->size();\n        return ((*this).prime() * (*this).inv(sz\
+    \ - 1)).pref(sz - 1).integral();\n    };\n\n    FPS exp(size_t sz = -1) const\
+    \ {\n        assert(!(this->empty()) && (*this)[0].val() == 0);\n        if (sz\
+    \ == -1) sz = this->size();\n\n        FPS g{mint::raw(1)};\n        for (int\
+    \ d = 1; d < sz; d <<= 1) {\n            g = (g * (FPS{mint::raw(1)} - g.log(2\
+    \ * d) + (*this).pref(2 * d)))\n                    .pref(2 * d);\n        }\n\
+    \        return g;\n    }\n\n    FPS pow(long long e, size_t sz = -1) const {\n\
+    \        if (sz == -1) sz = this->size();\n        if (e == 0) {\n           \
+    \ FPS res(sz);\n            if (sz) res[0] = mint::raw(1);\n            return\
+    \ res;\n        }\n        int p = 0;\n        while (p < (int)this->size() &&\
+    \ (*this)[p].val() == 0) ++p;\n\n        if (__int128_t(p + 1) * e >= sz) return\
+    \ FPS(sz);\n\n        FPS f(this->begin() + p, this->end());\n        f *= (*this)[p].inv();\
+    \   // \u5B9A\u6570\u9805\u30921\u306B\u76F4\u3059\n        f = (f.log(sz) * e).exp(sz);\
+    \  // \u3079\u304D\u3092\u8A08\u7B97\n        f *= (*this)[p];    // \u5B9A\u6570\
+    \u500D\u3092\u5143\u306B\u623B\u3059\n        f.insert(f.begin(), p * e, mint());\
+    \ // \u30B7\u30D5\u30C8\u3059\u308B\n\n        return f.pref(sz);\n    }\n};\n\
+    \n};  // namespace kyopro"
   dependsOn:
   - src/atcoder/convolution.hpp
   - src/atcoder/internal_bit.hpp
@@ -518,9 +541,10 @@ data:
   isVerificationFile: false
   path: src/FormalPowerSeries/FPS.hpp
   requiredBy: []
-  timestamp: '2023-09-10 11:02:33+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-09-11 11:50:36+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
