@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/FPS.hpp
     title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedRequiredBy: []
@@ -535,22 +535,23 @@ data:
     \ == -1) sz = this->size();\n\n        FPS g{mint::raw(1)};\n        for (int\
     \ d = 1; d < sz; d <<= 1) {\n            g = (g * (FPS{mint::raw(1)} - g.log(2\
     \ * d) + (*this).pref(2 * d)))\n                    .pref(2 * d);\n        }\n\
-    \        return g;\n    }\n\n    FPS pow(long long e, size_t sz = -1) const {\n\
-    \        if (sz == -1) sz = this->size();\n        if (e == 0) {\n           \
-    \ FPS res(sz);\n            if (sz) res[0] = mint::raw(1);\n            return\
-    \ res;\n        }\n        for (int p = 0; p < (int)this->size(); ++p) {\n   \
-    \         if((*this)[p].val()){\n                mint vp = (*this)[p];\n     \
-    \           FPS f = (*this >> p);\n                f /= vp;\n                f\
-    \ = (f.log(sz) * e).exp(sz);\n                f *= vp.pow(e);\n              \
-    \  f = (f << (p * e)).pref(sz);\n                f.expand(sz);\n             \
-    \   return f;\n            }\n\n            if (__int128_t(p + 1) * e >= sz) return\
-    \ FPS(sz);\n        }\n        return FPS(sz);\n    }\n};\n\n};  // namespace\
-    \ kyopro\n#line 6 \"test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
-    using fps = FormalPowerSeries<mint>;\n\nint main() {\n    int n;  \n    read(n);\n\
-    \    fps f(n);\n    rep(i, n) {\n        int v;\n        read(v);\n        f[i]\
-    \ = mint::raw(v);\n    }\n\n    f = f.exp();\n    rep(i, n) put(f[i].val());\n\
-    }\n"
+    \        return g;\n    }\n    /*\n    FPS pow(int64_t k, int deg = -1) {\n  \
+    \      const int n = (int)this->size();\n        if (deg == -1) deg = n;\n   \
+    \     shrink();\n        if(this->empty()) return {};\n        if (k == 0) {\n\
+    \            FPS ret(deg);\n            if (deg) ret[0] = 1;\n            return\
+    \ ret;\n        }\n        \n        for (int i = 0; i < n; i++) {\n         \
+    \   if ((*this)[i] != mint(0)) {\n                mint rev = mint(1) / (*this)[i];\n\
+    \                FPS ret = (((*this * rev) >> i).log(deg) * k).exp(deg);\n   \
+    \             ret *= (*this)[i].pow(k);\n                ret = (ret << (i * k)).pref(deg);\n\
+    \                if ((int)ret.size() < deg) ret.resize(deg, mint(0));\n      \
+    \          return ret;\n            }\n            if (__int128_t(i + 1) * k >=\
+    \ deg) return FPS(deg, mint(0));\n        }\n        return FPS(deg, mint(0));\n\
+    \    }\n    */\n};\n\n};  // namespace kyopro\n#line 6 \"test/yosupo_judge/polynomial/Exp\
+    \ of Formal_Power_Series.test.cpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\
+    \nusing mint = atcoder::modint998244353;\nusing fps = FormalPowerSeries<mint>;\n\
+    \nint main() {\n    int n;  \n    read(n);\n    fps f(n);\n    rep(i, n) {\n \
+    \       int v;\n        read(v);\n        f[i] = mint::raw(v);\n    }\n\n    f\
+    \ = f.exp();\n    rep(i, n) put(f[i].val());\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
     \n\n#include \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\
     \n#include \"../../../src/FormalPowerSeries/FPS.hpp\"\n\nusing namespace std;\n\
@@ -571,7 +572,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-09-11 12:24:43+09:00'
+  timestamp: '2023-09-11 03:53:16+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
