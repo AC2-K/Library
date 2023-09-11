@@ -12,7 +12,7 @@ using mint = atcoder::modint998244353;
 using FPS = FormalPowerSeries<mint>;
 
 int main() {
-    int n, m;
+    long long n, m;
     read(n, m);
     FPS f(n);
     rep(i, n) {
