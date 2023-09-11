@@ -76,6 +76,17 @@ struct FormalPowerSeries : public std::vector<mint> {
     FPS operator-(const mint& rhs) const { return FPS(*this) -= rhs; }
     FPS operator*(const mint& rhs) const { return FPS(*this) *= rhs; }
     FPS operator/(const mint& rhs) const { return FPS(*this) /= rhs; }
+    FPS operator>>(int sz) const {
+        if ((int)this->size() <= sz) return {};
+        FPS ret(*this);
+        ret.erase(ret.begin(), ret.begin() + sz);
+        return ret;
+    }
+    FPS operator<<(int sz) const {
+        FPS ret(*this);
+        ret.insert(ret.begin(), sz, mint(0));
+        return ret;
+    }
 
     // 積分
     FPS integral() const {
@@ -136,18 +147,22 @@ struct FormalPowerSeries : public std::vector<mint> {
             if (sz) res[0] = mint::raw(1);
             return res;
         }
+
         int p = 0;
         while (p < (int)this->size() && (*this)[p].val() == 0) ++p;
 
-        if (__int128_t(p + 1) * e >= sz) return FPS(sz);
+        if (__int128_t(p) * e >= sz) {
+            return FPS(sz);
+        }
 
-        FPS f(this->begin() + p, this->end());
-        f *= (*this)[p].inv();   // 定数項を1に直す
-        f = (f.log(sz) * e).exp(sz);  // べきを計算
-        f *= (*this)[p];    // 定数倍を元に戻す
-        f.insert(f.begin(), p * e, mint()); // シフトする
-
-        return f.pref(sz);
+        mint vp = (*this)[p];
+        FPS f = (*this >> p);
+        f /= vp;
+        f = (f.log(sz) * e).exp(sz);
+        f *= vp.pow(e);
+        f = (f << (p * e)).pref(sz);
+        f.expand(sz);
+        return f;
     }
 };
 
