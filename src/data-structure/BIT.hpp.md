@@ -77,7 +77,7 @@ title: Binary Index Tree
 ---
 ## 概要
 
-Binary Index Tree(BIT) とは、整数に対する
+Binary Index Tree(BIT) とは、整数列に対する
 
 - 一点加算
 - 区間和の計算
@@ -92,11 +92,11 @@ kyopro::BIT<T> a(int n);
 
 長さ $n$ の数列を扱うBITを生成します.
 Tは、**和が収まる** 型名です. 
-
 <details>
 <summary>おまけ</summary>
 型にoperatorを定義してから渡すことで,群やモノイドを乗せることができます(このライブラリはモノイドには対応していません...)
 </details>
+
 
 ### 計算量
 
@@ -163,8 +163,7 @@ $a_i$ の値を返します
 
 ### 制約
 
-- $0 \leq p \lt n$
-- $0 \leq l \leq r \lt n$
+- $0 \leq i \lt n$
 
 ### 計算量
 

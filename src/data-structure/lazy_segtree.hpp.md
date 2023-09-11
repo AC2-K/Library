@@ -124,13 +124,13 @@ title: LazySegmentTree
 - モノイド $(S,\bullet,\mathtt{e}),(F,\circ,\mathtt{id})$
 - 演算 $\ast:S\times F\to S$
 
-に対して、以下の条件が満たされるとします。
+に対して、以下の条件が満たされるとします.
 
 - 任意の $x\in S$ に対して $x \ast \mathtt{id}=x$
 - 任意の $x,y\in S,f\in F$に対して $(x \bullet y)\ast f=(x\ast f)\bullet(y\ast f)$
 - 任意の $x\in S$ と $f_1,f_2\in F$ について $(x\ast f_1) \ast f_2=x\ast (f1\circ f2)$
 
-この時, $S$ の要素の列 $a=(a_0,a_1,\dots,a_{n-1})$ に対して以下をクエリごと $O(\log n)$ で行います。
+この時, $S$ の要素の列 $a=(a_0,a_1,\dots,a_{n-1})$ に対して以下をクエリごと $O(\log n)$ で行います.
 
 - $l,r$ が与えられたとき、 $a_l\bullet a_{l+1}\dots a_{r-1}$ を計算する
 - $l,r$ と $f\in F$が与えられたとき、全ての $i\in [l,r)$ に対して $a_i\leftarrow a_i*f$ と更新
@@ -153,7 +153,7 @@ $a$ を長さ $n$ ,初期値 $\mathtt{e}$ の状態で作成します
 kyopro::lazy_segtree<S,F,op,e,composition,id,mapping> seg(std::vector<S> a);
 ```
 
-$a$ をそのまま渡すこともできます。
+$a$ をそのまま渡すこともできます.
 
 ## 計算量
 
@@ -165,7 +165,7 @@ $a$ をそのまま渡すこともできます。
 S fold(int l,int r)
 ```
 
-$a_l\bullet a_{l+1}\dots a_r$ を計算します。 $l=r$ の時は $\mathtt{e}$ を返します。
+$a_l\bullet a_{l+1}\dots a_r$ を計算します. $l=r$ の時は $\mathtt{e}$ を返します.
 
 ### 制約
 
