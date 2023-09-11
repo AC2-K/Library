@@ -538,17 +538,19 @@ data:
     \        return g;\n    }\n\n    FPS pow(long long e, size_t sz = -1) const {\n\
     \        if (sz == -1) sz = this->size();\n        if (e == 0) {\n           \
     \ FPS res(sz);\n            if (sz) res[0] = mint::raw(1);\n            return\
-    \ res;\n        }\n\n        int p = 0;\n        while (p < (int)this->size()\
-    \ && (*this)[p].val() == 0) ++p;\n\n        if (__int128_t(p) * e >= sz) {\n \
-    \           return FPS(sz);\n        }\n\n        mint vp = (*this)[p];\n    \
-    \    FPS f = (*this >> p);\n        f /= vp;\n        f = (f.log(sz) * e).exp(sz);\n\
-    \        f *= vp.pow(e);\n        f = (f << (p * e)).pref(sz);\n        f.expand(sz);\n\
-    \        return f;\n    }\n};\n\n};  // namespace kyopro\n#line 6 \"test/yosupo_judge/polynomial/Exp\
-    \ of Formal_Power_Series.test.cpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\
-    \nusing mint = atcoder::modint998244353;\nusing fps = FormalPowerSeries<mint>;\n\
-    \nint main() {\n    int n;  \n    read(n);\n    fps f(n);\n    rep(i, n) {\n \
-    \       int v;\n        read(v);\n        f[i] = mint::raw(v);\n    }\n\n    f\
-    \ = f.exp();\n    rep(i, n) put(f[i].val());\n}\n"
+    \ res;\n        }\n        for (int p = 0; p < (int)this->size(); ++p) {\n   \
+    \         if((*this)[p].val()){\n                mint vp = (*this)[p];\n     \
+    \           FPS f = (*this >> p);\n                f /= vp;\n                f\
+    \ = (f.log(sz) * e).exp(sz);\n                f *= vp.pow(e);\n              \
+    \  f = (f << (p * e)).pref(sz);\n                f.expand(sz);\n             \
+    \   return f;\n            }\n\n            if (__int128_t(p + 1) * e >= sz) return\
+    \ FPS(sz);\n        }\n        return FPS(sz);\n    }\n};\n\n};  // namespace\
+    \ kyopro\n#line 6 \"test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
+    using fps = FormalPowerSeries<mint>;\n\nint main() {\n    int n;  \n    read(n);\n\
+    \    fps f(n);\n    rep(i, n) {\n        int v;\n        read(v);\n        f[i]\
+    \ = mint::raw(v);\n    }\n\n    f = f.exp();\n    rep(i, n) put(f[i].val());\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
     \n\n#include \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\
     \n#include \"../../../src/FormalPowerSeries/FPS.hpp\"\n\nusing namespace std;\n\
@@ -569,7 +571,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-09-11 12:11:35+09:00'
+  timestamp: '2023-09-11 12:24:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
