@@ -14,7 +14,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/FormalPowerSeries/FPS.hpp
       title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/FormalPowerSeries/taylor-shift.hpp
       title: taylor shift
   - name: src/algorithm
@@ -394,6 +394,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
       title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+      title: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
       title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp

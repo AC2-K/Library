@@ -154,6 +154,9 @@ data:
     path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+    title: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -285,6 +288,7 @@ data:
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
