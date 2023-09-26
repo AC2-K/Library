@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algorithm/mo.hpp
     title: Mo's algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
@@ -65,8 +65,8 @@ data:
     \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
     \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
-    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate<typename\
-    \ T>\nvoid read(T& x) {single_read(x);}\ntemplate <typename Head, typename...\
+    \       str += c;\n        c = getchar_unlocked();\n    }\n}\ntemplate <typename\
+    \ T> void read(T& x) { single_read(x); }\ntemplate <typename Head, typename...\
     \ Tail>\nvoid read(Head& head, Tail&... tail) {\n    single_read(head), read(tail...);\n\
     }\n\n// write\nvoid single_write(char c) { putchar_unlocked(c); }\ntemplate <typename\
     \ T, internal::is_integral_t<T>* = nullptr>\nvoid single_write(T a) {\n    if\
@@ -76,10 +76,10 @@ data:
     \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
     \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
     \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate<typename T>\nvoid write(T x) { single_write(x); }\ntemplate\
-    \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
-    \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
-    \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
+    \    }\n}\n\ntemplate <typename T> void write(T x) {\n    single_write(x), putchar_unlocked('\
+    \ ');\n}\ntemplate <typename Head, typename... Tail> void write(Head head, Tail...\
+    \ tail) {\n    single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n\
+    }\ntemplate <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/algorithm/mo.hpp\"\
     \n#include <algorithm>\n#line 4 \"src/algorithm/mo.hpp\"\n#include <utility>\n\
     #include <vector>\nnamespace kyopro {\n/**\n * @brief Mo's algorithm\n */\nclass\
@@ -162,8 +162,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-09-10 10:33:40+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-09-26 08:37:39+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
 layout: document
