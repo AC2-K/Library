@@ -41,6 +41,7 @@
 "test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp": "2023-09-11 12:11:35 +0900",
 "test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp": "2023-09-11 12:11:35 +0900",
 "test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp": "2023-09-11 12:11:35 +0900",
+"test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp": "2023-09-26 19:14:02 +0900",
 "test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp": "2023-09-11 03:59:51 +0000",
 "test/yosupo_judge/string/Enumerate_Palindromes.test.cpp": "2023-08-21 14:50:09 +0900",
 "test/yosupo_judge/string/Z_algorithm.test.cpp": "2023-08-21 14:50:09 +0900",
