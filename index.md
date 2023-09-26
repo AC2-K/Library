@@ -19,7 +19,7 @@ data:
       title: taylor shift
   - name: src/algorithm
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/mo.hpp
       title: Mo's algorithm
   - name: src/atcoder
@@ -89,10 +89,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/SWAG.hpp
       title: Slide Window Aggrigation
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/dsu.hpp
       title: Disjoint Set(Union Find)
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/dual_segtree.hpp
       title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
     - icon: ':x:'
@@ -101,7 +101,7 @@ data:
     - icon: ':question:'
       path: src/data-structure/hash_map.hpp
       title: Hash Map
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/lazy_segtree.hpp
       title: LazySegmentTree
     - icon: ':question:'
@@ -130,7 +130,7 @@ data:
     - icon: ':warning:'
       path: src/data-structure/data-structure-2d/RangeTree.hpp
       title: src/data-structure/data-structure-2d/RangeTree.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/data-structure-2d/cumulative-sum.hpp
       title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"
   - name: src/data-structure/persistent
@@ -160,7 +160,7 @@ data:
     - icon: ':warning:'
       path: src/graph/TopologialSort.hpp
       title: Topologial Sort
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
   - name: src/graph/flow
@@ -170,10 +170,10 @@ data:
       title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   - name: src/internal
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/internal/barrett.hpp
       title: Barrett Reduction
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
     - icon: ':question:'
@@ -187,7 +187,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/divisor-multiple-transform.hpp
       title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/math/dynamic_modint.hpp
       title: "\u52D5\u7684modint"
     - icon: ':warning:'
@@ -199,22 +199,22 @@ data:
     - icon: ':x:'
       path: src/math/matrix.hpp
       title: Matrix
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/math/miller.hpp
       title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
     - icon: ':x:'
       path: src/math/mod_log.hpp
       title: "\u96E2\u6563\u5BFE\u6570"
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/math/mod_pow.hpp
       title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/phi_function.hpp
       title: "Euler\u306E $\\phi$ \u95A2\u6570"
     - icon: ':x:'
       path: src/math/primitive_root.hpp
       title: "\u539F\u59CB\u6839"
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/math/rho.hpp
       title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
     - icon: ':question:'
@@ -241,7 +241,7 @@ data:
       title: WildCard Pattern Matching
   - name: src/tree
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/tree/EulerTour.hpp
       title: Euler Tour
     - icon: ':x:'
@@ -250,41 +250,41 @@ data:
   verificationCategories:
   - name: test/AOJ/DSL
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/1_A.test.cpp
       title: test/AOJ/DSL/1_A.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2_B.test.cpp
       title: test/AOJ/DSL/2_B.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2_D_dual.test.cpp
       title: test/AOJ/DSL/2_D_dual.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2_D_lazy.test.cpp
       title: test/AOJ/DSL/2_D_lazy.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2_E_dual.test.cpp
       title: test/AOJ/DSL/2_E_dual.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2_E_lazy.test.cpp
       title: test/AOJ/DSL/2_E_lazy.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/5_B.test.cpp
       title: test/AOJ/DSL/5_B.test.cpp
   - name: test/AOJ/GRL
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/1_A.test.cpp
       title: test/AOJ/GRL/1_A.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/5_C.test.cpp
       title: test/AOJ/GRL/5_C.test.cpp
   - name: test/AOJ/NTL
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_B.test.cpp
       title: test/AOJ/NTL/1_B.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_D.test.cpp
       title: test/AOJ/NTL/1_D.test.cpp
     - icon: ':heavy_check_mark:'
@@ -327,22 +327,22 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
       title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
       title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
       title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/UnionFind.test.cpp
       title: test/yosupo_judge/data_structure/UnionFind.test.cpp
     - icon: ':x:'

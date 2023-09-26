@@ -6,7 +6,7 @@ data:
     path: src/data-structure/data-structure-2d/RangeTree.hpp
     title: src/data-structure/data-structure-2d/RangeTree.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_B.test.cpp
     title: test/AOJ/DSL/2_B.test.cpp
   - icon: ':heavy_check_mark:'

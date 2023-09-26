@@ -6,37 +6,37 @@ data:
     title: src/internal/type_traits.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/1_A.test.cpp
     title: test/AOJ/DSL/1_A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_B.test.cpp
     title: test/AOJ/DSL/2_B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_D_dual.test.cpp
     title: test/AOJ/DSL/2_D_dual.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_D_lazy.test.cpp
     title: test/AOJ/DSL/2_D_lazy.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_E_dual.test.cpp
     title: test/AOJ/DSL/2_E_dual.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_E_lazy.test.cpp
     title: test/AOJ/DSL/2_E_lazy.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/5_B.test.cpp
     title: test/AOJ/DSL/5_B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/1_A.test.cpp
     title: test/AOJ/GRL/1_A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_B.test.cpp
     title: test/AOJ/NTL/1_B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -72,16 +72,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
   - icon: ':x:'
@@ -214,9 +214,9 @@ data:
     \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
     \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
     \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate <typename T> void write(T x) {\n    single_write(x), putchar_unlocked('\
-    \ ');\n}\ntemplate <typename Head, typename... Tail> void write(Head head, Tail...\
-    \ tail) {\n    single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n\
+    \    }\n}\n\ntemplate <typename T> void write(T x) {\n    single_write(x);\n}\n\
+    template <typename Head, typename... Tail> void write(Head head, Tail... tail)\
+    \ {\n    single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n\
     }\ntemplate <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n"
   code: "#pragma once\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
@@ -242,9 +242,9 @@ data:
     \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
     \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
     \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate <typename T> void write(T x) {\n    single_write(x), putchar_unlocked('\
-    \ ');\n}\ntemplate <typename Head, typename... Tail> void write(Head head, Tail...\
-    \ tail) {\n    single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n\
+    \    }\n}\n\ntemplate <typename T> void write(T x) {\n    single_write(x);\n}\n\
+    template <typename Head, typename... Tail> void write(Head head, Tail... tail)\
+    \ {\n    single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n\
     }\ntemplate <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */"
   dependsOn:
@@ -252,7 +252,7 @@ data:
   isVerificationFile: false
   path: src/stream.hpp
   requiredBy: []
-  timestamp: '2023-09-26 08:37:39+09:00'
+  timestamp: '2023-09-26 09:24:47+00:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/GRL/5_C.test.cpp

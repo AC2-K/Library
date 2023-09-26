@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/dual_segtree.hpp
     title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/DSL_2_D
@@ -95,9 +95,9 @@ data:
     \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
     \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
     \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate <typename T> void write(T x) {\n    single_write(x), putchar_unlocked('\
-    \ ');\n}\ntemplate <typename Head, typename... Tail> void write(Head head, Tail...\
-    \ tail) {\n    single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n\
+    \    }\n}\n\ntemplate <typename T> void write(T x) {\n    single_write(x);\n}\n\
+    template <typename Head, typename... Tail> void write(Head head, Tail... tail)\
+    \ {\n    single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n\
     }\ntemplate <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 4 \"test/AOJ/DSL/2_D_dual.test.cpp\"\
     \nusing ull = unsigned long long;\ninline ull op(ull x, ull y) { return y; }\n\
@@ -123,8 +123,8 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_D_dual.test.cpp
   requiredBy: []
-  timestamp: '2023-09-26 08:37:39+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-09-26 09:24:47+00:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_D_dual.test.cpp
 layout: document

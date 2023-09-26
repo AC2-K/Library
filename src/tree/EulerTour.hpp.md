@@ -6,7 +6,7 @@ data:
     title: SparseTable
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
   - icon: ':x:'
@@ -20,7 +20,7 @@ data:
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/tree/EulerTour.md
     document_title: Euler Tour
@@ -113,7 +113,7 @@ data:
   path: src/tree/EulerTour.hpp
   requiredBy: []
   timestamp: '2023-08-18 21:22:28+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/GRL/5_C.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp

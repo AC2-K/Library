@@ -122,9 +122,9 @@ data:
     \    while (now < 37) putchar_unlocked(s[now++]);\n}\ntemplate <typename T, internal::is_modint_t<T>*\
     \ = nullptr>\nvoid single_write(T a) {\n    single_write(a.val());\n}\n\nvoid\
     \ single_write(const std::string& str) {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\n\ntemplate <typename T> void write(T x) {\n    single_write(x), putchar_unlocked('\
-    \ ');\n}\ntemplate <typename Head, typename... Tail> void write(Head head, Tail...\
-    \ tail) {\n    single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n\
+    \    }\n}\n\ntemplate <typename T> void write(T x) {\n    single_write(x);\n}\n\
+    template <typename Head, typename... Tail> void write(Head head, Tail... tail)\
+    \ {\n    single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n\
     }\ntemplate <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
     n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\
     \nusing namespace std;\nint main() {\n    kyopro::Treap<int> st;\n    int n, q;\n\
@@ -153,7 +153,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-09-26 08:37:39+09:00'
+  timestamp: '2023-09-26 09:24:47+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
