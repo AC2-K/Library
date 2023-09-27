@@ -183,7 +183,7 @@ data:
   isVerificationFile: false
   path: src/math/static_modint.hpp
   requiredBy: []
-  timestamp: '2023-09-27 10:21:57+09:00'
+  timestamp: '2023-09-27 10:48:37+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/matrix/Matrix Product.test.cpp

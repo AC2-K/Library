@@ -126,7 +126,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
   requiredBy: []
-  timestamp: '2023-09-27 10:21:57+09:00'
+  timestamp: '2023-09-27 10:48:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp

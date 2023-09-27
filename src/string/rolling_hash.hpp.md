@@ -151,7 +151,7 @@ data:
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-09-27 10:21:57+09:00'
+  timestamp: '2023-09-27 10:48:37+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yuki/No430.test.cpp

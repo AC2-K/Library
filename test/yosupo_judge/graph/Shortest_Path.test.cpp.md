@@ -132,7 +132,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2023-09-27 10:21:57+09:00'
+  timestamp: '2023-09-27 10:48:37+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/graph/Shortest_Path.test.cpp

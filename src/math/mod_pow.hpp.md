@@ -77,7 +77,7 @@ data:
   requiredBy:
   - src/math/mod_log.hpp
   - src/string/rolling_hash.hpp
-  timestamp: '2023-09-27 10:21:57+09:00'
+  timestamp: '2023-09-27 10:48:37+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_B.test.cpp

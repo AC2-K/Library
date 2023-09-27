@@ -338,7 +338,7 @@ data:
   requiredBy:
   - src/math/phi_function.hpp
   - src/math/primitive_root.hpp
-  timestamp: '2023-09-27 10:21:57+09:00'
+  timestamp: '2023-09-27 10:48:37+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
