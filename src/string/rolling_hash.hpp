@@ -40,9 +40,7 @@ private:
         return t;
     }
 
-    constexpr ull mapping(char c) const {
-        return (ull)c;  // 変更する?
-    }
+    constexpr ull mapping(char c) const { return (ull)c; }
 
     static ull generate() {
         std::mt19937_64 engine(
@@ -82,7 +80,7 @@ public:
             }
         }
     }
-    ull range(int l, int r) const {
+    ull slice(int l, int r) const {
         assert(0 <= l && l <= r && r <= str.size());
 
         ull res = mod + hash[r] - mul(hash[l], pow[r - l]);
@@ -99,8 +97,8 @@ public:
         int ng = std::min(a.size() - start_a, b.size() - start_b) + 1;
         while (ng - ok > 1) {
             int md = (ok + ng) >> 1;
-            if (a.range(start_a, start_a + md) ==
-                b.range(start_b, start_b + md)) {
+            if (a.slice(start_a, start_a + md) ==
+                b.slice(start_b, start_b + md)) {
                 ok = md;
             } else {
                 ng = md;

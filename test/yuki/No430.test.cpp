@@ -17,7 +17,7 @@ int main() {
         for (int length = 1; length <= 10 && i + length <= (int)s.size();
              length++) {
             int j = i + length;
-            ++hash_count[S.range(i, j)];
+            ++hash_count[S.slice(i, j)];
         }
     }
     long long ans = 0;
