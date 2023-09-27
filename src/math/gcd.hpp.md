@@ -99,12 +99,12 @@ data:
   isVerificationFile: false
   path: src/math/gcd.hpp
   requiredBy:
+  - src/string/rolling_hash.hpp
   - src/math/phi_function.hpp
   - src/math/mod_log.hpp
+  - src/math/rho.hpp
   - src/math/primitive_root.hpp
   - src/math/static_modint.hpp
-  - src/math/rho.hpp
-  - src/string/rolling_hash.hpp
   timestamp: '2023-08-21 15:56:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -112,15 +112,15 @@ data:
   - test/AOJ/NTL/1_E.test.cpp
   - test/yuki/No430.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
 documentation_of: src/math/gcd.hpp
 layout: document

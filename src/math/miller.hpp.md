@@ -247,15 +247,15 @@ data:
   path: src/math/miller.hpp
   requiredBy:
   - src/math/phi_function.hpp
-  - src/math/primitive_root.hpp
   - src/math/rho.hpp
+  - src/math/primitive_root.hpp
   timestamp: '2023-08-21 16:28:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
   - test/yuki/No3030.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
 documentation_of: src/math/miller.hpp
 layout: document
 redirect_from:

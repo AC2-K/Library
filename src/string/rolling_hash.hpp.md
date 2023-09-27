@@ -81,9 +81,8 @@ data:
     \   static ull base;\n\nprivate:\n    constexpr ull mul(const u128& a, const u128&\
     \ b) const {\n        u128 t = a * b;\n\n        t = (t >> 61) + (t & mod);\n\n\
     \        if (t >= mod) {\n            t -= mod;\n        }\n\n        return t;\n\
-    \    }\n\n    constexpr ull mapping(char c) const {\n        return (ull)c;  //\
-    \ \u5909\u66F4\u3059\u308B?\n    }\n\n    static ull generate() {\n        std::mt19937_64\
-    \ engine(\n            std::chrono::steady_clock::now().time_since_epoch().count());\n\
+    \    }\n\n    constexpr ull mapping(char c) const { return (ull)c; }\n\n    static\
+    \ ull generate() {\n        std::mt19937_64 engine(\n            std::chrono::steady_clock::now().time_since_epoch().count());\n\
     \        std::uniform_int_distribution<ull> rand(1uL, mod - 1);\n        return\
     \ rand(engine);\n    }\n    static void generate_base() {\n        if (base !=\
     \ 0) {\n            return;\n        }\n        ull r = mod - 1;\n\n        while\
@@ -95,7 +94,7 @@ data:
     \n        for (int i = 0; i < (int)str.size(); i++) {\n            hash[i + 1]\
     \ = mul(hash[i], base) + mapping(str[i]);\n            pow[i + 1] = mul(pow[i],\
     \ base);\n            if (hash[i + 1] >= mod) {\n                hash[i + 1] -=\
-    \ mod;\n            }\n        }\n    }\n    ull range(int l, int r) const {\n\
+    \ mod;\n            }\n        }\n    }\n    ull slice(int l, int r) const {\n\
     \        assert(0 <= l && l <= r && r <= str.size());\n\n        ull res = mod\
     \ + hash[r] - mul(hash[l], pow[r - l]);\n        return res < mod ? res : res\
     \ - mod;\n    }\n    ull get_all() const { return hash.back(); }\n    int size()\
@@ -103,8 +102,8 @@ data:
     \                  const RollingHash& b,\n                   int start_a,\n  \
     \                 int start_b) {\n        int ok = 0;\n        int ng = std::min(a.size()\
     \ - start_a, b.size() - start_b) + 1;\n        while (ng - ok > 1) {\n       \
-    \     int md = (ok + ng) >> 1;\n            if (a.range(start_a, start_a + md)\
-    \ ==\n                b.range(start_b, start_b + md)) {\n                ok =\
+    \     int md = (ok + ng) >> 1;\n            if (a.slice(start_a, start_a + md)\
+    \ ==\n                b.slice(start_b, start_b + md)) {\n                ok =\
     \ md;\n            } else {\n                ng = md;\n            }\n       \
     \ }\n\n        return ok;\n    }\n};\n}  // namespace kyopro\ntypename kyopro::RollingHash::ull\
     \ kyopro::RollingHash::base;\n"
@@ -119,10 +118,10 @@ data:
     \ (uint)'Z' + 2;\n    static ull base;\n\nprivate:\n    constexpr ull mul(const\
     \ u128& a, const u128& b) const {\n        u128 t = a * b;\n\n        t = (t >>\
     \ 61) + (t & mod);\n\n        if (t >= mod) {\n            t -= mod;\n       \
-    \ }\n\n        return t;\n    }\n\n    constexpr ull mapping(char c) const {\n\
-    \        return (ull)c;  // \u5909\u66F4\u3059\u308B?\n    }\n\n    static ull\
-    \ generate() {\n        std::mt19937_64 engine(\n            std::chrono::steady_clock::now().time_since_epoch().count());\n\
-    \        std::uniform_int_distribution<ull> rand(1uL, mod - 1);\n        return\
+    \ }\n\n        return t;\n    }\n\n    constexpr ull mapping(char c) const { return\
+    \ (ull)c; }\n\n    static ull generate() {\n        std::mt19937_64 engine(\n\
+    \            std::chrono::steady_clock::now().time_since_epoch().count());\n \
+    \       std::uniform_int_distribution<ull> rand(1uL, mod - 1);\n        return\
     \ rand(engine);\n    }\n    static void generate_base() {\n        if (base !=\
     \ 0) {\n            return;\n        }\n        ull r = mod - 1;\n\n        while\
     \ (_gcd(r, mod - 1) != 1 || r <= mapping_max) {\n            r = generate();\n\
@@ -133,7 +132,7 @@ data:
     \n        for (int i = 0; i < (int)str.size(); i++) {\n            hash[i + 1]\
     \ = mul(hash[i], base) + mapping(str[i]);\n            pow[i + 1] = mul(pow[i],\
     \ base);\n            if (hash[i + 1] >= mod) {\n                hash[i + 1] -=\
-    \ mod;\n            }\n        }\n    }\n    ull range(int l, int r) const {\n\
+    \ mod;\n            }\n        }\n    }\n    ull slice(int l, int r) const {\n\
     \        assert(0 <= l && l <= r && r <= str.size());\n\n        ull res = mod\
     \ + hash[r] - mul(hash[l], pow[r - l]);\n        return res < mod ? res : res\
     \ - mod;\n    }\n    ull get_all() const { return hash.back(); }\n    int size()\
@@ -141,8 +140,8 @@ data:
     \                  const RollingHash& b,\n                   int start_a,\n  \
     \                 int start_b) {\n        int ok = 0;\n        int ng = std::min(a.size()\
     \ - start_a, b.size() - start_b) + 1;\n        while (ng - ok > 1) {\n       \
-    \     int md = (ok + ng) >> 1;\n            if (a.range(start_a, start_a + md)\
-    \ ==\n                b.range(start_b, start_b + md)) {\n                ok =\
+    \     int md = (ok + ng) >> 1;\n            if (a.slice(start_a, start_a + md)\
+    \ ==\n                b.slice(start_b, start_b + md)) {\n                ok =\
     \ md;\n            } else {\n                ng = md;\n            }\n       \
     \ }\n\n        return ok;\n    }\n};\n}  // namespace kyopro\ntypename kyopro::RollingHash::ull\
     \ kyopro::RollingHash::base;\n"
@@ -153,7 +152,7 @@ data:
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-08-21 15:56:48+09:00'
+  timestamp: '2023-09-27 09:48:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No430.test.cpp
