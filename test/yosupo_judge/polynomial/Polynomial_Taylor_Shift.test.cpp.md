@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: taylor shift
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/combination.hpp
     title: "\u4E8C\u9805\u4FC2\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/polynomial_taylor_shift
@@ -447,41 +447,41 @@ data:
     \    return res;\n}\n};  // namespace kyopro\n#line 2 \"src/stream.hpp\"\n#include\
     \ <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
     \n#include <iostream>\n#include <limits>\n#line 5 \"src/internal/type_traits.hpp\"\
-    \n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\ntemplate <typename...\
-    \ Args> struct first_enabled {};\n\ntemplate <typename T, typename... Args>\n\
-    struct first_enabled<std::enable_if<true, T>, Args...> {\n    using type = T;\n\
-    };\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
-    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
-    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
-    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
-    \ntemplate <int dgt> struct int_least {\n    static_assert(dgt <= 128);\n    using\
-    \ type = first_enabled_t<std::enable_if<dgt <= 8, __int8_t>,\n               \
-    \                  std::enable_if<dgt <= 16, __int16_t>,\n                   \
-    \              std::enable_if<dgt <= 32, __int32_t>,\n                       \
-    \          std::enable_if<dgt <= 64, __int64_t>,\n                           \
-    \      std::enable_if<dgt <= 128, __int128_t> >;\n};\ntemplate <int dgt> struct\
-    \ uint_least {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, __uint8_t>,\n                                 std::enable_if<dgt <= 16,\
-    \ __uint16_t>,\n                                 std::enable_if<dgt <= 32, __uint32_t>,\n\
-    \                                 std::enable_if<dgt <= 64, __uint64_t>,\n   \
-    \                              std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\
-    \ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\ntemplate\
-    \ <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename\
-    \ T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
-    \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
+    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
+    \ {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, __int8_t>,\n                                 std::enable_if<dgt <= 16,\
+    \ __int16_t>,\n                                 std::enable_if<dgt <= 32, __int32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, __int64_t>,\n    \
+    \                             std::enable_if<dgt <= 128, __int128_t> >;\n};\n\
+    template <int dgt> struct uint_least {\n    static_assert(dgt <= 128);\n    using\
+    \ type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,\n              \
+    \                   std::enable_if<dgt <= 16, __uint16_t>,\n                 \
+    \                std::enable_if<dgt <= 32, __uint32_t>,\n                    \
+    \             std::enable_if<dgt <= 64, __uint64_t>,\n                       \
+    \          std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\ntemplate <int dgt>\
+    \ using int_least_t = typename int_least<dgt>::type;\ntemplate <int dgt> using\
+    \ uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename T>\nusing\
+    \ double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\ntemplate\
+    \ <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     \nstruct modint_base {};\ntemplate <typename T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
-    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
-    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
-    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/stream.hpp\"\
+    \n\nnamespace kyopro {\n// read\nvoid single_read(char& c) {\n    c = getchar_unlocked();\n\
+    \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
+    \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
+    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
+    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
+    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
     \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
     \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
@@ -540,8 +540,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   requiredBy: []
-  timestamp: '2023-09-27 11:04:08+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-09-26 19:14:02+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
 layout: document

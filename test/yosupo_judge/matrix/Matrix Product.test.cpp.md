@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/matrix.hpp
     title: Matrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -60,10 +60,11 @@ data:
     \    e >>= 1;\n        }\n\n        return res;\n    }\n};\n};  // namespace kyopro\n\
     \n/**\n *  @docs docs/math/matrix.md\n */\n#line 3 \"src/internal/type_traits.hpp\"\
     \n#include <limits>\n#include <numeric>\n#include <typeinfo>\nnamespace kyopro\
-    \ {\nnamespace internal {\ntemplate <typename... Args> struct first_enabled {};\n\
-    \ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
-    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
-    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
     \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
@@ -86,15 +87,15 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate\
-    \ <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0\
-    \ && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
-    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+    };  // namespace internal\n};  // namespace kyopro\n#line 3 \"src/math/gcd.hpp\"\
+    \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr inline\
+    \ T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
+    \ b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
+    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
+    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
+    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
     \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
     \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
@@ -202,8 +203,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-09-27 11:04:08+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-21 15:56:48+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
 layout: document

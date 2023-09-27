@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/dual_segtree.hpp
     title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
   _extendedRequiredBy: []
@@ -46,10 +46,11 @@ data:
     /**\n * @docs docs/data-structure/dual_segtree.md\n */\n#line 2 \"src/stream.hpp\"\
     \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
     \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
-    namespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct first_enabled\
-    \ {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
-    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
-    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    namespace kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
     \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
@@ -72,15 +73,14 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
-    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
-    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
-    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/stream.hpp\"\
+    \n\nnamespace kyopro {\n// read\nvoid single_read(char& c) {\n    c = getchar_unlocked();\n\
+    \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
+    \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
+    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
+    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
+    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
     \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
     \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
@@ -125,7 +125,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_E_dual.test.cpp
   requiredBy: []
-  timestamp: '2023-09-27 11:04:08+09:00'
+  timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_E_dual.test.cpp

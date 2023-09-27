@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
   _extendedRequiredBy: []
@@ -27,22 +27,23 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/static_modint.md
     document_title: "\u9759\u7684modint"
     links: []
   bundledCode: "#line 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#include\
     \ <iostream>\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n#include\
-    \ <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\ntemplate\
+    \ <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/*\n\
+    \ * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\ntemplate\
     \ <typename... Args> struct first_enabled {};\n\ntemplate <typename T, typename...\
     \ Args>\nstruct first_enabled<std::enable_if<true, T>, Args...> {\n    using type\
     \ = T;\n};\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
@@ -68,15 +69,15 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate\
-    \ <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0\
-    \ && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
-    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+    };  // namespace internal\n};  // namespace kyopro\n#line 3 \"src/math/gcd.hpp\"\
+    \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr inline\
+    \ T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
+    \ b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
+    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
+    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
+    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
     \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
     \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
@@ -183,8 +184,8 @@ data:
   isVerificationFile: false
   path: src/math/static_modint.hpp
   requiredBy: []
-  timestamp: '2023-09-27 11:04:08+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-08-21 15:56:48+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
