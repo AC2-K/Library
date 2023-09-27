@@ -75,8 +75,8 @@ data:
   isVerificationFile: false
   path: src/math/mod_pow.hpp
   requiredBy:
-  - src/string/rolling_hash.hpp
   - src/math/mod_log.hpp
+  - src/string/rolling_hash.hpp
   timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

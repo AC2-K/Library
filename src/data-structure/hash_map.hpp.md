@@ -73,8 +73,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No430.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 documentation_of: src/data-structure/hash_map.hpp
 layout: document
 redirect_from:
