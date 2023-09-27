@@ -7,26 +7,24 @@
 #include "../random/xor_shift.hpp"
 
 namespace kyopro {
+template <int m = 998244353>
 std::vector<bool> wildcard_pattern_matching(const std::string& s,
                                             const std::string& t,
                                             char wild_card) {
     assert(s.size() >= t.size());
-    using mint = atcoder::modint998244353;
-    
-    // 各文字にハッシュを割り当てる(ワイルドカードにのみ0を割り当てる
-    
+    using mint = atcoder::static_modint<m>;
+
     static xor_shift32 rng;
     static int d = rng();
-    
-    auto to_integer = [&](char v) -> mint {
-        return (v == wild_card ? mint() : mint(v + d));
+
+    auto to_num = [&](char v) -> mint {
+        return (v == wild_card ? mint() : mint::raw(v + d));
     };
-
+    
     std::vector<mint> sv(s.size()), tv(t.size());
-    for (int i = 0; i < (int)s.size(); ++i) sv[i] = to_integer(s[i]);
-    for (int i = 0; i < (int)t.size(); ++i) tv[i] = to_integer(t[i]);
+    for (int i = 0; i < (int)s.size(); ++i) sv[i] = to_num(s[i]);
+    for (int i = 0; i < (int)t.size(); ++i) tv[i] = to_num(t[i]);
 
-    // 畳み込みでマッチを計算する
     std::reverse(tv.begin(), tv.end());
 
     std::vector<mint> conv1;
