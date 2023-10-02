@@ -11,22 +11,25 @@
 >   - $a_i,b_i$ のいずれかが $w$ に一致する
 
 愚直に計算すると $O(\vert S \vert \vert T \vert)$ 時間かかりますが、うまい方法をとると $n=\vert S \vert + \vert T \vert$ として $O(n\log n)$ 時間に落とすことができます.
+
 ## wildcard_pattern_matching
 ```cpp
-std::vector<bool> wildcard_pattern_matching(const string& s,const string& t,char wildcard)
+std::vector<bool> wildcard_pattern_matching<int m>(const string& s,const string& t,char wildcard)
 ```
+
 長さ $\vert \mathtt{s} \vert - \vert \mathtt{t} \vert +1$ のvectorを返します.\
-返り値の $i$ 番目の要素には、 $\mathtt{s} [i:i+\vert T \vert)$ と $\mathtt{t}$ がマッチするか(`true`/`false`)が格納されています.
+返り値の $i$ 番目の要素には、 $\mathtt{s} [i:i+\vert T \vert)$ と $\mathtt{t}$ がマッチするか(`true`/`false`)が格納されています.\
+[$ m] は内部計算に用いる NTT 素数を入力してください.デフォルトでは 998244353です.
 
 ### 計算量
-- $n=\vert \mathtt{s} \vert + \vert \mathtt{t} \vert$ として $O(n\log n)$
+- $n = \vert \mathtt{s} \vert + \vert \mathtt{t} \vert$ として $O(n\log n)$
 
 ## 制約
 - $\vert \mathtt{s} \vert\geq\vert \mathtt{t} \vert$
+- $m$ はNTT素数.
 
 ## 誤判定の確率
-マッチ判定をを $\mod 998244353$ の畳み込みで計算しているので、たまに誤判定します(えぇ...).\
-誤判定確率は一回当たりexpected $1/998244353$ です.
+マッチ判定をを $\mod m$ の畳み込みで計算しているので,誤判定する可能性があります. 誤判定確率は一回当たりexpected $1/n$ です.
 
 ## 誤判定対策
-心配であれば、何度も判定を行い、すべてに通過したもののみをマッチしたとみなすことで(高い確率で)正しい結果を得られます.
+複数modのmodにより判定したり,何度かサブルーチンを呼び出すことにより正答確率を上げることができます.
