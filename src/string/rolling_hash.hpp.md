@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: Rolling Hash
     links: []
@@ -46,37 +46,37 @@ data:
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
     \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
     \ {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, __int8_t>,\n                                 std::enable_if<dgt <= 16,\
-    \ __int16_t>,\n                                 std::enable_if<dgt <= 32, __int32_t>,\n\
-    \                                 std::enable_if<dgt <= 64, __int64_t>,\n    \
-    \                             std::enable_if<dgt <= 128, __int128_t> >;\n};\n\
+    \ <= 8, std::int8_t>,\n                                 std::enable_if<dgt <=\
+    \ 16, std::int16_t>,\n                                 std::enable_if<dgt <= 32,\
+    \ std::int32_t>,\n                                 std::enable_if<dgt <= 64, std::int64_t>,\n\
+    \                                 std::enable_if<dgt <= 128, __int128_t>>;\n};\n\
     template <int dgt> struct uint_least {\n    static_assert(dgt <= 128);\n    using\
-    \ type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,\n              \
-    \                   std::enable_if<dgt <= 16, __uint16_t>,\n                 \
-    \                std::enable_if<dgt <= 32, __uint32_t>,\n                    \
-    \             std::enable_if<dgt <= 64, __uint64_t>,\n                       \
-    \          std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\ntemplate <int dgt>\
-    \ using int_least_t = typename int_least<dgt>::type;\ntemplate <int dgt> using\
-    \ uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename T>\nusing\
-    \ double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\ntemplate\
-    \ <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \ type = first_enabled_t<std::enable_if<dgt <= 8, std::uint8_t>,\n           \
+    \                      std::enable_if<dgt <= 16, std::uint16_t>,\n           \
+    \                      std::enable_if<dgt <= 32, std::uint32_t>,\n           \
+    \                      std::enable_if<dgt <= 64, std::uint64_t>,\n           \
+    \                      std::enable_if<dgt <= 128, __uint128_t>>;\n};\n\ntemplate\
+    \ <int dgt> using int_least_t = typename int_least<dgt>::type;\ntemplate <int\
+    \ dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename\
+    \ T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     \nstruct modint_base {};\ntemplate <typename T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
-    \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
-    \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n#line 3 \"src/math/mod_pow.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief \u30D0\u30A4\u30CA\u30EA\u6CD5\n */\ntemplate\
-    \ <typename T>\nconstexpr T mod_pow(internal::double_size_uint_t<T> base, T exp,\
-    \ T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ? 0 : 1);\n  \
-    \  base %= mod;\n    while (exp) {\n        if (exp & 1) {\n            ans *=\
-    \ base;\n            ans %= mod;\n        }\n        base *= base;\n        base\
-    \ %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace kyopro\n\
-    #line 8 \"src/string/rolling_hash.hpp\"\nnamespace kyopro {\n\n/**\n * @brief\
-    \ Rolling Hash\n */\nclass RollingHash {\n    using ull = uint_fast64_t;\n   \
-    \ using i128 = __int128_t;\n    using u128 = __uint128_t;\n    // mod\n    static\
-    \ constexpr ull msk30 = (1ul << 30) - 1;\n    static constexpr ull msk61 = (1ul\
-    \ << 31) - 1;\n    const std::string str;\n    std::vector<ull> hash, pow;\n\n\
-    \    static constexpr ull mod = (1uL << 61) - 1;\n    static constexpr ull primitive_root\
+    \n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
+    \ || std::is_same_v<T, __int128_t> ||\n                     std::is_same_v<T,\
+    \ __uint128_t>>;\n};  // namespace internal\n};  // namespace kyopro\n#line 3\
+    \ \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\n/**\n * @brief \u30D0\u30A4\u30CA\
+    \u30EA\u6CD5\n */\ntemplate <typename T>\nconstexpr T mod_pow(internal::double_size_uint_t<T>\
+    \ base, T exp, T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ?\
+    \ 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n     \
+    \       ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
+    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
+    \ kyopro\n#line 8 \"src/string/rolling_hash.hpp\"\nnamespace kyopro {\n\n/**\n\
+    \ * @brief Rolling Hash\n */\nclass RollingHash {\n    using ull = uint_fast64_t;\n\
+    \    using i128 = __int128_t;\n    using u128 = __uint128_t;\n    // mod\n   \
+    \ static constexpr ull msk30 = (1ul << 30) - 1;\n    static constexpr ull msk61\
+    \ = (1ul << 31) - 1;\n    const std::string str;\n    std::vector<ull> hash, pow;\n\
+    \n    static constexpr ull mod = (1uL << 61) - 1;\n    static constexpr ull primitive_root\
     \ = 37;\n\npublic:\n    static constexpr uint mapping_max = (uint)'Z' + 2;\n \
     \   static ull base;\n\nprivate:\n    constexpr ull mul(const u128& a, const u128&\
     \ b) const {\n        u128 t = a * b;\n\n        t = (t >> 61) + (t & mod);\n\n\
@@ -152,8 +152,8 @@ data:
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-09-27 09:48:32+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-02 16:13:09+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yuki/No430.test.cpp
 documentation_of: src/string/rolling_hash.hpp
