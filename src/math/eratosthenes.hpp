@@ -7,34 +7,24 @@ namespace kyopro {
 /**
  * @brief エラトステネスの篩
  */
-class eratosthenes_sieve {
+
+template <int n> class eratosthenes_sieve {
     std::vector<int> mpf;  // minimum prime factor
 
-    std::vector<int> mobius;
-
 public:
-    eratosthenes_sieve(int n) : mpf(n + 1, -1), mobius(n + 1, 1) {
-        std::iota(mpf.begin(), mpf.end(), 0);
-        mpf[0] = 0, mpf[1] = 0;
+    eratosthenes_sieve() : mpf(n, -1) {
         for (int i = 2; i <= n; ++i) {
-            if (!is_prime(i)) continue;
+            if (mpf[i] != -1) continue;
             mpf[i] = i;
 
-            mobius[i] = -1;
             if ((long long)i * i > n) continue;
             for (int j = i * 2; j <= n; j += i) {
                 if (mpf[j] == -1) mpf[j] = i;
-
-                if (j / i % i == 0) {
-                    mobius[i] = 0;
-                } else {
-                    mobius[j] = -mobius[j];
-                }
             }
         }
     }
 
-    bool is_prime(int p) const { return mpf[p] == p; }
+    bool is_prime(int p) const { return mpf[p] == -1; }
 
     std::vector<int> enumerate_primes() const {
         std::vector<int> res;
@@ -43,8 +33,6 @@ public:
         }
         return res;
     }
-
-    std::vector<int> enumerate_mobius() const { return mobius; }
 
     std::vector<int> factorize(int a) const {
         assert(1 <= a && a < (int)mpf.size());
@@ -56,8 +44,8 @@ public:
         return res;
     }
 
-    std::vector<std::pair<int, int>> exp_factorize(int n) {
-        std::vector<int> pf = factorize(n);
+    std::vector<std::pair<int, int>> exp_factorize(int a) const {
+        std::vector<int> pf = factorize(a);
 
         if (pf.empty()) {
             return {};
@@ -76,15 +64,16 @@ public:
         return res;
     }
 
-    std::vector<int> enumerate_divisor(int n) {
-        std::vector<std::pair<int, int>> pf = exp_factorize(n);
+    std::vector<int> enumerate_divisor(int a) const {
+        std::vector<std::pair<int, int>> pf = exp_factorize(a);
         std::vector<int> divisor{1};
         for (auto [p, e] : pf) {
             int pow = p;
             int sz = divisor.size();
             for (int i = 0; i < e; ++i) {
-                for (int j = 0; j < sz; ++j)
+                for (int j = 0; j < sz; ++j) {
                     divisor.emplace_back(divisor[j] * pow);
+                }
                 pow *= p;
             }
         }
