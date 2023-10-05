@@ -1,14 +1,16 @@
-#include<vector>
+#pragma once
+#include <algorithm>
+#include <vector>
 
 namespace kyopro {
 namespace number_of_subseq_impl {
 
-template <typename T> void comp(vector<T>& a) {
-    vector<T> tmp(a);
-    sort(tmp.begin(), tmp.end());
-    tmp.erase(unique(all(tmp)), tmp.end());
+template <typename T> void comp(std::vector<T>& a) {
+    std::vector<T> tmp(a);
+    std::sort(tmp.begin(), tmp.end());
+    tmp.erase(std::unique(tmp.begin(),tmp.end()), tmp.end());
     for (int i = 0; i < (int)a.size(); ++i) {
-        a[i] = lower_bound(all(tmp), a[i]) - tmp.begin();
+        a[i] = lower_bound(tmp.begin(), tmp.end(), a[i]) - tmp.begin();
     }
 }
 
@@ -18,12 +20,13 @@ template <typename T> void comp(vector<T>& a) {
 template <typename mint, typename T>
 mint num_of_subseq(std::vector<T> a) {
     number_of_subseq_impl::comp(a);
-    sum[0] = mint::(1);
-    rep(i, n) {
+    std::vector<mint> dp(a.size() + 1), sum(a.size() + 1);
+    sum[0] = mint(1);
+    for (int i = 0; i < (int)a.size(); ++i) {
         sum[i + 1] = 2 * sum[i] - dp[a[i]];
         dp[a[i]] += sum[i] - dp[a[i]];
     }
-    return sum[n];
+    return sum[a.size()];
 }
 };
 
