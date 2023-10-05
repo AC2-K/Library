@@ -34,6 +34,7 @@
 "test/yosupo_judge/math/Discrete_Logarithm.test.cpp": "2023-08-21 15:56:48 +0900",
 "test/yosupo_judge/math/Factorize.test.cpp": "2023-08-21 16:28:28 +0900",
 "test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp": "2023-08-20 22:22:55 +0900",
+"test/yosupo_judge/math/Number_of_Subsequences.test.cpp": "2023-10-06 00:03:30 +0900",
 "test/yosupo_judge/math/Primitive_Root.test.cpp": "2023-08-21 16:28:28 +0900",
 "test/yosupo_judge/matrix/Matrix Product.test.cpp": "2023-08-21 15:56:48 +0900",
 "test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp": "2023-08-21 15:21:38 +0900",
