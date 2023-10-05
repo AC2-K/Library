@@ -152,6 +152,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/template.hpp
       title: src/template.hpp
+  - name: src/dynamic_programming
+    pages:
+    - icon: ':warning:'
+      path: src/dynamic_programming/number_of_subseq.hpp
+      title: "\u90E8\u5206\u5217\u306E\u500B\u6570"
   - name: src/graph
     pages:
     - icon: ':warning:'
