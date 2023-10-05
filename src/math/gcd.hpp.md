@@ -52,6 +52,9 @@ data:
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+    title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - icon: ':heavy_check_mark:'
@@ -113,6 +116,7 @@ data:
   - test/yuki/No430.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp

@@ -154,7 +154,7 @@ data:
       title: src/template.hpp
   - name: src/dynamic_programming
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/dynamic_programming/number_of_subseq.hpp
       title: "\u90E8\u5206\u5217\u306E\u500B\u6570"
   - name: src/graph
@@ -372,6 +372,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+      title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Primitive_Root.test.cpp
       title: test/yosupo_judge/math/Primitive_Root.test.cpp

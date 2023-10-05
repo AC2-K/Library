@@ -133,6 +133,9 @@ data:
     path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
     title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+    title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - icon: ':heavy_check_mark:'
@@ -291,6 +294,7 @@ data:
   - test/yosupo_judge/string/Z_algorithm.test.cpp
   - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp

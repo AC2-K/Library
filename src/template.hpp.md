@@ -10,6 +10,9 @@ data:
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+    title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -60,6 +63,7 @@ data:
   timestamp: '2023-09-06 14:57:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
