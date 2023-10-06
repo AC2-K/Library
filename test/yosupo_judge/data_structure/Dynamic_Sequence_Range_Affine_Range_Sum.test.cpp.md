@@ -103,7 +103,7 @@ data:
     \       xy = merge(std::move(x), std::move(y));\n        root = merge(std::move(xy),\
     \ std::move(z));\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/lazy_reversible_bbst.md\n\
     \ * @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452\n */\n#line\
-    \ 3 \"src/math/static_modint.hpp\"\n#include <iostream>\n#line 3 \"src/internal/type_traits.hpp\"\
+    \ 4 \"src/math/static_modint.hpp\"\n#include <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\
     \n#include <limits>\n#include <numeric>\n#include <typeinfo>\nnamespace kyopro\
     \ {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
     \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
@@ -145,19 +145,19 @@ data:
     \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n#line 6 \"src/math/static_modint.hpp\"\nnamespace\
-    \ kyopro {\ntemplate <__uint32_t _mod> class modint : internal::modint_base {\n\
-    private:\n    using mint = modint<_mod>;\n    using i32 = __int32_t;\n    using\
-    \ u32 = __uint32_t;\n    using i64 = __int64_t;\n    using u64 = __uint64_t;\n\
-    \n    u32 v;\n    constexpr u32 normalize(i64 v_) const noexcept {\n        v_\
-    \ %= _mod;\n        if (v_ < 0) {\n            v_ += _mod;\n        }\n      \
-    \  return v_;\n    }\n\npublic:\n    static constexpr u32 mod() noexcept { return\
-    \ _mod; }\n    constexpr modint() noexcept : v(0) {}\n    constexpr modint(i64\
-    \ v_) noexcept : v(normalize(v_)) {}\n\n    static mint raw(u32 a) {\n       \
-    \ mint m;\n        m.v = a;\n        return m;\n    }\n    constexpr u32 val()\
-    \ const noexcept { return v; }\n    constexpr mint& operator+=(const mint& rhs)\
-    \ noexcept {\n        v += rhs.val();\n        if (v >= _mod) {\n            v\
-    \ -= _mod;\n        }\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
+    \ a;\n}\n};  // namespace kyopro\n#line 8 \"src/math/static_modint.hpp\"\nnamespace\
+    \ kyopro {\ntemplate <int _mod> class modint : internal::modint_base {\n    using\
+    \ mint = modint<_mod>;\n    using i32 = std::int32_t;\n    using u32 = std::uint32_t;\n\
+    \    using i64 = std::int64_t;\n    using u64 = std::uint64_t;\n\n    u32 v;\n\
+    \    constexpr u32 normalize(i64 v_) const noexcept {\n        v_ %= _mod;\n \
+    \       if (v_ < 0) {\n            v_ += _mod;\n        }\n        return v_;\n\
+    \    }\n\npublic:\n    static constexpr u32 mod() noexcept { return _mod; }\n\
+    \    constexpr modint() noexcept : v(0) {}\n    constexpr modint(i64 v_) noexcept\
+    \ : v(normalize(v_)) {}\n\n    static mint raw(u32 a) {\n        mint m;\n   \
+    \     m.v = a;\n        return m;\n    }\n    constexpr u32 val() const noexcept\
+    \ { return v; }\n    constexpr mint& operator+=(const mint& rhs) noexcept {\n\
+    \        v += rhs.val();\n        if (v >= _mod) {\n            v -= _mod;\n \
+    \       }\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
     \ mint& rhs) noexcept {\n        v += _mod - rhs.val();\n        if (v >= _mod)\
     \ {\n            v -= _mod;\n        }\n        return (*this);\n    }\n    constexpr\
     \ mint& operator*=(const mint& rhs) noexcept {\n        v = (u64)v * rhs.val()\
@@ -271,7 +271,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-08-21 15:56:48+09:00'
+  timestamp: '2023-10-06 23:07:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
