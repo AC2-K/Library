@@ -1,16 +1,17 @@
 #pragma once
 #include <cassert>
+#include <cstdint>
 #include <iostream>
+
 #include "../internal/type_traits.hpp"
 #include "../math/gcd.hpp"
 namespace kyopro {
-template <__uint32_t _mod> class modint : internal::modint_base {
-private:
+template <int _mod> class modint : internal::modint_base {
     using mint = modint<_mod>;
-    using i32 = __int32_t;
-    using u32 = __uint32_t;
-    using i64 = __int64_t;
-    using u64 = __uint64_t;
+    using i32 = std::int32_t;
+    using u32 = std::uint32_t;
+    using i64 = std::int64_t;
+    using u64 = std::uint64_t;
 
     u32 v;
     constexpr u32 normalize(i64 v_) const noexcept {
