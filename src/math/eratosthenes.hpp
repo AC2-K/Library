@@ -1,7 +1,9 @@
-#include <bitset>
+#pragma once
+#include <string.h>
 #include <cassert>
 #include <numeric>
 #include <vector>
+
 namespace kyopro {
 
 /**
@@ -9,10 +11,11 @@ namespace kyopro {
  */
 
 template <int n> class eratosthenes_sieve {
-    std::vector<int> mpf;  // minimum prime factor
+    int* mpf = new int[n];  // minimum prime factor
 
 public:
-    eratosthenes_sieve() : mpf(n, -1) {
+    constexpr eratosthenes_sieve() {
+        for (int i = 0; i < n; ++i) mpf[i] = -1;
         for (int i = 2; i <= n; ++i) {
             if (mpf[i] != -1) continue;
             mpf[i] = i;
@@ -28,14 +31,14 @@ public:
 
     std::vector<int> enumerate_primes() const {
         std::vector<int> res;
-        for (int i = 2; i < (int)mpf.size(); ++i) {
+        for (int i = 2; i < n; ++i) {
             if (is_prime(i)) res.emplace_back(i);
         }
         return res;
     }
 
     std::vector<int> factorize(int a) const {
-        assert(1 <= a && a < (int)mpf.size());
+        assert(1 <= a && a < n);
         if (a <= 1) return {};
         std::vector<int> res;
         while (a > 1) {
