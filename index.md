@@ -163,6 +163,9 @@ data:
       path: src/graph/Namori.hpp
       title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
     - icon: ':warning:'
+      path: src/graph/StaticGraph.hpp
+      title: "\u9759\u7684\u30B0\u30E9\u30D5"
+    - icon: ':warning:'
       path: src/graph/TopologialSort.hpp
       title: Topologial Sort
     - icon: ':heavy_check_mark:'
