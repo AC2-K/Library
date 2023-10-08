@@ -175,6 +175,9 @@ data:
       title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   - name: src/internal
     pages:
+    - icon: ':warning:'
+      path: src/internal/CSR.hpp
+      title: "CSR\u5F62\u5F0F"
     - icon: ':heavy_check_mark:'
       path: src/internal/barrett.hpp
       title: Barrett Reduction
