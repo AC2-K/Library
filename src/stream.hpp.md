@@ -28,9 +28,6 @@ data:
     path: test/AOJ/DSL/5_B.test.cpp
     title: test/AOJ/DSL/5_B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/AOJ/GRL/1_A.test.cpp
-    title: test/AOJ/GRL/1_A.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -91,9 +88,6 @@ data:
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/graph/Shortest_Path.test.cpp
-    title: test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
@@ -147,9 +141,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-    title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
@@ -258,7 +249,6 @@ data:
   timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/GRL/1_A.test.cpp
   - test/AOJ/GRL/5_C.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
   - test/AOJ/NTL/1_B.test.cpp
@@ -273,7 +263,6 @@ data:
   - test/yuki/No789.test.cpp
   - test/yuki/No430.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - test/yosupo_judge/graph/Shortest_Path.test.cpp
   - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
@@ -283,7 +272,6 @@ data:
   - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp

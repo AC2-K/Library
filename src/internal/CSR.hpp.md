@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: src/graph/StaticGraph.hpp
+    title: "\u9759\u7684\u30B0\u30E9\u30D5"
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
@@ -50,7 +53,8 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/internal/CSR.hpp
-  requiredBy: []
+  requiredBy:
+  - src/graph/StaticGraph.hpp
   timestamp: '2023-10-08 22:01:37+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

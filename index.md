@@ -168,7 +168,7 @@ data:
     - icon: ':warning:'
       path: src/graph/TopologialSort.hpp
       title: Topologial Sort
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
   - name: src/graph/flow
@@ -284,7 +284,7 @@ data:
       title: test/AOJ/DSL/5_B.test.cpp
   - name: test/AOJ/GRL
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/AOJ/GRL/1_A.test.cpp
       title: test/AOJ/GRL/1_A.test.cpp
     - icon: ':heavy_check_mark:'
@@ -362,11 +362,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - name: test/yosupo_judge/graph
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/graph/Shortest_Path.test.cpp
-      title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - name: test/yosupo_judge/math
     pages:
     - icon: ':heavy_check_mark:'
@@ -433,9 +428,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-      title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
     pages:
     - icon: ':heavy_check_mark:'
