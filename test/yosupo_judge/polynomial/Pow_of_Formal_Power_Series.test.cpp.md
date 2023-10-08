@@ -1,44 +1,44 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/FPS.hpp
     title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: fastIO
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/pow_of_formal_power_series
@@ -47,8 +47,8 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_formal_power_series\"\
     \n\n#line 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#include <cstdint>\n\
-    #include <iostream>\n\n#line 4 \"src/internal/type_traits.hpp\"\n#include <limits>\n\
-    #include <numeric>\n#include <typeinfo>\n\nnamespace kyopro {\nnamespace internal\
+    #include <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n\
+    #include <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace internal\
     \ {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n\
     template <typename... Args> struct first_enabled {};\n\ntemplate <typename T,\
     \ typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...> {\n\
@@ -57,33 +57,33 @@ data:
     \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
     \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
     \ntemplate <int dgt> struct int_least {\n    static_assert(dgt <= 128);\n    using\
-    \ type = first_enabled_t<std::enable_if<dgt <= 8, std::int8_t>,\n            \
-    \                     std::enable_if<dgt <= 16, std::int16_t>,\n             \
-    \                    std::enable_if<dgt <= 32, std::int32_t>,\n              \
-    \                   std::enable_if<dgt <= 64, std::int64_t>,\n               \
-    \                  std::enable_if<dgt <= 128, __int128_t>>;\n};\ntemplate <int\
-    \ dgt> struct uint_least {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, std::uint8_t>,\n                                 std::enable_if<dgt <=\
-    \ 16, std::uint16_t>,\n                                 std::enable_if<dgt <=\
-    \ 32, std::uint32_t>,\n                                 std::enable_if<dgt <=\
-    \ 64, std::uint64_t>,\n                                 std::enable_if<dgt <=\
-    \ 128, __uint128_t>>;\n};\n\ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\n\
-    template <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate\
-    \ <typename T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \ type = first_enabled_t<std::enable_if<dgt <= 8, __int8_t>,\n               \
+    \                  std::enable_if<dgt <= 16, __int16_t>,\n                   \
+    \              std::enable_if<dgt <= 32, __int32_t>,\n                       \
+    \          std::enable_if<dgt <= 64, __int64_t>,\n                           \
+    \      std::enable_if<dgt <= 128, __int128_t> >;\n};\ntemplate <int dgt> struct\
+    \ uint_least {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, __uint8_t>,\n                                 std::enable_if<dgt <= 16,\
+    \ __uint16_t>,\n                                 std::enable_if<dgt <= 32, __uint32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, __uint64_t>,\n   \
+    \                              std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\
+    \ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\ntemplate\
+    \ <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename\
+    \ T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
     \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     \nstruct modint_base {};\ntemplate <typename T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
-    \n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
-    \ || std::is_same_v<T, __int128_t> ||\n                     std::is_same_v<T,\
-    \ __uint128_t>>;\n};  // namespace internal\n};  // namespace kyopro\n#line 3\
-    \ \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
-    \ T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n\
-    \    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
-    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+    \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
+    \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
+    };  // namespace internal\n};  // namespace kyopro\n#line 3 \"src/math/gcd.hpp\"\
+    \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr inline\
+    \ T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
+    \ b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
+    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
+    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
+    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
     \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
     \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
@@ -638,8 +638,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-10-06 23:20:22+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-06 23:07:34+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
 layout: document
