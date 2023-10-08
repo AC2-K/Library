@@ -45,31 +45,33 @@ data:
     \npublic:\n    UnweightedStaticGraph(std::size_t n) : g(n) {}\n    void add_edge(int\
     \ a, int b) {\n        assert(0 <= a && a < g.n);\n        assert(0 <= b && b\
     \ < g.n);\n\n        g.add(a, b);\n        if constexpr (!is_directed) g.add(b,\
-    \ a);\n    }\n    void build() { g.build(); }\n    const internal::CSR<int>::range\
-    \ operator[](std::size_t i) const {\n        return g[i];\n    }\n};\ntemplate\
-    \ <typename weight, bool is_directed> class WeightedStaticGraph {\n    internal::CSR<std::pair<int,\
-    \ weight>> g;\n\npublic:\n    WeightedStaticGraph(std::size_t n) : g(n){}\n  \
-    \  void add_edge(int a, int b, weight w) {\n        assert(0 <= a && a < g.n);\n\
-    \        assert(0 <= a && a < g.n);\n\n        g.add(a, std::pair<int, weight>(b,\
-    \ w));\n        if constexpr (!is_directed) g.add(a, std::pair<int, weight>(b,\
-    \ w));\n    }\n    void build() { g.build(); }\n    const internal::CSR<std::pair<int,\
-    \ weight>>::range operator[](\n        std::size_t i) const {\n        return\
-    \ g[i];\n    }\n};\n\n};  // namespace kyopro\n#line 9 \"src/graph/dijkstra.hpp\"\
-    \nnamespace kyopro {\n/**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
-    \n */\ntemplate <typename weight> class dijkstra {\n    std::vector<weight> _dist;\n\
-    \    const int n;\n    using Graph = WeightedStaticGraph<long long, false>;\n\n\
-    private:\n    Graph g;\n\npublic:\n    dijkstra(int n)\n        : n(n), g(n),\
-    \ dist(n, std::numeric_limits<weight>::max() / 2) {}\n    dijkstra(const Graph&\
-    \ g) : n(g.size()), g(g) {}\n    void add_edge(int from, int to, long long cost)\
-    \ {\n        assert(0 <= from && from < n);\n        assert(0 <= to && to < n);\n\
-    \        assert(cost >= 0);\n\n        g.add_edge(from, to, cost);\n    }\n  \
-    \  void build(int s) {\n        dist.assign(n, );\n        std::priority_queue<std::pair<weight,\
-    \ int>,\n                            std::vector<std::pair<weight, int>>, std::greater<>>\n\
-    \            q;\n        q.emplace(0, s);\n        dist[s] = 0;\n        while\
-    \ (!q.empty()) {\n            auto [d, v] = q.top();\n            q.pop();\n \
-    \           if (dist[v] != d) {\n                continue;\n            }\n\n\
-    \            for (auto [nv, c] : g[v]) {\n                if (dist[v] + c < dist[nv])\
-    \ {\n                    dist[nv] = dist[v] + c;\n                    q.emplace(dist[nv],\
+    \ a);\n    }\n    std::size_t size() const { return g.n; }\n    void build() {\
+    \ g.build(); }\n    const internal::CSR<int>::range operator[](std::size_t i)\
+    \ {\n        return g[i];\n    }\n};\ntemplate <typename weight, bool is_directed>\
+    \ class WeightedStaticGraph {\n    internal::CSR<std::pair<int, weight>> g;\n\n\
+    public:\n    WeightedStaticGraph(std::size_t n) : g(n){}\n    void add_edge(int\
+    \ a, int b, weight w) {\n        assert(0 <= a && a < g.n);\n        assert(0\
+    \ <= a && a < g.n);\n\n        g.add(a, std::pair<int, weight>(b, w));\n     \
+    \   if constexpr (!is_directed) g.add(a, std::pair<int, weight>(b, w));\n    }\n\
+    \    std::size_t size() const { return g.n; }\n    void build() { g.build(); }\n\
+    \    const internal::CSR<std::pair<int, weight>>::range operator[](\n        std::size_t\
+    \ i) {\n        return g[i];\n    }\n};\n\n};  // namespace kyopro\n#line 9 \"\
+    src/graph/dijkstra.hpp\"\nnamespace kyopro {\n/**\n * @brief \u30C0\u30A4\u30AF\
+    \u30B9\u30C8\u30E9\u6CD5\n */\ntemplate <typename weight> class dijkstra {\n \
+    \   std::vector<weight> _dist;\n    const int n;\n    using Graph = WeightedStaticGraph<long\
+    \ long, true>;\n\n\nprivate:\n    static constexpr weight winf = std::numeric_limits<weight>::max()\
+    \ / 2;\n    Graph g;\n    \npublic:\n    dijkstra(int n) : n(n), g(n), _dist(n,\
+    \ winf){}\n    dijkstra(const Graph& g) : n(g.size()), _dist(n, winf), g(g){}\n\
+    \    void add_edge(int from, int to, weight cost) {\n        assert(0 <= from\
+    \ && from < n);\n        assert(0 <= to && to < n);\n        assert(cost >= 0);\n\
+    \n        g.add_edge(from, to, cost);\n    }\n    void build(int s) {\n      \
+    \  g.build();\n        std::priority_queue<std::pair<weight, int>,\n         \
+    \                   std::vector<std::pair<weight, int>>, std::greater<>>\n   \
+    \         q;\n        q.emplace(0, s);\n        _dist[s] = 0;\n        while (!q.empty())\
+    \ {\n            auto [d, v] = q.top();\n            q.pop();\n            if\
+    \ (_dist[v] != d) {\n                continue;\n            }\n\n            for\
+    \ (auto [nv, c] : g[v]) {\n                if (_dist[v] + c < _dist[nv]) {\n \
+    \                   _dist[nv] = _dist[v] + c;\n                    q.emplace(_dist[nv],\
     \ nv);\n                }\n            }\n        }\n    }\n    weight dist(int\
     \ v) const {\n        assert(0 <= v && v < n);\n        return _dist[v];\n   \
     \ }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/graph/dijkstra.md\n */\n"
@@ -77,19 +79,20 @@ data:
     #include <queue>\n#include <utility>\n#include <vector>\n#include \"../../src/graph/StaticGraph.hpp\"\
     \nnamespace kyopro {\n/**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
     \n */\ntemplate <typename weight> class dijkstra {\n    std::vector<weight> _dist;\n\
-    \    const int n;\n    using Graph = WeightedStaticGraph<long long, false>;\n\n\
-    private:\n    Graph g;\n\npublic:\n    dijkstra(int n)\n        : n(n), g(n),\
-    \ dist(n, std::numeric_limits<weight>::max() / 2) {}\n    dijkstra(const Graph&\
-    \ g) : n(g.size()), g(g) {}\n    void add_edge(int from, int to, long long cost)\
-    \ {\n        assert(0 <= from && from < n);\n        assert(0 <= to && to < n);\n\
-    \        assert(cost >= 0);\n\n        g.add_edge(from, to, cost);\n    }\n  \
-    \  void build(int s) {\n        dist.assign(n, );\n        std::priority_queue<std::pair<weight,\
-    \ int>,\n                            std::vector<std::pair<weight, int>>, std::greater<>>\n\
-    \            q;\n        q.emplace(0, s);\n        dist[s] = 0;\n        while\
-    \ (!q.empty()) {\n            auto [d, v] = q.top();\n            q.pop();\n \
-    \           if (dist[v] != d) {\n                continue;\n            }\n\n\
-    \            for (auto [nv, c] : g[v]) {\n                if (dist[v] + c < dist[nv])\
-    \ {\n                    dist[nv] = dist[v] + c;\n                    q.emplace(dist[nv],\
+    \    const int n;\n    using Graph = WeightedStaticGraph<long long, true>;\n\n\
+    \nprivate:\n    static constexpr weight winf = std::numeric_limits<weight>::max()\
+    \ / 2;\n    Graph g;\n    \npublic:\n    dijkstra(int n) : n(n), g(n), _dist(n,\
+    \ winf){}\n    dijkstra(const Graph& g) : n(g.size()), _dist(n, winf), g(g){}\n\
+    \    void add_edge(int from, int to, weight cost) {\n        assert(0 <= from\
+    \ && from < n);\n        assert(0 <= to && to < n);\n        assert(cost >= 0);\n\
+    \n        g.add_edge(from, to, cost);\n    }\n    void build(int s) {\n      \
+    \  g.build();\n        std::priority_queue<std::pair<weight, int>,\n         \
+    \                   std::vector<std::pair<weight, int>>, std::greater<>>\n   \
+    \         q;\n        q.emplace(0, s);\n        _dist[s] = 0;\n        while (!q.empty())\
+    \ {\n            auto [d, v] = q.top();\n            q.pop();\n            if\
+    \ (_dist[v] != d) {\n                continue;\n            }\n\n            for\
+    \ (auto [nv, c] : g[v]) {\n                if (_dist[v] + c < _dist[nv]) {\n \
+    \                   _dist[nv] = _dist[v] + c;\n                    q.emplace(_dist[nv],\
     \ nv);\n                }\n            }\n        }\n    }\n    weight dist(int\
     \ v) const {\n        assert(0 <= v && v < n);\n        return _dist[v];\n   \
     \ }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/graph/dijkstra.md\n */"
@@ -99,7 +102,7 @@ data:
   isVerificationFile: false
   path: src/graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-10-08 22:18:13+09:00'
+  timestamp: '2023-10-08 22:31:42+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/AOJ/GRL/1_A.test.cpp
