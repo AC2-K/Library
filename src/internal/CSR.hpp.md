@@ -8,10 +8,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
+  - icon: ':heavy_check_mark:'
+    path: src/tree/EulerTour.hpp
+    title: Euler Tour
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/1_A.test.cpp
     title: test/AOJ/GRL/1_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/GRL/5_C.test.cpp
+    title: test/AOJ/GRL/5_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+    title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -64,10 +79,15 @@ data:
   requiredBy:
   - src/graph/dijkstra.hpp
   - src/graph/StaticGraph.hpp
+  - src/tree/EulerTour.hpp
   timestamp: '2023-10-08 22:37:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/1_A.test.cpp
+  - test/AOJ/GRL/5_C.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
 documentation_of: src/internal/CSR.hpp
 layout: document
 redirect_from:

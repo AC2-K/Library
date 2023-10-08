@@ -8,10 +8,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/graph/dijkstra.hpp
     title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
+  - icon: ':heavy_check_mark:'
+    path: src/tree/EulerTour.hpp
+    title: Euler Tour
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/1_A.test.cpp
     title: test/AOJ/GRL/1_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/AOJ/GRL/5_C.test.cpp
+    title: test/AOJ/GRL/5_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+    title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -41,10 +56,10 @@ data:
     \ kyopro\n#line 4 \"src/graph/StaticGraph.hpp\"\n\nnamespace kyopro {\n/**\n *\
     \ @brief \u9759\u7684\u30B0\u30E9\u30D5\n */\ntemplate <bool is_directed> class\
     \ UnweightedStaticGraph {\n    internal::CSR<int> g;\n\npublic:\n    UnweightedStaticGraph(std::size_t\
-    \ n) : g(n) {}\n    void add_edge(int a, int b) {\n        assert(0 <= a && a\
-    \ < g.n);\n        assert(0 <= b && b < g.n);\n\n        g.add(a, b);\n      \
-    \  if constexpr (!is_directed) g.add(b, a);\n    }\n    std::size_t size() const\
-    \ { return g.n; }\n    void build() { g.build(); }\n    const typename internal::CSR<int>::range\
+    \ n) : g(n){}\n    void add_edge(int a, int b) {\n        assert(0 <= a && a <\
+    \ g.n);\n        assert(0 <= b && b < g.n);\n\n        g.add(a, b);\n        if\
+    \ constexpr (!is_directed) g.add(b, a);\n    }\n    std::size_t size() const {\
+    \ return g.n; }\n    void build() { g.build(); }\n    const typename internal::CSR<int>::range\
     \ operator[](std::size_t i) {\n        return g[i];\n    }\n};\ntemplate <typename\
     \ weight, bool is_directed> class WeightedStaticGraph {\n    internal::CSR<std::pair<int,\
     \ weight>> g;\n\npublic:\n    WeightedStaticGraph(std::size_t n) : g(n){}\n  \
@@ -58,7 +73,7 @@ data:
   code: "#pragma once\n#include <limits>\n#include \"../../src/internal/CSR.hpp\"\n\
     \nnamespace kyopro {\n/**\n * @brief \u9759\u7684\u30B0\u30E9\u30D5\n */\ntemplate\
     \ <bool is_directed> class UnweightedStaticGraph {\n    internal::CSR<int> g;\n\
-    \npublic:\n    UnweightedStaticGraph(std::size_t n) : g(n) {}\n    void add_edge(int\
+    \npublic:\n    UnweightedStaticGraph(std::size_t n) : g(n){}\n    void add_edge(int\
     \ a, int b) {\n        assert(0 <= a && a < g.n);\n        assert(0 <= b && b\
     \ < g.n);\n\n        g.add(a, b);\n        if constexpr (!is_directed) g.add(b,\
     \ a);\n    }\n    std::size_t size() const { return g.n; }\n    void build() {\
@@ -79,10 +94,15 @@ data:
   path: src/graph/StaticGraph.hpp
   requiredBy:
   - src/graph/dijkstra.hpp
-  timestamp: '2023-10-08 22:37:37+09:00'
+  - src/tree/EulerTour.hpp
+  timestamp: '2023-10-08 22:49:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/1_A.test.cpp
+  - test/AOJ/GRL/5_C.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
 documentation_of: src/graph/StaticGraph.hpp
 layout: document
 redirect_from:

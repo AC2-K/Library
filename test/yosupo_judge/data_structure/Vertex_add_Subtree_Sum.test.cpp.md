@@ -8,6 +8,12 @@ data:
     path: src/data-structure/sparse_table.hpp
     title: SparseTable
   - icon: ':heavy_check_mark:'
+    path: src/graph/StaticGraph.hpp
+    title: "\u9759\u7684\u30B0\u30E9\u30D5"
+  - icon: ':heavy_check_mark:'
+    path: src/internal/CSR.hpp
+    title: "CSR\u5F62\u5F0F"
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
@@ -117,24 +123,62 @@ data:
     \ look_up[i] = look_up[i >> 1] + 1;\n        }\n    }\n\n    T fold(int l, int\
     \ r) const {\n        int b = look_up[r - l];\n        return op(table[b][l],\
     \ table[b][r - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
-    \ docs/data-structure/sparse_table.md\n */\n#line 5 \"src/tree/EulerTour.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief Euler Tour\n */\nclass EulerTour {\n  \
-    \  int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> tour;\n\
-    \    std::vector<int> in, out, depth;\n\n    struct get_min_pair {\n        using\
-    \ value_t = std::pair<int, int>;\n        static value_t op(value_t x, value_t\
-    \ y) { return std::min(x, y); }\n    };\n\n    sparse_table<get_min_pair::value_t,\
-    \ get_min_pair::op> rmq;\n\npublic:\n    explicit EulerTour(int n)\n        :\
-    \ n(n), g(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) {\n        tour.reserve(2\
-    \ * n - 1);\n    }\n    void add_edge(int u, int v) {\n        assert(0 <= v &&\
-    \ v < n);\n        assert(0 <= u && u < n);\n        g[u].emplace_back(v);\n \
-    \       g[v].emplace_back(u);\n    }\n    const std::vector<std::vector<int>>&\
-    \ get_graph() const { return g; }\n    const std::vector<int>& get_tour() const\
-    \ { return tour; }\n    int get_depth(int v) const {\n        assert(0 <= v &&\
-    \ v < n);\n        return depth[v];\n    }\n\n    void build(int r = 0) {\n  \
-    \      auto dfs = [&](const auto& self, int v, int p) -> void {\n            in[v]\
-    \ = tour.size();\n            tour.emplace_back(v);\n            for (auto nv\
-    \ : g[v]) {\n                if (nv != p) {\n                    depth[nv] = depth[v]\
-    \ + 1;\n                    self(self, nv, v);\n                    tour.emplace_back(v);\n\
+    \ docs/data-structure/sparse_table.md\n */\n#line 2 \"src/internal/CSR.hpp\"\n\
+    \n#line 6 \"src/internal/CSR.hpp\"\n\nnamespace kyopro {\nnamespace internal {\n\
+    \n/**\n * @brief CSR\u5F62\u5F0F\n */\ntemplate <typename T> class CSR {\npublic:\n\
+    \    using usize = std::size_t;\n    const usize n;\n\nprivate:\n    std::vector<std::vector<T>>\
+    \ mat;\n    std::vector<T> csr;\n    std::vector<usize> ssum;\n    \npublic:\n\
+    \    class range {\n        typename std::vector<T>::iterator l, r;\n\n    public:\n\
+    \        range(const typename std::vector<T>::iterator& l,\n              const\
+    \ typename std::vector<T>::iterator& r)\n            : l(l), r(r){}\n        const\
+    \ typename std::vector<T>::iterator begin() const { return l; }\n        const\
+    \ typename std::vector<T>::iterator end() const { return r; }\n    };\n\n    CSR(usize\
+    \ n) : n(n), mat(n), csr(), ssum(n + 1) {}\n    CSR(const std::vector<std::vector<T>>&\
+    \ mat) : mat(mat) {}\n    \n    void add(usize a, T b) {\n        assert(0 <=\
+    \ a && a < n);\n        mat[a].emplace_back(b);\n    }\n    void build() {\n \
+    \       for (int i = 0; i < n; ++i) {\n            ssum[i + 1] += ssum[i] + mat[i].size();\n\
+    \        }\n        csr.reserve(ssum.back());\n        for (int i = 0; i < n;\
+    \ ++i) {\n            for (int j = 0; j < (int)mat[i].size(); ++j) {\n       \
+    \         csr.emplace_back(mat[i][j]);\n            }\n        }\n        mat.clear();\n\
+    \    }\n    const range operator[](usize x) {\n        assert(0 <= x && x < n);\n\
+    \        return range(csr.begin() + ssum[x], csr.begin() + ssum[x + 1]);\n   \
+    \ }\n};\n};  // namespace internal\n};  // namespace kyopro\n#line 4 \"src/graph/StaticGraph.hpp\"\
+    \n\nnamespace kyopro {\n/**\n * @brief \u9759\u7684\u30B0\u30E9\u30D5\n */\ntemplate\
+    \ <bool is_directed> class UnweightedStaticGraph {\n    internal::CSR<int> g;\n\
+    \npublic:\n    UnweightedStaticGraph(std::size_t n) : g(n){}\n    void add_edge(int\
+    \ a, int b) {\n        assert(0 <= a && a < g.n);\n        assert(0 <= b && b\
+    \ < g.n);\n\n        g.add(a, b);\n        if constexpr (!is_directed) g.add(b,\
+    \ a);\n    }\n    std::size_t size() const { return g.n; }\n    void build() {\
+    \ g.build(); }\n    const typename internal::CSR<int>::range operator[](std::size_t\
+    \ i) {\n        return g[i];\n    }\n};\ntemplate <typename weight, bool is_directed>\
+    \ class WeightedStaticGraph {\n    internal::CSR<std::pair<int, weight>> g;\n\n\
+    public:\n    WeightedStaticGraph(std::size_t n) : g(n){}\n    void add_edge(int\
+    \ a, int b, weight w) {\n        assert(0 <= a && a < g.n);\n        assert(0\
+    \ <= a && a < g.n);\n\n        g.add(a, std::pair<int, weight>(b, w));\n     \
+    \   if constexpr (!is_directed) g.add(a, std::pair<int, weight>(b, w));\n    }\n\
+    \    std::size_t size() const { return g.n; }\n    void build() { g.build(); }\n\
+    \    const typename internal::CSR<std::pair<int, weight>>::range operator[](\n\
+    \        std::size_t i) {\n        return g[i];\n    }\n};\n\n};  // namespace\
+    \ kyopro\n#line 6 \"src/tree/EulerTour.hpp\"\nnamespace kyopro {\n\n/**\n * @brief\
+    \ Euler Tour\n */\nclass EulerTour {\n    int n;\n    UnweightedStaticGraph<false>\
+    \ g;\n    std::vector<int> tour;\n    std::vector<int> in, out, depth;\n\n   \
+    \ struct get_min_pair {\n        using value_t = std::pair<int, int>;\n      \
+    \  static value_t op(value_t x, value_t y) { return std::min(x, y); }\n    };\n\
+    \n    sparse_table<get_min_pair::value_t, get_min_pair::op> rmq;\n\npublic:\n\
+    \    EulerTour(int n)\n        : n(n),\n          g(n),\n          in(n, -1),\n\
+    \          out(n, -1),\n          depth(n, -1),\n          rmq(2 * n - 1){\n \
+    \       tour.reserve(2 * n - 1);\n    }\n    EulerTour(const UnweightedStaticGraph<false>&\
+    \ g)\n        : g(g),\n          n(g.size()),\n          in(g.size(), -1),\n \
+    \         out(g.size(), -1),\n          depth(g.size(), -1),\n          rmq(g.size()\
+    \ - 1){}\n    \n    void add_edge(int u, int v) {\n        assert(0 <= v && v\
+    \ < n);\n        assert(0 <= u && u < n);\n        g.add_edge(u, v);\n    }\n\
+    \    const std::vector<int>& get_tour() const { return tour; }\n    int get_depth(int\
+    \ v) const {\n        assert(0 <= v && v < n);\n        return depth[v];\n   \
+    \ }\n    void build(int r = 0) {\n        g.build();\n        auto dfs = [&](const\
+    \ auto& self, int v, int p) -> void {\n            in[v] = tour.size();\n    \
+    \        tour.emplace_back(v);\n            for (auto nv : g[v]) {\n         \
+    \       if (nv != p) {\n                    depth[nv] = depth[v] + 1;\n      \
+    \              self(self, nv, v);\n                    tour.emplace_back(v);\n\
     \                }\n            }\n            out[v] = tour.size() - 1;\n   \
     \     };\n        dfs(dfs, r, -1);\n        for (int i = 0; i < (int)tour.size();\
     \ i++) {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n        }\n    \
@@ -179,10 +223,12 @@ data:
   - src/internal/type_traits.hpp
   - src/tree/EulerTour.hpp
   - src/data-structure/sparse_table.hpp
+  - src/graph/StaticGraph.hpp
+  - src/internal/CSR.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-09-10 10:33:40+09:00'
+  timestamp: '2023-10-08 22:49:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
