@@ -29,7 +29,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: fastIO
   - icon: ':heavy_check_mark:'
@@ -57,6 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/5_B.test.cpp
     title: test/AOJ/DSL/5_B.test.cpp
+  - icon: ':x:'
+    path: test/AOJ/GRL/1_A.test.cpp
+    title: test/AOJ/GRL/1_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
@@ -180,9 +183,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yuki/No789.test.cpp
     title: test/yuki/No789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8
@@ -261,8 +264,9 @@ data:
   - src/math/static_modint.hpp
   - src/math/dynamic_modint.hpp
   timestamp: '2023-07-30 13:18:23+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/AOJ/GRL/1_A.test.cpp
   - test/AOJ/GRL/5_C.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
   - test/AOJ/NTL/1_B.test.cpp

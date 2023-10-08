@@ -1,14 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/internal/CSR.hpp
     title: "CSR\u5F62\u5F0F"
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: src/graph/dijkstra.hpp
+    title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/AOJ/GRL/1_A.test.cpp
+    title: test/AOJ/GRL/1_A.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "\u9759\u7684\u30B0\u30E9\u30D5"
     links: []
@@ -67,10 +73,12 @@ data:
   - src/internal/CSR.hpp
   isVerificationFile: false
   path: src/graph/StaticGraph.hpp
-  requiredBy: []
+  requiredBy:
+  - src/graph/dijkstra.hpp
   timestamp: '2023-10-08 22:15:39+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/AOJ/GRL/1_A.test.cpp
 documentation_of: src/graph/StaticGraph.hpp
 layout: document
 redirect_from:

@@ -146,7 +146,7 @@ data:
     - icon: ':warning:'
       path: src/debug.hpp
       title: src/debug.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/stream.hpp
       title: fastIO
     - icon: ':heavy_check_mark:'
@@ -162,13 +162,13 @@ data:
     - icon: ':warning:'
       path: src/graph/Namori.hpp
       title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/graph/StaticGraph.hpp
       title: "\u9759\u7684\u30B0\u30E9\u30D5"
     - icon: ':warning:'
       path: src/graph/TopologialSort.hpp
       title: Topologial Sort
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
   - name: src/graph/flow
@@ -178,7 +178,7 @@ data:
       title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   - name: src/internal
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/internal/CSR.hpp
       title: "CSR\u5F62\u5F0F"
     - icon: ':heavy_check_mark:'
@@ -187,7 +187,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
