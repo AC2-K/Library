@@ -162,9 +162,6 @@ data:
     - icon: ':warning:'
       path: src/graph/Namori.hpp
       title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
-    - icon: ':heavy_check_mark:'
-      path: src/graph/StaticGraph.hpp
-      title: "\u9759\u7684\u30B0\u30E9\u30D5"
     - icon: ':warning:'
       path: src/graph/TopologialSort.hpp
       title: Topologial Sort
@@ -178,7 +175,7 @@ data:
       title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   - name: src/internal
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/internal/CSR.hpp
       title: "CSR\u5F62\u5F0F"
     - icon: ':heavy_check_mark:'
@@ -362,6 +359,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - name: test/yosupo_judge/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/graph/Shortest_Path.test.cpp
+      title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - name: test/yosupo_judge/math
     pages:
     - icon: ':heavy_check_mark:'
@@ -428,6 +430,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+      title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
     pages:
     - icon: ':heavy_check_mark:'

@@ -17,15 +17,15 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_1_A
+    PROBLEM: https://judge.yosupo.jp/problem/shortest_path
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_1_A
-  bundledCode: "#line 1 \"test/AOJ/GRL/1_A.test.cpp\"\n#define PROBLEM \\\n    \"\
-    https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_1_A\"\n\n#include\
-    \ <iostream>\n#line 2 \"src/graph/dijkstra.hpp\"\n#include <algorithm>\n#include\
-    \ <cassert>\n#include <numeric>\n#include <queue>\n#include <utility>\n#include\
-    \ <vector>\nnamespace kyopro {\n\n/**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\
-    \u30E9\u6CD5\n */\nclass dijkstra {\n    std::vector<long long> dist;\n    std::vector<int>\
+    - https://judge.yosupo.jp/problem/shortest_path
+  bundledCode: "#line 1 \"test/yosupo_judge/graph/Shortest_Path.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n#include <algorithm>\n\
+    #include <iostream>\n#line 3 \"src/graph/dijkstra.hpp\"\n#include <cassert>\n\
+    #include <numeric>\n#include <queue>\n#include <utility>\n#include <vector>\n\
+    namespace kyopro {\n\n/**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
+    \n */\nclass dijkstra {\n    std::vector<long long> dist;\n    std::vector<int>\
     \ trace;\n    const int n;\n    int s;\n\npublic:\n    struct edge {\n       \
     \ const int to;\n        const long long cost;\n        constexpr edge(int to,\
     \ long long cost) : to(to), cost(cost) {}\n    };\n\n    using graph = std::vector<std::vector<edge>>;\n\
@@ -108,35 +108,37 @@ data:
     \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 7 \"test/AOJ/GRL/1_A.test.cpp\"\
-    \nint main() {\n    int n, m, r;\n    kyopro::read(n, m, r);\n    kyopro::dijkstra\
-    \ g(n);\n    for (int i = 0; i < m; i++) {\n        int s, t, w;\n        kyopro::read(s,\
-    \ t, w);\n        g.add_edge(s, t, w);\n    }\n    g.build(r);\n    auto res =\
-    \ g.get_dist();\n\n    for (int v = 0; v < n; v++) {\n        if (res[v] >= (long\
-    \ long)1e18)\n            puts(\"INF\");\n        else\n            kyopro::put(res[v]);\n\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/graph/Shortest_Path.test.cpp\"\
+    \nint main() {\n    int n, m, s, t;\n    kyopro::read(n, m, s, t);\n\n    kyopro::dijkstra\
+    \ g(n);\n    for (int i = 0; i < m; i++) {\n        int a, b, c;\n        kyopro::read(a,\
+    \ b, c);\n        g.add_edge(a, b, c);\n    }\n\n    g.build(s);\n    auto [dist,\
+    \ path] = g.shortest_path(t);\n    if (path.empty()) {\n        kyopro::put(-1);\n\
+    \        exit(0);\n    }\n    kyopro::put(dist, path.size() - 1);\n    for (int\
+    \ i = 1; i < (int)path.size(); i++) {\n        kyopro::put(path[i - 1], path[i]);\n\
     \    }\n}\n"
-  code: "#define PROBLEM \\\n    \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/all/GRL_1_A\"\
-    \n\n#include <iostream>\n#include \"../../../src/graph/dijkstra.hpp\"\n#include\
-    \ \"../../../src/stream.hpp\"\nint main() {\n    int n, m, r;\n    kyopro::read(n,\
-    \ m, r);\n    kyopro::dijkstra g(n);\n    for (int i = 0; i < m; i++) {\n    \
-    \    int s, t, w;\n        kyopro::read(s, t, w);\n        g.add_edge(s, t, w);\n\
-    \    }\n    g.build(r);\n    auto res = g.get_dist();\n\n    for (int v = 0; v\
-    \ < n; v++) {\n        if (res[v] >= (long long)1e18)\n            puts(\"INF\"\
-    );\n        else\n            kyopro::put(res[v]);\n    }\n}"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n#include\
+    \ <algorithm>\n#include <iostream>\n#include \"../../../src/graph/dijkstra.hpp\"\
+    \n#include \"../../../src/stream.hpp\"\nint main() {\n    int n, m, s, t;\n  \
+    \  kyopro::read(n, m, s, t);\n\n    kyopro::dijkstra g(n);\n    for (int i = 0;\
+    \ i < m; i++) {\n        int a, b, c;\n        kyopro::read(a, b, c);\n      \
+    \  g.add_edge(a, b, c);\n    }\n\n    g.build(s);\n    auto [dist, path] = g.shortest_path(t);\n\
+    \    if (path.empty()) {\n        kyopro::put(-1);\n        exit(0);\n    }\n\
+    \    kyopro::put(dist, path.size() - 1);\n    for (int i = 1; i < (int)path.size();\
+    \ i++) {\n        kyopro::put(path[i - 1], path[i]);\n    }\n}"
   dependsOn:
   - src/graph/dijkstra.hpp
   - src/stream.hpp
   - src/internal/type_traits.hpp
   isVerificationFile: true
-  path: test/AOJ/GRL/1_A.test.cpp
+  path: test/yosupo_judge/graph/Shortest_Path.test.cpp
   requiredBy: []
   timestamp: '2023-08-18 11:55:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/AOJ/GRL/1_A.test.cpp
+documentation_of: test/yosupo_judge/graph/Shortest_Path.test.cpp
 layout: document
 redirect_from:
-- /verify/test/AOJ/GRL/1_A.test.cpp
-- /verify/test/AOJ/GRL/1_A.test.cpp.html
-title: test/AOJ/GRL/1_A.test.cpp
+- /verify/test/yosupo_judge/graph/Shortest_Path.test.cpp
+- /verify/test/yosupo_judge/graph/Shortest_Path.test.cpp.html
+title: test/yosupo_judge/graph/Shortest_Path.test.cpp
 ---
