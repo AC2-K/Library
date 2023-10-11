@@ -132,39 +132,40 @@ data:
     \   v -= mod();\n        }\n\n        return (*this);\n    }\n    constexpr mint&\
     \ operator*=(const mint& r) noexcept {\n        v = brt.mul(v, r.v);\n       \
     \ return (*this);\n    }\n    constexpr mint& operator/=(const mint& r) noexcept\
-    \ { return (*this) *= r.inv(); }\n\n    friend mint operator+(const mint& lhs,\
-    \ const mint& rhs) noexcept {\n        return mint(lhs) += rhs;\n    }\n    friend\
-    \ mint operator-(const mint& lhs, const mint& rhs) noexcept {\n        return\
-    \ mint(lhs) -= rhs;\n    }\n    friend mint operator*(const mint& lhs, const mint&\
-    \ rhs) noexcept {\n        return mint(lhs) *= rhs;\n    }\n    friend mint operator/(const\
-    \ mint& lhs, const mint& rhs) noexcept {\n        return mint(lhs) /= rhs;\n \
-    \   }\n    friend bool operator==(const mint& lhs, const mint& rhs) noexcept {\n\
-    \        return lhs._v == rhs._v;\n    }\n    friend bool operator!=(const mint&\
-    \ lhs, const mint& rhs) noexcept {\n        return lhs._v != rhs._v;\n    }\n\n\
-    \    constexpr mint& operator+=(i64 r) noexcept { return (*this) += mint(r); }\n\
-    \    constexpr mint& operator-=(i64 r) noexcept { return (*this) -= mint(r); }\n\
-    \    constexpr mint& operator*=(i64 r) noexcept { return (*this) *= mint(r); }\n\
-    \n    friend mint operator+(i64 l, const mint& r) noexcept { return mint(l) +=\
-    \ r; }\n    friend mint operator+(const mint& l, i64 r) noexcept { return mint(l)\
-    \ += r; }\n    friend mint operator-(i64 l, const mint& r) noexcept { return mint(l)\
-    \ -= r; }\n    friend mint operator-(const mint& l, i64 r) noexcept { return mint(l)\
-    \ -= r; }\n    friend mint operator*(i64 l, const mint& r) noexcept { return mint(l)\
-    \ *= r; }\n    friend mint operator*(const mint& l, i64 r) noexcept { return mint(l)\
-    \ *= r; }\n\n    constexpr mint operator+() const noexcept { return *this; }\n\
-    \    constexpr mint operator-() const noexcept { return mint() - *this; }\n  \
-    \  \n    template <typename T> mint pow(T e) const noexcept {\n        mint res(1),\
-    \ base(*this);\n\n        while (e) {\n            if (e & 1) {\n            \
-    \    res *= base;\n            }\n            e >>= 1;\n            base *= base;\n\
-    \        }\n        return res;\n    }\n    constexpr mint inv() const noexcept\
-    \ { return pow(mod() - 2); }\n};\n};  // namespace kyopro\ntemplate <int id>\n\
-    typename kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;\n\nnamespace\
-    \ kyopro {\ntemplate <typename T, int id = -1>\nclass montgomery_modint : internal::modint_base\
-    \ {\n    using LargeT = internal::double_size_uint_t<T>;\n    static T _mod;\n\
-    \    static internal::Montgomery<T> mr;\n\npublic:\n    static void set_mod(T\
-    \ mod_) {\n        mr.set_mod(mod_);\n        _mod = mod_;\n    }\n\n    static\
-    \ T mod() { return _mod; }\n\nprivate:\n    T v;\n\npublic:\n    montgomery_modint(T\
-    \ v_ = 0) {\n        assert(_mod);\n        v = mr.generate(v_);\n    }\n    T\
-    \ val() const { return mr.reduce(v); }\n\n    using mint = montgomery_modint<T,\
+    \ {\n        return (*this) *= r.inv();\n    }\n\n    friend mint operator+(const\
+    \ mint& lhs, const mint& rhs) noexcept {\n        return mint(lhs) += rhs;\n \
+    \   }\n    friend mint operator-(const mint& lhs, const mint& rhs) noexcept {\n\
+    \        return mint(lhs) -= rhs;\n    }\n    friend mint operator*(const mint&\
+    \ lhs, const mint& rhs) noexcept {\n        return mint(lhs) *= rhs;\n    }\n\
+    \    friend mint operator/(const mint& lhs, const mint& rhs) noexcept {\n    \
+    \    return mint(lhs) /= rhs;\n    }\n    friend bool operator==(const mint& lhs,\
+    \ const mint& rhs) noexcept {\n        return lhs.v == rhs.v;\n    }\n    friend\
+    \ bool operator!=(const mint& lhs, const mint& rhs) noexcept {\n        return\
+    \ lhs.v != rhs.v;\n    }\n\n    constexpr mint& operator+=(i64 r) noexcept { return\
+    \ (*this) += mint(r); }\n    constexpr mint& operator-=(i64 r) noexcept { return\
+    \ (*this) -= mint(r); }\n    constexpr mint& operator*=(i64 r) noexcept { return\
+    \ (*this) *= mint(r); }\n\n    friend mint operator+(i64 l, const mint& r) noexcept\
+    \ {\n        return mint(l) += r;\n    }\n    friend mint operator+(const mint&\
+    \ l, i64 r) noexcept {\n        return mint(l) += r;\n    }\n    friend mint operator-(i64\
+    \ l, const mint& r) noexcept {\n        return mint(l) -= r;\n    }\n    friend\
+    \ mint operator-(const mint& l, i64 r) noexcept {\n        return mint(l) -= r;\n\
+    \    }\n    friend mint operator*(i64 l, const mint& r) noexcept {\n        return\
+    \ mint(l) *= r;\n    }\n    friend mint operator*(const mint& l, i64 r) noexcept\
+    \ {\n        return mint(l) *= r;\n    }\n\n    constexpr mint operator+() const\
+    \ noexcept { return *this; }\n    constexpr mint operator-() const noexcept {\
+    \ return mint() - *this; }\n\n    template <typename T> mint pow(T e) const noexcept\
+    \ {\n        mint res(1), base(*this);\n\n        while (e) {\n            if\
+    \ (e & 1) {\n                res *= base;\n            }\n            e >>= 1;\n\
+    \            base *= base;\n        }\n        return res;\n    }\n    constexpr\
+    \ mint inv() const noexcept { return pow(mod() - 2); }\n};\n};  // namespace kyopro\n\
+    template <int id>\ntypename kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;\n\
+    \nnamespace kyopro {\ntemplate <typename T, int id = -1>\nclass montgomery_modint\
+    \ : internal::modint_base {\n    using LargeT = internal::double_size_uint_t<T>;\n\
+    \    static T _mod;\n    static internal::Montgomery<T> mr;\n\npublic:\n    static\
+    \ void set_mod(T mod_) {\n        mr.set_mod(mod_);\n        _mod = mod_;\n  \
+    \  }\n\n    static T mod() { return _mod; }\n\nprivate:\n    T v;\n\npublic:\n\
+    \    montgomery_modint(T v_ = 0) {\n        assert(_mod);\n        v = mr.generate(v_);\n\
+    \    }\n    T val() const { return mr.reduce(v); }\n\n    using mint = montgomery_modint<T,\
     \ id>;\n    mint& operator+=(const mint& r) {\n        v += r.v;\n        if (v\
     \ >= mr.get_mod()) {\n            v -= mr.get_mod();\n        }\n\n        return\
     \ (*this);\n    }\n\n    mint& operator-=(const mint& r) {\n        v += mr.get_mod()\
@@ -292,7 +293,7 @@ data:
   isVerificationFile: false
   path: src/math/phi_function.hpp
   requiredBy: []
-  timestamp: '2023-08-21 16:28:28+09:00'
+  timestamp: '2023-10-11 13:43:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
