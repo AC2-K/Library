@@ -73,7 +73,9 @@ public:
         v = brt.mul(v, r.v);
         return (*this);
     }
-    constexpr mint& operator/=(const mint& r) noexcept { return (*this) *= r.inv(); }
+    constexpr mint& operator/=(const mint& r) noexcept {
+        return (*this) *= r.inv();
+    }
 
     friend mint operator+(const mint& lhs, const mint& rhs) noexcept {
         return mint(lhs) += rhs;
@@ -88,26 +90,38 @@ public:
         return mint(lhs) /= rhs;
     }
     friend bool operator==(const mint& lhs, const mint& rhs) noexcept {
-        return lhs._v == rhs._v;
+        return lhs.v == rhs.v;
     }
     friend bool operator!=(const mint& lhs, const mint& rhs) noexcept {
-        return lhs._v != rhs._v;
+        return lhs.v != rhs.v;
     }
 
     constexpr mint& operator+=(i64 r) noexcept { return (*this) += mint(r); }
     constexpr mint& operator-=(i64 r) noexcept { return (*this) -= mint(r); }
     constexpr mint& operator*=(i64 r) noexcept { return (*this) *= mint(r); }
 
-    friend mint operator+(i64 l, const mint& r) noexcept { return mint(l) += r; }
-    friend mint operator+(const mint& l, i64 r) noexcept { return mint(l) += r; }
-    friend mint operator-(i64 l, const mint& r) noexcept { return mint(l) -= r; }
-    friend mint operator-(const mint& l, i64 r) noexcept { return mint(l) -= r; }
-    friend mint operator*(i64 l, const mint& r) noexcept { return mint(l) *= r; }
-    friend mint operator*(const mint& l, i64 r) noexcept { return mint(l) *= r; }
+    friend mint operator+(i64 l, const mint& r) noexcept {
+        return mint(l) += r;
+    }
+    friend mint operator+(const mint& l, i64 r) noexcept {
+        return mint(l) += r;
+    }
+    friend mint operator-(i64 l, const mint& r) noexcept {
+        return mint(l) -= r;
+    }
+    friend mint operator-(const mint& l, i64 r) noexcept {
+        return mint(l) -= r;
+    }
+    friend mint operator*(i64 l, const mint& r) noexcept {
+        return mint(l) *= r;
+    }
+    friend mint operator*(const mint& l, i64 r) noexcept {
+        return mint(l) *= r;
+    }
 
     constexpr mint operator+() const noexcept { return *this; }
     constexpr mint operator-() const noexcept { return mint() - *this; }
-    
+
     template <typename T> mint pow(T e) const noexcept {
         mint res(1), base(*this);
 
