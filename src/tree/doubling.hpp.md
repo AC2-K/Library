@@ -119,20 +119,19 @@ title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
 - Level Ancestor
 - Lowest Common Ancestor
 
-を高速に求めます.また,それに派生したクエリを高速に処理します.
+を高速に求めます.
 
 ## コンストラクタ
 
 ```cpp
-kyopro::doubling T(int n)
+doubling T(int n)
 ```
 
 $n$ 頂点の木 $T$ を生成します.この時点ではまだ辺は貼られていません.
 
 ### 制約
 
-- 木 $T$ の高さは $2^{21}\approx 2\times10^6$ を超えない.
-  - $n\leq 2^{21}$ なら十分.
+- 木 $T$ の**高さは** $2^{21} = 2097152 \geq 2\times 10^6$ を超えない.
 
 ### 計算量
 
@@ -141,11 +140,10 @@ $n$ 頂点の木 $T$ を生成します.この時点ではまだ辺は貼られ�
 ## add_edge
 
 ```cpp
-void add_edge(int a,int b,int c)
+void add_edge(int a, int b, int c)
 ```
 
-頂点 $a,b$ に重み $c$ の無向辺を張ります.\
-デフォルトでは $c=1$ です.
+頂点 $a,b$ に重み $c$ の無向辺を張ります.デフォルトでは $c = 1$ です.
 
 ### 制約
 
@@ -175,16 +173,15 @@ $T$ の根を頂点 $\mathtt{root}$ として前処理を行います.\
 ## level_ancestor
 
 ```cpp
-int level_ancestor(int v,int k)
+int level_ancestor(int v, int k)
 ```
 
 頂点 $v$ から根の方向に $k$ 辿った頂点を返します.\
-すなわち,頂点 $v$ から根へのパスを
+すなわち, 頂点 $v$ から根へのパスを
 
 $$p = (p_0=v , p_1 , p_2 \dots p_{\vert p\vert -1} = \mathtt{root})$$
 
-とするとき, $p_k$  を返します.ただし, $k\geq \vert p\vert$ の時は $-1$ を返します.
-
+とするとき, $p_k$  を返します.条件を満たす頂点が存在しなければ $-1$ をreturnします.
 ### 制約
 
 - $0\leq v < n$
@@ -196,10 +193,10 @@ $$p = (p_0=v , p_1 , p_2 \dots p_{\vert p\vert -1} = \mathtt{root})$$
 ## lca
 
 ```cpp
-int lca(int u,int v)
+int lca(int u, int v)
 ```
 
-頂点 $u,v$ のLowest Common Ancestor(最小共通祖先)を返します
+頂点 $u,v$ のLowest Common Ancestor(最深共通祖先)を返します
 
 ### 制約
 
@@ -215,7 +212,7 @@ int lca(int u,int v)
 int depth(int v)
 ```
 
-頂点 $u$ の深さを返します.ただし,ここでの「深さ」は**重み無し**です.
+頂点 $u$ の深さを返します. ただし, ここでの「深さ」は**重み無し**です.
 
 ## unweighted_dist
 
@@ -223,7 +220,7 @@ int depth(int v)
 long long unweighted_dist(int u,int v)
 ```
 
-頂点 $u,v$ の距離を返します.ここでの「距離」は**重み無し**です.
+頂点 $u,v$ の距離を返します. ここでの「距離」は**重み無し**です.
 
 ### 制約
 

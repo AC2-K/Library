@@ -271,7 +271,7 @@ Miller Rabinの素数判定法を実装したものです.
 ## is_prime
 
 ```cpp
-bool kyopro::miller::is_prime(T n)
+bool miller::is_prime(T n)
 ```
 
 与えられた正の整数 $n$ が素数であるか(`true`/`false`)を返します.
