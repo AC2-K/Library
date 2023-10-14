@@ -5,7 +5,7 @@ Pollard Rho素因数分解法を実装したものです.
 ## factorize
 
 ```cpp
-std::vector<uint64_t> kyopro::rho::factorize(uint64_t n)
+vector<T> rho::factorize(T n)
 ```
 
 以下の条件をすべて満たす列 $p$ を返します.
@@ -19,8 +19,8 @@ std::vector<uint64_t> kyopro::rho::factorize(uint64_t n)
 ## exp_factorize
 
 ```cpp
-std::vector<pair<uint64_t,int>> kyopro::rho::exp_factorize(uint64_t n)
+std::vector<std::pair<T, int>> rho::exp_factorize(T n)
 ```
 
 $n$ の素因数分解を $n=p_0^{e_0} p_1^{e_1} \cdots p_k^{e_k}$ とします.\
-この時 $(p_i,e_i)$ をペアにした列, $((p_0,e_0),(p_1,e_1),\dots,(p_k,e_k))$ を返します.また、この列は $p_i$ らに関して昇順であることが保証されます.
+この時 $(p_i,e_i)$ の列, $((p_0,e_0),(p_1,e_1),\dots,(p_k,e_k))$ を返します. この列は $p_i$ らに関して昇順であることが保証されます.
