@@ -41,8 +41,8 @@ data:
     \        for (; k > 0; k >>= 1) {\n            if (x + k <= n && bit[x + k] <\
     \ w) {\n                w -= bit[x + k];\n                x += k;\n          \
     \  }\n        }\n\n        return x + 1;\n    }\n\n    T operator[](int i) { return\
-    \ sum(i + 1) - sum(i); }\n    void update(int i, T v) { add(i, T::mod() - sum(i\
-    \ + 1) + sum(i) + v); }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
+    \ sum(i + 1) - sum(i); }\n    void update(int i, T v) { add(i, -sum(i + 1) + sum(i)\
+    \ + v); }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
     \ <string>\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n#include\
     \ <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/*\n\
@@ -187,7 +187,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-09-10 10:33:40+09:00'
+  timestamp: '2023-10-14 19:23:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp

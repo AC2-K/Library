@@ -25,9 +25,9 @@ data:
     \ (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n            if (x + k <=\
     \ n && bit[x + k] < w) {\n                w -= bit[x + k];\n                x\
     \ += k;\n            }\n        }\n\n        return x + 1;\n    }\n\n    T operator[](int\
-    \ i) { return sum(i + 1) - sum(i); }\n    void update(int i, T v) { add(i, T::mod()\
-    \ - sum(i + 1) + sum(i) + v); }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
-    \ docs/data-structure/BIT.md\n */\n#line 4 \"src/data-structure/data-structure-2d/PointAddRectangleSum.hpp\"\
+    \ i) { return sum(i + 1) - sum(i); }\n    void update(int i, T v) { add(i, -sum(i\
+    \ + 1) + sum(i) + v); }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
+    \ */\n#line 4 \"src/data-structure/data-structure-2d/PointAddRectangleSum.hpp\"\
     \nnamespace kyopro {\ntemplate <typename T, typename S> class PointAddRectangleSum\
     \ {\n    std::vector<BIT<S>> dat;\n    std::vector<std::vector<T>> ys;\n\n   \
     \ T n;\n    std::vector<std::pair<T, T>> ps;\n\npublic:\n    void add_point(T\
@@ -90,7 +90,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
   requiredBy: []
-  timestamp: '2023-09-10 10:33:40+09:00'
+  timestamp: '2023-10-14 19:23:45+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
