@@ -6,7 +6,7 @@
 
 namespace kyopro {
 /**
- * @brief 反転可能平衡二分探索木
+ * @brief 反転可能平衡二分木
  * @tparam S モノイド
  * @tparam op Sの二項演算
  * @tparam e Sの単位元

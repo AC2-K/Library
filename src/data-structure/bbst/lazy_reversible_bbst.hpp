@@ -6,7 +6,7 @@
 
 namespace kyopro {
 /**
- * @brief 遅延評価つき・反転可能 平衡二分探索木
+ * @brief 遅延評価つき反転可能平衡二分木
  * @tparam S モノイド
  * @tparam F 作用素
  * @tparam op Sの二項演算
