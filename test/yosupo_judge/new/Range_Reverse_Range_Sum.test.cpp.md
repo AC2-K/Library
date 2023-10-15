@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/bbst/reversible_bbst.hpp
-    title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
+    title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728"
   - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
@@ -38,26 +38,26 @@ data:
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
     };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 6 \"src/data-structure/bbst/reversible_bbst.hpp\"\
     \n\nnamespace kyopro {\n/**\n * @brief \u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\
-    \u5206\u63A2\u7D22\u6728\n * @tparam S \u30E2\u30CE\u30A4\u30C9\n * @tparam op\
-    \ S\u306E\u4E8C\u9805\u6F14\u7B97\n * @tparam e S\u306E\u5358\u4F4D\u5143\n */\n\
-    template <class S, S (*op)(S, S), S (*e)()> class reversible_bbst {\n    using\
-    \ u32 = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n        std::unique_ptr<Node>\
-    \ l, r;\n        u32 priority;\n        S value, prod;\n        int size;\n  \
-    \      bool rev;\n\n        Node(S v, u32 prio)\n            : l(),\n        \
-    \      r(),\n              priority(prio),\n              value(v),\n        \
-    \      prod(v),\n              size(1),\n              rev(false) {}\n    };\n\
-    \n    using ptr = std::unique_ptr<Node>;\n    int size(const ptr& p) const { return\
-    \ p ? p->size : 0; }\n    S fold(const ptr& p) { return p ? p->prod : e(); }\n\
-    \n    void reverse(const ptr& p) {\n        if (p) {\n            p->rev ^= 1;\n\
-    \        }\n    }\n\n    void push(const ptr& p) {\n        if (p->rev) {\n  \
-    \          p->rev = false;\n            std::swap(p->l, p->r);\n            reverse(p->l),\
-    \ reverse(p->r);\n        }\n    }\n\n    void update(const ptr& p) {\n      \
-    \  p->size = size(p->l) + size(p->r) + 1;\n        p->prod = op(p->value, op(fold(p->l),\
-    \ fold(p->r)));\n    }\n\n    std::pair<ptr, ptr> split(ptr p, int k) {\n    \
-    \    if (!p) return {nullptr, nullptr};\n\n        push(p);\n        int s = size(p->l);\n\
-    \        if (s >= k) {\n            auto [l, r] = split(std::move(p->l), k);\n\
-    \            p->l = std::move(r);\n            update(p);\n\n            return\
-    \ {std::move(l), std::move(p)};\n        } else {\n            auto [l, r] = split(std::move(p->r),\
+    \u5206\u6728\n * @tparam S \u30E2\u30CE\u30A4\u30C9\n * @tparam op S\u306E\u4E8C\
+    \u9805\u6F14\u7B97\n * @tparam e S\u306E\u5358\u4F4D\u5143\n */\ntemplate <class\
+    \ S, S (*op)(S, S), S (*e)()> class reversible_bbst {\n    using u32 = uint32_t;\n\
+    \    xor_shift32 rng;\n    struct Node {\n        std::unique_ptr<Node> l, r;\n\
+    \        u32 priority;\n        S value, prod;\n        int size;\n        bool\
+    \ rev;\n\n        Node(S v, u32 prio)\n            : l(),\n              r(),\n\
+    \              priority(prio),\n              value(v),\n              prod(v),\n\
+    \              size(1),\n              rev(false) {}\n    };\n\n    using ptr\
+    \ = std::unique_ptr<Node>;\n    int size(const ptr& p) const { return p ? p->size\
+    \ : 0; }\n    S fold(const ptr& p) { return p ? p->prod : e(); }\n\n    void reverse(const\
+    \ ptr& p) {\n        if (p) {\n            p->rev ^= 1;\n        }\n    }\n\n\
+    \    void push(const ptr& p) {\n        if (p->rev) {\n            p->rev = false;\n\
+    \            std::swap(p->l, p->r);\n            reverse(p->l), reverse(p->r);\n\
+    \        }\n    }\n\n    void update(const ptr& p) {\n        p->size = size(p->l)\
+    \ + size(p->r) + 1;\n        p->prod = op(p->value, op(fold(p->l), fold(p->r)));\n\
+    \    }\n\n    std::pair<ptr, ptr> split(ptr p, int k) {\n        if (!p) return\
+    \ {nullptr, nullptr};\n\n        push(p);\n        int s = size(p->l);\n     \
+    \   if (s >= k) {\n            auto [l, r] = split(std::move(p->l), k);\n    \
+    \        p->l = std::move(r);\n            update(p);\n\n            return {std::move(l),\
+    \ std::move(p)};\n        } else {\n            auto [l, r] = split(std::move(p->r),\
     \ k - s - 1);\n\n            p->r = std::move(l);\n            update(p);\n\n\
     \            return {std::move(p), std::move(r)};\n        }\n    }\n\n    ptr\
     \ merge(ptr l, ptr r) {\n        if (!l) return r;\n        if (!r) return l;\n\
@@ -161,7 +161,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-10-15 13:58:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp

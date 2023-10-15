@@ -3,8 +3,8 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/bbst/lazy_reversible_bbst.hpp
-    title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
-      \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
+    title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\
+      \u4E8C\u5206\u6728"
   - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
@@ -44,14 +44,14 @@ data:
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
     };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 6 \"src/data-structure/bbst/lazy_reversible_bbst.hpp\"\
-    \n\nnamespace kyopro {\n/**\n * @brief \u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\
-    \u53CD\u8EE2\u53EF\u80FD \u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728\n * @tparam\
-    \ S \u30E2\u30CE\u30A4\u30C9\n * @tparam F \u4F5C\u7528\u7D20\n * @tparam op S\u306E\
-    \u4E8C\u9805\u6F14\u7B97\n * @tparam e S\u306E\u5358\u4F4D\u5143\n * @tparam composition\
-    \ F\u306E\u4E8C\u9805\u6F14\u7B97\n * @tparam id F\u306E\u5358\u4F4D\u5143\n *\
-    \ @tparam mapping \u4F5C\u7528\n */\ntemplate <class S,\n          class F,\n\
-    \          S (*op)(S, S),\n          S (*e)(),\n          F (*composition)(F,\
-    \ F),\n          F (*id)(),\n          S (*mapping)(S, F, int)>\nclass lazy_reversible_bbst\
+    \n\nnamespace kyopro {\n/**\n * @brief \u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u53CD\
+    \u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728\n * @tparam S \u30E2\u30CE\u30A4\
+    \u30C9\n * @tparam F \u4F5C\u7528\u7D20\n * @tparam op S\u306E\u4E8C\u9805\u6F14\
+    \u7B97\n * @tparam e S\u306E\u5358\u4F4D\u5143\n * @tparam composition F\u306E\
+    \u4E8C\u9805\u6F14\u7B97\n * @tparam id F\u306E\u5358\u4F4D\u5143\n * @tparam\
+    \ mapping \u4F5C\u7528\n */\ntemplate <class S,\n          class F,\n        \
+    \  S (*op)(S, S),\n          S (*e)(),\n          F (*composition)(F, F),\n  \
+    \        F (*id)(),\n          S (*mapping)(S, F, int)>\nclass lazy_reversible_bbst\
     \ {\n    using u32 = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n    \
     \    std::unique_ptr<Node> l, r;\n        u32 priority;\n        S value, prod;\n\
     \n        F lazy;\n        int size;\n        bool rev;\n\n        Node(const\
@@ -271,7 +271,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-06 23:07:34+09:00'
+  timestamp: '2023-10-15 13:58:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

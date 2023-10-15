@@ -117,11 +117,11 @@ data:
       title: Treap
     - icon: ':heavy_check_mark:'
       path: src/data-structure/bbst/lazy_reversible_bbst.hpp
-      title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u30FB\u53CD\u8EE2\u53EF\u80FD \u5E73\
-        \u8861\u4E8C\u5206\u63A2\u7D22\u6728"
+      title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\
+        \u4E8C\u5206\u6728"
     - icon: ':heavy_check_mark:'
       path: src/data-structure/bbst/reversible_bbst.hpp
-      title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u63A2\u7D22\u6728"
+      title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728"
   - name: src/data-structure/data-structure-2d
     pages:
     - icon: ':warning:'
