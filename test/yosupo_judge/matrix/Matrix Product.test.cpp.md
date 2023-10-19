@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/matrix.hpp
-    title: Matrix
-  - icon: ':heavy_check_mark:'
+    title: "\u884C\u5217"
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
-    title: fastIO
+    title: "\u9AD8\u901F\u5165\u51FA\u529B"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/matrix_product
@@ -29,7 +29,7 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include <iostream>\n\
     #line 2 \"src/math/matrix.hpp\"\n#include <cassert>\n#include <utility>\n#include\
-    \ <vector>\nnamespace kyopro {\n\n/**\n * @brief Matrix\n */\ntemplate <typename\
+    \ <vector>\nnamespace kyopro {\n\n/**\n * @brief \u884C\u5217\n */\ntemplate <typename\
     \ T> class Matrix {\n    std::vector<std::vector<T>> dat;\n    int h = 0, w =\
     \ 0;\n\npublic:\n    constexpr Matrix(const std::vector<std::vector<T>>& dat)\n\
     \        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    constexpr\
@@ -61,11 +61,10 @@ data:
     \n/**\n *  @docs docs/math/matrix.md\n */\n#line 3 \"src/math/static_modint.hpp\"\
     \n#include <cstdint>\n#line 5 \"src/math/static_modint.hpp\"\n\n#line 3 \"src/internal/type_traits.hpp\"\
     \n#include <limits>\n#include <numeric>\n#include <typeinfo>\nnamespace kyopro\
-    \ {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
-    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
-    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
-    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {\nnamespace internal {\ntemplate <typename... Args> struct first_enabled {};\n\
+    \ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
+    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
+    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
     \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
@@ -88,15 +87,15 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n#line 3 \"src/math/gcd.hpp\"\
-    \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr inline\
-    \ T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
-    \ b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
-    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
-    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
-    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
-    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
-    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate\
+    \ <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0\
+    \ && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
+    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
     \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
     \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
@@ -175,14 +174,15 @@ data:
     \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 6 \"test/yosupo_judge/matrix/Matrix\
-    \ Product.test.cpp\"\n#pragma GCC optimize(\"unroll-loops\")\n\nusing mint = kyopro::modint<998244353>;\n\
-    int main() {\n    int n, m, k;\n    kyopro::read(n, m, k);\n    kyopro::Matrix<mint>\
-    \ a(n, m), b(m, k);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0;\
-    \ j < m; j++) {\n            kyopro::read(a[i][j]);\n        }\n    }\n    for\
-    \ (int i = 0; i < m; i++) {\n        for (int j = 0; j < k; j++) {\n         \
-    \   kyopro::read(b[i][j]);\n        }\n    }\n    auto res = a * b;\n    for (int\
-    \ i = 0; i < n; i++) {\n        for (int j = 0; j < k; j++) {\n            kyopro::put(res[i][j].val());\n\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\
+    \n */\n#line 6 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#pragma GCC\
+    \ optimize(\"unroll-loops\")\n\nusing mint = kyopro::modint<998244353>;\nint main()\
+    \ {\n    int n, m, k;\n    kyopro::read(n, m, k);\n    kyopro::Matrix<mint> a(n,\
+    \ m), b(m, k);\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j <\
+    \ m; j++) {\n            kyopro::read(a[i][j]);\n        }\n    }\n    for (int\
+    \ i = 0; i < m; i++) {\n        for (int j = 0; j < k; j++) {\n            kyopro::read(b[i][j]);\n\
+    \        }\n    }\n    auto res = a * b;\n    for (int i = 0; i < n; i++) {\n\
+    \        for (int j = 0; j < k; j++) {\n            kyopro::put(res[i][j].val());\n\
     \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include\
     \ <iostream>\n#include \"../../../src/math/matrix.hpp\"\n#include \"../../../src/math/static_modint.hpp\"\
@@ -204,8 +204,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-10-06 23:07:34+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-19 20:45:20+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
 layout: document

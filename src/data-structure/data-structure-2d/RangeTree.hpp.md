@@ -1,9 +1,9 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/segtree.hpp
-    title: SegmentTree
+    title: Segment Tree
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -13,7 +13,7 @@ data:
     links: []
   bundledCode: "#line 2 \"src/data-structure/data-structure-2d/RangeTree.hpp\"\n#include\
     \ <algorithm>\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <cassert>\n\
-    #include <vector>\nnamespace kyopro {\n\n/**\n * @brief SegmentTree\n */\ntemplate\
+    #include <vector>\nnamespace kyopro {\n\n/**\n * @brief Segment Tree\n */\ntemplate\
     \ <class S, auto op, auto e> class segtree {\n    int lg, sz, n;\n    std::vector<S>\
     \ dat;\n\npublic:\n    segtree() = default;\n    segtree(int n) : segtree(std::vector<S>(n,\
     \ e())) {}\n    segtree(const std::vector<S>& vec) : n((int)vec.size()) {\n  \
@@ -102,7 +102,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/data-structure-2d/RangeTree.hpp
   requiredBy: []
-  timestamp: '2023-08-20 22:22:55+09:00'
+  timestamp: '2023-10-19 20:45:20+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/data-structure/data-structure-2d/RangeTree.hpp

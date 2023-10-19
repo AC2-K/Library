@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/hash_map.hpp
     title: Hash Map
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/math/mod_log.md
     document_title: "\u96E2\u6563\u5BFE\u6570"
@@ -61,11 +61,10 @@ data:
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
     \ a;\n}\n};  // namespace kyopro\n#line 2 \"src/internal/type_traits.hpp\"\n#include\
     \ <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\nnamespace\
-    \ kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
-    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
-    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
-    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ kyopro {\nnamespace internal {\ntemplate <typename... Args> struct first_enabled\
+    \ {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
+    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
+    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
     \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
@@ -88,19 +87,19 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n#line 3 \"src/math/mod_pow.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief \u30D0\u30A4\u30CA\u30EA\u6CD5\n */\ntemplate\
-    \ <typename T>\nconstexpr T mod_pow(internal::double_size_uint_t<T> base, T exp,\
-    \ T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ? 0 : 1);\n  \
-    \  base %= mod;\n    while (exp) {\n        if (exp & 1) {\n            ans *=\
-    \ base;\n            ans %= mod;\n        }\n        base *= base;\n        base\
-    \ %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace kyopro\n\
-    #line 6 \"src/math/mod_log.hpp\"\nnamespace kyopro {\n\n/**\n * @brief \u96E2\u6563\
-    \u5BFE\u6570\n */\ntemplate <typename T> constexpr inline T mod_log(T x, T y,\
-    \ T p) {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x ==\
-    \ 0) {\n        if (y == 0) {\n            return 1;\n        } else {\n     \
-    \       return -1;\n        }\n    }\n    int m = (int)sqrt(p) + 1;\n    hash_map<T,\
-    \ T> mp;\n    T xm = mod_pow<T>(x, m, p);\n    internal::double_size_uint_t<T>\
+    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\n#line 3 \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\n/**\n * @brief \u30D0\
+    \u30A4\u30CA\u30EA\u6CD5\n */\ntemplate <typename T>\nconstexpr T mod_pow(internal::double_size_uint_t<T>\
+    \ base, T exp, T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ?\
+    \ 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n     \
+    \       ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
+    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
+    \ kyopro\n#line 6 \"src/math/mod_log.hpp\"\nnamespace kyopro {\n\n/**\n * @brief\
+    \ \u96E2\u6563\u5BFE\u6570\n */\ntemplate <typename T> constexpr inline T mod_log(T\
+    \ x, T y, T p) {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if\
+    \ (x == 0) {\n        if (y == 0) {\n            return 1;\n        } else {\n\
+    \            return -1;\n        }\n    }\n    int m = (int)sqrt(p) + 1;\n   \
+    \ hash_map<T, T> mp;\n    T xm = mod_pow<T>(x, m, p);\n    internal::double_size_uint_t<T>\
     \ add = 0, g, k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n    \
     \    if (y == k) return add;\n        if (y % g) return -1;\n        y /= g, p\
     \ /= g, add++;\n        k = (k * (x / g)) % p;\n    }\n\n    T pr = y;\n    for\
@@ -134,8 +133,8 @@ data:
   isVerificationFile: false
   path: src/math/mod_log.hpp
   requiredBy: []
-  timestamp: '2023-08-21 15:56:48+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-19 20:45:20+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 documentation_of: src/math/mod_log.hpp

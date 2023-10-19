@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/other/mo.md
     document_title: Mo's algorithm
@@ -44,7 +44,7 @@ data:
     \            out(idx);\n        }\n    }\n\n    template <typename A, typename\
     \ E, typename O>\n    void build(const A& add, const E& erase, const O& out) {\n\
     \        build(add, add, erase, erase, out);\n    }\n};\n};  // namespace kyopro\n\
-    \n/**\n * @docs docs/other/mo.md\n * @ref https://ei1333.hateblo.jp/entry/2017/09/11/211011\n\
+    \n/**\n * @docs docs/other/mo.md\n * @see https://ei1333.hateblo.jp/entry/2017/09/11/211011\n\
     \ */\n"
   code: "#pragma once\n#include <algorithm>\n#include <numeric>\n#include <utility>\n\
     #include <vector>\nnamespace kyopro {\n/**\n * @brief Mo's algorithm\n */\nclass\
@@ -73,14 +73,14 @@ data:
     \            out(idx);\n        }\n    }\n\n    template <typename A, typename\
     \ E, typename O>\n    void build(const A& add, const E& erase, const O& out) {\n\
     \        build(add, add, erase, erase, out);\n    }\n};\n};  // namespace kyopro\n\
-    \n/**\n * @docs docs/other/mo.md\n * @ref https://ei1333.hateblo.jp/entry/2017/09/11/211011\n\
+    \n/**\n * @docs docs/other/mo.md\n * @see https://ei1333.hateblo.jp/entry/2017/09/11/211011\n\
     \ */"
   dependsOn: []
   isVerificationFile: false
   path: src/algorithm/mo.hpp
   requiredBy: []
-  timestamp: '2023-05-07 23:12:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-19 20:45:20+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp

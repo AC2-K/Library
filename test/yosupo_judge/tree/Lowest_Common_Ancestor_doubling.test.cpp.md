@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
-    title: fastIO
-  - icon: ':heavy_check_mark:'
+    title: "\u9AD8\u901F\u5165\u51FA\u529B"
+  - icon: ':x:'
     path: src/tree/doubling.hpp
     title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -24,11 +24,10 @@ data:
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n#line 2 \"src/stream.hpp\"\
     \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
     \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
-    namespace kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
-    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
-    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
-    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    namespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct first_enabled\
+    \ {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
+    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
+    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
     \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
@@ -51,14 +50,15 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/stream.hpp\"\
-    \n\nnamespace kyopro {\n// read\nvoid single_read(char& c) {\n    c = getchar_unlocked();\n\
-    \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
-    \ = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
-    \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
-    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
-    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
-    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
+    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
+    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
+    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
+    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
+    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
     \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
     \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
@@ -77,26 +77,26 @@ data:
     \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/tree/doubling.hpp\"\
-    \n#include <cassert>\n#include <vector>\n\n/**\n * @brief \u6728\u306E\u30C0\u30D6\
-    \u30EA\u30F3\u30B0\n */\nnamespace kyopro {\nclass doubling {\n    struct edge\
-    \ {\n        int to;\n        int cost;\n\n        constexpr explicit edge() :\
-    \ to(0), cost(0) {}\n        constexpr explicit edge(int to, int cost) : to(to),\
-    \ cost(cost) {}\n    };\n    const int n;\n    static constexpr int lg = 21;\n\
-    \    std::vector<std::vector<edge>> g;\n    std::vector<int> parent[lg];\n   \
-    \ std::vector<long long> _dist;\n    std::vector<int> _depth;\n\npublic:\n   \
-    \ explicit doubling(int n) : n(n), g(n), _dist(n, -1), _depth(n) {\n        std::fill(parent,\
-    \ parent + lg, std::vector<int>(n));\n    }\n    void add_edge(int a, int b, int\
-    \ c = 1) {\n        g[a].emplace_back(b, c);\n        g[b].emplace_back(a, c);\n\
-    \    }\n    void build(int root = 0) {\n        std::vector<int> st;\n       \
-    \ st.reserve(n);\n\n        st.emplace_back(root);\n        _dist[root] = 0, _depth[root]\
-    \ = 0, parent[0][root] = root;\n        while (!st.empty()) {\n            int\
-    \ v = st.back();\n            st.pop_back();\n\n            for (auto [nv, c]\
-    \ : g[v]) {\n                if (_dist[nv] != -1) continue;\n                _dist[nv]\
-    \ = _dist[v] + c;\n                _depth[nv] = _depth[v] + 1;\n             \
-    \   parent[0][nv] = v;\n\n                st.emplace_back(nv);\n            }\n\
-    \        }\n\n        for (int i = 0; i < lg; ++i) {\n            for (int v =\
-    \ 0; v < n; ++v) {\n                parent[i + 1][v] = parent[i][parent[i][v]];\n\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\
+    \n */\n#line 2 \"src/tree/doubling.hpp\"\n#include <cassert>\n#include <vector>\n\
+    \n/**\n * @brief \u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0\n */\nnamespace kyopro\
+    \ {\nclass doubling {\n    struct edge {\n        int to;\n        int cost;\n\
+    \n        constexpr explicit edge() : to(0), cost(0) {}\n        constexpr explicit\
+    \ edge(int to, int cost) : to(to), cost(cost) {}\n    };\n    const int n;\n \
+    \   static constexpr int lg = 21;\n    std::vector<std::vector<edge>> g;\n   \
+    \ std::vector<int> parent[lg];\n    std::vector<long long> _dist;\n    std::vector<int>\
+    \ _depth;\n\npublic:\n    explicit doubling(int n) : n(n), g(n), _dist(n, -1),\
+    \ _depth(n) {\n        std::fill(parent, parent + lg, std::vector<int>(n));\n\
+    \    }\n    void add_edge(int a, int b, int c = 1) {\n        g[a].emplace_back(b,\
+    \ c);\n        g[b].emplace_back(a, c);\n    }\n    void build(int root = 0) {\n\
+    \        std::vector<int> st;\n        st.reserve(n);\n\n        st.emplace_back(root);\n\
+    \        _dist[root] = 0, _depth[root] = 0, parent[0][root] = root;\n        while\
+    \ (!st.empty()) {\n            int v = st.back();\n            st.pop_back();\n\
+    \n            for (auto [nv, c] : g[v]) {\n                if (_dist[nv] != -1)\
+    \ continue;\n                _dist[nv] = _dist[v] + c;\n                _depth[nv]\
+    \ = _depth[v] + 1;\n                parent[0][nv] = v;\n\n                st.emplace_back(nv);\n\
+    \            }\n        }\n\n        for (int i = 0; i < lg; ++i) {\n        \
+    \    for (int v = 0; v < n; ++v) {\n                parent[i + 1][v] = parent[i][parent[i][v]];\n\
     \            }\n        }\n    }\n\n    int level_ancestor(int v, const int k)\
     \ const {\n        if (_depth[v] < k) return -1;\n\n        for (int i = 0; i\
     \ < lg; ++i) {\n            if (k >> i & 1) {\n                v = parent[i][v];\n\
@@ -136,8 +136,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   requiredBy: []
-  timestamp: '2023-09-06 15:05:29+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-10-19 20:45:20+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
 layout: document

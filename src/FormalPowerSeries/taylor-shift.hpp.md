@@ -1,34 +1,34 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/combination.hpp
     title: "\u4E8C\u9805\u4FC2\u6570"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    document_title: taylor shift
+    document_title: Polynomial Taylor Shift
     links: []
   bundledCode: "#line 1 \"src/atcoder/convolution.hpp\"\n\n\n\n#include <algorithm>\n\
     #include <array>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\
@@ -420,24 +420,24 @@ data:
     \ n, int r) const {\n        assert(n >= r);\n        return fact(n) * ifact(n\
     \ - r);\n    }\n};\n\n};  // namespace kyopro\n\n\n/**\n * @docs docs/math/combination.md\n\
     */\n#line 4 \"src/FormalPowerSeries/taylor-shift.hpp\"\n\nnamespace kyopro {\n\
-    \n/**\n * @brief taylor shift\n * @tparam mint \u4FC2\u6570\u306E\u578B\n * @tparam\
-    \ deg_f f\u306E\u6B21\u6570\u306E\u6700\u5927\u5024\n * @param table \u5185\u90E8\
-    \u3067\u4F7F\u3046\u4E8C\u9805\u4FC2\u6570\u306E\u30C6\u30FC\u30D6\u30EB.(\u7701\
-    \u7565\u53EF\u80FD)\n */\n\ntemplate <typename mint, int deg_f>\nstd::vector<mint>\
-    \ taylor_shift(\n    const std::vector<mint>& f,\n    const mint& c,\n    const\
-    \ combination<mint, deg_f>& table = combination<mint, deg_f>()) {\n    const int\
-    \ n = f.size();\n    std::vector<mint> a(f.size()), b(f.size());\n    for (int\
-    \ i = 0; i < n; ++i) {\n        a[i] = f[i] * table.fact(i);\n        b[i] = c.pow(i)\
-    \ * table.ifact(i);\n    }\n    std::reverse(b.begin(), b.end());\n\n    std::vector\
-    \ res = atcoder::convolution(a, b);\n    for (int i = 0; i < n; ++i) {\n     \
-    \   res[i] = res[i + n - 1] * table.ifact(i);\n    }\n    res.resize(f.size());\n\
+    \n/**\n * @brief Polynomial Taylor Shift\n * @tparam mint \u4FC2\u6570\u306E\u578B\
+    \n * @tparam deg_f f\u306E\u6B21\u6570\u306E\u6700\u5927\u5024\n * @param table\
+    \ \u5185\u90E8\u3067\u4F7F\u3046\u4E8C\u9805\u4FC2\u6570\u306E\u30C6\u30FC\u30D6\
+    \u30EB.(\u7701\u7565\u53EF\u80FD)\n */\n\ntemplate <typename mint, int deg_f>\n\
+    std::vector<mint> taylor_shift(\n    const std::vector<mint>& f,\n    const mint&\
+    \ c,\n    const combination<mint, deg_f>& table = combination<mint, deg_f>())\
+    \ {\n    const int n = f.size();\n    std::vector<mint> a(f.size()), b(f.size());\n\
+    \    for (int i = 0; i < n; ++i) {\n        a[i] = f[i] * table.fact(i);\n   \
+    \     b[i] = c.pow(i) * table.ifact(i);\n    }\n    std::reverse(b.begin(), b.end());\n\
+    \n    std::vector res = atcoder::convolution(a, b);\n    for (int i = 0; i < n;\
+    \ ++i) {\n        res[i] = res[i + n - 1] * table.ifact(i);\n    }\n    res.resize(f.size());\n\
     \    return res;\n}\n};  // namespace kyopro\n"
   code: "#pragma once\n#include \"../../src/atcoder/convolution.hpp\"\n#include \"\
-    ../../src/math/combination.hpp\"\n\nnamespace kyopro {\n\n/**\n * @brief taylor\
-    \ shift\n * @tparam mint \u4FC2\u6570\u306E\u578B\n * @tparam deg_f f\u306E\u6B21\
-    \u6570\u306E\u6700\u5927\u5024\n * @param table \u5185\u90E8\u3067\u4F7F\u3046\
-    \u4E8C\u9805\u4FC2\u6570\u306E\u30C6\u30FC\u30D6\u30EB.(\u7701\u7565\u53EF\u80FD\
-    )\n */\n\ntemplate <typename mint, int deg_f>\nstd::vector<mint> taylor_shift(\n\
+    ../../src/math/combination.hpp\"\n\nnamespace kyopro {\n\n/**\n * @brief Polynomial\
+    \ Taylor Shift\n * @tparam mint \u4FC2\u6570\u306E\u578B\n * @tparam deg_f f\u306E\
+    \u6B21\u6570\u306E\u6700\u5927\u5024\n * @param table \u5185\u90E8\u3067\u4F7F\
+    \u3046\u4E8C\u9805\u4FC2\u6570\u306E\u30C6\u30FC\u30D6\u30EB.(\u7701\u7565\u53EF\
+    \u80FD)\n */\n\ntemplate <typename mint, int deg_f>\nstd::vector<mint> taylor_shift(\n\
     \    const std::vector<mint>& f,\n    const mint& c,\n    const combination<mint,\
     \ deg_f>& table = combination<mint, deg_f>()) {\n    const int n = f.size();\n\
     \    std::vector<mint> a(f.size()), b(f.size());\n    for (int i = 0; i < n; ++i)\
@@ -455,8 +455,8 @@ data:
   isVerificationFile: false
   path: src/FormalPowerSeries/taylor-shift.hpp
   requiredBy: []
-  timestamp: '2023-09-10 14:54:57+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-19 20:45:20+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
 documentation_of: src/FormalPowerSeries/taylor-shift.hpp
@@ -464,5 +464,5 @@ layout: document
 redirect_from:
 - /library/src/FormalPowerSeries/taylor-shift.hpp
 - /library/src/FormalPowerSeries/taylor-shift.hpp.html
-title: taylor shift
+title: Polynomial Taylor Shift
 ---

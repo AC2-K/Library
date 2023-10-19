@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
   _extendedVerifiedWith:
@@ -12,24 +12,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/data-structure/sparse_table.md
-    document_title: SparseTable
+    document_title: Sparse Table
     links: []
   bundledCode: "#line 2 \"src/data-structure/sparse_table.hpp\"\n#include <numeric>\n\
-    #include <vector>\nnamespace kyopro {\n\n/**\n * @brief SparseTable\n */\ntemplate\
+    #include <vector>\nnamespace kyopro {\n\n/**\n * @brief Sparse Table\n */\ntemplate\
     \ <class T, auto op> class sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>>\
     \ table;\n    std::vector<int> look_up;\n\npublic:\n    constexpr explicit sparse_table(int\
     \ n) : vec(n) {}\n    constexpr explicit sparse_table(const std::vector<T>& vec)\
@@ -47,7 +47,7 @@ data:
     \ table[b][r - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
     \ docs/data-structure/sparse_table.md\n */\n"
   code: "#pragma once\n#include <numeric>\n#include <vector>\nnamespace kyopro {\n\
-    \n/**\n * @brief SparseTable\n */\ntemplate <class T, auto op> class sparse_table\
+    \n/**\n * @brief Sparse Table\n */\ntemplate <class T, auto op> class sparse_table\
     \ {\n    std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n    std::vector<int>\
     \ look_up;\n\npublic:\n    constexpr explicit sparse_table(int n) : vec(n) {}\n\
     \    constexpr explicit sparse_table(const std::vector<T>& vec) : vec(vec) {\n\
@@ -69,8 +69,8 @@ data:
   path: src/data-structure/sparse_table.hpp
   requiredBy:
   - src/tree/EulerTour.hpp
-  timestamp: '2023-05-15 08:00:11+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-19 20:45:20+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
@@ -82,5 +82,5 @@ layout: document
 redirect_from:
 - /library/src/data-structure/sparse_table.hpp
 - /library/src/data-structure/sparse_table.hpp.html
-title: SparseTable
+title: Sparse Table
 ---
