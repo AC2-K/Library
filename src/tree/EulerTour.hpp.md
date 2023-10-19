@@ -128,7 +128,7 @@ title: Euler Tour
 ---
 ## 概要
 
-無向木をEulerTourを使って扱うことで, 様々なクエリを $O(\log n)$ あるいは $O(1)$ で処理することが出来ます.
+無向木をEulerTourにより扱うことで, 様々なクエリを $O(\log n)$ あるいは $O(1)$ で処理することが出来ます.
 
 ## コンストラクタ
 
@@ -136,7 +136,7 @@ title: Euler Tour
 EulerTour et(int n)
 ```
 
-$n$ 頂点の木を生成します. この時点では辺は張られていません。
+頂点数 $n$ で初期化します. この時点ではまだ辺は貼られていません.
 
 ### 計算量
 
@@ -148,7 +148,7 @@ $n$ 頂点の木を生成します. この時点では辺は張られていま�
 void add_edge(int a, int b)
 ```
 
-$a,b$ の間に無向辺を張ります。
+頂点 $a,b$ の間に無向辺を張ります.
 
 ### 制約
 
@@ -164,12 +164,12 @@ $a,b$ の間に無向辺を張ります。
 void build(int r)
 ```
 
-頂点 $\mathtt{r}$ を根として前処理を行います。デフォルトでは頂点 $0$ が根です。
+根を頂点 $r$ として前処理を行います. $r$ は省略可能で, デフォルトでは $r=0$ です.
 
 ### 制約
 
-- $0\leq r < n$
-- **これが呼び出される時点で $T$ は木**
+- $0\leq r\lt n$
+- これが呼び出される時点で $T$ の辺は全て張り終えている.
 
 ### 計算量
 
@@ -181,11 +181,11 @@ void build(int r)
 int lca(int a,int b)
 ```
 
-頂点 $a,b$ のLowest Common Ancestor(最小共通祖先)を返します。
+頂点 $a, b$ のLowest Common Ancestor(最深共通祖先)を返します.
 
 ### 制約
 
-- $0\leq a,b < n$
+- $0\leq a,b\lt n$
 
 ### 計算量
 
@@ -210,7 +210,7 @@ int dist(int a, int b)
 ## idx
 
 ```cpp
-std::pair<int, int> idx(int v)
+pair<int, int> idx(int v)
 ```
 
 EulerTour順に辿ったときの
@@ -218,7 +218,7 @@ EulerTour順に辿ったときの
 - 最初に $v$ を訪れる時刻
 - $v$ の部分木を抜ける時の時刻
 
-をそれぞれ`first`,`second`に詰めて返します.
+をそれぞれ`first`, `second`に詰めて返します.
 
 ### 制約
 
@@ -234,8 +234,7 @@ EulerTour順に辿ったときの
 bool is_in_subtree(int a, int b)
 ```
 
-$b$ が $a$ の部分木に含まれるか判定します。\
-$a=b$ の場合は`true`です。
+$b$ が $a$ の部分木に含まれるか判定します. $a=b$ の場合は`true`です.
 
 ### 制約
 

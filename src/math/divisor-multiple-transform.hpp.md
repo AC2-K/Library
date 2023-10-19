@@ -11,8 +11,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/divisor-multiple-transform.md
-    document_title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\
-      \u63DB"
+    document_title: "Fast M\xF6bius\u30FBZeta Transform"
     links: []
   bundledCode: "#line 2 \"src/math/divisor-multiple-transform.hpp\"\n#include <string.h>\n\
     #include <vector>\nnamespace kyopro {\n\ntemplate <typename T> inline void fast_mobius(std::vector<T>&\
@@ -31,8 +30,8 @@ data:
     \     }\n    }\n\n    for (int p = 2; p < n; ++p) {\n        if (!is_prime[p])\
     \ continue;\n        for (int i = (n - 1) / p; i >= 1; --i) {\n            f[i]\
     \ += f[p * i];\n        }\n    }\n    return;\n}\n};  // namespace kyopro\n\n\
-    /**\n * @brief \u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\
-    \u63DB\n * @docs docs/math/divisor-multiple-transform.md\n*/\n"
+    /**\n * @brief Fast M\xF6bius\u30FBZeta Transform\n * @docs docs/math/divisor-multiple-transform.md\n\
+    */\n"
   code: "#pragma once\n#include <string.h>\n#include <vector>\nnamespace kyopro {\n\
     \ntemplate <typename T> inline void fast_mobius(std::vector<T>& f) {\n    int\
     \ n = f.size();\n    bool is_prime[n + 1];\n    {\n        memset(is_prime, 1,\
@@ -50,13 +49,13 @@ data:
     \     }\n    }\n\n    for (int p = 2; p < n; ++p) {\n        if (!is_prime[p])\
     \ continue;\n        for (int i = (n - 1) / p; i >= 1; --i) {\n            f[i]\
     \ += f[p * i];\n        }\n    }\n    return;\n}\n};  // namespace kyopro\n\n\
-    /**\n * @brief \u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\
-    \u63DB\n * @docs docs/math/divisor-multiple-transform.md\n*/"
+    /**\n * @brief Fast M\xF6bius\u30FBZeta Transform\n * @docs docs/math/divisor-multiple-transform.md\n\
+    */"
   dependsOn: []
   isVerificationFile: false
   path: src/math/divisor-multiple-transform.hpp
   requiredBy: []
-  timestamp: '2023-06-15 21:32:34+09:00'
+  timestamp: '2023-10-19 20:27:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
@@ -65,19 +64,19 @@ layout: document
 redirect_from:
 - /library/src/math/divisor-multiple-transform.hpp
 - /library/src/math/divisor-multiple-transform.hpp.html
-title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
+title: "Fast M\xF6bius\u30FBZeta Transform"
 ---
 ## 概要
 
-整除関係における高速ゼータ変換,高速メビウス変換を実装したものです
+整除関係における高速ゼータ変換, 高速メビウス変換を実装したものです.
 
 ## fast_zeta
 
 ```cpp
-void fast_zeta(std::vector<T>& f)
+void fast_zeta(vector<T>& f)
 ```
 
-長さ $n$ の数列 $f$ に対し、以下を満たす長さ $n$ の数列 $F$を求め、$f$ を $F$ で置き換えます。
+長さ $n$ の数列 $f$ に対し, 以下を満たす長さ $n$ の数列 $F$を求め, $f$ を $F$ で置き換えます.
 
 $$F[n]=\sum_{\mathbb{d} \mid n}{f[d]}$$
 
@@ -88,10 +87,10 @@ $$F[n]=\sum_{\mathbb{d} \mid n}{f[d]}$$
 ## fast_mobius
 
 ```cpp
-void fast_zeta(std::vector<T>& F)
+void fast_zeta(vector<T>& F)
 ```
 
-上とは逆に、 $F$ が与えられたとき条件を満たす $f$ を求めます。そして、$F$ を $f$ で置き換えます。
+上とは逆に, $F$ が与えられたとき条件を満たす $f$ を求めます. そして、$F$ を $f$ で置き換えます.
 
 ### 計算量
 

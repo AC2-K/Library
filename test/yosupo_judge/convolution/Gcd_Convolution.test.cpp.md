@@ -6,7 +6,7 @@ data:
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/divisor-multiple-transform.hpp
-    title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
+    title: "Fast M\xF6bius\u30FBZeta Transform"
   - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
@@ -48,11 +48,11 @@ data:
     \     }\n    }\n\n    for (int p = 2; p < n; ++p) {\n        if (!is_prime[p])\
     \ continue;\n        for (int i = (n - 1) / p; i >= 1; --i) {\n            f[i]\
     \ += f[p * i];\n        }\n    }\n    return;\n}\n};  // namespace kyopro\n\n\
-    /**\n * @brief \u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\
-    \u63DB\n * @docs docs/math/divisor-multiple-transform.md\n*/\n#line 2 \"src/stream.hpp\"\
-    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
-    \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
-    namespace kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    /**\n * @brief Fast M\xF6bius\u30FBZeta Transform\n * @docs docs/math/divisor-multiple-transform.md\n\
+    */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
+    \ <string>\n#line 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n#include\
+    \ <limits>\n#include <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace\
+    \ internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
     \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
     \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
     \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
@@ -201,7 +201,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-10-06 23:07:34+09:00'
+  timestamp: '2023-10-19 20:27:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp

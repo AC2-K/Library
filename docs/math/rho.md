@@ -1,6 +1,6 @@
 ## 概要
 
-Pollard Rho素因数分解法を実装したものです.
+PollardRho素因数分解法を実装したものです.
 
 ## factorize
 
@@ -14,7 +14,7 @@ vector<T> rho::factorize(T n)
 - $p_0 \leq p_1 \leq \dots \leq p_{\vert p \vert -1}$
 - $p_0 p_1 \cdots p_{\vert p \vert -2} p_{\vert p \vert -1} = n$
 
-簡単に言うと, $n$ の素因数のリストをソートしたもの返します.
+簡単に言うと, $n$ の素因数のリストをソートしたものです.
 
 ## exp_factorize
 

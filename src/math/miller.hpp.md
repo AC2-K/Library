@@ -265,8 +265,7 @@ redirect_from:
 title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
 ---
 ## 概要
-
-Miller Rabinの素数判定法を実装したものです.
+MillerRabin素数判定法を実装したものです.
 
 ## is_prime
 

@@ -194,7 +194,7 @@ data:
       title: "\u4E8C\u9805\u4FC2\u6570"
     - icon: ':heavy_check_mark:'
       path: src/math/divisor-multiple-transform.hpp
-      title: "\u30E1\u30D3\u30A6\u30B9\u5909\u63DB\u30FB\u30BC\u30FC\u30BF\u5909\u63DB"
+      title: "Fast M\xF6bius\u30FBZeta Transform"
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: "\u52D5\u7684modint"
@@ -450,6 +450,6 @@ layout: toppage
 [![](https://img.shields.io/badge/license-CC0_License-blue.svg)](https://github.com/AC2-K/library/blob/main/LICENSE)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/AC2-K/library?style=flat-square)
 
-使い方はREADMEファイルを読んでください.\
+使い方はREADMEファイルを読んでください.
 
 このライブラリで実装されているメソッドやclassは全て`namespace kyopro`で定義されているので, ドキュメント内では`kyopro::`を省略しています.
