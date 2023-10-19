@@ -2,40 +2,40 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
     title: "\u52D5\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
-    title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-  - icon: ':x:'
+    title: "Euler\u306E $\\phi$ \u95A2\u6570"
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
-    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+    title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
     title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: Barrett Reduction
     links:
@@ -50,7 +50,7 @@ data:
     \    constexpr u32 mul(u32 a, u32 b) const {\n        u64 z = (u64)a * b;\n  \
     \      u64 x = (u64)(((u128)(z)*im) >> 64);\n        u64 y = x * m;\n        return\
     \ (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace internal\n};  //\
-    \ namespace kyopro\n\n/**\n * @see https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    \ namespace kyopro\n\n/**\n * @ref\n * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
     \ */\n"
   code: "#pragma once\n#include <cstdint>\nnamespace kyopro {\nnamespace internal\
     \ {\n\n/**\n * @brief Barrett Reduction\n */\nclass barrett {\n    using u32 =\
@@ -61,8 +61,8 @@ data:
     \ u32 reduce(u32 a) const { return mul(1, a); }\n    constexpr u32 mul(u32 a,\
     \ u32 b) const {\n        u64 z = (u64)a * b;\n        u64 x = (u64)(((u128)(z)*im)\
     \ >> 64);\n        u64 y = x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n\
-    \    }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @see\
-    \ https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    \    }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @ref\n\
+    \ * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
     \ */"
   dependsOn: []
   isVerificationFile: false
@@ -73,8 +73,8 @@ data:
   - src/math/rho.hpp
   - src/math/miller.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-10-19 20:45:20+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-06-25 12:32:45+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp

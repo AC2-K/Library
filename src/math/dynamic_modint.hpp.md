@@ -1,47 +1,47 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
-    title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-  - icon: ':x:'
+    title: "Euler\u306E $\\phi$ \u95A2\u6570"
+  - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
-    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+    title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
     title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/dynamic_modint.md
     document_title: "\u52D5\u7684modint"
@@ -57,13 +57,14 @@ data:
     \    constexpr u32 mul(u32 a, u32 b) const {\n        u64 z = (u64)a * b;\n  \
     \      u64 x = (u64)(((u128)(z)*im) >> 64);\n        u64 y = x * m;\n        return\
     \ (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace internal\n};  //\
-    \ namespace kyopro\n\n/**\n * @see https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    \ namespace kyopro\n\n/**\n * @ref\n * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
     \ */\n#line 3 \"src/internal/montgomery.hpp\"\n#include <limits>\n#include <numeric>\n\
     #line 5 \"src/internal/type_traits.hpp\"\n#include <typeinfo>\nnamespace kyopro\
-    \ {\nnamespace internal {\ntemplate <typename... Args> struct first_enabled {};\n\
-    \ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
-    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
-    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
     \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
@@ -86,34 +87,33 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/internal/montgomery.hpp\"\nnamespace kyopro {\nnamespace internal\
-    \ {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing\
-    \ i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n\n/**\n\
-    \ * @brief Montgomery Reduction\n */\ntemplate <typename T> class Montgomery {\n\
-    \    static constexpr int lg = std::numeric_limits<T>::digits;\n    using LargeT\
-    \ = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n    T inv() {\n\
-    \        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i) {\n         \
-    \   if (~t & 1) {\n                t += mod;\n                res += static_cast<T>(1)\
-    \ << i;\n            }\n            t >>= 1;\n        }\n        return res;\n\
-    \    }\n\npublic:\n    Montgomery() = default;\n    constexpr T get_mod() { return\
-    \ mod; }\n\n    void set_mod(T m) {\n        assert(m);\n        assert(m & 1);\n\
-    \n        mod = m;\n\n        r = (-static_cast<T>(mod)) % mod;\n        r2 =\
-    \ (-static_cast<LargeT>(mod)) % mod;\n        minv = inv();\n    }\n\n    T reduce(LargeT\
-    \ x) const {\n        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x)\
-    \ * minv) * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return\
-    \ res;\n    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T\
-    \ mul(T x, T y) { return reduce((LargeT)x * y); }\n};\n};  // namespace internal\n\
-    };  // namespace kyopro\n#line 6 \"src/math/dynamic_modint.hpp\"\nnamespace kyopro\
-    \ {\ntemplate <int id = -1> class barrett_modint : internal::modint_base {\n \
-    \   using mint = barrett_modint<id>;\n    using u32 = uint32_t;\n    using u64\
-    \ = uint64_t;\n\n    using i32 = int32_t;\n    using i64 = int64_t;\n    using\
-    \ br = internal::barrett;\n\n    static br brt;\n    u32 v;\n\npublic:\n    static\
-    \ void set_mod(u32 mod_) { brt = br(mod_); }\n\npublic:\n    explicit constexpr\
-    \ barrett_modint() noexcept : v(0) { assert(mod()); }\n    explicit constexpr\
-    \ barrett_modint(i64 v_) noexcept : v() {\n        assert(mod());\n        if\
-    \ (v_ < 0) v_ = (i64)mod() - v_;\n        v = brt.reduce(v_);\n    }\n\n    u32\
-    \ val() const noexcept { return v; }\n    static u32 mod() { return brt.get_mod();\
+    };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/internal/montgomery.hpp\"\
+    \nnamespace kyopro {\nnamespace internal {\nusing u32 = uint32_t;\nusing u64 =\
+    \ uint64_t;\nusing i32 = int32_t;\nusing i64 = int64_t;\nusing u128 = __uint128_t;\n\
+    using i128 = __int128_t;\n\n/**\n * @brief Montgomery Reduction\n */\ntemplate\
+    \ <typename T> class Montgomery {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
+    \    using LargeT = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n\
+    \    T inv() {\n        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i)\
+    \ {\n            if (~t & 1) {\n                t += mod;\n                res\
+    \ += static_cast<T>(1) << i;\n            }\n            t >>= 1;\n        }\n\
+    \        return res;\n    }\n\npublic:\n    Montgomery() = default;\n    constexpr\
+    \ T get_mod() { return mod; }\n\n    void set_mod(T m) {\n        assert(m);\n\
+    \        assert(m & 1);\n\n        mod = m;\n\n        r = (-static_cast<T>(mod))\
+    \ % mod;\n        r2 = (-static_cast<LargeT>(mod)) % mod;\n        minv = inv();\n\
+    \    }\n\n    T reduce(LargeT x) const {\n        u64 res =\n            (x +\
+    \ static_cast<LargeT>(static_cast<T>(x) * minv) * mod) >> lg;\n\n        if (res\
+    \ >= mod) res -= mod;\n        return res;\n    }\n\n    T generate(LargeT x)\
+    \ { return reduce(x * r2); }\n\n    T mul(T x, T y) { return reduce((LargeT)x\
+    \ * y); }\n};\n};  // namespace internal\n};  // namespace kyopro\n#line 6 \"\
+    src/math/dynamic_modint.hpp\"\nnamespace kyopro {\ntemplate <int id = -1> class\
+    \ barrett_modint : internal::modint_base {\n    using mint = barrett_modint<id>;\n\
+    \    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    using i32 = int32_t;\n\
+    \    using i64 = int64_t;\n    using br = internal::barrett;\n\n    static br\
+    \ brt;\n    u32 v;\n\npublic:\n    static void set_mod(u32 mod_) { brt = br(mod_);\
+    \ }\n\npublic:\n    explicit constexpr barrett_modint() noexcept : v(0) { assert(mod());\
+    \ }\n    explicit constexpr barrett_modint(i64 v_) noexcept : v() {\n        assert(mod());\n\
+    \        if (v_ < 0) v_ = (i64)mod() - v_;\n        v = brt.reduce(v_);\n    }\n\
+    \n    u32 val() const noexcept { return v; }\n    static u32 mod() { return brt.get_mod();\
     \ }\n    static mint raw(u32 v) {\n        mint x;\n        x.v = v;\n       \
     \ return x;\n    }\n\n    constexpr mint& operator++() noexcept {\n        ++v;\n\
     \        if (v == mod()) v = 0;\n        return (*this);\n    }\n    constexpr\
@@ -281,8 +281,8 @@ data:
   - src/math/rho.hpp
   - src/math/miller.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-10-19 20:45:20+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-10-11 13:43:15+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp

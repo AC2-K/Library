@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
-    title: Xor Shift
+    title: xor shift
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
     title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/bbst/reversible_bbst.md
     document_title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728"
@@ -28,7 +28,7 @@ data:
     \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief Xor Shift\n */\n#line 6 \"src/data-structure/bbst/reversible_bbst.hpp\"\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 6 \"src/data-structure/bbst/reversible_bbst.hpp\"\
     \n\nnamespace kyopro {\n/**\n * @brief \u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\
     \u5206\u6728\n * @tparam S \u30E2\u30CE\u30A4\u30C9\n * @tparam op S\u306E\u4E8C\
     \u9805\u6F14\u7B97\n * @tparam e S\u306E\u5358\u4F4D\u5143\n */\ntemplate <class\
@@ -71,7 +71,7 @@ data:
     \ [x, y] = split(std::move(xy), l);\n        reverse(y);\n        xy = merge(std::move(x),\
     \ std::move(y));\n        root = merge(std::move(xy), std::move(z));\n    }\n\
     };\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/reversible_bbst.md\n\
-    \ * @see https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp\n\
+    \ * @ref\n * https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp\n\
     \ */\n"
   code: "#pragma once\n#include <cassert>\n#include <memory>\n#include <utility>\n\
     #include \"../../random/xor_shift.hpp\"\n\nnamespace kyopro {\n/**\n * @brief\
@@ -116,15 +116,15 @@ data:
     \ [x, y] = split(std::move(xy), l);\n        reverse(y);\n        xy = merge(std::move(x),\
     \ std::move(y));\n        root = merge(std::move(xy), std::move(z));\n    }\n\
     };\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/bbst/reversible_bbst.md\n\
-    \ * @see https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp\n\
+    \ * @ref\n * https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp\n\
     \ */"
   dependsOn:
   - src/random/xor_shift.hpp
   isVerificationFile: false
   path: src/data-structure/bbst/reversible_bbst.hpp
   requiredBy: []
-  timestamp: '2023-10-19 20:45:20+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-10-15 13:58:49+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
 documentation_of: src/data-structure/bbst/reversible_bbst.hpp

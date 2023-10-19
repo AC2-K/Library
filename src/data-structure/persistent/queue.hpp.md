@@ -11,10 +11,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/data-structure/queue.md
-    document_title: Persitent Queue
+    document_title: persistent queue
     links: []
   bundledCode: "#line 2 \"src/data-structure/persistent/queue.hpp\"\n#include <cassert>\n\
-    namespace kyopro {\n/**\n * @brief Persitent Queue\n */\ntemplate <typename T,\
+    namespace kyopro {\n/**\n * @brief persistent queue\n */\ntemplate <typename T,\
     \ int lg = 20> class persistent_queue {\n    struct Node {\n        Node() = default;\n\
     \        uint32_t index;\n        T val;\n        Node* prev[20];\n    };\n\n\
     \    Node *front_ptr = nullptr, *back_ptr = nullptr;\n    int siz;\n\npublic:\n\
@@ -36,8 +36,8 @@ data:
     \  return front_ptr->val;\n    }\n    T back() {\n        assert(siz);\n     \
     \   return back_ptr->val;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
     \ docs/data-structure/queue.md\n */\n"
-  code: "#pragma once\n#include <cassert>\nnamespace kyopro {\n/**\n * @brief Persitent\
-    \ Queue\n */\ntemplate <typename T, int lg = 20> class persistent_queue {\n  \
+  code: "#pragma once\n#include <cassert>\nnamespace kyopro {\n/**\n * @brief persistent\
+    \ queue\n */\ntemplate <typename T, int lg = 20> class persistent_queue {\n  \
     \  struct Node {\n        Node() = default;\n        uint32_t index;\n       \
     \ T val;\n        Node* prev[20];\n    };\n\n    Node *front_ptr = nullptr, *back_ptr\
     \ = nullptr;\n    int siz;\n\npublic:\n    persistent_queue(Node* front_ptr =\
@@ -62,7 +62,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/persistent/queue.hpp
   requiredBy: []
-  timestamp: '2023-10-19 20:45:20+09:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
@@ -71,5 +71,5 @@ layout: document
 redirect_from:
 - /library/src/data-structure/persistent/queue.hpp
 - /library/src/data-structure/persistent/queue.hpp.html
-title: Persitent Queue
+title: persistent queue
 ---

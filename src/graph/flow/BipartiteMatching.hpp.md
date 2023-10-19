@@ -83,7 +83,8 @@ data:
     \n\n#line 2 \"src/graph/flow/BipartiteMatching.hpp\"\n\n#line 5 \"src/graph/flow/BipartiteMatching.hpp\"\
     \n\nnamespace kyopro {\n\n/**\n * @brief \u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0\
     \n */\ntemplate <typename Cap> class BipartiteGraph {\n    const int L, R;\n \
-    \   const int s, t;\n\n    atcoder::mf_graph<Cap> g;\n\n    bool flowed_flag;\n\
+    \   const int s, t;  // \u8D85\u9802\u70B9\u3092\u4F5C\u308B\n\n    atcoder::mf_graph<Cap>\
+    \ g;\n\n    // \u3059\u3067\u306B\u6D41\u3057\u305F\u304B?\n    bool flowed_flag;\n\
     \npublic:\n    explicit BipartiteGraph(int LV, int RV)\n        : g(LV + RV +\
     \ 2),\n          L(LV),\n          R(RV),\n          s(LV + RV + 1),\n       \
     \   t(LV + RV),\n          flowed_flag(false) {\n        for (int i = 0; i < LV;\
@@ -97,12 +98,13 @@ data:
     \ int>> res;\n        for (const auto& e : E) {\n            if (e.flow > 0 &&\
     \ e.from != s && e.to != t) {\n                res.emplace_back(e.from, e.to -\
     \ L);\n            }\n        }\n        return res;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @see\n * https://qiita.com/drken/items/e805e3f514acceb87602\n\
+    \ kyopro\n\n/**\n * @ref\n * https://qiita.com/drken/items/e805e3f514acceb87602\n\
     \ * https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp\n */\n"
   code: "#include \"../../atcoder/maxflow\"\n\n#include <cassert>\n#include <vector>\n\
     \nnamespace kyopro {\n\n/**\n * @brief \u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0\
     \n */\ntemplate <typename Cap> class BipartiteGraph {\n    const int L, R;\n \
-    \   const int s, t;\n\n    atcoder::mf_graph<Cap> g;\n\n    bool flowed_flag;\n\
+    \   const int s, t;  // \u8D85\u9802\u70B9\u3092\u4F5C\u308B\n\n    atcoder::mf_graph<Cap>\
+    \ g;\n\n    // \u3059\u3067\u306B\u6D41\u3057\u305F\u304B?\n    bool flowed_flag;\n\
     \npublic:\n    explicit BipartiteGraph(int LV, int RV)\n        : g(LV + RV +\
     \ 2),\n          L(LV),\n          R(RV),\n          s(LV + RV + 1),\n       \
     \   t(LV + RV),\n          flowed_flag(false) {\n        for (int i = 0; i < LV;\
@@ -116,7 +118,7 @@ data:
     \ int>> res;\n        for (const auto& e : E) {\n            if (e.flow > 0 &&\
     \ e.from != s && e.to != t) {\n                res.emplace_back(e.from, e.to -\
     \ L);\n            }\n        }\n        return res;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @see\n * https://qiita.com/drken/items/e805e3f514acceb87602\n\
+    \ kyopro\n\n/**\n * @ref\n * https://qiita.com/drken/items/e805e3f514acceb87602\n\
     \ * https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp\n */"
   dependsOn:
   - src/atcoder/maxflow.hpp
@@ -124,7 +126,7 @@ data:
   isVerificationFile: false
   path: src/graph/flow/BipartiteMatching.hpp
   requiredBy: []
-  timestamp: '2023-10-19 20:45:20+09:00'
+  timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/flow/BipartiteMatching.hpp

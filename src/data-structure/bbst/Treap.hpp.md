@@ -1,9 +1,9 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
-    title: Xor Shift
+    title: xor shift
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -27,7 +27,7 @@ data:
     \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief Xor Shift\n */\n#line 5 \"src/data-structure/bbst/Treap.hpp\"\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 5 \"src/data-structure/bbst/Treap.hpp\"\
     \n\nnamespace kyopro {\n\n/**\n * @brief Treap\n * @tparam T \u4E57\u305B\u308B\
     \u30C7\u30FC\u30BF\u578B\n */\ntemplate <class T> class Treap {\n    using u32\
     \ = uint32_t;\n    xor_shift32 rng;\n    struct Node {\n        const T key;\n\
@@ -102,7 +102,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/bbst/Treap.hpp
   requiredBy: []
-  timestamp: '2023-10-19 20:45:20+09:00'
+  timestamp: '2023-07-03 15:58:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

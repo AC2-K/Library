@@ -3,19 +3,19 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/dual_segtree.hpp
-    title: Dual Segment Tree
-  - icon: ':question:'
+    title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
+    title: fastIO
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -29,64 +29,66 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\n\
     #line 2 \"src/data-structure/dual_segtree.hpp\"\n#include <cassert>\n#include\
-    \ <vector>\nnamespace kyopro {\n/**\n * @brief Dual Segment Tree\n * @tparam F\
-    \ \u4F5C\u7528\u7D20\n * @tparam id F \u306E\u5358\u4F4D\u5143\n */\ntemplate\
-    \ <class F, F (*composition)(F, F), F (*id)()> class dual_segtree {\n    std::vector<F>\
-    \ dat;\n    int _n, sz, lg;\n\npublic:\n    dual_segtree() {}\n    dual_segtree(int\
-    \ _n) : _n(_n) {\n        sz = 1, lg = 0;\n        while (sz < _n) {\n       \
-    \     ++lg;\n            sz <<= 1;\n        }\n        dat.assign(sz << 1, id());\n\
-    \    }\n\nprivate:\n    void update(int p, const F& v) { dat[p] = composition(dat[p],\
-    \ v); }\n    void push(int p) {\n        if (dat[p] == id()) {\n            return;\n\
-    \        }\n        update(p << 1 | 0, dat[p]);\n        update(p << 1 | 1, dat[p]);\n\
-    \        dat[p] = id();\n    }\n\npublic:\n    F operator[](int p) {\n       \
-    \ assert(0 <= p && p < _n);\n\n        F res = id();\n\n        p += sz;\n   \
-    \     for (int i = lg; i > 0; i--) {\n            push(p >> i);\n        }\n \
-    \       return dat[p];\n    }\n\n    void apply(int l, int r, const F& v) {\n\
-    \        assert(0 <= l && l <= r && r <= _n);\n        if (l == r) return;\n \
-    \       l += sz, r += sz;\n        for (int i = lg; i > 0; i--) {\n          \
-    \  if (((l >> i) << i) != l) {\n                push(l >> i);\n            }\n\
-    \            if (((r >> i) << i) != r) {\n                push((r - 1) >> i);\n\
-    \            }\n        }\n        while (l < r) {\n            if (l & 1) {\n\
-    \                update(l++, v);\n            }\n            if (r & 1) {\n  \
-    \              update(--r, v);\n            }\n            l >>= 1, r >>= 1;\n\
-    \        }\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/dual_segtree.md\n\
-    \ */\n#line 3 \"src/math/static_modint.hpp\"\n#include <cstdint>\n#include <iostream>\n\
-    \n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n#include <numeric>\n\
-    #include <typeinfo>\nnamespace kyopro {\nnamespace internal {\ntemplate <typename...\
-    \ Args> struct first_enabled {};\n\ntemplate <typename T, typename... Args>\n\
-    struct first_enabled<std::enable_if<true, T>, Args...> {\n    using type = T;\n\
-    };\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
-    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
-    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
-    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
-    \ntemplate <int dgt> struct int_least {\n    static_assert(dgt <= 128);\n    using\
-    \ type = first_enabled_t<std::enable_if<dgt <= 8, __int8_t>,\n               \
-    \                  std::enable_if<dgt <= 16, __int16_t>,\n                   \
-    \              std::enable_if<dgt <= 32, __int32_t>,\n                       \
-    \          std::enable_if<dgt <= 64, __int64_t>,\n                           \
-    \      std::enable_if<dgt <= 128, __int128_t> >;\n};\ntemplate <int dgt> struct\
-    \ uint_least {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, __uint8_t>,\n                                 std::enable_if<dgt <= 16,\
-    \ __uint16_t>,\n                                 std::enable_if<dgt <= 32, __uint32_t>,\n\
-    \                                 std::enable_if<dgt <= 64, __uint64_t>,\n   \
-    \                              std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\
-    \ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\ntemplate\
-    \ <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename\
-    \ T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
-    \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \ <vector>\nnamespace kyopro {\n/**\n * @brief \u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\
+    \u30C8\u6728\n * @tparam F \u4F5C\u7528\u7D20\n * @tparam id F \u306E\u5358\u4F4D\
+    \u5143\n */\ntemplate <class F, F (*composition)(F, F), F (*id)()> class dual_segtree\
+    \ {\n    std::vector<F> dat;\n    int _n, sz, lg;\n\npublic:\n    dual_segtree()\
+    \ {}\n    dual_segtree(int _n) : _n(_n) {\n        sz = 1, lg = 0;\n        while\
+    \ (sz < _n) {\n            ++lg;\n            sz <<= 1;\n        }\n        dat.assign(sz\
+    \ << 1, id());\n    }\n\nprivate:\n    void update(int p, const F& v) { dat[p]\
+    \ = composition(dat[p], v); }\n    void push(int p) {\n        if (dat[p] == id())\
+    \ {\n            return;\n        }\n        update(p << 1 | 0, dat[p]);\n   \
+    \     update(p << 1 | 1, dat[p]);\n        dat[p] = id();\n    }\n\npublic:\n\
+    \    F operator[](int p) {\n        assert(0 <= p && p < _n);\n\n        F res\
+    \ = id();\n\n        p += sz;\n        for (int i = lg; i > 0; i--) {\n      \
+    \      push(p >> i);\n        }\n        return dat[p];\n    }\n\n    void apply(int\
+    \ l, int r, const F& v) {\n        assert(0 <= l && l <= r && r <= _n);\n    \
+    \    if (l == r) return;\n        l += sz, r += sz;\n        for (int i = lg;\
+    \ i > 0; i--) {\n            if (((l >> i) << i) != l) {\n                push(l\
+    \ >> i);\n            }\n            if (((r >> i) << i) != r) {\n           \
+    \     push((r - 1) >> i);\n            }\n        }\n        while (l < r) {\n\
+    \            if (l & 1) {\n                update(l++, v);\n            }\n  \
+    \          if (r & 1) {\n                update(--r, v);\n            }\n    \
+    \        l >>= 1, r >>= 1;\n        }\n    }\n};\n\n};  // namespace kyopro\n\n\
+    /**\n * @docs docs/data-structure/dual_segtree.md\n */\n#line 3 \"src/math/static_modint.hpp\"\
+    \n#include <cstdint>\n#include <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\
+    \n#include <limits>\n#include <numeric>\n#include <typeinfo>\nnamespace kyopro\
+    \ {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
+    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
+    \ {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, __int8_t>,\n                                 std::enable_if<dgt <= 16,\
+    \ __int16_t>,\n                                 std::enable_if<dgt <= 32, __int32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, __int64_t>,\n    \
+    \                             std::enable_if<dgt <= 128, __int128_t> >;\n};\n\
+    template <int dgt> struct uint_least {\n    static_assert(dgt <= 128);\n    using\
+    \ type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,\n              \
+    \                   std::enable_if<dgt <= 16, __uint16_t>,\n                 \
+    \                std::enable_if<dgt <= 32, __uint32_t>,\n                    \
+    \             std::enable_if<dgt <= 64, __uint64_t>,\n                       \
+    \          std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\ntemplate <int dgt>\
+    \ using int_least_t = typename int_least<dgt>::type;\ntemplate <int dgt> using\
+    \ uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename T>\nusing\
+    \ double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\ntemplate\
+    \ <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     \nstruct modint_base {};\ntemplate <typename T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate\
-    \ <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0\
-    \ && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
-    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+    };  // namespace internal\n};  // namespace kyopro\n#line 3 \"src/math/gcd.hpp\"\
+    \n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr inline\
+    \ T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
+    \ b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
+    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
+    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
+    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
     \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
     \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
@@ -165,8 +167,7 @@ data:
     \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\
-    \n */\n#line 5 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 5 \"test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp\"\
     \n\nusing mint = kyopro::modint<998244353>;\nusing Affine = std::pair<mint, mint>;\n\
     inline Affine op(Affine g, Affine f) {\n    auto a = f.first, b = f.second;\n\
     \    auto c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\n\
@@ -202,7 +203,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-10-19 20:45:20+09:00'
+  timestamp: '2023-10-06 23:07:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp

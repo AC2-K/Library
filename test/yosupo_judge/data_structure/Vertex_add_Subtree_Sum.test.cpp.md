@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/sparse_table.hpp
-    title: Sparse Table
-  - icon: ':question:'
+    title: SparseTable
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':question:'
+    title: fastIO
+  - icon: ':heavy_check_mark:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_add_subtree_sum
@@ -45,7 +45,8 @@ data:
     \ + 1) + sum(i) + v); }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/BIT.md\n\
     \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
     \ <string>\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n#include\
-    \ <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\ntemplate\
+    \ <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/*\n\
+    \ * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\ntemplate\
     \ <typename... Args> struct first_enabled {};\n\ntemplate <typename T, typename...\
     \ Args>\nstruct first_enabled<std::enable_if<true, T>, Args...> {\n    using type\
     \ = T;\n};\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
@@ -71,15 +72,14 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
-    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
-    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
-    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/stream.hpp\"\
+    \n\nnamespace kyopro {\n// read\nvoid single_read(char& c) {\n    c = getchar_unlocked();\n\
+    \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
+    \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
+    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
+    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
+    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
     \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
     \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
@@ -98,59 +98,59 @@ data:
     \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\
-    \n */\n#line 2 \"src/tree/EulerTour.hpp\"\n#include <cassert>\n#include <utility>\n\
-    #line 4 \"src/data-structure/sparse_table.hpp\"\nnamespace kyopro {\n\n/**\n *\
-    \ @brief Sparse Table\n */\ntemplate <class T, auto op> class sparse_table {\n\
-    \    std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n    std::vector<int>\
-    \ look_up;\n\npublic:\n    constexpr explicit sparse_table(int n) : vec(n) {}\n\
-    \    constexpr explicit sparse_table(const std::vector<T>& vec) : vec(vec) {\n\
-    \        build();\n    }\n    void set(int p, const T& v) { vec[p] = v; }\n  \
-    \  void build() {\n        int sz = vec.size();\n        int log = 0;\n      \
-    \  while ((1 << log) <= sz) {\n            log++;\n        }\n        table.assign(log,\
-    \ std::vector<T>(1 << log));\n        for (int i = 0; i < sz; i++) {\n       \
-    \     table[0][i] = vec[i];\n        }\n        for (int i = 1; i < log; i++)\
-    \ {\n            for (int j = 0; j + (1 << i) <= (1 << log); j++) {\n        \
-    \        table[i][j] =\n                    op(table[i - 1][j], table[i - 1][j\
-    \ + (1 << (i - 1))]);\n            }\n        }\n        look_up.resize(sz + 1);\n\
-    \        for (int i = 2; i < (int)look_up.size(); i++) {\n            look_up[i]\
-    \ = look_up[i >> 1] + 1;\n        }\n    }\n\n    T fold(int l, int r) const {\n\
-    \        int b = look_up[r - l];\n        return op(table[b][l], table[b][r -\
-    \ (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/data-structure/sparse_table.md\n\
-    \ */\n#line 5 \"src/tree/EulerTour.hpp\"\nnamespace kyopro {\n\n/**\n * @brief\
-    \ Euler Tour\n */\nclass EulerTour {\n    int n;\n    std::vector<std::vector<int>>\
-    \ g;\n    std::vector<int> tour;\n    std::vector<int> in, out, depth;\n\n   \
-    \ struct get_min_pair {\n        using value_t = std::pair<int, int>;\n      \
-    \  static value_t op(value_t x, value_t y) { return std::min(x, y); }\n    };\n\
-    \n    sparse_table<get_min_pair::value_t, get_min_pair::op> rmq;\n\npublic:\n\
-    \    explicit EulerTour(int n)\n        : n(n), g(n), in(n, -1), out(n, -1), depth(n,\
-    \ -1), rmq(2 * n - 1) {\n        tour.reserve(2 * n - 1);\n    }\n    void add_edge(int\
-    \ u, int v) {\n        assert(0 <= v && v < n);\n        assert(0 <= u && u <\
-    \ n);\n        g[u].emplace_back(v);\n        g[v].emplace_back(u);\n    }\n \
-    \   const std::vector<std::vector<int>>& get_graph() const { return g; }\n   \
-    \ const std::vector<int>& get_tour() const { return tour; }\n    int get_depth(int\
-    \ v) const {\n        assert(0 <= v && v < n);\n        return depth[v];\n   \
-    \ }\n\n    void build(int r = 0) {\n        auto dfs = [&](const auto& self, int\
-    \ v, int p) -> void {\n            in[v] = tour.size();\n            tour.emplace_back(v);\n\
-    \            for (auto nv : g[v]) {\n                if (nv != p) {\n        \
-    \            depth[nv] = depth[v] + 1;\n                    self(self, nv, v);\n\
-    \                    tour.emplace_back(v);\n                }\n            }\n\
-    \            out[v] = tour.size() - 1;\n        };\n        dfs(dfs, r, -1);\n\
-    \        for (int i = 0; i < (int)tour.size(); i++) {\n            rmq.set(i,\
-    \ {depth[tour[i]], tour[i]});\n        }\n        rmq.build();\n    }\n\n    std::pair<int,\
-    \ int> idx(int v) const {\n        assert(0 <= v && v < n);\n        return {in[v],\
-    \ out[v]};\n    }\n    int lca(int v, int u) const {\n        assert(0 <= v &&\
-    \ v < n);\n        assert(0 <= u && u < n);\n        if (in[v] > in[u] + 1) {\n\
-    \            std::swap(u, v);\n        }\n        return rmq.fold(in[v], in[u]\
-    \ + 1).second;\n    }\n\n    int dist(int v, int u) const {\n        assert(0\
-    \ <= v && v < n);\n        assert(0 <= u && u < n);\n        int p = lca(v, u);\n\
-    \        return depth[v] + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int\
-    \ par, int v) const {\n        assert(0 <= par && par < n);\n        assert(0\
-    \ <= v && v < n);\n\n        return (in[par] <= in[v] && out[v] <= out[par]);\n\
-    \    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/tree/EulerTour.md\n\
-    \ */\n#line 6 \"test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n,\
-    \ q;\n    read(n, q);\n    vector<long long> a(n);\n    for (auto& aa : a) read(aa);\n\
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/tree/EulerTour.hpp\"\
+    \n#include <cassert>\n#include <utility>\n#line 4 \"src/data-structure/sparse_table.hpp\"\
+    \nnamespace kyopro {\n\n/**\n * @brief SparseTable\n */\ntemplate <class T, auto\
+    \ op> class sparse_table {\n    std::vector<T> vec;\n    std::vector<std::vector<T>>\
+    \ table;\n    std::vector<int> look_up;\n\npublic:\n    constexpr explicit sparse_table(int\
+    \ n) : vec(n) {}\n    constexpr explicit sparse_table(const std::vector<T>& vec)\
+    \ : vec(vec) {\n        build();\n    }\n    void set(int p, const T& v) { vec[p]\
+    \ = v; }\n    void build() {\n        int sz = vec.size();\n        int log =\
+    \ 0;\n        while ((1 << log) <= sz) {\n            log++;\n        }\n    \
+    \    table.assign(log, std::vector<T>(1 << log));\n        for (int i = 0; i <\
+    \ sz; i++) {\n            table[0][i] = vec[i];\n        }\n        for (int i\
+    \ = 1; i < log; i++) {\n            for (int j = 0; j + (1 << i) <= (1 << log);\
+    \ j++) {\n                table[i][j] =\n                    op(table[i - 1][j],\
+    \ table[i - 1][j + (1 << (i - 1))]);\n            }\n        }\n        look_up.resize(sz\
+    \ + 1);\n        for (int i = 2; i < (int)look_up.size(); i++) {\n           \
+    \ look_up[i] = look_up[i >> 1] + 1;\n        }\n    }\n\n    T fold(int l, int\
+    \ r) const {\n        int b = look_up[r - l];\n        return op(table[b][l],\
+    \ table[b][r - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
+    \ docs/data-structure/sparse_table.md\n */\n#line 5 \"src/tree/EulerTour.hpp\"\
+    \nnamespace kyopro {\n\n/**\n * @brief Euler Tour\n */\nclass EulerTour {\n  \
+    \  int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int> tour;\n\
+    \    std::vector<int> in, out, depth;\n\n    struct get_min_pair {\n        using\
+    \ value_t = std::pair<int, int>;\n        static value_t op(value_t x, value_t\
+    \ y) { return std::min(x, y); }\n    };\n\n    sparse_table<get_min_pair::value_t,\
+    \ get_min_pair::op> rmq;\n\npublic:\n    explicit EulerTour(int n)\n        :\
+    \ n(n), g(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) {\n        tour.reserve(2\
+    \ * n - 1);\n    }\n    void add_edge(int u, int v) {\n        assert(0 <= v &&\
+    \ v < n);\n        assert(0 <= u && u < n);\n        g[u].emplace_back(v);\n \
+    \       g[v].emplace_back(u);\n    }\n    const std::vector<std::vector<int>>&\
+    \ get_graph() const { return g; }\n    const std::vector<int>& get_tour() const\
+    \ { return tour; }\n    int get_depth(int v) const {\n        assert(0 <= v &&\
+    \ v < n);\n        return depth[v];\n    }\n\n    void build(int r = 0) {\n  \
+    \      auto dfs = [&](const auto& self, int v, int p) -> void {\n            in[v]\
+    \ = tour.size();\n            tour.emplace_back(v);\n            for (auto nv\
+    \ : g[v]) {\n                if (nv != p) {\n                    depth[nv] = depth[v]\
+    \ + 1;\n                    self(self, nv, v);\n                    tour.emplace_back(v);\n\
+    \                }\n            }\n            out[v] = tour.size() - 1;\n   \
+    \     };\n        dfs(dfs, r, -1);\n        for (int i = 0; i < (int)tour.size();\
+    \ i++) {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n        }\n    \
+    \    rmq.build();\n    }\n\n    std::pair<int, int> idx(int v) const {\n     \
+    \   assert(0 <= v && v < n);\n        return {in[v], out[v]};\n    }\n    int\
+    \ lca(int v, int u) const {\n        assert(0 <= v && v < n);\n        assert(0\
+    \ <= u && u < n);\n        if (in[v] > in[u] + 1) {\n            std::swap(u,\
+    \ v);\n        }\n        return rmq.fold(in[v], in[u] + 1).second;\n    }\n\n\
+    \    int dist(int v, int u) const {\n        assert(0 <= v && v < n);\n      \
+    \  assert(0 <= u && u < n);\n        int p = lca(v, u);\n        return depth[v]\
+    \ + depth[u] - 2 * depth[p];\n    }\n\n    bool is_in_subtree(int par, int v)\
+    \ const {\n        assert(0 <= par && par < n);\n        assert(0 <= v && v <\
+    \ n);\n\n        return (in[par] <= in[v] && out[v] <= out[par]);\n    }\n};\n\
+    };  // namespace kyopro\n\n/**\n * @docs docs/tree/EulerTour.md\n */\n#line 6\
+    \ \"test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp\"\n\nusing\
+    \ namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n   \
+    \ read(n, q);\n    vector<long long> a(n);\n    for (auto& aa : a) read(aa);\n\
     \n    EulerTour g(n);\n    for (int i = 1; i < n; i++) {\n        int p;\n   \
     \     read(p);\n        g.add_edge(i, p);\n    }\n    g.build();\n\n    BIT<long\
     \ long> seg(2 * n);\n    for (int v = 0; v < n; v++) {\n        int in = g.idx(v).first;\n\
@@ -181,8 +181,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-19 20:45:20+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-10-14 19:23:45+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
 layout: document

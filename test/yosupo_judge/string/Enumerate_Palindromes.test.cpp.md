@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':x:'
+    title: fastIO
+  - icon: ':heavy_check_mark:'
     path: src/string/manacher.hpp
     title: Manacher's algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_palindromes
@@ -25,10 +25,11 @@ data:
     #include <iostream>\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include\
     \ <stdio.h>\n#include <string>\n#line 3 \"src/internal/type_traits.hpp\"\n#include\
     \ <limits>\n#include <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace\
-    \ internal {\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate\
-    \ <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>,\
-    \ Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
-    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
     \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
@@ -51,15 +52,14 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n// read\nvoid single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\nvoid single_read(T&\
-    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
-    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
-    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    };  // namespace internal\n};  // namespace kyopro\n#line 6 \"src/stream.hpp\"\
+    \n\nnamespace kyopro {\n// read\nvoid single_read(char& c) {\n    c = getchar_unlocked();\n\
+    \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\nvoid single_read(T& a) {\n    a = 0;\n    bool is_negative = false;\n\
+    \    char c = getchar_unlocked();\n    while (isspace(c)) {\n        c = getchar_unlocked();\n\
+    \    }\n    if (c == '-') is_negative = true, c = getchar_unlocked();\n    while\
+    \ (isdigit(c)) {\n        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n\
+    \    }\n    if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
     \ = nullptr>\nvoid single_read(T& a) {\n    long long x;\n    single_read(x);\n\
     \    a = T(x);\n}\nvoid single_read(std::string& str) {\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) c = getchar_unlocked();\n    while (!isspace(c)) {\n \
@@ -78,27 +78,26 @@ data:
     \ <typename Head, typename... Tail> void write(Head head, Tail... tail) {\n  \
     \  single_write(head);\n    putchar_unlocked(' ');\n    write(tail...);\n}\ntemplate\
     \ <typename... Args> void put(Args... x) {\n    write(x...);\n    putchar_unlocked('\\\
-    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\
-    \n */\n#line 2 \"src/string/manacher.hpp\"\n#include <cassert>\n#line 4 \"src/string/manacher.hpp\"\
-    \n#include <utility>\n#include <vector>\nnamespace kyopro {\n\n/**\n * @brief\
-    \ Manacher's algorithm\n */\nstd::vector<int> manacher(std::string s, bool even\
-    \ = true) {\n    assert(s.size());\n    if (even) {\n        std::string t;\n\
-    \        t.resize(2 * (int)s.size() - 1);\n        for (int i = 0; i < (int)s.size();\
-    \ i++) {\n            t[2 * i] = s[i];\n        }\n        for (int i = 0; i <\
-    \ (int)s.size(); i++) {\n            t[2 * i + 1] = '$';\n        }\n        std::swap(t,\
-    \ s);\n    }\n    std::vector<int> res(s.size());\n\n    int i = 0, j = 0;\n\n\
-    \    while (i < (int)s.size()) {\n        while (i - j >= 0 && i + j < (int)s.size()\
-    \ && s[i - j] == s[i + j]) {\n            j++;\n        }\n        res[i] = j;\n\
-    \n        int k = 1;\n        while (i - k >= 0 && i + k < (int)s.size() && k\
-    \ + res[i - k] < j) {\n            res[i + k] = res[i - k], k++;\n        }\n\
-    \        i += k, j -= k;\n    }\n\n    if (even) {\n        for (int i = 0; i\
-    \ < (int)res.size(); i++) {\n            if (~(i ^ res[i]) & 1) {\n          \
-    \      res[i]--;\n            }\n        }\n    } else {\n        for (auto& r\
-    \ : res) {\n            r = 2 * r - 1;\n        }\n    }\n    return res;\n}\n\
-    };  // namespace kyopro\n#line 5 \"test/yosupo_judge/string/Enumerate_Palindromes.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    std::string\
-    \ s;\n    read(s);\n    auto res = kyopro::manacher(s);\n    for (auto r : res)\
-    \ put(r);\n}\n"
+    n');\n}\n};  // namespace kyopro\n\n/**\n * @brief fastIO\n */\n#line 2 \"src/string/manacher.hpp\"\
+    \n#include <cassert>\n#line 4 \"src/string/manacher.hpp\"\n#include <utility>\n\
+    #include <vector>\nnamespace kyopro {\n\n/**\n * @brief Manacher's algorithm\n\
+    \ */\nstd::vector<int> manacher(std::string s, bool even = true) {\n    assert(s.size());\n\
+    \    if (even) {\n        std::string t;\n        t.resize(2 * (int)s.size() -\
+    \ 1);\n        for (int i = 0; i < (int)s.size(); i++) {\n            t[2 * i]\
+    \ = s[i];\n        }\n        for (int i = 0; i < (int)s.size(); i++) {\n    \
+    \        t[2 * i + 1] = '$';\n        }\n        std::swap(t, s);\n    }\n   \
+    \ std::vector<int> res(s.size());\n\n    int i = 0, j = 0;\n\n    while (i < (int)s.size())\
+    \ {\n        while (i - j >= 0 && i + j < (int)s.size() && s[i - j] == s[i + j])\
+    \ {\n            j++;\n        }\n        res[i] = j;\n\n        int k = 1;\n\
+    \        while (i - k >= 0 && i + k < (int)s.size() && k + res[i - k] < j) {\n\
+    \            res[i + k] = res[i - k], k++;\n        }\n        i += k, j -= k;\n\
+    \    }\n\n    if (even) {\n        for (int i = 0; i < (int)res.size(); i++) {\n\
+    \            if (~(i ^ res[i]) & 1) {\n                res[i]--;\n           \
+    \ }\n        }\n    } else {\n        for (auto& r : res) {\n            r = 2\
+    \ * r - 1;\n        }\n    }\n    return res;\n}\n};  // namespace kyopro\n#line\
+    \ 5 \"test/yosupo_judge/string/Enumerate_Palindromes.test.cpp\"\n\nusing namespace\
+    \ std;\nusing namespace kyopro;\n\nint main() {\n    std::string s;\n    read(s);\n\
+    \    auto res = kyopro::manacher(s);\n    for (auto r : res) put(r);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\
     \n#include <iostream>\n#include \"../../../src/stream.hpp\"\n#include \"../../../src/string/manacher.hpp\"\
     \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    std::string\
@@ -111,8 +110,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   requiredBy: []
-  timestamp: '2023-10-19 20:45:20+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-08-21 14:50:09+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
 layout: document

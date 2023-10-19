@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
     title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "\u90E8\u5206\u5217\u306E\u500B\u6570"
     links:
@@ -24,7 +24,7 @@ data:
     \    std::vector<mint> dp(a.size() + 1), sum(a.size() + 1);\n    sum[0] = mint(1);\n\
     \    for (int i = 0; i < (int)a.size(); ++i) {\n        sum[i + 1] = 2 * sum[i]\
     \ - dp[a[i]];\n        dp[a[i]] += sum[i] - dp[a[i]];\n    }\n    return sum[a.size()];\n\
-    }\n};\n\n/**\n * @brief \u90E8\u5206\u5217\u306E\u500B\u6570\n * @see https://noshi91.hatenablog.com/entry/2023/02/26/135340\n\
+    }\n};\n\n/**\n * @brief \u90E8\u5206\u5217\u306E\u500B\u6570\n * @reference https://noshi91.hatenablog.com/entry/2023/02/26/135340\n\
     */\n"
   code: "#pragma once\n#include <algorithm>\n#include <vector>\n\nnamespace kyopro\
     \ {\nnamespace number_of_subseq_impl {\n\ntemplate <typename T> void comp(std::vector<T>&\
@@ -37,14 +37,14 @@ data:
     \    std::vector<mint> dp(a.size() + 1), sum(a.size() + 1);\n    sum[0] = mint(1);\n\
     \    for (int i = 0; i < (int)a.size(); ++i) {\n        sum[i + 1] = 2 * sum[i]\
     \ - dp[a[i]];\n        dp[a[i]] += sum[i] - dp[a[i]];\n    }\n    return sum[a.size()];\n\
-    }\n};\n\n/**\n * @brief \u90E8\u5206\u5217\u306E\u500B\u6570\n * @see https://noshi91.hatenablog.com/entry/2023/02/26/135340\n\
+    }\n};\n\n/**\n * @brief \u90E8\u5206\u5217\u306E\u500B\u6570\n * @reference https://noshi91.hatenablog.com/entry/2023/02/26/135340\n\
     */"
   dependsOn: []
   isVerificationFile: false
   path: src/dynamic_programming/number_of_subseq.hpp
   requiredBy: []
-  timestamp: '2023-10-19 20:45:20+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2023-10-06 00:03:22+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
 documentation_of: src/dynamic_programming/number_of_subseq.hpp
