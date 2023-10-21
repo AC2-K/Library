@@ -25,7 +25,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
-    title: "Euler\u306E $\\phi$ \u95A2\u6570"
+    title: "Euler\u306E $\\varphi$ \u95A2\u6570"
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
@@ -44,7 +44,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/rho.md
-    document_title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+    document_title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
     links: []
   bundledCode: "#line 2 \"src/math/rho.hpp\"\n#include <algorithm>\n#include <vector>\n\
     #line 2 \"src/math/gcd.hpp\"\n#include <cassert>\n#include <tuple>\nnamespace\
@@ -238,7 +238,7 @@ data:
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
     };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 7 \"src/math/rho.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\
+    \nnamespace kyopro {\n\n/**\n * @brief PollardRho\u7D20\u56E0\u6570\u5206\u89E3\
     \u6CD5\n */\nclass rho {\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
     \    using u64 = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename\
     \ T,typename mint> static constexpr T find_factor(T n) {\n        xor_shift32\
@@ -283,7 +283,7 @@ data:
     \ */\n"
   code: "#pragma once\n#include <algorithm>\n#include <vector>\n#include \"../math/gcd.hpp\"\
     \n#include \"../math/miller.hpp\"\n#include \"../random/xor_shift.hpp\"\nnamespace\
-    \ kyopro {\n\n/**\n * @brief Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5\n\
+    \ kyopro {\n\n/**\n * @brief PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5\n\
     \ */\nclass rho {\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
     \    using u64 = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename\
     \ T,typename mint> static constexpr T find_factor(T n) {\n        xor_shift32\
@@ -339,7 +339,7 @@ data:
   requiredBy:
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-10-11 13:43:15+09:00'
+  timestamp: '2023-10-21 16:57:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp
@@ -350,7 +350,7 @@ layout: document
 redirect_from:
 - /library/src/math/rho.hpp
 - /library/src/math/rho.hpp.html
-title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
 ---
 ## 概要
 

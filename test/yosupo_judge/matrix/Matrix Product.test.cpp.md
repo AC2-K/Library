@@ -9,7 +9,7 @@ data:
     title: src/math/gcd.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/matrix.hpp
-    title: Matrix
+    title: "\u884C\u5217"
   - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
@@ -29,7 +29,7 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/matrix/Matrix Product.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include <iostream>\n\
     #line 2 \"src/math/matrix.hpp\"\n#include <cassert>\n#include <utility>\n#include\
-    \ <vector>\nnamespace kyopro {\n\n/**\n * @brief Matrix\n */\ntemplate <typename\
+    \ <vector>\nnamespace kyopro {\n\n/**\n * @brief \u884C\u5217\n */\ntemplate <typename\
     \ T> class Matrix {\n    std::vector<std::vector<T>> dat;\n    int h = 0, w =\
     \ 0;\n\npublic:\n    constexpr Matrix(const std::vector<std::vector<T>>& dat)\n\
     \        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    constexpr\
@@ -204,7 +204,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2023-10-06 23:07:34+09:00'
+  timestamp: '2023-10-21 16:57:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp

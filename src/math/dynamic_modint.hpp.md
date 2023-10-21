@@ -16,13 +16,13 @@ data:
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
-    title: "Euler\u306E $\\phi$ \u95A2\u6570"
+    title: "Euler\u306E $\\varphi$ \u95A2\u6570"
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
-    title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp

@@ -21,7 +21,7 @@ data:
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
-    title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
@@ -34,7 +34,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: "Euler\u306E $\\phi$ \u95A2\u6570"
+    document_title: "Euler\u306E $\\varphi$ \u95A2\u6570"
     links: []
   bundledCode: "#line 2 \"src/math/phi_function.hpp\"\n#include <algorithm>\n#line\
     \ 3 \"src/math/rho.hpp\"\n#include <vector>\n#line 2 \"src/math/gcd.hpp\"\n#include\
@@ -228,7 +228,7 @@ data:
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
     };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 7 \"src/math/rho.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\
+    \nnamespace kyopro {\n\n/**\n * @brief PollardRho\u7D20\u56E0\u6570\u5206\u89E3\
     \u6CD5\n */\nclass rho {\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
     \    using u64 = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename\
     \ T,typename mint> static constexpr T find_factor(T n) {\n        xor_shift32\
@@ -271,13 +271,14 @@ data:
     \ * pow);\n                pow *= p;\n            }\n        }\n\n        return\
     \ divisor;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/math/rho.md\n\
     \ */\n#line 4 \"src/math/phi_function.hpp\"\nnamespace kyopro {\n\n/**\n * @brief\
-    \ Euler\u306E $\\phi$ \u95A2\u6570\n */\ninline long long phi_func(long long n)\
-    \ {\n    long long res = n;\n    auto pf = kyopro::rho::factorize(n);\n    pf.erase(std::unique(pf.begin(),\
-    \ pf.end()), pf.end());\n    for (auto d : pf) {\n        res = res / d * (d -\
-    \ 1);\n    }\n    return res;\n}\n};  // namespace kyopro\n"
+    \ Euler\u306E $\\varphi$ \u95A2\u6570\n */\ninline long long phi_func(long long\
+    \ n) {\n    long long res = n;\n    auto pf = kyopro::rho::factorize(n);\n   \
+    \ pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto d : pf)\
+    \ {\n        res = res / d * (d - 1);\n    }\n    return res;\n}\n};  // namespace\
+    \ kyopro\n"
   code: "#pragma once\n#include <algorithm>\n#include \"../math/rho.hpp\"\nnamespace\
-    \ kyopro {\n\n/**\n * @brief Euler\u306E $\\phi$ \u95A2\u6570\n */\ninline long\
-    \ long phi_func(long long n) {\n    long long res = n;\n    auto pf = kyopro::rho::factorize(n);\n\
+    \ kyopro {\n\n/**\n * @brief Euler\u306E $\\varphi$ \u95A2\u6570\n */\ninline\
+    \ long long phi_func(long long n) {\n    long long res = n;\n    auto pf = kyopro::rho::factorize(n);\n\
     \    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto d :\
     \ pf) {\n        res = res / d * (d - 1);\n    }\n    return res;\n}\n};  // namespace\
     \ kyopro"
@@ -293,7 +294,7 @@ data:
   isVerificationFile: false
   path: src/math/phi_function.hpp
   requiredBy: []
-  timestamp: '2023-10-11 13:43:15+09:00'
+  timestamp: '2023-10-21 16:57:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
@@ -302,5 +303,5 @@ layout: document
 redirect_from:
 - /library/src/math/phi_function.hpp
 - /library/src/math/phi_function.hpp.html
-title: "Euler\u306E $\\phi$ \u95A2\u6570"
+title: "Euler\u306E $\\varphi$ \u95A2\u6570"
 ---

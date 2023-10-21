@@ -21,7 +21,7 @@ data:
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
-    title: "Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
   - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
@@ -228,7 +228,7 @@ data:
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
     };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 7 \"src/math/rho.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief Pollard Rho \u7D20\u56E0\u6570\u5206\u89E3\
+    \nnamespace kyopro {\n\n/**\n * @brief PollardRho\u7D20\u56E0\u6570\u5206\u89E3\
     \u6CD5\n */\nclass rho {\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
     \    using u64 = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename\
     \ T,typename mint> static constexpr T find_factor(T n) {\n        xor_shift32\
@@ -307,7 +307,7 @@ data:
   isVerificationFile: false
   path: src/math/primitive_root.hpp
   requiredBy: []
-  timestamp: '2023-10-11 13:43:15+09:00'
+  timestamp: '2023-10-21 16:57:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Primitive_Root.test.cpp
