@@ -5,7 +5,7 @@
 namespace kyopro {
 
 /**
- * @brief Matrix
+ * @brief 行列
  */
 template <typename T> class Matrix {
     std::vector<std::vector<T>> dat;

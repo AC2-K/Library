@@ -7,7 +7,7 @@
 namespace kyopro {
 
 /**
- * @brief Pollard Rho 素因数分解法
+ * @brief PollardRho素因数分解法
  */
 class rho {
     using i128 = __int128_t;
