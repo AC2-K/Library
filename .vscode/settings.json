@@ -103,7 +103,8 @@
         "version": "cpp",
         "rope": "cpp",
         "maxflow": "cpp",
-        "modint": "cpp"
+        "modint": "cpp",
+        "math": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
