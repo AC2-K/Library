@@ -4,19 +4,26 @@
 #include "../../random/xor_shift.hpp"
 
 namespace kyopro {
-template <class T> class Treap {
+template <class T> struct Treap {
     using u32 = std::uint32_t;
     xor_shift32 rng;
     struct Node {
         const T key;
         const u32 priority;
-        std::shared_ptr<Node> l, r;
+        Node *l, *r;
         Node(const T& key, u32 priority)
             : key(key), priority(priority), l(nullptr), r(nullptr) {}
     };
-    using sptr = std::shared_ptr<Node>;
-    sptr root = nullptr;
-    void split(const sptr t, const T& key, sptr& l, sptr& r) {
+    using uptr = std::unique_ptr<Node>;
+    std::vector<uptr> nodes;
+    Node* make_ptr(const T& key, u32 priority) {
+        nodes.emplace_back(std::make_unique<Node>(key,priority));
+        return nodes.back().get();
+    }
+
+    Node* root;
+    
+    void split(Node* t, const T& key, Node*& l, Node*& r) {
         if (!t) {
             l = r = nullptr;
         } else if (key < t->key) {
@@ -27,7 +34,7 @@ template <class T> class Treap {
         }
     }
 
-    void merge(sptr& t, const sptr& l, const sptr& r) {
+    void merge(Node*& t, Node* l, Node* r) {
         if (!l || !r) {
             t = l ? l : r;
         } else if (l->priority > r->priority) {
@@ -37,7 +44,7 @@ template <class T> class Treap {
         }
     }
 
-    void insert(sptr& t, const sptr& item) {
+    void insert(Node*& t, Node* item) {
         if (!t) {
             t = item;
         } else if (item->priority > t->priority) {
@@ -48,7 +55,7 @@ template <class T> class Treap {
         }
     }
 
-    void erase(sptr& t, const T& key) {
+    void erase(Node*& t, const T& key) {
         if (!t) return;
         if (t->key == key) {
             merge(t, t->l, t->r);
@@ -57,7 +64,7 @@ template <class T> class Treap {
         }
     }
 
-    const sptr find(const sptr& t, const T& key) const {
+    Node* find(Node*& t, const T& key) {
         if (!t) {
             return nullptr;
         } else if (t->key == key) {
@@ -68,17 +75,16 @@ template <class T> class Treap {
     }
 
 public:
-    constexpr explicit Treap() : rng(2023) {}
-    void insert(const T& key) {
-        insert(root, std::make_shared<Node>(key, rng()));
-    }
+    explicit Treap() : rng(2023), root(nullptr) {}
+    void insert(const T& key) { insert(root, make_ptr(key, rng())); }
 
     void erase(const T& key) { erase(root, key); }
 
-    const Node* find(const T& key) const { return find(root, key).get(); }
-    T min_element() const {
-        assert(root);
-        sptr cur = root;
+    const Node* find(const T& key) const { return find(root, key); }
+
+    T min_element() {
+        assert(root != nullptr);
+        Node* cur = root;
         while (cur->l) {
             cur = cur->l;
         }
@@ -87,7 +93,7 @@ public:
     }
     T max_element() {
         assert(root);
-        sptr cur = root;
+        Node* cur = root;
         while (cur->r) {
             cur = cur->r;
         }

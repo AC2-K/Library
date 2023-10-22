@@ -2,30 +2,39 @@
 
 #include "../../../src/data-structure/bbst/Treap.hpp"
 #include "../../../src/stream.hpp"
+#include"../../../src/template.hpp"
+
 using namespace std;
+using namespace kyopro;
+
 int main() {
-    kyopro::Treap<int> st;
+    Treap<int> st;
     int n, q;
-    kyopro::read(n, q);
+    read(n, q);
     for (int i = 0; i < n; ++i) {
         int a;
-        kyopro::read(a);
+        read(a);
         st.insert(a);
     }
     while (q--) {
+        // cout << "DEBUG = ";
+        // for (const auto& q : st.nodes) cout << q->key << ' ';
+        // cout << endl;
+        // cout << "ROOT = ";
+        // cout << st.root->key << endl;
         int t;
-        kyopro::read(t);
+        read(t);
         if (!t) {
             int x;
-            kyopro::read(x);
+            read(x);
             st.insert(x);
         } else if (t == 1) {
             int mn = st.min_element();
-            kyopro::put(mn);
+            put(mn);
             st.erase(mn);
         } else {
             int mx = st.max_element();
-            kyopro::put(mx);
+            put(mx);
             st.erase(mx);
         }
     }

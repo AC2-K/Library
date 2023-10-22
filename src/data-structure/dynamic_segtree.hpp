@@ -19,7 +19,7 @@ template <class S, auto op, auto e> class dynamic_segtree {
     std::vector<uptr> nodes;
     Node* root;
     Node* make_ptr(const S& v = e(), Node* pt = nullptr) {
-        nodes.push_back(std::make_unique<Node>(v, pt));
+        nodes.emplace_back(std::make_unique<Node>(v, pt));
         return nodes.back().get();
     };
 
