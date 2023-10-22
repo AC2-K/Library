@@ -13,6 +13,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "\u9AD8\u901F\u5165\u51FA\u529B"
+  - icon: ':heavy_check_mark:'
+    path: src/template.hpp
+    title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -37,45 +40,46 @@ data:
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
     };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 5 \"src/data-structure/bbst/Treap.hpp\"\
-    \n\nnamespace kyopro {\ntemplate <class T> class Treap {\n    using u32 = std::uint32_t;\n\
+    \n\nnamespace kyopro {\ntemplate <class T> struct Treap {\n    using u32 = std::uint32_t;\n\
     \    xor_shift32 rng;\n    struct Node {\n        const T key;\n        const\
-    \ u32 priority;\n        std::shared_ptr<Node> l, r;\n        Node(const T& key,\
-    \ u32 priority)\n            : key(key), priority(priority), l(nullptr), r(nullptr)\
-    \ {}\n    };\n    using sptr = std::shared_ptr<Node>;\n    sptr root = nullptr;\n\
-    \    void split(const sptr t, const T& key, sptr& l, sptr& r) {\n        if (!t)\
-    \ {\n            l = r = nullptr;\n        } else if (key < t->key) {\n      \
-    \      split(t->l, key, l, t->l);\n            r = t;\n        } else {\n    \
-    \        split(t->r, key, t->r, r), l = t;\n        }\n    }\n\n    void merge(sptr&\
-    \ t, const sptr& l, const sptr& r) {\n        if (!l || !r) {\n            t =\
-    \ l ? l : r;\n        } else if (l->priority > r->priority) {\n            merge(l->r,\
-    \ l->r, r), t = l;\n        } else {\n            merge(r->l, l, r->l), t = r;\n\
-    \        }\n    }\n\n    void insert(sptr& t, const sptr& item) {\n        if\
-    \ (!t) {\n            t = item;\n        } else if (item->priority > t->priority)\
-    \ {\n            split(t, item->key, item->l, item->r);\n            t = item;\n\
-    \        } else {\n            insert(item->key < t->key ? t->l : t->r, item);\n\
-    \        }\n    }\n\n    void erase(sptr& t, const T& key) {\n        if (!t)\
-    \ return;\n        if (t->key == key) {\n            merge(t, t->l, t->r);\n \
-    \       } else {\n            erase(key < t->key ? t->l : t->r, key);\n      \
-    \  }\n    }\n\n    const sptr find(const sptr& t, const T& key) const {\n    \
-    \    if (!t) {\n            return nullptr;\n        } else if (t->key == key)\
-    \ {\n            return t;\n        } else {\n            return find(key < t->key\
-    \ ? t->l : t->r, key);\n        }\n    }\n\npublic:\n    constexpr explicit Treap()\
-    \ : rng(2023) {}\n    void insert(const T& key) {\n        insert(root, std::make_shared<Node>(key,\
-    \ rng()));\n    }\n\n    void erase(const T& key) { erase(root, key); }\n\n  \
-    \  const Node* find(const T& key) const { return find(root, key).get(); }\n  \
-    \  T min_element() const {\n        assert(root);\n        sptr cur = root;\n\
-    \        while (cur->l) {\n            cur = cur->l;\n        }\n        T ans\
-    \ = cur->key;\n        return ans;\n    }\n    T max_element() {\n        assert(root);\n\
-    \        sptr cur = root;\n        while (cur->r) {\n            cur = cur->r;\n\
-    \        }\n        T ans = cur->key;\n        return ans;\n    }\n};\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief Treap\n */\n#line 2 \"src/stream.hpp\"\n\
-    #include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
-    \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
-    #line 7 \"src/internal/type_traits.hpp\"\n\nnamespace kyopro {\nnamespace internal\
-    \ {\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
-    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
-    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
-    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ u32 priority;\n        Node *l, *r;\n        Node(const T& key, u32 priority)\n\
+    \            : key(key), priority(priority), l(nullptr), r(nullptr) {}\n    };\n\
+    \    using uptr = std::unique_ptr<Node>;\n    std::vector<uptr> nodes;\n    Node*\
+    \ make_ptr(const T& key, u32 priority) {\n        nodes.emplace_back(std::make_unique<Node>(key,priority));\n\
+    \        return nodes.back().get();\n    }\n\n    Node* root;\n    \n    void\
+    \ split(Node* t, const T& key, Node*& l, Node*& r) {\n        if (!t) {\n    \
+    \        l = r = nullptr;\n        } else if (key < t->key) {\n            split(t->l,\
+    \ key, l, t->l);\n            r = t;\n        } else {\n            split(t->r,\
+    \ key, t->r, r), l = t;\n        }\n    }\n\n    void merge(Node*& t, Node* l,\
+    \ Node* r) {\n        if (!l || !r) {\n            t = l ? l : r;\n        } else\
+    \ if (l->priority > r->priority) {\n            merge(l->r, l->r, r), t = l;\n\
+    \        } else {\n            merge(r->l, l, r->l), t = r;\n        }\n    }\n\
+    \n    void insert(Node*& t, Node* item) {\n        if (!t) {\n            t =\
+    \ item;\n        } else if (item->priority > t->priority) {\n            split(t,\
+    \ item->key, item->l, item->r);\n            t = item;\n        } else {\n   \
+    \         insert(item->key < t->key ? t->l : t->r, item);\n        }\n    }\n\n\
+    \    void erase(Node*& t, const T& key) {\n        if (!t) return;\n        if\
+    \ (t->key == key) {\n            merge(t, t->l, t->r);\n        } else {\n   \
+    \         erase(key < t->key ? t->l : t->r, key);\n        }\n    }\n\n    Node*\
+    \ find(Node*& t, const T& key) {\n        if (!t) {\n            return nullptr;\n\
+    \        } else if (t->key == key) {\n            return t;\n        } else {\n\
+    \            return find(key < t->key ? t->l : t->r, key);\n        }\n    }\n\
+    \npublic:\n    explicit Treap() : rng(2023), root(nullptr) {}\n    void insert(const\
+    \ T& key) { insert(root, make_ptr(key, rng())); }\n\n    void erase(const T& key)\
+    \ { erase(root, key); }\n\n    const Node* find(const T& key) const { return find(root,\
+    \ key); }\n\n    T min_element() {\n        assert(root != nullptr);\n       \
+    \ Node* cur = root;\n        while (cur->l) {\n            cur = cur->l;\n   \
+    \     }\n        T ans = cur->key;\n        return ans;\n    }\n    T max_element()\
+    \ {\n        assert(root);\n        Node* cur = root;\n        while (cur->r)\
+    \ {\n            cur = cur->r;\n        }\n        T ans = cur->key;\n       \
+    \ return ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Treap\n */\n\
+    #line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
+    #line 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n#include <limits>\n\
+    #include <numeric>\n#include <typeinfo>\n#line 7 \"src/internal/type_traits.hpp\"\
+    \n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
+    \ first_enabled {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
+    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
+    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
     \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt, std::enable_if_t<dgt\
@@ -129,34 +133,53 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 5 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\
-    \nusing namespace std;\nint main() {\n    kyopro::Treap<int> st;\n    int n, q;\n\
-    \    kyopro::read(n, q);\n    for (int i = 0; i < n; ++i) {\n        int a;\n\
-    \        kyopro::read(a);\n        st.insert(a);\n    }\n    while (q--) {\n \
-    \       int t;\n        kyopro::read(t);\n        if (!t) {\n            int x;\n\
-    \            kyopro::read(x);\n            st.insert(x);\n        } else if (t\
-    \ == 1) {\n            int mn = st.min_element();\n            kyopro::put(mn);\n\
-    \            st.erase(mn);\n        } else {\n            int mx = st.max_element();\n\
-    \            kyopro::put(mx);\n            st.erase(mx);\n        }\n    }\n}\n"
+    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 2 \"src/template.hpp\"\
+    \n#include <bits/stdc++.h>\n#define rep(i, N) for (int i = 0; i < (N); i++)\n\
+    #define all(x) std::begin(x), std::end(x)\n#define popcount(x) __builtin_popcountll(x)\n\
+    using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
+    \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
+    \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
+    \ / 2;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
+    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
+    \ dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1,\
+    \ 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
+    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
+    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
+    \ true);\n}\n#line 6 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    Treap<int>\
+    \ st;\n    int n, q;\n    read(n, q);\n    for (int i = 0; i < n; ++i) {\n   \
+    \     int a;\n        read(a);\n        st.insert(a);\n    }\n    while (q--)\
+    \ {\n        // cout << \"DEBUG = \";\n        // for (const auto& q : st.nodes)\
+    \ cout << q->key << ' ';\n        // cout << endl;\n        // cout << \"ROOT\
+    \ = \";\n        // cout << st.root->key << endl;\n        int t;\n        read(t);\n\
+    \        if (!t) {\n            int x;\n            read(x);\n            st.insert(x);\n\
+    \        } else if (t == 1) {\n            int mn = st.min_element();\n      \
+    \      put(mn);\n            st.erase(mn);\n        } else {\n            int\
+    \ mx = st.max_element();\n            put(mx);\n            st.erase(mx);\n  \
+    \      }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
     \n\n#include \"../../../src/data-structure/bbst/Treap.hpp\"\n#include \"../../../src/stream.hpp\"\
-    \nusing namespace std;\nint main() {\n    kyopro::Treap<int> st;\n    int n, q;\n\
-    \    kyopro::read(n, q);\n    for (int i = 0; i < n; ++i) {\n        int a;\n\
-    \        kyopro::read(a);\n        st.insert(a);\n    }\n    while (q--) {\n \
-    \       int t;\n        kyopro::read(t);\n        if (!t) {\n            int x;\n\
-    \            kyopro::read(x);\n            st.insert(x);\n        } else if (t\
-    \ == 1) {\n            int mn = st.min_element();\n            kyopro::put(mn);\n\
-    \            st.erase(mn);\n        } else {\n            int mx = st.max_element();\n\
-    \            kyopro::put(mx);\n            st.erase(mx);\n        }\n    }\n}"
+    \n#include\"../../../src/template.hpp\"\n\nusing namespace std;\nusing namespace\
+    \ kyopro;\n\nint main() {\n    Treap<int> st;\n    int n, q;\n    read(n, q);\n\
+    \    for (int i = 0; i < n; ++i) {\n        int a;\n        read(a);\n       \
+    \ st.insert(a);\n    }\n    while (q--) {\n        // cout << \"DEBUG = \";\n\
+    \        // for (const auto& q : st.nodes) cout << q->key << ' ';\n        //\
+    \ cout << endl;\n        // cout << \"ROOT = \";\n        // cout << st.root->key\
+    \ << endl;\n        int t;\n        read(t);\n        if (!t) {\n            int\
+    \ x;\n            read(x);\n            st.insert(x);\n        } else if (t ==\
+    \ 1) {\n            int mn = st.min_element();\n            put(mn);\n       \
+    \     st.erase(mn);\n        } else {\n            int mx = st.max_element();\n\
+    \            put(mx);\n            st.erase(mx);\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/bbst/Treap.hpp
   - src/random/xor_shift.hpp
   - src/stream.hpp
   - src/internal/type_traits.hpp
+  - src/template.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
+  timestamp: '2023-10-22 18:54:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

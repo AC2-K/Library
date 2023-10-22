@@ -7,6 +7,9 @@ data:
     path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
     title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+    title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -70,6 +73,7 @@ data:
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
 documentation_of: src/template.hpp
 layout: document
