@@ -124,15 +124,12 @@ data:
       title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728"
   - name: src/data-structure/data-structure-2d
     pages:
-    - icon: ':warning:'
-      path: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
-      title: src/data-structure/data-structure-2d/PointAddRectangleSum.hpp
-    - icon: ':warning:'
-      path: src/data-structure/data-structure-2d/RangeTree.hpp
-      title: src/data-structure/data-structure-2d/RangeTree.hpp
     - icon: ':heavy_check_mark:'
       path: src/data-structure/data-structure-2d/cumulative-sum.hpp
       title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure/data-structure-2d/imos.hpp
+      title: "\u4E8C\u6B21\u5143imos\u6CD5"
   - name: src/data-structure/persistent
     pages:
     - icon: ':heavy_check_mark:'

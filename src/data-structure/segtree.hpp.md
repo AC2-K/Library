@@ -1,10 +1,7 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: src/data-structure/data-structure-2d/RangeTree.hpp
-    title: src/data-structure/data-structure-2d/RangeTree.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_B.test.cpp
@@ -75,8 +72,7 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/segtree.hpp
-  requiredBy:
-  - src/data-structure/data-structure-2d/RangeTree.hpp
+  requiredBy: []
   timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
