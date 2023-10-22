@@ -85,64 +85,65 @@ data:
     links:
     - https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8
   bundledCode: "#line 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n#include\
-    \ <limits>\n#include <numeric>\n#include <typeinfo>\nnamespace kyopro {\nnamespace\
-    \ internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
-    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
-    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
-    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ <limits>\n#include <numeric>\n#include <typeinfo>\n#include <cstdint>\n\nnamespace\
+    \ kyopro {\nnamespace internal {\ntemplate <typename... Args> struct first_enabled\
+    \ {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
+    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
+    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
-    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
-    \ {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, __int8_t>,\n                                 std::enable_if<dgt <= 16,\
-    \ __int16_t>,\n                                 std::enable_if<dgt <= 32, __int32_t>,\n\
-    \                                 std::enable_if<dgt <= 64, __int64_t>,\n    \
-    \                             std::enable_if<dgt <= 128, __int128_t> >;\n};\n\
-    template <int dgt> struct uint_least {\n    static_assert(dgt <= 128);\n    using\
-    \ type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,\n              \
-    \                   std::enable_if<dgt <= 16, __uint16_t>,\n                 \
-    \                std::enable_if<dgt <= 32, __uint32_t>,\n                    \
-    \             std::enable_if<dgt <= 64, __uint64_t>,\n                       \
-    \          std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\ntemplate <int dgt>\
-    \ using int_least_t = typename int_least<dgt>::type;\ntemplate <int dgt> using\
-    \ uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename T>\nusing\
-    \ double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\ntemplate\
-    \ <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt, std::enable_if_t<dgt\
+    \ <= 128>* = nullptr> struct int_least {\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, std::int8_t>,\n                                 std::enable_if<dgt <=\
+    \ 16, std::int16_t>,\n                                 std::enable_if<dgt <= 32,\
+    \ std::int32_t>,\n                                 std::enable_if<dgt <= 64, std::int64_t>,\n\
+    \                                 std::enable_if<dgt <= 128, __int128_t>>;\n};\n\
+    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
+    \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::uint8_t>,\n\
+    \                                 std::enable_if<dgt <= 16, std::uint16_t>,\n\
+    \                                 std::enable_if<dgt <= 32, std::uint32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, std::uint64_t>,\n\
+    \                                 std::enable_if<dgt <= 128, __uint128_t>>;\n\
+    };\n\ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\n\
+    template <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate\
+    \ <typename T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     \nstruct modint_base {};\ntemplate <typename T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n"
+    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */\n"
   code: "#pragma once\n#include <iostream>\n#include <limits>\n#include <numeric>\n\
-    #include <typeinfo>\nnamespace kyopro {\nnamespace internal {\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    #include <typeinfo>\n#include <cstdint>\n\nnamespace kyopro {\nnamespace internal\
+    \ {\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
     \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
     \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
     \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
-    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt> struct int_least\
-    \ {\n    static_assert(dgt <= 128);\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, __int8_t>,\n                                 std::enable_if<dgt <= 16,\
-    \ __int16_t>,\n                                 std::enable_if<dgt <= 32, __int32_t>,\n\
-    \                                 std::enable_if<dgt <= 64, __int64_t>,\n    \
-    \                             std::enable_if<dgt <= 128, __int128_t> >;\n};\n\
-    template <int dgt> struct uint_least {\n    static_assert(dgt <= 128);\n    using\
-    \ type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,\n              \
-    \                   std::enable_if<dgt <= 16, __uint16_t>,\n                 \
-    \                std::enable_if<dgt <= 32, __uint32_t>,\n                    \
-    \             std::enable_if<dgt <= 64, __uint64_t>,\n                       \
-    \          std::enable_if<dgt <= 128, __uint128_t> >;\n};\n\ntemplate <int dgt>\
-    \ using int_least_t = typename int_least<dgt>::type;\ntemplate <int dgt> using\
-    \ uint_least_t = typename uint_least<dgt>::type;\n\ntemplate <typename T>\nusing\
-    \ double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\ntemplate\
-    \ <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt, std::enable_if_t<dgt\
+    \ <= 128>* = nullptr> struct int_least {\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, std::int8_t>,\n                                 std::enable_if<dgt <=\
+    \ 16, std::int16_t>,\n                                 std::enable_if<dgt <= 32,\
+    \ std::int32_t>,\n                                 std::enable_if<dgt <= 64, std::int64_t>,\n\
+    \                                 std::enable_if<dgt <= 128, __int128_t>>;\n};\n\
+    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
+    \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::uint8_t>,\n\
+    \                                 std::enable_if<dgt <= 16, std::uint16_t>,\n\
+    \                                 std::enable_if<dgt <= 32, std::uint32_t>,\n\
+    \                                 std::enable_if<dgt <= 64, std::uint64_t>,\n\
+    \                                 std::enable_if<dgt <= 128, __uint128_t>>;\n\
+    };\n\ntemplate <int dgt> using int_least_t = typename int_least<dgt>::type;\n\
+    template <int dgt> using uint_least_t = typename uint_least<dgt>::type;\n\ntemplate\
+    \ <typename T>\nusing double_size_uint_t = uint_least_t<2 * std::numeric_limits<T>::digits>;\n\
+    \ntemplate <typename T>\nusing double_size_int_t = int_least_t<2 * std::numeric_limits<T>::digits>;\n\
     \nstruct modint_base {};\ntemplate <typename T> using is_modint = std::is_base_of<modint_base,\
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro"
+    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
+    \ */"
   dependsOn: []
   isVerificationFile: false
   path: src/internal/type_traits.hpp
@@ -158,7 +159,7 @@ data:
   - src/math/phi_function.hpp
   - src/math/static_modint.hpp
   - src/string/rolling_hash.hpp
-  timestamp: '2023-07-30 13:18:23+00:00'
+  timestamp: '2023-10-22 15:25:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No789.test.cpp
