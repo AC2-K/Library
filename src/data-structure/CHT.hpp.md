@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
+    title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: Convex Hull Trick
     links: []
@@ -85,8 +88,9 @@ data:
   path: src/data-structure/CHT.hpp
   requiredBy: []
   timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
 documentation_of: src/data-structure/CHT.hpp
 layout: document
 redirect_from:

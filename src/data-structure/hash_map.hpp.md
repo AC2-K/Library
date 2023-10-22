@@ -2,16 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/math/mod_log.hpp
     title: "\u96E2\u6563\u5BFE\u6570"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+    title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+    title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: Hash Map
     links: []
@@ -61,8 +67,10 @@ data:
   requiredBy:
   - src/math/mod_log.hpp
   timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
   - test/yuki/No430.test.cpp
 documentation_of: src/data-structure/hash_map.hpp
 layout: document

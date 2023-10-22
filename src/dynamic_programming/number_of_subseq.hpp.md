@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+    title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "\u90E8\u5206\u5217\u306E\u500B\u6570"
     links:
@@ -41,8 +44,9 @@ data:
   path: src/dynamic_programming/number_of_subseq.hpp
   requiredBy: []
   timestamp: '2023-10-06 00:03:22+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
 documentation_of: src/dynamic_programming/number_of_subseq.hpp
 layout: document
 redirect_from:

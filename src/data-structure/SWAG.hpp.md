@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: Slide Window Aggrigation
     links: []
@@ -50,8 +53,9 @@ data:
   path: src/data-structure/SWAG.hpp
   requiredBy: []
   timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
 documentation_of: src/data-structure/SWAG.hpp
 layout: document
 redirect_from:

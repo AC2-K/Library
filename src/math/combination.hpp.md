@@ -2,13 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: taylor shift
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+    title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+    title: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "\u4E8C\u9805\u4FC2\u6570"
     links: []
@@ -50,8 +56,10 @@ data:
   requiredBy:
   - src/FormalPowerSeries/taylor-shift.hpp
   timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
 documentation_of: src/math/combination.hpp
 layout: document
 redirect_from:

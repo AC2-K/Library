@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+    title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/divisor-multiple-transform.md
     document_title: "Fast M\xF6bius\u30FBZeta Transform"
@@ -52,8 +55,9 @@ data:
   path: src/math/divisor-multiple-transform.hpp
   requiredBy: []
   timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
 documentation_of: src/math/divisor-multiple-transform.hpp
 layout: document
 redirect_from:

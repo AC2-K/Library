@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo_judge/string/Z_algorithm.test.cpp
+    title: test/yosupo_judge/string/Z_algorithm.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: Z algorithm
     links: []
@@ -36,8 +39,9 @@ data:
   path: src/string/Z.hpp
   requiredBy: []
   timestamp: '2023-05-15 08:00:11+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/yosupo_judge/string/Z_algorithm.test.cpp
 documentation_of: src/string/Z.hpp
 layout: document
 redirect_from:

@@ -1,26 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
     links: []
@@ -534,8 +546,12 @@ data:
   path: src/FormalPowerSeries/FPS.hpp
   requiredBy: []
   timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
 documentation_of: src/FormalPowerSeries/FPS.hpp
 layout: document
 redirect_from:

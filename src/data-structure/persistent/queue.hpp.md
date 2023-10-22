@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
+    title: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "\u6C38\u7D9AQueue"
     links: []
@@ -58,8 +61,9 @@ data:
   path: src/data-structure/persistent/queue.hpp
   requiredBy: []
   timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
 documentation_of: src/data-structure/persistent/queue.hpp
 layout: document
 redirect_from:

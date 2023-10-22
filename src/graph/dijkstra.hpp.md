@@ -6,9 +6,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/1_A.test.cpp
     title: test/AOJ/GRL/1_A.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/graph/Shortest_Path.test.cpp
+    title: test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+    title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
     links: []
@@ -81,8 +87,10 @@ data:
   path: src/graph/dijkstra.hpp
   requiredBy: []
   timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/AOJ/GRL/1_A.test.cpp
 documentation_of: src/graph/dijkstra.hpp
 layout: document

@@ -2,29 +2,44 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/FPS.hpp
     title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: taylor shift
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
   - icon: ':warning:'
     path: src/atcoder/math.hpp
     title: src/atcoder/math.hpp
-  - icon: ':warning:'
+  - icon: ':x:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
   - icon: ':warning:'
     path: src/string/wildcard_pattern_matching.hpp
     title: "\u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\u30C3\
       \u30C1\u30F3\u30B0"
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+    title: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links:
     - https://en.wikipedia.org/wiki/Barrett_reduction
@@ -189,8 +204,13 @@ data:
   - src/FormalPowerSeries/taylor-shift.hpp
   - src/string/wildcard_pattern_matching.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
 documentation_of: src/atcoder/internal_math.hpp
 layout: document
 redirect_from:
