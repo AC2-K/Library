@@ -7,56 +7,47 @@
 #include "../math/mod_pow.hpp"
 namespace kyopro {
 
-/**
- * @brief Rolling Hash
- */
 class RollingHash {
-    using ull = uint_fast64_t;
+    using u64 = std::uint64_t;
     using i128 = __int128_t;
     using u128 = __uint128_t;
-    // mod
-    static constexpr ull msk30 = (1ul << 30) - 1;
-    static constexpr ull msk61 = (1ul << 31) - 1;
+
+    static constexpr u64 msk30 = (static_cast<u64>(1) << 30) - 1;
+    static constexpr u64 msk61 = (static_cast<u64>(1) << 31) - 1;
     const std::string str;
-    std::vector<ull> hash, pow;
-
-    static constexpr ull mod = (1uL << 61) - 1;
-    static constexpr ull primitive_root = 37;
-
-public:
+    std::vector<u64> _hash, _pow;
+    
+    static constexpr u64 mod = (static_cast<u64>(1) << 61) - 1;
+    static constexpr u64 primitive_root = 37;
     static constexpr uint mapping_max = (uint)'Z' + 2;
-    static ull base;
-
+    static u64 base;
+    
 private:
-    constexpr ull mul(const u128& a, const u128& b) const {
-        u128 t = a * b;
-
+    constexpr u64 mul(u64 a, u64 b) const {
+        u128 t = (u128)a * b;
         t = (t >> 61) + (t & mod);
-
         if (t >= mod) {
             t -= mod;
         }
-
         return t;
     }
 
-    constexpr ull mapping(char c) const { return (ull)c; }
+    constexpr u64 mapping(char c) const { return (u64)c; }
 
-    static ull generate() {
-        std::mt19937_64 engine(
+    static u64 generate() {
+        static std::mt19937_64 engine(
             std::chrono::steady_clock::now().time_since_epoch().count());
-        std::uniform_int_distribution<ull> rand(1uL, mod - 1);
+        std::uniform_int_distribution<u64> rand(1, mod - 1);
         return rand(engine);
     }
     static void generate_base() {
         if (base != 0) {
             return;
         }
-        ull r = mod - 1;
+        u64 r = mod - 1;
+        
+        while (_gcd(r, mod - 1) != 1 || r <= mapping_max) r = generate();
 
-        while (_gcd(r, mod - 1) != 1 || r <= mapping_max) {
-            r = generate();
-        }
         base = mod_pow(primitive_root, r, mod);
     }
 
@@ -69,24 +60,24 @@ public:
     }
 
     void build() {
-        hash.resize(str.size() + 1);
-        pow.resize(str.size() + 1, 1);
+        _hash.resize(str.size() + 1);
+        _pow.resize(str.size() + 1, 1);
 
         for (int i = 0; i < (int)str.size(); i++) {
-            hash[i + 1] = mul(hash[i], base) + mapping(str[i]);
-            pow[i + 1] = mul(pow[i], base);
-            if (hash[i + 1] >= mod) {
-                hash[i + 1] -= mod;
+            _hash[i + 1] = mul(_hash[i], base) + mapping(str[i]);
+            _pow[i + 1] = mul(_pow[i], base);
+            if (_hash[i + 1] >= mod) {
+                _hash[i + 1] -= mod;
             }
         }
     }
-    ull slice(int l, int r) const {
+    u64 hash(int l, int r) const {
         assert(0 <= l && l <= r && r <= str.size());
 
-        ull res = mod + hash[r] - mul(hash[l], pow[r - l]);
+        u64 res = mod + _hash[r] - mul(_hash[l], _pow[r - l]);
         return res < mod ? res : res - mod;
     }
-    ull get_all() const { return hash.back(); }
+    u64 get_all() const { return _hash.back(); }
     int size() const { return str.size(); }
 
     static int lcp(const RollingHash& a,
@@ -97,8 +88,8 @@ public:
         int ng = std::min(a.size() - start_a, b.size() - start_b) + 1;
         while (ng - ok > 1) {
             int md = (ok + ng) >> 1;
-            if (a.slice(start_a, start_a + md) ==
-                b.slice(start_b, start_b + md)) {
+            if (a.hash(start_a, start_a + md) ==
+                b.hash(start_b, start_b + md)) {
                 ok = md;
             } else {
                 ng = md;
@@ -109,4 +100,9 @@ public:
     }
 };
 }  // namespace kyopro
-typename kyopro::RollingHash::ull kyopro::RollingHash::base;
+typename kyopro::RollingHash::u64 kyopro::RollingHash::base;
+
+
+/**
+ * @brief Rolling Hash
+ */
