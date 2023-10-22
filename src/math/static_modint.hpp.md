@@ -13,8 +13,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    _deprecated_at_docs: docs/math/static_modint.md
-    document_title: "\u9759\u7684modint"
+    document_title: static modint
     links: []
   bundledCode: "#line 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#include\
     \ <cstdint>\n#include <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\n\
@@ -104,8 +103,7 @@ data:
     \    }\n    constexpr friend mint operator/(const mint& l, i64 r) noexcept {\n\
     \        return mint(l) /= mint(r);\n    }\n    constexpr friend mint operator/(i64\
     \ l, const mint& r) noexcept {\n        return mint(l) /= mint(r);\n    }\n};\n\
-    };  // namespace kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
-    \ */\n"
+    };  // namespace kyopro\n\n/**\n * @brief static modint\n */\n"
   code: "#pragma once\n#include <cassert>\n#include <cstdint>\n#include <iostream>\n\
     \n#include \"../internal/type_traits.hpp\"\n#include \"../math/gcd.hpp\"\nnamespace\
     \ kyopro {\ntemplate <int _mod> class modint : internal::modint_base {\n    using\
@@ -153,15 +151,14 @@ data:
     \    }\n    constexpr friend mint operator/(const mint& l, i64 r) noexcept {\n\
     \        return mint(l) /= mint(r);\n    }\n    constexpr friend mint operator/(i64\
     \ l, const mint& r) noexcept {\n        return mint(l) /= mint(r);\n    }\n};\n\
-    };  // namespace kyopro\n\n/**\n * @brief \u9759\u7684modint\n * @docs docs/math/static_modint.md\n\
-    \ */"
+    };  // namespace kyopro\n\n/**\n * @brief static modint\n */"
   dependsOn:
   - src/internal/type_traits.hpp
   - src/math/gcd.hpp
   isVerificationFile: false
   path: src/math/static_modint.hpp
   requiredBy: []
-  timestamp: '2023-10-22 15:25:04+09:00'
+  timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/static_modint.hpp
@@ -169,5 +166,5 @@ layout: document
 redirect_from:
 - /library/src/math/static_modint.hpp
 - /library/src/math/static_modint.hpp.html
-title: "\u9759\u7684modint"
+title: static modint
 ---

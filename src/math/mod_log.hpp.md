@@ -23,35 +23,34 @@ data:
     document_title: "\u96E2\u6563\u5BFE\u6570"
     links: []
   bundledCode: "#line 2 \"src/math/mod_log.hpp\"\n#include <cmath>\n#line 2 \"src/data-structure/hash_map.hpp\"\
-    \n#include <bits/stl_algobase.h>\n#include <chrono>\nnamespace kyopro {\n/**\n\
-    \ * @brief Hash Map\n */\ntemplate <typename Key,\n          typename Val,\n \
-    \         uint32_t n = 1 << 20,\n          Val default_val = Val()>\nclass hash_map\
-    \ {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64* flag = new\
-    \ u64[n];\n    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\n    static\
-    \ constexpr u32 shift = 64 - std::__lg(n);\n\n    u64 r;\n    u32 get_hash(const\
-    \ Key& k) const { return ((u64)k * r) >> shift; }\n\n    static constexpr int\
-    \ mod_msk = (1 << 6) - 1;\n\npublic:\n    explicit constexpr hash_map() {\n  \
-    \      r = std::chrono::steady_clock::now().time_since_epoch().count();\n    \
-    \    r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const Key&\
-    \ k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n            if\
-    \ (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash & mod_msk))))\
-    \ {\n                keys[hash] = k;\n                flag[hash >> 6] |= static_cast<u64>(1)\
-    \ << (hash & mod_msk);\n                return vals[hash] = default_val;\n   \
-    \         }\n\n            if (keys[hash] == k) return vals[hash];\n         \
-    \   hash = (hash + 1) & (n - 1);\n        }\n    }\n\n    Val* find(const Key&\
-    \ k) const {\n        u32 hash = get_hash(k);\n        while (1) {\n         \
-    \   if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))\n    \
-    \            return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
+    \n#include <bits/stl_algobase.h>\n#include <chrono>\nnamespace kyopro {\ntemplate\
+    \ <typename Key,\n          typename Val,\n          uint32_t n = 1 << 20,\n \
+    \         Val default_val = Val()>\nclass hash_map {\n    using u32 = uint32_t;\n\
+    \    using u64 = uint64_t;\n\n    u64* flag = new u64[n];\n    Key* keys = new\
+    \ Key[n];\n    Val* vals = new Val[n];\n\n    static constexpr u32 shift = 64\
+    \ - std::__lg(n);\n\n    u64 r;\n    u32 get_hash(const Key& k) const { return\
+    \ ((u64)k * r) >> shift; }\n\n    static constexpr int mod_msk = (1 << 6) - 1;\n\
+    \npublic:\n    explicit hash_map() {\n        r = std::chrono::steady_clock::now().time_since_epoch().count();\n\
+    \        r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const\
+    \ Key& k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n        \
+    \    if (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash\
+    \ & mod_msk)))) {\n                keys[hash] = k;\n                flag[hash\
+    \ >> 6] |= static_cast<u64>(1) << (hash & mod_msk);\n                return vals[hash]\
+    \ = default_val;\n            }\n\n            if (keys[hash] == k) return vals[hash];\n\
+    \            hash = (hash + 1) & (n - 1);\n        }\n    }\n\n    Val* find(const\
+    \ Key& k) const {\n        u32 hash = get_hash(k);\n        while (1) {\n    \
+    \        if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))\n\
+    \                return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
     \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @docs docs/data-structure/hash_map.md\n */\n#line 2 \"src/math/gcd.hpp\"\
-    \n#include <cassert>\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
-    \ T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n\
-    \    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
-    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+    \ kyopro\n\n/**\n * @brief Hash Map\n */\n#line 2 \"src/math/gcd.hpp\"\n#include\
+    \ <cassert>\n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr\
+    \ inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a\
+    \ == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
+    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
+    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
+    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
     \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
     \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
@@ -92,37 +91,37 @@ data:
     \ 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n     \
     \       ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
     \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
-    \ kyopro\n#line 6 \"src/math/mod_log.hpp\"\nnamespace kyopro {\n\n/**\n * @brief\
-    \ \u96E2\u6563\u5BFE\u6570\n */\ntemplate <typename T> constexpr inline T mod_log(T\
-    \ x, T y, T p) {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if\
-    \ (x == 0) {\n        if (y == 0) {\n            return 1;\n        } else {\n\
-    \            return -1;\n        }\n    }\n    int m = (int)sqrt(p) + 1;\n   \
-    \ hash_map<T, T> mp;\n    T xm = mod_pow<T>(x, m, p);\n    internal::double_size_uint_t<T>\
-    \ add = 0, g, k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n    \
-    \    if (y == k) return add;\n        if (y % g) return -1;\n        y /= g, p\
-    \ /= g, add++;\n        k = (k * (x / g)) % p;\n    }\n\n    T pr = y;\n    for\
-    \ (int j = 0; j <= m; ++j) {\n        mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr\
-    \ * x % p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; ++i) {\n        pr\
-    \ = (internal::double_size_uint_t<T>)pr * xm % p;\n        auto ptr = mp.find(pr);\n\
-    \        if (ptr) {\n            int j = *ptr;\n            return m * i - j +\
-    \ add;\n        }\n    }\n    return -1;\n}\n\n};  // namespace kyopro\n\n/**\n\
-    \ * @docs docs/math/mod_log.md\n */\n"
+    \ kyopro\n#line 6 \"src/math/mod_log.hpp\"\nnamespace kyopro {\n\ntemplate <typename\
+    \ T> constexpr inline T mod_log(T x, T y, T p) {\n    if (y == 1 || p == 1) {\n\
+    \        return 0;\n    }\n    if (x == 0) {\n        if (y == 0) {\n        \
+    \    return 1;\n        } else {\n            return -1;\n        }\n    }\n \
+    \   int m = (int)sqrt(p) + 1;\n    hash_map<T, T> mp;\n    T xm = mod_pow<T>(x,\
+    \ m, p);\n    internal::double_size_uint_t<T> add = 0, g, k = (p == 1 ? 0 : 1);\n\
+    \    while ((g = _gcd(x, p)) > 1) {\n        if (y == k) return add;\n       \
+    \ if (y % g) return -1;\n        y /= g, p /= g, add++;\n        k = (k * (x /\
+    \ g)) % p;\n    }\n\n    T pr = y;\n    for (int j = 0; j <= m; ++j) {\n     \
+    \   mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr * x % p;\n \
+    \   }\n    pr = k;\n    for (int i = 1; i <= m; ++i) {\n        pr = (internal::double_size_uint_t<T>)pr\
+    \ * xm % p;\n        auto ptr = mp.find(pr);\n        if (ptr) {\n           \
+    \ int j = *ptr;\n            return m * i - j + add;\n        }\n    }\n    return\
+    \ -1;\n}\n\n};  // namespace kyopro\n\n/**\n * @brief \u96E2\u6563\u5BFE\u6570\
+    \n * @docs docs/math/mod_log.md\n */\n"
   code: "#pragma once\n#include <cmath>\n#include \"../data-structure/hash_map.hpp\"\
     \n#include \"../math/gcd.hpp\"\n#include \"../math/mod_pow.hpp\"\nnamespace kyopro\
-    \ {\n\n/**\n * @brief \u96E2\u6563\u5BFE\u6570\n */\ntemplate <typename T> constexpr\
-    \ inline T mod_log(T x, T y, T p) {\n    if (y == 1 || p == 1) {\n        return\
-    \ 0;\n    }\n    if (x == 0) {\n        if (y == 0) {\n            return 1;\n\
-    \        } else {\n            return -1;\n        }\n    }\n    int m = (int)sqrt(p)\
-    \ + 1;\n    hash_map<T, T> mp;\n    T xm = mod_pow<T>(x, m, p);\n    internal::double_size_uint_t<T>\
-    \ add = 0, g, k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n    \
-    \    if (y == k) return add;\n        if (y % g) return -1;\n        y /= g, p\
-    \ /= g, add++;\n        k = (k * (x / g)) % p;\n    }\n\n    T pr = y;\n    for\
-    \ (int j = 0; j <= m; ++j) {\n        mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr\
+    \ {\n\ntemplate <typename T> constexpr inline T mod_log(T x, T y, T p) {\n   \
+    \ if (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n     \
+    \   if (y == 0) {\n            return 1;\n        } else {\n            return\
+    \ -1;\n        }\n    }\n    int m = (int)sqrt(p) + 1;\n    hash_map<T, T> mp;\n\
+    \    T xm = mod_pow<T>(x, m, p);\n    internal::double_size_uint_t<T> add = 0,\
+    \ g, k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n        if (y\
+    \ == k) return add;\n        if (y % g) return -1;\n        y /= g, p /= g, add++;\n\
+    \        k = (k * (x / g)) % p;\n    }\n\n    T pr = y;\n    for (int j = 0; j\
+    \ <= m; ++j) {\n        mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr\
     \ * x % p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; ++i) {\n        pr\
     \ = (internal::double_size_uint_t<T>)pr * xm % p;\n        auto ptr = mp.find(pr);\n\
     \        if (ptr) {\n            int j = *ptr;\n            return m * i - j +\
     \ add;\n        }\n    }\n    return -1;\n}\n\n};  // namespace kyopro\n\n/**\n\
-    \ * @docs docs/math/mod_log.md\n */"
+    \ * @brief \u96E2\u6563\u5BFE\u6570\n * @docs docs/math/mod_log.md\n */"
   dependsOn:
   - src/data-structure/hash_map.hpp
   - src/math/gcd.hpp
@@ -131,7 +130,7 @@ data:
   isVerificationFile: false
   path: src/math/mod_log.hpp
   requiredBy: []
-  timestamp: '2023-10-22 15:25:04+09:00'
+  timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/mod_log.hpp

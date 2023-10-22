@@ -7,10 +7,10 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
-    title: "\u52D5\u7684modint"
+    title: dynamic modint
   - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
-    title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
+    title: "MillerRabin\u7D20\u6570\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
@@ -19,7 +19,7 @@ data:
     title: "\u539F\u59CB\u6839"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
-    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp

@@ -7,10 +7,10 @@ data:
     title: Montgomery Reduction
   - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
-    title: "\u52D5\u7684modint"
+    title: dynamic modint
   - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
-    title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
+    title: "MillerRabin\u7D20\u6570\u5224\u5B9A"
   - icon: ':warning:'
     path: src/math/mod_log.hpp
     title: "\u96E2\u6563\u5BFE\u6570"
@@ -25,10 +25,10 @@ data:
     title: "\u539F\u59CB\u6839"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
-    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
   - icon: ':warning:'
     path: src/math/static_modint.hpp
-    title: "\u9759\u7684modint"
+    title: static modint
   - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "\u9AD8\u901F\u5165\u51FA\u529B"

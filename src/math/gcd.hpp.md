@@ -13,10 +13,10 @@ data:
     title: "\u539F\u59CB\u6839"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
-    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
   - icon: ':warning:'
     path: src/math/static_modint.hpp
-    title: "\u9759\u7684modint"
+    title: static modint
   - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash

@@ -401,34 +401,33 @@ data:
     \ static constexpr unsigned long long offset[5] = {\n            0, 0, M1M2M3,\
     \ 2 * M1M2M3, 3 * M1M2M3};\n        x -= offset[diff % 5];\n        c[i] = x;\n\
     \    }\n\n    return c;\n}\n\n}  // namespace atcoder\n\n\n#line 4 \"src/math/combination.hpp\"\
-    \nusing namespace std;\nnamespace kyopro {\n\n/**\n * @brief \u4E8C\u9805\u4FC2\
-    \u6570\n */\ntemplate <typename mint, int sz> class combination {\n    const int\
-    \ M;\n    mint fac[sz + 1], ifac[sz + 1];\n\npublic:\n    explicit combination()\
-    \ : M(std::min<int>(mint::mod(), sz)) {\n        assert(mint::mod());\n      \
-    \  fac[0] = mint(1), ifac[0] = mint(1), fac[1] = mint(1),\n        ifac[1] = mint(1);\n\
-    \n        for (int i = 2; i <= M; ++i) {\n            fac[i] = fac[i - 1] * i;\n\
-    \        }\n\n        ifac[M - 1] = mint(1) / fac[M - 1];\n        for (int i\
-    \ = M - 2; i > 1; --i) {\n            ifac[i] = ifac[i + 1] * (i + 1);\n     \
-    \   }\n    }\n\n    constexpr mint fact(int n) const {\n        assert(0 <= n\
-    \ && n <= sz);\n        return fac[n];\n    }\n    constexpr mint ifact(int n)\
-    \ const {\n        assert(0 <= n && n <= sz);\n        return ifac[n];\n    }\n\
-    \n    constexpr mint binom(int n, int r) const {\n        assert(n >= r);\n  \
-    \      return fact(n) * ifact(r) * ifact(n - r);\n    }\n    constexpr mint perm(int\
-    \ n, int r) const {\n        assert(n >= r);\n        return fact(n) * ifact(n\
-    \ - r);\n    }\n};\n\n};  // namespace kyopro\n\n\n/**\n * @docs docs/math/combination.md\n\
-    */\n#line 4 \"src/FormalPowerSeries/taylor-shift.hpp\"\n\nnamespace kyopro {\n\
-    \n/**\n * @brief taylor shift\n * @tparam mint \u4FC2\u6570\u306E\u578B\n * @tparam\
-    \ deg_f f\u306E\u6B21\u6570\u306E\u6700\u5927\u5024\n * @param table \u5185\u90E8\
-    \u3067\u4F7F\u3046\u4E8C\u9805\u4FC2\u6570\u306E\u30C6\u30FC\u30D6\u30EB.(\u7701\
-    \u7565\u53EF\u80FD)\n */\n\ntemplate <typename mint, int deg_f>\nstd::vector<mint>\
-    \ taylor_shift(\n    const std::vector<mint>& f,\n    const mint& c,\n    const\
-    \ combination<mint, deg_f>& table = combination<mint, deg_f>()) {\n    const int\
-    \ n = f.size();\n    std::vector<mint> a(f.size()), b(f.size());\n    for (int\
-    \ i = 0; i < n; ++i) {\n        a[i] = f[i] * table.fact(i);\n        b[i] = c.pow(i)\
-    \ * table.ifact(i);\n    }\n    std::reverse(b.begin(), b.end());\n\n    std::vector\
-    \ res = atcoder::convolution(a, b);\n    for (int i = 0; i < n; ++i) {\n     \
-    \   res[i] = res[i + n - 1] * table.ifact(i);\n    }\n    res.resize(f.size());\n\
-    \    return res;\n}\n};  // namespace kyopro\n"
+    \nusing namespace std;\nnamespace kyopro {\n\ntemplate <typename mint, int sz>\
+    \ class combination {\n    const int M;\n    mint fac[sz + 1], ifac[sz + 1];\n\
+    \npublic:\n    combination() : M(std::min<int>(mint::mod(), sz)) {\n        assert(mint::mod());\n\
+    \        fac[0] = mint(1), ifac[0] = mint(1), fac[1] = mint(1),\n        ifac[1]\
+    \ = mint(1);\n\n        for (int i = 2; i <= M; ++i) {\n            fac[i] = fac[i\
+    \ - 1] * i;\n        }\n\n        ifac[M - 1] = mint(1) / fac[M - 1];\n      \
+    \  for (int i = M - 2; i > 1; --i) {\n            ifac[i] = ifac[i + 1] * (i +\
+    \ 1);\n        }\n    }\n\n    constexpr mint fact(int n) const {\n        assert(0\
+    \ <= n && n <= sz);\n        return fac[n];\n    }\n    constexpr mint ifact(int\
+    \ n) const {\n        assert(0 <= n && n <= sz);\n        return ifac[n];\n  \
+    \  }\n\n    constexpr mint binom(int n, int r) const {\n        assert(n >= r);\n\
+    \        return fact(n) * ifact(r) * ifact(n - r);\n    }\n    constexpr mint\
+    \ perm(int n, int r) const {\n        assert(n >= r);\n        return fact(n)\
+    \ * ifact(n - r);\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief \u4E8C\
+    \u9805\u4FC2\u6570\n */\n#line 4 \"src/FormalPowerSeries/taylor-shift.hpp\"\n\n\
+    namespace kyopro {\n\n/**\n * @brief taylor shift\n * @tparam mint \u4FC2\u6570\
+    \u306E\u578B\n * @tparam deg_f f\u306E\u6B21\u6570\u306E\u6700\u5927\u5024\n *\
+    \ @param table \u5185\u90E8\u3067\u4F7F\u3046\u4E8C\u9805\u4FC2\u6570\u306E\u30C6\
+    \u30FC\u30D6\u30EB.(\u7701\u7565\u53EF\u80FD)\n */\n\ntemplate <typename mint,\
+    \ int deg_f>\nstd::vector<mint> taylor_shift(\n    const std::vector<mint>& f,\n\
+    \    const mint& c,\n    const combination<mint, deg_f>& table = combination<mint,\
+    \ deg_f>()) {\n    const int n = f.size();\n    std::vector<mint> a(f.size()),\
+    \ b(f.size());\n    for (int i = 0; i < n; ++i) {\n        a[i] = f[i] * table.fact(i);\n\
+    \        b[i] = c.pow(i) * table.ifact(i);\n    }\n    std::reverse(b.begin(),\
+    \ b.end());\n\n    std::vector res = atcoder::convolution(a, b);\n    for (int\
+    \ i = 0; i < n; ++i) {\n        res[i] = res[i + n - 1] * table.ifact(i);\n  \
+    \  }\n    res.resize(f.size());\n    return res;\n}\n};  // namespace kyopro\n"
   code: "#pragma once\n#include \"../../src/atcoder/convolution.hpp\"\n#include \"\
     ../../src/math/combination.hpp\"\n\nnamespace kyopro {\n\n/**\n * @brief taylor\
     \ shift\n * @tparam mint \u4FC2\u6570\u306E\u578B\n * @tparam deg_f f\u306E\u6B21\
@@ -452,7 +451,7 @@ data:
   isVerificationFile: false
   path: src/FormalPowerSeries/taylor-shift.hpp
   requiredBy: []
-  timestamp: '2023-09-10 14:54:57+09:00'
+  timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/FormalPowerSeries/taylor-shift.hpp

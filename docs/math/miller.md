@@ -1,5 +1,5 @@
 ## 概要
-MillerRabin素数判定法を実装したものです.
+MillerRabin素数判定を実装したものです.
 
 ## is_prime
 

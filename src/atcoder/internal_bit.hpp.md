@@ -19,7 +19,8 @@ data:
     title: src/atcoder/segtree.hpp
   - icon: ':warning:'
     path: src/string/wildcard_pattern_matching.hpp
-    title: WildCard Pattern Matching
+    title: "\u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\u30C3\
+      \u30C1\u30F3\u30B0"
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp

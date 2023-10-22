@@ -28,8 +28,8 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    _deprecated_at_docs: docs/string/wildcard_pattern_matching.md
-    document_title: WildCard Pattern Matching
+    document_title: "\u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\
+      \u30C3\u30C1\u30F3\u30B0"
     links: []
   bundledCode: "#line 1 \"src/atcoder/convolution.hpp\"\n\n\n\n#include <algorithm>\n\
     #include <array>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\
@@ -436,8 +436,8 @@ data:
     \ i < (int)ans.size(); ++i) {\n        ans[i] = (conv1[i + t.size() - 1] + conv2[i\
     \ + t.size() - 1] -\n                      2 * conv3[i + t.size() - 1] ==\n  \
     \                mint(0));\n    }\n    return ans;\n}\n\n};  // namespace kyopro\n\
-    \n/**\n * @brief WildCard Pattern Matching\n * @docs docs/string/wildcard_pattern_matching.md\n\
-    \ */\n"
+    \n/**\n * @brief \u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\
+    \u30C3\u30C1\u30F3\u30B0\n */\n"
   code: "#pragma once\n#include \"../atcoder/convolution\"\n#include \"../atcoder/modint\"\
     \n#include <string>\n#include <vector>\n#include<algorithm>\n#include \"../random/xor_shift.hpp\"\
     \n\nnamespace kyopro {\ntemplate <int m = 998244353>\nstd::vector<bool> wildcard_pattern_matching(const\
@@ -460,8 +460,8 @@ data:
     \ i < (int)ans.size(); ++i) {\n        ans[i] = (conv1[i + t.size() - 1] + conv2[i\
     \ + t.size() - 1] -\n                      2 * conv3[i + t.size() - 1] ==\n  \
     \                mint(0));\n    }\n    return ans;\n}\n\n};  // namespace kyopro\n\
-    \n/**\n * @brief WildCard Pattern Matching\n * @docs docs/string/wildcard_pattern_matching.md\n\
-    \ */\n"
+    \n/**\n * @brief \u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\
+    \u30C3\u30C1\u30F3\u30B0\n */\n"
   dependsOn:
   - src/atcoder/convolution.hpp
   - src/atcoder/internal_bit.hpp
@@ -473,7 +473,7 @@ data:
   isVerificationFile: false
   path: src/string/wildcard_pattern_matching.hpp
   requiredBy: []
-  timestamp: '2023-09-27 09:58:47+09:00'
+  timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/wildcard_pattern_matching.hpp
@@ -481,5 +481,6 @@ layout: document
 redirect_from:
 - /library/src/string/wildcard_pattern_matching.hpp
 - /library/src/string/wildcard_pattern_matching.hpp.html
-title: WildCard Pattern Matching
+title: "\u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\u30C3\u30C1\
+  \u30F3\u30B0"
 ---

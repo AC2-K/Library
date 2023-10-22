@@ -399,16 +399,15 @@ data:
     \ static constexpr unsigned long long offset[5] = {\n            0, 0, M1M2M3,\
     \ 2 * M1M2M3, 3 * M1M2M3};\n        x -= offset[diff % 5];\n        c[i] = x;\n\
     \    }\n\n    return c;\n}\n\n}  // namespace atcoder\n\n\n#line 4 \"src/FormalPowerSeries/FPS.hpp\"\
-    \nnamespace kyopro{\n\n\n/**\n * @brief \u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570\
-    \n * @note mint\u306FACL\u306E\u65B9\u3067\u6E21\u3059\u3053\u3068\n*/\ntemplate\
-    \ <typename mint, atcoder::internal::is_modint_t<mint>* = nullptr>\nstruct FormalPowerSeries\
-    \ : public std::vector<mint> {\n    using std::vector<mint>::vector;\n    using\
-    \ FPS = FormalPowerSeries<mint>;\n\n    void expand(size_t sz) {\n        if (this->size()\
-    \ < sz) this->resize(sz);\n    }\n\n    void shrink() {\n        while (!(*this).empty()\
-    \ && (*this).back().val() == 0) (*this).pop_back();\n    }\n\n    FPS pref(size_t\
-    \ sz) const {\n        FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));\n\
-    \        g.expand(sz);\n        return g;\n    }\n\n    FPS& operator+=(const\
-    \ FPS& rhs) {\n        expand(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
+    \nnamespace kyopro{\n\ntemplate <typename mint, atcoder::internal::is_modint_t<mint>*\
+    \ = nullptr>\nstruct FormalPowerSeries : public std::vector<mint> {\n    using\
+    \ std::vector<mint>::vector;\n    using FPS = FormalPowerSeries<mint>;\n\n   \
+    \ void expand(size_t sz) {\n        if (this->size() < sz) this->resize(sz);\n\
+    \    }\n\n    void shrink() {\n        while (!(*this).empty() && (*this).back().val()\
+    \ == 0) (*this).pop_back();\n    }\n\n    FPS pref(size_t sz) const {\n      \
+    \  FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));\n   \
+    \     g.expand(sz);\n        return g;\n    }\n\n    FPS& operator+=(const FPS&\
+    \ rhs) {\n        expand(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
     \ ++i) (*this)[i] += rhs[i];\n        return (*this);\n    }\n    \n    FPS& operator-=(const\
     \ FPS& rhs) {\n        expand(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
     \ ++i) (*this)[i] -= rhs[i];\n        return (*this);\n    }\n    FPS& operator*=(const\
@@ -460,18 +459,18 @@ data:
     \           return FPS(sz);\n        }\n\n        mint vp = (*this)[p];\n    \
     \    FPS f = (*this >> p);\n        f /= vp;\n        f = (f.log(sz) * e).exp(sz);\n\
     \        f *= vp.pow(e);\n        f = (f << (p * e)).pref(sz);\n        f.expand(sz);\n\
-    \        return f;\n    }\n};\n\n};  // namespace kyopro\n"
+    \        return f;\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief \u5F62\
+    \u5F0F\u7684\u3079\u304D\u7D1A\u6570\n*/\n"
   code: "#pragma once\n#include <vector>\n#include \"../../src/atcoder/convolution.hpp\"\
-    \nnamespace kyopro{\n\n\n/**\n * @brief \u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570\
-    \n * @note mint\u306FACL\u306E\u65B9\u3067\u6E21\u3059\u3053\u3068\n*/\ntemplate\
-    \ <typename mint, atcoder::internal::is_modint_t<mint>* = nullptr>\nstruct FormalPowerSeries\
-    \ : public std::vector<mint> {\n    using std::vector<mint>::vector;\n    using\
-    \ FPS = FormalPowerSeries<mint>;\n\n    void expand(size_t sz) {\n        if (this->size()\
-    \ < sz) this->resize(sz);\n    }\n\n    void shrink() {\n        while (!(*this).empty()\
-    \ && (*this).back().val() == 0) (*this).pop_back();\n    }\n\n    FPS pref(size_t\
-    \ sz) const {\n        FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));\n\
-    \        g.expand(sz);\n        return g;\n    }\n\n    FPS& operator+=(const\
-    \ FPS& rhs) {\n        expand(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
+    \nnamespace kyopro{\n\ntemplate <typename mint, atcoder::internal::is_modint_t<mint>*\
+    \ = nullptr>\nstruct FormalPowerSeries : public std::vector<mint> {\n    using\
+    \ std::vector<mint>::vector;\n    using FPS = FormalPowerSeries<mint>;\n\n   \
+    \ void expand(size_t sz) {\n        if (this->size() < sz) this->resize(sz);\n\
+    \    }\n\n    void shrink() {\n        while (!(*this).empty() && (*this).back().val()\
+    \ == 0) (*this).pop_back();\n    }\n\n    FPS pref(size_t sz) const {\n      \
+    \  FPS g((*this).begin(), (*this).begin() + std::min(sz, this->size()));\n   \
+    \     g.expand(sz);\n        return g;\n    }\n\n    FPS& operator+=(const FPS&\
+    \ rhs) {\n        expand(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
     \ ++i) (*this)[i] += rhs[i];\n        return (*this);\n    }\n    \n    FPS& operator-=(const\
     \ FPS& rhs) {\n        expand(rhs.size());\n        for (int i = 0; i < (int)rhs.size();\
     \ ++i) (*this)[i] -= rhs[i];\n        return (*this);\n    }\n    FPS& operator*=(const\
@@ -523,7 +522,8 @@ data:
     \           return FPS(sz);\n        }\n\n        mint vp = (*this)[p];\n    \
     \    FPS f = (*this >> p);\n        f /= vp;\n        f = (f.log(sz) * e).exp(sz);\n\
     \        f *= vp.pow(e);\n        f = (f << (p * e)).pref(sz);\n        f.expand(sz);\n\
-    \        return f;\n    }\n};\n\n};  // namespace kyopro"
+    \        return f;\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief \u5F62\
+    \u5F0F\u7684\u3079\u304D\u7D1A\u6570\n*/"
   dependsOn:
   - src/atcoder/convolution.hpp
   - src/atcoder/internal_bit.hpp
@@ -533,7 +533,7 @@ data:
   isVerificationFile: false
   path: src/FormalPowerSeries/FPS.hpp
   requiredBy: []
-  timestamp: '2023-09-11 12:11:35+09:00'
+  timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/FormalPowerSeries/FPS.hpp

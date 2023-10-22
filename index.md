@@ -91,10 +91,10 @@ data:
       title: Slide Window Aggrigation
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dsu.hpp
-      title: Disjoint Set(Union Find)
+      title: Disjoint Set Union
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dual_segtree.hpp
-      title: "\u53CC\u5BFE\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
+      title: Dual Segment Tree
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dynamic_segtree.hpp
       title: "\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
@@ -103,10 +103,10 @@ data:
       title: Hash Map
     - icon: ':heavy_check_mark:'
       path: src/data-structure/lazy_segtree.hpp
-      title: LazySegmentTree
+      title: Lazy Segment Tree
     - icon: ':heavy_check_mark:'
       path: src/data-structure/segtree.hpp
-      title: SegmentTree
+      title: Segment Tree
     - icon: ':heavy_check_mark:'
       path: src/data-structure/sparse_table.hpp
       title: SparseTable
@@ -137,10 +137,10 @@ data:
     pages:
     - icon: ':warning:'
       path: src/data-structure/persistent/queue.hpp
-      title: persistent queue
+      title: "\u6C38\u7D9AQueue"
     - icon: ':warning:'
       path: src/data-structure/persistent/stack.hpp
-      title: persistent stack
+      title: "\u6C38\u7D9AStack"
   - name: src
     pages:
     - icon: ':warning:'
@@ -162,12 +162,12 @@ data:
     - icon: ':warning:'
       path: src/graph/Namori.hpp
       title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
-    - icon: ':warning:'
-      path: src/graph/TopologialSort.hpp
-      title: Topologial Sort
     - icon: ':heavy_check_mark:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
+    - icon: ':warning:'
+      path: src/graph/topological_sort.hpp
+      title: Topologial Sort
   - name: src/graph/flow
     pages:
     - icon: ':warning:'
@@ -197,7 +197,7 @@ data:
       title: "Fast M\xF6bius\u30FBZeta Transform"
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
-      title: "\u52D5\u7684modint"
+      title: dynamic modint
     - icon: ':warning:'
       path: src/math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
@@ -209,7 +209,7 @@ data:
       title: "\u884C\u5217"
     - icon: ':heavy_check_mark:'
       path: src/math/miller.hpp
-      title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
+      title: "MillerRabin\u7D20\u6570\u5224\u5B9A"
     - icon: ':warning:'
       path: src/math/mod_log.hpp
       title: "\u96E2\u6563\u5BFE\u6570"
@@ -224,10 +224,10 @@ data:
       title: "\u539F\u59CB\u6839"
     - icon: ':heavy_check_mark:'
       path: src/math/rho.hpp
-      title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+      title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
     - icon: ':warning:'
       path: src/math/static_modint.hpp
-      title: "\u9759\u7684modint"
+      title: static modint
   - name: src/random
     pages:
     - icon: ':heavy_check_mark:'
@@ -246,7 +246,8 @@ data:
       title: Rolling Hash
     - icon: ':warning:'
       path: src/string/wildcard_pattern_matching.hpp
-      title: WildCard Pattern Matching
+      title: "\u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\u30C3\
+        \u30C1\u30F3\u30B0"
   - name: src/tree
     pages:
     - icon: ':heavy_check_mark:'
@@ -254,7 +255,7 @@ data:
       title: Euler Tour
     - icon: ':warning:'
       path: src/tree/doubling.hpp
-      title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
+      title: "\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   verificationCategories:
   - name: test/AOJ/DSL
     pages:

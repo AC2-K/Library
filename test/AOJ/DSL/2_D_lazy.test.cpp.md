@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/lazy_segtree.hpp
-    title: LazySegmentTree
+    title: Lazy Segment Tree
   - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
@@ -23,29 +23,29 @@ data:
   bundledCode: "#line 1 \"test/AOJ/DSL/2_D_lazy.test.cpp\"\n#define PROBLEM \\\n \
     \   \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D\"\n\n#line\
     \ 2 \"src/data-structure/lazy_segtree.hpp\"\n#include <cassert>\n#include <vector>\n\
-    namespace kyopro {\n/**\n * @brief LazySegmentTree\n */\ntemplate <class S,\n\
-    \          class F,\n          auto op,\n          auto e,\n          auto composition,\n\
-    \          auto id,\n          auto mapping>\nclass lazy_segtree {\n    int lg,\
-    \ sz, n;\n    std::vector<S> dat;\n    std::vector<F> lazy;\n\npublic:\n    lazy_segtree()\
-    \ {}\n    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e())) {}\n    lazy_segtree(const\
-    \ std::vector<S>& a) : n((int)a.size()) {\n        sz = 1, lg = 0;\n        while\
-    \ (sz <= n) {\n            sz <<= 1;\n            lg++;\n        }\n\n       \
-    \ dat = std::vector<S>(sz << 1, e());\n        lazy = std::vector<F>(sz, id());\n\
-    \        for (int i = 0; i < n; ++i) {\n            set(i, a[i]);\n        }\n\
-    \        build();\n    }\n\npublic:\n    void set(int i, const S& v) {\n     \
-    \   assert(0 <= i && i < sz);\n        dat[i + sz] = v;\n    }\n    void build()\
-    \ {\n        for (int i = sz - 1; i > 0; --i) {\n            push_up(i);\n   \
-    \     }\n    }\n\nprivate:\n    void all_apply(int p, const F& f) {\n        dat[p]\
-    \ = mapping(dat[p], f);\n        if (p < sz) lazy[p] = composition(lazy[p], f);\n\
-    \    }\n    void push_up(int k) { dat[k] = op(dat[k << 1 | 0], dat[k << 1 | 1]);\
-    \ }\n    void push_down(int p) {\n        if (lazy[p] == id()) {\n           \
-    \ return;\n        }\n        all_apply(p << 1 | 0, lazy[p]);\n        all_apply(p\
-    \ << 1 | 1, lazy[p]);\n        lazy[p] = id();\n    }\n\npublic:\n    S operator[](int\
-    \ p) {\n        assert(0 <= p && p < n);\n        p += sz;\n        for (int i\
-    \ = lg; i > 0; --i) push_down(p >> i);\n        return dat[p];\n    }\n    S fold(int\
-    \ l, int r) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r)\
-    \ return e();\n\n        l += sz, r += sz;\n        for (int i = lg; i > 0; --i)\
-    \ {\n            if (((l >> i) << i) != l) {\n                push_down(l >> i);\n\
+    namespace kyopro {\n\ntemplate <class S,\n          class F,\n          auto op,\n\
+    \          auto e,\n          auto composition,\n          auto id,\n        \
+    \  auto mapping>\nclass lazy_segtree {\n    int lg, sz, n;\n    std::vector<S>\
+    \ dat;\n    std::vector<F> lazy;\n\npublic:\n    lazy_segtree() {}\n    lazy_segtree(int\
+    \ n) : lazy_segtree(std::vector<S>(n, e())) {}\n    lazy_segtree(const std::vector<S>&\
+    \ a) : n((int)a.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n) {\n\
+    \            sz <<= 1;\n            lg++;\n        }\n\n        dat = std::vector<S>(sz\
+    \ << 1, e());\n        lazy = std::vector<F>(sz, id());\n        for (int i =\
+    \ 0; i < n; ++i) {\n            set(i, a[i]);\n        }\n        build();\n \
+    \   }\n\npublic:\n    void set(int i, const S& v) {\n        assert(0 <= i &&\
+    \ i < sz);\n        dat[i + sz] = v;\n    }\n    void build() {\n        for (int\
+    \ i = sz - 1; i > 0; --i) {\n            push_up(i);\n        }\n    }\n\nprivate:\n\
+    \    void all_apply(int p, const F& f) {\n        dat[p] = mapping(dat[p], f);\n\
+    \        if (p < sz) lazy[p] = composition(lazy[p], f);\n    }\n    void push_up(int\
+    \ k) { dat[k] = op(dat[k << 1 | 0], dat[k << 1 | 1]); }\n    void push_down(int\
+    \ p) {\n        if (lazy[p] == id()) {\n            return;\n        }\n     \
+    \   all_apply(p << 1 | 0, lazy[p]);\n        all_apply(p << 1 | 1, lazy[p]);\n\
+    \        lazy[p] = id();\n    }\n\npublic:\n    S operator[](int p) {\n      \
+    \  assert(0 <= p && p < n);\n        p += sz;\n        for (int i = lg; i > 0;\
+    \ --i) push_down(p >> i);\n        return dat[p];\n    }\n    S fold(int l, int\
+    \ r) {\n        assert(0 <= l && l <= r && r <= n);\n        if (l == r) return\
+    \ e();\n\n        l += sz, r += sz;\n        for (int i = lg; i > 0; --i) {\n\
+    \            if (((l >> i) << i) != l) {\n                push_down(l >> i);\n\
     \            }\n            if (((r >> i) << i) != r) {\n                push_down((r\
     \ - 1) >> i);\n            }\n        }\n\n        S sml = e(), smr = e();\n \
     \       while (l < r) {\n            if (l & 1) sml = op(sml, dat[l++]);\n   \
@@ -61,11 +61,11 @@ data:
     \                r >>= 1;\n            }\n            l = l2;\n            r =\
     \ r2;\n        }\n\n        for (int i = 1; i <= lg; ++i) {\n            if (((l\
     \ >> i) << i) != l) push_up(l >> i);\n            if (((r >> i) << i) != r) push_up((r\
-    \ - 1) >> i);\n        }\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs\
-    \ docs/data-structure/lazy_segtree.md\n */\n#line 2 \"src/stream.hpp\"\n#include\
-    \ <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
-    \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
-    #include <cstdint>\n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename...\
+    \ - 1) >> i);\n        }\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief\
+    \ Lazy Segment Tree\n */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include\
+    \ <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\n#include\
+    \ <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n#include\
+    \ <cstdint>\n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename...\
     \ Args> struct first_enabled {};\n\ntemplate <typename T, typename... Args>\n\
     struct first_enabled<std::enable_if<true, T>, Args...> {\n    using type = T;\n\
     };\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
@@ -151,7 +151,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_D_lazy.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 16:03:57+09:00'
+  timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_D_lazy.test.cpp

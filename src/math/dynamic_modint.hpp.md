@@ -13,7 +13,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
-    title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
+    title: "MillerRabin\u7D20\u6570\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
@@ -22,7 +22,7 @@ data:
     title: "\u539F\u59CB\u6839"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
-    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
@@ -34,21 +34,20 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/math/dynamic_modint.md
-    document_title: "\u52D5\u7684modint"
+    document_title: dynamic modint
     links: []
   bundledCode: "#line 2 \"src/math/dynamic_modint.hpp\"\n#include <cassert>\n#include\
     \ <iostream>\n#line 2 \"src/internal/barrett.hpp\"\n#include <cstdint>\nnamespace\
     \ kyopro {\nnamespace internal {\n\n/**\n * @brief Barrett Reduction\n */\nclass\
-    \ barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n    using u128\
-    \ = __uint128_t;\n\n    u32 m;\n    u64 im;\n\npublic:\n    constexpr explicit\
-    \ barrett() : m(0), im(0) {}\n    constexpr explicit barrett(u32 m)\n        :\
-    \ m(m), im(static_cast<u64>(-1) / m + 1) {}\n\n    constexpr u32 get_mod() const\
-    \ { return m; }\n    constexpr u32 reduce(u32 a) const { return mul(1, a); }\n\
-    \    constexpr u32 mul(u32 a, u32 b) const {\n        u64 z = (u64)a * b;\n  \
-    \      u64 x = (u64)(((u128)(z)*im) >> 64);\n        u64 y = x * m;\n        return\
-    \ (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace internal\n};  //\
-    \ namespace kyopro\n\n/**\n * @ref\n * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    \ barrett {\n    using u32 = std::uint32_t;\n    using u64 = std::uint64_t;\n\
+    \    using u128 = __uint128_t;\n\n    u32 m;\n    u64 im;\n\npublic:\n    constexpr\
+    \ barrett() : m(0), im(0) {}\n    constexpr barrett(u32 m)\n        : m(m), im(static_cast<u64>(-1)\
+    \ / m + 1) {}\n\n    constexpr u32 get_mod() const { return m; }\n    constexpr\
+    \ u32 reduce(u32 a) const { return mul(1, a); }\n    constexpr u32 mul(u32 a,\
+    \ u32 b) const {\n        u64 z = (u64)a * b;\n        u64 x = (u64)(((u128)(z)*im)\
+    \ >> 64);\n        u64 y = x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n\
+    \    }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @ref\n\
+    \ * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
     \ */\n#line 3 \"src/internal/montgomery.hpp\"\n#include <limits>\n#include <numeric>\n\
     #line 5 \"src/internal/type_traits.hpp\"\n#include <typeinfo>\n#line 7 \"src/internal/type_traits.hpp\"\
     \n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
@@ -97,95 +96,12 @@ data:
     \ mul(T x, T y) { return reduce((LargeT)x * y); }\n};\n};  // namespace internal\n\
     };  // namespace kyopro\n#line 6 \"src/math/dynamic_modint.hpp\"\nnamespace kyopro\
     \ {\ntemplate <int id = -1> class barrett_modint : internal::modint_base {\n \
-    \   using mint = barrett_modint<id>;\n    using u32 = uint32_t;\n    using u64\
-    \ = uint64_t;\n\n    using i32 = int32_t;\n    using i64 = int64_t;\n    using\
-    \ br = internal::barrett;\n\n    static br brt;\n    u32 v;\n\npublic:\n    static\
-    \ void set_mod(u32 mod_) { brt = br(mod_); }\n\npublic:\n    explicit constexpr\
-    \ barrett_modint() noexcept : v(0) { assert(mod()); }\n    explicit constexpr\
-    \ barrett_modint(i64 v_) noexcept : v() {\n        assert(mod());\n        if\
-    \ (v_ < 0) v_ = (i64)mod() - v_;\n        v = brt.reduce(v_);\n    }\n\n    u32\
-    \ val() const noexcept { return v; }\n    static u32 mod() { return brt.get_mod();\
-    \ }\n    static mint raw(u32 v) {\n        mint x;\n        x.v = v;\n       \
-    \ return x;\n    }\n\n    constexpr mint& operator++() noexcept {\n        ++v;\n\
-    \        if (v == mod()) v = 0;\n        return (*this);\n    }\n    constexpr\
-    \ mint& operator--() noexcept {\n        if (v == 0) v = mod();\n        --v;\n\
-    \        return (*this);\n    }\n    constexpr mint operator++(int) noexcept {\n\
-    \        mint res(*this);\n        ++(*this);\n        return res;\n    }\n  \
-    \  constexpr mint operator--(int) noexcept {\n        mint res(*this);\n     \
-    \   --(*this);\n        return res;\n    }\n\n    constexpr mint& operator+=(const\
-    \ mint& r) noexcept {\n        v += r.v;\n        if (v >= mod()) v -= mod();\n\
-    \        return (*this);\n    }\n    constexpr mint& operator-=(const mint& r)\
-    \ noexcept {\n        v += mod() - r.v;\n        if (v >= mod()) {\n         \
-    \   v -= mod();\n        }\n\n        return (*this);\n    }\n    constexpr mint&\
-    \ operator*=(const mint& r) noexcept {\n        v = brt.mul(v, r.v);\n       \
-    \ return (*this);\n    }\n    constexpr mint& operator/=(const mint& r) noexcept\
-    \ {\n        return (*this) *= r.inv();\n    }\n\n    friend mint operator+(const\
-    \ mint& lhs, const mint& rhs) noexcept {\n        return mint(lhs) += rhs;\n \
-    \   }\n    friend mint operator-(const mint& lhs, const mint& rhs) noexcept {\n\
-    \        return mint(lhs) -= rhs;\n    }\n    friend mint operator*(const mint&\
-    \ lhs, const mint& rhs) noexcept {\n        return mint(lhs) *= rhs;\n    }\n\
-    \    friend mint operator/(const mint& lhs, const mint& rhs) noexcept {\n    \
-    \    return mint(lhs) /= rhs;\n    }\n    friend bool operator==(const mint& lhs,\
-    \ const mint& rhs) noexcept {\n        return lhs.v == rhs.v;\n    }\n    friend\
-    \ bool operator!=(const mint& lhs, const mint& rhs) noexcept {\n        return\
-    \ lhs.v != rhs.v;\n    }\n\n    constexpr mint& operator+=(i64 r) noexcept { return\
-    \ (*this) += mint(r); }\n    constexpr mint& operator-=(i64 r) noexcept { return\
-    \ (*this) -= mint(r); }\n    constexpr mint& operator*=(i64 r) noexcept { return\
-    \ (*this) *= mint(r); }\n\n    friend mint operator+(i64 l, const mint& r) noexcept\
-    \ {\n        return mint(l) += r;\n    }\n    friend mint operator+(const mint&\
-    \ l, i64 r) noexcept {\n        return mint(l) += r;\n    }\n    friend mint operator-(i64\
-    \ l, const mint& r) noexcept {\n        return mint(l) -= r;\n    }\n    friend\
-    \ mint operator-(const mint& l, i64 r) noexcept {\n        return mint(l) -= r;\n\
-    \    }\n    friend mint operator*(i64 l, const mint& r) noexcept {\n        return\
-    \ mint(l) *= r;\n    }\n    friend mint operator*(const mint& l, i64 r) noexcept\
-    \ {\n        return mint(l) *= r;\n    }\n\n    constexpr mint operator+() const\
-    \ noexcept { return *this; }\n    constexpr mint operator-() const noexcept {\
-    \ return mint() - *this; }\n\n    template <typename T> mint pow(T e) const noexcept\
-    \ {\n        mint res(1), base(*this);\n\n        while (e) {\n            if\
-    \ (e & 1) {\n                res *= base;\n            }\n            e >>= 1;\n\
-    \            base *= base;\n        }\n        return res;\n    }\n    constexpr\
-    \ mint inv() const noexcept { return pow(mod() - 2); }\n};\n};  // namespace kyopro\n\
-    template <int id>\ntypename kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;\n\
-    \nnamespace kyopro {\ntemplate <typename T, int id = -1>\nclass montgomery_modint\
-    \ : internal::modint_base {\n    using LargeT = internal::double_size_uint_t<T>;\n\
-    \    static T _mod;\n    static internal::Montgomery<T> mr;\n\npublic:\n    static\
-    \ void set_mod(T mod_) {\n        mr.set_mod(mod_);\n        _mod = mod_;\n  \
-    \  }\n\n    static T mod() { return _mod; }\n\nprivate:\n    T v;\n\npublic:\n\
-    \    montgomery_modint(T v_ = 0) {\n        assert(_mod);\n        v = mr.generate(v_);\n\
-    \    }\n    T val() const { return mr.reduce(v); }\n\n    using mint = montgomery_modint<T,\
-    \ id>;\n    mint& operator+=(const mint& r) {\n        v += r.v;\n        if (v\
-    \ >= mr.get_mod()) {\n            v -= mr.get_mod();\n        }\n\n        return\
-    \ (*this);\n    }\n\n    mint& operator-=(const mint& r) {\n        v += mr.get_mod()\
-    \ - r.v;\n        if (v >= mr.get_mod) {\n            v -= mr.get_mod();\n   \
-    \     }\n\n        return (*this);\n    }\n\n    mint& operator*=(const mint&\
-    \ r) {\n        v = mr.mul(v, r.v);\n        return (*this);\n    }\n\n    mint\
-    \ operator+(const mint& r) { return mint(*this) += r; }\n    mint operator-(const\
-    \ mint& r) { return mint(*this) -= r; }\n    mint operator*(const mint& r) { return\
-    \ mint(*this) *= r; }\n\n    mint& operator=(const T& v_) {\n        (*this) =\
-    \ mint(v_);\n        return (*this);\n    }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n\
-    \    friend std::istream& operator>>(std::istream& is, mint& mt) {\n        T\
-    \ v_;\n        is >> v_;\n        mt = v_;\n        return is;\n    }\n    template\
-    \ <typename P> mint pow(P e) const {\n        assert(e >= 0);\n        mint res(1),\
-    \ base(*this);\n\n        while (e) {\n            if (e & 1) {\n            \
-    \    res *= base;\n            }\n            e >>= 1;\n            base *= base;\n\
-    \        }\n        return res;\n    }\n    mint inv() const { return pow(mod()\
-    \ - 2); }\n\n    mint& operator/=(const mint& r) { return (*this) *= r.inv();\
-    \ }\n    mint operator/(const mint& r) const { return mint(*this) *= r.inv();\
-    \ }\n    mint& operator/=(T r) { return (*this) /= mint(r); }\n    friend mint\
-    \ operator/(const mint& l, T r) { return mint(l) /= r; }\n    friend mint operator/(T\
-    \ l, const mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate\
-    \ <typename T, int id> T kyopro::montgomery_modint<T, id>::_mod;\ntemplate <typename\
-    \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;\n\
-    \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */\n"
-  code: "#pragma once\n#include <cassert>\n#include <iostream>\n#include \"../internal/barrett.hpp\"\
-    \n#include \"../internal/montgomery.hpp\"\nnamespace kyopro {\ntemplate <int id\
-    \ = -1> class barrett_modint : internal::modint_base {\n    using mint = barrett_modint<id>;\n\
-    \    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    using i32 = int32_t;\n\
-    \    using i64 = int64_t;\n    using br = internal::barrett;\n\n    static br\
-    \ brt;\n    u32 v;\n\npublic:\n    static void set_mod(u32 mod_) { brt = br(mod_);\
-    \ }\n\npublic:\n    explicit constexpr barrett_modint() noexcept : v(0) { assert(mod());\
-    \ }\n    explicit constexpr barrett_modint(i64 v_) noexcept : v() {\n        assert(mod());\n\
+    \   using mint = barrett_modint<id>;\n    using u32 = std::uint32_t;\n    using\
+    \ u64 = std::uint64_t;\n\n    using i32 = std::int32_t;\n    using i64 = std::int64_t;\n\
+    \    using br = internal::barrett;\n\n    static br brt;\n    u32 v;\n\npublic:\n\
+    \    static void set_mod(u32 mod_) { brt = br(mod_); }\n\npublic:\n    explicit\
+    \ constexpr barrett_modint() noexcept : v(0) { assert(mod()); }\n    explicit\
+    \ constexpr barrett_modint(i64 v_) noexcept : v() {\n        assert(mod());\n\
     \        if (v_ < 0) v_ = (i64)mod() - v_;\n        v = brt.reduce(v_);\n    }\n\
     \n    u32 val() const noexcept { return v; }\n    static u32 mod() { return brt.get_mod();\
     \ }\n    static mint raw(u32 v) {\n        mint x;\n        x.v = v;\n       \
@@ -260,7 +176,91 @@ data:
     \ l, const mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate\
     \ <typename T, int id> T kyopro::montgomery_modint<T, id>::_mod;\ntemplate <typename\
     \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;\n\
-    \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */"
+    \n/**\n * @brief dynamic modint\n */\n"
+  code: "#pragma once\n#include <cassert>\n#include <iostream>\n#include \"../internal/barrett.hpp\"\
+    \n#include \"../internal/montgomery.hpp\"\nnamespace kyopro {\ntemplate <int id\
+    \ = -1> class barrett_modint : internal::modint_base {\n    using mint = barrett_modint<id>;\n\
+    \    using u32 = std::uint32_t;\n    using u64 = std::uint64_t;\n\n    using i32\
+    \ = std::int32_t;\n    using i64 = std::int64_t;\n    using br = internal::barrett;\n\
+    \n    static br brt;\n    u32 v;\n\npublic:\n    static void set_mod(u32 mod_)\
+    \ { brt = br(mod_); }\n\npublic:\n    explicit constexpr barrett_modint() noexcept\
+    \ : v(0) { assert(mod()); }\n    explicit constexpr barrett_modint(i64 v_) noexcept\
+    \ : v() {\n        assert(mod());\n        if (v_ < 0) v_ = (i64)mod() - v_;\n\
+    \        v = brt.reduce(v_);\n    }\n\n    u32 val() const noexcept { return v;\
+    \ }\n    static u32 mod() { return brt.get_mod(); }\n    static mint raw(u32 v)\
+    \ {\n        mint x;\n        x.v = v;\n        return x;\n    }\n\n    constexpr\
+    \ mint& operator++() noexcept {\n        ++v;\n        if (v == mod()) v = 0;\n\
+    \        return (*this);\n    }\n    constexpr mint& operator--() noexcept {\n\
+    \        if (v == 0) v = mod();\n        --v;\n        return (*this);\n    }\n\
+    \    constexpr mint operator++(int) noexcept {\n        mint res(*this);\n   \
+    \     ++(*this);\n        return res;\n    }\n    constexpr mint operator--(int)\
+    \ noexcept {\n        mint res(*this);\n        --(*this);\n        return res;\n\
+    \    }\n\n    constexpr mint& operator+=(const mint& r) noexcept {\n        v\
+    \ += r.v;\n        if (v >= mod()) v -= mod();\n        return (*this);\n    }\n\
+    \    constexpr mint& operator-=(const mint& r) noexcept {\n        v += mod()\
+    \ - r.v;\n        if (v >= mod()) {\n            v -= mod();\n        }\n\n  \
+    \      return (*this);\n    }\n    constexpr mint& operator*=(const mint& r) noexcept\
+    \ {\n        v = brt.mul(v, r.v);\n        return (*this);\n    }\n    constexpr\
+    \ mint& operator/=(const mint& r) noexcept {\n        return (*this) *= r.inv();\n\
+    \    }\n\n    friend mint operator+(const mint& lhs, const mint& rhs) noexcept\
+    \ {\n        return mint(lhs) += rhs;\n    }\n    friend mint operator-(const\
+    \ mint& lhs, const mint& rhs) noexcept {\n        return mint(lhs) -= rhs;\n \
+    \   }\n    friend mint operator*(const mint& lhs, const mint& rhs) noexcept {\n\
+    \        return mint(lhs) *= rhs;\n    }\n    friend mint operator/(const mint&\
+    \ lhs, const mint& rhs) noexcept {\n        return mint(lhs) /= rhs;\n    }\n\
+    \    friend bool operator==(const mint& lhs, const mint& rhs) noexcept {\n   \
+    \     return lhs.v == rhs.v;\n    }\n    friend bool operator!=(const mint& lhs,\
+    \ const mint& rhs) noexcept {\n        return lhs.v != rhs.v;\n    }\n\n    constexpr\
+    \ mint& operator+=(i64 r) noexcept { return (*this) += mint(r); }\n    constexpr\
+    \ mint& operator-=(i64 r) noexcept { return (*this) -= mint(r); }\n    constexpr\
+    \ mint& operator*=(i64 r) noexcept { return (*this) *= mint(r); }\n\n    friend\
+    \ mint operator+(i64 l, const mint& r) noexcept {\n        return mint(l) += r;\n\
+    \    }\n    friend mint operator+(const mint& l, i64 r) noexcept {\n        return\
+    \ mint(l) += r;\n    }\n    friend mint operator-(i64 l, const mint& r) noexcept\
+    \ {\n        return mint(l) -= r;\n    }\n    friend mint operator-(const mint&\
+    \ l, i64 r) noexcept {\n        return mint(l) -= r;\n    }\n    friend mint operator*(i64\
+    \ l, const mint& r) noexcept {\n        return mint(l) *= r;\n    }\n    friend\
+    \ mint operator*(const mint& l, i64 r) noexcept {\n        return mint(l) *= r;\n\
+    \    }\n\n    constexpr mint operator+() const noexcept { return *this; }\n  \
+    \  constexpr mint operator-() const noexcept { return mint() - *this; }\n\n  \
+    \  template <typename T> mint pow(T e) const noexcept {\n        mint res(1),\
+    \ base(*this);\n\n        while (e) {\n            if (e & 1) {\n            \
+    \    res *= base;\n            }\n            e >>= 1;\n            base *= base;\n\
+    \        }\n        return res;\n    }\n    constexpr mint inv() const noexcept\
+    \ { return pow(mod() - 2); }\n};\n};  // namespace kyopro\ntemplate <int id>\n\
+    typename kyopro::barrett_modint<id>::br kyopro::barrett_modint<id>::brt;\n\nnamespace\
+    \ kyopro {\ntemplate <typename T, int id = -1>\nclass montgomery_modint : internal::modint_base\
+    \ {\n    using LargeT = internal::double_size_uint_t<T>;\n    static T _mod;\n\
+    \    static internal::Montgomery<T> mr;\n\npublic:\n    static void set_mod(T\
+    \ mod_) {\n        mr.set_mod(mod_);\n        _mod = mod_;\n    }\n\n    static\
+    \ T mod() { return _mod; }\n\nprivate:\n    T v;\n\npublic:\n    montgomery_modint(T\
+    \ v_ = 0) {\n        assert(_mod);\n        v = mr.generate(v_);\n    }\n    T\
+    \ val() const { return mr.reduce(v); }\n\n    using mint = montgomery_modint<T,\
+    \ id>;\n    mint& operator+=(const mint& r) {\n        v += r.v;\n        if (v\
+    \ >= mr.get_mod()) {\n            v -= mr.get_mod();\n        }\n\n        return\
+    \ (*this);\n    }\n\n    mint& operator-=(const mint& r) {\n        v += mr.get_mod()\
+    \ - r.v;\n        if (v >= mr.get_mod) {\n            v -= mr.get_mod();\n   \
+    \     }\n\n        return (*this);\n    }\n\n    mint& operator*=(const mint&\
+    \ r) {\n        v = mr.mul(v, r.v);\n        return (*this);\n    }\n\n    mint\
+    \ operator+(const mint& r) { return mint(*this) += r; }\n    mint operator-(const\
+    \ mint& r) { return mint(*this) -= r; }\n    mint operator*(const mint& r) { return\
+    \ mint(*this) *= r; }\n\n    mint& operator=(const T& v_) {\n        (*this) =\
+    \ mint(v_);\n        return (*this);\n    }\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const mint& mt) {\n        os << mt.val();\n        return os;\n    }\n\
+    \    friend std::istream& operator>>(std::istream& is, mint& mt) {\n        T\
+    \ v_;\n        is >> v_;\n        mt = v_;\n        return is;\n    }\n    template\
+    \ <typename P> mint pow(P e) const {\n        assert(e >= 0);\n        mint res(1),\
+    \ base(*this);\n\n        while (e) {\n            if (e & 1) {\n            \
+    \    res *= base;\n            }\n            e >>= 1;\n            base *= base;\n\
+    \        }\n        return res;\n    }\n    mint inv() const { return pow(mod()\
+    \ - 2); }\n\n    mint& operator/=(const mint& r) { return (*this) *= r.inv();\
+    \ }\n    mint operator/(const mint& r) const { return mint(*this) *= r.inv();\
+    \ }\n    mint& operator/=(T r) { return (*this) /= mint(r); }\n    friend mint\
+    \ operator/(const mint& l, T r) { return mint(l) /= r; }\n    friend mint operator/(T\
+    \ l, const mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate\
+    \ <typename T, int id> T kyopro::montgomery_modint<T, id>::_mod;\ntemplate <typename\
+    \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;\n\
+    \n/**\n * @brief dynamic modint\n */"
   dependsOn:
   - src/internal/barrett.hpp
   - src/internal/montgomery.hpp
@@ -272,7 +272,7 @@ data:
   - src/math/rho.hpp
   - src/math/miller.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-10-22 15:25:04+09:00'
+  timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No3030.test.cpp
@@ -282,5 +282,5 @@ layout: document
 redirect_from:
 - /library/src/math/dynamic_modint.hpp
 - /library/src/math/dynamic_modint.hpp.html
-title: "\u52D5\u7684modint"
+title: dynamic modint
 ---

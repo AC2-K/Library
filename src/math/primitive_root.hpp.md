@@ -12,16 +12,16 @@ data:
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/dynamic_modint.hpp
-    title: "\u52D5\u7684modint"
+    title: dynamic modint
   - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/miller.hpp
-    title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
+    title: "MillerRabin\u7D20\u6570\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
-    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
+    title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
   - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: xor shift
@@ -36,15 +36,15 @@ data:
   bundledCode: "#line 2 \"src/math/dynamic_modint.hpp\"\n#include <cassert>\n#include\
     \ <iostream>\n#line 2 \"src/internal/barrett.hpp\"\n#include <cstdint>\nnamespace\
     \ kyopro {\nnamespace internal {\n\n/**\n * @brief Barrett Reduction\n */\nclass\
-    \ barrett {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n    using u128\
-    \ = __uint128_t;\n\n    u32 m;\n    u64 im;\n\npublic:\n    constexpr explicit\
-    \ barrett() : m(0), im(0) {}\n    constexpr explicit barrett(u32 m)\n        :\
-    \ m(m), im(static_cast<u64>(-1) / m + 1) {}\n\n    constexpr u32 get_mod() const\
-    \ { return m; }\n    constexpr u32 reduce(u32 a) const { return mul(1, a); }\n\
-    \    constexpr u32 mul(u32 a, u32 b) const {\n        u64 z = (u64)a * b;\n  \
-    \      u64 x = (u64)(((u128)(z)*im) >> 64);\n        u64 y = x * m;\n        return\
-    \ (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace internal\n};  //\
-    \ namespace kyopro\n\n/**\n * @ref\n * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    \ barrett {\n    using u32 = std::uint32_t;\n    using u64 = std::uint64_t;\n\
+    \    using u128 = __uint128_t;\n\n    u32 m;\n    u64 im;\n\npublic:\n    constexpr\
+    \ barrett() : m(0), im(0) {}\n    constexpr barrett(u32 m)\n        : m(m), im(static_cast<u64>(-1)\
+    \ / m + 1) {}\n\n    constexpr u32 get_mod() const { return m; }\n    constexpr\
+    \ u32 reduce(u32 a) const { return mul(1, a); }\n    constexpr u32 mul(u32 a,\
+    \ u32 b) const {\n        u64 z = (u64)a * b;\n        u64 x = (u64)(((u128)(z)*im)\
+    \ >> 64);\n        u64 y = x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n\
+    \    }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @ref\n\
+    \ * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
     \ */\n#line 3 \"src/internal/montgomery.hpp\"\n#include <limits>\n#include <numeric>\n\
     #line 5 \"src/internal/type_traits.hpp\"\n#include <typeinfo>\n#line 7 \"src/internal/type_traits.hpp\"\
     \n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
@@ -93,14 +93,14 @@ data:
     \ mul(T x, T y) { return reduce((LargeT)x * y); }\n};\n};  // namespace internal\n\
     };  // namespace kyopro\n#line 6 \"src/math/dynamic_modint.hpp\"\nnamespace kyopro\
     \ {\ntemplate <int id = -1> class barrett_modint : internal::modint_base {\n \
-    \   using mint = barrett_modint<id>;\n    using u32 = uint32_t;\n    using u64\
-    \ = uint64_t;\n\n    using i32 = int32_t;\n    using i64 = int64_t;\n    using\
-    \ br = internal::barrett;\n\n    static br brt;\n    u32 v;\n\npublic:\n    static\
-    \ void set_mod(u32 mod_) { brt = br(mod_); }\n\npublic:\n    explicit constexpr\
-    \ barrett_modint() noexcept : v(0) { assert(mod()); }\n    explicit constexpr\
-    \ barrett_modint(i64 v_) noexcept : v() {\n        assert(mod());\n        if\
-    \ (v_ < 0) v_ = (i64)mod() - v_;\n        v = brt.reduce(v_);\n    }\n\n    u32\
-    \ val() const noexcept { return v; }\n    static u32 mod() { return brt.get_mod();\
+    \   using mint = barrett_modint<id>;\n    using u32 = std::uint32_t;\n    using\
+    \ u64 = std::uint64_t;\n\n    using i32 = std::int32_t;\n    using i64 = std::int64_t;\n\
+    \    using br = internal::barrett;\n\n    static br brt;\n    u32 v;\n\npublic:\n\
+    \    static void set_mod(u32 mod_) { brt = br(mod_); }\n\npublic:\n    explicit\
+    \ constexpr barrett_modint() noexcept : v(0) { assert(mod()); }\n    explicit\
+    \ constexpr barrett_modint(i64 v_) noexcept : v() {\n        assert(mod());\n\
+    \        if (v_ < 0) v_ = (i64)mod() - v_;\n        v = brt.reduce(v_);\n    }\n\
+    \n    u32 val() const noexcept { return v; }\n    static u32 mod() { return brt.get_mod();\
     \ }\n    static mint raw(u32 v) {\n        mint x;\n        x.v = v;\n       \
     \ return x;\n    }\n\n    constexpr mint& operator++() noexcept {\n        ++v;\n\
     \        if (v == mod()) v = 0;\n        return (*this);\n    }\n    constexpr\
@@ -173,11 +173,10 @@ data:
     \ l, const mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate\
     \ <typename T, int id> T kyopro::montgomery_modint<T, id>::_mod;\ntemplate <typename\
     \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;\n\
-    \n/**\n * @brief \u52D5\u7684modint\n * @docs docs/math/dynamic_modint.md\n */\n\
-    #line 2 \"src/math/rho.hpp\"\n#include <algorithm>\n#include <vector>\n#line 3\
-    \ \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
-    \ T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n\
-    \    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \n/**\n * @brief dynamic modint\n */\n#line 2 \"src/math/rho.hpp\"\n#include <algorithm>\n\
+    #include <vector>\n#line 3 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro\
+    \ {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a\
+    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
     \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
     \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
@@ -188,15 +187,14 @@ data:
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
     \ a;\n}\n};  // namespace kyopro\n#line 3 \"src/math/miller.hpp\"\nnamespace kyopro\
-    \ {\n\n/**\n * @brief MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5\n */\nclass miller\
-    \ {\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n    using u64\
-    \ = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename T, typename\
-    \ mint, const int bases[], int length>\n    static constexpr bool miller_rabin(T\
-    \ n) {\n        T d = n - 1;\n\n        while (~d & 1) {\n            d >>= 1;\n\
-    \        }\n\n        const T rev = n - 1;\n        if (mint::mod() != n) {\n\
-    \            mint::set_mod(n);\n        }\n        for (int i = 0; i < length;\
-    \ ++i) {\n            if (n <= bases[i]) {\n                return true;\n   \
-    \         }\n            T t = d;\n            mint y = mint(bases[i]).pow(t);\n\
+    \ {\n\n\nclass miller {\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
+    \    using u64 = std::uint64_t;\n    using u32 = std::uint32_t;\n\n    template\
+    \ <typename T, typename mint, const int bases[], int length>\n    static constexpr\
+    \ bool miller_rabin(T n) {\n        T d = n - 1;\n\n        while (~d & 1) {\n\
+    \            d >>= 1;\n        }\n\n        const T rev = n - 1;\n        if (mint::mod()\
+    \ != n) {\n            mint::set_mod(n);\n        }\n        for (int i = 0; i\
+    \ < length; ++i) {\n            if (n <= bases[i]) {\n                return true;\n\
+    \            }\n            T t = d;\n            mint y = mint(bases[i]).pow(t);\n\
     \n            while (t != n - 1 && y.val() != 1 && y.val() != rev) {\n       \
     \         y *= y;\n                t <<= 1;\n            }\n\n            if (y.val()\
     \ != rev && (~t & 1)) return false;\n        }\n        return true;\n    }\n\
@@ -209,33 +207,33 @@ data:
     \ if constexpr (std::numeric_limits<T>::digits < 32) {\n            return miller_rabin<T,\
     \ montgomery_modint<std::make_unsigned_t<T>>,\n                              \
     \  bases_int, 3>(n);\n\n        } else {\n            if (n <= 1 << 30)\n    \
-    \            return miller_rabin<T, montgomery_modint<std::make_unsigned_t<T>>,\n\
+    \            return miller_rabin<T,\n                                    montgomery_modint<std::make_unsigned_t<T>>,\n\
     \                                    bases_int, 3>(n);\n            else\n   \
-    \             return miller_rabin<T, montgomery_modint<std::make_unsigned_t<T>>,\n\
-    \                                    bases_ll, 7>(n);\n        }\n        return\
-    \ false;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/math/miller.md\n\
-    \ */\n#line 2 \"src/random/xor_shift.hpp\"\n#include <chrono>\n#line 4 \"src/random/xor_shift.hpp\"\
-    \n#include <random>\n\nnamespace kyopro {\nstruct xor_shift32 {\n    uint32_t\
-    \ rng;\n    constexpr explicit xor_shift32(uint32_t seed) : rng(seed) {}\n   \
-    \ explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
-    \ {}\n    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n     \
-    \   rng ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n\
-    };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr xor_shift(uint64_t\
-    \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
+    \             return miller_rabin<\n                    T, montgomery_modint<std::make_unsigned_t<T>>,\
+    \ bases_ll, 7>(\n                    n);\n        }\n        return false;\n \
+    \   }\n};\n};  // namespace kyopro\n\n/**\n * @brief MillerRabin\u7D20\u6570\u5224\
+    \u5B9A\n * @docs docs/math/miller.md\n */\n#line 2 \"src/random/xor_shift.hpp\"\
+    \n#include <chrono>\n#line 4 \"src/random/xor_shift.hpp\"\n#include <random>\n\
+    \nnamespace kyopro {\nstruct xor_shift32 {\n    uint32_t rng;\n    constexpr explicit\
+    \ xor_shift32(uint32_t seed) : rng(seed) {}\n    explicit xor_shift32()\n    \
+    \    : rng(std::chrono::steady_clock::now().time_since_epoch().count()) {}\n \
+    \   constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n        rng\
+    \ ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n};\n\n\
+    struct xor_shift {\n    uint64_t rng;\n    constexpr xor_shift(uint64_t seed)\
+    \ : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
     };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 7 \"src/math/rho.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief PollardRho\u7D20\u56E0\u6570\u5206\u89E3\
-    \u6CD5\n */\nclass rho {\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
-    \    using u64 = uint64_t;\n    using u32 = uint32_t;\n\n    template <typename\
-    \ T,typename mint> static constexpr T find_factor(T n) {\n        xor_shift32\
-    \ rng(2023);\n\n        if (~n & 1uL) {\n            return 2;\n        }\n  \
-    \      if (kyopro::miller::is_prime(n)) {\n            return n;\n        }\n\n\
-    \        if (mint::mod() != n) {\n            mint::set_mod(n);\n        }\n \
-    \       while (1) {\n            T c = rng();\n            const auto f = [&](mint\
-    \ x) -> mint { return x * x + c; };\n            mint x = rng();\n           \
-    \ mint y = f(x);\n            T d = 1;\n            while (d == 1) {\n       \
-    \         d = _gcd<std::make_signed_t<T>>(\n                    std::abs((std::make_signed_t<T>)x.val()\
+    \nnamespace kyopro {\n\n\nclass rho {\n    using i128 = __int128_t;\n    using\
+    \ u128 = __uint128_t;\n    using u64 = uint64_t;\n    using u32 = uint32_t;\n\n\
+    \    template <typename T,typename mint> static constexpr T find_factor(T n) {\n\
+    \        xor_shift32 rng(2023);\n\n        if (~n & 1uL) {\n            return\
+    \ 2;\n        }\n        if (kyopro::miller::is_prime(n)) {\n            return\
+    \ n;\n        }\n\n        if (mint::mod() != n) {\n            mint::set_mod(n);\n\
+    \        }\n        while (1) {\n            T c = rng();\n            const auto\
+    \ f = [&](mint x) -> mint { return x * x + c; };\n            mint x = rng();\n\
+    \            mint y = f(x);\n            T d = 1;\n            while (d == 1)\
+    \ {\n                d = _gcd<std::make_signed_t<T>>(\n                    std::abs((std::make_signed_t<T>)x.val()\
     \ - (std::make_signed_t<T>)y.val()), n);\n                x = f(x);\n        \
     \        y = f(f(y));\n            }\n            if (1 < d && d < n) {\n    \
     \            return d;\n            }\n        }\n        exit(-1);\n    }\n \
@@ -266,12 +264,13 @@ data:
     \ divisor.size();\n            for (int i = 0; i < e; ++i) {\n               \
     \ for (int j = 0; j < sz; ++j)\n                    divisor.emplace_back(divisor[j]\
     \ * pow);\n                pow *= p;\n            }\n        }\n\n        return\
-    \ divisor;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @docs docs/math/rho.md\n\
-    \ */\n#line 4 \"src/math/primitive_root.hpp\"\nnamespace kyopro {\n\n/**\n * @brief\
-    \ \u539F\u59CB\u6839\n */\ntemplate <typename T> constexpr T primitive_root(T\
-    \ p) noexcept {\n    if (p == 2) return 1;\n\n    auto pf = kyopro::rho::factorize(p\
-    \ - 1);\n    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto&\
-    \ q : pf) {\n        q = (p - 1) / q;\n    }\n\n    using mint =\n        std::conditional_t<std::numeric_limits<T>::digits\
+    \ divisor;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief PollardRho\u7D20\
+    \u56E0\u6570\u5206\u89E3\n * @docs docs/math/rho.md\n */\n#line 4 \"src/math/primitive_root.hpp\"\
+    \nnamespace kyopro {\n\n/**\n * @brief \u539F\u59CB\u6839\n */\ntemplate <typename\
+    \ T> constexpr T primitive_root(T p) noexcept {\n    if (p == 2) return 1;\n\n\
+    \    auto pf = kyopro::rho::factorize(p - 1);\n    pf.erase(std::unique(pf.begin(),\
+    \ pf.end()), pf.end());\n    for (auto& q : pf) {\n        q = (p - 1) / q;\n\
+    \    }\n\n    using mint =\n        std::conditional_t<std::numeric_limits<T>::digits\
     \ <= 32,\n                           barrett_modint<-1>, montgomery_modint<uint64_t>>;\n\
     \    if (mint::mod() != p) {\n        mint::set_mod(p);\n    }\n\n    for (int\
     \ _g = 1;; ++_g) {\n        mint g(_g);\n        if (g.val() == 0) continue;\n\
@@ -304,7 +303,7 @@ data:
   isVerificationFile: false
   path: src/math/primitive_root.hpp
   requiredBy: []
-  timestamp: '2023-10-22 15:25:04+09:00'
+  timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/math/primitive_root.hpp
