@@ -14,7 +14,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
   - icon: ':heavy_check_mark:'
@@ -24,15 +24,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Factorize.test.cpp
-    title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Primitive_Root.test.cpp
-    title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-    title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
@@ -122,9 +113,6 @@ data:
   timestamp: '2023-07-30 13:18:23+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/math/Factorize.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   - test/yuki/No3030.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/internal/montgomery.hpp

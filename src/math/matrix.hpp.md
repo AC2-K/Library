@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/matrix/Matrix Product.test.cpp
-    title: test/yosupo_judge/matrix/Matrix Product.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     _deprecated_at_docs: docs/math/matrix.md
     document_title: "\u884C\u5217"
@@ -80,9 +77,8 @@ data:
   path: src/math/matrix.hpp
   requiredBy: []
   timestamp: '2023-10-21 16:57:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/math/matrix.hpp
 layout: document
 redirect_from:

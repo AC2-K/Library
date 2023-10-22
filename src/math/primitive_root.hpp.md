@@ -26,13 +26,10 @@ data:
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Primitive_Root.test.cpp
-    title: test/yosupo_judge/math/Primitive_Root.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     document_title: "\u539F\u59CB\u6839"
     links: []
@@ -308,9 +305,8 @@ data:
   path: src/math/primitive_root.hpp
   requiredBy: []
   timestamp: '2023-10-21 16:57:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/math/primitive_root.hpp
 layout: document
 redirect_from:

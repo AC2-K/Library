@@ -5,13 +5,10 @@ data:
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
-    title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     _deprecated_at_docs: docs/data-structure/bbst/reversible_bbst.md
     document_title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728"
@@ -124,9 +121,8 @@ data:
   path: src/data-structure/bbst/reversible_bbst.hpp
   requiredBy: []
   timestamp: '2023-10-15 13:58:49+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/data-structure/bbst/reversible_bbst.hpp
 layout: document
 redirect_from:

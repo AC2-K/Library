@@ -9,15 +9,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-    title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-    title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-    title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -115,9 +106,6 @@ data:
   timestamp: '2023-08-18 21:22:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/AOJ/GRL/5_C.test.cpp
 documentation_of: src/tree/EulerTour.hpp
 layout: document

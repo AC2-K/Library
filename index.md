@@ -11,20 +11,20 @@ data:
       title: out.cpp
   - name: src/FormalPowerSeries
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/FormalPowerSeries/FPS.hpp
       title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/FormalPowerSeries/taylor-shift.hpp
       title: taylor shift
   - name: src/algorithm
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/algorithm/mo.hpp
       title: Mo's algorithm
   - name: src/atcoder
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/atcoder/convolution.hpp
       title: src/atcoder/convolution.hpp
     - icon: ':warning:'
@@ -33,13 +33,13 @@ data:
     - icon: ':warning:'
       path: src/atcoder/fenwicktree.hpp
       title: src/atcoder/fenwicktree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/atcoder/internal_bit.hpp
       title: src/atcoder/internal_bit.hpp
     - icon: ':warning:'
       path: src/atcoder/internal_csr.hpp
       title: src/atcoder/internal_csr.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/atcoder/internal_math.hpp
       title: src/atcoder/internal_math.hpp
     - icon: ':warning:'
@@ -48,7 +48,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/internal_scc.hpp
       title: src/atcoder/internal_scc.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/atcoder/internal_type_traits.hpp
       title: src/atcoder/internal_type_traits.hpp
     - icon: ':warning:'
@@ -63,7 +63,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/mincostflow.hpp
       title: src/atcoder/mincostflow.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/atcoder/modint.hpp
       title: src/atcoder/modint.hpp
     - icon: ':warning:'
@@ -80,13 +80,13 @@ data:
       title: src/atcoder/twosat.hpp
   - name: src/data-structure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data-structure/BIT.hpp
       title: Binary Index Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data-structure/CHT.hpp
       title: Convex Hull Trick
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data-structure/SWAG.hpp
       title: Slide Window Aggrigation
     - icon: ':heavy_check_mark:'
@@ -112,14 +112,14 @@ data:
       title: SparseTable
   - name: src/data-structure/bbst
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data-structure/bbst/Treap.hpp
       title: Treap
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data-structure/bbst/lazy_reversible_bbst.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\
         \u4E8C\u5206\u6728"
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data-structure/bbst/reversible_bbst.hpp
       title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728"
   - name: src/data-structure/data-structure-2d
@@ -135,7 +135,7 @@ data:
       title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"
   - name: src/data-structure/persistent
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/data-structure/persistent/queue.hpp
       title: persistent queue
     - icon: ':warning:'
@@ -149,12 +149,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: fastIO
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/template.hpp
       title: src/template.hpp
   - name: src/dynamic_programming
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/dynamic_programming/number_of_subseq.hpp
       title: "\u90E8\u5206\u5217\u306E\u500B\u6570"
   - name: src/graph
@@ -189,10 +189,10 @@ data:
       title: src/internal/type_traits.hpp
   - name: src/math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/math/combination.hpp
       title: "\u4E8C\u9805\u4FC2\u6570"
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/math/divisor-multiple-transform.hpp
       title: "Fast M\xF6bius\u30FBZeta Transform"
     - icon: ':heavy_check_mark:'
@@ -204,13 +204,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/math/matrix.hpp
       title: "\u884C\u5217"
     - icon: ':heavy_check_mark:'
       path: src/math/miller.hpp
       title: "MillerRabin\u7D20\u6570\u5224\u5B9A\u6CD5"
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/math/mod_log.hpp
       title: "\u96E2\u6563\u5BFE\u6570"
     - icon: ':heavy_check_mark:'
@@ -219,13 +219,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/phi_function.hpp
       title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/math/primitive_root.hpp
       title: "\u539F\u59CB\u6839"
     - icon: ':heavy_check_mark:'
       path: src/math/rho.hpp
       title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/math/static_modint.hpp
       title: "\u9759\u7684modint"
   - name: src/random
@@ -235,10 +235,10 @@ data:
       title: xor shift
   - name: src/string
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/string/Z.hpp
       title: Z algorithm
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/string/manacher.hpp
       title: Manacher's algorithm
     - icon: ':heavy_check_mark:'
@@ -252,7 +252,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/EulerTour.hpp
       title: Euler Tour
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: src/tree/doubling.hpp
       title: "\u6728\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   verificationCategories:
@@ -298,141 +298,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_E.test.cpp
       title: test/AOJ/NTL/1_E.test.cpp
-  - name: test/yosupo_judge/convolution
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-      title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - name: test/yosupo_judge/data_structure
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
-      title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-      title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-      title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
-      title: test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
-      title: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-      title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-      title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-      title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-      title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-      title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-      title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-      title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-      title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-      title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-      title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/UnionFind.test.cpp
-      title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-      title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-      title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - name: test/yosupo_judge/graph
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/graph/Shortest_Path.test.cpp
-      title: test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - name: test/yosupo_judge/math
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-      title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/math/Factorize.test.cpp
-      title: test/yosupo_judge/math/Factorize.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-      title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-      title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/math/Primitive_Root.test.cpp
-      title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - name: test/yosupo_judge/matrix
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/matrix/Matrix Product.test.cpp
-      title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - name: test/yosupo_judge/new
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-      title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
-      title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
-  - name: test/yosupo_judge/polynomial
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
-      title: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
-      title: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-      title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
-      title: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-      title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - name: test/yosupo_judge/string
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
-      title: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/string/Z_algorithm.test.cpp
-      title: test/yosupo_judge/string/Z_algorithm.test.cpp
-  - name: test/yosupo_judge/tree
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-      title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-      title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-      title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-      title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
     pages:
     - icon: ':heavy_check_mark:'

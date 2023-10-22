@@ -2,13 +2,10 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-    title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     _deprecated_at_docs: docs/data-structure/SWAG.md
     document_title: Slide Window Aggrigation
@@ -56,9 +53,8 @@ data:
   path: src/data-structure/SWAG.hpp
   requiredBy: []
   timestamp: '2023-07-03 15:58:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/data-structure/SWAG.hpp
 layout: document
 redirect_from:

@@ -5,13 +5,10 @@ data:
     path: src/random/xor_shift.hpp
     title: xor shift
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-    title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     _deprecated_at_docs: docs/data-structure/bbst/Treap.md
     document_title: Treap
@@ -103,9 +100,8 @@ data:
   path: src/data-structure/bbst/Treap.hpp
   requiredBy: []
   timestamp: '2023-07-03 15:58:56+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/data-structure/bbst/Treap.hpp
 layout: document
 redirect_from:

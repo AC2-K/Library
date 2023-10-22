@@ -2,19 +2,19 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/math/mod_log.hpp
     title: "\u96E2\u6563\u5BFE\u6570"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3\u6CD5"
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: src/math/static_modint.hpp
     title: "\u9759\u7684modint"
   - icon: ':heavy_check_mark:'
@@ -27,42 +27,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_E.test.cpp
     title: test/AOJ/NTL/1_E.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-    title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-    title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-    title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-    title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-    title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-    title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-    title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Factorize.test.cpp
-    title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-    title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Primitive_Root.test.cpp
-    title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/matrix/Matrix Product.test.cpp
-    title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-    title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
@@ -111,18 +75,6 @@ data:
   timestamp: '2023-08-21 15:56:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - test/yuki/No430.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
   - test/AOJ/NTL/1_E.test.cpp

@@ -8,37 +8,10 @@ data:
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-    title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-    title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-    title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-    title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-    title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-    title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-    title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/matrix/Matrix Product.test.cpp
-    title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-    title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     _deprecated_at_docs: docs/math/static_modint.md
     document_title: "\u9759\u7684modint"
@@ -190,17 +163,8 @@ data:
   path: src/math/static_modint.hpp
   requiredBy: []
   timestamp: '2023-10-06 23:07:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/math/static_modint.hpp
 layout: document
 redirect_from:

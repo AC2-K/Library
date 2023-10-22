@@ -9,18 +9,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_B.test.cpp
     title: test/AOJ/DSL/2_B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-    title: test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-    title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-    title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-    title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -83,10 +71,6 @@ data:
   timestamp: '2023-08-20 22:22:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-  - test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
   - test/AOJ/DSL/2_B.test.cpp
 documentation_of: src/data-structure/segtree.hpp
 layout: document
