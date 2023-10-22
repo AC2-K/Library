@@ -71,80 +71,79 @@ data:
     \ 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n     \
     \       ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
     \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
-    \ kyopro\n#line 8 \"src/string/rolling_hash.hpp\"\nnamespace kyopro {\n\n/**\n\
-    \ * @brief Rolling Hash\n */\nclass RollingHash {\n    using ull = uint_fast64_t;\n\
-    \    using i128 = __int128_t;\n    using u128 = __uint128_t;\n    // mod\n   \
-    \ static constexpr ull msk30 = (1ul << 30) - 1;\n    static constexpr ull msk61\
-    \ = (1ul << 31) - 1;\n    const std::string str;\n    std::vector<ull> hash, pow;\n\
-    \n    static constexpr ull mod = (1uL << 61) - 1;\n    static constexpr ull primitive_root\
-    \ = 37;\n\npublic:\n    static constexpr uint mapping_max = (uint)'Z' + 2;\n \
-    \   static ull base;\n\nprivate:\n    constexpr ull mul(const u128& a, const u128&\
-    \ b) const {\n        u128 t = a * b;\n\n        t = (t >> 61) + (t & mod);\n\n\
-    \        if (t >= mod) {\n            t -= mod;\n        }\n\n        return t;\n\
-    \    }\n\n    constexpr ull mapping(char c) const { return (ull)c; }\n\n    static\
-    \ ull generate() {\n        std::mt19937_64 engine(\n            std::chrono::steady_clock::now().time_since_epoch().count());\n\
-    \        std::uniform_int_distribution<ull> rand(1uL, mod - 1);\n        return\
+    \ kyopro\n#line 8 \"src/string/rolling_hash.hpp\"\nnamespace kyopro {\n\nclass\
+    \ RollingHash {\n    using u64 = std::uint64_t;\n    using i128 = __int128_t;\n\
+    \    using u128 = __uint128_t;\n\n    static constexpr u64 msk30 = (static_cast<u64>(1)\
+    \ << 30) - 1;\n    static constexpr u64 msk61 = (static_cast<u64>(1) << 31) -\
+    \ 1;\n    const std::string str;\n    std::vector<u64> _hash, _pow;\n    \n  \
+    \  static constexpr u64 mod = (static_cast<u64>(1) << 61) - 1;\n    static constexpr\
+    \ u64 primitive_root = 37;\n    static constexpr uint mapping_max = (uint)'Z'\
+    \ + 2;\n    static u64 base;\n    \nprivate:\n    constexpr u64 mul(u64 a, u64\
+    \ b) const {\n        u128 t = (u128)a * b;\n        t = (t >> 61) + (t & mod);\n\
+    \        if (t >= mod) {\n            t -= mod;\n        }\n        return t;\n\
+    \    }\n\n    constexpr u64 mapping(char c) const { return (u64)c; }\n\n    static\
+    \ u64 generate() {\n        static std::mt19937_64 engine(\n            std::chrono::steady_clock::now().time_since_epoch().count());\n\
+    \        std::uniform_int_distribution<u64> rand(1, mod - 1);\n        return\
     \ rand(engine);\n    }\n    static void generate_base() {\n        if (base !=\
-    \ 0) {\n            return;\n        }\n        ull r = mod - 1;\n\n        while\
-    \ (_gcd(r, mod - 1) != 1 || r <= mapping_max) {\n            r = generate();\n\
-    \        }\n        base = mod_pow(primitive_root, r, mod);\n    }\n\npublic:\n\
-    \    RollingHash() : str() {}\n\n    RollingHash(const std::string& str) : str(str)\
-    \ {\n        generate_base();\n        build();\n    }\n\n    void build() {\n\
-    \        hash.resize(str.size() + 1);\n        pow.resize(str.size() + 1, 1);\n\
-    \n        for (int i = 0; i < (int)str.size(); i++) {\n            hash[i + 1]\
-    \ = mul(hash[i], base) + mapping(str[i]);\n            pow[i + 1] = mul(pow[i],\
-    \ base);\n            if (hash[i + 1] >= mod) {\n                hash[i + 1] -=\
-    \ mod;\n            }\n        }\n    }\n    ull slice(int l, int r) const {\n\
-    \        assert(0 <= l && l <= r && r <= str.size());\n\n        ull res = mod\
-    \ + hash[r] - mul(hash[l], pow[r - l]);\n        return res < mod ? res : res\
-    \ - mod;\n    }\n    ull get_all() const { return hash.back(); }\n    int size()\
-    \ const { return str.size(); }\n\n    static int lcp(const RollingHash& a,\n \
-    \                  const RollingHash& b,\n                   int start_a,\n  \
-    \                 int start_b) {\n        int ok = 0;\n        int ng = std::min(a.size()\
-    \ - start_a, b.size() - start_b) + 1;\n        while (ng - ok > 1) {\n       \
-    \     int md = (ok + ng) >> 1;\n            if (a.slice(start_a, start_a + md)\
-    \ ==\n                b.slice(start_b, start_b + md)) {\n                ok =\
-    \ md;\n            } else {\n                ng = md;\n            }\n       \
-    \ }\n\n        return ok;\n    }\n};\n}  // namespace kyopro\ntypename kyopro::RollingHash::ull\
-    \ kyopro::RollingHash::base;\n"
+    \ 0) {\n            return;\n        }\n        u64 r = mod - 1;\n        \n \
+    \       while (_gcd(r, mod - 1) != 1 || r <= mapping_max) r = generate();\n\n\
+    \        base = mod_pow(primitive_root, r, mod);\n    }\n\npublic:\n    RollingHash()\
+    \ : str() {}\n\n    RollingHash(const std::string& str) : str(str) {\n       \
+    \ generate_base();\n        build();\n    }\n\n    void build() {\n        _hash.resize(str.size()\
+    \ + 1);\n        _pow.resize(str.size() + 1, 1);\n\n        for (int i = 0; i\
+    \ < (int)str.size(); i++) {\n            _hash[i + 1] = mul(_hash[i], base) +\
+    \ mapping(str[i]);\n            _pow[i + 1] = mul(_pow[i], base);\n          \
+    \  if (_hash[i + 1] >= mod) {\n                _hash[i + 1] -= mod;\n        \
+    \    }\n        }\n    }\n    u64 hash(int l, int r) const {\n        assert(0\
+    \ <= l && l <= r && r <= str.size());\n\n        u64 res = mod + _hash[r] - mul(_hash[l],\
+    \ _pow[r - l]);\n        return res < mod ? res : res - mod;\n    }\n    u64 get_all()\
+    \ const { return _hash.back(); }\n    int size() const { return str.size(); }\n\
+    \n    static int lcp(const RollingHash& a,\n                   const RollingHash&\
+    \ b,\n                   int start_a,\n                   int start_b) {\n   \
+    \     int ok = 0;\n        int ng = std::min(a.size() - start_a, b.size() - start_b)\
+    \ + 1;\n        while (ng - ok > 1) {\n            int md = (ok + ng) >> 1;\n\
+    \            if (a.hash(start_a, start_a + md) ==\n                b.hash(start_b,\
+    \ start_b + md)) {\n                ok = md;\n            } else {\n         \
+    \       ng = md;\n            }\n        }\n\n        return ok;\n    }\n};\n\
+    }  // namespace kyopro\ntypename kyopro::RollingHash::u64 kyopro::RollingHash::base;\n\
+    \n\n/**\n * @brief Rolling Hash\n */\n"
   code: "#pragma once\n#include <chrono>\n#include <random>\n#include <string>\n#include\
     \ <vector>\n#include \"../math/gcd.hpp\"\n#include \"../math/mod_pow.hpp\"\nnamespace\
-    \ kyopro {\n\n/**\n * @brief Rolling Hash\n */\nclass RollingHash {\n    using\
-    \ ull = uint_fast64_t;\n    using i128 = __int128_t;\n    using u128 = __uint128_t;\n\
-    \    // mod\n    static constexpr ull msk30 = (1ul << 30) - 1;\n    static constexpr\
-    \ ull msk61 = (1ul << 31) - 1;\n    const std::string str;\n    std::vector<ull>\
-    \ hash, pow;\n\n    static constexpr ull mod = (1uL << 61) - 1;\n    static constexpr\
-    \ ull primitive_root = 37;\n\npublic:\n    static constexpr uint mapping_max =\
-    \ (uint)'Z' + 2;\n    static ull base;\n\nprivate:\n    constexpr ull mul(const\
-    \ u128& a, const u128& b) const {\n        u128 t = a * b;\n\n        t = (t >>\
-    \ 61) + (t & mod);\n\n        if (t >= mod) {\n            t -= mod;\n       \
-    \ }\n\n        return t;\n    }\n\n    constexpr ull mapping(char c) const { return\
-    \ (ull)c; }\n\n    static ull generate() {\n        std::mt19937_64 engine(\n\
-    \            std::chrono::steady_clock::now().time_since_epoch().count());\n \
-    \       std::uniform_int_distribution<ull> rand(1uL, mod - 1);\n        return\
-    \ rand(engine);\n    }\n    static void generate_base() {\n        if (base !=\
-    \ 0) {\n            return;\n        }\n        ull r = mod - 1;\n\n        while\
-    \ (_gcd(r, mod - 1) != 1 || r <= mapping_max) {\n            r = generate();\n\
-    \        }\n        base = mod_pow(primitive_root, r, mod);\n    }\n\npublic:\n\
-    \    RollingHash() : str() {}\n\n    RollingHash(const std::string& str) : str(str)\
-    \ {\n        generate_base();\n        build();\n    }\n\n    void build() {\n\
-    \        hash.resize(str.size() + 1);\n        pow.resize(str.size() + 1, 1);\n\
-    \n        for (int i = 0; i < (int)str.size(); i++) {\n            hash[i + 1]\
-    \ = mul(hash[i], base) + mapping(str[i]);\n            pow[i + 1] = mul(pow[i],\
-    \ base);\n            if (hash[i + 1] >= mod) {\n                hash[i + 1] -=\
-    \ mod;\n            }\n        }\n    }\n    ull slice(int l, int r) const {\n\
-    \        assert(0 <= l && l <= r && r <= str.size());\n\n        ull res = mod\
-    \ + hash[r] - mul(hash[l], pow[r - l]);\n        return res < mod ? res : res\
-    \ - mod;\n    }\n    ull get_all() const { return hash.back(); }\n    int size()\
-    \ const { return str.size(); }\n\n    static int lcp(const RollingHash& a,\n \
-    \                  const RollingHash& b,\n                   int start_a,\n  \
-    \                 int start_b) {\n        int ok = 0;\n        int ng = std::min(a.size()\
+    \ kyopro {\n\nclass RollingHash {\n    using u64 = std::uint64_t;\n    using i128\
+    \ = __int128_t;\n    using u128 = __uint128_t;\n\n    static constexpr u64 msk30\
+    \ = (static_cast<u64>(1) << 30) - 1;\n    static constexpr u64 msk61 = (static_cast<u64>(1)\
+    \ << 31) - 1;\n    const std::string str;\n    std::vector<u64> _hash, _pow;\n\
+    \    \n    static constexpr u64 mod = (static_cast<u64>(1) << 61) - 1;\n    static\
+    \ constexpr u64 primitive_root = 37;\n    static constexpr uint mapping_max =\
+    \ (uint)'Z' + 2;\n    static u64 base;\n    \nprivate:\n    constexpr u64 mul(u64\
+    \ a, u64 b) const {\n        u128 t = (u128)a * b;\n        t = (t >> 61) + (t\
+    \ & mod);\n        if (t >= mod) {\n            t -= mod;\n        }\n       \
+    \ return t;\n    }\n\n    constexpr u64 mapping(char c) const { return (u64)c;\
+    \ }\n\n    static u64 generate() {\n        static std::mt19937_64 engine(\n \
+    \           std::chrono::steady_clock::now().time_since_epoch().count());\n  \
+    \      std::uniform_int_distribution<u64> rand(1, mod - 1);\n        return rand(engine);\n\
+    \    }\n    static void generate_base() {\n        if (base != 0) {\n        \
+    \    return;\n        }\n        u64 r = mod - 1;\n        \n        while (_gcd(r,\
+    \ mod - 1) != 1 || r <= mapping_max) r = generate();\n\n        base = mod_pow(primitive_root,\
+    \ r, mod);\n    }\n\npublic:\n    RollingHash() : str() {}\n\n    RollingHash(const\
+    \ std::string& str) : str(str) {\n        generate_base();\n        build();\n\
+    \    }\n\n    void build() {\n        _hash.resize(str.size() + 1);\n        _pow.resize(str.size()\
+    \ + 1, 1);\n\n        for (int i = 0; i < (int)str.size(); i++) {\n          \
+    \  _hash[i + 1] = mul(_hash[i], base) + mapping(str[i]);\n            _pow[i +\
+    \ 1] = mul(_pow[i], base);\n            if (_hash[i + 1] >= mod) {\n         \
+    \       _hash[i + 1] -= mod;\n            }\n        }\n    }\n    u64 hash(int\
+    \ l, int r) const {\n        assert(0 <= l && l <= r && r <= str.size());\n\n\
+    \        u64 res = mod + _hash[r] - mul(_hash[l], _pow[r - l]);\n        return\
+    \ res < mod ? res : res - mod;\n    }\n    u64 get_all() const { return _hash.back();\
+    \ }\n    int size() const { return str.size(); }\n\n    static int lcp(const RollingHash&\
+    \ a,\n                   const RollingHash& b,\n                   int start_a,\n\
+    \                   int start_b) {\n        int ok = 0;\n        int ng = std::min(a.size()\
     \ - start_a, b.size() - start_b) + 1;\n        while (ng - ok > 1) {\n       \
-    \     int md = (ok + ng) >> 1;\n            if (a.slice(start_a, start_a + md)\
-    \ ==\n                b.slice(start_b, start_b + md)) {\n                ok =\
-    \ md;\n            } else {\n                ng = md;\n            }\n       \
-    \ }\n\n        return ok;\n    }\n};\n}  // namespace kyopro\ntypename kyopro::RollingHash::ull\
-    \ kyopro::RollingHash::base;\n"
+    \     int md = (ok + ng) >> 1;\n            if (a.hash(start_a, start_a + md)\
+    \ ==\n                b.hash(start_b, start_b + md)) {\n                ok = md;\n\
+    \            } else {\n                ng = md;\n            }\n        }\n\n\
+    \        return ok;\n    }\n};\n}  // namespace kyopro\ntypename kyopro::RollingHash::u64\
+    \ kyopro::RollingHash::base;\n\n\n/**\n * @brief Rolling Hash\n */"
   dependsOn:
   - src/math/gcd.hpp
   - src/math/mod_pow.hpp
@@ -152,7 +151,7 @@ data:
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2023-10-22 15:25:04+09:00'
+  timestamp: '2023-10-23 06:43:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No430.test.cpp
