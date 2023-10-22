@@ -19,7 +19,7 @@ struct xor_shift32 {
 
 struct xor_shift {
     uint64_t rng;
-    constexpr xor_shift(uint64_t seed) : rng(seed) {}
+    constexpr explicit xor_shift(uint64_t seed) : rng(seed) {}
     explicit xor_shift()
         : rng(std::chrono::steady_clock::now().time_since_epoch().count()) {}
     constexpr uint64_t operator()() {
@@ -33,5 +33,5 @@ struct xor_shift {
 };  // namespace kyopro
 
 /**
- * @brief xor shift
+ * @brief Xor Shift
  */
