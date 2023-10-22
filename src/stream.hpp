@@ -57,8 +57,8 @@ inline void single_write(T a) noexcept {
         if (a < 0) putchar_unlocked('-'), a *= -1;
     }
     constexpr int d = std::numeric_limits<T>::digits10;
-    char s[d];
-    int now = d;
+    char s[d + 1];
+    int now = d + 1;
     while (a) {
         s[--now] = (char)'0' + a % 10;
         a /= 10;
