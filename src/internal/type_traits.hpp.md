@@ -31,7 +31,7 @@ data:
     title: "\u9759\u7684modint"
   - icon: ':heavy_check_mark:'
     path: src/stream.hpp
-    title: fastIO
+    title: "\u9AD8\u901F\u5165\u51FA\u529B"
   - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash

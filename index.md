@@ -148,7 +148,7 @@ data:
       title: src/debug.hpp
     - icon: ':heavy_check_mark:'
       path: src/stream.hpp
-      title: fastIO
+      title: "\u9AD8\u901F\u5165\u51FA\u529B"
     - icon: ':warning:'
       path: src/template.hpp
       title: src/template.hpp
