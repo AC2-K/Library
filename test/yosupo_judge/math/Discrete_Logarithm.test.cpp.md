@@ -32,29 +32,30 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/math/Discrete_Logarithm.test.cpp\"\n#define\
     \ PROBLEM \"https://judge.yosupo.jp/problem/discrete_logarithm_mod\"\n#include\
     \ <iostream>\n#line 2 \"src/math/mod_log.hpp\"\n#include <cmath>\n#line 2 \"src/data-structure/hash_map.hpp\"\
-    \n#include <bits/stl_algobase.h>\n#include <chrono>\nnamespace kyopro {\ntemplate\
-    \ <typename Key,\n          typename Val,\n          uint32_t n = 1 << 20,\n \
-    \         Val default_val = Val()>\nclass hash_map {\n    using u32 = uint32_t;\n\
-    \    using u64 = uint64_t;\n\n    u64* flag = new u64[n];\n    Key* keys = new\
-    \ Key[n];\n    Val* vals = new Val[n];\n\n    static constexpr u32 shift = 64\
-    \ - std::__lg(n);\n\n    u64 r;\n    u32 get_hash(const Key& k) const { return\
-    \ ((u64)k * r) >> shift; }\n\n    static constexpr int mod_msk = (1 << 6) - 1;\n\
-    \npublic:\n    explicit hash_map() {\n        r = std::chrono::steady_clock::now().time_since_epoch().count();\n\
-    \        r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](const\
-    \ Key& k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n        \
-    \    if (!(flag[hash >> 6] &\n                  (static_cast<u64>(1) << (hash\
-    \ & mod_msk)))) {\n                keys[hash] = k;\n                flag[hash\
-    \ >> 6] |= static_cast<u64>(1) << (hash & mod_msk);\n                return vals[hash]\
-    \ = default_val;\n            }\n\n            if (keys[hash] == k) return vals[hash];\n\
-    \            hash = (hash + 1) & (n - 1);\n        }\n    }\n\n    Val* find(const\
-    \ Key& k) const {\n        u32 hash = get_hash(k);\n        while (1) {\n    \
-    \        if (!(flag[hash >> 6] & (static_cast<u64>(1) << (hash & mod_msk))))\n\
-    \                return nullptr;\n            if (keys[hash] == k) return &(vals[hash]);\n\
-    \            hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief Hash Map\n */\n#line 2 \"src/math/gcd.hpp\"\n#include\
-    \ <cassert>\n#include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr\
-    \ inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a\
-    \ == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \n#include <chrono>\n#include <utility>\n#line 5 \"src/data-structure/hash_map.hpp\"\
+    \n#include <bits/stl_algobase.h>\n\nnamespace kyopro {\ntemplate <typename Key,\n\
+    \          typename Val,\n          std::size_t n = 1 << 20,\n          Val default_val\
+    \ = Val()>\nclass hash_map {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\
+    \n    u64* flag = new u64[n / 64];\n    Key* keys = new Key[n];\n    Val* vals\
+    \ = new Val[n];\n\n    static constexpr u32 shift = 64 - std::__lg(n);\n\n   \
+    \ u64 r;\n    u32 get_hash(Key k) const { return ((u64)k * r) >> shift; }\n\n\
+    \    static constexpr int block = 64;\n\npublic:\n    explicit hash_map() {\n\
+    \        r = std::chrono::steady_clock::now().time_since_epoch().count();\n  \
+    \      r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](Key k)\
+    \ {\n        u32 hash = get_hash(k);\n\n        while (1) {\n            if (~flag[hash\
+    \ / block] >> (hash % block) & static_cast<u64>(1)) {\n                keys[hash]\
+    \ = k;\n                flag[hash / block] |= (static_cast<u64>(1) << (hash %\
+    \ block));\n                return vals[hash] = default_val;\n            }\n\n\
+    \            if (keys[hash] == k) return vals[hash];\n            hash = (hash\
+    \ + 1) & (n - 1);\n        }\n    }\n\n    Val* find(Key k) const {\n        u32\
+    \ hash = get_hash(k);\n        while (1) {\n            if (~flag[hash / block]\
+    \ >> (hash % block) & static_cast<u64>(1)) {\n                return nullptr;\n\
+    \            }\n            if (keys[hash] == k) return &(vals[hash]);\n     \
+    \       hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace kyopro\n\
+    \n/**\n * @brief Hash Map\n */\n#line 2 \"src/math/gcd.hpp\"\n#include <cassert>\n\
+    #include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr inline T\
+    \ _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
+    \ b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
     \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
     \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
     \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
@@ -163,7 +164,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
+  timestamp: '2023-10-23 07:13:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
