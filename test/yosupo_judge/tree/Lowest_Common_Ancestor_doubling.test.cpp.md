@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/doubling.hpp
     title: "\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -142,7 +142,7 @@ data:
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   requiredBy: []
   timestamp: '2023-10-22 17:20:37+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
 layout: document

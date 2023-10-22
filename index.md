@@ -97,7 +97,7 @@ data:
       title: Dual Segment Tree
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dynamic_segtree.hpp
-      title: "\u52D5\u7684\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
+      title: Dynamic Segment Tree
     - icon: ':heavy_check_mark:'
       path: src/data-structure/hash_map.hpp
       title: Hash Map
@@ -107,7 +107,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/segtree.hpp
       title: Segment Tree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/sparse_table.hpp
       title: SparseTable
   - name: src/data-structure/bbst
@@ -146,7 +146,7 @@ data:
     - icon: ':warning:'
       path: src/debug.hpp
       title: src/debug.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: "\u9AD8\u901F\u5165\u51FA\u529B"
     - icon: ':heavy_check_mark:'
@@ -162,7 +162,7 @@ data:
     - icon: ':warning:'
       path: src/graph/Namori.hpp
       title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
     - icon: ':warning:'
@@ -184,7 +184,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
@@ -250,10 +250,10 @@ data:
         \u30C1\u30F3\u30B0"
   - name: src/tree
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/EulerTour.hpp
       title: Euler Tour
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/doubling.hpp
       title: "\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   verificationCategories:
@@ -422,16 +422,16 @@ data:
       title: test/yosupo_judge/string/Z_algorithm.test.cpp
   - name: test/yosupo_judge/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
       title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
