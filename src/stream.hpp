@@ -63,7 +63,7 @@ inline void single_write(T a) noexcept {
         s[--now] = (char)'0' + a % 10;
         a /= 10;
     }
-    while (now < d) putchar_unlocked(s[now++]);
+    while (now <= d) putchar_unlocked(s[now++]);
 }
 template <typename T, internal::is_modint_t<T>* = nullptr>
 inline void single_write(T a) noexcept {
