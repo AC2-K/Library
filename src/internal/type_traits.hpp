@@ -3,11 +3,10 @@
 #include <limits>
 #include <numeric>
 #include <typeinfo>
+#include <cstdint>
+
 namespace kyopro {
 namespace internal {
-/*
- * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8
- */
 template <typename... Args> struct first_enabled {};
 
 template <typename T, typename... Args>
@@ -24,21 +23,20 @@ template <typename T, typename... Args> struct first_enabled<T, Args...> {
 template <typename... Args>
 using first_enabled_t = typename first_enabled<Args...>::type;
 
-template <int dgt> struct int_least {
-    static_assert(dgt <= 128);
-    using type = first_enabled_t<std::enable_if<dgt <= 8, __int8_t>,
-                                 std::enable_if<dgt <= 16, __int16_t>,
-                                 std::enable_if<dgt <= 32, __int32_t>,
-                                 std::enable_if<dgt <= 64, __int64_t>,
-                                 std::enable_if<dgt <= 128, __int128_t> >;
+template <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct int_least {
+    using type = first_enabled_t<std::enable_if<dgt <= 8, std::int8_t>,
+                                 std::enable_if<dgt <= 16, std::int16_t>,
+                                 std::enable_if<dgt <= 32, std::int32_t>,
+                                 std::enable_if<dgt <= 64, std::int64_t>,
+                                 std::enable_if<dgt <= 128, __int128_t>>;
 };
-template <int dgt> struct uint_least {
-    static_assert(dgt <= 128);
-    using type = first_enabled_t<std::enable_if<dgt <= 8, __uint8_t>,
-                                 std::enable_if<dgt <= 16, __uint16_t>,
-                                 std::enable_if<dgt <= 32, __uint32_t>,
-                                 std::enable_if<dgt <= 64, __uint64_t>,
-                                 std::enable_if<dgt <= 128, __uint128_t> >;
+
+template <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least {
+    using type = first_enabled_t<std::enable_if<dgt <= 8, std::uint8_t>,
+                                 std::enable_if<dgt <= 16, std::uint16_t>,
+                                 std::enable_if<dgt <= 32, std::uint32_t>,
+                                 std::enable_if<dgt <= 64, std::uint64_t>,
+                                 std::enable_if<dgt <= 128, __uint128_t>>;
 };
 
 template <int dgt> using int_least_t = typename int_least<dgt>::type;
@@ -62,3 +60,7 @@ using is_integral_t =
                    std::is_same_v<T, __uint128_t>>;
 };  // namespace internal
 };  // namespace kyopro
+
+/*
+ * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8
+ */
