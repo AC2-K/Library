@@ -3,10 +3,7 @@
 #include <cstddef>
 #include <cstdint>
 namespace kyopro {
-/**
- * @brief 動的セグメント木
- */
-template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
+template <class S, auto op, auto e> class dynamic_segtree {
 public:
     explicit dynamic_segtree(std::size_t n = 0) : n(n), root(nullptr) {
         root = new Node();
@@ -105,5 +102,6 @@ private:
 };  // namespace kyopro
 
 /**
+ * @brief Dynamic Segment Tree
  * @see https://lorent-kyopro.hatenablog.com/entry/2021/03/12/025644
  */
