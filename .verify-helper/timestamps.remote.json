@@ -46,7 +46,11 @@
 "test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp": "2023-10-22 17:20:37 +0900",
 "test/yosupo_judge/string/Enumerate_Palindromes.test.cpp": "2023-10-22 17:20:37 +0900",
 "test/yosupo_judge/string/Z_algorithm.test.cpp": "2023-10-22 17:20:37 +0900",
+"test/yosupo_judge/tree/Jump_on_Tree.test.cpp": "2023-10-22 17:20:37 +0900",
+"test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp": "2023-10-22 17:20:37 +0900",
+"test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp": "2023-10-22 17:20:37 +0900",
+"test/yosupo_judge/tree/Tree_Diameter.test.cpp": "2023-10-22 17:20:37 +0900",
 "test/yuki/No3030.test.cpp": "2023-10-22 17:06:17 +0900",
 "test/yuki/No430.test.cpp": "2023-10-22 17:06:17 +0900",
-"test/yuki/No789.test.cpp": "2023-10-22 17:06:17 +0900"
+"test/yuki/No789.test.cpp": "2023-10-22 17:53:00 +0900"
 }
