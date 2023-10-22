@@ -2,30 +2,30 @@
 #include <cassert>
 #include <cstddef>
 #include <cstdint>
+#include <memory>
+#include <vector>
+
 namespace kyopro {
 template <class S, auto op, auto e> class dynamic_segtree {
-public:
-    explicit dynamic_segtree(std::size_t n = 0) : n(n), root(nullptr) {
-        root = new Node();
-    }
-    ~dynamic_segtree() { delete root; }
-
-private:
     struct Node {
         S val;
         Node *l, *r, *parent;
-
-        constexpr explicit Node(const S& v = e(), Node* pt = nullptr)
-            : val(v), l(nullptr), r(nullptr), parent(pt) {}
-        ~Node() { delete l, delete r; }
+        
+        constexpr Node(const S& v = e(), Node* pt = nullptr)
+            : val(), l(nullptr), r(nullptr), parent(pt) {}
     };
-    using ptr = Node*;
 
+    using uptr = std::unique_ptr<Node>;
+    std::vector<uptr> nodes;
     Node* root;
+    Node* make_ptr(const S& v = e(), Node* pt = nullptr) {
+        nodes.push_back(std::make_unique<Node>(v, pt));
+        return nodes.back().get();
+    };
+
     const std::size_t n;
 
-private:
-    Node* find(const std::size_t i) {
+    Node* find(std::size_t i) {
         assert(0 <= i && i < n);
 
         std::size_t l = 0, r = n;
@@ -36,13 +36,13 @@ private:
             std::size_t md = (r + l) >> 1;
             if (i < md) {
                 if (!p->l) {
-                    p->l = new Node(e(), p);
+                    p->l = make_ptr(e(), p);
                 }
                 p = p->l;
                 r = md;
             } else {
                 if (!p->r) {
-                    p->r = new Node(e(), p);
+                    p->r = make_ptr(e(), p);
                 }
                 p = p->r;
                 l = md;
@@ -57,6 +57,10 @@ private:
     }
 
 public:
+    explicit dynamic_segtree(std::size_t n = 0) : n(n), root(nullptr) {
+        root = make_ptr();
+    }
+
     void apply(std::size_t i, const S& x) {
         assert(0 <= i && i < n);
         auto p = find(i);
