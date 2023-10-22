@@ -229,7 +229,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/random/xor_shift.hpp
-      title: xor shift
+      title: Xor Shift
   - name: src/string
     pages:
     - icon: ':heavy_check_mark:'

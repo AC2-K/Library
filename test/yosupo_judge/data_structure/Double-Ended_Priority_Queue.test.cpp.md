@@ -9,7 +9,7 @@ data:
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
-    title: xor shift
+    title: Xor Shift
   - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "\u9AD8\u901F\u5165\u51FA\u529B"
@@ -35,11 +35,11 @@ data:
     \ {}\n    explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n\
-    };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr xor_shift(uint64_t\
+    };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr explicit xor_shift(uint64_t\
     \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 5 \"src/data-structure/bbst/Treap.hpp\"\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief Xor Shift\n */\n#line 5 \"src/data-structure/bbst/Treap.hpp\"\
     \n\nnamespace kyopro {\ntemplate <class T> struct Treap {\n    using u32 = std::uint32_t;\n\
     \    xor_shift32 rng;\n    struct Node {\n        const T key;\n        const\
     \ u32 priority;\n        Node *l, *r;\n        Node(const T& key, u32 priority)\n\
@@ -179,7 +179,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 18:54:24+09:00'
+  timestamp: '2023-10-22 21:54:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

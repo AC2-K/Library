@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
-    title: xor shift
+    title: Xor Shift
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -24,11 +24,11 @@ data:
     \ seed) : rng(seed) {}\n    explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n\
-    };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr xor_shift(uint64_t\
+    };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr explicit xor_shift(uint64_t\
     \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 6 \"src/data-structure/bbst/lazy_reversible_bbst.hpp\"\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief Xor Shift\n */\n#line 6 \"src/data-structure/bbst/lazy_reversible_bbst.hpp\"\
     \n\nnamespace kyopro {\ntemplate <class S,\n          class F,\n          S (*op)(S,\
     \ S),\n          S (*e)(),\n          F (*composition)(F, F),\n          F (*id)(),\n\
     \          S (*mapping)(S, F, int)>\nclass lazy_reversible_bbst {\n    using u32\
@@ -145,7 +145,7 @@ data:
   isVerificationFile: false
   path: src/data-structure/bbst/lazy_reversible_bbst.hpp
   requiredBy: []
-  timestamp: '2023-10-22 17:06:17+09:00'
+  timestamp: '2023-10-22 21:54:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

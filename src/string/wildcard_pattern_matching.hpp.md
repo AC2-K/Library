@@ -21,7 +21,7 @@ data:
     title: src/atcoder/modint.hpp
   - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
-    title: xor shift
+    title: Xor Shift
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -411,11 +411,11 @@ data:
     \ {}\n    explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n\
-    };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr xor_shift(uint64_t\
+    };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr explicit xor_shift(uint64_t\
     \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 8 \"src/string/wildcard_pattern_matching.hpp\"\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief Xor Shift\n */\n#line 8 \"src/string/wildcard_pattern_matching.hpp\"\
     \n\nnamespace kyopro {\ntemplate <int m = 998244353>\nstd::vector<bool> wildcard_pattern_matching(const\
     \ std::string& s,\n                                            const std::string&\
     \ t,\n                                            char wild_card) {\n    assert(s.size()\
@@ -473,7 +473,7 @@ data:
   isVerificationFile: false
   path: src/string/wildcard_pattern_matching.hpp
   requiredBy: []
-  timestamp: '2023-10-22 17:06:17+09:00'
+  timestamp: '2023-10-22 21:54:03+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/wildcard_pattern_matching.hpp

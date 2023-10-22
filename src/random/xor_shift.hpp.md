@@ -48,7 +48,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: xor shift
+    document_title: Xor Shift
     links: []
   bundledCode: "#line 2 \"src/random/xor_shift.hpp\"\n#include <chrono>\n#include\
     \ <cstdint>\n#include <random>\n\nnamespace kyopro {\nstruct xor_shift32 {\n \
@@ -56,22 +56,22 @@ data:
     \ {}\n    explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n\
-    };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr xor_shift(uint64_t\
+    };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr explicit xor_shift(uint64_t\
     \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n"
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief Xor Shift\n */\n"
   code: "#pragma once\n#include <chrono>\n#include <cstdint>\n#include <random>\n\n\
     namespace kyopro {\nstruct xor_shift32 {\n    uint32_t rng;\n    constexpr explicit\
     \ xor_shift32(uint32_t seed) : rng(seed) {}\n    explicit xor_shift32()\n    \
     \    : rng(std::chrono::steady_clock::now().time_since_epoch().count()) {}\n \
     \   constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n        rng\
     \ ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n};\n\n\
-    struct xor_shift {\n    uint64_t rng;\n    constexpr xor_shift(uint64_t seed)\
-    \ : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
+    struct xor_shift {\n    uint64_t rng;\n    constexpr explicit xor_shift(uint64_t\
+    \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n"
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief Xor Shift\n */\n"
   dependsOn: []
   isVerificationFile: false
   path: src/random/xor_shift.hpp
@@ -83,7 +83,7 @@ data:
   - src/math/rho.hpp
   - src/math/phi_function.hpp
   - src/string/wildcard_pattern_matching.hpp
-  timestamp: '2023-05-15 08:00:11+09:00'
+  timestamp: '2023-10-22 21:54:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp
@@ -97,5 +97,5 @@ layout: document
 redirect_from:
 - /library/src/random/xor_shift.hpp
 - /library/src/random/xor_shift.hpp.html
-title: xor shift
+title: Xor Shift
 ---

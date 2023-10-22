@@ -21,7 +21,7 @@ data:
     title: "MillerRabin\u7D20\u6570\u5224\u5B9A"
   - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
-    title: xor shift
+    title: Xor Shift
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
@@ -233,11 +233,11 @@ data:
     \    : rng(std::chrono::steady_clock::now().time_since_epoch().count()) {}\n \
     \   constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n        rng\
     \ ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n};\n\n\
-    struct xor_shift {\n    uint64_t rng;\n    constexpr xor_shift(uint64_t seed)\
-    \ : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
+    struct xor_shift {\n    uint64_t rng;\n    constexpr explicit xor_shift(uint64_t\
+    \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
     \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
     \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief xor shift\n */\n#line 7 \"src/math/rho.hpp\"\
+    };\n\n};  // namespace kyopro\n\n/**\n * @brief Xor Shift\n */\n#line 7 \"src/math/rho.hpp\"\
     \nnamespace kyopro {\n\n\nclass rho {\n    using i128 = __int128_t;\n    using\
     \ u128 = __uint128_t;\n    using u64 = uint64_t;\n    using u32 = uint32_t;\n\n\
     \    template <typename T,typename mint> static constexpr T find_factor(T n) {\n\
@@ -337,7 +337,7 @@ data:
   requiredBy:
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
-  timestamp: '2023-10-22 17:06:17+09:00'
+  timestamp: '2023-10-22 21:54:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Factorize.test.cpp
