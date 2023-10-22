@@ -3,19 +3,15 @@
 #include <vector>
 namespace kyopro {
 
-/**
- * @brief SparseTable
- */
 template <class T, auto op> class sparse_table {
     std::vector<T> vec;
     std::vector<std::vector<T>> table;
-    std::vector<int> look_up;
+    std::vector<int> lg;
 
 public:
-    constexpr explicit sparse_table(int n) : vec(n) {}
-    constexpr explicit sparse_table(const std::vector<T>& vec) : vec(vec) {
-        build();
-    }
+    constexpr sparse_table(int n) : vec(n){}
+    constexpr sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }
+
     void set(int p, const T& v) { vec[p] = v; }
     void build() {
         int sz = vec.size();
@@ -33,19 +29,19 @@ public:
                     op(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);
             }
         }
-        look_up.resize(sz + 1);
-        for (int i = 2; i < (int)look_up.size(); i++) {
-            look_up[i] = look_up[i >> 1] + 1;
+        lg.resize(sz + 1);
+        for (int i = 2; i < (int)lg.size(); i++) {
+            lg[i] = lg[i >> 1] + 1;
         }
     }
 
     T fold(int l, int r) const {
-        int b = look_up[r - l];
+        int b = lg[r - l];
         return op(table[b][l], table[b][r - (1 << b)]);
     }
 };
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/sparse_table.md
+ * @brief SparseTable
  */

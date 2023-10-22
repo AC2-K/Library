@@ -2,22 +2,15 @@
 #include <queue>
 #include <vector>
 namespace kyopro {
-
-/**
- * @brief なもりグラフ
- */
 class Namori {
     int n;
     std::vector<std::vector<int>> g;
     std::vector<int> root_idx;
     std::vector<int> deg;
     std::vector<bool> is_cycle;
-    std::vector<int> cycle;
 
 public:
-    Namori(int n) : n(n), g(n), deg(n), is_cycle(n, true), root_idx(n, -1) {
-        cycle.reserve(n);
-    }
+    Namori(int n) : n(n), g(n), deg(n), is_cycle(n, true), root_idx(n, -1) {}
 
     void add_edge(int s, int t) {
         g[s].emplace_back(t), g[t].emplace_back(s);
@@ -25,7 +18,6 @@ public:
     }
 
     void build() {
-        // deg=1の頂点を突っ込んでBFS
         {
             std::queue<int> q;
             for (int v = 0; v < n; ++v) {
@@ -46,7 +38,6 @@ public:
             }
         }
 
-        // DFSしてIDを振り分ける
         {
             for (int i = 0; i < n; ++i) {
                 if (!is_cycle[i]) continue;
@@ -78,10 +69,10 @@ public:
 
     int root(int v) const { return root_idx[v]; }
     bool is_in_cycle(int v) const { return is_cycle[v]; }
-    std::vector<int> get_cycle() const { return cycle; }
 };
 };  // namespace kyopro
 
 /**
+ * @brief なもりグラフ
  * @docs docs/graph/Namori.md
  */

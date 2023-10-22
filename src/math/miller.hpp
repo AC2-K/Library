@@ -2,14 +2,12 @@
 #include "../math/dynamic_modint.hpp"
 namespace kyopro {
 
-/**
- * @brief MillerRabin素数判定法
- */
+
 class miller {
     using i128 = __int128_t;
     using u128 = __uint128_t;
-    using u64 = uint64_t;
-    using u32 = uint32_t;
+    using u64 = std::uint64_t;
+    using u32 = std::uint32_t;
 
     template <typename T, typename mint, const int bases[], int length>
     static constexpr bool miller_rabin(T n) {
@@ -59,11 +57,13 @@ public:
 
         } else {
             if (n <= 1 << 30)
-                return miller_rabin<T, montgomery_modint<std::make_unsigned_t<T>>,
+                return miller_rabin<T,
+                                    montgomery_modint<std::make_unsigned_t<T>>,
                                     bases_int, 3>(n);
             else
-                return miller_rabin<T, montgomery_modint<std::make_unsigned_t<T>>,
-                                    bases_ll, 7>(n);
+                return miller_rabin<
+                    T, montgomery_modint<std::make_unsigned_t<T>>, bases_ll, 7>(
+                    n);
         }
         return false;
     }
@@ -71,5 +71,6 @@ public:
 };  // namespace kyopro
 
 /**
+ * @brief MillerRabin素数判定
  * @docs docs/math/miller.md
  */

@@ -2,9 +2,6 @@
 #include <bits/stl_algobase.h>
 #include <chrono>
 namespace kyopro {
-/**
- * @brief Hash Map
- */
 template <typename Key,
           typename Val,
           uint32_t n = 1 << 20,
@@ -25,7 +22,7 @@ class hash_map {
     static constexpr int mod_msk = (1 << 6) - 1;
 
 public:
-    explicit constexpr hash_map() {
+    explicit hash_map() {
         r = std::chrono::steady_clock::now().time_since_epoch().count();
         r ^= r >> 16;
         r ^= r << 32;
@@ -59,5 +56,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/hash_map.md
+ * @brief Hash Map
  */

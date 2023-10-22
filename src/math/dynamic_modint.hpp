@@ -6,11 +6,11 @@
 namespace kyopro {
 template <int id = -1> class barrett_modint : internal::modint_base {
     using mint = barrett_modint<id>;
-    using u32 = uint32_t;
-    using u64 = uint64_t;
+    using u32 = std::uint32_t;
+    using u64 = std::uint64_t;
 
-    using i32 = int32_t;
-    using i64 = int64_t;
+    using i32 = std::int32_t;
+    using i64 = std::int64_t;
     using br = internal::barrett;
 
     static br brt;
@@ -235,6 +235,5 @@ template <typename T, int id>
 kyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;
 
 /**
- * @brief 動的modint
- * @docs docs/math/dynamic_modint.md
+ * @brief dynamic modint
  */

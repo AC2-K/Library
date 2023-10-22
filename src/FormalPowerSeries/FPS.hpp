@@ -3,11 +3,6 @@
 #include "../../src/atcoder/convolution.hpp"
 namespace kyopro{
 
-
-/**
- * @brief 形式的べき級数
- * @note mintはACLの方で渡すこと
-*/
 template <typename mint, atcoder::internal::is_modint_t<mint>* = nullptr>
 struct FormalPowerSeries : public std::vector<mint> {
     using std::vector<mint>::vector;
@@ -167,3 +162,7 @@ struct FormalPowerSeries : public std::vector<mint> {
 };
 
 };  // namespace kyopro
+
+/**
+ * @brief 形式的べき級数
+*/

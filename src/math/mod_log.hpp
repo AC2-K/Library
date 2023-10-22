@@ -5,9 +5,6 @@
 #include "../math/mod_pow.hpp"
 namespace kyopro {
 
-/**
- * @brief 離散対数
- */
 template <typename T> constexpr inline T mod_log(T x, T y, T p) {
     if (y == 1 || p == 1) {
         return 0;
@@ -50,5 +47,6 @@ template <typename T> constexpr inline T mod_log(T x, T y, T p) {
 };  // namespace kyopro
 
 /**
+ * @brief 離散対数
  * @docs docs/math/mod_log.md
  */

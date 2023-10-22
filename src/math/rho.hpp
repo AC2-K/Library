@@ -6,9 +6,7 @@
 #include "../random/xor_shift.hpp"
 namespace kyopro {
 
-/**
- * @brief PollardRho素因数分解法
- */
+
 class rho {
     using i128 = __int128_t;
     using u128 = __uint128_t;
@@ -123,5 +121,6 @@ public:
 };  // namespace kyopro
 
 /**
+ * @brief PollardRho素因数分解
  * @docs docs/math/rho.md
  */

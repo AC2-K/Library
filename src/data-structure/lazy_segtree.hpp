@@ -2,9 +2,7 @@
 #include <cassert>
 #include <vector>
 namespace kyopro {
-/**
- * @brief LazySegmentTree
- */
+
 template <class S,
           class F,
           auto op,
@@ -124,5 +122,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/lazy_segtree.md
+ * @brief Lazy Segment Tree
  */

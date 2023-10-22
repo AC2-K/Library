@@ -5,8 +5,7 @@
 namespace kyopro {
 
 /**
- * @brief Topologial Sort
- * @returns (ソート済みの頂点列, 元のグラフがDAGだったか?)
+ * @returns (ソート済みの頂点列, 元のグラフがDAGであったか?)
  */
 std::pair<std::vector<int>, bool> topological_sort(
     const std::vector<std::vector<int>>& g) {
@@ -46,5 +45,5 @@ std::pair<std::vector<int>, bool> topological_sort(
 };  // namespace kyopro
 
 /**
- * @docs docs/graph/TopologialSort.md
+ * @brief Topologial Sort
  */

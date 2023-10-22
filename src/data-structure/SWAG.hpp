@@ -2,9 +2,7 @@
 #include <algorithm>
 #include <vector>
 namespace kyopro {
-/**
- * @brief Slide Window Aggrigation
- */
+
 template <class S, auto op, auto e> class SWAG {
     std::vector<S> front_stack, back_stack;
     std::vector<S> front_prod, back_prod;
@@ -42,5 +40,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/SWAG.md
-*/
+ * @brief Slide Window Aggrigation
+ */

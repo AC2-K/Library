@@ -4,13 +4,8 @@
 #include "../../random/xor_shift.hpp"
 
 namespace kyopro {
-
-/**
- * @brief Treap
- * @tparam T 乗せるデータ型
- */
 template <class T> class Treap {
-    using u32 = uint32_t;
+    using u32 = std::uint32_t;
     xor_shift32 rng;
     struct Node {
         const T key;
@@ -103,5 +98,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/bbst/Treap.md
+ * @brief Treap
  */

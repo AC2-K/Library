@@ -1,16 +1,14 @@
 #pragma once
 #include <vector>
 namespace kyopro {
-/**
- * @brief Binary Index Tree
- */
+
 template <typename T> class BIT {
     std::vector<T> bit;
     int n;
 
 public:
-    explicit BIT() {}
-    explicit BIT(int n) : n(n), bit(n + 1, T()) {}
+    BIT() : BIT(0) {}
+    BIT(int n) : n(n), bit(n + 1, T()) {}
     void add(int p, T w) {
         p++;
         for (int x = p; x <= n; x += x & -x) {
@@ -51,5 +49,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/BIT.md
+ * @brief Binary Index Tree
  */

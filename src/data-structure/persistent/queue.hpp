@@ -1,9 +1,7 @@
 #pragma once
 #include <cassert>
 namespace kyopro {
-/**
- * @brief persistent queue
- */
+
 template <typename T, int lg = 20> class persistent_queue {
     struct Node {
         Node() = default;
@@ -66,5 +64,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/queue.md
+ * @brief 永続Queue
  */

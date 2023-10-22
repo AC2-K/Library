@@ -4,15 +4,12 @@
 using namespace std;
 namespace kyopro {
 
-/**
- * @brief 二項係数
- */
 template <typename mint, int sz> class combination {
     const int M;
     mint fac[sz + 1], ifac[sz + 1];
 
 public:
-    explicit combination() : M(std::min<int>(mint::mod(), sz)) {
+    combination() : M(std::min<int>(mint::mod(), sz)) {
         assert(mint::mod());
         fac[0] = mint(1), ifac[0] = mint(1), fac[1] = mint(1),
         ifac[1] = mint(1);
@@ -48,7 +45,6 @@ public:
 
 };  // namespace kyopro
 
-
 /**
- * @docs docs/math/combination.md
-*/
+ * @brief 二項係数
+ */

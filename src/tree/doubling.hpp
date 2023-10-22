@@ -1,10 +1,6 @@
 #pragma once
 #include <cassert>
 #include <vector>
-
-/**
- * @brief 木のダブリング
- */
 namespace kyopro {
 class doubling {
     struct edge {
@@ -111,5 +107,7 @@ public:
 };  // namespace kyopro
 
 /**
+ *
+ * @brief 木上のダブリング
  * @docs docs/tree/doubling.md
  */

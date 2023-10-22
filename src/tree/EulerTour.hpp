@@ -4,9 +4,6 @@
 #include "../data-structure/sparse_table.hpp"
 namespace kyopro {
 
-/**
- * @brief Euler Tour
- */
 class EulerTour {
     int n;
     std::vector<std::vector<int>> g;
@@ -88,5 +85,6 @@ public:
 };  // namespace kyopro
 
 /**
+ * @brief Euler Tour
  * @docs docs/tree/EulerTour.md
  */

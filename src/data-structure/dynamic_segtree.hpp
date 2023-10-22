@@ -8,8 +8,7 @@ namespace kyopro {
  */
 template <class S, S (*op)(S, S), S (*e)()> class dynamic_segtree {
 public:
-    constexpr explicit dynamic_segtree(std::size_t n = 0)
-        : n(n), root(nullptr) {
+    explicit dynamic_segtree(std::size_t n = 0) : n(n), root(nullptr) {
         root = new Node();
     }
     ~dynamic_segtree() { delete root; }
@@ -106,6 +105,5 @@ private:
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/dynamic_segtree.md
- * @ref https://lorent-kyopro.hatenablog.com/entry/2021/03/12/025644
+ * @see https://lorent-kyopro.hatenablog.com/entry/2021/03/12/025644
  */

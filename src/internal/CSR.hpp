@@ -7,9 +7,6 @@
 namespace kyopro {
 namespace internal {
 
-/**
- * @brief CSR形式
- */
 template <typename T> class CSR {
     using usize = std::size_t;
 
@@ -56,3 +53,8 @@ public:
 };
 };  // namespace internal
 };  // namespace kyopro
+
+
+/**
+ * @brief CSR形式
+ */

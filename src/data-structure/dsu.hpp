@@ -3,14 +3,12 @@
 #include <vector>
 namespace kyopro {
 
-/**
- * @brief Disjoint Set(Union Find)
- */
 class dsu {
 private:
     std::vector<int> find;
 
 public:
+    dsu() : dsu(0) {}
     dsu(int n) : find(n, -1) {}
 
     int root(int x) {
@@ -35,5 +33,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/dsu.md
+ * @brief Disjoint Set Union
  */

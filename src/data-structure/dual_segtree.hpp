@@ -2,17 +2,12 @@
 #include <cassert>
 #include <vector>
 namespace kyopro {
-/**
- * @brief 双対セグメント木
- * @tparam F 作用素
- * @tparam id F の単位元
- */
-template <class F, F (*composition)(F, F), F (*id)()> class dual_segtree {
+template <class F, auto composition, auto id> class dual_segtree {
     std::vector<F> dat;
     int _n, sz, lg;
 
 public:
-    dual_segtree() {}
+    dual_segtree() : dual_segtree(0) {}
     dual_segtree(int _n) : _n(_n) {
         sz = 1, lg = 0;
         while (sz < _n) {
@@ -72,6 +67,7 @@ public:
 
 };  // namespace kyopro
 
+
 /**
- * @docs docs/data-structure/dual_segtree.md
- */
+ * @brief Dual Segment Tree
+*/

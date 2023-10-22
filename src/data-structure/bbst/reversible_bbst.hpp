@@ -5,12 +5,6 @@
 #include "../../random/xor_shift.hpp"
 
 namespace kyopro {
-/**
- * @brief 反転可能平衡二分木
- * @tparam S モノイド
- * @tparam op Sの二項演算
- * @tparam e Sの単位元
- */
 template <class S, S (*op)(S, S), S (*e)()> class reversible_bbst {
     using u32 = uint32_t;
     xor_shift32 rng;
@@ -124,7 +118,6 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/bbst/reversible_bbst.md
- * @ref
- * https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp
+ * @brief 反転可能平衡二分木
+ * @see https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp
  */

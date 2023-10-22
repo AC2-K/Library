@@ -7,16 +7,16 @@ namespace internal {
  * @brief Barrett Reduction
  */
 class barrett {
-    using u32 = uint32_t;
-    using u64 = uint64_t;
+    using u32 = std::uint32_t;
+    using u64 = std::uint64_t;
     using u128 = __uint128_t;
 
     u32 m;
     u64 im;
 
 public:
-    constexpr explicit barrett() : m(0), im(0) {}
-    constexpr explicit barrett(u32 m)
+    constexpr barrett() : m(0), im(0) {}
+    constexpr barrett(u32 m)
         : m(m), im(static_cast<u64>(-1) / m + 1) {}
 
     constexpr u32 get_mod() const { return m; }

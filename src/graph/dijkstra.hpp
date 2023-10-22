@@ -7,9 +7,6 @@
 #include <vector>
 namespace kyopro {
 
-/**
- * @brief ダイクストラ法
- */
 class dijkstra {
     std::vector<long long> dist;
     std::vector<int> trace;
@@ -85,5 +82,7 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/graph/dijkstra.md
+ * @brief ダイクストラ法
+ * @bug 最短距離が10^18を超えたりする場合はバグる
+ * @todo 上のやつを直す
  */

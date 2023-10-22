@@ -128,6 +128,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief 静的modint
- * @docs docs/math/static_modint.md
+ * @brief static modint
  */

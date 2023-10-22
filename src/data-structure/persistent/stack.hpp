@@ -1,10 +1,6 @@
 #pragma once
 #include <cassert>
 namespace kyopro {
-
-/**
- * @brief persistent stack
- */
 template <class T> class persistent_stack {
     class Node {
     public:
@@ -37,5 +33,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/stack.md
+ * @brief 永続Stack
  */

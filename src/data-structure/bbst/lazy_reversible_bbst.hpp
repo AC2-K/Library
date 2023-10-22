@@ -5,16 +5,6 @@
 #include "../../random/xor_shift.hpp"
 
 namespace kyopro {
-/**
- * @brief 遅延評価つき反転可能平衡二分木
- * @tparam S モノイド
- * @tparam F 作用素
- * @tparam op Sの二項演算
- * @tparam e Sの単位元
- * @tparam composition Fの二項演算
- * @tparam id Fの単位元
- * @tparam mapping 作用
- */
 template <class S,
           class F,
           S (*op)(S, S),
@@ -123,7 +113,7 @@ class lazy_reversible_bbst {
     ptr root = nullptr;
 
 public:
-    constexpr explicit lazy_reversible_bbst() : rng(2023) {}
+    lazy_reversible_bbst() : rng(2023) {}
     void insert(int i, S a) {
         auto [l, r] = split(std::move(root), i);
         ptr item = std::make_unique<Node>(a, rng());
@@ -168,6 +158,6 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/data-structure/bbst/lazy_reversible_bbst.md
- * @ref https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
+ * @brief 遅延評価つき反転可能平衡二分木
+ * @see https://xuzijian629.hatenablog.com/entry/2018/12/08/000452
  */

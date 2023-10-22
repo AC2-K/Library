@@ -4,9 +4,6 @@
 #include <utility>
 #include <vector>
 namespace kyopro {
-/**
- * @brief Mo's algorithm
- */
 class Mo {
     int n;
     std::vector<std::pair<int, int>> lr;
@@ -15,7 +12,7 @@ class Mo {
     std::vector<int> ord;
 
 public:
-    explicit Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }
+    Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }
     void add(int l, int r) { lr.emplace_back(l, r); }
 
 private:
@@ -34,7 +31,7 @@ private:
         }
         return d;
     }
-    void line_up() {
+    void _sort() {
         int q = lr.size();
         ord.resize(q);
         std::iota(std::begin(ord), std::end(ord), 0);
@@ -53,7 +50,7 @@ public:
                const EL& erase_left,
                const ER& erase_right,
                const O& out) {
-        line_up();
+        _sort();
         int l = 0, r = 0;
         for (auto idx : ord) {
             while (l > lr[idx].first) add_left(--l);
@@ -72,6 +69,6 @@ public:
 };  // namespace kyopro
 
 /**
- * @docs docs/other/mo.md
- * @ref https://ei1333.hateblo.jp/entry/2017/09/11/211011
+ * @brief Mo's algorithm
+ * @see https://ei1333.hateblo.jp/entry/2017/09/11/211011
  */
