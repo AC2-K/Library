@@ -5,17 +5,17 @@
 #include "../../random/xor_shift.hpp"
 
 namespace kyopro {
-template <class S, S (*op)(S, S), S (*e)()> class reversible_bbst {
+template <class S, auto op, auto e> class reversible_bbst {
     using u32 = uint32_t;
     xor_shift32 rng;
     struct Node {
-        std::unique_ptr<Node> l, r;
+        Node *l, *r;
         u32 priority;
         S value, prod;
         int size;
         bool rev;
-
-        Node(S v, u32 prio)
+        
+        explicit Node(const S& v, u32 prio)
             : l(),
               r(),
               priority(prio),
@@ -25,94 +25,96 @@ template <class S, S (*op)(S, S), S (*e)()> class reversible_bbst {
               rev(false) {}
     };
 
-    using ptr = std::unique_ptr<Node>;
-    int size(const ptr& p) const { return p ? p->size : 0; }
-    S fold(const ptr& p) { return p ? p->prod : e(); }
-
-    void reverse(const ptr& p) {
+    using uptr = std::unique_ptr<Node>;
+    std::vector<uptr> nodes;
+    Node* make_ptr(const S& v, u32 prio) {
+        nodes.emplace_back(std::make_unique<Node>(v, prio));
+        return nodes.back().get();
+    }
+    int size(Node* p) const { return p ? p->size : 0; }
+    S fold(Node* p) { return p ? p->prod : e(); }
+    void reverse(Node*& p) {
         if (p) {
             p->rev ^= 1;
         }
     }
-
-    void push(const ptr& p) {
+    void push_down(Node*& p) {
         if (p->rev) {
             p->rev = false;
             std::swap(p->l, p->r);
             reverse(p->l), reverse(p->r);
         }
     }
-
-    void update(const ptr& p) {
+    void push_up(Node*& p) {
         p->size = size(p->l) + size(p->r) + 1;
         p->prod = op(p->value, op(fold(p->l), fold(p->r)));
     }
 
-    std::pair<ptr, ptr> split(ptr p, int k) {
+    std::pair<Node*, Node*> split(Node* p, int k) {
         if (!p) return {nullptr, nullptr};
 
-        push(p);
+        push_down(p);
         int s = size(p->l);
         if (s >= k) {
-            auto [l, r] = split(std::move(p->l), k);
-            p->l = std::move(r);
-            update(p);
+            auto [l, r] = split(p->l, k);
+            p->l = r;
+            push_up(p);
 
             return {std::move(l), std::move(p)};
         } else {
-            auto [l, r] = split(std::move(p->r), k - s - 1);
+            auto [l, r] = split(p->r, k - s - 1);
 
-            p->r = std::move(l);
-            update(p);
+            p->r = l;
+            push_up(p);
 
             return {std::move(p), std::move(r)};
         }
     }
 
-    ptr merge(ptr l, ptr r) {
-        if (!l) return r;
-        if (!r) return l;
+    Node* merge(Node* l, Node* r) {
+        if (!l) return std::move(r);
+        if (!r) return std::move(l);
 
         if (l->priority < r->priority) {
-            push(r);
-            r->l = merge(std::move(l), std::move(r->l));
-            update(r);
-            return r;
+            push_down(r);
+            r->l = merge(l, r->l);
+            push_up(r);
+            return std::move(r);
         } else {
-            push(l);
-            l->r = merge(std::move(l->r), std::move(r));
-            update(l);
+            push_down(l);
+            l->r = merge(l->r, r);
+            push_up(l);
 
-            return l;
+            return std::move(l);
         }
     }
 
-    ptr root = nullptr;
+    Node* root;
 
 public:
-    constexpr explicit reversible_bbst() : rng(2023) {}
-    void insert(int i, S a) {
-        auto [l, r] = split(std::move(root), i);
-        ptr item = std::make_unique<Node>(a, rng());
-        root = merge(std::move(l), std::move(item));
-        root = merge(std::move(root), std::move(r));
+    explicit reversible_bbst() : rng(2023), root(nullptr) {}
+    void insert(int i, const S& a) {
+        Node* item = make_ptr(a, rng());
+        auto [l, r] = split(root, i);
+        root = merge(l, item);
+        root = merge(root, r);
     }
     S fold(int l, int r) {
         assert(0 <= l && l <= r && r <= size(root));
-        auto [xy, z] = split(std::move(root), r);
-        auto [x, y] = split(std::move(xy), l);
-        auto res = fold(y);
-        xy = merge(std::move(x), std::move(y));
-        root = merge(std::move(xy), std::move(z));
+        auto [xy, z] = split(root, r);
+        auto [x, y] = split(xy, l);
+        S res = fold(y);
+        xy = merge(x, y);
+        root = merge(xy, z);
         return res;
     }
     void reverse(int l, int r) {
         assert(0 <= l && l <= r && r <= size(root));
-        auto [xy, z] = split(std::move(root), r);
-        auto [x, y] = split(std::move(xy), l);
+        auto [xy, z] = split(root, r);
+        auto [x, y] = split(xy, l);
         reverse(y);
-        xy = merge(std::move(x), std::move(y));
-        root = merge(std::move(xy), std::move(z));
+        xy = merge(x, y);
+        root = merge(xy, z);
     }
 };
 };  // namespace kyopro
