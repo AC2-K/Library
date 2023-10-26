@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/taylor-shift.hpp
-    title: taylor shift
+    title: Polynomial Taylor Shift
   - icon: ':heavy_check_mark:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
@@ -432,15 +432,15 @@ data:
     \ perm(int n, int r) const {\n        assert(n >= r);\n        return fact(n)\
     \ * ifact(n - r);\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief \u4E8C\
     \u9805\u4FC2\u6570\n */\n#line 4 \"src/FormalPowerSeries/taylor-shift.hpp\"\n\n\
-    namespace kyopro {\n\n/**\n * @brief taylor shift\n * @tparam mint \u4FC2\u6570\
-    \u306E\u578B\n * @tparam deg_f f\u306E\u6B21\u6570\u306E\u6700\u5927\u5024\n *\
-    \ @param table \u5185\u90E8\u3067\u4F7F\u3046\u4E8C\u9805\u4FC2\u6570\u306E\u30C6\
-    \u30FC\u30D6\u30EB.(\u7701\u7565\u53EF\u80FD)\n */\n\ntemplate <typename mint,\
-    \ int deg_f>\nstd::vector<mint> taylor_shift(\n    const std::vector<mint>& f,\n\
-    \    const mint& c,\n    const combination<mint, deg_f>& table = combination<mint,\
+    namespace kyopro {\n\n/**\n * @brief Polynomial Taylor Shift\n * @tparam mint\
+    \ \u4FC2\u6570\u306E\u578B\n * @tparam deg_f f\u306E\u6B21\u6570\u306E\u6700\u5927\
+    \u5024\n * @param table \u5185\u90E8\u3067\u4F7F\u3046\u4E8C\u9805\u4FC2\u6570\
+    \u306E\u30C6\u30FC\u30D6\u30EB.(\u7701\u7565\u53EF\u80FD)\n */\n\ntemplate <typename\
+    \ mint, int deg_f>\nstd::vector<mint> taylor_shift(\n    const std::vector<mint>&\
+    \ f,\n    const mint& shift,\n    const combination<mint, deg_f>& table = combination<mint,\
     \ deg_f>()) {\n    const int n = f.size();\n    std::vector<mint> a(f.size()),\
     \ b(f.size());\n    for (int i = 0; i < n; ++i) {\n        a[i] = f[i] * table.fact(i);\n\
-    \        b[i] = c.pow(i) * table.ifact(i);\n    }\n    std::reverse(b.begin(),\
+    \        b[i] = shift.pow(i) * table.ifact(i);\n    }\n    std::reverse(b.begin(),\
     \ b.end());\n\n    std::vector res = atcoder::convolution(a, b);\n    for (int\
     \ i = 0; i < n; ++i) {\n        res[i] = res[i + n - 1] * table.ifact(i);\n  \
     \  }\n    res.resize(f.size());\n    return res;\n}\n};  // namespace kyopro\n\
@@ -544,7 +544,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
+  timestamp: '2023-10-26 13:28:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp

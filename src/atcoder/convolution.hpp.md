@@ -19,7 +19,7 @@ data:
     title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
   - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/taylor-shift.hpp
-    title: taylor shift
+    title: Polynomial Taylor Shift
   - icon: ':warning:'
     path: src/string/wildcard_pattern_matching.hpp
     title: "\u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\u30C3\

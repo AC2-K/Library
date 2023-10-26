@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/taylor-shift.hpp
-    title: taylor shift
+    title: Polynomial Taylor Shift
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp

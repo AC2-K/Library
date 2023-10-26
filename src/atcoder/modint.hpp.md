@@ -13,7 +13,7 @@ data:
     title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
   - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/taylor-shift.hpp
-    title: taylor shift
+    title: Polynomial Taylor Shift
   - icon: ':heavy_check_mark:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
