@@ -11,8 +11,7 @@ namespace internal {
 template <typename T> class CSR {
     using usize = std::size_t;
 
-    const usize n;
-    std::vector<std::vector<T>> mat;
+    const usize _size;
     std::vector<T> csr;
     std::vector<usize> ssum;
 
@@ -24,30 +23,24 @@ public:
         range(const typename std::vector<T>::iterator& l,
               const typename std::vector<T>::iterator& r)
             : l(l), r(r){}
-        typename std::vector<T>::iterator begin() { return l; }
-        typename std::vector<T>::iterator end() { return r; }
+        typename std::vector<T>::iterator begin() const noexcept { return l; }
+        typename std::vector<T>::iterator end() const noexcept { return r; }
     };
-
-    CSR(usize n) : n(n), mat(n), csr(), ssum(n + 1) {}
-    CSR(const std::vector<std::vector<T>>& mat) : mat(mat) {}
     
-    void add(usize a, T b) {
-        assert(0 <= a && a < n);
-        mat[a].emplace_back(b);
-    }
-    void build() {
-        for (int i = 0; i < n; ++i) ssum[i + 1] += ssum[i] + mat[i].size();
+    CSR(const std::vector<std::vector<T>>& mat) : _size(mat.size()) {
+        for (int i = 0; i < _size; ++i) ssum[i + 1] = ssum[i] + mat[i].size();
         csr.reserve(ssum.back());
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < (int)_size; ++i) {
             for (int j = 0; j < (int)mat[i].size(); ++j) {
-                csr.emplace_back(mat[i][j]);
+                csr.emplace_back(std::move(mat[i][j]));
             }
         }
         mat.clear();
     }
+    usize size() const noexcept { return _size; }
 
-    const range operator[](usize x) const {
-        assert(0 <= x && x < n);
+    range operator[](usize x) {
+        assert(0 <= x && x < _size);
         return range(csr.begin() + ssum[x], csr.begin() + ssum[x + 1]);
     }
 };

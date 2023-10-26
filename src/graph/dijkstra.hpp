@@ -1,82 +1,86 @@
 #pragma once
 #include <algorithm>
 #include <cassert>
+#include <limits>
 #include <numeric>
 #include <queue>
 #include <utility>
 #include <vector>
+
 namespace kyopro {
 
+template<typename Cost>
 class dijkstra {
-    std::vector<long long> dist;
-    std::vector<int> trace;
+    std::vector<Cost> _dist;
+    std::vector<int> _trace;
     const int n;
     int s;
 
-public:
     struct edge {
         const int to;
-        const long long cost;
-        constexpr edge(int to, long long cost) : to(to), cost(cost) {}
+        const Cost cost;
+        constexpr edge(int to, Cost cost) noexcept : to(to), cost(cost) {}
     };
 
-    using graph = std::vector<std::vector<edge>>;
-
-private:
-    graph g;
+    std::vector<std::vector<edge>> g;
 
 public:
-    dijkstra(int n) : n(n), g(n) {}
-    dijkstra(const graph& g) : n(g.size()), g(g) {}
-    void add_edge(int from, int to, long long cost) {
+    static constexpr Cost COST_INF = std::numeric_limits<Cost>::max() / 2;
+
+    dijkstra(int n) : n(n), g(n), _trace(n, -1), _dist(n, COST_INF) {}
+    dijkstra(const std::vector<std::vector<edge>>& g)
+        : n(g.size()), g(g), _trace(g.size(), -1), _dist(g.size(), COST_INF){}
+
+    void add_edge(int from, int to, Cost cost) {
         assert(0 <= from && from < n);
         assert(0 <= to && to < n);
         assert(cost >= 0);
         g[from].emplace_back(to, cost);
     }
-    void build(int _s) {
-        assert(0 <= _s && _s < n);
-        std::swap(s, _s);
 
-        trace.assign(n, -1), dist.assign(n, (long long)1e18);
-        std::priority_queue<std::pair<long long, int>,
-                            std::vector<std::pair<long long, int>>,
-                            std::greater<std::pair<long long, int>>>
-            que;
-        que.emplace(0, s);
-        dist[s] = 0;
-        trace[s] = s;
-        while (!que.empty()) {
-            auto [d, v] = que.top();
-            que.pop();
-            if (dist[v] != d) {
+    void build(int _s) {
+        s = _s;
+        std::priority_queue<std::pair<Cost, int>,
+                            std::vector<std::pair<Cost, int>>,
+                            std::greater<std::pair<Cost, int>>>
+            q;
+        q.emplace(0, s);
+        _dist[s] = 0;
+        _trace[s] = s;
+        while (!q.empty()) {
+            auto [d, v] = q.top();
+            q.pop();
+            if (_dist[v] != d) {
                 continue;
             }
-
             for (auto [nv, c] : g[v]) {
-                if (dist[v] + c < dist[nv]) {
-                    dist[nv] = dist[v] + c;
-                    trace[nv] = v;
-                    que.emplace(dist[nv], nv);
+                if (_dist[v] + c < _dist[nv]) {
+                    _dist[nv] = _dist[v] + c;
+                    _trace[nv] = v;
+                    q.emplace(_dist[nv], nv);
                 }
             }
         }
     }
 
-    const std::vector<long long>& get_dist() const { return dist; }
+    const Cost dist(int u) const { return _dist[u]; }
+    std::vector<Cost> dists() const { return _dist; }
+    std::vector<int> traces() const { return _trace; }
 
-    std::pair<long long, std::vector<int>> shortest_path(int to) {
+    std::vector<int> shortest_path(int to) const {
         assert(0 <= to && to < n);
-        if (dist[to] >= (long long)1e18) return {};
+        assert(_dist[to] < COST_INF);
+
         int cur = to;
         std::vector<int> path;
-        while (cur != trace[cur]) {
+        while (cur != _trace[cur]) {
             path.emplace_back(cur);
-            cur = trace[cur];
+            cur = _trace[cur];
         }
         path.emplace_back(s);
         std::reverse(path.begin(), path.end());
-        return {dist[to], path};
+
+        return path;
     }
 };
 };  // namespace kyopro

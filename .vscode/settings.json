@@ -18,7 +18,8 @@
         "ranges": "cpp",
         "span": "cpp",
         "regex": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "any": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
