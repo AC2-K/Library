@@ -8,10 +8,10 @@ template <class S, auto op, auto e> class SWAG {
     std::vector<S> front_prod, back_prod;
 
 public:
-    constexpr explicit SWAG() {
+    SWAG() {
         front_prod.emplace_back(e()), back_prod.emplace_back(e());
     }
-    void reserve(size_t sz) {
+    void reserve(std::size_t sz) {
         back_stack.reserve(sz), back_prod.reserve(sz + 1);
     }
     void push(const S& x) {
@@ -35,7 +35,7 @@ public:
     }
 
     S fold() const { return op(front_prod.back(), back_prod.back()); }
-    int size() { return front_stack.size() + back_stack.size(); }
+    std::size_t size() { return front_stack.size() + back_stack.size(); }
 };
 };  // namespace kyopro
 
