@@ -23,7 +23,7 @@ int main() {
     g.build(0);
     int v = -1;
     {
-        int ma = 0;
+        ll ma = 0;
         rep(i, n) {
             if (chmax(ma, g.dist(i))) v = i;
             // cout << g.dist(i) << " \n"[i == n - 1];
@@ -33,7 +33,7 @@ int main() {
     g.build(v);
     int u = -1;
     {
-        int ma = 0;
+        ll ma = 0;
         rep(i, n) {
             if (chmax(ma, g.dist(i))) u = i;
             // cout << g.dist(i) << " \n"[i == n - 1];

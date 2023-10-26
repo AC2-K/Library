@@ -19,8 +19,8 @@ int main() {
     }
 
     g.build(s);
-
-    if (g.dist(s) >= dijkstra<long long>::COST_INF) {
+    
+    if (g.dist(t) >= dijkstra<long long>::COST_INF) {
         put(-1);
         return 0;
     }

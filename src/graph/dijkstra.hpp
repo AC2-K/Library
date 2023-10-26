@@ -25,21 +25,23 @@ class dijkstra {
     std::vector<std::vector<edge>> g;
 
 public:
-    static constexpr Cost COST_INF = std::numeric_limits<Cost>::max() / 2;
-    
+    static constexpr Cost COST_INF = std::numeric_limits<Cost>::max();
+
     dijkstra(int n) : n(n), g(n) {}
-    dijkstra(const std::vector<std::vector<edge>>& g) : n(g.size()), g(g) {}
+    dijkstra(const std::vector<std::vector<edge>>& g) : g(g), n(g.size()) {}
 
     void add_edge(int from, int to, Cost cost) {
         assert(0 <= from && from < n);
         assert(0 <= to && to < n);
         assert(cost >= 0);
+
         g[from].emplace_back(to, cost);
     }
 
     void build(int _s) {
         _trace.assign(n, -1);
         _dist.assign(n, COST_INF);
+
         s = _s;
         std::priority_queue<std::pair<Cost, int>,
                             std::vector<std::pair<Cost, int>>,
@@ -80,7 +82,6 @@ public:
         }
         path.emplace_back(s);
         std::reverse(path.begin(), path.end());
-
         return path;
     }
 };
