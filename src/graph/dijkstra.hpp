@@ -26,10 +26,9 @@ class dijkstra {
 
 public:
     static constexpr Cost COST_INF = std::numeric_limits<Cost>::max() / 2;
-
-    dijkstra(int n) : n(n), g(n), _trace(n, -1), _dist(n, COST_INF) {}
-    dijkstra(const std::vector<std::vector<edge>>& g)
-        : n(g.size()), g(g), _trace(g.size(), -1), _dist(g.size(), COST_INF){}
+    
+    dijkstra(int n) : n(n), g(n) {}
+    dijkstra(const std::vector<std::vector<edge>>& g) : n(g.size()), g(g) {}
 
     void add_edge(int from, int to, Cost cost) {
         assert(0 <= from && from < n);
@@ -39,6 +38,8 @@ public:
     }
 
     void build(int _s) {
+        _trace.assign(n, -1);
+        _dist.assign(n, COST_INF);
         s = _s;
         std::priority_queue<std::pair<Cost, int>,
                             std::vector<std::pair<Cost, int>>,
@@ -63,7 +64,7 @@ public:
         }
     }
 
-    const Cost dist(int u) const { return _dist[u]; }
+    Cost dist(int x) const { return _dist[x]; }
     std::vector<Cost> dists() const { return _dist; }
     std::vector<int> traces() const { return _trace; }
 
@@ -87,6 +88,4 @@ public:
 
 /**
  * @brief ダイクストラ法
- * @bug 最短距離が10^18を超えたりする場合はバグる
- * @todo 上のやつを直す
  */

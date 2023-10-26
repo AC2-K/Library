@@ -4,20 +4,24 @@
 #include <iostream>
 #include "../../../src/graph/dijkstra.hpp"
 #include "../../../src/stream.hpp"
+
+using namespace std;
+using namespace kyopro;
+
 int main() {
     int n, m, r;
-    kyopro::read(n, m, r);
-    kyopro::dijkstra g(n);
+    read(n, m, r);
+    dijkstra<long long> g(n);
     for (int i = 0; i < m; i++) {
         int s, t, w;
-        kyopro::read(s, t, w);
+        read(s, t, w);
         g.add_edge(s, t, w);
     }
     g.build(r);
-    auto res = g.get_dist();
+    vector res = g.dists();
 
     for (int v = 0; v < n; v++) {
-        if (res[v] >= (long long)1e18)
+        if (res[v] >= g.COST_INF)
             puts("INF");
         else
             kyopro::put(res[v]);

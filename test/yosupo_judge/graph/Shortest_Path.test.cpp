@@ -5,8 +5,6 @@
 #include "../../../src/stream.hpp"
 #include "../../../src/template.hpp"
 
-#define OUT_LINE std::cerr << __LINE__ << std::endl
-
 using namespace std;
 using namespace kyopro;
 

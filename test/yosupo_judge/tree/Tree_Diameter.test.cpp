@@ -4,26 +4,44 @@
 #include <vector>
 #include "../../../src/graph/dijkstra.hpp"
 #include "../../../src/stream.hpp"
+#include"../../../src/template.hpp"
+
+using namespace std;
+using namespace kyopro;
+
 int main() {
     int n;
-    kyopro::read(n);
-    kyopro::dijkstra g(n);
-    for (int i = 0; i < n - 1; ++i) {
+    read(n);
+    dijkstra<long long> g(n);
+    for (int i = 0; i < n - 1; i++) {
         int a, b, c;
-        kyopro::read(a, b, c);
+        read(a, b, c);
         g.add_edge(a, b, c);
         g.add_edge(b, a, c);
     }
+    // put("-----");
     g.build(0);
-    std::vector<long long> dist = g.get_dist();
-    int v = std::max_element(dist.begin(), dist.end()) - dist.begin();
+    int v = -1;
+    {
+        int ma = 0;
+        rep(i, n) {
+            if (chmax(ma, g.dist(i))) v = i;
+            // cout << g.dist(i) << " \n"[i == n - 1];
+        }
+    }
+    // cout << v << '\n';
     g.build(v);
-    dist = g.get_dist();
+    int u = -1;
+    {
+        int ma = 0;
+        rep(i, n) {
+            if (chmax(ma, g.dist(i))) u = i;
+            // cout << g.dist(i) << " \n"[i == n - 1];
+        }
+    }
+    // cout << u << '\n';
 
-    auto it = std::max_element(dist.begin(), dist.end());
-    int u = it - dist.begin();
-    kyopro::put(*it);
-    auto path = g.shortest_path(u).second;
-    kyopro::put(path.size());
-    for (auto v : path) kyopro::put(v);
+    vector path = g.shortest_path(u);
+    put(g.dist(u), path.size());
+    for (auto ui : path) put(ui);
 }
