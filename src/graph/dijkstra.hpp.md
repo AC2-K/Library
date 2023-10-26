@@ -6,15 +6,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/1_A.test.cpp
     title: test/AOJ/GRL/1_A.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
     links: []
@@ -25,13 +25,13 @@ data:
     \    const int n;\n    int s;\n\n    struct edge {\n        const int to;\n  \
     \      const Cost cost;\n        constexpr edge(int to, Cost cost) noexcept :\
     \ to(to), cost(cost) {}\n    };\n\n    std::vector<std::vector<edge>> g;\n\npublic:\n\
-    \    static constexpr Cost COST_INF = std::numeric_limits<Cost>::max() / 2;\n\
-    \    \n    dijkstra(int n) : n(n), g(n) {}\n    dijkstra(const std::vector<std::vector<edge>>&\
-    \ g) : n(g.size()), g(g) {}\n\n    void add_edge(int from, int to, Cost cost)\
+    \    static constexpr Cost COST_INF = std::numeric_limits<Cost>::max();\n\n  \
+    \  dijkstra(int n) : n(n), g(n) {}\n    dijkstra(const std::vector<std::vector<edge>>&\
+    \ g) : g(g), n(g.size()) {}\n\n    void add_edge(int from, int to, Cost cost)\
     \ {\n        assert(0 <= from && from < n);\n        assert(0 <= to && to < n);\n\
-    \        assert(cost >= 0);\n        g[from].emplace_back(to, cost);\n    }\n\n\
-    \    void build(int _s) {\n        _trace.assign(n, -1);\n        _dist.assign(n,\
-    \ COST_INF);\n        s = _s;\n        std::priority_queue<std::pair<Cost, int>,\n\
+    \        assert(cost >= 0);\n\n        g[from].emplace_back(to, cost);\n    }\n\
+    \n    void build(int _s) {\n        _trace.assign(n, -1);\n        _dist.assign(n,\
+    \ COST_INF);\n\n        s = _s;\n        std::priority_queue<std::pair<Cost, int>,\n\
     \                            std::vector<std::pair<Cost, int>>,\n            \
     \                std::greater<std::pair<Cost, int>>>\n            q;\n       \
     \ q.emplace(0, s);\n        _dist[s] = 0;\n        _trace[s] = s;\n        while\
@@ -47,21 +47,21 @@ data:
     \ COST_INF);\n\n        int cur = to;\n        std::vector<int> path;\n      \
     \  while (cur != _trace[cur]) {\n            path.emplace_back(cur);\n       \
     \     cur = _trace[cur];\n        }\n        path.emplace_back(s);\n        std::reverse(path.begin(),\
-    \ path.end());\n\n        return path;\n    }\n};\n};  // namespace kyopro\n\n\
-    /**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n */\n"
+    \ path.end());\n        return path;\n    }\n};\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n */\n"
   code: "#pragma once\n#include <algorithm>\n#include <cassert>\n#include <limits>\n\
     #include <numeric>\n#include <queue>\n#include <utility>\n#include <vector>\n\n\
     namespace kyopro {\n\ntemplate<typename Cost>\nclass dijkstra {\n    std::vector<Cost>\
     \ _dist;\n    std::vector<int> _trace;\n    const int n;\n    int s;\n\n    struct\
     \ edge {\n        const int to;\n        const Cost cost;\n        constexpr edge(int\
     \ to, Cost cost) noexcept : to(to), cost(cost) {}\n    };\n\n    std::vector<std::vector<edge>>\
-    \ g;\n\npublic:\n    static constexpr Cost COST_INF = std::numeric_limits<Cost>::max()\
-    \ / 2;\n    \n    dijkstra(int n) : n(n), g(n) {}\n    dijkstra(const std::vector<std::vector<edge>>&\
-    \ g) : n(g.size()), g(g) {}\n\n    void add_edge(int from, int to, Cost cost)\
+    \ g;\n\npublic:\n    static constexpr Cost COST_INF = std::numeric_limits<Cost>::max();\n\
+    \n    dijkstra(int n) : n(n), g(n) {}\n    dijkstra(const std::vector<std::vector<edge>>&\
+    \ g) : g(g), n(g.size()) {}\n\n    void add_edge(int from, int to, Cost cost)\
     \ {\n        assert(0 <= from && from < n);\n        assert(0 <= to && to < n);\n\
-    \        assert(cost >= 0);\n        g[from].emplace_back(to, cost);\n    }\n\n\
-    \    void build(int _s) {\n        _trace.assign(n, -1);\n        _dist.assign(n,\
-    \ COST_INF);\n        s = _s;\n        std::priority_queue<std::pair<Cost, int>,\n\
+    \        assert(cost >= 0);\n\n        g[from].emplace_back(to, cost);\n    }\n\
+    \n    void build(int _s) {\n        _trace.assign(n, -1);\n        _dist.assign(n,\
+    \ COST_INF);\n\n        s = _s;\n        std::priority_queue<std::pair<Cost, int>,\n\
     \                            std::vector<std::pair<Cost, int>>,\n            \
     \                std::greater<std::pair<Cost, int>>>\n            q;\n       \
     \ q.emplace(0, s);\n        _dist[s] = 0;\n        _trace[s] = s;\n        while\
@@ -77,14 +77,14 @@ data:
     \ COST_INF);\n\n        int cur = to;\n        std::vector<int> path;\n      \
     \  while (cur != _trace[cur]) {\n            path.emplace_back(cur);\n       \
     \     cur = _trace[cur];\n        }\n        path.emplace_back(s);\n        std::reverse(path.begin(),\
-    \ path.end());\n\n        return path;\n    }\n};\n};  // namespace kyopro\n\n\
-    /**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n */"
+    \ path.end());\n        return path;\n    }\n};\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-10-26 15:47:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-10-26 23:34:28+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/1_A.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
