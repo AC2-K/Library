@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/graph/dijkstra.hpp
     title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
   - icon: ':question:'
@@ -10,6 +10,9 @@ data:
   - icon: ':question:'
     path: src/stream.hpp
     title: "\u9AD8\u901F\u5165\u51FA\u529B"
+  - icon: ':question:'
+    path: src/template.hpp
+    title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
@@ -30,21 +33,21 @@ data:
     \ to;\n        const Cost cost;\n        constexpr edge(int to, Cost cost) noexcept\
     \ : to(to), cost(cost) {}\n    };\n\n    std::vector<std::vector<edge>> g;\n\n\
     public:\n    static constexpr Cost COST_INF = std::numeric_limits<Cost>::max()\
-    \ / 2;\n\n    dijkstra(int n) : n(n), g(n), _trace(n, -1), _dist(n, COST_INF)\
-    \ {}\n    dijkstra(const std::vector<std::vector<edge>>& g)\n        : n(g.size()),\
-    \ g(g), _trace(g.size(), -1), _dist(g.size(), COST_INF){}\n\n    void add_edge(int\
-    \ from, int to, Cost cost) {\n        assert(0 <= from && from < n);\n       \
-    \ assert(0 <= to && to < n);\n        assert(cost >= 0);\n        g[from].emplace_back(to,\
-    \ cost);\n    }\n\n    void build(int _s) {\n        s = _s;\n        std::priority_queue<std::pair<Cost,\
-    \ int>,\n                            std::vector<std::pair<Cost, int>>,\n    \
-    \                        std::greater<std::pair<Cost, int>>>\n            q;\n\
-    \        q.emplace(0, s);\n        _dist[s] = 0;\n        _trace[s] = s;\n   \
-    \     while (!q.empty()) {\n            auto [d, v] = q.top();\n            q.pop();\n\
-    \            if (_dist[v] != d) {\n                continue;\n            }\n\
-    \            for (auto [nv, c] : g[v]) {\n                if (_dist[v] + c < _dist[nv])\
+    \ / 2;\n    \n    dijkstra(int n) : n(n), g(n) {}\n    dijkstra(const std::vector<std::vector<edge>>&\
+    \ g) : n(g.size()), g(g) {}\n\n    void add_edge(int from, int to, Cost cost)\
+    \ {\n        assert(0 <= from && from < n);\n        assert(0 <= to && to < n);\n\
+    \        assert(cost >= 0);\n        g[from].emplace_back(to, cost);\n    }\n\n\
+    \    void build(int _s) {\n        _trace.assign(n, -1);\n        _dist.assign(n,\
+    \ COST_INF);\n        s = _s;\n        std::priority_queue<std::pair<Cost, int>,\n\
+    \                            std::vector<std::pair<Cost, int>>,\n            \
+    \                std::greater<std::pair<Cost, int>>>\n            q;\n       \
+    \ q.emplace(0, s);\n        _dist[s] = 0;\n        _trace[s] = s;\n        while\
+    \ (!q.empty()) {\n            auto [d, v] = q.top();\n            q.pop();\n \
+    \           if (_dist[v] != d) {\n                continue;\n            }\n \
+    \           for (auto [nv, c] : g[v]) {\n                if (_dist[v] + c < _dist[nv])\
     \ {\n                    _dist[nv] = _dist[v] + c;\n                    _trace[nv]\
     \ = v;\n                    q.emplace(_dist[nv], nv);\n                }\n   \
-    \         }\n        }\n    }\n\n    const Cost dist(int u) const { return _dist[u];\
+    \         }\n        }\n    }\n\n    Cost dist(int x) const { return _dist[x];\
     \ }\n    std::vector<Cost> dists() const { return _dist; }\n    std::vector<int>\
     \ traces() const { return _trace; }\n\n    std::vector<int> shortest_path(int\
     \ to) const {\n        assert(0 <= to && to < n);\n        assert(_dist[to] <\
@@ -52,15 +55,13 @@ data:
     \  while (cur != _trace[cur]) {\n            path.emplace_back(cur);\n       \
     \     cur = _trace[cur];\n        }\n        path.emplace_back(s);\n        std::reverse(path.begin(),\
     \ path.end());\n\n        return path;\n    }\n};\n};  // namespace kyopro\n\n\
-    /**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n * @bug \u6700\u77ED\
-    \u8DDD\u96E2\u304C10^18\u3092\u8D85\u3048\u305F\u308A\u3059\u308B\u5834\u5408\u306F\
-    \u30D0\u30B0\u308B\n * @todo \u4E0A\u306E\u3084\u3064\u3092\u76F4\u3059\n */\n\
-    #line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
-    #line 5 \"src/internal/type_traits.hpp\"\n#include <typeinfo>\n#include <cstdint>\n\
-    \nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
-    \ first_enabled {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
-    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
-    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    /**\n * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n */\n#line 2 \"src/stream.hpp\"\
+    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 5 \"src/internal/type_traits.hpp\"\
+    \n#include <typeinfo>\n#include <cstdint>\n\nnamespace kyopro {\nnamespace internal\
+    \ {\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
     \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt, std::enable_if_t<dgt\
@@ -114,34 +115,54 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 7 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\
-    \nint main() {\n    int n;\n    kyopro::read(n);\n    kyopro::dijkstra g(n);\n\
-    \    for (int i = 0; i < n - 1; ++i) {\n        int a, b, c;\n        kyopro::read(a,\
-    \ b, c);\n        g.add_edge(a, b, c);\n        g.add_edge(b, a, c);\n    }\n\
-    \    g.build(0);\n    std::vector<long long> dist = g.get_dist();\n    int v =\
-    \ std::max_element(dist.begin(), dist.end()) - dist.begin();\n    g.build(v);\n\
-    \    dist = g.get_dist();\n\n    auto it = std::max_element(dist.begin(), dist.end());\n\
-    \    int u = it - dist.begin();\n    kyopro::put(*it);\n    auto path = g.shortest_path(u).second;\n\
-    \    kyopro::put(path.size());\n    for (auto v : path) kyopro::put(v);\n}\n"
+    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 2 \"src/template.hpp\"\
+    \n#include <bits/stdc++.h>\n#define rep(i, N) for (int i = 0; i < (N); i++)\n\
+    #define all(x) std::begin(x), std::end(x)\n#define popcount(x) __builtin_popcountll(x)\n\
+    using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
+    \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
+    \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
+    \ / 2;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
+    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
+    \ dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1,\
+    \ 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
+    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
+    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
+    \ true);\n}\n#line 8 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\n\nusing\
+    \ namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n;\n    read(n);\n\
+    \    dijkstra<long long> g(n);\n    for (int i = 0; i < n - 1; i++) {\n      \
+    \  int a, b, c;\n        read(a, b, c);\n        g.add_edge(a, b, c);\n      \
+    \  g.add_edge(b, a, c);\n    }\n    // put(\"-----\");\n    g.build(0);\n    int\
+    \ v = -1;\n    {\n        int ma = 0;\n        rep(i, n) {\n            if (chmax(ma,\
+    \ g.dist(i))) v = i;\n            // cout << g.dist(i) << \" \\n\"[i == n - 1];\n\
+    \        }\n    }\n    // cout << v << '\\n';\n    g.build(v);\n    int u = -1;\n\
+    \    {\n        int ma = 0;\n        rep(i, n) {\n            if (chmax(ma, g.dist(i)))\
+    \ u = i;\n            // cout << g.dist(i) << \" \\n\"[i == n - 1];\n        }\n\
+    \    }\n    // cout << u << '\\n';\n\n    vector path = g.shortest_path(u);\n\
+    \    put(g.dist(u), path.size());\n    for (auto ui : path) put(ui);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n#include\
     \ <algorithm>\n#include <iostream>\n#include <vector>\n#include \"../../../src/graph/dijkstra.hpp\"\
-    \n#include \"../../../src/stream.hpp\"\nint main() {\n    int n;\n    kyopro::read(n);\n\
-    \    kyopro::dijkstra g(n);\n    for (int i = 0; i < n - 1; ++i) {\n        int\
-    \ a, b, c;\n        kyopro::read(a, b, c);\n        g.add_edge(a, b, c);\n   \
-    \     g.add_edge(b, a, c);\n    }\n    g.build(0);\n    std::vector<long long>\
-    \ dist = g.get_dist();\n    int v = std::max_element(dist.begin(), dist.end())\
-    \ - dist.begin();\n    g.build(v);\n    dist = g.get_dist();\n\n    auto it =\
-    \ std::max_element(dist.begin(), dist.end());\n    int u = it - dist.begin();\n\
-    \    kyopro::put(*it);\n    auto path = g.shortest_path(u).second;\n    kyopro::put(path.size());\n\
-    \    for (auto v : path) kyopro::put(v);\n}"
+    \n#include \"../../../src/stream.hpp\"\n#include\"../../../src/template.hpp\"\n\
+    \nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n;\n\
+    \    read(n);\n    dijkstra<long long> g(n);\n    for (int i = 0; i < n - 1; i++)\
+    \ {\n        int a, b, c;\n        read(a, b, c);\n        g.add_edge(a, b, c);\n\
+    \        g.add_edge(b, a, c);\n    }\n    // put(\"-----\");\n    g.build(0);\n\
+    \    int v = -1;\n    {\n        int ma = 0;\n        rep(i, n) {\n          \
+    \  if (chmax(ma, g.dist(i))) v = i;\n            // cout << g.dist(i) << \" \\\
+    n\"[i == n - 1];\n        }\n    }\n    // cout << v << '\\n';\n    g.build(v);\n\
+    \    int u = -1;\n    {\n        int ma = 0;\n        rep(i, n) {\n          \
+    \  if (chmax(ma, g.dist(i))) u = i;\n            // cout << g.dist(i) << \" \\\
+    n\"[i == n - 1];\n        }\n    }\n    // cout << u << '\\n';\n\n    vector path\
+    \ = g.shortest_path(u);\n    put(g.dist(u), path.size());\n    for (auto ui :\
+    \ path) put(ui);\n}"
   dependsOn:
   - src/graph/dijkstra.hpp
   - src/stream.hpp
   - src/internal/type_traits.hpp
+  - src/template.hpp
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 14:56:05+09:00'
+  timestamp: '2023-10-26 15:47:27+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Diameter.test.cpp
