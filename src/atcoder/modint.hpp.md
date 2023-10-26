@@ -349,19 +349,19 @@ data:
   isVerificationFile: false
   path: src/atcoder/modint.hpp
   requiredBy:
-  - src/atcoder/convolution.hpp
+  - src/string/wildcard_pattern_matching.hpp
+  - src/string/wildcard_pattern_matching.hpp
   - src/FormalPowerSeries/FPS.hpp
   - src/FormalPowerSeries/taylor-shift.hpp
-  - src/string/wildcard_pattern_matching.hpp
-  - src/string/wildcard_pattern_matching.hpp
+  - src/atcoder/convolution.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
 documentation_of: src/atcoder/modint.hpp
 layout: document
 redirect_from:

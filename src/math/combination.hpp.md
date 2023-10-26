@@ -58,8 +58,8 @@ data:
   timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
 documentation_of: src/math/combination.hpp
 layout: document
 redirect_from:
