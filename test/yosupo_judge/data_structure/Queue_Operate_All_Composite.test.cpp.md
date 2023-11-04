@@ -174,15 +174,15 @@ data:
     using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
     \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
-    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
-    \ dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1,\
-    \ 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
-    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
-    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
-    \ true);\n}\n#line 7 \"test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\
-    \nusing mint = kyopro::modint<MOD2>;\nusing Affine = std::pair<mint, mint>;\n\
-    constexpr inline Affine op(const Affine& g, const Affine& f) {\n    auto a = f.first,\
+    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
+    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0, 1, -1,\
+    \ -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a <\
+    \ b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 7 \"\
+    test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\nusing\
+    \ mint = kyopro::modint<MOD2>;\nusing Affine = std::pair<mint, mint>;\nconstexpr\
+    \ inline Affine op(const Affine& g, const Affine& f) {\n    auto a = f.first,\
     \ b = f.second;\n    auto c = g.first, d = g.second;\n    return Affine(a * c,\
     \ a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1, 0); }\nint main()\
     \ {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    kyopro::read(q);\n\
@@ -216,7 +216,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 13:28:52+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp

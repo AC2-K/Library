@@ -121,21 +121,21 @@ data:
     using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
     \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
-    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
-    \ dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1,\
-    \ 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
-    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
-    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
-    \ true);\n}\n#line 8 \"test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\n\nusing\
-    \ namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n;\n    read(n);\n\
-    \    dijkstra<long long> g(n);\n    for (int i = 0; i < n - 1; i++) {\n      \
-    \  int a, b, c;\n        read(a, b, c);\n        g.add_edge(a, b, c);\n      \
-    \  g.add_edge(b, a, c);\n    }\n    // put(\"-----\");\n    g.build(0);\n    int\
-    \ v = -1;\n    {\n        ll ma = 0;\n        rep(i, n) {\n            if (chmax(ma,\
-    \ g.dist(i))) v = i;\n            // cout << g.dist(i) << \" \\n\"[i == n - 1];\n\
-    \        }\n    }\n    // cout << v << '\\n';\n    g.build(v);\n    int u = -1;\n\
-    \    {\n        ll ma = 0;\n        rep(i, n) {\n            if (chmax(ma, g.dist(i)))\
+    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
+    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0, 1, -1,\
+    \ -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a <\
+    \ b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 8 \"\
+    test/yosupo_judge/tree/Tree_Diameter.test.cpp\"\n\nusing namespace std;\nusing\
+    \ namespace kyopro;\n\nint main() {\n    int n;\n    read(n);\n    dijkstra<long\
+    \ long> g(n);\n    for (int i = 0; i < n - 1; i++) {\n        int a, b, c;\n \
+    \       read(a, b, c);\n        g.add_edge(a, b, c);\n        g.add_edge(b, a,\
+    \ c);\n    }\n    // put(\"-----\");\n    g.build(0);\n    int v = -1;\n    {\n\
+    \        ll ma = 0;\n        rep(i, n) {\n            if (chmax(ma, g.dist(i)))\
+    \ v = i;\n            // cout << g.dist(i) << \" \\n\"[i == n - 1];\n        }\n\
+    \    }\n    // cout << v << '\\n';\n    g.build(v);\n    int u = -1;\n    {\n\
+    \        ll ma = 0;\n        rep(i, n) {\n            if (chmax(ma, g.dist(i)))\
     \ u = i;\n            // cout << g.dist(i) << \" \\n\"[i == n - 1];\n        }\n\
     \    }\n    // cout << u << '\\n';\n\n    vector path = g.shortest_path(u);\n\
     \    put(g.dist(u), path.size());\n    for (auto ui : path) put(ui);\n}\n"
@@ -162,7 +162,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 23:34:28+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Diameter.test.cpp

@@ -38,20 +38,19 @@ data:
     \ void push(int p) {\n        if (dat[p] == id()) {\n            return;\n   \
     \     }\n        update(p << 1 | 0, dat[p]);\n        update(p << 1 | 1, dat[p]);\n\
     \        dat[p] = id();\n    }\n\npublic:\n    F operator[](int p) {\n       \
-    \ assert(0 <= p && p < _n);\n\n        F res = id();\n\n        p += sz;\n   \
-    \     for (int i = lg; i > 0; i--) {\n            push(p >> i);\n        }\n \
-    \       return dat[p];\n    }\n\n    void apply(int l, int r, const F& v) {\n\
-    \        assert(0 <= l && l <= r && r <= _n);\n        if (l == r) return;\n \
-    \       l += sz, r += sz;\n        for (int i = lg; i > 0; i--) {\n          \
-    \  if (((l >> i) << i) != l) {\n                push(l >> i);\n            }\n\
-    \            if (((r >> i) << i) != r) {\n                push((r - 1) >> i);\n\
-    \            }\n        }\n        while (l < r) {\n            if (l & 1) {\n\
-    \                update(l++, v);\n            }\n            if (r & 1) {\n  \
-    \              update(--r, v);\n            }\n            l >>= 1, r >>= 1;\n\
-    \        }\n    }\n};\n\n};  // namespace kyopro\n\n\n/**\n * @brief Dual Segment\
-    \ Tree\n*/\n#line 3 \"src/math/static_modint.hpp\"\n#include <cstdint>\n#include\
-    \ <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n\
-    #include <numeric>\n#include <typeinfo>\n#line 7 \"src/internal/type_traits.hpp\"\
+    \ assert(0 <= p && p < _n);\n\n        p += sz;\n        for (int i = lg; i >\
+    \ 0; i--) {\n            push(p >> i);\n        }\n        return dat[p];\n  \
+    \  }\n\n    void apply(int l, int r, const F& v) {\n        assert(0 <= l && l\
+    \ <= r && r <= _n);\n        if (l == r) return;\n        l += sz, r += sz;\n\
+    \        for (int i = lg; i > 0; i--) {\n            if (((l >> i) << i) != l)\
+    \ {\n                push(l >> i);\n            }\n            if (((r >> i) <<\
+    \ i) != r) {\n                push((r - 1) >> i);\n            }\n        }\n\
+    \        while (l < r) {\n            if (l & 1) {\n                update(l++,\
+    \ v);\n            }\n            if (r & 1) {\n                update(--r, v);\n\
+    \            }\n            l >>= 1, r >>= 1;\n        }\n    }\n};\n\n};  //\
+    \ namespace kyopro\n\n\n/**\n * @brief Dual Segment Tree\n*/\n#line 3 \"src/math/static_modint.hpp\"\
+    \n#include <cstdint>\n#include <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\
+    \n#include <limits>\n#include <numeric>\n#include <typeinfo>\n#line 7 \"src/internal/type_traits.hpp\"\
     \n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
     \ first_enabled {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
     \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
@@ -204,7 +203,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp

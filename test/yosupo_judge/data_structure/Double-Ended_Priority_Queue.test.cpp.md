@@ -139,19 +139,19 @@ data:
     using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
     \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
-    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
-    \ dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1,\
-    \ 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
-    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
-    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
-    \ true);\n}\n#line 6 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    Treap<int>\
-    \ st;\n    int n, q;\n    read(n, q);\n    for (int i = 0; i < n; ++i) {\n   \
-    \     int a;\n        read(a);\n        st.insert(a);\n    }\n    while (q--)\
-    \ {\n        // cout << \"DEBUG = \";\n        // for (const auto& q : st.nodes)\
-    \ cout << q->key << ' ';\n        // cout << endl;\n        // cout << \"ROOT\
-    \ = \";\n        // cout << st.root->key << endl;\n        int t;\n        read(t);\n\
+    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
+    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0, 1, -1,\
+    \ -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a <\
+    \ b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 6 \"\
+    test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\n\nusing\
+    \ namespace std;\nusing namespace kyopro;\n\nint main() {\n    Treap<int> st;\n\
+    \    int n, q;\n    read(n, q);\n    for (int i = 0; i < n; ++i) {\n        int\
+    \ a;\n        read(a);\n        st.insert(a);\n    }\n    while (q--) {\n    \
+    \    // cout << \"DEBUG = \";\n        // for (const auto& q : st.nodes) cout\
+    \ << q->key << ' ';\n        // cout << endl;\n        // cout << \"ROOT = \"\
+    ;\n        // cout << st.root->key << endl;\n        int t;\n        read(t);\n\
     \        if (!t) {\n            int x;\n            read(x);\n            st.insert(x);\n\
     \        } else if (t == 1) {\n            int mn = st.min_element();\n      \
     \      put(mn);\n            st.erase(mn);\n        } else {\n            int\
@@ -179,7 +179,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 21:54:03+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

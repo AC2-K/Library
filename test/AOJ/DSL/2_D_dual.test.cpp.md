@@ -31,33 +31,33 @@ data:
     \ void push(int p) {\n        if (dat[p] == id()) {\n            return;\n   \
     \     }\n        update(p << 1 | 0, dat[p]);\n        update(p << 1 | 1, dat[p]);\n\
     \        dat[p] = id();\n    }\n\npublic:\n    F operator[](int p) {\n       \
-    \ assert(0 <= p && p < _n);\n\n        F res = id();\n\n        p += sz;\n   \
-    \     for (int i = lg; i > 0; i--) {\n            push(p >> i);\n        }\n \
-    \       return dat[p];\n    }\n\n    void apply(int l, int r, const F& v) {\n\
-    \        assert(0 <= l && l <= r && r <= _n);\n        if (l == r) return;\n \
-    \       l += sz, r += sz;\n        for (int i = lg; i > 0; i--) {\n          \
-    \  if (((l >> i) << i) != l) {\n                push(l >> i);\n            }\n\
-    \            if (((r >> i) << i) != r) {\n                push((r - 1) >> i);\n\
-    \            }\n        }\n        while (l < r) {\n            if (l & 1) {\n\
-    \                update(l++, v);\n            }\n            if (r & 1) {\n  \
-    \              update(--r, v);\n            }\n            l >>= 1, r >>= 1;\n\
-    \        }\n    }\n};\n\n};  // namespace kyopro\n\n\n/**\n * @brief Dual Segment\
-    \ Tree\n*/\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n\
-    #include <string>\n#line 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n\
-    #include <limits>\n#include <numeric>\n#include <typeinfo>\n#include <cstdint>\n\
-    \nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
-    \ first_enabled {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
-    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
-    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
-    \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
-    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
-    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt, std::enable_if_t<dgt\
-    \ <= 128>* = nullptr> struct int_least {\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, std::int8_t>,\n                                 std::enable_if<dgt <=\
-    \ 16, std::int16_t>,\n                                 std::enable_if<dgt <= 32,\
-    \ std::int32_t>,\n                                 std::enable_if<dgt <= 64, std::int64_t>,\n\
-    \                                 std::enable_if<dgt <= 128, __int128_t>>;\n};\n\
-    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
+    \ assert(0 <= p && p < _n);\n\n        p += sz;\n        for (int i = lg; i >\
+    \ 0; i--) {\n            push(p >> i);\n        }\n        return dat[p];\n  \
+    \  }\n\n    void apply(int l, int r, const F& v) {\n        assert(0 <= l && l\
+    \ <= r && r <= _n);\n        if (l == r) return;\n        l += sz, r += sz;\n\
+    \        for (int i = lg; i > 0; i--) {\n            if (((l >> i) << i) != l)\
+    \ {\n                push(l >> i);\n            }\n            if (((r >> i) <<\
+    \ i) != r) {\n                push((r - 1) >> i);\n            }\n        }\n\
+    \        while (l < r) {\n            if (l & 1) {\n                update(l++,\
+    \ v);\n            }\n            if (r & 1) {\n                update(--r, v);\n\
+    \            }\n            l >>= 1, r >>= 1;\n        }\n    }\n};\n\n};  //\
+    \ namespace kyopro\n\n\n/**\n * @brief Dual Segment Tree\n*/\n#line 2 \"src/stream.hpp\"\
+    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
+    \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
+    #include <cstdint>\n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename...\
+    \ Args> struct first_enabled {};\n\ntemplate <typename T, typename... Args>\n\
+    struct first_enabled<std::enable_if<true, T>, Args...> {\n    using type = T;\n\
+    };\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
+    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
+    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
+    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
+    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct int_least\
+    \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::int8_t>,\n\
+    \                                 std::enable_if<dgt <= 16, std::int16_t>,\n \
+    \                                std::enable_if<dgt <= 32, std::int32_t>,\n  \
+    \                               std::enable_if<dgt <= 64, std::int64_t>,\n   \
+    \                              std::enable_if<dgt <= 128, __int128_t>>;\n};\n\n\
+    template <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
     \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::uint8_t>,\n\
     \                                 std::enable_if<dgt <= 16, std::uint16_t>,\n\
     \                                 std::enable_if<dgt <= 32, std::uint32_t>,\n\
@@ -126,7 +126,7 @@ data:
   isVerificationFile: true
   path: test/AOJ/DSL/2_D_dual.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:06:17+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/AOJ/DSL/2_D_dual.test.cpp

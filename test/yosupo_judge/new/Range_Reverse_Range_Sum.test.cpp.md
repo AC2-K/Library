@@ -145,20 +145,20 @@ data:
     using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
     \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
-    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
-    \ dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1,\
-    \ 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
-    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
-    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
-    \ true);\n}\n#line 6 \"test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp\"\
-    \nusing ll = long long;\nconstexpr inline ll op(ll x, ll y) { return x + y; }\n\
-    constexpr inline ll e() { return 0; }\n\nusing namespace std;\nusing namespace\
-    \ kyopro;\n\nint main() {\n    int n, q;\n    read(n, q);\n    reversible_bbst<ll,\
-    \ op, e> bbst;\n    for (int i = 0; i < n; i++) {\n        int a;\n        read(a);\n\
-    \        bbst.insert(i, a);\n    }\n\n    while (q--) {\n        int t, l, r;\n\
-    \        read(t, l, r);\n        if (!t) {\n            bbst.reverse(l, r);\n\
-    \        } else {\n            put(bbst.fold(l, r));\n        }\n    }\n}\n"
+    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
+    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0, 1, -1,\
+    \ -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a <\
+    \ b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 6 \"\
+    test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp\"\nusing ll = long long;\n\
+    constexpr inline ll op(ll x, ll y) { return x + y; }\nconstexpr inline ll e()\
+    \ { return 0; }\n\nusing namespace std;\nusing namespace kyopro;\n\nint main()\
+    \ {\n    int n, q;\n    read(n, q);\n    reversible_bbst<ll, op, e> bbst;\n  \
+    \  for (int i = 0; i < n; i++) {\n        int a;\n        read(a);\n        bbst.insert(i,\
+    \ a);\n    }\n\n    while (q--) {\n        int t, l, r;\n        read(t, l, r);\n\
+    \        if (!t) {\n            bbst.reverse(l, r);\n        } else {\n      \
+    \      put(bbst.fold(l, r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_reverse_range_sum\"\
     \n\n#include \"../../../src/data-structure/bbst/reversible_bbst.hpp\"\n#include\
     \ \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\nusing ll\
@@ -178,7 +178,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 21:54:03+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp

@@ -510,15 +510,15 @@ data:
     using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
     \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
-    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
-    \ dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1,\
-    \ 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
-    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
-    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
-    \ true);\n}\n#line 6 \"test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
-    \nint main() {\n    int n, _c;\n    read(n, _c);\n    mint c = mint::raw(_c);\n\
+    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
+    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0, 1, -1,\
+    \ -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a <\
+    \ b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 6 \"\
+    test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp\"\n\nusing namespace\
+    \ std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\n\
+    int main() {\n    int n, _c;\n    read(n, _c);\n    mint c = mint::raw(_c);\n\
     \    vector<mint> poly(n);\n    rep(i, n) {\n        int v;\n        read(v);\n\
     \        poly[i] = mint::raw(v);\n    }\n\n    poly = taylor_shift<mint, 524290>(poly,\
     \ c);\n    rep(i, n) put(poly[i].val());\n}\n"
@@ -544,7 +544,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 13:28:52+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp

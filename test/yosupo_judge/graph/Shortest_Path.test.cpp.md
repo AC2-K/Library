@@ -121,18 +121,18 @@ data:
     using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
     \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
-    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
-    \ dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1,\
-    \ 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
-    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
-    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
-    \ true);\n}\n#line 7 \"test/yosupo_judge/graph/Shortest_Path.test.cpp\"\n\nusing\
-    \ namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n, m, s, t;\n\
-    \    read(n, m, s, t);\n    dijkstra<long long> g(n);\n    for (int i = 0; i <\
-    \ m; i++) {\n        int a, b, c;\n        read(a, b, c);\n        g.add_edge(a,\
-    \ b, c);\n    }\n\n    g.build(s);\n    \n    if (g.dist(t) >= dijkstra<long long>::COST_INF)\
-    \ {\n        put(-1);\n        return 0;\n    }\n\n    vector path = g.shortest_path(t);\n\
+    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
+    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0, 1, -1,\
+    \ -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a <\
+    \ b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 7 \"\
+    test/yosupo_judge/graph/Shortest_Path.test.cpp\"\n\nusing namespace std;\nusing\
+    \ namespace kyopro;\n\nint main() {\n    int n, m, s, t;\n    read(n, m, s, t);\n\
+    \    dijkstra<long long> g(n);\n    for (int i = 0; i < m; i++) {\n        int\
+    \ a, b, c;\n        read(a, b, c);\n        g.add_edge(a, b, c);\n    }\n\n  \
+    \  g.build(s);\n    \n    if (g.dist(t) >= dijkstra<long long>::COST_INF) {\n\
+    \        put(-1);\n        return 0;\n    }\n\n    vector path = g.shortest_path(t);\n\
     \    kyopro::put(g.dist(t), path.size() - 1);\n    for (int i = 1; i < (int)path.size();\
     \ i++)\n        kyopro::put(path[i - 1], path[i]);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n#include\
@@ -154,7 +154,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/graph/Shortest_Path.test.cpp
   requiredBy: []
-  timestamp: '2023-10-26 23:34:28+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/graph/Shortest_Path.test.cpp

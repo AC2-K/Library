@@ -115,21 +115,20 @@ data:
     using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
     \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
-    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
-    \ dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1,\
-    \ 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
-    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
-    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
-    \ true);\n}\n#line 5 \"src/math/static_modint.hpp\"\n\n#line 4 \"src/math/gcd.hpp\"\
-    \nnamespace kyopro {\ntemplate <typename T> constexpr inline T _gcd(T a, T b)\
-    \ noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return\
-    \ a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n \
-    \   a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
-    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
-    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
-    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
-    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
+    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0, 1, -1,\
+    \ -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a <\
+    \ b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 5 \"\
+    src/math/static_modint.hpp\"\n\n#line 4 \"src/math/gcd.hpp\"\nnamespace kyopro\
+    \ {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a\
+    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
+    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
     \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
     \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
@@ -204,7 +203,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp

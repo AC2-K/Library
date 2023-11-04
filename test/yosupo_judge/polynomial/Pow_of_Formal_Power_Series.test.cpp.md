@@ -171,14 +171,14 @@ data:
     using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
     \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconstexpr ld eps = 1e-12;\nconst long double pi = acosl(-1);\nconstexpr\
-    \ uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr int\
-    \ dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1,\
-    \ 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool chmax(T1&\
-    \ a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename T1, typename\
-    \ T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a > b && (a = b,\
-    \ true);\n}\n#line 1 \"src/atcoder/convolution.hpp\"\n\n\n\n#line 7 \"src/atcoder/convolution.hpp\"\
-    \n#include <type_traits>\n#line 9 \"src/atcoder/convolution.hpp\"\n\n#line 1 \"\
+    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
+    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0, 1, -1,\
+    \ -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a <\
+    \ b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 1 \"\
+    src/atcoder/convolution.hpp\"\n\n\n\n#line 7 \"src/atcoder/convolution.hpp\"\n\
+    #include <type_traits>\n#line 9 \"src/atcoder/convolution.hpp\"\n\n#line 1 \"\
     src/atcoder/internal_bit.hpp\"\n\n\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\
     \n#if __cplusplus >= 202002L\n#include <bit>\n#endif\n\nnamespace atcoder {\n\n\
     namespace internal {\n\n#if __cplusplus >= 202002L\n\nusing std::bit_ceil;\n\n\
@@ -641,7 +641,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp

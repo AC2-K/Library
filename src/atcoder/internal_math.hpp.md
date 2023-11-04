@@ -197,20 +197,20 @@ data:
   isVerificationFile: false
   path: src/atcoder/internal_math.hpp
   requiredBy:
-  - src/string/wildcard_pattern_matching.hpp
-  - src/FormalPowerSeries/FPS.hpp
-  - src/FormalPowerSeries/taylor-shift.hpp
+  - src/atcoder/modint.hpp
   - src/atcoder/convolution.hpp
   - src/atcoder/math.hpp
-  - src/atcoder/modint.hpp
+  - src/FormalPowerSeries/FPS.hpp
+  - src/FormalPowerSeries/taylor-shift.hpp
+  - src/string/wildcard_pattern_matching.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
 documentation_of: src/atcoder/internal_math.hpp
 layout: document
 redirect_from:

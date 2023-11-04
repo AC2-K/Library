@@ -30,7 +30,7 @@ data:
   bundledCode: "#line 2 \"src/data-structure/sparse_table.hpp\"\n#include <numeric>\n\
     #include <vector>\nnamespace kyopro {\n\ntemplate <class T, auto op> class sparse_table\
     \ {\n    std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n    std::vector<int>\
-    \ lg;\n\npublic:\n    constexpr sparse_table(int n) : vec(n){}\n    constexpr\
+    \ lg;\n\npublic:\n    constexpr sparse_table(int n) : vec(n) {}\n    constexpr\
     \ sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }\n\n    void\
     \ set(int p, const T& v) { vec[p] = v; }\n    void build() {\n        int sz =\
     \ vec.size();\n        int log = 0;\n        while ((1 << log) <= sz) {\n    \
@@ -47,7 +47,7 @@ data:
   code: "#pragma once\n#include <numeric>\n#include <vector>\nnamespace kyopro {\n\
     \ntemplate <class T, auto op> class sparse_table {\n    std::vector<T> vec;\n\
     \    std::vector<std::vector<T>> table;\n    std::vector<int> lg;\n\npublic:\n\
-    \    constexpr sparse_table(int n) : vec(n){}\n    constexpr sparse_table(const\
+    \    constexpr sparse_table(int n) : vec(n) {}\n    constexpr sparse_table(const\
     \ std::vector<T>& vec) : vec(vec) { build(); }\n\n    void set(int p, const T&\
     \ v) { vec[p] = v; }\n    void build() {\n        int sz = vec.size();\n     \
     \   int log = 0;\n        while ((1 << log) <= sz) {\n            log++;\n   \
@@ -66,14 +66,14 @@ data:
   path: src/data-structure/sparse_table.hpp
   requiredBy:
   - src/tree/EulerTour.hpp
-  timestamp: '2023-10-22 17:06:17+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/5_C.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Static_RMQ.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
 documentation_of: src/data-structure/sparse_table.hpp
 layout: document
 redirect_from:

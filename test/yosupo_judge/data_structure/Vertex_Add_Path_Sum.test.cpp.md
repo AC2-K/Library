@@ -106,7 +106,7 @@ data:
     \n#include <cassert>\n#include <utility>\n#line 4 \"src/data-structure/sparse_table.hpp\"\
     \nnamespace kyopro {\n\ntemplate <class T, auto op> class sparse_table {\n   \
     \ std::vector<T> vec;\n    std::vector<std::vector<T>> table;\n    std::vector<int>\
-    \ lg;\n\npublic:\n    constexpr sparse_table(int n) : vec(n){}\n    constexpr\
+    \ lg;\n\npublic:\n    constexpr sparse_table(int n) : vec(n) {}\n    constexpr\
     \ sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }\n\n    void\
     \ set(int p, const T& v) { vec[p] = v; }\n    void build() {\n        int sz =\
     \ vec.size();\n        int log = 0;\n        while ((1 << log) <= sz) {\n    \
@@ -189,7 +189,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
+  timestamp: '2023-11-04 20:49:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
