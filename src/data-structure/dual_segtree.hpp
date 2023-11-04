@@ -32,8 +32,6 @@ public:
     F operator[](int p) {
         assert(0 <= p && p < _n);
 
-        F res = id();
-
         p += sz;
         for (int i = lg; i > 0; i--) {
             push(p >> i);

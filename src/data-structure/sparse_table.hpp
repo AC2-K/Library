@@ -9,7 +9,7 @@ template <class T, auto op> class sparse_table {
     std::vector<int> lg;
 
 public:
-    constexpr sparse_table(int n) : vec(n){}
+    constexpr sparse_table(int n) : vec(n) {}
     constexpr sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }
 
     void set(int p, const T& v) { vec[p] = v; }

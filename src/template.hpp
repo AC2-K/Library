@@ -10,7 +10,6 @@ using graph = std::vector<std::vector<int>>;
 using P = std::pair<int, int>;
 constexpr int inf = std::numeric_limits<int>::max() / 2;
 constexpr ll infl = std::numeric_limits<ll>::max() / 2;
-constexpr ld eps = 1e-12;
 const long double pi = acosl(-1);
 constexpr uint64_t MOD = 1e9 + 7;
 constexpr uint64_t MOD2 = 998244353;
