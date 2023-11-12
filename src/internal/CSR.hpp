@@ -1,52 +1,62 @@
 #pragma once
 
 #include <cassert>
+#include <iterator>
 #include <utility>
 #include <vector>
-#include <iterator>
 
 namespace kyopro {
 namespace internal {
 
-template <typename T> class CSR {
-    using usize = std::size_t;
-
-    const usize _size;
-    std::vector<T> csr;
-    std::vector<usize> ssum;
+template <typename T, typename _size_t> class csr {
+    _size_t n;
+    std::vector<T> d;
+    std::vector<_size_t> ssum;
 
 public:
-    class range {
-        const typename std::vector<T>::iterator l, r;
-
-    public:
-        range(const typename std::vector<T>::iterator& l,
-              const typename std::vector<T>::iterator& r)
-            : l(l), r(r){}
-        typename std::vector<T>::iterator begin() const noexcept { return l; }
-        typename std::vector<T>::iterator end() const noexcept { return r; }
-    };
-    
-    CSR(const std::vector<std::vector<T>>& mat) : _size(mat.size()) {
-        for (int i = 0; i < _size; ++i) ssum[i + 1] = ssum[i] + mat[i].size();
-        csr.reserve(ssum.back());
-        for (int i = 0; i < (int)_size; ++i) {
-            for (int j = 0; j < (int)mat[i].size(); ++j) {
-                csr.emplace_back(std::move(mat[i][j]));
-            }
+    csr(_size_t n, const std::vector<std::pair<_size_t, T>>& v)
+        : n(n), ssum(n + 1), d(v.size()) {
+        for (int i = 0; i < (int)v.size(); ++i) {
+            ++ssum[v[i].first + 1];
         }
-        mat.clear();
-    }
-    usize size() const noexcept { return _size; }
+        for (int i = 0; i < n; ++i) {
+            ssum[i + 1] += ssum[i];
+        }
 
-    range operator[](usize x) {
-        assert(0 <= x && x < _size);
-        return range(csr.begin() + ssum[x], csr.begin() + ssum[x + 1]);
+        std::vector cnt = ssum;
+        for (auto e : v) d[cnt[e.first]++] = e.second;
     }
+
+    struct vector_range {
+        using iterator = typename std::vector<T>::iterator;
+        iterator l, r;
+
+        iterator begin() const { return l; }
+        iterator end() const { return r; }
+        _size_t size() { return std::distance(l, r); }
+        T& operator[](_size_t i) const { return l[i]; }
+    };
+    struct const_vector_range {
+        using const_iterator = typename std::vector<T>::const_iterator;
+        const_iterator l, r;
+
+        const_iterator begin() const { return l; }
+        const_iterator end() const { return r; }
+        _size_t size() { return (_size_t)std::distance(l, r); }
+        const T& operator[](_size_t i) const { return l[i]; }
+    };
+
+    vector_range operator[](_size_t i) {
+        return vector_range{d.begin() + ssum[i], d.begin() + ssum[i + 1]};
+    }
+    const_vector_range operator[](_size_t i) const {
+        return const_vector_range{d.begin() + ssum[i], d.begin() + ssum[i + 1]};
+    }
+
+    _size_t size() const { return (_size_t)n; }
 };
 };  // namespace internal
 };  // namespace kyopro
-
 
 /**
  * @brief CSR形式

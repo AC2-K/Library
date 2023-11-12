@@ -6,7 +6,8 @@
 #include "../internal/type_traits.hpp"
 #include "../math/gcd.hpp"
 namespace kyopro {
-template <int _mod> class modint : internal::modint_base {
+template <int _mod, std::enable_if_t<_mod >= 0>* = nullptr>
+class modint : internal::modint_base {
     using mint = modint<_mod>;
     using i32 = std::int32_t;
     using u32 = std::uint32_t;
@@ -93,7 +94,9 @@ public:
     constexpr bool operator==(const mint& r) const noexcept {
         return (*this).val() == r.val();
     }
-    template <typename T> constexpr mint pow(T e) const noexcept {
+
+    template <typename T, internal::is_integral_t<T>* = nullptr>
+    constexpr mint pow(T e) const noexcept {
         mint ans(1), base(*this);
         while (e) {
             if (e & 1) {

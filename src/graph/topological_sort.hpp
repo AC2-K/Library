@@ -7,8 +7,8 @@ namespace kyopro {
 /**
  * @returns (ソート済みの頂点列, 元のグラフがDAGであったか?)
  */
-std::pair<std::vector<int>, bool> topological_sort(
-    const std::vector<std::vector<int>>& g) {
+template <typename Graph>
+std::pair<std::vector<int>, bool> topological_sort(const Graph& g) {
     int n = g.size();
     std::vector<bool> vis(n, false), finished(n, false);
     std::vector<int> res;
