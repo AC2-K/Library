@@ -48,7 +48,7 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,\
-    \ N) for (int i = 0; i < (N); i++)\n#define all(x) std::begin(x), std::end(x)\n\
+    \ n) for (int i = 0; i < (n); i++)\n#define all(x) std::begin(x), std::end(x)\n\
     #define popcount(x) __builtin_popcountll(x)\nusing i128 = __int128_t;\nusing ll\
     \ = long long;\nusing ld = long double;\nusing graph = std::vector<std::vector<int>>;\n\
     using P = std::pair<int, int>;\nconstexpr int inf = std::numeric_limits<int>::max()\
@@ -59,8 +59,8 @@ data:
     \ T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a < b && (a = b,\
     \ true);\n}\ntemplate <typename T1, typename T2> constexpr inline bool chmin(T1&\
     \ a, T2 b) {\n    return a > b && (a = b, true);\n}\n"
-  code: "#pragma once\n#include <bits/stdc++.h>\n#define rep(i, N) for (int i = 0;\
-    \ i < (N); i++)\n#define all(x) std::begin(x), std::end(x)\n#define popcount(x)\
+  code: "#pragma once\n#include <bits/stdc++.h>\n#define rep(i, n) for (int i = 0;\
+    \ i < (n); i++)\n#define all(x) std::begin(x), std::end(x)\n#define popcount(x)\
     \ __builtin_popcountll(x)\nusing i128 = __int128_t;\nusing ll = long long;\nusing\
     \ ld = long double;\nusing graph = std::vector<std::vector<int>>;\nusing P = std::pair<int,\
     \ int>;\nconstexpr int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll\
@@ -75,7 +75,7 @@ data:
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2023-11-04 20:49:15+09:00'
+  timestamp: '2023-11-12 17:27:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/5_B.test.cpp
