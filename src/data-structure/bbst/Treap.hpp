@@ -76,8 +76,8 @@ template <class T> struct Treap {
 
 public:
     explicit Treap() : rng(2023), root(nullptr) {}
+    bool empty() const { return root == nullptr; }
     void insert(const T& key) { insert(root, make_ptr(key, rng())); }
-
     void erase(const T& key) { erase(root, key); }
 
     const Node* find(const T& key) const { return find(root, key); }
