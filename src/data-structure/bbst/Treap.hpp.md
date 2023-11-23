@@ -51,15 +51,16 @@ data:
     \ find(Node*& t, const T& key) {\n        if (!t) {\n            return nullptr;\n\
     \        } else if (t->key == key) {\n            return t;\n        } else {\n\
     \            return find(key < t->key ? t->l : t->r, key);\n        }\n    }\n\
-    \npublic:\n    explicit Treap() : rng(2023), root(nullptr) {}\n    void insert(const\
-    \ T& key) { insert(root, make_ptr(key, rng())); }\n\n    void erase(const T& key)\
-    \ { erase(root, key); }\n\n    const Node* find(const T& key) const { return find(root,\
-    \ key); }\n\n    T min_element() {\n        assert(root != nullptr);\n       \
-    \ Node* cur = root;\n        while (cur->l) {\n            cur = cur->l;\n   \
-    \     }\n        T ans = cur->key;\n        return ans;\n    }\n    T max_element()\
-    \ {\n        assert(root);\n        Node* cur = root;\n        while (cur->r)\
-    \ {\n            cur = cur->r;\n        }\n        T ans = cur->key;\n       \
-    \ return ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Treap\n */\n"
+    \npublic:\n    explicit Treap() : rng(2023), root(nullptr) {}\n    bool empty()\
+    \ const { return root == nullptr; }\n    void insert(const T& key) { insert(root,\
+    \ make_ptr(key, rng())); }\n    void erase(const T& key) { erase(root, key); }\n\
+    \n    const Node* find(const T& key) const { return find(root, key); }\n\n   \
+    \ T min_element() {\n        assert(root != nullptr);\n        Node* cur = root;\n\
+    \        while (cur->l) {\n            cur = cur->l;\n        }\n        T ans\
+    \ = cur->key;\n        return ans;\n    }\n    T max_element() {\n        assert(root);\n\
+    \        Node* cur = root;\n        while (cur->r) {\n            cur = cur->r;\n\
+    \        }\n        T ans = cur->key;\n        return ans;\n    }\n};\n};  //\
+    \ namespace kyopro\n\n/**\n * @brief Treap\n */\n"
   code: "#pragma once\n#include <cassert>\n#include <memory>\n#include \"../../random/xor_shift.hpp\"\
     \n\nnamespace kyopro {\ntemplate <class T> struct Treap {\n    using u32 = std::uint32_t;\n\
     \    xor_shift32 rng;\n    struct Node {\n        const T key;\n        const\
@@ -85,21 +86,22 @@ data:
     \ find(Node*& t, const T& key) {\n        if (!t) {\n            return nullptr;\n\
     \        } else if (t->key == key) {\n            return t;\n        } else {\n\
     \            return find(key < t->key ? t->l : t->r, key);\n        }\n    }\n\
-    \npublic:\n    explicit Treap() : rng(2023), root(nullptr) {}\n    void insert(const\
-    \ T& key) { insert(root, make_ptr(key, rng())); }\n\n    void erase(const T& key)\
-    \ { erase(root, key); }\n\n    const Node* find(const T& key) const { return find(root,\
-    \ key); }\n\n    T min_element() {\n        assert(root != nullptr);\n       \
-    \ Node* cur = root;\n        while (cur->l) {\n            cur = cur->l;\n   \
-    \     }\n        T ans = cur->key;\n        return ans;\n    }\n    T max_element()\
-    \ {\n        assert(root);\n        Node* cur = root;\n        while (cur->r)\
-    \ {\n            cur = cur->r;\n        }\n        T ans = cur->key;\n       \
-    \ return ans;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Treap\n */"
+    \npublic:\n    explicit Treap() : rng(2023), root(nullptr) {}\n    bool empty()\
+    \ const { return root == nullptr; }\n    void insert(const T& key) { insert(root,\
+    \ make_ptr(key, rng())); }\n    void erase(const T& key) { erase(root, key); }\n\
+    \n    const Node* find(const T& key) const { return find(root, key); }\n\n   \
+    \ T min_element() {\n        assert(root != nullptr);\n        Node* cur = root;\n\
+    \        while (cur->l) {\n            cur = cur->l;\n        }\n        T ans\
+    \ = cur->key;\n        return ans;\n    }\n    T max_element() {\n        assert(root);\n\
+    \        Node* cur = root;\n        while (cur->r) {\n            cur = cur->r;\n\
+    \        }\n        T ans = cur->key;\n        return ans;\n    }\n};\n};  //\
+    \ namespace kyopro\n\n/**\n * @brief Treap\n */"
   dependsOn:
   - src/random/xor_shift.hpp
   isVerificationFile: false
   path: src/data-structure/bbst/Treap.hpp
   requiredBy: []
-  timestamp: '2023-10-22 21:54:03+09:00'
+  timestamp: '2023-11-23 03:11:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

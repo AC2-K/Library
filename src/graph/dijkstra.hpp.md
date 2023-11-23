@@ -87,8 +87,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/1_A.test.cpp
-  - test/yosupo_judge/graph/Shortest_Path.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  - test/yosupo_judge/graph/Shortest_Path.test.cpp
 documentation_of: src/graph/dijkstra.hpp
 layout: document
 redirect_from:

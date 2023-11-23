@@ -79,18 +79,18 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/5_B.test.cpp
-  - test/yosupo_judge/graph/Shortest_Path.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+  - test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
-  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
 documentation_of: src/template.hpp
 layout: document
 redirect_from:
