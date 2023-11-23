@@ -4,7 +4,7 @@
 #include <deque>
 
 namespace kyopro {
-template <typename Key, typename Value> class slide_window_min {
+template <typename Key, typename Value> class slide_window_minimum {
     std::deque<std::pair<Key, Value>> deq;
 
 public:
@@ -19,7 +19,7 @@ public:
     }
 
     void pop(Key t) {
-        while (!deq.empty() && deq.front().first < t) deq.pop_front();
+        while (!deq.empty() && deq.front().first <= t) deq.pop_front();
     }
 
     Value fold() const noexcept {
