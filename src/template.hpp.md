@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/3_D.test.cpp
+    title: test/AOJ/DSL/3_D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/5_B.test.cpp
     title: test/AOJ/DSL/5_B.test.cpp
   - icon: ':heavy_check_mark:'
@@ -78,6 +81,7 @@ data:
   timestamp: '2023-11-12 17:27:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/AOJ/DSL/3_D.test.cpp
   - test/AOJ/DSL/5_B.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp

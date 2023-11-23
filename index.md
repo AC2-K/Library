@@ -107,8 +107,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/segtree.hpp
       title: Segment Tree
-    - icon: ':warning:'
-      path: src/data-structure/slide_window_min.hpp
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure/slide_window_minimum.hpp
       title: "Slide Window Minimum(\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024)"
     - icon: ':heavy_check_mark:'
       path: src/data-structure/sparse_table.hpp
@@ -277,6 +277,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/2_E_lazy.test.cpp
       title: test/AOJ/DSL/2_E_lazy.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/AOJ/DSL/3_D.test.cpp
+      title: test/AOJ/DSL/3_D.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/AOJ/DSL/5_B.test.cpp
       title: test/AOJ/DSL/5_B.test.cpp

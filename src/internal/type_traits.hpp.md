@@ -55,6 +55,9 @@ data:
     path: test/AOJ/DSL/2_E_lazy.test.cpp
     title: test/AOJ/DSL/2_E_lazy.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/AOJ/DSL/3_D.test.cpp
+    title: test/AOJ/DSL/3_D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/5_B.test.cpp
     title: test/AOJ/DSL/5_B.test.cpp
   - icon: ':heavy_check_mark:'
@@ -281,6 +284,7 @@ data:
   - test/AOJ/GRL/1_A.test.cpp
   - test/AOJ/GRL/5_C.test.cpp
   - test/AOJ/DSL/2_D_lazy.test.cpp
+  - test/AOJ/DSL/3_D.test.cpp
   - test/AOJ/DSL/1_A.test.cpp
   - test/AOJ/DSL/2_E_lazy.test.cpp
   - test/AOJ/DSL/2_D_dual.test.cpp
