@@ -107,6 +107,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/segtree.hpp
       title: Segment Tree
+    - icon: ':warning:'
+      path: src/data-structure/slide_window_min.hpp
+      title: push the element to end of this structure.
     - icon: ':heavy_check_mark:'
       path: src/data-structure/sparse_table.hpp
       title: SparseTable
