@@ -109,7 +109,7 @@ data:
       title: Segment Tree
     - icon: ':warning:'
       path: src/data-structure/slide_window_min.hpp
-      title: push the element to end of this structure.
+      title: "Slide Window Minimum(\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024)"
     - icon: ':heavy_check_mark:'
       path: src/data-structure/sparse_table.hpp
       title: SparseTable
