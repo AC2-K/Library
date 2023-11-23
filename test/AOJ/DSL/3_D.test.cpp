@@ -21,8 +21,8 @@ int main() {
         int a;
         read(a);
         q.emplace(i, a);
-        q.pop(i - l + 1);
-        printf("%c%d", " \n"[i == n - 1], q.fold());
+        q.pop(i - l);
+        printf("%c%d", ' ', q.fold());
     }
     printf("\n");
 }
