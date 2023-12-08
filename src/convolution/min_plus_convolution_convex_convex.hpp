@@ -3,7 +3,7 @@
 #include <numeric>
 #include <utility>
 #include <vector>
-#include "internal/type_traits.hpp"
+#include "../../src/internal/type_traits.hpp"
 
 namespace kyopro {
 template <typename T>
