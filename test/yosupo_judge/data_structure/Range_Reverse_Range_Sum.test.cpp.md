@@ -26,7 +26,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/range_reverse_range_sum
     links:
     - https://judge.yosupo.jp/problem/range_reverse_range_sum
-  bundledCode: "#line 1 \"test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_reverse_range_sum\"\n\
     \n#line 2 \"src/data-structure/bbst/reversible_bbst.hpp\"\n#include <cassert>\n\
     #include <memory>\n#include <utility>\n#line 2 \"src/random/xor_shift.hpp\"\n\
@@ -151,14 +151,14 @@ data:
     \ T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a <\
     \ b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
     \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 6 \"\
-    test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp\"\nusing ll = long long;\n\
-    constexpr inline ll op(ll x, ll y) { return x + y; }\nconstexpr inline ll e()\
-    \ { return 0; }\n\nusing namespace std;\nusing namespace kyopro;\n\nint main()\
-    \ {\n    int n, q;\n    read(n, q);\n    reversible_bbst<ll, op, e> bbst;\n  \
-    \  for (int i = 0; i < n; i++) {\n        int a;\n        read(a);\n        bbst.insert(i,\
-    \ a);\n    }\n\n    while (q--) {\n        int t, l, r;\n        read(t, l, r);\n\
-    \        if (!t) {\n            bbst.reverse(l, r);\n        } else {\n      \
-    \      put(bbst.fold(l, r));\n        }\n    }\n}\n"
+    test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp\"\nusing ll\
+    \ = long long;\nconstexpr inline ll op(ll x, ll y) { return x + y; }\nconstexpr\
+    \ inline ll e() { return 0; }\n\nusing namespace std;\nusing namespace kyopro;\n\
+    \nint main() {\n    int n, q;\n    read(n, q);\n    reversible_bbst<ll, op, e>\
+    \ bbst;\n    for (int i = 0; i < n; i++) {\n        int a;\n        read(a);\n\
+    \        bbst.insert(i, a);\n    }\n\n    while (q--) {\n        int t, l, r;\n\
+    \        read(t, l, r);\n        if (!t) {\n            bbst.reverse(l, r);\n\
+    \        } else {\n            put(bbst.fold(l, r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_reverse_range_sum\"\
     \n\n#include \"../../../src/data-structure/bbst/reversible_bbst.hpp\"\n#include\
     \ \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\nusing ll\
@@ -176,15 +176,15 @@ data:
   - src/internal/type_traits.hpp
   - src/template.hpp
   isVerificationFile: true
-  path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+  path: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-11-12 17:27:03+09:00'
+  timestamp: '2023-12-08 13:44:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+documentation_of: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
-- /verify/test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp.html
-title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+- /verify/test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
+- /verify/test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp.html
+title: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
 ---

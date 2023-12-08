@@ -346,6 +346,9 @@ data:
       path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
       title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
+      title: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
       title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     - icon: ':heavy_check_mark:'
@@ -371,6 +374,9 @@ data:
   - name: test/yosupo_judge/math
     pages:
     - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
+      title: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     - icon: ':heavy_check_mark:'
@@ -390,14 +396,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - name: test/yosupo_judge/new
-    pages:
     - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-      title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
-      title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+      path: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
+      title: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   - name: test/yosupo_judge/polynomial
     pages:
     - icon: ':heavy_check_mark:'

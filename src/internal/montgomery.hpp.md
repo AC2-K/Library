@@ -25,14 +25,14 @@ data:
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
+    title: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-    title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
@@ -125,9 +125,9 @@ data:
   verifiedWith:
   - test/yuki/No3030.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
-  - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
 documentation_of: src/internal/montgomery.hpp
 layout: document
 redirect_from:

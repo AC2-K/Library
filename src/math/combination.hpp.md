@@ -7,8 +7,8 @@ data:
     title: Polynomial Taylor Shift
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-    title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+    path: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
+    title: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
@@ -59,7 +59,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
 documentation_of: src/math/combination.hpp
 layout: document
 redirect_from:

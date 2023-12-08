@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
+    title: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -80,6 +83,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
 documentation_of: src/math/matrix.hpp
 layout: document
 redirect_from:

@@ -29,7 +29,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
     links:
     - https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
-  bundledCode: "#line 1 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
     \n\n#include <iostream>\n#line 2 \"src/math/combination.hpp\"\n#include <algorithm>\n\
     #include <cassert>\nusing namespace std;\nnamespace kyopro {\n\ntemplate <typename\
@@ -216,7 +216,7 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 7 \"test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp\"\
+    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 7 \"test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp\"\
     \nusing mint = kyopro::barrett_modint<10>;\nusing namespace std;\nint main() {\n\
     \    int t, m;\n    kyopro::read(t, m);\n    mint::set_mod(m);\n    kyopro::combination<mint,\
     \ (int)1e7> solver;\n    while (t--) {\n        int n, r;\n        kyopro::read(n,\
@@ -238,15 +238,15 @@ data:
   - src/internal/type_traits.hpp
   - src/stream.hpp
   isVerificationFile: true
-  path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+  path: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
+  timestamp: '2023-12-08 13:44:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+documentation_of: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-- /verify/test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp.html
-title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
+- /verify/test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
+- /verify/test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp.html
+title: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
 ---

@@ -82,6 +82,9 @@ data:
     path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
     title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   - icon: ':heavy_check_mark:'
@@ -96,6 +99,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
+    title: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
@@ -115,11 +121,8 @@ data:
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-    title: test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
-    title: test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
+    path: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
+    title: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
@@ -291,6 +294,7 @@ data:
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/UnionFind.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
   - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
@@ -307,20 +311,20 @@ data:
   - test/yosupo_judge/string/Z_algorithm.test.cpp
   - test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/new/Range_Reverse_Range_Sum.test.cpp
-  - test/yosupo_judge/new/Binomial_Coeffcient_Prime.test.cpp
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
+  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
 documentation_of: src/stream.hpp
 layout: document
 redirect_from:
