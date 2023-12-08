@@ -59,9 +59,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
 documentation_of: src/data-structure/BIT.hpp
 layout: document
 redirect_from:
