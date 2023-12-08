@@ -80,7 +80,7 @@ data:
       title: src/atcoder/twosat.hpp
   - name: src/convolution
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/convolution/min_plus_convolution_convex_convex.hpp
       title: Min Plus Convolution(Convex, Convex)
   - name: src/data-structure
@@ -312,7 +312,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
       title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
       title: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
   - name: test/yosupo_judge/data_structure

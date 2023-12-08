@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/convolution/min_plus_convolution_convex_convex.hpp
+    title: Min Plus Convolution(Convex, Convex)
+  - icon: ':heavy_check_mark:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
   - icon: ':heavy_check_mark:'
@@ -75,6 +78,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
     title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
+    title: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
     title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
@@ -275,6 +281,7 @@ data:
   - src/math/rho.hpp
   - src/string/rolling_hash.hpp
   - src/stream.hpp
+  - src/convolution/min_plus_convolution_convex_convex.hpp
   - src/internal/montgomery.hpp
   timestamp: '2023-10-22 15:25:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -309,6 +316,7 @@ data:
   - test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   - test/yosupo_judge/string/Z_algorithm.test.cpp
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp

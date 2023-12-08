@@ -13,6 +13,9 @@ data:
     path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
     title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
+    title: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
     title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   - icon: ':heavy_check_mark:'
@@ -90,6 +93,7 @@ data:
   - test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
