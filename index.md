@@ -22,6 +22,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algorithm/mo.hpp
       title: Mo's algorithm
+    - icon: ':heavy_check_mark:'
+      path: src/algorithm/monotone_minima.hpp
+      title: src/algorithm/monotone_minima.hpp
   - name: src/atcoder
     pages:
     - icon: ':heavy_check_mark:'
@@ -80,6 +83,9 @@ data:
       title: src/atcoder/twosat.hpp
   - name: src/convolution
     pages:
+    - icon: ':heavy_check_mark:'
+      path: src/convolution/min_plus_convolution_convex_arbitrary.hpp
+      title: src/convolution/min_plus_convolution_convex_arbitrary.hpp
     - icon: ':heavy_check_mark:'
       path: src/convolution/min_plus_convolution_convex_convex.hpp
       title: Min Plus Convolution(Convex, Convex)
@@ -148,7 +154,7 @@ data:
       title: "\u6C38\u7D9AStack"
   - name: src
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: src/debug.hpp
       title: src/debug.hpp
     - icon: ':heavy_check_mark:'
@@ -312,6 +318,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
       title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
+      title: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
       title: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
