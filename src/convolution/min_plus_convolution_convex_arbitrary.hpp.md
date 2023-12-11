@@ -13,6 +13,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    document_title: Min Plus Convolution (Convex, Arbitrary)
     links: []
   bundledCode: "#line 2 \"src/convolution/min_plus_convolution_convex_arbitrary.hpp\"\
     \n#include <limits>\n#line 2 \"src/algorithm/monotone_minima.hpp\"\n#include <utility>\n\
@@ -39,7 +40,8 @@ data:
     \ >= n) {\n            return std::numeric_limits<T>::max() / 2 + b[j];\n    \
     \    }\n        return a[i - j] + b[j];\n    };\n\n    std::vector res = monotone_minima<T>(n\
     \ + m - 1, m, f);\n    std::vector<T> c(n + m - 1);\n    for (int i = 0; i < (int)c.size();\
-    \ ++i) c[i] = res[i].second;\n    return c;\n}\n};  // namespace kyopro\n"
+    \ ++i) c[i] = res[i].second;\n    return c;\n}\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief Min Plus Convolution (Convex, Arbitrary)\n*/\n"
   code: "#pragma once\n#include <limits>\n#include \"../../src/algorithm/monotone_minima.hpp\"\
     \nnamespace kyopro {\n\n/// @note a \u306F\u4E0B\u306B\u51F8\u3067\u3042\u308B\
     \u5FC5\u8981\u304C\u3042\u308B\n/// @note \u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\
@@ -51,13 +53,14 @@ data:
     \ >= n) {\n            return std::numeric_limits<T>::max() / 2 + b[j];\n    \
     \    }\n        return a[i - j] + b[j];\n    };\n\n    std::vector res = monotone_minima<T>(n\
     \ + m - 1, m, f);\n    std::vector<T> c(n + m - 1);\n    for (int i = 0; i < (int)c.size();\
-    \ ++i) c[i] = res[i].second;\n    return c;\n}\n};  // namespace kyopro"
+    \ ++i) c[i] = res[i].second;\n    return c;\n}\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief Min Plus Convolution (Convex, Arbitrary)\n*/"
   dependsOn:
   - src/algorithm/monotone_minima.hpp
   isVerificationFile: false
   path: src/convolution/min_plus_convolution_convex_arbitrary.hpp
   requiredBy: []
-  timestamp: '2023-12-11 11:51:40+09:00'
+  timestamp: '2023-12-11 11:56:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
@@ -66,5 +69,5 @@ layout: document
 redirect_from:
 - /library/src/convolution/min_plus_convolution_convex_arbitrary.hpp
 - /library/src/convolution/min_plus_convolution_convex_arbitrary.hpp.html
-title: src/convolution/min_plus_convolution_convex_arbitrary.hpp
+title: Min Plus Convolution (Convex, Arbitrary)
 ---

@@ -6,7 +6,7 @@ data:
     title: src/algorithm/monotone_minima.hpp
   - icon: ':heavy_check_mark:'
     path: src/convolution/min_plus_convolution_convex_arbitrary.hpp
-    title: src/convolution/min_plus_convolution_convex_arbitrary.hpp
+    title: Min Plus Convolution (Convex, Arbitrary)
   - icon: ':heavy_check_mark:'
     path: src/debug.hpp
     title: src/debug.hpp
@@ -56,26 +56,27 @@ data:
     \ >= n) {\n            return std::numeric_limits<T>::max() / 2 + b[j];\n    \
     \    }\n        return a[i - j] + b[j];\n    };\n\n    std::vector res = monotone_minima<T>(n\
     \ + m - 1, m, f);\n    std::vector<T> c(n + m - 1);\n    for (int i = 0; i < (int)c.size();\
-    \ ++i) c[i] = res[i].second;\n    return c;\n}\n};  // namespace kyopro\n#line\
-    \ 1 \"src/debug.hpp\"\n#ifdef ONLINE_JUDGE\n#define debug(x) void(0)\n#else\n\
-    #define _GLIBCXX_DEBUG\n#define debug(x) std::cerr << __LINE__ << \" : \" << #x\
-    \ << \" = \" << (x) << std::endl\n#endif\n#line 2 \"src/stream.hpp\"\n#include\
-    \ <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
-    \n#include <iostream>\n#line 4 \"src/internal/type_traits.hpp\"\n#include <numeric>\n\
-    #include <typeinfo>\n#include <cstdint>\n\nnamespace kyopro {\nnamespace internal\
-    \ {\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
-    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
-    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
-    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
-    \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
-    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
-    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt, std::enable_if_t<dgt\
-    \ <= 128>* = nullptr> struct int_least {\n    using type = first_enabled_t<std::enable_if<dgt\
-    \ <= 8, std::int8_t>,\n                                 std::enable_if<dgt <=\
-    \ 16, std::int16_t>,\n                                 std::enable_if<dgt <= 32,\
-    \ std::int32_t>,\n                                 std::enable_if<dgt <= 64, std::int64_t>,\n\
-    \                                 std::enable_if<dgt <= 128, __int128_t>>;\n};\n\
-    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
+    \ ++i) c[i] = res[i].second;\n    return c;\n}\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief Min Plus Convolution (Convex, Arbitrary)\n*/\n#line 1 \"src/debug.hpp\"\
+    \n#ifdef ONLINE_JUDGE\n#define debug(x) void(0)\n#else\n#define _GLIBCXX_DEBUG\n\
+    #define debug(x) std::cerr << __LINE__ << \" : \" << #x << \" = \" << (x) << std::endl\n\
+    #endif\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
+    \ <string>\n#line 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n#line\
+    \ 4 \"src/internal/type_traits.hpp\"\n#include <numeric>\n#include <typeinfo>\n\
+    #include <cstdint>\n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename...\
+    \ Args> struct first_enabled {};\n\ntemplate <typename T, typename... Args>\n\
+    struct first_enabled<std::enable_if<true, T>, Args...> {\n    using type = T;\n\
+    };\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
+    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
+    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
+    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
+    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct int_least\
+    \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::int8_t>,\n\
+    \                                 std::enable_if<dgt <= 16, std::int16_t>,\n \
+    \                                std::enable_if<dgt <= 32, std::int32_t>,\n  \
+    \                               std::enable_if<dgt <= 64, std::int64_t>,\n   \
+    \                              std::enable_if<dgt <= 128, __int128_t>>;\n};\n\n\
+    template <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
     \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::uint8_t>,\n\
     \                                 std::enable_if<dgt <= 16, std::uint16_t>,\n\
     \                                 std::enable_if<dgt <= 32, std::uint32_t>,\n\
@@ -155,7 +156,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
   requiredBy: []
-  timestamp: '2023-12-11 11:51:40+09:00'
+  timestamp: '2023-12-11 11:56:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp

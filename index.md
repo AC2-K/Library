@@ -85,7 +85,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: src/convolution/min_plus_convolution_convex_arbitrary.hpp
-      title: src/convolution/min_plus_convolution_convex_arbitrary.hpp
+      title: Min Plus Convolution (Convex, Arbitrary)
     - icon: ':heavy_check_mark:'
       path: src/convolution/min_plus_convolution_convex_convex.hpp
       title: Min Plus Convolution(Convex, Convex)
