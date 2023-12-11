@@ -2,6 +2,8 @@
 #include <utility>
 #include <vector>
 namespace kyopro {
+
+/// @note f must be monotone
 template <typename T, typename F>
 std::vector<std::pair<std::size_t, T>> monotone_minima(std::size_t h,
                                                        std::size_t w,
@@ -34,3 +36,7 @@ std::vector<std::pair<std::size_t, T>> monotone_minima(std::size_t h,
     return res;
 }
 };  // namespace kyopro
+
+/**
+ * @brief Monotone Minima
+*/
