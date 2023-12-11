@@ -24,3 +24,7 @@ std::vector<T> min_plus_convolution_convex_arbitrary(const std::vector<T>& a,
     return c;
 }
 };  // namespace kyopro
+
+/**
+ * @brief Min Plus Convolution (Convex, Arbitrary)
+*/
