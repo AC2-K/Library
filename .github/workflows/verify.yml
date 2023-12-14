@@ -19,12 +19,13 @@ jobs:
 
     - name: Install dependencies
       run: pip3 install -U online-judge-verify-helper
-    - name: Clone ac-library 
+    - name: Clone AC-Library
       uses: actions/checkout@v3
       with:
-        repogitory: atcoder/ac-library
+        repository: atcoder/ac-library
         path: src/ac-library
         sparse-checkout: atcoder
+
     - name: Run tests
       env:
         GH_PAT: ${{ secrets.GH_PAT }}
