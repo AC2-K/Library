@@ -77,8 +77,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
   - test/AOJ/DSL/2_B.test.cpp
 documentation_of: src/data-structure/segtree.hpp

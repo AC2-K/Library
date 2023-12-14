@@ -24,7 +24,7 @@ data:
       title: Mo's algorithm
     - icon: ':heavy_check_mark:'
       path: src/algorithm/monotone_minima.hpp
-      title: src/algorithm/monotone_minima.hpp
+      title: Monotone Minima
   - name: src/atcoder
     pages:
     - icon: ':heavy_check_mark:'

@@ -81,8 +81,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/AOJ/NTL/1_B.test.cpp
   - test/yuki/No430.test.cpp
+  - test/AOJ/NTL/1_B.test.cpp
 documentation_of: src/math/mod_pow.hpp
 layout: document
 redirect_from:
