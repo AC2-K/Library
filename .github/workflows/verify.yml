@@ -24,7 +24,7 @@ jobs:
       with:
         repogitory: atcoder/ac-library
         path: src/ac-library
-        
+        sparse-checkout: atcoder
     - name: Run tests
       env:
         GH_PAT: ${{ secrets.GH_PAT }}
