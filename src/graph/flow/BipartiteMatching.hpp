@@ -1,4 +1,4 @@
-#include "../../atcoder/maxflow"
+#include "../../ac-library/atcoder/maxflow"
 
 #include <cassert>
 #include <vector>

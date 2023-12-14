@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../../src/atcoder/convolution.hpp"
+#include "../../src/ac-library/atcoder/convolution.hpp"
 namespace kyopro{
 
 template <typename mint, atcoder::internal::is_modint_t<mint>* = nullptr>

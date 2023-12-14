@@ -32,6 +32,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @ref
- * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp
+ * @see https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp
  */
