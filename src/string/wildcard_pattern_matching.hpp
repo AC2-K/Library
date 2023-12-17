@@ -1,6 +1,6 @@
 #pragma once
-#include "atcoder/convolution"
-#include "atcoder/modint"
+#include "atcoder/convolution.hpp"
+#include "atcoder/modint.hpp"
 #include <string>
 #include <vector>
 #include<algorithm>

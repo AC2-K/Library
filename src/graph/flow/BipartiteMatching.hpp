@@ -1,4 +1,4 @@
-#include "atcoder/maxflow"
+#include "atcoder/maxflow.hpp"
 
 #include <cassert>
 #include <vector>

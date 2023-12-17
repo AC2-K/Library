@@ -1,6 +1,6 @@
 #pragma once
 #include "atcoder/convolution.hpp"
-#include "../src/math/combination.hpp"
+#include "../../src/math/combination.hpp"
 
 namespace kyopro {
 
