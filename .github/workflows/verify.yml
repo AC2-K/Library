@@ -24,13 +24,13 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: atcoder/ac-library
-        path: src/ac-library
+        path: ac-library
         sparse-checkout: atcoder
 
     - name: Run tests
       working-directory: main
       env:
-        CPLUS_INCLUDE_PATH: ${{ github.workspace }}/src/ac-library
+        CPLUS_INCLUDE_PATH: ${{ github.workspace }}/ac-library
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
         GH_PAT: ${{ secrets.GH_PAT }}
