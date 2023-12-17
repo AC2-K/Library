@@ -3,32 +3,35 @@ name: verify
 on: push
 
 jobs:
-  steps:
-  - name: Git checkout
-    uses: actions/checkout@v3
-    with:
-      path: main
-      fetch-depth: 0
+  verify:
+    runs-on: ubuntu-latest
 
-  - name: Set up Python
-    uses: actions/setup-python@v4
-    with:
-      python-version: 3.12.0
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        path: main
+        fetch-depth: 0
 
-  - name: Install oj-verify
-    run: pip3 install -U online-judge-verify-helper
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.12.0
 
-  - name: Clone AC-Library
-    uses: actions/checkout@v3
-    with:
-      repository: atcoder/ac-library
-      path: ac-library
-      sparse-checkout: atcoder
+    - name: Install dependencies
+      run: pip3 install -U online-judge-verify-helper
 
-  - name: Run tests
-    env:
-      CPLUS_INCLUDE_PATH: ${{ github.workspace }}/ac-library
-      GH_PAT: ${{ secrets.GH_PAT }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
-    run: oj-verify all
+    - name: Clone AC-Library
+      uses: actions/checkout@v3
+      with:
+        repository: atcoder/ac-library
+        path: src/ac-library
+        sparse-checkout: atcoder
+
+    - name: Run tests
+      working-directory: main
+      env:
+        CPLUS_INCLUDE_PATH: ${{ github.workspace }}/src/ac-library
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        YUKICODER_TOKEN: ${{ secrets.YUKICODER_TOKEN }}
+        GH_PAT: ${{ secrets.GH_PAT }}
+      run: oj-verify all
