@@ -86,7 +86,8 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "maxflow": "cpp"
+        "maxflow": "cpp",
+        "convolution": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }
