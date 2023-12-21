@@ -4,6 +4,7 @@
 #include "../../../src/math/gcd.hpp"
 #include "../../../src/stream.hpp"
 
+using namespace std;
 using namespace kyopro;
 
 int main() {
@@ -11,5 +12,5 @@ int main() {
     read(a, b);
     long long x, y;
     ext_gcd(a, b, x, y);
-    write(x, y);
+    cout << x << ' ' << y << endl;
 }
