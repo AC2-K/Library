@@ -3,23 +3,24 @@
 #include <vector>
 namespace kyopro {
 
-
-template <class S, auto op, auto e> class segtree {
+template <class S, class Op> class segtree {
     int lg, sz, n;
     std::vector<S> dat;
+    const Op op;
+    const S e;
 
 public:
     segtree() = default;
-    segtree(int n) : segtree(std::vector<S>(n, e())) {}
-    segtree(const std::vector<S>& vec) : n((int)vec.size()) {
+    segtree(int n, const Op& op, const S& e)
+        : segtree(std::vector<S>(n, e), op, e) {}
+    segtree(const std::vector<S>& vec, const Op& op, const S& e)
+        : n((int)vec.size()), op(op), e(e) {
         sz = 1, lg = 0;
         while (sz <= n) {
             sz <<= 1;
             lg++;
         }
-
-        dat = std::vector<S>(sz << 1, e());
-
+        dat.assign(sz << 1, e);
         for (int i = 0; i < n; i++) {
             set(i, vec[i]);
         }
@@ -53,7 +54,7 @@ public:
             return dat[1];
         }
         l += sz, r += sz;
-        S sml = e(), smr = e();
+        S sml = e, smr = e;
         while (l != r) {
             if (l & 1) sml = op(sml, dat[l++]);
             if (r & 1) smr = op(dat[--r], smr);
@@ -61,6 +62,7 @@ public:
         }
         return op(sml, smr);
     }
+
     void apply(int p, const S& v) {
         assert(0 <= p && p < sz);
         update(p, op(dat[sz + p], v));
