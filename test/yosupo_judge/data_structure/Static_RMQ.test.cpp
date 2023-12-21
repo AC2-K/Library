@@ -2,10 +2,13 @@
 #include <iostream>
 #include "../../../src/data-structure/sparse_table.hpp"
 inline int op(int x, int y) { return std::min(x, y); }
+
+using namespace kyopro;
+
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);
-    kyopro::sparse_table<int, op> rmq(n);
+    sparse_table<int, op> rmq(n);
     for (int i = 0; i < n; i++) {
         int ai;
         scanf("%d", &ai);

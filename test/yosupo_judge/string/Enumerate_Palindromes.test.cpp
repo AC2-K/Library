@@ -9,6 +9,6 @@ using namespace kyopro;
 int main() {
     std::string s;
     read(s);
-    auto res = kyopro::manacher(s);
+    auto res = manacher(s);
     for (auto r : res) put(r);
 }

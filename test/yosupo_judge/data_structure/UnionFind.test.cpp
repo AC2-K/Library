@@ -2,13 +2,16 @@
 
 #include "../../../src/data-structure/dsu.hpp"
 #include "../../../src/stream.hpp"
+
+using namespace kyopro;
+
 int main() {
     int n, q;
-    kyopro::read(n, q);
-    kyopro::dsu uf(n);
+    read(n, q);
+    dsu uf(n);
     while (q--) {
         int t, x, y;
-        kyopro::read(t, x, y);
+        read(t, x, y);
         if (!t) {
             uf.merge(x, y);
         } else {

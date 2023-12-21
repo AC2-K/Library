@@ -1,6 +1,10 @@
 name: verify
 
-on: push
+on:
+  push:
+    branches:
+    - main
+  pull_request:
 
 jobs:
   verify:
@@ -9,7 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        path: main
         fetch-depth: 0
 
     - name: Set up Python
@@ -28,7 +31,6 @@ jobs:
         sparse-checkout: atcoder
 
     - name: Run tests
-      working-directory: main
       env:
         CPLUS_INCLUDE_PATH: ${{ github.workspace }}/ac-library
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

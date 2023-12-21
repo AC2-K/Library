@@ -5,25 +5,28 @@
 #include "../../../src/stream.hpp"
 #pragma GCC optimize("unroll-loops")
 
-using mint = kyopro::modint<998244353>;
+using namespace std;
+using namespace kyopro;
+
+using mint = modint<998244353>;
 int main() {
     int n, m, k;
-    kyopro::read(n, m, k);
-    kyopro::Matrix<mint> a(n, m), b(m, k);
+    read(n, m, k);
+    Matrix<mint> a(n, m), b(m, k);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            kyopro::read(a[i][j]);
+            read(a[i][j]);
         }
     }
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < k; j++) {
-            kyopro::read(b[i][j]);
+            read(b[i][j]);
         }
     }
     auto res = a * b;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < k; j++) {
-            kyopro::put(res[i][j].val());
+            put(res[i][j].val());
         }
     }
 }

@@ -2,16 +2,20 @@
 #include <iostream>
 #include "../../../src/math/rho.hpp"
 #include "../../../src/stream.hpp"
+
+using namespace std;
+using namespace kyopro;
+
 int main() {
     int q;
-    kyopro::read(q);
+    read(q);
     while (q--) {
         uint64_t x;
-        kyopro::read(x);
-        const auto pf = kyopro::rho::factorize(x);
-        kyopro::put(pf.size());
+        read(x);
+        const auto pf = rho::factorize(x);
+        put(pf.size());
         for (auto p : pf) {
-            kyopro::put(p);
+            put(p);
         }
     }
 }
