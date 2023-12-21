@@ -3,7 +3,11 @@
 #include "../../../src/data-structure/bbst/lazy_reversible_bbst.hpp"
 #include "../../../src/math/static_modint.hpp"
 #include "../../../src/stream.hpp"
-using mint = kyopro::modint<998244353>;
+
+using namespace std;
+using namespace kyopro;
+
+using mint = modint<998244353>;
 using S = mint;
 inline S op(S a, S b) { return a + b; }
 inline S e() { return mint(0); }
@@ -21,38 +25,37 @@ inline S mapping(S d, Affine f, int length) {
     return a * d + b * length;
 };
 int main() {
-    kyopro::lazy_reversible_bbst<S, Affine, op, e, composition, id, mapping>
-        stree;
+    lazy_reversible_bbst<S, Affine, op, e, composition, id, mapping> stree;
     int n, q;
-    kyopro::read(n, q);
+    read(n, q);
     for (int i = 0; i < n; ++i) {
         mint ai;
-        kyopro::read(ai);
+        read(ai);
         stree.insert(i, ai);
     }
     while (q--) {
         int t;
-        kyopro::read(t);
+        read(t);
         if (t == 0) {
             int i, x;
-            kyopro::read(i, x);
+            read(i, x);
             stree.insert(i, mint::raw(x));
         } else if (t == 1) {
             int i;
-            kyopro::read(i);
+            read(i);
             stree.erase(i);
         } else if (t == 2) {
             int l, r;
-            kyopro::read(l, r);
+            read(l, r);
             stree.reverse(l, r);
         } else if (t == 3) {
             int l, r, a, b;
-            kyopro::read(l, r, a, b);
+            read(l, r, a, b);
             stree.apply(l, r, Affine(mint::raw(a), mint::raw(b)));
         } else {
             int l, r;
-            kyopro::read(l, r);
-            kyopro::put(stree.fold(l, r).val());
+            read(l, r);
+            put(stree.fold(l, r).val());
         }
     }
 }

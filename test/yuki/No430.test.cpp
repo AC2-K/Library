@@ -25,7 +25,7 @@ int main() {
     for (int i = 0; i < m; ++i) {
         string c;
         read(c);
-        ans += hash_count[kyopro::RollingHash(c).get_all()];
+        ans += hash_count[RollingHash(c).get_all()];
     }
     put(ans);
 }

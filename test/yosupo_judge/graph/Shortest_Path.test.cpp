@@ -19,14 +19,13 @@ int main() {
     }
 
     g.build(s);
-    
+
     if (g.dist(t) >= dijkstra<long long>::COST_INF) {
         put(-1);
         return 0;
     }
 
     vector path = g.shortest_path(t);
-    kyopro::put(g.dist(t), path.size() - 1);
-    for (int i = 1; i < (int)path.size(); i++)
-        kyopro::put(path[i - 1], path[i]);
+    put(g.dist(t), path.size() - 1);
+    for (int i = 1; i < (int)path.size(); i++) put(path[i - 1], path[i]);
 }

@@ -2,12 +2,16 @@
 #include "../../../src/math/primitive_root.hpp"
 #include <iostream>
 #include "../../../src/stream.hpp"
+
+using namespace std;
+using namespace kyopro;
+
 int main() {
     int q;
-    kyopro::read(q);
+    read(q);
     while (q--) {
         long long p;
-        kyopro::read(p);
-        kyopro::put(kyopro::primitive_root(p));
+        read(p);
+        put(primitive_root(p));
     }
 }

@@ -3,7 +3,11 @@
 #include "../../../src/data-structure/lazy_segtree.hpp"
 #include "../../../src/math/static_modint.hpp"
 #include "../../../src/stream.hpp"
-using mint = kyopro::modint<998244353>;
+
+using namespace std;
+using namespace kyopro;
+
+using mint = modint<998244353>;
 struct S {
     mint s;
     int len;
@@ -27,27 +31,27 @@ inline S mapping(S d, Affine f) {
 
 int main() {
     int n, q;
-    kyopro::read(n, q);
-    kyopro::lazy_segtree<S, Affine, op, e, composition, id, mapping> sg(n);
+    read(n, q);
+    lazy_segtree<S, Affine, op, e, composition, id, mapping> sg(n);
     for (int i = 0; i < n; i++) {
         mint a;
-        kyopro::read(a);
+        read(a);
         sg.set(i, {a, 1});
     }
     sg.build();
     while (q--) {
         int t;
-        kyopro::read(t);
+        read(t);
         if (t == 0) {
             int l, r;
             mint b, c;
-            kyopro::read(l, r, b, c);
+            read(l, r, b, c);
             sg.apply(l, r, Affine(b, c));
         } else {
             int l, r;
-            kyopro::read(l, r);
+            read(l, r);
             auto res = sg.fold(l, r);
-            kyopro::put(res.s.val());
+            put(res.s.val());
         }
     }
 }

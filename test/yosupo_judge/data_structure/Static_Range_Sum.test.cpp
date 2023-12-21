@@ -2,13 +2,17 @@
 #include <iostream>
 #include "../../../src/data-structure/segtree.hpp"
 
+using namespace std;
+using namespace kyopro;
+
 inline long long op(long long x, long long y) { return x + y; }
 inline long long e() { return 0; }
+
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);
 
-    kyopro::segtree<long long, op, e> seg(n);
+    segtree<long long, op, e> seg(n);
     for (int i = 0; i < n; i++) {
         int a;
         scanf("%d", &a);

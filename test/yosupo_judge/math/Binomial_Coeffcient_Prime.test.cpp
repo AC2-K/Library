@@ -4,20 +4,22 @@
 #include "../../../src/math/combination.hpp"
 #include "../../../src/math/dynamic_modint.hpp"
 #include "../../../src/stream.hpp"
-using mint = kyopro::barrett_modint<10>;
+
 using namespace std;
+using namespace kyopro;
+using mint = barrett_modint<>;
 int main() {
     int t, m;
-    kyopro::read(t, m);
+    read(t, m);
     mint::set_mod(m);
-    kyopro::combination<mint, (int)1e7> solver;
+    combination<mint, (int)1e7> solver;
     while (t--) {
         int n, r;
-        kyopro::read(n, r);
+        read(n, r);
         if (n < r) {
-            kyopro::put(0);
+            put(0);
         } else {
-            kyopro::put(solver.binom(n, r).val());
+            put(solver.binom(n, r).val());
         }
     }
 }

@@ -2,9 +2,7 @@
 #include <iostream>
 #include "../../../src/data-structure/segtree.hpp"
 #include "../../../src/stream.hpp"
-
-inline long long op(long long x, long long y) { return x + y; }
-inline long long e() { return 0; }
+#include "../../../src/template.hpp"
 
 using namespace std;
 using namespace kyopro;
@@ -12,10 +10,11 @@ using namespace kyopro;
 int main() {
     int n, q;
     read(n, q);
-    vector<long long> a(n);
+    vector<ll> a(n);
     for (auto& aa : a) read(aa);
-
-    segtree<long long, op, e> seg(a);
+    
+    segtree seg(
+        a, [](ll a, ll b) { return a + b; }, 0LL);
     while (q--) {
         int t;
         read(t);
