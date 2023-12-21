@@ -11,5 +11,5 @@ int main() {
     read(a, b);
     long long x, y;
     ext_gcd(a, b, x, y);
-    put(x, y);
+    write(x, y);
 }
