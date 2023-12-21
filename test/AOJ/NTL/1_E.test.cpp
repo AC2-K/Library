@@ -9,7 +9,7 @@ using namespace kyopro;
 
 int main() {
     long long a, b;
-    read(a, b);
+    cin >> a >> b;
     long long x, y;
     ext_gcd(a, b, x, y);
     cout << x << ' ' << y << endl;
