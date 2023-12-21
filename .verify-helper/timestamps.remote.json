@@ -10,6 +10,7 @@
 "test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp": "2023-11-23 03:11:42 +0900",
 "test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp": "2023-12-22 01:04:49 +0900",
 "test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp": "2023-12-22 01:04:49 +0900",
+"test/yosupo_judge/data_structure/Persistent_Queue.test.cpp": "2023-12-22 01:37:01 +0900",
 "test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp": "2023-10-22 17:20:37 +0900",
 "test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp": "2023-12-22 01:28:26 +0900",
 "test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp": "2023-11-12 17:27:03 +0900",
