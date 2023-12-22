@@ -3,13 +3,15 @@
 #include <vector>
 namespace kyopro {
 
-template <class S, auto op, auto e> class SWAG {
+template <class S, class Op> class SWAG {
     std::vector<S> front_stack, back_stack;
     std::vector<S> front_prod, back_prod;
 
+    const Op op;
+    const S e;
 public:
-    SWAG() {
-        front_prod.emplace_back(e()), back_prod.emplace_back(e());
+    SWAG(const Op& op, const S& e) {
+        front_prod.emplace_back(e), back_prod.emplace_back(e);
     }
     void reserve(std::size_t sz) {
         back_stack.reserve(sz), back_prod.reserve(sz + 1);
@@ -24,9 +26,9 @@ public:
             std::reverse(back_stack.begin(), back_stack.end());
             std::swap(front_stack, back_stack);
             back_prod.clear(), front_prod.clear();
-            back_prod.emplace_back(e());
+            back_prod.emplace_back(e);
             front_prod.resize(front_stack.size() + 1);
-            front_prod[0] = e();
+            front_prod[0] = e;
             for (int i = 0; i < (int)front_stack.size(); ++i) {
                 front_prod[i + 1] = op(front_stack[i], front_prod[i]);
             }
