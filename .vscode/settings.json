@@ -89,5 +89,7 @@
         "maxflow": "cpp",
         "convolution": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Enabled"
+    "C_Cpp.errorSquiggles": "Enabled",
+    "clang-format.executable": "/workspaces/Library/.clang-format",
+    "C_Cpp.clang_format_path": "/workspaces/Library/.clang-format"
 }

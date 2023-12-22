@@ -4,18 +4,19 @@
 #include "../data-structure/sparse_table.hpp"
 namespace kyopro {
 
+
+namespace internalEulerTour {
+    using value_t = std::pair<int, int>;
+    constexpr auto op = [](value_t x, value_t y) { return x > y ? y : x; };
+};
 class EulerTour {
     int n;
     std::vector<std::vector<int>> g;
     std::vector<int> tour;
     std::vector<int> in, out, depth;
 
-    struct get_min_pair {
-        using value_t = std::pair<int, int>;
-        static value_t op(value_t x, value_t y) { return std::min(x, y); }
-    };
 
-    sparse_table<get_min_pair::value_t, decltype(get_min_pair::op)> rmq;
+    sparse_table<internalEulerTour::value_t, decltype(internalEulerTour::op)> rmq;
 
 public:
     explicit EulerTour(int n)
@@ -24,7 +25,7 @@ public:
           in(n, -1),
           out(n, -1),
           depth(n, -1),
-          rmq(2 * n - 1, get_min_pair::op) {
+          rmq(2 * n - 1, internalEulerTour::op) {
         tour.reserve(2 * n - 1);
     }
     void add_edge(int u, int v) {

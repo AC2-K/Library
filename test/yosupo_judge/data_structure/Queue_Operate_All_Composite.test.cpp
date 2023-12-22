@@ -10,15 +10,13 @@ using namespace kyopro;
 
 using mint = modint<MOD2>;
 using Affine = pair<mint, mint>;
-constexpr inline Affine op(const Affine& g, const Affine& f) {
-    auto a = f.first, b = f.second;
-    auto c = g.first, d = g.second;
-    return Affine(a * c, a * d + b);
-}
-constexpr inline Affine e() { return Affine(1, 0); }
 
 int main() {
-    SWAG que(op, e());
+    SWAG que([](Affine g,Affine f) {
+        auto a = f.first, b = f.second;
+        auto c = g.first, d = g.second;
+        return Affine(a * c, a * d + b);
+    }, Affine(1, 0));
     int q;
     read(q);
     while (q--) {

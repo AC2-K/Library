@@ -2,15 +2,15 @@
 #include <iostream>
 #include "../../src/data-structure/dynamic_segtree.hpp"
 #include "../../src/stream.hpp"
-constexpr inline int op(int x, int y) { return x + y; }
-constexpr inline int e() { return 0; }
+inline int op(int x, int y) { return x + y; }
+inline int e() { return 0; }
 
 using namespace std;
 using namespace kyopro;
 
 int main() {
     const size_t n = 1000000001;
-    dynamic_segtree<int, op, e> seg(n);
+    dynamic_segtree seg(n, op, e());
 
     int q;
     read(q);

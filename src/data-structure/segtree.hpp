@@ -10,10 +10,9 @@ template <class S, class Op> class segtree {
     const S e;
 
 public:
-    segtree() = default;
-    segtree(int n, const Op& op, const S& e)
-        : segtree(std::vector<S>(n, e), op, e) {}
-    segtree(const std::vector<S>& vec, const Op& op, const S& e)
+    segtree(Op op, S e) : op(op), e(e) {}
+    segtree(int n, Op op, S e) : segtree(std::vector<S>(n, e), op, e) {}
+    segtree(const std::vector<S>& vec, Op op, S e)
         : n((int)vec.size()), op(op), e(e) {
         sz = 1, lg = 0;
         while (sz <= n) {

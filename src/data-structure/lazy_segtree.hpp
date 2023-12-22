@@ -18,30 +18,29 @@ class lazy_segtree {
 public:
     lazy_segtree() = default;
     lazy_segtree(int n,
-                 const Op& op,
-                 const S& e,
-                 const Composition& composition,
-                 const F& id,
-                 const Mapping& mapping)
-        : lazy_segtree(n,
+                 Op op,
+                 S e,
+                 Composition composition,
+                 F id,
+                 Mapping mapping)
+        : lazy_segtree(std::vector<S>(n, e),
                        op,
                        e,
                        composition,
                        id,
-                       mapping,
-                       std::vector<S>(n, e())) {}
+                       mapping) {}
     lazy_segtree(const std::vector<S>& a,
-                 const Op& op,
-                 const S& e,
-                 const Composition& composition,
-                 const F& id,
-                 const Mapping& mapping)
+                 Op op,
+                 S e,
+                 Composition composition,
+                 F id,
+                 Mapping mapping)
         : n((int)a.size()),
           op(op),
           e(e),
           composition(composition),
           id(id),
-          mapping(mapping) {}
+          mapping(mapping) 
     {
         sz = 1, lg = 0;
         while (sz <= n) {
@@ -80,7 +79,7 @@ private:
         }
         all_apply(p << 1 | 0, lazy[p]);
         all_apply(p << 1 | 1, lazy[p]);
-        lazy[p] = id();
+        lazy[p] = id;
     }
 
 public:

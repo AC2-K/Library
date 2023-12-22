@@ -10,9 +10,9 @@ template <class F, class Op> class dual_segtree {
 
 public:
     dual_segtree() = default;
-    dual_segtree(const Op& composition, const F& id)
-        : composition(composition), id(id), dual_segtree(0) {}
-    dual_segtree(int _n, const Op& composition, const F& id)
+    dual_segtree(Op composition, F id)
+        : dual_segtree(0, composition, id) {}
+    dual_segtree(int _n, Op composition, F id)
         : _n(_n), composition(composition), id(id) {
         sz = 1, lg = 0;
         while (sz < _n) {

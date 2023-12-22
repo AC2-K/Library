@@ -15,14 +15,14 @@ template <class S, class Op> class dynamic_segtree {
         S val;
         Node *l, *r, *parent;
         
-        constexpr Node(const S& v = e, Node* pt = nullptr)
+        constexpr Node(S v, Node* pt)
             : val(), l(nullptr), r(nullptr), parent(pt) {}
     };
 
     using uptr = std::unique_ptr<Node>;
     std::vector<uptr> nodes;
     Node* root;
-    Node* make_ptr(const S& v = e, Node* pt = nullptr) {
+    Node* make_ptr(S v, Node* pt = nullptr) {
         nodes.emplace_back(std::make_unique<Node>(v, pt));
         return nodes.back().get();
     };
@@ -60,18 +60,19 @@ template <class S, class Op> class dynamic_segtree {
     }
 
 public:
-    explicit dynamic_segtree(std::size_t n = 0, const Op& op, const S& e)
+    dynamic_segtree() = default;
+    dynamic_segtree(std::size_t n, Op op, S e)
         : n(n), op(op), e(e), root(nullptr) {
-        root = make_ptr();
+        root = make_ptr(e, nullptr);
     }
 
-    void apply(std::size_t i, const S& x) {
+    void apply(std::size_t i, S x) {
         assert(0 <= i && i < n);
         auto p = find(i);
         p->val = op(p->val, x);
         push(p);
     }
-    void update(std::size_t i, const S& x) {
+    void update(std::size_t i, S x) {
         assert(0 <= i && i < n);
         auto p = find(i);
         p->val = x;

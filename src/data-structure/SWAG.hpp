@@ -10,7 +10,7 @@ template <class S, class Op> class SWAG {
     const Op op;
     const S e;
 public:
-    SWAG(const Op& op, const S& e) {
+    SWAG(Op op, S e) : op(op), e(e) {
         front_prod.emplace_back(e), back_prod.emplace_back(e);
     }
     void reserve(std::size_t sz) {
