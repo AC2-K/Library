@@ -3,30 +3,54 @@
 #include <vector>
 namespace kyopro {
 
-template <class S,
-          class F,
-          auto op,
-          auto e,
-          auto composition,
-          auto id,
-          auto mapping>
+template <class S, class F, class Op, class Composition, class Mapping>
 class lazy_segtree {
     int lg, sz, n;
     std::vector<S> dat;
     std::vector<F> lazy;
 
+    const Op op;
+    const S e;
+    const Composition composition;
+    const F id;
+    const Mapping mapping;
+
 public:
-    lazy_segtree() {}
-    lazy_segtree(int n) : lazy_segtree(std::vector<S>(n, e())) {}
-    lazy_segtree(const std::vector<S>& a) : n((int)a.size()) {
+    lazy_segtree() = default;
+    lazy_segtree(int n,
+                 const Op& op,
+                 const S& e,
+                 const Composition& composition,
+                 const F& id,
+                 const Mapping& mapping)
+        : lazy_segtree(n,
+                       op,
+                       e,
+                       composition,
+                       id,
+                       mapping,
+                       std::vector<S>(n, e())) {}
+    lazy_segtree(const std::vector<S>& a,
+                 const Op& op,
+                 const S& e,
+                 const Composition& composition,
+                 const F& id,
+                 const Mapping& mapping)
+        : n((int)a.size()),
+          op(op),
+          e(e),
+          composition(composition),
+          id(id),
+          mapping(mapping) {}
+    {
         sz = 1, lg = 0;
         while (sz <= n) {
             sz <<= 1;
             lg++;
         }
 
-        dat = std::vector<S>(sz << 1, e());
-        lazy = std::vector<F>(sz, id());
+        dat.assign(sz << 1, e);
+        lazy.assign(sz, id);
         for (int i = 0; i < n; ++i) {
             set(i, a[i]);
         }
@@ -51,7 +75,7 @@ private:
     }
     void push_up(int k) { dat[k] = op(dat[k << 1 | 0], dat[k << 1 | 1]); }
     void push_down(int p) {
-        if (lazy[p] == id()) {
+        if (lazy[p] == id) {
             return;
         }
         all_apply(p << 1 | 0, lazy[p]);
@@ -66,9 +90,10 @@ public:
         for (int i = lg; i > 0; --i) push_down(p >> i);
         return dat[p];
     }
+
     S fold(int l, int r) {
         assert(0 <= l && l <= r && r <= n);
-        if (l == r) return e();
+        if (l == r) return e;
 
         l += sz, r += sz;
         for (int i = lg; i > 0; --i) {
@@ -80,7 +105,7 @@ public:
             }
         }
 
-        S sml = e(), smr = e();
+        S sml = e, smr = e;
         while (l < r) {
             if (l & 1) sml = op(sml, dat[l++]);
             if (r & 1) smr = op(dat[--r], smr);
