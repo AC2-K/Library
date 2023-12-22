@@ -3,14 +3,19 @@
 #include <vector>
 namespace kyopro {
 
-template <class T, auto op> class sparse_table {
+template <class T, class Op> class sparse_table {
     std::vector<T> vec;
     std::vector<std::vector<T>> table;
     std::vector<int> lg;
 
+    const Op op;
+
 public:
-    constexpr sparse_table(int n) : vec(n) {}
-    constexpr sparse_table(const std::vector<T>& vec) : vec(vec) { build(); }
+    sparse_table() = default;
+    sparse_table(int n, const Op& op) : vec(n), op(op) {}
+    sparse_table(const std::vector<T>& vec, const op& op) : vec(vec), op(op) {
+        build();
+    }
 
     void set(int p, const T& v) { vec[p] = v; }
     void build() {
