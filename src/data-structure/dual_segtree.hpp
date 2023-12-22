@@ -2,7 +2,7 @@
 #include <cassert>
 #include <vector>
 namespace kyopro {
-template <class F, auto Op> class dual_segtree {
+template <class F, class Op> class dual_segtree {
     std::vector<F> dat;
     int _n, sz, lg;
     const Op composition;
