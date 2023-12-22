@@ -32,7 +32,7 @@ inline S mapping(S d, Affine f) {
 int main() {
     int n, q;
     read(n, q);
-    lazy_segtree<S, Affine, op, e, composition, id, mapping> sg(n);
+    lazy_segtree sg(n, op, e(), composition, id(), mapping);
     for (int i = 0; i < n; i++) {
         mint a;
         read(a);

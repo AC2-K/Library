@@ -15,7 +15,7 @@ int main() {
     vector<long long> a(n);
     for (auto& aa : a) read(aa);
 
-    segtree<long long, op, e> seg(a);
+    segtree seg(a, op, 0LL);
     while (q--) {
         int t;
         read(t);

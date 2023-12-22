@@ -12,7 +12,8 @@ public:
     dual_segtree() = default;
     dual_segtree(const Op& composition, const F& id)
         : composition(composition), id(id), dual_segtree(0) {}
-    dual_segtree(int _n) : _n(_n) {
+    dual_segtree(int _n, const Op& composition, const F& id)
+        : _n(_n), composition(composition), id(id) {
         sz = 1, lg = 0;
         while (sz < _n) {
             ++lg;
@@ -24,7 +25,7 @@ public:
 private:
     void update(int p, const F& v) { dat[p] = composition(dat[p], v); }
     void push(int p) {
-        if (dat[p] == id){
+        if (dat[p] == id) {
             return;
         }
         update(p << 1 | 0, dat[p]);
@@ -69,7 +70,6 @@ public:
 
 };  // namespace kyopro
 
-
 /**
  * @brief Dual Segment Tree
-*/
+ */

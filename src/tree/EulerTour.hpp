@@ -15,11 +15,16 @@ class EulerTour {
         static value_t op(value_t x, value_t y) { return std::min(x, y); }
     };
 
-    sparse_table<get_min_pair::value_t, get_min_pair::op> rmq;
+    sparse_table<get_min_pair::value_t, decltype(get_min_pair::op)> rmq;
 
 public:
     explicit EulerTour(int n)
-        : n(n), g(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) {
+        : n(n),
+          g(n),
+          in(n, -1),
+          out(n, -1),
+          depth(n, -1),
+          rmq(2 * n - 1, get_min_pair::op) {
         tour.reserve(2 * n - 1);
     }
     void add_edge(int u, int v) {

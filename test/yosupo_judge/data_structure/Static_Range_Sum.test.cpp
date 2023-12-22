@@ -12,7 +12,7 @@ int main() {
     int n, q;
     scanf("%d%d", &n, &q);
 
-    segtree<long long, op, e> seg(n);
+    segtree seg(n, op, e());
     for (int i = 0; i < n; i++) {
         int a;
         scanf("%d", &a);

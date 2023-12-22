@@ -17,7 +17,7 @@ inline Affine e() { return Affine(1, 0); }
 int main() {
     int n, q;
     read(n, q);
-    dual_segtree<Affine, op, e> sg(n);
+    dual_segtree sg(n, op, e());
     std::vector<mint> a(n);
     for (auto& aa : a) {
         read(aa);

@@ -13,7 +13,7 @@ template <class T, class Op> class sparse_table {
 public:
     sparse_table() = default;
     sparse_table(int n, const Op& op) : vec(n), op(op) {}
-    sparse_table(const std::vector<T>& vec, const op& op) : vec(vec), op(op) {
+    sparse_table(const std::vector<T>& vec, const Op& op) : vec(vec), op(op) {
         build();
     }
 

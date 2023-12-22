@@ -8,7 +8,7 @@ using namespace kyopro;
 int main() {
     int n, q;
     scanf("%d%d", &n, &q);
-    sparse_table<int, op> rmq(n);
+    sparse_table<int, decltype(op)> rmq(n, op);
     for (int i = 0; i < n; i++) {
         int ai;
         scanf("%d", &ai);

@@ -18,11 +18,11 @@ inline F op(F l, F r) {
     mint nb = (l.b * r.a + r.b);
     return F{na, nb};
 }
-inline F e() { return F{1, 0}; }
+
 int main() {
     int n, q;
     read(n, q);
-    segtree<F, op, e> seg(n);
+    segtree seg(n, op, F{1, 0});
     for (int i = 0; i < n; i++) {
         mint a, b;
         read(a, b);

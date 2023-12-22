@@ -16,8 +16,9 @@ constexpr inline Affine op(const Affine& g, const Affine& f) {
     return Affine(a * c, a * d + b);
 }
 constexpr inline Affine e() { return Affine(1, 0); }
+
 int main() {
-    SWAG<Affine, op, e> que;
+    SWAG que(op, e());
     int q;
     read(q);
     while (q--) {
