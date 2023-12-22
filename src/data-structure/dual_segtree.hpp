@@ -2,30 +2,34 @@
 #include <cassert>
 #include <vector>
 namespace kyopro {
-template <class F, auto composition, auto id> class dual_segtree {
+template <class F, auto Op> class dual_segtree {
     std::vector<F> dat;
     int _n, sz, lg;
+    const Op composition;
+    const F id;
 
 public:
-    dual_segtree() : dual_segtree(0) {}
+    dual_segtree() = default;
+    dual_segtree(const Op& composition, const F& id)
+        : composition(composition), id(id), dual_segtree(0) {}
     dual_segtree(int _n) : _n(_n) {
         sz = 1, lg = 0;
         while (sz < _n) {
             ++lg;
             sz <<= 1;
         }
-        dat.assign(sz << 1, id());
+        dat.assign(sz << 1, id);
     }
 
 private:
     void update(int p, const F& v) { dat[p] = composition(dat[p], v); }
     void push(int p) {
-        if (dat[p] == id()) {
+        if (dat[p] == id){
             return;
         }
         update(p << 1 | 0, dat[p]);
         update(p << 1 | 1, dat[p]);
-        dat[p] = id();
+        dat[p] = id;
     }
 
 public:
