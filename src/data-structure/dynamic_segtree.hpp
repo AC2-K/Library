@@ -6,7 +6,7 @@
 #include <vector>
 
 namespace kyopro {
-template <class S, auto op, auto e> class dynamic_segtree {
+template <class S, auto Op> class dynamic_segtree {
     struct Node {
         S val;
         Node *l, *r, *parent;
@@ -24,6 +24,8 @@ template <class S, auto op, auto e> class dynamic_segtree {
     };
 
     const std::size_t n;
+    const Op op;
+    const S id;
 
     Node* find(std::size_t i) {
         assert(0 <= i && i < n);
@@ -57,7 +59,8 @@ template <class S, auto op, auto e> class dynamic_segtree {
     }
 
 public:
-    explicit dynamic_segtree(std::size_t n = 0) : n(n), root(nullptr) {
+    explicit dynamic_segtree(std::size_t n = 0, const Op& op, const S& e)
+        : n(n), op(op), e(e), root(nullptr) {
         root = make_ptr();
     }
 
