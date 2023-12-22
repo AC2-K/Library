@@ -6,7 +6,7 @@
 #include <vector>
 
 namespace kyopro {
-template <class S, auto Op> class dynamic_segtree {
+template <class S, class Op> class dynamic_segtree {
     struct Node {
         S val;
         Node *l, *r, *parent;
