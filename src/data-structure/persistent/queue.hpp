@@ -5,20 +5,22 @@ namespace kyopro {
 template <typename T, int lg = 20> class persistent_queue {
     struct Node {
         Node() = default;
-        uint32_t index;
+        std::size_t index;
         T val;
         Node* prev[20];
     };
 
     Node *front_ptr = nullptr, *back_ptr = nullptr;
-    int siz;
+    std::size_t siz;
 
 public:
     persistent_queue(Node* front_ptr = nullptr,
                      Node* back_ptr = nullptr,
                      int siz = 0)
         : front_ptr(front_ptr), back_ptr(back_ptr), siz(siz) {}
-    bool empty() { return siz; }
+    std::size_t size() const { return siz; }
+    bool empty() const { return size() == 0; }
+
     persistent_queue push(const T& x) {
         Node* ptr = new Node();
         ptr->val = x;

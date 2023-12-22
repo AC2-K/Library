@@ -5,10 +5,12 @@
 #include "../../../src/math/gcd.hpp"
 
 using namespace std;
+using namespace kyopro;
+
 int main() {
     long long a, b;
     cin >> a >> b;
     long long x, y;
-    kyopro::ext_gcd(a, b, x, y);
-    std::cout << x << ' ' << y << '\n';
+    ext_gcd(a, b, x, y);
+    cout << x << ' ' << y << '\n';
 }

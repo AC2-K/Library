@@ -10,7 +10,7 @@ using namespace kyopro;
 int main() {
     int q;
     read(q);
-    std::vector<kyopro::persistent_queue<int>> v(q + 1);
+    vector<persistent_queue<int>> v(q + 1);
     for (int i = 1; i <= q; i++) {
         int t, idx;
         read(t, idx);

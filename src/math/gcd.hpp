@@ -1,11 +1,12 @@
 #pragma once
 #include <cassert>
 #include <tuple>
+#include <utility>
 namespace kyopro {
 template <typename T> constexpr inline T _gcd(T a, T b) noexcept {
     assert(a >= 0 && b >= 0);
     if (a == 0 || b == 0) return a + b;
-    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));
+    int d = std::min(__builtin_ctzll(a), __builtin_ctzll(b));
     a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);
     while (a != b) {
         if (!a || !b) {
@@ -22,7 +23,8 @@ template <typename T> constexpr inline T _gcd(T a, T b) noexcept {
 
     return a << d;
 }
-template <typename T> constexpr inline T ext_gcd(T a, T b, T& x, T& y) noexcept {
+template <typename T>
+constexpr inline T ext_gcd(T a, T b, T& x, T& y) noexcept {
     x = 1, y = 0;
     T nx = 0, ny = 1;
     while (b) {
