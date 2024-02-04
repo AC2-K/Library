@@ -28,6 +28,9 @@ data:
     path: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - icon: ':heavy_check_mark:'
@@ -90,23 +93,24 @@ data:
   timestamp: '2023-11-12 17:27:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
-  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - test/AOJ/DSL/3_D.test.cpp
+  - test/AOJ/DSL/5_B.test.cpp
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
   - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
+  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   - test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - test/AOJ/DSL/3_D.test.cpp
-  - test/AOJ/DSL/5_B.test.cpp
+  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
 documentation_of: src/template.hpp
 layout: document
 redirect_from:

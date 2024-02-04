@@ -144,6 +144,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/data-structure-2d/imos.hpp
       title: "\u4E8C\u6B21\u5143imos\u6CD5"
+    - icon: ':heavy_check_mark:'
+      path: src/data-structure/data-structure-2d/merge-sort-tree.hpp
+      title: MergeSortTree
   - name: src/data-structure/persistent
     pages:
     - icon: ':heavy_check_mark:'
@@ -365,6 +368,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
+      title: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
       title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
