@@ -1,5 +1,6 @@
 #pragma once
 #include <cassert>
+#include <cmath>
 #include <tuple>
 namespace kyopro {
 template <typename T> constexpr inline T _gcd(T a, T b) noexcept {
@@ -22,7 +23,9 @@ template <typename T> constexpr inline T _gcd(T a, T b) noexcept {
 
     return a << d;
 }
-template <typename T> constexpr inline T ext_gcd(T a, T b, T& x, T& y) noexcept {
+
+template <typename T>
+constexpr inline T ext_gcd(T a, T b, T& x, T& y) noexcept {
     x = 1, y = 0;
     T nx = 0, ny = 1;
     while (b) {
