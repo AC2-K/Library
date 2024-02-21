@@ -80,8 +80,8 @@ data:
   timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+  - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
 documentation_of: src/algorithm/mo.hpp
 layout: document
 redirect_from:

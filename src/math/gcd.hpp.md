@@ -74,62 +74,63 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"src/math/gcd.hpp\"\n#include <cassert>\n#include <tuple>\n\
-    namespace kyopro {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) noexcept\
-    \ {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n\
-    \    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
-    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (!a || !b) {\n \
-    \           return a + b;\n        }\n        if (a >= b) {\n            a -=\
-    \ b;\n            a >>= __builtin_ctzll(a);\n        } else {\n            b -=\
-    \ a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return a\
-    \ << d;\n}\ntemplate <typename T> constexpr inline T ext_gcd(T a, T b, T& x, T&\
-    \ y) noexcept {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b) {\n \
-    \       T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n  \
-    \      std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
-    \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
-    \ kyopro\n"
-  code: "#pragma once\n#include <cassert>\n#include <tuple>\nnamespace kyopro {\n\
-    template <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a\
-    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
-    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
+  bundledCode: "#line 2 \"src/math/gcd.hpp\"\n#include <cassert>\n#include <cmath>\n\
+    #include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr inline T\
+    \ _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
+    \ b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
+    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
+    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
+    \    }\n    }\n\n    return a << d;\n}\n\ntemplate <typename T>\nconstexpr inline\
     \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
     \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro"
+    \ a;\n}\n};  // namespace kyopro\n"
+  code: "#pragma once\n#include <cassert>\n#include <cmath>\n#include <tuple>\nnamespace\
+    \ kyopro {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n\
+    \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
+    \ d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
+    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (!a || !b) {\n \
+    \           return a + b;\n        }\n        if (a >= b) {\n            a -=\
+    \ b;\n            a >>= __builtin_ctzll(a);\n        } else {\n            b -=\
+    \ a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return a\
+    \ << d;\n}\n\ntemplate <typename T>\nconstexpr inline T ext_gcd(T a, T b, T& x,\
+    \ T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b) {\n\
+    \        T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n \
+    \       std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
+    \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
+    \ kyopro"
   dependsOn: []
   isVerificationFile: false
   path: src/math/gcd.hpp
   requiredBy:
-  - src/string/rolling_hash.hpp
-  - src/math/rho.hpp
-  - src/math/phi_function.hpp
-  - src/math/mod_log.hpp
   - src/math/primitive_root.hpp
+  - src/math/mod_log.hpp
+  - src/math/rho.hpp
   - src/math/static_modint.hpp
-  timestamp: '2023-08-21 15:56:48+09:00'
+  - src/math/phi_function.hpp
+  - src/string/rolling_hash.hpp
+  timestamp: '2024-02-21 16:16:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/NTL/1_D.test.cpp
-  - test/AOJ/NTL/1_E.test.cpp
-  - test/yuki/No430.test.cpp
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
+  - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yuki/No430.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
+  - test/AOJ/NTL/1_E.test.cpp
 documentation_of: src/math/gcd.hpp
 layout: document
 redirect_from:

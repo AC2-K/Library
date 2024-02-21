@@ -47,21 +47,21 @@ data:
     \            }\n            if (keys[hash] == k) return &(vals[hash]);\n     \
     \       hash = (hash + 1) & (n - 1);\n        }\n    }\n};\n};  // namespace kyopro\n\
     \n/**\n * @brief Hash Map\n */\n#line 2 \"src/math/gcd.hpp\"\n#include <cassert>\n\
-    #include <tuple>\nnamespace kyopro {\ntemplate <typename T> constexpr inline T\
-    \ _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 ||\
-    \ b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
-    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
-    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
-    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
-    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
-    \    }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
-    \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
-    \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
-    \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
-    \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n#line 2 \"src/internal/type_traits.hpp\"\n#include\
-    \ <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n#include\
-    \ <cstdint>\n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename...\
+    #line 4 \"src/math/gcd.hpp\"\n#include <tuple>\nnamespace kyopro {\ntemplate <typename\
+    \ T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n\
+    \    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
+    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\n\ntemplate <typename T>\nconstexpr\
+    \ inline T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T\
+    \ nx = 0, ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a,\
+    \ b) = std::pair<T, T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx,\
+    \ x - nx * q};\n        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n \
+    \   }\n    return a;\n}\n};  // namespace kyopro\n#line 2 \"src/internal/type_traits.hpp\"\
+    \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
+    #include <cstdint>\n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename...\
     \ Args> struct first_enabled {};\n\ntemplate <typename T, typename... Args>\n\
     struct first_enabled<std::enable_if<true, T>, Args...> {\n    using type = T;\n\
     };\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
@@ -134,7 +134,7 @@ data:
   isVerificationFile: false
   path: src/math/mod_log.hpp
   requiredBy: []
-  timestamp: '2023-10-23 07:13:22+09:00'
+  timestamp: '2024-02-21 16:16:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp

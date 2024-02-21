@@ -47,18 +47,18 @@ data:
     document_title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
     links: []
   bundledCode: "#line 2 \"src/math/rho.hpp\"\n#include <algorithm>\n#include <vector>\n\
-    #line 2 \"src/math/gcd.hpp\"\n#include <cassert>\n#include <tuple>\nnamespace\
-    \ kyopro {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n\
-    \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
-    \ d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
+    #line 2 \"src/math/gcd.hpp\"\n#include <cassert>\n#include <cmath>\n#include <tuple>\n\
+    namespace kyopro {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) noexcept\
+    \ {\n    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n\
+    \    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
     \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (!a || !b) {\n \
     \           return a + b;\n        }\n        if (a >= b) {\n            a -=\
     \ b;\n            a >>= __builtin_ctzll(a);\n        } else {\n            b -=\
     \ a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return a\
-    \ << d;\n}\ntemplate <typename T> constexpr inline T ext_gcd(T a, T b, T& x, T&\
-    \ y) noexcept {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b) {\n \
-    \       T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n  \
-    \      std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
+    \ << d;\n}\n\ntemplate <typename T>\nconstexpr inline T ext_gcd(T a, T b, T& x,\
+    \ T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b) {\n\
+    \        T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n \
+    \       std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
     \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
     \ kyopro\n#line 3 \"src/math/dynamic_modint.hpp\"\n#include <iostream>\n#line\
     \ 2 \"src/internal/barrett.hpp\"\n#include <cstdint>\nnamespace kyopro {\nnamespace\
@@ -335,14 +335,14 @@ data:
   isVerificationFile: false
   path: src/math/rho.hpp
   requiredBy:
-  - src/math/phi_function.hpp
   - src/math/primitive_root.hpp
-  timestamp: '2023-10-22 21:54:03+09:00'
+  - src/math/phi_function.hpp
+  timestamp: '2024-02-21 16:16:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/NTL/1_D.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/math/rho.hpp
 layout: document
 redirect_from:

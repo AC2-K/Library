@@ -121,21 +121,21 @@ data:
     \ T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a <\
     \ b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
     \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 5 \"\
-    src/math/static_modint.hpp\"\n\n#line 4 \"src/math/gcd.hpp\"\nnamespace kyopro\
+    src/math/static_modint.hpp\"\n\n#line 5 \"src/math/gcd.hpp\"\nnamespace kyopro\
     \ {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a\
     \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
     \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
     \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
     \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
     \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\ntemplate <typename T> constexpr inline\
-    \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
-    \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
-    \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
-    \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n#line 8 \"src/math/static_modint.hpp\"\nnamespace\
-    \ kyopro {\ntemplate <int _mod, std::enable_if_t<_mod >= 0>* = nullptr>\nclass\
-    \ modint : internal::modint_base {\n    using mint = modint<_mod>;\n    using\
+    \        }\n    }\n\n    return a << d;\n}\n\ntemplate <typename T>\nconstexpr\
+    \ inline T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T\
+    \ nx = 0, ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a,\
+    \ b) = std::pair<T, T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx,\
+    \ x - nx * q};\n        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n \
+    \   }\n    return a;\n}\n};  // namespace kyopro\n#line 8 \"src/math/static_modint.hpp\"\
+    \nnamespace kyopro {\ntemplate <int _mod, std::enable_if_t<_mod >= 0>* = nullptr>\n\
+    class modint : internal::modint_base {\n    using mint = modint<_mod>;\n    using\
     \ i32 = std::int32_t;\n    using u32 = std::uint32_t;\n    using i64 = std::int64_t;\n\
     \    using u64 = std::uint64_t;\n\n    u32 v;\n    constexpr u32 normalize(i64\
     \ v_) const noexcept {\n        v_ %= _mod;\n        if (v_ < 0) {\n         \
@@ -204,7 +204,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2023-11-12 17:27:03+09:00'
+  timestamp: '2024-02-21 16:16:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp

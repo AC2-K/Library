@@ -86,9 +86,9 @@ data:
   timestamp: '2023-10-26 23:34:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/GRL/1_A.test.cpp
-  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  - test/AOJ/GRL/1_A.test.cpp
 documentation_of: src/graph/dijkstra.hpp
 layout: document
 redirect_from:
