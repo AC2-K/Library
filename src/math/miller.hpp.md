@@ -246,16 +246,16 @@ data:
   isVerificationFile: false
   path: src/math/miller.hpp
   requiredBy:
-  - src/math/primitive_root.hpp
   - src/math/rho.hpp
+  - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
   timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/AOJ/NTL/1_D.test.cpp
+  - test/yuki/No3030.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
-  - test/yuki/No3030.test.cpp
-  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/math/miller.hpp
 layout: document
 redirect_from:

@@ -340,9 +340,9 @@ data:
   timestamp: '2024-02-21 16:16:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/AOJ/NTL/1_D.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
-  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/math/rho.hpp
 layout: document
 redirect_from:

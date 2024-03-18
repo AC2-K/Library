@@ -14,6 +14,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/FormalPowerSeries/FPS.hpp
       title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
+    - icon: ':warning:'
+      path: src/FormalPowerSeries/fps-sqrt.hpp
+      title: Sqrt of FPS
     - icon: ':heavy_check_mark:'
       path: src/FormalPowerSeries/taylor-shift.hpp
       title: Polynomial Taylor Shift
@@ -230,6 +233,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/mod_pow.hpp
       title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
+    - icon: ':warning:'
+      path: src/math/mod_sqrt.hpp
+      title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
     - icon: ':heavy_check_mark:'
       path: src/math/phi_function.hpp
       title: "Euler\u306E $\\varphi$ \u95A2\u6570"
@@ -439,6 +445,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
       title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+    - icon: ':x:'
+      path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+      title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - name: test/yosupo_judge/string
     pages:
     - icon: ':heavy_check_mark:'
