@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/FormalPowerSeries/fps-sqrt.hpp
+    title: Sqrt of FPS
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/bbst/Treap.hpp
     title: Treap
   - icon: ':heavy_check_mark:'
@@ -12,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/bbst/reversible_bbst.hpp
     title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728"
+  - icon: ':heavy_check_mark:'
+    path: src/math/mod_sqrt.hpp
+    title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
@@ -44,6 +50,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -77,9 +86,11 @@ data:
   path: src/random/xor_shift.hpp
   requiredBy:
   - src/string/wildcard_pattern_matching.hpp
+  - src/math/mod_sqrt.hpp
   - src/math/rho.hpp
   - src/math/primitive_root.hpp
   - src/math/phi_function.hpp
+  - src/FormalPowerSeries/fps-sqrt.hpp
   - src/data-structure/bbst/lazy_reversible_bbst.hpp
   - src/data-structure/bbst/reversible_bbst.hpp
   - src/data-structure/bbst/Treap.hpp
@@ -87,6 +98,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
+  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

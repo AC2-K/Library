@@ -25,11 +25,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: Xor Shift
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: src/FormalPowerSeries/fps-sqrt.hpp
+    title: Sqrt of FPS
+  - icon: ':heavy_check_mark:'
+    path: src/math/mod_sqrt.hpp
+    title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -306,10 +315,13 @@ data:
   - src/random/xor_shift.hpp
   isVerificationFile: false
   path: src/math/primitive_root.hpp
-  requiredBy: []
+  requiredBy:
+  - src/math/mod_sqrt.hpp
+  - src/FormalPowerSeries/fps-sqrt.hpp
   timestamp: '2024-02-21 16:16:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
 documentation_of: src/math/primitive_root.hpp
 layout: document

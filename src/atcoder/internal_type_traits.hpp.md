@@ -6,6 +6,9 @@ data:
     path: src/FormalPowerSeries/FPS.hpp
     title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
   - icon: ':heavy_check_mark:'
+    path: src/FormalPowerSeries/fps-sqrt.hpp
+    title: Sqrt of FPS
+  - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: Polynomial Taylor Shift
   - icon: ':heavy_check_mark:'
@@ -37,6 +40,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -138,12 +144,14 @@ data:
   - src/atcoder/fenwicktree.hpp
   - src/atcoder/convolution.hpp
   - src/atcoder/modint.hpp
+  - src/FormalPowerSeries/fps-sqrt.hpp
   - src/FormalPowerSeries/FPS.hpp
   - src/FormalPowerSeries/taylor-shift.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp

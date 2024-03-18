@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/FormalPowerSeries/fps-sqrt.hpp
+    title: Sqrt of FPS
+  - icon: ':heavy_check_mark:'
     path: src/convolution/min_plus_convolution_convex_convex.hpp
     title: Min Plus Convolution(Convex, Convex)
   - icon: ':heavy_check_mark:'
@@ -20,6 +23,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/mod_pow.hpp
     title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
+  - icon: ':heavy_check_mark:'
+    path: src/math/mod_sqrt.hpp
+    title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
@@ -181,6 +187,9 @@ data:
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
     title: test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   - icon: ':heavy_check_mark:'
@@ -278,6 +287,7 @@ data:
   path: src/internal/type_traits.hpp
   requiredBy:
   - src/string/rolling_hash.hpp
+  - src/math/mod_sqrt.hpp
   - src/math/miller.hpp
   - src/math/dynamic_modint.hpp
   - src/math/rho.hpp
@@ -289,6 +299,7 @@ data:
   - src/stream.hpp
   - src/internal/montgomery.hpp
   - src/convolution/min_plus_convolution_convex_convex.hpp
+  - src/FormalPowerSeries/fps-sqrt.hpp
   timestamp: '2023-10-22 15:25:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -308,6 +319,7 @@ data:
   - test/yuki/No789.test.cpp
   - test/yuki/No3030.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp

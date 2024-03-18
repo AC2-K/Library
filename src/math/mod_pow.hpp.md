@@ -6,8 +6,14 @@ data:
     title: src/internal/type_traits.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/FormalPowerSeries/fps-sqrt.hpp
+    title: Sqrt of FPS
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
     title: "\u96E2\u6563\u5BFE\u6570"
+  - icon: ':heavy_check_mark:'
+    path: src/math/mod_sqrt.hpp
+    title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
   - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
@@ -18,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+    title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
@@ -76,12 +85,15 @@ data:
   path: src/math/mod_pow.hpp
   requiredBy:
   - src/string/rolling_hash.hpp
+  - src/math/mod_sqrt.hpp
   - src/math/mod_log.hpp
+  - src/FormalPowerSeries/fps-sqrt.hpp
   timestamp: '2023-10-22 15:25:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_B.test.cpp
   - test/yuki/No430.test.cpp
+  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 documentation_of: src/math/mod_pow.hpp
 layout: document
