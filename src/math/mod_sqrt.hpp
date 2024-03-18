@@ -1,6 +1,6 @@
 #pragma once
-#include "math/mod_log.hpp"
-#include "math/primitive_root.hpp"
+#include "../math/mod_log.hpp"
+#include "../math/primitive_root.hpp"
 
 namespace kyopro {
 /**
