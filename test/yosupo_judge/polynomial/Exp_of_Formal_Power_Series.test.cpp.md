@@ -38,7 +38,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/exp_of_formal_power_series
     links:
     - https://judge.yosupo.jp/problem/exp_of_formal_power_series
-  bundledCode: "#line 1 \"test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
     \n\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
     \ <string>\n#line 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n#include\
@@ -547,12 +547,12 @@ data:
     \    FPS f = (*this >> p);\n        f /= vp;\n        f = (f.log(sz) * e).exp(sz);\n\
     \        f *= vp.pow(e);\n        f = (f << (p * e)).pref(sz);\n        f.expand(sz);\n\
     \        return f;\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief \u5F62\
-    \u5F0F\u7684\u3079\u304D\u7D1A\u6570\n*/\n#line 6 \"test/yosupo_judge/polynomial/Exp\
-    \ of Formal_Power_Series.test.cpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\
-    \nusing mint = atcoder::modint998244353;\nusing fps = FormalPowerSeries<mint>;\n\
-    \nint main() {\n    int n;  \n    read(n);\n    fps f(n);\n    rep(i, n) {\n \
-    \       int v;\n        read(v);\n        f[i] = mint::raw(v);\n    }\n\n    f\
-    \ = f.exp();\n    rep(i, n) put(f[i].val());\n}\n"
+    \u5F0F\u7684\u3079\u304D\u7D1A\u6570\n*/\n#line 6 \"test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
+    using fps = FormalPowerSeries<mint>;\n\nint main() {\n    int n;  \n    read(n);\n\
+    \    fps f(n);\n    rep(i, n) {\n        int v;\n        read(v);\n        f[i]\
+    \ = mint::raw(v);\n    }\n\n    f = f.exp();\n    rep(i, n) put(f[i].val());\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
     \n\n#include \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\
     \n#include \"../../../src/FormalPowerSeries/FPS.hpp\"\n\nusing namespace std;\n\
@@ -571,15 +571,15 @@ data:
   - src/atcoder/internal_math.hpp
   - src/atcoder/internal_type_traits.hpp
   isVerificationFile: true
-  path: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+  path: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2023-11-12 17:27:03+09:00'
+  timestamp: '2024-03-19 17:36:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+documentation_of: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
-- /verify/test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp.html
-title: test/yosupo_judge/polynomial/Exp of Formal_Power_Series.test.cpp
+- /verify/test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
+- /verify/test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp.html
+title: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
 ---
