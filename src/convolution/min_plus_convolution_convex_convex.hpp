@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <limits>
 #include <numeric>
 #include <utility>
@@ -22,20 +23,8 @@ std::vector<T> min_plus_convolution_convex_convex(const std::vector<T>& a,
     da[0] = a[0] - INF, db[0] = b[0] - INF;
 
     std::vector<T> ds;
-    ds.reserve(da.size() + db.size());
-    for (int ia = 0, ib = 0; ia < n || ib < m;) {
-        if (ia == (int)da.size()) {
-            ds.emplace_back(db[ib++]);
-        } else if (ib == m) {
-            ds.emplace_back(da[ia++]);
-        } else {
-            if (da[ia] > db[ib]) {
-                ds.emplace_back(db[ib++]);
-            } else {
-                ds.emplace_back(da[ia++]);
-            }
-        }
-    }
+    std::merge(da.begin(), da.end(), db.begin(), db.end(),
+               std::back_inserter(ds));
 
     std::vector<T> res(n + m - 1);
     T sum = ds[0];
