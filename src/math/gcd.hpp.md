@@ -34,6 +34,9 @@ data:
     path: test/AOJ/NTL/1_E.test.cpp
     title: test/AOJ/NTL/1_E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
+    title: test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
     title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -140,6 +143,7 @@ data:
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
   - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp

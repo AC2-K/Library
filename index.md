@@ -28,6 +28,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/algorithm/monotone_minima.hpp
       title: Monotone Minima
+    - icon: ':heavy_check_mark:'
+      path: src/algorithm/subset_mobius.hpp
+      title: subset mobius transform
+    - icon: ':heavy_check_mark:'
+      path: src/algorithm/subset_zeta.hpp
+      title: subset zeta transform
   - name: src/atcoder
     pages:
     - icon: ':heavy_check_mark:'
@@ -92,6 +98,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/convolution/min_plus_convolution_convex_convex.hpp
       title: Min Plus Convolution(Convex, Convex)
+    - icon: ':heavy_check_mark:'
+      path: src/convolution/or_plus_convolution.hpp
+      title: or plus convolution
   - name: src/data-structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -324,6 +333,9 @@ data:
       title: test/AOJ/NTL/1_E.test.cpp
   - name: test/yosupo_judge/convolution
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
+      title: test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
       title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
