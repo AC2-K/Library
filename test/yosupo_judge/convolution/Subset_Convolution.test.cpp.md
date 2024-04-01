@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/convolution/subset_convolution.hpp
-    title: src/convolution/subset_convolution.hpp
+    title: Subset Convolution
   - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
@@ -189,8 +189,9 @@ data:
     \       }\n        swap(ranked_a[i], c);\n    }\n\n    internal::ranked_mobius(n,\
     \ ranked_a);\n    std::vector<T> answer(a.size());\n    for (int i = 0; i < (int)a.size();\
     \ ++i) {\n        answer[i] = ranked_a[i][__builtin_popcount(i)];\n    }\n   \
-    \ return answer;\n}\n};  // namespace kyopro\n#line 7 \"test/yosupo_judge/convolution/Subset_Convolution.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
+    \ return answer;\n}\n};  // namespace kyopro\n\n/**\n * @brief Subset Convolution\n\
+    \ */\n#line 7 \"test/yosupo_judge/convolution/Subset_Convolution.test.cpp\"\n\n\
+    using namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     int main() {\n    int n;\n    read(n);\n    vector<mint> a(1 << n), b(1 << n);\n\
     \    rep(i, (int)a.size()) read(a[i]);\n    rep(i, (int)b.size()) read(b[i]);\n\
     \n    vector c = subset_convolution(n, a, b);\n\n    rep(i, (int)c.size()) put(c[i]);\n\
@@ -213,7 +214,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Subset_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-04-01 10:43:24+09:00'
+  timestamp: '2024-04-01 11:01:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Subset_Convolution.test.cpp

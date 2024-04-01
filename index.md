@@ -30,10 +30,10 @@ data:
       title: Monotone Minima
     - icon: ':heavy_check_mark:'
       path: src/algorithm/subset_mobius.hpp
-      title: subset mobius transform
+      title: "Subset M\xF6bius  transform"
     - icon: ':heavy_check_mark:'
       path: src/algorithm/subset_zeta.hpp
-      title: subset zeta transform
+      title: Subset Zeta transform
   - name: src/atcoder
     pages:
     - icon: ':heavy_check_mark:'
@@ -93,17 +93,17 @@ data:
   - name: src/convolution
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/convolution/bitwise_or_convolution.hpp
+      title: Bitwise Or Convolution
+    - icon: ':heavy_check_mark:'
       path: src/convolution/min_plus_convolution_convex_arbitrary.hpp
       title: Min Plus Convolution (Convex, Arbitrary)
     - icon: ':heavy_check_mark:'
       path: src/convolution/min_plus_convolution_convex_convex.hpp
       title: Min Plus Convolution(Convex, Convex)
     - icon: ':heavy_check_mark:'
-      path: src/convolution/or_plus_convolution.hpp
-      title: or plus convolution
-    - icon: ':heavy_check_mark:'
       path: src/convolution/subset_convolution.hpp
-      title: src/convolution/subset_convolution.hpp
+      title: Subset Convolution
   - name: src/data-structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -223,7 +223,7 @@ data:
       title: "\u4E8C\u9805\u4FC2\u6570"
     - icon: ':heavy_check_mark:'
       path: src/math/divisor-multiple-transform.hpp
-      title: "Fast M\xF6bius\u30FBZeta Transform"
+      title: "Divisor M\xF6bius\u30FBZeta  Transform"
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: dynamic modint

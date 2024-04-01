@@ -10,6 +10,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    document_title: Subset Convolution
     links: []
   bundledCode: "#line 2 \"src/convolution/subset_convolution.hpp\"\n#include <vector>\n\
     \nnamespace kyopro {\nnamespace internal {\n\ntemplate <typename T> void add(std::vector<T>&\
@@ -36,7 +37,8 @@ data:
     \       }\n        swap(ranked_a[i], c);\n    }\n\n    internal::ranked_mobius(n,\
     \ ranked_a);\n    std::vector<T> answer(a.size());\n    for (int i = 0; i < (int)a.size();\
     \ ++i) {\n        answer[i] = ranked_a[i][__builtin_popcount(i)];\n    }\n   \
-    \ return answer;\n}\n};  // namespace kyopro\n"
+    \ return answer;\n}\n};  // namespace kyopro\n\n/**\n * @brief Subset Convolution\n\
+    \ */\n"
   code: "#pragma once\n#include <vector>\n\nnamespace kyopro {\nnamespace internal\
     \ {\n\ntemplate <typename T> void add(std::vector<T>& a, const std::vector<T>&\
     \ b) {\n    if (a.size() < b.size()) a.resize(b.size());\n    for (int i = 0;\
@@ -62,12 +64,13 @@ data:
     \       }\n        swap(ranked_a[i], c);\n    }\n\n    internal::ranked_mobius(n,\
     \ ranked_a);\n    std::vector<T> answer(a.size());\n    for (int i = 0; i < (int)a.size();\
     \ ++i) {\n        answer[i] = ranked_a[i][__builtin_popcount(i)];\n    }\n   \
-    \ return answer;\n}\n};  // namespace kyopro"
+    \ return answer;\n}\n};  // namespace kyopro\n\n/**\n * @brief Subset Convolution\n\
+    \ */"
   dependsOn: []
   isVerificationFile: false
   path: src/convolution/subset_convolution.hpp
   requiredBy: []
-  timestamp: '2024-04-01 10:43:09+09:00'
+  timestamp: '2024-04-01 11:01:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
@@ -76,5 +79,5 @@ layout: document
 redirect_from:
 - /library/src/convolution/subset_convolution.hpp
 - /library/src/convolution/subset_convolution.hpp.html
-title: src/convolution/subset_convolution.hpp
+title: Subset Convolution
 ---
