@@ -60,3 +60,7 @@ std::vector<T> subset_convolution(int n, std::vector<T> a, std::vector<T> b) {
     return answer;
 }
 };  // namespace kyopro
+
+/**
+ * @brief Subset Convolution
+ */

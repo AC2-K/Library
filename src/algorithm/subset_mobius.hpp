@@ -2,7 +2,7 @@
 #include <vector>
 namespace kyopro {
 /**
- * @brief subset mobius transform
+ * @brief Subset Möbius  transform
  * @param n v : 2^[n] → T, |v| = 2^n
  */
 template <typename T> void mobius(int n, std::vector<T>& v) {

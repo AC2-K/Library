@@ -3,7 +3,7 @@
 #include <vector>
 namespace kyopro {
 
-template <typename T> void fast_mobius(std::vector<T>& f) {
+template <typename T> void mobius(std::vector<T>& f) {
     int n = f.size();
     bool is_prime[n + 1];
     {
@@ -25,7 +25,7 @@ template <typename T> void fast_mobius(std::vector<T>& f) {
     }
     return;
 }
-template <typename T> void fast_zeta(std::vector<T>& f) {
+template <typename T> void zeta(std::vector<T>& f) {
     int n = f.size();
     bool is_prime[n + 1];
     {
@@ -50,6 +50,6 @@ template <typename T> void fast_zeta(std::vector<T>& f) {
 };  // namespace kyopro
 
 /**
- * @brief Fast Möbius・Zeta Transform
+ * @brief Divisor Möbius・Zeta  Transform
  * @docs docs/math/divisor-multiple-transform.md
-*/
+ */

@@ -1,19 +1,25 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/gcd_convolution"
 
 #include "../../../src/math/divisor-multiple-transform.hpp"
+#include "../../../src/math/static_modint.hpp"
 #include "../../../src/stream.hpp"
 #include "../../../src/template.hpp"
-#include"../../../src/math/static_modint.hpp"
+
+using namespace std;
+using namespace kyopro;
+
+using mint = modint<998244353>;
+
 int main() {
     int n;
-    kyopro::read(n);
+    read(n);
 
-    std::vector<kyopro::modint<998244353>> a(n + 1), b(n + 1);
-    for (int i = 1; i <= n; ++i) kyopro::read(a[i]);
-    for (int i = 1; i <= n; ++i) kyopro::read(b[i]);
+    vector<modint<998244353>> a(n + 1), b(n + 1);
+    for (int i = 1; i <= n; ++i) read(a[i]);
+    for (int i = 1; i <= n; ++i) read(b[i]);
 
-    kyopro::fast_zeta(a),kyopro::fast_zeta(b);
+    zeta(a), zeta(b);
     for (int i = 1; i <= n; ++i) a[i] *= b[i];
-    kyopro::fast_mobius(a);
-    for (int i = 1; i <= n; ++i) kyopro::put(a[i].val());
+    mobius(a);
+    for (int i = 1; i <= n; ++i) put(a[i].val());
 }

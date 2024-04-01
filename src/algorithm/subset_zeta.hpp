@@ -2,7 +2,7 @@
 #include <vector>
 namespace kyopro {
 /**
- * @brief subset zeta transform
+ * @brief Subset Zeta transform
  * @param n v : 2^[n] → T, |v| = 2^n
  */
 template <typename T> void zeta(int n, std::vector<T>& v) {
