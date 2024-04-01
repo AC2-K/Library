@@ -101,6 +101,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/convolution/or_plus_convolution.hpp
       title: or plus convolution
+    - icon: ':heavy_check_mark:'
+      path: src/convolution/subset_convolution.hpp
+      title: src/convolution/subset_convolution.hpp
   - name: src/data-structure
     pages:
     - icon: ':heavy_check_mark:'
@@ -345,6 +348,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
       title: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/convolution/Subset_Convolution.test.cpp
+      title: test/yosupo_judge/convolution/Subset_Convolution.test.cpp
   - name: test/yosupo_judge/data_structure
     pages:
     - icon: ':heavy_check_mark:'

@@ -22,6 +22,9 @@ data:
     path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
     title: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/convolution/Subset_Convolution.test.cpp
+    title: test/yosupo_judge/convolution/Subset_Convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
     title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   - icon: ':heavy_check_mark:'
@@ -113,6 +116,7 @@ data:
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   - test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
   - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
   - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
