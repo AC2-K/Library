@@ -18,7 +18,6 @@ std::vector<int> enumerate_primes(int n) {
 }
 };  // namespace internal
 
-
 namespace multiple {
 template <typename T> void zeta(std::vector<T>& f) {
     vector primes = internal::enumerate_primes(f.size());
@@ -34,7 +33,6 @@ template <typename T> void mobius(std::vector<T>& f) {
     vector primes = internal::enumerate_primes(f.size());
 
     for (auto p : primes) {
-        if (!is_prime[p]) continue;
         for (int i = 1 / p; p * i < (int)f.size(); ++i) {
             f[i] -= f[p * i];
         }
@@ -44,8 +42,8 @@ template <typename T> void mobius(std::vector<T>& f) {
 };  // namespace multiple
 
 namespace divisor {
-void zeta(std::vector<mint>& f) {
-    vector primes = internal::enumerate_primes(f.size());
+template <typename T> void zeta(std::vector<T>& f) {
+    std::vector primes = internal::enumerate_primes(f.size());
 
     for (auto p : primes) {
         for (int i = 1; i * p < (int)f.size(); ++i) {
@@ -53,8 +51,8 @@ void zeta(std::vector<mint>& f) {
         }
     }
 };
-void mobius(std::vector<mint>& f) {
-    vector primes = internal::enumerate_primes(f.size());
+template <typename T> void mobius(std::vector<T>& f) {
+    std::vector primes = internal::enumerate_primes(f.size());
     for (auto p : primes) {
         for (int i = (int)(f.size() - 1) / p * p; i >= 1; i -= p) {
             f[i] -= f[i / p];
