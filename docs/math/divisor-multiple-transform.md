@@ -1,28 +1,69 @@
-## 概要
+# 概要
 
 整除関係における高速ゼータ変換, 高速メビウス変換を実装したものです.
+\
+`multiple::`で定義されている$\zeta,\mu$ と `divisor::`で定義されている$\zeta,\mu$が異なることに気を付けてください.
 
-## fast_zeta
+
+# `namespace::multiple`
+倍数変換がまとめてあります
+
+## zeta
 
 ```cpp
-void fast_zeta(vector<T>& f)
+void zeta(vector<T>& f)
 ```
 
-長さ $n$ の数列 $f$ に対し, 以下を満たす長さ $n$ の数列 $F$を求め, $f$ を $F$ で置き換えます.
+$f$ が与えられたとき, $f$ を以下で定義される $\zeta f(x)$ に置き換えます. 
 
-$$F[n]=\sum_{\mathbb{d} \mid n}{f[d]}$$
+$$(\zeta f)(x)=\sum_{x \mid y}{f(y)}$$
 
 ### 計算量
 
 - $O(n\log\log n)$
 
-## fast_mobius
+## mobius
 
 ```cpp
-void fast_zeta(vector<T>& F)
+void mobius(vector<T>& F)
 ```
 
-上とは逆に, $F$ が与えられたとき条件を満たす $f$ を求めます. そして、$F$ を $f$ で置き換えます.
+$f$ が与えられたとき, $f$ を以下で定義される $\mu f(x)$ に置き換えます. 
+
+$$\zeta (\mu f)=f$$
+### 計算量
+
+- $O(n\log\log n)$
+
+
+# `namespace::divisor`
+約数変換がまとめてあります
+
+## zeta
+
+```cpp
+void zeta(vector<T>& f)
+```
+
+$f$ が与えられたとき, $f$ を以下で定義される $\zeta f(x)$ に置き換えます. 
+
+$$(\zeta f)(x)=\sum_{y \mid x}{f(y)}$$
+
+```multiple::zeta``` と $x,y$ の整除関係が逆になっていることに気を付けてください.
+
+## 計算量
+
+- $O(n\log\log n)$
+
+## mobius
+
+```cpp
+void mobius(vector<T>& F)
+```
+
+$f$ が与えられたとき, $f$ を以下で定義される $\mu f(x)$ に置き換えます. 
+
+$$\zeta (\mu f)=f$$
 
 ### 計算量
 

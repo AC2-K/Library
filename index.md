@@ -223,7 +223,7 @@ data:
       title: "\u4E8C\u9805\u4FC2\u6570"
     - icon: ':heavy_check_mark:'
       path: src/math/divisor-multiple-transform.hpp
-      title: "Divisor M\xF6bius\u30FBZeta  Transform"
+      title: "Divisor\u30FBMultiple Transform"
     - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: dynamic modint

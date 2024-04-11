@@ -6,7 +6,7 @@ data:
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
     path: src/math/divisor-multiple-transform.hpp
-    title: "Divisor M\xF6bius\u30FBZeta  Transform"
+    title: "Divisor\u30FBMultiple Transform"
   - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
@@ -51,10 +51,10 @@ data:
     \ void mobius(std::vector<T>& f) {\n    std::vector primes = internal::enumerate_primes(f.size());\n\
     \    for (auto p : primes) {\n        for (int i = (int)(f.size() - 1) / p * p;\
     \ i >= 1; i -= p) {\n            f[i] -= f[i / p];\n        }\n    }\n};\n}; \
-    \ // namespace divisor\n\n};  // namespace kyopro\n\n/**\n * @brief Divisor M\xF6\
-    bius\u30FBZeta  Transform\n * @docs docs/math/divisor-multiple-transform.md\n\
-    \ */\n#line 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#include <cstdint>\n\
-    #include <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n\
+    \ // namespace divisor\n\n};  // namespace kyopro\n\n/**\n * @brief Divisor\u30FB\
+    Multiple Transform\n * @docs docs/math/divisor-multiple-transform.md\n */\n#line\
+    \ 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#include <cstdint>\n#include\
+    \ <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n\
     #include <numeric>\n#include <typeinfo>\n#line 7 \"src/internal/type_traits.hpp\"\
     \n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
     \ first_enabled {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
@@ -212,7 +212,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-04-12 00:00:10+09:00'
+  timestamp: '2024-04-12 00:02:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
