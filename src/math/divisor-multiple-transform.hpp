@@ -64,6 +64,6 @@ template <typename T> void mobius(std::vector<T>& f) {
 };  // namespace kyopro
 
 /**
- * @brief Divisor Möbius・Zeta  Transform
+ * @brief Divisor・Multiple Transform
  * @docs docs/math/divisor-multiple-transform.md
  */
