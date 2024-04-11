@@ -1,52 +1,68 @@
 #pragma once
-#include <string.h>
 #include <vector>
 namespace kyopro {
 
-template <typename T> void mobius(std::vector<T>& f) {
-    int n = f.size();
-    bool is_prime[n + 1];
+namespace internal {
+std::vector<int> enumerate_primes(int n) {
+    std::vector<int> primes;
     {
-        memset(is_prime, 1, sizeof(is_prime));
-        is_prime[0] = is_prime[1] = false;
-        for (int p = 2; p <= n; ++p) {
-            if (!is_prime[p]) continue;
-            for (int q = p * 2; q <= n; q += p) {
-                is_prime[q] = false;
-            }
-        }
-    }
+        std::vector<bool> f(n + 1);
+        for (int i = 2; i <= n; ++i) {
+            if (f[i]) continue;
 
-    for (int p = 2; p < n; ++p) {
-        if (!is_prime[p]) continue;
-        for (int i = 1 / p; p * i < n; ++i) {
-            f[i] -= f[p * i];
+            primes.emplace_back(i);
+            for (int j = 2 * i; j <= n; j += i) f[j] = 1;
         }
     }
-    return;
+    return primes;
 }
-template <typename T> void zeta(std::vector<T>& f) {
-    int n = f.size();
-    bool is_prime[n + 1];
-    {
-        memset(is_prime, 1, sizeof(is_prime));
-        is_prime[0] = is_prime[1] = false;
-        for (int p = 2; p <= n; ++p) {
-            if (!is_prime[p]) continue;
-            for (int q = p * 2; q <= n; q += p) {
-                is_prime[q] = false;
-            }
-        }
-    }
+};  // namespace internal
 
-    for (int p = 2; p < n; ++p) {
-        if (!is_prime[p]) continue;
-        for (int i = (n - 1) / p; i >= 1; --i) {
+
+namespace multiple {
+template <typename T> void zeta(std::vector<T>& f) {
+    vector primes = internal::enumerate_primes(f.size());
+    for (auto p : primes) {
+        for (int i = ((int)f.size() - 1) / p; i >= 1; --i) {
             f[i] += f[p * i];
         }
     }
     return;
 }
+
+template <typename T> void mobius(std::vector<T>& f) {
+    vector primes = internal::enumerate_primes(f.size());
+
+    for (auto p : primes) {
+        if (!is_prime[p]) continue;
+        for (int i = 1 / p; p * i < (int)f.size(); ++i) {
+            f[i] -= f[p * i];
+        }
+    }
+    return;
+}
+};  // namespace multiple
+
+namespace divisor {
+void zeta(std::vector<mint>& f) {
+    vector primes = internal::enumerate_primes(f.size());
+
+    for (auto p : primes) {
+        for (int i = 1; i * p < (int)f.size(); ++i) {
+            f[i * p] += f[i];
+        }
+    }
+};
+void mobius(std::vector<mint>& f) {
+    vector primes = internal::enumerate_primes(f.size());
+    for (auto p : primes) {
+        for (int i = (int)(f.size() - 1) / p * p; i >= 1; i -= p) {
+            f[i] -= f[i / p];
+        }
+    }
+};
+};  // namespace divisor
+
 };  // namespace kyopro
 
 /**

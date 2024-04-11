@@ -18,8 +18,8 @@ int main() {
     for (int i = 1; i <= n; ++i) read(a[i]);
     for (int i = 1; i <= n; ++i) read(b[i]);
 
-    zeta(a), zeta(b);
+    multiple::zeta(a), multiple::zeta(b);
     for (int i = 1; i <= n; ++i) a[i] *= b[i];
-    mobius(a);
+    multiple::mobius(a);
     for (int i = 1; i <= n; ++i) put(a[i].val());
 }
