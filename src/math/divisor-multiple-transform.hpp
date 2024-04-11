@@ -20,7 +20,7 @@ std::vector<int> enumerate_primes(int n) {
 
 namespace multiple {
 template <typename T> void zeta(std::vector<T>& f) {
-    vector primes = internal::enumerate_primes(f.size());
+    std::vector primes = internal::enumerate_primes(f.size());
     for (auto p : primes) {
         for (int i = ((int)f.size() - 1) / p; i >= 1; --i) {
             f[i] += f[p * i];
