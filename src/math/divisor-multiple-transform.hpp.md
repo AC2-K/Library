@@ -3,59 +3,66 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
     title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/math/divisor-multiple-transform.md
     document_title: "Divisor M\xF6bius\u30FBZeta  Transform"
     links: []
-  bundledCode: "#line 2 \"src/math/divisor-multiple-transform.hpp\"\n#include <string.h>\n\
-    #include <vector>\nnamespace kyopro {\n\ntemplate <typename T> void mobius(std::vector<T>&\
-    \ f) {\n    int n = f.size();\n    bool is_prime[n + 1];\n    {\n        memset(is_prime,\
-    \ 1, sizeof(is_prime));\n        is_prime[0] = is_prime[1] = false;\n        for\
-    \ (int p = 2; p <= n; ++p) {\n            if (!is_prime[p]) continue;\n      \
-    \      for (int q = p * 2; q <= n; q += p) {\n                is_prime[q] = false;\n\
-    \            }\n        }\n    }\n\n    for (int p = 2; p < n; ++p) {\n      \
-    \  if (!is_prime[p]) continue;\n        for (int i = 1 / p; p * i < n; ++i) {\n\
-    \            f[i] -= f[p * i];\n        }\n    }\n    return;\n}\ntemplate <typename\
-    \ T> void zeta(std::vector<T>& f) {\n    int n = f.size();\n    bool is_prime[n\
-    \ + 1];\n    {\n        memset(is_prime, 1, sizeof(is_prime));\n        is_prime[0]\
-    \ = is_prime[1] = false;\n        for (int p = 2; p <= n; ++p) {\n           \
-    \ if (!is_prime[p]) continue;\n            for (int q = p * 2; q <= n; q += p)\
-    \ {\n                is_prime[q] = false;\n            }\n        }\n    }\n\n\
-    \    for (int p = 2; p < n; ++p) {\n        if (!is_prime[p]) continue;\n    \
-    \    for (int i = (n - 1) / p; i >= 1; --i) {\n            f[i] += f[p * i];\n\
-    \        }\n    }\n    return;\n}\n};  // namespace kyopro\n\n/**\n * @brief Divisor\
-    \ M\xF6bius\u30FBZeta  Transform\n * @docs docs/math/divisor-multiple-transform.md\n\
-    \ */\n"
-  code: "#pragma once\n#include <string.h>\n#include <vector>\nnamespace kyopro {\n\
-    \ntemplate <typename T> void mobius(std::vector<T>& f) {\n    int n = f.size();\n\
-    \    bool is_prime[n + 1];\n    {\n        memset(is_prime, 1, sizeof(is_prime));\n\
-    \        is_prime[0] = is_prime[1] = false;\n        for (int p = 2; p <= n; ++p)\
-    \ {\n            if (!is_prime[p]) continue;\n            for (int q = p * 2;\
-    \ q <= n; q += p) {\n                is_prime[q] = false;\n            }\n   \
-    \     }\n    }\n\n    for (int p = 2; p < n; ++p) {\n        if (!is_prime[p])\
-    \ continue;\n        for (int i = 1 / p; p * i < n; ++i) {\n            f[i] -=\
-    \ f[p * i];\n        }\n    }\n    return;\n}\ntemplate <typename T> void zeta(std::vector<T>&\
-    \ f) {\n    int n = f.size();\n    bool is_prime[n + 1];\n    {\n        memset(is_prime,\
-    \ 1, sizeof(is_prime));\n        is_prime[0] = is_prime[1] = false;\n        for\
-    \ (int p = 2; p <= n; ++p) {\n            if (!is_prime[p]) continue;\n      \
-    \      for (int q = p * 2; q <= n; q += p) {\n                is_prime[q] = false;\n\
-    \            }\n        }\n    }\n\n    for (int p = 2; p < n; ++p) {\n      \
-    \  if (!is_prime[p]) continue;\n        for (int i = (n - 1) / p; i >= 1; --i)\
-    \ {\n            f[i] += f[p * i];\n        }\n    }\n    return;\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief Divisor M\xF6bius\u30FBZeta  Transform\n * @docs docs/math/divisor-multiple-transform.md\n\
-    \ */"
+  bundledCode: "#line 2 \"src/math/divisor-multiple-transform.hpp\"\n#include <vector>\n\
+    namespace kyopro {\n\nnamespace internal {\nstd::vector<int> enumerate_primes(int\
+    \ n) {\n    std::vector<int> primes;\n    {\n        std::vector<bool> f(n + 1);\n\
+    \        for (int i = 2; i <= n; ++i) {\n            if (f[i]) continue;\n\n \
+    \           primes.emplace_back(i);\n            for (int j = 2 * i; j <= n; j\
+    \ += i) f[j] = 1;\n        }\n    }\n    return primes;\n}\n};  // namespace internal\n\
+    \n\nnamespace multiple {\ntemplate <typename T> void zeta(std::vector<T>& f) {\n\
+    \    vector primes = internal::enumerate_primes(f.size());\n    for (auto p :\
+    \ primes) {\n        for (int i = ((int)f.size() - 1) / p; i >= 1; --i) {\n  \
+    \          f[i] += f[p * i];\n        }\n    }\n    return;\n}\n\ntemplate <typename\
+    \ T> void mobius(std::vector<T>& f) {\n    vector primes = internal::enumerate_primes(f.size());\n\
+    \n    for (auto p : primes) {\n        if (!is_prime[p]) continue;\n        for\
+    \ (int i = 1 / p; p * i < (int)f.size(); ++i) {\n            f[i] -= f[p * i];\n\
+    \        }\n    }\n    return;\n}\n};  // namespace multiple\n\nnamespace divisor\
+    \ {\nvoid zeta(std::vector<mint>& f) {\n    vector primes = internal::enumerate_primes(f.size());\n\
+    \n    for (auto p : primes) {\n        for (int i = 1; i * p < (int)f.size();\
+    \ ++i) {\n            f[i * p] += f[i];\n        }\n    }\n};\nvoid mobius(std::vector<mint>&\
+    \ f) {\n    vector primes = internal::enumerate_primes(f.size());\n    for (auto\
+    \ p : primes) {\n        for (int i = (int)(f.size() - 1) / p * p; i >= 1; i -=\
+    \ p) {\n            f[i] -= f[i / p];\n        }\n    }\n};\n};  // namespace\
+    \ divisor\n\n};  // namespace kyopro\n\n/**\n * @brief Divisor M\xF6bius\u30FB\
+    Zeta  Transform\n * @docs docs/math/divisor-multiple-transform.md\n */\n"
+  code: "#pragma once\n#include <vector>\nnamespace kyopro {\n\nnamespace internal\
+    \ {\nstd::vector<int> enumerate_primes(int n) {\n    std::vector<int> primes;\n\
+    \    {\n        std::vector<bool> f(n + 1);\n        for (int i = 2; i <= n; ++i)\
+    \ {\n            if (f[i]) continue;\n\n            primes.emplace_back(i);\n\
+    \            for (int j = 2 * i; j <= n; j += i) f[j] = 1;\n        }\n    }\n\
+    \    return primes;\n}\n};  // namespace internal\n\n\nnamespace multiple {\n\
+    template <typename T> void zeta(std::vector<T>& f) {\n    vector primes = internal::enumerate_primes(f.size());\n\
+    \    for (auto p : primes) {\n        for (int i = ((int)f.size() - 1) / p; i\
+    \ >= 1; --i) {\n            f[i] += f[p * i];\n        }\n    }\n    return;\n\
+    }\n\ntemplate <typename T> void mobius(std::vector<T>& f) {\n    vector primes\
+    \ = internal::enumerate_primes(f.size());\n\n    for (auto p : primes) {\n   \
+    \     if (!is_prime[p]) continue;\n        for (int i = 1 / p; p * i < (int)f.size();\
+    \ ++i) {\n            f[i] -= f[p * i];\n        }\n    }\n    return;\n}\n};\
+    \  // namespace multiple\n\nnamespace divisor {\nvoid zeta(std::vector<mint>&\
+    \ f) {\n    vector primes = internal::enumerate_primes(f.size());\n\n    for (auto\
+    \ p : primes) {\n        for (int i = 1; i * p < (int)f.size(); ++i) {\n     \
+    \       f[i * p] += f[i];\n        }\n    }\n};\nvoid mobius(std::vector<mint>&\
+    \ f) {\n    vector primes = internal::enumerate_primes(f.size());\n    for (auto\
+    \ p : primes) {\n        for (int i = (int)(f.size() - 1) / p * p; i >= 1; i -=\
+    \ p) {\n            f[i] -= f[i / p];\n        }\n    }\n};\n};  // namespace\
+    \ divisor\n\n};  // namespace kyopro\n\n/**\n * @brief Divisor M\xF6bius\u30FB\
+    Zeta  Transform\n * @docs docs/math/divisor-multiple-transform.md\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/math/divisor-multiple-transform.hpp
   requiredBy: []
-  timestamp: '2024-04-01 11:01:24+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-04-11 23:49:55+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
 documentation_of: src/math/divisor-multiple-transform.hpp

@@ -4,10 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/hash_map.hpp
     title: Hash Map
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
   - icon: ':heavy_check_mark:'
@@ -143,8 +143,8 @@ data:
   isVerificationFile: false
   path: src/math/mod_log.hpp
   requiredBy:
-  - src/math/mod_sqrt.hpp
   - src/FormalPowerSeries/fps-sqrt.hpp
+  - src/math/mod_sqrt.hpp
   timestamp: '2024-02-21 16:16:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -76,22 +76,22 @@ data:
   isVerificationFile: false
   path: src/internal/barrett.hpp
   requiredBy:
-  - src/math/mod_sqrt.hpp
-  - src/math/miller.hpp
-  - src/math/dynamic_modint.hpp
-  - src/math/rho.hpp
-  - src/math/primitive_root.hpp
-  - src/math/phi_function.hpp
   - src/FormalPowerSeries/fps-sqrt.hpp
+  - src/math/mod_sqrt.hpp
+  - src/math/primitive_root.hpp
+  - src/math/dynamic_modint.hpp
+  - src/math/phi_function.hpp
+  - src/math/miller.hpp
+  - src/math/rho.hpp
   timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/NTL/1_D.test.cpp
-  - test/yuki/No3030.test.cpp
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
+  - test/yuki/No3030.test.cpp
+  - test/AOJ/NTL/1_D.test.cpp
 documentation_of: src/internal/barrett.hpp
 layout: document
 redirect_from:

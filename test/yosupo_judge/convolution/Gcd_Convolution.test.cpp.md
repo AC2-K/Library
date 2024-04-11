@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/divisor-multiple-transform.hpp
     title: "Divisor M\xF6bius\u30FBZeta  Transform"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/gcd_convolution
@@ -31,26 +31,30 @@ data:
     - https://judge.yosupo.jp/problem/gcd_convolution
   bundledCode: "#line 1 \"test/yosupo_judge/convolution/Gcd_Convolution.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/gcd_convolution\"\n\n#line\
-    \ 2 \"src/math/divisor-multiple-transform.hpp\"\n#include <string.h>\n#include\
-    \ <vector>\nnamespace kyopro {\n\ntemplate <typename T> void mobius(std::vector<T>&\
-    \ f) {\n    int n = f.size();\n    bool is_prime[n + 1];\n    {\n        memset(is_prime,\
-    \ 1, sizeof(is_prime));\n        is_prime[0] = is_prime[1] = false;\n        for\
-    \ (int p = 2; p <= n; ++p) {\n            if (!is_prime[p]) continue;\n      \
-    \      for (int q = p * 2; q <= n; q += p) {\n                is_prime[q] = false;\n\
-    \            }\n        }\n    }\n\n    for (int p = 2; p < n; ++p) {\n      \
-    \  if (!is_prime[p]) continue;\n        for (int i = 1 / p; p * i < n; ++i) {\n\
-    \            f[i] -= f[p * i];\n        }\n    }\n    return;\n}\ntemplate <typename\
-    \ T> void zeta(std::vector<T>& f) {\n    int n = f.size();\n    bool is_prime[n\
-    \ + 1];\n    {\n        memset(is_prime, 1, sizeof(is_prime));\n        is_prime[0]\
-    \ = is_prime[1] = false;\n        for (int p = 2; p <= n; ++p) {\n           \
-    \ if (!is_prime[p]) continue;\n            for (int q = p * 2; q <= n; q += p)\
-    \ {\n                is_prime[q] = false;\n            }\n        }\n    }\n\n\
-    \    for (int p = 2; p < n; ++p) {\n        if (!is_prime[p]) continue;\n    \
-    \    for (int i = (n - 1) / p; i >= 1; --i) {\n            f[i] += f[p * i];\n\
-    \        }\n    }\n    return;\n}\n};  // namespace kyopro\n\n/**\n * @brief Divisor\
-    \ M\xF6bius\u30FBZeta  Transform\n * @docs docs/math/divisor-multiple-transform.md\n\
-    \ */\n#line 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#include <cstdint>\n\
-    #include <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n\
+    \ 2 \"src/math/divisor-multiple-transform.hpp\"\n#include <vector>\nnamespace\
+    \ kyopro {\n\nnamespace internal {\nstd::vector<int> enumerate_primes(int n) {\n\
+    \    std::vector<int> primes;\n    {\n        std::vector<bool> f(n + 1);\n  \
+    \      for (int i = 2; i <= n; ++i) {\n            if (f[i]) continue;\n\n   \
+    \         primes.emplace_back(i);\n            for (int j = 2 * i; j <= n; j +=\
+    \ i) f[j] = 1;\n        }\n    }\n    return primes;\n}\n};  // namespace internal\n\
+    \n\nnamespace multiple {\ntemplate <typename T> void zeta(std::vector<T>& f) {\n\
+    \    vector primes = internal::enumerate_primes(f.size());\n    for (auto p :\
+    \ primes) {\n        for (int i = ((int)f.size() - 1) / p; i >= 1; --i) {\n  \
+    \          f[i] += f[p * i];\n        }\n    }\n    return;\n}\n\ntemplate <typename\
+    \ T> void mobius(std::vector<T>& f) {\n    vector primes = internal::enumerate_primes(f.size());\n\
+    \n    for (auto p : primes) {\n        if (!is_prime[p]) continue;\n        for\
+    \ (int i = 1 / p; p * i < (int)f.size(); ++i) {\n            f[i] -= f[p * i];\n\
+    \        }\n    }\n    return;\n}\n};  // namespace multiple\n\nnamespace divisor\
+    \ {\nvoid zeta(std::vector<mint>& f) {\n    vector primes = internal::enumerate_primes(f.size());\n\
+    \n    for (auto p : primes) {\n        for (int i = 1; i * p < (int)f.size();\
+    \ ++i) {\n            f[i * p] += f[i];\n        }\n    }\n};\nvoid mobius(std::vector<mint>&\
+    \ f) {\n    vector primes = internal::enumerate_primes(f.size());\n    for (auto\
+    \ p : primes) {\n        for (int i = (int)(f.size() - 1) / p * p; i >= 1; i -=\
+    \ p) {\n            f[i] -= f[i / p];\n        }\n    }\n};\n};  // namespace\
+    \ divisor\n\n};  // namespace kyopro\n\n/**\n * @brief Divisor M\xF6bius\u30FB\
+    Zeta  Transform\n * @docs docs/math/divisor-multiple-transform.md\n */\n#line\
+    \ 2 \"src/math/static_modint.hpp\"\n#include <cassert>\n#include <cstdint>\n#include\
+    \ <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\n#include <limits>\n\
     #include <numeric>\n#include <typeinfo>\n#line 7 \"src/internal/type_traits.hpp\"\
     \n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
     \ first_enabled {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
@@ -186,18 +190,18 @@ data:
     using namespace kyopro;\n\nusing mint = modint<998244353>;\n\nint main() {\n \
     \   int n;\n    read(n);\n\n    vector<modint<998244353>> a(n + 1), b(n + 1);\n\
     \    for (int i = 1; i <= n; ++i) read(a[i]);\n    for (int i = 1; i <= n; ++i)\
-    \ read(b[i]);\n\n    zeta(a), zeta(b);\n    for (int i = 1; i <= n; ++i) a[i]\
-    \ *= b[i];\n    mobius(a);\n    for (int i = 1; i <= n; ++i) put(a[i].val());\n\
-    }\n"
+    \ read(b[i]);\n\n    multiple::zeta(a), multiple::zeta(b);\n    for (int i = 1;\
+    \ i <= n; ++i) a[i] *= b[i];\n    multiple::mobius(a);\n    for (int i = 1; i\
+    \ <= n; ++i) put(a[i].val());\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/gcd_convolution\"\n\n#include\
     \ \"../../../src/math/divisor-multiple-transform.hpp\"\n#include \"../../../src/math/static_modint.hpp\"\
     \n#include \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\
     \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     \nint main() {\n    int n;\n    read(n);\n\n    vector<modint<998244353>> a(n\
     \ + 1), b(n + 1);\n    for (int i = 1; i <= n; ++i) read(a[i]);\n    for (int\
-    \ i = 1; i <= n; ++i) read(b[i]);\n\n    zeta(a), zeta(b);\n    for (int i = 1;\
-    \ i <= n; ++i) a[i] *= b[i];\n    mobius(a);\n    for (int i = 1; i <= n; ++i)\
-    \ put(a[i].val());\n}"
+    \ i = 1; i <= n; ++i) read(b[i]);\n\n    multiple::zeta(a), multiple::zeta(b);\n\
+    \    for (int i = 1; i <= n; ++i) a[i] *= b[i];\n    multiple::mobius(a);\n  \
+    \  for (int i = 1; i <= n; ++i) put(a[i].val());\n}"
   dependsOn:
   - src/math/divisor-multiple-transform.hpp
   - src/math/static_modint.hpp
@@ -208,8 +212,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-04-01 11:01:24+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-04-11 23:49:55+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
 layout: document

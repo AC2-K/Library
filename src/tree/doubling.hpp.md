@@ -101,8 +101,8 @@ data:
   timestamp: '2023-10-22 17:06:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
 documentation_of: src/tree/doubling.hpp
 layout: document
 redirect_from:

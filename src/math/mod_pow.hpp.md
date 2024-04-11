@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   _extendedRequiredBy:
@@ -85,16 +85,16 @@ data:
   path: src/math/mod_pow.hpp
   requiredBy:
   - src/string/rolling_hash.hpp
-  - src/math/mod_sqrt.hpp
-  - src/math/mod_log.hpp
   - src/FormalPowerSeries/fps-sqrt.hpp
+  - src/math/mod_log.hpp
+  - src/math/mod_sqrt.hpp
   timestamp: '2023-10-22 15:25:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/AOJ/NTL/1_B.test.cpp
-  - test/yuki/No430.test.cpp
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yuki/No430.test.cpp
+  - test/AOJ/NTL/1_B.test.cpp
 documentation_of: src/math/mod_pow.hpp
 layout: document
 redirect_from:
