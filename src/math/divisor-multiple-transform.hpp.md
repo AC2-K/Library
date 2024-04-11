@@ -20,9 +20,9 @@ data:
     \           primes.emplace_back(i);\n            for (int j = 2 * i; j <= n; j\
     \ += i) f[j] = 1;\n        }\n    }\n    return primes;\n}\n};  // namespace internal\n\
     \nnamespace multiple {\ntemplate <typename T> void zeta(std::vector<T>& f) {\n\
-    \    vector primes = internal::enumerate_primes(f.size());\n    for (auto p :\
-    \ primes) {\n        for (int i = ((int)f.size() - 1) / p; i >= 1; --i) {\n  \
-    \          f[i] += f[p * i];\n        }\n    }\n    return;\n}\n\ntemplate <typename\
+    \    std::vector primes = internal::enumerate_primes(f.size());\n    for (auto\
+    \ p : primes) {\n        for (int i = ((int)f.size() - 1) / p; i >= 1; --i) {\n\
+    \            f[i] += f[p * i];\n        }\n    }\n    return;\n}\n\ntemplate <typename\
     \ T> void mobius(std::vector<T>& f) {\n    vector primes = internal::enumerate_primes(f.size());\n\
     \n    for (auto p : primes) {\n        for (int i = 1 / p; p * i < (int)f.size();\
     \ ++i) {\n            f[i] -= f[p * i];\n        }\n    }\n    return;\n}\n};\
@@ -42,7 +42,7 @@ data:
     \ {\n            if (f[i]) continue;\n\n            primes.emplace_back(i);\n\
     \            for (int j = 2 * i; j <= n; j += i) f[j] = 1;\n        }\n    }\n\
     \    return primes;\n}\n};  // namespace internal\n\nnamespace multiple {\ntemplate\
-    \ <typename T> void zeta(std::vector<T>& f) {\n    vector primes = internal::enumerate_primes(f.size());\n\
+    \ <typename T> void zeta(std::vector<T>& f) {\n    std::vector primes = internal::enumerate_primes(f.size());\n\
     \    for (auto p : primes) {\n        for (int i = ((int)f.size() - 1) / p; i\
     \ >= 1; --i) {\n            f[i] += f[p * i];\n        }\n    }\n    return;\n\
     }\n\ntemplate <typename T> void mobius(std::vector<T>& f) {\n    vector primes\
@@ -62,7 +62,7 @@ data:
   isVerificationFile: false
   path: src/math/divisor-multiple-transform.hpp
   requiredBy: []
-  timestamp: '2024-04-11 23:55:48+09:00'
+  timestamp: '2024-04-11 23:58:39+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
