@@ -30,7 +30,7 @@ template <typename T> void zeta(std::vector<T>& f) {
 }
 
 template <typename T> void mobius(std::vector<T>& f) {
-    vector primes = internal::enumerate_primes(f.size());
+    std::vector primes = internal::enumerate_primes(f.size());
 
     for (auto p : primes) {
         for (int i = 1 / p; p * i < (int)f.size(); ++i) {
