@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/divisor-multiple-transform.hpp
     title: "Divisor M\xF6bius\u30FBZeta  Transform"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/gcd_convolution
@@ -41,7 +41,7 @@ data:
     \    std::vector primes = internal::enumerate_primes(f.size());\n    for (auto\
     \ p : primes) {\n        for (int i = ((int)f.size() - 1) / p; i >= 1; --i) {\n\
     \            f[i] += f[p * i];\n        }\n    }\n    return;\n}\n\ntemplate <typename\
-    \ T> void mobius(std::vector<T>& f) {\n    vector primes = internal::enumerate_primes(f.size());\n\
+    \ T> void mobius(std::vector<T>& f) {\n    std::vector primes = internal::enumerate_primes(f.size());\n\
     \n    for (auto p : primes) {\n        for (int i = 1 / p; p * i < (int)f.size();\
     \ ++i) {\n            f[i] -= f[p * i];\n        }\n    }\n    return;\n}\n};\
     \  // namespace multiple\n\nnamespace divisor {\ntemplate <typename T> void zeta(std::vector<T>&\
@@ -212,8 +212,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-04-11 23:58:39+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-04-12 00:00:10+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
 layout: document

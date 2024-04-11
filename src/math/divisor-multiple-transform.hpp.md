@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
     title: test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/math/divisor-multiple-transform.md
     document_title: "Divisor M\xF6bius\u30FBZeta  Transform"
@@ -23,7 +23,7 @@ data:
     \    std::vector primes = internal::enumerate_primes(f.size());\n    for (auto\
     \ p : primes) {\n        for (int i = ((int)f.size() - 1) / p; i >= 1; --i) {\n\
     \            f[i] += f[p * i];\n        }\n    }\n    return;\n}\n\ntemplate <typename\
-    \ T> void mobius(std::vector<T>& f) {\n    vector primes = internal::enumerate_primes(f.size());\n\
+    \ T> void mobius(std::vector<T>& f) {\n    std::vector primes = internal::enumerate_primes(f.size());\n\
     \n    for (auto p : primes) {\n        for (int i = 1 / p; p * i < (int)f.size();\
     \ ++i) {\n            f[i] -= f[p * i];\n        }\n    }\n    return;\n}\n};\
     \  // namespace multiple\n\nnamespace divisor {\ntemplate <typename T> void zeta(std::vector<T>&\
@@ -45,7 +45,7 @@ data:
     \ <typename T> void zeta(std::vector<T>& f) {\n    std::vector primes = internal::enumerate_primes(f.size());\n\
     \    for (auto p : primes) {\n        for (int i = ((int)f.size() - 1) / p; i\
     \ >= 1; --i) {\n            f[i] += f[p * i];\n        }\n    }\n    return;\n\
-    }\n\ntemplate <typename T> void mobius(std::vector<T>& f) {\n    vector primes\
+    }\n\ntemplate <typename T> void mobius(std::vector<T>& f) {\n    std::vector primes\
     \ = internal::enumerate_primes(f.size());\n\n    for (auto p : primes) {\n   \
     \     for (int i = 1 / p; p * i < (int)f.size(); ++i) {\n            f[i] -= f[p\
     \ * i];\n        }\n    }\n    return;\n}\n};  // namespace multiple\n\nnamespace\
@@ -62,8 +62,8 @@ data:
   isVerificationFile: false
   path: src/math/divisor-multiple-transform.hpp
   requiredBy: []
-  timestamp: '2024-04-11 23:58:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-04-12 00:00:10+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
 documentation_of: src/math/divisor-multiple-transform.hpp
