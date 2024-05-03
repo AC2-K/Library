@@ -109,7 +109,7 @@ public:
     template <typename F> void path_query(int u, int v, const F& f) {
         int l = lca(u, v);
 
-        for (auto [a, b] : ascend(u, l)) {
+        for (const auto&& [a, b] : ascend(u, l)) {
             int s = a + 1, t = b;
             if (s < t) {
                 f(s, t);
@@ -118,7 +118,7 @@ public:
             }
         }
         f(in[l], in[l] + 1);
-        for (auto [a, b] : descend(l, v)) {
+        for (const auto&& [a, b] : descend(l, v)) {
             int s = a, t = b + 1;
             if (s < t) {
                 f(s, t);
@@ -131,9 +131,9 @@ public:
     template <typename F>
     void path_noncommutative_query(int u, int v, const F& f) {
         int l = lca(u, v);
-        for (auto [a, b] : ascend(u, l)) f(a + 1, b);
+        for (auto&& [a, b] : ascend(u, l)) f(a + 1, b);
         f(in[l], in[l] + 1);
-        for (auto [a, b] : descend(l, v)) f(a, b + 1);
+        for (auto&& [a, b] : descend(l, v)) f(a, b + 1);
     }
 
     template <typename F> void subtree_query(int u, const F& f) {
