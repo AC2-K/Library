@@ -34,13 +34,13 @@ public:
     std::pair<int, int> idx(int i) const { return std::pair(in[i], out[i]); }
 
 private:
-    void dfs_sz(int cur) {
+    void dfs_sz(int cur) /* Checked */ {
         sz[cur] = 1;
 
         for (auto& dst : g[cur]) {
             if (dst == par[cur]) {
                 if (g[cur].size() >= 2 && dst == g[cur][0]) {
-                    std::swap(g[cur][0], g[cur][1]);
+                    swap(g[cur][0], g[cur][1]);
                 } else {
                     continue;
                 }
@@ -52,12 +52,12 @@ private:
             sz[cur] += sz[dst];
 
             if (sz[dst] > sz[g[cur][0]]) {
-                std::swap(dst, g[cur][0]);
+                swap(dst, g[cur][0]);
             }
         }
     }
 
-    void dfs_hld(int cur) {
+    void dfs_hld(int cur) /* Checked */ {
         in[cur] = id++;
         for (auto dst : g[cur]) {
             if (dst == par[cur]) continue;
@@ -96,7 +96,7 @@ public:
 
     int lca(int a, int b) const {
         while (nxt[a] != nxt[b]) {
-            if (in[a] < in[b]) std::swap(a, b);
+            if (in[a] < in[b]) swap(a, b);
             a = par[nxt[a]];
         }
         return dep[a] < dep[b] ? a : b;
