@@ -1,17 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':warning:'
     path: src/internal/CSR.hpp
     title: "CSR\u5F62\u5F0F"
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':x:'
-    path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
-    title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
-  _isVerificationFailed: true
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     document_title: HeavyLightDecomposition
     links:
@@ -142,9 +139,8 @@ data:
   path: src/tree/HeavyLightDecomposition.hpp
   requiredBy: []
   timestamp: '2024-05-03 16:29:00+09:00'
-  verificationStatus: LIBRARY_ALL_WA
-  verifiedWith:
-  - test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: src/tree/HeavyLightDecomposition.hpp
 layout: document
 redirect_from:

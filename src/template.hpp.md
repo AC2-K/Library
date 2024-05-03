@@ -66,12 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - icon: ':x:'
-    path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
-    title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,\
@@ -101,7 +98,7 @@ data:
   path: src/template.hpp
   requiredBy: []
   timestamp: '2024-05-03 15:25:19+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/3_D.test.cpp
   - test/AOJ/DSL/5_B.test.cpp
@@ -124,7 +121,6 @@ data:
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
 documentation_of: src/template.hpp
 layout: document
 redirect_from:
