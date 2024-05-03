@@ -1,31 +1,40 @@
 #pragma once
 #include <cassert>
 #include <vector>
+#include "../internal/CSR.hpp"
+
 namespace kyopro {
-class doubling {
+
+template <typename Cost, int lg> class doubling {
     struct edge {
         int to;
-        int cost;
+        Cost cost;
 
-        constexpr explicit edge() : to(0), cost(0) {}
-        constexpr explicit edge(int to, int cost) : to(to), cost(cost) {}
+        edge() : to(0), cost(0) {}
+        edge(int to, Cost cost) : to(to), cost(cost) {}
     };
+
     const int n;
-    static constexpr int lg = 21;
-    std::vector<std::vector<edge>> g;
+
+    std::vector<std::pair<int, edge>> es;
     std::vector<int> parent[lg];
-    std::vector<long long> _dist;
+    std::vector<Cost> _dist;
     std::vector<int> _depth;
 
 public:
-    explicit doubling(int n) : n(n), g(n), _dist(n, -1), _depth(n) {
+    doubling(int n) : n(n), _dist(n, -1), _depth(n) {
         std::fill(parent, parent + lg, std::vector<int>(n));
+        es.reserve(2 * (n - 1));
     }
-    void add_edge(int a, int b, int c = 1) {
-        g[a].emplace_back(b, c);
-        g[b].emplace_back(a, c);
+
+    void add_edge(int a, int b, Cost c = 1) {
+        es.emplace_back(a, edge{b, c});
+        es.emplace_back(b, edge{a, c});
     }
+    
     void build(int root = 0) {
+        internal::csr g(n, es);
+
         std::vector<int> st;
         st.reserve(n);
 
