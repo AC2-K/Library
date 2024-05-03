@@ -14,6 +14,7 @@ template <typename T, typename _size_t> class csr {
     std::vector<_size_t> ssum;
 
 public:
+    csr() = default;
     csr(_size_t n, const std::vector<std::pair<_size_t, T>>& v)
         : n(n), ssum(n + 1), d(v.size()) {
         for (int i = 0; i < (int)v.size(); ++i) {
