@@ -214,30 +214,29 @@ data:
     \ + ssum[i + 1]};\n    }\n\n    _size_t size() const { return (_size_t)n; }\n\
     };\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief CSR\u5F62\
     \u5F0F\n */\n#line 4 \"src/tree/HeavyLightDecomposition.hpp\"\n\nnamespace kyopro\
-    \ {\n\nclass HeavyLightDecomposition {\n    int root, id;\n    int n;\n\n    std::vector<std::pair<int,\
+    \ {\n\nclass HeavyLightDecomposition {\n    int id;\n    int n;\n\n    std::vector<std::pair<int,\
     \ int>> es;\n    std::vector<int> sz, dep, in, out, nxt, par;\n\npublic:\n   \
-    \ HeavyLightDecomposition(int n)\n        : n(n),\n          es(),\n         \
-    \ id(0),\n          sz(n),\n          dep(n),\n          in(n, -1),\n        \
-    \  out(n, -1),\n          nxt(n, root),\n          par(n, root) {\n        es.reserve(2\
-    \ * (n - 1));\n    }\n\n    void add_edge(int u, int v) {\n        es.emplace_back(u,\
-    \ v);\n        es.emplace_back(v, u);\n    }\n\n    std::pair<int, int> idx(int\
-    \ i) const { return std::pair(in[i], out[i]); }\n\n    void build(int root) {\n\
-    \        internal::csr g(n, es);\n        {\n            auto dfs_sz = [&](auto\
-    \ f, int cur) -> void {\n                sz[cur] = 1;\n\n                for (auto&\
-    \ dst : g[cur]) {\n                    if (dst == par[cur]) {\n              \
-    \          if (g[cur].size() >= 2 && dst == g[cur][0]) {\n                   \
-    \         std::swap(g[cur][0], g[cur][1]);\n                        } else {\n\
-    \                            continue;\n                        }\n          \
-    \          }\n\n                    dep[dst] = dep[cur] + 1;\n               \
-    \     par[dst] = cur;\n                    f(f, dst);\n                    sz[cur]\
-    \ += sz[dst];\n\n                    if (sz[dst] > sz[g[cur][0]]) {\n        \
-    \                std::swap(dst, g[cur][0]);\n                    }\n         \
-    \       }\n            };\n            dfs_sz(dfs_sz, root);\n        }\n    \
-    \    {\n            auto dfs_hld = [&](auto f, int cur) -> void {\n          \
-    \      in[cur] = id++;\n                for (auto dst : g[cur]) {\n          \
-    \          if (dst == par[cur]) continue;\n\n                    nxt[dst] = (dst\
-    \ == g[cur][0] ? nxt[cur] : dst);\n                    f(f, dst);\n          \
-    \      }\n                out[cur] = id;\n            };\n            dfs_hld(dfs_hld,\
+    \ HeavyLightDecomposition(int n)\n        : n(n), es(), id(0), sz(n), dep(n),\
+    \ in(n, -1), out(n, -1) {\n        es.reserve(2 * (n - 1));\n    }\n\n    void\
+    \ add_edge(int u, int v) {\n        es.emplace_back(u, v);\n        es.emplace_back(v,\
+    \ u);\n    }\n\n    std::pair<int, int> idx(int i) const { return std::pair(in[i],\
+    \ out[i]); }\n\n    void build(int root) {\n        nxt.assign(n, root), par.assign(n,\
+    \ root);\n        internal::csr g(n, es);\n        {\n            auto dfs_sz\
+    \ = [&](auto f, int cur) -> void {\n                sz[cur] = 1;\n\n         \
+    \       for (auto& dst : g[cur]) {\n                    if (dst == par[cur]) {\n\
+    \                        if (g[cur].size() >= 2 && dst == g[cur][0]) {\n     \
+    \                       std::swap(g[cur][0], g[cur][1]);\n                   \
+    \     } else {\n                            continue;\n                      \
+    \  }\n                    }\n\n                    dep[dst] = dep[cur] + 1;\n\
+    \                    par[dst] = cur;\n                    f(f, dst);\n       \
+    \             sz[cur] += sz[dst];\n\n                    if (sz[dst] > sz[g[cur][0]])\
+    \ {\n                        std::swap(dst, g[cur][0]);\n                    }\n\
+    \                }\n            };\n            dfs_sz(dfs_sz, root);\n      \
+    \  }\n        {\n            auto dfs_hld = [&](auto f, int cur) -> void {\n \
+    \               in[cur] = id++;\n                for (auto dst : g[cur]) {\n \
+    \                   if (dst == par[cur]) continue;\n\n                    nxt[dst]\
+    \ = (dst == g[cur][0] ? nxt[cur] : dst);\n                    f(f, dst);\n   \
+    \             }\n                out[cur] = id;\n            };\n            dfs_hld(dfs_hld,\
     \ root);\n        }\n    }\n\nprivate:\n    std::vector<std::pair<int, int>> ascend(int\
     \ u, int v) const {\n        std::vector<std::pair<int, int>> res;\n        while\
     \ (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u], in[nxt[u]]);\n   \
@@ -259,8 +258,8 @@ data:
     \ < t) {\n                f(s, t);\n            } else {\n                f(t,\
     \ s);\n            }\n        }\n    }\n\n    template <typename F>\n    void\
     \ path_noncommutative_query(int u, int v, const F& f) {\n        int l = lca(u,\
-    \ v);\n        for (auto&& [a, b] : ascend(u, l)) f(a + 1, b);\n        f(in[l],\
-    \ in[l] + 1);\n        for (auto&& [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\
+    \ v);\n        for (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        f(in[l],\
+    \ in[l] + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\
     \n    template <typename F> void subtree_query(int u, const F& f) {\n        f(in[u],\
     \ out[u]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Heavy Light Decomposition\n\
     \ * @see https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp\n\
@@ -323,7 +322,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 18:04:04+09:00'
+  timestamp: '2024-05-03 18:19:39+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
