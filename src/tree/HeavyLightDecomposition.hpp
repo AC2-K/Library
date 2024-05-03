@@ -36,10 +36,11 @@ public:
         {
             auto dfs_sz = [&](const auto& f, int cur) -> void {
                 sz[cur] = 1;
+
                 for (auto& dst : g[cur]) {
                     if (dst == par[cur]) {
                         if (g[cur].size() >= 2 && dst == g[cur][0]) {
-                            std::swap(g[cur][0], g[cur][1]);
+                            swap(g[cur][0], g[cur][1]);
                         } else {
                             continue;
                         }
@@ -51,7 +52,7 @@ public:
                     sz[cur] += sz[dst];
 
                     if (sz[dst] > sz[g[cur][0]]) {
-                        std::swap(dst, g[cur][0]);
+                        swap(dst, g[cur][0]);
                     }
                 }
             };
@@ -130,9 +131,9 @@ public:
     template <typename F>
     void path_noncommutative_query(int u, int v, const F& f) {
         int l = lca(u, v);
-        for (auto&& [a, b] : ascend(u, l)) f(a + 1, b);
+        for (auto [a, b] : ascend(u, l)) f(a + 1, b);
         f(in[l], in[l] + 1);
-        for (auto&& [a, b] : descend(l, v)) f(a, b + 1);
+        for (auto [a, b] : descend(l, v)) f(a, b + 1);
     }
 
     template <typename F> void subtree_query(int u, const F& f) {
