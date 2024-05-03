@@ -15,6 +15,7 @@ public:
     HeavyLightDecomposition(int n)
         : n(n),
           es(),
+          id(0),
           sz(n),
           dep(n),
           in(n, -1),
