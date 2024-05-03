@@ -4,7 +4,7 @@ data:
   _extendedRequiredBy:
   - icon: ':x:'
     path: src/tree/HeavyLightDecomposition.hpp
-    title: Heavy Light Decomposition
+    title: HeavyLightDecomposition
   _extendedVerifiedWith:
   - icon: ':x:'
     path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
