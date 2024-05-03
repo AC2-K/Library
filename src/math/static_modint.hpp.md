@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
   _extendedRequiredBy: []
@@ -45,12 +45,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
     title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: static modint
     links: []
@@ -201,7 +201,7 @@ data:
   path: src/math/static_modint.hpp
   requiredBy: []
   timestamp: '2024-02-21 16:16:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
   - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
