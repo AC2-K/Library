@@ -130,7 +130,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/lazy_segtree.hpp
       title: Lazy Segment Tree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/segtree.hpp
       title: Segment Tree
     - icon: ':heavy_check_mark:'
@@ -175,10 +175,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/debug.hpp
       title: src/debug.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: "\u9AD8\u901F\u5165\u51FA\u529B"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/template.hpp
       title: src/template.hpp
   - name: src/dynamic_programming
@@ -204,7 +204,7 @@ data:
       title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   - name: src/internal
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/CSR.hpp
       title: "CSR\u5F62\u5F0F"
     - icon: ':heavy_check_mark:'
@@ -213,7 +213,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
@@ -230,7 +230,7 @@ data:
     - icon: ':warning:'
       path: src/math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
     - icon: ':heavy_check_mark:'
@@ -257,7 +257,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/rho.hpp
       title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/static_modint.hpp
       title: static modint
   - name: src/random
@@ -285,7 +285,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/EulerTour.hpp
       title: Euler Tour
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/HeavyLightDecomposition.hpp
       title: HeavyLightDecomposition
     - icon: ':heavy_check_mark:'
@@ -491,7 +491,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
       title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   - name: test/yuki

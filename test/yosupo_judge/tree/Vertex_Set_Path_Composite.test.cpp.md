@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/segtree.hpp
     title: Segment Tree
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/CSR.hpp
     title: "CSR\u5F62\u5F0F"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template.hpp
     title: src/template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/HeavyLightDecomposition.hpp
     title: HeavyLightDecomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -217,7 +217,7 @@ data:
     \ {\n\nclass HeavyLightDecomposition {\n    int root, id;\n    int n;\n\n    internal::csr<int,\
     \ int> g;\n    std::vector<std::pair<int, int>> es;\n    std::vector<int> sz,\
     \ dep, in, out, nxt, par;\n\npublic:\n    HeavyLightDecomposition(int n)\n   \
-    \     : n(n),\n          es(),\n          g(),\n          sz(n),\n          dep(n),\n\
+    \     : n(n),\n          g(),\n          es(),\n          sz(n),\n          dep(n),\n\
     \          in(n, -1),\n          out(n, -1),\n          nxt(n, root),\n      \
     \    par(n, root) {\n        es.reserve(2 * (n - 1));\n    }\n\n    void add_edge(int\
     \ u, int v) {\n        es.emplace_back(u, v);\n        es.emplace_back(v, u);\n\
@@ -230,31 +230,31 @@ data:
     \ dep[cur] + 1;\n            par[dst] = cur;\n            dfs_sz(dst);\n     \
     \       sz[cur] += sz[dst];\n\n            if (sz[dst] > sz[g[cur][0]]) {\n  \
     \              std::swap(dst, g[cur][0]);\n            }\n        }\n    }\n\n\
-    \    void dfs_hld(int cur) /* Checked */ {\n        in[cur] = id++;\n        for\
-    \ (auto dst : g[cur]) {\n            if (dst == par[cur]) continue;\n\n      \
-    \      nxt[dst] = (dst == g[cur][0] ? nxt[cur] : dst);\n            dfs_hld(dst);\n\
-    \        }\n        out[cur] = id;\n    }\n\npublic:\n    void build(int root)\
-    \ {\n        g = internal::csr<int, int>(n, es);\n        dfs_sz(root);\n    \
-    \    dfs_hld(root);\n    }\n\n    std::vector<std::pair<int, int>> ascend(int\
-    \ u, int v) const {\n        std::vector<std::pair<int, int>> res;\n        while\
-    \ (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u], in[nxt[u]]);\n   \
-    \         u = par[nxt[u]];\n        }\n\n        if (u != v) res.emplace_back(in[u],\
-    \ in[v] + 1);\n        return res;\n    }\n\n    std::vector<std::pair<int, int>>\
-    \ descend(int u, int v) const {\n        if (u == v) return {};\n        if (nxt[u]\
-    \ == nxt[v]) return {{in[u] + 1, in[v]}};\n        std::vector res = descend(u,\
-    \ par[nxt[v]]);\n        res.emplace_back(in[nxt[v]], in[v]);\n        return\
-    \ res;\n    }\n\n    int lca(int a, int b) const {\n        while (nxt[a] != nxt[b])\
-    \ {\n            if (in[a] < in[b]) std::swap(a, b);\n            a = par[nxt[a]];\n\
-    \        }\n        return dep[a] < dep[b] ? a : b;\n    }\n\n    int dist(int\
-    \ a, int b) const {\n        return dep[a] + dep[b] - 2 * dep[lca(a, b)];\n  \
-    \  }\n\n    template <typename F> void path_query(int u, int v, const F& f) {\n\
-    \        int l = lca(u, v);\n\n        for (const auto&& [a, b] : ascend(u, l))\
-    \ {\n            int s = a + 1, t = b;\n            if (s < t) {\n           \
-    \     f(s, t);\n            } else {\n                f(t, s);\n            }\n\
-    \        }\n        f(in[l], in[l] + 1);\n        for (const auto&& [a, b] : descend(l,\
-    \ v)) {\n            int s = a, t = b + 1;\n            if (s < t) {\n       \
-    \         f(s, t);\n            } else {\n                f(t, s);\n         \
-    \   }\n        }\n    }\n\n    template <typename F>\n    void path_noncommutative_query(int\
+    \    void dfs_hld(int cur) {\n        in[cur] = id++;\n        for (auto dst :\
+    \ g[cur]) {\n            if (dst == par[cur]) continue;\n\n            nxt[dst]\
+    \ = (dst == g[cur][0] ? nxt[cur] : dst);\n            dfs_hld(dst);\n        }\n\
+    \        out[cur] = id;\n    }\n\npublic:\n    void build(int root) {\n      \
+    \  g = internal::csr<int, int>(n, es);\n        dfs_sz(root);\n        dfs_hld(root);\n\
+    \    }\n\n    std::vector<std::pair<int, int>> ascend(int u, int v) const {\n\
+    \        std::vector<std::pair<int, int>> res;\n        while (nxt[u] != nxt[v])\
+    \ {\n            res.emplace_back(in[u], in[nxt[u]]);\n            u = par[nxt[u]];\n\
+    \        }\n\n        if (u != v) res.emplace_back(in[u], in[v] + 1);\n      \
+    \  return res;\n    }\n\n    std::vector<std::pair<int, int>> descend(int u, int\
+    \ v) const {\n        if (u == v) return {};\n        if (nxt[u] == nxt[v]) return\
+    \ {{in[u] + 1, in[v]}};\n        std::vector res = descend(u, par[nxt[v]]);\n\
+    \        res.emplace_back(in[nxt[v]], in[v]);\n        return res;\n    }\n\n\
+    \    int lca(int a, int b) const {\n        while (nxt[a] != nxt[b]) {\n     \
+    \       if (in[a] < in[b]) std::swap(a, b);\n            a = par[nxt[a]];\n  \
+    \      }\n        return dep[a] < dep[b] ? a : b;\n    }\n\n    int dist(int a,\
+    \ int b) const {\n        return dep[a] + dep[b] - 2 * dep[lca(a, b)];\n    }\n\
+    \n    template <typename F> void path_query(int u, int v, const F& f) {\n    \
+    \    int l = lca(u, v);\n\n        for (auto [a, b] : ascend(u, l)) {\n      \
+    \      int s = a + 1, t = b;\n            if (s < t) {\n                f(s, t);\n\
+    \            } else {\n                f(t, s);\n            }\n        }\n  \
+    \      f(in[l], in[l] + 1);\n        for (auto [a, b] : descend(l, v)) {\n   \
+    \         int s = a, t = b + 1;\n            if (s < t) {\n                f(s,\
+    \ t);\n            } else {\n                f(t, s);\n            }\n       \
+    \ }\n    }\n\n    template <typename F>\n    void path_noncommutative_query(int\
     \ u, int v, const F& f) {\n        int l = lca(u, v);\n        for (auto&& [a,\
     \ b] : ascend(u, l)) f(a + 1, b);\n        f(in[l], in[l] + 1);\n        for (auto&&\
     \ [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n    template <typename F> void\
@@ -319,8 +319,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 16:17:19+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-05-03 16:29:00+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
 layout: document
