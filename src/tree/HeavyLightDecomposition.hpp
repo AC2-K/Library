@@ -34,7 +34,7 @@ public:
     void build(int root) {
         internal::csr g(n, es);
         {
-            auto dfs_sz = [&](const auto& f, int cur) -> void {
+            auto dfs_sz = [&](auto f, int cur) -> void {
                 sz[cur] = 1;
 
                 for (auto& dst : g[cur]) {
@@ -59,7 +59,7 @@ public:
             dfs_sz(dfs_sz, root);
         }
         {
-            auto dfs_hld = [&](const auto& f, int cur) -> void {
+            auto dfs_hld = [&](auto f, int cur) -> void {
                 in[cur] = id++;
                 for (auto dst : g[cur]) {
                     if (dst == par[cur]) continue;
