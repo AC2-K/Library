@@ -1,35 +1,35 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/segtree.hpp
     title: Segment Tree
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/CSR.hpp
     title: "CSR\u5F62\u5F0F"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: src/math/gcd.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template.hpp
     title: src/template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/HeavyLightDecomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -216,11 +216,11 @@ data:
     \u5F0F\n */\n#line 4 \"src/tree/HeavyLightDecomposition.hpp\"\n\nnamespace kyopro\
     \ {\n\nclass HeavyLightDecomposition {\n    int id;\n    int n;\n\n    std::vector<std::pair<int,\
     \ int>> es;\n    std::vector<int> sz, dep, in, out, nxt, par;\n\npublic:\n   \
-    \ HeavyLightDecomposition(int n)\n        : n(n), es(), id(0), sz(n), dep(n),\
-    \ in(n, -1), out(n, -1) {\n        es.reserve(2 * (n - 1));\n    }\n\n    void\
-    \ add_edge(int u, int v) {\n        es.emplace_back(u, v);\n        es.emplace_back(v,\
-    \ u);\n    }\n\n    std::pair<int, int> idx(int i) const { return std::pair(in[i],\
-    \ out[i]); }\n\n    void build(int root) {\n        nxt.assign(n, root), par.assign(n,\
+    \ HeavyLightDecomposition(int n)\n        : id(0), n(n), sz(n), dep(n), in(n,\
+    \ -1), out(n, -1) {\n        es.reserve(2 * (n - 1));\n    }\n\n    void add_edge(int\
+    \ u, int v) {\n        es.emplace_back(u, v);\n        es.emplace_back(v, u);\n\
+    \    }\n\n    std::pair<int, int> idx(int i) const { return std::pair(in[i], out[i]);\
+    \ }\n\n    void build(int root) {\n        nxt.assign(n, root), par.assign(n,\
     \ root);\n        internal::csr g(n, es);\n        {\n            auto dfs_sz\
     \ = [&](auto f, int cur) -> void {\n                sz[cur] = 1;\n\n         \
     \       for (auto& dst : g[cur]) {\n                    if (dst == par[cur]) {\n\
@@ -250,19 +250,18 @@ data:
     \ = par[nxt[a]];\n        }\n        return dep[a] < dep[b] ? a : b;\n    }\n\n\
     \    int dist(int a, int b) const {\n        return dep[a] + dep[b] - 2 * dep[lca(a,\
     \ b)];\n    }\n\n    template <typename F> void path_query(int u, int v, const\
-    \ F& f) {\n        int l = lca(u, v);\n\n        for (const auto&& [a, b] : ascend(u,\
+    \ F& f) {\n        int l = lca(u, v);\n\n        for (auto [a, b] : ascend(u,\
     \ l)) {\n            int s = a + 1, t = b;\n            if (s < t) {\n       \
     \         f(s, t);\n            } else {\n                f(t, s);\n         \
-    \   }\n        }\n        f(in[l], in[l] + 1);\n        for (const auto&& [a,\
-    \ b] : descend(l, v)) {\n            int s = a, t = b + 1;\n            if (s\
-    \ < t) {\n                f(s, t);\n            } else {\n                f(t,\
-    \ s);\n            }\n        }\n    }\n\n    template <typename F>\n    void\
-    \ path_noncommutative_query(int u, int v, const F& f) {\n        int l = lca(u,\
-    \ v);\n        for (auto [a, b] : ascend(u, l)) f(a + 1, b);\n        f(in[l],\
-    \ in[l] + 1);\n        for (auto [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\
-    \n    template <typename F> void subtree_query(int u, const F& f) {\n        f(in[u],\
-    \ out[u]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Heavy Light Decomposition\n\
-    \ * @see https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp\n\
+    \   }\n        }\n        f(in[l], in[l] + 1);\n        for (auto [a, b] : descend(l,\
+    \ v)) {\n            int s = a, t = b + 1;\n            if (s < t) {\n       \
+    \         f(s, t);\n            } else {\n                f(t, s);\n         \
+    \   }\n        }\n    }\n\n    template <typename F>\n    void path_noncommutative_query(int\
+    \ u, int v, const F& f) {\n        int l = lca(u, v);\n        for (auto [a, b]\
+    \ : ascend(u, l)) f(a + 1, b);\n        f(in[l], in[l] + 1);\n        for (auto\
+    \ [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n    template <typename F> void\
+    \ subtree_query(int u, const F& f) {\n        f(in[u], out[u]);\n    }\n};\n};\
+    \  // namespace kyopro\n\n/**\n * @brief Heavy Light Decomposition\n * @see https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp\n\
     \ */\n#line 8 \"test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp\"\n\n\
     using namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     using affine = pair<mint, mint>;\n\naffine composite(affine x, affine y) noexcept\
@@ -309,7 +308,7 @@ data:
     \ r);\n                    ans = s * ans + t;\n                } else {\n    \
     \                auto [s, t] = sg2.fold(r, l);\n                    ans = s *\
     \ ans + t;\n                }\n            };\n\n            g.path_noncommutative_query(x,\
-    \ y, f);\n            put(ans);\n        }\n    }\n}\n"
+    \ y, f);\n            put(ans);\n        }\n    }\n}"
   dependsOn:
   - src/data-structure/segtree.hpp
   - src/math/static_modint.hpp
@@ -322,8 +321,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 18:19:39+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-05-03 18:25:18+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
 layout: document
