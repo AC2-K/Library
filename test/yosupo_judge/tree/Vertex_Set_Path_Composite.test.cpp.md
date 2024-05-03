@@ -8,10 +8,13 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
     document_title: Segment Tree
     links:
+    - https://judge.yosupo.jp/problem/vertex_set_path_composite
     - https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8
   bundledCode: "#line 1 \"test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_set_path_composite\"\
     \n#line 2 \"Library/src/data-structure/segtree.hpp\"\n#include <cassert>\n#include\
     \ <vector>\nnamespace kyopro {\n\ntemplate <class S, auto op, auto e> class segtree\
     \ {\n    int lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree() = default;\n\
@@ -258,57 +261,57 @@ data:
     \            ans = s * ans + t;\n                }\n            };\n\n       \
     \     g.path_noncommutative_query(x, y, f);\n            put(ans);\n        }\n\
     \    }\n}\n"
-  code: "#line 2 \"Library/src/data-structure/segtree.hpp\"\n#include <cassert>\n\
-    #include <vector>\nnamespace kyopro {\n\ntemplate <class S, auto op, auto e> class\
-    \ segtree {\n    int lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree()\
-    \ = default;\n    segtree(int n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const\
-    \ std::vector<S>& vec) : n((int)vec.size()) {\n        sz = 1, lg = 0;\n     \
-    \   while (sz <= n) {\n            sz <<= 1;\n            lg++;\n        }\n\n\
-    \        dat = std::vector<S>(sz << 1, e());\n\n        for (int i = 0; i < n;\
-    \ i++) {\n            set(i, vec[i]);\n        }\n        build();\n    }\n\n\
-    \    void set(int p, const S& v) {\n        assert(0 <= p && p < sz);\n      \
-    \  dat[sz + p] = v;\n    }\n    void build() {\n        for (int i = sz - 1; i\
-    \ > 0; i--) {\n            dat[i] = op(dat[i << 1 | 0], dat[i << 1 | 1]);\n  \
-    \      }\n    }\n\n    S operator[](int p) const { return dat[sz + p]; }\n\n \
-    \   void update(int p, const S& v) {\n        assert(0 <= p && p < sz);\n    \
-    \    p += sz;\n        dat[p] = v;\n        while (p >>= 1) {\n            dat[p]\
-    \ = op(dat[(p << 1) | 0], dat[(p << 1) | 1]);\n        }\n    }\n\n    S fold(int\
-    \ l, int r) const {\n        assert(0 <= l && l <= r && r <= sz);\n        if\
-    \ (l == 0 && r == n) {\n            return dat[1];\n        }\n        l += sz,\
-    \ r += sz;\n        S sml = e(), smr = e();\n        while (l != r) {\n      \
-    \      if (l & 1) sml = op(sml, dat[l++]);\n            if (r & 1) smr = op(dat[--r],\
-    \ smr);\n            l >>= 1, r >>= 1;\n        }\n        return op(sml, smr);\n\
-    \    }\n    void apply(int p, const S& v) {\n        assert(0 <= p && p < sz);\n\
-    \        update(p, op(dat[sz + p], v));\n    }\n};\n};  // namespace kyopro\n\n\
-    /**\n * @brief Segment Tree\n */\n#line 1 \"Library/src/debug.hpp\"\n#ifdef ONLINE_JUDGE\n\
-    #define debug(x) void(0)\n#else\n#define _GLIBCXX_DEBUG\n#define debug(x) \\\n\
-    \    std::cerr << __LINE__ << \" : \" << #x << \" = \" << (x) << std::endl\n#endif\n\
-    #line 2 \"Library/src/internal/CSR.hpp\"\n\n#line 4 \"Library/src/internal/CSR.hpp\"\
-    \n#include <iterator>\n#include <utility>\n#line 7 \"Library/src/internal/CSR.hpp\"\
-    \n\nnamespace kyopro {\nnamespace internal {\n\ntemplate <typename T, typename\
-    \ _size_t> class csr {\n    _size_t n;\n    std::vector<T> d;\n    std::vector<_size_t>\
-    \ ssum;\n\npublic:\n    csr() = default;\n    csr(_size_t n, const std::vector<std::pair<_size_t,\
-    \ T>>& v)\n        : n(n), ssum(n + 1), d(v.size()) {\n        for (int i = 0;\
-    \ i < (int)v.size(); ++i) {\n            ++ssum[v[i].first + 1];\n        }\n\
-    \        for (int i = 0; i < n; ++i) {\n            ssum[i + 1] += ssum[i];\n\
-    \        }\n\n        std::vector cnt = ssum;\n        for (auto e : v) d[cnt[e.first]++]\
-    \ = e.second;\n    }\n\n    struct vector_range {\n        using iterator = typename\
-    \ std::vector<T>::iterator;\n        iterator l, r;\n\n        iterator begin()\
-    \ const { return l; }\n        iterator end() const { return r; }\n        _size_t\
-    \ size() { return std::distance(l, r); }\n        T& operator[](_size_t i) const\
-    \ { return l[i]; }\n    };\n    struct const_vector_range {\n        using const_iterator\
-    \ = typename std::vector<T>::const_iterator;\n        const_iterator l, r;\n\n\
-    \        const_iterator begin() const { return l; }\n        const_iterator end()\
-    \ const { return r; }\n        _size_t size() { return (_size_t)std::distance(l,\
-    \ r); }\n        const T& operator[](_size_t i) const { return l[i]; }\n    };\n\
-    \n    vector_range operator[](_size_t i) {\n        return vector_range{d.begin()\
-    \ + ssum[i], d.begin() + ssum[i + 1]};\n    }\n    const_vector_range operator[](_size_t\
-    \ i) const {\n        return const_vector_range{d.begin() + ssum[i], d.begin()\
-    \ + ssum[i + 1]};\n    }\n\n    _size_t size() const { return (_size_t)n; }\n\
-    };\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief CSR\u5F62\
-    \u5F0F\n */\n#line 3 \"Library/src/math/static_modint.hpp\"\n#include <cstdint>\n\
-    #include <iostream>\n\n#line 3 \"Library/src/internal/type_traits.hpp\"\n#include\
-    \ <limits>\n#include <numeric>\n#include <typeinfo>\n#line 7 \"Library/src/internal/type_traits.hpp\"\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_set_path_composite\"\
+    \n#line 2 \"Library/src/data-structure/segtree.hpp\"\n#include <cassert>\n#include\
+    \ <vector>\nnamespace kyopro {\n\ntemplate <class S, auto op, auto e> class segtree\
+    \ {\n    int lg, sz, n;\n    std::vector<S> dat;\n\npublic:\n    segtree() = default;\n\
+    \    segtree(int n) : segtree(std::vector<S>(n, e())) {}\n    segtree(const std::vector<S>&\
+    \ vec) : n((int)vec.size()) {\n        sz = 1, lg = 0;\n        while (sz <= n)\
+    \ {\n            sz <<= 1;\n            lg++;\n        }\n\n        dat = std::vector<S>(sz\
+    \ << 1, e());\n\n        for (int i = 0; i < n; i++) {\n            set(i, vec[i]);\n\
+    \        }\n        build();\n    }\n\n    void set(int p, const S& v) {\n   \
+    \     assert(0 <= p && p < sz);\n        dat[sz + p] = v;\n    }\n    void build()\
+    \ {\n        for (int i = sz - 1; i > 0; i--) {\n            dat[i] = op(dat[i\
+    \ << 1 | 0], dat[i << 1 | 1]);\n        }\n    }\n\n    S operator[](int p) const\
+    \ { return dat[sz + p]; }\n\n    void update(int p, const S& v) {\n        assert(0\
+    \ <= p && p < sz);\n        p += sz;\n        dat[p] = v;\n        while (p >>=\
+    \ 1) {\n            dat[p] = op(dat[(p << 1) | 0], dat[(p << 1) | 1]);\n     \
+    \   }\n    }\n\n    S fold(int l, int r) const {\n        assert(0 <= l && l <=\
+    \ r && r <= sz);\n        if (l == 0 && r == n) {\n            return dat[1];\n\
+    \        }\n        l += sz, r += sz;\n        S sml = e(), smr = e();\n     \
+    \   while (l != r) {\n            if (l & 1) sml = op(sml, dat[l++]);\n      \
+    \      if (r & 1) smr = op(dat[--r], smr);\n            l >>= 1, r >>= 1;\n  \
+    \      }\n        return op(sml, smr);\n    }\n    void apply(int p, const S&\
+    \ v) {\n        assert(0 <= p && p < sz);\n        update(p, op(dat[sz + p], v));\n\
+    \    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Segment Tree\n */\n#line\
+    \ 1 \"Library/src/debug.hpp\"\n#ifdef ONLINE_JUDGE\n#define debug(x) void(0)\n\
+    #else\n#define _GLIBCXX_DEBUG\n#define debug(x) \\\n    std::cerr << __LINE__\
+    \ << \" : \" << #x << \" = \" << (x) << std::endl\n#endif\n#line 2 \"Library/src/internal/CSR.hpp\"\
+    \n\n#line 4 \"Library/src/internal/CSR.hpp\"\n#include <iterator>\n#include <utility>\n\
+    #line 7 \"Library/src/internal/CSR.hpp\"\n\nnamespace kyopro {\nnamespace internal\
+    \ {\n\ntemplate <typename T, typename _size_t> class csr {\n    _size_t n;\n \
+    \   std::vector<T> d;\n    std::vector<_size_t> ssum;\n\npublic:\n    csr() =\
+    \ default;\n    csr(_size_t n, const std::vector<std::pair<_size_t, T>>& v)\n\
+    \        : n(n), ssum(n + 1), d(v.size()) {\n        for (int i = 0; i < (int)v.size();\
+    \ ++i) {\n            ++ssum[v[i].first + 1];\n        }\n        for (int i =\
+    \ 0; i < n; ++i) {\n            ssum[i + 1] += ssum[i];\n        }\n\n       \
+    \ std::vector cnt = ssum;\n        for (auto e : v) d[cnt[e.first]++] = e.second;\n\
+    \    }\n\n    struct vector_range {\n        using iterator = typename std::vector<T>::iterator;\n\
+    \        iterator l, r;\n\n        iterator begin() const { return l; }\n    \
+    \    iterator end() const { return r; }\n        _size_t size() { return std::distance(l,\
+    \ r); }\n        T& operator[](_size_t i) const { return l[i]; }\n    };\n   \
+    \ struct const_vector_range {\n        using const_iterator = typename std::vector<T>::const_iterator;\n\
+    \        const_iterator l, r;\n\n        const_iterator begin() const { return\
+    \ l; }\n        const_iterator end() const { return r; }\n        _size_t size()\
+    \ { return (_size_t)std::distance(l, r); }\n        const T& operator[](_size_t\
+    \ i) const { return l[i]; }\n    };\n\n    vector_range operator[](_size_t i)\
+    \ {\n        return vector_range{d.begin() + ssum[i], d.begin() + ssum[i + 1]};\n\
+    \    }\n    const_vector_range operator[](_size_t i) const {\n        return const_vector_range{d.begin()\
+    \ + ssum[i], d.begin() + ssum[i + 1]};\n    }\n\n    _size_t size() const { return\
+    \ (_size_t)n; }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief CSR\u5F62\u5F0F\n */\n#line 3 \"Library/src/math/static_modint.hpp\"\
+    \n#include <cstdint>\n#include <iostream>\n\n#line 3 \"Library/src/internal/type_traits.hpp\"\
+    \n#include <limits>\n#include <numeric>\n#include <typeinfo>\n#line 7 \"Library/src/internal/type_traits.hpp\"\
     \n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
     \ first_enabled {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
     \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
@@ -509,7 +512,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 17:51:19+09:00'
+  timestamp: '2024-05-03 17:53:17+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
