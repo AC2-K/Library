@@ -2,22 +2,22 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/FormalPowerSeries/FPS.hpp
     title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
   - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: Polynomial Taylor Shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
   - icon: ':warning:'
     path: src/atcoder/math.hpp
     title: src/atcoder/math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
   - icon: ':warning:'
@@ -40,12 +40,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links:
     - https://en.wikipedia.org/wiki/Barrett_reduction
@@ -204,21 +204,21 @@ data:
   path: src/atcoder/internal_math.hpp
   requiredBy:
   - src/string/wildcard_pattern_matching.hpp
-  - src/FormalPowerSeries/FPS.hpp
+  - src/atcoder/modint.hpp
+  - src/atcoder/math.hpp
+  - src/atcoder/convolution.hpp
   - src/FormalPowerSeries/fps-sqrt.hpp
   - src/FormalPowerSeries/taylor-shift.hpp
-  - src/atcoder/modint.hpp
-  - src/atcoder/convolution.hpp
-  - src/atcoder/math.hpp
+  - src/FormalPowerSeries/FPS.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
 documentation_of: src/atcoder/internal_math.hpp
 layout: document
 redirect_from:

@@ -4,16 +4,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/bbst/reversible_bbst.hpp
     title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: Xor Shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template.hpp
     title: src/template.hpp
   _extendedRequiredBy: []
@@ -145,11 +145,10 @@ data:
     using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
     \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
     \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\n\
-    constexpr uint64_t MOD2 = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0, 1, -1,\
-    \ -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename\
-    \ T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a <\
-    \ b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
+    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr int dx[] = {1, 0, -1, 0,\
+    \ 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate\
+    \ <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return\
+    \ a < b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
     \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 6 \"\
     test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp\"\nusing ll\
     \ = long long;\nconstexpr inline ll op(ll x, ll y) { return x + y; }\nconstexpr\
@@ -178,7 +177,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-12-08 13:44:27+09:00'
+  timestamp: '2024-05-03 15:25:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp

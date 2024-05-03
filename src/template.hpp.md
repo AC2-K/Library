@@ -27,7 +27,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
     title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -60,15 +60,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i,\
@@ -77,8 +77,7 @@ data:
     \ = long long;\nusing ld = long double;\nusing graph = std::vector<std::vector<int>>;\n\
     using P = std::pair<int, int>;\nconstexpr int inf = std::numeric_limits<int>::max()\
     \ / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max() / 2;\nconst long double\
-    \ pi = acosl(-1);\nconstexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2\
-    \ = 998244353;\nconstexpr int dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr\
+    \ pi = acosl(-1);\nconstexpr int dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr\
     \ int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename T1, typename\
     \ T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return a < b && (a = b,\
     \ true);\n}\ntemplate <typename T1, typename T2> constexpr inline bool chmin(T1&\
@@ -89,40 +88,39 @@ data:
     \ ld = long double;\nusing graph = std::vector<std::vector<int>>;\nusing P = std::pair<int,\
     \ int>;\nconstexpr int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll\
     \ infl = std::numeric_limits<ll>::max() / 2;\nconst long double pi = acosl(-1);\n\
-    constexpr uint64_t MOD = 1e9 + 7;\nconstexpr uint64_t MOD2 = 998244353;\nconstexpr\
-    \ int dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1,\
-    \ 1, 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline bool\
-    \ chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
+    constexpr int dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0,\
+    \ 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
     \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
     \ b && (a = b, true);\n}"
   dependsOn: []
   isVerificationFile: false
   path: src/template.hpp
   requiredBy: []
-  timestamp: '2023-11-12 17:27:03+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-03 15:25:19+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
-  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-  - test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
-  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
-  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
-  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
-  - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
-  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  - test/yosupo_judge/graph/Shortest_Path.test.cpp
   - test/AOJ/DSL/3_D.test.cpp
   - test/AOJ/DSL/5_B.test.cpp
+  - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
+  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
+  - test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
+  - test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
+  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
 documentation_of: src/template.hpp
 layout: document
 redirect_from:

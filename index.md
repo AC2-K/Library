@@ -11,10 +11,10 @@ data:
       title: out.cpp
   - name: src/FormalPowerSeries
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/FormalPowerSeries/FPS.hpp
       title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/FormalPowerSeries/fps-sqrt.hpp
       title: Sqrt of FPS
     - icon: ':heavy_check_mark:'
@@ -36,7 +36,7 @@ data:
       title: Subset Zeta transform
   - name: src/atcoder
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/atcoder/convolution.hpp
       title: src/atcoder/convolution.hpp
     - icon: ':warning:'
@@ -45,13 +45,13 @@ data:
     - icon: ':warning:'
       path: src/atcoder/fenwicktree.hpp
       title: src/atcoder/fenwicktree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/atcoder/internal_bit.hpp
       title: src/atcoder/internal_bit.hpp
     - icon: ':warning:'
       path: src/atcoder/internal_csr.hpp
       title: src/atcoder/internal_csr.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/atcoder/internal_math.hpp
       title: src/atcoder/internal_math.hpp
     - icon: ':warning:'
@@ -60,7 +60,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/internal_scc.hpp
       title: src/atcoder/internal_scc.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/atcoder/internal_type_traits.hpp
       title: src/atcoder/internal_type_traits.hpp
     - icon: ':warning:'
@@ -75,7 +75,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/mincostflow.hpp
       title: src/atcoder/mincostflow.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/atcoder/modint.hpp
       title: src/atcoder/modint.hpp
     - icon: ':warning:'
@@ -112,7 +112,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/CHT.hpp
       title: Convex Hull Trick
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/data-structure/SWAG.hpp
       title: Slide Window Aggrigation
     - icon: ':heavy_check_mark:'
@@ -124,7 +124,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dynamic_segtree.hpp
       title: Dynamic Segment Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/data-structure/hash_map.hpp
       title: Hash Map
     - icon: ':heavy_check_mark:'
@@ -172,13 +172,13 @@ data:
       title: "\u6C38\u7D9AStack"
   - name: src
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/debug.hpp
       title: src/debug.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/stream.hpp
       title: "\u9AD8\u901F\u5165\u51FA\u529B"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/template.hpp
       title: src/template.hpp
   - name: src/dynamic_programming
@@ -191,7 +191,7 @@ data:
     - icon: ':warning:'
       path: src/graph/Namori.hpp
       title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
     - icon: ':warning:'
@@ -207,13 +207,13 @@ data:
     - icon: ':warning:'
       path: src/internal/CSR.hpp
       title: "CSR\u5F62\u5F0F"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/barrett.hpp
       title: Barrett Reduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/internal/type_traits.hpp
       title: src/internal/type_traits.hpp
   - name: src/math
@@ -224,45 +224,45 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/divisor-multiple-transform.hpp
       title: "Divisor\u30FBMultiple Transform"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/dynamic_modint.hpp
       title: dynamic modint
     - icon: ':warning:'
       path: src/math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/gcd.hpp
       title: src/math/gcd.hpp
     - icon: ':heavy_check_mark:'
       path: src/math/matrix.hpp
       title: "\u884C\u5217"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/miller.hpp
       title: "MillerRabin\u7D20\u6570\u5224\u5B9A"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/mod_log.hpp
       title: "\u96E2\u6563\u5BFE\u6570"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/mod_pow.hpp
       title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: src/math/mod_sqrt.hpp
       title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
     - icon: ':heavy_check_mark:'
       path: src/math/phi_function.hpp
       title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/primitive_root.hpp
       title: "\u539F\u59CB\u6839"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/rho.hpp
       title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/math/static_modint.hpp
       title: static modint
   - name: src/random
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/random/xor_shift.hpp
       title: Xor Shift
   - name: src/string
@@ -285,6 +285,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/EulerTour.hpp
       title: Euler Tour
+    - icon: ':warning:'
+      path: src/tree/HeavyLightDecomposition.hpp
+      title: HeavyLightDecomposition
     - icon: ':heavy_check_mark:'
       path: src/tree/doubling.hpp
       title: "\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
@@ -377,7 +380,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     - icon: ':heavy_check_mark:'
@@ -463,7 +466,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
       title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - name: test/yosupo_judge/string
@@ -485,7 +488,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
   - name: test/yuki
