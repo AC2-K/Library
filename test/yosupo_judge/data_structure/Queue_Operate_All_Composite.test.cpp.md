@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/SWAG.hpp
     title: Slide Window Aggrigation
   - icon: ':question:'
@@ -21,9 +21,9 @@ data:
     title: src/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
@@ -181,12 +181,12 @@ data:
     \ <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return\
     \ a < b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
     \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 7 \"\
-    test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\nusing\
-    \ mint = kyopro::modint<MOD2>;\nusing Affine = std::pair<mint, mint>;\nconstexpr\
+    test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp\"\n\nusing\
+    \ mint = kyopro::modint<998244353>;\nusing Affine = std::pair<mint, mint>;\nconstexpr\
     \ inline Affine op(const Affine& g, const Affine& f) {\n    auto a = f.first,\
     \ b = f.second;\n    auto c = g.first, d = g.second;\n    return Affine(a * c,\
-    \ a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1, 0); }\nint main()\
-    \ {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    kyopro::read(q);\n\
+    \ a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1, 0); }\n\nint\
+    \ main() {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    kyopro::read(q);\n\
     \    while (q--) {\n        int t;\n        kyopro::read(t);\n\n        if (t\
     \ == 0) {\n            mint a, b;\n            kyopro::read(a, b);\n         \
     \   que.push(Affine(a, b));\n        } else if (t == 1) {\n            que.pop_front();\n\
@@ -196,11 +196,11 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \n\n#include \"../../../src/data-structure/SWAG.hpp\"\n#include \"../../../src/math/static_modint.hpp\"\
     \n#include \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\
-    \nusing mint = kyopro::modint<MOD2>;\nusing Affine = std::pair<mint, mint>;\n\
+    \n\nusing mint = kyopro::modint<998244353>;\nusing Affine = std::pair<mint, mint>;\n\
     constexpr inline Affine op(const Affine& g, const Affine& f) {\n    auto a = f.first,\
     \ b = f.second;\n    auto c = g.first, d = g.second;\n    return Affine(a * c,\
-    \ a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1, 0); }\nint main()\
-    \ {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    kyopro::read(q);\n\
+    \ a * d + b);\n}\nconstexpr inline Affine e() { return Affine(1, 0); }\n\nint\
+    \ main() {\n    kyopro::SWAG<Affine, op, e> que;\n    int q;\n    kyopro::read(q);\n\
     \    while (q--) {\n        int t;\n        kyopro::read(t);\n\n        if (t\
     \ == 0) {\n            mint a, b;\n            kyopro::read(a, b);\n         \
     \   que.push(Affine(a, b));\n        } else if (t == 1) {\n            que.pop_front();\n\
@@ -217,8 +217,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 15:25:19+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-05-03 16:05:53+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
 layout: document

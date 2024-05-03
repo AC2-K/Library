@@ -112,7 +112,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/CHT.hpp
       title: Convex Hull Trick
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/SWAG.hpp
       title: Slide Window Aggrigation
     - icon: ':heavy_check_mark:'
@@ -380,7 +380,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     - icon: ':heavy_check_mark:'
