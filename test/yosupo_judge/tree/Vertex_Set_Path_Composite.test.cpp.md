@@ -222,19 +222,19 @@ data:
     \    par(n, root) {\n        es.reserve(2 * (n - 1));\n    }\n\n    void add_edge(int\
     \ u, int v) {\n        es.emplace_back(u, v);\n        es.emplace_back(v, u);\n\
     \    }\n\n    std::pair<int, int> idx(int i) const { return std::pair(in[i], out[i]);\
-    \ }\n\nprivate:\n    void dfs_sz(int cur) {\n        sz[cur] = 1;\n\n        for\
-    \ (auto& dst : g[cur]) {\n            if (dst == par[cur]) {\n               \
-    \ if (g[cur].size() >= 2 && dst == g[cur][0]) {\n                    std::swap(g[cur][0],\
-    \ g[cur][1]);\n                } else {\n                    continue;\n     \
-    \           }\n            }\n\n            dep[dst] = dep[cur] + 1;\n       \
-    \     par[dst] = cur;\n            dfs_sz(dst);\n            sz[cur] += sz[dst];\n\
-    \n            if (sz[dst] > sz[g[cur][0]]) {\n                std::swap(dst, g[cur][0]);\n\
-    \            }\n        }\n    }\n\n    void dfs_hld(int cur) {\n        in[cur]\
-    \ = id++;\n        for (auto dst : g[cur]) {\n            if (dst == par[cur])\
-    \ continue;\n\n            nxt[dst] = (dst == g[cur][0] ? nxt[cur] : dst);\n \
-    \           dfs_hld(dst);\n        }\n        out[cur] = id;\n    }\n\npublic:\n\
-    \    void build(int root) {\n        g = internal::csr<int, int>(n, es);\n   \
-    \     dfs_sz(root);\n        dfs_hld(root);\n    }\n\n    std::vector<std::pair<int,\
+    \ }\n\nprivate:\n    void dfs_sz(int cur) /* Checked */ {\n        sz[cur] = 1;\n\
+    \n        for (auto& dst : g[cur]) {\n            if (dst == par[cur]) {\n   \
+    \             if (g[cur].size() >= 2 && dst == g[cur][0]) {\n                \
+    \    swap(g[cur][0], g[cur][1]);\n                } else {\n                 \
+    \   continue;\n                }\n            }\n\n            dep[dst] = dep[cur]\
+    \ + 1;\n            par[dst] = cur;\n            dfs_sz(dst);\n            sz[cur]\
+    \ += sz[dst];\n\n            if (sz[dst] > sz[g[cur][0]]) {\n                swap(dst,\
+    \ g[cur][0]);\n            }\n        }\n    }\n\n    void dfs_hld(int cur) /*\
+    \ Checked */ {\n        in[cur] = id++;\n        for (auto dst : g[cur]) {\n \
+    \           if (dst == par[cur]) continue;\n\n            nxt[dst] = (dst == g[cur][0]\
+    \ ? nxt[cur] : dst);\n            dfs_hld(dst);\n        }\n        out[cur] =\
+    \ id;\n    }\n\npublic:\n    void build(int root) {\n        g = internal::csr<int,\
+    \ int>(n, es);\n        dfs_sz(root);\n        dfs_hld(root);\n    }\n\n    std::vector<std::pair<int,\
     \ int>> ascend(int u, int v) const {\n        std::vector<std::pair<int, int>>\
     \ res;\n        while (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u],\
     \ in[nxt[u]]);\n            u = par[nxt[u]];\n        }\n\n        if (u != v)\
@@ -243,11 +243,11 @@ data:
     \  if (nxt[u] == nxt[v]) return {{in[u] + 1, in[v]}};\n        std::vector res\
     \ = descend(u, par[nxt[v]]);\n        res.emplace_back(in[nxt[v]], in[v]);\n \
     \       return res;\n    }\n\n    int lca(int a, int b) const {\n        while\
-    \ (nxt[a] != nxt[b]) {\n            if (in[a] < in[b]) std::swap(a, b);\n    \
-    \        a = par[nxt[a]];\n        }\n        return dep[a] < dep[b] ? a : b;\n\
-    \    }\n\n    int dist(int a, int b) const {\n        return dep[a] + dep[b] -\
-    \ 2 * dep[lca(a, b)];\n    }\n\n    template <typename F> void path_query(int\
-    \ u, int v, const F& f) {\n        int l = lca(u, v);\n\n        for (const auto&&\
+    \ (nxt[a] != nxt[b]) {\n            if (in[a] < in[b]) swap(a, b);\n         \
+    \   a = par[nxt[a]];\n        }\n        return dep[a] < dep[b] ? a : b;\n   \
+    \ }\n\n    int dist(int a, int b) const {\n        return dep[a] + dep[b] - 2\
+    \ * dep[lca(a, b)];\n    }\n\n    template <typename F> void path_query(int u,\
+    \ int v, const F& f) {\n        int l = lca(u, v);\n\n        for (const auto&&\
     \ [a, b] : ascend(u, l)) {\n            int s = a + 1, t = b;\n            if\
     \ (s < t) {\n                f(s, t);\n            } else {\n                f(t,\
     \ s);\n            }\n        }\n        f(in[l], in[l] + 1);\n        for (const\
@@ -319,7 +319,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 15:59:44+09:00'
+  timestamp: '2024-05-03 16:13:32+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
