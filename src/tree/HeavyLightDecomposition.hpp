@@ -5,7 +5,7 @@
 namespace kyopro {
 
 class HeavyLightDecomposition {
-    int root, id;
+    int id;
     int n;
 
     std::vector<std::pair<int, int>> es;
@@ -13,15 +13,7 @@ class HeavyLightDecomposition {
 
 public:
     HeavyLightDecomposition(int n)
-        : n(n),
-          es(),
-          id(0),
-          sz(n),
-          dep(n),
-          in(n, -1),
-          out(n, -1),
-          nxt(n, root),
-          par(n, root) {
+        : n(n), es(), id(0), sz(n), dep(n), in(n, -1), out(n, -1) {
         es.reserve(2 * (n - 1));
     }
 
@@ -33,6 +25,7 @@ public:
     std::pair<int, int> idx(int i) const { return std::pair(in[i], out[i]); }
 
     void build(int root) {
+        nxt.assign(n, root), par.assign(n, root);
         internal::csr g(n, es);
         {
             auto dfs_sz = [&](auto f, int cur) -> void {
@@ -132,9 +125,9 @@ public:
     template <typename F>
     void path_noncommutative_query(int u, int v, const F& f) {
         int l = lca(u, v);
-        for (auto&& [a, b] : ascend(u, l)) f(a + 1, b);
+        for (auto [a, b] : ascend(u, l)) f(a + 1, b);
         f(in[l], in[l] + 1);
-        for (auto&& [a, b] : descend(l, v)) f(a, b + 1);
+        for (auto [a, b] : descend(l, v)) f(a, b + 1);
     }
 
     template <typename F> void subtree_query(int u, const F& f) {
