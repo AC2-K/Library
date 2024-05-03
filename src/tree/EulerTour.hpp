@@ -2,11 +2,14 @@
 #include <cassert>
 #include <utility>
 #include "../data-structure/sparse_table.hpp"
+#include "../internal/CSR.hpp"
+
 namespace kyopro {
 
 class EulerTour {
     int n;
-    std::vector<std::vector<int>> g;
+
+    std::vector<std::pair<int, int>> es;
     std::vector<int> tour;
     std::vector<int> in, out, depth;
 
@@ -19,23 +22,25 @@ class EulerTour {
 
 public:
     explicit EulerTour(int n)
-        : n(n), g(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) {
-        tour.reserve(2 * n - 1);
+        : n(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) {
+        tour.reserve(2 * n);
+        es.reserve(2 * n);
     }
+
     void add_edge(int u, int v) {
         assert(0 <= v && v < n);
         assert(0 <= u && u < n);
-        g[u].emplace_back(v);
-        g[v].emplace_back(u);
+        es.emplace_back(u, v);
+        es.emplace_back(v, u);
     }
-    const std::vector<std::vector<int>>& get_graph() const { return g; }
-    const std::vector<int>& get_tour() const { return tour; }
+
     int get_depth(int v) const {
         assert(0 <= v && v < n);
         return depth[v];
     }
 
     void build(int r = 0) {
+        internal::csr g(n, es);
         auto dfs = [&](const auto& self, int v, int p) -> void {
             in[v] = tour.size();
             tour.emplace_back(v);
@@ -59,6 +64,7 @@ public:
         assert(0 <= v && v < n);
         return {in[v], out[v]};
     }
+    
     int lca(int v, int u) const {
         assert(0 <= v && v < n);
         assert(0 <= u && u < n);

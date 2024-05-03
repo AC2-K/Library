@@ -11,7 +11,7 @@ int main() {
     int n, q;
     read(n, q);
     vector<long long> a(n);
-    for (auto& aa : a) read(aa);
+    for (int i = 0; i < n; ++i) read(a[i]);
 
     EulerTour g(n);
     for (int i = 1; i < n; i++) {
