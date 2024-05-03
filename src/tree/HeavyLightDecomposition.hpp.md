@@ -70,11 +70,11 @@ data:
     \  if (nxt[u] == nxt[v]) return {{in[u] + 1, in[v]}};\n        std::vector res\
     \ = descend(u, par[nxt[v]]);\n        res.emplace_back(in[nxt[v]], in[v]);\n \
     \       return res;\n    }\n\n    int lca(int a, int b) const {\n        while\
-    \ (nxt[a] != nxt[b]) {\n            if (in[a] < in[b]) swap(a, b);\n         \
-    \   a = par[nxt[a]];\n        }\n        return dep[a] < dep[b] ? a : b;\n   \
-    \ }\n\n    int dist(int a, int b) const {\n        return dep[a] + dep[b] - 2\
-    \ * dep[lca(a, b)];\n    }\n\n    template <typename F> void path_query(int u,\
-    \ int v, const F& f) {\n        int l = lca(u, v);\n\n        for (const auto&&\
+    \ (nxt[a] != nxt[b]) {\n            if (in[a] < in[b]) std::swap(a, b);\n    \
+    \        a = par[nxt[a]];\n        }\n        return dep[a] < dep[b] ? a : b;\n\
+    \    }\n\n    int dist(int a, int b) const {\n        return dep[a] + dep[b] -\
+    \ 2 * dep[lca(a, b)];\n    }\n\n    template <typename F> void path_query(int\
+    \ u, int v, const F& f) {\n        int l = lca(u, v);\n\n        for (const auto&&\
     \ [a, b] : ascend(u, l)) {\n            int s = a + 1, t = b;\n            if\
     \ (s < t) {\n                f(s, t);\n            } else {\n                f(t,\
     \ s);\n            }\n        }\n        f(in[l], in[l] + 1);\n        for (const\
@@ -119,7 +119,7 @@ data:
     \ == nxt[v]) return {{in[u] + 1, in[v]}};\n        std::vector res = descend(u,\
     \ par[nxt[v]]);\n        res.emplace_back(in[nxt[v]], in[v]);\n        return\
     \ res;\n    }\n\n    int lca(int a, int b) const {\n        while (nxt[a] != nxt[b])\
-    \ {\n            if (in[a] < in[b]) swap(a, b);\n            a = par[nxt[a]];\n\
+    \ {\n            if (in[a] < in[b]) std::swap(a, b);\n            a = par[nxt[a]];\n\
     \        }\n        return dep[a] < dep[b] ? a : b;\n    }\n\n    int dist(int\
     \ a, int b) const {\n        return dep[a] + dep[b] - 2 * dep[lca(a, b)];\n  \
     \  }\n\n    template <typename F> void path_query(int u, int v, const F& f) {\n\
@@ -141,7 +141,7 @@ data:
   isVerificationFile: false
   path: src/tree/HeavyLightDecomposition.hpp
   requiredBy: []
-  timestamp: '2024-05-03 16:14:57+09:00'
+  timestamp: '2024-05-03 16:17:19+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
