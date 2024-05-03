@@ -50,11 +50,13 @@
 "test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp": "2024-05-03 15:25:19 +0900",
 "test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp": "2024-05-03 15:25:19 +0900",
 "test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp": "2024-05-03 15:25:19 +0900",
+"test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp": "2024-05-03 15:25:19 +0900",
 "test/yosupo_judge/string/Enumerate_Palindromes.test.cpp": "2023-10-22 17:20:37 +0900",
 "test/yosupo_judge/string/Z_algorithm.test.cpp": "2023-10-22 17:20:37 +0900",
 "test/yosupo_judge/tree/Jump_on_Tree.test.cpp": "2023-10-22 17:20:37 +0900",
 "test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp": "2023-11-04 20:49:15 +0900",
 "test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp": "2023-10-22 17:20:37 +0900",
+"test/yosupo_judge/tree/Tree_Diameter.test.cpp": "2024-05-03 15:25:19 +0900",
 "test/yuki/No3030.test.cpp": "2023-10-22 17:06:17 +0900",
 "test/yuki/No430.test.cpp": "2024-02-21 16:16:45 +0900",
 "test/yuki/No789.test.cpp": "2023-10-22 18:54:24 +0900"
