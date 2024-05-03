@@ -2,16 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/FPS.hpp
     title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
   - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: Polynomial Taylor Shift
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
   - icon: ':warning:'
@@ -40,12 +40,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/atcoder/internal_bit.hpp\"\n\n\n\n#ifdef _MSC_VER\n\
@@ -85,7 +85,7 @@ data:
   - src/FormalPowerSeries/taylor-shift.hpp
   - src/FormalPowerSeries/FPS.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp

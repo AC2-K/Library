@@ -7,7 +7,7 @@ data:
   - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: Xor Shift
   - icon: ':question:'

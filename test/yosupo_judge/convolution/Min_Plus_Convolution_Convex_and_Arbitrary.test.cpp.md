@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/min_plus_convolution_convex_arbitrary.hpp
     title: Min Plus Convolution (Convex, Arbitrary)
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/debug.hpp
     title: src/debug.hpp
   - icon: ':question:'

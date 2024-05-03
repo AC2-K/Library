@@ -60,12 +60,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
+    title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
   _verificationStatusIcon: ':question:'
@@ -121,6 +124,7 @@ data:
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  - test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
 documentation_of: src/template.hpp
 layout: document
 redirect_from:

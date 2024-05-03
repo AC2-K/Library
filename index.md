@@ -11,10 +11,10 @@ data:
       title: out.cpp
   - name: src/FormalPowerSeries
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/FormalPowerSeries/FPS.hpp
       title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/FormalPowerSeries/fps-sqrt.hpp
       title: Sqrt of FPS
     - icon: ':heavy_check_mark:'
@@ -36,7 +36,7 @@ data:
       title: Subset Zeta transform
   - name: src/atcoder
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/convolution.hpp
       title: src/atcoder/convolution.hpp
     - icon: ':warning:'
@@ -45,13 +45,13 @@ data:
     - icon: ':warning:'
       path: src/atcoder/fenwicktree.hpp
       title: src/atcoder/fenwicktree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/internal_bit.hpp
       title: src/atcoder/internal_bit.hpp
     - icon: ':warning:'
       path: src/atcoder/internal_csr.hpp
       title: src/atcoder/internal_csr.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/internal_math.hpp
       title: src/atcoder/internal_math.hpp
     - icon: ':warning:'
@@ -60,7 +60,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/internal_scc.hpp
       title: src/atcoder/internal_scc.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/internal_type_traits.hpp
       title: src/atcoder/internal_type_traits.hpp
     - icon: ':warning:'
@@ -75,7 +75,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/mincostflow.hpp
       title: src/atcoder/mincostflow.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/modint.hpp
       title: src/atcoder/modint.hpp
     - icon: ':warning:'
@@ -124,13 +124,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dynamic_segtree.hpp
       title: Dynamic Segment Tree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/hash_map.hpp
       title: Hash Map
     - icon: ':heavy_check_mark:'
       path: src/data-structure/lazy_segtree.hpp
       title: Lazy Segment Tree
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: src/data-structure/segtree.hpp
       title: Segment Tree
     - icon: ':heavy_check_mark:'
@@ -172,7 +172,7 @@ data:
       title: "\u6C38\u7D9AStack"
   - name: src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/debug.hpp
       title: src/debug.hpp
     - icon: ':question:'
@@ -191,7 +191,7 @@ data:
     - icon: ':warning:'
       path: src/graph/Namori.hpp
       title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/graph/dijkstra.hpp
       title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
     - icon: ':warning:'
@@ -204,13 +204,13 @@ data:
       title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
   - name: src/internal
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/internal/CSR.hpp
       title: "CSR\u5F62\u5F0F"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/barrett.hpp
       title: Barrett Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
     - icon: ':question:'
@@ -224,7 +224,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/divisor-multiple-transform.hpp
       title: "Divisor\u30FBMultiple Transform"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: dynamic modint
     - icon: ':warning:'
@@ -236,25 +236,25 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/matrix.hpp
       title: "\u884C\u5217"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/miller.hpp
       title: "MillerRabin\u7D20\u6570\u5224\u5B9A"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/mod_log.hpp
       title: "\u96E2\u6563\u5BFE\u6570"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/mod_pow.hpp
       title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/mod_sqrt.hpp
       title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
     - icon: ':heavy_check_mark:'
       path: src/math/phi_function.hpp
       title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/primitive_root.hpp
       title: "\u539F\u59CB\u6839"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/rho.hpp
       title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
     - icon: ':question:'
@@ -262,7 +262,7 @@ data:
       title: static modint
   - name: src/random
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/random/xor_shift.hpp
       title: Xor Shift
   - name: src/string
@@ -285,7 +285,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/EulerTour.hpp
       title: Euler Tour
-    - icon: ':warning:'
+    - icon: ':x:'
       path: src/tree/HeavyLightDecomposition.hpp
       title: HeavyLightDecomposition
     - icon: ':heavy_check_mark:'
@@ -466,7 +466,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
       title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - name: test/yosupo_judge/string
@@ -488,9 +488,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
       title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+    - icon: ':x:'
+      path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
+      title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   - name: test/yuki
     pages:
     - icon: ':heavy_check_mark:'

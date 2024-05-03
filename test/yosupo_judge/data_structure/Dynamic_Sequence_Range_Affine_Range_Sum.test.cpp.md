@@ -14,7 +14,7 @@ data:
   - icon: ':question:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/random/xor_shift.hpp
     title: Xor Shift
   - icon: ':question:'

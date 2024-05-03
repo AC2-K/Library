@@ -45,6 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - icon: ':x:'
+    path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
+    title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
   _verificationStatusIcon: ':question:'
@@ -212,6 +215,7 @@ data:
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
   - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
 documentation_of: src/math/static_modint.hpp
 layout: document
 redirect_from:
