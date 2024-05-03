@@ -226,18 +226,18 @@ data:
     \ f, int cur) -> void {\n                sz[cur] = 1;\n\n                for (auto&\
     \ dst : g[cur]) {\n                    if (dst == par[cur]) {\n              \
     \          if (g[cur].size() >= 2 && dst == g[cur][0]) {\n                   \
-    \         swap(g[cur][0], g[cur][1]);\n                        } else {\n    \
-    \                        continue;\n                        }\n              \
-    \      }\n\n                    dep[dst] = dep[cur] + 1;\n                   \
-    \ par[dst] = cur;\n                    f(f, dst);\n                    sz[cur]\
+    \         std::swap(g[cur][0], g[cur][1]);\n                        } else {\n\
+    \                            continue;\n                        }\n          \
+    \          }\n\n                    dep[dst] = dep[cur] + 1;\n               \
+    \     par[dst] = cur;\n                    f(f, dst);\n                    sz[cur]\
     \ += sz[dst];\n\n                    if (sz[dst] > sz[g[cur][0]]) {\n        \
-    \                swap(dst, g[cur][0]);\n                    }\n              \
-    \  }\n            };\n            dfs_sz(dfs_sz, root);\n        }\n        {\n\
-    \            auto dfs_hld = [&](const auto& f, int cur) -> void {\n          \
-    \      in[cur] = id++;\n                for (auto dst : g[cur]) {\n          \
-    \          if (dst == par[cur]) continue;\n\n                    nxt[dst] = (dst\
-    \ == g[cur][0] ? nxt[cur] : dst);\n                    f(f, dst);\n          \
-    \      }\n                out[cur] = id;\n            };\n            dfs_hld(dfs_hld,\
+    \                std::swap(dst, g[cur][0]);\n                    }\n         \
+    \       }\n            };\n            dfs_sz(dfs_sz, root);\n        }\n    \
+    \    {\n            auto dfs_hld = [&](const auto& f, int cur) -> void {\n   \
+    \             in[cur] = id++;\n                for (auto dst : g[cur]) {\n   \
+    \                 if (dst == par[cur]) continue;\n\n                    nxt[dst]\
+    \ = (dst == g[cur][0] ? nxt[cur] : dst);\n                    f(f, dst);\n   \
+    \             }\n                out[cur] = id;\n            };\n            dfs_hld(dfs_hld,\
     \ root);\n        }\n    }\n\nprivate:\n    std::vector<std::pair<int, int>> ascend(int\
     \ u, int v) const {\n        std::vector<std::pair<int, int>> res;\n        while\
     \ (nxt[u] != nxt[v]) {\n            res.emplace_back(in[u], in[nxt[u]]);\n   \
@@ -322,7 +322,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 16:58:25+09:00'
+  timestamp: '2024-05-03 17:00:03+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
