@@ -15,8 +15,8 @@ class HeavyLightDecomposition {
 public:
     HeavyLightDecomposition(int n)
         : n(n),
-          es(),
           g(),
+          es(),
           sz(n),
           dep(n),
           in(n, -1),
@@ -57,7 +57,7 @@ private:
         }
     }
 
-    void dfs_hld(int cur) /* Checked */ {
+    void dfs_hld(int cur) {
         in[cur] = id++;
         for (auto dst : g[cur]) {
             if (dst == par[cur]) continue;
@@ -109,7 +109,7 @@ public:
     template <typename F> void path_query(int u, int v, const F& f) {
         int l = lca(u, v);
 
-        for (const auto&& [a, b] : ascend(u, l)) {
+        for (auto [a, b] : ascend(u, l)) {
             int s = a + 1, t = b;
             if (s < t) {
                 f(s, t);
@@ -118,7 +118,7 @@ public:
             }
         }
         f(in[l], in[l] + 1);
-        for (const auto&& [a, b] : descend(l, v)) {
+        for (auto [a, b] : descend(l, v)) {
             int s = a, t = b + 1;
             if (s < t) {
                 f(s, t);
