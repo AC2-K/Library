@@ -251,18 +251,19 @@ data:
     \ = par[nxt[a]];\n        }\n        return dep[a] < dep[b] ? a : b;\n    }\n\n\
     \    int dist(int a, int b) const {\n        return dep[a] + dep[b] - 2 * dep[lca(a,\
     \ b)];\n    }\n\n    template <typename F> void path_query(int u, int v, const\
-    \ F& f) {\n        int l = lca(u, v);\n\n        for (auto [a, b] : ascend(u,\
+    \ F& f) {\n        int l = lca(u, v);\n\n        for (const auto&& [a, b] : ascend(u,\
     \ l)) {\n            int s = a + 1, t = b;\n            if (s < t) {\n       \
     \         f(s, t);\n            } else {\n                f(t, s);\n         \
-    \   }\n        }\n        f(in[l], in[l] + 1);\n        for (auto [a, b] : descend(l,\
-    \ v)) {\n            int s = a, t = b + 1;\n            if (s < t) {\n       \
-    \         f(s, t);\n            } else {\n                f(t, s);\n         \
-    \   }\n        }\n    }\n\n    template <typename F>\n    void path_noncommutative_query(int\
-    \ u, int v, const F& f) {\n        int l = lca(u, v);\n        for (auto [a, b]\
-    \ : ascend(u, l)) f(a + 1, b);\n        f(in[l], in[l] + 1);\n        for (auto\
-    \ [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n    template <typename F> void\
-    \ subtree_query(int u, const F& f) {\n        f(in[u], out[u]);\n    }\n};\n};\
-    \  // namespace kyopro\n\n/**\n * @brief Heavy Light Decomposition\n * @see https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp\n\
+    \   }\n        }\n        f(in[l], in[l] + 1);\n        for (const auto&& [a,\
+    \ b] : descend(l, v)) {\n            int s = a, t = b + 1;\n            if (s\
+    \ < t) {\n                f(s, t);\n            } else {\n                f(t,\
+    \ s);\n            }\n        }\n    }\n\n    template <typename F>\n    void\
+    \ path_noncommutative_query(int u, int v, const F& f) {\n        int l = lca(u,\
+    \ v);\n        for (auto&& [a, b] : ascend(u, l)) f(a + 1, b);\n        f(in[l],\
+    \ in[l] + 1);\n        for (auto&& [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\
+    \n    template <typename F> void subtree_query(int u, const F& f) {\n        f(in[u],\
+    \ out[u]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Heavy Light Decomposition\n\
+    \ * @see https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp\n\
     \ */\n#line 8 \"test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp\"\n\n\
     using namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     using affine = pair<mint, mint>;\n\naffine composite(affine x, affine y) noexcept\
@@ -322,7 +323,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 17:00:03+09:00'
+  timestamp: '2024-05-03 17:05:26+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
