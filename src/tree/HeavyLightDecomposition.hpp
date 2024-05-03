@@ -40,7 +40,7 @@ public:
                 for (auto& dst : g[cur]) {
                     if (dst == par[cur]) {
                         if (g[cur].size() >= 2 && dst == g[cur][0]) {
-                            swap(g[cur][0], g[cur][1]);
+                            std::swap(g[cur][0], g[cur][1]);
                         } else {
                             continue;
                         }
@@ -52,7 +52,7 @@ public:
                     sz[cur] += sz[dst];
 
                     if (sz[dst] > sz[g[cur][0]]) {
-                        swap(dst, g[cur][0]);
+                        std::swap(dst, g[cur][0]);
                     }
                 }
             };
