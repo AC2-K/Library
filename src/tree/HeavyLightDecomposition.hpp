@@ -96,7 +96,7 @@ public:
 
     int lca(int a, int b) const {
         while (nxt[a] != nxt[b]) {
-            if (in[a] < in[b]) swap(a, b);
+            if (in[a] < in[b]) std::swap(a, b);
             a = par[nxt[a]];
         }
         return dep[a] < dep[b] ? a : b;
