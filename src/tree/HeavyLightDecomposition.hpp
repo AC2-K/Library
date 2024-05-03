@@ -8,14 +8,12 @@ class HeavyLightDecomposition {
     int root, id;
     int n;
 
-    internal::csr<int, int> g;
     std::vector<std::pair<int, int>> es;
     std::vector<int> sz, dep, in, out, nxt, par;
 
 public:
     HeavyLightDecomposition(int n)
         : n(n),
-          g(),
           es(),
           sz(n),
           dep(n),
@@ -33,48 +31,48 @@ public:
 
     std::pair<int, int> idx(int i) const { return std::pair(in[i], out[i]); }
 
-private:
-    void dfs_sz(int cur) /* Checked */ {
-        sz[cur] = 1;
-
-        for (auto& dst : g[cur]) {
-            if (dst == par[cur]) {
-                if (g[cur].size() >= 2 && dst == g[cur][0]) {
-                    std::swap(g[cur][0], g[cur][1]);
-                } else {
-                    continue;
-                }
-            }
-
-            dep[dst] = dep[cur] + 1;
-            par[dst] = cur;
-            dfs_sz(dst);
-            sz[cur] += sz[dst];
-
-            if (sz[dst] > sz[g[cur][0]]) {
-                std::swap(dst, g[cur][0]);
-            }
-        }
-    }
-
-    void dfs_hld(int cur) {
-        in[cur] = id++;
-        for (auto dst : g[cur]) {
-            if (dst == par[cur]) continue;
-
-            nxt[dst] = (dst == g[cur][0] ? nxt[cur] : dst);
-            dfs_hld(dst);
-        }
-        out[cur] = id;
-    }
-
-public:
     void build(int root) {
-        g = internal::csr<int, int>(n, es);
-        dfs_sz(root);
-        dfs_hld(root);
+        internal::csr g(n, es);
+        {
+            auto dfs_sz = [&](const auto& f, int cur) -> void {
+                sz[cur] = 1;
+                for (auto& dst : g[cur]) {
+                    if (dst == par[cur]) {
+                        if (g[cur].size() >= 2 && dst == g[cur][0]) {
+                            std::swap(g[cur][0], g[cur][1]);
+                        } else {
+                            continue;
+                        }
+                    }
+
+                    dep[dst] = dep[cur] + 1;
+                    par[dst] = cur;
+                    f(f, dst);
+                    sz[cur] += sz[dst];
+
+                    if (sz[dst] > sz[g[cur][0]]) {
+                        std::swap(dst, g[cur][0]);
+                    }
+                }
+            };
+            dfs_sz(dfs_sz, root);
+        }
+        {
+            auto dfs_hld = [&](const auto& f, int cur) -> void {
+                in[cur] = id++;
+                for (auto dst : g[cur]) {
+                    if (dst == par[cur]) continue;
+
+                    nxt[dst] = (dst == g[cur][0] ? nxt[cur] : dst);
+                    f(f, dst);
+                }
+                out[cur] = id;
+            };
+            dfs_hld(dfs_hld, root);
+        }
     }
 
+private:
     std::vector<std::pair<int, int>> ascend(int u, int v) const {
         std::vector<std::pair<int, int>> res;
         while (nxt[u] != nxt[v]) {
@@ -94,6 +92,7 @@ public:
         return res;
     }
 
+public:
     int lca(int a, int b) const {
         while (nxt[a] != nxt[b]) {
             if (in[a] < in[b]) std::swap(a, b);
@@ -143,6 +142,6 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief HeavyLightDecomposition
+ * @brief Heavy Light Decomposition
  * @see https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp
  */
