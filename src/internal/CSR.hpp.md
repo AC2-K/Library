@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/tree/HeavyLightDecomposition.hpp
     title: Heavy Light Decomposition
+  - icon: ':heavy_check_mark:'
+    path: src/tree/doubling.hpp
+    title: "\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
@@ -22,8 +25,14 @@ data:
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
+    title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+    title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -82,6 +91,7 @@ data:
   requiredBy:
   - src/tree/EulerTour.hpp
   - src/tree/HeavyLightDecomposition.hpp
+  - src/tree/doubling.hpp
   timestamp: '2024-05-03 15:25:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -89,7 +99,9 @@ data:
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
 documentation_of: src/internal/CSR.hpp
 layout: document
 redirect_from:
