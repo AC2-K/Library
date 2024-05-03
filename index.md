@@ -414,6 +414,9 @@ data:
       path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+      title: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - name: test/yosupo_judge/graph
@@ -491,9 +494,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
-      title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   - name: test/yuki
     pages:
     - icon: ':heavy_check_mark:'

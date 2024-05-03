@@ -8,6 +8,9 @@ data:
     path: src/data-structure/sparse_table.hpp
     title: SparseTable
   - icon: ':heavy_check_mark:'
+    path: src/internal/CSR.hpp
+    title: "CSR\u5F62\u5F0F"
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
@@ -119,20 +122,42 @@ data:
     \ i++) {\n            lg[i] = lg[i >> 1] + 1;\n        }\n    }\n\n    T fold(int\
     \ l, int r) const {\n        int b = lg[r - l];\n        return op(table[b][l],\
     \ table[b][r - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief\
-    \ SparseTable\n */\n#line 5 \"src/tree/EulerTour.hpp\"\nnamespace kyopro {\n\n\
-    class EulerTour {\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
+    \ SparseTable\n */\n#line 2 \"src/internal/CSR.hpp\"\n\n#line 4 \"src/internal/CSR.hpp\"\
+    \n#include <iterator>\n#line 7 \"src/internal/CSR.hpp\"\n\nnamespace kyopro {\n\
+    namespace internal {\n\ntemplate <typename T, typename _size_t> class csr {\n\
+    \    _size_t n;\n    std::vector<T> d;\n    std::vector<_size_t> ssum;\n\npublic:\n\
+    \    csr() = default;\n    csr(_size_t n, const std::vector<std::pair<_size_t,\
+    \ T>>& v)\n        : n(n), ssum(n + 1), d(v.size()) {\n        for (int i = 0;\
+    \ i < (int)v.size(); ++i) {\n            ++ssum[v[i].first + 1];\n        }\n\
+    \        for (int i = 0; i < n; ++i) {\n            ssum[i + 1] += ssum[i];\n\
+    \        }\n\n        std::vector cnt = ssum;\n        for (auto e : v) d[cnt[e.first]++]\
+    \ = e.second;\n    }\n\n    struct vector_range {\n        using iterator = typename\
+    \ std::vector<T>::iterator;\n        iterator l, r;\n\n        iterator begin()\
+    \ const { return l; }\n        iterator end() const { return r; }\n        _size_t\
+    \ size() { return std::distance(l, r); }\n        T& operator[](_size_t i) const\
+    \ { return l[i]; }\n    };\n    struct const_vector_range {\n        using const_iterator\
+    \ = typename std::vector<T>::const_iterator;\n        const_iterator l, r;\n\n\
+    \        const_iterator begin() const { return l; }\n        const_iterator end()\
+    \ const { return r; }\n        _size_t size() { return (_size_t)std::distance(l,\
+    \ r); }\n        const T& operator[](_size_t i) const { return l[i]; }\n    };\n\
+    \n    vector_range operator[](_size_t i) {\n        return vector_range{d.begin()\
+    \ + ssum[i], d.begin() + ssum[i + 1]};\n    }\n    const_vector_range operator[](_size_t\
+    \ i) const {\n        return const_vector_range{d.begin() + ssum[i], d.begin()\
+    \ + ssum[i + 1]};\n    }\n\n    _size_t size() const { return (_size_t)n; }\n\
+    };\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief CSR\u5F62\
+    \u5F0F\n */\n#line 6 \"src/tree/EulerTour.hpp\"\n\nnamespace kyopro {\n\nclass\
+    \ EulerTour {\n    int n;\n\n    std::vector<std::pair<int, int>> es;\n    std::vector<int>\
     \ tour;\n    std::vector<int> in, out, depth;\n\n    struct get_min_pair {\n \
     \       using value_t = std::pair<int, int>;\n        static value_t op(value_t\
     \ x, value_t y) { return std::min(x, y); }\n    };\n\n    sparse_table<get_min_pair::value_t,\
     \ get_min_pair::op> rmq;\n\npublic:\n    explicit EulerTour(int n)\n        :\
-    \ n(n), g(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) {\n        tour.reserve(2\
-    \ * n - 1);\n    }\n    void add_edge(int u, int v) {\n        assert(0 <= v &&\
-    \ v < n);\n        assert(0 <= u && u < n);\n        g[u].emplace_back(v);\n \
-    \       g[v].emplace_back(u);\n    }\n    const std::vector<std::vector<int>>&\
-    \ get_graph() const { return g; }\n    const std::vector<int>& get_tour() const\
-    \ { return tour; }\n    int get_depth(int v) const {\n        assert(0 <= v &&\
-    \ v < n);\n        return depth[v];\n    }\n\n    void build(int r = 0) {\n  \
-    \      auto dfs = [&](const auto& self, int v, int p) -> void {\n            in[v]\
+    \ n(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) {\n        tour.reserve(2\
+    \ * n);\n        es.reserve(2 * n);\n    }\n\n    void add_edge(int u, int v)\
+    \ {\n        assert(0 <= v && v < n);\n        assert(0 <= u && u < n);\n    \
+    \    es.emplace_back(u, v);\n        es.emplace_back(v, u);\n    }\n\n    int\
+    \ get_depth(int v) const {\n        assert(0 <= v && v < n);\n        return depth[v];\n\
+    \    }\n\n    void build(int r = 0) {\n        internal::csr g(n, es);\n     \
+    \   auto dfs = [&](const auto& self, int v, int p) -> void {\n            in[v]\
     \ = tour.size();\n            tour.emplace_back(v);\n            for (auto nv\
     \ : g[v]) {\n                if (nv != p) {\n                    depth[nv] = depth[v]\
     \ + 1;\n                    self(self, nv, v);\n                    tour.emplace_back(v);\n\
@@ -140,8 +165,8 @@ data:
     \     };\n        dfs(dfs, r, -1);\n        for (int i = 0; i < (int)tour.size();\
     \ i++) {\n            rmq.set(i, {depth[tour[i]], tour[i]});\n        }\n    \
     \    rmq.build();\n    }\n\n    std::pair<int, int> idx(int v) const {\n     \
-    \   assert(0 <= v && v < n);\n        return {in[v], out[v]};\n    }\n    int\
-    \ lca(int v, int u) const {\n        assert(0 <= v && v < n);\n        assert(0\
+    \   assert(0 <= v && v < n);\n        return {in[v], out[v]};\n    }\n    \n \
+    \   int lca(int v, int u) const {\n        assert(0 <= v && v < n);\n        assert(0\
     \ <= u && u < n);\n        if (in[v] > in[u] + 1) {\n            std::swap(u,\
     \ v);\n        }\n        return rmq.fold(in[v], in[u] + 1).second;\n    }\n\n\
     \    int dist(int v, int u) const {\n        assert(0 <= v && v < n);\n      \
@@ -152,30 +177,31 @@ data:
     };  // namespace kyopro\n\n/**\n * @brief Euler Tour\n * @docs docs/tree/EulerTour.md\n\
     \ */\n#line 6 \"test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp\"\
     \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n,\
-    \ q;\n    read(n, q);\n    vector<long long> a(n);\n    for (auto& aa : a) read(aa);\n\
-    \n    EulerTour g(n);\n    for (int i = 0; i < n - 1; i++) {\n        int v, u;\n\
-    \        read(v, u);\n        g.add_edge(v, u);\n    }\n    g.build();\n\n   \
-    \ BIT<long long> seg(2 * n);\n    for (int v = 0; v < n; v++) {\n        auto\
-    \ [in, out] = g.idx(v);\n        seg.add(in, a[v]);\n        seg.add(out + 1,\
-    \ -a[v]);\n    }\n    while (q--) {\n        int t;\n        read(t);\n      \
-    \  if (t == 0) {\n            int v, x;\n            read(v, x);\n           \
-    \ auto [in, out] = g.idx(v);\n            seg.add(in, x);\n            seg.add(out\
-    \ + 1, -x);\n        } else {\n            int v, u;\n            read(v, u);\n\
-    \            long long ans = 0;\n            int p_in = g.idx(g.lca(v, u)).first;\n\
-    \            ans += seg.sum(p_in, g.idx(v).first + 1);\n            ans += seg.sum(p_in\
-    \ + 1, g.idx(u).first + 1);\n            put(ans);\n        }\n    }\n}\n"
+    \ q;\n    read(n, q);\n    vector<long long> a(n);\n    for (int i = 0; i < n;\
+    \ ++i) read(a[i]);\n\n    EulerTour g(n);\n    for (int i = 0; i < n - 1; i++)\
+    \ {\n        int v, u;\n        read(v, u);\n        g.add_edge(v, u);\n    }\n\
+    \    g.build();\n\n    BIT<long long> seg(2 * n);\n    for (int v = 0; v < n;\
+    \ v++) {\n        auto [in, out] = g.idx(v);\n        seg.add(in, a[v]);\n   \
+    \     seg.add(out + 1, -a[v]);\n    }\n\n    while (q--) {\n        int t;\n \
+    \       read(t);\n        if (t == 0) {\n            int v, x;\n            read(v,\
+    \ x);\n            auto [in, out] = g.idx(v);\n            seg.add(in, x);\n \
+    \           seg.add(out + 1, -x);\n        } else {\n            int v, u;\n \
+    \           read(v, u);\n            long long ans = 0;\n            int p_in\
+    \ = g.idx(g.lca(v, u)).first;\n            ans += seg.sum(p_in, g.idx(v).first\
+    \ + 1);\n            ans += seg.sum(p_in + 1, g.idx(u).first + 1);\n         \
+    \   put(ans);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
     #include <iostream>\n#include \"../../../src/data-structure/BIT.hpp\"\n#include\
     \ \"../../../src/stream.hpp\"\n#include \"../../../src/tree/EulerTour.hpp\"\n\n\
     using namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n\
-    \    read(n, q);\n    vector<long long> a(n);\n    for (auto& aa : a) read(aa);\n\
-    \n    EulerTour g(n);\n    for (int i = 0; i < n - 1; i++) {\n        int v, u;\n\
-    \        read(v, u);\n        g.add_edge(v, u);\n    }\n    g.build();\n\n   \
-    \ BIT<long long> seg(2 * n);\n    for (int v = 0; v < n; v++) {\n        auto\
-    \ [in, out] = g.idx(v);\n        seg.add(in, a[v]);\n        seg.add(out + 1,\
-    \ -a[v]);\n    }\n    while (q--) {\n        int t;\n        read(t);\n      \
-    \  if (t == 0) {\n            int v, x;\n            read(v, x);\n           \
-    \ auto [in, out] = g.idx(v);\n            seg.add(in, x);\n            seg.add(out\
+    \    read(n, q);\n    vector<long long> a(n);\n    for (int i = 0; i < n; ++i)\
+    \ read(a[i]);\n\n    EulerTour g(n);\n    for (int i = 0; i < n - 1; i++) {\n\
+    \        int v, u;\n        read(v, u);\n        g.add_edge(v, u);\n    }\n  \
+    \  g.build();\n\n    BIT<long long> seg(2 * n);\n    for (int v = 0; v < n; v++)\
+    \ {\n        auto [in, out] = g.idx(v);\n        seg.add(in, a[v]);\n        seg.add(out\
+    \ + 1, -a[v]);\n    }\n\n    while (q--) {\n        int t;\n        read(t);\n\
+    \        if (t == 0) {\n            int v, x;\n            read(v, x);\n     \
+    \       auto [in, out] = g.idx(v);\n            seg.add(in, x);\n            seg.add(out\
     \ + 1, -x);\n        } else {\n            int v, u;\n            read(v, u);\n\
     \            long long ans = 0;\n            int p_in = g.idx(g.lca(v, u)).first;\n\
     \            ans += seg.sum(p_in, g.idx(v).first + 1);\n            ans += seg.sum(p_in\
@@ -186,10 +212,11 @@ data:
   - src/internal/type_traits.hpp
   - src/tree/EulerTour.hpp
   - src/data-structure/sparse_table.hpp
+  - src/internal/CSR.hpp
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   requiredBy: []
-  timestamp: '2023-11-04 20:49:15+09:00'
+  timestamp: '2024-05-03 18:39:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp

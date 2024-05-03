@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
-    title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
+    path: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -149,7 +149,7 @@ data:
   timestamp: '2024-05-03 18:25:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
 documentation_of: src/tree/HeavyLightDecomposition.hpp
 layout: document
 redirect_from:

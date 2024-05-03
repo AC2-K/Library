@@ -37,6 +37,9 @@ data:
     path: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
     title: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - icon: ':heavy_check_mark:'
@@ -66,9 +69,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
-    title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -115,6 +115,7 @@ data:
   - test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
   - test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
   - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
@@ -124,7 +125,6 @@ data:
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
 documentation_of: src/template.hpp
 layout: document
 redirect_from:

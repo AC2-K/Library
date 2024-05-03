@@ -35,7 +35,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
     links:
     - https://judge.yosupo.jp/problem/vertex_set_path_composite
-  bundledCode: "#line 1 \"test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_set_path_composite\"\
     \n\n#line 2 \"src/data-structure/segtree.hpp\"\n#include <cassert>\n#include <vector>\n\
     namespace kyopro {\n\n\ntemplate <class S, auto op, auto e> class segtree {\n\
@@ -262,8 +262,8 @@ data:
     \ [a, b] : descend(l, v)) f(a, b + 1);\n    }\n\n    template <typename F> void\
     \ subtree_query(int u, const F& f) {\n        f(in[u], out[u]);\n    }\n};\n};\
     \  // namespace kyopro\n\n/**\n * @brief Heavy Light Decomposition\n * @see https://nyaannyaan.github.io/library/tree/heavy-light-decomposition.hpp\n\
-    \ */\n#line 8 \"test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp\"\n\n\
-    using namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
+    \ */\n#line 8 \"test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     using affine = pair<mint, mint>;\n\naffine composite(affine x, affine y) noexcept\
     \ {\n    return affine(x.first * y.first, x.second * y.first + y.second);\n}\n\
     affine id() noexcept { return affine(mint::raw(1), mint()); }\n\naffine op1(affine\
@@ -319,15 +319,15 @@ data:
   - src/tree/HeavyLightDecomposition.hpp
   - src/internal/CSR.hpp
   isVerificationFile: true
-  path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
+  path: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 18:25:18+09:00'
+  timestamp: '2024-05-03 18:39:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
+documentation_of: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
-- /verify/test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp.html
-title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
+- /verify/test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+- /verify/test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp.html
+title: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
 ---

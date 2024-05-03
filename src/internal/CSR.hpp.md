@@ -3,12 +3,27 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/tree/EulerTour.hpp
+    title: Euler Tour
+  - icon: ':heavy_check_mark:'
     path: src/tree/HeavyLightDecomposition.hpp
     title: Heavy Light Decomposition
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
-    title: test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
+    path: test/AOJ/GRL/5_C.test.cpp
+    title: test/AOJ/GRL/5_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+    title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+    title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -65,11 +80,16 @@ data:
   isVerificationFile: false
   path: src/internal/CSR.hpp
   requiredBy:
+  - src/tree/EulerTour.hpp
   - src/tree/HeavyLightDecomposition.hpp
   timestamp: '2024-05-03 15:25:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
+  - test/AOJ/GRL/5_C.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
 documentation_of: src/internal/CSR.hpp
 layout: document
 redirect_from:
