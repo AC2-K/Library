@@ -51,12 +51,12 @@ data:
     \ i) const { return std::pair(in[i], out[i]); }\n\nprivate:\n    void dfs_sz(int\
     \ cur) /* Checked */ {\n        sz[cur] = 1;\n\n        for (auto& dst : g[cur])\
     \ {\n            if (dst == par[cur]) {\n                if (g[cur].size() >=\
-    \ 2 && dst == g[cur][0]) {\n                    swap(g[cur][0], g[cur][1]);\n\
+    \ 2 && dst == g[cur][0]) {\n                    std::swap(g[cur][0], g[cur][1]);\n\
     \                } else {\n                    continue;\n                }\n\
     \            }\n\n            dep[dst] = dep[cur] + 1;\n            par[dst] =\
     \ cur;\n            dfs_sz(dst);\n            sz[cur] += sz[dst];\n\n        \
-    \    if (sz[dst] > sz[g[cur][0]]) {\n                swap(dst, g[cur][0]);\n \
-    \           }\n        }\n    }\n\n    void dfs_hld(int cur) /* Checked */ {\n\
+    \    if (sz[dst] > sz[g[cur][0]]) {\n                std::swap(dst, g[cur][0]);\n\
+    \            }\n        }\n    }\n\n    void dfs_hld(int cur) /* Checked */ {\n\
     \        in[cur] = id++;\n        for (auto dst : g[cur]) {\n            if (dst\
     \ == par[cur]) continue;\n\n            nxt[dst] = (dst == g[cur][0] ? nxt[cur]\
     \ : dst);\n            dfs_hld(dst);\n        }\n        out[cur] = id;\n    }\n\
@@ -100,14 +100,14 @@ data:
     \ out[i]); }\n\nprivate:\n    void dfs_sz(int cur) /* Checked */ {\n        sz[cur]\
     \ = 1;\n\n        for (auto& dst : g[cur]) {\n            if (dst == par[cur])\
     \ {\n                if (g[cur].size() >= 2 && dst == g[cur][0]) {\n         \
-    \           swap(g[cur][0], g[cur][1]);\n                } else {\n          \
-    \          continue;\n                }\n            }\n\n            dep[dst]\
+    \           std::swap(g[cur][0], g[cur][1]);\n                } else {\n     \
+    \               continue;\n                }\n            }\n\n            dep[dst]\
     \ = dep[cur] + 1;\n            par[dst] = cur;\n            dfs_sz(dst);\n   \
     \         sz[cur] += sz[dst];\n\n            if (sz[dst] > sz[g[cur][0]]) {\n\
-    \                swap(dst, g[cur][0]);\n            }\n        }\n    }\n\n  \
-    \  void dfs_hld(int cur) /* Checked */ {\n        in[cur] = id++;\n        for\
-    \ (auto dst : g[cur]) {\n            if (dst == par[cur]) continue;\n\n      \
-    \      nxt[dst] = (dst == g[cur][0] ? nxt[cur] : dst);\n            dfs_hld(dst);\n\
+    \                std::swap(dst, g[cur][0]);\n            }\n        }\n    }\n\
+    \n    void dfs_hld(int cur) /* Checked */ {\n        in[cur] = id++;\n       \
+    \ for (auto dst : g[cur]) {\n            if (dst == par[cur]) continue;\n\n  \
+    \          nxt[dst] = (dst == g[cur][0] ? nxt[cur] : dst);\n            dfs_hld(dst);\n\
     \        }\n        out[cur] = id;\n    }\n\npublic:\n    void build(int root)\
     \ {\n        g = internal::csr<int, int>(n, es);\n        dfs_sz(root);\n    \
     \    dfs_hld(root);\n    }\n\n    std::vector<std::pair<int, int>> ascend(int\
@@ -141,7 +141,7 @@ data:
   isVerificationFile: false
   path: src/tree/HeavyLightDecomposition.hpp
   requiredBy: []
-  timestamp: '2024-05-03 16:13:32+09:00'
+  timestamp: '2024-05-03 16:14:57+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/tree/Vertex_Set_Path_Composite.test.cpp
