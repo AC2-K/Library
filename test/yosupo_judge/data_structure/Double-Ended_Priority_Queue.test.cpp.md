@@ -149,27 +149,22 @@ data:
     \ namespace std;\nusing namespace kyopro;\n\nint main() {\n    Treap<int> st;\n\
     \    int n, q;\n    read(n, q);\n    for (int i = 0; i < n; ++i) {\n        int\
     \ a;\n        read(a);\n        st.insert(a);\n    }\n    while (q--) {\n    \
-    \    // cout << \"DEBUG = \";\n        // for (const auto& q : st.nodes) cout\
-    \ << q->key << ' ';\n        // cout << endl;\n        // cout << \"ROOT = \"\
-    ;\n        // cout << st.root->key << endl;\n        int t;\n        read(t);\n\
-    \        if (!t) {\n            int x;\n            read(x);\n            st.insert(x);\n\
-    \        } else if (t == 1) {\n            int mn = st.min_element();\n      \
-    \      put(mn);\n            st.erase(mn);\n        } else {\n            int\
-    \ mx = st.max_element();\n            put(mx);\n            st.erase(mx);\n  \
-    \      }\n    }\n}\n"
+    \    int t;\n        read(t);\n        if (!t) {\n            int x;\n       \
+    \     read(x);\n            st.insert(x);\n        } else if (t == 1) {\n    \
+    \        int mn = st.min_element();\n            put(mn);\n            st.erase(mn);\n\
+    \        } else {\n            int mx = st.max_element();\n            put(mx);\n\
+    \            st.erase(mx);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
     \n\n#include \"../../../src/data-structure/bbst/Treap.hpp\"\n#include \"../../../src/stream.hpp\"\
     \n#include\"../../../src/template.hpp\"\n\nusing namespace std;\nusing namespace\
     \ kyopro;\n\nint main() {\n    Treap<int> st;\n    int n, q;\n    read(n, q);\n\
     \    for (int i = 0; i < n; ++i) {\n        int a;\n        read(a);\n       \
-    \ st.insert(a);\n    }\n    while (q--) {\n        // cout << \"DEBUG = \";\n\
-    \        // for (const auto& q : st.nodes) cout << q->key << ' ';\n        //\
-    \ cout << endl;\n        // cout << \"ROOT = \";\n        // cout << st.root->key\
-    \ << endl;\n        int t;\n        read(t);\n        if (!t) {\n            int\
-    \ x;\n            read(x);\n            st.insert(x);\n        } else if (t ==\
-    \ 1) {\n            int mn = st.min_element();\n            put(mn);\n       \
-    \     st.erase(mn);\n        } else {\n            int mx = st.max_element();\n\
-    \            put(mx);\n            st.erase(mx);\n        }\n    }\n}"
+    \ st.insert(a);\n    }\n    while (q--) {\n        int t;\n        read(t);\n\
+    \        if (!t) {\n            int x;\n            read(x);\n            st.insert(x);\n\
+    \        } else if (t == 1) {\n            int mn = st.min_element();\n      \
+    \      put(mn);\n            st.erase(mn);\n        } else {\n            int\
+    \ mx = st.max_element();\n            put(mx);\n            st.erase(mx);\n  \
+    \      }\n    }\n}"
   dependsOn:
   - src/data-structure/bbst/Treap.hpp
   - src/random/xor_shift.hpp
@@ -179,7 +174,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 15:25:19+09:00'
+  timestamp: '2024-05-06 00:59:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
