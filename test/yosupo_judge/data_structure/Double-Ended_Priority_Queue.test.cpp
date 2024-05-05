@@ -17,11 +17,6 @@ int main() {
         st.insert(a);
     }
     while (q--) {
-        // cout << "DEBUG = ";
-        // for (const auto& q : st.nodes) cout << q->key << ' ';
-        // cout << endl;
-        // cout << "ROOT = ";
-        // cout << st.root->key << endl;
         int t;
         read(t);
         if (!t) {

@@ -15,9 +15,9 @@ template <class S, auto op, auto e> class reversible_bbst {
         int size;
         bool rev;
         
-        explicit Node(const S& v, u32 prio)
-            : l(),
-              r(),
+        Node(const S& v, u32 prio)
+            : l(nullptr),
+              r(nullptr),
               priority(prio),
               value(v),
               prod(v),
@@ -33,6 +33,7 @@ template <class S, auto op, auto e> class reversible_bbst {
     }
     int size(Node* p) const { return p ? p->size : 0; }
     S fold(Node* p) { return p ? p->prod : e(); }
+    
     void reverse(Node*& p) {
         if (p) {
             p->rev ^= 1;
@@ -92,7 +93,7 @@ template <class S, auto op, auto e> class reversible_bbst {
     Node* root;
 
 public:
-    explicit reversible_bbst() : rng(2023), root(nullptr) {}
+    reversible_bbst() : rng(2023), root(nullptr) {}
     void insert(int i, const S& a) {
         Node* item = make_ptr(a, rng());
         auto [l, r] = split(root, i);
