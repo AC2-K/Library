@@ -10,6 +10,7 @@ template <typename S, auto op, auto e> struct SplayTree {
         Node *lch, *rch, *par;
         usize sz;
         S value, agg;
+        bool rev;
 
         Node()
             : lch(nullptr),
@@ -17,17 +18,33 @@ template <typename S, auto op, auto e> struct SplayTree {
               par(nullptr),
               sz(1),
               value(e()),
-              agg(e()) {}
+              agg(e()),
+              rev(false) {}
         Node(const S& v)
             : lch(nullptr),
               rch(nullptr),
               par(nullptr),
               sz(1),
               value(v),
-              agg(v) {}
+              agg(v),
+              rev(false) {}
 
         static usize size(Node* x) { return x ? x->sz : 0; }
         static S fold(Node* x) { return x ? x->agg : e(); }
+        static void reverse(Node*& x) {
+            if (x) {
+                x->rev ^= 1;
+            }
+        }
+
+        void push() {
+            if (this->rev) {
+                std::swap(this->lch, this->rch);
+                this->rev = false;
+                Node::reverse(this->lch);
+                Node::reverse(this->rch);
+            }
+        }
 
         void update() {
             this->sz = 1 + size(this->lch) + size(this->rch);
@@ -76,24 +93,36 @@ template <typename S, auto op, auto e> struct SplayTree {
         }
 
         void splay() {
-            while (this->state() != 0) {
-                if (this->par->state() == 0) {
+            this->push();
+            while (this->state()) {
+                Node* p = this->par;
+                Node* pp = p->par;
+
+                if (pp) pp->push();
+                if (p) p->push();
+                this->push();
+
+                if (p->state() == 0) {
                     this->rotate();
-                } else if (this->state() == this->par->state()) {
-                    this->par->rotate();
+                } else if (this->state() == p->state()) {
+                    p->rotate();
                     this->rotate();
                 } else {
                     this->rotate();
                     this->rotate();
                 }
+
+                if (pp) pp->update();
+                if (p) p->update();
+                this->update();
             }
         }
     };
 
     Node* access(usize k, Node* t) {
         Node* now = t;
-
         while (1) {
+            now->push();
             usize lsize = Node::size(now->lch);
             if (k < lsize) {
                 now = now->lch;
@@ -110,10 +139,13 @@ template <typename S, auto op, auto e> struct SplayTree {
     Node* merge(Node* l, Node* r) {
         if (!l) return r;
         if (!r) return l;
+        l->push();
+        r->push();
         l = access(Node::size(l) - 1, l);
         l->rch = r;
         r->par = l;
         l->update();
+
         return l;
     }
 
@@ -121,9 +153,8 @@ template <typename S, auto op, auto e> struct SplayTree {
         if (!t) return {nullptr, nullptr};
         if (k == 0) return {nullptr, t};
         if (k == t->sz) return {t, nullptr};
-
+        t->push();
         t = access(k, t);
-
         Node *l, *r;
         l = t->lch;
         r = t;
@@ -180,9 +211,16 @@ public:
     S fold(int l, int r) {
         auto [xy, z] = split(r, root);
         auto [x, y] = split(l, xy);
-        S ans = y->agg;
+        S ans = Node::fold(y);
         root = merge(merge(x, y), z);
         return ans;
+    }
+
+    void reverse(int l, int r) {
+        auto [xy, z] = split(r, root);
+        auto [x, y] = split(l, xy);
+        Node::reverse(y);
+        root = merge(merge(x, y), z);
     }
 };
 };  // namespace kyopro
