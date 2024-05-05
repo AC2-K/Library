@@ -142,6 +142,9 @@ data:
   - name: src/data-structure/bbst
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/data-structure/bbst/SplayTree.hpp
+      title: Splay Tree
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/bbst/Treap.hpp
       title: Treap
     - icon: ':heavy_check_mark:'
@@ -337,6 +340,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_E.test.cpp
       title: test/AOJ/NTL/1_E.test.cpp
+  - name: test/AOJ
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/AOJ/P1508.test.cpp
+      title: test/AOJ/P1508.test.cpp
   - name: test/yosupo_judge/convolution
     pages:
     - icon: ':heavy_check_mark:'

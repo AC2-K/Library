@@ -82,6 +82,9 @@ data:
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/AOJ/P1508.test.cpp
+    title: test/AOJ/P1508.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
     title: test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -325,6 +328,7 @@ data:
   - test/AOJ/DSL/2_D_dual.test.cpp
   - test/AOJ/DSL/5_B.test.cpp
   - test/AOJ/DSL/2_E_dual.test.cpp
+  - test/AOJ/P1508.test.cpp
   - test/AOJ/GRL/5_C.test.cpp
   - test/AOJ/GRL/1_A.test.cpp
   - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
