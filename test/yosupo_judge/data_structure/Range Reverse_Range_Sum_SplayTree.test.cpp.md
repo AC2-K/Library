@@ -5,6 +5,9 @@ data:
     path: src/data-structure/bbst/SplayTree.hpp
     title: Splay Tree
   - icon: ':heavy_check_mark:'
+    path: src/debug.hpp
+    title: src/debug.hpp
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: src/internal/type_traits.hpp
   - icon: ':heavy_check_mark:'
@@ -20,11 +23,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508
+    PROBLEM: https://judge.yosupo.jp/problem/range_reverse_range_sum
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508
-  bundledCode: "#line 1 \"test/AOJ/P1508.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508\"\
-    \n\n#line 2 \"src/data-structure/bbst/SplayTree.hpp\"\n#include <memory>\n#include\
+    - https://judge.yosupo.jp/problem/range_reverse_range_sum
+  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_reverse_range_sum\"\n\
+    \n#line 2 \"src/data-structure/bbst/SplayTree.hpp\"\n#include <memory>\n#include\
     \ <vector>\n\nnamespace kyopro {\ntemplate <typename S, auto op, auto e> struct\
     \ SplayTree {\n    using usize = std::size_t;\n\n    struct Node {\n        Node\
     \ *lch, *rch, *par;\n        usize sz;\n        S value, agg;\n        bool rev;\n\
@@ -98,23 +102,25 @@ data:
     \        return ans;\n    }\n\n    void reverse(int l, int r) {\n        auto\
     \ [xy, z] = split(r, root);\n        auto [x, y] = split(l, xy);\n        Node::reverse(y);\n\
     \        root = merge(merge(x, y), z);\n    }\n};\n};  // namespace kyopro\n\n\
-    /**\n * @brief Splay Tree\n */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n\
-    #include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
-    \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
-    #include <cstdint>\n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename...\
-    \ Args> struct first_enabled {};\n\ntemplate <typename T, typename... Args>\n\
-    struct first_enabled<std::enable_if<true, T>, Args...> {\n    using type = T;\n\
-    };\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
-    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
-    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
-    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
-    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct int_least\
-    \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::int8_t>,\n\
-    \                                 std::enable_if<dgt <= 16, std::int16_t>,\n \
-    \                                std::enable_if<dgt <= 32, std::int32_t>,\n  \
-    \                               std::enable_if<dgt <= 64, std::int64_t>,\n   \
-    \                              std::enable_if<dgt <= 128, __int128_t>>;\n};\n\n\
-    template <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
+    /**\n * @brief Splay Tree\n */\n#line 1 \"src/debug.hpp\"\n#ifdef ONLINE_JUDGE\n\
+    #define debug(x) void(0)\n#else\n#define _GLIBCXX_DEBUG\n#define debug(x) std::cerr\
+    \ << __LINE__ << \" : \" << #x << \" = \" << (x) << std::endl\n#endif\n#line 2\
+    \ \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
+    #line 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n#include <limits>\n\
+    #include <numeric>\n#include <typeinfo>\n#include <cstdint>\n\nnamespace kyopro\
+    \ {\nnamespace internal {\ntemplate <typename... Args> struct first_enabled {};\n\
+    \ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
+    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
+    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
+    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt, std::enable_if_t<dgt\
+    \ <= 128>* = nullptr> struct int_least {\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, std::int8_t>,\n                                 std::enable_if<dgt <=\
+    \ 16, std::int16_t>,\n                                 std::enable_if<dgt <= 32,\
+    \ std::int32_t>,\n                                 std::enable_if<dgt <= 64, std::int64_t>,\n\
+    \                                 std::enable_if<dgt <= 128, __int128_t>>;\n};\n\
+    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
     \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::uint8_t>,\n\
     \                                 std::enable_if<dgt <= 16, std::uint16_t>,\n\
     \                                 std::enable_if<dgt <= 32, std::uint32_t>,\n\
@@ -169,46 +175,41 @@ data:
     \ 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate\
     \ <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return\
     \ a < b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
-    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 6 \"\
-    test/AOJ/P1508.test.cpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\n\
-    constexpr inline int op(int x, int y) noexcept { return min(x, y); }\nconstexpr\
-    \ inline int e() noexcept { return 1e9; }\n\nint main() {\n    int n, q;\n   \
-    \ cin >> n >> q;\n    vector<int> a(n);\n    rep(i, n) read(a[i]);\n    SplayTree<int,\
-    \ op, e> st(a);\n\n    for (int i = 0; i < q; i++) {\n        int com;\n     \
-    \   cin >> com;\n        if (com == 0) {\n            int l, r;\n            cin\
-    \ >> l >> r;\n            int x = st.access(r);\n            st.erase(r);\n  \
-    \          st.insert(l, x);\n        } else if (com == 1) {\n            int l,\
-    \ r;\n            cin >> l >> r;\n            cout << st.fold(l, r + 1) << endl;\n\
-    \        } else if (com == 2) {\n            int i, x;\n            cin >> i >>\
-    \ x;\n            st.update(i, x);\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1508\"\
-    \n\n#include \"../../src/data-structure/bbst/SplayTree.hpp\"\n#include \"../../src/stream.hpp\"\
-    \n#include \"../../src/template.hpp\"\n\nusing namespace std;\nusing namespace\
-    \ kyopro;\n\nconstexpr inline int op(int x, int y) noexcept { return min(x, y);\
-    \ }\nconstexpr inline int e() noexcept { return 1e9; }\n\nint main() {\n    int\
-    \ n, q;\n    cin >> n >> q;\n    vector<int> a(n);\n    rep(i, n) read(a[i]);\n\
-    \    SplayTree<int, op, e> st(a);\n\n    for (int i = 0; i < q; i++) {\n     \
-    \   int com;\n        cin >> com;\n        if (com == 0) {\n            int l,\
-    \ r;\n            cin >> l >> r;\n            int x = st.access(r);\n        \
-    \    st.erase(r);\n            st.insert(l, x);\n        } else if (com == 1)\
-    \ {\n            int l, r;\n            cin >> l >> r;\n            cout << st.fold(l,\
-    \ r + 1) << endl;\n        } else if (com == 2) {\n            int i, x;\n   \
-    \         cin >> i >> x;\n            st.update(i, x);\n        }\n    }\n}\n"
+    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 7 \"\
+    test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp\"\n\
+    \nusing namespace std;\nusing namespace kyopro;\n\nusing ll = long long;\n\nconstexpr\
+    \ inline ll op(ll x, ll y) noexcept { return x + y; }\nconstexpr inline ll e()\
+    \ noexcept { return 0; }\n\nint main() {\n    int n, q;\n    read(n, q);\n   \
+    \ vector<ll> a(n);\n    rep(i, n) read(a[i]);\n\n    SplayTree<ll, op, e> sg(a);\n\
+    \n    while (q--) {\n        int t, l, r;\n        read(t, l, r);\n        if\
+    \ (!t) {\n            sg.reverse(l, r);\n        } else {\n            put(sg.fold(l,\
+    \ r));\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_reverse_range_sum\"\
+    \n\n#include \"../../../src/data-structure/bbst/SplayTree.hpp\"\n#include \"../../../src/debug.hpp\"\
+    \n#include \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing ll = long long;\n\n\
+    constexpr inline ll op(ll x, ll y) noexcept { return x + y; }\nconstexpr inline\
+    \ ll e() noexcept { return 0; }\n\nint main() {\n    int n, q;\n    read(n, q);\n\
+    \    vector<ll> a(n);\n    rep(i, n) read(a[i]);\n\n    SplayTree<ll, op, e> sg(a);\n\
+    \n    while (q--) {\n        int t, l, r;\n        read(t, l, r);\n        if\
+    \ (!t) {\n            sg.reverse(l, r);\n        } else {\n            put(sg.fold(l,\
+    \ r));\n        }\n    }\n}\n"
   dependsOn:
   - src/data-structure/bbst/SplayTree.hpp
+  - src/debug.hpp
   - src/stream.hpp
   - src/internal/type_traits.hpp
   - src/template.hpp
   isVerificationFile: true
-  path: test/AOJ/P1508.test.cpp
+  path: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
   requiredBy: []
-  timestamp: '2024-05-06 00:31:30+09:00'
+  timestamp: '2024-05-06 00:31:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/AOJ/P1508.test.cpp
+documentation_of: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
 layout: document
 redirect_from:
-- /verify/test/AOJ/P1508.test.cpp
-- /verify/test/AOJ/P1508.test.cpp.html
-title: test/AOJ/P1508.test.cpp
+- /verify/test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
+- /verify/test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp.html
+title: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
 ---

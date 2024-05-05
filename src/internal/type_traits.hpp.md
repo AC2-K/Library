@@ -127,6 +127,9 @@ data:
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
+    title: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - icon: ':heavy_check_mark:'
@@ -342,6 +345,7 @@ data:
   - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+  - test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
