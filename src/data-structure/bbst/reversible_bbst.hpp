@@ -14,7 +14,7 @@ template <class S, auto op, auto e> class reversible_bbst {
         S value, prod;
         int size;
         bool rev;
-        
+
         Node(const S& v, u32 prio)
             : l(nullptr),
               r(nullptr),
@@ -33,7 +33,7 @@ template <class S, auto op, auto e> class reversible_bbst {
     }
     int size(Node* p) const { return p ? p->size : 0; }
     S fold(Node* p) { return p ? p->prod : e(); }
-    
+
     void reverse(Node*& p) {
         if (p) {
             p->rev ^= 1;
@@ -60,7 +60,6 @@ template <class S, auto op, auto e> class reversible_bbst {
             auto [l, r] = split(p->l, k);
             p->l = r;
             push_up(p);
-
             return {std::move(l), std::move(p)};
         } else {
             auto [l, r] = split(p->r, k - s - 1);
@@ -76,13 +75,14 @@ template <class S, auto op, auto e> class reversible_bbst {
         if (!l) return std::move(r);
         if (!r) return std::move(l);
 
+        push_down(l);
+        push_down(r);
+
         if (l->priority < r->priority) {
-            push_down(r);
             r->l = merge(l, r->l);
             push_up(r);
             return std::move(r);
         } else {
-            push_down(l);
             l->r = merge(l->r, r);
             push_up(l);
 
@@ -100,6 +100,35 @@ public:
         root = merge(l, item);
         root = merge(root, r);
     }
+    void erase(int i) {
+        auto [x, yz] = split(root, i);
+        auto [y, z] = split(yz, 1);
+        root = merge(x, z);
+    }
+
+    void update(int i, const S& v) {
+        erase(i);
+        insert(i, v);
+    }
+
+    S access(int i) {
+        assert(0 <= i && i < size(root));
+        Node* x = root;
+        while (1) {
+            push_down(x);
+            int z = size(x->l);
+
+            if (i < z) {
+                x = x->l;
+            } else if (i == z) {
+                return x->value;
+            } else {
+                x = x->r;
+                i -= z + 1;
+            }
+        }
+    }
+
     S fold(int l, int r) {
         assert(0 <= l && l <= r && r <= size(root));
         auto [xy, z] = split(root, r);
@@ -122,5 +151,6 @@ public:
 
 /**
  * @brief 反転可能平衡二分木
- * @see https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp
+ * @see
+ * https://github.com/yosupo06/library-checker-problems/blob/master/datastructure/range_reverse_range_sum/sol/correct.cpp
  */
