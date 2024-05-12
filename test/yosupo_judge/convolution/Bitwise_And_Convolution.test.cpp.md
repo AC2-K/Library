@@ -2,10 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/algorithm/subset_mobius.hpp
-    title: "Subset M\xF6bius  transform"
-  - icon: ':heavy_check_mark:'
-    path: src/algorithm/subset_zeta.hpp
+    path: src/algorithm/subset_transform.hpp
     title: Subset Zeta transform
   - icon: ':heavy_check_mark:'
     path: src/convolution/bitwise_or_convolution.hpp
@@ -37,23 +34,22 @@ data:
     - https://judge.yosupo.jp/problem/bitwise_and_convolution
   bundledCode: "#line 1 \"test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n\
-    #line 2 \"src/algorithm/subset_zeta.hpp\"\n#include <vector>\nnamespace kyopro\
+    #line 2 \"src/algorithm/subset_transform.hpp\"\n#include <vector>\nnamespace kyopro\
     \ {\n/**\n * @brief Subset Zeta transform\n * @param n v : 2^[n] \u2192 T, |v|\
     \ = 2^n\n */\ntemplate <typename T> void zeta(int n, std::vector<T>& v) {\n  \
     \  for (int j = 0; j < n; ++j) {\n        for (int i = 0; i < (int)v.size(); ++i)\
     \ {\n            if (~i >> j & 1) continue;\n            v[i] += v[i & ~(1 <<\
-    \ j)];\n        }\n    }\n}\n}  // namespace kyopro\n#line 3 \"src/algorithm/subset_mobius.hpp\"\
-    \nnamespace kyopro {\n/**\n * @brief Subset M\xF6bius  transform\n * @param n\
-    \ v : 2^[n] \u2192 T, |v| = 2^n\n */\ntemplate <typename T> void mobius(int n,\
-    \ std::vector<T>& v) {\n    for (int j = 0; j < n; ++j) {\n        for (int i\
-    \ = 0; i < (int)v.size(); ++i) {\n            if (~i >> j & 1) continue;\n   \
-    \         v[i] -= v[i & ~(1 << j)];\n        }\n    }\n}\n};  // namespace kyopro\n\
-    #line 4 \"src/convolution/bitwise_or_convolution.hpp\"\n\nnamespace kyopro {\n\
-    \n/**\n * @brief Bitwise Or Convolution\n * @param n a,b : 2^[n] \u2192 T, |a|\
-    \ = |b| = 2^n\n * @return convolution\n */\ntemplate <typename T>\nstd::vector<T>\
+    \ j)];\n        }\n    }\n}\n\n/**\n * @brief Subset M\xF6bius  transform\n *\
+    \ @param n v : 2^[n] \u2192 T, |v| = 2^n\n */\ntemplate <typename T> void mobius(int\
+    \ n, std::vector<T>& v) {\n    for (int j = 0; j < n; ++j) {\n        for (int\
+    \ i = 0; i < (int)v.size(); ++i) {\n            if (~i >> j & 1) continue;\n \
+    \           v[i] -= v[i & ~(1 << j)];\n        }\n    }\n}\n\n};  // namespace\
+    \ kyopro\n#line 3 \"src/convolution/bitwise_or_convolution.hpp\"\n\nnamespace\
+    \ kyopro {\n\n/**\n * @brief Bitwise Or Convolution\n * @param n a,b : 2^[n] \u2192\
+    \ T, |a| = |b| = 2^n\n * @return convolution\n */\ntemplate <typename T>\nstd::vector<T>\
     \ bitwise_or_convolution(int n, std::vector<T> a, std::vector<T> b) {\n    zeta(n,\
     \ a), zeta(n, b);\n    for (int i = 0; i < (int)a.size(); ++i) a[i] *= b[i];\n\
-    \    mobius(n, a);\n    return a;\n}\n};\n#line 2 \"src/math/static_modint.hpp\"\
+    \    mobius(n, a);\n    return a;\n}\n\n};\n#line 2 \"src/math/static_modint.hpp\"\
     \n#include <cassert>\n#include <cstdint>\n#include <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\
     \n#include <limits>\n#include <numeric>\n#include <typeinfo>\n#line 7 \"src/internal/type_traits.hpp\"\
     \n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
@@ -202,8 +198,7 @@ data:
     \ rep(i, 1 << n) put(c[i]);\n}"
   dependsOn:
   - src/convolution/bitwise_or_convolution.hpp
-  - src/algorithm/subset_zeta.hpp
-  - src/algorithm/subset_mobius.hpp
+  - src/algorithm/subset_transform.hpp
   - src/math/static_modint.hpp
   - src/internal/type_traits.hpp
   - src/math/gcd.hpp
@@ -212,7 +207,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 15:25:19+09:00'
+  timestamp: '2024-05-12 23:33:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp

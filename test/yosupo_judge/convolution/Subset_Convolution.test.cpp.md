@@ -191,7 +191,7 @@ data:
     \ return answer;\n}\n};  // namespace kyopro\n\n/**\n * @brief Subset Convolution\n\
     \ */\n#line 7 \"test/yosupo_judge/convolution/Subset_Convolution.test.cpp\"\n\n\
     using namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
-    int main() {\n    int n;\n    read(n);\n    vector<mint> a(1 << n), b(1 << n);\n\
+    \nint main() {\n    int n;\n    read(n);\n    vector<mint> a(1 << n), b(1 << n);\n\
     \    rep(i, (int)a.size()) read(a[i]);\n    rep(i, (int)b.size()) read(b[i]);\n\
     \n    vector c = subset_convolution(n, a, b);\n\n    rep(i, (int)c.size()) put(c[i]);\n\
     }\n"
@@ -199,7 +199,7 @@ data:
     #include \"../../../src/math/static_modint.hpp\"\n#include \"../../../src/stream.hpp\"\
     \n#include \"../../../src/template.hpp\"\n#include \"../../../src/convolution/subset_convolution.hpp\"\
     \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
-    int main() {\n    int n;\n    read(n);\n    vector<mint> a(1 << n), b(1 << n);\n\
+    \nint main() {\n    int n;\n    read(n);\n    vector<mint> a(1 << n), b(1 << n);\n\
     \    rep(i, (int)a.size()) read(a[i]);\n    rep(i, (int)b.size()) read(b[i]);\n\
     \n    vector c = subset_convolution(n, a, b);\n\n    rep(i, (int)c.size()) put(c[i]);\n\
     }"
@@ -213,7 +213,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Subset_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 15:25:19+09:00'
+  timestamp: '2024-05-12 23:33:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Subset_Convolution.test.cpp

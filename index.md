@@ -29,10 +29,7 @@ data:
       path: src/algorithm/monotone_minima.hpp
       title: Monotone Minima
     - icon: ':heavy_check_mark:'
-      path: src/algorithm/subset_mobius.hpp
-      title: "Subset M\xF6bius  transform"
-    - icon: ':heavy_check_mark:'
-      path: src/algorithm/subset_zeta.hpp
+      path: src/algorithm/subset_transform.hpp
       title: Subset Zeta transform
   - name: src/atcoder
     pages:
