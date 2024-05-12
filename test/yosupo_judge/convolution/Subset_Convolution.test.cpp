@@ -9,6 +9,7 @@ using namespace std;
 using namespace kyopro;
 
 using mint = modint<998244353>;
+
 int main() {
     int n;
     read(n);

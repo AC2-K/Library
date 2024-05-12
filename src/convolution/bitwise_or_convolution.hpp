@@ -1,6 +1,5 @@
 #pragma once
-#include "../algorithm/subset_zeta.hpp"
-#include "../algorithm/subset_mobius.hpp"
+#include "../algorithm/subset_transform.hpp"
 
 namespace kyopro {
 
@@ -16,4 +15,5 @@ std::vector<T> bitwise_or_convolution(int n, std::vector<T> a, std::vector<T> b)
     mobius(n, a);
     return a;
 }
+
 };
