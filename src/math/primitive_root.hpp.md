@@ -43,7 +43,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: "\u539F\u59CB\u6839"
+    document_title: "Primitive Root(\u539F\u59CB\u6839)"
     links: []
   bundledCode: "#line 2 \"src/math/dynamic_modint.hpp\"\n#include <cassert>\n#include\
     \ <iostream>\n#line 2 \"src/internal/barrett.hpp\"\n#include <cstdint>\nnamespace\
@@ -280,31 +280,31 @@ data:
     \ * pow);\n                pow *= p;\n            }\n        }\n\n        return\
     \ divisor;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief PollardRho\u7D20\
     \u56E0\u6570\u5206\u89E3\n * @docs docs/math/rho.md\n */\n#line 4 \"src/math/primitive_root.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief \u539F\u59CB\u6839\n */\ntemplate <typename\
-    \ T> constexpr T primitive_root(T p) noexcept {\n    if (p == 2) return 1;\n\n\
-    \    auto pf = kyopro::rho::factorize(p - 1);\n    pf.erase(std::unique(pf.begin(),\
-    \ pf.end()), pf.end());\n    for (auto& q : pf) {\n        q = (p - 1) / q;\n\
-    \    }\n\n    using mint =\n        std::conditional_t<std::numeric_limits<T>::digits\
+    \nnamespace kyopro {\n\ntemplate <typename T> constexpr T primitive_root(T p)\
+    \ noexcept {\n    if (p == 2) return 1;\n\n    auto pf = kyopro::rho::factorize(p\
+    \ - 1);\n    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto&\
+    \ q : pf) {\n        q = (p - 1) / q;\n    }\n\n    using mint =\n        std::conditional_t<std::numeric_limits<T>::digits\
     \ <= 32,\n                           barrett_modint<-1>, montgomery_modint<uint64_t>>;\n\
     \    if (mint::mod() != p) {\n        mint::set_mod(p);\n    }\n\n    for (int\
     \ _g = 1;; ++_g) {\n        mint g(_g);\n        if (g.val() == 0) continue;\n\
     \        bool is_ok = true;\n\n        for (auto q : pf) {\n            if (g.pow(q).val()\
     \ == 1) {\n                is_ok = false;\n                break;\n          \
     \  }\n        }\n\n        if (is_ok) {\n            return g.val();\n       \
-    \ }\n    }\n    return -1;\n}\n};  // namespace kyopro\n"
+    \ }\n    }\n    return -1;\n}\n};  // namespace kyopro\n\n/**\n * @brief Primitive\
+    \ Root(\u539F\u59CB\u6839)\n */\n"
   code: "#pragma once\n#include \"../math/dynamic_modint.hpp\"\n#include \"../math/rho.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief \u539F\u59CB\u6839\n */\ntemplate <typename\
-    \ T> constexpr T primitive_root(T p) noexcept {\n    if (p == 2) return 1;\n\n\
-    \    auto pf = kyopro::rho::factorize(p - 1);\n    pf.erase(std::unique(pf.begin(),\
-    \ pf.end()), pf.end());\n    for (auto& q : pf) {\n        q = (p - 1) / q;\n\
-    \    }\n\n    using mint =\n        std::conditional_t<std::numeric_limits<T>::digits\
+    \nnamespace kyopro {\n\ntemplate <typename T> constexpr T primitive_root(T p)\
+    \ noexcept {\n    if (p == 2) return 1;\n\n    auto pf = kyopro::rho::factorize(p\
+    \ - 1);\n    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto&\
+    \ q : pf) {\n        q = (p - 1) / q;\n    }\n\n    using mint =\n        std::conditional_t<std::numeric_limits<T>::digits\
     \ <= 32,\n                           barrett_modint<-1>, montgomery_modint<uint64_t>>;\n\
     \    if (mint::mod() != p) {\n        mint::set_mod(p);\n    }\n\n    for (int\
     \ _g = 1;; ++_g) {\n        mint g(_g);\n        if (g.val() == 0) continue;\n\
     \        bool is_ok = true;\n\n        for (auto q : pf) {\n            if (g.pow(q).val()\
     \ == 1) {\n                is_ok = false;\n                break;\n          \
     \  }\n        }\n\n        if (is_ok) {\n            return g.val();\n       \
-    \ }\n    }\n    return -1;\n}\n};  // namespace kyopro"
+    \ }\n    }\n    return -1;\n}\n};  // namespace kyopro\n\n/**\n * @brief Primitive\
+    \ Root(\u539F\u59CB\u6839)\n */"
   dependsOn:
   - src/math/dynamic_modint.hpp
   - src/internal/barrett.hpp
@@ -319,7 +319,7 @@ data:
   requiredBy:
   - src/FormalPowerSeries/fps-sqrt.hpp
   - src/math/mod_sqrt.hpp
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-05-16 21:11:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
@@ -329,5 +329,5 @@ layout: document
 redirect_from:
 - /library/src/math/primitive_root.hpp
 - /library/src/math/primitive_root.hpp.html
-title: "\u539F\u59CB\u6839"
+title: "Primitive Root(\u539F\u59CB\u6839)"
 ---

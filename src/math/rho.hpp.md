@@ -34,7 +34,7 @@ data:
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
-    title: "\u539F\u59CB\u6839"
+    title: "Primitive Root(\u539F\u59CB\u6839)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp

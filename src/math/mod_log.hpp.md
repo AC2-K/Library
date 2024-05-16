@@ -12,7 +12,7 @@ data:
     title: gcd
   - icon: ':heavy_check_mark:'
     path: src/math/mod_pow.hpp
-    title: "Power Modulo(\u7D2F\u4E57)"
+    title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
@@ -104,22 +104,23 @@ data:
     \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
     \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
     \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Power Modulo(\u7D2F\u4E57\
-    )\n */\n#line 6 \"src/math/mod_log.hpp\"\nnamespace kyopro {\n\ntemplate <typename\
-    \ T> constexpr inline T mod_log(T x, T y, T p) {\n    if (y == 1 || p == 1) {\n\
-    \        return 0;\n    }\n    if (x == 0) {\n        if (y == 0) {\n        \
-    \    return 1;\n        } else {\n            return -1;\n        }\n    }\n \
-    \   int m = (int)sqrt(p) + 1;\n    hash_map<T, T> mp;\n    T xm = mod_pow<T>(x,\
-    \ m, p);\n    internal::double_size_uint_t<T> add = 0, g, k = (p == 1 ? 0 : 1);\n\
-    \    while ((g = _gcd(x, p)) > 1) {\n        if (y == k) return add;\n       \
-    \ if (y % g) return -1;\n        y /= g, p /= g, add++;\n        k = (k * (x /\
-    \ g)) % p;\n    }\n\n    T pr = y;\n    for (int j = 0; j <= m; ++j) {\n     \
-    \   mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr * x % p;\n \
-    \   }\n    pr = k;\n    for (int i = 1; i <= m; ++i) {\n        pr = (internal::double_size_uint_t<T>)pr\
-    \ * xm % p;\n        auto ptr = mp.find(pr);\n        if (ptr) {\n           \
-    \ int j = *ptr;\n            return m * i - j + add;\n        }\n    }\n    return\
-    \ -1;\n}\n\n};  // namespace kyopro\n\n/**\n * @brief Discrete Logarithm(\u96E2\
-    \u6563\u5BFE\u6570)\n * @docs docs/math/mod_log.md\n */\n"
+    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Modulo Power(\u7E70\u308A\
+    \u8FD4\u3057\u4E8C\u4E57\u6CD5)\n */\n#line 6 \"src/math/mod_log.hpp\"\nnamespace\
+    \ kyopro {\n\ntemplate <typename T> constexpr inline T mod_log(T x, T y, T p)\
+    \ {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n\
+    \        if (y == 0) {\n            return 1;\n        } else {\n            return\
+    \ -1;\n        }\n    }\n    int m = (int)sqrt(p) + 1;\n    hash_map<T, T> mp;\n\
+    \    T xm = mod_pow<T>(x, m, p);\n    internal::double_size_uint_t<T> add = 0,\
+    \ g, k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n        if (y\
+    \ == k) return add;\n        if (y % g) return -1;\n        y /= g, p /= g, add++;\n\
+    \        k = (k * (x / g)) % p;\n    }\n\n    T pr = y;\n    for (int j = 0; j\
+    \ <= m; ++j) {\n        mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr\
+    \ * x % p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; ++i) {\n        pr\
+    \ = (internal::double_size_uint_t<T>)pr * xm % p;\n        auto ptr = mp.find(pr);\n\
+    \        if (ptr) {\n            int j = *ptr;\n            return m * i - j +\
+    \ add;\n        }\n    }\n    return -1;\n}\n\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n * @docs docs/math/mod_log.md\n\
+    \ */\n"
   code: "#pragma once\n#include <cmath>\n#include \"../data-structure/hash_map.hpp\"\
     \n#include \"../math/gcd.hpp\"\n#include \"../math/mod_pow.hpp\"\nnamespace kyopro\
     \ {\n\ntemplate <typename T> constexpr inline T mod_log(T x, T y, T p) {\n   \
@@ -147,7 +148,7 @@ data:
   requiredBy:
   - src/FormalPowerSeries/fps-sqrt.hpp
   - src/math/mod_sqrt.hpp
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-05-16 21:11:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp

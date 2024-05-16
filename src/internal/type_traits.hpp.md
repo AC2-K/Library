@@ -22,7 +22,7 @@ data:
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':heavy_check_mark:'
     path: src/math/mod_pow.hpp
-    title: "Power Modulo(\u7D2F\u4E57)"
+    title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: src/math/mod_sqrt.hpp
     title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
@@ -31,7 +31,7 @@ data:
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
-    title: "\u539F\u59CB\u6839"
+    title: "Primitive Root(\u539F\u59CB\u6839)"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"

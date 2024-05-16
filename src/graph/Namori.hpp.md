@@ -7,7 +7,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: "Nmamori Graph(\u306A\u3082\u308A\u30B0\u30E9\u30D5)"
+    document_title: "Namori Graph(\u306A\u3082\u308A\u30B0\u30E9\u30D5)"
     links: []
   bundledCode: "#line 2 \"src/graph/Namori.hpp\"\n#include <queue>\n#include <vector>\n\
     namespace kyopro {\nclass Namori {\n    int n;\n    std::vector<std::vector<int>>\
@@ -33,7 +33,7 @@ data:
     \       st.emplace_back(to, v);\n                        }\n                 \
     \   }\n                }\n            }\n        }\n    }\n\n    int root(int\
     \ v) const { return root_idx[v]; }\n    bool is_in_cycle(int v) const { return\
-    \ is_cycle[v]; }\n};\n};  // namespace kyopro\n\n/**\n * @brief Nmamori Graph(\u306A\
+    \ is_cycle[v]; }\n};\n};  // namespace kyopro\n\n/**\n * @brief Namori Graph(\u306A\
     \u3082\u308A\u30B0\u30E9\u30D5)\n */\n"
   code: "#pragma once\n#include <queue>\n#include <vector>\nnamespace kyopro {\nclass\
     \ Namori {\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
@@ -59,13 +59,13 @@ data:
     \       st.emplace_back(to, v);\n                        }\n                 \
     \   }\n                }\n            }\n        }\n    }\n\n    int root(int\
     \ v) const { return root_idx[v]; }\n    bool is_in_cycle(int v) const { return\
-    \ is_cycle[v]; }\n};\n};  // namespace kyopro\n\n/**\n * @brief Nmamori Graph(\u306A\
+    \ is_cycle[v]; }\n};\n};  // namespace kyopro\n\n/**\n * @brief Namori Graph(\u306A\
     \u3082\u308A\u30B0\u30E9\u30D5)\n */\n"
   dependsOn: []
   isVerificationFile: false
   path: src/graph/Namori.hpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-05-16 21:11:27+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/Namori.hpp
@@ -73,5 +73,5 @@ layout: document
 redirect_from:
 - /library/src/graph/Namori.hpp
 - /library/src/graph/Namori.hpp.html
-title: "Nmamori Graph(\u306A\u3082\u308A\u30B0\u30E9\u30D5)"
+title: "Namori Graph(\u306A\u3082\u308A\u30B0\u30E9\u30D5)"
 ---

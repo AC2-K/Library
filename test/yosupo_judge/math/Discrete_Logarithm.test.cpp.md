@@ -15,7 +15,7 @@ data:
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':heavy_check_mark:'
     path: src/math/mod_pow.hpp
-    title: "Power Modulo(\u7D2F\u4E57)"
+    title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
@@ -101,48 +101,49 @@ data:
     \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
     \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
     \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Power Modulo(\u7D2F\u4E57\
-    )\n */\n#line 6 \"src/math/mod_log.hpp\"\nnamespace kyopro {\n\ntemplate <typename\
-    \ T> constexpr inline T mod_log(T x, T y, T p) {\n    if (y == 1 || p == 1) {\n\
-    \        return 0;\n    }\n    if (x == 0) {\n        if (y == 0) {\n        \
-    \    return 1;\n        } else {\n            return -1;\n        }\n    }\n \
-    \   int m = (int)sqrt(p) + 1;\n    hash_map<T, T> mp;\n    T xm = mod_pow<T>(x,\
-    \ m, p);\n    internal::double_size_uint_t<T> add = 0, g, k = (p == 1 ? 0 : 1);\n\
-    \    while ((g = _gcd(x, p)) > 1) {\n        if (y == k) return add;\n       \
-    \ if (y % g) return -1;\n        y /= g, p /= g, add++;\n        k = (k * (x /\
-    \ g)) % p;\n    }\n\n    T pr = y;\n    for (int j = 0; j <= m; ++j) {\n     \
-    \   mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr * x % p;\n \
-    \   }\n    pr = k;\n    for (int i = 1; i <= m; ++i) {\n        pr = (internal::double_size_uint_t<T>)pr\
-    \ * xm % p;\n        auto ptr = mp.find(pr);\n        if (ptr) {\n           \
-    \ int j = *ptr;\n            return m * i - j + add;\n        }\n    }\n    return\
-    \ -1;\n}\n\n};  // namespace kyopro\n\n/**\n * @brief Discrete Logarithm(\u96E2\
-    \u6563\u5BFE\u6570)\n * @docs docs/math/mod_log.md\n */\n#line 2 \"src/stream.hpp\"\
-    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 6 \"src/stream.hpp\"\
-    \n\nnamespace kyopro {\n\ninline void single_read(char& c) {\n    c = getchar_unlocked();\n\
-    \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
-    \ = nullptr>\ninline void single_read(T& a) {\n    a = 0;\n    bool is_negative\
-    \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
-    \   c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c =\
-    \ getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
-    \        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n}\ntemplate\
-    \ <typename T, internal::is_modint_t<T>* = nullptr>\ninline void single_read(T&\
-    \ a) {\n    long long x;\n    single_read(x);\n    a = T(x);\n}\ninline void single_read(std::string&\
-    \ str) noexcept {\n    char c = getchar_unlocked();\n    while (isspace(c)) c\
-    \ = getchar_unlocked();\n    while (!isspace(c)) {\n        str += c;\n      \
-    \  c = getchar_unlocked();\n    }\n}\ntemplate<typename T>\ninline void read(T&\
-    \ x) noexcept {single_read(x);}\ntemplate <typename Head, typename... Tail>\n\
-    inline void read(Head& head, Tail&... tail) noexcept {\n    single_read(head),\
-    \ read(tail...);\n}\n\ninline void single_write(char c) noexcept { putchar_unlocked(c);\
-    \ }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void\
-    \ single_write(T a) noexcept {\n    if (!a) {\n        putchar_unlocked('0');\n\
-    \        return;\n    }\n    if constexpr (std::is_signed_v<T>) {\n        if\
-    \ (a < 0) putchar_unlocked('-'), a *= -1;\n    }\n    constexpr int d = std::numeric_limits<T>::digits10;\n\
-    \    char s[d + 1];\n    int now = d + 1;\n    while (a) {\n        s[--now] =\
-    \ (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now <= d) putchar_unlocked(s[now++]);\n\
-    }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\ninline void single_write(T\
-    \ a) noexcept {\n    single_write(a.val());\n}\ninline void single_write(const\
-    \ std::string& str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\ntemplate <typename T> inline void write(T x) noexcept { single_write(x);\
+    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Modulo Power(\u7E70\u308A\
+    \u8FD4\u3057\u4E8C\u4E57\u6CD5)\n */\n#line 6 \"src/math/mod_log.hpp\"\nnamespace\
+    \ kyopro {\n\ntemplate <typename T> constexpr inline T mod_log(T x, T y, T p)\
+    \ {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n\
+    \        if (y == 0) {\n            return 1;\n        } else {\n            return\
+    \ -1;\n        }\n    }\n    int m = (int)sqrt(p) + 1;\n    hash_map<T, T> mp;\n\
+    \    T xm = mod_pow<T>(x, m, p);\n    internal::double_size_uint_t<T> add = 0,\
+    \ g, k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n        if (y\
+    \ == k) return add;\n        if (y % g) return -1;\n        y /= g, p /= g, add++;\n\
+    \        k = (k * (x / g)) % p;\n    }\n\n    T pr = y;\n    for (int j = 0; j\
+    \ <= m; ++j) {\n        mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr\
+    \ * x % p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; ++i) {\n        pr\
+    \ = (internal::double_size_uint_t<T>)pr * xm % p;\n        auto ptr = mp.find(pr);\n\
+    \        if (ptr) {\n            int j = *ptr;\n            return m * i - j +\
+    \ add;\n        }\n    }\n    return -1;\n}\n\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n * @docs docs/math/mod_log.md\n\
+    \ */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include\
+    \ <string>\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
+    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
+    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
+    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
+    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
+    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ = nullptr>\ninline void single_read(T& a) {\n    long long x;\n    single_read(x);\n\
+    \    a = T(x);\n}\ninline void single_read(std::string& str) noexcept {\n    char\
+    \ c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n  \
+    \  while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\ntemplate<typename T>\ninline void read(T& x) noexcept {single_read(x);}\n\
+    template <typename Head, typename... Tail>\ninline void read(Head& head, Tail&...\
+    \ tail) noexcept {\n    single_read(head), read(tail...);\n}\n\ninline void single_write(char\
+    \ c) noexcept { putchar_unlocked(c); }\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\ninline void single_write(T a) noexcept {\n    if (!a) {\n      \
+    \  putchar_unlocked('0');\n        return;\n    }\n    if constexpr (std::is_signed_v<T>)\
+    \ {\n        if (a < 0) putchar_unlocked('-'), a *= -1;\n    }\n    constexpr\
+    \ int d = std::numeric_limits<T>::digits10;\n    char s[d + 1];\n    int now =\
+    \ d + 1;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /=\
+    \ 10;\n    }\n    while (now <= d) putchar_unlocked(s[now++]);\n}\ntemplate <typename\
+    \ T, internal::is_modint_t<T>* = nullptr>\ninline void single_write(T a) noexcept\
+    \ {\n    single_write(a.val());\n}\ninline void single_write(const std::string&\
+    \ str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n  \
+    \  }\n}\ntemplate <typename T> inline void write(T x) noexcept { single_write(x);\
     \ }\ntemplate <typename Head, typename... Tail>\ninline void write(Head head,\
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
@@ -167,7 +168,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-05-16 21:11:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp

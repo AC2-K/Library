@@ -45,13 +45,13 @@ data:
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':heavy_check_mark:'
     path: src/math/mod_pow.hpp
-    title: "Power Modulo(\u7D2F\u4E57)"
+    title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: src/math/mod_sqrt.hpp
     title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
-    title: "\u539F\u59CB\u6839"
+    title: "Primitive Root(\u539F\u59CB\u6839)"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
@@ -575,31 +575,32 @@ data:
     \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
     \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
     \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Power Modulo(\u7D2F\u4E57\
-    )\n */\n#line 6 \"src/math/mod_log.hpp\"\nnamespace kyopro {\n\ntemplate <typename\
-    \ T> constexpr inline T mod_log(T x, T y, T p) {\n    if (y == 1 || p == 1) {\n\
-    \        return 0;\n    }\n    if (x == 0) {\n        if (y == 0) {\n        \
-    \    return 1;\n        } else {\n            return -1;\n        }\n    }\n \
-    \   int m = (int)sqrt(p) + 1;\n    hash_map<T, T> mp;\n    T xm = mod_pow<T>(x,\
-    \ m, p);\n    internal::double_size_uint_t<T> add = 0, g, k = (p == 1 ? 0 : 1);\n\
-    \    while ((g = _gcd(x, p)) > 1) {\n        if (y == k) return add;\n       \
-    \ if (y % g) return -1;\n        y /= g, p /= g, add++;\n        k = (k * (x /\
-    \ g)) % p;\n    }\n\n    T pr = y;\n    for (int j = 0; j <= m; ++j) {\n     \
-    \   mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr * x % p;\n \
-    \   }\n    pr = k;\n    for (int i = 1; i <= m; ++i) {\n        pr = (internal::double_size_uint_t<T>)pr\
-    \ * xm % p;\n        auto ptr = mp.find(pr);\n        if (ptr) {\n           \
-    \ int j = *ptr;\n            return m * i - j + add;\n        }\n    }\n    return\
-    \ -1;\n}\n\n};  // namespace kyopro\n\n/**\n * @brief Discrete Logarithm(\u96E2\
-    \u6563\u5BFE\u6570)\n * @docs docs/math/mod_log.md\n */\n#line 3 \"src/internal/barrett.hpp\"\
-    \nnamespace kyopro {\nnamespace internal {\nclass barrett {\n    using u32 = std::uint32_t;\n\
-    \    using u64 = std::uint64_t;\n    using u128 = __uint128_t;\n\n    u32 m;\n\
-    \    u64 im;\n\npublic:\n    constexpr barrett() : m(0), im(0) {}\n    constexpr\
-    \ barrett(u32 m)\n        : m(m), im(static_cast<u64>(-1) / m + 1) {}\n\n    constexpr\
-    \ u32 get_mod() const { return m; }\n    constexpr u32 reduce(u32 a) const { return\
-    \ mul(1, a); }\n    constexpr u32 mul(u32 a, u32 b) const {\n        u64 z = (u64)a\
-    \ * b;\n        u64 x = (u64)(((u128)(z)*im) >> 64);\n        u64 y = x * m;\n\
-    \        return (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace internal\n\
-    };  // namespace kyopro\n\n/**\n * @brief Barrett Reduction\n * @see https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Modulo Power(\u7E70\u308A\
+    \u8FD4\u3057\u4E8C\u4E57\u6CD5)\n */\n#line 6 \"src/math/mod_log.hpp\"\nnamespace\
+    \ kyopro {\n\ntemplate <typename T> constexpr inline T mod_log(T x, T y, T p)\
+    \ {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n\
+    \        if (y == 0) {\n            return 1;\n        } else {\n            return\
+    \ -1;\n        }\n    }\n    int m = (int)sqrt(p) + 1;\n    hash_map<T, T> mp;\n\
+    \    T xm = mod_pow<T>(x, m, p);\n    internal::double_size_uint_t<T> add = 0,\
+    \ g, k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n        if (y\
+    \ == k) return add;\n        if (y % g) return -1;\n        y /= g, p /= g, add++;\n\
+    \        k = (k * (x / g)) % p;\n    }\n\n    T pr = y;\n    for (int j = 0; j\
+    \ <= m; ++j) {\n        mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr\
+    \ * x % p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; ++i) {\n        pr\
+    \ = (internal::double_size_uint_t<T>)pr * xm % p;\n        auto ptr = mp.find(pr);\n\
+    \        if (ptr) {\n            int j = *ptr;\n            return m * i - j +\
+    \ add;\n        }\n    }\n    return -1;\n}\n\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)\n * @docs docs/math/mod_log.md\n\
+    \ */\n#line 3 \"src/internal/barrett.hpp\"\nnamespace kyopro {\nnamespace internal\
+    \ {\nclass barrett {\n    using u32 = std::uint32_t;\n    using u64 = std::uint64_t;\n\
+    \    using u128 = __uint128_t;\n\n    u32 m;\n    u64 im;\n\npublic:\n    constexpr\
+    \ barrett() : m(0), im(0) {}\n    constexpr barrett(u32 m)\n        : m(m), im(static_cast<u64>(-1)\
+    \ / m + 1) {}\n\n    constexpr u32 get_mod() const { return m; }\n    constexpr\
+    \ u32 reduce(u32 a) const { return mul(1, a); }\n    constexpr u32 mul(u32 a,\
+    \ u32 b) const {\n        u64 z = (u64)a * b;\n        u64 x = (u64)(((u128)(z)*im)\
+    \ >> 64);\n        u64 y = x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n\
+    \    }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief\
+    \ Barrett Reduction\n * @see https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
     \ */\n#line 6 \"src/internal/montgomery.hpp\"\nnamespace kyopro {\nnamespace internal\
     \ {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing\
     \ i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n\ntemplate\
@@ -779,28 +780,27 @@ data:
     \ * pow);\n                pow *= p;\n            }\n        }\n\n        return\
     \ divisor;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief PollardRho\u7D20\
     \u56E0\u6570\u5206\u89E3\n * @docs docs/math/rho.md\n */\n#line 4 \"src/math/primitive_root.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief \u539F\u59CB\u6839\n */\ntemplate <typename\
-    \ T> constexpr T primitive_root(T p) noexcept {\n    if (p == 2) return 1;\n\n\
-    \    auto pf = kyopro::rho::factorize(p - 1);\n    pf.erase(std::unique(pf.begin(),\
-    \ pf.end()), pf.end());\n    for (auto& q : pf) {\n        q = (p - 1) / q;\n\
-    \    }\n\n    using mint =\n        std::conditional_t<std::numeric_limits<T>::digits\
+    \nnamespace kyopro {\n\ntemplate <typename T> constexpr T primitive_root(T p)\
+    \ noexcept {\n    if (p == 2) return 1;\n\n    auto pf = kyopro::rho::factorize(p\
+    \ - 1);\n    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto&\
+    \ q : pf) {\n        q = (p - 1) / q;\n    }\n\n    using mint =\n        std::conditional_t<std::numeric_limits<T>::digits\
     \ <= 32,\n                           barrett_modint<-1>, montgomery_modint<uint64_t>>;\n\
     \    if (mint::mod() != p) {\n        mint::set_mod(p);\n    }\n\n    for (int\
     \ _g = 1;; ++_g) {\n        mint g(_g);\n        if (g.val() == 0) continue;\n\
     \        bool is_ok = true;\n\n        for (auto q : pf) {\n            if (g.pow(q).val()\
     \ == 1) {\n                is_ok = false;\n                break;\n          \
     \  }\n        }\n\n        if (is_ok) {\n            return g.val();\n       \
-    \ }\n    }\n    return -1;\n}\n};  // namespace kyopro\n#line 4 \"src/math/mod_sqrt.hpp\"\
-    \n\nnamespace kyopro {\n/**\n * @brief \u5E73\u65B9\u5270\u4F59(O(\u221Ap))\n\
-    \ * @note \u9045\u3044\n */\nconstexpr int mod_sqrt_lazy(int x, int p) {\n   \
-    \ if (x == 0) return 0;\n    if (p == 2) return x;\n    int g = primitive_root(p);\n\
-    \    int e = mod_log(g, x, p);\n    if (e % 2 != 0) {\n        return -1;\n  \
-    \  } else {\n        return mod_pow(g, e / 2, p);\n    }\n}\n};  // namespace\
-    \ kyopro\n#line 4 \"src/FormalPowerSeries/fps-sqrt.hpp\"\n\nnamespace kyopro {\n\
-    /**\n * @brief Sqrt of FPS\n */\ntemplate <typename mint>\nFormalPowerSeries<mint>\
-    \ fps_sqrt(const FormalPowerSeries<mint>& f,\n                               \
-    \  int deg = -1LL) {\n    if (f.empty()) return FormalPowerSeries<mint>{};\n\n\
-    \    if (deg == -1) deg = f.size();\n\n    int g0 = mod_sqrt_lazy(f[0].val(),\
+    \ }\n    }\n    return -1;\n}\n};  // namespace kyopro\n\n/**\n * @brief Primitive\
+    \ Root(\u539F\u59CB\u6839)\n */\n#line 4 \"src/math/mod_sqrt.hpp\"\n\nnamespace\
+    \ kyopro {\n/**\n * @brief \u5E73\u65B9\u5270\u4F59(O(\u221Ap))\n * @note \u9045\
+    \u3044\n */\nconstexpr int mod_sqrt_lazy(int x, int p) {\n    if (x == 0) return\
+    \ 0;\n    if (p == 2) return x;\n    int g = primitive_root(p);\n    int e = mod_log(g,\
+    \ x, p);\n    if (e % 2 != 0) {\n        return -1;\n    } else {\n        return\
+    \ mod_pow(g, e / 2, p);\n    }\n}\n};  // namespace kyopro\n#line 4 \"src/FormalPowerSeries/fps-sqrt.hpp\"\
+    \n\nnamespace kyopro {\n/**\n * @brief Sqrt of FPS\n */\ntemplate <typename mint>\n\
+    FormalPowerSeries<mint> fps_sqrt(const FormalPowerSeries<mint>& f,\n         \
+    \                        int deg = -1LL) {\n    if (f.empty()) return FormalPowerSeries<mint>{};\n\
+    \n    if (deg == -1) deg = f.size();\n\n    int g0 = mod_sqrt_lazy(f[0].val(),\
     \ mint::mod());\n\n    if (g0 == 0) {\n        for (int i = 1; i < (int)f.size();\
     \ ++i) {\n            if (f[i] == mint()) continue;\n\n            if (i & 1)\
     \ return FormalPowerSeries<mint>{};\n\n            FormalPowerSeries<mint> g =\
@@ -857,7 +857,7 @@ data:
   isVerificationFile: false
   path: src/FormalPowerSeries/fps-sqrt.hpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-05-16 21:11:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp

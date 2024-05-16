@@ -21,7 +21,7 @@ data:
     title: "Primality Test(MillerRabin\u7D20\u6570\u5224\u5B9A)"
   - icon: ':heavy_check_mark:'
     path: src/math/primitive_root.hpp
-    title: "\u539F\u59CB\u6839"
+    title: "Primitive Root(\u539F\u59CB\u6839)"
   - icon: ':heavy_check_mark:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
@@ -278,20 +278,20 @@ data:
     \ * pow);\n                pow *= p;\n            }\n        }\n\n        return\
     \ divisor;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief PollardRho\u7D20\
     \u56E0\u6570\u5206\u89E3\n * @docs docs/math/rho.md\n */\n#line 4 \"src/math/primitive_root.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief \u539F\u59CB\u6839\n */\ntemplate <typename\
-    \ T> constexpr T primitive_root(T p) noexcept {\n    if (p == 2) return 1;\n\n\
-    \    auto pf = kyopro::rho::factorize(p - 1);\n    pf.erase(std::unique(pf.begin(),\
-    \ pf.end()), pf.end());\n    for (auto& q : pf) {\n        q = (p - 1) / q;\n\
-    \    }\n\n    using mint =\n        std::conditional_t<std::numeric_limits<T>::digits\
+    \nnamespace kyopro {\n\ntemplate <typename T> constexpr T primitive_root(T p)\
+    \ noexcept {\n    if (p == 2) return 1;\n\n    auto pf = kyopro::rho::factorize(p\
+    \ - 1);\n    pf.erase(std::unique(pf.begin(), pf.end()), pf.end());\n    for (auto&\
+    \ q : pf) {\n        q = (p - 1) / q;\n    }\n\n    using mint =\n        std::conditional_t<std::numeric_limits<T>::digits\
     \ <= 32,\n                           barrett_modint<-1>, montgomery_modint<uint64_t>>;\n\
     \    if (mint::mod() != p) {\n        mint::set_mod(p);\n    }\n\n    for (int\
     \ _g = 1;; ++_g) {\n        mint g(_g);\n        if (g.val() == 0) continue;\n\
     \        bool is_ok = true;\n\n        for (auto q : pf) {\n            if (g.pow(q).val()\
     \ == 1) {\n                is_ok = false;\n                break;\n          \
     \  }\n        }\n\n        if (is_ok) {\n            return g.val();\n       \
-    \ }\n    }\n    return -1;\n}\n};  // namespace kyopro\n#line 2 \"src/stream.hpp\"\
-    \n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 6 \"src/stream.hpp\"\
-    \n\nnamespace kyopro {\n\ninline void single_read(char& c) {\n    c = getchar_unlocked();\n\
+    \ }\n    }\n    return -1;\n}\n};  // namespace kyopro\n\n/**\n * @brief Primitive\
+    \ Root(\u539F\u59CB\u6839)\n */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n\
+    #include <stdio.h>\n#include <string>\n#line 6 \"src/stream.hpp\"\n\nnamespace\
+    \ kyopro {\n\ninline void single_read(char& c) {\n    c = getchar_unlocked();\n\
     \    while (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
     \ = nullptr>\ninline void single_read(T& a) {\n    a = 0;\n    bool is_negative\
     \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
@@ -343,7 +343,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Primitive_Root.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-05-16 21:11:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Primitive_Root.test.cpp

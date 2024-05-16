@@ -34,7 +34,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: "Power Modulo(\u7D2F\u4E57)"
+    document_title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
     links: []
   bundledCode: "#line 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n#include\
     \ <limits>\n#include <numeric>\n#include <typeinfo>\n#include <cstdint>\n\nnamespace\
@@ -71,15 +71,16 @@ data:
     \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
     \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
     \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
-    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Power Modulo(\u7D2F\u4E57\
-    )\n */\n"
+    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Modulo Power(\u7E70\u308A\
+    \u8FD4\u3057\u4E8C\u4E57\u6CD5)\n */\n"
   code: "#pragma once\n#include \"../internal/type_traits.hpp\"\nnamespace kyopro\
     \ {\n\ntemplate <typename T>\nconstexpr T mod_pow(internal::double_size_uint_t<T>\
     \ base, T exp, T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ?\
     \ 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n     \
     \       ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
     \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief Power Modulo(\u7D2F\u4E57)\n */"
+    \ kyopro\n\n/**\n * @brief Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5\
+    )\n */"
   dependsOn:
   - src/internal/type_traits.hpp
   isVerificationFile: false
@@ -89,7 +90,7 @@ data:
   - src/string/rolling_hash.hpp
   - src/math/mod_log.hpp
   - src/math/mod_sqrt.hpp
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-05-16 21:11:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yuki/No430.test.cpp
@@ -101,5 +102,5 @@ layout: document
 redirect_from:
 - /library/src/math/mod_pow.hpp
 - /library/src/math/mod_pow.hpp.html
-title: "Power Modulo(\u7D2F\u4E57)"
+title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
 ---
