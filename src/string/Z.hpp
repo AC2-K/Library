@@ -4,7 +4,6 @@
 #include <vector>
 namespace kyopro {
 /**
- * @brief Z algorithm
  * @return LCP(S,S[i:]) (i=0,1,...,|str|-1)
  */
 std::vector<int> Z(const std::string& str) {
@@ -34,3 +33,8 @@ std::vector<int> Z(const std::string& str) {
     return res;
 }
 };  // namespace kyopro
+
+/**
+ * 
+ * @brief Z algorithm
+*/

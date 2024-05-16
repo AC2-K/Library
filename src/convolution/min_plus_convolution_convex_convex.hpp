@@ -7,6 +7,13 @@
 #include "../../src/internal/type_traits.hpp"
 
 namespace kyopro {
+
+    
+/**
+ * @brief Min Plus Convolution(Convex, Convex)
+ * @note a,b ともに下に凸である必要がある
+ * @note オーバーフローしがちなので気を付けよう!
+ */
 template <typename T>
 std::vector<T> min_plus_convolution_convex_convex(const std::vector<T>& a,
                                                   std::vector<T>& b) {
@@ -35,7 +42,3 @@ std::vector<T> min_plus_convolution_convex_convex(const std::vector<T>& a,
     return res;
 }
 };  // namespace kyopro
-
-/**
- * @brief Min Plus Convolution(Convex, Convex)
- */

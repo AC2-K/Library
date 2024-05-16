@@ -60,5 +60,5 @@ std::vector<bool> wildcard_pattern_matching(const std::string& s,
 };  // namespace kyopro
 
 /**
- * @brief ワイルカードパターンマッチング
+ * @brief Wildcard Pattern Matching 
  */

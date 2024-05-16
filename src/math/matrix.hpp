@@ -83,5 +83,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief 行列
+ * @brief Matrix(行列)
  */

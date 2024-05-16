@@ -64,5 +64,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief 永続Queue
+ * @brief Persistent Queue
  */

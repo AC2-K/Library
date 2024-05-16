@@ -106,5 +106,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief MergeSortTree
+ * @brief Merge Sort Tree
 */

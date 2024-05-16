@@ -12,9 +12,6 @@ using i64 = int64_t;
 using u128 = __uint128_t;
 using i128 = __int128_t;
 
-/**
- * @brief Montgomery Reduction
- */
 template <typename T> class Montgomery {
     static constexpr int lg = std::numeric_limits<T>::digits;
     using LargeT = internal::double_size_uint_t<T>;
@@ -60,3 +57,8 @@ public:
 };
 };  // namespace internal
 };  // namespace kyopro
+
+
+/**
+ * @brief Montgomery Reduction
+ */

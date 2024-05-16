@@ -2,9 +2,6 @@
 #include "../internal/type_traits.hpp"
 namespace kyopro {
 
-/**
- * @brief バイナリ法
- */
 template <typename T>
 constexpr T mod_pow(internal::double_size_uint_t<T> base, T exp, T mod) {
     internal::double_size_uint_t<T> ans = (mod == 1 ? 0 : 1);
@@ -21,3 +18,7 @@ constexpr T mod_pow(internal::double_size_uint_t<T> base, T exp, T mod) {
     return ans;
 }
 };  // namespace kyopro
+
+/**
+ * @brief Power Modulo(累乗)
+ */

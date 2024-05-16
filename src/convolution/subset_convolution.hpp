@@ -30,6 +30,10 @@ void ranked_mobius(int n, std::vector<std::vector<T>>& a) {
 }
 };  // namespace internal
 
+
+/**
+ * @brief Subset Convolution
+ */
 template <typename T>
 std::vector<T> subset_convolution(int n, std::vector<T> a, std::vector<T> b) {
     std::vector<std::vector<T>> ranked_a(a.size()), ranked_b(b.size());
@@ -60,7 +64,3 @@ std::vector<T> subset_convolution(int n, std::vector<T> a, std::vector<T> b) {
     return answer;
 }
 };  // namespace kyopro
-
-/**
- * @brief Subset Convolution
- */

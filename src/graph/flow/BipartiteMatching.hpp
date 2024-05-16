@@ -5,16 +5,12 @@
 
 namespace kyopro {
 
-/**
- * @brief 二部マッチング
- */
 template <typename Cap> class BipartiteGraph {
     const int L, R;
-    const int s, t;  // 超頂点を作る
+    const int s, t;
 
     atcoder::mf_graph<Cap> g;
 
-    // すでに流したか?
     bool flowed_flag;
 
 public:
@@ -34,14 +30,11 @@ public:
         return g.add_edge(from, to + L, cap);
     }
 
-public:
-    // 流量
     Cap flow() {
         flowed_flag = true;
         return g.flow(s, t);
     }
 
-    // 復元
     std::vector<std::pair<int, int>> Matching() {
         if (!flowed_flag) flow();
 
@@ -59,7 +52,8 @@ public:
 };  // namespace kyopro
 
 /**
- * @ref
+ * @brief Bipartite Matching(二部マッチング)
+ * @see
  * https://qiita.com/drken/items/e805e3f514acceb87602
  * https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp
  */

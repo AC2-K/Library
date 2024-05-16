@@ -4,3 +4,7 @@
 #define _GLIBCXX_DEBUG
 #define debug(x) std::cerr << __LINE__ << " : " << #x << " = " << (x) << std::endl
 #endif
+
+/**
+ * @brief Debugger
+*/

@@ -15,8 +15,10 @@ template <typename T> void comp(std::vector<T>& a) {
 }
 
 };  // namespace number_of_subseq_impl
- 
-/// @return Number of subsequence of a  (including empty sequence)
+
+/**
+ * @note Empty Sequence is included.
+*/
 template <typename mint, typename T>
 mint num_of_subseq(std::vector<T> a) {
     number_of_subseq_impl::comp(a);
@@ -31,6 +33,6 @@ mint num_of_subseq(std::vector<T> a) {
 };
 
 /**
- * @brief 部分列の個数
- * @reference https://noshi91.hatenablog.com/entry/2023/02/26/135340
+ * @brief Count subsequences 部分列の個数
+ * @see https://noshi91.hatenablog.com/entry/2023/02/26/135340
 */

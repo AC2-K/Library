@@ -33,5 +33,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief 永続Stack
+ * @brief Persistent Stack
  */

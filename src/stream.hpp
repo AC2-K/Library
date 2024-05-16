@@ -88,5 +88,5 @@ template <typename... Args> inline void put(Args... x) noexcept {
 };  // namespace kyopro
 
 /**
- * @brief 高速入出力
+ * @brief Fast IO(高速入出力)
  */

@@ -43,5 +43,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief SparseTable
+ * @brief Sparse Table
  */

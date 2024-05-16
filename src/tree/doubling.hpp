@@ -117,6 +117,6 @@ public:
 
 /**
  *
- * @brief 木上のダブリング
+ * @brief Binary Lifting(木上のダブリング)
  * @docs docs/tree/doubling.md
  */

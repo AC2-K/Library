@@ -88,5 +88,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief ダイクストラ法
+ * @brief Single Source Shortest Path(ダイクストラ法)
  */

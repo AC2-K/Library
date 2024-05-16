@@ -235,5 +235,5 @@ template <typename T, int id>
 kyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;
 
 /**
- * @brief dynamic modint
+ * @brief Dynamic modint
  */

@@ -73,6 +73,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief なもりグラフ
- * @docs docs/graph/Namori.md
+ * @brief Nmamori Graph(なもりグラフ)
  */

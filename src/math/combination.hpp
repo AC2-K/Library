@@ -46,5 +46,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief 二項係数
+ * @brief Combination
  */

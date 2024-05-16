@@ -37,3 +37,7 @@ constexpr inline T ext_gcd(T a, T b, T& x, T& y) noexcept {
     return a;
 }
 };  // namespace kyopro
+
+/**
+ * @brief gcd
+*/

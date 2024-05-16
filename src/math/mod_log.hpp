@@ -47,6 +47,6 @@ template <typename T> constexpr inline T mod_log(T x, T y, T p) {
 };  // namespace kyopro
 
 /**
- * @brief 離散対数
+ * @brief Discrete Logarithm(離散対数)
  * @docs docs/math/mod_log.md
  */

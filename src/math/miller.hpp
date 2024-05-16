@@ -71,6 +71,6 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief MillerRabin素数判定
+ * @brief Primality Test(MillerRabin素数判定)
  * @docs docs/math/miller.md
  */

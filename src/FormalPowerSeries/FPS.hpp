@@ -164,5 +164,5 @@ struct FormalPowerSeries : public std::vector<mint> {
 };  // namespace kyopro
 
 /**
- * @brief 形式的べき級数
+ * @brief Formal Power Series(形式的べき級数)
 */

@@ -61,6 +61,7 @@ using is_integral_t =
 };  // namespace internal
 };  // namespace kyopro
 
-/*
- * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8
+/**
+ * @brief Type Traits
+ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8
  */

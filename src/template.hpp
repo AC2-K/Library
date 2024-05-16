@@ -19,3 +19,7 @@ template <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {
 template <typename T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {
     return a > b && (a = b, true);
 }
+
+/**
+ * @brief Template
+*/

@@ -60,5 +60,5 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief CSR形式
+ * @brief CSR形式(二次元ベクトルの圧縮)
  */

@@ -5,8 +5,6 @@ namespace kyopro {
 
 /**
  * @brief Bitwise Or Convolution
- * @param n a,b : 2^[n] → T, |a| = |b| = 2^n
- * @return convolution
  */
 template <typename T>
 std::vector<T> bitwise_or_convolution(int n, std::vector<T> a, std::vector<T> b) {

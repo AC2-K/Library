@@ -3,10 +3,6 @@
 #include <vector>
 
 namespace kyopro {
-
-/**
- * @returns (ソート済みの頂点列, 元のグラフがDAGであったか?)
- */
 template <typename Graph>
 std::pair<std::vector<int>, bool> topological_sort(const Graph& g) {
     int n = g.size();
