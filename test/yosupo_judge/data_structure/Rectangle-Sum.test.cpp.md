@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/data-structure/data-structure-2d/merge-sort-tree.hpp
-    title: MergeSortTree
-  - icon: ':heavy_check_mark:'
+    title: Merge Sort Tree
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':heavy_check_mark:'
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
+  - icon: ':question:'
     path: src/template.hpp
-    title: src/template.hpp
+    title: Template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rectangle_sum
@@ -62,7 +62,7 @@ data:
     \ lower, upper);\n            }\n            if (r & 1) {\n                sum\
     \ += get(--r, lower, upper);\n            }\n            l >>= 1, r >>= 1;\n \
     \       }\n\n        return sum;\n    }\n};\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief MergeSortTree\n*/\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n\
+    \ * @brief Merge Sort Tree\n*/\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n\
     #include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
     \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
     #include <cstdint>\n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename...\
@@ -92,9 +92,10 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 6\
+    \ \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char& c)\
+    \ {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
@@ -123,23 +124,23 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 2 \"src/template.hpp\"\
-    \n#include <bits/stdc++.h>\n#define rep(i, n) for (int i = 0; i < (n); i++)\n\
-    #define all(x) std::begin(x), std::end(x)\n#define popcount(x) __builtin_popcountll(x)\n\
-    using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
-    \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
-    \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr int dx[] = {1, 0, -1, 0,\
-    \ 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate\
-    \ <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return\
-    \ a < b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
-    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 6 \"\
-    test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp\"\nusing namespace std;\n\
-    using namespace kyopro;\n\nint main() {\n    int n, q;\n    read(n, q);\n\n  \
-    \  merge_sort_tree<int, int, ll> mgst;\n    rep(i, n) {\n        int x, y, w;\n\
-    \        read(x, y, w);\n        mgst.add_point(x, y, w);\n    }\n    mgst.build();\n\
-    \    while (q--) {\n        int l, d, r, u;\n        read(l, d, r, u);\n     \
-    \   put(mgst.fold(l, r, d, u));\n    }\n}\n"
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i, n) for (int\
+    \ i = 0; i < (n); i++)\n#define all(x) std::begin(x), std::end(x)\n#define popcount(x)\
+    \ __builtin_popcountll(x)\nusing i128 = __int128_t;\nusing ll = long long;\nusing\
+    \ ld = long double;\nusing graph = std::vector<std::vector<int>>;\nusing P = std::pair<int,\
+    \ int>;\nconstexpr int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll\
+    \ infl = std::numeric_limits<ll>::max() / 2;\nconst long double pi = acosl(-1);\n\
+    constexpr int dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0,\
+    \ 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
+    \ b && (a = b, true);\n}\n\n/**\n * @brief Template\n*/\n#line 6 \"test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp\"\
+    \nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n\
+    \    read(n, q);\n\n    merge_sort_tree<int, int, ll> mgst;\n    rep(i, n) {\n\
+    \        int x, y, w;\n        read(x, y, w);\n        mgst.add_point(x, y, w);\n\
+    \    }\n    mgst.build();\n    while (q--) {\n        int l, d, r, u;\n      \
+    \  read(l, d, r, u);\n        put(mgst.fold(l, r, d, u));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include\
     \ \"../../../src/data-structure/data-structure-2d/merge-sort-tree.hpp\"\n#include\
     \ \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\nusing namespace\
@@ -156,8 +157,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 15:25:19+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
 layout: document

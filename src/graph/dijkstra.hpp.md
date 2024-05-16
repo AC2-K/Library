@@ -6,17 +6,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/1_A.test.cpp
     title: test/AOJ/GRL/1_A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
-    document_title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
+    document_title: "Single Source Shortest Path(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\
+      \u6CD5)"
     links: []
   bundledCode: "#line 2 \"src/graph/dijkstra.hpp\"\n#include <algorithm>\n#include\
     \ <cassert>\n#include <limits>\n#include <numeric>\n#include <queue>\n#include\
@@ -48,7 +49,8 @@ data:
     \  while (cur != _trace[cur]) {\n            path.emplace_back(cur);\n       \
     \     cur = _trace[cur];\n        }\n        path.emplace_back(s);\n        std::reverse(path.begin(),\
     \ path.end());\n        return path;\n    }\n};\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n */\n"
+    \ * @brief Single Source Shortest Path(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
+    )\n */\n"
   code: "#pragma once\n#include <algorithm>\n#include <cassert>\n#include <limits>\n\
     #include <numeric>\n#include <queue>\n#include <utility>\n#include <vector>\n\n\
     namespace kyopro {\n\ntemplate<typename Cost>\nclass dijkstra {\n    std::vector<Cost>\
@@ -78,13 +80,14 @@ data:
     \  while (cur != _trace[cur]) {\n            path.emplace_back(cur);\n       \
     \     cur = _trace[cur];\n        }\n        path.emplace_back(s);\n        std::reverse(path.begin(),\
     \ path.end());\n        return path;\n    }\n};\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief \u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\n */"
+    \ * @brief Single Source Shortest Path(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
+    )\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/graph/dijkstra.hpp
   requiredBy: []
-  timestamp: '2023-10-26 23:34:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/GRL/1_A.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
@@ -94,5 +97,5 @@ layout: document
 redirect_from:
 - /library/src/graph/dijkstra.hpp
 - /library/src/graph/dijkstra.hpp.html
-title: "\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5"
+title: "Single Source Shortest Path(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5)"
 ---

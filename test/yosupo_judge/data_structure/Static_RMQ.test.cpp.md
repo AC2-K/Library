@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/sparse_table.hpp
-    title: SparseTable
+    title: Sparse Table
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/staticrmq
@@ -32,7 +32,7 @@ data:
     \ i++) {\n            lg[i] = lg[i >> 1] + 1;\n        }\n    }\n\n    T fold(int\
     \ l, int r) const {\n        int b = lg[r - l];\n        return op(table[b][l],\
     \ table[b][r - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief\
-    \ SparseTable\n */\n#line 4 \"test/yosupo_judge/data_structure/Static_RMQ.test.cpp\"\
+    \ Sparse Table\n */\n#line 4 \"test/yosupo_judge/data_structure/Static_RMQ.test.cpp\"\
     \ninline int op(int x, int y) { return std::min(x, y); }\nint main() {\n    int\
     \ n, q;\n    scanf(\"%d%d\", &n, &q);\n    kyopro::sparse_table<int, op> rmq(n);\n\
     \    for (int i = 0; i < n; i++) {\n        int ai;\n        scanf(\"%d\", &ai);\n\
@@ -52,8 +52,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2023-11-04 20:49:15+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
 layout: document

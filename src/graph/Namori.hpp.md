@@ -7,8 +7,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    _deprecated_at_docs: docs/graph/Namori.md
-    document_title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
+    document_title: "Nmamori Graph(\u306A\u3082\u308A\u30B0\u30E9\u30D5)"
     links: []
   bundledCode: "#line 2 \"src/graph/Namori.hpp\"\n#include <queue>\n#include <vector>\n\
     namespace kyopro {\nclass Namori {\n    int n;\n    std::vector<std::vector<int>>\
@@ -34,8 +33,8 @@ data:
     \       st.emplace_back(to, v);\n                        }\n                 \
     \   }\n                }\n            }\n        }\n    }\n\n    int root(int\
     \ v) const { return root_idx[v]; }\n    bool is_in_cycle(int v) const { return\
-    \ is_cycle[v]; }\n};\n};  // namespace kyopro\n\n/**\n * @brief \u306A\u3082\u308A\
-    \u30B0\u30E9\u30D5\n * @docs docs/graph/Namori.md\n */\n"
+    \ is_cycle[v]; }\n};\n};  // namespace kyopro\n\n/**\n * @brief Nmamori Graph(\u306A\
+    \u3082\u308A\u30B0\u30E9\u30D5)\n */\n"
   code: "#pragma once\n#include <queue>\n#include <vector>\nnamespace kyopro {\nclass\
     \ Namori {\n    int n;\n    std::vector<std::vector<int>> g;\n    std::vector<int>\
     \ root_idx;\n    std::vector<int> deg;\n    std::vector<bool> is_cycle;\n\npublic:\n\
@@ -60,13 +59,13 @@ data:
     \       st.emplace_back(to, v);\n                        }\n                 \
     \   }\n                }\n            }\n        }\n    }\n\n    int root(int\
     \ v) const { return root_idx[v]; }\n    bool is_in_cycle(int v) const { return\
-    \ is_cycle[v]; }\n};\n};  // namespace kyopro\n\n/**\n * @brief \u306A\u3082\u308A\
-    \u30B0\u30E9\u30D5\n * @docs docs/graph/Namori.md\n */\n"
+    \ is_cycle[v]; }\n};\n};  // namespace kyopro\n\n/**\n * @brief Nmamori Graph(\u306A\
+    \u3082\u308A\u30B0\u30E9\u30D5)\n */\n"
   dependsOn: []
   isVerificationFile: false
   path: src/graph/Namori.hpp
   requiredBy: []
-  timestamp: '2023-10-22 17:06:17+09:00'
+  timestamp: '2024-05-16 17:50:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/Namori.hpp
@@ -74,94 +73,5 @@ layout: document
 redirect_from:
 - /library/src/graph/Namori.hpp
 - /library/src/graph/Namori.hpp.html
-title: "\u306A\u3082\u308A\u30B0\u30E9\u30D5"
+title: "Nmamori Graph(\u306A\u3082\u308A\u30B0\u30E9\u30D5)"
 ---
-## 概要
-
-$N$ 頂点 $N$ 辺の連結な単純無向グラフ(通称なもりグラフ)は,
-
-- ちょうどひとつの閉路を含む.
-- 閉路上の頂点を根とするいくつかの木に分解できる.
-
-ことが知られています. このライブラリを使うと, 与えられたなもりグラフに対して
-
-- 閉路上の点を列挙
-- いくつかの木に分解
-
-が行えます.
-
-## コンストラクタ
-
-```cpp
-Namori g(int N)
-```
-
-頂点数・辺数 $N$ で初期化します. この時点では辺は貼られていません.
-
-### 計算量
-
-- $O(N)$
-
-## add_edge
-
-```cpp
-void add_edge(int a, int b)
-```
-
-$a$ と $b$ の間に無向辺を張ります.
-
-### 制約
-
-- $0 \leq a,b \lt N$
-
-### 計算量
-
-- $O(1)$
-
-## build
-
-```cpp
-void build()
-```
-
-なもりグラフを分解します.
-
-### 制約
-
-- これが呼び出される時点で辺は全て張られている.
-
-### 計算量
-
-- $O(N)$
-
-## root
-
-```cpp
-int root(int v)
-```
-
-分解後に $v$ の属する木の根の番号を返します.
-
-### 制約
-
-- $0 \leq v \lt N$
-
-### 計算量
-
-- $O(1)$
-
-## is_in_cycle
-
-```cpp
-bool is_in_cycle(int v)
-```
-
-$v$ が閉路に含まれているか判定します
-
-### 制約
-
-- $0 \leq v \lt N$
-
-### 計算量
-
-- $O(1)$

@@ -1,55 +1,53 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/FPS.hpp
-    title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-  - icon: ':heavy_check_mark:'
+    title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
+  - icon: ':x:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: Polynomial Taylor Shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
   - icon: ':warning:'
     path: src/string/wildcard_pattern_matching.hpp
-    title: "\u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\u30C3\
-      \u30C1\u30F3\u30B0"
+    title: Wildcard Pattern Matching
   - icon: ':warning:'
     path: src/string/wildcard_pattern_matching.hpp
-    title: "\u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\u30C3\
-      \u30C1\u30F3\u30B0"
+    title: Wildcard Pattern Matching
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/atcoder/modint.hpp\"\n\n\n\n#include <cassert>\n#include\
@@ -355,19 +353,19 @@ data:
   isVerificationFile: false
   path: src/atcoder/modint.hpp
   requiredBy:
+  - src/FormalPowerSeries/fps-sqrt.hpp
+  - src/FormalPowerSeries/FPS.hpp
+  - src/FormalPowerSeries/taylor-shift.hpp
   - src/string/wildcard_pattern_matching.hpp
   - src/string/wildcard_pattern_matching.hpp
   - src/atcoder/convolution.hpp
-  - src/FormalPowerSeries/fps-sqrt.hpp
-  - src/FormalPowerSeries/taylor-shift.hpp
-  - src/FormalPowerSeries/FPS.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
 documentation_of: src/atcoder/modint.hpp

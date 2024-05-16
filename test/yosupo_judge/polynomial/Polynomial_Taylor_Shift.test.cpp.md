@@ -1,41 +1,41 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: Polynomial Taylor Shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':x:'
     path: src/math/combination.hpp
-    title: "\u4E8C\u9805\u4FC2\u6570"
-  - icon: ':heavy_check_mark:'
+    title: Combination
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':heavy_check_mark:'
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
+  - icon: ':question:'
     path: src/template.hpp
-    title: src/template.hpp
+    title: Template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/polynomial_taylor_shift
@@ -430,17 +430,17 @@ data:
     \  }\n\n    constexpr mint binom(int n, int r) const {\n        assert(n >= r);\n\
     \        return fact(n) * ifact(r) * ifact(n - r);\n    }\n    constexpr mint\
     \ perm(int n, int r) const {\n        assert(n >= r);\n        return fact(n)\
-    \ * ifact(n - r);\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief \u4E8C\
-    \u9805\u4FC2\u6570\n */\n#line 4 \"src/FormalPowerSeries/taylor-shift.hpp\"\n\n\
-    namespace kyopro {\n\n/**\n * @brief Polynomial Taylor Shift\n * @tparam mint\
-    \ \u4FC2\u6570\u306E\u578B\n * @tparam deg_f f\u306E\u6B21\u6570\u306E\u6700\u5927\
-    \u5024\n * @param table \u5185\u90E8\u3067\u4F7F\u3046\u4E8C\u9805\u4FC2\u6570\
-    \u306E\u30C6\u30FC\u30D6\u30EB.(\u7701\u7565\u53EF\u80FD)\n */\n\ntemplate <typename\
-    \ mint, int deg_f>\nstd::vector<mint> taylor_shift(\n    const std::vector<mint>&\
-    \ f,\n    const mint& shift,\n    const combination<mint, deg_f>& table = combination<mint,\
-    \ deg_f>()) {\n    const int n = f.size();\n    std::vector<mint> a(f.size()),\
-    \ b(f.size());\n    for (int i = 0; i < n; ++i) {\n        a[i] = f[i] * table.fact(i);\n\
-    \        b[i] = shift.pow(i) * table.ifact(i);\n    }\n    std::reverse(b.begin(),\
+    \ * ifact(n - r);\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief Combination\n\
+    \ */\n#line 4 \"src/FormalPowerSeries/taylor-shift.hpp\"\n\nnamespace kyopro {\n\
+    \n/**\n * @brief Polynomial Taylor Shift\n * @tparam mint \u4FC2\u6570\u306E\u578B\
+    \n * @tparam deg_f f\u306E\u6B21\u6570\u306E\u6700\u5927\u5024\n * @param table\
+    \ \u5185\u90E8\u3067\u4F7F\u3046\u4E8C\u9805\u4FC2\u6570\u306E\u30C6\u30FC\u30D6\
+    \u30EB.(\u7701\u7565\u53EF\u80FD)\n */\n\ntemplate <typename mint, int deg_f>\n\
+    std::vector<mint> taylor_shift(\n    const std::vector<mint>& f,\n    const mint&\
+    \ shift,\n    const combination<mint, deg_f>& table = combination<mint, deg_f>())\
+    \ {\n    const int n = f.size();\n    std::vector<mint> a(f.size()), b(f.size());\n\
+    \    for (int i = 0; i < n; ++i) {\n        a[i] = f[i] * table.fact(i);\n   \
+    \     b[i] = shift.pow(i) * table.ifact(i);\n    }\n    std::reverse(b.begin(),\
     \ b.end());\n\n    std::vector res = atcoder::convolution(a, b);\n    for (int\
     \ i = 0; i < n; ++i) {\n        res[i] = res[i + n - 1] * table.ifact(i);\n  \
     \  }\n    res.resize(f.size());\n    return res;\n}\n};  // namespace kyopro\n\
@@ -473,9 +473,10 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 6\
+    \ \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char& c)\
+    \ {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
@@ -504,20 +505,20 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 2 \"src/template.hpp\"\
-    \n#include <bits/stdc++.h>\n#define rep(i, n) for (int i = 0; i < (n); i++)\n\
-    #define all(x) std::begin(x), std::end(x)\n#define popcount(x) __builtin_popcountll(x)\n\
-    using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
-    \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
-    \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr int dx[] = {1, 0, -1, 0,\
-    \ 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate\
-    \ <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return\
-    \ a < b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
-    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 6 \"\
-    test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp\"\n\nusing namespace\
-    \ std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\n\
-    int main() {\n    int n, _c;\n    read(n, _c);\n    mint c = mint::raw(_c);\n\
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i, n) for (int\
+    \ i = 0; i < (n); i++)\n#define all(x) std::begin(x), std::end(x)\n#define popcount(x)\
+    \ __builtin_popcountll(x)\nusing i128 = __int128_t;\nusing ll = long long;\nusing\
+    \ ld = long double;\nusing graph = std::vector<std::vector<int>>;\nusing P = std::pair<int,\
+    \ int>;\nconstexpr int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll\
+    \ infl = std::numeric_limits<ll>::max() / 2;\nconst long double pi = acosl(-1);\n\
+    constexpr int dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0,\
+    \ 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
+    \ b && (a = b, true);\n}\n\n/**\n * @brief Template\n*/\n#line 6 \"test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
+    \nint main() {\n    int n, _c;\n    read(n, _c);\n    mint c = mint::raw(_c);\n\
     \    vector<mint> poly(n);\n    rep(i, n) {\n        int v;\n        read(v);\n\
     \        poly[i] = mint::raw(v);\n    }\n\n    poly = taylor_shift<mint, 524290>(poly,\
     \ c);\n    rep(i, n) put(poly[i].val());\n}\n"
@@ -543,8 +544,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 15:25:19+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
 layout: document

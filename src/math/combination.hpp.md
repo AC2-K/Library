@@ -2,21 +2,21 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: Polynomial Taylor Shift
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
     title: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
     title: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    document_title: "\u4E8C\u9805\u4FC2\u6570"
+    document_title: Combination
     links: []
   bundledCode: "#line 2 \"src/math/combination.hpp\"\n#include <algorithm>\n#include\
     \ <cassert>\nusing namespace std;\nnamespace kyopro {\n\ntemplate <typename mint,\
@@ -33,7 +33,7 @@ data:
     \ {\n        assert(n >= r);\n        return fact(n) * ifact(r) * ifact(n - r);\n\
     \    }\n    constexpr mint perm(int n, int r) const {\n        assert(n >= r);\n\
     \        return fact(n) * ifact(n - r);\n    }\n};\n\n};  // namespace kyopro\n\
-    \n/**\n * @brief \u4E8C\u9805\u4FC2\u6570\n */\n"
+    \n/**\n * @brief Combination\n */\n"
   code: "#pragma once\n#include <algorithm>\n#include <cassert>\nusing namespace std;\n\
     namespace kyopro {\n\ntemplate <typename mint, int sz> class combination {\n \
     \   const int M;\n    mint fac[sz + 1], ifac[sz + 1];\n\npublic:\n    combination()\
@@ -48,22 +48,22 @@ data:
     \n    constexpr mint binom(int n, int r) const {\n        assert(n >= r);\n  \
     \      return fact(n) * ifact(r) * ifact(n - r);\n    }\n    constexpr mint perm(int\
     \ n, int r) const {\n        assert(n >= r);\n        return fact(n) * ifact(n\
-    \ - r);\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief \u4E8C\u9805\u4FC2\
-    \u6570\n */"
+    \ - r);\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief Combination\n\
+    \ */"
   dependsOn: []
   isVerificationFile: false
   path: src/math/combination.hpp
   requiredBy:
   - src/FormalPowerSeries/taylor-shift.hpp
-  timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
 documentation_of: src/math/combination.hpp
 layout: document
 redirect_from:
 - /library/src/math/combination.hpp
 - /library/src/math/combination.hpp.html
-title: "\u4E8C\u9805\u4FC2\u6570"
+title: Combination
 ---

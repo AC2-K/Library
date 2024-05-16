@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/dynamic_programming/number_of_subseq.hpp
-    title: "\u90E8\u5206\u5217\u306E\u500B\u6570"
-  - icon: ':heavy_check_mark:'
+    title: "Count subsequences \u90E8\u5206\u5217\u306E\u500B\u6570"
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/math/gcd.hpp
-    title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+    title: gcd
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':heavy_check_mark:'
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
+  - icon: ':question:'
     path: src/template.hpp
-    title: src/template.hpp
+    title: Template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/number_of_subsequences
@@ -60,9 +60,10 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 6\
+    \ \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char& c)\
+    \ {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
@@ -91,30 +92,31 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 2 \"src/template.hpp\"\
-    \n#include <bits/stdc++.h>\n#define rep(i, n) for (int i = 0; i < (n); i++)\n\
-    #define all(x) std::begin(x), std::end(x)\n#define popcount(x) __builtin_popcountll(x)\n\
-    using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
-    \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
-    \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr int dx[] = {1, 0, -1, 0,\
-    \ 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate\
-    \ <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return\
-    \ a < b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
-    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 5 \"\
-    src/math/static_modint.hpp\"\n\n#line 5 \"src/math/gcd.hpp\"\nnamespace kyopro\
-    \ {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a\
-    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
-    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
-    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
-    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
-    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
-    \        }\n    }\n\n    return a << d;\n}\n\ntemplate <typename T>\nconstexpr\
-    \ inline T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T\
-    \ nx = 0, ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a,\
-    \ b) = std::pair<T, T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx,\
-    \ x - nx * q};\n        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n \
-    \   }\n    return a;\n}\n};  // namespace kyopro\n#line 8 \"src/math/static_modint.hpp\"\
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i, n) for (int\
+    \ i = 0; i < (n); i++)\n#define all(x) std::begin(x), std::end(x)\n#define popcount(x)\
+    \ __builtin_popcountll(x)\nusing i128 = __int128_t;\nusing ll = long long;\nusing\
+    \ ld = long double;\nusing graph = std::vector<std::vector<int>>;\nusing P = std::pair<int,\
+    \ int>;\nconstexpr int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll\
+    \ infl = std::numeric_limits<ll>::max() / 2;\nconst long double pi = acosl(-1);\n\
+    constexpr int dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0,\
+    \ 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
+    \ b && (a = b, true);\n}\n\n/**\n * @brief Template\n*/\n#line 5 \"src/math/static_modint.hpp\"\
+    \n\n#line 5 \"src/math/gcd.hpp\"\nnamespace kyopro {\ntemplate <typename T> constexpr\
+    \ inline T _gcd(T a, T b) noexcept {\n    assert(a >= 0 && b >= 0);\n    if (a\
+    \ == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n\
+    \    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n    while (a != b) {\n\
+    \        if (!a || !b) {\n            return a + b;\n        }\n        if (a\
+    \ >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n      \
+    \  } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n    \
+    \    }\n    }\n\n    return a << d;\n}\n\ntemplate <typename T>\nconstexpr inline\
+    \ T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0,\
+    \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
+    \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
+    \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
+    \ a;\n}\n};  // namespace kyopro\n\n/**\n * @brief gcd\n*/\n#line 8 \"src/math/static_modint.hpp\"\
     \nnamespace kyopro {\ntemplate <int _mod, std::enable_if_t<_mod >= 0>* = nullptr>\n\
     class modint : internal::modint_base {\n    using mint = modint<_mod>;\n    using\
     \ i32 = std::int32_t;\n    using u32 = std::uint32_t;\n    using i64 = std::int64_t;\n\
@@ -167,16 +169,17 @@ data:
     \ tmp.end());\n    tmp.erase(std::unique(tmp.begin(),tmp.end()), tmp.end());\n\
     \    for (int i = 0; i < (int)a.size(); ++i) {\n        a[i] = lower_bound(tmp.begin(),\
     \ tmp.end(), a[i]) - tmp.begin();\n    }\n}\n\n};  // namespace number_of_subseq_impl\n\
-    \ \n/// @return Number of subsequence of a  (including empty sequence)\ntemplate\
-    \ <typename mint, typename T>\nmint num_of_subseq(std::vector<T> a) {\n    number_of_subseq_impl::comp(a);\n\
+    \n/**\n * @note Empty Sequence is included.\n*/\ntemplate <typename mint, typename\
+    \ T>\nmint num_of_subseq(std::vector<T> a) {\n    number_of_subseq_impl::comp(a);\n\
     \    std::vector<mint> dp(a.size() + 1), sum(a.size() + 1);\n    sum[0] = mint(1);\n\
     \    for (int i = 0; i < (int)a.size(); ++i) {\n        sum[i + 1] = 2 * sum[i]\
     \ - dp[a[i]];\n        dp[a[i]] += sum[i] - dp[a[i]];\n    }\n    return sum[a.size()];\n\
-    }\n};\n\n/**\n * @brief \u90E8\u5206\u5217\u306E\u500B\u6570\n * @reference https://noshi91.hatenablog.com/entry/2023/02/26/135340\n\
-    */\n#line 7 \"test/yosupo_judge/math/Number_of_Subsequences.test.cpp\"\n\nusing\
-    \ namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
-    \nint main() {\n    int n;\n    read(n);\n    vector<int> a(n);\n    rep(i, n)\
-    \ read(a[i]);\n    put(num_of_subseq<mint, int>(a) - 1);\n}\n"
+    }\n};\n\n/**\n * @brief Count subsequences \u90E8\u5206\u5217\u306E\u500B\u6570\
+    \n * @see https://noshi91.hatenablog.com/entry/2023/02/26/135340\n*/\n#line 7\
+    \ \"test/yosupo_judge/math/Number_of_Subsequences.test.cpp\"\n\nusing namespace\
+    \ std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\nint main()\
+    \ {\n    int n;\n    read(n);\n    vector<int> a(n);\n    rep(i, n) read(a[i]);\n\
+    \    put(num_of_subseq<mint, int>(a) - 1);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/number_of_subsequences\"\
     \n\n#include\"../../../src/stream.hpp\"\n#include\"../../../src/template.hpp\"\
     \n#include\"../../../src/math/static_modint.hpp\"\n#include\"../../../src/dynamic_programming/number_of_subseq.hpp\"\
@@ -193,8 +196,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 15:25:19+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
 layout: document

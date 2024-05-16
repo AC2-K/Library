@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/1_A.test.cpp
     title: test/AOJ/DSL/1_A.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/UnionFind.test.cpp
     title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: Disjoint Set Union
     links: []
@@ -41,7 +41,7 @@ data:
   path: src/data-structure/dsu.hpp
   requiredBy: []
   timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/DSL/1_A.test.cpp
   - test/yosupo_judge/data_structure/UnionFind.test.cpp

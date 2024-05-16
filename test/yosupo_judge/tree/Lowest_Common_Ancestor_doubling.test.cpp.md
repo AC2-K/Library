@@ -1,23 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/CSR.hpp
-    title: "CSR\u5F62\u5F0F"
-  - icon: ':heavy_check_mark:'
+    title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
+      \u7E2E)"
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':heavy_check_mark:'
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
+  - icon: ':x:'
     path: src/tree/doubling.hpp
-    title: "\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
+    title: "Binary Lifting(\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/lca
@@ -54,9 +55,10 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 6\
+    \ \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char& c)\
+    \ {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
@@ -85,22 +87,22 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 2 \"src/tree/doubling.hpp\"\
-    \n#include <cassert>\n#include <vector>\n#line 2 \"src/internal/CSR.hpp\"\n\n\
-    #line 4 \"src/internal/CSR.hpp\"\n#include <iterator>\n#include <utility>\n#line\
-    \ 7 \"src/internal/CSR.hpp\"\n\nnamespace kyopro {\nnamespace internal {\n\ntemplate\
-    \ <typename T, typename _size_t> class csr {\n    _size_t n;\n    std::vector<T>\
-    \ d;\n    std::vector<_size_t> ssum;\n\npublic:\n    csr() = default;\n    csr(_size_t\
-    \ n, const std::vector<std::pair<_size_t, T>>& v)\n        : n(n), ssum(n + 1),\
-    \ d(v.size()) {\n        for (int i = 0; i < (int)v.size(); ++i) {\n         \
-    \   ++ssum[v[i].first + 1];\n        }\n        for (int i = 0; i < n; ++i) {\n\
-    \            ssum[i + 1] += ssum[i];\n        }\n\n        std::vector cnt = ssum;\n\
-    \        for (auto e : v) d[cnt[e.first]++] = e.second;\n    }\n\n    struct vector_range\
-    \ {\n        using iterator = typename std::vector<T>::iterator;\n        iterator\
-    \ l, r;\n\n        iterator begin() const { return l; }\n        iterator end()\
-    \ const { return r; }\n        _size_t size() { return std::distance(l, r); }\n\
-    \        T& operator[](_size_t i) const { return l[i]; }\n    };\n    struct const_vector_range\
-    \ {\n        using const_iterator = typename std::vector<T>::const_iterator;\n\
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 2 \"src/tree/doubling.hpp\"\n#include <cassert>\n#include <vector>\n#line 2\
+    \ \"src/internal/CSR.hpp\"\n\n#line 4 \"src/internal/CSR.hpp\"\n#include <iterator>\n\
+    #include <utility>\n#line 7 \"src/internal/CSR.hpp\"\n\nnamespace kyopro {\nnamespace\
+    \ internal {\n\ntemplate <typename T, typename _size_t> class csr {\n    _size_t\
+    \ n;\n    std::vector<T> d;\n    std::vector<_size_t> ssum;\n\npublic:\n    csr()\
+    \ = default;\n    csr(_size_t n, const std::vector<std::pair<_size_t, T>>& v)\n\
+    \        : n(n), ssum(n + 1), d(v.size()) {\n        for (int i = 0; i < (int)v.size();\
+    \ ++i) {\n            ++ssum[v[i].first + 1];\n        }\n        for (int i =\
+    \ 0; i < n; ++i) {\n            ssum[i + 1] += ssum[i];\n        }\n\n       \
+    \ std::vector cnt = ssum;\n        for (auto e : v) d[cnt[e.first]++] = e.second;\n\
+    \    }\n\n    struct vector_range {\n        using iterator = typename std::vector<T>::iterator;\n\
+    \        iterator l, r;\n\n        iterator begin() const { return l; }\n    \
+    \    iterator end() const { return r; }\n        _size_t size() { return std::distance(l,\
+    \ r); }\n        T& operator[](_size_t i) const { return l[i]; }\n    };\n   \
+    \ struct const_vector_range {\n        using const_iterator = typename std::vector<T>::const_iterator;\n\
     \        const_iterator l, r;\n\n        const_iterator begin() const { return\
     \ l; }\n        const_iterator end() const { return r; }\n        _size_t size()\
     \ { return (_size_t)std::distance(l, r); }\n        const T& operator[](_size_t\
@@ -109,15 +111,16 @@ data:
     \    }\n    const_vector_range operator[](_size_t i) const {\n        return const_vector_range{d.begin()\
     \ + ssum[i], d.begin() + ssum[i + 1]};\n    }\n\n    _size_t size() const { return\
     \ (_size_t)n; }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief CSR\u5F62\u5F0F\n */\n#line 5 \"src/tree/doubling.hpp\"\n\nnamespace\
-    \ kyopro {\n\ntemplate <typename Cost, int lg> class doubling {\n    struct edge\
-    \ {\n        int to;\n        Cost cost;\n\n        edge() : to(0), cost(0) {}\n\
-    \        edge(int to, Cost cost) : to(to), cost(cost) {}\n    };\n\n    const\
-    \ int n;\n\n    std::vector<std::pair<int, edge>> es;\n    std::vector<int> parent[lg];\n\
-    \    std::vector<Cost> _dist;\n    std::vector<int> _depth;\n\npublic:\n    doubling(int\
-    \ n) : n(n), _dist(n, -1), _depth(n) {\n        std::fill(parent, parent + lg,\
-    \ std::vector<int>(n));\n        es.reserve(2 * (n - 1));\n    }\n\n    void add_edge(int\
-    \ a, int b, Cost c = 1) {\n        es.emplace_back(a, edge{b, c});\n        es.emplace_back(b,\
+    \ * @brief CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
+    \u7E2E)\n */\n#line 5 \"src/tree/doubling.hpp\"\n\nnamespace kyopro {\n\ntemplate\
+    \ <typename Cost, int lg> class doubling {\n    struct edge {\n        int to;\n\
+    \        Cost cost;\n\n        edge() : to(0), cost(0) {}\n        edge(int to,\
+    \ Cost cost) : to(to), cost(cost) {}\n    };\n\n    const int n;\n\n    std::vector<std::pair<int,\
+    \ edge>> es;\n    std::vector<int> parent[lg];\n    std::vector<Cost> _dist;\n\
+    \    std::vector<int> _depth;\n\npublic:\n    doubling(int n) : n(n), _dist(n,\
+    \ -1), _depth(n) {\n        std::fill(parent, parent + lg, std::vector<int>(n));\n\
+    \        es.reserve(2 * (n - 1));\n    }\n\n    void add_edge(int a, int b, Cost\
+    \ c = 1) {\n        es.emplace_back(a, edge{b, c});\n        es.emplace_back(b,\
     \ edge{a, c});\n    }\n    \n    void build(int root = 0) {\n        internal::csr\
     \ g(n, es);\n\n        std::vector<int> st;\n        st.reserve(n);\n\n      \
     \  st.emplace_back(root);\n        _dist[root] = 0, _depth[root] = 0, parent[0][root]\
@@ -147,13 +150,14 @@ data:
     \n        if (d1 + d2 < k) {\n            return -1;\n        }\n\n        if\
     \ (d1 >= k) {\n            return level_ancestor(from, k);\n        } else {\n\
     \            return level_ancestor(to, d1 + d2 - k);\n        }\n    }\n};\n};\
-    \  // namespace kyopro\n\n/**\n *\n * @brief \u6728\u4E0A\u306E\u30C0\u30D6\u30EA\
-    \u30F3\u30B0\n * @docs docs/tree/doubling.md\n */\n#line 4 \"test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n,\
-    \ q;\n    read(n, q);\n    doubling<int, 19> g(n);\n    for (int i = 1; i < n;\
-    \ ++i) {\n        int p;\n        kyopro::read(p);\n        g.add_edge(p, i);\n\
-    \    }\n    g.build();\n    while (q--) {\n        int a, b;\n        read(a,\
-    \ b);\n        put(g.lca(a, b));\n    }\n}\n"
+    \  // namespace kyopro\n\n/**\n *\n * @brief Binary Lifting(\u6728\u4E0A\u306E\
+    \u30C0\u30D6\u30EA\u30F3\u30B0)\n * @docs docs/tree/doubling.md\n */\n#line 4\
+    \ \"test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp\"\n\nusing\
+    \ namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n   \
+    \ read(n, q);\n    doubling<int, 19> g(n);\n    for (int i = 1; i < n; ++i) {\n\
+    \        int p;\n        kyopro::read(p);\n        g.add_edge(p, i);\n    }\n\
+    \    g.build();\n    while (q--) {\n        int a, b;\n        read(a, b);\n \
+    \       put(g.lca(a, b));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n#include \"../../../src/stream.hpp\"\
     \n#include \"../../../src/tree/doubling.hpp\"\n\nusing namespace std;\nusing namespace\
     \ kyopro;\n\nint main() {\n    int n, q;\n    read(n, q);\n    doubling<int, 19>\
@@ -168,8 +172,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 19:01:18+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
 layout: document

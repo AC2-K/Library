@@ -2,30 +2,30 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
-    document_title: SparseTable
+    document_title: Sparse Table
     links: []
   bundledCode: "#line 2 \"src/data-structure/sparse_table.hpp\"\n#include <numeric>\n\
     #include <vector>\nnamespace kyopro {\n\ntemplate <class T, auto op> class sparse_table\
@@ -43,7 +43,7 @@ data:
     \ i++) {\n            lg[i] = lg[i >> 1] + 1;\n        }\n    }\n\n    T fold(int\
     \ l, int r) const {\n        int b = lg[r - l];\n        return op(table[b][l],\
     \ table[b][r - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief\
-    \ SparseTable\n */\n"
+    \ Sparse Table\n */\n"
   code: "#pragma once\n#include <numeric>\n#include <vector>\nnamespace kyopro {\n\
     \ntemplate <class T, auto op> class sparse_table {\n    std::vector<T> vec;\n\
     \    std::vector<std::vector<T>> table;\n    std::vector<int> lg;\n\npublic:\n\
@@ -59,19 +59,19 @@ data:
     \    lg.resize(sz + 1);\n        for (int i = 2; i < (int)lg.size(); i++) {\n\
     \            lg[i] = lg[i >> 1] + 1;\n        }\n    }\n\n    T fold(int l, int\
     \ r) const {\n        int b = lg[r - l];\n        return op(table[b][l], table[b][r\
-    \ - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief SparseTable\n\
+    \ - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Sparse Table\n\
     \ */"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/sparse_table.hpp
   requiredBy:
   - src/tree/EulerTour.hpp
-  timestamp: '2023-11-04 20:49:15+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/GRL/5_C.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
 documentation_of: src/data-structure/sparse_table.hpp
@@ -79,5 +79,5 @@ layout: document
 redirect_from:
 - /library/src/data-structure/sparse_table.hpp
 - /library/src/data-structure/sparse_table.hpp.html
-title: SparseTable
+title: Sparse Table
 ---

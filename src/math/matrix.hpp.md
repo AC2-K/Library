@@ -3,17 +3,17 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
     title: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    document_title: "\u884C\u5217"
+    document_title: "Matrix(\u884C\u5217)"
     links: []
   bundledCode: "#line 2 \"src/math/matrix.hpp\"\n#include <cassert>\n#include <utility>\n\
     #include <vector>\nnamespace kyopro {\n\ntemplate <typename T> class Matrix {\n\
@@ -44,7 +44,7 @@ data:
     \ res(n, n, 0);\n        mat pr(*this);\n        for (int i = 0; i < n; i++) res[i][i]\
     \ = 1;\n\n        while (e) {\n            if (e & 1) res *= pr;\n           \
     \ pr *= pr;\n\n            e >>= 1;\n        }\n\n        return res;\n    }\n\
-    };\n};  // namespace kyopro\n\n/**\n * @brief \u884C\u5217\n */\n"
+    };\n};  // namespace kyopro\n\n/**\n * @brief Matrix(\u884C\u5217)\n */\n"
   code: "#pragma once\n#include <cassert>\n#include <utility>\n#include <vector>\n\
     namespace kyopro {\n\ntemplate <typename T> class Matrix {\n    std::vector<std::vector<T>>\
     \ dat;\n    int h = 0, w = 0;\n\npublic:\n    constexpr Matrix(const std::vector<std::vector<T>>&\
@@ -74,20 +74,20 @@ data:
     \ pr(*this);\n        for (int i = 0; i < n; i++) res[i][i] = 1;\n\n        while\
     \ (e) {\n            if (e & 1) res *= pr;\n            pr *= pr;\n\n        \
     \    e >>= 1;\n        }\n\n        return res;\n    }\n};\n};  // namespace kyopro\n\
-    \n/**\n * @brief \u884C\u5217\n */"
+    \n/**\n * @brief Matrix(\u884C\u5217)\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/math/matrix.hpp
   requiredBy: []
-  timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
 documentation_of: src/math/matrix.hpp
 layout: document
 redirect_from:
 - /library/src/math/matrix.hpp
 - /library/src/math/matrix.hpp.html
-title: "\u884C\u5217"
+title: "Matrix(\u884C\u5217)"
 ---

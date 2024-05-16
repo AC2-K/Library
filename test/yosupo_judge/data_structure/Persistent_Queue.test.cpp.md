@@ -3,13 +3,13 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/persistent/queue.hpp
-    title: "\u6C38\u7D9AQueue"
-  - icon: ':heavy_check_mark:'
+    title: Persistent Queue
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -44,7 +44,7 @@ data:
     \ back_ptr, siz - 1);\n    }\n\n    T front() {\n        assert(siz);\n      \
     \  return front_ptr->val;\n    }\n    T back() {\n        assert(siz);\n     \
     \   return back_ptr->val;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief\
-    \ \u6C38\u7D9AQueue\n */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include\
+    \ Persistent Queue\n */\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include\
     \ <stdio.h>\n#include <string>\n#line 3 \"src/internal/type_traits.hpp\"\n#include\
     \ <limits>\n#include <numeric>\n#include <typeinfo>\n#include <cstdint>\n\nnamespace\
     \ kyopro {\nnamespace internal {\ntemplate <typename... Args> struct first_enabled\
@@ -73,9 +73,10 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 6\
+    \ \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char& c)\
+    \ {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
@@ -104,13 +105,14 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 6 \"test/yosupo_judge/data_structure/Persistent_Queue.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int q;\n\
-    \    read(q);\n    std::vector<kyopro::persistent_queue<int>> v(q + 1);\n    for\
-    \ (int i = 1; i <= q; i++) {\n        int t, idx;\n        read(t, idx);\n   \
-    \     idx++;\n\n        if (!t) {\n            int s;\n            read(s);\n\
-    \            v[i] = v[idx].push(s);\n        } else {\n            put(v[idx].front());\n\
-    \            v[i] = v[idx].pop();\n        }\n    }\n}\n"
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 6 \"test/yosupo_judge/data_structure/Persistent_Queue.test.cpp\"\n\nusing namespace\
+    \ std;\nusing namespace kyopro;\n\nint main() {\n    int q;\n    read(q);\n  \
+    \  std::vector<kyopro::persistent_queue<int>> v(q + 1);\n    for (int i = 1; i\
+    \ <= q; i++) {\n        int t, idx;\n        read(t, idx);\n        idx++;\n\n\
+    \        if (!t) {\n            int s;\n            read(s);\n            v[i]\
+    \ = v[idx].push(s);\n        } else {\n            put(v[idx].front());\n    \
+    \        v[i] = v[idx].pop();\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_queue\"\n#include\
     \ <iostream>\n#include <vector>\n#include \"../../../src/data-structure/persistent/queue.hpp\"\
     \n#include \"../../../src/stream.hpp\"\n\nusing namespace std;\nusing namespace\
@@ -127,7 +129,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
+  timestamp: '2024-05-16 17:50:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Persistent_Queue.test.cpp

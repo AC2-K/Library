@@ -1,46 +1,47 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    document_title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
+    document_title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570\
+      )"
     links: []
   bundledCode: "#line 2 \"src/FormalPowerSeries/FPS.hpp\"\n#include <vector>\n#line\
     \ 1 \"src/atcoder/convolution.hpp\"\n\n\n\n#include <algorithm>\n#include <array>\n\
@@ -477,8 +478,8 @@ data:
     \           return FPS(sz);\n        }\n\n        mint vp = (*this)[p];\n    \
     \    FPS f = (*this >> p);\n        f /= vp;\n        f = (f.log(sz) * e).exp(sz);\n\
     \        f *= vp.pow(e);\n        f = (f << (p * e)).pref(sz);\n        f.expand(sz);\n\
-    \        return f;\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief \u5F62\
-    \u5F0F\u7684\u3079\u304D\u7D1A\u6570\n*/\n"
+    \        return f;\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief Formal\
+    \ Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)\n*/\n"
   code: "#pragma once\n#include <vector>\n#include \"../../src/atcoder/convolution.hpp\"\
     \nnamespace kyopro{\n\ntemplate <typename mint, atcoder::internal::is_modint_t<mint>*\
     \ = nullptr>\nstruct FormalPowerSeries : public std::vector<mint> {\n    using\
@@ -540,8 +541,8 @@ data:
     \           return FPS(sz);\n        }\n\n        mint vp = (*this)[p];\n    \
     \    FPS f = (*this >> p);\n        f /= vp;\n        f = (f.log(sz) * e).exp(sz);\n\
     \        f *= vp.pow(e);\n        f = (f << (p * e)).pref(sz);\n        f.expand(sz);\n\
-    \        return f;\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief \u5F62\
-    \u5F0F\u7684\u3079\u304D\u7D1A\u6570\n*/"
+    \        return f;\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief Formal\
+    \ Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)\n*/"
   dependsOn:
   - src/atcoder/convolution.hpp
   - src/atcoder/internal_bit.hpp
@@ -552,12 +553,12 @@ data:
   path: src/FormalPowerSeries/FPS.hpp
   requiredBy:
   - src/FormalPowerSeries/fps-sqrt.hpp
-  timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
+  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
 documentation_of: src/FormalPowerSeries/FPS.hpp
@@ -565,5 +566,5 @@ layout: document
 redirect_from:
 - /library/src/FormalPowerSeries/FPS.hpp
 - /library/src/FormalPowerSeries/FPS.hpp.html
-title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
+title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
 ---

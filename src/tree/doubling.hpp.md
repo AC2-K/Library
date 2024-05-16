@@ -1,23 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/CSR.hpp
-    title: "CSR\u5F62\u5F0F"
+    title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
+      \u7E2E)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
     title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: docs/tree/doubling.md
-    document_title: "\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
+    document_title: "Binary Lifting(\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0\
+      )"
     links: []
   bundledCode: "#line 2 \"src/tree/doubling.hpp\"\n#include <cassert>\n#include <vector>\n\
     #line 2 \"src/internal/CSR.hpp\"\n\n#line 4 \"src/internal/CSR.hpp\"\n#include\
@@ -43,10 +45,11 @@ data:
     \ i) const {\n        return const_vector_range{d.begin() + ssum[i], d.begin()\
     \ + ssum[i + 1]};\n    }\n\n    _size_t size() const { return (_size_t)n; }\n\
     };\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief CSR\u5F62\
-    \u5F0F\n */\n#line 5 \"src/tree/doubling.hpp\"\n\nnamespace kyopro {\n\ntemplate\
-    \ <typename Cost, int lg> class doubling {\n    struct edge {\n        int to;\n\
-    \        Cost cost;\n\n        edge() : to(0), cost(0) {}\n        edge(int to,\
-    \ Cost cost) : to(to), cost(cost) {}\n    };\n\n    const int n;\n\n    std::vector<std::pair<int,\
+    \u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\u7E2E)\n */\n#line\
+    \ 5 \"src/tree/doubling.hpp\"\n\nnamespace kyopro {\n\ntemplate <typename Cost,\
+    \ int lg> class doubling {\n    struct edge {\n        int to;\n        Cost cost;\n\
+    \n        edge() : to(0), cost(0) {}\n        edge(int to, Cost cost) : to(to),\
+    \ cost(cost) {}\n    };\n\n    const int n;\n\n    std::vector<std::pair<int,\
     \ edge>> es;\n    std::vector<int> parent[lg];\n    std::vector<Cost> _dist;\n\
     \    std::vector<int> _depth;\n\npublic:\n    doubling(int n) : n(n), _dist(n,\
     \ -1), _depth(n) {\n        std::fill(parent, parent + lg, std::vector<int>(n));\n\
@@ -81,8 +84,8 @@ data:
     \n        if (d1 + d2 < k) {\n            return -1;\n        }\n\n        if\
     \ (d1 >= k) {\n            return level_ancestor(from, k);\n        } else {\n\
     \            return level_ancestor(to, d1 + d2 - k);\n        }\n    }\n};\n};\
-    \  // namespace kyopro\n\n/**\n *\n * @brief \u6728\u4E0A\u306E\u30C0\u30D6\u30EA\
-    \u30F3\u30B0\n * @docs docs/tree/doubling.md\n */\n"
+    \  // namespace kyopro\n\n/**\n *\n * @brief Binary Lifting(\u6728\u4E0A\u306E\
+    \u30C0\u30D6\u30EA\u30F3\u30B0)\n * @docs docs/tree/doubling.md\n */\n"
   code: "#pragma once\n#include <cassert>\n#include <vector>\n#include \"../internal/CSR.hpp\"\
     \n\nnamespace kyopro {\n\ntemplate <typename Cost, int lg> class doubling {\n\
     \    struct edge {\n        int to;\n        Cost cost;\n\n        edge() : to(0),\
@@ -121,24 +124,25 @@ data:
     \      int d2 = _depth[to] - _depth[p];\n\n        if (d1 + d2 < k) {\n      \
     \      return -1;\n        }\n\n        if (d1 >= k) {\n            return level_ancestor(from,\
     \ k);\n        } else {\n            return level_ancestor(to, d1 + d2 - k);\n\
-    \        }\n    }\n};\n};  // namespace kyopro\n\n/**\n *\n * @brief \u6728\u4E0A\
-    \u306E\u30C0\u30D6\u30EA\u30F3\u30B0\n * @docs docs/tree/doubling.md\n */"
+    \        }\n    }\n};\n};  // namespace kyopro\n\n/**\n *\n * @brief Binary Lifting(\u6728\
+    \u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0)\n * @docs docs/tree/doubling.md\n\
+    \ */"
   dependsOn:
   - src/internal/CSR.hpp
   isVerificationFile: false
   path: src/tree/doubling.hpp
   requiredBy: []
-  timestamp: '2024-05-03 19:01:18+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
 documentation_of: src/tree/doubling.hpp
 layout: document
 redirect_from:
 - /library/src/tree/doubling.hpp
 - /library/src/tree/doubling.hpp.html
-title: "\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
+title: "Binary Lifting(\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0)"
 ---
 ## 概要
 

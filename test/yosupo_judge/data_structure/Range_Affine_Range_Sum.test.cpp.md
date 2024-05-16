@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/lazy_segtree.hpp
     title: Lazy Segment Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/math/gcd.hpp
-    title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+    title: gcd
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_affine_range_sum
@@ -97,33 +97,34 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <cmath>\n#include <tuple>\nnamespace\
-    \ kyopro {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n\
-    \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
-    \ d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
-    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (!a || !b) {\n \
-    \           return a + b;\n        }\n        if (a >= b) {\n            a -=\
-    \ b;\n            a >>= __builtin_ctzll(a);\n        } else {\n            b -=\
-    \ a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return a\
-    \ << d;\n}\n\ntemplate <typename T>\nconstexpr inline T ext_gcd(T a, T b, T& x,\
-    \ T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b) {\n\
-    \        T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n \
-    \       std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
-    \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
-    \ kyopro\n#line 8 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate\
-    \ <int _mod, std::enable_if_t<_mod >= 0>* = nullptr>\nclass modint : internal::modint_base\
-    \ {\n    using mint = modint<_mod>;\n    using i32 = std::int32_t;\n    using\
-    \ u32 = std::uint32_t;\n    using i64 = std::int64_t;\n    using u64 = std::uint64_t;\n\
-    \n    u32 v;\n    constexpr u32 normalize(i64 v_) const noexcept {\n        v_\
-    \ %= _mod;\n        if (v_ < 0) {\n            v_ += _mod;\n        }\n      \
-    \  return v_;\n    }\n\npublic:\n    static constexpr u32 mod() noexcept { return\
-    \ _mod; }\n    constexpr modint() noexcept : v(0) {}\n    constexpr modint(i64\
-    \ v_) noexcept : v(normalize(v_)) {}\n\n    static mint raw(u32 a) {\n       \
-    \ mint m;\n        m.v = a;\n        return m;\n    }\n    constexpr u32 val()\
-    \ const noexcept { return v; }\n    constexpr mint& operator+=(const mint& rhs)\
-    \ noexcept {\n        v += rhs.val();\n        if (v >= _mod) {\n            v\
-    \ -= _mod;\n        }\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 3\
+    \ \"src/math/gcd.hpp\"\n#include <cmath>\n#include <tuple>\nnamespace kyopro {\n\
+    template <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a\
+    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
+    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\n\ntemplate <typename T>\nconstexpr\
+    \ inline T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T\
+    \ nx = 0, ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a,\
+    \ b) = std::pair<T, T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx,\
+    \ x - nx * q};\n        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n \
+    \   }\n    return a;\n}\n};  // namespace kyopro\n\n/**\n * @brief gcd\n*/\n#line\
+    \ 8 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate <int _mod, std::enable_if_t<_mod\
+    \ >= 0>* = nullptr>\nclass modint : internal::modint_base {\n    using mint =\
+    \ modint<_mod>;\n    using i32 = std::int32_t;\n    using u32 = std::uint32_t;\n\
+    \    using i64 = std::int64_t;\n    using u64 = std::uint64_t;\n\n    u32 v;\n\
+    \    constexpr u32 normalize(i64 v_) const noexcept {\n        v_ %= _mod;\n \
+    \       if (v_ < 0) {\n            v_ += _mod;\n        }\n        return v_;\n\
+    \    }\n\npublic:\n    static constexpr u32 mod() noexcept { return _mod; }\n\
+    \    constexpr modint() noexcept : v(0) {}\n    constexpr modint(i64 v_) noexcept\
+    \ : v(normalize(v_)) {}\n\n    static mint raw(u32 a) {\n        mint m;\n   \
+    \     m.v = a;\n        return m;\n    }\n    constexpr u32 val() const noexcept\
+    \ { return v; }\n    constexpr mint& operator+=(const mint& rhs) noexcept {\n\
+    \        v += rhs.val();\n        if (v >= _mod) {\n            v -= _mod;\n \
+    \       }\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
     \ mint& rhs) noexcept {\n        v += _mod - rhs.val();\n        if (v >= _mod)\
     \ {\n            v -= _mod;\n        }\n        return (*this);\n    }\n    constexpr\
     \ mint& operator*=(const mint& rhs) noexcept {\n        v = (u64)v * rhs.val()\
@@ -189,10 +190,11 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 6 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\
-    \nusing mint = kyopro::modint<998244353>;\nstruct S {\n    mint s;\n    int len;\n\
-    };\ninline S op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }\ninline S e()\
-    \ { return S{0, 0}; }\nusing Affine = std::pair<mint, mint>;\ninline Affine composition(Affine\
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 6 \"test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp\"\nusing\
+    \ mint = kyopro::modint<998244353>;\nstruct S {\n    mint s;\n    int len;\n};\n\
+    inline S op(S a, S b) { return S{a.s + b.s, a.len + b.len}; }\ninline S e() {\
+    \ return S{0, 0}; }\nusing Affine = std::pair<mint, mint>;\ninline Affine composition(Affine\
     \ g, Affine f) {\n    // f(g)\n    // a(cx+d)+b\n    auto a = f.first, b = f.second;\n\
     \    auto c = g.first, d = g.second;\n    return Affine(a * c, a * d + b);\n}\n\
     inline Affine id() { return Affine(1, 0); }\ninline S mapping(S d, Affine f) {\n\
@@ -234,8 +236,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-02-21 16:16:45+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
 layout: document

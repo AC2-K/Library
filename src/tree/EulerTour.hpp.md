@@ -1,29 +1,30 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/sparse_table.hpp
-    title: SparseTable
-  - icon: ':heavy_check_mark:'
+    title: Sparse Table
+  - icon: ':question:'
     path: src/internal/CSR.hpp
-    title: "CSR\u5F62\u5F0F"
+    title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
+      \u7E2E)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/tree/EulerTour.md
     document_title: Euler Tour
@@ -45,7 +46,7 @@ data:
     \ i++) {\n            lg[i] = lg[i >> 1] + 1;\n        }\n    }\n\n    T fold(int\
     \ l, int r) const {\n        int b = lg[r - l];\n        return op(table[b][l],\
     \ table[b][r - (1 << b)]);\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief\
-    \ SparseTable\n */\n#line 2 \"src/internal/CSR.hpp\"\n\n#line 4 \"src/internal/CSR.hpp\"\
+    \ Sparse Table\n */\n#line 2 \"src/internal/CSR.hpp\"\n\n#line 4 \"src/internal/CSR.hpp\"\
     \n#include <iterator>\n#line 7 \"src/internal/CSR.hpp\"\n\nnamespace kyopro {\n\
     namespace internal {\n\ntemplate <typename T, typename _size_t> class csr {\n\
     \    _size_t n;\n    std::vector<T> d;\n    std::vector<_size_t> ssum;\n\npublic:\n\
@@ -68,11 +69,12 @@ data:
     \ i) const {\n        return const_vector_range{d.begin() + ssum[i], d.begin()\
     \ + ssum[i + 1]};\n    }\n\n    _size_t size() const { return (_size_t)n; }\n\
     };\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief CSR\u5F62\
-    \u5F0F\n */\n#line 6 \"src/tree/EulerTour.hpp\"\n\nnamespace kyopro {\n\nclass\
-    \ EulerTour {\n    int n;\n\n    std::vector<std::pair<int, int>> es;\n    std::vector<int>\
-    \ tour;\n    std::vector<int> in, out, depth;\n\n    struct get_min_pair {\n \
-    \       using value_t = std::pair<int, int>;\n        static value_t op(value_t\
-    \ x, value_t y) { return std::min(x, y); }\n    };\n\n    sparse_table<get_min_pair::value_t,\
+    \u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\u7E2E)\n */\n#line\
+    \ 6 \"src/tree/EulerTour.hpp\"\n\nnamespace kyopro {\n\nclass EulerTour {\n  \
+    \  int n;\n\n    std::vector<std::pair<int, int>> es;\n    std::vector<int> tour;\n\
+    \    std::vector<int> in, out, depth;\n\n    struct get_min_pair {\n        using\
+    \ value_t = std::pair<int, int>;\n        static value_t op(value_t x, value_t\
+    \ y) { return std::min(x, y); }\n    };\n\n    sparse_table<get_min_pair::value_t,\
     \ get_min_pair::op> rmq;\n\npublic:\n    explicit EulerTour(int n)\n        :\
     \ n(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) {\n        tour.reserve(2\
     \ * n);\n        es.reserve(2 * n);\n    }\n\n    void add_edge(int u, int v)\
@@ -137,12 +139,12 @@ data:
   isVerificationFile: false
   path: src/tree/EulerTour.hpp
   requiredBy: []
-  timestamp: '2024-05-03 18:39:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/GRL/5_C.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
 documentation_of: src/tree/EulerTour.hpp
 layout: document

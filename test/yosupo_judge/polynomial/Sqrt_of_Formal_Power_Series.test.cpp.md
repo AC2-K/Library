@@ -1,80 +1,80 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/FPS.hpp
-    title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-  - icon: ':heavy_check_mark:'
+    title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
+  - icon: ':x:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/hash_map.hpp
     title: Hash Map
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/debug.hpp
-    title: src/debug.hpp
-  - icon: ':heavy_check_mark:'
+    title: Debugger
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
-    title: dynamic modint
-  - icon: ':heavy_check_mark:'
+    title: Dynamic modint
+  - icon: ':question:'
     path: src/math/gcd.hpp
-    title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+    title: gcd
+  - icon: ':question:'
     path: src/math/miller.hpp
-    title: "MillerRabin\u7D20\u6570\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+    title: "Primality Test(MillerRabin\u7D20\u6570\u5224\u5B9A)"
+  - icon: ':x:'
     path: src/math/mod_log.hpp
-    title: "\u96E2\u6563\u5BFE\u6570"
-  - icon: ':heavy_check_mark:'
+    title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
-    title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
-  - icon: ':heavy_check_mark:'
+    title: "Power Modulo(\u7D2F\u4E57)"
+  - icon: ':x:'
     path: src/math/mod_sqrt.hpp
     title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: Xor Shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':heavy_check_mark:'
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
+  - icon: ':question:'
     path: src/template.hpp
-    title: src/template.hpp
+    title: Template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sqrt_of_formal_power_series
@@ -517,17 +517,17 @@ data:
     \           return FPS(sz);\n        }\n\n        mint vp = (*this)[p];\n    \
     \    FPS f = (*this >> p);\n        f /= vp;\n        f = (f.log(sz) * e).exp(sz);\n\
     \        f *= vp.pow(e);\n        f = (f << (p * e)).pref(sz);\n        f.expand(sz);\n\
-    \        return f;\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief \u5F62\
-    \u5F0F\u7684\u3079\u304D\u7D1A\u6570\n*/\n#line 2 \"src/math/mod_log.hpp\"\n#include\
-    \ <cmath>\n#line 2 \"src/data-structure/hash_map.hpp\"\n#include <chrono>\n#line\
-    \ 5 \"src/data-structure/hash_map.hpp\"\n#include <bits/stl_algobase.h>\n\nnamespace\
-    \ kyopro {\ntemplate <typename Key,\n          typename Val,\n          std::size_t\
-    \ n = 1 << 20,\n          Val default_val = Val()>\nclass hash_map {\n    using\
-    \ u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64* flag = new u64[n / 64];\n\
-    \    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\n    static constexpr\
-    \ u32 shift = 64 - std::__lg(n);\n\n    u64 r;\n    u32 get_hash(Key k) const\
-    \ { return ((u64)k * r) >> shift; }\n\n    static constexpr int block = 64;\n\n\
-    public:\n    explicit hash_map() {\n        r = std::chrono::steady_clock::now().time_since_epoch().count();\n\
+    \        return f;\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief Formal\
+    \ Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)\n*/\n#line 2 \"src/math/mod_log.hpp\"\
+    \n#include <cmath>\n#line 2 \"src/data-structure/hash_map.hpp\"\n#include <chrono>\n\
+    #line 5 \"src/data-structure/hash_map.hpp\"\n#include <bits/stl_algobase.h>\n\n\
+    namespace kyopro {\ntemplate <typename Key,\n          typename Val,\n       \
+    \   std::size_t n = 1 << 20,\n          Val default_val = Val()>\nclass hash_map\
+    \ {\n    using u32 = uint32_t;\n    using u64 = uint64_t;\n\n    u64* flag = new\
+    \ u64[n / 64];\n    Key* keys = new Key[n];\n    Val* vals = new Val[n];\n\n \
+    \   static constexpr u32 shift = 64 - std::__lg(n);\n\n    u64 r;\n    u32 get_hash(Key\
+    \ k) const { return ((u64)k * r) >> shift; }\n\n    static constexpr int block\
+    \ = 64;\n\npublic:\n    explicit hash_map() {\n        r = std::chrono::steady_clock::now().time_since_epoch().count();\n\
     \        r ^= r >> 16;\n        r ^= r << 32;\n    }\n    Val& operator[](Key\
     \ k) {\n        u32 hash = get_hash(k);\n\n        while (1) {\n            if\
     \ (~flag[hash / block] >> (hash % block) & static_cast<u64>(1)) {\n          \
@@ -552,22 +552,22 @@ data:
     \ ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a, b) = std::pair<T,\
     \ T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n\
     \        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return\
-    \ a;\n}\n};  // namespace kyopro\n#line 2 \"src/internal/type_traits.hpp\"\n#include\
-    \ <iostream>\n#include <limits>\n#line 5 \"src/internal/type_traits.hpp\"\n#include\
-    \ <typeinfo>\n#include <cstdint>\n\nnamespace kyopro {\nnamespace internal {\n\
-    template <typename... Args> struct first_enabled {};\n\ntemplate <typename T,\
-    \ typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...> {\n\
-    \    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
-    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
-    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
-    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
-    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct int_least\
-    \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::int8_t>,\n\
-    \                                 std::enable_if<dgt <= 16, std::int16_t>,\n \
-    \                                std::enable_if<dgt <= 32, std::int32_t>,\n  \
-    \                               std::enable_if<dgt <= 64, std::int64_t>,\n   \
-    \                              std::enable_if<dgt <= 128, __int128_t>>;\n};\n\n\
-    template <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
+    \ a;\n}\n};  // namespace kyopro\n\n/**\n * @brief gcd\n*/\n#line 2 \"src/internal/type_traits.hpp\"\
+    \n#include <iostream>\n#include <limits>\n#line 5 \"src/internal/type_traits.hpp\"\
+    \n#include <typeinfo>\n#include <cstdint>\n\nnamespace kyopro {\nnamespace internal\
+    \ {\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
+    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
+    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
+    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
+    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt, std::enable_if_t<dgt\
+    \ <= 128>* = nullptr> struct int_least {\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, std::int8_t>,\n                                 std::enable_if<dgt <=\
+    \ 16, std::int16_t>,\n                                 std::enable_if<dgt <= 32,\
+    \ std::int32_t>,\n                                 std::enable_if<dgt <= 64, std::int64_t>,\n\
+    \                                 std::enable_if<dgt <= 128, __int128_t>>;\n};\n\
+    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
     \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::uint8_t>,\n\
     \                                 std::enable_if<dgt <= 16, std::uint16_t>,\n\
     \                                 std::enable_if<dgt <= 32, std::uint32_t>,\n\
@@ -581,14 +581,15 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 3 \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\n/**\n * @brief \u30D0\
-    \u30A4\u30CA\u30EA\u6CD5\n */\ntemplate <typename T>\nconstexpr T mod_pow(internal::double_size_uint_t<T>\
-    \ base, T exp, T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ?\
-    \ 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n     \
-    \       ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
-    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
-    \ kyopro\n#line 6 \"src/math/mod_log.hpp\"\nnamespace kyopro {\n\ntemplate <typename\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 3\
+    \ \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\ntemplate <typename T>\nconstexpr\
+    \ T mod_pow(internal::double_size_uint_t<T> base, T exp, T mod) {\n    internal::double_size_uint_t<T>\
+    \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
+    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
+    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
+    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Power Modulo(\u7D2F\u4E57\
+    )\n */\n#line 6 \"src/math/mod_log.hpp\"\nnamespace kyopro {\n\ntemplate <typename\
     \ T> constexpr inline T mod_log(T x, T y, T p) {\n    if (y == 1 || p == 1) {\n\
     \        return 0;\n    }\n    if (x == 0) {\n        if (y == 0) {\n        \
     \    return 1;\n        } else {\n            return -1;\n        }\n    }\n \
@@ -601,43 +602,42 @@ data:
     \   }\n    pr = k;\n    for (int i = 1; i <= m; ++i) {\n        pr = (internal::double_size_uint_t<T>)pr\
     \ * xm % p;\n        auto ptr = mp.find(pr);\n        if (ptr) {\n           \
     \ int j = *ptr;\n            return m * i - j + add;\n        }\n    }\n    return\
-    \ -1;\n}\n\n};  // namespace kyopro\n\n/**\n * @brief \u96E2\u6563\u5BFE\u6570\
-    \n * @docs docs/math/mod_log.md\n */\n#line 3 \"src/internal/barrett.hpp\"\nnamespace\
-    \ kyopro {\nnamespace internal {\n\n/**\n * @brief Barrett Reduction\n */\nclass\
-    \ barrett {\n    using u32 = std::uint32_t;\n    using u64 = std::uint64_t;\n\
-    \    using u128 = __uint128_t;\n\n    u32 m;\n    u64 im;\n\npublic:\n    constexpr\
-    \ barrett() : m(0), im(0) {}\n    constexpr barrett(u32 m)\n        : m(m), im(static_cast<u64>(-1)\
-    \ / m + 1) {}\n\n    constexpr u32 get_mod() const { return m; }\n    constexpr\
-    \ u32 reduce(u32 a) const { return mul(1, a); }\n    constexpr u32 mul(u32 a,\
-    \ u32 b) const {\n        u64 z = (u64)a * b;\n        u64 x = (u64)(((u128)(z)*im)\
-    \ >> 64);\n        u64 y = x * m;\n        return (u32)(z - y + (z < y ? m : 0));\n\
-    \    }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n * @ref\n\
-    \ * https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
+    \ -1;\n}\n\n};  // namespace kyopro\n\n/**\n * @brief Discrete Logarithm(\u96E2\
+    \u6563\u5BFE\u6570)\n * @docs docs/math/mod_log.md\n */\n#line 3 \"src/internal/barrett.hpp\"\
+    \nnamespace kyopro {\nnamespace internal {\nclass barrett {\n    using u32 = std::uint32_t;\n\
+    \    using u64 = std::uint64_t;\n    using u128 = __uint128_t;\n\n    u32 m;\n\
+    \    u64 im;\n\npublic:\n    constexpr barrett() : m(0), im(0) {}\n    constexpr\
+    \ barrett(u32 m)\n        : m(m), im(static_cast<u64>(-1) / m + 1) {}\n\n    constexpr\
+    \ u32 get_mod() const { return m; }\n    constexpr u32 reduce(u32 a) const { return\
+    \ mul(1, a); }\n    constexpr u32 mul(u32 a, u32 b) const {\n        u64 z = (u64)a\
+    \ * b;\n        u64 x = (u64)(((u128)(z)*im) >> 64);\n        u64 y = x * m;\n\
+    \        return (u32)(z - y + (z < y ? m : 0));\n    }\n};\n};  // namespace internal\n\
+    };  // namespace kyopro\n\n/**\n * @brief Barrett Reduction\n * @see https://github.com/atcoder/ac-library/blob/master/atcoder/internal_math.hpp\n\
     \ */\n#line 6 \"src/internal/montgomery.hpp\"\nnamespace kyopro {\nnamespace internal\
     \ {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing\
-    \ i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n\n/**\n\
-    \ * @brief Montgomery Reduction\n */\ntemplate <typename T> class Montgomery {\n\
-    \    static constexpr int lg = std::numeric_limits<T>::digits;\n    using LargeT\
-    \ = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n    T inv() {\n\
-    \        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i) {\n         \
-    \   if (~t & 1) {\n                t += mod;\n                res += static_cast<T>(1)\
-    \ << i;\n            }\n            t >>= 1;\n        }\n        return res;\n\
-    \    }\n\npublic:\n    Montgomery() = default;\n    constexpr T get_mod() { return\
-    \ mod; }\n\n    void set_mod(T m) {\n        assert(m);\n        assert(m & 1);\n\
-    \n        mod = m;\n\n        r = (-static_cast<T>(mod)) % mod;\n        r2 =\
-    \ (-static_cast<LargeT>(mod)) % mod;\n        minv = inv();\n    }\n\n    T reduce(LargeT\
-    \ x) const {\n        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x)\
-    \ * minv) * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return\
-    \ res;\n    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T\
-    \ mul(T x, T y) { return reduce((LargeT)x * y); }\n};\n};  // namespace internal\n\
-    };  // namespace kyopro\n#line 6 \"src/math/dynamic_modint.hpp\"\nnamespace kyopro\
-    \ {\ntemplate <int id = -1> class barrett_modint : internal::modint_base {\n \
-    \   using mint = barrett_modint<id>;\n    using u32 = std::uint32_t;\n    using\
-    \ u64 = std::uint64_t;\n\n    using i32 = std::int32_t;\n    using i64 = std::int64_t;\n\
-    \    using br = internal::barrett;\n\n    static br brt;\n    u32 v;\n\npublic:\n\
-    \    static void set_mod(u32 mod_) { brt = br(mod_); }\n\npublic:\n    explicit\
-    \ constexpr barrett_modint() noexcept : v(0) { assert(mod()); }\n    explicit\
-    \ constexpr barrett_modint(i64 v_) noexcept : v() {\n        assert(mod());\n\
+    \ i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n\ntemplate\
+    \ <typename T> class Montgomery {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
+    \    using LargeT = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n\
+    \    T inv() {\n        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i)\
+    \ {\n            if (~t & 1) {\n                t += mod;\n                res\
+    \ += static_cast<T>(1) << i;\n            }\n            t >>= 1;\n        }\n\
+    \        return res;\n    }\n\npublic:\n    Montgomery() = default;\n    constexpr\
+    \ T get_mod() { return mod; }\n\n    void set_mod(T m) {\n        assert(m);\n\
+    \        assert(m & 1);\n\n        mod = m;\n\n        r = (-static_cast<T>(mod))\
+    \ % mod;\n        r2 = (-static_cast<LargeT>(mod)) % mod;\n        minv = inv();\n\
+    \    }\n\n    T reduce(LargeT x) const {\n        u64 res =\n            (x +\
+    \ static_cast<LargeT>(static_cast<T>(x) * minv) * mod) >> lg;\n\n        if (res\
+    \ >= mod) res -= mod;\n        return res;\n    }\n\n    T generate(LargeT x)\
+    \ { return reduce(x * r2); }\n\n    T mul(T x, T y) { return reduce((LargeT)x\
+    \ * y); }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n\n/**\n *\
+    \ @brief Montgomery Reduction\n */\n#line 6 \"src/math/dynamic_modint.hpp\"\n\
+    namespace kyopro {\ntemplate <int id = -1> class barrett_modint : internal::modint_base\
+    \ {\n    using mint = barrett_modint<id>;\n    using u32 = std::uint32_t;\n  \
+    \  using u64 = std::uint64_t;\n\n    using i32 = std::int32_t;\n    using i64\
+    \ = std::int64_t;\n    using br = internal::barrett;\n\n    static br brt;\n \
+    \   u32 v;\n\npublic:\n    static void set_mod(u32 mod_) { brt = br(mod_); }\n\
+    \npublic:\n    explicit constexpr barrett_modint() noexcept : v(0) { assert(mod());\
+    \ }\n    explicit constexpr barrett_modint(i64 v_) noexcept : v() {\n        assert(mod());\n\
     \        if (v_ < 0) v_ = (i64)mod() - v_;\n        v = brt.reduce(v_);\n    }\n\
     \n    u32 val() const noexcept { return v; }\n    static u32 mod() { return brt.get_mod();\
     \ }\n    static mint raw(u32 v) {\n        mint x;\n        x.v = v;\n       \
@@ -712,7 +712,7 @@ data:
     \ l, const mint& r) { return mint(l) /= r; }\n};\n};  // namespace kyopro\ntemplate\
     \ <typename T, int id> T kyopro::montgomery_modint<T, id>::_mod;\ntemplate <typename\
     \ T, int id>\nkyopro::internal::Montgomery<T> kyopro::montgomery_modint<T, id>::mr;\n\
-    \n/**\n * @brief dynamic modint\n */\n#line 3 \"src/math/miller.hpp\"\nnamespace\
+    \n/**\n * @brief Dynamic modint\n */\n#line 3 \"src/math/miller.hpp\"\nnamespace\
     \ kyopro {\n\n\nclass miller {\n    using i128 = __int128_t;\n    using u128 =\
     \ __uint128_t;\n    using u64 = std::uint64_t;\n    using u32 = std::uint32_t;\n\
     \n    template <typename T, typename mint, const int bases[], int length>\n  \
@@ -738,8 +738,8 @@ data:
     \                               bases_int, 3>(n);\n            else\n        \
     \        return miller_rabin<\n                    T, montgomery_modint<std::make_unsigned_t<T>>,\
     \ bases_ll, 7>(\n                    n);\n        }\n        return false;\n \
-    \   }\n};\n};  // namespace kyopro\n\n/**\n * @brief MillerRabin\u7D20\u6570\u5224\
-    \u5B9A\n * @docs docs/math/miller.md\n */\n#line 4 \"src/random/xor_shift.hpp\"\
+    \   }\n};\n};  // namespace kyopro\n\n/**\n * @brief Primality Test(MillerRabin\u7D20\
+    \u6570\u5224\u5B9A)\n * @docs docs/math/miller.md\n */\n#line 4 \"src/random/xor_shift.hpp\"\
     \n#include <random>\n\nnamespace kyopro {\nstruct xor_shift32 {\n    uint32_t\
     \ rng;\n    constexpr explicit xor_shift32(uint32_t seed) : rng(seed) {}\n   \
     \ explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
@@ -829,52 +829,52 @@ data:
     \ (int j = 0; j < (int)g.size(); ++j) g[j] *= inv2;\n    }\n\n    return g.pref(deg);\n\
     }\n};  // namespace kyopro\n#line 1 \"src/debug.hpp\"\n#ifdef ONLINE_JUDGE\n#define\
     \ debug(x) void(0)\n#else\n#define _GLIBCXX_DEBUG\n#define debug(x) std::cerr\
-    \ << __LINE__ << \" : \" << #x << \" = \" << (x) << std::endl\n#endif\n#line 2\
-    \ \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
-    #line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
-    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
-    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
-    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
-    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
-    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
-    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
-    \ = nullptr>\ninline void single_read(T& a) {\n    long long x;\n    single_read(x);\n\
-    \    a = T(x);\n}\ninline void single_read(std::string& str) noexcept {\n    char\
-    \ c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n  \
-    \  while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
-    \    }\n}\ntemplate<typename T>\ninline void read(T& x) noexcept {single_read(x);}\n\
-    template <typename Head, typename... Tail>\ninline void read(Head& head, Tail&...\
-    \ tail) noexcept {\n    single_read(head), read(tail...);\n}\n\ninline void single_write(char\
-    \ c) noexcept { putchar_unlocked(c); }\ntemplate <typename T, internal::is_integral_t<T>*\
-    \ = nullptr>\ninline void single_write(T a) noexcept {\n    if (!a) {\n      \
-    \  putchar_unlocked('0');\n        return;\n    }\n    if constexpr (std::is_signed_v<T>)\
-    \ {\n        if (a < 0) putchar_unlocked('-'), a *= -1;\n    }\n    constexpr\
-    \ int d = std::numeric_limits<T>::digits10;\n    char s[d + 1];\n    int now =\
-    \ d + 1;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /=\
-    \ 10;\n    }\n    while (now <= d) putchar_unlocked(s[now++]);\n}\ntemplate <typename\
-    \ T, internal::is_modint_t<T>* = nullptr>\ninline void single_write(T a) noexcept\
-    \ {\n    single_write(a.val());\n}\ninline void single_write(const std::string&\
-    \ str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n  \
-    \  }\n}\ntemplate <typename T> inline void write(T x) noexcept { single_write(x);\
+    \ << __LINE__ << \" : \" << #x << \" = \" << (x) << std::endl\n#endif\n\n/**\n\
+    \ * @brief Debugger\n*/\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include\
+    \ <stdio.h>\n#include <string>\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro\
+    \ {\n\ninline void single_read(char& c) {\n    c = getchar_unlocked();\n    while\
+    \ (isspace(c)) c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\ninline void single_read(T& a) {\n    a = 0;\n    bool is_negative\
+    \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
+    \   c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c =\
+    \ getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
+    \        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n}\ntemplate\
+    \ <typename T, internal::is_modint_t<T>* = nullptr>\ninline void single_read(T&\
+    \ a) {\n    long long x;\n    single_read(x);\n    a = T(x);\n}\ninline void single_read(std::string&\
+    \ str) noexcept {\n    char c = getchar_unlocked();\n    while (isspace(c)) c\
+    \ = getchar_unlocked();\n    while (!isspace(c)) {\n        str += c;\n      \
+    \  c = getchar_unlocked();\n    }\n}\ntemplate<typename T>\ninline void read(T&\
+    \ x) noexcept {single_read(x);}\ntemplate <typename Head, typename... Tail>\n\
+    inline void read(Head& head, Tail&... tail) noexcept {\n    single_read(head),\
+    \ read(tail...);\n}\n\ninline void single_write(char c) noexcept { putchar_unlocked(c);\
+    \ }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void\
+    \ single_write(T a) noexcept {\n    if (!a) {\n        putchar_unlocked('0');\n\
+    \        return;\n    }\n    if constexpr (std::is_signed_v<T>) {\n        if\
+    \ (a < 0) putchar_unlocked('-'), a *= -1;\n    }\n    constexpr int d = std::numeric_limits<T>::digits10;\n\
+    \    char s[d + 1];\n    int now = d + 1;\n    while (a) {\n        s[--now] =\
+    \ (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now <= d) putchar_unlocked(s[now++]);\n\
+    }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\ninline void single_write(T\
+    \ a) noexcept {\n    single_write(a.val());\n}\ninline void single_write(const\
+    \ std::string& str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
+    \    }\n}\ntemplate <typename T> inline void write(T x) noexcept { single_write(x);\
     \ }\ntemplate <typename Head, typename... Tail>\ninline void write(Head head,\
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 2 \"src/template.hpp\"\
-    \n#include <bits/stdc++.h>\n#define rep(i, n) for (int i = 0; i < (n); i++)\n\
-    #define all(x) std::begin(x), std::end(x)\n#define popcount(x) __builtin_popcountll(x)\n\
-    using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
-    \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
-    \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr int dx[] = {1, 0, -1, 0,\
-    \ 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate\
-    \ <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return\
-    \ a < b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
-    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 7 \"\
-    test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp\"\n\nusing namespace\
-    \ std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\n\
-    int main() {\n    int n;\n    read(n);\n    FormalPowerSeries<mint> f(n);\n\n\
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i, n) for (int\
+    \ i = 0; i < (n); i++)\n#define all(x) std::begin(x), std::end(x)\n#define popcount(x)\
+    \ __builtin_popcountll(x)\nusing i128 = __int128_t;\nusing ll = long long;\nusing\
+    \ ld = long double;\nusing graph = std::vector<std::vector<int>>;\nusing P = std::pair<int,\
+    \ int>;\nconstexpr int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll\
+    \ infl = std::numeric_limits<ll>::max() / 2;\nconst long double pi = acosl(-1);\n\
+    constexpr int dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0,\
+    \ 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
+    \ b && (a = b, true);\n}\n\n/**\n * @brief Template\n*/\n#line 7 \"test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
+    \nint main() {\n    int n;\n    read(n);\n    FormalPowerSeries<mint> f(n);\n\n\
     \    rep(i, n) {\n        int x;\n        read(x);\n        f[i] = mint::raw(x);\n\
     \    }\n\n    f = fps_sqrt<mint>(f);\n    if (f.empty()) {\n        put(-1);\n\
     \    } else {\n        rep(i, (int)f.size()) put(f[i].val());\n    }\n}\n"
@@ -913,8 +913,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 15:25:19+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 layout: document

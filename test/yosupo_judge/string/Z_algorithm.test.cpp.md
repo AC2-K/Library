@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':heavy_check_mark:'
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
+  - icon: ':x:'
     path: src/string/Z.hpp
     title: Z algorithm
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
@@ -51,9 +51,10 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 6\
+    \ \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char& c)\
+    \ {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
@@ -82,9 +83,9 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 2 \"src/string/Z.hpp\"\
-    \n#include <cassert>\n#line 4 \"src/string/Z.hpp\"\n#include <vector>\nnamespace\
-    \ kyopro {\n/**\n * @brief Z algorithm\n * @return LCP(S,S[i:]) (i=0,1,...,|str|-1)\n\
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 2 \"src/string/Z.hpp\"\n#include <cassert>\n#line 4 \"src/string/Z.hpp\"\n#include\
+    \ <vector>\nnamespace kyopro {\n/**\n * @return LCP(S,S[i:]) (i=0,1,...,|str|-1)\n\
     \ */\nstd::vector<int> Z(const std::string& str) {\n    assert(str.size());\n\
     \    std::vector<int> res(str.size());\n    res.front() = (int)str.size();\n\n\
     \    int i = 1, j = 0;\n\n    while (i < (int)str.size()) {\n        while (i\
@@ -93,9 +94,9 @@ data:
     \    continue;\n        }\n        int k = 1;\n        while (i + k < (int)str.size()\
     \ && k + res[k] < j) {\n            res[i + k] = res[k];\n            ++k;\n \
     \       }\n        i += k, j -= k;\n    }\n    return res;\n}\n};  // namespace\
-    \ kyopro\n#line 7 \"test/yosupo_judge/string/Z_algorithm.test.cpp\"\n\nusing namespace\
-    \ std;\nusing namespace kyopro;\nint main() {\n    string s;\n    read(s);\n \
-    \   auto res = Z(s);\n    for (auto r : res) put(r);\n}\n"
+    \ kyopro\n\n/**\n * \n * @brief Z algorithm\n*/\n#line 7 \"test/yosupo_judge/string/Z_algorithm.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\nint main() {\n    string s;\n\
+    \    read(s);\n    auto res = Z(s);\n    for (auto r : res) put(r);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#include\
     \ <iostream>\n#include <string>\n\n#include \"../../../src/stream.hpp\"\n#include\
     \ \"../../../src/string/Z.hpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\
@@ -108,8 +109,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/string/Z_algorithm.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/string/Z_algorithm.test.cpp
 layout: document

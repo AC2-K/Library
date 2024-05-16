@@ -10,7 +10,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: "\u6C38\u7D9AQueue"
+    document_title: Persistent Queue
     links: []
   bundledCode: "#line 2 \"src/data-structure/persistent/queue.hpp\"\n#include <cassert>\n\
     namespace kyopro {\n\ntemplate <typename T, int lg = 20> class persistent_queue\
@@ -33,7 +33,7 @@ data:
     \        }\n\n        return persistent_queue(cur, back_ptr, siz - 1);\n    }\n\
     \n    T front() {\n        assert(siz);\n        return front_ptr->val;\n    }\n\
     \    T back() {\n        assert(siz);\n        return back_ptr->val;\n    }\n\
-    };\n};  // namespace kyopro\n\n/**\n * @brief \u6C38\u7D9AQueue\n */\n"
+    };\n};  // namespace kyopro\n\n/**\n * @brief Persistent Queue\n */\n"
   code: "#pragma once\n#include <cassert>\nnamespace kyopro {\n\ntemplate <typename\
     \ T, int lg = 20> class persistent_queue {\n    struct Node {\n        Node()\
     \ = default;\n        uint32_t index;\n        T val;\n        Node* prev[20];\n\
@@ -55,12 +55,12 @@ data:
     \ back_ptr, siz - 1);\n    }\n\n    T front() {\n        assert(siz);\n      \
     \  return front_ptr->val;\n    }\n    T back() {\n        assert(siz);\n     \
     \   return back_ptr->val;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief\
-    \ \u6C38\u7D9AQueue\n */"
+    \ Persistent Queue\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/persistent/queue.hpp
   requiredBy: []
-  timestamp: '2023-10-22 17:06:17+09:00'
+  timestamp: '2024-05-16 17:50:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
@@ -69,5 +69,5 @@ layout: document
 redirect_from:
 - /library/src/data-structure/persistent/queue.hpp
 - /library/src/data-structure/persistent/queue.hpp.html
-title: "\u6C38\u7D9AQueue"
+title: Persistent Queue
 ---

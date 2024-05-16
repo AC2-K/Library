@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/FPS.hpp
-    title: "\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570"
-  - icon: ':heavy_check_mark:'
+    title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
+  - icon: ':x:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':heavy_check_mark:'
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
+  - icon: ':question:'
     path: src/template.hpp
-    title: src/template.hpp
+    title: Template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/inv_of_formal_power_series
@@ -69,9 +69,10 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 6\
+    \ \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char& c)\
+    \ {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
@@ -100,65 +101,65 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 2 \"src/template.hpp\"\
-    \n#include <bits/stdc++.h>\n#define rep(i, n) for (int i = 0; i < (n); i++)\n\
-    #define all(x) std::begin(x), std::end(x)\n#define popcount(x) __builtin_popcountll(x)\n\
-    using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
-    \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
-    \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr int dx[] = {1, 0, -1, 0,\
-    \ 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate\
-    \ <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return\
-    \ a < b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
-    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 1 \"\
-    src/atcoder/convolution.hpp\"\n\n\n\n#line 7 \"src/atcoder/convolution.hpp\"\n\
-    #include <type_traits>\n#line 9 \"src/atcoder/convolution.hpp\"\n\n#line 1 \"\
-    src/atcoder/internal_bit.hpp\"\n\n\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\
-    \n#if __cplusplus >= 202002L\n#include <bit>\n#endif\n\nnamespace atcoder {\n\n\
-    namespace internal {\n\n#if __cplusplus >= 202002L\n\nusing std::bit_ceil;\n\n\
-    #else\n\n// @return same with std::bit::bit_ceil\nunsigned int bit_ceil(unsigned\
-    \ int n) {\n    unsigned int x = 1;\n    while (x < (unsigned int)(n)) x *= 2;\n\
-    \    return x;\n}\n\n#endif\n\n// @param n `1 <= n`\n// @return same with std::bit::countr_zero\n\
-    int countr_zero(unsigned int n) {\n#ifdef _MSC_VER\n    unsigned long index;\n\
-    \    _BitScanForward(&index, n);\n    return index;\n#else\n    return __builtin_ctz(n);\n\
-    #endif\n}\n\n// @param n `1 <= n`\n// @return same with std::bit::countr_zero\n\
-    constexpr int countr_zero_constexpr(unsigned int n) {\n    int x = 0;\n    while\
-    \ (!(n & (1 << x))) x++;\n    return x;\n}\n\n}  // namespace internal\n\n}  //\
-    \ namespace atcoder\n\n\n#line 1 \"src/atcoder/modint.hpp\"\n\n\n\n#line 7 \"\
-    src/atcoder/modint.hpp\"\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n#line\
-    \ 1 \"src/atcoder/internal_math.hpp\"\n\n\n\n#line 5 \"src/atcoder/internal_math.hpp\"\
-    \n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace\
-    \ internal {\n\n// @param m `1 <= m`\n// @return x mod m\nconstexpr long long\
-    \ safe_mod(long long x, long long m) {\n    x %= m;\n    if (x < 0) x += m;\n\
-    \    return x;\n}\n\n// Fast modular multiplication by barrett reduction\n// Reference:\
-    \ https://en.wikipedia.org/wiki/Barrett_reduction\n// NOTE: reconsider after Ice\
-    \ Lake\nstruct barrett {\n    unsigned int _m;\n    unsigned long long im;\n\n\
-    \    // @param m `1 <= m`\n    explicit barrett(unsigned int m) : _m(m), im((unsigned\
-    \ long long)(-1) / m + 1) {}\n\n    // @return m\n    unsigned int umod() const\
-    \ { return _m; }\n\n    // @param a `0 <= a < m`\n    // @param b `0 <= b < m`\n\
-    \    // @return `a * b % m`\n    unsigned int mul(unsigned int a, unsigned int\
-    \ b) const {\n        // [1] m = 1\n        // a = b = im = 0, so okay\n\n   \
-    \     // [2] m >= 2\n        // im = ceil(2^64 / m)\n        // -> im * m = 2^64\
-    \ + r (0 <= r < m)\n        // let z = a*b = c*m + d (0 <= c, d < m)\n       \
-    \ // a*b * im = (c*m + d) * im = c*(im*m) + d*im = c*2^64 + c*r + d*im\n     \
-    \   // c*r + d*im < m * m + m * im < m * m + 2^64 + m <= 2^64 + m * (m + 1) <\
-    \ 2^64 * 2\n        // ((ab * im) >> 64) == c or c + 1\n        unsigned long\
-    \ long z = a;\n        z *= b;\n#ifdef _MSC_VER\n        unsigned long long x;\n\
-    \        _umul128(z, im, &x);\n#else\n        unsigned long long x =\n       \
-    \     (unsigned long long)(((unsigned __int128)(z)*im) >> 64);\n#endif\n     \
-    \   unsigned long long y = x * _m;\n        return (unsigned int)(z - y + (z <\
-    \ y ? _m : 0));\n    }\n};\n\n// @param n `0 <= n`\n// @param m `1 <= m`\n// @return\
-    \ `(x ** n) % m`\nconstexpr long long pow_mod_constexpr(long long x, long long\
-    \ n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m = (unsigned int)(m);\n\
-    \    unsigned long long r = 1;\n    unsigned long long y = safe_mod(x, m);\n \
-    \   while (n) {\n        if (n & 1) r = (r * y) % _m;\n        y = (y * y) % _m;\n\
-    \        n >>= 1;\n    }\n    return r;\n}\n\n// Reference:\n// M. Forisek and\
-    \ J. Jancina,\n// Fast Primality Testing for Integers That Fit into a Machine\
-    \ Word\n// @param n `0 <= n`\nconstexpr bool is_prime_constexpr(int n) {\n   \
-    \ if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return true;\n\
-    \    if (n % 2 == 0) return false;\n    long long d = n - 1;\n    while (d % 2\
-    \ == 0) d /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for (long\
-    \ long a : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i, n) for (int\
+    \ i = 0; i < (n); i++)\n#define all(x) std::begin(x), std::end(x)\n#define popcount(x)\
+    \ __builtin_popcountll(x)\nusing i128 = __int128_t;\nusing ll = long long;\nusing\
+    \ ld = long double;\nusing graph = std::vector<std::vector<int>>;\nusing P = std::pair<int,\
+    \ int>;\nconstexpr int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll\
+    \ infl = std::numeric_limits<ll>::max() / 2;\nconst long double pi = acosl(-1);\n\
+    constexpr int dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0,\
+    \ 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
+    \ b && (a = b, true);\n}\n\n/**\n * @brief Template\n*/\n#line 1 \"src/atcoder/convolution.hpp\"\
+    \n\n\n\n#line 7 \"src/atcoder/convolution.hpp\"\n#include <type_traits>\n#line\
+    \ 9 \"src/atcoder/convolution.hpp\"\n\n#line 1 \"src/atcoder/internal_bit.hpp\"\
+    \n\n\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n#if __cplusplus >= 202002L\n\
+    #include <bit>\n#endif\n\nnamespace atcoder {\n\nnamespace internal {\n\n#if __cplusplus\
+    \ >= 202002L\n\nusing std::bit_ceil;\n\n#else\n\n// @return same with std::bit::bit_ceil\n\
+    unsigned int bit_ceil(unsigned int n) {\n    unsigned int x = 1;\n    while (x\
+    \ < (unsigned int)(n)) x *= 2;\n    return x;\n}\n\n#endif\n\n// @param n `1 <=\
+    \ n`\n// @return same with std::bit::countr_zero\nint countr_zero(unsigned int\
+    \ n) {\n#ifdef _MSC_VER\n    unsigned long index;\n    _BitScanForward(&index,\
+    \ n);\n    return index;\n#else\n    return __builtin_ctz(n);\n#endif\n}\n\n//\
+    \ @param n `1 <= n`\n// @return same with std::bit::countr_zero\nconstexpr int\
+    \ countr_zero_constexpr(unsigned int n) {\n    int x = 0;\n    while (!(n & (1\
+    \ << x))) x++;\n    return x;\n}\n\n}  // namespace internal\n\n}  // namespace\
+    \ atcoder\n\n\n#line 1 \"src/atcoder/modint.hpp\"\n\n\n\n#line 7 \"src/atcoder/modint.hpp\"\
+    \n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n#line 1 \"src/atcoder/internal_math.hpp\"\
+    \n\n\n\n#line 5 \"src/atcoder/internal_math.hpp\"\n\n#ifdef _MSC_VER\n#include\
+    \ <intrin.h>\n#endif\n\nnamespace atcoder {\n\nnamespace internal {\n\n// @param\
+    \ m `1 <= m`\n// @return x mod m\nconstexpr long long safe_mod(long long x, long\
+    \ long m) {\n    x %= m;\n    if (x < 0) x += m;\n    return x;\n}\n\n// Fast\
+    \ modular multiplication by barrett reduction\n// Reference: https://en.wikipedia.org/wiki/Barrett_reduction\n\
+    // NOTE: reconsider after Ice Lake\nstruct barrett {\n    unsigned int _m;\n \
+    \   unsigned long long im;\n\n    // @param m `1 <= m`\n    explicit barrett(unsigned\
+    \ int m) : _m(m), im((unsigned long long)(-1) / m + 1) {}\n\n    // @return m\n\
+    \    unsigned int umod() const { return _m; }\n\n    // @param a `0 <= a < m`\n\
+    \    // @param b `0 <= b < m`\n    // @return `a * b % m`\n    unsigned int mul(unsigned\
+    \ int a, unsigned int b) const {\n        // [1] m = 1\n        // a = b = im\
+    \ = 0, so okay\n\n        // [2] m >= 2\n        // im = ceil(2^64 / m)\n    \
+    \    // -> im * m = 2^64 + r (0 <= r < m)\n        // let z = a*b = c*m + d (0\
+    \ <= c, d < m)\n        // a*b * im = (c*m + d) * im = c*(im*m) + d*im = c*2^64\
+    \ + c*r + d*im\n        // c*r + d*im < m * m + m * im < m * m + 2^64 + m <= 2^64\
+    \ + m * (m + 1) < 2^64 * 2\n        // ((ab * im) >> 64) == c or c + 1\n     \
+    \   unsigned long long z = a;\n        z *= b;\n#ifdef _MSC_VER\n        unsigned\
+    \ long long x;\n        _umul128(z, im, &x);\n#else\n        unsigned long long\
+    \ x =\n            (unsigned long long)(((unsigned __int128)(z)*im) >> 64);\n\
+    #endif\n        unsigned long long y = x * _m;\n        return (unsigned int)(z\
+    \ - y + (z < y ? _m : 0));\n    }\n};\n\n// @param n `0 <= n`\n// @param m `1\
+    \ <= m`\n// @return `(x ** n) % m`\nconstexpr long long pow_mod_constexpr(long\
+    \ long x, long long n, int m) {\n    if (m == 1) return 0;\n    unsigned int _m\
+    \ = (unsigned int)(m);\n    unsigned long long r = 1;\n    unsigned long long\
+    \ y = safe_mod(x, m);\n    while (n) {\n        if (n & 1) r = (r * y) % _m;\n\
+    \        y = (y * y) % _m;\n        n >>= 1;\n    }\n    return r;\n}\n\n// Reference:\n\
+    // M. Forisek and J. Jancina,\n// Fast Primality Testing for Integers That Fit\
+    \ into a Machine Word\n// @param n `0 <= n`\nconstexpr bool is_prime_constexpr(int\
+    \ n) {\n    if (n <= 1) return false;\n    if (n == 2 || n == 7 || n == 61) return\
+    \ true;\n    if (n % 2 == 0) return false;\n    long long d = n - 1;\n    while\
+    \ (d % 2 == 0) d /= 2;\n    constexpr long long bases[3] = {2, 7, 61};\n    for\
+    \ (long long a : bases) {\n        long long t = d;\n        long long y = pow_mod_constexpr(a,\
     \ t, n);\n        while (t != n - 1 && y != 1 && y != n - 1) {\n            y\
     \ = y * y % n;\n            t <<= 1;\n        }\n        if (y != n - 1 && t %\
     \ 2 == 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\
@@ -545,8 +546,8 @@ data:
     \           return FPS(sz);\n        }\n\n        mint vp = (*this)[p];\n    \
     \    FPS f = (*this >> p);\n        f /= vp;\n        f = (f.log(sz) * e).exp(sz);\n\
     \        f *= vp.pow(e);\n        f = (f << (p * e)).pref(sz);\n        f.expand(sz);\n\
-    \        return f;\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief \u5F62\
-    \u5F0F\u7684\u3079\u304D\u7D1A\u6570\n*/\n#line 6 \"test/yosupo_judge/polynomial/Inv_of\
+    \        return f;\n    }\n};\n\n};  // namespace kyopro\n\n/**\n * @brief Formal\
+    \ Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)\n*/\n#line 6 \"test/yosupo_judge/polynomial/Inv_of\
     \ Formal_Power_Series.test.cpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\
     \nusing mint = atcoder::modint998244353;\nusing fps = FormalPowerSeries<mint>;\n\
     \nint main() {\n    int n;\n    read(n);\n    fps f(n);\n    rep(i, n) {\n   \
@@ -572,8 +573,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2024-05-03 15:25:19+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
 layout: document

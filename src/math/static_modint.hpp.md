@@ -1,12 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/math/gcd.hpp
-    title: src/math/gcd.hpp
+    title: gcd
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -27,30 +27,30 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
     title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
     title: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: static modint
     links: []
@@ -83,33 +83,34 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <cmath>\n#include <tuple>\nnamespace\
-    \ kyopro {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n\
-    \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
-    \ d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
-    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (!a || !b) {\n \
-    \           return a + b;\n        }\n        if (a >= b) {\n            a -=\
-    \ b;\n            a >>= __builtin_ctzll(a);\n        } else {\n            b -=\
-    \ a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return a\
-    \ << d;\n}\n\ntemplate <typename T>\nconstexpr inline T ext_gcd(T a, T b, T& x,\
-    \ T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b) {\n\
-    \        T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n \
-    \       std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
-    \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
-    \ kyopro\n#line 8 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate\
-    \ <int _mod, std::enable_if_t<_mod >= 0>* = nullptr>\nclass modint : internal::modint_base\
-    \ {\n    using mint = modint<_mod>;\n    using i32 = std::int32_t;\n    using\
-    \ u32 = std::uint32_t;\n    using i64 = std::int64_t;\n    using u64 = std::uint64_t;\n\
-    \n    u32 v;\n    constexpr u32 normalize(i64 v_) const noexcept {\n        v_\
-    \ %= _mod;\n        if (v_ < 0) {\n            v_ += _mod;\n        }\n      \
-    \  return v_;\n    }\n\npublic:\n    static constexpr u32 mod() noexcept { return\
-    \ _mod; }\n    constexpr modint() noexcept : v(0) {}\n    constexpr modint(i64\
-    \ v_) noexcept : v(normalize(v_)) {}\n\n    static mint raw(u32 a) {\n       \
-    \ mint m;\n        m.v = a;\n        return m;\n    }\n    constexpr u32 val()\
-    \ const noexcept { return v; }\n    constexpr mint& operator+=(const mint& rhs)\
-    \ noexcept {\n        v += rhs.val();\n        if (v >= _mod) {\n            v\
-    \ -= _mod;\n        }\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 3\
+    \ \"src/math/gcd.hpp\"\n#include <cmath>\n#include <tuple>\nnamespace kyopro {\n\
+    template <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a\
+    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
+    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\n\ntemplate <typename T>\nconstexpr\
+    \ inline T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T\
+    \ nx = 0, ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a,\
+    \ b) = std::pair<T, T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx,\
+    \ x - nx * q};\n        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n \
+    \   }\n    return a;\n}\n};  // namespace kyopro\n\n/**\n * @brief gcd\n*/\n#line\
+    \ 8 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate <int _mod, std::enable_if_t<_mod\
+    \ >= 0>* = nullptr>\nclass modint : internal::modint_base {\n    using mint =\
+    \ modint<_mod>;\n    using i32 = std::int32_t;\n    using u32 = std::uint32_t;\n\
+    \    using i64 = std::int64_t;\n    using u64 = std::uint64_t;\n\n    u32 v;\n\
+    \    constexpr u32 normalize(i64 v_) const noexcept {\n        v_ %= _mod;\n \
+    \       if (v_ < 0) {\n            v_ += _mod;\n        }\n        return v_;\n\
+    \    }\n\npublic:\n    static constexpr u32 mod() noexcept { return _mod; }\n\
+    \    constexpr modint() noexcept : v(0) {}\n    constexpr modint(i64 v_) noexcept\
+    \ : v(normalize(v_)) {}\n\n    static mint raw(u32 a) {\n        mint m;\n   \
+    \     m.v = a;\n        return m;\n    }\n    constexpr u32 val() const noexcept\
+    \ { return v; }\n    constexpr mint& operator+=(const mint& rhs) noexcept {\n\
+    \        v += rhs.val();\n        if (v >= _mod) {\n            v -= _mod;\n \
+    \       }\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
     \ mint& rhs) noexcept {\n        v += _mod - rhs.val();\n        if (v >= _mod)\
     \ {\n            v -= _mod;\n        }\n        return (*this);\n    }\n    constexpr\
     \ mint& operator*=(const mint& rhs) noexcept {\n        v = (u64)v * rhs.val()\
@@ -200,22 +201,22 @@ data:
   isVerificationFile: false
   path: src/math/static_modint.hpp
   requiredBy: []
-  timestamp: '2024-02-21 16:16:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
-  - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
-  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
-  - test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
+  - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
 documentation_of: src/math/static_modint.hpp
 layout: document
 redirect_from:

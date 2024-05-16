@@ -4,21 +4,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/convolution/subset_convolution.hpp
     title: Subset Convolution
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/math/gcd.hpp
-    title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+    title: gcd
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
-  - icon: ':heavy_check_mark:'
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
+  - icon: ':question:'
     path: src/template.hpp
-    title: src/template.hpp
+    title: Template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -60,33 +60,34 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 3 \"src/math/gcd.hpp\"\n#include <cmath>\n#include <tuple>\nnamespace\
-    \ kyopro {\ntemplate <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n\
-    \    assert(a >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int\
-    \ d = std::min<T>(__builtin_ctzll(a), __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a),\
-    \ b >>= __builtin_ctzll(b);\n    while (a != b) {\n        if (!a || !b) {\n \
-    \           return a + b;\n        }\n        if (a >= b) {\n            a -=\
-    \ b;\n            a >>= __builtin_ctzll(a);\n        } else {\n            b -=\
-    \ a;\n            b >>= __builtin_ctzll(b);\n        }\n    }\n\n    return a\
-    \ << d;\n}\n\ntemplate <typename T>\nconstexpr inline T ext_gcd(T a, T b, T& x,\
-    \ T& y) noexcept {\n    x = 1, y = 0;\n    T nx = 0, ny = 1;\n    while (b) {\n\
-    \        T q = a / b;\n        std::tie(a, b) = std::pair<T, T>{b, a % b};\n \
-    \       std::tie(x, nx) = std::pair<T, T>{nx, x - nx * q};\n        std::tie(y,\
-    \ ny) = std::pair<T, T>{ny, y - ny * q};\n    }\n    return a;\n}\n};  // namespace\
-    \ kyopro\n#line 8 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate\
-    \ <int _mod, std::enable_if_t<_mod >= 0>* = nullptr>\nclass modint : internal::modint_base\
-    \ {\n    using mint = modint<_mod>;\n    using i32 = std::int32_t;\n    using\
-    \ u32 = std::uint32_t;\n    using i64 = std::int64_t;\n    using u64 = std::uint64_t;\n\
-    \n    u32 v;\n    constexpr u32 normalize(i64 v_) const noexcept {\n        v_\
-    \ %= _mod;\n        if (v_ < 0) {\n            v_ += _mod;\n        }\n      \
-    \  return v_;\n    }\n\npublic:\n    static constexpr u32 mod() noexcept { return\
-    \ _mod; }\n    constexpr modint() noexcept : v(0) {}\n    constexpr modint(i64\
-    \ v_) noexcept : v(normalize(v_)) {}\n\n    static mint raw(u32 a) {\n       \
-    \ mint m;\n        m.v = a;\n        return m;\n    }\n    constexpr u32 val()\
-    \ const noexcept { return v; }\n    constexpr mint& operator+=(const mint& rhs)\
-    \ noexcept {\n        v += rhs.val();\n        if (v >= _mod) {\n            v\
-    \ -= _mod;\n        }\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 3\
+    \ \"src/math/gcd.hpp\"\n#include <cmath>\n#include <tuple>\nnamespace kyopro {\n\
+    template <typename T> constexpr inline T _gcd(T a, T b) noexcept {\n    assert(a\
+    \ >= 0 && b >= 0);\n    if (a == 0 || b == 0) return a + b;\n    int d = std::min<T>(__builtin_ctzll(a),\
+    \ __builtin_ctzll(b));\n    a >>= __builtin_ctzll(a), b >>= __builtin_ctzll(b);\n\
+    \    while (a != b) {\n        if (!a || !b) {\n            return a + b;\n  \
+    \      }\n        if (a >= b) {\n            a -= b;\n            a >>= __builtin_ctzll(a);\n\
+    \        } else {\n            b -= a;\n            b >>= __builtin_ctzll(b);\n\
+    \        }\n    }\n\n    return a << d;\n}\n\ntemplate <typename T>\nconstexpr\
+    \ inline T ext_gcd(T a, T b, T& x, T& y) noexcept {\n    x = 1, y = 0;\n    T\
+    \ nx = 0, ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a,\
+    \ b) = std::pair<T, T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx,\
+    \ x - nx * q};\n        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n \
+    \   }\n    return a;\n}\n};  // namespace kyopro\n\n/**\n * @brief gcd\n*/\n#line\
+    \ 8 \"src/math/static_modint.hpp\"\nnamespace kyopro {\ntemplate <int _mod, std::enable_if_t<_mod\
+    \ >= 0>* = nullptr>\nclass modint : internal::modint_base {\n    using mint =\
+    \ modint<_mod>;\n    using i32 = std::int32_t;\n    using u32 = std::uint32_t;\n\
+    \    using i64 = std::int64_t;\n    using u64 = std::uint64_t;\n\n    u32 v;\n\
+    \    constexpr u32 normalize(i64 v_) const noexcept {\n        v_ %= _mod;\n \
+    \       if (v_ < 0) {\n            v_ += _mod;\n        }\n        return v_;\n\
+    \    }\n\npublic:\n    static constexpr u32 mod() noexcept { return _mod; }\n\
+    \    constexpr modint() noexcept : v(0) {}\n    constexpr modint(i64 v_) noexcept\
+    \ : v(normalize(v_)) {}\n\n    static mint raw(u32 a) {\n        mint m;\n   \
+    \     m.v = a;\n        return m;\n    }\n    constexpr u32 val() const noexcept\
+    \ { return v; }\n    constexpr mint& operator+=(const mint& rhs) noexcept {\n\
+    \        v += rhs.val();\n        if (v >= _mod) {\n            v -= _mod;\n \
+    \       }\n        return (*this);\n    }\n    constexpr mint& operator-=(const\
     \ mint& rhs) noexcept {\n        v += _mod - rhs.val();\n        if (v >= _mod)\
     \ {\n            v -= _mod;\n        }\n        return (*this);\n    }\n    constexpr\
     \ mint& operator*=(const mint& rhs) noexcept {\n        v = (u64)v * rhs.val()\
@@ -152,45 +153,45 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 2 \"src/template.hpp\"\
-    \n#include <bits/stdc++.h>\n#define rep(i, n) for (int i = 0; i < (n); i++)\n\
-    #define all(x) std::begin(x), std::end(x)\n#define popcount(x) __builtin_popcountll(x)\n\
-    using i128 = __int128_t;\nusing ll = long long;\nusing ld = long double;\nusing\
-    \ graph = std::vector<std::vector<int>>;\nusing P = std::pair<int, int>;\nconstexpr\
-    \ int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll infl = std::numeric_limits<ll>::max()\
-    \ / 2;\nconst long double pi = acosl(-1);\nconstexpr int dx[] = {1, 0, -1, 0,\
-    \ 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0, 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate\
-    \ <typename T1, typename T2> constexpr inline bool chmax(T1& a, T2 b) {\n    return\
-    \ a < b && (a = b, true);\n}\ntemplate <typename T1, typename T2> constexpr inline\
-    \ bool chmin(T1& a, T2 b) {\n    return a > b && (a = b, true);\n}\n#line 3 \"\
-    src/convolution/subset_convolution.hpp\"\n\nnamespace kyopro {\nnamespace internal\
-    \ {\n\ntemplate <typename T> void add(std::vector<T>& a, const std::vector<T>&\
-    \ b) {\n    if (a.size() < b.size()) a.resize(b.size());\n    for (int i = 0;\
-    \ i < (int)b.size(); ++i) a[i] += b[i];\n}\ntemplate <typename T> void sub(std::vector<T>&\
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 2 \"src/template.hpp\"\n#include <bits/stdc++.h>\n#define rep(i, n) for (int\
+    \ i = 0; i < (n); i++)\n#define all(x) std::begin(x), std::end(x)\n#define popcount(x)\
+    \ __builtin_popcountll(x)\nusing i128 = __int128_t;\nusing ll = long long;\nusing\
+    \ ld = long double;\nusing graph = std::vector<std::vector<int>>;\nusing P = std::pair<int,\
+    \ int>;\nconstexpr int inf = std::numeric_limits<int>::max() / 2;\nconstexpr ll\
+    \ infl = std::numeric_limits<ll>::max() / 2;\nconst long double pi = acosl(-1);\n\
+    constexpr int dx[] = {1, 0, -1, 0, 1, -1, -1, 1, 0};\nconstexpr int dy[] = {0,\
+    \ 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline\
+    \ bool chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
+    \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
+    \ b && (a = b, true);\n}\n\n/**\n * @brief Template\n*/\n#line 3 \"src/convolution/subset_convolution.hpp\"\
+    \n\nnamespace kyopro {\nnamespace internal {\n\ntemplate <typename T> void add(std::vector<T>&\
     \ a, const std::vector<T>& b) {\n    if (a.size() < b.size()) a.resize(b.size());\n\
-    \    for (int i = 0; i < (int)b.size(); ++i) a[i] -= b[i];\n}\n\ntemplate <typename\
-    \ T> void ranked_zeta(int n, std::vector<std::vector<T>>& a) {\n    for (int i\
-    \ = 0; i < n; ++i) {\n        for (int j = 0; j < (int)a.size(); ++j) {\n    \
-    \        if (j >> i & 1) add(a[j], a[j & ~(1 << i)]);\n        }\n    }\n}\ntemplate\
-    \ <typename T>\nvoid ranked_mobius(int n, std::vector<std::vector<T>>& a) {\n\
-    \    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < (int)a.size();\
+    \    for (int i = 0; i < (int)b.size(); ++i) a[i] += b[i];\n}\ntemplate <typename\
+    \ T> void sub(std::vector<T>& a, const std::vector<T>& b) {\n    if (a.size()\
+    \ < b.size()) a.resize(b.size());\n    for (int i = 0; i < (int)b.size(); ++i)\
+    \ a[i] -= b[i];\n}\n\ntemplate <typename T> void ranked_zeta(int n, std::vector<std::vector<T>>&\
+    \ a) {\n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < (int)a.size();\
+    \ ++j) {\n            if (j >> i & 1) add(a[j], a[j & ~(1 << i)]);\n        }\n\
+    \    }\n}\ntemplate <typename T>\nvoid ranked_mobius(int n, std::vector<std::vector<T>>&\
+    \ a) {\n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < (int)a.size();\
     \ ++j) {\n            if (j >> i & 1) sub(a[j], a[j & ~(1 << i)]);\n        }\n\
-    \    }\n}\n};  // namespace internal\n\ntemplate <typename T>\nstd::vector<T>\
-    \ subset_convolution(int n, std::vector<T> a, std::vector<T> b) {\n    std::vector<std::vector<T>>\
-    \ ranked_a(a.size()), ranked_b(b.size());\n    for (int i = 0; i < (1 << n); ++i)\
-    \ {\n        ranked_a[i].resize(__builtin_popcount(i) + 1);\n        ranked_b[i].resize(__builtin_popcount(i)\
-    \ + 1);\n\n        ranked_a[i][__builtin_popcount(i)] = a[i];\n        ranked_b[i][__builtin_popcount(i)]\
-    \ = b[i];\n    }\n\n    internal::ranked_zeta(n, ranked_a), internal::ranked_zeta(n,\
-    \ ranked_b);\n    for (int i = 0; i < (1 << n); ++i) {\n        std::vector<T>\
-    \ c(ranked_a[i].size() + ranked_b[i].size());\n        for (int j = 0; j < (int)ranked_b[i].size();\
-    \ ++j) {\n            for (int k = 0; k < (int)ranked_b[i].size(); ++k) {\n  \
-    \              c[j + k] += ranked_a[i][j] * ranked_b[i][k];\n            }\n \
-    \       }\n        swap(ranked_a[i], c);\n    }\n\n    internal::ranked_mobius(n,\
-    \ ranked_a);\n    std::vector<T> answer(a.size());\n    for (int i = 0; i < (int)a.size();\
-    \ ++i) {\n        answer[i] = ranked_a[i][__builtin_popcount(i)];\n    }\n   \
-    \ return answer;\n}\n};  // namespace kyopro\n\n/**\n * @brief Subset Convolution\n\
-    \ */\n#line 7 \"test/yosupo_judge/convolution/Subset_Convolution.test.cpp\"\n\n\
-    using namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
+    \    }\n}\n};  // namespace internal\n\n\n/**\n * @brief Subset Convolution\n\
+    \ */\ntemplate <typename T>\nstd::vector<T> subset_convolution(int n, std::vector<T>\
+    \ a, std::vector<T> b) {\n    std::vector<std::vector<T>> ranked_a(a.size()),\
+    \ ranked_b(b.size());\n    for (int i = 0; i < (1 << n); ++i) {\n        ranked_a[i].resize(__builtin_popcount(i)\
+    \ + 1);\n        ranked_b[i].resize(__builtin_popcount(i) + 1);\n\n        ranked_a[i][__builtin_popcount(i)]\
+    \ = a[i];\n        ranked_b[i][__builtin_popcount(i)] = b[i];\n    }\n\n    internal::ranked_zeta(n,\
+    \ ranked_a), internal::ranked_zeta(n, ranked_b);\n    for (int i = 0; i < (1 <<\
+    \ n); ++i) {\n        std::vector<T> c(ranked_a[i].size() + ranked_b[i].size());\n\
+    \        for (int j = 0; j < (int)ranked_b[i].size(); ++j) {\n            for\
+    \ (int k = 0; k < (int)ranked_b[i].size(); ++k) {\n                c[j + k] +=\
+    \ ranked_a[i][j] * ranked_b[i][k];\n            }\n        }\n        swap(ranked_a[i],\
+    \ c);\n    }\n\n    internal::ranked_mobius(n, ranked_a);\n    std::vector<T>\
+    \ answer(a.size());\n    for (int i = 0; i < (int)a.size(); ++i) {\n        answer[i]\
+    \ = ranked_a[i][__builtin_popcount(i)];\n    }\n    return answer;\n}\n};  //\
+    \ namespace kyopro\n#line 7 \"test/yosupo_judge/convolution/Subset_Convolution.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     \nint main() {\n    int n;\n    read(n);\n    vector<mint> a(1 << n), b(1 << n);\n\
     \    rep(i, (int)a.size()) read(a[i]);\n    rep(i, (int)b.size()) read(b[i]);\n\
     \n    vector c = subset_convolution(n, a, b);\n\n    rep(i, (int)c.size()) put(c[i]);\n\
@@ -213,7 +214,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Subset_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-05-12 23:33:58+09:00'
+  timestamp: '2024-05-16 17:50:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Subset_Convolution.test.cpp

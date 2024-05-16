@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/math/gcd.hpp
-    title: src/math/gcd.hpp
-  - icon: ':heavy_check_mark:'
+    title: gcd
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
-    title: "\u30D0\u30A4\u30CA\u30EA\u6CD5"
+    title: "Power Modulo(\u7D2F\u4E57)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: Rolling Hash
     links: []
@@ -35,22 +35,22 @@ data:
     \ nx = 0, ny = 1;\n    while (b) {\n        T q = a / b;\n        std::tie(a,\
     \ b) = std::pair<T, T>{b, a % b};\n        std::tie(x, nx) = std::pair<T, T>{nx,\
     \ x - nx * q};\n        std::tie(y, ny) = std::pair<T, T>{ny, y - ny * q};\n \
-    \   }\n    return a;\n}\n};  // namespace kyopro\n#line 2 \"src/internal/type_traits.hpp\"\
-    \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
-    #include <cstdint>\n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename...\
-    \ Args> struct first_enabled {};\n\ntemplate <typename T, typename... Args>\n\
-    struct first_enabled<std::enable_if<true, T>, Args...> {\n    using type = T;\n\
-    };\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<false,\
-    \ T>, Args...>\n    : first_enabled<Args...> {};\ntemplate <typename T, typename...\
-    \ Args> struct first_enabled<T, Args...> {\n    using type = T;\n};\n\ntemplate\
-    \ <typename... Args>\nusing first_enabled_t = typename first_enabled<Args...>::type;\n\
-    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct int_least\
-    \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::int8_t>,\n\
-    \                                 std::enable_if<dgt <= 16, std::int16_t>,\n \
-    \                                std::enable_if<dgt <= 32, std::int32_t>,\n  \
-    \                               std::enable_if<dgt <= 64, std::int64_t>,\n   \
-    \                              std::enable_if<dgt <= 128, __int128_t>>;\n};\n\n\
-    template <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
+    \   }\n    return a;\n}\n};  // namespace kyopro\n\n/**\n * @brief gcd\n*/\n#line\
+    \ 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n#include <limits>\n\
+    #include <numeric>\n#include <typeinfo>\n#include <cstdint>\n\nnamespace kyopro\
+    \ {\nnamespace internal {\ntemplate <typename... Args> struct first_enabled {};\n\
+    \ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
+    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
+    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
+    \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
+    \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt, std::enable_if_t<dgt\
+    \ <= 128>* = nullptr> struct int_least {\n    using type = first_enabled_t<std::enable_if<dgt\
+    \ <= 8, std::int8_t>,\n                                 std::enable_if<dgt <=\
+    \ 16, std::int16_t>,\n                                 std::enable_if<dgt <= 32,\
+    \ std::int32_t>,\n                                 std::enable_if<dgt <= 64, std::int64_t>,\n\
+    \                                 std::enable_if<dgt <= 128, __int128_t>>;\n};\n\
+    \ntemplate <int dgt, std::enable_if_t<dgt <= 128>* = nullptr> struct uint_least\
     \ {\n    using type = first_enabled_t<std::enable_if<dgt <= 8, std::uint8_t>,\n\
     \                                 std::enable_if<dgt <= 16, std::uint16_t>,\n\
     \                                 std::enable_if<dgt <= 32, std::uint32_t>,\n\
@@ -64,24 +64,25 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 3 \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\n/**\n * @brief \u30D0\
-    \u30A4\u30CA\u30EA\u6CD5\n */\ntemplate <typename T>\nconstexpr T mod_pow(internal::double_size_uint_t<T>\
-    \ base, T exp, T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ?\
-    \ 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n     \
-    \       ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
-    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
-    \ kyopro\n#line 8 \"src/string/rolling_hash.hpp\"\nnamespace kyopro {\n\nclass\
-    \ RollingHash {\n    using u64 = std::uint64_t;\n    using i128 = __int128_t;\n\
-    \    using u128 = __uint128_t;\n\n    static constexpr u64 msk30 = (static_cast<u64>(1)\
-    \ << 30) - 1;\n    static constexpr u64 msk61 = (static_cast<u64>(1) << 31) -\
-    \ 1;\n    const std::string str;\n    std::vector<u64> _hash, _pow;\n    \n  \
-    \  static constexpr u64 mod = (static_cast<u64>(1) << 61) - 1;\n    static constexpr\
-    \ u64 primitive_root = 37;\n    static constexpr uint mapping_max = (uint)'Z'\
-    \ + 2;\n    static u64 base;\n    \nprivate:\n    constexpr u64 mul(u64 a, u64\
-    \ b) const {\n        u128 t = (u128)a * b;\n        t = (t >> 61) + (t & mod);\n\
-    \        if (t >= mod) {\n            t -= mod;\n        }\n        return t;\n\
-    \    }\n\n    constexpr u64 mapping(char c) const { return (u64)c; }\n\n    static\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 3\
+    \ \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\ntemplate <typename T>\nconstexpr\
+    \ T mod_pow(internal::double_size_uint_t<T> base, T exp, T mod) {\n    internal::double_size_uint_t<T>\
+    \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
+    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
+    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
+    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Power Modulo(\u7D2F\u4E57\
+    )\n */\n#line 8 \"src/string/rolling_hash.hpp\"\nnamespace kyopro {\n\nclass RollingHash\
+    \ {\n    using u64 = std::uint64_t;\n    using i128 = __int128_t;\n    using u128\
+    \ = __uint128_t;\n\n    static constexpr u64 msk30 = (static_cast<u64>(1) << 30)\
+    \ - 1;\n    static constexpr u64 msk61 = (static_cast<u64>(1) << 31) - 1;\n  \
+    \  const std::string str;\n    std::vector<u64> _hash, _pow;\n    \n    static\
+    \ constexpr u64 mod = (static_cast<u64>(1) << 61) - 1;\n    static constexpr u64\
+    \ primitive_root = 37;\n    static constexpr uint mapping_max = (uint)'Z' + 2;\n\
+    \    static u64 base;\n    \nprivate:\n    constexpr u64 mul(u64 a, u64 b) const\
+    \ {\n        u128 t = (u128)a * b;\n        t = (t >> 61) + (t & mod);\n     \
+    \   if (t >= mod) {\n            t -= mod;\n        }\n        return t;\n   \
+    \ }\n\n    constexpr u64 mapping(char c) const { return (u64)c; }\n\n    static\
     \ u64 generate() {\n        static std::mt19937_64 engine(\n            std::chrono::steady_clock::now().time_since_epoch().count());\n\
     \        std::uniform_int_distribution<u64> rand(1, mod - 1);\n        return\
     \ rand(engine);\n    }\n    static void generate_base() {\n        if (base !=\
@@ -151,8 +152,8 @@ data:
   isVerificationFile: false
   path: src/string/rolling_hash.hpp
   requiredBy: []
-  timestamp: '2024-02-21 16:16:45+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yuki/No430.test.cpp
 documentation_of: src/string/rolling_hash.hpp

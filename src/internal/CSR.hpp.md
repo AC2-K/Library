@@ -2,42 +2,43 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/tree/HeavyLightDecomposition.hpp
     title: Heavy Light Decomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/tree/doubling.hpp
-    title: "\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0"
+    title: "Binary Lifting(\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
     title: test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
-    document_title: "CSR\u5F62\u5F0F"
+    document_title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\
+      \u5727\u7E2E)"
     links: []
   bundledCode: "#line 2 \"src/internal/CSR.hpp\"\n\n#include <cassert>\n#include <iterator>\n\
     #include <utility>\n#include <vector>\n\nnamespace kyopro {\nnamespace internal\
@@ -61,7 +62,8 @@ data:
     \    }\n    const_vector_range operator[](_size_t i) const {\n        return const_vector_range{d.begin()\
     \ + ssum[i], d.begin() + ssum[i + 1]};\n    }\n\n    _size_t size() const { return\
     \ (_size_t)n; }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief CSR\u5F62\u5F0F\n */\n"
+    \ * @brief CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
+    \u7E2E)\n */\n"
   code: "#pragma once\n\n#include <cassert>\n#include <iterator>\n#include <utility>\n\
     #include <vector>\n\nnamespace kyopro {\nnamespace internal {\n\ntemplate <typename\
     \ T, typename _size_t> class csr {\n    _size_t n;\n    std::vector<T> d;\n  \
@@ -84,7 +86,8 @@ data:
     \    }\n    const_vector_range operator[](_size_t i) const {\n        return const_vector_range{d.begin()\
     \ + ssum[i], d.begin() + ssum[i + 1]};\n    }\n\n    _size_t size() const { return\
     \ (_size_t)n; }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief CSR\u5F62\u5F0F\n */"
+    \ * @brief CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
+    \u7E2E)\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/internal/CSR.hpp
@@ -92,20 +95,21 @@ data:
   - src/tree/EulerTour.hpp
   - src/tree/HeavyLightDecomposition.hpp
   - src/tree/doubling.hpp
-  timestamp: '2024-05-03 15:25:16+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/GRL/5_C.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
-  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-  - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
 documentation_of: src/internal/CSR.hpp
 layout: document
 redirect_from:
 - /library/src/internal/CSR.hpp
 - /library/src/internal/CSR.hpp.html
-title: "CSR\u5F62\u5F0F"
+title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\u7E2E\
+  )"
 ---

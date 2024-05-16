@@ -1,15 +1,15 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -65,9 +65,10 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 6\
+    \ \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char& c)\
+    \ {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
@@ -96,14 +97,15 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 5 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n,\
-    \ q;\n    read(n, q);\n    BIT<long long> seg(n);\n    for (int i = 0; i < n;\
-    \ i++) {\n        int a;\n        read(a);\n        seg.add(i, a);\n    }\n\n\
-    \    while (q--) {\n        int t;\n        read(t);\n        if (t == 0) {\n\
-    \            int p, x;\n            read(p, x);\n            seg.add(p, x);\n\
-    \        } else {\n            int l, r;\n            read(l, r);\n          \
-    \  put(seg.sum(l, r));\n        }\n    }\n}\n"
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 5 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\n\n\
+    using namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n\
+    \    read(n, q);\n    BIT<long long> seg(n);\n    for (int i = 0; i < n; i++)\
+    \ {\n        int a;\n        read(a);\n        seg.add(i, a);\n    }\n\n    while\
+    \ (q--) {\n        int t;\n        read(t);\n        if (t == 0) {\n         \
+    \   int p, x;\n            read(p, x);\n            seg.add(p, x);\n        }\
+    \ else {\n            int l, r;\n            read(l, r);\n            put(seg.sum(l,\
+    \ r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     #include <iostream>\n#include \"../../../src/data-structure/BIT.hpp\"\n#include\
     \ \"../../../src/stream.hpp\"\n\nusing namespace std;\nusing namespace kyopro;\n\
@@ -120,7 +122,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
+  timestamp: '2024-05-16 17:50:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp

@@ -13,7 +13,8 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
+    document_title: "Bipartite Matching(\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0\
+      )"
     links:
     - https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp
     - https://qiita.com/drken/items/e805e3f514acceb87602
@@ -81,44 +82,41 @@ data:
     \ {\n        int to, rev;\n        Cap cap;\n    };\n    std::vector<std::pair<int,\
     \ int>> pos;\n    std::vector<std::vector<_edge>> g;\n};\n\n}  // namespace atcoder\n\
     \n\n#line 2 \"src/graph/flow/BipartiteMatching.hpp\"\n\n#line 5 \"src/graph/flow/BipartiteMatching.hpp\"\
-    \n\nnamespace kyopro {\n\n/**\n * @brief \u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0\
-    \n */\ntemplate <typename Cap> class BipartiteGraph {\n    const int L, R;\n \
-    \   const int s, t;  // \u8D85\u9802\u70B9\u3092\u4F5C\u308B\n\n    atcoder::mf_graph<Cap>\
-    \ g;\n\n    // \u3059\u3067\u306B\u6D41\u3057\u305F\u304B?\n    bool flowed_flag;\n\
-    \npublic:\n    explicit BipartiteGraph(int LV, int RV)\n        : g(LV + RV +\
-    \ 2),\n          L(LV),\n          R(RV),\n          s(LV + RV + 1),\n       \
-    \   t(LV + RV),\n          flowed_flag(false) {\n        for (int i = 0; i < LV;\
-    \ ++i) g.add_edge(s, i, 1);\n        for (int i = LV; i < LV + RV; ++i) g.add_edge(i,\
-    \ t, 1);\n    }\n    int add_edge(int from, int to, Cap cap = 1) {\n        assert(0\
-    \ <= from && from < L);\n        assert(0 <= to && to < R);\n        return g.add_edge(from,\
-    \ to + L, cap);\n    }\n\npublic:\n    // \u6D41\u91CF\n    Cap flow() {\n   \
-    \     flowed_flag = true;\n        return g.flow(s, t);\n    }\n\n    // \u5FA9\
-    \u5143\n    std::vector<std::pair<int, int>> Matching() {\n        if (!flowed_flag)\
+    \n\nnamespace kyopro {\n\ntemplate <typename Cap> class BipartiteGraph {\n   \
+    \ const int L, R;\n    const int s, t;\n\n    atcoder::mf_graph<Cap> g;\n\n  \
+    \  bool flowed_flag;\n\npublic:\n    explicit BipartiteGraph(int LV, int RV)\n\
+    \        : g(LV + RV + 2),\n          L(LV),\n          R(RV),\n          s(LV\
+    \ + RV + 1),\n          t(LV + RV),\n          flowed_flag(false) {\n        for\
+    \ (int i = 0; i < LV; ++i) g.add_edge(s, i, 1);\n        for (int i = LV; i <\
+    \ LV + RV; ++i) g.add_edge(i, t, 1);\n    }\n    int add_edge(int from, int to,\
+    \ Cap cap = 1) {\n        assert(0 <= from && from < L);\n        assert(0 <=\
+    \ to && to < R);\n        return g.add_edge(from, to + L, cap);\n    }\n\n   \
+    \ Cap flow() {\n        flowed_flag = true;\n        return g.flow(s, t);\n  \
+    \  }\n\n    std::vector<std::pair<int, int>> Matching() {\n        if (!flowed_flag)\
     \ flow();\n\n        auto E = g.edges();\n\n        std::vector<std::pair<int,\
     \ int>> res;\n        for (const auto& e : E) {\n            if (e.flow > 0 &&\
     \ e.from != s && e.to != t) {\n                res.emplace_back(e.from, e.to -\
     \ L);\n            }\n        }\n        return res;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @ref\n * https://qiita.com/drken/items/e805e3f514acceb87602\n\
-    \ * https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp\n */\n"
+    \ kyopro\n\n/**\n * @brief Bipartite Matching(\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\
+    \u30B0)\n * @see\n * https://qiita.com/drken/items/e805e3f514acceb87602\n * https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp\n\
+    \ */\n"
   code: "#include \"../../atcoder/maxflow\"\n\n#include <cassert>\n#include <vector>\n\
-    \nnamespace kyopro {\n\n/**\n * @brief \u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0\
-    \n */\ntemplate <typename Cap> class BipartiteGraph {\n    const int L, R;\n \
-    \   const int s, t;  // \u8D85\u9802\u70B9\u3092\u4F5C\u308B\n\n    atcoder::mf_graph<Cap>\
-    \ g;\n\n    // \u3059\u3067\u306B\u6D41\u3057\u305F\u304B?\n    bool flowed_flag;\n\
-    \npublic:\n    explicit BipartiteGraph(int LV, int RV)\n        : g(LV + RV +\
-    \ 2),\n          L(LV),\n          R(RV),\n          s(LV + RV + 1),\n       \
-    \   t(LV + RV),\n          flowed_flag(false) {\n        for (int i = 0; i < LV;\
-    \ ++i) g.add_edge(s, i, 1);\n        for (int i = LV; i < LV + RV; ++i) g.add_edge(i,\
-    \ t, 1);\n    }\n    int add_edge(int from, int to, Cap cap = 1) {\n        assert(0\
-    \ <= from && from < L);\n        assert(0 <= to && to < R);\n        return g.add_edge(from,\
-    \ to + L, cap);\n    }\n\npublic:\n    // \u6D41\u91CF\n    Cap flow() {\n   \
-    \     flowed_flag = true;\n        return g.flow(s, t);\n    }\n\n    // \u5FA9\
-    \u5143\n    std::vector<std::pair<int, int>> Matching() {\n        if (!flowed_flag)\
-    \ flow();\n\n        auto E = g.edges();\n\n        std::vector<std::pair<int,\
-    \ int>> res;\n        for (const auto& e : E) {\n            if (e.flow > 0 &&\
-    \ e.from != s && e.to != t) {\n                res.emplace_back(e.from, e.to -\
-    \ L);\n            }\n        }\n        return res;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @ref\n * https://qiita.com/drken/items/e805e3f514acceb87602\n\
+    \nnamespace kyopro {\n\ntemplate <typename Cap> class BipartiteGraph {\n    const\
+    \ int L, R;\n    const int s, t;\n\n    atcoder::mf_graph<Cap> g;\n\n    bool\
+    \ flowed_flag;\n\npublic:\n    explicit BipartiteGraph(int LV, int RV)\n     \
+    \   : g(LV + RV + 2),\n          L(LV),\n          R(RV),\n          s(LV + RV\
+    \ + 1),\n          t(LV + RV),\n          flowed_flag(false) {\n        for (int\
+    \ i = 0; i < LV; ++i) g.add_edge(s, i, 1);\n        for (int i = LV; i < LV +\
+    \ RV; ++i) g.add_edge(i, t, 1);\n    }\n    int add_edge(int from, int to, Cap\
+    \ cap = 1) {\n        assert(0 <= from && from < L);\n        assert(0 <= to &&\
+    \ to < R);\n        return g.add_edge(from, to + L, cap);\n    }\n\n    Cap flow()\
+    \ {\n        flowed_flag = true;\n        return g.flow(s, t);\n    }\n\n    std::vector<std::pair<int,\
+    \ int>> Matching() {\n        if (!flowed_flag) flow();\n\n        auto E = g.edges();\n\
+    \n        std::vector<std::pair<int, int>> res;\n        for (const auto& e :\
+    \ E) {\n            if (e.flow > 0 && e.from != s && e.to != t) {\n          \
+    \      res.emplace_back(e.from, e.to - L);\n            }\n        }\n       \
+    \ return res;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Bipartite\
+    \ Matching(\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0)\n * @see\n * https://qiita.com/drken/items/e805e3f514acceb87602\n\
     \ * https://nyaannyaan.github.io/library/flow/flow-on-bipartite-graph.hpp\n */"
   dependsOn:
   - src/atcoder/maxflow.hpp
@@ -126,7 +124,7 @@ data:
   isVerificationFile: false
   path: src/graph/flow/BipartiteMatching.hpp
   requiredBy: []
-  timestamp: '2023-08-02 13:39:21+00:00'
+  timestamp: '2024-05-16 17:50:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/graph/flow/BipartiteMatching.hpp
@@ -134,5 +132,5 @@ layout: document
 redirect_from:
 - /library/src/graph/flow/BipartiteMatching.hpp
 - /library/src/graph/flow/BipartiteMatching.hpp.html
-title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
+title: "Bipartite Matching(\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0)"
 ---

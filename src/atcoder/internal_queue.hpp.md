@@ -10,7 +10,7 @@ data:
     title: src/atcoder/mincostflow.hpp
   - icon: ':warning:'
     path: src/graph/flow/BipartiteMatching.hpp
-    title: "\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0"
+    title: "Bipartite Matching(\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0)"
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp

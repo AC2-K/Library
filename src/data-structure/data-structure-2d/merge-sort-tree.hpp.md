@@ -3,14 +3,14 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
     title: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
-    document_title: MergeSortTree
+    document_title: Merge Sort Tree
     links: []
   bundledCode: "#line 2 \"src/data-structure/data-structure-2d/merge-sort-tree.hpp\"\
     \n#include <algorithm>\n#include <iterator>\n#include <utility>\n#include <vector>\n\
@@ -49,7 +49,7 @@ data:
     \ lower, upper);\n            }\n            if (r & 1) {\n                sum\
     \ += get(--r, lower, upper);\n            }\n            l >>= 1, r >>= 1;\n \
     \       }\n\n        return sum;\n    }\n};\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief MergeSortTree\n*/\n"
+    \ * @brief Merge Sort Tree\n*/\n"
   code: "#pragma once\n#include <algorithm>\n#include <iterator>\n#include <utility>\n\
     #include <vector>\n\nnamespace kyopro {\ntemplate <typename Key_x, typename Key_y,\
     \ typename Value>\nclass merge_sort_tree {\n    int lg, sz;\n\n    struct point\
@@ -87,13 +87,13 @@ data:
     \ lower, upper);\n            }\n            if (r & 1) {\n                sum\
     \ += get(--r, lower, upper);\n            }\n            l >>= 1, r >>= 1;\n \
     \       }\n\n        return sum;\n    }\n};\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief MergeSortTree\n*/"
+    \ * @brief Merge Sort Tree\n*/"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/data-structure-2d/merge-sort-tree.hpp
   requiredBy: []
-  timestamp: '2024-02-04 11:34:18+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
 documentation_of: src/data-structure/data-structure-2d/merge-sort-tree.hpp
@@ -101,5 +101,5 @@ layout: document
 redirect_from:
 - /library/src/data-structure/data-structure-2d/merge-sort-tree.hpp
 - /library/src/data-structure/data-structure-2d/merge-sort-tree.hpp.html
-title: MergeSortTree
+title: Merge Sort Tree
 ---

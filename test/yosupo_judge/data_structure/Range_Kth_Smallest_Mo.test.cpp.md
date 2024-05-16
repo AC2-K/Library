@@ -1,23 +1,23 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/algorithm/mo.hpp
     title: Mo's algorithm
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/BIT.hpp
     title: Binary Index Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
-  - icon: ':heavy_check_mark:'
+    title: Type Traits
+  - icon: ':question:'
     path: src/stream.hpp
-    title: "\u9AD8\u901F\u5165\u51FA\u529B"
+    title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
@@ -54,9 +54,10 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
-    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 6\
+    \ \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char& c)\
+    \ {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
     }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
     \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
     \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
@@ -85,24 +86,25 @@ data:
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief \u9AD8\u901F\u5165\u51FA\u529B\n */\n#line 2 \"src/algorithm/mo.hpp\"\
-    \n#include <algorithm>\n#line 4 \"src/algorithm/mo.hpp\"\n#include <utility>\n\
-    #include <vector>\nnamespace kyopro {\nclass Mo {\n    int n;\n    std::vector<std::pair<int,\
-    \ int>> lr;\n    const int logn;\n    const long long maxn;\n    std::vector<int>\
-    \ ord;\n\npublic:\n    Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n);\
-    \ }\n    void add(int l, int r) { lr.emplace_back(l, r); }\n\nprivate:\n    long\
-    \ long hilbertorder(int x, int y) {\n        long long d = 0;\n        for (int\
-    \ s = 1 << (logn - 1); s; s >>= 1) {\n            bool rx = x & s, ry = y & s;\n\
-    \            d = d << 2 | rx * 3 ^ static_cast<int>(ry);\n            if (!ry)\
-    \ {\n                if (rx) {\n                    x = maxn - x;\n          \
-    \          y = maxn - y;\n                }\n                std::swap(x, y);\n\
-    \            }\n        }\n        return d;\n    }\n    void _sort() {\n    \
-    \    int q = lr.size();\n        ord.resize(q);\n        std::iota(std::begin(ord),\
-    \ std::end(ord), 0);\n        std::vector<long long> tmp(q);\n        for (int\
-    \ i = 0; i < q; i++) {\n            tmp[i] = hilbertorder(lr[i].first, lr[i].second);\n\
-    \        }\n        std::sort(std::begin(ord), std::end(ord),\n              \
-    \    [&](int a, int b) { return tmp[a] < tmp[b]; });\n    }\n\npublic:\n    template\
-    \ <typename AL, typename AR, typename EL, typename ER, typename O>\n    void build(const\
+    \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
+    \ 2 \"src/algorithm/mo.hpp\"\n#include <algorithm>\n#line 4 \"src/algorithm/mo.hpp\"\
+    \n#include <utility>\n#include <vector>\nnamespace kyopro {\nclass Mo {\n    int\
+    \ n;\n    std::vector<std::pair<int, int>> lr;\n    const int logn;\n    const\
+    \ long long maxn;\n    std::vector<int> ord;\n\npublic:\n    Mo(int n) : n(n),\
+    \ logn(20), maxn(1ll << logn) { lr.reserve(n); }\n    void add(int l, int r) {\
+    \ lr.emplace_back(l, r); }\n\nprivate:\n    long long hilbertorder(int x, int\
+    \ y) {\n        long long d = 0;\n        for (int s = 1 << (logn - 1); s; s >>=\
+    \ 1) {\n            bool rx = x & s, ry = y & s;\n            d = d << 2 | rx\
+    \ * 3 ^ static_cast<int>(ry);\n            if (!ry) {\n                if (rx)\
+    \ {\n                    x = maxn - x;\n                    y = maxn - y;\n  \
+    \              }\n                std::swap(x, y);\n            }\n        }\n\
+    \        return d;\n    }\n    void _sort() {\n        int q = lr.size();\n  \
+    \      ord.resize(q);\n        std::iota(std::begin(ord), std::end(ord), 0);\n\
+    \        std::vector<long long> tmp(q);\n        for (int i = 0; i < q; i++) {\n\
+    \            tmp[i] = hilbertorder(lr[i].first, lr[i].second);\n        }\n  \
+    \      std::sort(std::begin(ord), std::end(ord),\n                  [&](int a,\
+    \ int b) { return tmp[a] < tmp[b]; });\n    }\n\npublic:\n    template <typename\
+    \ AL, typename AR, typename EL, typename ER, typename O>\n    void build(const\
     \ AL& add_left,\n               const AR& add_right,\n               const EL&\
     \ erase_left,\n               const ER& erase_right,\n               const O&\
     \ out) {\n        _sort();\n        int l = 0, r = 0;\n        for (auto idx :\
@@ -165,8 +167,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2023-10-22 17:20:37+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
 layout: document

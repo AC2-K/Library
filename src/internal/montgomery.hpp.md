@@ -1,53 +1,53 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
-    title: src/internal/type_traits.hpp
+    title: Type Traits
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
-    title: dynamic modint
-  - icon: ':heavy_check_mark:'
+    title: Dynamic modint
+  - icon: ':question:'
     path: src/math/miller.hpp
-    title: "MillerRabin\u7D20\u6570\u5224\u5B9A"
-  - icon: ':heavy_check_mark:'
+    title: "Primality Test(MillerRabin\u7D20\u6570\u5224\u5B9A)"
+  - icon: ':x:'
     path: src/math/mod_sqrt.hpp
     title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
     title: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: Montgomery Reduction
     links: []
@@ -81,65 +81,66 @@ data:
     \ T>;\ntemplate <typename T> using is_modint_t = std::enable_if_t<is_modint<T>::value>;\n\
     \n\n// is_integral\ntemplate <typename T>\nusing is_integral_t =\n    std::enable_if_t<std::is_integral_v<T>\
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
-    };  // namespace internal\n};  // namespace kyopro\n\n/*\n * @ref https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n\
-    \ */\n#line 6 \"src/internal/montgomery.hpp\"\nnamespace kyopro {\nnamespace internal\
-    \ {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing\
-    \ i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n\n/**\n\
-    \ * @brief Montgomery Reduction\n */\ntemplate <typename T> class Montgomery {\n\
-    \    static constexpr int lg = std::numeric_limits<T>::digits;\n    using LargeT\
-    \ = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n    T inv() {\n\
-    \        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i) {\n         \
-    \   if (~t & 1) {\n                t += mod;\n                res += static_cast<T>(1)\
-    \ << i;\n            }\n            t >>= 1;\n        }\n        return res;\n\
-    \    }\n\npublic:\n    Montgomery() = default;\n    constexpr T get_mod() { return\
-    \ mod; }\n\n    void set_mod(T m) {\n        assert(m);\n        assert(m & 1);\n\
-    \n        mod = m;\n\n        r = (-static_cast<T>(mod)) % mod;\n        r2 =\
-    \ (-static_cast<LargeT>(mod)) % mod;\n        minv = inv();\n    }\n\n    T reduce(LargeT\
-    \ x) const {\n        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x)\
-    \ * minv) * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return\
-    \ res;\n    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T\
-    \ mul(T x, T y) { return reduce((LargeT)x * y); }\n};\n};  // namespace internal\n\
-    };  // namespace kyopro\n"
+    };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
+    \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 6\
+    \ \"src/internal/montgomery.hpp\"\nnamespace kyopro {\nnamespace internal {\n\
+    using u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing i64\
+    \ = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n\ntemplate\
+    \ <typename T> class Montgomery {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
+    \    using LargeT = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n\
+    \    T inv() {\n        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i)\
+    \ {\n            if (~t & 1) {\n                t += mod;\n                res\
+    \ += static_cast<T>(1) << i;\n            }\n            t >>= 1;\n        }\n\
+    \        return res;\n    }\n\npublic:\n    Montgomery() = default;\n    constexpr\
+    \ T get_mod() { return mod; }\n\n    void set_mod(T m) {\n        assert(m);\n\
+    \        assert(m & 1);\n\n        mod = m;\n\n        r = (-static_cast<T>(mod))\
+    \ % mod;\n        r2 = (-static_cast<LargeT>(mod)) % mod;\n        minv = inv();\n\
+    \    }\n\n    T reduce(LargeT x) const {\n        u64 res =\n            (x +\
+    \ static_cast<LargeT>(static_cast<T>(x) * minv) * mod) >> lg;\n\n        if (res\
+    \ >= mod) res -= mod;\n        return res;\n    }\n\n    T generate(LargeT x)\
+    \ { return reduce(x * r2); }\n\n    T mul(T x, T y) { return reduce((LargeT)x\
+    \ * y); }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n\n/**\n *\
+    \ @brief Montgomery Reduction\n */\n"
   code: "#pragma once\n#include <cassert>\n#include <limits>\n#include <numeric>\n\
     #include \"../internal/type_traits.hpp\"\nnamespace kyopro {\nnamespace internal\
     \ {\nusing u32 = uint32_t;\nusing u64 = uint64_t;\nusing i32 = int32_t;\nusing\
-    \ i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n\n/**\n\
-    \ * @brief Montgomery Reduction\n */\ntemplate <typename T> class Montgomery {\n\
-    \    static constexpr int lg = std::numeric_limits<T>::digits;\n    using LargeT\
-    \ = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n    T inv() {\n\
-    \        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i) {\n         \
-    \   if (~t & 1) {\n                t += mod;\n                res += static_cast<T>(1)\
-    \ << i;\n            }\n            t >>= 1;\n        }\n        return res;\n\
-    \    }\n\npublic:\n    Montgomery() = default;\n    constexpr T get_mod() { return\
-    \ mod; }\n\n    void set_mod(T m) {\n        assert(m);\n        assert(m & 1);\n\
-    \n        mod = m;\n\n        r = (-static_cast<T>(mod)) % mod;\n        r2 =\
-    \ (-static_cast<LargeT>(mod)) % mod;\n        minv = inv();\n    }\n\n    T reduce(LargeT\
-    \ x) const {\n        u64 res =\n            (x + static_cast<LargeT>(static_cast<T>(x)\
-    \ * minv) * mod) >> lg;\n\n        if (res >= mod) res -= mod;\n        return\
-    \ res;\n    }\n\n    T generate(LargeT x) { return reduce(x * r2); }\n\n    T\
-    \ mul(T x, T y) { return reduce((LargeT)x * y); }\n};\n};  // namespace internal\n\
-    };  // namespace kyopro"
+    \ i64 = int64_t;\nusing u128 = __uint128_t;\nusing i128 = __int128_t;\n\ntemplate\
+    \ <typename T> class Montgomery {\n    static constexpr int lg = std::numeric_limits<T>::digits;\n\
+    \    using LargeT = internal::double_size_uint_t<T>;\n    T mod, r, r2, minv;\n\
+    \    T inv() {\n        T t = 0, res = 0;\n        for (int i = 0; i < lg; ++i)\
+    \ {\n            if (~t & 1) {\n                t += mod;\n                res\
+    \ += static_cast<T>(1) << i;\n            }\n            t >>= 1;\n        }\n\
+    \        return res;\n    }\n\npublic:\n    Montgomery() = default;\n    constexpr\
+    \ T get_mod() { return mod; }\n\n    void set_mod(T m) {\n        assert(m);\n\
+    \        assert(m & 1);\n\n        mod = m;\n\n        r = (-static_cast<T>(mod))\
+    \ % mod;\n        r2 = (-static_cast<LargeT>(mod)) % mod;\n        minv = inv();\n\
+    \    }\n\n    T reduce(LargeT x) const {\n        u64 res =\n            (x +\
+    \ static_cast<LargeT>(static_cast<T>(x) * minv) * mod) >> lg;\n\n        if (res\
+    \ >= mod) res -= mod;\n        return res;\n    }\n\n    T generate(LargeT x)\
+    \ { return reduce(x * r2); }\n\n    T mul(T x, T y) { return reduce((LargeT)x\
+    \ * y); }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n\n/**\n *\
+    \ @brief Montgomery Reduction\n */"
   dependsOn:
   - src/internal/type_traits.hpp
   isVerificationFile: false
   path: src/internal/montgomery.hpp
   requiredBy:
-  - src/math/primitive_root.hpp
-  - src/math/rho.hpp
+  - src/FormalPowerSeries/fps-sqrt.hpp
   - src/math/phi_function.hpp
-  - src/math/mod_sqrt.hpp
+  - src/math/rho.hpp
   - src/math/dynamic_modint.hpp
   - src/math/miller.hpp
-  - src/FormalPowerSeries/fps-sqrt.hpp
-  timestamp: '2023-10-22 15:25:04+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  - src/math/mod_sqrt.hpp
+  - src/math/primitive_root.hpp
+  timestamp: '2024-05-16 17:50:34+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yuki/No3030.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
 documentation_of: src/internal/montgomery.hpp
 layout: document
 redirect_from:

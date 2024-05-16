@@ -1,25 +1,25 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: Xor Shift
   _extendedRequiredBy: []
@@ -28,8 +28,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: "\u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\
-      \u30C3\u30C1\u30F3\u30B0"
+    document_title: Wildcard Pattern Matching
     links: []
   bundledCode: "#line 1 \"src/atcoder/convolution.hpp\"\n\n\n\n#include <algorithm>\n\
     #include <array>\n#include <cassert>\n#include <type_traits>\n#include <vector>\n\
@@ -436,8 +435,7 @@ data:
     \ i < (int)ans.size(); ++i) {\n        ans[i] = (conv1[i + t.size() - 1] + conv2[i\
     \ + t.size() - 1] -\n                      2 * conv3[i + t.size() - 1] ==\n  \
     \                mint(0));\n    }\n    return ans;\n}\n\n};  // namespace kyopro\n\
-    \n/**\n * @brief \u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\
-    \u30C3\u30C1\u30F3\u30B0\n */\n"
+    \n/**\n * @brief Wildcard Pattern Matching \n */\n"
   code: "#pragma once\n#include \"../atcoder/convolution\"\n#include \"../atcoder/modint\"\
     \n#include <string>\n#include <vector>\n#include<algorithm>\n#include \"../random/xor_shift.hpp\"\
     \n\nnamespace kyopro {\ntemplate <int m = 998244353>\nstd::vector<bool> wildcard_pattern_matching(const\
@@ -460,8 +458,7 @@ data:
     \ i < (int)ans.size(); ++i) {\n        ans[i] = (conv1[i + t.size() - 1] + conv2[i\
     \ + t.size() - 1] -\n                      2 * conv3[i + t.size() - 1] ==\n  \
     \                mint(0));\n    }\n    return ans;\n}\n\n};  // namespace kyopro\n\
-    \n/**\n * @brief \u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\
-    \u30C3\u30C1\u30F3\u30B0\n */\n"
+    \n/**\n * @brief Wildcard Pattern Matching \n */\n"
   dependsOn:
   - src/atcoder/convolution.hpp
   - src/atcoder/internal_bit.hpp
@@ -473,7 +470,7 @@ data:
   isVerificationFile: false
   path: src/string/wildcard_pattern_matching.hpp
   requiredBy: []
-  timestamp: '2023-10-22 21:54:03+09:00'
+  timestamp: '2024-05-16 17:50:34+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: src/string/wildcard_pattern_matching.hpp
@@ -481,6 +478,5 @@ layout: document
 redirect_from:
 - /library/src/string/wildcard_pattern_matching.hpp
 - /library/src/string/wildcard_pattern_matching.hpp.html
-title: "\u30EF\u30A4\u30EB\u30AB\u30FC\u30C9\u30D1\u30BF\u30FC\u30F3\u30DE\u30C3\u30C1\
-  \u30F3\u30B0"
+title: Wildcard Pattern Matching
 ---
