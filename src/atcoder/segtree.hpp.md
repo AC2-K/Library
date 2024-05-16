@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
   _extendedRequiredBy: []

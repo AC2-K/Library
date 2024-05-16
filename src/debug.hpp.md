@@ -6,7 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
     title: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
     title: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
   - icon: ':x:'

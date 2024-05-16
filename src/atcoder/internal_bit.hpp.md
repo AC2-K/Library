@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/FormalPowerSeries/FPS.hpp
     title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
   - icon: ':x:'
@@ -11,7 +11,7 @@ data:
   - icon: ':x:'
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: Polynomial Taylor Shift
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
   - icon: ':warning:'
@@ -24,7 +24,7 @@ data:
     path: src/string/wildcard_pattern_matching.hpp
     title: Wildcard Pattern Matching
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - icon: ':x:'
@@ -44,7 +44,7 @@ data:
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"src/atcoder/internal_bit.hpp\"\n\n\n\n#ifdef _MSC_VER\n\
@@ -84,7 +84,7 @@ data:
   - src/atcoder/convolution.hpp
   - src/atcoder/segtree.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp

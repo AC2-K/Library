@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/FormalPowerSeries/FPS.hpp
     title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
   - icon: ':question:'
@@ -40,7 +40,7 @@ data:
   - icon: ':question:'
     path: src/math/miller.hpp
     title: "Primality Test(MillerRabin\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':question:'
@@ -49,7 +49,7 @@ data:
   - icon: ':x:'
     path: src/math/mod_sqrt.hpp
     title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
   - icon: ':question:'

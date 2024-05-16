@@ -22,13 +22,13 @@ data:
   - icon: ':question:'
     path: src/math/miller.hpp
     title: "Primality Test(MillerRabin\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "Power Modulo(\u7D2F\u4E57)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
   - icon: ':question:'

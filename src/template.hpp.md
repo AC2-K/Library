@@ -33,28 +33,28 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
     title: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
     title: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
     title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
     title: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - icon: ':x:'

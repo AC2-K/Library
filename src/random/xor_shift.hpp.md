@@ -12,7 +12,7 @@ data:
     path: src/data-structure/bbst/lazy_reversible_bbst.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\
       \u4E8C\u5206\u6728"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/bbst/reversible_bbst.hpp
     title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728"
   - icon: ':x:'
@@ -21,7 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
   - icon: ':question:'
@@ -40,13 +40,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - icon: ':x:'

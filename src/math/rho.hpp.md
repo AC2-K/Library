@@ -32,17 +32,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: "\u539F\u59CB\u6839"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - icon: ':x:'

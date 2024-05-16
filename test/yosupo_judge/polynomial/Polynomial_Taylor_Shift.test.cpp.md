@@ -4,25 +4,25 @@ data:
   - icon: ':x:'
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: Polynomial Taylor Shift
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
   - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/combination.hpp
     title: Combination
   - icon: ':question:'

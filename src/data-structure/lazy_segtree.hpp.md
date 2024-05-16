@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/DSL/2_E_lazy.test.cpp
     title: test/AOJ/DSL/2_E_lazy.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: Lazy Segment Tree
     links: []
@@ -105,7 +105,7 @@ data:
   path: src/data-structure/lazy_segtree.hpp
   requiredBy: []
   timestamp: '2023-10-22 17:06:17+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/DSL/2_D_lazy.test.cpp
   - test/AOJ/DSL/2_E_lazy.test.cpp

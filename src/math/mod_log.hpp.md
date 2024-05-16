@@ -21,7 +21,7 @@ data:
     path: src/math/mod_sqrt.hpp
     title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':x:'
@@ -29,7 +29,7 @@ data:
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: docs/math/mod_log.md
     document_title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
@@ -148,7 +148,7 @@ data:
   - src/FormalPowerSeries/fps-sqrt.hpp
   - src/math/mod_sqrt.hpp
   timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp

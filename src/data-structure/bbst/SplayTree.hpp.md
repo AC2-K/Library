@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/P1508.test.cpp
     title: test/AOJ/P1508.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
     title: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: Splay Tree
     links: []
@@ -170,7 +170,7 @@ data:
   path: src/data-structure/bbst/SplayTree.hpp
   requiredBy: []
   timestamp: '2024-05-06 00:31:30+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/P1508.test.cpp
   - test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp

@@ -5,7 +5,7 @@ data:
   - icon: ':x:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
   - icon: ':x:'
@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
     title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':x:'

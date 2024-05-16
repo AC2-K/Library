@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/data-structure-2d/merge-sort-tree.hpp
     title: Merge Sort Tree
   - icon: ':question:'
@@ -15,9 +15,9 @@ data:
     title: Template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/rectangle_sum
@@ -158,7 +158,7 @@ data:
   path: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
   requiredBy: []
   timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
 layout: document

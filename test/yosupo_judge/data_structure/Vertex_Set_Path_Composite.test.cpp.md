@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/segtree.hpp
     title: Segment Tree
   - icon: ':question:'
@@ -23,14 +23,14 @@ data:
   - icon: ':question:'
     path: src/template.hpp
     title: Template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/HeavyLightDecomposition.hpp
     title: Heavy Light Decomposition
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/vertex_set_path_composite
@@ -325,7 +325,7 @@ data:
   path: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
   requiredBy: []
   timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
 layout: document

@@ -11,7 +11,7 @@ data:
       title: out.cpp
   - name: src/FormalPowerSeries
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/FormalPowerSeries/FPS.hpp
       title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
     - icon: ':x:'
@@ -22,7 +22,7 @@ data:
       title: Polynomial Taylor Shift
   - name: src/algorithm
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/algorithm/mo.hpp
       title: Mo's algorithm
     - icon: ':heavy_check_mark:'
@@ -33,7 +33,7 @@ data:
       title: Subset Transform
   - name: src/atcoder
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/atcoder/convolution.hpp
       title: src/atcoder/convolution.hpp
     - icon: ':warning:'
@@ -42,13 +42,13 @@ data:
     - icon: ':warning:'
       path: src/atcoder/fenwicktree.hpp
       title: src/atcoder/fenwicktree.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/atcoder/internal_bit.hpp
       title: src/atcoder/internal_bit.hpp
     - icon: ':warning:'
       path: src/atcoder/internal_csr.hpp
       title: src/atcoder/internal_csr.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/atcoder/internal_math.hpp
       title: src/atcoder/internal_math.hpp
     - icon: ':warning:'
@@ -57,7 +57,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/internal_scc.hpp
       title: src/atcoder/internal_scc.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/atcoder/internal_type_traits.hpp
       title: src/atcoder/internal_type_traits.hpp
     - icon: ':warning:'
@@ -72,7 +72,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/mincostflow.hpp
       title: src/atcoder/mincostflow.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/atcoder/modint.hpp
       title: src/atcoder/modint.hpp
     - icon: ':warning:'
@@ -103,7 +103,7 @@ data:
       title: Subset Convolution
   - name: src/data-structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/BIT.hpp
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
@@ -112,10 +112,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/SWAG.hpp
       title: Slide Window Aggrigation
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/dsu.hpp
       title: Disjoint Set Union
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/dual_segtree.hpp
       title: Dual Segment Tree
     - icon: ':x:'
@@ -124,10 +124,10 @@ data:
     - icon: ':question:'
       path: src/data-structure/hash_map.hpp
       title: Hash Map
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/lazy_segtree.hpp
       title: Lazy Segment Tree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/segtree.hpp
       title: Segment Tree
     - icon: ':heavy_check_mark:'
@@ -138,7 +138,7 @@ data:
       title: Sparse Table
   - name: src/data-structure/bbst
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/bbst/SplayTree.hpp
       title: Splay Tree
     - icon: ':heavy_check_mark:'
@@ -148,7 +148,7 @@ data:
       path: src/data-structure/bbst/lazy_reversible_bbst.hpp
       title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\
         \u4E8C\u5206\u6728"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/bbst/reversible_bbst.hpp
       title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728"
   - name: src/data-structure/data-structure-2d
@@ -159,7 +159,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/data-structure-2d/imos.hpp
       title: "\u4E8C\u6B21\u5143imos\u6CD5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/data-structure-2d/merge-sort-tree.hpp
       title: Merge Sort Tree
   - name: src/data-structure/persistent
@@ -183,7 +183,7 @@ data:
       title: Template
   - name: src/dynamic_programming
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/dynamic_programming/number_of_subseq.hpp
       title: "Count subsequences \u90E8\u5206\u5217\u306E\u500B\u6570"
   - name: src/graph
@@ -220,7 +220,7 @@ data:
       title: Type Traits
   - name: src/math
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/math/combination.hpp
       title: Combination
     - icon: ':heavy_check_mark:'
@@ -235,13 +235,13 @@ data:
     - icon: ':question:'
       path: src/math/gcd.hpp
       title: gcd
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/matrix.hpp
       title: "Matrix(\u884C\u5217)"
     - icon: ':question:'
       path: src/math/miller.hpp
       title: "Primality Test(MillerRabin\u7D20\u6570\u5224\u5B9A)"
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/math/mod_log.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
     - icon: ':question:'
@@ -253,7 +253,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/phi_function.hpp
       title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/math/primitive_root.hpp
       title: "\u539F\u59CB\u6839"
     - icon: ':question:'
@@ -286,7 +286,7 @@ data:
     - icon: ':question:'
       path: src/tree/EulerTour.hpp
       title: Euler Tour
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/HeavyLightDecomposition.hpp
       title: Heavy Light Decomposition
     - icon: ':x:'
@@ -389,81 +389,81 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
       title: test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
       title: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
       title: test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
       title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
       title: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Static_Range_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/UnionFind.test.cpp
       title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - name: test/yosupo_judge/graph
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/graph/Shortest_Path.test.cpp
       title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - name: test/yosupo_judge/math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
       title: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
       title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Primitive_Root.test.cpp
       title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - name: test/yosupo_judge/matrix
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
       title: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   - name: test/yosupo_judge/polynomial
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
       title: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
     - icon: ':x:'

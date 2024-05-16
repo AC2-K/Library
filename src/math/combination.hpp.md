@@ -6,7 +6,7 @@ data:
     path: src/FormalPowerSeries/taylor-shift.hpp
     title: Polynomial Taylor Shift
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
     title: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
   - icon: ':x:'
@@ -14,7 +14,7 @@ data:
     title: test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: Combination
     links: []
@@ -56,7 +56,7 @@ data:
   requiredBy:
   - src/FormalPowerSeries/taylor-shift.hpp
   timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp

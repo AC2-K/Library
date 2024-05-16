@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
   _extendedRequiredBy:
@@ -21,7 +21,7 @@ data:
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - icon: ':x:'
@@ -38,7 +38,7 @@ data:
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570\
       )"
@@ -554,7 +554,7 @@ data:
   requiredBy:
   - src/FormalPowerSeries/fps-sqrt.hpp
   timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
