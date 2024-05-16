@@ -20,5 +20,5 @@ constexpr T mod_pow(internal::double_size_uint_t<T> base, T exp, T mod) {
 };  // namespace kyopro
 
 /**
- * @brief Power Modulo(累乗)
+ * @brief Modulo Power(繰り返し二乗法)
  */

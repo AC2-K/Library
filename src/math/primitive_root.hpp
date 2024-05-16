@@ -3,9 +3,6 @@
 #include "../math/rho.hpp"
 namespace kyopro {
 
-/**
- * @brief 原始根
- */
 template <typename T> constexpr T primitive_root(T p) noexcept {
     if (p == 2) return 1;
 
@@ -41,3 +38,7 @@ template <typename T> constexpr T primitive_root(T p) noexcept {
     return -1;
 }
 };  // namespace kyopro
+
+/**
+ * @brief Primitive Root(原始根)
+ */
