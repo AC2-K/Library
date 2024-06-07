@@ -2,7 +2,7 @@
 
 #include "../../../src/data-structure/bbst/Treap.hpp"
 #include "../../../src/stream.hpp"
-#include"../../../src/template.hpp"
+#include "../../../src/template.hpp"
 
 using namespace std;
 using namespace kyopro;
