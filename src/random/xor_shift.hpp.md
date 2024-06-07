@@ -35,8 +35,8 @@ data:
     path: test/AOJ/NTL/1_D.test.cpp
     title: test/AOJ/NTL/1_D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-    title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+    path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Treap.test.cpp
+    title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Treap.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
@@ -97,7 +97,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_D.test.cpp
-  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Treap.test.cpp
   - test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp

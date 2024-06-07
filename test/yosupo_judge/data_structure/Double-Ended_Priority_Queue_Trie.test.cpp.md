@@ -2,14 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: src/data-structure/bbst/Treap.hpp
-    title: Treap
+    path: src/data-structure/BinaryTrie.hpp
+    title: src/data-structure/BinaryTrie.hpp
   - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
-    path: src/random/xor_shift.hpp
-    title: Xor Shift
   - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
@@ -26,55 +23,59 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/double_ended_priority_queue
     links:
     - https://judge.yosupo.jp/problem/double_ended_priority_queue
-  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\
+  bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
-    \n\n#line 2 \"src/data-structure/bbst/Treap.hpp\"\n#include <cassert>\n#include\
-    \ <memory>\n#line 2 \"src/random/xor_shift.hpp\"\n#include <chrono>\n#include\
-    \ <cstdint>\n#include <random>\n\nnamespace kyopro {\nstruct xor_shift32 {\n \
-    \   uint32_t rng;\n    constexpr explicit xor_shift32(uint32_t seed) : rng(seed)\
-    \ {}\n    explicit xor_shift32()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
-    \ {}\n    constexpr uint32_t operator()() {\n        rng ^= rng << 13;\n     \
-    \   rng ^= rng >> 17;\n        rng ^= rng << 5;\n        return rng;\n    }\n\
-    };\n\nstruct xor_shift {\n    uint64_t rng;\n    constexpr explicit xor_shift(uint64_t\
-    \ seed) : rng(seed) {}\n    explicit xor_shift()\n        : rng(std::chrono::steady_clock::now().time_since_epoch().count())\
-    \ {}\n    constexpr uint64_t operator()() {\n        rng ^= rng << 13;\n     \
-    \   rng ^= rng >> 7;\n        rng ^= rng << 17;\n        return rng;\n    }\n\
-    };\n\n};  // namespace kyopro\n\n/**\n * @brief Xor Shift\n */\n#line 5 \"src/data-structure/bbst/Treap.hpp\"\
-    \n\nnamespace kyopro {\ntemplate <class T> struct Treap {\n    using u32 = std::uint32_t;\n\
-    \    xor_shift32 rng;\n    struct Node {\n        const T key;\n        const\
-    \ u32 priority;\n        Node *l, *r;\n        Node(const T& key, u32 priority)\n\
-    \            : key(key), priority(priority), l(nullptr), r(nullptr) {}\n    };\n\
-    \    using uptr = std::unique_ptr<Node>;\n    std::vector<uptr> nodes;\n    Node*\
-    \ make_ptr(const T& key, u32 priority) {\n        nodes.emplace_back(std::make_unique<Node>(key,priority));\n\
-    \        return nodes.back().get();\n    }\n\n    Node* root;\n    \n    void\
-    \ split(Node* t, const T& key, Node*& l, Node*& r) {\n        if (!t) {\n    \
-    \        l = r = nullptr;\n        } else if (key < t->key) {\n            split(t->l,\
-    \ key, l, t->l);\n            r = t;\n        } else {\n            split(t->r,\
-    \ key, t->r, r), l = t;\n        }\n    }\n\n    void merge(Node*& t, Node* l,\
-    \ Node* r) {\n        if (!l || !r) {\n            t = l ? l : r;\n        } else\
-    \ if (l->priority > r->priority) {\n            merge(l->r, l->r, r), t = l;\n\
-    \        } else {\n            merge(r->l, l, r->l), t = r;\n        }\n    }\n\
-    \n    void insert(Node*& t, Node* item) {\n        if (!t) {\n            t =\
-    \ item;\n        } else if (item->priority > t->priority) {\n            split(t,\
-    \ item->key, item->l, item->r);\n            t = item;\n        } else {\n   \
-    \         insert(item->key < t->key ? t->l : t->r, item);\n        }\n    }\n\n\
-    \    void erase(Node*& t, const T& key) {\n        if (!t) return;\n        if\
-    \ (t->key == key) {\n            merge(t, t->l, t->r);\n        } else {\n   \
-    \         erase(key < t->key ? t->l : t->r, key);\n        }\n    }\n\n    Node*\
-    \ find(Node*& t, const T& key) {\n        if (!t) {\n            return nullptr;\n\
-    \        } else if (t->key == key) {\n            return t;\n        } else {\n\
-    \            return find(key < t->key ? t->l : t->r, key);\n        }\n    }\n\
-    \npublic:\n    explicit Treap() : rng(2023), root(nullptr) {}\n    bool empty()\
-    \ const { return root == nullptr; }\n    void insert(const T& key) { insert(root,\
-    \ make_ptr(key, rng())); }\n    void erase(const T& key) { erase(root, key); }\n\
-    \n    const Node* find(const T& key) const { return find(root, key); }\n\n   \
-    \ T min_element() {\n        assert(root != nullptr);\n        Node* cur = root;\n\
-    \        while (cur->l) {\n            cur = cur->l;\n        }\n        T ans\
-    \ = cur->key;\n        return ans;\n    }\n    T max_element() {\n        assert(root);\n\
-    \        Node* cur = root;\n        while (cur->r) {\n            cur = cur->r;\n\
-    \        }\n        T ans = cur->key;\n        return ans;\n    }\n};\n};  //\
-    \ namespace kyopro\n\n/**\n * @brief Treap\n */\n#line 2 \"src/stream.hpp\"\n\
-    #include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
+    \n\n#line 2 \"src/data-structure/BinaryTrie.hpp\"\n#include <cassert>\n#include\
+    \ <cstdint>\n\nnamespace kyopro {\ntemplate <typename T, std::uint32_t lg> class\
+    \ BinaryTrie {\n    using u32 = std::uint32_t;\n    using usize = std::size_t;\n\
+    \n    struct Node {\n        usize cnt;\n        Node* par;\n        Node* ch[2]{nullptr,\
+    \ nullptr};\n\n        Node() : cnt(0), par(nullptr) {}\n    };\n\npublic:\n \
+    \   Node* root = new Node();\n\n    BinaryTrie() : root(new Node()){}\n\n    usize\
+    \ size() const { return root->cnt; }\n    bool empty() const { return size() ==\
+    \ 0; }\n    \n    usize count(T x) const {\n        Node* cur = root;\n      \
+    \  for (int i = lg - 1; i >= 0; --i) {\n            T b = (x >> i & T(1));\n\n\
+    \            if (cur->ch[b] == nullptr || cur->ch[b] == 0) {\n               \
+    \ return 0;\n            } else {\n                cur = cur->ch[b];\n       \
+    \     }\n        }\n\n        return cur->cnt;\n    }\n\n    void insert(T x)\
+    \ {\n        Node* cur = root;\n\n        for (int i = lg - 1; i >= 0; --i) {\n\
+    \            T b = (x >> i & T(1));\n\n            if (cur->ch[b] == nullptr)\
+    \ {\n                cur->ch[b] = new Node();\n                cur->ch[b]->par\
+    \ = cur;\n            }\n\n            cur = cur->ch[b];\n        }\n\n      \
+    \  ++cur->cnt;\n\n        while (cur->par != nullptr) {\n            cur = cur->par;\n\
+    \n            cur->cnt = 0;\n\n            if (cur->ch[0] != nullptr) cur->cnt\
+    \ += cur->ch[0]->cnt;\n            if (cur->ch[1] != nullptr) cur->cnt += cur->ch[1]->cnt;\n\
+    \        }\n    }\n\n    void erase(T x) {\n        Node* cur = root;\n      \
+    \  for (int i = lg - 1; i >= 0; --i) {\n            T b = (x >> i & T(1));\n \
+    \           cur = cur->ch[b];\n            assert(cur);\n        }\n\n       \
+    \ --cur->cnt;\n\n        while (cur->par != nullptr) {\n            cur = cur->par;\n\
+    \n            cur->cnt = 0;\n\n            if (cur->ch[0] != nullptr) {\n    \
+    \            cur->cnt += cur->ch[0]->cnt;\n            }\n            if (cur->ch[1]\
+    \ != nullptr) {\n                cur->cnt += cur->ch[1]->cnt;\n            }\n\
+    \        }\n    }\n\n    T max() const {\n        assert(size() > 0);\n\n    \
+    \    Node* cur = root;\n\n        T res = 0;\n        for (int i = lg - 1; i >=\
+    \ 0; --i) {\n            if (cur->ch[1] != nullptr && cur->ch[1]->cnt != 0) {\n\
+    \                cur = cur->ch[1];\n                res |= (T(1) << i);\n    \
+    \        } else {\n                cur = cur->ch[0];\n            }\n        }\n\
+    \n        return res;\n    }\n\n    T min() const {\n        assert(size() > 0);\n\
+    \n        Node* cur = root;\n\n        T res = 0;\n\n        for (int i = lg -\
+    \ 1; i >= 0; --i) {\n            if (cur->ch[0] != nullptr && cur->ch[0]->cnt\
+    \ != 0) {\n                cur = cur->ch[0];\n            } else {\n         \
+    \       cur = cur->ch[1];\n                res |= (T(1) << i);\n            }\n\
+    \        }\n\n        return res;\n    }\n\n    T kth_smallest(usize k) const\
+    \ {\n        assert(k < this->size());\n\n        Node* cur = root;\n        T\
+    \ res = 0;\n\n        for (int i = lg - 1; i >= 0; --i) {\n            if (cur->ch[0]\
+    \ != nullptr && k < cur->ch[0]->cnt) {\n                cur = cur->ch[0];\n  \
+    \          } else {\n                if (cur->ch[0] != nullptr) k -= cur->ch[0]->cnt;\n\
+    \n                cur = cur->ch[1];\n                res |= (T(1) << i);\n   \
+    \         }\n        }\n\n        return res;\n    }\n\n    T kth_largest(usize\
+    \ k) const {\n        assert(k < this->size());\n\n        Node* cur = root;\n\
+    \        T res = 0;\n\n        for (int i = lg - 1; i >= 0; --i) {\n         \
+    \   if (cur->ch[1] != nullptr && k < cur->ch[1]->cnt) {\n                cur =\
+    \ cur->ch[1];\n                res |= (T(1) << i);\n            } else {\n   \
+    \             if (cur->ch[1] != nullptr) k -= cur->ch[1]->cnt;\n             \
+    \   cur = cur->ch[0];\n            }\n        }\n\n        return res;\n    }\n\
+    };\n\n};  // namespace kyopro\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n\
+    #include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
     \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
     #line 7 \"src/internal/type_traits.hpp\"\n\nnamespace kyopro {\nnamespace internal\
     \ {\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
@@ -146,42 +147,43 @@ data:
     \ 1, 0, -1, 1, 1, -1, -1, 0};\ntemplate <typename T1, typename T2> constexpr inline\
     \ bool chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
     \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
-    \ b && (a = b, true);\n}\n\n/**\n * @brief Template\n*/\n#line 6 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    Treap<int>\
-    \ st;\n    int n, q;\n    read(n, q);\n    for (int i = 0; i < n; ++i) {\n   \
-    \     int a;\n        read(a);\n        st.insert(a);\n    }\n    while (q--)\
-    \ {\n        int t;\n        read(t);\n        if (!t) {\n            int x;\n\
-    \            read(x);\n            st.insert(x);\n        } else if (t == 1) {\n\
-    \            int mn = st.min_element();\n            put(mn);\n            st.erase(mn);\n\
-    \        } else {\n            int mx = st.max_element();\n            put(mx);\n\
-    \            st.erase(mx);\n        }\n    }\n}\n"
+    \ b && (a = b, true);\n}\n\n/**\n * @brief Template\n*/\n#line 6 \"test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing u32 = uint32_t;\nconst\
+    \ int offset = 1e9;\n\nint main() {\n    int n, q;\n    read(n, q);\n\n    BinaryTrie<u32,\
+    \ 32> pq;\n\n    rep(i, n) {\n        int s;\n        read(s);\n        pq.insert(s\
+    \ + offset);\n    }\n\n    while (q--) {\n        int t;\n        read(t);\n\n\
+    \        if (t == 0) {\n            int x;\n            read(x);\n           \
+    \ pq.insert(x + offset);\n        } else if (t == 1) {\n            u32 mn = pq.min();\n\
+    \            pq.erase(mn);\n\n            put((int)mn - offset);\n        } else\
+    \ {\n            u32 mx = pq.max();\n            pq.erase(mx);\n\n           \
+    \ put((int)mx - offset);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/double_ended_priority_queue\"\
-    \n\n#include \"../../../src/data-structure/bbst/Treap.hpp\"\n#include \"../../../src/stream.hpp\"\
-    \n#include\"../../../src/template.hpp\"\n\nusing namespace std;\nusing namespace\
-    \ kyopro;\n\nint main() {\n    Treap<int> st;\n    int n, q;\n    read(n, q);\n\
-    \    for (int i = 0; i < n; ++i) {\n        int a;\n        read(a);\n       \
-    \ st.insert(a);\n    }\n    while (q--) {\n        int t;\n        read(t);\n\
-    \        if (!t) {\n            int x;\n            read(x);\n            st.insert(x);\n\
-    \        } else if (t == 1) {\n            int mn = st.min_element();\n      \
-    \      put(mn);\n            st.erase(mn);\n        } else {\n            int\
-    \ mx = st.max_element();\n            put(mx);\n            st.erase(mx);\n  \
-    \      }\n    }\n}"
+    \n\n#include \"../../../src/data-structure/BinaryTrie.hpp\"\n#include \"../../../src/stream.hpp\"\
+    \n#include \"../../../src/template.hpp\"\n\nusing namespace std;\nusing namespace\
+    \ kyopro;\n\nusing u32 = uint32_t;\nconst int offset = 1e9;\n\nint main() {\n\
+    \    int n, q;\n    read(n, q);\n\n    BinaryTrie<u32, 32> pq;\n\n    rep(i, n)\
+    \ {\n        int s;\n        read(s);\n        pq.insert(s + offset);\n    }\n\
+    \n    while (q--) {\n        int t;\n        read(t);\n\n        if (t == 0) {\n\
+    \            int x;\n            read(x);\n            pq.insert(x + offset);\n\
+    \        } else if (t == 1) {\n            u32 mn = pq.min();\n            pq.erase(mn);\n\
+    \n            put((int)mn - offset);\n        } else {\n            u32 mx = pq.max();\n\
+    \            pq.erase(mx);\n\n            put((int)mx - offset);\n        }\n\
+    \    }\n}\n"
   dependsOn:
-  - src/data-structure/bbst/Treap.hpp
-  - src/random/xor_shift.hpp
+  - src/data-structure/BinaryTrie.hpp
   - src/stream.hpp
   - src/internal/type_traits.hpp
   - src/template.hpp
   isVerificationFile: true
-  path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+  path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-06-07 23:12:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
 layout: document
 redirect_from:
-- /verify/test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-- /verify/test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp.html
-title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+- /verify/test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
+- /verify/test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp.html
+title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
 ---

@@ -107,6 +107,9 @@ data:
       path: src/data-structure/BIT.hpp
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
+      path: src/data-structure/BinaryTrie.hpp
+      title: src/data-structure/BinaryTrie.hpp
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/CHT.hpp
       title: Convex Hull Trick
     - icon: ':heavy_check_mark:'
@@ -366,8 +369,11 @@ data:
       path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
       title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
     - icon: ':heavy_check_mark:'
-      path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-      title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+      path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Treap.test.cpp
+      title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Treap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
+      title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

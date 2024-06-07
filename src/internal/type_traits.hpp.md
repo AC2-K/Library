@@ -103,8 +103,11 @@ data:
     path: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
     title: test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
-    title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
+    path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Treap.test.cpp
+    title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Treap.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
+    title: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
@@ -338,9 +341,9 @@ data:
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
-  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
   - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   - test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
@@ -350,6 +353,7 @@ data:
   - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
   - test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
+  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Treap.test.cpp
   - test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   - test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
