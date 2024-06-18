@@ -166,3 +166,8 @@ public:
 };
 
 };  // namespace kyopro
+
+
+/**
+ * @brief Binary Trie
+ */
