@@ -1,23 +1,23 @@
 ## 概要
 
-数列 $(a_i)_{i=0,1,2,\dots}$ に対し, 以下の条件を満たす定数 $c_0,c_1,c_2,\cdots,c_d$ が存在するならば, $(a_i)_{i=0,1,2,\dots}$ は **線形漸化的** であるといいます.
+数列 $a_0,a_1,a_2\dots$ に対し, 以下の条件を満たす定数 $c_0,c_1,c_2,\cdots,c_d$ が存在するならば, $(a_i)$ は **線形漸化的** であるといいます.
 
 $$\forall n\geq d : c_0a_n+c_1a_{n-1}+\cdots+a_{n-k}c_k=0$$
 
-このような線形漸化的な数列 $(a_i)_{i=0,1,\dots}$ に対して
+線形漸化的な数列 $(a_i)$ に対して
 
-- $a$ の先頭 $d$ 項
+- $a_0,a_1,\dots,a_{d-1}$ 
 - $c_0,c_1,\dots,c_d$
 
-が与えられたとき, $a$ を一意に決定することができます. このライブラリでは, そのような $(a_i)$ に対する $a_N$ の値を, $O(d\log d\log N)$ timeで求めます.
+が与えられたとき, このライブラリでは $a_N$ の値を $O(d\log d\log N)$ timeで求めます.
 
 ## BostanMori
 
 ``BostanMori(n, P, Q)``
 
-高々 $d$ 次の多項式 $P,Q$ に対して, [Bostan-Mori法](https://qiita.com/ryuhe1/items/da5acbcce4ac1911f47a) を利用し $\displaystyle[x^N]\frac{P}{Q}$ を返します.
+高々 $d$ 次の多項式 $P,Q$ に対して, [Bostan-Mori法](https://qiita.com/ryuhe1/items/da5acbcce4ac1911f47a) を用いて $\displaystyle[x^N]\frac{P}{Q}$ を計算します.
 
-$P,Q$ は`kyopro::FormalPowerSeries`として渡してください.
+$P,Q$ は[FormalPowerSeries](https://ac2-k.github.io/Library/src/FormalPowerSeries/FPS.hpp)として渡してください.
 
 ### 計算量
 
@@ -32,7 +32,7 @@ $P,Q$ は`kyopro::FormalPowerSeries`として渡してください.
 
 ``NthTermOfLinearlyRecurrentSequence(n, ainit, c)``
 
-線形漸化的な数列 $(a_i)_{i=0,1,2,\dots}$ に対し
+線形漸化的な数列 $(a_i)$ に対して
 
 - 非負整数 $N$(=`n`)
 - $a$ の先頭 $d$ 項(=`ainit`)
@@ -49,4 +49,4 @@ $P,Q$ は`kyopro::FormalPowerSeries`として渡してください.
 ### 制約
 
 - $N\geq 0$
-- $\forall n\geq d:\displaystyle\sum_{i=0}^{k}{c_ia_{n-i}}$
+- $\forall n\geq d:\displaystyle\sum_{i=0}^{k}{c_ia_{n-i}}=0$
