@@ -31,7 +31,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: docs/FormalPowerSeries/BostanMori
+    _deprecated_at_docs: docs/FormalPowerSeries/BostanMori.md
     document_title: "BotanMori\u6CD5(\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u9AD8\u901F\
       \u8A08\u7B97)"
     links: []
@@ -525,7 +525,7 @@ data:
     \ a =\n        FormalPowerSeries<mint>(ainit) * FormalPowerSeries<mint>(c);\n\
     \    \n    a.resize(ainit.size());\n    return BostanMori(n, a, FormalPowerSeries<mint>(c));\n\
     }\n};\n\n/**\n * @brief BotanMori\u6CD5(\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u9AD8\
-    \u901F\u8A08\u7B97)\n * @docs docs/FormalPowerSeries/BostanMori \n */\n"
+    \u901F\u8A08\u7B97)\n * @docs docs/FormalPowerSeries/BostanMori.md\n */\n"
   code: "#pragma once\n#include\"../../src/FormalPowerSeries/FPS.hpp\"\n#include\"\
     ../../src/internal/type_traits.hpp\"\n\nnamespace kyopro {\n\ntemplate <typename\
     \ T,\n          internal::is_integral_t<T>* = nullptr,\n          typename mint,\n\
@@ -550,7 +550,7 @@ data:
     \ a =\n        FormalPowerSeries<mint>(ainit) * FormalPowerSeries<mint>(c);\n\
     \    \n    a.resize(ainit.size());\n    return BostanMori(n, a, FormalPowerSeries<mint>(c));\n\
     }\n};\n\n/**\n * @brief BotanMori\u6CD5(\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u9AD8\
-    \u901F\u8A08\u7B97)\n * @docs docs/FormalPowerSeries/BostanMori \n */"
+    \u901F\u8A08\u7B97)\n * @docs docs/FormalPowerSeries/BostanMori.md\n */"
   dependsOn:
   - src/FormalPowerSeries/FPS.hpp
   - src/atcoder/convolution.hpp
@@ -562,7 +562,7 @@ data:
   isVerificationFile: false
   path: src/FormalPowerSeries/BostanMori.hpp
   requiredBy: []
-  timestamp: '2024-06-18 17:31:24+09:00'
+  timestamp: '2024-06-18 18:28:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
@@ -574,3 +574,57 @@ redirect_from:
 title: "BotanMori\u6CD5(\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u9AD8\u901F\u8A08\u7B97\
   )"
 ---
+# BostanMori法(線形漸化式の高速計算)
+
+## 概要
+
+数列 $(a_i)_{i=0,1,2,\dots}^{}$ に対し, 以下の条件を満たす定数 $c_0,c_1,c_2,\cdots,c_d$ が存在するとき, $(a_i)_{i=0,1,2,\dots}$ は**線形漸化的**であるという.
+
+$$\forall n\geq d : c_0a_n+c_1a_{n-1}+\cdots+a_{n-k}c_k=0$$
+
+このような線形漸化的な数列 $(a_i)_{i=0,1,\dots}$ 
+
+- $a$ の先頭 $d$ 項
+- $c_0,c_1,\dots,c_d$
+
+が与えられたとき, $a$ は一意に定まります. このライブラリではそのような $(a_i)$ に対する, $a_N$ の値を $O(d\log d\log N)$ timeで求めます.
+
+## BostanMori
+
+` BostanMori(n, P, Q)`
+
+$\displaystyle[x^N]\frac{P}{Q}$ を返します.
+
+$n$は任意の整数型, $P,Q$は形式的べき級数(本ライブラリの`kyopro::FormalPowerSeries<atcoder::modint>`)として渡してください. 係数を `mint` で返します.
+
+### 計算量
+
+- $O(d\log d\log N)$
+- ただし $\deg P,\deg Q\leq d$
+
+### 制約
+
+- $N\geq 0$
+
+## linear_reccurence_sequence
+
+`linear_reccurence_sequence(n, a, c)`
+
+線形漸化的な数列 $(a_i)_{i=0,1,2,\dots}$ に対し
+
+- 非負整数 $N$(=`n`)
+- $a$ の先頭 $d$ 項(=`a`)
+- $c_0,c_1,\dots,c_d$=(`c`)
+
+が与えられたとき, $a_N$ の値返します.
+
+$n$ は任意の整数型, $a,c$ は`std::vector<atcodr::modint>`として渡してください.
+
+### 計算量
+
+- $O(d\log d\log N)$
+
+### 制約
+
+- $N\geq 0$
+- $\forall n\geq d:\displaystyle\sum_{i=0}^{k}{c_ia_{n-i}}$

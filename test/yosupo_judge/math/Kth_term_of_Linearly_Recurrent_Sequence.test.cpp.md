@@ -581,9 +581,9 @@ data:
     \ a =\n        FormalPowerSeries<mint>(ainit) * FormalPowerSeries<mint>(c);\n\
     \    \n    a.resize(ainit.size());\n    return BostanMori(n, a, FormalPowerSeries<mint>(c));\n\
     }\n};\n\n/**\n * @brief BotanMori\u6CD5(\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u9AD8\
-    \u901F\u8A08\u7B97)\n * @docs docs/FormalPowerSeries/BostanMori \n */\n#line 7\
-    \ \"test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp\"\n\
-    \nusing namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
+    \u901F\u8A08\u7B97)\n * @docs docs/FormalPowerSeries/BostanMori.md\n */\n#line\
+    \ 7 \"test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = atcoder::modint998244353;\n\
     \nint main() {\n    ll d, k;\n    read(d, k);\n    vector<mint> a(d), c(d + 1);\n\
     \    rep(i, d) {\n        unsigned x;\n        read(x);\n        a[i] = mint::raw(x);\n\
     \    }\n\n    c[0] = mint::raw(1);\n    rep(i, d) {\n        unsigned x;\n   \
@@ -613,7 +613,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   requiredBy: []
-  timestamp: '2024-06-18 17:31:24+09:00'
+  timestamp: '2024-06-18 18:28:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
