@@ -688,4 +688,4 @@ $$a_N=[x^N]A(x)=[x^N]\frac{P(x)}{Q(x)}$$
 
 ### 変形
 
-実装の簡単のため $\displaystyle\sum_{i=0}^{d}{c_ia_{n-i}}=0$ という定義を用いたが, 移項して整理することで, よく用いられる $\displaystyle a_n=\sum_{i=1}^{d}{c^{\prime}_d a_{n-d}}$ という形にも帰着することができる.
+実装の簡単のため $\displaystyle\sum_{i=0}^{d}{c_ia_{n-i}}=0$ という定義を用いたが, 移項して整理することで, よく用いられる $\displaystyle a_n=\sum_{i=1}^{d}{c^{\prime}_{d} a_{n-d}}$ という形にも帰着することができる.
