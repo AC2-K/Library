@@ -67,5 +67,5 @@ mint linear_reccurence_sequence(T n,
 
 /**
  * @brief BotanMori法(線形漸化式の高速計算)
- * @docs docs/FormalPowerSeries/BostanMori 
+ * @docs docs/FormalPowerSeries/BostanMori.md
  */
