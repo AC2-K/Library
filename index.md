@@ -12,6 +12,10 @@ data:
   - name: src/FormalPowerSeries
     pages:
     - icon: ':heavy_check_mark:'
+      path: src/FormalPowerSeries/BostanMori.hpp
+      title: "BotanMori\u6CD5(\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u9AD8\u901F\u8A08\
+        \u7B97)"
+    - icon: ':heavy_check_mark:'
       path: src/FormalPowerSeries/FPS.hpp
       title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
     - icon: ':heavy_check_mark:'
@@ -450,6 +454,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Factorize.test.cpp
       title: test/yosupo_judge/math/Factorize.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+      title: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
       title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp

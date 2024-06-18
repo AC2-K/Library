@@ -9,6 +9,10 @@ data:
     title: src/atcoder/internal_type_traits.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/FormalPowerSeries/BostanMori.hpp
+    title: "BotanMori\u6CD5(\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u9AD8\u901F\u8A08\
+      \u7B97)"
+  - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/FPS.hpp
     title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
   - icon: ':heavy_check_mark:'
@@ -27,6 +31,9 @@ data:
     path: src/string/wildcard_pattern_matching.hpp
     title: Wildcard Pattern Matching
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
@@ -353,6 +360,7 @@ data:
   isVerificationFile: false
   path: src/atcoder/modint.hpp
   requiredBy:
+  - src/FormalPowerSeries/BostanMori.hpp
   - src/FormalPowerSeries/fps-sqrt.hpp
   - src/FormalPowerSeries/FPS.hpp
   - src/FormalPowerSeries/taylor-shift.hpp
@@ -368,6 +376,7 @@ data:
   - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
 documentation_of: src/atcoder/modint.hpp
 layout: document
 redirect_from:

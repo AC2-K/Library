@@ -136,6 +136,9 @@ data:
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
     title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -354,6 +357,7 @@ data:
   - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
   - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp

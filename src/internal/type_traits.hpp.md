@@ -3,6 +3,10 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: src/FormalPowerSeries/BostanMori.hpp
+    title: "BotanMori\u6CD5(\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u9AD8\u901F\u8A08\
+      \u7B97)"
+  - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
   - icon: ':heavy_check_mark:'
@@ -175,6 +179,9 @@ data:
     path: test/yosupo_judge/math/Factorize.test.cpp
     title: test/yosupo_judge/math/Factorize.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
     title: test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   - icon: ':heavy_check_mark:'
@@ -305,6 +312,7 @@ data:
   isVerificationFile: false
   path: src/internal/type_traits.hpp
   requiredBy:
+  - src/FormalPowerSeries/BostanMori.hpp
   - src/FormalPowerSeries/fps-sqrt.hpp
   - src/string/rolling_hash.hpp
   - src/stream.hpp
@@ -373,6 +381,7 @@ data:
   - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
   - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
   - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp

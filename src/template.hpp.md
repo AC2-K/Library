@@ -52,6 +52,9 @@ data:
     path: test/yosupo_judge/graph/Shortest_Path.test.cpp
     title: test/yosupo_judge/graph/Shortest_Path.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+    title: test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
     title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - icon: ':heavy_check_mark:'
@@ -132,6 +135,7 @@ data:
   - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/graph/Shortest_Path.test.cpp
   - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
   - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
