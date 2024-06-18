@@ -27,5 +27,5 @@ int main() {
         c[i + 1] = -mint::raw(x);
     }
 
-    put(linear_reccurence_sequence(k, a, c).val());
+    put(NthTermOfLinearlyRecurrentSequence(k, a, c).val());
 }

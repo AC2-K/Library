@@ -54,7 +54,7 @@ template <typename T,
           internal::is_integral_t<T>* = nullptr,
           typename mint,
           atcoder::internal::is_modint_t<mint>* = nullptr>
-mint linear_reccurence_sequence(T n,
+mint NthTermOfLinearlyRecurrentSequence(T n,
                                 const std::vector<mint>& ainit,
                                 const std::vector<mint>& c) {
     FormalPowerSeries<mint> a =
@@ -66,6 +66,6 @@ mint linear_reccurence_sequence(T n,
 };
 
 /**
- * @brief BotanMori法(線形漸化式の高速計算)
+ * @brief Bostan-Mori法(線形漸化式の高速計算)
  * @docs docs/FormalPowerSeries/BostanMori.md
  */
