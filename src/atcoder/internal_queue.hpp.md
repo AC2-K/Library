@@ -39,9 +39,9 @@ data:
   isVerificationFile: false
   path: src/atcoder/internal_queue.hpp
   requiredBy:
-  - src/atcoder/mincostflow.hpp
-  - src/atcoder/maxflow.hpp
   - src/graph/flow/BipartiteMatching.hpp
+  - src/atcoder/maxflow.hpp
+  - src/atcoder/mincostflow.hpp
   timestamp: '2023-08-02 13:39:21+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
