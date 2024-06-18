@@ -112,7 +112,7 @@ data:
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
       path: src/data-structure/BinaryTrie.hpp
-      title: src/data-structure/BinaryTrie.hpp
+      title: Binary Trie
     - icon: ':heavy_check_mark:'
       path: src/data-structure/CHT.hpp
       title: Convex Hull Trick

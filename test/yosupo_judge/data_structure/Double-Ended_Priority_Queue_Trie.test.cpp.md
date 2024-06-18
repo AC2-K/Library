@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/BinaryTrie.hpp
-    title: src/data-structure/BinaryTrie.hpp
+    title: Binary Trie
   - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: Type Traits
@@ -74,14 +74,14 @@ data:
     \ cur->ch[1];\n                res |= (T(1) << i);\n            } else {\n   \
     \             if (cur->ch[1] != nullptr) k -= cur->ch[1]->cnt;\n             \
     \   cur = cur->ch[0];\n            }\n        }\n\n        return res;\n    }\n\
-    };\n\n};  // namespace kyopro\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n\
-    #include <stdio.h>\n#include <string>\n#line 2 \"src/internal/type_traits.hpp\"\
-    \n#include <iostream>\n#include <limits>\n#include <numeric>\n#include <typeinfo>\n\
-    #line 7 \"src/internal/type_traits.hpp\"\n\nnamespace kyopro {\nnamespace internal\
-    \ {\ntemplate <typename... Args> struct first_enabled {};\n\ntemplate <typename\
-    \ T, typename... Args>\nstruct first_enabled<std::enable_if<true, T>, Args...>\
-    \ {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\nstruct\
-    \ first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
+    };\n\n};  // namespace kyopro\n\n\n/**\n * @brief Binary Trie\n */\n#line 2 \"\
+    src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
+    #line 2 \"src/internal/type_traits.hpp\"\n#include <iostream>\n#include <limits>\n\
+    #include <numeric>\n#include <typeinfo>\n#line 7 \"src/internal/type_traits.hpp\"\
+    \n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
+    \ first_enabled {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
+    \ T>, Args...> {\n    using type = T;\n};\ntemplate <typename T, typename... Args>\n\
+    struct first_enabled<std::enable_if<false, T>, Args...>\n    : first_enabled<Args...>\
     \ {};\ntemplate <typename T, typename... Args> struct first_enabled<T, Args...>\
     \ {\n    using type = T;\n};\n\ntemplate <typename... Args>\nusing first_enabled_t\
     \ = typename first_enabled<Args...>::type;\n\ntemplate <int dgt, std::enable_if_t<dgt\
@@ -177,7 +177,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
   requiredBy: []
-  timestamp: '2024-06-07 23:12:10+09:00'
+  timestamp: '2024-06-18 22:53:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp

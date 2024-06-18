@@ -10,6 +10,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    document_title: Binary Trie
     links: []
   bundledCode: "#line 2 \"src/data-structure/BinaryTrie.hpp\"\n#include <cassert>\n\
     #include <cstdint>\n\nnamespace kyopro {\ntemplate <typename T, std::uint32_t\
@@ -60,7 +61,7 @@ data:
     \ cur->ch[1];\n                res |= (T(1) << i);\n            } else {\n   \
     \             if (cur->ch[1] != nullptr) k -= cur->ch[1]->cnt;\n             \
     \   cur = cur->ch[0];\n            }\n        }\n\n        return res;\n    }\n\
-    };\n\n};  // namespace kyopro\n"
+    };\n\n};  // namespace kyopro\n\n\n/**\n * @brief Binary Trie\n */\n"
   code: "#pragma once\n#include <cassert>\n#include <cstdint>\n\nnamespace kyopro\
     \ {\ntemplate <typename T, std::uint32_t lg> class BinaryTrie {\n    using u32\
     \ = std::uint32_t;\n    using usize = std::size_t;\n\n    struct Node {\n    \
@@ -110,12 +111,12 @@ data:
     \ cur->ch[1];\n                res |= (T(1) << i);\n            } else {\n   \
     \             if (cur->ch[1] != nullptr) k -= cur->ch[1]->cnt;\n             \
     \   cur = cur->ch[0];\n            }\n        }\n\n        return res;\n    }\n\
-    };\n\n};  // namespace kyopro"
+    };\n\n};  // namespace kyopro\n\n\n/**\n * @brief Binary Trie\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/BinaryTrie.hpp
   requiredBy: []
-  timestamp: '2024-06-07 23:12:10+09:00'
+  timestamp: '2024-06-18 22:53:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
@@ -124,5 +125,5 @@ layout: document
 redirect_from:
 - /library/src/data-structure/BinaryTrie.hpp
 - /library/src/data-structure/BinaryTrie.hpp.html
-title: src/data-structure/BinaryTrie.hpp
+title: Binary Trie
 ---
