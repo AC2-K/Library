@@ -88,16 +88,16 @@ data:
     \ noexcept {\n    write(x...);\n    putchar_unlocked('\\n');\n}\n};  // namespace\
     \ kyopro\n\n/**\n * @brief Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)\n */\n#line\
     \ 2 \"src/algorithm/mo.hpp\"\n#include <algorithm>\n#line 4 \"src/algorithm/mo.hpp\"\
-    \n#include <utility>\n#include <vector>\nnamespace kyopro {\nclass Mo {\n    int\
-    \ n;\n    std::vector<std::pair<int, int>> lr;\n    const int logn;\n    const\
-    \ long long maxn;\n    std::vector<int> ord;\n\npublic:\n    Mo(int n) : n(n),\
-    \ logn(20), maxn(1ll << logn) { lr.reserve(n); }\n    void add(int l, int r) {\
-    \ lr.emplace_back(l, r); }\n\nprivate:\n    long long hilbertorder(int x, int\
-    \ y) {\n        long long d = 0;\n        for (int s = 1 << (logn - 1); s; s >>=\
-    \ 1) {\n            bool rx = x & s, ry = y & s;\n            d = d << 2 | rx\
-    \ * 3 ^ static_cast<int>(ry);\n            if (!ry) {\n                if (rx)\
-    \ {\n                    x = maxn - x;\n                    y = maxn - y;\n  \
-    \              }\n                std::swap(x, y);\n            }\n        }\n\
+    \n#include <utility>\n#include <vector>\n\nnamespace kyopro {\nclass Mo {\n  \
+    \  int n;\n    std::vector<std::pair<int, int>> lr;\n    const int logn;\n   \
+    \ const long long maxn;\n    std::vector<int> ord;\n\npublic:\n    Mo(int n) :\
+    \ n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }\n    void add(int l, int\
+    \ r) { lr.emplace_back(l, r); }\n\nprivate:\n    long long hilbertorder(int x,\
+    \ int y) {\n        long long d = 0;\n        for (int s = 1 << (logn - 1); s;\
+    \ s >>= 1) {\n            bool rx = x & s, ry = y & s;\n            d = d << 2\
+    \ | rx * 3 ^ static_cast<int>(ry);\n            if (!ry) {\n                if\
+    \ (rx) {\n                    x = maxn - x;\n                    y = maxn - y;\n\
+    \                }\n                std::swap(x, y);\n            }\n        }\n\
     \        return d;\n    }\n    void _sort() {\n        int q = lr.size();\n  \
     \      ord.resize(q);\n        std::iota(std::begin(ord), std::end(ord), 0);\n\
     \        std::vector<long long> tmp(q);\n        for (int i = 0; i < q; i++) {\n\
@@ -167,7 +167,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-06-23 18:35:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp

@@ -17,7 +17,7 @@ data:
     links:
     - https://ei1333.hateblo.jp/entry/2017/09/11/211011
   bundledCode: "#line 2 \"src/algorithm/mo.hpp\"\n#include <algorithm>\n#include <numeric>\n\
-    #include <utility>\n#include <vector>\nnamespace kyopro {\nclass Mo {\n    int\
+    #include <utility>\n#include <vector>\n\nnamespace kyopro {\nclass Mo {\n    int\
     \ n;\n    std::vector<std::pair<int, int>> lr;\n    const int logn;\n    const\
     \ long long maxn;\n    std::vector<int> ord;\n\npublic:\n    Mo(int n) : n(n),\
     \ logn(20), maxn(1ll << logn) { lr.reserve(n); }\n    void add(int l, int r) {\
@@ -46,7 +46,7 @@ data:
     \n/**\n * @brief Mo's algorithm\n * @see https://ei1333.hateblo.jp/entry/2017/09/11/211011\n\
     \ */\n"
   code: "#pragma once\n#include <algorithm>\n#include <numeric>\n#include <utility>\n\
-    #include <vector>\nnamespace kyopro {\nclass Mo {\n    int n;\n    std::vector<std::pair<int,\
+    #include <vector>\n\nnamespace kyopro {\nclass Mo {\n    int n;\n    std::vector<std::pair<int,\
     \ int>> lr;\n    const int logn;\n    const long long maxn;\n    std::vector<int>\
     \ ord;\n\npublic:\n    Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n);\
     \ }\n    void add(int l, int r) { lr.emplace_back(l, r); }\n\nprivate:\n    long\
@@ -77,7 +77,7 @@ data:
   isVerificationFile: false
   path: src/algorithm/mo.hpp
   requiredBy: []
-  timestamp: '2023-10-22 17:06:17+09:00'
+  timestamp: '2024-06-23 18:35:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp

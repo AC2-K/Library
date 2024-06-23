@@ -165,36 +165,35 @@ data:
     \ bool chmax(T1& a, T2 b) {\n    return a < b && (a = b, true);\n}\ntemplate <typename\
     \ T1, typename T2> constexpr inline bool chmin(T1& a, T2 b) {\n    return a >\
     \ b && (a = b, true);\n}\n\n/**\n * @brief Template\n*/\n#line 3 \"src/convolution/subset_convolution.hpp\"\
-    \n\nnamespace kyopro {\nnamespace internal {\n\ntemplate <typename T> void add(std::vector<T>&\
+    \n\nnamespace kyopro {\nnamespace internal {\n\ntemplate <typename T> void Add(std::vector<T>&\
     \ a, const std::vector<T>& b) {\n    if (a.size() < b.size()) a.resize(b.size());\n\
     \    for (int i = 0; i < (int)b.size(); ++i) a[i] += b[i];\n}\ntemplate <typename\
-    \ T> void sub(std::vector<T>& a, const std::vector<T>& b) {\n    if (a.size()\
+    \ T> void Sub(std::vector<T>& a, const std::vector<T>& b) {\n    if (a.size()\
     \ < b.size()) a.resize(b.size());\n    for (int i = 0; i < (int)b.size(); ++i)\
-    \ a[i] -= b[i];\n}\n\ntemplate <typename T> void ranked_zeta(int n, std::vector<std::vector<T>>&\
+    \ a[i] -= b[i];\n}\n\ntemplate <typename T> void RankedZeta(int n, std::vector<std::vector<T>>&\
     \ a) {\n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < (int)a.size();\
-    \ ++j) {\n            if (j >> i & 1) add(a[j], a[j & ~(1 << i)]);\n        }\n\
-    \    }\n}\ntemplate <typename T>\nvoid ranked_mobius(int n, std::vector<std::vector<T>>&\
+    \ ++j) {\n            if (j >> i & 1) Add(a[j], a[j & ~(1 << i)]);\n        }\n\
+    \    }\n}\ntemplate <typename T>\nvoid RankedMobius(int n, std::vector<std::vector<T>>&\
     \ a) {\n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < (int)a.size();\
-    \ ++j) {\n            if (j >> i & 1) sub(a[j], a[j & ~(1 << i)]);\n        }\n\
+    \ ++j) {\n            if (j >> i & 1) Sub(a[j], a[j & ~(1 << i)]);\n        }\n\
     \    }\n}\n};  // namespace internal\n\n\n/**\n * @brief Subset Convolution\n\
-    \ */\ntemplate <typename T>\nstd::vector<T> subset_convolution(int n, std::vector<T>\
+    \ */\ntemplate <typename T>\nstd::vector<T> SubsetConvolution(int n, std::vector<T>\
     \ a, std::vector<T> b) {\n    std::vector<std::vector<T>> ranked_a(a.size()),\
     \ ranked_b(b.size());\n    for (int i = 0; i < (1 << n); ++i) {\n        ranked_a[i].resize(__builtin_popcount(i)\
     \ + 1);\n        ranked_b[i].resize(__builtin_popcount(i) + 1);\n\n        ranked_a[i][__builtin_popcount(i)]\
-    \ = a[i];\n        ranked_b[i][__builtin_popcount(i)] = b[i];\n    }\n\n    internal::ranked_zeta(n,\
-    \ ranked_a), internal::ranked_zeta(n, ranked_b);\n    for (int i = 0; i < (1 <<\
+    \ = a[i];\n        ranked_b[i][__builtin_popcount(i)] = b[i];\n    }\n\n    internal::RankedZeta(n,\
+    \ ranked_a), internal::RankedZeta(n, ranked_b);\n    for (int i = 0; i < (1 <<\
     \ n); ++i) {\n        std::vector<T> c(ranked_a[i].size() + ranked_b[i].size());\n\
     \        for (int j = 0; j < (int)ranked_b[i].size(); ++j) {\n            for\
     \ (int k = 0; k < (int)ranked_b[i].size(); ++k) {\n                c[j + k] +=\
     \ ranked_a[i][j] * ranked_b[i][k];\n            }\n        }\n        swap(ranked_a[i],\
-    \ c);\n    }\n\n    internal::ranked_mobius(n, ranked_a);\n    std::vector<T>\
-    \ answer(a.size());\n    for (int i = 0; i < (int)a.size(); ++i) {\n        answer[i]\
-    \ = ranked_a[i][__builtin_popcount(i)];\n    }\n    return answer;\n}\n};  //\
-    \ namespace kyopro\n#line 7 \"test/yosupo_judge/convolution/Subset_Convolution.test.cpp\"\
+    \ c);\n    }\n\n    internal::RankedMobius(n, ranked_a);\n    std::vector<T> answer(a.size());\n\
+    \    for (int i = 0; i < (int)a.size(); ++i) {\n        answer[i] = ranked_a[i][__builtin_popcount(i)];\n\
+    \    }\n    return answer;\n}\n};  // namespace kyopro\n#line 7 \"test/yosupo_judge/convolution/Subset_Convolution.test.cpp\"\
     \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     \nint main() {\n    int n;\n    read(n);\n    vector<mint> a(1 << n), b(1 << n);\n\
     \    rep(i, (int)a.size()) read(a[i]);\n    rep(i, (int)b.size()) read(b[i]);\n\
-    \n    vector c = subset_convolution(n, a, b);\n\n    rep(i, (int)c.size()) put(c[i]);\n\
+    \n    vector c = SubsetConvolution(n, a, b);\n\n    rep(i, (int)c.size()) put(c[i]);\n\
     }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/subset_convolution\"\n\n\
     #include \"../../../src/math/static_modint.hpp\"\n#include \"../../../src/stream.hpp\"\
@@ -202,7 +201,7 @@ data:
     \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     \nint main() {\n    int n;\n    read(n);\n    vector<mint> a(1 << n), b(1 << n);\n\
     \    rep(i, (int)a.size()) read(a[i]);\n    rep(i, (int)b.size()) read(b[i]);\n\
-    \n    vector c = subset_convolution(n, a, b);\n\n    rep(i, (int)c.size()) put(c[i]);\n\
+    \n    vector c = SubsetConvolution(n, a, b);\n\n    rep(i, (int)c.size()) put(c[i]);\n\
     }"
   dependsOn:
   - src/math/static_modint.hpp
@@ -214,7 +213,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Subset_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-06-23 18:35:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Subset_Convolution.test.cpp

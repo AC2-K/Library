@@ -23,11 +23,11 @@ data:
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\n\
     #include <iostream>\n#line 2 \"src/algorithm/mo.hpp\"\n#include <algorithm>\n\
-    #include <numeric>\n#include <utility>\n#include <vector>\nnamespace kyopro {\n\
-    class Mo {\n    int n;\n    std::vector<std::pair<int, int>> lr;\n    const int\
-    \ logn;\n    const long long maxn;\n    std::vector<int> ord;\n\npublic:\n   \
-    \ Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }\n    void add(int\
-    \ l, int r) { lr.emplace_back(l, r); }\n\nprivate:\n    long long hilbertorder(int\
+    #include <numeric>\n#include <utility>\n#include <vector>\n\nnamespace kyopro\
+    \ {\nclass Mo {\n    int n;\n    std::vector<std::pair<int, int>> lr;\n    const\
+    \ int logn;\n    const long long maxn;\n    std::vector<int> ord;\n\npublic:\n\
+    \    Mo(int n) : n(n), logn(20), maxn(1ll << logn) { lr.reserve(n); }\n    void\
+    \ add(int l, int r) { lr.emplace_back(l, r); }\n\nprivate:\n    long long hilbertorder(int\
     \ x, int y) {\n        long long d = 0;\n        for (int s = 1 << (logn - 1);\
     \ s; s >>= 1) {\n            bool rx = x & s, ry = y & s;\n            d = d <<\
     \ 2 | rx * 3 ^ static_cast<int>(ry);\n            if (!ry) {\n               \
@@ -151,7 +151,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-06-23 18:35:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp

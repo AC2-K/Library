@@ -34,7 +34,7 @@ data:
     \n#line 2 \"src/convolution/min_plus_convolution_convex_arbitrary.hpp\"\n#include\
     \ <limits>\n#line 2 \"src/algorithm/monotone_minima.hpp\"\n#include <utility>\n\
     #include <vector>\nnamespace kyopro {\n\n/// @note f must be monotone\ntemplate\
-    \ <typename T, typename F>\nstd::vector<std::pair<std::size_t, T>> monotone_minima(std::size_t\
+    \ <typename T, typename F>\nstd::vector<std::pair<std::size_t, T>> MonotoneMinima(std::size_t\
     \ h,\n                                                       std::size_t w,\n\
     \                                                       const F& f) {\n    using\
     \ usize = std::size_t;\n    std::vector<std::pair<usize, T>> res(h);\n\n    const\
@@ -51,12 +51,12 @@ data:
     \ * @note a \u306F\u4E0B\u306B\u51F8\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
     \u308B\n * @note \u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u3057\u304C\u3061\u3063\
     \u307D\u3044\u306E\u3067\u6C17\u3092\u4ED8\u3051\u308B \n*/\ntemplate <typename\
-    \ T>\nstd::vector<T> min_plus_convolution_convex_arbitrary(const std::vector<T>&\
-    \ a,\n                                                     const std::vector<T>&\
-    \ b) {\n    const int n = a.size();\n    const int m = b.size();\n    \n    const\
+    \ T>\nstd::vector<T> MinPlusConvolutionConvexArbitrary(const std::vector<T>& a,\n\
+    \                                                     const std::vector<T>& b)\
+    \ {\n    const int n = a.size();\n    const int m = b.size();\n    \n    const\
     \ auto f = [&](int i, int j) {\n        if (i - j < 0 || i - j >= n) {\n     \
     \       return std::numeric_limits<T>::max() / 2 + b[j];\n        }\n        return\
-    \ a[i - j] + b[j];\n    };\n\n    std::vector res = monotone_minima<T>(n + m -\
+    \ a[i - j] + b[j];\n    };\n\n    std::vector res = MonotoneMinima<T>(n + m -\
     \ 1, m, f);\n    std::vector<T> c(n + m - 1);\n    for (int i = 0; i < (int)c.size();\
     \ ++i) c[i] = res[i].second;\n    return c;\n}\n};  // namespace kyopro\n#line\
     \ 1 \"src/debug.hpp\"\n#ifdef ONLINE_JUDGE\n#define debug(x) void(0)\n#else\n\
@@ -137,7 +137,7 @@ data:
     \ b && (a = b, true);\n}\n\n/**\n * @brief Template\n*/\n#line 7 \"test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp\"\
     \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n,\
     \ m;\n    read(n, m);\n    vector a(n, 0LL), b(m, 0LL);\n    rep(i, n) read(a[i]);\n\
-    \    rep(i, m) read(b[i]);\n    vector c = min_plus_convolution_convex_arbitrary(a,\
+    \    rep(i, m) read(b[i]);\n    vector c = MinPlusConvolutionConvexArbitrary(a,\
     \ b);\n    rep(i, (int)c.size()) put(c[i]);\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/min_plus_convolution_convex_arbitrary\"\
     \n#include \"../../../src/convolution/min_plus_convolution_convex_arbitrary.hpp\"\
@@ -145,8 +145,8 @@ data:
     #include \"../../../src/template.hpp\"\n\nusing namespace std;\nusing namespace\
     \ kyopro;\n\nint main() {\n    int n, m;\n    read(n, m);\n    vector a(n, 0LL),\
     \ b(m, 0LL);\n    rep(i, n) read(a[i]);\n    rep(i, m) read(b[i]);\n    vector\
-    \ c = min_plus_convolution_convex_arbitrary(a, b);\n    rep(i, (int)c.size())\
-    \ put(c[i]);\n}\n"
+    \ c = MinPlusConvolutionConvexArbitrary(a, b);\n    rep(i, (int)c.size()) put(c[i]);\n\
+    }\n"
   dependsOn:
   - src/convolution/min_plus_convolution_convex_arbitrary.hpp
   - src/algorithm/monotone_minima.hpp
@@ -157,7 +157,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-06-23 18:35:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
