@@ -34,20 +34,20 @@ data:
     - https://judge.yosupo.jp/problem/bitwise_and_convolution
   bundledCode: "#line 1 \"test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n\
-    #line 2 \"src/algorithm/subset_transform.hpp\"\n#include <vector>\n\nnamespace\
-    \ kyopro {\n/**\n * @param n v : 2^[n] \u2192 T, |v| = 2^n\n */\ntemplate <typename\
-    \ T> void Zeta(int n, std::vector<T>& v) {\n    for (int j = 0; j < n; ++j) {\n\
-    \        for (int i = 0; i < (int)v.size(); ++i) {\n            if (~i >> j &\
-    \ 1) continue;\n            v[i] += v[i & ~(1 << j)];\n        }\n    }\n}\n\n\
-    /**\n * @param n v : 2^[n] \u2192 T, |v| = 2^n\n */\ntemplate <typename T> void\
-    \ Mobius(int n, std::vector<T>& v) {\n    for (int j = 0; j < n; ++j) {\n    \
-    \    for (int i = 0; i < (int)v.size(); ++i) {\n            if (~i >> j & 1) continue;\n\
-    \            v[i] -= v[i & ~(1 << j)];\n        }\n    }\n}\n\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief Subset Transform\n*/\n#line 3 \"src/convolution/bitwise_or_convolution.hpp\"\
+    #line 2 \"src/algorithm/subset_transform.hpp\"\n#include <vector>\n\n\n/**\n *\
+    \ @brief Subset Transform\n*/\n\nnamespace kyopro {\n/**\n * @param n v : 2^[n]\
+    \ \u2192 T, |v| = 2^n\n */\ntemplate <typename T> void zeta(int n, std::vector<T>&\
+    \ v) {\n    for (int j = 0; j < n; ++j) {\n        for (int i = 0; i < (int)v.size();\
+    \ ++i) {\n            if (~i >> j & 1) continue;\n            v[i] += v[i & ~(1\
+    \ << j)];\n        }\n    }\n}\n\n/**\n * @param n v : 2^[n] \u2192 T, |v| = 2^n\n\
+    \ */\ntemplate <typename T> void mobius(int n, std::vector<T>& v) {\n    for (int\
+    \ j = 0; j < n; ++j) {\n        for (int i = 0; i < (int)v.size(); ++i) {\n  \
+    \          if (~i >> j & 1) continue;\n            v[i] -= v[i & ~(1 << j)];\n\
+    \        }\n    }\n}\n\n};  // namespace kyopro\n#line 3 \"src/convolution/bitwise_or_convolution.hpp\"\
     \n\nnamespace kyopro {\n\n/**\n * @brief Bitwise Or Convolution\n */\ntemplate\
-    \ <typename T>\nstd::vector<T> BitwiseOrConvolution(int n, std::vector<T> a, std::vector<T>\
-    \ b) {\n    Zeta(n, a), Zeta(n, b);\n    for (int i = 0; i < (int)a.size(); ++i)\
-    \ a[i] *= b[i];\n    Mobius(n, a);\n    return a;\n}\n\n};\n#line 2 \"src/math/static_modint.hpp\"\
+    \ <typename T>\nstd::vector<T> bitwise_or_convolution(int n, std::vector<T> a,\
+    \ std::vector<T> b) {\n    zeta(n, a), zeta(n, b);\n    for (int i = 0; i < (int)a.size();\
+    \ ++i) a[i] *= b[i];\n    mobius(n, a);\n    return a;\n}\n\n};\n#line 2 \"src/math/static_modint.hpp\"\
     \n#include <cassert>\n#include <cstdint>\n#include <iostream>\n\n#line 3 \"src/internal/type_traits.hpp\"\
     \n#include <limits>\n#include <numeric>\n#include <typeinfo>\n#line 7 \"src/internal/type_traits.hpp\"\
     \n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
@@ -184,7 +184,7 @@ data:
     \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     \nint main() {\n    int n;\n    read(n);\n    vector<mint> a(1 << n), b(1 << n);\n\
     \    rep(i, 1 << n) read(a[i]);\n    rep(i, 1 << n) read(b[i]);\n    reverse(all(a)),\
-    \ reverse(all(b));\n    vector c = BitwiseOrConvolution(n, a, b);\n    reverse(c.begin(),\
+    \ reverse(all(b));\n    vector c = bitwise_or_convolution(n, a, b);\n    reverse(c.begin(),\
     \ c.end());\n    rep(i, 1 << n) put(c[i]);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\
     \n#include \"../../../src/convolution/bitwise_or_convolution.hpp\"\n#include \"\
@@ -193,8 +193,8 @@ data:
     \ kyopro;\n\nusing mint = modint<998244353>;\n\nint main() {\n    int n;\n   \
     \ read(n);\n    vector<mint> a(1 << n), b(1 << n);\n    rep(i, 1 << n) read(a[i]);\n\
     \    rep(i, 1 << n) read(b[i]);\n    reverse(all(a)), reverse(all(b));\n    vector\
-    \ c = BitwiseOrConvolution(n, a, b);\n    reverse(c.begin(), c.end());\n    rep(i,\
-    \ 1 << n) put(c[i]);\n}"
+    \ c = bitwise_or_convolution(n, a, b);\n    reverse(c.begin(), c.end());\n   \
+    \ rep(i, 1 << n) put(c[i]);\n}"
   dependsOn:
   - src/convolution/bitwise_or_convolution.hpp
   - src/algorithm/subset_transform.hpp
@@ -206,7 +206,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-06-23 18:35:17+09:00'
+  timestamp: '2024-05-16 17:50:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp

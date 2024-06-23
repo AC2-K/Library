@@ -62,8 +62,8 @@ data:
     \ \u3068\u3082\u306B\u4E0B\u306B\u51F8\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
     \u308B\n * @note \u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u3057\u304C\u3061\u306A\
     \u306E\u3067\u6C17\u3092\u4ED8\u3051\u3088\u3046!\n */\ntemplate <typename T>\n\
-    std::vector<T> MinPlusConvolutionConvexConvex(const std::vector<T>& a,\n     \
-    \                                             std::vector<T>& b) {\n    constexpr\
+    std::vector<T> min_plus_convolution_convex_convex(const std::vector<T>& a,\n \
+    \                                                 std::vector<T>& b) {\n    constexpr\
     \ T INF = std::numeric_limits<T>::max() / 2;\n    const int n = a.size();\n  \
     \  const int m = b.size();\n    const T A0 = INF;\n    const T B0 = INF;\n\n \
     \   std::vector<T> da(n);\n    std::vector<T> db(m);\n    for (int i = 1; i <\
@@ -118,15 +118,15 @@ data:
     \ b && (a = b, true);\n}\n\n/**\n * @brief Template\n*/\n#line 7 \"test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp\"\
     \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n,\
     \ m;\n    read(n, m);\n    vector a(n, 0LL), b(m, 0LL);\n    rep(i, n) read(a[i]);\n\
-    \    rep(i, m) read(b[i]);\n    vector c = MinPlusConvolutionConvexConvex(a, b);\n\
-    \    rep(i, n + m - 1) put(c[i]);\n}\n"
+    \    rep(i, m) read(b[i]);\n    vector c = min_plus_convolution_convex_convex(a,\
+    \ b);\n    rep(i, n + m - 1) put(c[i]);\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/min_plus_convolution_convex_convex\"\
     \n\n#include \"../../../src/convolution/min_plus_convolution_convex_convex.hpp\"\
     \n#include \"../../../src/stream.hpp\"\n#include \"../../../src/template.hpp\"\
     \n\nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n,\
     \ m;\n    read(n, m);\n    vector a(n, 0LL), b(m, 0LL);\n    rep(i, n) read(a[i]);\n\
-    \    rep(i, m) read(b[i]);\n    vector c = MinPlusConvolutionConvexConvex(a, b);\n\
-    \    rep(i, n + m - 1) put(c[i]);\n}"
+    \    rep(i, m) read(b[i]);\n    vector c = min_plus_convolution_convex_convex(a,\
+    \ b);\n    rep(i, n + m - 1) put(c[i]);\n}"
   dependsOn:
   - src/convolution/min_plus_convolution_convex_convex.hpp
   - src/internal/type_traits.hpp
@@ -135,7 +135,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
   requiredBy: []
-  timestamp: '2024-06-23 18:35:17+09:00'
+  timestamp: '2024-05-16 17:50:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp

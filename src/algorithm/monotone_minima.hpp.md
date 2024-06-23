@@ -17,7 +17,7 @@ data:
     links: []
   bundledCode: "#line 2 \"src/algorithm/monotone_minima.hpp\"\n#include <utility>\n\
     #include <vector>\nnamespace kyopro {\n\n/// @note f must be monotone\ntemplate\
-    \ <typename T, typename F>\nstd::vector<std::pair<std::size_t, T>> MonotoneMinima(std::size_t\
+    \ <typename T, typename F>\nstd::vector<std::pair<std::size_t, T>> monotone_minima(std::size_t\
     \ h,\n                                                       std::size_t w,\n\
     \                                                       const F& f) {\n    using\
     \ usize = std::size_t;\n    std::vector<std::pair<usize, T>> res(h);\n\n    const\
@@ -32,9 +32,9 @@ data:
     };  // namespace kyopro\n\n/**\n * @brief Monotone Minima\n*/\n"
   code: "#pragma once\n#include <utility>\n#include <vector>\nnamespace kyopro {\n\
     \n/// @note f must be monotone\ntemplate <typename T, typename F>\nstd::vector<std::pair<std::size_t,\
-    \ T>> MonotoneMinima(std::size_t h,\n                                        \
-    \               std::size_t w,\n                                             \
-    \          const F& f) {\n    using usize = std::size_t;\n    std::vector<std::pair<usize,\
+    \ T>> monotone_minima(std::size_t h,\n                                       \
+    \                std::size_t w,\n                                            \
+    \           const F& f) {\n    using usize = std::size_t;\n    std::vector<std::pair<usize,\
     \ T>> res(h);\n\n    const auto calc = [&](const auto& calc, usize top, usize\
     \ bottom, usize l,\n                          usize r) -> void {\n        if (top\
     \ >= bottom) return;\n\n        usize mid = (top + bottom) / 2;\n\n        T mn\
@@ -50,7 +50,7 @@ data:
   path: src/algorithm/monotone_minima.hpp
   requiredBy:
   - src/convolution/min_plus_convolution_convex_arbitrary.hpp
-  timestamp: '2024-06-23 18:35:17+09:00'
+  timestamp: '2023-12-11 12:01:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
