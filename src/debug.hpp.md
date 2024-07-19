@@ -35,10 +35,10 @@ data:
   timestamp: '2024-05-16 17:50:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
-  - test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
+  - test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
+  - test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
 documentation_of: src/debug.hpp
 layout: document
 redirect_from:

@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: geometry
+    pages:
+    - icon: ':warning:'
+      path: geometry/geom.hpp
+      title: "Geometry(\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8)"
   - name: .
     pages:
     - icon: ':warning:'
