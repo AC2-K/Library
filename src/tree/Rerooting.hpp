@@ -1,5 +1,5 @@
 #pragma once
-#include "internal/CSR.hpp"
+#include "../../src/internal/CSR.hpp"
 
 namespace kyopro {
 template <typename V, typename OP, typename PUT_EV, typename LEAF>
