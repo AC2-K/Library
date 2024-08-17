@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/CSR.hpp
     title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
       \u7E2E)"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: docs/tree/Rerooting.md
-    document_title: "Rerooting(\u5168\u65B9\u4F4D\u6728DP)"
+    document_title: "Solving DP on tree for all roots(\u5168\u65B9\u4F4D\u6728DP)"
     links: []
   bundledCode: "#line 2 \"src/internal/CSR.hpp\"\n\n#include <cassert>\n#include <iterator>\n\
     #include <utility>\n#include <vector>\n\nnamespace kyopro {\nnamespace internal\
@@ -61,10 +61,10 @@ data:
     \              }\n                return dp1[v];\n            };\n           \
     \ push_up(push_up, 0, -1);\n        }\n\n        std::vector<V> dp(n);\n\n   \
     \     {\n            // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\u3057\u3066\
-    \u3044\u304F\n            auto push_down = [&](const auto& push_down, int v, int\
-    \ p = -1,\n                                 V agg) -> void {\n               \
-    \ dp[v] = agg;\n                std::vector<std::pair<int, int>> children;\n \
-    \               std::vector<V> pref, suff;\n                for (auto [nv, e_idx]\
+    \u3044\u304F\n            \n            auto push_down = [&](const auto& push_down,\
+    \ int v, int p,\n                                 V agg) -> void {\n         \
+    \       dp[v] = agg;\n                std::vector<std::pair<int, int>> children;\n\
+    \                std::vector<V> pref, suff;\n                for (auto [nv, e_idx]\
     \ : g[v]) {\n                    if (nv == p) continue;\n                    children.emplace_back(nv,\
     \ e_idx);\n                    pref.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
     \ v));\n                    suff.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
@@ -83,8 +83,8 @@ data:
     \              push_down(push_down, children[i].first, v, next_agg);\n       \
     \         }\n                return;\n            };\n            push_down(push_down,\
     \ 0, -1, identity);\n        }\n\n        return dp;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief Rerooting(\u5168\u65B9\u4F4D\u6728DP)\n * @docs docs/tree/Rerooting.md\n\
-    \ */\n"
+    \ kyopro\n\n/**\n * @brief Solving DP on tree for all roots(\u5168\u65B9\u4F4D\
+    \u6728DP)\n * @docs docs/tree/Rerooting.md\n */\n"
   code: "#pragma once\n#include \"../../src/internal/CSR.hpp\"\n\nnamespace kyopro\
     \ {\ntemplate <typename V, typename OP, typename PUT_EV, typename LEAF>\nclass\
     \ Rerooting {\n    const V identity;\n    const OP op;\n    const PUT_EV put_edge_vertex;\n\
@@ -106,10 +106,10 @@ data:
     \              }\n                return dp1[v];\n            };\n           \
     \ push_up(push_up, 0, -1);\n        }\n\n        std::vector<V> dp(n);\n\n   \
     \     {\n            // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\u3057\u3066\
-    \u3044\u304F\n            auto push_down = [&](const auto& push_down, int v, int\
-    \ p = -1,\n                                 V agg) -> void {\n               \
-    \ dp[v] = agg;\n                std::vector<std::pair<int, int>> children;\n \
-    \               std::vector<V> pref, suff;\n                for (auto [nv, e_idx]\
+    \u3044\u304F\n            \n            auto push_down = [&](const auto& push_down,\
+    \ int v, int p,\n                                 V agg) -> void {\n         \
+    \       dp[v] = agg;\n                std::vector<std::pair<int, int>> children;\n\
+    \                std::vector<V> pref, suff;\n                for (auto [nv, e_idx]\
     \ : g[v]) {\n                    if (nv == p) continue;\n                    children.emplace_back(nv,\
     \ e_idx);\n                    pref.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
     \ v));\n                    suff.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
@@ -128,15 +128,15 @@ data:
     \              push_down(push_down, children[i].first, v, next_agg);\n       \
     \         }\n                return;\n            };\n            push_down(push_down,\
     \ 0, -1, identity);\n        }\n\n        return dp;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief Rerooting(\u5168\u65B9\u4F4D\u6728DP)\n * @docs docs/tree/Rerooting.md\n\
-    \ */"
+    \ kyopro\n\n/**\n * @brief Solving DP on tree for all roots(\u5168\u65B9\u4F4D\
+    \u6728DP)\n * @docs docs/tree/Rerooting.md\n */"
   dependsOn:
   - src/internal/CSR.hpp
   isVerificationFile: false
   path: src/tree/Rerooting.hpp
   requiredBy: []
-  timestamp: '2024-08-17 18:56:09+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-08-17 19:12:41+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
 documentation_of: src/tree/Rerooting.hpp
@@ -144,5 +144,5 @@ layout: document
 redirect_from:
 - /library/src/tree/Rerooting.hpp
 - /library/src/tree/Rerooting.hpp.html
-title: "Rerooting(\u5168\u65B9\u4F4D\u6728DP)"
+title: "Solving DP on tree for all roots(\u5168\u65B9\u4F4D\u6728DP)"
 ---

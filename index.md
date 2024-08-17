@@ -187,10 +187,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/debug.hpp
       title: Debugger
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/template.hpp
       title: Template
   - name: src/dynamic_programming
@@ -217,7 +217,7 @@ data:
       title: "Bipartite Matching(\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0)"
   - name: src/internal
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/CSR.hpp
       title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
         \u7E2E)"
@@ -227,7 +227,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/type_traits.hpp
       title: Type Traits
   - name: src/math
@@ -244,7 +244,7 @@ data:
     - icon: ':warning:'
       path: src/math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/gcd.hpp
       title: gcd
     - icon: ':heavy_check_mark:'
@@ -271,7 +271,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/rho.hpp
       title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/static_modint.hpp
       title: static modint
   - name: src/random
@@ -301,9 +301,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/HeavyLightDecomposition.hpp
       title: Heavy Light Decomposition
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/Rerooting.hpp
-      title: "Rerooting(\u5168\u65B9\u4F4D\u6728DP)"
+      title: "Solving DP on tree for all roots(\u5168\u65B9\u4F4D\u6728DP)"
     - icon: ':heavy_check_mark:'
       path: src/tree/doubling.hpp
       title: "Binary Lifting(\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0)"
@@ -524,7 +524,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
       title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   - name: test/yuki

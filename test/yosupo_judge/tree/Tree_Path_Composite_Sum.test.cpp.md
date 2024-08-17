@@ -1,33 +1,33 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/CSR.hpp
     title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
       \u7E2E)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: gcd
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template.hpp
     title: Template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/Rerooting.hpp
-    title: "Rerooting(\u5168\u65B9\u4F4D\u6728DP)"
+    title: "Solving DP on tree for all roots(\u5168\u65B9\u4F4D\u6728DP)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_path_composite_sum
@@ -212,10 +212,10 @@ data:
     \              }\n                return dp1[v];\n            };\n           \
     \ push_up(push_up, 0, -1);\n        }\n\n        std::vector<V> dp(n);\n\n   \
     \     {\n            // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\u3057\u3066\
-    \u3044\u304F\n            auto push_down = [&](const auto& push_down, int v, int\
-    \ p = -1,\n                                 V agg) -> void {\n               \
-    \ dp[v] = agg;\n                std::vector<std::pair<int, int>> children;\n \
-    \               std::vector<V> pref, suff;\n                for (auto [nv, e_idx]\
+    \u3044\u304F\n            \n            auto push_down = [&](const auto& push_down,\
+    \ int v, int p,\n                                 V agg) -> void {\n         \
+    \       dp[v] = agg;\n                std::vector<std::pair<int, int>> children;\n\
+    \                std::vector<V> pref, suff;\n                for (auto [nv, e_idx]\
     \ : g[v]) {\n                    if (nv == p) continue;\n                    children.emplace_back(nv,\
     \ e_idx);\n                    pref.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
     \ v));\n                    suff.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
@@ -234,9 +234,9 @@ data:
     \              push_down(push_down, children[i].first, v, next_agg);\n       \
     \         }\n                return;\n            };\n            push_down(push_down,\
     \ 0, -1, identity);\n        }\n\n        return dp;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief Rerooting(\u5168\u65B9\u4F4D\u6728DP)\n * @docs docs/tree/Rerooting.md\n\
-    \ */\n#line 6 \"test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp\"\n\n\
-    using namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
+    \ kyopro\n\n/**\n * @brief Solving DP on tree for all roots(\u5168\u65B9\u4F4D\
+    \u6728DP)\n * @docs docs/tree/Rerooting.md\n */\n#line 6 \"test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp\"\
+    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     \nint main() {\n    int n;\n    read(n);\n    vector<mint> a(n), b(n - 1), c(n\
     \ - 1);\n    rep(i, n) read(a[i]);\n\n    auto op = [&](pair<mint, mint> x, pair<mint,\
     \ mint> y) {\n        return pair(x.first + y.first, x.second + y.second);\n \
@@ -274,8 +274,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-08-17 18:56:09+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-08-17 19:12:41+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
 layout: document
