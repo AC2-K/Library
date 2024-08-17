@@ -63,6 +63,7 @@
 "test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp": "2024-05-16 17:50:34 +0900",
 "test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp": "2024-05-16 17:50:34 +0900",
 "test/yosupo_judge/tree/Tree_Diameter.test.cpp": "2024-05-16 17:50:34 +0900",
+"test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp": "2024-08-17 19:12:41 +0900",
 "test/yuki/No3030.test.cpp": "2024-05-16 17:50:34 +0900",
 "test/yuki/No430.test.cpp": "2024-05-16 21:11:27 +0900",
 "test/yuki/No789.test.cpp": "2024-05-16 17:50:34 +0900"
