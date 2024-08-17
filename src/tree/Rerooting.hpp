@@ -55,7 +55,8 @@ public:
 
         {
             // 上から下へ伝搬していく
-            auto push_down = [&](const auto& push_down, int v, int p = -1,
+            
+            auto push_down = [&](const auto& push_down, int v, int p,
                                  V agg) -> void {
                 dp[v] = agg;
                 std::vector<std::pair<int, int>> children;
@@ -101,6 +102,6 @@ public:
 };  // namespace kyopro
 
 /**
- * @brief Rerooting(全方位木DP)
+ * @brief Solving DP on tree for all roots(全方位木DP)
  * @docs docs/tree/Rerooting.md
  */
