@@ -192,30 +192,30 @@ data:
     \ (_size_t)n; }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n\
     \ * @brief CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
     \u7E2E)\n */\n#line 3 \"src/tree/Rerooting.hpp\"\n\nnamespace kyopro {\ntemplate\
-    \ <typename V, typename OP, typename PUT_EV, typename LEAF>\nclass Rerooting {\n\
-    \    const V identity;\n    const OP op;\n    const PUT_EV put_edge_vertex;\n\
+    \ <typename M, typename OP, typename PUT_EV, typename LEAF>\nclass Rerooting {\n\
+    \    const M identity;\n    const OP op;\n    const PUT_EV put_edge_vertex;\n\
     \    const LEAF leaf;\n\n    const int n;\n\n    std::vector<std::pair<int, std::pair<int,\
-    \ int>>> es;\n\npublic:\n    Rerooting(int n,\n              const V& identity,\n\
+    \ int>>> es;\n\npublic:\n    Rerooting(int n,\n              const M& identity,\n\
     \              const OP& op,\n              const PUT_EV& put_edge_vertex,\n \
     \             const LEAF& leaf)\n        : n(n),\n          identity(identity),\n\
     \          op(op),\n          put_edge_vertex(put_edge_vertex),\n          leaf(leaf)\
     \ {\n        es.reserve(2 * n - 2);\n    }\n    void add_edge(int u, int v, int\
     \ i) {\n        es.emplace_back(u, std::pair(v, i));\n        es.emplace_back(v,\
-    \ std::pair(u, i));\n    }\n\n    std::vector<V> run() {\n        assert(es.size()\
-    \ == 2 * n - 2);\n\n        internal::csr g(n, es);\n\n        std::vector<V>\
+    \ std::pair(u, i));\n    }\n\n    std::vector<M> run() {\n        assert(es.size()\
+    \ == 2 * n - 2);\n\n        internal::csr g(n, es);\n\n        std::vector<M>\
     \ dp1(n);\n        {\n            auto push_up = [&](const auto& push_up, int\
-    \ v, int p = -1) -> V {\n                dp1[v] = leaf(v);\n                for\
+    \ v, int p = -1) -> M {\n                dp1[v] = leaf(v);\n                for\
     \ (auto [nv, e_idx] : g[v]) {\n                    if (nv == p) continue;\n  \
     \                  dp1[v] = op(dp1[v], put_edge_vertex(push_up(push_up, nv, v),\n\
     \                                                        e_idx, v));\n       \
     \             // \u9802\u70B9, \u8FBA\u306E\u60C5\u5831\u3092\u6DFB\u52A0\n  \
     \              }\n                return dp1[v];\n            };\n           \
-    \ push_up(push_up, 0, -1);\n        }\n\n        std::vector<V> dp(n);\n\n   \
+    \ push_up(push_up, 0, -1);\n        }\n\n        std::vector<M> dp(n);\n\n   \
     \     {\n            // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\u3057\u3066\
     \u3044\u304F\n            \n            auto push_down = [&](const auto& push_down,\
-    \ int v, int p,\n                                 V agg) -> void {\n         \
+    \ int v, int p,\n                                 M agg) -> void {\n         \
     \       dp[v] = agg;\n                std::vector<std::pair<int, int>> children;\n\
-    \                std::vector<V> pref, suff;\n                for (auto [nv, e_idx]\
+    \                std::vector<M> pref, suff;\n                for (auto [nv, e_idx]\
     \ : g[v]) {\n                    if (nv == p) continue;\n                    children.emplace_back(nv,\
     \ e_idx);\n                    pref.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
     \ v));\n                    suff.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
@@ -225,7 +225,7 @@ data:
     \         for (int i = (int)suff.size() - 1; i > 0; --i) {\n                 \
     \   suff[i - 1] = op(suff[i - 1], suff[i]);\n                }\n             \
     \   dp[v] = op(dp[v], pref.back());\n\n                for (int i = 0; i < (int)children.size();\
-    \ ++i) {\n                    V next_agg = op(leaf(v), agg);\n               \
+    \ ++i) {\n                    M next_agg = op(leaf(v), agg);\n               \
     \     if (i > 0) {\n                        next_agg = op(next_agg, pref[i - 1]);\n\
     \                    }\n                    if (i < (int)suff.size() - 1) {\n\
     \                        next_agg = op(next_agg, suff[i + 1]);\n             \
@@ -274,7 +274,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-08-17 19:12:41+09:00'
+  timestamp: '2024-08-18 01:00:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
