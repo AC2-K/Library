@@ -101,5 +101,6 @@ public:
 };  // namespace kyopro
 
 /**
- * Rerooting(全方位木DP)
+ * @brief Rerooting(全方位木DP)
+ * @docs docs/tree/Rerooting.md
  */
