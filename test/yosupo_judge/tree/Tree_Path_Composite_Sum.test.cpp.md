@@ -22,7 +22,7 @@ data:
     title: Template
   - icon: ':x:'
     path: src/tree/Rerooting.hpp
-    title: src/tree/Rerooting.hpp
+    title: "Rerooting(\u5168\u65B9\u4F4D\u6728DP)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: true
@@ -234,8 +234,9 @@ data:
     \              push_down(push_down, children[i].first, v, next_agg);\n       \
     \         }\n                return;\n            };\n            push_down(push_down,\
     \ 0, -1, identity);\n        }\n\n        return dp;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * Rerooting(\u5168\u65B9\u4F4D\u6728DP)\n */\n#line 6 \"test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
+    \ kyopro\n\n/**\n * @brief Rerooting(\u5168\u65B9\u4F4D\u6728DP)\n * @docs docs/tree/Rerooting.md\n\
+    \ */\n#line 6 \"test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp\"\n\n\
+    using namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     \nint main() {\n    int n;\n    read(n);\n    vector<mint> a(n), b(n - 1), c(n\
     \ - 1);\n    rep(i, n) read(a[i]);\n\n    auto op = [&](pair<mint, mint> x, pair<mint,\
     \ mint> y) {\n        return pair(x.first + y.first, x.second + y.second);\n \
@@ -273,7 +274,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-08-17 18:48:04+09:00'
+  timestamp: '2024-08-17 18:56:09+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp

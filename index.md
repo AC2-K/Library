@@ -303,7 +303,7 @@ data:
       title: Heavy Light Decomposition
     - icon: ':x:'
       path: src/tree/Rerooting.hpp
-      title: src/tree/Rerooting.hpp
+      title: "Rerooting(\u5168\u65B9\u4F4D\u6728DP)"
     - icon: ':heavy_check_mark:'
       path: src/tree/doubling.hpp
       title: "Binary Lifting(\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0)"

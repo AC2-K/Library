@@ -14,6 +14,8 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':x:'
   attributes:
+    _deprecated_at_docs: docs/tree/Rerooting.md
+    document_title: "Rerooting(\u5168\u65B9\u4F4D\u6728DP)"
     links: []
   bundledCode: "#line 2 \"src/internal/CSR.hpp\"\n\n#include <cassert>\n#include <iterator>\n\
     #include <utility>\n#include <vector>\n\nnamespace kyopro {\nnamespace internal\
@@ -81,7 +83,8 @@ data:
     \              push_down(push_down, children[i].first, v, next_agg);\n       \
     \         }\n                return;\n            };\n            push_down(push_down,\
     \ 0, -1, identity);\n        }\n\n        return dp;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * Rerooting(\u5168\u65B9\u4F4D\u6728DP)\n */\n"
+    \ kyopro\n\n/**\n * @brief Rerooting(\u5168\u65B9\u4F4D\u6728DP)\n * @docs docs/tree/Rerooting.md\n\
+    \ */\n"
   code: "#pragma once\n#include \"../../src/internal/CSR.hpp\"\n\nnamespace kyopro\
     \ {\ntemplate <typename V, typename OP, typename PUT_EV, typename LEAF>\nclass\
     \ Rerooting {\n    const V identity;\n    const OP op;\n    const PUT_EV put_edge_vertex;\n\
@@ -125,13 +128,14 @@ data:
     \              push_down(push_down, children[i].first, v, next_agg);\n       \
     \         }\n                return;\n            };\n            push_down(push_down,\
     \ 0, -1, identity);\n        }\n\n        return dp;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * Rerooting(\u5168\u65B9\u4F4D\u6728DP)\n */"
+    \ kyopro\n\n/**\n * @brief Rerooting(\u5168\u65B9\u4F4D\u6728DP)\n * @docs docs/tree/Rerooting.md\n\
+    \ */"
   dependsOn:
   - src/internal/CSR.hpp
   isVerificationFile: false
   path: src/tree/Rerooting.hpp
   requiredBy: []
-  timestamp: '2024-08-17 18:48:04+09:00'
+  timestamp: '2024-08-17 18:56:09+09:00'
   verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
@@ -140,5 +144,5 @@ layout: document
 redirect_from:
 - /library/src/tree/Rerooting.hpp
 - /library/src/tree/Rerooting.hpp.html
-title: src/tree/Rerooting.hpp
+title: "Rerooting(\u5168\u65B9\u4F4D\u6728DP)"
 ---
