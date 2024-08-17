@@ -2,9 +2,9 @@
 #include "../../src/internal/CSR.hpp"
 
 namespace kyopro {
-template <typename V, typename OP, typename PUT_EV, typename LEAF>
+template <typename M, typename OP, typename PUT_EV, typename LEAF>
 class Rerooting {
-    const V identity;
+    const M identity;
     const OP op;
     const PUT_EV put_edge_vertex;
     const LEAF leaf;
@@ -15,7 +15,7 @@ class Rerooting {
 
 public:
     Rerooting(int n,
-              const V& identity,
+              const M& identity,
               const OP& op,
               const PUT_EV& put_edge_vertex,
               const LEAF& leaf)
@@ -31,14 +31,14 @@ public:
         es.emplace_back(v, std::pair(u, i));
     }
 
-    std::vector<V> run() {
+    std::vector<M> run() {
         assert(es.size() == 2 * n - 2);
 
         internal::csr g(n, es);
 
-        std::vector<V> dp1(n);
+        std::vector<M> dp1(n);
         {
-            auto push_up = [&](const auto& push_up, int v, int p = -1) -> V {
+            auto push_up = [&](const auto& push_up, int v, int p = -1) -> M {
                 dp1[v] = leaf(v);
                 for (auto [nv, e_idx] : g[v]) {
                     if (nv == p) continue;
@@ -51,16 +51,16 @@ public:
             push_up(push_up, 0, -1);
         }
 
-        std::vector<V> dp(n);
+        std::vector<M> dp(n);
 
         {
             // 上から下へ伝搬していく
             
             auto push_down = [&](const auto& push_down, int v, int p,
-                                 V agg) -> void {
+                                 M agg) -> void {
                 dp[v] = agg;
                 std::vector<std::pair<int, int>> children;
-                std::vector<V> pref, suff;
+                std::vector<M> pref, suff;
                 for (auto [nv, e_idx] : g[v]) {
                     if (nv == p) continue;
                     children.emplace_back(nv, e_idx);
@@ -78,7 +78,7 @@ public:
                 dp[v] = op(dp[v], pref.back());
 
                 for (int i = 0; i < (int)children.size(); ++i) {
-                    V next_agg = op(leaf(v), agg);
+                    M next_agg = op(leaf(v), agg);
                     if (i > 0) {
                         next_agg = op(next_agg, pref[i - 1]);
                     }
