@@ -301,6 +301,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/HeavyLightDecomposition.hpp
       title: Heavy Light Decomposition
+    - icon: ':warning:'
+      path: src/tree/Rerooting.hpp
+      title: src/tree/Rerooting.hpp
     - icon: ':heavy_check_mark:'
       path: src/tree/doubling.hpp
       title: "Binary Lifting(\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0)"
@@ -521,6 +524,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
+    - icon: ':x:'
+      path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
+      title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   - name: test/yuki
     pages:
     - icon: ':heavy_check_mark:'

@@ -317,8 +317,8 @@ data:
   isVerificationFile: false
   path: src/math/primitive_root.hpp
   requiredBy:
-  - src/FormalPowerSeries/fps-sqrt.hpp
   - src/math/mod_sqrt.hpp
+  - src/FormalPowerSeries/fps-sqrt.hpp
   timestamp: '2024-05-16 21:11:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
