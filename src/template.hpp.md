@@ -81,9 +81,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
+    title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: Template
     links: []
@@ -115,9 +118,10 @@ data:
   path: src/template.hpp
   requiredBy: []
   timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
   - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp

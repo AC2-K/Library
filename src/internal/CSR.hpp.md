@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/tree/HeavyLightDecomposition.hpp
     title: Heavy Light Decomposition
+  - icon: ':x:'
+    path: src/tree/Rerooting.hpp
+    title: src/tree/Rerooting.hpp
   - icon: ':heavy_check_mark:'
     path: src/tree/doubling.hpp
     title: "Binary Lifting(\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0)"
@@ -33,9 +36,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
+    title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\
       \u5727\u7E2E)"
@@ -93,13 +99,15 @@ data:
   path: src/internal/CSR.hpp
   requiredBy:
   - src/tree/EulerTour.hpp
+  - src/tree/Rerooting.hpp
   - src/tree/HeavyLightDecomposition.hpp
   - src/tree/doubling.hpp
   timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
   - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
+  - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
