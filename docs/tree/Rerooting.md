@@ -46,8 +46,6 @@ Rerooting(int n,
 - [ABC222 - F](https://atcoder.jp/contests/abc222/submissions/56766266)
 - [LibraryChecker - Tree Path Composite Sum](https://judge.yosupo.jp/submission/229005)
 
-</details>
-
 ### 制約
 
 - すべての引数が条件を満たしている

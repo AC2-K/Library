@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: gcd
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/matrix.hpp
     title: "Matrix(\u884C\u5217)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
   _extendedRequiredBy: []
@@ -30,21 +30,22 @@ data:
     \ PROBLEM \"https://judge.yosupo.jp/problem/matrix_product\"\n#include <iostream>\n\
     #line 2 \"src/math/matrix.hpp\"\n#include <cassert>\n#include <utility>\n#include\
     \ <vector>\nnamespace kyopro {\n\ntemplate <typename T> class Matrix {\n    std::vector<std::vector<T>>\
-    \ dat;\n    int h = 0, w = 0;\n\npublic:\n    constexpr Matrix(const std::vector<std::vector<T>>&\
-    \ dat)\n        : dat(dat), h(dat.size()), w(dat.front().size()) {}\n\n    constexpr\
-    \ Matrix(int h_, int w_, T v = T())\n        : dat(h_, std::vector<T>(w_, v))\
-    \ {}\n\n    using mat = Matrix<T>;\n    // access\n    constexpr std::vector<T>&\
-    \ operator[](int i) { return dat[i]; }\n\n    // operator\n    constexpr mat&\
-    \ operator+=(const mat& r) {\n        assert(r.h == this->h);\n        assert(r.w\
-    \ == this->w);\n        for (int i = 0; i < h; i++) {\n            for (int j\
-    \ = 0; j < w; j++) {\n                dat[i][j] += r.dat[i][j];\n            }\n\
-    \        }\n        return (*this);\n    }\n    constexpr mat& operator-=(const\
-    \ mat& r) {\n        assert(r.h == this->h);\n        assert(r.w == this->w);\n\
-    \        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++)\
-    \ {\n                dat[i][j] -= r.dat[i][j];\n            }\n        }\n   \
-    \     return (*this);\n    }\n\n    constexpr mat& operator*=(const mat& r) {\n\
-    \        int ha = dat.size(), wa = dat.front().size();\n        int hb = r.dat.size(),\
-    \ wb = r.dat.front().size();\n        assert(wa == hb);\n\n        std::vector<std::vector<T>>\
+    \ dat;\n\npublic:\n    const int h;\n    const int w;\n\n    constexpr Matrix(const\
+    \ std::vector<std::vector<T>>& dat)\n        : dat(dat), h(dat.size()), w(dat.front().size())\
+    \ {}\n        \n    constexpr Matrix(int h_, int w_, T v = T())\n        : dat(h_,\
+    \ std::vector<T>(w_, v)), h(h_), w(w_) {}\n\n    using mat = Matrix<T>;\n    //\
+    \ access\n    constexpr std::vector<T>& operator[](int i) { return dat[i]; }\n\
+    \n    // operator\n    constexpr mat& operator+=(const mat& r) {\n        assert(r.h\
+    \ == this->h);\n        assert(r.w == this->w);\n\n        for (int i = 0; i <\
+    \ (this->h); i++) {\n            for (int j = 0; j < (this->w); j++) {\n     \
+    \           this->dat[i][j] += r.dat[i][j];\n            }\n        }\n      \
+    \  return (*this);\n    }\n\n    constexpr mat& operator-=(const mat& r) {\n \
+    \       assert(r.h == this->h);\n        assert(r.w == this->w);\n        for\
+    \ (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++) {\n     \
+    \           dat[i][j] -= r.dat[i][j];\n            }\n        }\n        return\
+    \ (*this);\n    }\n\n    constexpr mat& operator*=(const mat& r) {\n        int\
+    \ ha = dat.size(), wa = dat.front().size();\n        int hb = r.dat.size(), wb\
+    \ = r.dat.front().size();\n        assert(wa == hb);\n\n        std::vector<std::vector<T>>\
     \ res(ha, std::vector<T>(wb));\n        for (int i = 0; i < ha; i++) {\n     \
     \       for (int k = 0; k < wa; k++) {\n                for (int j = 0; j < wb;\
     \ j++) {\n                    res[i][j] += dat[i][k] * r.dat[k][j];\n        \
@@ -52,12 +53,13 @@ data:
     \ return (*this);\n    }\n\n    constexpr mat operator+(const mat& r) { return\
     \ mat(*this) += r; }\n    constexpr mat operator-(const mat& r) { return mat(*this)\
     \ -= r; }\n    constexpr mat operator*(const mat& r) { return mat(*this) *= r;\
-    \ }\n\n    template <typename P> constexpr mat pow(P e) const {\n        assert(e\
-    \ >= 0);\n        int n = dat.size();\n        mat res(n, n, 0);\n        mat\
-    \ pr(*this);\n        for (int i = 0; i < n; i++) res[i][i] = 1;\n\n        while\
-    \ (e) {\n            if (e & 1) res *= pr;\n            pr *= pr;\n\n        \
-    \    e >>= 1;\n        }\n\n        return res;\n    }\n};\n};  // namespace kyopro\n\
-    \n/**\n * @brief Matrix(\u884C\u5217)\n */\n#line 3 \"src/math/static_modint.hpp\"\
+    \ }\n\n    static mat E(int n) {\n        mat res(n, n, 0);\n        for (int\
+    \ i = 0; i < n; i++) res[i][i] = 1;\n        return res;\n    }\n\n    template\
+    \ <typename P> constexpr mat pow(P e) const {\n        assert(e >= 0);\n     \
+    \   int n = dat.size();\n        mat res = mat::E(n);\n        mat pr(*this);\n\
+    \n        while (e) {\n            if (e & 1) res *= pr;\n            pr *= pr;\n\
+    \n            e >>= 1;\n        }\n\n        return res;\n    }\n};\n};  // namespace\
+    \ kyopro\n\n/**\n * @brief Matrix(\u884C\u5217)\n */\n#line 3 \"src/math/static_modint.hpp\"\
     \n#include <cstdint>\n#line 5 \"src/math/static_modint.hpp\"\n\n#line 3 \"src/internal/type_traits.hpp\"\
     \n#include <limits>\n#include <numeric>\n#include <typeinfo>\n#line 7 \"src/internal/type_traits.hpp\"\
     \n\nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
@@ -209,7 +211,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Matrix Product.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-08-18 16:33:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Matrix Product.test.cpp
