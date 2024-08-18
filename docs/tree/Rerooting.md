@@ -5,8 +5,8 @@
 以下の問題を考えます(これは[Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)を一般化した問題となっています)
 
 > $n$ 頂点の木 $T=(V, E)$ が与えられます.\
-> 可換モノイド $M$ があり, 各頂点 $v\in M$ 対して値 $a_v\in M$ が定まっています.\
-> また, $V\times E$ から $M$ への  作用 $f:M\times V\times E \to M;(x,v,e)\to f_{e,v}(x)$ が定義されています.\
+> 可換モノイド $M$ があり, 各頂点 $v\in V$ に対して値 $a_v\in M$ が定まっています.\
+> また, $V\times E$ から $M$ への作用 $f:M\times V\times E \to M;(x,v,e)\to f_{e,v}(x)$ が定義されています.\
 > $P:(x,y)\in V\times V\to S$ を以下のようにして定めます.
 > 
 > - $T$ における $x\to y$ の単純パスを $(v_0,e_0,v_1,\dots,v_{k},e_k,v_{k+1})$ として $P(x,y)=f_{v_0,e_0}(f_{v_1,e_1}(\dots f_{v_k,e_k}(a_y)\dots))$
@@ -88,7 +88,6 @@ int main() {
 }
 
 ```
-
 
 </details>
 
