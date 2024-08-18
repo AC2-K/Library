@@ -187,10 +187,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/debug.hpp
       title: Debugger
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/template.hpp
       title: Template
   - name: src/dynamic_programming
@@ -227,7 +227,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/type_traits.hpp
       title: Type Traits
   - name: src/math
@@ -244,10 +244,10 @@ data:
     - icon: ':warning:'
       path: src/math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/gcd.hpp
       title: gcd
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/matrix.hpp
       title: "Matrix(\u884C\u5217)"
     - icon: ':heavy_check_mark:'
@@ -271,7 +271,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/rho.hpp
       title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/static_modint.hpp
       title: static modint
   - name: src/random
@@ -479,7 +479,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Matrix Product.test.cpp
       title: test/yosupo_judge/matrix/Matrix Product.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
       title: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   - name: test/yosupo_judge/polynomial

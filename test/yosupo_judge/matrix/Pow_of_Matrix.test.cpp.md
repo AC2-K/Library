@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: gcd
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/matrix.hpp
     title: "Matrix(\u884C\u5217)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/template.hpp
     title: Template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/pow_of_matrix
@@ -39,11 +39,11 @@ data:
     \ v)), h(h_), w(w_) {}\n    \n    using mat = Matrix<T>;\n    // access\n    constexpr\
     \ std::vector<T>& operator[](int i) { return dat[i]; }\n\n    constexpr mat& operator=(const\
     \ mat& r) {\n        this->dat = r.dat;\n        this->h = r.h, this->w = r.w;\n\
-    \    }\n\n    // operator\n    constexpr mat& operator+=(const mat& r) {\n   \
-    \     assert(r.h == this->h);\n        assert(r.w == this->w);\n\n        for\
-    \ (int i = 0; i < (this->h); i++) {\n            for (int j = 0; j < (this->w);\
-    \ j++) {\n                this->dat[i][j] += r.dat[i][j];\n            }\n   \
-    \     }\n        return (*this);\n    }\n\n    constexpr mat& operator-=(const\
+    \        return (*this);\n    }\n\n    // operator\n    constexpr mat& operator+=(const\
+    \ mat& r) {\n        assert(r.h == this->h);\n        assert(r.w == this->w);\n\
+    \n        for (int i = 0; i < (this->h); i++) {\n            for (int j = 0; j\
+    \ < (this->w); j++) {\n                this->dat[i][j] += r.dat[i][j];\n     \
+    \       }\n        }\n        return (*this);\n    }\n\n    constexpr mat& operator-=(const\
     \ mat& r) {\n        assert(r.h == this->h);\n        assert(r.w == this->w);\n\
     \        for (int i = 0; i < h; i++) {\n            for (int j = 0; j < w; j++)\
     \ {\n                dat[i][j] -= r.dat[i][j];\n            }\n        }\n   \
@@ -218,8 +218,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   requiredBy: []
-  timestamp: '2024-08-18 16:40:02+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-08-18 16:42:47+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
 layout: document
