@@ -41,53 +41,10 @@ Rerooting(int n,
 
 なお, 本ライブラリではこれらの呼び出しは $O(1)$ で行えるものとして計算量を表記しています.
 
-<details> <summary> 実装例 </summary>
+実用例をいくつか提示しておきます.
 
-[ABC222 F - Expensive Expense](https://atcoder.jp/contests/abc222/tasks/abc222_f)
-
-```cpp
-
-int main() {
-    ...
-
-    vector<int> c(n - 1), d(n);
-    auto op = [&](ll x, ll y) { return max(x, y); };
-    auto put_edge_vertex = [&](ll x, int e, int v) { return x + c[e]; };
-    auto leaf = [&](int v) { return d[v]; };
-
-    Rerooting<ll, decltype(op), decltype(put_edge_vertex), decltype(leaf)> t(
-        n, 0, op, put_edge_vertex, leaf);
-    
-    ...
-}
-```
-
-[Library Checker 「Tree Path Composite Sum」](https://judge.yosupo.jp/submission/229005)
-
-
-```cpp
-
-using mint = modint<998244353>;
-
-int main() {
-    ...
-
-    using M = pair<mint, mint>
-    auto op = [&](M x, M y) {
-        return M(x.first + y.first, x.second + y.second);
-    };
-    auto put_edge_vertex = [&](M x, int e, int) {
-        return M(b[e] * x.first + c[e] * x.second, x.second);
-    };
-    auto leaf = [&](int v) { return M(a[v], mint(1)); };
-
-    Rerooting<M, decltype(op), decltype(put_edge_vertex), decltype(leaf)> 
-        t(n, M(), op, put_edge_vertex, leaf);
-
-    ...
-}
-
-```
+- [ABC222 - F](https://atcoder.jp/contests/abc222/submissions/56766266)
+- [LibraryChecker - Tree Path Composite Sum](https://judge.yosupo.jp/submission/229005)
 
 </details>
 
