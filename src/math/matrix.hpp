@@ -25,6 +25,7 @@ public:
     constexpr mat& operator=(const mat& r) {
         this->dat = r.dat;
         this->h = r.h, this->w = r.w;
+        return (*this);
     }
 
     // operator
