@@ -8,18 +8,24 @@ template <typename T> class Matrix {
     std::vector<std::vector<T>> dat;
 
 public:
-    const int h;
-    const int w;
+    
+    int h;
+    int w;
 
     constexpr Matrix(const std::vector<std::vector<T>>& dat)
         : dat(dat), h(dat.size()), w(dat.front().size()) {}
         
     constexpr Matrix(int h_, int w_, T v = T())
         : dat(h_, std::vector<T>(w_, v)), h(h_), w(w_) {}
-
+    
     using mat = Matrix<T>;
     // access
     constexpr std::vector<T>& operator[](int i) { return dat[i]; }
+
+    constexpr mat& operator=(const mat& r) {
+        this->dat = r.dat;
+        this->h = r.h, this->w = r.w;
+    }
 
     // operator
     constexpr mat& operator+=(const mat& r) {
