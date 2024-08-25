@@ -22,22 +22,23 @@ data:
     - https://judge.yosupo.jp/problem/point_add_range_sum
   bundledCode: "#line 1 \"test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n#include\
-    \ <iostream>\n#line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\nnamespace\
-    \ kyopro {\n\ntemplate <typename T> class BIT {\n    std::vector<T> bit;\n   \
-    \ int n;\n\npublic:\n    BIT() : BIT(0) {}\n    BIT(int n) : n(n), bit(n + 1,\
-    \ T()) {}\n    void add(int p, T w) {\n        p++;\n        for (int x = p; x\
-    \ <= n; x += x & -x) {\n            bit[x] += w;\n        }\n    }\n\n    T sum(int\
-    \ p) const {\n        T s = 0;\n\n        for (int x = p; x > 0; x -= x & -x)\
-    \ {\n            s += bit[x];\n        }\n        return s;\n    }\n\n    T sum(int\
-    \ l, int r) const { return sum(r) - sum(l); }\n\n    int lower_bound(T w) const\
-    \ {\n        if (w <= 0) return 0;\n\n        int x = 0;\n        int k = 1;\n\
-    \        while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n          \
-    \  if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x + k];\n   \
-    \             x += k;\n            }\n        }\n\n        return x + 1;\n   \
-    \ }\n\n    T operator[](int i) { return sum(i + 1) - sum(i); }\n    void update(int\
-    \ i, T v) { add(i, -sum(i + 1) + sum(i) + v); }\n};\n};  // namespace kyopro\n\
-    \n/**\n * @brief Binary Index Tree\n */\n#line 2 \"src/stream.hpp\"\n#include\
-    \ <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 3 \"src/internal/type_traits.hpp\"\
+    \ <iostream>\n#line 2 \"src/data-structure/BIT.hpp\"\n#include <vector>\n#include\
+    \ <cassert>\n\nnamespace kyopro {\n\ntemplate <typename T> class BIT {\n    std::vector<T>\
+    \ bit;\n    int n;\n\npublic:\n    BIT() : BIT(0) {}\n    BIT(int n) : n(n), bit(n\
+    \ + 1, T()) {}\n    \n    void add(int p, T w) {\n        assert(0 <= p && p <\
+    \ n);\n        p++;\n        for (int x = p; x <= n; x += x & -x) {\n        \
+    \    bit[x] += w;\n        }\n    }\n\n    T sum(int p) const {\n        assert(0\
+    \ <= p && p <= n);\n        T s = 0;\n\n        for (int x = p; x > 0; x -= x\
+    \ & -x) {\n            s += bit[x];\n        }\n        return s;\n    }\n\n \
+    \   T sum(int l, int r) const { return sum(r) - sum(l); }\n\n    int lower_bound(T\
+    \ w) const {\n        if (w <= 0) return 0;\n\n        int x = 0;\n        int\
+    \ k = 1;\n        while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n \
+    \           if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x +\
+    \ k];\n                x += k;\n            }\n        }\n\n        return x +\
+    \ 1;\n    }\n\n    T operator[](int i) { return sum(i + 1) - sum(i); }\n    void\
+    \ update(int i, T v) { add(i, -sum(i + 1) + sum(i) + v); }\n};\n};  // namespace\
+    \ kyopro\n\n/**\n * @brief Binary Index Tree\n */\n#line 2 \"src/stream.hpp\"\n\
+    #include <ctype.h>\n#include <stdio.h>\n#include <string>\n#line 3 \"src/internal/type_traits.hpp\"\
     \n#include <limits>\n#include <numeric>\n#include <typeinfo>\n#include <cstdint>\n\
     \nnamespace kyopro {\nnamespace internal {\ntemplate <typename... Args> struct\
     \ first_enabled {};\n\ntemplate <typename T, typename... Args>\nstruct first_enabled<std::enable_if<true,\
@@ -122,7 +123,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-08-25 13:33:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp

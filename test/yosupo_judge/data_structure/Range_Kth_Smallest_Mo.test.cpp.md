@@ -115,21 +115,22 @@ data:
     \ E, typename O>\n    void build(const A& add, const E& erase, const O& out) {\n\
     \        build(add, add, erase, erase, out);\n    }\n};\n};  // namespace kyopro\n\
     \n/**\n * @brief Mo's algorithm\n * @see https://ei1333.hateblo.jp/entry/2017/09/11/211011\n\
-    \ */\n#line 3 \"src/data-structure/BIT.hpp\"\nnamespace kyopro {\n\ntemplate <typename\
-    \ T> class BIT {\n    std::vector<T> bit;\n    int n;\n\npublic:\n    BIT() :\
-    \ BIT(0) {}\n    BIT(int n) : n(n), bit(n + 1, T()) {}\n    void add(int p, T\
-    \ w) {\n        p++;\n        for (int x = p; x <= n; x += x & -x) {\n       \
-    \     bit[x] += w;\n        }\n    }\n\n    T sum(int p) const {\n        T s\
-    \ = 0;\n\n        for (int x = p; x > 0; x -= x & -x) {\n            s += bit[x];\n\
-    \        }\n        return s;\n    }\n\n    T sum(int l, int r) const { return\
-    \ sum(r) - sum(l); }\n\n    int lower_bound(T w) const {\n        if (w <= 0)\
-    \ return 0;\n\n        int x = 0;\n        int k = 1;\n        while (k < n) k\
-    \ <<= 1;\n        for (; k > 0; k >>= 1) {\n            if (x + k <= n && bit[x\
-    \ + k] < w) {\n                w -= bit[x + k];\n                x += k;\n   \
-    \         }\n        }\n\n        return x + 1;\n    }\n\n    T operator[](int\
-    \ i) { return sum(i + 1) - sum(i); }\n    void update(int i, T v) { add(i, -sum(i\
-    \ + 1) + sum(i) + v); }\n};\n};  // namespace kyopro\n\n/**\n * @brief Binary\
-    \ Index Tree\n */\n#line 7 \"test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp\"\
+    \ */\n#line 3 \"src/data-structure/BIT.hpp\"\n#include <cassert>\n\nnamespace\
+    \ kyopro {\n\ntemplate <typename T> class BIT {\n    std::vector<T> bit;\n   \
+    \ int n;\n\npublic:\n    BIT() : BIT(0) {}\n    BIT(int n) : n(n), bit(n + 1,\
+    \ T()) {}\n    \n    void add(int p, T w) {\n        assert(0 <= p && p < n);\n\
+    \        p++;\n        for (int x = p; x <= n; x += x & -x) {\n            bit[x]\
+    \ += w;\n        }\n    }\n\n    T sum(int p) const {\n        assert(0 <= p &&\
+    \ p <= n);\n        T s = 0;\n\n        for (int x = p; x > 0; x -= x & -x) {\n\
+    \            s += bit[x];\n        }\n        return s;\n    }\n\n    T sum(int\
+    \ l, int r) const { return sum(r) - sum(l); }\n\n    int lower_bound(T w) const\
+    \ {\n        if (w <= 0) return 0;\n\n        int x = 0;\n        int k = 1;\n\
+    \        while (k < n) k <<= 1;\n        for (; k > 0; k >>= 1) {\n          \
+    \  if (x + k <= n && bit[x + k] < w) {\n                w -= bit[x + k];\n   \
+    \             x += k;\n            }\n        }\n\n        return x + 1;\n   \
+    \ }\n\n    T operator[](int i) { return sum(i + 1) - sum(i); }\n    void update(int\
+    \ i, T v) { add(i, -sum(i + 1) + sum(i) + v); }\n};\n};  // namespace kyopro\n\
+    \n/**\n * @brief Binary Index Tree\n */\n#line 7 \"test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp\"\
     \nusing namespace std;\nusing namespace kyopro;\n\nint main() {\n    int n, q;\n\
     \    read(n, q);\n    Mo mo(q);\n    vector<int> a(n);\n    for (auto& aa : a)\
     \ \n        read(aa);\n    \n    vector<int> k(q);\n    for (int i = 0; i < q;\
@@ -167,7 +168,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-08-25 13:33:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
