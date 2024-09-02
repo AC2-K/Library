@@ -18,20 +18,25 @@ int main() {
     auto op = [&](pair<mint, mint> x, pair<mint, mint> y) {
         return pair(x.first + y.first, x.second + y.second);
     };
-    auto put_edge_vertex = [&](pair<mint, mint> x, int e, int) {
+    
+    auto put_vertex = [&](pair<mint, mint> x, int v) { return x; };
+
+    auto put_edge = [&](pair<mint, mint> x, int e) {
         return pair(b[e] * x.first + c[e] * x.second, x.second);
     };
+
     auto leaf = [&](int v) { return pair(a[v], mint::raw(1)); };
 
-    Rerooting<pair<mint, mint>, decltype(op), decltype(put_edge_vertex),
-              decltype(leaf)>
-        t(n, pair<mint, mint>(), op, put_edge_vertex, leaf);
+    Rerooting<pair<mint, mint>, decltype(op), decltype(put_vertex),
+              decltype(put_edge), decltype(leaf)>
+        t(n, pair<mint, mint>(), op, put_vertex, put_edge, leaf);
 
     rep(i, n - 1) {
         int u, v;
         read(u, v, b[i], c[i]);
         t.add_edge(u, v, i);
     }
+
     vector answer = t.run();
     rep(i, n) put(answer[i].first + a[i]);
 }
