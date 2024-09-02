@@ -192,61 +192,64 @@ data:
     \ (_size_t)n; }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n\
     \ * @brief CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
     \u7E2E)\n */\n#line 3 \"src/tree/Rerooting.hpp\"\n\nnamespace kyopro {\ntemplate\
-    \ <typename M, typename OP, typename PUT_EV, typename LEAF>\nclass Rerooting {\n\
-    \    const M identity;\n    const OP op;\n    const PUT_EV put_edge_vertex;\n\
-    \    const LEAF leaf;\n\n    const int n;\n\n    std::vector<std::pair<int, std::pair<int,\
+    \ <typename M,\n          typename OP,\n          typename PUT_V,\n          typename\
+    \ PUT_E,\n          typename LEAF>\nclass Rerooting {\n    const M identity;\n\
+    \    const OP op;\n    const PUT_V put_vertex;\n    const PUT_E put_edge;\n  \
+    \  const LEAF leaf;\n\n    const int n;\n\n    std::vector<std::pair<int, std::pair<int,\
     \ int>>> es;\n\npublic:\n    Rerooting(int n,\n              const M& identity,\n\
-    \              const OP& op,\n              const PUT_EV& put_edge_vertex,\n \
-    \             const LEAF& leaf)\n        : n(n),\n          identity(identity),\n\
-    \          op(op),\n          put_edge_vertex(put_edge_vertex),\n          leaf(leaf)\
-    \ {\n        es.reserve(2 * n - 2);\n    }\n    void add_edge(int u, int v, int\
-    \ i) {\n        es.emplace_back(u, std::pair(v, i));\n        es.emplace_back(v,\
-    \ std::pair(u, i));\n    }\n\n    std::vector<M> run() {\n        assert(es.size()\
-    \ == 2 * n - 2);\n\n        internal::csr g(n, es);\n\n        std::vector<M>\
-    \ dp1(n);\n        {\n            auto push_up = [&](const auto& push_up, int\
-    \ v, int p = -1) -> M {\n                dp1[v] = leaf(v);\n                for\
-    \ (auto [nv, e_idx] : g[v]) {\n                    if (nv == p) continue;\n  \
-    \                  dp1[v] = op(dp1[v], put_edge_vertex(push_up(push_up, nv, v),\n\
-    \                                                        e_idx, v));\n       \
-    \             // \u9802\u70B9, \u8FBA\u306E\u60C5\u5831\u3092\u6DFB\u52A0\n  \
-    \              }\n                return dp1[v];\n            };\n           \
-    \ push_up(push_up, 0, -1);\n        }\n\n        std::vector<M> dp(n);\n\n   \
-    \     {\n            // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\u3057\u3066\
-    \u3044\u304F\n            \n            auto push_down = [&](const auto& push_down,\
-    \ int v, int p,\n                                 M agg) -> void {\n         \
-    \       dp[v] = agg;\n                std::vector<std::pair<int, int>> children;\n\
-    \                std::vector<M> pref, suff;\n                for (auto [nv, e_idx]\
-    \ : g[v]) {\n                    if (nv == p) continue;\n                    children.emplace_back(nv,\
-    \ e_idx);\n                    pref.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
-    \ v));\n                    suff.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
-    \ v));\n                }\n\n                if (children.empty()) return;\n \
-    \               for (int i = 0; i < (int)pref.size() - 1; ++i) {\n           \
-    \         pref[i + 1] = op(pref[i + 1], pref[i]);\n                }\n       \
-    \         for (int i = (int)suff.size() - 1; i > 0; --i) {\n                 \
-    \   suff[i - 1] = op(suff[i - 1], suff[i]);\n                }\n             \
-    \   dp[v] = op(dp[v], pref.back());\n\n                for (int i = 0; i < (int)children.size();\
-    \ ++i) {\n                    M next_agg = op(leaf(v), agg);\n               \
-    \     if (i > 0) {\n                        next_agg = op(next_agg, pref[i - 1]);\n\
-    \                    }\n                    if (i < (int)suff.size() - 1) {\n\
-    \                        next_agg = op(next_agg, suff[i + 1]);\n             \
-    \       }\n\n                    next_agg = put_edge_vertex(next_agg, children[i].second,\n\
-    \                                               children[i].first);\n\n      \
-    \              push_down(push_down, children[i].first, v, next_agg);\n       \
-    \         }\n                return;\n            };\n            push_down(push_down,\
-    \ 0, -1, identity);\n        }\n\n        return dp;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief Solving DP on tree for all roots(\u5168\u65B9\u4F4D\
-    \u6728DP)\n * @docs docs/tree/Rerooting.md\n */\n#line 6 \"test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp\"\
-    \n\nusing namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
+    \              const OP& op,\n              const PUT_V& put_vertex,\n       \
+    \       const PUT_E& put_edge,\n              const LEAF& leaf)\n        : n(n),\n\
+    \          identity(identity),\n          op(op),\n          put_vertex(put_vertex),\n\
+    \          put_edge(put_edge),\n          leaf(leaf) {\n        es.reserve(2 *\
+    \ n - 2);\n    }\n\n    void add_edge(int u, int v, int i) {\n        es.emplace_back(u,\
+    \ std::pair(v, i));\n        es.emplace_back(v, std::pair(u, i));\n    }\n\n \
+    \   std::vector<M> run() {\n        assert(es.size() == 2 * n - 2);\n\n      \
+    \  internal::csr g(n, es);\n\n        std::vector<M> dp1(n);\n        {\n    \
+    \        auto push_up = [&](const auto& push_up, int v, int p = -1) -> M {\n \
+    \               dp1[v] = identity;\n\n                for (auto [nv, e] : g[v])\
+    \ {\n                    if (nv == p) continue;\n                    dp1[v] =\
+    \ op(dp1[v], put_edge(push_up(push_up, nv, v), e));\n                }\n\n   \
+    \             dp1[v] = put_vertex(dp1[v], v);\n\n                dp1[v] = op(dp1[v],\
+    \ leaf(v));\n\n                return dp1[v];\n            };\n            push_up(push_up,\
+    \ 0, -1);\n        }\n\n        std::vector<M> dp(n);\n\n        {\n         \
+    \   // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\u3057\u3066\u3044\u304F\n\n\
+    \            auto push_down = [&](const auto& push_down, int v, int p,\n     \
+    \                            M agg) -> void {\n                dp[v] = agg;\n\n\
+    \                std::vector<std::pair<int, int>> children;\n                std::vector<M>\
+    \ pref, suff;\n\n                for (auto [nv, e] : g[v]) {\n               \
+    \     if (nv == p) continue;\n\n                    children.emplace_back(nv,\
+    \ e);\n                    pref.emplace_back(put_edge(dp1[nv], e));\n        \
+    \            suff.emplace_back(put_edge(dp1[nv], e));\n                }\n\n \
+    \               if (children.empty()) return;\n\n                for (int i =\
+    \ 0; i < (int)pref.size() - 1; ++i) {\n                    pref[i + 1] = op(pref[i\
+    \ + 1], pref[i]);\n                }\n\n                for (int i = (int)suff.size()\
+    \ - 1; i > 0; --i) {\n                    suff[i - 1] = op(suff[i - 1], suff[i]);\n\
+    \                }\n\n                dp[v] = op(dp[v], put_vertex(pref.back(),\
+    \ v));\n\n                for (int i = 0; i < (int)children.size(); ++i) {\n \
+    \                   M next_agg = op(leaf(v), agg);\n\n                    if (i\
+    \ > 0) {\n                        next_agg = op(next_agg, pref[i - 1]);\n    \
+    \                }\n\n                    if (i < (int)suff.size() - 1) {\n  \
+    \                      next_agg = op(next_agg, suff[i + 1]);\n               \
+    \     }\n                    \n                    next_agg = put_vertex(\n  \
+    \                      put_edge(put_vertex(next_agg, v), children[i].second),\n\
+    \                        children[i].first);\n\n                    push_down(push_down,\
+    \ children[i].first, v, next_agg);\n                }\n                return;\n\
+    \            };\n            push_down(push_down, 0, -1, identity);\n        }\n\
+    \n        return dp;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Solving\
+    \ DP on tree for all roots(\u5168\u65B9\u4F4D\u6728DP)\n * @docs docs/tree/Rerooting.md\n\
+    \ */\n#line 6 \"test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp\"\n\n\
+    using namespace std;\nusing namespace kyopro;\n\nusing mint = modint<998244353>;\n\
     \nint main() {\n    int n;\n    read(n);\n    vector<mint> a(n), b(n - 1), c(n\
     \ - 1);\n    rep(i, n) read(a[i]);\n\n    auto op = [&](pair<mint, mint> x, pair<mint,\
     \ mint> y) {\n        return pair(x.first + y.first, x.second + y.second);\n \
-    \   };\n    auto put_edge_vertex = [&](pair<mint, mint> x, int e, int) {\n   \
-    \     return pair(b[e] * x.first + c[e] * x.second, x.second);\n    };\n    auto\
-    \ leaf = [&](int v) { return pair(a[v], mint::raw(1)); };\n\n    Rerooting<pair<mint,\
-    \ mint>, decltype(op), decltype(put_edge_vertex),\n              decltype(leaf)>\n\
-    \        t(n, pair<mint, mint>(), op, put_edge_vertex, leaf);\n\n    rep(i, n\
-    \ - 1) {\n        int u, v;\n        read(u, v, b[i], c[i]);\n        t.add_edge(u,\
-    \ v, i);\n    }\n    vector answer = t.run();\n    rep(i, n) put(answer[i].first\
+    \   };\n    \n    auto put_vertex = [&](pair<mint, mint> x, int v) { return x;\
+    \ };\n\n    auto put_edge = [&](pair<mint, mint> x, int e) {\n        return pair(b[e]\
+    \ * x.first + c[e] * x.second, x.second);\n    };\n\n    auto leaf = [&](int v)\
+    \ { return pair(a[v], mint::raw(1)); };\n\n    Rerooting<pair<mint, mint>, decltype(op),\
+    \ decltype(put_vertex),\n              decltype(put_edge), decltype(leaf)>\n \
+    \       t(n, pair<mint, mint>(), op, put_vertex, put_edge, leaf);\n\n    rep(i,\
+    \ n - 1) {\n        int u, v;\n        read(u, v, b[i], c[i]);\n        t.add_edge(u,\
+    \ v, i);\n    }\n\n    vector answer = t.run();\n    rep(i, n) put(answer[i].first\
     \ + a[i]);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
     \n#include \"../../../src/math/static_modint.hpp\"\n#include \"../../../src/stream.hpp\"\
@@ -255,13 +258,14 @@ data:
     \nint main() {\n    int n;\n    read(n);\n    vector<mint> a(n), b(n - 1), c(n\
     \ - 1);\n    rep(i, n) read(a[i]);\n\n    auto op = [&](pair<mint, mint> x, pair<mint,\
     \ mint> y) {\n        return pair(x.first + y.first, x.second + y.second);\n \
-    \   };\n    auto put_edge_vertex = [&](pair<mint, mint> x, int e, int) {\n   \
-    \     return pair(b[e] * x.first + c[e] * x.second, x.second);\n    };\n    auto\
-    \ leaf = [&](int v) { return pair(a[v], mint::raw(1)); };\n\n    Rerooting<pair<mint,\
-    \ mint>, decltype(op), decltype(put_edge_vertex),\n              decltype(leaf)>\n\
-    \        t(n, pair<mint, mint>(), op, put_edge_vertex, leaf);\n\n    rep(i, n\
-    \ - 1) {\n        int u, v;\n        read(u, v, b[i], c[i]);\n        t.add_edge(u,\
-    \ v, i);\n    }\n    vector answer = t.run();\n    rep(i, n) put(answer[i].first\
+    \   };\n    \n    auto put_vertex = [&](pair<mint, mint> x, int v) { return x;\
+    \ };\n\n    auto put_edge = [&](pair<mint, mint> x, int e) {\n        return pair(b[e]\
+    \ * x.first + c[e] * x.second, x.second);\n    };\n\n    auto leaf = [&](int v)\
+    \ { return pair(a[v], mint::raw(1)); };\n\n    Rerooting<pair<mint, mint>, decltype(op),\
+    \ decltype(put_vertex),\n              decltype(put_edge), decltype(leaf)>\n \
+    \       t(n, pair<mint, mint>(), op, put_vertex, put_edge, leaf);\n\n    rep(i,\
+    \ n - 1) {\n        int u, v;\n        read(u, v, b[i], c[i]);\n        t.add_edge(u,\
+    \ v, i);\n    }\n\n    vector answer = t.run();\n    rep(i, n) put(answer[i].first\
     \ + a[i]);\n}"
   dependsOn:
   - src/math/static_modint.hpp
@@ -274,7 +278,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-08-18 01:00:36+09:00'
+  timestamp: '2024-09-02 21:21:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp

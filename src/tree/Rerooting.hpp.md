@@ -41,101 +41,105 @@ data:
     \ (_size_t)n; }\n};\n};  // namespace internal\n};  // namespace kyopro\n\n/**\n\
     \ * @brief CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
     \u7E2E)\n */\n#line 3 \"src/tree/Rerooting.hpp\"\n\nnamespace kyopro {\ntemplate\
-    \ <typename M, typename OP, typename PUT_EV, typename LEAF>\nclass Rerooting {\n\
-    \    const M identity;\n    const OP op;\n    const PUT_EV put_edge_vertex;\n\
-    \    const LEAF leaf;\n\n    const int n;\n\n    std::vector<std::pair<int, std::pair<int,\
+    \ <typename M,\n          typename OP,\n          typename PUT_V,\n          typename\
+    \ PUT_E,\n          typename LEAF>\nclass Rerooting {\n    const M identity;\n\
+    \    const OP op;\n    const PUT_V put_vertex;\n    const PUT_E put_edge;\n  \
+    \  const LEAF leaf;\n\n    const int n;\n\n    std::vector<std::pair<int, std::pair<int,\
     \ int>>> es;\n\npublic:\n    Rerooting(int n,\n              const M& identity,\n\
-    \              const OP& op,\n              const PUT_EV& put_edge_vertex,\n \
-    \             const LEAF& leaf)\n        : n(n),\n          identity(identity),\n\
-    \          op(op),\n          put_edge_vertex(put_edge_vertex),\n          leaf(leaf)\
-    \ {\n        es.reserve(2 * n - 2);\n    }\n    void add_edge(int u, int v, int\
-    \ i) {\n        es.emplace_back(u, std::pair(v, i));\n        es.emplace_back(v,\
-    \ std::pair(u, i));\n    }\n\n    std::vector<M> run() {\n        assert(es.size()\
-    \ == 2 * n - 2);\n\n        internal::csr g(n, es);\n\n        std::vector<M>\
-    \ dp1(n);\n        {\n            auto push_up = [&](const auto& push_up, int\
-    \ v, int p = -1) -> M {\n                dp1[v] = leaf(v);\n                for\
-    \ (auto [nv, e_idx] : g[v]) {\n                    if (nv == p) continue;\n  \
-    \                  dp1[v] = op(dp1[v], put_edge_vertex(push_up(push_up, nv, v),\n\
-    \                                                        e_idx, v));\n       \
-    \             // \u9802\u70B9, \u8FBA\u306E\u60C5\u5831\u3092\u6DFB\u52A0\n  \
-    \              }\n                return dp1[v];\n            };\n           \
-    \ push_up(push_up, 0, -1);\n        }\n\n        std::vector<M> dp(n);\n\n   \
-    \     {\n            // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\u3057\u3066\
-    \u3044\u304F\n            \n            auto push_down = [&](const auto& push_down,\
-    \ int v, int p,\n                                 M agg) -> void {\n         \
-    \       dp[v] = agg;\n                std::vector<std::pair<int, int>> children;\n\
-    \                std::vector<M> pref, suff;\n                for (auto [nv, e_idx]\
-    \ : g[v]) {\n                    if (nv == p) continue;\n                    children.emplace_back(nv,\
-    \ e_idx);\n                    pref.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
-    \ v));\n                    suff.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
-    \ v));\n                }\n\n                if (children.empty()) return;\n \
-    \               for (int i = 0; i < (int)pref.size() - 1; ++i) {\n           \
-    \         pref[i + 1] = op(pref[i + 1], pref[i]);\n                }\n       \
-    \         for (int i = (int)suff.size() - 1; i > 0; --i) {\n                 \
-    \   suff[i - 1] = op(suff[i - 1], suff[i]);\n                }\n             \
-    \   dp[v] = op(dp[v], pref.back());\n\n                for (int i = 0; i < (int)children.size();\
-    \ ++i) {\n                    M next_agg = op(leaf(v), agg);\n               \
-    \     if (i > 0) {\n                        next_agg = op(next_agg, pref[i - 1]);\n\
-    \                    }\n                    if (i < (int)suff.size() - 1) {\n\
-    \                        next_agg = op(next_agg, suff[i + 1]);\n             \
-    \       }\n\n                    next_agg = put_edge_vertex(next_agg, children[i].second,\n\
-    \                                               children[i].first);\n\n      \
-    \              push_down(push_down, children[i].first, v, next_agg);\n       \
-    \         }\n                return;\n            };\n            push_down(push_down,\
-    \ 0, -1, identity);\n        }\n\n        return dp;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief Solving DP on tree for all roots(\u5168\u65B9\u4F4D\
-    \u6728DP)\n * @docs docs/tree/Rerooting.md\n */\n"
+    \              const OP& op,\n              const PUT_V& put_vertex,\n       \
+    \       const PUT_E& put_edge,\n              const LEAF& leaf)\n        : n(n),\n\
+    \          identity(identity),\n          op(op),\n          put_vertex(put_vertex),\n\
+    \          put_edge(put_edge),\n          leaf(leaf) {\n        es.reserve(2 *\
+    \ n - 2);\n    }\n\n    void add_edge(int u, int v, int i) {\n        es.emplace_back(u,\
+    \ std::pair(v, i));\n        es.emplace_back(v, std::pair(u, i));\n    }\n\n \
+    \   std::vector<M> run() {\n        assert(es.size() == 2 * n - 2);\n\n      \
+    \  internal::csr g(n, es);\n\n        std::vector<M> dp1(n);\n        {\n    \
+    \        auto push_up = [&](const auto& push_up, int v, int p = -1) -> M {\n \
+    \               dp1[v] = identity;\n\n                for (auto [nv, e] : g[v])\
+    \ {\n                    if (nv == p) continue;\n                    dp1[v] =\
+    \ op(dp1[v], put_edge(push_up(push_up, nv, v), e));\n                }\n\n   \
+    \             dp1[v] = put_vertex(dp1[v], v);\n\n                dp1[v] = op(dp1[v],\
+    \ leaf(v));\n\n                return dp1[v];\n            };\n            push_up(push_up,\
+    \ 0, -1);\n        }\n\n        std::vector<M> dp(n);\n\n        {\n         \
+    \   // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\u3057\u3066\u3044\u304F\n\n\
+    \            auto push_down = [&](const auto& push_down, int v, int p,\n     \
+    \                            M agg) -> void {\n                dp[v] = agg;\n\n\
+    \                std::vector<std::pair<int, int>> children;\n                std::vector<M>\
+    \ pref, suff;\n\n                for (auto [nv, e] : g[v]) {\n               \
+    \     if (nv == p) continue;\n\n                    children.emplace_back(nv,\
+    \ e);\n                    pref.emplace_back(put_edge(dp1[nv], e));\n        \
+    \            suff.emplace_back(put_edge(dp1[nv], e));\n                }\n\n \
+    \               if (children.empty()) return;\n\n                for (int i =\
+    \ 0; i < (int)pref.size() - 1; ++i) {\n                    pref[i + 1] = op(pref[i\
+    \ + 1], pref[i]);\n                }\n\n                for (int i = (int)suff.size()\
+    \ - 1; i > 0; --i) {\n                    suff[i - 1] = op(suff[i - 1], suff[i]);\n\
+    \                }\n\n                dp[v] = op(dp[v], put_vertex(pref.back(),\
+    \ v));\n\n                for (int i = 0; i < (int)children.size(); ++i) {\n \
+    \                   M next_agg = op(leaf(v), agg);\n\n                    if (i\
+    \ > 0) {\n                        next_agg = op(next_agg, pref[i - 1]);\n    \
+    \                }\n\n                    if (i < (int)suff.size() - 1) {\n  \
+    \                      next_agg = op(next_agg, suff[i + 1]);\n               \
+    \     }\n                    \n                    next_agg = put_vertex(\n  \
+    \                      put_edge(put_vertex(next_agg, v), children[i].second),\n\
+    \                        children[i].first);\n\n                    push_down(push_down,\
+    \ children[i].first, v, next_agg);\n                }\n                return;\n\
+    \            };\n            push_down(push_down, 0, -1, identity);\n        }\n\
+    \n        return dp;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Solving\
+    \ DP on tree for all roots(\u5168\u65B9\u4F4D\u6728DP)\n * @docs docs/tree/Rerooting.md\n\
+    \ */\n"
   code: "#pragma once\n#include \"../../src/internal/CSR.hpp\"\n\nnamespace kyopro\
-    \ {\ntemplate <typename M, typename OP, typename PUT_EV, typename LEAF>\nclass\
-    \ Rerooting {\n    const M identity;\n    const OP op;\n    const PUT_EV put_edge_vertex;\n\
-    \    const LEAF leaf;\n\n    const int n;\n\n    std::vector<std::pair<int, std::pair<int,\
-    \ int>>> es;\n\npublic:\n    Rerooting(int n,\n              const M& identity,\n\
-    \              const OP& op,\n              const PUT_EV& put_edge_vertex,\n \
-    \             const LEAF& leaf)\n        : n(n),\n          identity(identity),\n\
-    \          op(op),\n          put_edge_vertex(put_edge_vertex),\n          leaf(leaf)\
-    \ {\n        es.reserve(2 * n - 2);\n    }\n    void add_edge(int u, int v, int\
-    \ i) {\n        es.emplace_back(u, std::pair(v, i));\n        es.emplace_back(v,\
-    \ std::pair(u, i));\n    }\n\n    std::vector<M> run() {\n        assert(es.size()\
-    \ == 2 * n - 2);\n\n        internal::csr g(n, es);\n\n        std::vector<M>\
-    \ dp1(n);\n        {\n            auto push_up = [&](const auto& push_up, int\
-    \ v, int p = -1) -> M {\n                dp1[v] = leaf(v);\n                for\
-    \ (auto [nv, e_idx] : g[v]) {\n                    if (nv == p) continue;\n  \
-    \                  dp1[v] = op(dp1[v], put_edge_vertex(push_up(push_up, nv, v),\n\
-    \                                                        e_idx, v));\n       \
-    \             // \u9802\u70B9, \u8FBA\u306E\u60C5\u5831\u3092\u6DFB\u52A0\n  \
-    \              }\n                return dp1[v];\n            };\n           \
-    \ push_up(push_up, 0, -1);\n        }\n\n        std::vector<M> dp(n);\n\n   \
-    \     {\n            // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\u3057\u3066\
-    \u3044\u304F\n            \n            auto push_down = [&](const auto& push_down,\
-    \ int v, int p,\n                                 M agg) -> void {\n         \
-    \       dp[v] = agg;\n                std::vector<std::pair<int, int>> children;\n\
-    \                std::vector<M> pref, suff;\n                for (auto [nv, e_idx]\
-    \ : g[v]) {\n                    if (nv == p) continue;\n                    children.emplace_back(nv,\
-    \ e_idx);\n                    pref.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
-    \ v));\n                    suff.emplace_back(put_edge_vertex(dp1[nv], e_idx,\
-    \ v));\n                }\n\n                if (children.empty()) return;\n \
-    \               for (int i = 0; i < (int)pref.size() - 1; ++i) {\n           \
-    \         pref[i + 1] = op(pref[i + 1], pref[i]);\n                }\n       \
-    \         for (int i = (int)suff.size() - 1; i > 0; --i) {\n                 \
-    \   suff[i - 1] = op(suff[i - 1], suff[i]);\n                }\n             \
-    \   dp[v] = op(dp[v], pref.back());\n\n                for (int i = 0; i < (int)children.size();\
-    \ ++i) {\n                    M next_agg = op(leaf(v), agg);\n               \
-    \     if (i > 0) {\n                        next_agg = op(next_agg, pref[i - 1]);\n\
-    \                    }\n                    if (i < (int)suff.size() - 1) {\n\
-    \                        next_agg = op(next_agg, suff[i + 1]);\n             \
-    \       }\n\n                    next_agg = put_edge_vertex(next_agg, children[i].second,\n\
-    \                                               children[i].first);\n\n      \
-    \              push_down(push_down, children[i].first, v, next_agg);\n       \
-    \         }\n                return;\n            };\n            push_down(push_down,\
-    \ 0, -1, identity);\n        }\n\n        return dp;\n    }\n};\n};  // namespace\
-    \ kyopro\n\n/**\n * @brief Solving DP on tree for all roots(\u5168\u65B9\u4F4D\
-    \u6728DP)\n * @docs docs/tree/Rerooting.md\n */"
+    \ {\ntemplate <typename M,\n          typename OP,\n          typename PUT_V,\n\
+    \          typename PUT_E,\n          typename LEAF>\nclass Rerooting {\n    const\
+    \ M identity;\n    const OP op;\n    const PUT_V put_vertex;\n    const PUT_E\
+    \ put_edge;\n    const LEAF leaf;\n\n    const int n;\n\n    std::vector<std::pair<int,\
+    \ std::pair<int, int>>> es;\n\npublic:\n    Rerooting(int n,\n              const\
+    \ M& identity,\n              const OP& op,\n              const PUT_V& put_vertex,\n\
+    \              const PUT_E& put_edge,\n              const LEAF& leaf)\n     \
+    \   : n(n),\n          identity(identity),\n          op(op),\n          put_vertex(put_vertex),\n\
+    \          put_edge(put_edge),\n          leaf(leaf) {\n        es.reserve(2 *\
+    \ n - 2);\n    }\n\n    void add_edge(int u, int v, int i) {\n        es.emplace_back(u,\
+    \ std::pair(v, i));\n        es.emplace_back(v, std::pair(u, i));\n    }\n\n \
+    \   std::vector<M> run() {\n        assert(es.size() == 2 * n - 2);\n\n      \
+    \  internal::csr g(n, es);\n\n        std::vector<M> dp1(n);\n        {\n    \
+    \        auto push_up = [&](const auto& push_up, int v, int p = -1) -> M {\n \
+    \               dp1[v] = identity;\n\n                for (auto [nv, e] : g[v])\
+    \ {\n                    if (nv == p) continue;\n                    dp1[v] =\
+    \ op(dp1[v], put_edge(push_up(push_up, nv, v), e));\n                }\n\n   \
+    \             dp1[v] = put_vertex(dp1[v], v);\n\n                dp1[v] = op(dp1[v],\
+    \ leaf(v));\n\n                return dp1[v];\n            };\n            push_up(push_up,\
+    \ 0, -1);\n        }\n\n        std::vector<M> dp(n);\n\n        {\n         \
+    \   // \u4E0A\u304B\u3089\u4E0B\u3078\u4F1D\u642C\u3057\u3066\u3044\u304F\n\n\
+    \            auto push_down = [&](const auto& push_down, int v, int p,\n     \
+    \                            M agg) -> void {\n                dp[v] = agg;\n\n\
+    \                std::vector<std::pair<int, int>> children;\n                std::vector<M>\
+    \ pref, suff;\n\n                for (auto [nv, e] : g[v]) {\n               \
+    \     if (nv == p) continue;\n\n                    children.emplace_back(nv,\
+    \ e);\n                    pref.emplace_back(put_edge(dp1[nv], e));\n        \
+    \            suff.emplace_back(put_edge(dp1[nv], e));\n                }\n\n \
+    \               if (children.empty()) return;\n\n                for (int i =\
+    \ 0; i < (int)pref.size() - 1; ++i) {\n                    pref[i + 1] = op(pref[i\
+    \ + 1], pref[i]);\n                }\n\n                for (int i = (int)suff.size()\
+    \ - 1; i > 0; --i) {\n                    suff[i - 1] = op(suff[i - 1], suff[i]);\n\
+    \                }\n\n                dp[v] = op(dp[v], put_vertex(pref.back(),\
+    \ v));\n\n                for (int i = 0; i < (int)children.size(); ++i) {\n \
+    \                   M next_agg = op(leaf(v), agg);\n\n                    if (i\
+    \ > 0) {\n                        next_agg = op(next_agg, pref[i - 1]);\n    \
+    \                }\n\n                    if (i < (int)suff.size() - 1) {\n  \
+    \                      next_agg = op(next_agg, suff[i + 1]);\n               \
+    \     }\n                    \n                    next_agg = put_vertex(\n  \
+    \                      put_edge(put_vertex(next_agg, v), children[i].second),\n\
+    \                        children[i].first);\n\n                    push_down(push_down,\
+    \ children[i].first, v, next_agg);\n                }\n                return;\n\
+    \            };\n            push_down(push_down, 0, -1, identity);\n        }\n\
+    \n        return dp;\n    }\n};\n};  // namespace kyopro\n\n/**\n * @brief Solving\
+    \ DP on tree for all roots(\u5168\u65B9\u4F4D\u6728DP)\n * @docs docs/tree/Rerooting.md\n\
+    \ */"
   dependsOn:
   - src/internal/CSR.hpp
   isVerificationFile: false
   path: src/tree/Rerooting.hpp
   requiredBy: []
-  timestamp: '2024-08-18 01:00:36+09:00'
+  timestamp: '2024-09-02 21:21:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
@@ -150,42 +154,66 @@ title: "Solving DP on tree for all roots(\u5168\u65B9\u4F4D\u6728DP)"
 
 このライブラリは全方位木DP(Rerooting DP)を用いて問題を解くことをサポートします.
 
-以下の問題を考えます(これは[Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)を一般化した問題となっています)
+以下の問題を考えます.
 
-> $n$ 頂点の木 $T=(V, E)$ が与えられます.\
-> 可換モノイド $M$ があり, 各頂点 $v\in V$ に対して値 $a_v\in M$ が定まっています.\
-> また, $V\times E$ から $M$ への作用 $f:M\times V\times E \to M;(x,v,e)\to f_{e,v}(x)$ が定義されています.\
-> $P:(x,y)\in V\times V\to S$ を以下のようにして定めます.
+> $N$ 頂点の木 $T=(V, E)$ が与えられます.\
+> **可換**モノイド $(M,\text{op},\text{id})$ があり, 各頂点 $v\in V$ に対して値 $a_v\in M$ が定まっているとします. \
+> また,
 > 
-> - $T$ における $x\to y$ の単純パスを $(v_0,e_0,v_1,\dots,v_{k},e_k,v_{k+1})$ として $P(x,y)=f_{v_0,e_0}(f_{v_1,e_1}(\dots f_{v_k,e_k}(a_y)\dots))$
+> - 写像 $f:M \times V \to M;(x,v)\to f_v(x)$ 
+> - 写像 $g:M \times E \to M;(x,e)\to g_e(x)$
+> 
+> が定まっているとします.
+>  
+> 各 $r\in V$ に対して, 以下を行ってください.
+> 
+> - $q(v)\in M$ を以下のようにして定める.
+> 
+>   - $v$ が根でない場合 $C_{r}(v)$ を $v$ から子方向へと伸びている辺の集合として
+> 
+>       $\displaystyle q(v)=a_v+f_v\left(\sum_{e=\{v,u\}\in C(v)}{g_e(q(u))}\right)$ 
+>   
+>       とする.
+>  
+>   - $v$ が根の場合, 上と同様にして $C(v)$ を定め
+> 
+>       $\displaystyle q(v)=f_v\left(\sum_{e=\{v,u\}\in C(v)}{g_e(q(u))}\right)$
+> 
+>       とする
 >
-> すべての $x\in V$ に対して $q_x=\displaystyle\prod_{y\neq x}{P(x,y)}$ の値を計算してください.
+> - $T$ を $r$ を根とする根付き木と見なし $q(r)$ の値を求める.
 
-このライブラリでは $O(N)$ 時間でこれを解きます.
+素直な木DPを毎回行うと計算量は $O(N^2)$ となってしまいます. しかし, 全方位木DPを用いれば計算量 $O(N)$ でこれを達成できます.
 
 # 2. 使用方法
 
 ## コンストラクタ
 
 ```cpp
-template<typename M, typename OP, typename PUT_EV, typename LEAF>
+template<typename M, 
+         typename OP,
+         typename PUT_E,
+         typename PUT_V, 
+         typename LEAF>
 Rerooting(int n, 
           const V& identity, 
           const OP& op,
-          const PUT_EV& put_edge_vertex,
+          const PUT_E& put_edge,
           const LEAF&LEAF
           )
 ```
 
+型:
 - `M` : $M$ を表す型
-- `OP`, `PUT_EV`, `LEAF` : それぞれ後述する`op`, `put_edge_vertex`, `leaf`の型
+- `OP`, `PUT_E`, `PUT_V`, `LEAF` : それぞれ後述する`op`, `put_edge_vertex`, `leaf`の型
 
+変数:
 - `n` : $T$ の頂点数
 - `identity` : $M$ の単位元
-- `op` : $M$ の二項演算.
-- `put_edge_vertex` : $x\in M,e\in E,v\in V$を引数に取り, $f_{e,v}(x)$ を返す関数
+- `op` : $M$ の二項演算
+- `put_vertex` : $(x,v)\in M\times V$ を引数に取り, $f_v(x)$ を返す関数
+- `put_edge` : $(x,e)\in M\times E$ を引数に取り, $g_{e}(x)$ を返す関数
 - `leaf` : $v\in V$ を引数に取り $a_v$ の値を返す関数
-
 
 なお, 本ライブラリではこれらの呼び出しは $O(1)$ で行えるものとして計算量を表記しています.
 
@@ -218,7 +246,7 @@ $u,v$ の頂点間に辺 $e$ を張ります.
 ```cpp
 std::vector<M> run()
 ```
-上記の問題における $q_x$ の計算結果をvectorにして返します.
+上記の問題における $q(r)$ の計算結果の列をvectorにして返します.
 
 ### 制約
 
