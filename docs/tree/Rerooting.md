@@ -2,42 +2,66 @@
 
 このライブラリは全方位木DP(Rerooting DP)を用いて問題を解くことをサポートします.
 
-以下の問題を考えます(これは[Tree Path Composite Sum](https://judge.yosupo.jp/problem/tree_path_composite_sum)を一般化した問題となっています)
+以下の問題を考えます.
 
-> $n$ 頂点の木 $T=(V, E)$ が与えられます.\
-> 可換モノイド $M$ があり, 各頂点 $v\in V$ に対して値 $a_v\in M$ が定まっています.\
-> また, $V\times E$ から $M$ への作用 $f:M\times V\times E \to M;(x,v,e)\to f_{e,v}(x)$ が定義されています.\
-> $P:(x,y)\in V\times V\to S$ を以下のようにして定めます.
+> $N$ 頂点の木 $T=(V, E)$ が与えられます.\
+> **可換**モノイド $(M,\text{op},\text{id})$ があり, 各頂点 $v\in V$ に対して値 $a_v\in M$ が定まっているとします. \
+> また,
 > 
-> - $T$ における $x\to y$ の単純パスを $(v_0,e_0,v_1,\dots,v_{k},e_k,v_{k+1})$ として $P(x,y)=f_{v_0,e_0}(f_{v_1,e_1}(\dots f_{v_k,e_k}(a_y)\dots))$
+> - 写像 $f:M \times V \to M;(x,v)\to f_v(x)$ 
+> - 写像 $g:M \times E \to M;(x,e)\to g_e(x)$
+> 
+> が定まっているとします.
+>  
+> 各 $r\in V$ に対して, 以下を行ってください.
+> 
+> - $q(v)\in M$ を以下のようにして定める.
+> 
+>   - $v$ が根でない場合 $C_{r}(v)$ を $v$ から子方向へと伸びている辺の集合として
+> 
+>       $\displaystyle q(v)=a_v+f_v\left(\sum_{e=\{v,u\}\in C(v)}{g_e(q(u))}\right)$ 
+>   
+>       とする.
+>  
+>   - $v$ が根の場合, 上と同様にして $C(v)$ を定め
+> 
+>       $\displaystyle q(v)=f_v\left(\sum_{e=\{v,u\}\in C(v)}{g_e(q(u))}\right)$
+> 
+>       とする
 >
-> すべての $x\in V$ に対して $q_x=\displaystyle\prod_{y\neq x}{P(x,y)}$ の値を計算してください.
+> - $T$ を $r$ を根とする根付き木と見なし $q(r)$ の値を求める.
 
-このライブラリでは $O(N)$ 時間でこれを解きます.
+素直な木DPを毎回行うと計算量は $O(N^2)$ となってしまいます. しかし, 全方位木DPを用いれば計算量 $O(N)$ でこれを達成できます.
 
 # 2. 使用方法
 
 ## コンストラクタ
 
 ```cpp
-template<typename M, typename OP, typename PUT_EV, typename LEAF>
+template<typename M, 
+         typename OP,
+         typename PUT_E,
+         typename PUT_V, 
+         typename LEAF>
 Rerooting(int n, 
           const V& identity, 
           const OP& op,
-          const PUT_EV& put_edge_vertex,
+          const PUT_E& put_edge,
           const LEAF&LEAF
           )
 ```
 
+型:
 - `M` : $M$ を表す型
-- `OP`, `PUT_EV`, `LEAF` : それぞれ後述する`op`, `put_edge_vertex`, `leaf`の型
+- `OP`, `PUT_E`, `PUT_V`, `LEAF` : それぞれ後述する`op`, `put_edge_vertex`, `leaf`の型
 
+変数:
 - `n` : $T$ の頂点数
 - `identity` : $M$ の単位元
-- `op` : $M$ の二項演算.
-- `put_edge_vertex` : $x\in M,e\in E,v\in V$を引数に取り, $f_{e,v}(x)$ を返す関数
+- `op` : $M$ の二項演算
+- `put_vertex` : $(x,v)\in M\times V$ を引数に取り, $f_v(x)$ を返す関数
+- `put_edge` : $(x,e)\in M\times E$ を引数に取り, $g_{e}(x)$ を返す関数
 - `leaf` : $v\in V$ を引数に取り $a_v$ の値を返す関数
-
 
 なお, 本ライブラリではこれらの呼び出しは $O(1)$ で行えるものとして計算量を表記しています.
 
@@ -70,7 +94,7 @@ $u,v$ の頂点間に辺 $e$ を張ります.
 ```cpp
 std::vector<M> run()
 ```
-上記の問題における $q_x$ の計算結果をvectorにして返します.
+上記の問題における $q(r)$ の計算結果の列をvectorにして返します.
 
 ### 制約
 
