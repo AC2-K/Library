@@ -16,22 +16,18 @@
 > 各 $r\in V$ に対して, 以下を行ってください.
 > 
 > - $q(v)\in M$ を以下のようにして定める.
-> 
->   - $v$ が根でない場合 $C_{r}(v)$ を $v$ から子方向へと伸びている辺の集合として
-> 
->       $\displaystyle q(v)=a_v+f_v\left(\sum_{e=\{v,u\}\in C(v)}{g_e(q(u))}\right)$ 
->   
+>   - $v$ が根でない場合 $C_{r}(v)$ を $v$ から子方向へと伸びている辺の集合として\
+>       $\displaystyle q(v)=a_v+f_v\left(\sum_{e=\{v,u\}\in C(v)}{g_e(q(u))}\right)$\
 >       とする.
->  
->   - $v$ が根の場合, 上と同様にして $C(v)$ を定め
-> 
->       $\displaystyle q(v)=f_v\left(\sum_{e=\{v,u\}\in C(v)}{g_e(q(u))}\right)$
-> 
+>   - $v$ が根の場合, 上と同様にして $C(v)$ を定め\
+>       $\displaystyle q(v)=f_v\left(\sum_{e=\{v,u\}\in C(v)}{g_e(q(u))}\right)$\
 >       とする
->
+> 
 > - $T$ を $r$ を根とする根付き木と見なし $q(r)$ の値を求める.
 
 素直な木DPを毎回行うと計算量は $O(N^2)$ となってしまいます. しかし, 全方位木DPを用いれば計算量 $O(N)$ でこれを達成できます.
+
+なお, 以下 $E,V$ を頂点番号や辺番号と同一視することにします.
 
 # 2. 使用方法
 
@@ -46,6 +42,7 @@ template<typename M,
 Rerooting(int n, 
           const V& identity, 
           const OP& op,
+          const PUT_V& put_vertex,
           const PUT_E& put_edge,
           const LEAF&LEAF
           )
@@ -53,7 +50,7 @@ Rerooting(int n,
 
 型:
 - `M` : $M$ を表す型
-- `OP`, `PUT_E`, `PUT_V`, `LEAF` : それぞれ後述する`op`, `put_edge_vertex`, `leaf`の型
+- `OP`, `PUT_V`, `PUT_E`, `LEAF` : それぞれ後述する`op`, `put_vertex`, `put_edge`, `leaf`の型
 
 変数:
 - `n` : $T$ の頂点数
@@ -67,8 +64,8 @@ Rerooting(int n,
 
 実用例をいくつか提示しておきます.
 
-- [ABC222 - F](https://atcoder.jp/contests/abc222/submissions/56766266)
-- [LibraryChecker - Tree Path Composite Sum](https://judge.yosupo.jp/submission/229005)
+- [ABC222 - F](https://atcoder.jp/contests/abc222/submissions/57491947)
+- [LibraryChecker - Tree Path Composite Sum](https://judge.yosupo.jp/submission/232590)
 
 ### 制約
 
