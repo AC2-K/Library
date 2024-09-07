@@ -17,10 +17,10 @@
 > 
 > - $q(v)\in M$ を以下のようにして定める.
 >   - $v$ が根でない場合 $C_{r}(v)$ を $v$ から子方向へと伸びている辺の集合として\
->       $\displaystyle q(v)=a_v+f_v\left(\sum_{e=\{v,u\}\in C(v)}{g_e(q(u))}\right)$\
+>       $\displaystyle q(v)=a_v+f_v\left(\sum_{e=(v,u)\in C(v)}{g_e(q(u))}\right)$\
 >       とする.
 >   - $v$ が根の場合, 上と同様にして $C(v)$ を定め\
->       $\displaystyle q(v)=f_v\left(\sum_{e=\{v,u\}\in C(v)}{g_e(q(u))}\right)$\
+>       $\displaystyle q(v)=f_v\left(\sum_{e=(v,u)\in C(v)}{g_e(q(u))}\right)$\
 >       とする
 > 
 > - $T$ を $r$ を根とする根付き木と見なし $q(r)$ の値を求める.
