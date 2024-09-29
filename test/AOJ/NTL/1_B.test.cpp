@@ -5,5 +5,5 @@
 int main() {
     int n, m;
     kyopro::read(n, m);
-    kyopro::put(kyopro::mod_pow<int>(n, m, (int)1e9 + 7));
+    kyopro::put(kyopro::mod_pow(n, m, (int)1e9 + 7));
 }

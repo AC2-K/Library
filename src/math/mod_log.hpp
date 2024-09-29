@@ -18,7 +18,7 @@ template <typename T> constexpr inline T mod_log(T x, T y, T p) {
     }
     int m = (int)sqrt(p) + 1;
     hash_map<T, T> mp;
-    T xm = mod_pow<T>(x, m, p);
+    T xm = mod_pow(x, m, p);
     internal::double_size_uint_t<T> add = 0, g, k = (p == 1 ? 0 : 1);
     while ((g = _gcd(x, p)) > 1) {
         if (y == k) return add;
