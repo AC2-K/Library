@@ -8,37 +8,35 @@
 
 namespace kyopro {
 
-    
 /**
- * @brief Min Plus Convolution(Convex, Convex)
- * @note a,b ともに下に凸である必要がある
- * @note オーバーフローしがちなので気を付けよう!
+ * @brief (min, +) Convolution(Convex, Convex)
+ * @attention Both a, b must be convex
  */
 template <typename T>
 std::vector<T> min_plus_convolution_convex_convex(const std::vector<T>& a,
                                                   std::vector<T>& b) {
-    constexpr T INF = std::numeric_limits<T>::max() / 2;
     const int n = a.size();
     const int m = b.size();
-    const T A0 = INF;
-    const T B0 = INF;
 
-    std::vector<T> da(n);
-    std::vector<T> db(m);
-    for (int i = 1; i < n; ++i) da[i] = a[i] - a[i - 1];
-    for (int i = 1; i < m; ++i) db[i] = b[i] - b[i - 1];
-    da[0] = a[0] - INF, db[0] = b[0] - INF;
+    std::vector<T> da(n - 1);
+    std::vector<T> db(m - 1);
+    for (int i = 0; i < n - 1; ++i) da[i] = a[i + 1] - a[i];
+    for (int i = 0; i < m - 1; ++i) db[i] = b[i + 1] - b[i];
 
     std::vector<T> ds;
     std::merge(da.begin(), da.end(), db.begin(), db.end(),
                std::back_inserter(ds));
 
     std::vector<T> res(n + m - 1);
-    T sum = ds[0];
-    for (int k = 1; k < (int)ds.size(); ++k) {
+    res[0] = a[0] + b[0];
+    T sum = 0;
+
+    for (int k = 0; k < (int)ds.size(); ++k) {
         sum += ds[k];
-        res[k - 1] = sum + A0 + B0;
+        res[k + 1] = sum + a[0] + b[0];
     }
+
     return res;
 }
+
 };  // namespace kyopro

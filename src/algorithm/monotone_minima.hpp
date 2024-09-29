@@ -4,6 +4,7 @@
 namespace kyopro {
 
 /// @note f must be monotone
+/// @returns vector of (idx, minimum)
 template <typename T, typename F>
 std::vector<std::pair<std::size_t, T>> monotone_minima(std::size_t h,
                                                        std::size_t w,

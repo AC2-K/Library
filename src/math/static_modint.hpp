@@ -88,8 +88,12 @@ public:
     constexpr mint operator+(i64 r) const noexcept { return mint(*this) += r; }
     constexpr mint operator-(i64 r) const noexcept { return mint(*this) -= r; }
     constexpr mint operator*(i64 r) const noexcept { return mint(*this) *= r; }
+    constexpr mint operator-() noexcept {
+        return raw(mint::mod() - this->val());
+    }
 
     constexpr mint& operator=(i64 r) noexcept { return (*this) = mint(r); }
+    
 
     constexpr bool operator==(const mint& r) const noexcept {
         return (*this).val() == r.val();

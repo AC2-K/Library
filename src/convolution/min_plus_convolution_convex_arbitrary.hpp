@@ -4,9 +4,8 @@
 namespace kyopro {
 
 /**
- * @brief Min Plus Convolution (Convex, Arbitrary)
- * @note a は下に凸である必要がある
- * @note オーバーフローしがちっぽいので気を付ける 
+ * @brief (min, +) Convolution (Convex, Arbitrary)
+ * @attention a must be convex
 */
 template <typename T>
 std::vector<T> min_plus_convolution_convex_arbitrary(const std::vector<T>& a,

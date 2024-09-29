@@ -2,9 +2,9 @@
 #include "../internal/type_traits.hpp"
 namespace kyopro {
 
-template <typename T>
-constexpr T mod_pow(internal::double_size_uint_t<T> base, T exp, T mod) {
-    internal::double_size_uint_t<T> ans = (mod == 1 ? 0 : 1);
+template <typename T, typename E,typename M>
+constexpr T mod_pow(T base, E exp, M mod) {
+    internal::double_size_uint_t<M> ans = (mod == 1 ? 0 : 1);
     base %= mod;
     while (exp) {
         if (exp & 1) {
