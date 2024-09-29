@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/sparse_table.hpp
     title: Sparse Table
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/CSR.hpp
     title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
       \u7E2E)"

@@ -217,7 +217,7 @@ data:
       title: "Bipartite Matching(\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0)"
   - name: src/internal
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/CSR.hpp
       title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
         \u7E2E)"
@@ -256,7 +256,7 @@ data:
     - icon: ':x:'
       path: src/math/mod_log.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':x:'
+    - icon: ':question:'
       path: src/math/mod_pow.hpp
       title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
     - icon: ':x:'
@@ -271,7 +271,7 @@ data:
     - icon: ':question:'
       path: src/math/rho.hpp
       title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/static_modint.hpp
       title: static modint
   - name: src/random
@@ -287,7 +287,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/string/manacher.hpp
       title: Manacher's algorithm
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/string/rolling_hash.hpp
       title: Rolling Hash
     - icon: ':warning:'
@@ -301,7 +301,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/tree/HeavyLightDecomposition.hpp
       title: Heavy Light Decomposition
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/Rerooting.hpp
       title: "Solving DP on tree for all roots(\u5168\u65B9\u4F4D\u6728DP)"
     - icon: ':heavy_check_mark:'
@@ -524,7 +524,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
       title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
       title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   - name: test/yuki
@@ -532,7 +532,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yuki/No3030.test.cpp
       title: test/yuki/No3030.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yuki/No430.test.cpp
       title: test/yuki/No430.test.cpp
     - icon: ':heavy_check_mark:'

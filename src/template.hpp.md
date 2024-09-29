@@ -81,7 +81,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   _isVerificationFailed: true

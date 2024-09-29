@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/CSR.hpp
     title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
       \u7E2E)"
@@ -11,7 +11,7 @@ data:
   - icon: ':question:'
     path: src/math/gcd.hpp
     title: gcd
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
   - icon: ':question:'
@@ -20,14 +20,14 @@ data:
   - icon: ':question:'
     path: src/template.hpp
     title: Template
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/Rerooting.hpp
     title: "Solving DP on tree for all roots(\u5168\u65B9\u4F4D\u6728DP)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_path_composite_sum
@@ -280,7 +280,7 @@ data:
   path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   requiredBy: []
   timestamp: '2024-09-29 11:09:18+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
 layout: document

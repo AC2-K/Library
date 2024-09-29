@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/segtree.hpp
     title: Segment Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/CSR.hpp
     title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
       \u7E2E)"
@@ -14,7 +14,7 @@ data:
   - icon: ':question:'
     path: src/math/gcd.hpp
     title: gcd
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
   - icon: ':question:'

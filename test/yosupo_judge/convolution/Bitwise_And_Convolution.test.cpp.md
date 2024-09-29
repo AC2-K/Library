@@ -13,7 +13,7 @@ data:
   - icon: ':question:'
     path: src/math/gcd.hpp
     title: gcd
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
   - icon: ':question:'

@@ -21,7 +21,7 @@ data:
   - icon: ':x:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
   _isVerificationFailed: true

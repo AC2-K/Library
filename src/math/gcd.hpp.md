@@ -20,10 +20,10 @@ data:
   - icon: ':question:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
   _extendedVerifiedWith:
@@ -84,10 +84,10 @@ data:
   - icon: ':x:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
   _isVerificationFailed: true

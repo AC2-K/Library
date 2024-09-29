@@ -24,7 +24,7 @@ data:
   - icon: ':x:'
     path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':x:'
+  - icon: ':question:'
     path: src/math/mod_pow.hpp
     title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
   - icon: ':x:'
@@ -39,13 +39,13 @@ data:
   - icon: ':question:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
   - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
   _extendedVerifiedWith:
@@ -232,13 +232,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
   - icon: ':heavy_check_mark:'

@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/matrix.hpp
     title: "Matrix(\u884C\u5217)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
   - icon: ':question:'
