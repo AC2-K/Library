@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: gcd
   _extendedRequiredBy: []
@@ -48,12 +48,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: static modint
     links: []
@@ -132,10 +132,11 @@ data:
     \ l, const mint& r) noexcept {\n        return mint(l) *= r;\n    }\n\n    constexpr\
     \ mint operator+(i64 r) const noexcept { return mint(*this) += r; }\n    constexpr\
     \ mint operator-(i64 r) const noexcept { return mint(*this) -= r; }\n    constexpr\
-    \ mint operator*(i64 r) const noexcept { return mint(*this) *= r; }\n\n    constexpr\
-    \ mint& operator=(i64 r) noexcept { return (*this) = mint(r); }\n\n    constexpr\
-    \ bool operator==(const mint& r) const noexcept {\n        return (*this).val()\
-    \ == r.val();\n    }\n\n    template <typename T, internal::is_integral_t<T>*\
+    \ mint operator*(i64 r) const noexcept { return mint(*this) *= r; }\n    constexpr\
+    \ mint operator-() noexcept {\n        return raw(mint::mod() - this->val());\n\
+    \    }\n\n    constexpr mint& operator=(i64 r) noexcept { return (*this) = mint(r);\
+    \ }\n    \n\n    constexpr bool operator==(const mint& r) const noexcept {\n \
+    \       return (*this).val() == r.val();\n    }\n\n    template <typename T, internal::is_integral_t<T>*\
     \ = nullptr>\n    constexpr mint pow(T e) const noexcept {\n        mint ans(1),\
     \ base(*this);\n        while (e) {\n            if (e & 1) {\n              \
     \  ans *= base;\n            }\n            base *= base;\n            e >>= 1;\n\
@@ -182,45 +183,47 @@ data:
     \        return mint(l) *= r;\n    }\n\n    constexpr mint operator+(i64 r) const\
     \ noexcept { return mint(*this) += r; }\n    constexpr mint operator-(i64 r) const\
     \ noexcept { return mint(*this) -= r; }\n    constexpr mint operator*(i64 r) const\
-    \ noexcept { return mint(*this) *= r; }\n\n    constexpr mint& operator=(i64 r)\
-    \ noexcept { return (*this) = mint(r); }\n\n    constexpr bool operator==(const\
-    \ mint& r) const noexcept {\n        return (*this).val() == r.val();\n    }\n\
-    \n    template <typename T, internal::is_integral_t<T>* = nullptr>\n    constexpr\
-    \ mint pow(T e) const noexcept {\n        mint ans(1), base(*this);\n        while\
-    \ (e) {\n            if (e & 1) {\n                ans *= base;\n            }\n\
-    \            base *= base;\n            e >>= 1;\n        }\n        return ans;\n\
-    \    }\n\n    constexpr mint inv() const noexcept {\n        long long x, y;\n\
-    \        auto d = ext_gcd((long long)_mod, (long long)v, x, y);\n        assert(d\
-    \ == 1);\n        return mint(y);\n    }\n\n    constexpr mint& operator/=(const\
-    \ mint& r) noexcept {\n        return (*this) *= r.inv();\n    }\n    constexpr\
-    \ mint operator/(const mint& r) const noexcept {\n        return mint(*this) *=\
-    \ r.inv();\n    }\n    constexpr friend mint operator/(const mint& l, i64 r) noexcept\
-    \ {\n        return mint(l) /= mint(r);\n    }\n    constexpr friend mint operator/(i64\
-    \ l, const mint& r) noexcept {\n        return mint(l) /= mint(r);\n    }\n};\n\
-    };  // namespace kyopro\n\n/**\n * @brief static modint\n */"
+    \ noexcept { return mint(*this) *= r; }\n    constexpr mint operator-() noexcept\
+    \ {\n        return raw(mint::mod() - this->val());\n    }\n\n    constexpr mint&\
+    \ operator=(i64 r) noexcept { return (*this) = mint(r); }\n    \n\n    constexpr\
+    \ bool operator==(const mint& r) const noexcept {\n        return (*this).val()\
+    \ == r.val();\n    }\n\n    template <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\n    constexpr mint pow(T e) const noexcept {\n        mint ans(1),\
+    \ base(*this);\n        while (e) {\n            if (e & 1) {\n              \
+    \  ans *= base;\n            }\n            base *= base;\n            e >>= 1;\n\
+    \        }\n        return ans;\n    }\n\n    constexpr mint inv() const noexcept\
+    \ {\n        long long x, y;\n        auto d = ext_gcd((long long)_mod, (long\
+    \ long)v, x, y);\n        assert(d == 1);\n        return mint(y);\n    }\n\n\
+    \    constexpr mint& operator/=(const mint& r) noexcept {\n        return (*this)\
+    \ *= r.inv();\n    }\n    constexpr mint operator/(const mint& r) const noexcept\
+    \ {\n        return mint(*this) *= r.inv();\n    }\n    constexpr friend mint\
+    \ operator/(const mint& l, i64 r) noexcept {\n        return mint(l) /= mint(r);\n\
+    \    }\n    constexpr friend mint operator/(i64 l, const mint& r) noexcept {\n\
+    \        return mint(l) /= mint(r);\n    }\n};\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief static modint\n */"
   dependsOn:
   - src/internal/type_traits.hpp
   - src/math/gcd.hpp
   isVerificationFile: false
   path: src/math/static_modint.hpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-09-29 11:09:18+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
-  - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
-  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
   - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
   - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - test/yosupo_judge/matrix/Matrix Product.test.cpp
   - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
+  - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
+  - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
 documentation_of: src/math/static_modint.hpp
 layout: document
 redirect_from:

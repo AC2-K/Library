@@ -4,16 +4,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/data-structure/bbst/SplayTree.hpp
     title: Splay Tree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/debug.hpp
     title: Debugger
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template.hpp
     title: Template
   _extendedRequiredBy: []

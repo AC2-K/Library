@@ -6,46 +6,46 @@ data:
     path: src/FormalPowerSeries/BostanMori.hpp
     title: "Bostan-Mori\u6CD5(\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u9AD8\u901F\u8A08\
       \u7B97)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
   - icon: ':heavy_check_mark:'
     path: src/convolution/min_plus_convolution_convex_convex.hpp
-    title: Min Plus Convolution(Convex, Convex)
-  - icon: ':heavy_check_mark:'
+    title: (min, +) Convolution(Convex, Convex)
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: Dynamic modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/miller.hpp
     title: "Primality Test(MillerRabin\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/mod_pow.hpp
     title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/mod_sqrt.hpp
     title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: "Primitive Root(\u539F\u59CB\u6839)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
   _extendedVerifiedWith:
@@ -79,7 +79,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/NTL/1_B.test.cpp
     title: test/AOJ/NTL/1_B.test.cpp
   - icon: ':heavy_check_mark:'
@@ -172,7 +172,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
     title: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
@@ -211,7 +211,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -232,21 +232,21 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Diameter.test.cpp
     title: test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No789.test.cpp
     title: test/yuki/No789.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: Type Traits
     links:
@@ -315,89 +315,89 @@ data:
   isVerificationFile: false
   path: src/internal/type_traits.hpp
   requiredBy:
-  - src/stream.hpp
-  - src/math/mod_pow.hpp
-  - src/math/mod_sqrt.hpp
-  - src/math/miller.hpp
-  - src/math/rho.hpp
-  - src/math/static_modint.hpp
-  - src/math/primitive_root.hpp
-  - src/math/dynamic_modint.hpp
-  - src/math/mod_log.hpp
-  - src/math/phi_function.hpp
-  - src/internal/montgomery.hpp
-  - src/convolution/min_plus_convolution_convex_convex.hpp
   - src/FormalPowerSeries/BostanMori.hpp
   - src/FormalPowerSeries/fps-sqrt.hpp
   - src/string/rolling_hash.hpp
+  - src/math/primitive_root.hpp
+  - src/math/miller.hpp
+  - src/math/mod_sqrt.hpp
+  - src/math/mod_pow.hpp
+  - src/math/rho.hpp
+  - src/math/static_modint.hpp
+  - src/math/phi_function.hpp
+  - src/math/dynamic_modint.hpp
+  - src/math/mod_log.hpp
+  - src/convolution/min_plus_convolution_convex_convex.hpp
+  - src/stream.hpp
+  - src/internal/montgomery.hpp
   timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/No789.test.cpp
-  - test/yuki/No430.test.cpp
-  - test/yuki/No3030.test.cpp
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
-  - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
-  - test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
-  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
-  - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
-  - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
-  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
-  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
-  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
-  - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-  - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-  - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
-  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
-  - test/yosupo_judge/graph/Shortest_Path.test.cpp
-  - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
-  - test/yosupo_judge/data_structure/UnionFind.test.cpp
-  - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
-  - test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
-  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
-  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Treap.test.cpp
-  - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
-  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
-  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
-  - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
-  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
-  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
-  - test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
-  - test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
-  - test/yosupo_judge/matrix/Matrix Product.test.cpp
-  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
-  - test/yosupo_judge/string/Z_algorithm.test.cpp
-  - test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
   - test/AOJ/P1508.test.cpp
-  - test/AOJ/NTL/1_B.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
+  - test/AOJ/NTL/1_B.test.cpp
   - test/AOJ/GRL/5_C.test.cpp
   - test/AOJ/GRL/1_A.test.cpp
-  - test/AOJ/DSL/2_D_dual.test.cpp
-  - test/AOJ/DSL/1_A.test.cpp
-  - test/AOJ/DSL/2_B.test.cpp
-  - test/AOJ/DSL/5_B.test.cpp
-  - test/AOJ/DSL/2_E_lazy.test.cpp
-  - test/AOJ/DSL/3_D.test.cpp
   - test/AOJ/DSL/2_E_dual.test.cpp
   - test/AOJ/DSL/2_D_lazy.test.cpp
+  - test/AOJ/DSL/5_B.test.cpp
+  - test/AOJ/DSL/3_D.test.cpp
+  - test/AOJ/DSL/2_D_dual.test.cpp
+  - test/AOJ/DSL/2_B.test.cpp
+  - test/AOJ/DSL/2_E_lazy.test.cpp
+  - test/AOJ/DSL/1_A.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Point_Get.test.cpp
+  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_Segtree.test.cpp
+  - test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
+  - test/yosupo_judge/data_structure/Point_Set_Range_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Rectangle-Sum.test.cpp
+  - test/yosupo_judge/data_structure/Static_Range_Frequency_Mo.test.cpp
+  - test/yosupo_judge/data_structure/Range_Kth_Smallest_Mo.test.cpp
+  - test/yosupo_judge/data_structure/Range_Reverse_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Trie.test.cpp
+  - test/yosupo_judge/data_structure/Queue_Operate_All_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Point_Add_Range_Sum_BIT.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+  - test/yosupo_judge/data_structure/Line_Add_Get_Min.test.cpp
+  - test/yosupo_judge/data_structure/Persistent_Queue.test.cpp
+  - test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
+  - test/yosupo_judge/data_structure/UnionFind.test.cpp
+  - test/yosupo_judge/data_structure/Double-Ended_Priority_Queue_Treap.test.cpp
+  - test/yosupo_judge/data_structure/Associative_Array_hashmap.test.cpp
+  - test/yosupo_judge/string/Enumerate_Palindromes.test.cpp
+  - test/yosupo_judge/string/Z_algorithm.test.cpp
+  - test/yosupo_judge/graph/Shortest_Path.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
+  - test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
+  - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/matrix/Matrix Product.test.cpp
+  - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
+  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
+  - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
+  - test/yosupo_judge/tree/Tree_Diameter.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+  - test/yosupo_judge/convolution/Subset_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
+  - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
+  - test/yosupo_judge/convolution/Bitwise_And_Convolution.test.cpp
+  - test/yosupo_judge/convolution/Gcd_Convolution.test.cpp
+  - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/yuki/No430.test.cpp
+  - test/yuki/No789.test.cpp
+  - test/yuki/No3030.test.cpp
 documentation_of: src/internal/type_traits.hpp
 layout: document
 redirect_from:

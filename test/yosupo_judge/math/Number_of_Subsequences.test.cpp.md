@@ -4,19 +4,19 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/dynamic_programming/number_of_subseq.hpp
     title: "Count subsequences \u90E8\u5206\u5217\u306E\u500B\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: gcd
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template.hpp
     title: Template
   _extendedRequiredBy: []
@@ -148,22 +148,24 @@ data:
     \        return mint(l) *= r;\n    }\n\n    constexpr mint operator+(i64 r) const\
     \ noexcept { return mint(*this) += r; }\n    constexpr mint operator-(i64 r) const\
     \ noexcept { return mint(*this) -= r; }\n    constexpr mint operator*(i64 r) const\
-    \ noexcept { return mint(*this) *= r; }\n\n    constexpr mint& operator=(i64 r)\
-    \ noexcept { return (*this) = mint(r); }\n\n    constexpr bool operator==(const\
-    \ mint& r) const noexcept {\n        return (*this).val() == r.val();\n    }\n\
-    \n    template <typename T, internal::is_integral_t<T>* = nullptr>\n    constexpr\
-    \ mint pow(T e) const noexcept {\n        mint ans(1), base(*this);\n        while\
-    \ (e) {\n            if (e & 1) {\n                ans *= base;\n            }\n\
-    \            base *= base;\n            e >>= 1;\n        }\n        return ans;\n\
-    \    }\n\n    constexpr mint inv() const noexcept {\n        long long x, y;\n\
-    \        auto d = ext_gcd((long long)_mod, (long long)v, x, y);\n        assert(d\
-    \ == 1);\n        return mint(y);\n    }\n\n    constexpr mint& operator/=(const\
-    \ mint& r) noexcept {\n        return (*this) *= r.inv();\n    }\n    constexpr\
-    \ mint operator/(const mint& r) const noexcept {\n        return mint(*this) *=\
-    \ r.inv();\n    }\n    constexpr friend mint operator/(const mint& l, i64 r) noexcept\
-    \ {\n        return mint(l) /= mint(r);\n    }\n    constexpr friend mint operator/(i64\
-    \ l, const mint& r) noexcept {\n        return mint(l) /= mint(r);\n    }\n};\n\
-    };  // namespace kyopro\n\n/**\n * @brief static modint\n */\n#line 4 \"src/dynamic_programming/number_of_subseq.hpp\"\
+    \ noexcept { return mint(*this) *= r; }\n    constexpr mint operator-() noexcept\
+    \ {\n        return raw(mint::mod() - this->val());\n    }\n\n    constexpr mint&\
+    \ operator=(i64 r) noexcept { return (*this) = mint(r); }\n    \n\n    constexpr\
+    \ bool operator==(const mint& r) const noexcept {\n        return (*this).val()\
+    \ == r.val();\n    }\n\n    template <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\n    constexpr mint pow(T e) const noexcept {\n        mint ans(1),\
+    \ base(*this);\n        while (e) {\n            if (e & 1) {\n              \
+    \  ans *= base;\n            }\n            base *= base;\n            e >>= 1;\n\
+    \        }\n        return ans;\n    }\n\n    constexpr mint inv() const noexcept\
+    \ {\n        long long x, y;\n        auto d = ext_gcd((long long)_mod, (long\
+    \ long)v, x, y);\n        assert(d == 1);\n        return mint(y);\n    }\n\n\
+    \    constexpr mint& operator/=(const mint& r) noexcept {\n        return (*this)\
+    \ *= r.inv();\n    }\n    constexpr mint operator/(const mint& r) const noexcept\
+    \ {\n        return mint(*this) *= r.inv();\n    }\n    constexpr friend mint\
+    \ operator/(const mint& l, i64 r) noexcept {\n        return mint(l) /= mint(r);\n\
+    \    }\n    constexpr friend mint operator/(i64 l, const mint& r) noexcept {\n\
+    \        return mint(l) /= mint(r);\n    }\n};\n};  // namespace kyopro\n\n/**\n\
+    \ * @brief static modint\n */\n#line 4 \"src/dynamic_programming/number_of_subseq.hpp\"\
     \n\nnamespace kyopro {\nnamespace number_of_subseq_impl {\n\ntemplate <typename\
     \ T> void comp(std::vector<T>& a) {\n    std::vector<T> tmp(a);\n    std::sort(tmp.begin(),\
     \ tmp.end());\n    tmp.erase(std::unique(tmp.begin(),tmp.end()), tmp.end());\n\
@@ -196,7 +198,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-09-29 11:09:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Number_of_Subsequences.test.cpp

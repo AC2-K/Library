@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/CSR.hpp
     title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
       \u7E2E)"
@@ -135,8 +135,8 @@ data:
   timestamp: '2024-05-16 17:50:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
   - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
 documentation_of: src/tree/doubling.hpp
 layout: document
 redirect_from:

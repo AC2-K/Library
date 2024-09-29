@@ -1,22 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: gcd
   - icon: ':heavy_check_mark:'
     path: src/math/matrix.hpp
     title: "Matrix(\u884C\u5217)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template.hpp
     title: Template
   _extendedRequiredBy: []
@@ -138,10 +138,11 @@ data:
     \ l, const mint& r) noexcept {\n        return mint(l) *= r;\n    }\n\n    constexpr\
     \ mint operator+(i64 r) const noexcept { return mint(*this) += r; }\n    constexpr\
     \ mint operator-(i64 r) const noexcept { return mint(*this) -= r; }\n    constexpr\
-    \ mint operator*(i64 r) const noexcept { return mint(*this) *= r; }\n\n    constexpr\
-    \ mint& operator=(i64 r) noexcept { return (*this) = mint(r); }\n\n    constexpr\
-    \ bool operator==(const mint& r) const noexcept {\n        return (*this).val()\
-    \ == r.val();\n    }\n\n    template <typename T, internal::is_integral_t<T>*\
+    \ mint operator*(i64 r) const noexcept { return mint(*this) *= r; }\n    constexpr\
+    \ mint operator-() noexcept {\n        return raw(mint::mod() - this->val());\n\
+    \    }\n\n    constexpr mint& operator=(i64 r) noexcept { return (*this) = mint(r);\
+    \ }\n    \n\n    constexpr bool operator==(const mint& r) const noexcept {\n \
+    \       return (*this).val() == r.val();\n    }\n\n    template <typename T, internal::is_integral_t<T>*\
     \ = nullptr>\n    constexpr mint pow(T e) const noexcept {\n        mint ans(1),\
     \ base(*this);\n        while (e) {\n            if (e & 1) {\n              \
     \  ans *= base;\n            }\n            base *= base;\n            e >>= 1;\n\
@@ -218,7 +219,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   requiredBy: []
-  timestamp: '2024-08-18 16:42:47+09:00'
+  timestamp: '2024-09-29 11:09:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp

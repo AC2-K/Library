@@ -5,19 +5,19 @@ data:
     path: src/data-structure/bbst/lazy_reversible_bbst.hpp
     title: "\u9045\u5EF6\u8A55\u4FA1\u3064\u304D\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\
       \u4E8C\u5206\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: gcd
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: Xor Shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
   _extendedRequiredBy: []
@@ -173,10 +173,11 @@ data:
     \ l, const mint& r) noexcept {\n        return mint(l) *= r;\n    }\n\n    constexpr\
     \ mint operator+(i64 r) const noexcept { return mint(*this) += r; }\n    constexpr\
     \ mint operator-(i64 r) const noexcept { return mint(*this) -= r; }\n    constexpr\
-    \ mint operator*(i64 r) const noexcept { return mint(*this) *= r; }\n\n    constexpr\
-    \ mint& operator=(i64 r) noexcept { return (*this) = mint(r); }\n\n    constexpr\
-    \ bool operator==(const mint& r) const noexcept {\n        return (*this).val()\
-    \ == r.val();\n    }\n\n    template <typename T, internal::is_integral_t<T>*\
+    \ mint operator*(i64 r) const noexcept { return mint(*this) *= r; }\n    constexpr\
+    \ mint operator-() noexcept {\n        return raw(mint::mod() - this->val());\n\
+    \    }\n\n    constexpr mint& operator=(i64 r) noexcept { return (*this) = mint(r);\
+    \ }\n    \n\n    constexpr bool operator==(const mint& r) const noexcept {\n \
+    \       return (*this).val() == r.val();\n    }\n\n    template <typename T, internal::is_integral_t<T>*\
     \ = nullptr>\n    constexpr mint pow(T e) const noexcept {\n        mint ans(1),\
     \ base(*this);\n        while (e) {\n            if (e & 1) {\n              \
     \  ans *= base;\n            }\n            base *= base;\n            e >>= 1;\n\
@@ -273,7 +274,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-09-29 11:09:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Dynamic_Sequence_Range_Affine_Range_Sum.test.cpp

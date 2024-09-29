@@ -8,7 +8,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/tree/HeavyLightDecomposition.hpp
     title: Heavy Light Decomposition
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/tree/Rerooting.hpp
     title: "Solving DP on tree for all roots(\u5168\u65B9\u4F4D\u6728DP)"
   - icon: ':heavy_check_mark:'
@@ -36,12 +36,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\
       \u5727\u7E2E)"
@@ -98,21 +98,21 @@ data:
   isVerificationFile: false
   path: src/internal/CSR.hpp
   requiredBy:
+  - src/tree/EulerTour.hpp
   - src/tree/doubling.hpp
   - src/tree/Rerooting.hpp
-  - src/tree/EulerTour.hpp
   - src/tree/HeavyLightDecomposition.hpp
   timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-  - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
-  - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
-  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+  - test/AOJ/GRL/5_C.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
-  - test/AOJ/GRL/5_C.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
+  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
+  - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
 documentation_of: src/internal/CSR.hpp
 layout: document
 redirect_from:

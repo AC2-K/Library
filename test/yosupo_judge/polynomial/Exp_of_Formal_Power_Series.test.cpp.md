@@ -1,31 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/FormalPowerSeries/FPS.hpp
     title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template.hpp
     title: Template
   _extendedRequiredBy: []

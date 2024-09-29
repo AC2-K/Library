@@ -3,14 +3,14 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: src/convolution/min_plus_convolution_convex_convex.hpp
-    title: Min Plus Convolution(Convex, Convex)
-  - icon: ':heavy_check_mark:'
+    title: (min, +) Convolution(Convex, Convex)
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template.hpp
     title: Template
   _extendedRequiredBy: []
@@ -58,48 +58,44 @@ data:
     };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
     \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 8\
     \ \"src/convolution/min_plus_convolution_convex_convex.hpp\"\n\nnamespace kyopro\
-    \ {\n\n    \n/**\n * @brief Min Plus Convolution(Convex, Convex)\n * @note a,b\
-    \ \u3068\u3082\u306B\u4E0B\u306B\u51F8\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
-    \u308B\n * @note \u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u3057\u304C\u3061\u306A\
-    \u306E\u3067\u6C17\u3092\u4ED8\u3051\u3088\u3046!\n */\ntemplate <typename T>\n\
-    std::vector<T> min_plus_convolution_convex_convex(const std::vector<T>& a,\n \
-    \                                                 std::vector<T>& b) {\n    constexpr\
-    \ T INF = std::numeric_limits<T>::max() / 2;\n    const int n = a.size();\n  \
-    \  const int m = b.size();\n    const T A0 = INF;\n    const T B0 = INF;\n\n \
-    \   std::vector<T> da(n);\n    std::vector<T> db(m);\n    for (int i = 1; i <\
-    \ n; ++i) da[i] = a[i] - a[i - 1];\n    for (int i = 1; i < m; ++i) db[i] = b[i]\
-    \ - b[i - 1];\n    da[0] = a[0] - INF, db[0] = b[0] - INF;\n\n    std::vector<T>\
-    \ ds;\n    std::merge(da.begin(), da.end(), db.begin(), db.end(),\n          \
-    \     std::back_inserter(ds));\n\n    std::vector<T> res(n + m - 1);\n    T sum\
-    \ = ds[0];\n    for (int k = 1; k < (int)ds.size(); ++k) {\n        sum += ds[k];\n\
-    \        res[k - 1] = sum + A0 + B0;\n    }\n    return res;\n}\n};  // namespace\
-    \ kyopro\n#line 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n\
-    #include <string>\n#line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline\
-    \ void single_read(char& c) {\n    c = getchar_unlocked();\n    while (isspace(c))\
-    \ c = getchar_unlocked();\n}\ntemplate <typename T, internal::is_integral_t<T>*\
-    \ = nullptr>\ninline void single_read(T& a) {\n    a = 0;\n    bool is_negative\
-    \ = false;\n    char c = getchar_unlocked();\n    while (isspace(c)) {\n     \
-    \   c = getchar_unlocked();\n    }\n    if (c == '-') is_negative = true, c =\
-    \ getchar_unlocked();\n    while (isdigit(c)) {\n        a = 10 * a + (c - '0');\n\
-    \        c = getchar_unlocked();\n    }\n    if (is_negative) a *= -1;\n}\ntemplate\
-    \ <typename T, internal::is_modint_t<T>* = nullptr>\ninline void single_read(T&\
-    \ a) {\n    long long x;\n    single_read(x);\n    a = T(x);\n}\ninline void single_read(std::string&\
-    \ str) noexcept {\n    char c = getchar_unlocked();\n    while (isspace(c)) c\
-    \ = getchar_unlocked();\n    while (!isspace(c)) {\n        str += c;\n      \
-    \  c = getchar_unlocked();\n    }\n}\ntemplate<typename T>\ninline void read(T&\
-    \ x) noexcept {single_read(x);}\ntemplate <typename Head, typename... Tail>\n\
-    inline void read(Head& head, Tail&... tail) noexcept {\n    single_read(head),\
-    \ read(tail...);\n}\n\ninline void single_write(char c) noexcept { putchar_unlocked(c);\
-    \ }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void\
-    \ single_write(T a) noexcept {\n    if (!a) {\n        putchar_unlocked('0');\n\
-    \        return;\n    }\n    if constexpr (std::is_signed_v<T>) {\n        if\
-    \ (a < 0) putchar_unlocked('-'), a *= -1;\n    }\n    constexpr int d = std::numeric_limits<T>::digits10;\n\
-    \    char s[d + 1];\n    int now = d + 1;\n    while (a) {\n        s[--now] =\
-    \ (char)'0' + a % 10;\n        a /= 10;\n    }\n    while (now <= d) putchar_unlocked(s[now++]);\n\
-    }\ntemplate <typename T, internal::is_modint_t<T>* = nullptr>\ninline void single_write(T\
-    \ a) noexcept {\n    single_write(a.val());\n}\ninline void single_write(const\
-    \ std::string& str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n\
-    \    }\n}\ntemplate <typename T> inline void write(T x) noexcept { single_write(x);\
+    \ {\n\n/**\n * @brief (min, +) Convolution(Convex, Convex)\n * @attention Both\
+    \ a, b must be convex\n */\ntemplate <typename T>\nstd::vector<T> min_plus_convolution_convex_convex(const\
+    \ std::vector<T>& a,\n                                                  std::vector<T>&\
+    \ b) {\n    const int n = a.size();\n    const int m = b.size();\n\n    std::vector<T>\
+    \ da(n - 1);\n    std::vector<T> db(m - 1);\n    for (int i = 0; i < n - 1; ++i)\
+    \ da[i] = a[i + 1] - a[i];\n    for (int i = 0; i < m - 1; ++i) db[i] = b[i +\
+    \ 1] - b[i];\n\n    std::vector<T> ds;\n    std::merge(da.begin(), da.end(), db.begin(),\
+    \ db.end(),\n               std::back_inserter(ds));\n\n    std::vector<T> res(n\
+    \ + m - 1);\n    res[0] = a[0] + b[0];\n    T sum = 0;\n\n    for (int k = 0;\
+    \ k < (int)ds.size(); ++k) {\n        sum += ds[k];\n        res[k + 1] = sum\
+    \ + a[0] + b[0];\n    }\n\n    return res;\n}\n\n};  // namespace kyopro\n#line\
+    \ 2 \"src/stream.hpp\"\n#include <ctype.h>\n#include <stdio.h>\n#include <string>\n\
+    #line 6 \"src/stream.hpp\"\n\nnamespace kyopro {\n\ninline void single_read(char&\
+    \ c) {\n    c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n\
+    }\ntemplate <typename T, internal::is_integral_t<T>* = nullptr>\ninline void single_read(T&\
+    \ a) {\n    a = 0;\n    bool is_negative = false;\n    char c = getchar_unlocked();\n\
+    \    while (isspace(c)) {\n        c = getchar_unlocked();\n    }\n    if (c ==\
+    \ '-') is_negative = true, c = getchar_unlocked();\n    while (isdigit(c)) {\n\
+    \        a = 10 * a + (c - '0');\n        c = getchar_unlocked();\n    }\n   \
+    \ if (is_negative) a *= -1;\n}\ntemplate <typename T, internal::is_modint_t<T>*\
+    \ = nullptr>\ninline void single_read(T& a) {\n    long long x;\n    single_read(x);\n\
+    \    a = T(x);\n}\ninline void single_read(std::string& str) noexcept {\n    char\
+    \ c = getchar_unlocked();\n    while (isspace(c)) c = getchar_unlocked();\n  \
+    \  while (!isspace(c)) {\n        str += c;\n        c = getchar_unlocked();\n\
+    \    }\n}\ntemplate<typename T>\ninline void read(T& x) noexcept {single_read(x);}\n\
+    template <typename Head, typename... Tail>\ninline void read(Head& head, Tail&...\
+    \ tail) noexcept {\n    single_read(head), read(tail...);\n}\n\ninline void single_write(char\
+    \ c) noexcept { putchar_unlocked(c); }\ntemplate <typename T, internal::is_integral_t<T>*\
+    \ = nullptr>\ninline void single_write(T a) noexcept {\n    if (!a) {\n      \
+    \  putchar_unlocked('0');\n        return;\n    }\n    if constexpr (std::is_signed_v<T>)\
+    \ {\n        if (a < 0) putchar_unlocked('-'), a *= -1;\n    }\n    constexpr\
+    \ int d = std::numeric_limits<T>::digits10;\n    char s[d + 1];\n    int now =\
+    \ d + 1;\n    while (a) {\n        s[--now] = (char)'0' + a % 10;\n        a /=\
+    \ 10;\n    }\n    while (now <= d) putchar_unlocked(s[now++]);\n}\ntemplate <typename\
+    \ T, internal::is_modint_t<T>* = nullptr>\ninline void single_write(T a) noexcept\
+    \ {\n    single_write(a.val());\n}\ninline void single_write(const std::string&\
+    \ str) noexcept {\n    for (auto c : str) {\n        putchar_unlocked(c);\n  \
+    \  }\n}\ntemplate <typename T> inline void write(T x) noexcept { single_write(x);\
     \ }\ntemplate <typename Head, typename... Tail>\ninline void write(Head head,\
     \ Tail... tail) noexcept {\n    single_write(head);\n    putchar_unlocked(' ');\n\
     \    write(tail...);\n}\ntemplate <typename... Args> inline void put(Args... x)\
@@ -135,7 +131,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-09-29 11:09:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp

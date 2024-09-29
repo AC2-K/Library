@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
   _extendedRequiredBy: []
@@ -13,7 +13,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    document_title: Min Plus Convolution(Convex, Convex)
+    document_title: (min, +) Convolution(Convex, Convex)
     links: []
   bundledCode: "#line 2 \"src/convolution/min_plus_convolution_convex_convex.hpp\"\
     \n#include <algorithm>\n#include <limits>\n#include <numeric>\n#include <utility>\n\
@@ -48,46 +48,37 @@ data:
     };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
     \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 8\
     \ \"src/convolution/min_plus_convolution_convex_convex.hpp\"\n\nnamespace kyopro\
-    \ {\n\n    \n/**\n * @brief Min Plus Convolution(Convex, Convex)\n * @note a,b\
-    \ \u3068\u3082\u306B\u4E0B\u306B\u51F8\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
-    \u308B\n * @note \u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u3057\u304C\u3061\u306A\
-    \u306E\u3067\u6C17\u3092\u4ED8\u3051\u3088\u3046!\n */\ntemplate <typename T>\n\
-    std::vector<T> min_plus_convolution_convex_convex(const std::vector<T>& a,\n \
-    \                                                 std::vector<T>& b) {\n    constexpr\
-    \ T INF = std::numeric_limits<T>::max() / 2;\n    const int n = a.size();\n  \
-    \  const int m = b.size();\n    const T A0 = INF;\n    const T B0 = INF;\n\n \
-    \   std::vector<T> da(n);\n    std::vector<T> db(m);\n    for (int i = 1; i <\
-    \ n; ++i) da[i] = a[i] - a[i - 1];\n    for (int i = 1; i < m; ++i) db[i] = b[i]\
-    \ - b[i - 1];\n    da[0] = a[0] - INF, db[0] = b[0] - INF;\n\n    std::vector<T>\
-    \ ds;\n    std::merge(da.begin(), da.end(), db.begin(), db.end(),\n          \
-    \     std::back_inserter(ds));\n\n    std::vector<T> res(n + m - 1);\n    T sum\
-    \ = ds[0];\n    for (int k = 1; k < (int)ds.size(); ++k) {\n        sum += ds[k];\n\
-    \        res[k - 1] = sum + A0 + B0;\n    }\n    return res;\n}\n};  // namespace\
-    \ kyopro\n"
+    \ {\n\n/**\n * @brief (min, +) Convolution(Convex, Convex)\n * @attention Both\
+    \ a, b must be convex\n */\ntemplate <typename T>\nstd::vector<T> min_plus_convolution_convex_convex(const\
+    \ std::vector<T>& a,\n                                                  std::vector<T>&\
+    \ b) {\n    const int n = a.size();\n    const int m = b.size();\n\n    std::vector<T>\
+    \ da(n - 1);\n    std::vector<T> db(m - 1);\n    for (int i = 0; i < n - 1; ++i)\
+    \ da[i] = a[i + 1] - a[i];\n    for (int i = 0; i < m - 1; ++i) db[i] = b[i +\
+    \ 1] - b[i];\n\n    std::vector<T> ds;\n    std::merge(da.begin(), da.end(), db.begin(),\
+    \ db.end(),\n               std::back_inserter(ds));\n\n    std::vector<T> res(n\
+    \ + m - 1);\n    res[0] = a[0] + b[0];\n    T sum = 0;\n\n    for (int k = 0;\
+    \ k < (int)ds.size(); ++k) {\n        sum += ds[k];\n        res[k + 1] = sum\
+    \ + a[0] + b[0];\n    }\n\n    return res;\n}\n\n};  // namespace kyopro\n"
   code: "#pragma once\n#include <algorithm>\n#include <limits>\n#include <numeric>\n\
     #include <utility>\n#include <vector>\n#include \"../../src/internal/type_traits.hpp\"\
-    \n\nnamespace kyopro {\n\n    \n/**\n * @brief Min Plus Convolution(Convex, Convex)\n\
-    \ * @note a,b \u3068\u3082\u306B\u4E0B\u306B\u51F8\u3067\u3042\u308B\u5FC5\u8981\
-    \u304C\u3042\u308B\n * @note \u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u3057\u304C\
-    \u3061\u306A\u306E\u3067\u6C17\u3092\u4ED8\u3051\u3088\u3046!\n */\ntemplate <typename\
-    \ T>\nstd::vector<T> min_plus_convolution_convex_convex(const std::vector<T>&\
-    \ a,\n                                                  std::vector<T>& b) {\n\
-    \    constexpr T INF = std::numeric_limits<T>::max() / 2;\n    const int n = a.size();\n\
-    \    const int m = b.size();\n    const T A0 = INF;\n    const T B0 = INF;\n\n\
-    \    std::vector<T> da(n);\n    std::vector<T> db(m);\n    for (int i = 1; i <\
-    \ n; ++i) da[i] = a[i] - a[i - 1];\n    for (int i = 1; i < m; ++i) db[i] = b[i]\
-    \ - b[i - 1];\n    da[0] = a[0] - INF, db[0] = b[0] - INF;\n\n    std::vector<T>\
+    \n\nnamespace kyopro {\n\n/**\n * @brief (min, +) Convolution(Convex, Convex)\n\
+    \ * @attention Both a, b must be convex\n */\ntemplate <typename T>\nstd::vector<T>\
+    \ min_plus_convolution_convex_convex(const std::vector<T>& a,\n              \
+    \                                    std::vector<T>& b) {\n    const int n = a.size();\n\
+    \    const int m = b.size();\n\n    std::vector<T> da(n - 1);\n    std::vector<T>\
+    \ db(m - 1);\n    for (int i = 0; i < n - 1; ++i) da[i] = a[i + 1] - a[i];\n \
+    \   for (int i = 0; i < m - 1; ++i) db[i] = b[i + 1] - b[i];\n\n    std::vector<T>\
     \ ds;\n    std::merge(da.begin(), da.end(), db.begin(), db.end(),\n          \
-    \     std::back_inserter(ds));\n\n    std::vector<T> res(n + m - 1);\n    T sum\
-    \ = ds[0];\n    for (int k = 1; k < (int)ds.size(); ++k) {\n        sum += ds[k];\n\
-    \        res[k - 1] = sum + A0 + B0;\n    }\n    return res;\n}\n};  // namespace\
-    \ kyopro\n"
+    \     std::back_inserter(ds));\n\n    std::vector<T> res(n + m - 1);\n    res[0]\
+    \ = a[0] + b[0];\n    T sum = 0;\n\n    for (int k = 0; k < (int)ds.size(); ++k)\
+    \ {\n        sum += ds[k];\n        res[k + 1] = sum + a[0] + b[0];\n    }\n\n\
+    \    return res;\n}\n\n};  // namespace kyopro\n"
   dependsOn:
   - src/internal/type_traits.hpp
   isVerificationFile: false
   path: src/convolution/min_plus_convolution_convex_convex.hpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-09-29 11:09:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Convex.test.cpp
@@ -96,5 +87,5 @@ layout: document
 redirect_from:
 - /library/src/convolution/min_plus_convolution_convex_convex.hpp
 - /library/src/convolution/min_plus_convolution_convex_convex.hpp.html
-title: Min Plus Convolution(Convex, Convex)
+title: (min, +) Convolution(Convex, Convex)
 ---

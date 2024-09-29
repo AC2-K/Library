@@ -1,34 +1,34 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: Dynamic modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: gcd
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/miller.hpp
     title: "Primality Test(MillerRabin\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: "Primitive Root(\u539F\u59CB\u6839)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: Xor Shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
   _extendedRequiredBy: []

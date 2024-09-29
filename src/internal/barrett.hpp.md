@@ -2,25 +2,25 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: Dynamic modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/miller.hpp
     title: "Primality Test(MillerRabin\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/mod_sqrt.hpp
     title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
   - icon: ':heavy_check_mark:'
     path: src/math/phi_function.hpp
     title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: "Primitive Root(\u539F\u59CB\u6839)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
   _extendedVerifiedWith:
@@ -36,15 +36,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No3030.test.cpp
     title: test/yuki/No3030.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: Barrett Reduction
     links:
@@ -75,22 +75,22 @@ data:
   isVerificationFile: false
   path: src/internal/barrett.hpp
   requiredBy:
-  - src/math/mod_sqrt.hpp
-  - src/math/miller.hpp
-  - src/math/rho.hpp
-  - src/math/primitive_root.hpp
-  - src/math/dynamic_modint.hpp
-  - src/math/phi_function.hpp
   - src/FormalPowerSeries/fps-sqrt.hpp
+  - src/math/primitive_root.hpp
+  - src/math/miller.hpp
+  - src/math/mod_sqrt.hpp
+  - src/math/rho.hpp
+  - src/math/phi_function.hpp
+  - src/math/dynamic_modint.hpp
   timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/yuki/No3030.test.cpp
-  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/math/Primitive_Root.test.cpp
-  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
-  - test/yosupo_judge/math/Factorize.test.cpp
   - test/AOJ/NTL/1_D.test.cpp
+  - test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
+  - test/yosupo_judge/math/Primitive_Root.test.cpp
+  - test/yosupo_judge/math/Factorize.test.cpp
+  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
+  - test/yuki/No3030.test.cpp
 documentation_of: src/internal/barrett.hpp
 layout: document
 redirect_from:

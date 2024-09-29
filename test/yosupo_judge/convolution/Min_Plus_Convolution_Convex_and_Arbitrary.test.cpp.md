@@ -6,17 +6,17 @@ data:
     title: Monotone Minima
   - icon: ':heavy_check_mark:'
     path: src/convolution/min_plus_convolution_convex_arbitrary.hpp
-    title: Min Plus Convolution (Convex, Arbitrary)
-  - icon: ':heavy_check_mark:'
+    title: (min, +) Convolution (Convex, Arbitrary)
+  - icon: ':question:'
     path: src/debug.hpp
     title: Debugger
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template.hpp
     title: Template
   _extendedRequiredBy: []
@@ -33,31 +33,29 @@ data:
     \n#define PROBLEM \\\n    \"https://judge.yosupo.jp/problem/min_plus_convolution_convex_arbitrary\"\
     \n#line 2 \"src/convolution/min_plus_convolution_convex_arbitrary.hpp\"\n#include\
     \ <limits>\n#line 2 \"src/algorithm/monotone_minima.hpp\"\n#include <utility>\n\
-    #include <vector>\nnamespace kyopro {\n\n/// @note f must be monotone\ntemplate\
-    \ <typename T, typename F>\nstd::vector<std::pair<std::size_t, T>> monotone_minima(std::size_t\
-    \ h,\n                                                       std::size_t w,\n\
-    \                                                       const F& f) {\n    using\
-    \ usize = std::size_t;\n    std::vector<std::pair<usize, T>> res(h);\n\n    const\
-    \ auto calc = [&](const auto& calc, usize top, usize bottom, usize l,\n      \
-    \                    usize r) -> void {\n        if (top >= bottom) return;\n\n\
-    \        usize mid = (top + bottom) / 2;\n\n        T mn = f(mid, l);\n      \
-    \  usize idx = l;\n        for (usize i = l + 1; i < r; ++i) {\n            T\
-    \ val = f(mid, i);\n            if (mn > val) {\n                mn = val;\n \
-    \               idx = i;\n            }\n        }\n\n        res[mid] = std::pair(idx,\
-    \ mn);\n        calc(calc, top, mid, l, idx + 1);\n        calc(calc, mid + 1,\
-    \ bottom, idx, r);\n    };\n    calc(calc, 0, h, 0, w);\n\n    return res;\n}\n\
-    };  // namespace kyopro\n\n/**\n * @brief Monotone Minima\n*/\n#line 4 \"src/convolution/min_plus_convolution_convex_arbitrary.hpp\"\
-    \nnamespace kyopro {\n\n/**\n * @brief Min Plus Convolution (Convex, Arbitrary)\n\
-    \ * @note a \u306F\u4E0B\u306B\u51F8\u3067\u3042\u308B\u5FC5\u8981\u304C\u3042\
-    \u308B\n * @note \u30AA\u30FC\u30D0\u30FC\u30D5\u30ED\u30FC\u3057\u304C\u3061\u3063\
-    \u307D\u3044\u306E\u3067\u6C17\u3092\u4ED8\u3051\u308B \n*/\ntemplate <typename\
-    \ T>\nstd::vector<T> min_plus_convolution_convex_arbitrary(const std::vector<T>&\
-    \ a,\n                                                     const std::vector<T>&\
-    \ b) {\n    const int n = a.size();\n    const int m = b.size();\n    \n    const\
-    \ auto f = [&](int i, int j) {\n        if (i - j < 0 || i - j >= n) {\n     \
-    \       return std::numeric_limits<T>::max() / 2 + b[j];\n        }\n        return\
-    \ a[i - j] + b[j];\n    };\n\n    std::vector res = monotone_minima<T>(n + m -\
-    \ 1, m, f);\n    std::vector<T> c(n + m - 1);\n    for (int i = 0; i < (int)c.size();\
+    #include <vector>\nnamespace kyopro {\n\n/// @note f must be monotone\n/// @returns\
+    \ vector of (idx, minimum)\ntemplate <typename T, typename F>\nstd::vector<std::pair<std::size_t,\
+    \ T>> monotone_minima(std::size_t h,\n                                       \
+    \                std::size_t w,\n                                            \
+    \           const F& f) {\n    using usize = std::size_t;\n    std::vector<std::pair<usize,\
+    \ T>> res(h);\n\n    const auto calc = [&](const auto& calc, usize top, usize\
+    \ bottom, usize l,\n                          usize r) -> void {\n        if (top\
+    \ >= bottom) return;\n\n        usize mid = (top + bottom) / 2;\n\n        T mn\
+    \ = f(mid, l);\n        usize idx = l;\n        for (usize i = l + 1; i < r; ++i)\
+    \ {\n            T val = f(mid, i);\n            if (mn > val) {\n           \
+    \     mn = val;\n                idx = i;\n            }\n        }\n\n      \
+    \  res[mid] = std::pair(idx, mn);\n        calc(calc, top, mid, l, idx + 1);\n\
+    \        calc(calc, mid + 1, bottom, idx, r);\n    };\n    calc(calc, 0, h, 0,\
+    \ w);\n\n    return res;\n}\n};  // namespace kyopro\n\n/**\n * @brief Monotone\
+    \ Minima\n*/\n#line 4 \"src/convolution/min_plus_convolution_convex_arbitrary.hpp\"\
+    \nnamespace kyopro {\n\n/**\n * @brief (min, +) Convolution (Convex, Arbitrary)\n\
+    \ * @attention a must be convex\n*/\ntemplate <typename T>\nstd::vector<T> min_plus_convolution_convex_arbitrary(const\
+    \ std::vector<T>& a,\n                                                     const\
+    \ std::vector<T>& b) {\n    const int n = a.size();\n    const int m = b.size();\n\
+    \    \n    const auto f = [&](int i, int j) {\n        if (i - j < 0 || i - j\
+    \ >= n) {\n            return std::numeric_limits<T>::max() / 2 + b[j];\n    \
+    \    }\n        return a[i - j] + b[j];\n    };\n\n    std::vector res = monotone_minima<T>(n\
+    \ + m - 1, m, f);\n    std::vector<T> c(n + m - 1);\n    for (int i = 0; i < (int)c.size();\
     \ ++i) c[i] = res[i].second;\n    return c;\n}\n};  // namespace kyopro\n#line\
     \ 1 \"src/debug.hpp\"\n#ifdef ONLINE_JUDGE\n#define debug(x) void(0)\n#else\n\
     #define _GLIBCXX_DEBUG\n#define debug(x) std::cerr << __LINE__ << \" : \" << #x\
@@ -157,7 +155,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 17:50:34+09:00'
+  timestamp: '2024-09-29 11:09:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/convolution/Min_Plus_Convolution_Convex_and_Arbitrary.test.cpp

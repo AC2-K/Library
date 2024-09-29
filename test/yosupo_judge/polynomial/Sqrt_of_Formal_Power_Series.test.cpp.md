@@ -1,80 +1,80 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/FormalPowerSeries/FPS.hpp
     title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/convolution.hpp
     title: src/atcoder/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/internal_bit.hpp
     title: src/atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/internal_math.hpp
     title: src/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/internal_type_traits.hpp
     title: src/atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/data-structure/hash_map.hpp
     title: Hash Map
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/debug.hpp
     title: Debugger
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/barrett.hpp
     title: Barrett Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/montgomery.hpp
     title: Montgomery Reduction
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/dynamic_modint.hpp
     title: Dynamic modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/gcd.hpp
     title: gcd
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/miller.hpp
     title: "Primality Test(MillerRabin\u7D20\u6570\u5224\u5B9A)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/mod_pow.hpp
     title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: src/math/mod_sqrt.hpp
     title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/primitive_root.hpp
     title: "Primitive Root(\u539F\u59CB\u6839)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/math/rho.hpp
     title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/random/xor_shift.hpp
     title: Xor Shift
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/template.hpp
     title: Template
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/sqrt_of_formal_power_series
@@ -583,8 +583,8 @@ data:
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
     };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
     \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 3\
-    \ \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\ntemplate <typename T>\nconstexpr\
-    \ T mod_pow(internal::double_size_uint_t<T> base, T exp, T mod) {\n    internal::double_size_uint_t<T>\
+    \ \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\ntemplate <typename T, typename\
+    \ E,typename M>\nconstexpr T mod_pow(T base, E exp, M mod) {\n    internal::double_size_uint_t<M>\
     \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
     \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
     \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
@@ -913,8 +913,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   requiredBy: []
-  timestamp: '2024-05-16 21:11:27+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-09-29 11:09:18+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 layout: document

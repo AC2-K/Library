@@ -172,8 +172,8 @@ data:
   timestamp: '2024-05-06 00:31:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
   - test/AOJ/P1508.test.cpp
+  - test/yosupo_judge/data_structure/Range Reverse_Range_Sum_SplayTree.test.cpp
 documentation_of: src/data-structure/bbst/SplayTree.hpp
 layout: document
 redirect_from:
