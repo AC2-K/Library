@@ -20,10 +20,10 @@ data:
       path: src/FormalPowerSeries/BostanMori.hpp
       title: "Bostan-Mori\u6CD5(\u7DDA\u5F62\u6F38\u5316\u5F0F\u306E\u9AD8\u901F\u8A08\
         \u7B97)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/FormalPowerSeries/FPS.hpp
       title: "Formal Power Series(\u5F62\u5F0F\u7684\u3079\u304D\u7D1A\u6570)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/FormalPowerSeries/fps-sqrt.hpp
       title: Sqrt of FPS
     - icon: ':heavy_check_mark:'
@@ -42,7 +42,7 @@ data:
       title: Subset Transform
   - name: src/atcoder
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/convolution.hpp
       title: src/atcoder/convolution.hpp
     - icon: ':warning:'
@@ -51,13 +51,13 @@ data:
     - icon: ':warning:'
       path: src/atcoder/fenwicktree.hpp
       title: src/atcoder/fenwicktree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/internal_bit.hpp
       title: src/atcoder/internal_bit.hpp
     - icon: ':warning:'
       path: src/atcoder/internal_csr.hpp
       title: src/atcoder/internal_csr.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/internal_math.hpp
       title: src/atcoder/internal_math.hpp
     - icon: ':warning:'
@@ -66,7 +66,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/internal_scc.hpp
       title: src/atcoder/internal_scc.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/internal_type_traits.hpp
       title: src/atcoder/internal_type_traits.hpp
     - icon: ':warning:'
@@ -81,7 +81,7 @@ data:
     - icon: ':warning:'
       path: src/atcoder/mincostflow.hpp
       title: src/atcoder/mincostflow.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/atcoder/modint.hpp
       title: src/atcoder/modint.hpp
     - icon: ':warning:'
@@ -133,7 +133,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/dynamic_segtree.hpp
       title: Dynamic Segment Tree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/hash_map.hpp
       title: Hash Map
     - icon: ':heavy_check_mark:'
@@ -184,13 +184,13 @@ data:
       title: Persistent Stack
   - name: src
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/debug.hpp
       title: Debugger
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/template.hpp
       title: Template
   - name: src/dynamic_programming
@@ -221,13 +221,13 @@ data:
       path: src/internal/CSR.hpp
       title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
         \u7E2E)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/barrett.hpp
       title: Barrett Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/type_traits.hpp
       title: Type Traits
   - name: src/math
@@ -238,37 +238,37 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/math/divisor-multiple-transform.hpp
       title: "Divisor\u30FBMultiple Transform"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/dynamic_modint.hpp
       title: Dynamic modint
     - icon: ':warning:'
       path: src/math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/gcd.hpp
       title: gcd
     - icon: ':heavy_check_mark:'
       path: src/math/matrix.hpp
       title: "Matrix(\u884C\u5217)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/miller.hpp
       title: "Primality Test(MillerRabin\u7D20\u6570\u5224\u5B9A)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/mod_log.hpp
       title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/mod_pow.hpp
       title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: src/math/mod_sqrt.hpp
       title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
     - icon: ':heavy_check_mark:'
       path: src/math/phi_function.hpp
       title: "Euler\u306E $\\varphi$ \u95A2\u6570"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/primitive_root.hpp
       title: "Primitive Root(\u539F\u59CB\u6839)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/math/rho.hpp
       title: "PollardRho\u7D20\u56E0\u6570\u5206\u89E3"
     - icon: ':heavy_check_mark:'
@@ -276,7 +276,7 @@ data:
       title: static modint
   - name: src/random
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/random/xor_shift.hpp
       title: Xor Shift
   - name: src/string
@@ -344,7 +344,7 @@ data:
       title: test/AOJ/GRL/5_C.test.cpp
   - name: test/AOJ/NTL
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/NTL/1_B.test.cpp
       title: test/AOJ/NTL/1_B.test.cpp
     - icon: ':heavy_check_mark:'
@@ -456,7 +456,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
       title: test/yosupo_judge/math/Binomial_Coeffcient_Prime.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
       title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     - icon: ':heavy_check_mark:'
@@ -499,7 +499,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
       title: test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
       title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - name: test/yosupo_judge/string

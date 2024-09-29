@@ -1,38 +1,38 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: Type Traits
   _extendedRequiredBy:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/FormalPowerSeries/fps-sqrt.hpp
     title: Sqrt of FPS
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_sqrt.hpp
     title: "\u5E73\u65B9\u5270\u4F59(O(\u221Ap))"
   - icon: ':heavy_check_mark:'
     path: src/string/rolling_hash.hpp
     title: Rolling Hash
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/NTL/1_B.test.cpp
     title: test/AOJ/NTL/1_B.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yuki/No430.test.cpp
     title: test/yuki/No430.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
     links: []
@@ -66,21 +66,21 @@ data:
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
     };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
     \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 3\
-    \ \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\ntemplate <typename T, typename\
-    \ E, typename M>\nconstexpr inline T mod_pow(T base, E exp, M mod) noexcept {\n\
-    \    internal::double_size_uint_t<M> ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n\
-    \    while (exp) {\n        if (exp & 1) {\n            ans *= base;\n       \
-    \     ans %= mod;\n        }\n        base *= base;\n        base %= mod;\n  \
-    \      exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)\n */\n"
+    \ \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\ntemplate <typename T>\nconstexpr\
+    \ T mod_pow(internal::double_size_uint_t<T> base, T exp, T mod) {\n    internal::double_size_uint_t<T>\
+    \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
+    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
+    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
+    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Modulo Power(\u7E70\u308A\
+    \u8FD4\u3057\u4E8C\u4E57\u6CD5)\n */\n"
   code: "#pragma once\n#include \"../internal/type_traits.hpp\"\nnamespace kyopro\
-    \ {\n\ntemplate <typename T, typename E, typename M>\nconstexpr inline T mod_pow(T\
-    \ base, E exp, M mod) noexcept {\n    internal::double_size_uint_t<M> ans = (mod\
-    \ == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n\
-    \            ans *= base;\n            ans %= mod;\n        }\n        base *=\
-    \ base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n\
-    };  // namespace kyopro\n\n/**\n * @brief Modulo Power(\u7E70\u308A\u8FD4\u3057\
-    \u4E8C\u4E57\u6CD5)\n */"
+    \ {\n\ntemplate <typename T>\nconstexpr T mod_pow(internal::double_size_uint_t<T>\
+    \ base, T exp, T mod) {\n    internal::double_size_uint_t<T> ans = (mod == 1 ?\
+    \ 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp & 1) {\n     \
+    \       ans *= base;\n            ans %= mod;\n        }\n        base *= base;\n\
+    \        base %= mod;\n        exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace\
+    \ kyopro\n\n/**\n * @brief Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5\
+    )\n */"
   dependsOn:
   - src/internal/type_traits.hpp
   isVerificationFile: false
@@ -90,8 +90,8 @@ data:
   - src/string/rolling_hash.hpp
   - src/math/mod_sqrt.hpp
   - src/math/mod_log.hpp
-  timestamp: '2024-09-29 11:27:45+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2024-09-29 15:12:55+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_B.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp

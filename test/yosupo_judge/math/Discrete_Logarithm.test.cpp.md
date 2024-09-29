@@ -1,29 +1,29 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/hash_map.hpp
     title: Hash Map
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/gcd.hpp
     title: gcd
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_log.hpp
     title: "Discrete Logarithm(\u96E2\u6563\u5BFE\u6570)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/math/mod_pow.hpp
     title: "Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/discrete_logarithm_mod
@@ -96,22 +96,22 @@ data:
     \ || std::is_same_v<T, __int128_t> ||\n                   std::is_same_v<T, __uint128_t>>;\n\
     };  // namespace internal\n};  // namespace kyopro\n\n/**\n * @brief Type Traits\n\
     \ * @see https://qiita.com/kazatsuyu/items/f8c3b304e7f8b35263d8\n */\n#line 3\
-    \ \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\ntemplate <typename T, typename\
-    \ E, typename M>\nconstexpr inline T mod_pow(T base, E exp, M mod) noexcept {\n\
-    \    internal::double_size_uint_t<M> ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n\
-    \    while (exp) {\n        if (exp & 1) {\n            ans *= base;\n       \
-    \     ans %= mod;\n        }\n        base *= base;\n        base %= mod;\n  \
-    \      exp >>= 1;\n    }\n    return ans;\n}\n};  // namespace kyopro\n\n/**\n\
-    \ * @brief Modulo Power(\u7E70\u308A\u8FD4\u3057\u4E8C\u4E57\u6CD5)\n */\n#line\
-    \ 6 \"src/math/mod_log.hpp\"\nnamespace kyopro {\n\ntemplate <typename T> constexpr\
-    \ inline T mod_log(T x, T y, T p) {\n    if (y == 1 || p == 1) {\n        return\
-    \ 0;\n    }\n    if (x == 0) {\n        if (y == 0) {\n            return 1;\n\
-    \        } else {\n            return -1;\n        }\n    }\n    int m = (int)sqrt(p)\
-    \ + 1;\n    hash_map<T, T> mp;\n    T xm = mod_pow(x, m, p);\n    internal::double_size_uint_t<T>\
-    \ add = 0, g, k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n    \
-    \    if (y == k) return add;\n        if (y % g) return -1;\n        y /= g, p\
-    \ /= g, add++;\n        k = (k * (x / g)) % p;\n    }\n\n    T pr = y;\n    for\
-    \ (int j = 0; j <= m; ++j) {\n        mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr\
+    \ \"src/math/mod_pow.hpp\"\nnamespace kyopro {\n\ntemplate <typename T>\nconstexpr\
+    \ T mod_pow(internal::double_size_uint_t<T> base, T exp, T mod) {\n    internal::double_size_uint_t<T>\
+    \ ans = (mod == 1 ? 0 : 1);\n    base %= mod;\n    while (exp) {\n        if (exp\
+    \ & 1) {\n            ans *= base;\n            ans %= mod;\n        }\n     \
+    \   base *= base;\n        base %= mod;\n        exp >>= 1;\n    }\n    return\
+    \ ans;\n}\n};  // namespace kyopro\n\n/**\n * @brief Modulo Power(\u7E70\u308A\
+    \u8FD4\u3057\u4E8C\u4E57\u6CD5)\n */\n#line 6 \"src/math/mod_log.hpp\"\nnamespace\
+    \ kyopro {\n\ntemplate <typename T> constexpr inline T mod_log(T x, T y, T p)\
+    \ {\n    if (y == 1 || p == 1) {\n        return 0;\n    }\n    if (x == 0) {\n\
+    \        if (y == 0) {\n            return 1;\n        } else {\n            return\
+    \ -1;\n        }\n    }\n    int m = (int)sqrt(p) + 1;\n    hash_map<T, T> mp;\n\
+    \    T xm = mod_pow(x, m, p);\n    internal::double_size_uint_t<T> add = 0, g,\
+    \ k = (p == 1 ? 0 : 1);\n    while ((g = _gcd(x, p)) > 1) {\n        if (y ==\
+    \ k) return add;\n        if (y % g) return -1;\n        y /= g, p /= g, add++;\n\
+    \        k = (k * (x / g)) % p;\n    }\n\n    T pr = y;\n    for (int j = 0; j\
+    \ <= m; ++j) {\n        mp[pr] = j;\n        pr = (internal::double_size_uint_t<T>)pr\
     \ * x % p;\n    }\n    pr = k;\n    for (int i = 1; i <= m; ++i) {\n        pr\
     \ = (internal::double_size_uint_t<T>)pr * xm % p;\n        auto ptr = mp.find(pr);\n\
     \        if (ptr) {\n            int j = *ptr;\n            return m * i - j +\
@@ -168,8 +168,8 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   requiredBy: []
-  timestamp: '2024-09-29 11:27:45+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-09-29 15:12:55+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
 layout: document
