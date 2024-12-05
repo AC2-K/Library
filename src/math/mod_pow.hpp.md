@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
   _extendedRequiredBy:
@@ -87,9 +87,9 @@ data:
   path: src/math/mod_pow.hpp
   requiredBy:
   - src/FormalPowerSeries/fps-sqrt.hpp
-  - src/string/rolling_hash.hpp
-  - src/math/mod_sqrt.hpp
   - src/math/mod_log.hpp
+  - src/math/mod_sqrt.hpp
+  - src/string/rolling_hash.hpp
   timestamp: '2024-09-29 15:12:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

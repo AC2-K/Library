@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
   - icon: ':heavy_check_mark:'
@@ -15,10 +15,10 @@ data:
     path: src/tree/doubling.hpp
     title: "Binary Lifting(\u6728\u4E0A\u306E\u30C0\u30D6\u30EA\u30F3\u30B0)"
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -39,9 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
     title: test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\
       \u5727\u7E2E)"
@@ -98,21 +98,21 @@ data:
   isVerificationFile: false
   path: src/internal/CSR.hpp
   requiredBy:
+  - src/tree/Rerooting.hpp
   - src/tree/EulerTour.hpp
   - src/tree/doubling.hpp
-  - src/tree/Rerooting.hpp
   - src/tree/HeavyLightDecomposition.hpp
   timestamp: '2024-05-16 17:50:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/AOJ/GRL/5_C.test.cpp
-  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp
   - test/yosupo_judge/data_structure/Vertex_Set_Path_Composite.test.cpp
-  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
-  - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
-  - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+  - test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
+  - test/yosupo_judge/tree/Jump_on_Tree.test.cpp
+  - test/yosupo_judge/tree/Lowest_Common_Ancestor_doubling.test.cpp
+  - test/yosupo_judge/tree/Tree_Path_Composite_Sum.test.cpp
 documentation_of: src/internal/CSR.hpp
 layout: document
 redirect_from:

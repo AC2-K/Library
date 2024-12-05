@@ -9,7 +9,7 @@ data:
   attributes:
     document_title: "Geometry(\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8)"
     links: []
-  bundledCode: "#line 2 \"geometry/geom.hpp\"\n\n#include<complex>\n#include<vector>\n\
+  bundledCode: "#line 2 \"src/geometry/geom.hpp\"\n\n#include<complex>\n#include<vector>\n\
     #include<algorithm>\n\nnamespace geometry {\n\nusing T = ; // \u5909\u66F4\u3059\
     \u308B\n\nconstexpr T eps = 0;  // \u7CBE\u5EA6\u306B\u3088\u3063\u3066\u5909\u66F4\
     \u3059\u308B\nconstexpr inline int sgn(T x) noexcept {\n    return x < -eps ?\
@@ -77,15 +77,15 @@ data:
     \u30C8)\n */"
   dependsOn: []
   isVerificationFile: false
-  path: geometry/geom.hpp
+  path: src/geometry/geom.hpp
   requiredBy: []
-  timestamp: '2024-07-20 00:25:32+09:00'
+  timestamp: '2024-12-05 21:13:04+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: geometry/geom.hpp
+documentation_of: src/geometry/geom.hpp
 layout: document
 redirect_from:
-- /library/geometry/geom.hpp
-- /library/geometry/geom.hpp.html
+- /library/src/geometry/geom.hpp
+- /library/src/geometry/geom.hpp.html
 title: "Geometry(\u5E7E\u4F55\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8)"
 ---

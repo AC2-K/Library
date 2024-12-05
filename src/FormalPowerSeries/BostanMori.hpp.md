@@ -19,7 +19,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/atcoder/modint.hpp
     title: src/atcoder/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
   _extendedRequiredBy: []

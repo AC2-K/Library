@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/dynamic_programming/number_of_subseq.hpp
     title: "Count subsequences \u90E8\u5206\u5217\u306E\u500B\u6570"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/internal/type_traits.hpp
     title: Type Traits
   - icon: ':heavy_check_mark:'
@@ -13,7 +13,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: src/math/static_modint.hpp
     title: static modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
   - icon: ':heavy_check_mark:'
