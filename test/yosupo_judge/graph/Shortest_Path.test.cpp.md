@@ -5,10 +5,10 @@ data:
     path: src/graph/dijkstra.hpp
     title: "Single Source Shortest Path(\u30C0\u30A4\u30AF\u30B9\u30C8\u30E9\u6CD5\
       )"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/internal/type_traits.hpp
     title: Type Traits
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/stream.hpp
     title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
   - icon: ':heavy_check_mark:'

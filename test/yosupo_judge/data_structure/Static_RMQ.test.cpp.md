@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/data-structure/sparse_table.hpp
     title: Sparse Table
   _extendedRequiredBy: []
@@ -30,7 +30,7 @@ data:
     \ =\n                    op(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);\n\
     \            }\n        }\n        lg.resize(sz + 1);\n        for (int i = 2;\
     \ i < (int)lg.size(); i++) {\n            lg[i] = lg[i >> 1] + 1;\n        }\n\
-    \    }\n\n    T fold(int l, int r) const {\n        assert(l < r);\n        int\
+    \    }\n\n    T fold(int l, int r) const {\n        assert(l <= r);\n        int\
     \ b = lg[r - l];\n        return op(table[b][l], table[b][r - (1 << b)]);\n  \
     \  }\n};\n};  // namespace kyopro\n\n/**\n * @brief Sparse Table\n */\n#line 4\
     \ \"test/yosupo_judge/data_structure/Static_RMQ.test.cpp\"\ninline int op(int\
@@ -53,7 +53,7 @@ data:
   isVerificationFile: true
   path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
   requiredBy: []
-  timestamp: '2024-12-05 21:13:20+09:00'
+  timestamp: '2024-12-05 21:26:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/yosupo_judge/data_structure/Static_RMQ.test.cpp

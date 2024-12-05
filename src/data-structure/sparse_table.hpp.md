@@ -2,17 +2,17 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: src/tree/EulerTour.hpp
     title: Euler Tour
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/AOJ/GRL/5_C.test.cpp
     title: test/AOJ/GRL/5_C.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
     title: test/yosupo_judge/data_structure/Static_RMQ.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -21,9 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
     title: test/yosupo_judge/tree/Lowest_Common_Ancestor_RMQ.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: Sparse Table
     links: []
@@ -41,7 +41,7 @@ data:
     \ =\n                    op(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);\n\
     \            }\n        }\n        lg.resize(sz + 1);\n        for (int i = 2;\
     \ i < (int)lg.size(); i++) {\n            lg[i] = lg[i >> 1] + 1;\n        }\n\
-    \    }\n\n    T fold(int l, int r) const {\n        assert(l < r);\n        int\
+    \    }\n\n    T fold(int l, int r) const {\n        assert(l <= r);\n        int\
     \ b = lg[r - l];\n        return op(table[b][l], table[b][r - (1 << b)]);\n  \
     \  }\n};\n};  // namespace kyopro\n\n/**\n * @brief Sparse Table\n */\n"
   code: "#pragma once\n#include <cassert>\n#include <numeric>\n#include <vector>\n\
@@ -58,16 +58,16 @@ data:
     \            op(table[i - 1][j], table[i - 1][j + (1 << (i - 1))]);\n        \
     \    }\n        }\n        lg.resize(sz + 1);\n        for (int i = 2; i < (int)lg.size();\
     \ i++) {\n            lg[i] = lg[i >> 1] + 1;\n        }\n    }\n\n    T fold(int\
-    \ l, int r) const {\n        assert(l < r);\n        int b = lg[r - l];\n    \
-    \    return op(table[b][l], table[b][r - (1 << b)]);\n    }\n};\n};  // namespace\
+    \ l, int r) const {\n        assert(l <= r);\n        int b = lg[r - l];\n   \
+    \     return op(table[b][l], table[b][r - (1 << b)]);\n    }\n};\n};  // namespace\
     \ kyopro\n\n/**\n * @brief Sparse Table\n */"
   dependsOn: []
   isVerificationFile: false
   path: src/data-structure/sparse_table.hpp
   requiredBy:
   - src/tree/EulerTour.hpp
-  timestamp: '2024-12-05 21:13:20+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2024-12-05 21:26:43+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/GRL/5_C.test.cpp
   - test/yosupo_judge/data_structure/Vertex_add_Subtree_Sum.test.cpp

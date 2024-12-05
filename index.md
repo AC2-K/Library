@@ -107,7 +107,7 @@ data:
       title: Subset Convolution
   - name: src/data-structure
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/BIT.hpp
       title: Binary Index Tree
     - icon: ':heavy_check_mark:'
@@ -140,7 +140,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/data-structure/slide_window_minimum.hpp
       title: "Slide Window Minimum(\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/sparse_table.hpp
       title: Sparse Table
   - name: src/data-structure/bbst
@@ -182,7 +182,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/debug.hpp
       title: Debugger
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/stream.hpp
       title: "Fast IO(\u9AD8\u901F\u5165\u51FA\u529B)"
     - icon: ':heavy_check_mark:'
@@ -217,7 +217,7 @@ data:
       title: "Bipartite Matching(\u4E8C\u90E8\u30DE\u30C3\u30C1\u30F3\u30B0)"
   - name: src/internal
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/CSR.hpp
       title: "CSR\u5F62\u5F0F(\u4E8C\u6B21\u5143\u30D9\u30AF\u30C8\u30EB\u306E\u5727\
         \u7E2E)"
@@ -227,7 +227,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: src/internal/montgomery.hpp
       title: Montgomery Reduction
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/internal/type_traits.hpp
       title: Type Traits
   - name: src/math
@@ -295,7 +295,7 @@ data:
       title: Wildcard Pattern Matching
   - name: src/tree
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: src/tree/EulerTour.hpp
       title: Euler Tour
     - icon: ':heavy_check_mark:'
@@ -339,7 +339,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/1_A.test.cpp
       title: test/AOJ/GRL/1_A.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/AOJ/GRL/5_C.test.cpp
       title: test/AOJ/GRL/5_C.test.cpp
   - name: test/AOJ/NTL
@@ -437,7 +437,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/UnionFind.test.cpp
       title: test/yosupo_judge/data_structure/UnionFind.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
       title: test/yosupo_judge/data_structure/Vertex_Add_Path_Sum.test.cpp
     - icon: ':heavy_check_mark:'
