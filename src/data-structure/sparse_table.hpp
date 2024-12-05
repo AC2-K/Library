@@ -1,6 +1,8 @@
 #pragma once
+#include <cassert>
 #include <numeric>
 #include <vector>
+
 namespace kyopro {
 
 template <class T, auto op> class sparse_table {
@@ -36,6 +38,7 @@ public:
     }
 
     T fold(int l, int r) const {
+        assert(l < r);
         int b = lg[r - l];
         return op(table[b][l], table[b][r - (1 << b)]);
     }
