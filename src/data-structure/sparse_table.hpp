@@ -38,7 +38,7 @@ public:
     }
 
     T fold(int l, int r) const {
-        assert(l < r);
+        assert(l <= r);
         int b = lg[r - l];
         return op(table[b][l], table[b][r - (1 << b)]);
     }

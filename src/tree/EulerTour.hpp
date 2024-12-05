@@ -24,7 +24,7 @@ public:
     explicit EulerTour(int n)
         : n(n), in(n, -1), out(n, -1), depth(n, -1), rmq(2 * n - 1) {
         tour.reserve(2 * n);
-        es.reserve(2 * n);
+        es.reserve(2 * (n - 1));
     }
 
     void add_edge(int u, int v) {
@@ -68,6 +68,7 @@ public:
     int lca(int v, int u) const {
         assert(0 <= v && v < n);
         assert(0 <= u && u < n);
+        if (u == v) return v;
         if (in[v] > in[u] + 1) {
             std::swap(u, v);
         }
