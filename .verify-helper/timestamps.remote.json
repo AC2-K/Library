@@ -49,6 +49,7 @@
 "test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp": "2024-05-16 17:50:34 +0900",
 "test/yosupo_judge/math/Number_of_Subsequences.test.cpp": "2024-09-29 11:09:18 +0900",
 "test/yosupo_judge/math/Primitive_Root.test.cpp": "2024-05-16 21:11:27 +0900",
+"test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp": "2024-12-06 15:11:18 +0900",
 "test/yosupo_judge/matrix/Matrix Product.test.cpp": "2024-09-29 11:09:18 +0900",
 "test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp": "2024-09-29 11:09:18 +0900",
 "test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp": "2024-05-16 17:50:34 +0900",
