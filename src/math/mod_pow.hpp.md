@@ -25,6 +25,9 @@ data:
     path: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
     title: test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
+    title: test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
     title: test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -94,6 +97,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_B.test.cpp
+  - test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
   - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yuki/No430.test.cpp

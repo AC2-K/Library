@@ -58,6 +58,9 @@ data:
     path: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
     title: test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
+    title: test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
     title: test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp
   - icon: ':heavy_check_mark:'
@@ -123,6 +126,7 @@ data:
   - test/AOJ/DSL/3_D.test.cpp
   - test/AOJ/DSL/5_B.test.cpp
   - test/AOJ/P1508.test.cpp
+  - test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
   - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/yosupo_judge/matrix/Pow_of_Matrix.test.cpp

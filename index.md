@@ -120,6 +120,9 @@ data:
       path: src/data-structure/SWAG.hpp
       title: Slide Window Aggrigation
     - icon: ':heavy_check_mark:'
+      path: src/data-structure/bitvector.hpp
+      title: bitvector
+    - icon: ':heavy_check_mark:'
       path: src/data-structure/dsu.hpp
       title: Disjoint Set Union
     - icon: ':heavy_check_mark:'
@@ -244,6 +247,9 @@ data:
     - icon: ':warning:'
       path: src/math/eratosthenes.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
+    - icon: ':heavy_check_mark:'
+      path: src/math/gauss_jordan.hpp
+      title: "Gauss Jordan\u306E\u6383\u304D\u51FA\u3057\u6CD5"
     - icon: ':heavy_check_mark:'
       path: src/math/gcd.hpp
       title: gcd
@@ -474,6 +480,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/yosupo_judge/math/Primitive_Root.test.cpp
       title: test/yosupo_judge/math/Primitive_Root.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
+      title: test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
   - name: test/yosupo_judge/matrix
     pages:
     - icon: ':heavy_check_mark:'

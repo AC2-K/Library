@@ -148,6 +148,9 @@ data:
     path: test/yosupo_judge/math/Primitive_Root.test.cpp
     title: test/yosupo_judge/math/Primitive_Root.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
+    title: test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/yosupo_judge/matrix/Matrix Product.test.cpp
     title: test/yosupo_judge/matrix/Matrix Product.test.cpp
   - icon: ':heavy_check_mark:'
@@ -322,6 +325,7 @@ data:
   - test/AOJ/NTL/1_B.test.cpp
   - test/AOJ/GRL/1_A.test.cpp
   - test/AOJ/GRL/5_C.test.cpp
+  - test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
   - test/yosupo_judge/math/Number_of_Subsequences.test.cpp
   - test/yosupo_judge/math/Longest_Increasing_Subsequence.test.cpp
   - test/yosupo_judge/math/Factorize.test.cpp
