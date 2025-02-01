@@ -89,18 +89,18 @@ data:
   isVerificationFile: false
   path: src/math/mod_pow.hpp
   requiredBy:
-  - src/FormalPowerSeries/fps-sqrt.hpp
-  - src/math/mod_log.hpp
   - src/math/mod_sqrt.hpp
+  - src/math/mod_log.hpp
+  - src/FormalPowerSeries/fps-sqrt.hpp
   - src/string/rolling_hash.hpp
   timestamp: '2024-09-29 15:12:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/AOJ/NTL/1_B.test.cpp
-  - test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
-  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
-  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yuki/No430.test.cpp
+  - test/yosupo_judge/math/Discrete_Logarithm.test.cpp
+  - test/yosupo_judge/math/Rank_of_Matrix_Mod2.test.cpp
+  - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
 documentation_of: src/math/mod_pow.hpp
 layout: document
 redirect_from:

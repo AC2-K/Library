@@ -146,10 +146,10 @@ data:
   isVerificationFile: false
   path: src/atcoder/internal_type_traits.hpp
   requiredBy:
-  - src/FormalPowerSeries/fps-sqrt.hpp
   - src/FormalPowerSeries/FPS.hpp
-  - src/FormalPowerSeries/BostanMori.hpp
   - src/FormalPowerSeries/taylor-shift.hpp
+  - src/FormalPowerSeries/BostanMori.hpp
+  - src/FormalPowerSeries/fps-sqrt.hpp
   - src/atcoder/convolution.hpp
   - src/atcoder/fenwicktree.hpp
   - src/atcoder/modint.hpp
@@ -159,11 +159,11 @@ data:
   verifiedWith:
   - test/yosupo_judge/math/Kth_term_of_Linearly_Recurrent_Sequence.test.cpp
   - test/yosupo_judge/polynomial/Polynomial_Taylor_Shift.test.cpp
+  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Exp_of_Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Sqrt_of_Formal_Power_Series.test.cpp
   - test/yosupo_judge/polynomial/Inv_of Formal_Power_Series.test.cpp
-  - test/yosupo_judge/polynomial/Pow_of_Formal_Power_Series.test.cpp
+  - test/yosupo_judge/polynomial/Log of Formal_Power_Series.test.cpp
 documentation_of: src/atcoder/internal_type_traits.hpp
 layout: document
 redirect_from:

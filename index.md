@@ -163,6 +163,9 @@ data:
       title: "\u53CD\u8EE2\u53EF\u80FD\u5E73\u8861\u4E8C\u5206\u6728"
   - name: src/data-structure/data-structure-2d
     pages:
+    - icon: ':warning:'
+      path: src/data-structure/data-structure-2d/area-of-union-of-rectangles.hpp
+      title: src/data-structure/data-structure-2d/area-of-union-of-rectangles.hpp
     - icon: ':heavy_check_mark:'
       path: src/data-structure/data-structure-2d/cumulative-sum.hpp
       title: "\u4E8C\u6B21\u5143\u7D2F\u7A4D\u548C"
